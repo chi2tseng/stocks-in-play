@@ -32,7 +32,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 | 6. Build report | `py build_report.py` + `py gen_tables.py` | <1s | $0 | `final-candidates.csv` + `sorted-views.md` |
 | 7. Final brief | Claude composes the 繁體中文 brief | — | — | inline in chat |
 | **8. Write news_detail.json** | **Claude curates per-symbol `detail` + `publishedAt` for the top 10 SIPs** | ~3 min | $0 | `news_detail.json` (top-10 only; rest auto-fallback to catalyst sentence) |
-| **9. Write claude_picks.json** | **Claude writes hand-picked rankings + 繁中 rationale for the 5-10 highest-conviction longs** | ~2 min | $0 | `claude_picks.json` ([{symbol, rank, rationale}]) — drives the "Claude 精選" subtab on Today's SIPs |
+| **9. Write claude_picks.json** | **Claude writes hand-picked rankings + 繁中 rationale + `intent: long\|short` for 5-10 highest-conviction picks** | ~2 min | $0 | `claude_picks.json` ([{symbol, rank, intent, rationale}]) — drives the **default "Claude 精選"** subtab on Today's SIPs. **Direction-match rule:** `intent: long` only for gap-up tickers (chgPct > 0); `intent: short` only for gap-down (chgPct < 0). Dashboard silently drops mismatches. |
 | **10. Publish dashboard** | `py build_dashboard.py` (no args = today's ISO date) | <1s | $0 | `dashboard/data/<DATE>.json`, `dates.json`, `data.json`, `index.html` |
 
 **Total runtime:** ~5-10 min including news-detail curation. **Total cost:** $0.
@@ -46,7 +46,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 - `gen_tables.py` — produces 3 sorted markdown views (|%Chg| / Session / Price)
 - **`build_dashboard.py`** — assembles `dashboard/data/<DATE>.json` + writes the static SPA at `dashboard/index.html` (revolut design system, "Stocks In Play" branding). Merges `shorts.json` + `claude_picks.json` if present.
 - **`news_detail.json`** — per-symbol detail + `publishedAt` (real news publication time). Optional input; spec at `NEWS_TIME_SPEC.md`.
-- **`claude_picks.json`** — `{ "picks": [ {"symbol", "rank", "rationale"} ] }`. Drives the **"Claude 精選"** subtab on Today's SIPs. Symbols not in today's candidates get silently dropped.
+- **`claude_picks.json`** — `{ "picks": [ {"symbol", "rank", "intent": "long"|"short", "rationale", "neglected"?: bool} ] }`. Drives the **default "Claude 精選"** subtab on Today's SIPs. **Direction-match rule:** longs must be gap-up, shorts must be gap-down — mismatches are silently filtered out by the dashboard. Symbols not in today's candidates also drop.
 - **`NEWS_TIME_SPEC.md`** — contract for how to source + format real news timestamps. Read it BEFORE writing `news_detail.json` (see § 8 below for the integration).
 
 **Dashboard URL:** http://127.0.0.1:5510/ (served by the `sips-dashboard` preview server, started by `mcp__Claude_Preview__preview_start` with name `sips-dashboard` and `port: 5510`). The server is always running once started; the dashboard auto-refreshes when `data/<DATE>.json` is rewritten.

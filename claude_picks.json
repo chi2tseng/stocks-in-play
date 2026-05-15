@@ -1,55 +1,47 @@
 {
-  "_comment": "Claude's hand-picked SIP rankings for 2026-05-15 scan. Read by build_dashboard.py and exposed as DATA.claudePicks on the Today's SIPs subtab.",
+  "_comment": "Claude's hand-picked SIP rankings. Read by build_dashboard.py and exposed as DATA.claudePicks. Each pick has an `intent` field: 'long' (default) or 'short'. Direction-match rule (enforced by dashboard JS): long picks must be gap-up (chgPct > 0), short picks must be gap-down (chgPct < 0). Mismatches are silently filtered out — market direction must agree with the thesis. NEVER mark a gap-down ticker as a long pick (or vice versa).",
   "picks": [
     {
       "symbol": "FIG",
       "rank": 1,
-      "rationale": "今日 post-market 場上最乾淨的 Setup A——連續四季營收加速 (+46% > +37% > +30% > +25%)、NDR 139%、AI Credit 帳單爆量、FY26 指引上修至 +35% YoY。盤後 +11.66% 在 $22.60，YTD -45.84% 還有大量空間。Short Float 31.58% (D2C 3.38) 提供軋空燃料。Mkt Cap $10.6B 適合機構參與，標準進場 2.5% 停損。"
-    },
-    {
-      "symbol": "GEMI",
-      "rank": 2,
-      "rationale": "Winklevoss Capital 以 $14/股 (用 BTC 支付) $1 億策略投資——當前 $6.35 vs 內幕對價 $14 = 122% 折價套利。Q1 營收 $50.3M (+42% YoY) 在 Coinbase/Robinhood 競爭下仍能成長。Short Float 21.16% (D2C 4.48) 軋空潛力備齊。YTD -46.98% 嚴重折價。風險：加密 beta 高、部位需小於 FIG。"
-    },
-    {
-      "symbol": "BOOT",
-      "rank": 3,
-      "rationale": "Boot Barn FQ4 EPS $1.45 beat $1.43、Rev $539M (+18.7% YoY)、**同店銷售 +6.1%** + FY27 指引 +14-16% 成長。Forward YoY 連續四季全在 +14-19% 全期區間。Mkt Cap $4.45B 有機構參與餘地、YTD -17.06% 是健康回測。質地最高但波動小、適合保守倉位。"
-    },
-    {
-      "symbol": "WYY",
-      "rank": 4,
-      "rationale": "WidePoint Q1 EPS $0.01 vs -$0.055 (每股 +$0.065 轉盈)、Rev $40.58M (+18.59% YoY)、**調整 EBITDA +714%**。Forward YoY 顯示未來 4Q EPS YoY ≥ +111%——典型 inflection point。Mkt Cap $88.66M 屬 sugar baby 級別、流動性偏低需 limit order。建議 5-10% 倉位、停損 5%。"
+      "intent": "long",
+      "rationale": "今日 post-market 場上最乾淨的 Setup A——連續四季營收加速 +46% > +37% > +30% > +25%、NDR 139%、FY26 指引上修至 +35%。盤後 +11.66% 在 $22.60、距 IPO 後 -48% YTD 還有大量空間。標準進場 2.5% 停損，強催化劑可升級 5%。"
     },
     {
       "symbol": "POET",
+      "rank": 2,
+      "intent": "long",
+      "rationale": "與 Lumilens 簽 $50M 首筆訂單 + 5 年累計 $500M 的 AI 光子引擎協議；任命前 Silicon Labs 高管為 COO 是『故事股升級執行』訊號。AI 光子是 HBM 之後資料中心下一波瓶頸；但屬故事股，建議只做日內或短線 swing。"
+    },
+    {
+      "symbol": "WYY",
+      "rank": 3,
+      "intent": "long",
+      "rationale": "WidePoint Q1 EPS 由 -$0.08 轉正至 $0.01、EBITDA +714%、FCF +941%、連 35 季 EBITDA 為正；CWMS 3.0 政府 SaaS 為 2026 主軸。微型股 ($89M cap) 流動性偏低，建議 limit order + 半倉以內。"
+    },
+    {
+      "symbol": "PIII",
+      "rank": 4,
+      "intent": "long",
+      "rationale": "Q1 EPS +$0.32 vs 預估 -$4.85（surprise +107%！分析師全錯）、FY EBITDA 指引中位數翻倍至 $40M——Stockbee 經典『EPS surprise ≥ 100%』+ 上修指引組合。盤後 +42.68% 已先吃一段，明天若回測 $5.40-$5.60 為再進場區。"
+    },
+    {
+      "symbol": "GEMI",
       "rank": 5,
-      "rationale": "POET 與 Lumilens 簽 $50M AI 光子引擎合約（5 年潛在 $5 億），對市值 $3.14B 公司是質變級訂單。但 1M +195%、12M +358% 嚴重過熱、Short Float 16.17% 但 D2C 僅 0.51 day（軋空已耗盡）。盤後 +11.28% 後隔日常 sell-the-news。**建議保守進場：等開盤 15 分鐘回測 $22 才考慮輕倉**。"
+      "intent": "long",
+      "rationale": "Q1 營收 +42% YoY、獲 Winklevoss Capital $100M BTC 注資（內部人增資是強訊號）；TradingView 估未來 4Q 營收加速至 +62%/+22%/+18%/+35%。屬加密交易所敘事 + 強股東支持；建議與 BTC 同向操作。"
     },
     {
       "symbol": "DXCM",
       "rank": 6,
-      "rationale": "Elliott Management 大額入股 Dexcom、獲 2 個董事席位 + 重組創新委員會，YTD -12.88%、12M -33.17% 深度折價。Elliott 過往戰績優異（HPE、PYPL），但 $22.31B 大型股需 6-12 個月才看到結構性變化。短線 +5.5% 是 Day 1 反應、中長線推薦。"
+      "intent": "long",
+      "rationale": "Q1 EPS $0.56 +75% YoY +20% beat；Elliott Management 入股並達成合作協議——過去案例如 HPE、Salesforce 都帶動結構性重估與 capital allocation 改革。大盤股 ($24B) 適合中長期 swing，停損可放寬至 4%。"
     },
     {
-      "symbol": "DAIO",
+      "symbol": "GAMB",
       "rank": 7,
-      "rationale": "Data I/O 同日宣布 $23M 收購 + $9M 投資可使 FY 營收倍增、Q2 指引 +20%。對 Mkt Cap $27.34M 的公司是質變級事件。但 Q1 本身 EPS -$0.34 大 miss、純併購轉型故事——失敗風險也大。建議 5% 試水部位、停損 3%。"
-    },
-    {
-      "symbol": "PIII",
-      "rank": 8,
-      "rationale": "P3 Health Partners Q1 調整 EBITDA $26M「拐點 quarter」、FY26 指引從 -$20M~+$40M 上調至 $20-60M。每股從 -$6.28 跳到 +$0.32 但**警告**：(1) Rev YoY 僅 +3.53%（純成本改善而非成長加速）、(2) Mkt Cap $29.17M 極端 micro-cap、(3) 盤後 +42.68% 後常 sell-the-news。僅作 5% 試水、停損 5%、開盤需等回測 $5。"
-    },
-    {
-      "symbol": "MICC",
-      "rank": 9,
-      "rationale": "Unilever 分拆冰淇淋業務獨立上市為 Magnum ICE Cream Company N.V.，FY underlying sales +4.5%、銷量 +2.9%。Mkt Cap $9.2B 大型消費品，spinoff 首日 +16.84% 後常見 fade、等 1-2 週估值穩定再進。短線非首選。"
-    },
-    {
-      "symbol": "PZZA",
-      "rank": 10,
-      "rationale": "Papa John's Q1 全部 miss（EPS $0.32 < $0.37、Rev -7.7%、同店 -3.9%）但維持 FY26 EBITDA 指引 $200-210M、盤後 +8.28%。Short Float 16.47% + D2C 4.04——典型「壞數字 + maintained guidance」軋空 oversold bounce。1-3 日交易機會、不是真 SIP。"
+      "intent": "short",
+      "rationale": "Q1 EPS -$0.03 大 miss $0.06、EPS YoY -80%、營收持平 €40.4M、由淨利轉淨虧 $1.2M、宣布裁員 25% AI 重組——業績疲弱的最強訊號。盤後 -25.6% 在 $3.08 已破支撐；建議等開盤後 15 分鐘觀察，若反彈 $3.20-$3.30 為做空進場區，回補目標 $2.50-$2.70，停損 $3.45。"
     }
   ]
 }
