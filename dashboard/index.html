@@ -257,6 +257,64 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 }
 .save-study-btn:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
 .save-study-btn.saved { background: rgba(0,168,126,0.10); color: var(--pos); border-color: var(--pos); }
+
+/* ── OHLCV row + intraday chip ── */
+.study-section-label {
+  font-size: 11px; color: var(--stone); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.6px; margin-top: 4px;
+  display: flex; align-items: center; gap: 10px;
+}
+.study-intraday {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  padding: 2px 8px; border-radius: var(--r-pill); background: var(--surface-soft);
+}
+.study-intraday.pos { color: var(--pos); }
+.study-intraday.neg { color: var(--neg); }
+.study-ohlcv-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+.study-ohlcv-field { display: flex; flex-direction: column; gap: 3px; font-size: 10px; color: var(--stone); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
+.study-ohlcv-field input {
+  padding: 5px 8px; border: 1px solid var(--hairline); border-radius: var(--r-sm);
+  background: var(--canvas); color: var(--ink); font-family: var(--font-mono); font-size: 12px;
+}
+.study-ohlcv-field input:focus { outline: none; border-color: var(--primary); }
+@media (max-width: 700px) { .study-ohlcv-row { grid-template-columns: repeat(3, 1fr); } }
+
+/* ── Screenshot grid + upload zone + thumbs + lightbox ── */
+.study-screenshots {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px; margin-top: 4px;
+}
+.study-shot {
+  background: var(--surface-soft); border-radius: var(--r-sm);
+  overflow: hidden; display: flex; flex-direction: column;
+  border: 1px solid var(--hairline);
+}
+.study-shot img { width: 100%; height: 90px; object-fit: cover; display: block; background: var(--surface-elevated); transition: transform 0.15s; }
+.study-shot img:hover { transform: scale(1.04); }
+.study-shot-bar { display: flex; gap: 4px; padding: 4px 6px; background: var(--canvas); }
+.study-shot-label { flex: 1; min-width: 0; padding: 3px 6px; font-size: 11px; border: 1px solid transparent; border-radius: var(--r-sm); background: transparent; color: var(--body); font-family: var(--font-body); }
+.study-shot-label:focus { outline: none; border-color: var(--primary); background: var(--canvas); }
+.study-shot-del { padding: 2px 6px; font-size: 11px; background: transparent; color: var(--mute); border: none; cursor: pointer; border-radius: var(--r-sm); }
+.study-shot-del:hover { color: var(--neg); background: rgba(226,59,74,0.08); }
+.study-shot-drop {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 130px; border: 2px dashed var(--hairline); border-radius: var(--r-sm);
+  cursor: pointer; transition: border-color 0.12s, background 0.12s;
+  color: var(--mute);
+}
+.study-shot-drop:hover, .study-shot-drop:focus, .study-shot-drop.drag-over { border-color: var(--primary); background: rgba(73,79,223,0.04); color: var(--primary); outline: none; }
+.study-shot-drop-inner { text-align: center; padding: 8px; }
+.study-shot-drop-icon { font-size: 28px; font-weight: 300; line-height: 1; margin-bottom: 4px; }
+.study-shot-drop-hint { font-size: 10px; line-height: 1.4; }
+
+/* Lightbox overlay for click-to-enlarge */
+.shot-lightbox {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.88);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  z-index: 99999; cursor: zoom-out; padding: 40px;
+}
+.shot-lightbox img { max-width: 95vw; max-height: 88vh; box-shadow: 0 24px 64px rgba(0,0,0,0.5); border-radius: var(--r-sm); }
+.shot-lightbox .shot-caption { color: rgba(255,255,255,0.85); margin-top: 12px; font-family: var(--font-mono); font-size: 13px; }
 .cal-btn svg { width: 13px; height: 13px; }
 .cal-popup { position: fixed; top: 0; left: 0; background: var(--canvas); border-radius: var(--r-md); padding: 16px; width: 280px; z-index: 9999; box-shadow: 0 24px 64px -12px rgba(0,0,0,0.25); border: 1px solid var(--hairline); display: none; }
 .cal-popup.open { display: block; }
@@ -2404,6 +2462,16 @@ const I18N = {
     'studies-import': '匯入 JSON',
     'studies-clear': '清空全部',
     'studies-clear-confirm': '確定清空所有 studies？此動作無法復原。',
+    'studies-ohlcv-label': '當日 OHLCV',
+    'ohlcv-date': '日期',
+    'ohlcv-open': '開盤',
+    'ohlcv-high': '最高',
+    'ohlcv-low': '最低',
+    'ohlcv-close': '收盤',
+    'ohlcv-volume': '成交量',
+    'studies-screenshots-label': '截圖（進場 / 停損 / 出場 / 圖型）',
+    'studies-shot-label-placeholder': '標籤（例: entry / stop / exit）',
+    'studies-shot-upload-hint': '點擊上傳 · 拖放圖片 · 或於此區按 Ctrl+V 貼上',
     'claude-rationale-label': 'Claude 分析',
     'forward-yoy': 'Forward YoY',
     'copy': 'Copy',
@@ -2450,6 +2518,16 @@ const I18N = {
     'studies-import': 'Import JSON',
     'studies-clear': 'Clear all',
     'studies-clear-confirm': 'Clear all studies? This cannot be undone.',
+    'studies-ohlcv-label': "Day's OHLCV",
+    'ohlcv-date': 'Date',
+    'ohlcv-open': 'Open',
+    'ohlcv-high': 'High',
+    'ohlcv-low': 'Low',
+    'ohlcv-close': 'Close',
+    'ohlcv-volume': 'Volume',
+    'studies-screenshots-label': 'Screenshots (entry / stop / exit / pattern)',
+    'studies-shot-label-placeholder': 'Label (e.g. entry / stop / exit)',
+    'studies-shot-upload-hint': 'Click to upload · drag & drop · or Ctrl+V here',
     'claude-rationale-label': "Claude's Analysis",
     'forward-yoy': 'Forward YoY',
     'copy': 'Copy',
@@ -2500,6 +2578,100 @@ function installLangToggle() {
    Studies are user-owned data, not synced to GitHub — Export/Import JSON button gives
    manual cross-device portability. */
 const STUDIES_KEY = 'sips-studies';
+/* ── IndexedDB image store ────────────────────────────────────────────
+   localStorage caps at ~5 MB per origin (small for screenshots). IndexedDB
+   has no practical cap on modern browsers — typically 50% of free disk.
+   Screenshots get stored here keyed by uuid; the study metadata in
+   localStorage holds the key (not the data) so the JSON stays small.
+   API:  await putImg(key, dataUrl) / await getImg(key) / await delImg(key)
+   ─────────────────────────────────────────────────────────────────── */
+const IMG_DB_NAME = 'sips-images';
+const IMG_STORE = 'images';
+let __imgDB = null;
+function openImgDB() {
+  if (__imgDB) return Promise.resolve(__imgDB);
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(IMG_DB_NAME, 1);
+    req.onupgradeneeded = () => req.result.createObjectStore(IMG_STORE);
+    req.onsuccess = () => { __imgDB = req.result; resolve(__imgDB); };
+    req.onerror = () => reject(req.error);
+  });
+}
+async function putImg(key, dataUrl) {
+  const db = await openImgDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(IMG_STORE, 'readwrite');
+    tx.objectStore(IMG_STORE).put(dataUrl, key);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+async function getImg(key) {
+  const db = await openImgDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(IMG_STORE, 'readonly');
+    const req = tx.objectStore(IMG_STORE).get(key);
+    req.onsuccess = () => resolve(req.result || null);
+    req.onerror = () => reject(req.error);
+  });
+}
+async function delImg(key) {
+  const db = await openImgDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(IMG_STORE, 'readwrite');
+    tx.objectStore(IMG_STORE).delete(key);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+async function getAllImgs() {
+  const db = await openImgDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(IMG_STORE, 'readonly');
+    const store = tx.objectStore(IMG_STORE);
+    const out = {};
+    const req = store.openCursor();
+    req.onsuccess = e => {
+      const cur = e.target.result;
+      if (cur) { out[cur.key] = cur.value; cur.continue(); }
+      else resolve(out);
+    };
+    req.onerror = () => reject(req.error);
+  });
+}
+function uuid() {
+  // Compact 12-char uuid suffix — collision-free enough for per-user image keys.
+  return 'img-' + Math.random().toString(36).slice(2, 8) + Date.now().toString(36).slice(-4);
+}
+
+// Auto-downscale large screenshots before storage. Max 1600px on long edge, JPEG 0.88 quality.
+// Keeps 4K screenshots under ~400 KB without losing legibility for chart annotations.
+function downscaleImage(file, maxDim = 1600, quality = 0.88) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        let { width: w, height: h } = img;
+        if (w > maxDim || h > maxDim) {
+          const scale = maxDim / Math.max(w, h);
+          w = Math.round(w * scale); h = Math.round(h * scale);
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        // PNG → JPEG (massive size reduction). Keep PNG only if image is small + has transparency hints.
+        const useJpeg = file.size > 200 * 1024 || file.type === 'image/jpeg';
+        resolve(canvas.toDataURL(useJpeg ? 'image/jpeg' : 'image/png', quality));
+      };
+      img.onerror = reject;
+      img.src = reader.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
 function loadStudies() {
   try { return JSON.parse(localStorage.getItem(STUDIES_KEY) || '[]'); }
   catch { return []; }
@@ -2538,11 +2710,20 @@ function addStudy(stock) {
     targetPrice: null,
     stopLoss: null,
     conviction: 3,
+    // Daily OHLCV — filled in manually after the trading day. `chgIntraday_pct` is open→close.
+    ohlcv: { date: '', open: null, high: null, low: null, close: null, volume: null },
+    // Screenshots — array of { id, label, caption, imgKey }. Image data lives in IndexedDB.
+    screenshots: [],
   });
   saveStudies(arr);
   return true;
 }
-function removeStudy(sym) {
+async function removeStudy(sym) {
+  const st = loadStudies().find(s => s.symbol === sym);
+  // Clean up associated IndexedDB images so we don't leak storage
+  if (st?.screenshots?.length) {
+    for (const ss of st.screenshots) { try { await delImg(ss.imgKey); } catch {} }
+  }
   saveStudies(loadStudies().filter(st => st.symbol !== sym));
 }
 function updateStudy(sym, patch) {
@@ -2577,13 +2758,113 @@ function renderStudies() {
     card.querySelector('.study-target')?.addEventListener('input', e => updateStudy(sym, { targetPrice: parseFloat(e.target.value) || null }));
     card.querySelector('.study-stop')?.addEventListener('input', e => updateStudy(sym, { stopLoss: parseFloat(e.target.value) || null }));
     card.querySelector('.study-conviction')?.addEventListener('input', e => updateStudy(sym, { conviction: parseInt(e.target.value, 10) }));
-    card.querySelector('.study-remove')?.addEventListener('click', () => {
-      if (confirm(`Remove ${sym} from studies?`)) { removeStudy(sym); renderStudies(); }
+    card.querySelector('.study-remove')?.addEventListener('click', async () => {
+      if (confirm(`Remove ${sym} from studies?`)) { await removeStudy(sym); renderStudies(); }
     });
+    // OHLCV inputs — write to the nested ohlcv object on every keystroke (no debounce, payload tiny).
+    card.querySelectorAll('.study-ohlcv-field input').forEach(inp => {
+      inp.addEventListener('input', e => {
+        const field = e.target.dataset.field;
+        const cur = loadStudies().find(s => s.symbol === sym)?.ohlcv || {};
+        const val = field === 'date' ? e.target.value : (parseFloat(e.target.value) || null);
+        updateStudy(sym, { ohlcv: { ...cur, [field]: val } });
+        // Refresh the intraday chip without a full re-render
+        const o = { ...cur, [field]: val };
+        if (o.open && o.close) {
+          const intra = (o.close - o.open) / o.open * 100;
+          const chip = card.querySelector('.study-intraday');
+          if (chip) {
+            chip.textContent = `Intraday ${(intra >= 0 ? '+' : '') + intra.toFixed(2)}%`;
+            chip.className = `study-intraday ${intra >= 0 ? 'pos' : 'neg'}`;
+          }
+        }
+      });
+    });
+    // Hydrate screenshot <img> elements from IndexedDB (async load)
+    card.querySelectorAll('img[data-needs-img]').forEach(async img => {
+      const key = img.dataset.needsImg;
+      const data = await getImg(key);
+      if (data) img.src = data;
+    });
+    // Click a screenshot → lightbox
+    card.querySelectorAll('.study-shot img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', async () => {
+        const key = img.dataset.needsImg;
+        const data = await getImg(key);
+        if (data) {
+          const label = card.querySelector(`.study-shot-label[data-img-key="${key}"]`)?.value || '';
+          openShotLightbox(data, label);
+        }
+      });
+    });
+    // Edit screenshot label
+    card.querySelectorAll('.study-shot-label').forEach(inp => {
+      inp.addEventListener('input', e => {
+        const key = e.target.dataset.imgKey;
+        const studies = loadStudies();
+        const st = studies.find(s => s.symbol === sym);
+        if (!st) return;
+        const ss = (st.screenshots || []).find(x => x.imgKey === key);
+        if (ss) { ss.label = e.target.value; saveStudies(studies); }
+      });
+    });
+    // Delete screenshot
+    card.querySelectorAll('.study-shot-del').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const key = btn.dataset.imgKey;
+        const studies = loadStudies();
+        const st = studies.find(s => s.symbol === sym);
+        if (!st) return;
+        st.screenshots = (st.screenshots || []).filter(x => x.imgKey !== key);
+        saveStudies(studies);
+        await delImg(key);
+        renderStudies();
+      });
+    });
+    // Upload zone — file picker + drag-drop + paste
+    const drop = card.querySelector('.study-shot-drop');
+    const fileInp = drop?.querySelector('input[type="file"]');
+    const handleFiles = async (files) => {
+      const studies = loadStudies();
+      const st = studies.find(s => s.symbol === sym);
+      if (!st) return;
+      st.screenshots = st.screenshots || [];
+      for (const f of files) {
+        if (!f.type.startsWith('image/')) continue;
+        try {
+          const dataUrl = await downscaleImage(f);
+          const key = uuid();
+          await putImg(key, dataUrl);
+          st.screenshots.push({ imgKey: key, label: '', caption: '' });
+        } catch (err) { console.warn('image save failed', err); }
+      }
+      saveStudies(studies);
+      renderStudies();
+    };
+    fileInp?.addEventListener('change', e => handleFiles(Array.from(e.target.files || [])));
+    drop?.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('drag-over'); });
+    drop?.addEventListener('dragleave', () => drop.classList.remove('drag-over'));
+    drop?.addEventListener('drop', e => {
+      e.preventDefault(); drop.classList.remove('drag-over');
+      handleFiles(Array.from(e.dataTransfer?.files || []));
+    });
+    // Paste handler scoped to the card (focus the drop zone first, or paste anywhere in the card)
+    card.addEventListener('paste', e => {
+      const items = Array.from(e.clipboardData?.items || []);
+      const files = items.filter(it => it.type.startsWith('image/')).map(it => it.getAsFile()).filter(Boolean);
+      if (files.length) { e.preventDefault(); handleFiles(files); }
+    });
+    card.tabIndex = -1;   // makes the card focusable so paste works without clicking the drop input
   });
   // Toolbar
-  document.getElementById('studies-export')?.addEventListener('click', () => {
-    const blob = new Blob([JSON.stringify(loadStudies(), null, 2)], { type: 'application/json' });
+  document.getElementById('studies-export')?.addEventListener('click', async () => {
+    // Bundle screenshots inline as base64 so the JSON is self-contained for cross-device transfer.
+    // Schema:  { version: 2, studies: [...], images: { imgKey: dataUrl } }
+    const studies = loadStudies();
+    const images = await getAllImgs();
+    const bundle = { version: 2, exportedAt: new Date().toISOString(), studies, images };
+    const blob = new Blob([JSON.stringify(bundle, null, 2)], { type: 'application/json' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = `sips-studies-${new Date().toISOString().slice(0,10)}.json`;
@@ -2594,11 +2875,23 @@ function renderStudies() {
   document.getElementById('studies-import-file')?.addEventListener('change', e => {
     const f = e.target.files[0]; if (!f) return;
     const reader = new FileReader();
-    reader.onload = () => {
+    reader.onload = async () => {
       try {
-        const arr = JSON.parse(reader.result);
-        if (Array.isArray(arr)) { saveStudies(arr); renderStudies(); }
-      } catch { alert('Invalid JSON'); }
+        const parsed = JSON.parse(reader.result);
+        if (Array.isArray(parsed)) {
+          // v1 format: bare array of studies (no images bundle — accept anyway)
+          saveStudies(parsed);
+        } else if (parsed && parsed.version === 2 && Array.isArray(parsed.studies)) {
+          // v2 format: { studies, images }. Restore both, replacing any existing data.
+          saveStudies(parsed.studies);
+          for (const [key, dataUrl] of Object.entries(parsed.images || {})) {
+            try { await putImg(key, dataUrl); } catch (err) { console.warn('import img fail', key, err); }
+          }
+        } else {
+          throw new Error('Unrecognized format');
+        }
+        renderStudies();
+      } catch (err) { alert('Invalid JSON: ' + err.message); }
     };
     reader.readAsText(f);
   });
@@ -2646,6 +2939,13 @@ function studyCardHtml(st) {
   const intentBadge = s.claudeIntent ? `<span class="tag" style="background:${s.claudeIntent === 'short' ? 'rgba(226,59,74,0.10)' : 'rgba(0,168,126,0.10)'};color:${s.claudeIntent === 'short' ? 'var(--neg)' : 'var(--pos)'}">${s.claudeIntent.toUpperCase()}</span>` : '';
   const rationale = (LANG === 'en' && s.claudeRationale_en) ? s.claudeRationale_en : (s.claudeRationale || '');
   const cat = (LANG === 'en' && s.catalyst_en) ? s.catalyst_en : (s.catalyst || '');
+  const o = st.ohlcv || {};
+  // Compute intraday % chg from open→close so user gets feedback as they type
+  const intraday = (o.open && o.close) ? ((o.close - o.open) / o.open * 100) : null;
+  const intradayChip = intraday != null
+    ? `<span class="study-intraday ${intraday >= 0 ? 'pos' : 'neg'}">Intraday ${(intraday >= 0 ? '+' : '') + intraday.toFixed(2)}%</span>`
+    : '';
+  const screenshots = st.screenshots || [];
   return `<div class="study-card" data-sym="${st.symbol}">
     <div class="study-card-head">
       <a href="#/stock/${st.symbol}" class="study-sym">${st.symbol}</a>
@@ -2657,6 +2957,15 @@ function studyCardHtml(st) {
     <div class="study-name">${escapeHtml(s.name || '')}</div>
     ${cat ? `<div class="study-catalyst">${escapeHtml(cat)}</div>` : ''}
     ${rationale ? `<div class="study-rationale">${escapeHtml(rationale).replace(/\n/g, '<br>')}</div>` : ''}
+    <div class="study-section-label">${t('studies-ohlcv-label')} ${intradayChip}</div>
+    <div class="study-ohlcv-row">
+      <label class="study-ohlcv-field"><span>${t('ohlcv-date')}</span><input data-field="date" type="date" value="${o.date || ''}"></label>
+      <label class="study-ohlcv-field"><span>${t('ohlcv-open')}</span><input data-field="open" type="number" step="0.01" value="${o.open ?? ''}" placeholder="—"></label>
+      <label class="study-ohlcv-field"><span>${t('ohlcv-high')}</span><input data-field="high" type="number" step="0.01" value="${o.high ?? ''}" placeholder="—"></label>
+      <label class="study-ohlcv-field"><span>${t('ohlcv-low')}</span><input data-field="low" type="number" step="0.01" value="${o.low ?? ''}" placeholder="—"></label>
+      <label class="study-ohlcv-field"><span>${t('ohlcv-close')}</span><input data-field="close" type="number" step="0.01" value="${o.close ?? ''}" placeholder="—"></label>
+      <label class="study-ohlcv-field"><span>${t('ohlcv-volume')}</span><input data-field="volume" type="number" step="1000" value="${o.volume ?? ''}" placeholder="—"></label>
+    </div>
     <div class="study-fields">
       <label class="study-field"><span>${t('studies-target-price')}</span><input class="study-target" type="number" step="0.01" value="${st.targetPrice ?? ''}" placeholder="—"></label>
       <label class="study-field"><span>${t('studies-stop-loss')}</span><input class="study-stop" type="number" step="0.01" value="${st.stopLoss ?? ''}" placeholder="—"></label>
@@ -2664,7 +2973,33 @@ function studyCardHtml(st) {
     </div>
     <input class="study-tags" type="text" value="${(st.tags || []).join(', ')}" placeholder="${t('studies-tags-placeholder')}">
     <textarea class="study-notes" rows="4" placeholder="${t('studies-note-placeholder')}">${escapeHtml(st.notes || '')}</textarea>
+    <div class="study-section-label">${t('studies-screenshots-label')}</div>
+    <div class="study-screenshots" data-sym="${st.symbol}">
+      ${screenshots.map(ss => `<div class="study-shot" data-img-key="${ss.imgKey}">
+        <img loading="lazy" data-needs-img="${ss.imgKey}" alt="${escapeHtml(ss.label || '')}">
+        <div class="study-shot-bar">
+          <input class="study-shot-label" data-img-key="${ss.imgKey}" type="text" value="${escapeHtml(ss.label || '')}" placeholder="${t('studies-shot-label-placeholder')}">
+          <button class="study-shot-del" data-img-key="${ss.imgKey}" title="${t('remove-study')}">✕</button>
+        </div>
+      </div>`).join('')}
+      <label class="study-shot-drop" tabindex="0">
+        <input type="file" accept="image/*" multiple style="display:none">
+        <div class="study-shot-drop-inner">
+          <div class="study-shot-drop-icon">+</div>
+          <div class="study-shot-drop-hint">${t('studies-shot-upload-hint')}</div>
+        </div>
+      </label>
+    </div>
   </div>`;
+}
+
+// Lightbox modal for clicking a study screenshot
+function openShotLightbox(dataUrl, caption) {
+  const overlay = document.createElement('div');
+  overlay.className = 'shot-lightbox';
+  overlay.innerHTML = `<img src="${dataUrl}"><div class="shot-caption">${escapeHtml(caption || '')}</div>`;
+  overlay.onclick = () => overlay.remove();
+  document.body.appendChild(overlay);
 }
 
 boot();
