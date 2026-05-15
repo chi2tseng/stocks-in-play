@@ -1199,9 +1199,10 @@ function dayLabelWithReset(sym, firstSeenMap, currentIso) {
 }
 
 function parseHash() {
-  const h = location.hash.slice(1) || '/earnings';
+  // Default landing route is Today's SIPs (Claude 精選 subtab kicks in via renderSips's own default).
+  const h = location.hash.slice(1) || '/sips';
   const parts = h.split('/').filter(Boolean);
-  let date = null, routeVal = 'earnings', arg = null;
+  let date = null, routeVal = 'sips', arg = null;
   if (parts.length && /^\d{4}-\d{2}-\d{2}$/.test(parts[0])) date = parts.shift();
   if (parts.length) routeVal = parts.shift();
   if (parts.length) arg = parts.shift();
