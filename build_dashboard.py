@@ -347,6 +347,61 @@ for p in claude_picks_list:
 # Filter day_resets to symbols actually in today's candidate set (drop stale entries silently).
 day_resets_clean = {sym: reason for sym, reason in day_resets_map.items() if sym in stocks}
 
+# --- Backfill placeholder studies with today's data ---
+# Studies created via the dashboard's "Add ticker → Create new <TICKER>" flow start with
+# snapshot._placeholder = True and only show News Detail + Notes. If the same ticker turns up
+# in today's scan, populate the snapshot now (so chart / sessions / TV / catalyst become
+# available) and un-hide the data sections. Manual edits to `notes`, `ohlcv`, `customChart`,
+# `price`, `chgPct` etc. are preserved (we only replace the snapshot subtree).
+studies_json_path = os.path.join(DIR, 'dashboard', 'studies', 'studies.json')
+if os.path.exists(studies_json_path):
+    try:
+        with open(studies_json_path, 'r', encoding='utf-8') as f:
+            studies_arr2 = json.load(f)
+        if isinstance(studies_arr2, list):
+            placeholder_filled = 0
+            for st in studies_arr2:
+                snap = st.get('snapshot') or {}
+                if not snap.get('_placeholder'):
+                    continue
+                sym = st.get('symbol')
+                tdata = stocks.get(sym)
+                if not tdata:
+                    continue
+                # Build a fresh snapshot — same field set as the JS addStudy() builds.
+                st['snapshot'] = {
+                    'name':                tdata.get('name', ''),
+                    'type':                tdata.get('type'),
+                    'chgPct':              tdata.get('chgPct'),
+                    'last':                tdata.get('last'),
+                    'catalyst':            tdata.get('catalyst'),
+                    'catalyst_en':         tdata.get('catalyst_en'),
+                    'tv':                  tdata.get('tv'),
+                    'sessions':            tdata.get('sessions'),
+                    'shortFloat':          tdata.get('shortFloat'),
+                    'shortRatio':          tdata.get('shortRatio'),
+                    'marketCap_M':         tdata.get('marketCap_M'),
+                    'claudeRationale':     tdata.get('_claudeRationale'),
+                    'claudeRationale_en':  tdata.get('_claudeRationale_en'),
+                    'claudeIntent':        tdata.get('_claudeIntent'),
+                    'newsDetail':          tdata.get('newsDetail'),
+                    'scanDate':            DATE,
+                }
+                # Un-hide the chart/MS/YoY sections now that we have data to put in them.
+                hidden = set(st.get('hiddenSections') or [])
+                for h in ('eps_chart', 'rev_chart', 'ms_table', 'yoy_block'):
+                    hidden.discard(h)
+                st['hiddenSections'] = sorted(hidden)
+                placeholder_filled += 1
+            if placeholder_filled:
+                tmp = studies_json_path + '.tmp'
+                with open(tmp, 'w', encoding='utf-8') as f:
+                    json.dump(studies_arr2, f, ensure_ascii=False, indent=2)
+                os.replace(tmp, studies_json_path)
+                print(f'[studies] filled {placeholder_filled} placeholder study/studies with today\'s scan data')
+    except Exception as e:
+        print(f'[studies] placeholder backfill skipped (non-fatal): {e}')
+
 _now = datetime.datetime.now()
 data = {
     'date': DATE,
@@ -573,6 +628,154 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
   nav.topbar .brand { font-size: 18px; margin-right: 16px; }
   nav.topbar .nav-links a { padding: 6px 10px; font-size: 13px; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   📱 MOBILE — single block covering ≤768px (covers phones + small tablets in portrait).
+   Designed mobile-first principles from ui-ux-pro-max-skill:
+     • 16px min body text so iOS doesn't auto-zoom on inputs
+     • 44×44pt min touch targets on tap-critical buttons
+     • Nav becomes horizontal-scrollable (no hamburger) — preserves all routes in one tap
+     • Stock header stacks vertically, pills wrap, price moves below symbol
+     • Tables wrapped in scroll containers (overflow-x: auto + max-width)
+     • Bottom safe-area padding for iPhone bottom gesture bar
+     • No horizontal page scroll under any condition (overflow-x: hidden on body)
+   Breakpoint = 768px because that's the iPad portrait boundary; below that we're in
+   true phone territory, above it desktop layouts hold up just fine.
+═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* No horizontal page scroll — single most-common iOS layout bug */
+  html, body { overflow-x: hidden; max-width: 100vw; }
+  body { font-size: 15px; }
+
+  /* ── Top navigation: scrollable horizontal strip ─────────────── */
+  nav.topbar { height: auto; padding: 0; }
+  nav.topbar .topbar-inner {
+    flex-wrap: wrap; padding: 8px 14px; gap: 8px;
+    align-items: center; row-gap: 8px;
+  }
+  nav.topbar .brand { font-size: 17px; margin-right: 4px; padding: 4px 0; }
+  nav.topbar .nav-links {
+    order: 3; flex: 1 0 100%; overflow-x: auto; gap: 4px;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    padding-bottom: 4px; margin-bottom: 2px;
+  }
+  nav.topbar .nav-links::-webkit-scrollbar { display: none; }
+  nav.topbar .nav-links a {
+    flex: 0 0 auto; padding: 8px 12px; font-size: 13px;
+    min-height: 36px; display: inline-flex; align-items: center;
+  }
+  nav.topbar .topbar-right { gap: 6px; margin-left: auto; }
+  .topbar-iconbtn { width: 36px; height: 36px; }
+  .topbar-iconbtn svg { width: 18px; height: 18px; }
+  .cal-btn { min-height: 36px; padding: 6px 12px; font-size: 13px; }
+
+  /* ── Main content padding ─────────────────────────────────────── */
+  main { padding: 14px 12px 32px; }
+  /* iOS safe area for the bottom gesture bar */
+  main { padding-bottom: max(32px, env(safe-area-inset-bottom)); }
+
+  /* ── Page title / breadcrumb ──────────────────────────────────── */
+  .page-title { font-size: 22px; margin: 4px 0 12px; }
+  .breadcrumb { font-size: 13px; }
+
+  /* ── Stock detail header: stack columns, wrap pills ───────────── */
+  .stock-header {
+    padding: 18px 16px; gap: 12px;
+    flex-direction: column; align-items: stretch;
+  }
+  .stock-header .sym-big { font-size: 32px; line-height: 1.1; }
+  .stock-header > div:first-of-type ~ div:last-of-type {
+    margin-left: 0 !important; text-align: left !important;
+  }
+  /* Move the price/chg block to the top-right of the symbol row using a sub-grid */
+  .stock-header { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; }
+  .stock-header > .sym-big { grid-row: 1; grid-column: 1; }
+  .stock-header > div:nth-of-type(2) { grid-column: 1 / -1; }       /* pills + name take full width */
+  .stock-header > div:last-of-type {
+    grid-row: 1; grid-column: 2; text-align: right !important; margin-left: 0 !important;
+  }
+  .stock-header .price { font-size: 24px; }
+  .stock-header .chg { font-size: 13px; }
+  .stock-header-tags { gap: 4px; }
+  .stock-header-tags .tag { font-size: 11px; padding: 4px 8px; }
+  .study-delete, #study-delete { top: 12px !important; right: 12px !important; }
+
+  /* ── Section cards (Notes, MS table, YoY, news detail) ────────── */
+  .stock-card { padding: 16px 14px; margin: 10px 0; border-radius: 12px; }
+  .stock-card h3 { font-size: 15px; }
+  .section-x { top: 10px; right: 10px; }
+
+  /* ── Studies list ─────────────────────────────────────────────── */
+  .studies-toolbar { flex-wrap: wrap; gap: 6px; }
+  .studies-search-wrap { flex: 1 0 100%; max-width: none; order: 1; }
+  .studies-toolbar .readonly-badge { order: 0; }
+  .studies-btn { padding: 8px 12px; font-size: 12px; min-height: 36px; }
+  #studies-export { margin-left: 0 !important; }
+  .studies-grid, .sip-grid { grid-template-columns: 1fr !important; gap: 10px; }
+  .study-card, .sip-card { padding: 14px; }
+
+  /* ── Tables (Short Squeeze, Earnings, etc.) ─────────────────────
+     Wrap any standalone <table> in horizontal scroll. Cell padding tightens. */
+  .table-wrap, .ms-table-wrap, .sx-wrap, .earnings-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { font-size: 12px; }
+  table th, table td { padding: 6px 8px !important; white-space: nowrap; }
+  .ms-table th, .ms-table td { padding: 4px 6px !important; }
+  .ms-cell-input { width: 48px !important; min-width: 48px; font-size: 11px; padding: 2px 4px; }
+
+  /* ── Forward YoY block + MS table editable cells ──────────────── */
+  .yoy-block { font-size: 12px; padding: 12px 14px; }
+  .copy-btn { padding: 4px 10px; font-size: 11px; min-height: 30px; }
+
+  /* ── Bar charts (already collapsing at 900px; tighten labels) ──── */
+  .chart-wrap { gap: 10px; margin: 8px 0; }
+  .chart-wrap h3 { font-size: 14px; }
+
+  /* ── OHLCV modal: shrink chrome, full-width grid ───────────────── */
+  .ohlcv-modal { width: calc(100vw - 24px); max-width: 420px; margin: 12px; }
+  .ohlcv-modal-body { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .ohlcv-modal input, .ohlcv-modal label { font-size: 13px; }
+
+  /* ── Calendar picker dropdown ──────────────────────────────────── */
+  .cal-dropdown { left: 12px; right: 12px; max-width: calc(100vw - 24px); }
+
+  /* ── Save-to-Studies button + sip-card buttons ─────────────────── */
+  .save-study-btn { padding: 6px 12px; font-size: 11px; min-height: 32px; }
+  .trade-pill { min-height: 32px; }
+
+  /* ── Notion-style notes area ───────────────────────────────────── */
+  .study-notes-rich { font-size: 15px; padding: 14px; min-height: 140px; }
+  .study-notes-rich img { max-width: 100% !important; height: auto; }
+
+  /* ── Inputs: prevent iOS zoom by keeping font ≥ 16px ───────────── */
+  input[type="text"], input[type="number"], input[type="date"], textarea, [contenteditable="true"] {
+    font-size: 16px;
+  }
+
+  /* ── Snackbar bottom-anchored, full-width ──────────────────────── */
+  .snackbar { left: 12px; right: 12px; bottom: max(20px, env(safe-area-inset-bottom)); min-width: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   📱 TINY MOBILE (≤375px — iPhone SE / older Androids)
+   Extra-tight density for the smallest screens.
+═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 375px) {
+  .stock-header .sym-big { font-size: 28px; }
+  .stock-header .price { font-size: 20px; }
+  nav.topbar .brand { font-size: 16px; }
+  nav.topbar .nav-links a { padding: 6px 10px; font-size: 12px; }
+  .studies-btn { padding: 7px 10px; }
+  .page-title { font-size: 20px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   📱 TABLET portrait (769–1024px) — keep desktop layout but ease pad.
+═══════════════════════════════════════════════════════════════════ */
+@media (min-width: 769px) and (max-width: 1024px) {
+  main { padding: 22px 22px; }
+  .stock-header { padding: 22px 22px; }
+  .sip-grid { grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); }
+}
 /* legacy .date-strip / .date-pill kept as no-op (old templates may still reference them) */
 .date-strip, .date-pills { display: none; }
 .cal-btn {
@@ -615,6 +818,63 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 .studies-btn:hover { background: var(--surface-soft); border-color: var(--ink); }
 .studies-btn-danger { color: var(--neg); }
 .studies-btn-danger:hover { background: rgba(226,59,74,0.06); border-color: var(--neg); }
+
+/* ── Studies search box (typeahead for past-scan tickers + "Create new" fallback) ── */
+.studies-search-wrap { position: relative; flex: 1; max-width: 340px; }
+.studies-search {
+  width: 100%; padding: 8px 12px 8px 32px; border-radius: var(--r-pill);
+  border: 1px solid var(--hairline); background: var(--canvas); color: var(--ink);
+  font-family: var(--font-body); font-size: 13px; outline: none;
+  transition: border-color 0.12s, box-shadow 0.12s;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>");
+  background-repeat: no-repeat; background-position: 11px center;
+}
+.studies-search:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(73,79,223,0.08); }
+.studies-search-results {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 50;
+  background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-md);
+  box-shadow: 0 12px 36px -8px rgba(15,15,25,0.14);
+  max-height: 360px; overflow-y: auto; display: none;
+  font-family: var(--font-body);
+}
+.studies-search-results.show { display: block; }
+.studies-search-item {
+  padding: 9px 14px; cursor: pointer; display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid var(--hairline-soft); transition: background 0.1s;
+}
+.studies-search-item:last-child { border-bottom: none; }
+.studies-search-item:hover, .studies-search-item.active { background: var(--surface-soft); }
+.studies-search-sym { font-family: var(--font-mono); font-weight: 700; color: var(--ink); font-size: 13px; min-width: 64px; }
+.studies-search-meta { font-size: 11px; color: var(--mute); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.studies-search-date { font-family: var(--font-mono); font-size: 10px; color: var(--stone); letter-spacing: 0.3px; }
+.studies-search-create {
+  padding: 9px 14px; cursor: pointer; background: rgba(73,79,223,0.04);
+  color: var(--primary); font-weight: 600; font-size: 13px;
+  border-top: 1px solid var(--hairline);
+  display: flex; align-items: center; gap: 8px;
+}
+.studies-search-create:hover { background: rgba(73,79,223,0.10); }
+.studies-search-empty { padding: 18px; text-align: center; color: var(--mute); font-size: 12px; }
+
+/* Placeholder badge shown on studies awaiting /SIPs data fill */
+.placeholder-badge {
+  display: inline-block; padding: 2px 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.6px;
+  color: #b97c00; background: rgba(255,178,30,0.14); border: 1px solid rgba(255,178,30,0.4);
+  border-radius: var(--r-pill); margin-left: 8px; text-transform: uppercase;
+  font-family: var(--font-body);
+}
+body.dark .placeholder-badge { color: #ffce6a; background: rgba(255,206,106,0.10); border-color: rgba(255,206,106,0.35); }
+
+/* Editable price cell in study header — click anywhere on the price to edit */
+.price.price-editable { cursor: pointer; position: relative; transition: background 0.12s; border-radius: var(--r-sm); padding: 2px 6px; margin: -2px -6px; }
+.price.price-editable:hover { background: var(--surface-soft); }
+.price-edit-input {
+  font-family: var(--font-mono); font-weight: 700; font-size: 22px; color: var(--ink);
+  background: var(--canvas); border: 1.5px solid var(--primary); border-radius: var(--r-sm);
+  padding: 2px 6px; width: 120px; outline: none; text-align: right;
+}
+body.readonly-mode .price.price-editable { cursor: default; }
+body.readonly-mode .price.price-editable:hover { background: transparent; }
 
 /* ── Read-only mode (hosted GitHub Pages — no sidecar) ──
    Studies are a "personal backup viewable on phone/other devices" — view but don't edit.
@@ -1610,6 +1870,27 @@ async function getPrevDateData() {
   __prevCache[prevDate] = d;
   return d;
 }
+// Cross-date symbol → snapshot index, built lazily for the Studies "Add ticker" search.
+// Maps every ticker that has appeared in ANY past scan to its most recent snapshot
+// (newest date wins). The Studies search box uses this to offer instant "add from past
+// scan" when the user types a ticker that's already in our history.
+let __symbolIndex = null;
+async function buildSymbolIndex() {
+  if (__symbolIndex) return __symbolIndex;
+  const m = new Map();
+  // Walk newest → oldest so the first match per symbol is the freshest snapshot.
+  const sortedDates = [...STATE.dates].sort((a, b) => b.date.localeCompare(a.date));
+  for (const d of sortedDates) {
+    const data = await loadDateData(d.date);
+    if (!data || !data.stocks) continue;
+    for (const [sym, snap] of Object.entries(data.stocks)) {
+      if (!m.has(sym)) m.set(sym, { snapshot: snap, scanDate: d.date });
+    }
+  }
+  __symbolIndex = m;
+  return m;
+}
+
 // Return Set of symbols that appeared in any earlier date (cross-date dedup helper)
 let __prevSymbolsSet = null;
 async function getEarlierSymbolsSet() {
@@ -3376,7 +3657,7 @@ function saveStudies(arr) {
 function isStudySaved(sym) {
   return loadStudies().some(st => st.symbol === sym);
 }
-function addStudy(stock) {
+function addStudy(stock, opts = {}) {
   const arr = loadStudies();
   if (arr.some(st => st.symbol === stock.symbol)) return false; // dedupe
   arr.push({
@@ -3397,7 +3678,8 @@ function addStudy(stock) {
       claudeRationale: stock._claudeRationale,
       claudeRationale_en: stock._claudeRationale_en,
       claudeIntent: stock._claudeIntent,
-      scanDate: STATE.date,
+      newsDetail: stock.newsDetail,
+      scanDate: opts.scanDate || STATE.date,
     },
     notes: '',
     tags: [],
@@ -3415,6 +3697,44 @@ function addStudy(stock) {
   });
   saveStudies(arr);
   return true;
+}
+
+// Manually create a placeholder study for a ticker that isn't in any past scan yet.
+// All chart/MS/YoY sections start hidden — the page shows only "News Detail" + "Notes"
+// until next /SIPs run picks up the ticker and build_dashboard.py backfills the snapshot.
+// Validates `sym` so we don't end up with junk like "  Apple Inc  " in the studies file.
+function addManualStudy(rawSym) {
+  const sym = String(rawSym || '').toUpperCase().trim().replace(/[^A-Z0-9.\-]/g, '');
+  if (!sym || !/^[A-Z][A-Z0-9.\-]{0,7}$/.test(sym)) {
+    alert(`Invalid ticker: "${rawSym}". Expected 1–8 letters/digits, starting with a letter.`);
+    return null;
+  }
+  if (loadStudies().some(st => st.symbol === sym)) {
+    // Already exists — just navigate there instead of duplicating.
+    return sym;
+  }
+  const arr = loadStudies();
+  arr.push({
+    symbol: sym,
+    savedAt: new Date().toISOString(),
+    snapshot: {
+      name: '', type: 'momentum', chgPct: null, last: null,
+      catalyst: '', tv: null, sessions: [],
+      shortFloat: null, shortRatio: null, marketCap_M: null,
+      claudeRationale: '', claudeIntent: null,
+      newsDetail: '',
+      scanDate: STATE.date || '',
+      _placeholder: true,   // ← marks this study as awaiting /SIPs auto-fill
+    },
+    notes: '', tags: [], targetPrice: null, stopLoss: null, conviction: 3,
+    ohlcv: { date: '', open: null, high: null, low: null, close: null, prev_close: null, volume: null },
+    screenshots: [],
+    // Default: hide all data-heavy sections — the placeholder page shows news + notes only.
+    // build_dashboard.py un-hides them once it has real data to display.
+    hiddenSections: ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'],
+  });
+  saveStudies(arr);
+  return sym;
 }
 async function removeStudy(sym) {
   // Full wipe — the entire study object (notes, ohlcv, customChart, screenshots, tags,
@@ -3447,6 +3767,11 @@ function renderStudies() {
     <h2 class="page-title">My Studies</h2>
     <div class="studies-toolbar">
       <span class="readonly-badge" title="Sidecar (local Python server) not detected — viewing the committed snapshot. Run &quot;py D:/SIPs/sidecar.py&quot; to edit.">&#128274; View only</span>
+      <div class="studies-search-wrap">
+        <input type="text" class="studies-search" id="studies-search"
+               placeholder="Add ticker — search past scans or create new" autocomplete="off" spellcheck="false">
+        <div class="studies-search-results" id="studies-search-results"></div>
+      </div>
       <button class="studies-btn" id="studies-export" style="margin-left:auto">${t('studies-export')}</button>
       <button class="studies-btn" id="studies-import">${t('studies-import')}</button>
       <input type="file" id="studies-import-file" accept="application/json" style="display:none">
@@ -3514,6 +3839,124 @@ function renderStudies() {
       for (const [k, v] of Object.entries(beforeImgs)) { try { await putImg(k, v); } catch {} }
       renderStudies();
     });
+  });
+
+  /* ── Ticker search/add box ──
+     Two flows for the user:
+       (a) Type a ticker that appeared in a past scan → pick from dropdown → addStudy with that
+           snapshot. The study lands fully populated with sessions / tv / catalyst from that
+           scan date (most-recent date wins).
+       (b) Type a ticker that has NEVER been scanned → "Create new <TICKER>" appears at the
+           bottom of the dropdown → click → addManualStudy creates a placeholder. The study
+           page renders only News Detail (empty) + Notes; next /SIPs run will backfill the
+           rest via build_dashboard.py's placeholder-fill step.
+     The search index is built lazily on first focus (one fetch per scan date, memoized). */
+  const searchInp = document.getElementById('studies-search');
+  const searchRes = document.getElementById('studies-search-results');
+  let __searchIndex = null;
+  let __activeIdx = -1;
+  let __currentMatches = [];
+
+  async function ensureSearchIndex() {
+    if (!__searchIndex) __searchIndex = await buildSymbolIndex();
+    return __searchIndex;
+  }
+  function renderSearchDropdown(query) {
+    if (!query) { searchRes.classList.remove('show'); searchRes.innerHTML = ''; return; }
+    const idx = __searchIndex || new Map();
+    const q = query.toUpperCase().trim();
+    const savedSyms = new Set(loadStudies().map(s => s.symbol));
+    // Prefix match wins over substring match; cap at 8 results.
+    const all = Array.from(idx.entries()).map(([sym, info]) => ({ sym, ...info }));
+    const prefix = all.filter(r => r.sym.startsWith(q));
+    const substr = all.filter(r => !r.sym.startsWith(q) && r.sym.includes(q));
+    __currentMatches = [...prefix, ...substr].slice(0, 8);
+    const exact = idx.has(q);
+    let html = '';
+    if (__currentMatches.length === 0 && !exact) {
+      html += `<div class="studies-search-empty">No past scan matches "${escapeHtml(q)}"</div>`;
+    } else {
+      html += __currentMatches.map((r, i) => {
+        const s = r.snapshot || {};
+        const cat = (s.catalyst_en || s.catalyst || s.name || '').toString().slice(0, 80);
+        const alreadySaved = savedSyms.has(r.sym);
+        return `<div class="studies-search-item ${i === __activeIdx ? 'active' : ''}" data-action="add" data-sym="${r.sym}" data-date="${r.scanDate}">
+          <span class="studies-search-sym">${r.sym}</span>
+          <span class="studies-search-meta">${escapeHtml(cat)}${alreadySaved ? ' <em style="color:var(--pos)">· already saved</em>' : ''}</span>
+          <span class="studies-search-date">${r.scanDate}</span>
+        </div>`;
+      }).join('');
+    }
+    // Show "Create new" if query is a plausible ticker AND there's no exact match in past scans
+    if (!exact && /^[A-Z][A-Z0-9.\-]{0,7}$/.test(q)) {
+      const createIdx = __currentMatches.length; // arrow-key index after matches
+      html += `<div class="studies-search-create ${createIdx === __activeIdx ? 'active' : ''}" data-action="create" data-sym="${q}">
+        <span>+ Create new <strong>${q}</strong></span>
+        <span style="color:var(--mute);font-weight:400;font-size:11px;margin-left:auto">awaits /SIPs data fill</span>
+      </div>`;
+    }
+    searchRes.innerHTML = html;
+    searchRes.classList.add('show');
+  }
+  async function pickSearchResult(sym, scanDate) {
+    // Add from past scan: fetch the snapshot for that date, then call addStudy.
+    const data = await loadDateData(scanDate);
+    const snap = data?.stocks?.[sym];
+    if (!snap) { alert(`Couldn't load ${sym} from ${scanDate}`); return; }
+    const ok = addStudy({ ...snap, symbol: sym }, { scanDate });
+    if (ok) location.hash = '#/study/' + sym;
+    else { alert(`${sym} is already saved`); location.hash = '#/study/' + sym; }
+  }
+  function createSearchResult(sym) {
+    const s = addManualStudy(sym);
+    if (s) location.hash = '#/study/' + s;
+  }
+
+  searchInp?.addEventListener('focus', async () => {
+    await ensureSearchIndex();
+    if (searchInp.value) renderSearchDropdown(searchInp.value);
+  });
+  searchInp?.addEventListener('input', async () => {
+    await ensureSearchIndex();
+    __activeIdx = -1;
+    renderSearchDropdown(searchInp.value);
+  });
+  searchInp?.addEventListener('keydown', e => {
+    const maxIdx = __currentMatches.length + (/^[A-Z][A-Z0-9.\-]{0,7}$/.test(searchInp.value.toUpperCase()) && !(__searchIndex?.has(searchInp.value.toUpperCase())) ? 0 : -1);
+    // maxIdx points to the create-new row (matches.length) if shown; else matches.length-1
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      __activeIdx = Math.min(maxIdx, __activeIdx + 1);
+      renderSearchDropdown(searchInp.value);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      __activeIdx = Math.max(-1, __activeIdx - 1);
+      renderSearchDropdown(searchInp.value);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      // If a row is highlighted, pick it. Otherwise default to "Create new" with whatever they typed.
+      const items = searchRes.querySelectorAll('[data-action]');
+      const target = (__activeIdx >= 0 && items[__activeIdx]) ? items[__activeIdx] : items[items.length - 1];
+      if (!target) return;
+      const action = target.dataset.action;
+      if (action === 'add')    pickSearchResult(target.dataset.sym, target.dataset.date);
+      if (action === 'create') createSearchResult(target.dataset.sym);
+    } else if (e.key === 'Escape') {
+      searchRes.classList.remove('show');
+      searchInp.blur();
+    }
+  });
+  searchRes?.addEventListener('mousedown', e => {
+    // mousedown (not click) so the input's blur handler doesn't dismiss the dropdown first
+    const item = e.target.closest('[data-action]');
+    if (!item) return;
+    e.preventDefault();
+    if (item.dataset.action === 'add')    pickSearchResult(item.dataset.sym, item.dataset.date);
+    if (item.dataset.action === 'create') createSearchResult(item.dataset.sym);
+  });
+  searchInp?.addEventListener('blur', () => {
+    // Defer hide so click handlers on the dropdown run first
+    setTimeout(() => searchRes?.classList.remove('show'), 150);
   });
 }
 
@@ -3670,8 +4113,15 @@ async function renderStudyDetail(sym) {
   const fmtMetric = v => v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
 
   // Build the four pill rows that mirror renderStock — short / surp / NEW trade pills.
+  // Sessions row: we used to show pre-market / post-market %chg from the scan-time snapshot.
+  // In Studies we want the REAL day's chgPct (close → close), which is what users actually
+  // trade against. If we don't have prev_close yet, hide the row entirely — the next /SIPs
+  // run (Phase 10b) will fill prev_ohlcv.json and the tag re-appears the day after.
   const _tv = s.tv;
-  const sessTags = (s.sessions || []).map(x => `<span class="tag">${x.session.toUpperCase()} <span class="dot dot-${x.direction}"></span> ${fmtPctShort(x.chgPct)}</span>`).join(' ');
+  const renderDayTag = (v) => v == null
+    ? ''
+    : `<span class="tag" id="study-day-tag" title="Day's chgPct = (close − prev_close) / prev_close · 100">DAY <span class="dot dot-${v >= 0 ? 'up' : 'down'}"></span> ${fmtPctShort(v)}</span>`;
+  const sessTags = renderDayTag(_derivedChg);
   const typeTag = `<span class="tag ${typeTagClass(s.type || 'momentum')}">${s.type || 'momentum'}</span>`;
   const _surpPill = (lbl, v, title) => v == null
     ? ''
@@ -3717,11 +4167,17 @@ async function renderStudyDetail(sym) {
     ? `<div class="stock-card study-section" data-section="${id}"><button class="section-x" type="button" data-section="${id}" title="Hide section (right-click anywhere to restore)">&times;</button>${titleHtml}${bodyHtml}</div>`
     : '';
 
+  // Display price — user override (study.price) wins over snapshot.last.
+  const displayPrice = (study.price != null) ? study.price : s.last;
+  // Placeholder badge (for manually-created studies awaiting /SIPs auto-fill)
+  const isPlaceholder = !!s._placeholder;
+  const placeholderBadge = isPlaceholder ? '<span class="placeholder-badge" title="Awaiting /SIPs to fill in catalyst, sessions, TV data">Placeholder</span>' : '';
+
   app.innerHTML = `
     <div class="breadcrumb"><a href="#/studies">← Studies</a> &nbsp;»&nbsp; <b>${sym}</b></div>
     <div class="stock-header" style="position:relative">
       <button class="studies-btn studies-btn-danger" id="study-delete" style="position:absolute;top:18px;right:18px;font-size:11px;padding:5px 12px">Delete</button>
-      <div class="sym-big">${sym}${dayChip}</div>
+      <div class="sym-big">${sym}${dayChip}${placeholderBadge}</div>
       <div>
         <div class="name">${escapeHtml(s.name || '')}</div>
         <div class="stock-header-tags">${sessTags} ${typeTag}</div>
@@ -3730,7 +4186,7 @@ async function renderStudyDetail(sym) {
         <div class="stock-header-tags stock-header-trade">${tradePills}</div>
       </div>
       <div style="margin-left:auto;text-align:right">
-        <div class="price">${fmtPrice(s.last)}</div>
+        <div class="price price-editable" id="study-price-cell" title="Click to edit price"><span class="price-text">${fmtPrice(displayPrice)}</span></div>
         <div class="chg ${cls(chg)}" id="study-chg-readout" title="${chgSource}">${fmtPct(chg)} · Vol ${fmtVol(s.volume)}</div>
       </div>
     </div>
@@ -3826,6 +4282,45 @@ async function renderStudyDetail(sym) {
     if (stopBtn) stopBtn.className = `tag stat-tag trade-pill ${m.stop == null ? '' : (m.stop >= 0 ? 'pos' : 'neg')}`;
   }
 
+  // Editable price — click swaps the readout for an <input>, blur/Enter commits, Esc cancels.
+  // Stored as study.price (user override); fallback display order: study.price → s.last → "—".
+  // Hosted (read-only) mode disables the click via CSS (.readonly-mode .price-editable { cursor: default }).
+  const priceCell = document.getElementById('study-price-cell');
+  priceCell?.addEventListener('click', () => {
+    if (!STATE.sidecar.available) return;        // read-only
+    if (priceCell.querySelector('input')) return; // already editing
+    const span = priceCell.querySelector('.price-text');
+    const cur = (loadStudies().find(st => st.symbol === sym)?.price);
+    const seed = (cur != null) ? cur : s.last;
+    const inp = document.createElement('input');
+    inp.type = 'number'; inp.step = '0.01'; inp.min = '0';
+    inp.className = 'price-edit-input';
+    inp.value = (seed != null) ? seed : '';
+    inp.placeholder = '—';
+    span.style.display = 'none';
+    priceCell.appendChild(inp);
+    inp.focus(); inp.select();
+    let committed = false;
+    const finish = (cancel) => {
+      if (committed) return;
+      committed = true;
+      if (!cancel) {
+        const raw = inp.value.trim();
+        const v = (raw === '') ? null : parseFloat(raw);
+        const final = (v != null && isFinite(v)) ? v : null;
+        updateStudy(sym, { price: final });
+        span.textContent = fmtPrice(final);
+      }
+      span.style.display = '';
+      inp.remove();
+    };
+    inp.addEventListener('blur', () => finish(false));
+    inp.addEventListener('keydown', ev => {
+      if (ev.key === 'Enter')  { ev.preventDefault(); finish(false); }
+      if (ev.key === 'Escape') { ev.preventDefault(); finish(true); }
+    });
+  });
+
   // Re-render the %Chg readout in the header — runs whenever OHLCV changes so the auto-derived
   // day-chgPct flips in real time as user fills close/prev_close.
   function refreshChgReadout() {
@@ -3839,10 +4334,21 @@ async function renderStudyDetail(sym) {
               : (derived != null)    ? "derived from today's OHLCV (close − prev_close)"
               : 'snapshot gap % (pre/post-market)';
     const el = document.getElementById('study-chg-readout');
-    if (!el) return;
-    el.className = `chg ${cls(newChg)}`;
-    el.title = src;
-    el.textContent = `${fmtPct(newChg)} · Vol ${fmtVol(s.volume)}`;
+    if (el) {
+      el.className = `chg ${cls(newChg)}`;
+      el.title = src;
+      el.textContent = `${fmtPct(newChg)} · Vol ${fmtVol(s.volume)}`;
+    }
+    // Day tag (sessTags row) — appear / disappear / update as OHLCV is filled
+    const dayTagHost = document.querySelector('.stock-header .stock-header-tags');
+    const existing = document.getElementById('study-day-tag');
+    if (derived == null) {
+      existing?.remove();
+    } else if (existing) {
+      existing.innerHTML = `DAY <span class="dot dot-${derived >= 0 ? 'up' : 'down'}"></span> ${fmtPctShort(derived)}`;
+    } else if (dayTagHost) {
+      dayTagHost.insertAdjacentHTML('afterbegin', renderDayTag(derived) + ' ');
+    }
   }
 
   // ── OHLCV popup modal — opens when user clicks either trade metric chip ──
