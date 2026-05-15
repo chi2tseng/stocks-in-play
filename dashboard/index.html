@@ -496,6 +496,7 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 
 /* ── Stat pills (short interest + perf history on SIP cards) ── */
 .sip-shortperf { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 6px; }
+.sip-shortperf-surp { margin-top: 4px; margin-bottom: 6px; }   /* second row: EPS Surp / Rev Surp — tighter gap above */
 .stat-pill {
   font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.2px;
   padding: 3px 9px; border-radius: var(--r-pill);
@@ -511,6 +512,7 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
      a sub-line under row 1. */
 .stock-header-tags { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .stock-header-short { margin-top: 4px; }
+.stock-header-surp  { margin-top: 4px; }   /* third row: EPS Surp / Rev Surp */
 .stock-header-tags .stat-tag {
   background: var(--surface-soft); color: var(--charcoal);
   font-family: var(--font-mono); letter-spacing: 0.1px;
@@ -1122,21 +1124,26 @@ function magnaChip(label, state) {
 // Card stats line — Short Float + DTC only. Perf history is hidden per user spec; Claude makes
 // the neglect call manually (set `neglected: true` on a pick in claude_picks.json to light N up).
 function shortPerfLine(s) {
-  const bits = [];
-  if (s.shortFloat != null) bits.push(`<span class="stat-pill" title="Short Float — % of float currently shorted">Short Float ${s.shortFloat.toFixed(1)}%</span>`);
-  if (s.shortRatio != null) bits.push(`<span class="stat-pill" title="Days to cover (short ratio)">DTC ${s.shortRatio.toFixed(1)}d</span>`);
-  // EPS / Rev Surprise % — pulled from TradingView FQ if available. Colored pos/neg.
+  // Row 1: Short Float + DTC (Finviz-sourced shorts metrics).
+  const shortBits = [];
+  if (s.shortFloat != null) shortBits.push(`<span class="stat-pill" title="Short Float — % of float currently shorted">Short Float ${s.shortFloat.toFixed(1)}%</span>`);
+  if (s.shortRatio != null) shortBits.push(`<span class="stat-pill" title="Days to cover (short ratio)">DTC ${s.shortRatio.toFixed(1)}d</span>`);
+  // Row 2: EPS / Rev Surprise % (TradingView FQ-sourced earnings surprise metrics). Pos/neg tinted.
+  const surpBits = [];
   const tv = s.tv;
   if (tv && tv.surpriseEPS_pct != null) {
     const v = tv.surpriseEPS_pct, cn = v >= 0 ? 'pos' : 'neg';
-    bits.push(`<span class="stat-pill ${cn}" title="EPS surprise vs consensus (TradingView FQ)">EPS Surp ${(v >= 0 ? '+' : '') + v.toFixed(1)}%</span>`);
+    surpBits.push(`<span class="stat-pill ${cn}" title="EPS surprise vs consensus (TradingView FQ)">EPS Surp ${(v >= 0 ? '+' : '') + v.toFixed(1)}%</span>`);
   }
   if (tv && tv.surpriseRev_pct != null) {
     const v = tv.surpriseRev_pct, cn = v >= 0 ? 'pos' : 'neg';
-    bits.push(`<span class="stat-pill ${cn}" title="Revenue surprise vs consensus (TradingView FQ)">Rev Surp ${(v >= 0 ? '+' : '') + v.toFixed(1)}%</span>`);
+    surpBits.push(`<span class="stat-pill ${cn}" title="Revenue surprise vs consensus (TradingView FQ)">Rev Surp ${(v >= 0 ? '+' : '') + v.toFixed(1)}%</span>`);
   }
-  if (!bits.length) return '';
-  return `<div class="sip-shortperf">${bits.join('')}</div>`;
+  if (!shortBits.length && !surpBits.length) return '';
+  return [
+    shortBits.length ? `<div class="sip-shortperf">${shortBits.join('')}</div>` : '',
+    surpBits.length  ? `<div class="sip-shortperf sip-shortperf-surp">${surpBits.join('')}</div>` : '',
+  ].join('');
 }
 
 // Build the Forward-YoY copy block (used by both MAGNA + Claude's Pick tabs).
@@ -1549,7 +1556,8 @@ function renderGappers() {
     { label: 'Name',   sortVal: r => r.name,   render: r => `<td style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--mute);font-size:12px">${escapeHtml(r.name || '')}</td>` },
     { label: 'Price',  sortVal: r => r.last,   render: r => `<td class="num">${fmtPrice(r.last)}</td>` },
     { label: '%Chg',   sortVal: r => r.chgPct, render: r => `<td class="num ${cls(r.chgPct)}">${fmtPct(r.chgPct)}</td>` },
-    { label: '|%Chg|', sortVal: r => r.absChg, render: r => `<td class="num ${cls(r.chgPct)}">${r.absChg.toFixed(2)}%</td>` },
+    // |%Chg| column retired — it was an absolute-value sort key but rendered positive numbers in red,
+    // which looked like a bug (down -25% showing as red "25.60%"). %Chg above has the proper -X% sign.
     { label: 'Volume', sortVal: r => r.volume, render: r => `<td class="num">${fmtVol(r.volume)}</td>` },
     { label: 'Session',sortVal: r => r.session,render: r => `<td><span class="tag" style="padding:2px 8px;font-size:10px">${r.session.toUpperCase()}</span></td>` },
     { label: 'Dir',    sortVal: r => r.direction, render: r => `<td><span class="dot dot-${r.direction}"></span></td>` },
@@ -1903,8 +1911,9 @@ async function renderStock(sym) {
   } else if (fallbackCatalyst) {
     newsDetailHtml = `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3>${metaPill}<p>${escapeHtml(fallbackCatalyst)}</p></div>`;
   }
-  // Short Float + DTC + EPS Surp + Rev Surp pills inlined into the header (alongside session
-  // tags + type) so the stat strip doesn't take a whole separate card below the title.
+  // Stock-detail header pills — split into TWO rows:
+  //   • headerShortPills:  Short Float + DTC (Finviz-sourced shorts metrics)
+  //   • headerSurpPills:   EPS Surp + Rev Surp (TradingView FQ earnings surprise, pos/neg tinted)
   const _tv = s.tv;
   const _surpPill = (lbl, v, title) => v == null
     ? ''
@@ -1912,6 +1921,8 @@ async function renderStock(sym) {
   const headerShortPills = [
     s.shortFloat != null ? `<span class="tag stat-tag" title="Short Float — % of float currently shorted">Short Float ${s.shortFloat.toFixed(1)}%</span>` : '',
     s.shortRatio != null ? `<span class="tag stat-tag" title="Days to cover (short ratio)">DTC ${s.shortRatio.toFixed(1)}d</span>` : '',
+  ].filter(Boolean).join(' ');
+  const headerSurpPills = [
     _tv ? _surpPill('EPS Surp', _tv.surpriseEPS_pct, 'EPS surprise vs consensus (TradingView FQ)') : '',
     _tv ? _surpPill('Rev Surp', _tv.surpriseRev_pct, 'Revenue surprise vs consensus (TradingView FQ)') : '',
   ].filter(Boolean).join(' ');
@@ -1923,6 +1934,7 @@ async function renderStock(sym) {
         <div class="name">${escapeHtml(s.name)}</div>
         <div class="stock-header-tags">${sessTags} <span class="tag ${typeTagClass(s.type)}">${s.type}</span></div>
         ${headerShortPills ? `<div class="stock-header-tags stock-header-short">${headerShortPills}</div>` : ''}
+        ${headerSurpPills  ? `<div class="stock-header-tags stock-header-surp">${headerSurpPills}</div>`   : ''}
       </div>
       <div style="margin-left:auto;text-align:right">
         <div class="price">${fmtPrice(s.last)}</div>
