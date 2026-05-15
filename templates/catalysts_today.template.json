@@ -1,0 +1,9 @@
+{
+  "_comment": "Per-symbol catalyst classification for today's candidates. Read by build_report.py and merged into final-candidates.csv. Copy this file to ./catalysts_today.json (repo root) and populate from the Phase 2 catalyst-hunt agent output. Falls through to build_report.py's hardcoded `catalysts` dict for tickers not listed here.",
+  "_schema": {
+    "TICKER": {
+      "Type": "earnings | guidance | analyst | contract | M&A | FDA | news | momentum | macro",
+      "Catalyst": "One-sentence 繁體中文 explanation with $ figures + named products / programs"
+    }
+  }
+}

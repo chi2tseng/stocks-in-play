@@ -1,0 +1,38 @@
+{
+  "_comment": "Symbols whose day-count should reset to day1 for the current scan because they have a NEW MAJOR catalyst today that is the PRIMARY cause of the move. Curated by Claude per scan — JUDGMENT-BASED, no hard thresholds.\n\nProcess (per ticker):\n  1. Identify today's catalyst (from catalysts_today.json + news_detail.json).\n  2. Look at prior-scan presence + |chgPct| in 5/13, 5/14.\n  3. Look at 1M / 3M perf for cumulative trend.\n  4. ASK: Are the prior moves RELATED to today's catalyst (= continuation/leak/anticipation) or UNRELATED (= different driver, today's catalyst is genuinely fresh)?\n     • Related & priced-in → day3 (continuation, even with a 'fresh' catalyst headline)\n     • Unrelated theme/momentum → day1 (catalyst is new to market regardless of prior price action)\n\nSoft signals (worth examining, NOT auto-disqualifying):\n  • Prior-scan day |chgPct| ≥ 4% — investigate whether it's leak/preview of today's catalyst\n  • 1M cumulative > +100% — likely already running, but not always disqualifying\n  • Catalyst published ≥ 2 trading days ago — usually means continuation\n\nValid catalysts per Stockbee SIP PDF (page 1-7):\n  • Earnings reports (Scheduled — biggest after biotech)\n  • FDA approvals / drug trial news / industry conference (biotech triad)\n  • Analyst upgrades/downgrades + multiple PT changes\n  • Unscheduled: CEO change, new product, contract, M&A, shortage, influencer mention\n  • Corporate actions (reverse split, special dividend, large buyback, share offering announcement)",
+
+  "resets": {
+    "FIG":  "5/14 PM Q1 +46% YoY 財報大超預期 + 上修指引 — fresh earnings；5/13、5/14 各 +4.5% 是不相關 pre-earnings noise（未足以視為今天 catalyst 的 leak）",
+    "BOOT": "5/14 PM Q4 FY26 +19% YoY 財報 + FY27 指引上修 — 首次入榜，fresh earnings",
+    "WYY":  "5/14 PM Q1 +21% YoY + EPS 轉正 + EBITDA +714% — 首次入榜，1M +72% 為緩漲累積、無單日 spike，今日 earnings 真實驅動",
+    "STNE": "5/14 PM Q1 EPS +231% YoY + 特別股利 — 首次入榜，1M -21% 反而是 oversold-rebound 配合 fresh earnings",
+    "GEMI": "5/14 PM Q1 + Winklevoss Capital $100M 比特幣注資 — 首次入榜，fresh major catalyst",
+    "PIII": "5/14 PM Q1 + EBITDA inflection + FY 指引上修 — 首次入榜，今日 +42.7% 是 EBITDA 轉折真實 SIP",
+    "DXCM": "5/14 Investor Day 揭示 2029 年 $66 億營收目標 — fresh strategic catalyst",
+    "DAIO": "5/14 PM 簽訂 $23M LOI 半導體封裝廠收購 — fresh M&A",
+    "BNKK": "5/14 PM Q1 +10,200% YoY 首次轉營業利益 — fresh earnings 首次 print；5/13、5/14 各 +16% 是不相關的 IPO/crypto-meme 動能、非 earnings preview，所以 earnings 對市場是新數據 → day1",
+    "TPG":  "5/14 PM Q1 EPS +45.8% YoY + $0.59 股利 — fresh earnings + 大型基金 AUM update",
+    "GAMB": "5/14 早盤 Q1 EPS miss + 25% 裁員重組 — fresh gap-down 主因",
+    "VUZI": "5/14 PM Q1 -12% YoY rev — fresh gap-down",
+    "DARE": "5/14 PM Q1 + going concern 警告 — fresh earnings（1M +60% 為 biotech 投機 noise，與 going-concern 揭露無關）",
+    "MOBX": "5/14 PM Q1 cash crisis 揭露 — fresh negative catalyst",
+    "CURI": "5/14 PM Q1 miss + 全年指引下修 — fresh gap-down",
+    "RUM":  "5/14 PM Q1 EPS miss + EBITDA -$21M — fresh earnings（1M +46% 為 Northern Data 併購進展，與 earnings miss 不同 driver）",
+    "DLO":  "5/14 PM Q1 EPS miss + 毛利率壓縮 — fresh gap-down",
+    "XNDU": "5/14 PM Q1 +4x YoY + 加拿大 $285M Project OPTIMISM — fresh，1M -40% 反為 oversold",
+    "UAMY": "5/14 PM Q1 + CFO 暫時休假 + 礦床新增 — fresh earnings",
+    "VLN":  "5/13 PM Q1 毛利率 65.2% 遠超指引 — fresh，1M +129% 為緩漲累積（無單日 +20%+ spike）",
+    "ELPW": "5/14 PM 公告 12 月反向分割 + ATM 增發 — fresh 公司行為，1M 僅 +7.8% 無 prior run-up"
+  },
+
+  "_no_reset_reasons": {
+    "AIIO": "5/13 +64.8%、5/14 +64.8%、1M +810%！今日 -20.7% 是 pump-and-dump unwind；prior 漲幅是同一波 AI/acquisition rumor 主題（與今日 M&A 公告同 driver）→ day3 continuation/unwind",
+    "POET": "Lumilens 合約 5/14 早盤公告，5/14 +22.1% 就是 catalyst 日的反應，5/13 +22.1% 是 leak/preview。今日 +11.3% 是同一 catalyst 的 day-2/3 延續 → day3 continuation",
+    "AEHL": "$200M shelf 是 5/11 公告（已 4 天），5/13、5/14 各 +49% 是同一個 Bitcoin Genius Plan 主題持續炒作，今日 -15.7% 是 distribution event 後的 unwind → day3 continuation",
+    "PZZA": "催化劑為 5/7 財報（已 8 天）、今日 +8% 為技術反彈，無新主因 → 不入 reset",
+    "BW":   "5/11 財報（已 4 天）、今日 -7.2% 為延伸反應 → 不入 reset",
+    "VELO": "5/12 財報（已 3 天）、1M +75%、今日 -4.4% 是 sell-the-news continuation → 不入 reset",
+    "NAMS": "催化劑 5/7 財報（已 8 天）、今日是延伸反應 → 不入 reset",
+    "QUCY": "1M +448% RSI 82 估值極端延伸、BP United 合約存在但已 priced in，今日 -13% 是 momentum unwind → 不入 reset"
+  }
+}

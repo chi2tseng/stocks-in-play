@@ -1,0 +1,10 @@
+{
+  "_comment": "Per-symbol news detail + REAL publication time. Read by build_dashboard.py; surfaces on each stock's detail page. See ./docs/NEWS_TIME_SPEC.md for the publishedAt format spec. Copy this file to ./news_detail.json (repo root) and populate during Phase 8 of /SIPs.",
+  "_schema": {
+    "TICKER": {
+      "detail": "Multi-paragraph 繁體中文 markdown. Paragraphs separated by \\n\\n (single \\n becomes <br>). Length: ~150-400 chars / 3-6 short paragraphs.",
+      "publishedAt": "ISO 8601 with TZ offset, e.g. 2026-05-14T16:05:00-04:00",
+      "publishedTimezone": "ET (or PT / CT / etc — human-readable label)"
+    }
+  }
+}

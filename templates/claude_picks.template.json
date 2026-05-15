@@ -1,0 +1,4 @@
+{
+  "_comment": "Claude's hand-picked SIP rankings. Read by build_dashboard.py and exposed as DATA.claudePicks. The 'Claude 精選' subtab on Today's SIPs renders these in rank order. Symbol must exist in today's candidates.csv or it gets silently dropped. Schema: { picks: [{symbol, rank, rationale, neglected?}] }. The optional `neglected: true|false` flag fires the N (Neglect) MAGNA bit on the dashboard. Copy this file to ./claude_picks.json (repo root) and populate after each /SIPs scan.",
+  "picks": []
+}

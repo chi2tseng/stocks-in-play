@@ -1,0 +1,64 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Per-run scratch (regenerated on every /SIPs scan)
+candidates*.csv
+final-candidates.csv
+shorts.json
+tv-summary.json
+tv-summary.csv
+*-earnings-fq.md
+*-earnings-fq-firecrawl.md
+barchart-*.md
+barchart-*-p*.json
+barchart-pre-*.json
+barchart-post-*.json
+sorted-views.md
+sorted_views.md
+report.md
+
+# Local dev artifacts
+*.log
+.DS_Store
+Thumbs.db
+*.swp
+
+# Editor / IDE
+.vscode/
+.idea/
+*.iml
+
+# Stale UI screenshots from dev iterations (the SPA is rebuilt from build_dashboard.py)
+dashboard/v*.png
+dashboard/v*-*.png
+
+# Stale scratch helpers from earlier dev
+test_parse_5.py
+investigate_p2.py
+filter_breakdown.py
+build_briefing.py
+build_briefing_md.py
+build_report_today.py
+gen_html_report.py
+debug_se.py
+nvda_show.py
+_compare_dates.py
+stockbee-video-p1.json
+
+# NOTE: do NOT ignore these — they're the live data + curated examples we want public:
+# - dashboard/data/*.json
+# - dashboard/data.json
+# - dashboard/dates.json
+# - dashboard/index.html
+# - claude_picks.json
+# - news_detail.json
+# - day_resets.json
+# - catalysts_today.json
