@@ -604,9 +604,11 @@ After publishing, end the chat response with a single line:
 
 Replace N with the candidate count and TICKER with the #1 ranked SIP.
 
-### 8.6 (Optional) Share today's scan with invited collaborators — Phase 11
+### 8.6 Phase 11 — auto-publish to GitHub Pages (REQUIRED for hosted dashboard)
 
-If the repo is cloned from the private GitHub remote, push today's data so other invited collaborators can `git pull` and see your scan locally:
+This repo is wired with `.github/workflows/pages.yml`. Every push that touches `dashboard/**` triggers an auto-deploy to **https://chi2tseng.github.io/stocks-in-play/** within ~30 seconds.
+
+**Run this at the very end of every `/SIPs` scan:**
 
 ```bash
 git add dashboard/data/<DATE>.json dashboard/data.json dashboard/dates.json dashboard/index.html \
@@ -615,7 +617,21 @@ git commit -m "scan: <DATE> — top SIP <TICKER>, <N> candidates"
 git push
 ```
 
-Each collaborator then runs `git pull && py build_dashboard.py` (or just opens the local preview if their `127.0.0.1:5510` server is already pointed at this repo) to view the latest scan.
+Use the date `<DATE>` from the scan, the #1 ranked Claude pick as `<TICKER>`, and the total candidate count as `<N>`. Example commit message:
+
+```
+scan: 2026-05-15 — top SIP FIG, 29 candidates
+```
+
+After ~30 seconds, the public dashboard at https://chi2tseng.github.io/stocks-in-play/ reflects the new data. Calendar picker picks up the new date automatically.
+
+**Verification (optional):**
+```bash
+# Watch the Pages deploy status
+gh run watch
+# Or list recent deploys
+gh run list --workflow=pages.yml --limit 3
+```
 
 ---
 

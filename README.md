@@ -1,8 +1,9 @@
 # Stocks In Play (SIPs)
 
-A daily **NTRT/MTRT gap scanner** + **Stocks In Play dashboard** that classifies overnight movers using Stockbee's SIP framework and Mark Minervini's **MAGNA53** template. Outputs a 繁體中文 morning brief + a local static-SPA dashboard.
+A daily **NTRT/MTRT gap scanner** + **Stocks In Play dashboard** that classifies overnight movers using Stockbee's SIP framework and Mark Minervini's **MAGNA53** template. Outputs a 繁體中文 morning brief + a public static-SPA dashboard.
 
-> 🔒 **Private repo.** Invited collaborators only. Skillfish install requires a GitHub personal access token (see below).
+🌐 **Hosted dashboard:** **<https://chi2tseng.github.io/stocks-in-play/>** — view today's scan in any browser, no install
+🤖 **Claude Code skill:** `npx skillfish add chi2tseng/stocks-in-play SIPs` (lets you run your own scans)
 
 ---
 
@@ -22,24 +23,32 @@ Every morning (or post-market evening), the `/SIPs` skill:
 
 ---
 
-## How to install (invited friends)
+## Two ways to use this
 
-You'll need: **Windows / macOS / Linux**, **Node.js 18+**, **Python 3.10+**, **Claude Code** (latest), and a **GitHub PAT** with `repo` scope (since this repo is private).
+### 1. View-only — open the hosted dashboard
+
+No install. Open **<https://chi2tseng.github.io/stocks-in-play/>** in any browser.
+
+- See today's SIPs auto-ranked by MAGNA53 score
+- Click any ticker → detail page with EPS/Rev quarterly charts (hover tooltips!) + news history
+- Sortable Short Squeeze table with Short Float / DTC / YoY Rev / YoY EPS
+- Calendar picker to view historical scan days
+
+### 2. Run-it-yourself — scan your own data
+
+You'll need: **Windows / macOS / Linux**, **Node.js 18+**, **Python 3.10+**, **Claude Code** (latest).
 
 ```bash
-# 1. Clone the repo (you must be invited as collaborator)
+# 1. Install the Claude Code skill (public repo, no GH token needed)
+npx skillfish add chi2tseng/stocks-in-play SIPs
+
+# 2. Clone the repo (code lives here)
 git clone https://github.com/chi2tseng/stocks-in-play.git
 cd stocks-in-play
 
-# 2. Install Playwright + Chromium
+# 3. Install Playwright + Chromium
 npm install
 npx playwright install chromium
-
-# 3. Install the Claude Code skill
-#    Requires a GitHub PAT exported as GH_TOKEN since the repo is private
-export GH_TOKEN=ghp_yourPersonalAccessToken     # macOS / Linux
-$env:GH_TOKEN = 'ghp_yourPersonalAccessToken'   # Windows PowerShell
-npx skillfish add chi2tseng/stocks-in-play SIPs
 
 # 4. Open Claude Code in this directory and run the skill
 claude
@@ -47,7 +56,7 @@ claude
 /SIPs
 ```
 
-The skill orchestrates the whole pipeline (Barchart → catalysts → TradingView → Finviz → report → dashboard). Output lands in your local `dashboard/` directory; Claude Preview serves it at `http://127.0.0.1:5510`.
+The skill orchestrates the whole pipeline (Barchart → catalysts → TradingView → Finviz → report → dashboard) and pushes to GitHub. Output lands in your local `dashboard/` directory; Claude Preview serves it at `http://127.0.0.1:5510`.
 
 ### Daily workflow (after first install)
 
