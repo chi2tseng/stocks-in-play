@@ -120,6 +120,61 @@ if os.path.exists(shorts_path):
     with open(shorts_path, 'r', encoding='utf-8') as f:
         shorts_raw = json.load(f)
 
+# --- Load optional prev-day OHLCV file (built by /SIPs after trading day) ---
+# Schema: { "<TICKER>": { date, open, high, low, close, prev_close, volume } }
+# Surfaces as DATA.stocks[sym].prevOhlcv so the Studies "Save to Studies" flow can auto-fill
+# ohlcv when present (user doesn't have to re-key the numbers manually).
+# `prev_close` (the close of the bar BEFORE `date`) drives the dashboard's day-%Chg derivation
+# in renderStudyDetail: (close − prev_close) / prev_close · 100.
+prev_ohlcv_path = os.path.join(DIR, 'prev_ohlcv.json')
+prev_ohlcv_raw = {}
+if os.path.exists(prev_ohlcv_path):
+    with open(prev_ohlcv_path, 'r', encoding='utf-8') as f:
+        prev_ohlcv_raw = json.load(f)
+
+# --- Auto-backfill existing studies (dashboard/studies/studies.json) ---
+# For every ticker the user has saved as a Study, if its ohlcv has never been filled
+# (ohlcv.open is None), backfill from prev_ohlcv_raw. Manual data is sacred — anything
+# the user typed in person stays exactly as they left it. This lets the day's %Chg auto-
+# derive across the user's whole Studies library on every /SIPs run, without re-typing
+# yesterday's bar for each ticker.
+studies_json_path = os.path.join(DIR, 'dashboard', 'studies', 'studies.json')
+if prev_ohlcv_raw and os.path.exists(studies_json_path):
+    try:
+        with open(studies_json_path, 'r', encoding='utf-8') as f:
+            studies_arr = json.load(f)
+        if isinstance(studies_arr, list):
+            changed = False
+            for st in studies_arr:
+                sym = (st or {}).get('symbol')
+                if not sym:
+                    continue
+                cur_ohlcv = st.get('ohlcv') or {}
+                if cur_ohlcv.get('open') is not None:
+                    continue  # user-filled — never overwrite
+                row = prev_ohlcv_raw.get(sym)
+                if not row:
+                    continue
+                # Merge — keep any existing fields the user may have partially typed
+                st['ohlcv'] = {**cur_ohlcv, **{
+                    'date':       row.get('date', cur_ohlcv.get('date', '')),
+                    'open':       row.get('open'),
+                    'high':       row.get('high'),
+                    'low':        row.get('low'),
+                    'close':      row.get('close'),
+                    'prev_close': row.get('prev_close'),
+                    'volume':     row.get('volume'),
+                }}
+                changed = True
+            if changed:
+                tmp = studies_json_path + '.tmp'
+                with open(tmp, 'w', encoding='utf-8') as f:
+                    json.dump(studies_arr, f, ensure_ascii=False, indent=2)
+                os.replace(tmp, studies_json_path)
+                print(f'[prev_ohlcv] backfilled {sum(1 for s in studies_arr if (s.get("ohlcv") or {}).get("open") is not None)} studies in dashboard/studies/studies.json')
+    except Exception as e:
+        print(f'[prev_ohlcv] backfill skipped (non-fatal): {e}')
+
 # --- Load optional Claude picks file ---
 # Schema: { "picks": [ { "symbol": "X", "rank": 1, "rationale": "..." }, ... ] }
 claude_picks_path = os.path.join(DIR, 'claude_picks.json')
@@ -247,6 +302,9 @@ for sym in all_syms:
         'perf6M':        sh.get('perf6M'),
         'perfYTD':       sh.get('perfYTD'),
         'perf12M':       sh.get('perf12M'),
+        # Prev-day OHLCV (optional, populated by /SIPs after the trading day).
+        # Auto-fills Studies' ohlcv when user clicks "Save to Studies".
+        'prevOhlcv':     prev_ohlcv_raw.get(sym) or None,
     }
 
 # --- Build SCANX lists ---
@@ -557,6 +615,27 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 .studies-btn:hover { background: var(--surface-soft); border-color: var(--ink); }
 .studies-btn-danger { color: var(--neg); }
 .studies-btn-danger:hover { background: rgba(226,59,74,0.06); border-color: var(--neg); }
+
+/* ── Read-only mode (hosted GitHub Pages — no sidecar) ──
+   Studies are a "personal backup viewable on phone/other devices" — view but don't edit.
+   The .readonly-mode body class is toggled in detectSidecar() once on boot. */
+body.readonly-mode .ro-hide { display: none !important; }
+body.readonly-mode [contenteditable="true"] { background: var(--surface-soft); cursor: not-allowed; }
+body.readonly-mode .studies-btn,
+body.readonly-mode .study-remove,
+body.readonly-mode .notes-img-del,
+body.readonly-mode .section-x,
+body.readonly-mode .copy-btn,
+body.readonly-mode .trade-pill,
+body.readonly-mode .ms-edit input { pointer-events: none; opacity: 0.55; }
+body.readonly-mode .studies-btn-danger { display: none !important; }
+.readonly-badge {
+  display: none; align-items: center; gap: 6px; padding: 4px 10px; font-size: 11px; font-weight: 600;
+  border-radius: var(--r-pill); background: rgba(255, 178, 30, 0.12); color: #b97c00;
+  border: 1px solid rgba(255, 178, 30, 0.4); font-family: var(--font-body); letter-spacing: 0.2px;
+}
+body.dark .readonly-badge { color: #ffce6a; background: rgba(255, 206, 106, 0.10); border-color: rgba(255, 206, 106, 0.35); }
+body.readonly-mode .readonly-badge { display: inline-flex; }
 .studies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 12px; }
 .study-card {
   background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-lg);
@@ -592,6 +671,7 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 }
 .save-study-btn:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
 .save-study-btn.saved { background: rgba(0,168,126,0.10); color: var(--pos); border-color: var(--pos); }
+body.readonly-mode .save-study-btn { display: none !important; }
 
 /* ── OHLCV row + intraday chip ── */
 .study-section-label {
@@ -623,12 +703,45 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 .shot-lightbox img { max-width: 95vw; max-height: 88vh; box-shadow: 0 24px 64px rgba(0,0,0,0.5); border-radius: var(--r-sm); }
 .shot-lightbox .shot-caption { color: rgba(255,255,255,0.85); margin-top: 12px; font-family: var(--font-mono); font-size: 13px; }
 
+/* ── Undo snackbar (bottom-center, 10s auto-dismiss) ── */
+.undo-snackbar {
+  position: fixed; left: 50%; bottom: 24px;
+  transform: translate(-50%, 24px); opacity: 0;
+  display: flex; align-items: center; gap: 16px;
+  padding: 12px 18px 12px 20px;
+  background: rgba(25, 28, 31, 0.96); color: #fff;
+  border-radius: var(--r-pill); box-shadow: 0 20px 48px -8px rgba(0,0,0,0.4);
+  font-family: var(--font-body); font-size: 14px; font-weight: 500;
+  z-index: 99998; pointer-events: none;
+  transition: opacity 200ms ease-out, transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.undo-snackbar.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.undo-snackbar .undo-btn {
+  background: transparent; border: 1px solid rgba(255,255,255,0.30);
+  color: #fff; padding: 5px 14px; border-radius: var(--r-pill);
+  font-weight: 600; cursor: pointer; font-family: var(--font-body); font-size: 13px;
+}
+.undo-snackbar .undo-btn:hover { background: rgba(255,255,255,0.10); border-color: #fff; }
+body.dark .undo-snackbar { background: rgba(245, 246, 248, 0.96); color: var(--ink); }
+body.dark .undo-snackbar .undo-btn { border-color: rgba(25,28,31,0.30); color: var(--ink); }
+
 /* ── Study list preview cards ── */
 .studies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 16px; }
 .study-saved-on {
   font-family: var(--font-mono); font-size: 10px; color: var(--stone);
   text-transform: uppercase; letter-spacing: 0.4px; margin-left: 8px;
 }
+.study-preview-del {
+  position: absolute; top: 12px; right: 14px;
+  width: 24px; height: 24px; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; border: 1px solid transparent; border-radius: 50%;
+  color: var(--mute); font-size: 12px; cursor: pointer; opacity: 0;
+  transition: opacity 0.12s, color 0.12s, background 0.12s, border-color 0.12s;
+  z-index: 3;
+}
+.sip-card:hover .study-preview-del { opacity: 1; }
+.study-preview-del:hover { color: var(--neg); background: rgba(226,59,74,0.10); border-color: rgba(226,59,74,0.30); }
 .study-potential, .study-intraday {
   display: inline-flex; align-items: center; gap: 4px;
   font-family: var(--font-mono); font-size: 11px; font-weight: 700;
@@ -637,41 +750,97 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 .study-potential.pos, .study-intraday.pos { color: var(--pos); background: rgba(0, 168, 126, 0.10); }
 .study-potential.neg, .study-intraday.neg { color: var(--neg); background: rgba(226, 59, 74, 0.10); }
 
-/* ── Study detail page ── */
-.study-detail-header {
-  display: flex; align-items: center; gap: 24px; padding: 20px 24px;
-  background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-lg);
-  margin-bottom: 16px; flex-wrap: wrap;
+/* Study detail re-uses .stock-header from the original stock detail page. The only addition
+   is the .stock-header-trade pill row (defined above) and per-section X (below). */
+
+/* Trade pills — small inline pills in the stock-header row (Gain / Stop). Clickable to open OHLCV popup. */
+.stock-header-trade { margin-top: 4px; }
+.trade-pill { cursor: pointer; }
+.trade-pill:hover { box-shadow: 0 0 0 2px rgba(73, 79, 223, 0.12); }
+.trade-pill span { font-family: var(--font-mono); margin-left: 6px; font-weight: 700; }
+
+/* Section X — appears top-right of each .study-section card on hover */
+.study-section { position: relative; }
+.section-x {
+  position: absolute; top: 14px; right: 16px;
+  width: 24px; height: 24px; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; border: 1px solid transparent; border-radius: 50%;
+  color: var(--mute); font-size: 14px; cursor: pointer; opacity: 0;
+  transition: opacity 0.12s, color 0.12s, background 0.12s, border-color 0.12s;
+  z-index: 3;
 }
-.study-detail-symblock { display: flex; flex-direction: column; gap: 4px; }
-.study-detail-name { font-size: 13px; color: var(--mute); }
-.study-detail-fields { display: flex; gap: 12px; align-items: flex-end; margin-left: auto; flex-wrap: wrap; }
-.study-detail-fields .study-field { flex-direction: column; gap: 4px; font-size: 10px; color: var(--stone); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
-.study-detail-fields .study-field input,
-.study-detail-fields .study-field select {
-  padding: 6px 10px; border: 1px solid var(--hairline); border-radius: var(--r-sm);
-  background: var(--canvas); color: var(--ink); font-family: var(--font-mono); font-size: 13px;
+.study-section:hover .section-x { opacity: 1; }
+.section-x:hover { color: var(--neg); background: rgba(226,59,74,0.10); border-color: rgba(226,59,74,0.30); }
+
+/* Right-click context menu for restoring hidden sections */
+.study-ctx-menu {
+  position: fixed; min-width: 200px;
+  background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-md);
+  box-shadow: 0 24px 48px -8px rgba(0, 0, 0, 0.18);
+  padding: 6px; z-index: 9999;
+  font-family: var(--font-body); font-size: 13px;
 }
-.study-detail-fields .study-field select { font-family: var(--font-body); font-weight: 600; }
-.study-detail-fields .study-field input:focus,
-.study-detail-fields .study-field select:focus { outline: none; border-color: var(--primary); }
-.study-detail-block h3 { font-family: var(--font-display); font-size: 14px; margin: 0 0 14px; font-weight: 600; color: var(--ink); letter-spacing: -0.1px; }
-.study-summary-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
-.study-summary-chip {
-  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
-  padding: 6px 12px; border-radius: var(--r-pill); background: var(--surface-soft);
-  color: var(--mute);
+.study-ctx-menu-title { padding: 8px 12px 6px; font-size: 11px; color: var(--stone); text-transform: uppercase; letter-spacing: 0.4px; font-weight: 700; }
+.study-ctx-menu-item {
+  display: block; width: 100%; padding: 8px 12px;
+  background: transparent; border: none; text-align: left;
+  color: var(--ink); cursor: pointer; border-radius: var(--r-sm);
 }
-.study-summary-chip.pos { color: var(--pos); background: rgba(0, 168, 126, 0.10); }
-.study-summary-chip.neg { color: var(--neg); background: rgba(226, 59, 74, 0.10); }
-.study-summary-chip b { font-weight: 700; margin-left: 4px; }
-.study-catalyst-input {
-  width: 100%; box-sizing: border-box; resize: vertical;
-  padding: 10px 14px; font-size: 14px; line-height: 1.6;
-  border: 1px solid var(--hairline); border-radius: var(--r-sm);
-  background: var(--canvas); color: var(--ink); font-family: var(--font-body);
+.study-ctx-menu-item:hover { background: var(--surface-soft); color: var(--primary); }
+
+/* OHLCV popup modal — opens on metric chip click. Centered, click-outside dismisses. */
+.ohlcv-modal-overlay {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.40);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999; opacity: 0; transition: opacity 160ms ease-out;
+  cursor: pointer;
 }
-.study-catalyst-input:focus { outline: none; border-color: var(--primary); }
+.ohlcv-modal-overlay.show { opacity: 1; }
+.ohlcv-modal {
+  background: var(--canvas); border-radius: var(--r-lg);
+  padding: 0; min-width: 360px; max-width: 92vw;
+  box-shadow: 0 32px 80px -16px rgba(0,0,0,0.30);
+  cursor: default;
+  transform: scale(0.96); transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ohlcv-modal-overlay.show .ohlcv-modal { transform: scale(1); }
+.ohlcv-modal-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 22px; border-bottom: 1px solid var(--hairline);
+}
+.ohlcv-modal-head h3 { margin: 0; font-family: var(--font-display); font-size: 16px; }
+.ohlcv-modal-close {
+  width: 30px; height: 30px; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; border: none; color: var(--mute);
+  font-size: 22px; cursor: pointer; border-radius: 50%;
+}
+.ohlcv-modal-close:hover { background: var(--surface-soft); color: var(--ink); }
+.ohlcv-modal-body {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  padding: 22px;
+}
+.ohlcv-modal-body .study-ohlcv-field input {
+  padding: 8px 12px; font-size: 14px;
+}
+.ohlcv-modal-foot {
+  padding: 14px 22px; border-top: 1px solid var(--hairline);
+  display: flex; justify-content: flex-end;
+}
+
+/* Editable MS table — cells become flat-styled inputs that look like cells until focused */
+.ms-table-editable .ms-cell-input {
+  width: 100%; min-width: 0;
+  padding: 4px 6px; font-family: var(--font-mono); font-variant-numeric: tabular-nums;
+  font-size: 14px; text-align: right;
+  background: transparent; color: inherit;
+  border: 1px solid transparent; border-radius: var(--r-sm);
+  outline: none;
+}
+.ms-table-editable .ms-cell-input:hover { background: var(--canvas); border-color: var(--hairline); }
+.ms-table-editable .ms-cell-input:focus { background: var(--canvas); border-color: var(--primary); }
+.ms-table-editable .ms-estimate .ms-cell-input { color: var(--mute); }
 
 /* Notion-style rich notes — contenteditable with inline image embeds */
 .study-notes-rich {
@@ -685,7 +854,7 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 .study-notes-rich.drag-over { border-color: var(--primary); border-style: dashed; background: rgba(73, 79, 223, 0.04); }
 .study-notes-rich:empty:before { content: attr(data-placeholder); color: var(--stone); pointer-events: none; }
 .study-notes-rich img {
-  max-width: 100%; height: auto; margin: 12px 0;
+  max-width: 100%; height: auto;
   border-radius: var(--r-sm); display: block;
   background: var(--surface-soft);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
@@ -694,6 +863,23 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 .study-notes-rich img:hover { transform: scale(1.005); }
 .study-notes-rich p { margin: 0 0 12px; }
 .study-notes-rich p:last-child { margin-bottom: 0; }
+/* Inline image wrap — positions the delete X in the top-right corner on hover */
+.notes-img-wrap {
+  display: inline-block; position: relative; margin: 12px 0;
+  max-width: 100%;
+}
+.notes-img-wrap img { margin: 0; }
+.notes-img-del {
+  position: absolute; top: 6px; right: 6px;
+  width: 24px; height: 24px; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(25, 28, 31, 0.85); color: #fff;
+  border: none; border-radius: 50%; font-size: 16px; line-height: 1;
+  cursor: pointer; opacity: 0;
+  transition: opacity 0.12s, background 0.12s;
+}
+.notes-img-wrap:hover .notes-img-del { opacity: 1; }
+.notes-img-del:hover { background: var(--neg); }
 .cal-btn svg { width: 13px; height: 13px; }
 .cal-popup { position: fixed; top: 0; left: 0; background: var(--canvas); border-radius: var(--r-md); padding: 16px; width: 280px; z-index: 9999; box-shadow: 0 24px 64px -12px rgba(0,0,0,0.25); border: 1px solid var(--hairline); display: none; }
 .cal-popup.open { display: block; }
@@ -1270,13 +1456,14 @@ td.sym a { transition: background 140ms ease, color 140ms ease; }
       <a data-route="studies">Studies</a>
     </div>
     <div class="topbar-right" id="topbar-right">
+      <span class="readonly-badge" title="Sidecar (local Python server) not detected — viewing the committed snapshot. Run `py D:/SIPs/sidecar.py` to edit.">&#128274; View only</span>
       <button class="topbar-iconbtn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
         <svg id="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
         <svg id="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
       <button class="cal-btn" id="cal-btn" aria-label="Select date">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-        <span id="cal-btn-label">選擇日期</span>
+        <span id="cal-btn-label">Select date</span>
       </button>
       <div class="cal-popup" id="cal-popup"></div>
     </div>
@@ -1286,7 +1473,16 @@ td.sym a { transition: background 140ms ease, color 140ms ease; }
 <main id="app"></main>
 <div id="chart-tooltip" role="tooltip" aria-hidden="true"></div>
 <script>
-const STATE = { date: null, dates: [], data: null };
+const STATE = { date: null, dates: [], data: null,
+  // Sidecar mode = the local Python sidecar at 127.0.0.1:5510 is running.
+  //   true  → Studies edits write through to disk (dashboard/studies/*).
+  //   false → hosted GitHub Pages: read-only, all edit affordances disabled.
+  // Detected once on boot via GET /api/health.
+  sidecar: { available: false, checked: false, info: null },
+  // Image-path index built by sidecar: { imgKey: 'imgKey.png' }. Used in read-only
+  // mode to render <img src="studies/images/<filename>"> without probing extensions.
+  imgIndex: null,
+};
 let DATA = null;
 
 const fmtPct = v => v == null ? '—' : `${v >= 0 ? '+' : ''}${v.toFixed(2)}%`;
@@ -1325,6 +1521,54 @@ function formatLabelHint(isoDate) {
   return `${monShort[d.getMonth()]} ${d.getDate()} 盤後 + ${monShort[next.getMonth()]} ${next.getDate()} 盤前`;
 }
 
+/* ═════ Sidecar detection + disk hydration for Studies ═════
+   The local sidecar (D:/SIPs/sidecar.py) serves the same static files as
+   `python -m http.server` PLUS write endpoints under /api/. We probe /api/health
+   once on boot to decide:
+     - sidecar.available = true  → Studies edits write through to disk; offer normal editing UX.
+     - sidecar.available = false → we're on GitHub Pages (or sidecar isn't running); read-only mode.
+   Either way, on boot we try to load `studies/studies.json` + `studies/images/index.json` so
+   the user's most-recently-committed library shows up — that's what makes hosted Pages a
+   "personal backup viewable on phone" rather than an empty shell. */
+async function detectSidecar() {
+  try {
+    const r = await fetch('/api/health', {cache: 'no-store'});
+    if (!r.ok) throw new Error('non-200');
+    const info = await r.json();
+    STATE.sidecar.available = !!info.ok && !!info.writable;
+    STATE.sidecar.info = info;
+  } catch (_) {
+    STATE.sidecar.available = false;
+  }
+  STATE.sidecar.checked = true;
+  document.body.classList.toggle('readonly-mode', !STATE.sidecar.available);
+}
+
+async function hydrateStudiesFromDisk() {
+  // Pull the canonical studies file written by sidecar (or committed by /SIPs Phase 11).
+  // Disk wins over localStorage: this is the "phone shows what my desktop saved last" path.
+  try {
+    const r = await fetch('studies/studies.json', {cache: 'no-store'});
+    if (!r.ok) return;
+    const arr = await r.json();
+    if (Array.isArray(arr) && arr.length > 0) {
+      // Replace localStorage so the rest of the app reads from a single source of truth.
+      localStorage.setItem(STUDIES_KEY, JSON.stringify(arr));
+    } else if (Array.isArray(arr) && arr.length === 0 && STATE.sidecar.available) {
+      // Disk is empty but localStorage might have a pre-sidecar library — migrate it up.
+      const local = JSON.parse(localStorage.getItem(STUDIES_KEY) || '[]');
+      if (Array.isArray(local) && local.length > 0) {
+        await postStudiesToDisk(local);
+      }
+    }
+  } catch (_) { /* file may not exist yet — fine */ }
+  // Image index (key → filename) so we can render <img> in read-only mode without probing.
+  try {
+    const r = await fetch('studies/images/index.json', {cache: 'no-store'});
+    if (r.ok) STATE.imgIndex = await r.json();
+  } catch (_) { /* no index yet */ }
+}
+
 async function boot() {
   try {
     const r = await fetch('dates.json', {cache: 'no-store'});
@@ -1336,6 +1580,9 @@ async function boot() {
     STATE.date = STATE.data.date;
     STATE.dates = [{date: STATE.date, label: STATE.date}];
   }
+  // Sidecar probe + studies hydration happen in parallel with route render.
+  await detectSidecar();
+  await hydrateStudiesFromDisk();
   installOutsideClickHandler();
   installChartTooltip();
   installThemeToggle();
@@ -1501,7 +1748,7 @@ function renderDateStrip() {
   const label = document.getElementById('cal-btn-label');
   if (label) {
     const active = STATE.dates.find(d => d.date === STATE.date);
-    label.textContent = active ? active.label : '選擇日期';
+    label.textContent = active ? active.label : 'Select date';
   }
   // cal-btn is rendered once in HTML body — wire its click here (idempotent)
   const calBtn = document.getElementById('cal-btn');
@@ -2361,6 +2608,135 @@ function renderMarketSurgeTable(chart) {
   return `<div class="ms-table-wrap"><table class="ms-table"><thead>${head}</thead><tbody>${row('EPS ($)','eps',fmtEpsCell)}${yoyRow('YoY % Chg','epsYoY')}${surpRow('Surprise %','epsSurp')}${row('Sales ($M)','rev',fmtSales)}${yoyRow('YoY % Chg','revYoY')}${surpRow('Surprise %','revSurp')}</tbody></table></div>`;
 }
 
+/* Editable MS table for Studies — cells in EPS ($) / Sales ($M) rows are <input>; YoY % Chg
+   and Surprise % rows are computed-only labels that update live as user types.
+   Returns HTML; the renderStudyDetail bindMsTableEditors() wires input listeners that:
+     1. parse the input value
+     2. write it back into study.customChart[arrayName][quarterIdx]
+     3. re-render the bar charts + recompute the YoY/Surprise cells in place. */
+function renderEditableMsTable(chart, sym) {
+  if (!chart || !chart.quarters || !chart.quarters.length) return '<div style="color:var(--stone);padding:20px">No quarterly data</div>';
+  const q = chart.quarters, er = chart.eps_reported || [], ee = chart.eps_estimate || [], rr = chart.rev_reported_M || [], re = chart.rev_estimate_M || [], li = chart.latest_idx;
+  const N = Math.min(11, q.length);
+  let start = Math.max(0, li - 4);
+  let end = Math.min(q.length, start + N);
+  start = Math.max(0, end - N);
+  const cells = [];
+  for (let i = start; i < end; i++) {
+    const isReported = er[i] != null;
+    cells.push({ q: q[i], i, isReported });
+  }
+  const firstEstIdx = cells.findIndex(c => !c.isReported);
+  // Header row
+  let head = '<tr>';
+  cells.forEach((c, idx) => {
+    const div = (idx === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
+    const estCls = c.isReported ? '' : 'est-col';
+    const tag = c.isReported ? '' : ' <span class="ms-est-tag">est</span>';
+    head += `<th class="${div} ${estCls}">${c.q}${tag}</th>`;
+  });
+  head += '<th class="ms-rowlabel"></th></tr>';
+  // Editable value row generator
+  function inputRow(label, repArr, estArr, fmtVal, stepVal, dataKey) {
+    let html = '<tr>';
+    cells.forEach((c, idx) => {
+      const div = (idx === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
+      const klass = c.isReported ? 'ms-reported' : 'ms-estimate';
+      const v = c.isReported ? repArr[c.i] : estArr[c.i];
+      const valStr = (v != null) ? fmtVal(v) : '';
+      html += `<td class="${klass} ${div}"><input class="ms-cell-input" type="number" step="${stepVal}" data-sym="${sym}" data-row="${dataKey}" data-qi="${c.i}" data-isrep="${c.isReported ? 1 : 0}" value="${valStr}" placeholder="—"></td>`;
+    });
+    html += `<td class="ms-rowlabel">${label}</td></tr>`;
+    return html;
+  }
+  // Computed-only row generator (YoY % Chg + Surprise %)
+  function computedRow(label, kind, isEps, isSurp) {
+    let html = `<tr ${isSurp ? 'class="ms-surprise-row"' : ''}>`;
+    cells.forEach((c, idx) => {
+      const div = (idx === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
+      const klass = isSurp ? 'ms-surprise' : (c.isReported ? 'ms-reported' : 'ms-estimate');
+      html += `<td class="${klass} ${div}" data-computed="${kind}-${c.i}"></td>`;
+    });
+    html += `<td class="ms-rowlabel ${isSurp ? 'ms-surprise-label' : ''}">${label}</td></tr>`;
+    return html;
+  }
+  const fmtEps  = v => v.toFixed(2);
+  const fmtRev  = v => (Math.abs(v) >= 1000 ? v.toFixed(1) : v.toFixed(1));
+  return `<div class="ms-table-wrap"><table class="ms-table ms-table-editable"><thead>${head}</thead><tbody>` +
+    inputRow('EPS ($)',     er, ee, fmtEps, '0.01', 'eps') +
+    computedRow('YoY % Chg', 'epsYoY', true, false) +
+    computedRow('Surprise %','epsSurp', true, true) +
+    inputRow('Sales ($M)',  rr, re, fmtRev, '0.1',  'rev') +
+    computedRow('YoY % Chg', 'revYoY', false, false) +
+    computedRow('Surprise %','revSurp', false, true) +
+  `</tbody></table></div>`;
+}
+
+// JS twin of parse_tv.py's yoy() — universal formula `(curr - prior) / abs(prior) * 100`.
+// Returns the same string the Python builder produces, e.g. '+34.12%' / '-87.80%' / 'N/M'.
+function yoyText(curr, prior) {
+  if (curr == null || prior == null) return 'N/M';
+  if (prior === 0) return 'N/M';
+  const pct = (curr - prior) / Math.abs(prior) * 100.0;
+  const sign = pct >= 0 ? '+' : '';
+  return `${sign}${pct.toFixed(2)}%`;
+}
+
+// Build the multiline Forward YoY text from a chart object (eps_reported / eps_estimate /
+// rev_reported_M / rev_estimate_M arrays). Mirrors the Python `parse_tv.py` builder so the
+// Studies page can recompute YoY whenever the user edits an MS-table cell.
+//   line 0:  "<eps_yoy> / <rev_yoy>"      ← latest reported quarter vs same Q a year ago
+//   line 1:  "--------------------"        ← separator
+//   line 2+: "<eps_fwd_yoy> / <rev_fwd_yoy>"  ← one line per estimated forward quarter (up to 4)
+function buildYoyBlockText(chart) {
+  if (!chart) return '';
+  const er = chart.eps_reported || [], ee = chart.eps_estimate || [];
+  const rr = chart.rev_reported_M || [], re = chart.rev_estimate_M || [];
+  // Find the latest index with a reported EPS value (matches Python's `latest` walk-back).
+  let latest = -1;
+  for (let k = er.length - 1; k >= 0; k--) {
+    if (er[k] != null) { latest = k; break; }
+  }
+  if (latest < 0) return '';
+  const priorEps = (latest >= 4) ? er[latest - 4] : null;
+  const priorRev = (latest >= 4) ? rr[latest - 4] : null;
+  const lines = [
+    `${yoyText(er[latest], priorEps)} / ${yoyText(rr[latest], priorRev)}`,
+    '-'.repeat(20),
+  ];
+  for (let fwd = 1; fwd <= 4; fwd++) {
+    const fi = latest + fwd;
+    if (fi < ee.length && ee[fi] != null) {
+      const pe = (fi >= 4 && (fi - 4) < er.length) ? er[fi - 4] : null;
+      const pr = (fi >= 4 && (fi - 4) < rr.length) ? rr[fi - 4] : null;
+      const reVal = (fi < re.length) ? re[fi] : null;
+      lines.push(`${yoyText(ee[fi], pe)} / ${yoyText(reVal, pr)}`);
+    }
+  }
+  return lines.join('\n');
+}
+
+// Recompute the YoY / Surprise cells based on current customChart arrays.
+function recomputeMsComputedCells(chart) {
+  if (!chart) return;
+  const er = chart.eps_reported || [], ee = chart.eps_estimate || [], rr = chart.rev_reported_M || [], re = chart.rev_estimate_M || [];
+  const surp = (rep, est) => (rep == null || est == null || est === 0) ? { txt: '', val: null } : (() => { const r = Math.round((rep - est) / Math.abs(est) * 100); return { txt: (r >= 0 ? '+' : '') + r + '%', val: r }; })();
+  const yoy  = (cur, prior) => (cur == null || prior == null) ? { txt: 'N/A', val: null } : (prior === 0 ? { txt: 'N/M', val: null } : (() => { const r = Math.round((cur - prior) / Math.abs(prior) * 100); return { txt: (r >= 0 ? '+' : '') + r + '%', val: r }; })());
+  document.querySelectorAll('td[data-computed]').forEach(td => {
+    const [kind, i] = td.dataset.computed.split('-');
+    const idx = parseInt(i, 10);
+    let v = { txt: '', val: null };
+    if (kind === 'epsYoY') { const cur = (er[idx] != null) ? er[idx] : ee[idx]; v = yoy(cur, er[idx-4]); }
+    else if (kind === 'revYoY') { const cur = (rr[idx] != null) ? rr[idx] : re[idx]; v = yoy(cur, rr[idx-4]); }
+    else if (kind === 'epsSurp') { v = (er[idx] != null) ? surp(er[idx], ee[idx]) : { txt: '', val: null }; }
+    else if (kind === 'revSurp') { v = (rr[idx] != null) ? surp(rr[idx], re[idx]) : { txt: '', val: null }; }
+    if (!v.txt) { td.innerHTML = ''; return; }
+    if (v.txt === 'N/M' || v.txt === 'N/A') { td.innerHTML = `<span class="nm">${v.txt}</span>`; return; }
+    const c = v.val > 0 ? 'pos' : v.val < 0 ? 'neg' : '';
+    td.innerHTML = `<span class="${c}">${v.txt}</span>`;
+  });
+}
+
 /* ============================================================
    Company News history (thefly.com-style)
    Walks STATE.dates, loads each day's data, and collects every
@@ -2545,7 +2921,8 @@ async function renderStock(sym) {
   ].filter(Boolean).join(' ');
   app.innerHTML = `
     <div class="breadcrumb"><a href="#/earnings">Earnings</a> · <a href="#/catalyst">Catalyst</a> · <a href="#/scanx">SCANX</a> &nbsp;»&nbsp; <b>${s.symbol}</b></div>
-    <div class="stock-header">
+    <div class="stock-header" style="position:relative">
+      ${saveStudyBtnHtml(s.symbol)}
       <div class="sym-big">${s.symbol}${dayChip}</div>
       <div>
         <div class="name">${escapeHtml(s.name)}</div>
@@ -2816,7 +3193,7 @@ const _UI_LABELS = {
   'studies-clear-confirm': 'Clear all studies? This cannot be undone.',
   'studies-saved-on': 'Saved',
   'ohlcv-date': 'Date', 'ohlcv-open': 'Open', 'ohlcv-high': 'High',
-  'ohlcv-low': 'Low', 'ohlcv-close': 'Close', 'ohlcv-volume': 'Volume',
+  'ohlcv-low': 'Low', 'ohlcv-close': 'Close', 'ohlcv-prev-close': 'Prev close', 'ohlcv-volume': 'Volume',
   'claude-rationale-label': "Claude's Analysis",
 };
 function t(key) { return _UI_LABELS[key] || key; }
@@ -2850,30 +3227,69 @@ function openImgDB() {
 }
 async function putImg(key, dataUrl) {
   const db = await openImgDB();
-  return new Promise((resolve, reject) => {
+  await new Promise((resolve, reject) => {
     const tx = db.transaction(IMG_STORE, 'readwrite');
     tx.objectStore(IMG_STORE).put(dataUrl, key);
     tx.oncomplete = () => resolve();
     tx.onerror = () => reject(tx.error);
   });
+  // Write through to sidecar disk so /SIPs Phase 11 commit picks it up.
+  if (STATE.sidecar.available) {
+    try {
+      const r = await fetch('/api/studies/image', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ key, dataUrl }),
+      });
+      if (r.ok) {
+        const info = await r.json();
+        // Keep client-side index in sync so getImg can serve from disk if IDB ever clears.
+        if (info && info.path) {
+          STATE.imgIndex = STATE.imgIndex || {};
+          STATE.imgIndex[key] = info.path.replace(/^studies\/images\//, '');
+        }
+      }
+    } catch (e) { console.warn('[sidecar] putImg failed', e); }
+  }
 }
 async function getImg(key) {
+  // 1. IDB (fast path — everything we wrote locally lands here).
   const db = await openImgDB();
-  return new Promise((resolve, reject) => {
+  const idbHit = await new Promise((resolve, reject) => {
     const tx = db.transaction(IMG_STORE, 'readonly');
     const req = tx.objectStore(IMG_STORE).get(key);
     req.onsuccess = () => resolve(req.result || null);
     req.onerror = () => reject(req.error);
   });
+  if (idbHit) return idbHit;
+  // 2. Fall back to disk-served image (covers read-only hosted + post-IDB-clear cases).
+  //    Returns the URL string — the caller uses it as <img src>.
+  if (STATE.imgIndex && STATE.imgIndex[key]) {
+    return `studies/images/${STATE.imgIndex[key]}`;
+  }
+  // 3. Last-ditch extension probe (only the formats we save).
+  for (const ext of ['png', 'jpg', 'webp', 'gif']) {
+    try {
+      const r = await fetch(`studies/images/${key}.${ext}`, {method: 'HEAD'});
+      if (r.ok) return `studies/images/${key}.${ext}`;
+    } catch (_) {}
+  }
+  return null;
 }
 async function delImg(key) {
   const db = await openImgDB();
-  return new Promise((resolve, reject) => {
+  await new Promise((resolve, reject) => {
     const tx = db.transaction(IMG_STORE, 'readwrite');
     tx.objectStore(IMG_STORE).delete(key);
     tx.oncomplete = () => resolve();
     tx.onerror = () => reject(tx.error);
   });
+  if (STATE.sidecar.available) {
+    try {
+      await fetch(`/api/studies/image/${encodeURIComponent(key)}`, {method: 'DELETE'});
+      if (STATE.imgIndex) delete STATE.imgIndex[key];
+    } catch (e) { console.warn('[sidecar] delImg failed', e); }
+  }
 }
 async function getAllImgs() {
   const db = await openImgDB();
@@ -2927,8 +3343,35 @@ function loadStudies() {
   try { return JSON.parse(localStorage.getItem(STUDIES_KEY) || '[]'); }
   catch { return []; }
 }
+// Debounced POST to /api/studies/save so rapid keystrokes (notes typing, OHLCV editing,
+// etc.) coalesce into one disk write per ~600 ms. Latest payload wins.
+let __studiesFlushTimer = null;
+let __studiesFlushPending = null;
+async function postStudiesToDisk(arr) {
+  if (!STATE.sidecar.available) return;
+  try {
+    await fetch('/api/studies/save', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(arr),
+    });
+  } catch (e) { console.warn('[sidecar] saveStudies failed', e); }
+}
+function flushStudiesSoon(arr) {
+  __studiesFlushPending = arr;
+  if (__studiesFlushTimer) return;
+  __studiesFlushTimer = setTimeout(() => {
+    const payload = __studiesFlushPending;
+    __studiesFlushTimer = null;
+    __studiesFlushPending = null;
+    postStudiesToDisk(payload);
+  }, 600);
+}
 function saveStudies(arr) {
+  // localStorage is always written immediately for snappy UI + offline fallback.
   localStorage.setItem(STUDIES_KEY, JSON.stringify(arr));
+  // Then flush to disk via sidecar (no-op in read-only hosted mode).
+  flushStudiesSoon(arr);
 }
 function isStudySaved(sym) {
   return loadStudies().some(st => st.symbol === sym);
@@ -2961,8 +3404,12 @@ function addStudy(stock) {
     targetPrice: null,
     stopLoss: null,
     conviction: 3,
-    // Daily OHLCV — filled in manually after the trading day. `chgIntraday_pct` is open→close.
-    ohlcv: { date: '', open: null, high: null, low: null, close: null, volume: null },
+    // Daily OHLCV — auto-filled from stock.prevOhlcv (if /SIPs ran the prev-day fetch),
+    // otherwise blank for user to enter via the popup modal. `prev_close` drives the day's
+    // %Chg derivation: (close − prev_close) / prev_close · 100.
+    ohlcv: stock.prevOhlcv && typeof stock.prevOhlcv === 'object'
+      ? { date: stock.prevOhlcv.date || '', open: stock.prevOhlcv.open ?? null, high: stock.prevOhlcv.high ?? null, low: stock.prevOhlcv.low ?? null, close: stock.prevOhlcv.close ?? null, prev_close: stock.prevOhlcv.prev_close ?? null, volume: stock.prevOhlcv.volume ?? null }
+      : { date: '', open: null, high: null, low: null, close: null, prev_close: null, volume: null },
     // Screenshots — array of { id, label, caption, imgKey }. Image data lives in IndexedDB.
     screenshots: [],
   });
@@ -2970,8 +3417,11 @@ function addStudy(stock) {
   return true;
 }
 async function removeStudy(sym) {
+  // Full wipe — the entire study object (notes, ohlcv, customChart, screenshots, tags,
+  // conviction, …) goes when the user removes a ticker. Re-adding via "Save to Studies"
+  // builds a fresh record from the current SIP snapshot — no residue from the prior session.
+  // (The snackbar undo restores everything from the cached snapshot, including customChart.)
   const st = loadStudies().find(s => s.symbol === sym);
-  // Clean up associated IndexedDB images so we don't leak storage
   if (st?.screenshots?.length) {
     for (const ss of st.screenshots) { try { await delImg(ss.imgKey); } catch {} }
   }
@@ -2996,11 +3446,11 @@ function renderStudies() {
   app.innerHTML = `
     <h2 class="page-title">My Studies</h2>
     <div class="studies-toolbar">
-      <button class="studies-btn" id="studies-export">${t('studies-export')}</button>
+      <span class="readonly-badge" title="Sidecar (local Python server) not detected — viewing the committed snapshot. Run &quot;py D:/SIPs/sidecar.py&quot; to edit.">&#128274; View only</span>
+      <button class="studies-btn" id="studies-export" style="margin-left:auto">${t('studies-export')}</button>
       <button class="studies-btn" id="studies-import">${t('studies-import')}</button>
       <input type="file" id="studies-import-file" accept="application/json" style="display:none">
       <button class="studies-btn studies-btn-danger" id="studies-clear">${t('studies-clear')}</button>
-      <span class="subtab-hint" style="margin-left:auto">${studies.length} saved · stored locally (IndexedDB + localStorage)</span>
     </div>
     ${studies.length === 0
       ? `<div class="sip-empty">${t('studies-empty')}</div>`
@@ -3011,7 +3461,12 @@ function renderStudies() {
   document.getElementById('studies-export')?.addEventListener('click', async () => {
     // Bundle screenshots inline as base64 so the JSON is self-contained for cross-device transfer.
     // Schema:  { version: 2, studies: [...], images: { imgKey: dataUrl } }
-    const studies = loadStudies();
+    // Strip `customChart` from each study so a re-import starts with a blank chart — the user
+    // explicitly opted into "next import = blank" so MS-table edits don't carry over.
+    const studies = loadStudies().map(st => {
+      const { customChart, ...rest } = st;
+      return rest;
+    });
     const images = await getAllImgs();
     const bundle = { version: 2, exportedAt: new Date().toISOString(), studies, images };
     const blob = new Blob([JSON.stringify(bundle, null, 2)], { type: 'application/json' });
@@ -3045,8 +3500,20 @@ function renderStudies() {
     };
     reader.readAsText(f);
   });
-  document.getElementById('studies-clear')?.addEventListener('click', () => {
-    if (confirm(t('studies-clear-confirm'))) { saveStudies([]); renderStudies(); }
+  document.getElementById('studies-clear')?.addEventListener('click', async () => {
+    const before = loadStudies();
+    if (!before.length) return;
+    if (!confirm(t('studies-clear-confirm'))) return;
+    // Snapshot images so undo is fully reversible
+    const beforeImgs = await getAllImgs();
+    saveStudies([]);
+    for (const k of Object.keys(beforeImgs)) { try { await delImg(k); } catch {} }
+    renderStudies();
+    showUndoSnackbar(`Cleared ${before.length} studies`, async () => {
+      saveStudies(before);
+      for (const [k, v] of Object.entries(beforeImgs)) { try { await putImg(k, v); } catch {} }
+      renderStudies();
+    });
   });
 }
 
@@ -3099,7 +3566,9 @@ function studyPreviewCardHtml(st, idx) {
   const potentialChip = potentialPct != null
     ? `<span class="study-potential ${potentialPct >= 0 ? 'pos' : 'neg'}" title="Open → High (catalyst potential)">→High ${(potentialPct >= 0 ? '+' : '') + potentialPct.toFixed(2)}%</span>`
     : '';
-  return `<a class="sip-card" href="#/study/${st.symbol}" style="text-decoration:none;color:inherit;display:block">
+  return `<a class="sip-card" href="#/study/${st.symbol}" style="text-decoration:none;color:inherit;display:block;position:relative">
+    <button class="study-preview-del" data-sym="${st.symbol}" title="Delete study"
+            onclick="event.preventDefault();event.stopPropagation();handleDeleteStudyFromList('${st.symbol}');">✕</button>
     <span class="sip-rank-row"><span class="sip-rank">#${idx + 1}</span><span class="study-saved-on">${(st.savedAt || '').slice(0, 10)}</span></span>
     <div class="sip-header"><div class="sip-sym">${st.symbol}</div><div class="sip-chg ${chgCls}">${fmtPct(chg)}</div></div>
     <div class="sip-name">${escapeHtml(s.name || '')}</div>
@@ -3108,13 +3577,42 @@ function studyPreviewCardHtml(st, idx) {
   </a>`;
 }
 
+// Global delete handler used by the preview card's X — collects the full study + its images
+// so the undo snackbar can fully restore. Called from inline onclick.
+window.handleDeleteStudyFromList = async function(sym) {
+  const studies = loadStudies();
+  const st = studies.find(s => s.symbol === sym);
+  if (!st) return;
+  // Snapshot all images attached to this study (from notes <img data-img-key>, legacy screenshots)
+  const imgKeys = new Set();
+  (st.screenshots || []).forEach(ss => imgKeys.add(ss.imgKey));
+  const noteImgs = (st.notes || '').match(/data-img-key="([^"]+)"/g) || [];
+  noteImgs.forEach(m => imgKeys.add(m.replace(/data-img-key="|"$/g, '')));
+  const beforeImgs = {};
+  for (const k of imgKeys) { try { const v = await getImg(k); if (v) beforeImgs[k] = v; } catch {} }
+  // Delete
+  saveStudies(studies.filter(s => s.symbol !== sym));
+  for (const k of imgKeys) { try { await delImg(k); } catch {} }
+  renderStudies();
+  showUndoSnackbar(`Removed ${sym}`, async () => {
+    saveStudies([...loadStudies(), st]);
+    for (const [k, v] of Object.entries(beforeImgs)) { try { await putImg(k, v); } catch {} }
+    renderStudies();
+  });
+};
+
 /* ═══════ Study detail page — #/study/<SYM> ═══════
-   Full editing UI. Everything is customisable: symbol (read-only, the URL key), chgPct,
-   long/short intent, catalyst, OHLCV (auto-computes open→high "catalyst potential" + intraday).
-   Pulls the saved snapshot's EPS/Rev quarterly charts + MS-table + Forward YoY block so the
-   study looks the same as the original stock-detail page at time-of-save.
-   Notion-style notes: contenteditable div with inline image paste/drop. Images stored in
-   IndexedDB; the notes HTML in localStorage carries `<img data-img-key="...">` placeholders. */
+   Same layout as the standard stock detail page, but every value is editable. Changes
+   live on the study object only — never mutates DATA.stocks. Sections:
+     • Header (symbol + chgPct + long/short + Save/Delete + Sections gear)
+     • Catalyst (free-form textarea)
+     • EPS Surp % / Rev Surp % chips → 漲幅 / 止損 chips (click opens OHLCV popup)
+     • EPS Quarterly bar chart  ─┐
+     • Revenue Quarterly bar chart ─┴─ all driven by study.customChart (overrides snapshot.tv.chart)
+     • MS-style quarterly table (editable cells)
+     • Forward YoY block
+     • Notion-style notes (contenteditable + paste/drop images)
+   Section visibility configurable via the gear button. */
 async function renderStudyDetail(sym) {
   const app = document.getElementById('app');
   const study = loadStudies().find(st => st.symbol === sym);
@@ -3123,115 +3621,415 @@ async function renderStudyDetail(sym) {
     return;
   }
   const s = study.snapshot || {};
-  const chg = (study.chgPct != null) ? study.chgPct : s.chgPct;
-  const intent = study.intent || s.claudeIntent || 'long';
-  const cat = (study.catalyst != null) ? study.catalyst : (s.catalyst || '');
-  const o = study.ohlcv || {};
-  const tv = s.tv || null;
-  const chartHtml = (tv && tv.chart) ? renderChart(tv.chart) : { eps: '', rev: '' };
-  const msHtml = (tv && tv.chart) ? renderMarketSurgeTable(tv.chart) : '';
-  const yoyHtml = (tv && tv.yoyBlock) ? `<div class="sip-yoy-block">${colorizeYoyBlock(tv.yoyBlock)}</div>` : '';
+  // %Chg priority (highest → lowest):
+  //   1. study.chgPct        — user's manual override (future-proofing; no UI yet, set via OHLCV modal if you ever add one)
+  //   2. derived from ohlcv  — (close − prev_close) / prev_close · 100, once /SIPs Phase 10b has filled both
+  //   3. snapshot.chgPct     — the gap % (pre-market / post-market) baked in at scan time
+  function deriveDayChgPct(ohlcv) {
+    if (!ohlcv) return null;
+    const close = ohlcv.close, prev = ohlcv.prev_close;
+    if (close == null || prev == null || prev === 0) return null;
+    return (close - prev) / prev * 100;
+  }
+  const _derivedChg = deriveDayChgPct(study.ohlcv);
+  const chg = (study.chgPct != null) ? study.chgPct
+            : (_derivedChg != null)  ? _derivedChg
+            : s.chgPct;
+  // Tag the chg readout so the hover title explains where the value came from.
+  const chgSource = (study.chgPct != null) ? 'manual override'
+                  : (_derivedChg != null)  ? "derived from today's OHLCV (close − prev_close)"
+                  : 'snapshot gap % (pre/post-market)';
+  // intent auto-derived from chgPct sign (gap up = long, gap down = short) — no UI override.
+  const intent = chg < 0 ? 'short' : 'long';
+  // Custom chart overrides snapshot's TV chart when user edits MS-table values.
+  const baseChart = (s.tv && s.tv.chart) ? s.tv.chart : null;
+  // Section visibility (hidden set). Defaults: everything visible. Hide via the X on each card.
+  const sectionsAll = ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block', 'notes'];
+  const sectionLabels = { eps_chart: 'EPS Quarterly', rev_chart: 'Revenue Quarterly', ms_table: '季度 EPS / Sales', yoy_block: 'Forward YoY', notes: 'Notes' };
+  const hidden = new Set(study.hiddenSections || []);
+  const sectionShown = id => !hidden.has(id);
   // Migrate legacy thumbnail screenshots into the notes HTML on first detail-view render
-  // so the user doesn't lose old uploads when we drop the thumbnail grid.
   let notesHtml = study.notes || '';
   if (Array.isArray(study.screenshots) && study.screenshots.length && !study._migratedShots) {
     const tail = study.screenshots.map(ss =>
-      `<p><img data-img-key="${ss.imgKey}" alt="${escapeHtml(ss.label || '')}"></p>${ss.label ? `<p><em>${escapeHtml(ss.label)}</em></p>` : ''}`
+      `<p><span class="notes-img-wrap" contenteditable="false"><img data-img-key="${ss.imgKey}" alt="${escapeHtml(ss.label || '')}"><button class="notes-img-del" type="button" data-img-key="${ss.imgKey}" title="Delete image">&times;</button></span></p>${ss.label ? `<p><em>${escapeHtml(ss.label)}</em></p>` : ''}`
     ).join('');
     notesHtml = (notesHtml || '') + tail;
     updateStudy(sym, { notes: notesHtml, _migratedShots: true, screenshots: [] });
   }
+
+  // Direction-aware metrics. 漲幅 (gain) = (H-O)/O · 止損 (stop) = (L-O)/O · sign-flipped for short.
+  function computeMetrics() {
+    const cur = loadStudies().find(st => st.symbol === sym)?.ohlcv || {};
+    const dir = intent === 'short' ? -1 : 1;
+    const gain = (cur.open && cur.high) ? ((cur.high - cur.open) / cur.open * 100 * dir) : null;
+    const stop = (cur.open && cur.low)  ? ((cur.low  - cur.open) / cur.open * 100 * dir) : null;
+    return { gain, stop };
+  }
+  const { gain: initGain, stop: initStop } = computeMetrics();
+  const fmtMetric = v => v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+
+  // Build the four pill rows that mirror renderStock — short / surp / NEW trade pills.
+  const _tv = s.tv;
+  const sessTags = (s.sessions || []).map(x => `<span class="tag">${x.session.toUpperCase()} <span class="dot dot-${x.direction}"></span> ${fmtPctShort(x.chgPct)}</span>`).join(' ');
+  const typeTag = `<span class="tag ${typeTagClass(s.type || 'momentum')}">${s.type || 'momentum'}</span>`;
+  const _surpPill = (lbl, v, title) => v == null
+    ? ''
+    : `<span class="tag stat-tag ${v >= 0 ? 'pos' : 'neg'}" title="${title}">${lbl} ${(v >= 0 ? '+' : '') + v.toFixed(1)}%</span>`;
+  const headerShortPills = [
+    s.shortFloat != null ? `<span class="tag stat-tag" title="Short Float — % of float currently shorted">Short Float ${s.shortFloat.toFixed(1)}%</span>` : '',
+    s.shortRatio != null ? `<span class="tag stat-tag" title="Days to cover (short ratio)">DTC ${s.shortRatio.toFixed(1)}d</span>` : '',
+  ].filter(Boolean).join(' ');
+  const headerSurpPills = [
+    _tv ? _surpPill('EPS Surp', _tv.surpriseEPS_pct, 'EPS surprise vs consensus (TradingView FQ)') : '',
+    _tv ? _surpPill('Rev Surp', _tv.surpriseRev_pct, 'Revenue surprise vs consensus (TradingView FQ)') : '',
+  ].filter(Boolean).join(' ');
+  // Trade pills row — Gain / Stop, click to open OHLCV popup. Pos/neg tinted.
+  const gainCls = initGain == null ? '' : (initGain >= 0 ? 'pos' : 'neg');
+  const stopCls = initStop == null ? '' : (initStop >= 0 ? 'pos' : 'neg');
+  const tradePills = `
+    <button class="tag stat-tag trade-pill ${gainCls}" type="button" id="study-gain-pill" title="Gain = (High − Open) / Open · sign-flipped for short · click to edit OHLCV">Gain <span id="study-gain-val">${fmtMetric(initGain)}</span></button>
+    <button class="tag stat-tag trade-pill ${stopCls}" type="button" id="study-stop-pill" title="Stop = (Low − Open) / Open · sign-flipped for short · click to edit OHLCV">Stop <span id="study-stop-val">${fmtMetric(initStop)}</span></button>`;
+  // Day-1 badge if applicable (from snapshot's _dayLabel — saved at the time the study was added)
+  const dayChip = (study.snapshot?._dayLabel === 'day1') ? `<span class="day-badge day1">day1</span>` : '';
+  // Catalyst row from the snapshot — if user has saved a custom catalyst override, prefer it
+  const cat = (study.catalyst != null && study.catalyst !== '') ? study.catalyst : (s.catalyst || '');
+  // News detail (snapshot) — shown like the original stock detail page
+  const detail = s.newsDetail || '';
+  const fallbackCatalyst = cat;
+  const newsBlockHtml = detail
+    ? `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3>${String(detail).split(/\n\n+/).filter(Boolean).map(p => `<p>${escapeHtml(p).replace(/\n/g,'<br>')}</p>`).join('')}</div>`
+    : (fallbackCatalyst ? `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3><p>${escapeHtml(fallbackCatalyst)}</p></div>` : '');
+  // Forward YoY block — copies the renderStock pattern exactly so the Copy button works.
+  // If the user has edited the MS table (customChart present), regenerate the YoY text from
+  // those custom arrays. Otherwise fall back to the snapshot's pre-baked yoyBlock from Python.
+  const _customChart = study.customChart || null;
+  const _initialYoyTxt = _customChart
+    ? buildYoyBlockText(_customChart)
+    : (s.tv && s.tv.yoyBlock) || '';
+  const yoyHtml = _initialYoyTxt
+    ? `<button class="copy-btn" data-copy-target="yoy-${sym}">Copy</button><div class="yoy-block" id="yoy-${sym}" data-raw="${escapeHtml(_initialYoyTxt)}">${colorizeYoyBlock(_initialYoyTxt)}</div>`
+    : '';
+
+  // Helper: render a section card with an X button. Sections can be hidden via the X then
+  // re-added via right-click context menu.
+  const sectionCard = (id, titleHtml, bodyHtml) => sectionShown(id)
+    ? `<div class="stock-card study-section" data-section="${id}"><button class="section-x" type="button" data-section="${id}" title="Hide section (right-click anywhere to restore)">&times;</button>${titleHtml}${bodyHtml}</div>`
+    : '';
+
   app.innerHTML = `
     <div class="breadcrumb"><a href="#/studies">← Studies</a> &nbsp;»&nbsp; <b>${sym}</b></div>
-    <div class="study-detail-header">
-      <div class="study-detail-symblock">
-        <div class="sym-big">${sym}</div>
-        <div class="study-detail-name">${escapeHtml(s.name || '')}</div>
+    <div class="stock-header" style="position:relative">
+      <button class="studies-btn studies-btn-danger" id="study-delete" style="position:absolute;top:18px;right:18px;font-size:11px;padding:5px 12px">Delete</button>
+      <div class="sym-big">${sym}${dayChip}</div>
+      <div>
+        <div class="name">${escapeHtml(s.name || '')}</div>
+        <div class="stock-header-tags">${sessTags} ${typeTag}</div>
+        ${headerShortPills ? `<div class="stock-header-tags stock-header-short">${headerShortPills}</div>` : ''}
+        ${headerSurpPills  ? `<div class="stock-header-tags stock-header-surp">${headerSurpPills}</div>`   : ''}
+        <div class="stock-header-tags stock-header-trade">${tradePills}</div>
       </div>
-      <div class="study-detail-fields">
-        <label class="study-field"><span>%Chg</span><input type="number" step="0.01" id="study-chgpct" value="${chg ?? ''}" placeholder="—"></label>
-        <label class="study-field"><span>Intent</span><select id="study-intent">
-          <option value="long" ${intent === 'long' ? 'selected' : ''}>LONG</option>
-          <option value="short" ${intent === 'short' ? 'selected' : ''}>SHORT</option>
-        </select></label>
-        <button class="studies-btn studies-btn-danger" id="study-delete">Delete study</button>
+      <div style="margin-left:auto;text-align:right">
+        <div class="price">${fmtPrice(s.last)}</div>
+        <div class="chg ${cls(chg)}" id="study-chg-readout" title="${chgSource}">${fmtPct(chg)} · Vol ${fmtVol(s.volume)}</div>
       </div>
     </div>
-    <div class="stock-card study-detail-block">
-      <h3>OHLCV</h3>
-      <div class="study-ohlcv-row">
-        <label class="study-ohlcv-field"><span>${t('ohlcv-date')}</span><input data-field="date" type="date" value="${o.date || ''}"></label>
-        <label class="study-ohlcv-field"><span>${t('ohlcv-open')}</span><input data-field="open" type="number" step="0.01" value="${o.open ?? ''}" placeholder="—"></label>
-        <label class="study-ohlcv-field"><span>${t('ohlcv-high')}</span><input data-field="high" type="number" step="0.01" value="${o.high ?? ''}" placeholder="—"></label>
-        <label class="study-ohlcv-field"><span>${t('ohlcv-low')}</span><input data-field="low" type="number" step="0.01" value="${o.low ?? ''}" placeholder="—"></label>
-        <label class="study-ohlcv-field"><span>${t('ohlcv-close')}</span><input data-field="close" type="number" step="0.01" value="${o.close ?? ''}" placeholder="—"></label>
-        <label class="study-ohlcv-field"><span>${t('ohlcv-volume')}</span><input data-field="volume" type="number" step="1000" value="${o.volume ?? ''}" placeholder="—"></label>
-      </div>
-      <div class="study-summary-chips" id="study-summary-chips"></div>
+    ${newsBlockHtml}
+    <div class="chart-wrap study-charts-wrap" id="study-chart-wrap">
+      ${sectionCard('eps_chart', `<h3>EPS Quarterly <span class="label-en">Reported vs Estimate</span></h3>`, `<div id="study-eps-chart-host"></div>`)}
+      ${sectionCard('rev_chart', `<h3>Revenue Quarterly <span class="label-en">Reported vs Estimate</span></h3>`, `<div id="study-rev-chart-host"></div>`)}
     </div>
-    <div class="stock-card">
-      <h3>Catalyst</h3>
-      <textarea class="study-catalyst-input" id="study-catalyst" rows="4" placeholder="Free-form catalyst description — paste from /SIPs or write your own">${escapeHtml(cat)}</textarea>
-    </div>
-    ${chartHtml.eps || chartHtml.rev ? `
-    <div class="chart-wrap">
-      ${chartHtml.eps ? `<div class="stock-card"><h3>EPS Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.eps}</div>` : ''}
-      ${chartHtml.rev ? `<div class="stock-card"><h3>Revenue Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.rev}</div>` : ''}
-    </div>` : ''}
-    ${msHtml ? `<div class="stock-card"><h3>季度 EPS / Sales <span class="label-en">Reported + Estimate</span></h3>${msHtml}</div>` : ''}
-    ${yoyHtml ? `<div class="stock-card"><h3>Forward YoY <span class="label-en">TradingView FQ — EPS YoY / Rev YoY</span></h3>${yoyHtml}</div>` : ''}
-    <div class="stock-card">
-      <h3>Notes <span class="label-en">paste images (Ctrl+V) or drag-drop directly inline</span></h3>
-      <div class="study-notes-rich" id="study-notes" contenteditable="true" data-placeholder="${t('studies-note-placeholder')}">${notesHtml}</div>
-    </div>
+    ${sectionCard('ms_table', `<h3>季度 EPS / Sales <span class="label-en">Reported + Estimate · click any value to edit</span></h3>`, `<div id="study-ms-host"></div>`)}
+    ${sectionCard('yoy_block', `<h3>Forward YoY <span class="label-en">TradingView FQ — EPS YoY / Rev YoY</span></h3>`, yoyHtml || '<div style="color:var(--stone)">No TradingView quarterly estimate data</div>')}
+    ${sectionCard('notes', `<h3>Notes <span class="label-en">paste images (Ctrl+V) or drag-drop · Ctrl+Z to undo</span></h3>`, `<div class="study-notes-rich" id="study-notes" contenteditable="${STATE.sidecar.available ? 'true' : 'false'}" data-placeholder="${t('studies-note-placeholder')}">${notesHtml}</div>`)}
   `;
-  // Hydrate all <img data-img-key> inside notes from IndexedDB
+
+  // ── Chart + MS-table render helpers (recompute when customChart changes) ──
+  function activeChart() {
+    return loadStudies().find(st => st.symbol === sym)?.customChart || baseChart;
+  }
+  function renderAllCharts() {
+    const c = activeChart();
+    if (!c) return;
+    const eps = document.getElementById('study-eps-chart-host');
+    const rev = document.getElementById('study-rev-chart-host');
+    if (eps) eps.innerHTML = svgBarChart(c.quarters, c.eps_reported, c.eps_estimate, c.latest_idx, false);
+    if (rev) rev.innerHTML = svgBarChart(c.quarters, c.rev_reported_M, c.rev_estimate_M, c.latest_idx, true);
+    const ms = document.getElementById('study-ms-host');
+    if (ms) ms.innerHTML = renderEditableMsTable(c, sym);
+    recomputeMsComputedCells(c);
+    bindMsTableEditors();
+  }
+  // Editable MS table input listeners — write back into the right array slot of customChart,
+  // then re-recompute the dependent YoY/Surp cells + re-render the bar charts.
+  function bindMsTableEditors() {
+    document.querySelectorAll('.ms-cell-input').forEach(inp => {
+      inp.addEventListener('input', () => {
+        const cur = loadStudies().find(st => st.symbol === sym);
+        if (!cur) return;
+        // Lazy-clone the chart so the original snapshot stays untouched
+        const c = cur.customChart ? { ...cur.customChart,
+          eps_reported: [...(cur.customChart.eps_reported || baseChart.eps_reported)],
+          eps_estimate: [...(cur.customChart.eps_estimate || baseChart.eps_estimate)],
+          rev_reported_M: [...(cur.customChart.rev_reported_M || baseChart.rev_reported_M)],
+          rev_estimate_M: [...(cur.customChart.rev_estimate_M || baseChart.rev_estimate_M)]
+        } : {
+          quarters: [...baseChart.quarters],
+          eps_reported: [...baseChart.eps_reported],
+          eps_estimate: [...baseChart.eps_estimate],
+          rev_reported_M: [...baseChart.rev_reported_M],
+          rev_estimate_M: [...baseChart.rev_estimate_M],
+          latest_idx: baseChart.latest_idx,
+        };
+        const qi = parseInt(inp.dataset.qi, 10);
+        const isRep = inp.dataset.isrep === '1';
+        const v = inp.value === '' ? null : parseFloat(inp.value);
+        if (inp.dataset.row === 'eps') { (isRep ? c.eps_reported : c.eps_estimate)[qi] = (v != null && !isNaN(v)) ? v : null; }
+        else                            { (isRep ? c.rev_reported_M : c.rev_estimate_M)[qi] = (v != null && !isNaN(v)) ? v : null; }
+        updateStudy(sym, { customChart: c });
+        // Re-render bar charts immediately + update computed cells
+        const epsHost = document.getElementById('study-eps-chart-host');
+        const revHost = document.getElementById('study-rev-chart-host');
+        if (epsHost) epsHost.innerHTML = svgBarChart(c.quarters, c.eps_reported, c.eps_estimate, c.latest_idx, false);
+        if (revHost) revHost.innerHTML = svgBarChart(c.quarters, c.rev_reported_M, c.rev_estimate_M, c.latest_idx, true);
+        recomputeMsComputedCells(c);
+        refreshYoyBlock(c);
+      });
+    });
+  }
+  // Re-paint the Forward YoY card from a (possibly customized) chart object so it stays
+  // in sync with MS-table edits. Uses buildYoyBlockText (JS twin of parse_tv.yoy).
+  function refreshYoyBlock(chart) {
+    const host = document.getElementById(`yoy-${sym}`);
+    if (!host) return;
+    const txt = buildYoyBlockText(chart);
+    if (!txt) {
+      host.innerHTML = '<span class="nm">No quarterly data</span>';
+      host.removeAttribute('data-raw');
+      return;
+    }
+    host.setAttribute('data-raw', txt);
+    host.innerHTML = colorizeYoyBlock(txt);
+  }
+  renderAllCharts();
+
+  // Refresh Gain / Stop trade pills (called from OHLCV popup on every keystroke)
+  function refreshTradeMetrics() {
+    const m = computeMetrics();
+    const gainEl = document.getElementById('study-gain-val');
+    const stopEl = document.getElementById('study-stop-val');
+    const gainBtn = document.getElementById('study-gain-pill');
+    const stopBtn = document.getElementById('study-stop-pill');
+    if (gainEl) gainEl.textContent = fmtMetric(m.gain);
+    if (stopEl) stopEl.textContent = fmtMetric(m.stop);
+    if (gainBtn) gainBtn.className = `tag stat-tag trade-pill ${m.gain == null ? '' : (m.gain >= 0 ? 'pos' : 'neg')}`;
+    if (stopBtn) stopBtn.className = `tag stat-tag trade-pill ${m.stop == null ? '' : (m.stop >= 0 ? 'pos' : 'neg')}`;
+  }
+
+  // Re-render the %Chg readout in the header — runs whenever OHLCV changes so the auto-derived
+  // day-chgPct flips in real time as user fills close/prev_close.
+  function refreshChgReadout() {
+    const cur = loadStudies().find(st => st.symbol === sym);
+    if (!cur) return;
+    const derived = deriveDayChgPct(cur.ohlcv);
+    const newChg = (cur.chgPct != null) ? cur.chgPct
+                 : (derived != null)    ? derived
+                 : s.chgPct;
+    const src = (cur.chgPct != null) ? 'manual override'
+              : (derived != null)    ? "derived from today's OHLCV (close − prev_close)"
+              : 'snapshot gap % (pre/post-market)';
+    const el = document.getElementById('study-chg-readout');
+    if (!el) return;
+    el.className = `chg ${cls(newChg)}`;
+    el.title = src;
+    el.textContent = `${fmtPct(newChg)} · Vol ${fmtVol(s.volume)}`;
+  }
+
+  // ── OHLCV popup modal — opens when user clicks either trade metric chip ──
+  function openOhlcvModal() {
+    const cur = loadStudies().find(st => st.symbol === sym)?.ohlcv || {};
+    const modal = document.createElement('div');
+    modal.className = 'ohlcv-modal-overlay';
+    modal.innerHTML = `
+      <div class="ohlcv-modal" onclick="event.stopPropagation()">
+        <div class="ohlcv-modal-head">
+          <h3>OHLCV — ${sym}</h3>
+          <button class="ohlcv-modal-close" type="button">&times;</button>
+        </div>
+        <div class="ohlcv-modal-body">
+          <label class="study-ohlcv-field"><span>${t('ohlcv-date')}</span><input data-field="date" type="date" value="${cur.date || ''}"></label>
+          <label class="study-ohlcv-field"><span>${t('ohlcv-open')}</span><input data-field="open" type="number" step="0.01" value="${cur.open ?? ''}" placeholder="—"></label>
+          <label class="study-ohlcv-field"><span>${t('ohlcv-high')}</span><input data-field="high" type="number" step="0.01" value="${cur.high ?? ''}" placeholder="—"></label>
+          <label class="study-ohlcv-field"><span>${t('ohlcv-low')}</span><input data-field="low" type="number" step="0.01" value="${cur.low ?? ''}" placeholder="—"></label>
+          <label class="study-ohlcv-field"><span>${t('ohlcv-close')}</span><input data-field="close" type="number" step="0.01" value="${cur.close ?? ''}" placeholder="—"></label>
+          <label class="study-ohlcv-field" title="Prior-day close — drives the day's %Chg derivation. Auto-filled by /SIPs Phase 10b when available."><span>${t('ohlcv-prev-close')}</span><input data-field="prev_close" type="number" step="0.01" value="${cur.prev_close ?? ''}" placeholder="—"></label>
+          <label class="study-ohlcv-field"><span>${t('ohlcv-volume')}</span><input data-field="volume" type="number" step="1000" value="${cur.volume ?? ''}" placeholder="—"></label>
+        </div>
+        <div class="ohlcv-modal-foot">
+          <button class="studies-btn" type="button" id="ohlcv-modal-done">Done</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    requestAnimationFrame(() => modal.classList.add('show'));
+    const close = () => { modal.classList.remove('show'); setTimeout(() => modal.remove(), 180); };
+    modal.onclick = close;
+    modal.querySelector('.ohlcv-modal-close').onclick = close;
+    modal.querySelector('#ohlcv-modal-done').onclick = close;
+    modal.querySelectorAll('input').forEach(inp => {
+      inp.addEventListener('input', e => {
+        const field = e.target.dataset.field;
+        const ohlcv = loadStudies().find(st => st.symbol === sym)?.ohlcv || {};
+        const val = field === 'date' ? e.target.value : (parseFloat(e.target.value) || null);
+        updateStudy(sym, { ohlcv: { ...ohlcv, [field]: val } });
+        refreshTradeMetrics();
+        refreshChgReadout();
+      });
+    });
+    // Focus first empty input for fast entry
+    const focusInp = Array.from(modal.querySelectorAll('input')).find(i => !i.value) || modal.querySelector('input');
+    focusInp?.focus();
+  }
+  document.getElementById('study-gain-pill')?.addEventListener('click', openOhlcvModal);
+  document.getElementById('study-stop-pill')?.addEventListener('click', openOhlcvModal);
+
+  // ── Per-section X to hide + right-click menu to bring back ──
+  app.querySelectorAll('.section-x').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const sid = e.target.dataset.section;
+      const cur = loadStudies().find(st => st.symbol === sym);
+      if (!cur) return;
+      const next = new Set(cur.hiddenSections || []);
+      next.add(sid);
+      updateStudy(sym, { hiddenSections: Array.from(next) });
+      const card = e.target.closest('.study-section');
+      if (card) card.remove();
+    });
+  });
+  // Right-click anywhere on the detail page → context menu listing hidden sections to restore
+  app.addEventListener('contextmenu', e => {
+    const cur = loadStudies().find(st => st.symbol === sym);
+    const hiddenList = (cur?.hiddenSections || []).filter(id => sectionsAll.includes(id));
+    if (hiddenList.length === 0) return;   // default browser menu wins when nothing to restore
+    e.preventDefault();
+    // Remove any open menu
+    document.querySelectorAll('.study-ctx-menu').forEach(m => m.remove());
+    const menu = document.createElement('div');
+    menu.className = 'study-ctx-menu';
+    menu.style.left = e.clientX + 'px';
+    menu.style.top  = e.clientY + 'px';
+    menu.innerHTML = `<div class="study-ctx-menu-title">Restore hidden section</div>` +
+      hiddenList.map(id => `<button class="study-ctx-menu-item" data-section="${id}">+ ${sectionLabels[id] || id}</button>`).join('');
+    document.body.appendChild(menu);
+    const close = () => menu.remove();
+    menu.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+      const sid = b.dataset.section;
+      const cur2 = loadStudies().find(st => st.symbol === sym);
+      const remaining = (cur2?.hiddenSections || []).filter(x => x !== sid);
+      updateStudy(sym, { hiddenSections: remaining });
+      close();
+      renderStudyDetail(sym);   // re-render so the restored card appears in its original slot
+    }));
+    setTimeout(() => document.addEventListener('click', close, { once: true }), 0);
+  });
+  // Hydrate all <img data-img-key> inside notes from IndexedDB. For legacy imgs that aren't
+  // already wrapped in .notes-img-wrap (older format), retro-fit the wrap + delete X so the
+  // user can manage them the same way as freshly-pasted ones.
   for (const img of app.querySelectorAll('#study-notes img[data-img-key]')) {
     const key = img.getAttribute('data-img-key');
     if (key && !img.src) {
       try { const data = await getImg(key); if (data) img.src = data; } catch {}
     }
     img.style.cursor = 'zoom-in';
+    // Retro-wrap legacy imgs (no parent .notes-img-wrap)
+    if (img.parentElement && !img.parentElement.classList?.contains('notes-img-wrap')) {
+      const wrap = document.createElement('span');
+      wrap.className = 'notes-img-wrap';
+      wrap.contentEditable = 'false';
+      img.replaceWith(wrap);
+      wrap.appendChild(img);
+      const del = document.createElement('button');
+      del.type = 'button';
+      del.className = 'notes-img-del';
+      del.dataset.imgKey = key;
+      del.title = 'Delete image';
+      del.innerHTML = '&times;';
+      wrap.appendChild(del);
+    }
   }
-  // Click image in notes → fullscreen lightbox
-  app.querySelector('#study-notes')?.addEventListener('click', e => {
+  // Delegated click handler for notes block — handles X (delete) + img click (lightbox).
+  // Image delete is wrapped in an undo snackbar so accidental clicks are recoverable:
+  //   • capture full notes innerHTML (with img src still attached) + the IDB image data
+  //   • remove the wrap + delImg
+  //   • on undo: putImg the data back + restore notes innerHTML to the pre-delete state
+  app.querySelector('#study-notes')?.addEventListener('click', async e => {
+    const delBtn = e.target.closest?.('.notes-img-del');
+    if (delBtn) {
+      e.preventDefault();
+      const key = delBtn.dataset.imgKey;
+      const notesEl = document.getElementById('study-notes');
+      const wrap = delBtn.closest('.notes-img-wrap');
+      // Snapshot for undo BEFORE mutation
+      const beforeHtml = notesEl?.innerHTML;
+      let beforeImg = null;
+      try { beforeImg = await getImg(key); } catch {}
+      // Apply delete
+      wrap?.remove();
+      try { await delImg(key); } catch {}
+      // Persist the post-delete notes
+      notesEl?.dispatchEvent(new Event('input', { bubbles: true }));
+      // Undo: put the image back into IDB/disk + restore the notes HTML at original position
+      showUndoSnackbar('Image deleted', async () => {
+        if (beforeImg) { try { await putImg(key, beforeImg); } catch {} }
+        if (notesEl && beforeHtml != null) {
+          notesEl.innerHTML = beforeHtml;
+          // Re-hydrate any img missing a src (defensive — beforeHtml already has src baked in)
+          for (const img of notesEl.querySelectorAll('img[data-img-key]')) {
+            if (!img.src) {
+              const k = img.getAttribute('data-img-key');
+              try { const v = await getImg(k); if (v) img.src = v; } catch {}
+            }
+          }
+          notesEl.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+      });
+      return;
+    }
     if (e.target.tagName === 'IMG' && e.target.src) {
       openShotLightbox(e.target.src);
     }
   });
-  // Refresh the summary chips line (intraday + potential) based on current OHLCV
-  function refreshSummaryChips() {
-    const cur = loadStudies().find(st => st.symbol === sym)?.ohlcv || {};
-    const intraday = (cur.open && cur.close) ? ((cur.close - cur.open) / cur.open * 100) : null;
-    const potential = (cur.open && cur.high) ? ((cur.high - cur.open) / cur.open * 100) : null;
-    const drawdown = (cur.open && cur.low) ? ((cur.low - cur.open) / cur.open * 100) : null;
-    const chips = [];
-    if (potential != null) chips.push(`<span class="study-summary-chip pos">Open → High <b>${(potential >= 0 ? '+' : '') + potential.toFixed(2)}%</b></span>`);
-    if (drawdown != null && drawdown < 0) chips.push(`<span class="study-summary-chip neg">Open → Low <b>${drawdown.toFixed(2)}%</b></span>`);
-    if (intraday != null) chips.push(`<span class="study-summary-chip ${intraday >= 0 ? 'pos' : 'neg'}">Open → Close <b>${(intraday >= 0 ? '+' : '') + intraday.toFixed(2)}%</b></span>`);
-    document.getElementById('study-summary-chips').innerHTML = chips.join('');
-  }
-  refreshSummaryChips();
-  // Wire OHLCV inputs → save + refresh chips
-  app.querySelectorAll('.study-ohlcv-field input').forEach(inp => {
-    inp.addEventListener('input', e => {
-      const field = e.target.dataset.field;
-      const cur = loadStudies().find(st => st.symbol === sym)?.ohlcv || {};
-      const val = field === 'date' ? e.target.value : (parseFloat(e.target.value) || null);
-      updateStudy(sym, { ohlcv: { ...cur, [field]: val } });
-      refreshSummaryChips();
-    });
+  // Wire Copy buttons (Forward YoY) — mirrors the renderStock pattern
+  app.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.onclick = async () => {
+      const tgt = document.getElementById(btn.dataset.copyTarget);
+      if (!tgt) return;
+      const text = tgt.dataset.raw || tgt.textContent;
+      try { await navigator.clipboard.writeText(text); }
+      catch (e) { const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+      btn.textContent = 'Copied!'; btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1200);
+    };
   });
-  // Editable chgPct / intent / catalyst
-  document.getElementById('study-chgpct')?.addEventListener('input', e => updateStudy(sym, { chgPct: parseFloat(e.target.value) || null }));
-  document.getElementById('study-intent')?.addEventListener('change', e => updateStudy(sym, { intent: e.target.value }));
-  document.getElementById('study-catalyst')?.addEventListener('input', e => updateStudy(sym, { catalyst: e.target.value }));
-  // Delete
+  // Delete with snackbar undo (instead of confirm dialog, since clear-all already pattern)
   document.getElementById('study-delete')?.addEventListener('click', async () => {
-    if (confirm(`Delete study ${sym}? This also removes its screenshots.`)) {
-      await removeStudy(sym);
-      location.hash = '#/studies';
-    }
+    const snapshot = loadStudies().find(st => st.symbol === sym);
+    if (!snapshot) return;
+    // Collect image keys for restore
+    const imgKeys = new Set();
+    const noteImgs = (snapshot.notes || '').match(/data-img-key="([^"]+)"/g) || [];
+    noteImgs.forEach(m => imgKeys.add(m.replace(/data-img-key="|"$/g, '')));
+    const beforeImgs = {};
+    for (const k of imgKeys) { try { const v = await getImg(k); if (v) beforeImgs[k] = v; } catch {} }
+    saveStudies(loadStudies().filter(s => s.symbol !== sym));
+    for (const k of imgKeys) { try { await delImg(k); } catch {} }
+    location.hash = '#/studies';
+    showUndoSnackbar(`Deleted ${sym}`, async () => {
+      saveStudies([...loadStudies(), snapshot]);
+      for (const [k, v] of Object.entries(beforeImgs)) { try { await putImg(k, v); } catch {} }
+      location.hash = '#/study/' + sym;
+    });
   });
   // Notion-style notes — contenteditable with inline image paste/drop. Save innerHTML on input
   // (debounced via animation frame to batch fast typing).
@@ -3248,25 +4046,22 @@ async function renderStudyDetail(sym) {
     saveTimer = requestAnimationFrame(flushSave);
   };
   notes?.addEventListener('input', scheduleSave);
-  // Image paste handler — insert <img> at cursor after IndexedDB write
+  // Image paste handler — insert <span.notes-img-wrap><img><button.notes-img-del>✕</button></span>
+  // at cursor via execCommand so browser-native Ctrl+Z still works.
   const insertImgAtCursor = (dataUrl, key) => {
-    const img = document.createElement('img');
-    img.src = dataUrl;
-    img.setAttribute('data-img-key', key);
-    img.className = 'notes-inline-img';
-    img.style.cursor = 'zoom-in';
-    const sel = window.getSelection();
-    if (sel && sel.rangeCount && notes.contains(sel.anchorNode)) {
-      const range = sel.getRangeAt(0);
-      range.deleteContents();
-      range.insertNode(img);
-      // Move cursor after the image + insert a line break for next paragraph
-      const br = document.createElement('br');
-      img.after(br);
-      range.setStartAfter(br); range.setEndAfter(br);
-      sel.removeAllRanges(); sel.addRange(range);
-    } else {
-      notes.appendChild(img);
+    const safeUrl = dataUrl.replace(/"/g, '&quot;');
+    const html = `<span class="notes-img-wrap" contenteditable="false">` +
+      `<img src="${safeUrl}" data-img-key="${key}" class="notes-inline-img" style="cursor:zoom-in">` +
+      `<button class="notes-img-del" type="button" data-img-key="${key}" title="Delete image">&times;</button>` +
+    `</span><br>`;
+    notes.focus();
+    if (!document.execCommand('insertHTML', false, html)) {
+      // Fallback if execCommand is unavailable in the future
+      const wrap = document.createElement('span');
+      wrap.className = 'notes-img-wrap';
+      wrap.contentEditable = 'false';
+      wrap.innerHTML = `<img src="${safeUrl}" data-img-key="${key}" class="notes-inline-img" style="cursor:zoom-in"><button class="notes-img-del" type="button" data-img-key="${key}" title="Delete image">&times;</button>`;
+      notes.appendChild(wrap);
       notes.appendChild(document.createElement('br'));
     }
     scheduleSave();
@@ -3313,6 +4108,33 @@ function openShotLightbox(dataUrl, caption) {
   overlay.innerHTML = `<img src="${dataUrl}">${caption ? `<div class="shot-caption">${escapeHtml(caption)}</div>` : ''}`;
   overlay.onclick = () => overlay.remove();
   document.body.appendChild(overlay);
+}
+
+// ── Undo snackbar ───────────────────────────────────────────────
+// Reusable bottom-of-screen toast for destructive actions. Caller passes
+// (message, undoFn). 10s auto-dismiss; click Undo to invoke undoFn.
+function showUndoSnackbar(message, undoFn, ms = 10000) {
+  const old = document.getElementById('undo-snackbar');
+  if (old) old.remove();
+  const snack = document.createElement('div');
+  snack.id = 'undo-snackbar';
+  snack.className = 'undo-snackbar';
+  snack.innerHTML = `<span></span><button class="undo-btn">Undo</button>`;
+  snack.querySelector('span').textContent = message;
+  document.body.appendChild(snack);
+  requestAnimationFrame(() => snack.classList.add('show'));
+  let dismissed = false;
+  const dismiss = () => {
+    if (dismissed) return; dismissed = true;
+    snack.classList.remove('show');
+    setTimeout(() => snack.remove(), 300);
+  };
+  const timer = setTimeout(dismiss, ms);
+  snack.querySelector('.undo-btn').onclick = async () => {
+    clearTimeout(timer);
+    try { await undoFn(); } catch (e) { console.warn('undo failed', e); }
+    dismiss();
+  };
 }
 
 boot();

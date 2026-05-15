@@ -58,7 +58,12 @@ stockbee-video-p1.json
 # - dashboard/data.json
 # - dashboard/dates.json
 # - dashboard/index.html
+# - dashboard/studies/studies.json       ← personal Studies library (written by sidecar.py)
+# - dashboard/studies/images/*           ← Studies screenshots (PNG/JPG/etc) + index.json
 # - claude_picks.json
 # - news_detail.json
 # - day_resets.json
 # - catalysts_today.json
+
+# Sidecar atomic-write tempfiles — never commit
+dashboard/studies/**/*.tmp

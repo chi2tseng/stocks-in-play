@@ -604,7 +604,72 @@ After publishing, end the chat response with a single line:
 
 Replace N with the candidate count and TICKER with the #1 ranked SIP.
 
-### 8.6 Phase 11 — auto-publish to GitHub Pages (REQUIRED for hosted dashboard)
+### 8.6 Phase 10b — Fetch yesterday's OHLCV for every candidate + every existing Study (NEW)
+
+After the trading day closes (~5pm ET), fetch the **previous trading day's** OHLCV for two populations:
+
+1. **Today's scan candidates** — for the Studies-auto-fill case (so clicking "Save to Studies" on a new SIP card pre-populates OHLCV).
+2. **All tickers already in `dashboard/studies/studies.json`** — but **skip any ticker whose study already has manually-filled `ohlcv.open/high/low/close`**. Manual data is sacred; we only auto-fill empty rows. This makes the day's %Chg auto-derive — `(close − prev_close) / prev_close · 100` — work for every Study without the user re-typing yesterday's bar.
+
+Write the merged result to `./prev_ohlcv.json` at repo root.
+
+**Schema** (`prev_ohlcv.json`):
+```json
+{
+  "FIG":  { "date": "2026-05-14", "open": 22.60, "high": 24.10, "low": 22.45, "close": 23.85, "prev_close": 22.10, "volume": 18200000 },
+  "BOOT": { "date": "2026-05-14", "open": 158.00, "high": 162.80, "low": 156.30, "close": 161.20, "prev_close": 156.95, "volume": 350000 }
+}
+```
+
+**`prev_close` is required** (not optional): it's the close of the day BEFORE the OHLCV `date`, used by the dashboard to derive each Study's day-%Chg. Yahoo's `range=5d` JSON gives you 5 daily bars in one request — take the latest bar as the row above, and the second-latest bar's `close` as `prev_close`.
+
+**Build sequence (Python pseudo-code):**
+```python
+# 1. Read existing studies to know which tickers need filling
+import json, os
+studies = []
+studies_path = 'dashboard/studies/studies.json'
+if os.path.exists(studies_path):
+    with open(studies_path) as f: studies = json.load(f)
+
+# 2. Compute target ticker set
+todays_tickers = list(final_candidates_df['Symbol'])
+study_tickers_needing_fill = [
+    st['symbol'] for st in studies
+    if not (st.get('ohlcv') and st['ohlcv'].get('open') is not None)  # skip manually-filled
+]
+all_tickers = list(set(todays_tickers + study_tickers_needing_fill))
+
+# 3. Fetch + merge → prev_ohlcv.json
+out = {}
+for t in all_tickers:
+    bars = fetch_yahoo_5d(t)           # latest 5 daily bars
+    if len(bars) < 2: continue
+    latest, prior = bars[-1], bars[-2]
+    out[t] = {
+        'date':       latest['date'],
+        'open':       latest['open'],
+        'high':       latest['high'],
+        'low':        latest['low'],
+        'close':      latest['close'],
+        'prev_close': prior['close'],
+        'volume':     latest['volume'],
+    }
+with open('prev_ohlcv.json', 'w') as f: json.dump(out, f, indent=2)
+```
+
+**How to source** (in order of reliability):
+1. **Yahoo Finance** `https://query1.finance.yahoo.com/v8/finance/chart/<TICKER>?interval=1d&range=5d` — public JSON endpoint, no API key, returns 5 bars in one call. **Preferred** because you get `prev_close` for free.
+2. **Barchart `https://www.barchart.com/stocks/quotes/<TICKER>/price-history/historical`** — daily OHLCV table. Playwright scrape, XHR intercept on `/proxies/core-api/v1/historical/get?symbol=<TICKER>&type=eod` returns clean JSON.
+3. **Finviz quote page** — has yesterday's OHLCV on the snapshot table but harder to parse than the API options above.
+
+**`build_dashboard.py` behaviour:**
+- For **today's stocks** (in `stocks` dict): exposes `stocks[sym].prevOhlcv = prev_ohlcv_raw.get(sym)`.
+- For **existing studies that need filling**: writes the matching entries into `dashboard/studies/studies.json` directly under each study's `ohlcv` field — but ONLY if `ohlcv.open` is null (manual-fill detection).
+
+If `prev_ohlcv.json` doesn't exist, the rest of the pipeline runs fine — this step is purely an enhancement that saves the user from re-typing yesterday's bar for every Study every day.
+
+### 8.7 Phase 11 — auto-publish to GitHub Pages (REQUIRED for hosted dashboard)
 
 This repo is wired with `.github/workflows/pages.yml`. Every push that touches `dashboard/**` triggers an auto-deploy to **https://chi2tseng.github.io/stocks-in-play/** within ~30 seconds.
 
@@ -612,10 +677,13 @@ This repo is wired with `.github/workflows/pages.yml`. Every push that touches `
 
 ```bash
 git add dashboard/data/<DATE>.json dashboard/data.json dashboard/dates.json dashboard/index.html \
+        dashboard/studies/studies.json dashboard/studies/images \
         claude_picks.json news_detail.json day_resets.json catalysts_today.json
 git commit -m "scan: <DATE> — top SIP <TICKER>, <N> candidates"
 git push
 ```
+
+`dashboard/studies/` is the **personal Studies library** — `studies.json` plus the screenshot binaries the user pasted into Notes/Screenshots panels. The local sidecar (`D:/SIPs/sidecar.py`) writes these files in real time while the user edits at `127.0.0.1:5510`. Committing them here makes the hosted GitHub Pages dashboard act as a **read-only mirror on phone/other devices** (sidecar-less = view-only mode, all edit buttons hidden by `body.readonly-mode` CSS). If the `studies/` directory is empty (user hasn't added any), the `git add` for it is a no-op — that's fine.
 
 Use the date `<DATE>` from the scan, the #1 ranked Claude pick as `<TICKER>`, and the total candidate count as `<N>`. Example commit message:
 
