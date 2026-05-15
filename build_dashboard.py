@@ -850,6 +850,8 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
   font-family: var(--font-mono); letter-spacing: 0.1px;
   text-transform: none; font-weight: 600; padding: 4px 10px;
 }
+.stock-header-tags .stat-tag.pos { color: var(--pos); }
+.stock-header-tags .stat-tag.neg { color: var(--neg); }
 
 /* ── Claude's Pick card variant ── */
 .sip-card.claude-pick { border-color: rgba(73,79,223,0.20); }
@@ -1457,6 +1459,16 @@ function shortPerfLine(s) {
   const bits = [];
   if (s.shortFloat != null) bits.push(`<span class="stat-pill" title="Short Float — % of float currently shorted">Short Float ${s.shortFloat.toFixed(1)}%</span>`);
   if (s.shortRatio != null) bits.push(`<span class="stat-pill" title="Days to cover (short ratio)">DTC ${s.shortRatio.toFixed(1)}d</span>`);
+  // EPS / Rev Surprise % — pulled from TradingView FQ if available. Colored pos/neg.
+  const tv = s.tv;
+  if (tv && tv.surpriseEPS_pct != null) {
+    const v = tv.surpriseEPS_pct, cn = v >= 0 ? 'pos' : 'neg';
+    bits.push(`<span class="stat-pill ${cn}" title="EPS surprise vs consensus (TradingView FQ)">EPS Surp ${(v >= 0 ? '+' : '') + v.toFixed(1)}%</span>`);
+  }
+  if (tv && tv.surpriseRev_pct != null) {
+    const v = tv.surpriseRev_pct, cn = v >= 0 ? 'pos' : 'neg';
+    bits.push(`<span class="stat-pill ${cn}" title="Revenue surprise vs consensus (TradingView FQ)">Rev Surp ${(v >= 0 ? '+' : '') + v.toFixed(1)}%</span>`);
+  }
   if (!bits.length) return '';
   return `<div class="sip-shortperf">${bits.join('')}</div>`;
 }
@@ -2225,11 +2237,17 @@ async function renderStock(sym) {
   } else if (fallbackCatalyst) {
     newsDetailHtml = `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3>${metaPill}<p>${escapeHtml(fallbackCatalyst)}</p></div>`;
   }
-  // Short Float + DTC pills inlined into the header (alongside session tags + type) so the
-  // stat strip doesn't take a whole separate card below the title.
+  // Short Float + DTC + EPS Surp + Rev Surp pills inlined into the header (alongside session
+  // tags + type) so the stat strip doesn't take a whole separate card below the title.
+  const _tv = s.tv;
+  const _surpPill = (lbl, v, title) => v == null
+    ? ''
+    : `<span class="tag stat-tag ${v >= 0 ? 'pos' : 'neg'}" title="${title}">${lbl} ${(v >= 0 ? '+' : '') + v.toFixed(1)}%</span>`;
   const headerShortPills = [
     s.shortFloat != null ? `<span class="tag stat-tag" title="Short Float — % of float currently shorted">Short Float ${s.shortFloat.toFixed(1)}%</span>` : '',
     s.shortRatio != null ? `<span class="tag stat-tag" title="Days to cover (short ratio)">DTC ${s.shortRatio.toFixed(1)}d</span>` : '',
+    _tv ? _surpPill('EPS Surp', _tv.surpriseEPS_pct, 'EPS surprise vs consensus (TradingView FQ)') : '',
+    _tv ? _surpPill('Rev Surp', _tv.surpriseRev_pct, 'Revenue surprise vs consensus (TradingView FQ)') : '',
   ].filter(Boolean).join(' ');
   app.innerHTML = `
     <div class="breadcrumb"><a href="#/earnings">Earnings</a> · <a href="#/catalyst">Catalyst</a> · <a href="#/scanx">SCANX</a> &nbsp;»&nbsp; <b>${s.symbol}</b></div>
