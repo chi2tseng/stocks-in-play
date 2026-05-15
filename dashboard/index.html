@@ -279,35 +279,7 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 .study-ohlcv-field input:focus { outline: none; border-color: var(--primary); }
 @media (max-width: 700px) { .study-ohlcv-row { grid-template-columns: repeat(3, 1fr); } }
 
-/* ── Screenshot grid + upload zone + thumbs + lightbox ── */
-.study-screenshots {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 8px; margin-top: 4px;
-}
-.study-shot {
-  background: var(--surface-soft); border-radius: var(--r-sm);
-  overflow: hidden; display: flex; flex-direction: column;
-  border: 1px solid var(--hairline);
-}
-.study-shot img { width: 100%; height: 90px; object-fit: cover; display: block; background: var(--surface-elevated); transition: transform 0.15s; }
-.study-shot img:hover { transform: scale(1.04); }
-.study-shot-bar { display: flex; gap: 4px; padding: 4px 6px; background: var(--canvas); }
-.study-shot-label { flex: 1; min-width: 0; padding: 3px 6px; font-size: 11px; border: 1px solid transparent; border-radius: var(--r-sm); background: transparent; color: var(--body); font-family: var(--font-body); }
-.study-shot-label:focus { outline: none; border-color: var(--primary); background: var(--canvas); }
-.study-shot-del { padding: 2px 6px; font-size: 11px; background: transparent; color: var(--mute); border: none; cursor: pointer; border-radius: var(--r-sm); }
-.study-shot-del:hover { color: var(--neg); background: rgba(226,59,74,0.08); }
-.study-shot-drop {
-  display: flex; align-items: center; justify-content: center;
-  min-height: 130px; border: 2px dashed var(--hairline); border-radius: var(--r-sm);
-  cursor: pointer; transition: border-color 0.12s, background 0.12s;
-  color: var(--mute);
-}
-.study-shot-drop:hover, .study-shot-drop:focus, .study-shot-drop.drag-over { border-color: var(--primary); background: rgba(73,79,223,0.04); color: var(--primary); outline: none; }
-.study-shot-drop-inner { text-align: center; padding: 8px; }
-.study-shot-drop-icon { font-size: 28px; font-weight: 300; line-height: 1; margin-bottom: 4px; }
-.study-shot-drop-hint { font-size: 10px; line-height: 1.4; }
-
-/* Lightbox overlay for click-to-enlarge */
+/* Lightbox overlay for click-to-enlarge any image in the notes block */
 .shot-lightbox {
   position: fixed; inset: 0; background: rgba(0, 0, 0, 0.88);
   display: flex; align-items: center; justify-content: center; flex-direction: column;
@@ -315,6 +287,78 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 }
 .shot-lightbox img { max-width: 95vw; max-height: 88vh; box-shadow: 0 24px 64px rgba(0,0,0,0.5); border-radius: var(--r-sm); }
 .shot-lightbox .shot-caption { color: rgba(255,255,255,0.85); margin-top: 12px; font-family: var(--font-mono); font-size: 13px; }
+
+/* ── Study list preview cards ── */
+.studies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 16px; }
+.study-saved-on {
+  font-family: var(--font-mono); font-size: 10px; color: var(--stone);
+  text-transform: uppercase; letter-spacing: 0.4px; margin-left: 8px;
+}
+.study-potential, .study-intraday {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  padding: 3px 8px; border-radius: var(--r-pill); background: var(--surface-soft);
+}
+.study-potential.pos, .study-intraday.pos { color: var(--pos); background: rgba(0, 168, 126, 0.10); }
+.study-potential.neg, .study-intraday.neg { color: var(--neg); background: rgba(226, 59, 74, 0.10); }
+
+/* ── Study detail page ── */
+.study-detail-header {
+  display: flex; align-items: center; gap: 24px; padding: 20px 24px;
+  background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-lg);
+  margin-bottom: 16px; flex-wrap: wrap;
+}
+.study-detail-symblock { display: flex; flex-direction: column; gap: 4px; }
+.study-detail-name { font-size: 13px; color: var(--mute); }
+.study-detail-fields { display: flex; gap: 12px; align-items: flex-end; margin-left: auto; flex-wrap: wrap; }
+.study-detail-fields .study-field { flex-direction: column; gap: 4px; font-size: 10px; color: var(--stone); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
+.study-detail-fields .study-field input,
+.study-detail-fields .study-field select {
+  padding: 6px 10px; border: 1px solid var(--hairline); border-radius: var(--r-sm);
+  background: var(--canvas); color: var(--ink); font-family: var(--font-mono); font-size: 13px;
+}
+.study-detail-fields .study-field select { font-family: var(--font-body); font-weight: 600; }
+.study-detail-fields .study-field input:focus,
+.study-detail-fields .study-field select:focus { outline: none; border-color: var(--primary); }
+.study-detail-block h3 { font-family: var(--font-display); font-size: 14px; margin: 0 0 14px; font-weight: 600; color: var(--ink); letter-spacing: -0.1px; }
+.study-summary-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.study-summary-chip {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+  padding: 6px 12px; border-radius: var(--r-pill); background: var(--surface-soft);
+  color: var(--mute);
+}
+.study-summary-chip.pos { color: var(--pos); background: rgba(0, 168, 126, 0.10); }
+.study-summary-chip.neg { color: var(--neg); background: rgba(226, 59, 74, 0.10); }
+.study-summary-chip b { font-weight: 700; margin-left: 4px; }
+.study-catalyst-input {
+  width: 100%; box-sizing: border-box; resize: vertical;
+  padding: 10px 14px; font-size: 14px; line-height: 1.6;
+  border: 1px solid var(--hairline); border-radius: var(--r-sm);
+  background: var(--canvas); color: var(--ink); font-family: var(--font-body);
+}
+.study-catalyst-input:focus { outline: none; border-color: var(--primary); }
+
+/* Notion-style rich notes — contenteditable with inline image embeds */
+.study-notes-rich {
+  min-height: 200px; padding: 16px 18px;
+  border: 1px solid var(--hairline); border-radius: var(--r-sm);
+  background: var(--canvas); color: var(--ink); font-family: var(--font-body);
+  font-size: 14px; line-height: 1.7;
+  transition: border-color 0.12s;
+}
+.study-notes-rich:focus { outline: none; border-color: var(--primary); }
+.study-notes-rich.drag-over { border-color: var(--primary); border-style: dashed; background: rgba(73, 79, 223, 0.04); }
+.study-notes-rich:empty:before { content: attr(data-placeholder); color: var(--stone); pointer-events: none; }
+.study-notes-rich img {
+  max-width: 100%; height: auto; margin: 12px 0;
+  border-radius: var(--r-sm); display: block;
+  background: var(--surface-soft);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s;
+}
+.study-notes-rich img:hover { transform: scale(1.005); }
+.study-notes-rich p { margin: 0 0 12px; }
+.study-notes-rich p:last-child { margin-bottom: 0; }
 .cal-btn svg { width: 13px; height: 13px; }
 .cal-popup { position: fixed; top: 0; left: 0; background: var(--canvas); border-radius: var(--r-md); padding: 16px; width: 280px; z-index: 9999; box-shadow: 0 24px 64px -12px rgba(0,0,0,0.25); border: 1px solid var(--hairline); display: none; }
 .cal-popup.open { display: block; }
@@ -888,13 +932,10 @@ td.sym a { transition: background 140ms ease, color 140ms ease; }
       <a data-route="catalyst">Catalyst Deep Dive</a>
       <a data-route="scanx">SCANX</a>
       <a data-route="gappers">Gappers</a>
-      <a data-route="studies" data-i18n="nav-studies">Studies</a>
+      <a data-route="studies">Studies</a>
     </div>
     <div class="topbar-right" id="topbar-right">
-      <button class="topbar-iconbtn" id="lang-toggle" aria-label="Toggle language" title="切換語言 / Toggle language">
-        <span id="lang-label">EN</span>
-      </button>
-      <button class="topbar-iconbtn" id="theme-toggle" aria-label="Toggle dark mode" title="切換深色模式 / Toggle dark mode">
+      <button class="topbar-iconbtn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
         <svg id="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
         <svg id="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
@@ -963,7 +1004,6 @@ async function boot() {
   installOutsideClickHandler();
   installChartTooltip();
   installThemeToggle();
-  installLangToggle();
   renderDateStrip();
   route();
 }
@@ -1095,6 +1135,7 @@ async function route() {
   if (r === 'scanx')    return renderScanx();
   if (r === 'gappers')  return renderGappers();
   if (r === 'studies')  return renderStudies();
+  if (r === 'study' && arg) return renderStudyDetail(arg);
   if (r === 'stock' && arg) return renderStock(arg);
   renderSips();
 }
@@ -2424,151 +2465,26 @@ function installThemeToggle() {
   };
 }
 
-// ── i18n: bilingual UI dict + language toggle (persisted in localStorage). ──
-// Dynamic content (catalysts, news_detail) falls back to ZH if no `_en` field exists;
-// going forward /SIPs writes both ZH + EN to claude_picks.json / news_detail.json / catalysts_today.json.
-const I18N = {
-  zh: {
-    'nav-sips': "Today's SIPs",
-    'nav-squeeze': 'Short Squeeze',
-    'nav-earnings': 'Earnings Results',
-    'nav-catalyst': 'Catalyst Deep Dive',
-    'nav-scanx': 'SCANX',
-    'nav-gappers': 'Gappers',
-    'nav-studies': '我的學習',
-    'cal-btn-default': '選擇日期',
-    'page-todays-sips': "Today's SIPs",
-    'page-squeeze': 'Short Squeeze',
-    'page-earnings': 'Earnings Results',
-    'page-catalyst': 'Catalyst Deep Dive',
-    'page-scanx': 'SCANX',
-    'page-gappers': 'Gappers',
-    'page-studies': '我的學習庫',
-    'subtab-claude': 'Claude 精選',
-    'subtab-magna': 'MAGNA53 排序',
-    'mismatch-hide': '⊘ 隱藏方向不符',
-    'mismatch-show': '✓ 包含方向不符',
-    'save-study': '➕ 加入學習',
-    'saved': '✓ 已加入',
-    'remove-study': '移除',
-    'studies-empty': '尚未儲存任何 SIPs。在任一張 SIP 卡片上點「加入學習」即可儲存。',
-    'studies-note-placeholder': '加入你的觀察筆記（markdown 支援）...',
-    'studies-tags-placeholder': '標籤（逗號分隔）',
-    'studies-target-price': '目標價',
-    'studies-stop-loss': '停損價',
-    'studies-conviction': '信念度',
-    'studies-saved-on': '加入於',
-    'studies-export': '匯出 JSON',
-    'studies-import': '匯入 JSON',
-    'studies-clear': '清空全部',
-    'studies-clear-confirm': '確定清空所有 studies？此動作無法復原。',
-    'studies-ohlcv-label': '當日 OHLCV',
-    'ohlcv-date': '日期',
-    'ohlcv-open': '開盤',
-    'ohlcv-high': '最高',
-    'ohlcv-low': '最低',
-    'ohlcv-close': '收盤',
-    'ohlcv-volume': '成交量',
-    'studies-screenshots-label': '截圖（進場 / 停損 / 出場 / 圖型）',
-    'studies-shot-label-placeholder': '標籤（例: entry / stop / exit）',
-    'studies-shot-upload-hint': '點擊上傳 · 拖放圖片 · 或於此區按 Ctrl+V 貼上',
-    'claude-rationale-label': 'Claude 分析',
-    'forward-yoy': 'Forward YoY',
-    'copy': 'Copy',
-    'copied': '已複製!',
-    'news-detail': '新聞詳情',
-    'catalyst-summary': '催化劑摘要',
-    'company-news': 'Company News',
-    'eps-quarterly': 'EPS Quarterly',
-    'rev-quarterly': 'Revenue Quarterly',
-    'reported-vs-estimate': 'Reported vs Estimate',
-    'no-tv-data': '無 TradingView 季度估計資料',
-  },
-  en: {
-    'nav-sips': "Today's SIPs",
-    'nav-squeeze': 'Short Squeeze',
-    'nav-earnings': 'Earnings Results',
-    'nav-catalyst': 'Catalyst Deep Dive',
-    'nav-scanx': 'SCANX',
-    'nav-gappers': 'Gappers',
-    'nav-studies': 'Studies',
-    'cal-btn-default': 'Pick date',
-    'page-todays-sips': "Today's SIPs",
-    'page-squeeze': 'Short Squeeze',
-    'page-earnings': 'Earnings Results',
-    'page-catalyst': 'Catalyst Deep Dive',
-    'page-scanx': 'SCANX',
-    'page-gappers': 'Gappers',
-    'page-studies': 'My Studies Library',
-    'subtab-claude': 'Claude Picks',
-    'subtab-magna': 'MAGNA53 Score',
-    'mismatch-hide': '⊘ Hide mismatched',
-    'mismatch-show': '✓ Show mismatched',
-    'save-study': '➕ Save to Studies',
-    'saved': '✓ Saved',
-    'remove-study': 'Remove',
-    'studies-empty': 'No SIPs saved yet. Click "Save to Studies" on any SIP card to add one.',
-    'studies-note-placeholder': 'Add your observation notes (markdown supported)…',
-    'studies-tags-placeholder': 'Tags (comma-separated)',
-    'studies-target-price': 'Target',
-    'studies-stop-loss': 'Stop',
-    'studies-conviction': 'Conviction',
-    'studies-saved-on': 'Saved',
-    'studies-export': 'Export JSON',
-    'studies-import': 'Import JSON',
-    'studies-clear': 'Clear all',
-    'studies-clear-confirm': 'Clear all studies? This cannot be undone.',
-    'studies-ohlcv-label': "Day's OHLCV",
-    'ohlcv-date': 'Date',
-    'ohlcv-open': 'Open',
-    'ohlcv-high': 'High',
-    'ohlcv-low': 'Low',
-    'ohlcv-close': 'Close',
-    'ohlcv-volume': 'Volume',
-    'studies-screenshots-label': 'Screenshots (entry / stop / exit / pattern)',
-    'studies-shot-label-placeholder': 'Label (e.g. entry / stop / exit)',
-    'studies-shot-upload-hint': 'Click to upload · drag & drop · or Ctrl+V here',
-    'claude-rationale-label': "Claude's Analysis",
-    'forward-yoy': 'Forward YoY',
-    'copy': 'Copy',
-    'copied': 'Copied!',
-    'news-detail': 'News Detail',
-    'catalyst-summary': 'Catalyst Summary',
-    'company-news': 'Company News',
-    'eps-quarterly': 'EPS Quarterly',
-    'rev-quarterly': 'Revenue Quarterly',
-    'reported-vs-estimate': 'Reported vs Estimate',
-    'no-tv-data': 'No TradingView quarterly estimate data',
-  },
+// i18n removed (2026-05-15): user dropped the toggle. UI stays English, dynamic content
+// (catalysts / news_detail / claude rationale) stays in 繁體中文 as captured by /SIPs.
+// `t(key)` shim preserved for backward compat with existing call sites — returns the EN
+// label or the key itself as fallback. Safe to remove later if every t() call gets inlined.
+const _UI_LABELS = {
+  'save-study': '➕ Save to Studies',
+  'saved': '✓ Saved',
+  'remove-study': 'Remove',
+  'studies-empty': 'No SIPs saved yet. Click "Save to Studies" on any SIP card to add one.',
+  'studies-note-placeholder': 'Notes — paste images (Ctrl+V) or drag-drop to embed inline…',
+  'studies-export': 'Export JSON',
+  'studies-import': 'Import JSON',
+  'studies-clear': 'Clear all',
+  'studies-clear-confirm': 'Clear all studies? This cannot be undone.',
+  'studies-saved-on': 'Saved',
+  'ohlcv-date': 'Date', 'ohlcv-open': 'Open', 'ohlcv-high': 'High',
+  'ohlcv-low': 'Low', 'ohlcv-close': 'Close', 'ohlcv-volume': 'Volume',
+  'claude-rationale-label': "Claude's Analysis",
 };
-let LANG = (localStorage.getItem('sips-lang') === 'en') ? 'en' : 'zh';
-function t(key) { return (I18N[LANG] && I18N[LANG][key]) || (I18N.zh[key] || key); }
-// Pick a localized field from a content object: prefers `field_en` when EN active, else `field`, else ''.
-function ti(obj, field) {
-  if (!obj) return '';
-  if (LANG === 'en' && obj[field + '_en']) return obj[field + '_en'];
-  return obj[field] || '';
-}
-function installLangToggle() {
-  const apply = () => {
-    const btn = document.getElementById('lang-label');
-    if (btn) btn.textContent = LANG === 'en' ? '中' : 'EN';
-    document.documentElement.lang = LANG === 'en' ? 'en' : 'zh-Hant';
-    // Translate all [data-i18n] nodes (used on the nav links)
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      el.textContent = t(el.dataset.i18n);
-    });
-    // Re-render whatever page is showing so all renderers re-pull translated strings
-    if (typeof route === 'function') route();
-  };
-  apply();
-  const btn = document.getElementById('lang-toggle');
-  if (btn) btn.onclick = () => {
-    LANG = (LANG === 'en') ? 'zh' : 'en';
-    localStorage.setItem('sips-lang', LANG);
-    apply();
-  };
-}
+function t(key) { return _UI_LABELS[key] || key; }
 
 /* ═══════════ Studies (localStorage-backed personal library) ═══════════
    Schema in localStorage key 'sips-studies':
@@ -2734,129 +2650,28 @@ function updateStudy(sym, patch) {
   saveStudies(arr);
 }
 
+/* ═══════ Studies list view — small preview cards like Today's SIPs ═══════
+   Click a card → #/study/<SYM> for the full editable detail page.
+   Each card shows: SYMBOL + chgPct + intent badge + 1-line catalyst preview
+   + open→high catalyst-potential % (if OHLCV filled) + saved-on date.
+   The card is purely read-only here; all editing happens on the detail page. */
 function renderStudies() {
   const app = document.getElementById('app');
   const studies = loadStudies().slice().sort((a, b) => (b.savedAt || '').localeCompare(a.savedAt || ''));
   app.innerHTML = `
-    <h2 class="page-title">${t('page-studies')}</h2>
+    <h2 class="page-title">My Studies</h2>
     <div class="studies-toolbar">
       <button class="studies-btn" id="studies-export">${t('studies-export')}</button>
       <button class="studies-btn" id="studies-import">${t('studies-import')}</button>
       <input type="file" id="studies-import-file" accept="application/json" style="display:none">
       <button class="studies-btn studies-btn-danger" id="studies-clear">${t('studies-clear')}</button>
-      <span class="subtab-hint" style="margin-left:auto">${studies.length} saved · localStorage only</span>
+      <span class="subtab-hint" style="margin-left:auto">${studies.length} saved · stored locally (IndexedDB + localStorage)</span>
     </div>
     ${studies.length === 0
       ? `<div class="sip-empty">${t('studies-empty')}</div>`
-      : `<div class="studies-grid" id="studies-grid">${studies.map(studyCardHtml).join('')}</div>`}
+      : `<div class="sip-grid" id="studies-grid">${studies.map(studyPreviewCardHtml).join('')}</div>`}
   `;
-  // Wire studies card events
-  app.querySelectorAll('.study-card').forEach(card => {
-    const sym = card.dataset.sym;
-    card.querySelector('.study-notes')?.addEventListener('input', e => updateStudy(sym, { notes: e.target.value }));
-    card.querySelector('.study-tags')?.addEventListener('input', e => updateStudy(sym, { tags: e.target.value.split(',').map(s => s.trim()).filter(Boolean) }));
-    card.querySelector('.study-target')?.addEventListener('input', e => updateStudy(sym, { targetPrice: parseFloat(e.target.value) || null }));
-    card.querySelector('.study-stop')?.addEventListener('input', e => updateStudy(sym, { stopLoss: parseFloat(e.target.value) || null }));
-    card.querySelector('.study-conviction')?.addEventListener('input', e => updateStudy(sym, { conviction: parseInt(e.target.value, 10) }));
-    card.querySelector('.study-remove')?.addEventListener('click', async () => {
-      if (confirm(`Remove ${sym} from studies?`)) { await removeStudy(sym); renderStudies(); }
-    });
-    // OHLCV inputs — write to the nested ohlcv object on every keystroke (no debounce, payload tiny).
-    card.querySelectorAll('.study-ohlcv-field input').forEach(inp => {
-      inp.addEventListener('input', e => {
-        const field = e.target.dataset.field;
-        const cur = loadStudies().find(s => s.symbol === sym)?.ohlcv || {};
-        const val = field === 'date' ? e.target.value : (parseFloat(e.target.value) || null);
-        updateStudy(sym, { ohlcv: { ...cur, [field]: val } });
-        // Refresh the intraday chip without a full re-render
-        const o = { ...cur, [field]: val };
-        if (o.open && o.close) {
-          const intra = (o.close - o.open) / o.open * 100;
-          const chip = card.querySelector('.study-intraday');
-          if (chip) {
-            chip.textContent = `Intraday ${(intra >= 0 ? '+' : '') + intra.toFixed(2)}%`;
-            chip.className = `study-intraday ${intra >= 0 ? 'pos' : 'neg'}`;
-          }
-        }
-      });
-    });
-    // Hydrate screenshot <img> elements from IndexedDB (async load)
-    card.querySelectorAll('img[data-needs-img]').forEach(async img => {
-      const key = img.dataset.needsImg;
-      const data = await getImg(key);
-      if (data) img.src = data;
-    });
-    // Click a screenshot → lightbox
-    card.querySelectorAll('.study-shot img').forEach(img => {
-      img.style.cursor = 'zoom-in';
-      img.addEventListener('click', async () => {
-        const key = img.dataset.needsImg;
-        const data = await getImg(key);
-        if (data) {
-          const label = card.querySelector(`.study-shot-label[data-img-key="${key}"]`)?.value || '';
-          openShotLightbox(data, label);
-        }
-      });
-    });
-    // Edit screenshot label
-    card.querySelectorAll('.study-shot-label').forEach(inp => {
-      inp.addEventListener('input', e => {
-        const key = e.target.dataset.imgKey;
-        const studies = loadStudies();
-        const st = studies.find(s => s.symbol === sym);
-        if (!st) return;
-        const ss = (st.screenshots || []).find(x => x.imgKey === key);
-        if (ss) { ss.label = e.target.value; saveStudies(studies); }
-      });
-    });
-    // Delete screenshot
-    card.querySelectorAll('.study-shot-del').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const key = btn.dataset.imgKey;
-        const studies = loadStudies();
-        const st = studies.find(s => s.symbol === sym);
-        if (!st) return;
-        st.screenshots = (st.screenshots || []).filter(x => x.imgKey !== key);
-        saveStudies(studies);
-        await delImg(key);
-        renderStudies();
-      });
-    });
-    // Upload zone — file picker + drag-drop + paste
-    const drop = card.querySelector('.study-shot-drop');
-    const fileInp = drop?.querySelector('input[type="file"]');
-    const handleFiles = async (files) => {
-      const studies = loadStudies();
-      const st = studies.find(s => s.symbol === sym);
-      if (!st) return;
-      st.screenshots = st.screenshots || [];
-      for (const f of files) {
-        if (!f.type.startsWith('image/')) continue;
-        try {
-          const dataUrl = await downscaleImage(f);
-          const key = uuid();
-          await putImg(key, dataUrl);
-          st.screenshots.push({ imgKey: key, label: '', caption: '' });
-        } catch (err) { console.warn('image save failed', err); }
-      }
-      saveStudies(studies);
-      renderStudies();
-    };
-    fileInp?.addEventListener('change', e => handleFiles(Array.from(e.target.files || [])));
-    drop?.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('drag-over'); });
-    drop?.addEventListener('dragleave', () => drop.classList.remove('drag-over'));
-    drop?.addEventListener('drop', e => {
-      e.preventDefault(); drop.classList.remove('drag-over');
-      handleFiles(Array.from(e.dataTransfer?.files || []));
-    });
-    // Paste handler scoped to the card (focus the drop zone first, or paste anywhere in the card)
-    card.addEventListener('paste', e => {
-      const items = Array.from(e.clipboardData?.items || []);
-      const files = items.filter(it => it.type.startsWith('image/')).map(it => it.getAsFile()).filter(Boolean);
-      if (files.length) { e.preventDefault(); handleFiles(files); }
-    });
-    card.tabIndex = -1;   // makes the card focusable so paste works without clicking the drop input
-  });
+  // Cards are pure links — no wiring needed beyond toolbar handlers below.
   // Toolbar
   document.getElementById('studies-export')?.addEventListener('click', async () => {
     // Bundle screenshots inline as base64 so the JSON is self-contained for cross-device transfer.
@@ -2933,71 +2748,234 @@ window.handleSaveStudy = function(sym, btn) {
   }
 };
 
-function studyCardHtml(st) {
+// Small preview card for the Studies list — mirrors the layout of sipCardHtml so the user
+// can scan ranks/intent/catalyst at a glance. Clicking the whole card opens the detail page.
+function studyPreviewCardHtml(st, idx) {
   const s = st.snapshot;
-  const chgCls = s.chgPct >= 0 ? 'pos' : 'neg';
-  const intentBadge = s.claudeIntent ? `<span class="tag" style="background:${s.claudeIntent === 'short' ? 'rgba(226,59,74,0.10)' : 'rgba(0,168,126,0.10)'};color:${s.claudeIntent === 'short' ? 'var(--neg)' : 'var(--pos)'}">${s.claudeIntent.toUpperCase()}</span>` : '';
-  const rationale = (LANG === 'en' && s.claudeRationale_en) ? s.claudeRationale_en : (s.claudeRationale || '');
-  const cat = (LANG === 'en' && s.catalyst_en) ? s.catalyst_en : (s.catalyst || '');
+  const chg = (st.chgPct != null) ? st.chgPct : s.chgPct;
+  const chgCls = chg >= 0 ? 'pos' : 'neg';
+  const intent = st.intent || s.claudeIntent || 'long';
+  const intentBadge = `<span class="tag" style="background:${intent === 'short' ? 'rgba(226,59,74,0.10)' : 'rgba(0,168,126,0.10)'};color:${intent === 'short' ? 'var(--neg)' : 'var(--pos)'}">${intent.toUpperCase()}</span>`;
+  const cat = (st.catalyst != null && st.catalyst !== '') ? st.catalyst : (s.catalyst || '');
+  // Open → High potential: shows how much the stock could have run from open. If filled this is
+  // the most valuable single number on the card — it's the "catalyst-realised return."
   const o = st.ohlcv || {};
-  // Compute intraday % chg from open→close so user gets feedback as they type
-  const intraday = (o.open && o.close) ? ((o.close - o.open) / o.open * 100) : null;
-  const intradayChip = intraday != null
-    ? `<span class="study-intraday ${intraday >= 0 ? 'pos' : 'neg'}">Intraday ${(intraday >= 0 ? '+' : '') + intraday.toFixed(2)}%</span>`
+  const potentialPct = (o.open && o.high) ? ((o.high - o.open) / o.open * 100) : null;
+  const potentialChip = potentialPct != null
+    ? `<span class="study-potential ${potentialPct >= 0 ? 'pos' : 'neg'}" title="Open → High (catalyst potential)">→High ${(potentialPct >= 0 ? '+' : '') + potentialPct.toFixed(2)}%</span>`
     : '';
-  const screenshots = st.screenshots || [];
-  return `<div class="study-card" data-sym="${st.symbol}">
-    <div class="study-card-head">
-      <a href="#/stock/${st.symbol}" class="study-sym">${st.symbol}</a>
-      <span class="sip-chg ${chgCls}">${fmtPct(s.chgPct)}</span>
-      ${intentBadge}
-      <span class="study-saved-on">${t('studies-saved-on')}: ${st.savedAt.slice(0, 10)}${s.scanDate && s.scanDate !== st.savedAt.slice(0,10) ? ` · scan ${s.scanDate}` : ''}</span>
-      <button class="study-remove" title="${t('remove-study')}">✕</button>
-    </div>
-    <div class="study-name">${escapeHtml(s.name || '')}</div>
-    ${cat ? `<div class="study-catalyst">${escapeHtml(cat)}</div>` : ''}
-    ${rationale ? `<div class="study-rationale">${escapeHtml(rationale).replace(/\n/g, '<br>')}</div>` : ''}
-    <div class="study-section-label">${t('studies-ohlcv-label')} ${intradayChip}</div>
-    <div class="study-ohlcv-row">
-      <label class="study-ohlcv-field"><span>${t('ohlcv-date')}</span><input data-field="date" type="date" value="${o.date || ''}"></label>
-      <label class="study-ohlcv-field"><span>${t('ohlcv-open')}</span><input data-field="open" type="number" step="0.01" value="${o.open ?? ''}" placeholder="—"></label>
-      <label class="study-ohlcv-field"><span>${t('ohlcv-high')}</span><input data-field="high" type="number" step="0.01" value="${o.high ?? ''}" placeholder="—"></label>
-      <label class="study-ohlcv-field"><span>${t('ohlcv-low')}</span><input data-field="low" type="number" step="0.01" value="${o.low ?? ''}" placeholder="—"></label>
-      <label class="study-ohlcv-field"><span>${t('ohlcv-close')}</span><input data-field="close" type="number" step="0.01" value="${o.close ?? ''}" placeholder="—"></label>
-      <label class="study-ohlcv-field"><span>${t('ohlcv-volume')}</span><input data-field="volume" type="number" step="1000" value="${o.volume ?? ''}" placeholder="—"></label>
-    </div>
-    <div class="study-fields">
-      <label class="study-field"><span>${t('studies-target-price')}</span><input class="study-target" type="number" step="0.01" value="${st.targetPrice ?? ''}" placeholder="—"></label>
-      <label class="study-field"><span>${t('studies-stop-loss')}</span><input class="study-stop" type="number" step="0.01" value="${st.stopLoss ?? ''}" placeholder="—"></label>
-      <label class="study-field"><span>${t('studies-conviction')}</span><input class="study-conviction" type="range" min="1" max="5" value="${st.conviction || 3}"></label>
-    </div>
-    <input class="study-tags" type="text" value="${(st.tags || []).join(', ')}" placeholder="${t('studies-tags-placeholder')}">
-    <textarea class="study-notes" rows="4" placeholder="${t('studies-note-placeholder')}">${escapeHtml(st.notes || '')}</textarea>
-    <div class="study-section-label">${t('studies-screenshots-label')}</div>
-    <div class="study-screenshots" data-sym="${st.symbol}">
-      ${screenshots.map(ss => `<div class="study-shot" data-img-key="${ss.imgKey}">
-        <img loading="lazy" data-needs-img="${ss.imgKey}" alt="${escapeHtml(ss.label || '')}">
-        <div class="study-shot-bar">
-          <input class="study-shot-label" data-img-key="${ss.imgKey}" type="text" value="${escapeHtml(ss.label || '')}" placeholder="${t('studies-shot-label-placeholder')}">
-          <button class="study-shot-del" data-img-key="${ss.imgKey}" title="${t('remove-study')}">✕</button>
-        </div>
-      </div>`).join('')}
-      <label class="study-shot-drop" tabindex="0">
-        <input type="file" accept="image/*" multiple style="display:none">
-        <div class="study-shot-drop-inner">
-          <div class="study-shot-drop-icon">+</div>
-          <div class="study-shot-drop-hint">${t('studies-shot-upload-hint')}</div>
-        </div>
-      </label>
-    </div>
-  </div>`;
+  return `<a class="sip-card" href="#/study/${st.symbol}" style="text-decoration:none;color:inherit;display:block">
+    <span class="sip-rank-row"><span class="sip-rank">#${idx + 1}</span><span class="study-saved-on">${(st.savedAt || '').slice(0, 10)}</span></span>
+    <div class="sip-header"><div class="sip-sym">${st.symbol}</div><div class="sip-chg ${chgCls}">${fmtPct(chg)}</div></div>
+    <div class="sip-name">${escapeHtml(s.name || '')}</div>
+    <div class="sip-meta">${intentBadge} ${potentialChip}</div>
+    ${cat ? `<div class="sip-catalyst" style="margin-top:8px">${escapeHtml(cat)}</div>` : ''}
+  </a>`;
 }
 
-// Lightbox modal for clicking a study screenshot
+/* ═══════ Study detail page — #/study/<SYM> ═══════
+   Full editing UI. Everything is customisable: symbol (read-only, the URL key), chgPct,
+   long/short intent, catalyst, OHLCV (auto-computes open→high "catalyst potential" + intraday).
+   Pulls the saved snapshot's EPS/Rev quarterly charts + MS-table + Forward YoY block so the
+   study looks the same as the original stock-detail page at time-of-save.
+   Notion-style notes: contenteditable div with inline image paste/drop. Images stored in
+   IndexedDB; the notes HTML in localStorage carries `<img data-img-key="...">` placeholders. */
+async function renderStudyDetail(sym) {
+  const app = document.getElementById('app');
+  const study = loadStudies().find(st => st.symbol === sym);
+  if (!study) {
+    app.innerHTML = `<div class="empty">Study ${sym} not found. <a href="#/studies">← Back to Studies</a></div>`;
+    return;
+  }
+  const s = study.snapshot || {};
+  const chg = (study.chgPct != null) ? study.chgPct : s.chgPct;
+  const intent = study.intent || s.claudeIntent || 'long';
+  const cat = (study.catalyst != null) ? study.catalyst : (s.catalyst || '');
+  const o = study.ohlcv || {};
+  const tv = s.tv || null;
+  const chartHtml = (tv && tv.chart) ? renderChart(tv.chart) : { eps: '', rev: '' };
+  const msHtml = (tv && tv.chart) ? renderMarketSurgeTable(tv.chart) : '';
+  const yoyHtml = (tv && tv.yoyBlock) ? `<div class="sip-yoy-block">${colorizeYoyBlock(tv.yoyBlock)}</div>` : '';
+  // Migrate legacy thumbnail screenshots into the notes HTML on first detail-view render
+  // so the user doesn't lose old uploads when we drop the thumbnail grid.
+  let notesHtml = study.notes || '';
+  if (Array.isArray(study.screenshots) && study.screenshots.length && !study._migratedShots) {
+    const tail = study.screenshots.map(ss =>
+      `<p><img data-img-key="${ss.imgKey}" alt="${escapeHtml(ss.label || '')}"></p>${ss.label ? `<p><em>${escapeHtml(ss.label)}</em></p>` : ''}`
+    ).join('');
+    notesHtml = (notesHtml || '') + tail;
+    updateStudy(sym, { notes: notesHtml, _migratedShots: true, screenshots: [] });
+  }
+  app.innerHTML = `
+    <div class="breadcrumb"><a href="#/studies">← Studies</a> &nbsp;»&nbsp; <b>${sym}</b></div>
+    <div class="study-detail-header">
+      <div class="study-detail-symblock">
+        <div class="sym-big">${sym}</div>
+        <div class="study-detail-name">${escapeHtml(s.name || '')}</div>
+      </div>
+      <div class="study-detail-fields">
+        <label class="study-field"><span>%Chg</span><input type="number" step="0.01" id="study-chgpct" value="${chg ?? ''}" placeholder="—"></label>
+        <label class="study-field"><span>Intent</span><select id="study-intent">
+          <option value="long" ${intent === 'long' ? 'selected' : ''}>LONG</option>
+          <option value="short" ${intent === 'short' ? 'selected' : ''}>SHORT</option>
+        </select></label>
+        <button class="studies-btn studies-btn-danger" id="study-delete">Delete study</button>
+      </div>
+    </div>
+    <div class="stock-card study-detail-block">
+      <h3>OHLCV</h3>
+      <div class="study-ohlcv-row">
+        <label class="study-ohlcv-field"><span>${t('ohlcv-date')}</span><input data-field="date" type="date" value="${o.date || ''}"></label>
+        <label class="study-ohlcv-field"><span>${t('ohlcv-open')}</span><input data-field="open" type="number" step="0.01" value="${o.open ?? ''}" placeholder="—"></label>
+        <label class="study-ohlcv-field"><span>${t('ohlcv-high')}</span><input data-field="high" type="number" step="0.01" value="${o.high ?? ''}" placeholder="—"></label>
+        <label class="study-ohlcv-field"><span>${t('ohlcv-low')}</span><input data-field="low" type="number" step="0.01" value="${o.low ?? ''}" placeholder="—"></label>
+        <label class="study-ohlcv-field"><span>${t('ohlcv-close')}</span><input data-field="close" type="number" step="0.01" value="${o.close ?? ''}" placeholder="—"></label>
+        <label class="study-ohlcv-field"><span>${t('ohlcv-volume')}</span><input data-field="volume" type="number" step="1000" value="${o.volume ?? ''}" placeholder="—"></label>
+      </div>
+      <div class="study-summary-chips" id="study-summary-chips"></div>
+    </div>
+    <div class="stock-card">
+      <h3>Catalyst</h3>
+      <textarea class="study-catalyst-input" id="study-catalyst" rows="4" placeholder="Free-form catalyst description — paste from /SIPs or write your own">${escapeHtml(cat)}</textarea>
+    </div>
+    ${chartHtml.eps || chartHtml.rev ? `
+    <div class="chart-wrap">
+      ${chartHtml.eps ? `<div class="stock-card"><h3>EPS Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.eps}</div>` : ''}
+      ${chartHtml.rev ? `<div class="stock-card"><h3>Revenue Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.rev}</div>` : ''}
+    </div>` : ''}
+    ${msHtml ? `<div class="stock-card"><h3>季度 EPS / Sales <span class="label-en">Reported + Estimate</span></h3>${msHtml}</div>` : ''}
+    ${yoyHtml ? `<div class="stock-card"><h3>Forward YoY <span class="label-en">TradingView FQ — EPS YoY / Rev YoY</span></h3>${yoyHtml}</div>` : ''}
+    <div class="stock-card">
+      <h3>Notes <span class="label-en">paste images (Ctrl+V) or drag-drop directly inline</span></h3>
+      <div class="study-notes-rich" id="study-notes" contenteditable="true" data-placeholder="${t('studies-note-placeholder')}">${notesHtml}</div>
+    </div>
+  `;
+  // Hydrate all <img data-img-key> inside notes from IndexedDB
+  for (const img of app.querySelectorAll('#study-notes img[data-img-key]')) {
+    const key = img.getAttribute('data-img-key');
+    if (key && !img.src) {
+      try { const data = await getImg(key); if (data) img.src = data; } catch {}
+    }
+    img.style.cursor = 'zoom-in';
+  }
+  // Click image in notes → fullscreen lightbox
+  app.querySelector('#study-notes')?.addEventListener('click', e => {
+    if (e.target.tagName === 'IMG' && e.target.src) {
+      openShotLightbox(e.target.src);
+    }
+  });
+  // Refresh the summary chips line (intraday + potential) based on current OHLCV
+  function refreshSummaryChips() {
+    const cur = loadStudies().find(st => st.symbol === sym)?.ohlcv || {};
+    const intraday = (cur.open && cur.close) ? ((cur.close - cur.open) / cur.open * 100) : null;
+    const potential = (cur.open && cur.high) ? ((cur.high - cur.open) / cur.open * 100) : null;
+    const drawdown = (cur.open && cur.low) ? ((cur.low - cur.open) / cur.open * 100) : null;
+    const chips = [];
+    if (potential != null) chips.push(`<span class="study-summary-chip pos">Open → High <b>${(potential >= 0 ? '+' : '') + potential.toFixed(2)}%</b></span>`);
+    if (drawdown != null && drawdown < 0) chips.push(`<span class="study-summary-chip neg">Open → Low <b>${drawdown.toFixed(2)}%</b></span>`);
+    if (intraday != null) chips.push(`<span class="study-summary-chip ${intraday >= 0 ? 'pos' : 'neg'}">Open → Close <b>${(intraday >= 0 ? '+' : '') + intraday.toFixed(2)}%</b></span>`);
+    document.getElementById('study-summary-chips').innerHTML = chips.join('');
+  }
+  refreshSummaryChips();
+  // Wire OHLCV inputs → save + refresh chips
+  app.querySelectorAll('.study-ohlcv-field input').forEach(inp => {
+    inp.addEventListener('input', e => {
+      const field = e.target.dataset.field;
+      const cur = loadStudies().find(st => st.symbol === sym)?.ohlcv || {};
+      const val = field === 'date' ? e.target.value : (parseFloat(e.target.value) || null);
+      updateStudy(sym, { ohlcv: { ...cur, [field]: val } });
+      refreshSummaryChips();
+    });
+  });
+  // Editable chgPct / intent / catalyst
+  document.getElementById('study-chgpct')?.addEventListener('input', e => updateStudy(sym, { chgPct: parseFloat(e.target.value) || null }));
+  document.getElementById('study-intent')?.addEventListener('change', e => updateStudy(sym, { intent: e.target.value }));
+  document.getElementById('study-catalyst')?.addEventListener('input', e => updateStudy(sym, { catalyst: e.target.value }));
+  // Delete
+  document.getElementById('study-delete')?.addEventListener('click', async () => {
+    if (confirm(`Delete study ${sym}? This also removes its screenshots.`)) {
+      await removeStudy(sym);
+      location.hash = '#/studies';
+    }
+  });
+  // Notion-style notes — contenteditable with inline image paste/drop. Save innerHTML on input
+  // (debounced via animation frame to batch fast typing).
+  const notes = document.getElementById('study-notes');
+  let saveTimer = null;
+  const flushSave = () => {
+    // Strip inline data: URIs from src before storage — images live in IndexedDB by data-img-key
+    const clone = notes.cloneNode(true);
+    clone.querySelectorAll('img[data-img-key]').forEach(img => img.removeAttribute('src'));
+    updateStudy(sym, { notes: clone.innerHTML });
+  };
+  const scheduleSave = () => {
+    if (saveTimer) cancelAnimationFrame(saveTimer);
+    saveTimer = requestAnimationFrame(flushSave);
+  };
+  notes?.addEventListener('input', scheduleSave);
+  // Image paste handler — insert <img> at cursor after IndexedDB write
+  const insertImgAtCursor = (dataUrl, key) => {
+    const img = document.createElement('img');
+    img.src = dataUrl;
+    img.setAttribute('data-img-key', key);
+    img.className = 'notes-inline-img';
+    img.style.cursor = 'zoom-in';
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount && notes.contains(sel.anchorNode)) {
+      const range = sel.getRangeAt(0);
+      range.deleteContents();
+      range.insertNode(img);
+      // Move cursor after the image + insert a line break for next paragraph
+      const br = document.createElement('br');
+      img.after(br);
+      range.setStartAfter(br); range.setEndAfter(br);
+      sel.removeAllRanges(); sel.addRange(range);
+    } else {
+      notes.appendChild(img);
+      notes.appendChild(document.createElement('br'));
+    }
+    scheduleSave();
+  };
+  notes?.addEventListener('paste', async e => {
+    const items = Array.from(e.clipboardData?.items || []);
+    const imgItem = items.find(it => it.type.startsWith('image/'));
+    if (imgItem) {
+      e.preventDefault();
+      const file = imgItem.getAsFile();
+      const dataUrl = await downscaleImage(file);
+      const key = uuid();
+      await putImg(key, dataUrl);
+      insertImgAtCursor(dataUrl, key);
+    }
+    // For non-image paste, also strip rich formatting (paste as plain text)
+    else {
+      const text = e.clipboardData?.getData('text/plain');
+      if (text) {
+        e.preventDefault();
+        document.execCommand('insertText', false, text);
+      }
+    }
+  });
+  notes?.addEventListener('dragover', e => { e.preventDefault(); notes.classList.add('drag-over'); });
+  notes?.addEventListener('dragleave', () => notes.classList.remove('drag-over'));
+  notes?.addEventListener('drop', async e => {
+    e.preventDefault();
+    notes.classList.remove('drag-over');
+    const files = Array.from(e.dataTransfer?.files || []).filter(f => f.type.startsWith('image/'));
+    for (const file of files) {
+      const dataUrl = await downscaleImage(file);
+      const key = uuid();
+      await putImg(key, dataUrl);
+      insertImgAtCursor(dataUrl, key);
+    }
+  });
+}
+
+// Lightbox modal for clicking any image (used both in notes inline + legacy screenshots)
 function openShotLightbox(dataUrl, caption) {
   const overlay = document.createElement('div');
   overlay.className = 'shot-lightbox';
-  overlay.innerHTML = `<img src="${dataUrl}"><div class="shot-caption">${escapeHtml(caption || '')}</div>`;
+  overlay.innerHTML = `<img src="${dataUrl}">${caption ? `<div class="shot-caption">${escapeHtml(caption)}</div>` : ''}`;
   overlay.onclick = () => overlay.remove();
   document.body.appendChild(overlay);
 }
