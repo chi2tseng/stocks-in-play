@@ -508,6 +508,23 @@ nav.topbar, header { background: var(--canvas); }
 .subtab:hover { color: var(--ink); border-color: var(--ink); }
 .subtab.active { background: var(--ink); color: #ffffff; border-color: var(--ink); }
 .subtab-hint { font-size: 13px; color: var(--mute); margin-left: 4px; }
+/* Mismatch-filter toggle (Claude tab toolbar) — pill button. ON state = filled. */
+.mismatch-toggle {
+  margin-left: auto; padding: 6px 14px; border-radius: var(--r-pill);
+  background: var(--canvas); border: 1px solid var(--hairline); color: var(--mute);
+  font-size: 12px; font-weight: 600; cursor: pointer; font-family: var(--font-body);
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.mismatch-toggle:hover { color: var(--ink); border-color: var(--ink); }
+.mismatch-toggle.on { background: var(--ink); color: #ffffff; border-color: var(--ink); }
+/* Direction-mismatch banner on a Claude pick card */
+.dir-mismatch-banner {
+  margin: 8px 0 10px; padding: 8px 12px;
+  background: rgba(226, 59, 74, 0.08); color: var(--neg);
+  border-left: 3px solid var(--neg); border-radius: var(--r-sm);
+  font-size: 12px; font-weight: 500;
+}
+.sip-card.dir-mismatch { border-color: rgba(226, 59, 74, 0.30); }
 .panel { background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-lg); padding: 0; overflow: hidden; }
 .panel + .panel { margin-top: 16px; }
 .panel-header { padding: 14px 20px; font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); background: var(--surface-soft); border-bottom: 1px solid var(--hairline); }
@@ -1522,8 +1539,14 @@ function claudePickCardHtml(s, idx) {
   const rationaleHtml = rationale
     ? `<div class="claude-rationale">${escapeHtml(rationale).replace(/\n/g, '<br>')}</div>`
     : `<div class="claude-rationale claude-rationale-empty">（Claude 尚未提供分析——在 <code>D:\\SIPs\\claude_picks.json</code> 寫入 <code>{"symbol":"${s.symbol}","rationale":"..."}</code> 後 rebuild 即可。）</div>`;
-  return `<a class="sip-card claude-pick ${isFeatured ? 'featured' : ''}" href="#/stock/${s.symbol}" style="text-decoration:none;color:inherit;display:block">
+  // Direction-mismatch banner — only shown when the toolbar toggle is ON and this pick's
+  // declared intent disagrees with the actual chgPct sign.
+  const mismatchBanner = s._claudeDirMismatch
+    ? `<div class="dir-mismatch-banner">⚠️ 方向不符：intent=<b>${s._claudeIntent}</b> 但 chgPct=${fmtPctShort(s.chgPct)}</div>`
+    : '';
+  return `<a class="sip-card claude-pick ${isFeatured ? 'featured' : ''} ${s._claudeDirMismatch ? 'dir-mismatch' : ''}" href="#/stock/${s.symbol}" style="text-decoration:none;color:inherit;display:block">
     <span class="sip-rank-row"><span class="sip-rank claude-rank">#${idx + 1}</span>${dayBadgeHtml(s)}</span>
+    ${mismatchBanner}
     <div class="sip-header"><div class="sip-sym">${s.symbol}</div><div class="sip-chg ${chgCls}">${fmtPct(s.chgPct)}</div></div>
     <div class="sip-name">${escapeHtml(s.name)}</div>
     <div class="sip-meta">${sessTags} <span class="tag ${typeTagClass(s.type)}">${s.type}</span></div>
@@ -1533,6 +1556,10 @@ function claudePickCardHtml(s, idx) {
     ${forwardYoyBlock(s)}
   </a>`;
 }
+
+// Module-level toggle: when ON, the Claude tab also shows picks whose `intent` doesn't match
+// today's chgPct direction (e.g. a "long" pick on a stock that gapped down). Default OFF.
+let SHOW_MISMATCHED_PICKS = false;
 
 async function renderSips(subtab) {
   // Subtabs: 'claude' (default) — Claude-curated picks with rationale | 'magna' — MAGNA53 algorithmic score.
@@ -1546,6 +1573,9 @@ async function renderSips(subtab) {
       <div class="subtab ${tab === 'claude' ? 'active' : ''}" data-sub="claude">Claude 精選</div>
       <div class="subtab ${tab === 'magna'  ? 'active' : ''}" data-sub="magna">MAGNA53 排序</div>
       <span class="subtab-hint" id="sips-hint"></span>
+      ${tab === 'claude' ? `<button class="mismatch-toggle ${SHOW_MISMATCHED_PICKS ? 'on' : ''}" id="mismatch-toggle" title="顯示方向不符的 picks（intent vs chgPct 不一致）">
+        ${SHOW_MISMATCHED_PICKS ? '✓ 包含方向不符' : '⊘ 隱藏方向不符'}
+      </button>` : ''}
     </div>
     <div id="sips-stack"></div>`;
   // Wire subtab clicks → re-route via hash so URL is shareable. Claude is now the default
@@ -1557,6 +1587,9 @@ async function renderSips(subtab) {
       location.hash = '#/' + (isLatest ? '' : STATE.date + '/') + 'sips' + (sub === 'claude' ? '' : '/' + sub);
     };
   });
+  // Wire mismatch-filter toggle (only present on Claude tab) → flip the module flag + re-render in place.
+  const mt = document.getElementById('mismatch-toggle');
+  if (mt) mt.onclick = () => { SHOW_MISMATCHED_PICKS = !SHOW_MISMATCHED_PICKS; renderSips(subtab); };
   // Day1/2/3 label: walk previous date snapshots so a ticker that already showed up earlier in the
   // week gets tagged day2 / day3 instead of day1. The map is cached across calls within a session.
   const firstSeen = await getSymbolFirstSeenMap();
@@ -1579,24 +1612,34 @@ async function renderSips(subtab) {
   } else {
     // Claude picks come from DATA.claudePicks (an array of {symbol, rank, rationale, intent?}).
     // Direction-match rule (per user spec): a `long` pick must be gap-up (chgPct > 0), a `short`
-    // pick must be gap-down (chgPct < 0). Mismatches are silently filtered out — market direction
-    // must agree with the thesis. `intent` defaults to "long" when missing (legacy schema).
+    // pick must be gap-down (chgPct < 0). When SHOW_MISMATCHED_PICKS is false (default), mismatches
+    // are silently dropped. When true (via the toolbar toggle), mismatches are SHOWN but marked
+    // with `_claudeDirMismatch: true` so the card can render a visual warning.
+    // `intent` defaults to "long" when missing (legacy schema).
     const picks = Array.isArray(DATA.claudePicks) ? DATA.claudePicks.slice() : [];
     picks.sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
     const bySym = Object.fromEntries(rows.map(r => [r.symbol, r]));
-    const enriched = picks
+    const isMismatch = s => {
+      if (s._claudeIntent === 'long')  return !(s.chgPct > 0);
+      if (s._claudeIntent === 'short') return !(s.chgPct < 0);
+      return false;
+    };
+    const all = picks
       .map(p => bySym[p.symbol]
         ? { ...bySym[p.symbol], _claudeRationale: p.rationale, _claudeIntent: p.intent || 'long' }
         : null)
       .filter(Boolean)
-      .filter(s => {
-        if (s._claudeIntent === 'long')  return s.chgPct > 0;
-        if (s._claudeIntent === 'short') return s.chgPct < 0;
-        return true;
-      });
+      .map(s => ({ ...s, _claudeDirMismatch: isMismatch(s) }));
+    const enriched = SHOW_MISMATCHED_PICKS ? all : all.filter(s => !s._claudeDirMismatch);
+    const droppedCount = all.length - enriched.length;
     if (enriched.length === 0) {
-      stack.innerHTML = `<div class="sip-empty">尚無 Claude 精選清單（或所有 picks 方向跟市場不符已被過濾）。<br><br>在 <code>D:\\SIPs\\claude_picks.json</code> 加入 <code>{"picks":[{"symbol":"X","rank":1,"rationale":"...","intent":"long"}]}</code> 後 rebuild dashboard 即可看到。</div>`;
+      stack.innerHTML = `<div class="sip-empty">尚無 Claude 精選清單${droppedCount > 0 ? `（${droppedCount} 筆方向跟市場不符已隱藏，按上方 toggle 顯示）` : ''}。<br><br>在 <code>D:\\SIPs\\claude_picks.json</code> 加入 <code>{"picks":[{"symbol":"X","rank":1,"rationale":"...","intent":"long"}]}</code> 後 rebuild dashboard 即可看到。</div>`;
       return;
+    }
+    if (!SHOW_MISMATCHED_PICKS && droppedCount > 0) {
+      hint.textContent = `${enriched.length} picks shown · ${droppedCount} hidden (direction mismatch)`;
+    } else if (SHOW_MISMATCHED_PICKS) {
+      hint.textContent = `${enriched.length} picks shown (including mismatched)`;
     }
     stack.innerHTML = '<div class="sip-grid">' + enriched.map((s, idx) => claudePickCardHtml(s, idx)).join('') + '</div>';
   }
@@ -1802,9 +1845,10 @@ function renderSqueeze() {
 
   const body = document.getElementById('squeeze-table');
 
-  // Pre-market % comes from the row's pre session (if it gapped pre-market). For tickers that
-  // only moved post-market this stays null → displayed as "—".
-  const prePct = r => r.sessions?.find(x => x.session === 'pre')?.chgPct;
+  // Pre/Post-market % come from the row's session-specific entries. A ticker may have just one
+  // (only pre or only post moved) or both — auto-fills as each scan adds data. null → "—".
+  const prePct  = r => r.sessions?.find(x => x.session === 'pre')?.chgPct;
+  const postPct = r => r.sessions?.find(x => x.session === 'post')?.chgPct;
   const numPct = v => v == null
     ? '<td class="num">—</td>'
     : `<td class="num ${cls(v)}">${fmtPct(v)}</td>`;
@@ -1815,8 +1859,10 @@ function renderSqueeze() {
       render: r => r.shortFloat == null ? '<td class="num">—</td>' : `<td class="num">${r.shortFloat.toFixed(1)}%</td>` },
     { label: 'DTC',          sortVal: r => r.shortRatio,
       render: r => `<td class="num">${r.shortRatio.toFixed(1)}d</td>` },
-    { label: 'Pre %',        sortVal: r => prePct(r) ?? -Infinity,
+    { label: 'Pre %',        sortVal: r => prePct(r)  ?? -Infinity,
       render: r => numPct(prePct(r)) },
+    { label: 'Post %',       sortVal: r => postPct(r) ?? -Infinity,
+      render: r => numPct(postPct(r)) },
     { label: 'YoY Rev',      sortVal: r => r.tv?.yrYrRev_pct ?? -Infinity,
       render: r => numPct(r.tv?.yrYrRev_pct) },
     { label: 'YoY EPS',      sortVal: r => r.tv?.epsYoY_pct ?? -Infinity,
