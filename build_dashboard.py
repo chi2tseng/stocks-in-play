@@ -1729,11 +1729,15 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
    page where wide whitespace looked premium — but inside Studies the table sits in a smaller
    card and the slider was awful UX. Preview cards (.sip-card .ms-table) keep their tighter
    font-size/padding overrides below. */
-.ms-table { border-collapse: separate; border-spacing: 0; font-size: 12px; width: 100%; table-layout: auto; }
+.ms-table { border-collapse: separate; border-spacing: 0; font-size: 12px; width: 100%; table-layout: fixed; }
 .ms-table th, .ms-table td { padding: 7px 6px; text-align: right; border-bottom: 1px solid var(--hairline); font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 12px; }
 .ms-table th { font-size: 11px; font-weight: 700; color: var(--ink); background: var(--canvas); border-bottom: 2px solid var(--ink); padding: 8px 6px 6px; font-family: var(--font-display); letter-spacing: 0; text-transform: none; }
 .ms-table th.est-col { color: var(--primary); }
-.ms-table .ms-rowlabel { text-align: left; font-family: var(--font-display); font-weight: 700; color: var(--ink); background: var(--surface-soft); font-size: 14px; padding: 14px 16px; border-right: 1px solid var(--hairline); letter-spacing: -0.1px; min-width: 110px; }
+.ms-table .ms-rowlabel { text-align: left; font-family: var(--font-display); font-weight: 700; color: var(--ink); background: var(--surface-soft); font-size: 14px; padding: 14px 16px; border-left: 1px solid var(--hairline); letter-spacing: -0.1px; min-width: 110px; width: 140px; }
+/* With table-layout: fixed (set above), giving the label column an explicit width forces all
+   8 data columns to split the remaining space EQUALLY — previously estimate columns (which
+   include the "est" tag) were wider than reported columns under table-layout: auto, which
+   pushed the reported/estimate divider visually left of the data midpoint. */
 .ms-table .ms-reported { background: var(--canvas); color: var(--ink); }
 .ms-table .ms-estimate { background: rgba(73, 79, 223, 0.04); color: var(--mute); }
 /* Surprise % rows — grey band overlay so they read as a distinct "beat/miss" stripe between
@@ -3242,9 +3246,16 @@ function renderMarketSurgeTable(chart) {
     });
   }
   const firstEstIdx = cells.findIndex(c => !c.isReported);
+  // Auto-scale Sales units row-wide: if ANY visible cell crosses $1B, show all cells in
+  // the row in $B (the row label says "Sales ($B)"); otherwise stay in $M. This keeps
+  // YoY/Surprise math consistent within the row (all in same unit) and the divider lines
+  // up cleanly. Decided per render based on the actual window data.
+  const revMaxAbs = cells.reduce((m, c) => Math.max(m, c.rev != null ? Math.abs(c.rev) : 0), 0);
+  const useBillions = revMaxAbs >= 1000;
+  const revUnit = useBillions ? 'B' : 'M';
   const fmtSales = v => {
     if (v == null) return '';
-    if (Math.abs(v) >= 1000) return v.toLocaleString('en-US', {minimumFractionDigits:1, maximumFractionDigits:1});
+    if (useBillions) return (v / 1000).toFixed(2);
     return v.toFixed(1);
   };
   const fmtEpsCell = v => v == null ? '' : v.toFixed(2);
@@ -3253,43 +3264,39 @@ function renderMarketSurgeTable(chart) {
     const c = val > 0 ? 'pos' : val < 0 ? 'neg' : '';
     return `<span class="${c}">${txt}</span>`;
   };
-  // Row labels live on the LEFT side of the table so the ms-divider (separating reported
-  // from estimate columns) sits at the table's visual center. Putting labels on the right
-  // visually shifts the divider left by ~half the label-column width — which the eye
-  // reads as "off-center". Left-side labels also match conventional financial-table layout.
-  let head = '<tr><th class="ms-rowlabel"></th>';
+  let head = '<tr>';
   cells.forEach((c, i) => {
     const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
     const estCls = c.isReported ? '' : 'est-col';
     const tag = c.isReported ? '' : ' <span class="ms-est-tag">est</span>';
     head += `<th class="${div} ${estCls}">${c.q}${tag}</th>`;
   });
-  head += '</tr>';
+  head += '<th class="ms-rowlabel"></th></tr>';
   function row(label, key, fmt) {
-    let html = `<tr><td class="ms-rowlabel">${label}</td>`;
+    let html = '<tr>';
     cells.forEach((c, i) => {
       const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
       const klass = c.isReported ? 'ms-reported' : 'ms-estimate';
       html += `<td class="${klass} ${div}">${fmt(c[key])}</td>`;
     });
-    html += `</tr>`;
+    html += `<td class="ms-rowlabel">${label}</td></tr>`;
     return html;
   }
   function yoyRow(label, key) {
-    let html = `<tr><td class="ms-rowlabel">${label}</td>`;
+    let html = '<tr>';
     cells.forEach((c, i) => {
       const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
       const klass = c.isReported ? 'ms-reported' : 'ms-estimate';
       html += `<td class="${klass} ${div}">${fmtYoY(c[key].txt, c[key].val)}</td>`;
     });
-    html += `</tr>`;
+    html += `<td class="ms-rowlabel">${label}</td></tr>`;
     return html;
   }
   // Surprise % row — only reported quarters have a value (estimate-only future quarters render
   // blank, since "surprise vs estimate" is meaningless when there's no reported number yet).
   // Rendered with `ms-surprise` class for the grey separator-band background.
   function surpRow(label, key) {
-    let html = `<tr class="ms-surprise-row"><td class="ms-rowlabel ms-surprise-label">${label}</td>`;
+    let html = '<tr class="ms-surprise-row">';
     cells.forEach((c, i) => {
       const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
       // Blank cell for non-reported quarters or when surprise is N/A.
@@ -3298,10 +3305,10 @@ function renderMarketSurgeTable(chart) {
         : '';
       html += `<td class="ms-surprise ${div}">${content}</td>`;
     });
-    html += `</tr>`;
+    html += `<td class="ms-rowlabel ms-surprise-label">${label}</td></tr>`;
     return html;
   }
-  return `<div class="ms-table-wrap"><table class="ms-table"><thead>${head}</thead><tbody>${row('EPS ($)','eps',fmtEpsCell)}${yoyRow('YoY % Chg','epsYoY')}${surpRow('Surprise %','epsSurp')}${row('Sales ($M)','rev',fmtSales)}${yoyRow('YoY % Chg','revYoY')}${surpRow('Surprise %','revSurp')}</tbody></table></div>`;
+  return `<div class="ms-table-wrap"><table class="ms-table"><thead>${head}</thead><tbody>${row('EPS ($)','eps',fmtEpsCell)}${yoyRow('YoY % Chg','epsYoY')}${surpRow('Surprise %','epsSurp')}${row(`Sales ($${revUnit})`,'rev',fmtSales)}${yoyRow('YoY % Chg','revYoY')}${surpRow('Surprise %','revSurp')}</tbody></table></div>`;
 }
 
 /* Editable MS table for Studies — cells in EPS ($) / Sales ($M) rows are <input>; YoY % Chg
@@ -3350,7 +3357,15 @@ function renderCompactReadonlyMsTable(chart) {
     });
   }
   const firstEstIdx = cells.findIndex(c => !c.isReported);
-  const fmtSales = v => v == null ? '' : (Math.abs(v) >= 1000 ? v.toLocaleString('en-US', {minimumFractionDigits:1, maximumFractionDigits:1}) : v.toFixed(1));
+  // Auto-scale Sales units: $B for values ≥ $1B (= 1000 M), $M otherwise. The unit suffix
+  // lives on each cell so the preview is self-describing — there's no label column on the
+  // compact table to communicate units. AMD $10,270M → "10.3B", ONDS $30.1M → "30.1M".
+  const fmtSales = v => {
+    if (v == null) return '';
+    const abs = Math.abs(v);
+    if (abs >= 1000) return (v / 1000).toFixed(abs >= 100000 ? 1 : 2) + 'B';
+    return v.toFixed(1) + 'M';
+  };
   const fmtEpsCell = v => v == null ? '' : v.toFixed(2);
   const fmtYoY = (txt, val) => {
     if (txt === 'N/M' || txt === 'N/A') return `<span class="nm">${txt}</span>`;
@@ -3402,16 +3417,15 @@ function renderEditableMsTable(chart, sym, focusIdx) {
     cells.push({ q: q[i], i, isReported });
   }
   const firstEstIdx = cells.findIndex(c => !c.isReported);
-  // Header row — row label on the LEFT (see renderMarketSurgeTable for the rationale:
-  // left-side labels put the reported/estimate divider at the table's visual center).
-  let head = '<tr><th class="ms-rowlabel"></th>';
+  // Header row
+  let head = '<tr>';
   cells.forEach((c, idx) => {
     const div = (idx === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
     const estCls = c.isReported ? '' : 'est-col';
     const tag = c.isReported ? '' : ' <span class="ms-est-tag">est</span>';
     head += `<th class="${div} ${estCls}">${c.q}${tag}</th>`;
   });
-  head += '</tr>';
+  head += '<th class="ms-rowlabel"></th></tr>';
   // Editable value row generator.
   // `unitScale` = the storage→display multiplier inverse: storage = display × unitScale.
   // For EPS this is always 1 (stored in $/share, displayed in $/share).
@@ -3419,7 +3433,7 @@ function renderEditableMsTable(chart, sym, focusIdx) {
   // (one B = 1000 M, so to recover storage from a "10.27" we multiply by 1000).
   function inputRow(label, repArr, estArr, fmtVal, stepVal, dataKey, unitScale) {
     const us = unitScale || 1;
-    let html = `<tr><td class="ms-rowlabel">${label}</td>`;
+    let html = '<tr>';
     cells.forEach((c, idx) => {
       const div = (idx === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
       const klass = c.isReported ? 'ms-reported' : 'ms-estimate';
@@ -3427,18 +3441,18 @@ function renderEditableMsTable(chart, sym, focusIdx) {
       const valStr = (v != null) ? fmtVal(v / us) : '';
       html += `<td class="${klass} ${div}"><input class="ms-cell-input" type="number" step="${stepVal}" data-sym="${sym}" data-row="${dataKey}" data-qi="${c.i}" data-isrep="${c.isReported ? 1 : 0}" data-scale="${us}" value="${valStr}" placeholder="—"></td>`;
     });
-    html += `</tr>`;
+    html += `<td class="ms-rowlabel">${label}</td></tr>`;
     return html;
   }
   // Computed-only row generator (YoY % Chg + Surprise %)
   function computedRow(label, kind, isEps, isSurp) {
-    let html = `<tr ${isSurp ? 'class="ms-surprise-row"' : ''}><td class="ms-rowlabel ${isSurp ? 'ms-surprise-label' : ''}">${label}</td>`;
+    let html = `<tr ${isSurp ? 'class="ms-surprise-row"' : ''}>`;
     cells.forEach((c, idx) => {
       const div = (idx === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
       const klass = isSurp ? 'ms-surprise' : (c.isReported ? 'ms-reported' : 'ms-estimate');
       html += `<td class="${klass} ${div}" data-computed="${kind}-${c.i}"></td>`;
     });
-    html += `</tr>`;
+    html += `<td class="ms-rowlabel ${isSurp ? 'ms-surprise-label' : ''}">${label}</td></tr>`;
     return html;
   }
   // Decide Sales display unit: if any visible cell carries ≥ $1000M (= $1B), show the whole
