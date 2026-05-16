@@ -15,6 +15,19 @@ Designed to be invoked manually (`/update-studies`) or wired into an end-of-day 
 Not a cloud agent — TV scrape needs Playwright locally, and news composition needs
 Claude's judgment.
 
+## § Mode flags (arg parsing)
+
+| Arg | Effect |
+|---|---|
+| _(none)_ | **Default: blanks only.** Skip studies whose OHLCV bar is fully filled. Skip TV scrape for earnings studies whose `snapshot.tv` is already present. Only `newsDetail` / `catalyst` blanks get composed. Manual data is sacred. |
+| `safe` | Explicit alias for the default. Kept for backwards compatibility. |
+| `refresh` | **Force overwrite.** Re-fetch every study's OHLCV at its `ohlcv.date` and OVERWRITE existing values. Re-run TV scrape for every earnings-tagged study (including ones with a filled `snapshot.tv`). Useful after the user changes a study's date pill, or after a company has reported a new quarter since the last refresh. News is still only filled if empty (manual user-edits to newsDetail are NEVER overwritten — even in refresh mode). |
+| `dry-run` | Print the planned diff but don't write back. Useful for previewing what `refresh` would change before committing to it. |
+| `sym SYM1 SYM2 ...` | Restrict to specific tickers. Combinable with the other modes (e.g. `/update-studies refresh sym AMD FIG`). |
+| `then rebuild and push` | After the writeback, run `py build_dashboard.py` and `git add/commit/push` without re-prompting. |
+
+The skill matches these flags in natural language (e.g. "refresh AMD", "update studies in safe mode for FIG and ARM").
+
 ---
 
 ## § Resources
@@ -52,10 +65,25 @@ repo root from the parent `/SIPs` skill — just call them.
 5. Announce in one line:
    `Refreshing N studies: M with earnings tag (full refresh), K non-earnings (OHLCV+news).`
 
-## § Phase 2 — OHLCV refresh (all studies)
+## § Phase 2 — OHLCV refresh (default: blanks only, opt-in to overwrite)
+
+**Default behaviour = safe / blanks only.** For each study, only fetch + write the OHLCV
+bar if at least one of `ohlcv.{open,high,low,close,prev_close,volume}` is `null`. If the
+study already has a complete bar, skip the Yahoo call — manual data is sacred and we
+don't second-guess it. This matches `/SIPs` Phase 10b's "manual data is sacred" rule.
+
+**To force a re-fetch on filled studies**, pass the `refresh` arg (e.g.
+`/update-studies refresh` or `/update-studies for AMD refresh`). In refresh mode, every
+study gets a fresh Yahoo bar pulled at its `ohlcv.date` and the result OVERWRITES the
+existing values. Use this when the user manually changed `ohlcv.date` via the date pill
+(so the old bar is for the wrong day) or when they want today's closing price written
+back into a study that still holds a stale earlier-in-the-day quote.
+
+**`safe` arg = explicit alias for the default** (kept for backwards compatibility with
+phrases like "/update-studies safe mode").
 
 Same code path as `/SIPs` Phase 10b but per-study, with the per-study target date instead
-of "yesterday". For each target study:
+of "yesterday". For each target study (that qualifies under the mode above):
 
 ```bash
 py -c "
@@ -94,9 +122,20 @@ in the header + every preview card uses this, so it should reflect the official 
 close (was previously the stale scan-time price). `study.price` (manual override) still
 wins on display.
 
-## § Phase 3 — TradingView FQ refresh (earnings studies only)
+## § Phase 3 — TradingView FQ refresh (earnings studies, default: blanks only)
 
-For each study with `"earnings"` in `customTypes`, mirror `/SIPs` Phase 5–6:
+**Default behaviour = safe / blanks only.** For each study with `"earnings"` in
+`customTypes`, only run the TV scrape if `snapshot.tv` is missing, empty, or carries
+`snapshot._placeholder: true`. If `snapshot.tv` already has the full chart + summary
+block, skip the scrape entirely — the user either filled it via a previous run or
+manually curated it, both of which take precedence over a re-scrape.
+
+**`refresh` arg also forces TV re-scrape** on filled earnings-tagged studies. Use this
+when the company has reported a NEW quarter since the last refresh (e.g. AMD reported
+Q1 '26 on May 5 — running `/update-studies refresh for AMD` after that pulls the new
+quarter into the chart). Without `refresh`, an already-filled TV block is left alone.
+
+For each qualifying earnings study, mirror `/SIPs` Phase 5–6:
 
 ```bash
 cd /d/SIPs && node tv-scrape.js <SYM>          # Playwright, ~30-60s

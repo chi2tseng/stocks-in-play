@@ -852,10 +852,15 @@ respect manual edits throughout (never overwrite a non-empty `newsDetail`, `tv`,
 is the integration checklist, not a re-copy of the algorithms. Read that file for
 edge-case handling, Python→JS schema-conversion tables, and the universal YoY formula.
 
-#### 10c.1 — News refresh + earnings auto-detect (all studies)
+#### 10c.1 — News refresh + earnings auto-detect (all studies, blanks only)
 
-For each study (regardless of tag), if `snapshot.newsDetail` is empty OR
-`snapshot.scanDate < study.ohlcv.date` (stale):
+**Default behaviour = blanks only.** Manual edits to `newsDetail` / `catalyst` are NEVER
+overwritten — the user's hand-curated 繁體中文 prose is more valuable than what we'd
+auto-fetch. The user can force a re-fetch by clearing the field in the dashboard
+(Studies → study → news-detail card → delete contents) then re-running /SIPs.
+
+For each study, only process if `snapshot.newsDetail` is empty AND `snapshot.catalyst`
+is empty:
 
 1. **Source** the news for `<TICKER>` near `study.ohlcv.date` via WebSearch / WebFetch /
    firecrawl. Same sourcing pattern as `/SIPs § 7` (the news-detail composer).
@@ -876,9 +881,15 @@ For each study (regardless of tag), if `snapshot.newsDetail` is empty OR
 5. **Compose** a `catalyst` one-liner (≤200 chars) for the preview-card teaser.
 6. **Respect user edits**: only write `newsDetail` / `catalyst` if they're empty.
 
-#### 10c.2 — TradingView FQ refresh (earnings-tagged studies only)
+#### 10c.2 — TradingView FQ refresh (earnings-tagged studies, blanks only)
 
-For each study with `"earnings"` in `customTypes` AND empty/stale `snapshot.tv`:
+**Default behaviour = blanks only.** Don't re-scrape filled TV data — the user may have
+manually corrected the figures, or the historical-quarter rewind from a previous run
+may have anchored `latest_idx` to a past quarter that we don't want to clobber with
+today's latest.
+
+For each study with `"earnings"` in `customTypes` AND `snapshot.tv` missing/empty/
+`_placeholder: true`:
 
 ```bash
 cd D:\SIPs && node tv-scrape.js <SYM>       # Playwright, ~30-60s
