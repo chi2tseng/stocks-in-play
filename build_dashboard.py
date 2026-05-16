@@ -1347,12 +1347,12 @@ body.dark .catalyst-type-pill.cat-type-technical     { color: #c7a4ff; }
   color: var(--mute) !important; font-weight: 500; font-size: 10px;
   text-transform: uppercase; letter-spacing: 0.6px;
 }
-.chg-cell .gap-pct, .chg-cell .move-pct {
+.chg-cell .gap-pct, .chg-cell .move-pct, .chg-cell .day-pct {
   font-family: var(--font-mono); font-weight: 700; font-size: 14px;
   color: var(--mute);   /* fallback when value is null / no pos/neg class */
 }
-.chg-cell.pos .gap-pct, .chg-cell.pos .move-pct { color: var(--pos) !important; }
-.chg-cell.neg .gap-pct, .chg-cell.neg .move-pct { color: var(--neg) !important; }
+.chg-cell.pos .gap-pct, .chg-cell.pos .move-pct, .chg-cell.pos .day-pct { color: var(--pos) !important; }
+.chg-cell.neg .gap-pct, .chg-cell.neg .move-pct, .chg-cell.neg .day-pct { color: var(--neg) !important; }
 .vol-readout { font-family: var(--font-mono); font-size: 12px; color: var(--mute); margin-top: 2px; }
 
 /* Trade pills (LONG/SHORT, Gain, Stop) — buttons that need to LOOK identical to the
@@ -1386,9 +1386,9 @@ body.dark .trade-pill.direction-pill.neg { background: rgba(255, 84, 102, 0.22) 
 .sip-card .sip-chg-row { display: flex; flex-direction: column; gap: 2px; align-items: flex-start; margin: 4px 0 10px; font-family: var(--font-mono); }
 .sip-card .chg-cell { font-size: 12px; font-weight: 600; display: inline-flex; gap: 6px; align-items: baseline; }
 .sip-card .chg-cell > span:first-child { color: var(--mute) !important; font-weight: 500; font-size: 9px; text-transform: uppercase; letter-spacing: 0.6px; }
-.sip-card .chg-cell .gap-pct, .sip-card .chg-cell .move-pct { font-weight: 700; font-size: 13px; }
-.sip-card .chg-cell.pos .gap-pct, .sip-card .chg-cell.pos .move-pct { color: var(--pos) !important; }
-.sip-card .chg-cell.neg .gap-pct, .sip-card .chg-cell.neg .move-pct { color: var(--neg) !important; }
+.sip-card .chg-cell .gap-pct, .sip-card .chg-cell .move-pct, .sip-card .chg-cell .day-pct { font-weight: 700; font-size: 13px; }
+.sip-card .chg-cell.pos .gap-pct, .sip-card .chg-cell.pos .move-pct, .sip-card .chg-cell.pos .day-pct { color: var(--pos) !important; }
+.sip-card .chg-cell.neg .gap-pct, .sip-card .chg-cell.neg .move-pct, .sip-card .chg-cell.neg .day-pct { color: var(--neg) !important; }
 
 /* Editable MS table — cells become flat-styled inputs that look like cells until focused */
 .ms-table-editable .ms-cell-input {
@@ -4672,10 +4672,13 @@ function studyPreviewCardHtml(st, idx) {
   const dateTitle = ohlcvDate
     ? `Trading day from OHLCV (set in the Gain/Stop popup). Saved on ${(st.savedAt || '').slice(0, 10)}.`
     : `Saved on this date. Fill OHLCV.date in the Gain/Stop popup to override with the actual trading day.`;
-  // gap / move row — same shape as the detail-page header. Each cell shows label + value.
+  // gap / move / day rows — same shape as the detail-page header. Each row shows label + value.
+  // day = (close − prev_close) / prev_close · 100 — filled by /update-studies once OHLCV
+  // close + prev_close are present.
   const gapMoveRow = `<div class="sip-chg-row">
     ${gapPct != null ? `<span class="chg-cell gap-cell ${cls(gapPct)}" title="Gap % at scan time">gap <span class="gap-pct">${fmtPct(gapPct)}</span></span>` : ''}
     ${movePct != null ? `<span class="chg-cell move-cell ${cls(movePct)}" title="Day's move % from open — ${intent === 'short' ? '(Low − Open) / Open · negative = drop = short profit' : '(High − Open) / Open · positive = rise = long profit'}">move <span class="move-pct">${(movePct >= 0 ? '+' : '') + movePct.toFixed(2)}%</span></span>` : ''}
+    ${derivedChg != null ? `<span class="chg-cell day-cell ${cls(derivedChg)}" title="Day's % change — (Close − Prev close) / Prev close · 100">day <span class="day-pct">${(derivedChg >= 0 ? '+' : '') + derivedChg.toFixed(2)}%</span></span>` : ''}
   </div>`;
   return `<a class="sip-card" href="#/study/${st.id || st.symbol}" style="text-decoration:none;color:inherit;display:block;position:relative">
     <button class="study-preview-del" data-id="${st.id || st.symbol}" title="Delete study"
@@ -5104,8 +5107,9 @@ async function renderStudyDetail(idOrSym) {
       <div style="margin-left:auto;text-align:right">
         <div class="price price-editable" id="study-price-cell" title="Click to edit price"><span class="price-text">${fmtPrice(displayPrice)}</span></div>
         <div class="chg-readout" id="study-chg-readout">
-          <span class="chg-cell gap-cell ${cls(gapPct)}" title="Gap % at scan time — pre-market / post-market move that triggered the SIP">gap <span class="gap-pct">${fmtPct(gapPct)}</span></span>
+          <span class="chg-cell gap-cell ${cls(gapPct)}" title="Gap % at scan time — pre/post-market move that triggered the SIP">gap <span class="gap-pct">${fmtPct(gapPct)}</span></span>
           <span class="chg-cell move-cell ${cls(initGain)}" title="Day's move % from open — raw price change at the favourable extreme. ${intent === 'short' ? '(Low − Open) / Open · negative = drop = short profit.' : '(High − Open) / Open · positive = rise = long profit.'}">move <span class="move-pct">${fmtPct(initGain)}</span></span>
+          <span class="chg-cell day-cell ${cls(_derivedChg)}" title="Day's % change — (Close − Prev close) / Prev close · 100. Filled by /update-studies once both fields are present.">day <span class="day-pct">${fmtPct(_derivedChg)}</span></span>
         </div>
         <div class="vol-readout">Vol <span class="vol-editable" id="study-vol-cell" title="Click to edit volume (linked to OHLCV)"><span class="vol-text">${fmtVol(displayVol)}</span></span></div>
       </div>

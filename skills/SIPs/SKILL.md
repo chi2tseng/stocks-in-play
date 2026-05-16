@@ -786,7 +786,7 @@ gh run list --workflow=pages.yml --limit 3
 
 ## § 10. Reference & related skills
 
-- **`/update-studies`** — companion command that runs **daily** to refresh every Study's OHLCV from Yahoo based on each study's `ohlcv.date` field. Script lives at `./update_studies.py`. Use this when you don't want to wait until the next full `/SIPs` scan to see fresh Move / Stop / day-chg metrics on existing Studies. See `update_studies.py --help` for `--safe` / `--sym` / `--dry-run` / `--build` flags. Schedule via Windows Task Scheduler / cron for unattended runs.
+- **`/update-studies`** — Claude-driven daily refresh of every Study's OHLCV (open/high/low/close/prev_close/volume) based on each study's `ohlcv.date`. Walks the studies file, hits Yahoo's chart API via `curl`, parses the JSON inline, and writes back. Does NOT shell out to a separate Python script — it's all Read/Edit/Bash tool calls inside the conversation. See `~/.claude/commands/update-studies.md` for the full workflow spec.
 - `/ep9m-trading` skill — deeper Stockbee context (sugar babies, DEP, FHP, institutional quality, OLC). Read on demand if the user asks follow-up questions like "should I treat this as a sugar baby?"
 - `reference_firecrawl.md` in auto-memory — confirms the FQ URL trick + CLI quirks on this machine
 - `reference_playwright_tv.md` + `reference_playwright_barchart.md` in auto-memory — Playwright scraper setup
