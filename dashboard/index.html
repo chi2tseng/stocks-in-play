@@ -4077,9 +4077,21 @@ function studyPreviewCardHtml(st, idx) {
   const cat = (st.catalyst != null && st.catalyst !== '') ? st.catalyst : (s.catalyst || '');
   // Open → High potential: shows how much the stock could have run from open. If filled this is
   // the most valuable single number on the card — it's the "catalyst-realised return."
-  const potentialPct = (o.open && o.high) ? ((o.high - o.open) / o.open * 100) : null;
+  // Catalyst-realised return — intent-aware so a SHORT study's "potential" is the favourable
+  // move toward Low, not the loss-side move toward High.
+  const previewIntent = st.intent || s.claudeIntent || ((s.chgPct != null && s.chgPct < 0) ? 'short' : 'long');
+  let potentialPct = null, potentialLabel = '→High';
+  if (o.open) {
+    if (previewIntent === 'short' && o.low != null) {
+      potentialPct = (o.open - o.low) / o.open * 100;
+      potentialLabel = '→Low';
+    } else if (o.high != null) {
+      potentialPct = (o.high - o.open) / o.open * 100;
+      potentialLabel = '→High';
+    }
+  }
   const potentialChip = potentialPct != null
-    ? `<span class="study-potential ${potentialPct >= 0 ? 'pos' : 'neg'}" title="Open → High (catalyst potential)">→High ${(potentialPct >= 0 ? '+' : '') + potentialPct.toFixed(2)}%</span>`
+    ? `<span class="study-potential ${potentialPct >= 0 ? 'pos' : 'neg'}" title="Open → ${potentialLabel === '→Low' ? 'Low (short profit at session low)' : 'High (long profit at session high)'}">${potentialLabel} ${(potentialPct >= 0 ? '+' : '') + potentialPct.toFixed(2)}%</span>`
     : '';
   // Mini MS table — READ-ONLY snapshot at save time. Shows the latest reported quarter
   // + 4 forward estimates (max 5 quarters total). Hidden entirely if:
@@ -4318,26 +4330,24 @@ async function renderStudyDetail(idOrSym) {
   const id = study.id;
   const sym = study.symbol;
   const s = study.snapshot || {};
-  // %Chg priority (highest → lowest):
-  //   1. study.chgPct        — user's manual override (future-proofing; no UI yet, set via OHLCV modal if you ever add one)
-  //   2. derived from ohlcv  — (close − prev_close) / prev_close · 100, once /SIPs Phase 10b has filled both
-  //   3. snapshot.chgPct     — the gap % (pre-market / post-market) baked in at scan time
+  // %Chg priority (highest → lowest) for the BIG number in the header:
+  //   1. study.chgPct  — manual override (future-proofing; no UI yet)
+  //   2. Gain          — once user fills OHLCV, the intent-aware Gain replaces gap %.
+  //                       This is the "今天的漲幅" the user actually traded.
+  //   3. derivedChg    — (close − prev_close) / prev_close · 100, when both close + prev_close
+  //                       are present but Gain isn't (e.g. user only typed close+prev_close).
+  //   4. snapshot.chgPct — the gap % (pre/post-market) baked in at scan time. Default fallback.
   function deriveDayChgPct(ohlcv) {
     if (!ohlcv) return null;
     const close = ohlcv.close, prev = ohlcv.prev_close;
     if (close == null || prev == null || prev === 0) return null;
     return (close - prev) / prev * 100;
   }
-  const _derivedChg = deriveDayChgPct(study.ohlcv);
-  const chg = (study.chgPct != null) ? study.chgPct
-            : (_derivedChg != null)  ? _derivedChg
-            : s.chgPct;
-  // Tag the chg readout so the hover title explains where the value came from.
-  const chgSource = (study.chgPct != null) ? 'manual override'
-                  : (_derivedChg != null)  ? "derived from today's OHLCV (close − prev_close)"
-                  : 'snapshot gap % (pre/post-market)';
-  // intent auto-derived from chgPct sign (gap up = long, gap down = short) — no UI override.
-  const intent = chg < 0 ? 'short' : 'long';
+  // Intent locks at study creation — based on the ORIGINAL gap direction (snapshot.chgPct).
+  // Determines which OHLCV column anchors the Gain/Stop math (Open→High vs Open→Low).
+  // It does NOT track the displayed `chg` (which may flip to Gain later).
+  const _baseGap = (study.chgPct != null) ? study.chgPct : s.chgPct;
+  const intent = (_baseGap != null && _baseGap < 0) ? 'short' : 'long';
   // Custom chart overrides snapshot's TV chart when user edits MS-table values.
   const baseChart = (s.tv && s.tv.chart) ? s.tv.chart : null;
   // Section visibility (hidden set). Defaults: everything visible. Hide via the X on each card.
@@ -4356,15 +4366,40 @@ async function renderStudyDetail(idOrSym) {
   }
 
   // Direction-aware metrics. 漲幅 (gain) = (H-O)/O · 止損 (stop) = (L-O)/O · sign-flipped for short.
+  // Gain (漲幅) = peak favourable excursion from open · Stop (止損) = worst drawdown from open.
+  // The direction depends on the trade intent:
+  //   LONG  — you bought at open. Gain = how far it ran UP   (Open → High).
+  //                              Stop = how far it dropped   (Open → Low).
+  //   SHORT — you shorted at open. Gain = how far it dropped (Open → Low,  i.e. profit).
+  //                                Stop = how far it ran UP  (Open → High, i.e. loss).
+  // So for SHORT the columns swap: gain is anchored on Low and stop on High. The previous
+  // "* dir" sign-flip kept the column anchors wrong, producing gain on High for short trades
+  // (which is your loss, not profit). Below picks the right anchor per intent.
   function computeMetrics() {
     const cur = loadStudies().find(st => st.id === id)?.ohlcv || {};
-    const dir = intent === 'short' ? -1 : 1;
-    const gain = (cur.open && cur.high) ? ((cur.high - cur.open) / cur.open * 100 * dir) : null;
-    const stop = (cur.open && cur.low)  ? ((cur.low  - cur.open) / cur.open * 100 * dir) : null;
+    if (!cur.open) return { gain: null, stop: null };
+    let gain = null, stop = null;
+    if (intent === 'short') {
+      if (cur.low  != null) gain = (cur.open - cur.low)  / cur.open * 100;   // → positive when profitable
+      if (cur.high != null) stop = (cur.open - cur.high) / cur.open * 100;   // → negative (max drawdown)
+    } else {
+      if (cur.high != null) gain = (cur.high - cur.open) / cur.open * 100;   // → positive
+      if (cur.low  != null) stop = (cur.low  - cur.open) / cur.open * 100;   // → negative
+    }
     return { gain, stop };
   }
   const { gain: initGain, stop: initStop } = computeMetrics();
   const fmtMetric = v => v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+  // Compute the header chg AFTER initGain — Gain wins over the gap % once OHLCV is filled.
+  const _derivedChg = deriveDayChgPct(study.ohlcv);
+  const chg = (study.chgPct != null) ? study.chgPct
+            : (initGain != null)     ? initGain
+            : (_derivedChg != null)  ? _derivedChg
+            : s.chgPct;
+  const chgSource = (study.chgPct != null) ? 'manual override'
+                  : (initGain != null)     ? `Gain from OHLCV (${intent === 'short' ? '(Open − Low) / Open' : '(High − Open) / Open'})`
+                  : (_derivedChg != null)  ? "derived from OHLCV (close − prev_close) / prev_close"
+                  : 'snapshot gap % (pre/post-market)';
 
   // Build the four pill rows that mirror renderStock — short / surp / NEW trade pills.
   // Sessions row: we used to show pre-market / post-market %chg from the scan-time snapshot.
@@ -4404,8 +4439,8 @@ async function renderStudyDetail(idOrSym) {
   const gainCls = initGain == null ? '' : (initGain >= 0 ? 'pos' : 'neg');
   const stopCls = initStop == null ? '' : (initStop >= 0 ? 'pos' : 'neg');
   const tradePills = `
-    <button class="tag stat-tag trade-pill ${gainCls}" type="button" id="study-gain-pill" title="Gain = (High − Open) / Open · sign-flipped for short · click to edit OHLCV">Gain <span id="study-gain-val">${fmtMetric(initGain)}</span></button>
-    <button class="tag stat-tag trade-pill ${stopCls}" type="button" id="study-stop-pill" title="Stop = (Low − Open) / Open · sign-flipped for short · click to edit OHLCV">Stop <span id="study-stop-val">${fmtMetric(initStop)}</span></button>`;
+    <button class="tag stat-tag trade-pill ${gainCls}" type="button" id="study-gain-pill" title="${intent === 'short' ? 'Gain = (Open − Low) / Open · short-side profit at session low' : 'Gain = (High − Open) / Open · long-side run from open to high'} · click to edit OHLCV">Gain <span id="study-gain-val">${fmtMetric(initGain)}</span></button>
+    <button class="tag stat-tag trade-pill ${stopCls}" type="button" id="study-stop-pill" title="${intent === 'short' ? 'Stop = (Open − High) / Open · short-side drawdown at session high' : 'Stop = (Low − Open) / Open · long-side drawdown at session low'} · click to edit OHLCV">Stop <span id="study-stop-val">${fmtMetric(initStop)}</span></button>`;
   // Day-1 badge if applicable (from snapshot's _dayLabel — saved at the time the study was added)
   const dayChip = (study.snapshot?._dayLabel === 'day1') ? `<span class="day-badge day1">day1</span>` : '';
   // Catalyst row from the snapshot — if user has saved a custom catalyst override, prefer it
@@ -4473,7 +4508,7 @@ async function renderStudyDetail(idOrSym) {
       </div>
       <div style="margin-left:auto;text-align:right">
         <div class="price price-editable" id="study-price-cell" title="Click to edit price"><span class="price-text">${fmtPrice(displayPrice)}</span></div>
-        <div class="chg ${cls(chg)}" id="study-chg-readout" title="${chgSource}">${fmtPct(chg)} · Vol <span class="vol-editable" id="study-vol-cell" title="Click to edit volume (linked to OHLCV)"><span class="vol-text">${fmtVol(displayVol)}</span></span></div>
+        <div class="chg ${cls(chg)}" id="study-chg-readout" title="${chgSource}"><span class="chg-pct">${fmtPct(chg)}</span> · Vol <span class="vol-editable" id="study-vol-cell" title="Click to edit volume (linked to OHLCV)"><span class="vol-text">${fmtVol(displayVol)}</span></span></div>
       </div>
     </div>
     ${sectionCard('news_detail',
@@ -4898,18 +4933,24 @@ async function renderStudyDetail(idOrSym) {
   function refreshChgReadout() {
     const cur = loadStudies().find(st => st.id === id);
     if (!cur) return;
+    const { gain: liveGain } = computeMetrics();
     const derived = deriveDayChgPct(cur.ohlcv);
+    // Mirror the renderStudyDetail priority — Gain wins over derivedChg wins over gap%.
     const newChg = (cur.chgPct != null) ? cur.chgPct
+                 : (liveGain != null)   ? liveGain
                  : (derived != null)    ? derived
                  : s.chgPct;
     const src = (cur.chgPct != null) ? 'manual override'
-              : (derived != null)    ? "derived from today's OHLCV (close − prev_close)"
+              : (liveGain != null)   ? `Gain from OHLCV (${intent === 'short' ? '(Open − Low) / Open' : '(High − Open) / Open'})`
+              : (derived != null)    ? "derived from OHLCV (close − prev_close) / prev_close"
               : 'snapshot gap % (pre/post-market)';
     const el = document.getElementById('study-chg-readout');
     if (el) {
       el.className = `chg ${cls(newChg)}`;
       el.title = src;
-      el.textContent = `${fmtPct(newChg)} · Vol ${fmtVol(s.volume)}`;
+      // Only touch the .chg-pct span — vol-editable's click handler must survive refresh.
+      const pctEl = el.querySelector('.chg-pct');
+      if (pctEl) pctEl.textContent = fmtPct(newChg);
     }
     // Day tag (sessTags row) — appear / disappear / update as OHLCV is filled
     const dayTagHost = document.querySelector('.stock-header .stock-header-tags');
