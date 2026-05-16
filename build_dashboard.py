@@ -1771,17 +1771,36 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .ms-table .ms-surprise-label { background: var(--surface-soft); color: var(--charcoal); font-weight: 600; }
 /* Reported→Estimate divider. Drawn as a pseudo-element offset INTO the first estimate cell
    rather than as a flush border-left on that cell. Reason: cell content is right-aligned, so
-   the last reported value (e.g. "30.1") sits right against the column boundary while the
-   first estimate value (e.g. "39.4") sits FAR from it. A border at the boundary visually
-   hugs the reported number and feels off-center. Pushing the line ~35% into the est cell
-   places it closer to the optical midpoint between the two adjacent values. */
+   the last reported value sits right against the column boundary while the first estimate
+   value sits FAR from it. Pushing the line into the est cell places it closer to the optical
+   midpoint between the two adjacent values.
+
+   Offset is exposed as a CSS custom property so the line and the background-tint split can
+   move together — tweak --ms-divider-offset to retune both at once. */
+.ms-table { --ms-divider-offset: 10%; }
 .ms-table .ms-divider,
 .ms-table th.ms-divider { position: relative; }
 .ms-table .ms-divider::before {
   content: ''; position: absolute;
-  left: 10%; top: 0; bottom: 0;
+  left: var(--ms-divider-offset);
+  /* Extend 2px above & below the cell's padding box so the line bridges over each row's
+     border-bottom hairline — without this the line reads as 6 disconnected segments. */
+  top: -2px; bottom: -2px;
   width: 3px; background: var(--primary);
   pointer-events: none;
+  /* Sit above the cell's own borders + adjacent cells' content so the line reads as a
+     single continuous mark on top of the table. */
+  z-index: 2;
+}
+/* Split-background on est-with-divider cells: left of the line matches reported (canvas),
+   right of the line keeps the est tint. The background gradient transition sits exactly at
+   --ms-divider-offset so moving the line moves the fill along with it. */
+.ms-table .ms-estimate.ms-divider {
+  background: linear-gradient(
+    to right,
+    var(--canvas) var(--ms-divider-offset),
+    rgba(73, 79, 223, 0.04) var(--ms-divider-offset)
+  );
 }
 .ms-table .pos { color: var(--pos); font-weight: 600; background: rgba(0, 168, 126, 0.06); }
 .ms-table .neg { color: var(--neg); font-weight: 600; background: rgba(226, 59, 74, 0.06); }
