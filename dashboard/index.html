@@ -4582,7 +4582,7 @@ async function renderStudyDetail(idOrSym) {
   const dirCls = intent === 'long' ? 'pos' : 'neg';
   const tradePills = `
     <button class="tag stat-tag trade-pill direction-pill ${dirCls}" type="button" id="study-direction-pill" title="Trade direction (Long / Short) · click to change in OHLCV popup">${intent.toUpperCase()}</button>
-    <button class="tag stat-tag trade-pill ${gainCls}" type="button" id="study-gain-pill" title="${intent === 'short' ? 'Gain = (Low − Open) / Open · raw signed drop · negative = short profit · click to edit OHLCV' : 'Gain = (High − Open) / Open · raw signed rise · positive = long profit · click to edit OHLCV'}">Gain <span id="study-gain-val">${fmtMetric(initGain)}</span></button>
+    <button class="tag stat-tag trade-pill ${gainCls}" type="button" id="study-gain-pill" title="${intent === 'short' ? 'Move = (Low − Open) / Open · raw signed drop · negative = short profit · click to edit OHLCV' : 'Move = (High − Open) / Open · raw signed rise · positive = long profit · click to edit OHLCV'}">Move <span id="study-gain-val">${fmtMetric(initGain)}</span></button>
     <button class="tag stat-tag trade-pill ${stopCls}" type="button" id="study-stop-pill" title="${intent === 'short' ? 'Stop = (High − Open) / Open · raw signed rise · positive = short drawdown · click to edit OHLCV' : 'Stop = (Low − Open) / Open · raw signed drop · negative = long drawdown · click to edit OHLCV'}">Stop <span id="study-stop-val">${fmtMetric(initStop)}</span></button>`;
   // Day-1 badge if applicable (from snapshot's _dayLabel — saved at the time the study was added)
   const dayChip = (study.snapshot?._dayLabel === 'day1') ? `<span class="day-badge day1">day1</span>` : '';
