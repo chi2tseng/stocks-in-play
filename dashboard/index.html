@@ -4040,10 +4040,18 @@ function studyPreviewCardHtml(st, idx) {
   const chart = st.customChart || (s.tv && s.tv.chart) || null;
   const msHiddenByUser = Array.isArray(st.hiddenSections) && st.hiddenSections.includes('ms_table');
   const msHtml = (chart && !msHiddenByUser) ? renderCompactReadonlyMsTable(chart) : '';
+  // Date display priority: ohlcv.date (user-filled in the Gain/Stop popup) wins over
+  // savedAt (default = creation time). Hover-title spells out which source is being shown
+  // so the user can tell at a glance.
+  const ohlcvDate = (st.ohlcv && st.ohlcv.date) ? st.ohlcv.date : '';
+  const displayDate = ohlcvDate || (st.savedAt || '').slice(0, 10);
+  const dateTitle = ohlcvDate
+    ? `Trading day from OHLCV (set in the Gain/Stop popup). Saved on ${(st.savedAt || '').slice(0, 10)}.`
+    : `Saved on this date. Fill OHLCV.date in the Gain/Stop popup to override with the actual trading day.`;
   return `<a class="sip-card" href="#/study/${st.id || st.symbol}" style="text-decoration:none;color:inherit;display:block;position:relative">
     <button class="study-preview-del" data-id="${st.id || st.symbol}" title="Delete study"
             onclick="event.preventDefault();event.stopPropagation();handleDeleteStudyFromList('${st.id || st.symbol}');">✕</button>
-    <span class="sip-rank-row"><span class="sip-rank">#${idx + 1}</span><span class="study-saved-on">${(st.savedAt || '').slice(0, 10)}</span></span>
+    <span class="sip-rank-row"><span class="sip-rank">#${idx + 1}</span><span class="study-saved-on" title="${dateTitle}">${displayDate}</span></span>
     <div class="sip-header"><div class="sip-sym">${st.symbol}</div><div class="sip-chg ${chgCls}">${fmtPct(chg)}</div></div>
     <div class="sip-name">${escapeHtml(s.name || '')}</div>
     <div class="sip-meta">${chgPill} ${typeBadges} ${intentBadge} ${potentialChip}</div>
