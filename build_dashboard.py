@@ -1803,17 +1803,17 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
   );
 }
 /* Compact readonly preview (Studies cards only) — show ONE reported quarter + 4 forward
-   estimates. Two padding tweaks:
-   1. Bump right padding on ALL cells to 14px so the est values (1.60 / 11.24B / +233% / etc.)
-      don't hug the right edge of their column — the default 6px from the base rule looked
-      cramped against the table's right border.
-   2. First-child (reported column) gets even more padding-right: 22px so its right-aligned
-      values appear visually centered while still aligning vertically with each other.
-   Numbers stay right-aligned (decimals + minus signs line up vertically across rows). */
+   estimates. Symmetric horizontal padding so each cell has equal breathing room on its
+   left and right edges (no more cramped right edge or asymmetric left bias):
+     · est columns:  14px on both sides
+     · first column: 22px on both sides — extra padding keeps the right-aligned reported
+       values visually anchored toward the center of the column rather than hugging the
+       divider.
+   Numbers stay right-aligned to each other (decimals + minus signs line up vertically). */
 .ms-table.ms-table-readonly th,
-.ms-table.ms-table-readonly td { padding-right: 14px; }
+.ms-table.ms-table-readonly td { padding-left: 14px; padding-right: 14px; }
 .ms-table.ms-table-readonly th:first-child,
-.ms-table.ms-table-readonly td:first-child { text-align: right; padding-right: 22px; }
+.ms-table.ms-table-readonly td:first-child { text-align: right; padding-left: 22px; padding-right: 22px; }
 .ms-table .pos { color: var(--pos); font-weight: 600; background: rgba(0, 168, 126, 0.06); }
 .ms-table .neg { color: var(--neg); font-weight: 600; background: rgba(226, 59, 74, 0.06); }
 .ms-table .nm { color: var(--stone); }
