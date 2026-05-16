@@ -909,16 +909,22 @@ body.dark .catalyst-type-pill.cat-type-ep            { color: #ff9bcd; }
 }
 .chg-cell.pos .gap-pct, .chg-cell.pos .move-pct, .chg-cell.pos .day-pct { color: var(--pos) !important; }
 .chg-cell.neg .gap-pct, .chg-cell.neg .move-pct, .chg-cell.neg .day-pct { color: var(--neg) !important; }
-/* Vol readout — matches gap/move/day visual hierarchy (uppercase muted label + bold ink value). */
+/* Vol readout — matches gap/move/day visual hierarchy (uppercase muted label + bold ink value).
+   !important on label/value colours so nothing in the surrounding .stock-header / .vol-editable
+   inheritance chain can override them. */
 .vol-readout {
   font-family: var(--font-mono); margin-top: 2px;
   display: inline-flex; align-items: baseline; gap: 6px; justify-content: flex-end;
+  color: var(--ink);
 }
 .vol-readout .vol-label {
-  color: var(--mute); font-weight: 500; font-size: 10px;
+  color: var(--mute) !important; font-weight: 500; font-size: 10px;
   text-transform: uppercase; letter-spacing: 0.6px;
 }
-.vol-readout .vol-text { font-weight: 700; font-size: 14px; color: var(--ink); }
+.vol-readout .vol-editable { color: var(--ink); }
+.vol-readout .vol-editable .vol-text {
+  font-weight: 700 !important; font-size: 14px !important; color: var(--ink) !important;
+}
 
 /* Trade pills (LONG/SHORT, Gain, Stop) — buttons that need to LOOK identical to the
    surrounding span-based .stat-tag pills. Kill the UA <button> defaults: border, native
