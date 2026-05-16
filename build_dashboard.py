@@ -1779,7 +1779,7 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .ms-table th.ms-divider { position: relative; }
 .ms-table .ms-divider::before {
   content: ''; position: absolute;
-  left: 35%; top: 0; bottom: 0;
+  left: 10%; top: 0; bottom: 0;
   width: 3px; background: var(--primary);
   pointer-events: none;
 }
