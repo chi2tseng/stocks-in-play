@@ -665,11 +665,14 @@ body.readonly-mode .study-delete-outer { display: none !important; }
 
 /* Custom catalyst types — Notion-style multi-select pills */
 .catalyst-types-row { display: inline-flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+/* Catalyst pills — match the SIP-page .tag-earnings aesthetic: bold body-font text on a
+   solid tinted background, no border, low text-transform so the label reads naturally.
+   Padding split: 4px 4px 4px 11px so the inline X stays balanced when present. */
 .catalyst-type-pill {
-  display: inline-flex; align-items: center; gap: 4px; padding: 3px 4px 3px 10px;
-  font-size: 12px; font-weight: 600; border-radius: var(--r-pill);
+  display: inline-flex; align-items: center; gap: 4px; padding: 4px 4px 4px 11px;
+  font-size: 11px; font-weight: 700; border-radius: var(--r-pill);
   font-family: var(--font-body); letter-spacing: 0.2px;
-  background: var(--surface-soft); color: var(--ink); border: 1px solid var(--hairline);
+  background: var(--surface-soft); color: var(--ink); border: none;
   transition: filter 0.12s;
 }
 .catalyst-type-pill[data-action="edit-cat-type"] { cursor: pointer; }
@@ -694,17 +697,17 @@ body.dark .catalyst-type-pill .pill-x { background: rgba(255,255,255,0.08); }
 }
 .catalyst-type-add:hover { color: var(--primary); border-color: var(--primary); }
 
-/* Catalyst-type palette — saturated solid-color tints for fast identification.
-   Each preset has its own hue + matching darker text. Borders match the bg hue at 0.5α so
-   the pills feel solid in light mode and still legible in dark mode (text auto-lightens). */
-.cat-type-earnings      { background: rgba(73, 79, 223, 0.22);  color: var(--primary);            border-color: rgba(73, 79, 223, 0.50); }
-.cat-type-momentum      { background: rgba(255, 178, 30, 0.24); color: #8a5800;                   border-color: rgba(255, 178, 30, 0.55); }
-.cat-type-fda           { background: rgba(0, 168, 126, 0.22);  color: var(--pos);                border-color: rgba(0, 168, 126, 0.50); }
-.cat-type-ma            { background: rgba(226, 59, 74, 0.22);  color: var(--neg);                border-color: rgba(226, 59, 74, 0.50); }
-.cat-type-contract      { background: rgba(94, 158, 214, 0.24); color: #1e5d8e;                   border-color: rgba(94, 158, 214, 0.55); }
-.cat-type-technical     { background: rgba(160, 100, 220, 0.22);color: #5928a3;                   border-color: rgba(160, 100, 220, 0.55); }
-.cat-type-fbo           { background: rgba(255, 105, 100, 0.22);color: #b53b3b;                   border-color: rgba(255, 105, 100, 0.55); }
-.cat-type-short-squeeze { background: rgba(255, 140, 0, 0.24);  color: #8a4500;                   border-color: rgba(255, 140, 0, 0.55); }
+/* Catalyst-type palette — matches the SIP page's .tag-earnings design system: solid pastel
+   tint background (~0.14 alpha) + bold deep-tone text. Each preset has its own hue. The
+   text colour is intentionally darker than the bg so it pops without needing a border. */
+.cat-type-earnings      { background: rgba(73, 79, 223, 0.14);  color: var(--primary-deep); }
+.cat-type-momentum      { background: rgba(255, 178, 30, 0.18); color: #8a5800; }
+.cat-type-fda           { background: rgba(0, 168, 126, 0.16);  color: #008060; }
+.cat-type-ma            { background: rgba(226, 59, 74, 0.14);  color: #b03040; }
+.cat-type-contract      { background: rgba(94, 158, 214, 0.18); color: #1e5d8e; }
+.cat-type-technical     { background: rgba(160, 100, 220, 0.16);color: #5928a3; }
+.cat-type-fbo           { background: rgba(255, 105, 100, 0.16);color: #b53b3b; }
+.cat-type-short-squeeze { background: rgba(255, 140, 0, 0.18);  color: #8a4500; }
 body.dark .cat-type-earnings      { color: #a5a9ff; }
 body.dark .cat-type-momentum,
 body.dark .cat-type-short-squeeze { color: #ffce6a; }
