@@ -17,14 +17,18 @@ Claude's judgment.
 
 ## § Mode flags (arg parsing)
 
+**Auto-rebuild + auto-push is the default.** Every successful run finishes with
+`py build_dashboard.py` + `git add/commit/push` automatically (per the user's standing
+"make everything push after executing both /SIPs and /update-studies" instruction). The
+only way to skip git is `dry-run`.
+
 | Arg | Effect |
 |---|---|
-| _(none)_ | **Default: blanks only.** Skip studies whose OHLCV bar is fully filled. Skip TV scrape for earnings studies whose `snapshot.tv` is already present. Only `newsDetail` / `catalyst` blanks get composed. Manual data is sacred. |
+| _(none)_ | **Default: blanks only + auto rebuild + auto push.** Skip studies whose OHLCV bar is fully filled. Skip TV scrape for earnings studies whose `snapshot.tv` is already present. Only `newsDetail` / `catalyst` blanks get composed. Manual data is sacred. Run finishes with `build_dashboard.py` + `git push`. |
 | `safe` | Explicit alias for the default. Kept for backwards compatibility. |
-| `refresh` | **Force overwrite.** Re-fetch every study's OHLCV at its `ohlcv.date` and OVERWRITE existing values. Re-run TV scrape for every earnings-tagged study (including ones with a filled `snapshot.tv`). Useful after the user changes a study's date pill, or after a company has reported a new quarter since the last refresh. News is still only filled if empty (manual user-edits to newsDetail are NEVER overwritten — even in refresh mode). |
-| `dry-run` | Print the planned diff but don't write back. Useful for previewing what `refresh` would change before committing to it. |
+| `refresh` | **Force overwrite.** Re-fetch every study's OHLCV at its `ohlcv.date` and OVERWRITE existing values. Re-run TV scrape for every earnings-tagged study (including ones with a filled `snapshot.tv`). Useful after the user changes a study's date pill, or after a company has reported a new quarter since the last refresh. News is still only filled if empty (manual user-edits to newsDetail are NEVER overwritten — even in refresh mode). Still auto-rebuilds + pushes. |
+| `dry-run` | Print the planned diff but don't write back, don't rebuild, don't push. Useful for previewing what `refresh` would change before committing to it. |
 | `sym SYM1 SYM2 ...` | Restrict to specific tickers. Combinable with the other modes (e.g. `/update-studies refresh sym AMD FIG`). |
-| `then rebuild and push` | After the writeback, run `py build_dashboard.py` and `git add/commit/push` without re-prompting. |
 
 The skill matches these flags in natural language (e.g. "refresh AMD", "update studies in safe mode for FIG and ARM").
 
@@ -314,10 +318,13 @@ where ohlcv.open was null (the `/SIPs` Phase 10b backfill path — see SIPs SKIL
 If the build errors, log it but continue to Phase 7 — `studies.json` is still useful
 even if the static build failed.
 
-## § Phase 7 — Commit + push
+## § Phase 7 — Commit + push (AUTO, required)
 
-Same as `/SIPs` Phase 11. ASK THE USER before pushing — don't auto-commit unless they
-said "and push" in the original request.
+**Auto-push is the default.** Mirror `/SIPs` Phase 11's behaviour: every run that mutated
+studies.json closes with a commit + push so the hosted Pages mirror stays current.
+Don't prompt — the user has standing approval per their explicit instruction "make
+everything to push after executed both /SIPs and /update-studies". The only way to skip
+is the `dry-run` arg.
 
 ```powershell
 cd D:\SIPs
@@ -328,7 +335,9 @@ git push
 ```
 
 If zero studies changed, do NOT make an empty commit. Print
-`[OK] No changes — all studies current.`
+`[OK] No changes — all studies current.` and skip both commit and push.
+
+If `dry-run` was passed, print the diff that WOULD be written but don't touch git.
 
 GitHub Pages auto-deploys in ~30 seconds. Hosted dashboard URL:
 `https://chi2tseng.github.io/stocks-in-play/`.
