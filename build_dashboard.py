@@ -1070,10 +1070,15 @@ body.readonly-mode .study-delete-outer { display: none !important; }
 body.dark .catalyst-type-pill[data-action="edit-cat-type"]:hover { filter: brightness(1.15); }
 .catalyst-type-pill .pill-label { display: inline-block; }
 .catalyst-type-pill .pill-x {
-  background: transparent; border: none; cursor: pointer; padding: 0 4px;
-  font-size: 13px; color: var(--mute); border-radius: 50%; line-height: 1;
+  background: rgba(0,0,0,0.06); border: none; cursor: pointer;
+  width: 16px; height: 16px; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 14px; color: var(--mute); border-radius: 50%; line-height: 1;
+  margin-left: 2px;
+  transition: background 0.12s, color 0.12s;
 }
-.catalyst-type-pill .pill-x:hover { color: var(--neg); background: rgba(226,59,74,0.10); }
+.catalyst-type-pill .pill-x:hover { color: #fff; background: var(--neg); }
+body.dark .catalyst-type-pill .pill-x { background: rgba(255,255,255,0.08); }
 .catalyst-type-add {
   display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px;
   font-size: 12px; font-weight: 600; cursor: pointer;
@@ -1116,16 +1121,21 @@ body.dark .cat-type-fbo { color: #ff9a96; }
 }
 .catalyst-type-popup .cat-option:hover { background: var(--surface-soft); }
 .catalyst-type-popup .cat-option.selected::after { content: '✓'; margin-left: auto; color: var(--pos); padding-left: 4px; }
-/* Small × on user-created options — clicking it forgets the type from the dropdown list */
+/* × on every option (preset or custom) — clicking forgets the type from the dropdown list.
+   Always visible (not hover-only) so it's discoverable. */
+.catalyst-type-popup .cat-option { padding-right: 6px; }
 .catalyst-type-popup .cat-forget-x {
-  margin-left: auto; padding: 1px 8px;
-  background: transparent; border: none; cursor: pointer;
+  margin-left: auto; width: 22px; height: 22px; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; border: 1px solid transparent; cursor: pointer;
   color: var(--stone); font-size: 14px; line-height: 1;
-  border-radius: 50%;
-  opacity: 0; transition: opacity 0.12s, color 0.12s, background 0.12s;
+  border-radius: 50%; opacity: 0.65;
+  transition: opacity 0.12s, color 0.12s, background 0.12s, border-color 0.12s;
 }
 .catalyst-type-popup .cat-option:hover .cat-forget-x { opacity: 1; }
-.catalyst-type-popup .cat-forget-x:hover { color: var(--neg); background: rgba(226,59,74,0.10); }
+.catalyst-type-popup .cat-forget-x:hover {
+  color: #fff; background: var(--neg); border-color: var(--neg); opacity: 1;
+}
 .catalyst-type-popup .cat-option.selected .cat-forget-x { display: none; }
 .catalyst-type-popup .cat-create {
   padding: 6px 10px; cursor: pointer; border-radius: var(--r-sm);
@@ -4358,7 +4368,11 @@ function catalystTypeClass(key) {
 // Custom (user-created) catalyst types — persisted to localStorage so the dropdown remembers
 // them across sessions. NEW types created via "+ Create new <X>" land here. Stored as a flat
 // array of label strings (case preserved). Lookup is case-insensitive.
-const CUSTOM_CAT_TYPES_KEY = 'sips-custom-catalyst-types';
+// Separate `sips-hidden-preset-catalyst-types` key tracks which built-in presets the user has
+// curated out of the dropdown — they stay defined in code (so existing study pills still
+// color-code correctly) but don't appear as picker options.
+const CUSTOM_CAT_TYPES_KEY  = 'sips-custom-catalyst-types';
+const HIDDEN_CAT_PRESETS_KEY = 'sips-hidden-preset-catalyst-types';
 function loadCustomCatTypes() {
   try {
     const arr = JSON.parse(localStorage.getItem(CUSTOM_CAT_TYPES_KEY) || '[]');
@@ -4371,7 +4385,6 @@ function saveCustomCatTypes(arr) {
 function rememberCustomCatType(label) {
   const arr = loadCustomCatTypes();
   const lower = label.toLowerCase();
-  // Skip if it matches a preset OR an existing custom (case-insensitive)
   if (CATALYST_PRESETS.some(p => p.label.toLowerCase() === lower || p.key === lower.replace(/\s+/g, '-'))) return false;
   if (arr.some(a => a.toLowerCase() === lower)) return false;
   arr.push(label);
@@ -4382,15 +4395,28 @@ function forgetCustomCatType(label) {
   const arr = loadCustomCatTypes().filter(a => a.toLowerCase() !== label.toLowerCase());
   saveCustomCatTypes(arr);
 }
-// All available options for the picker — built-in presets + user-remembered customs.
+function loadHiddenPresets() {
+  try {
+    const arr = JSON.parse(localStorage.getItem(HIDDEN_CAT_PRESETS_KEY) || '[]');
+    return Array.isArray(arr) ? arr : [];
+  } catch { return []; }
+}
+function hidePresetCatType(key) {
+  const arr = loadHiddenPresets();
+  if (!arr.includes(key)) arr.push(key);
+  localStorage.setItem(HIDDEN_CAT_PRESETS_KEY, JSON.stringify(arr));
+}
+// All available options for the picker — built-in presets (minus user-hidden ones) + customs.
 function getAllCatalystOptions() {
+  const hidden = new Set(loadHiddenPresets());
+  const presets = CATALYST_PRESETS.filter(p => !hidden.has(p.key));
   const customs = loadCustomCatTypes().map(label => ({
     key: label.toLowerCase().replace(/\s+/g, '-'),
     label,
-    cls: '',           // default surface color (no preset palette)
+    cls: '',
     isCustom: true,
   }));
-  return [...CATALYST_PRESETS, ...customs];
+  return [...presets, ...customs];
 }
 function getStudyTypes(study) {
   // Priority: user override → snapshot.type (legacy single-type) → 'momentum'
@@ -4849,9 +4875,11 @@ async function renderStudyDetail(idOrSym) {
       const matches = all.filter(p => !q || p.label.toLowerCase().includes(q) || p.key.includes(q));
       const optHtml = matches.map(p => {
         const isSel = mode === 'add' && (selected.has(p.label) || selected.has(p.key));
-        const forgetX = p.isCustom
-          ? `<button class="cat-forget-x" type="button" data-action="forget-custom" data-key="${escapeHtml(p.label)}" title="Remove from dropdown list">&times;</button>`
-          : '';
+        // Every option (preset OR custom) gets a delete-X. Presets get hidden from the dropdown
+        // (still rendered when used in studies), customs get fully forgotten from localStorage.
+        const action = p.isCustom ? 'forget-custom' : 'hide-preset';
+        const title = p.isCustom ? 'Forget this custom tag' : 'Hide this preset from the dropdown';
+        const forgetX = `<button class="cat-forget-x" type="button" data-action="${action}" data-key="${escapeHtml(p.isCustom ? p.label : p.key)}" title="${title}">&times;</button>`;
         return `<div class="cat-option ${isSel ? 'selected' : ''}" data-key="${escapeHtml(p.label)}">
           <span class="tag catalyst-type-pill ${p.cls}" style="padding:1px 8px;font-size:11px;pointer-events:none">${escapeHtml(p.label)}</span>
           ${forgetX}
@@ -4873,11 +4901,21 @@ async function renderStudyDetail(idOrSym) {
     inp.addEventListener('input', () => { host.innerHTML = renderOptions(inp.value); });
     inp.addEventListener('keydown', e => { if (e.key === 'Escape') pop.remove(); });
     host.addEventListener('click', e => {
-      // "forget custom type" X — handled FIRST so its click doesn't also fire the parent option
+      // Forget/hide X — handled FIRST so the click doesn't bubble to the parent option (which
+      // would otherwise toggle/swap the tag). Custom types get fully forgotten; presets get
+      // hidden from the dropdown but the built-in CATALYST_PRESETS entry stays in code so any
+      // existing study pill still color-codes correctly.
       const forgetBtn = e.target.closest('[data-action="forget-custom"]');
       if (forgetBtn) {
         e.preventDefault(); e.stopPropagation();
         forgetCustomCatType(forgetBtn.dataset.key);
+        host.innerHTML = renderOptions(inp.value);
+        return;
+      }
+      const hideBtn = e.target.closest('[data-action="hide-preset"]');
+      if (hideBtn) {
+        e.preventDefault(); e.stopPropagation();
+        hidePresetCatType(hideBtn.dataset.key);
         host.innerHTML = renderOptions(inp.value);
         return;
       }
