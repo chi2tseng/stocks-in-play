@@ -285,10 +285,27 @@ For each study (regardless of tag):
 
 4. **Compose** a one-liner `catalyst` (≤200 chars) for the preview-card teaser.
 
-5. **Respect user edits**: only WRITE `snapshot.newsDetail` and `snapshot.catalyst` if
-   they're currently **empty** (`null` or `""`). If the user has manually edited either,
-   log `[info] SYM: keeping existing news` and skip. The reason: the user's hand-curated
-   version is usually better than auto-fetched.
+5. **Record source URLs** in `study.snapshot.sources` (REQUIRED whenever you compose new
+   `newsDetail`): an array of `{ label, url, publishedAt? }` objects pointing to the
+   ORIGINAL articles / filings / press releases you consulted while writing the body.
+   Same rules as /SIPs Phase 7's `sources` field:
+   - 1-4 entries, most authoritative first
+   - Priority order: company IR / SEC filings → Reuters/Bloomberg/WSJ → Briefing.com /
+     TheFly → Yahoo Finance → industry trade press
+   - NEVER use Reddit / Twitter / Stocktwits as primary
+   - `label` should be human-readable (e.g. "Reuters — AMD Q4 2025 results"); hostname is
+     the rendering fallback if `label` is missing
+   - `url` must be a stable permalink, not a search result page
+
+   The dashboard renders these as small clickable pills below the news-detail body
+   (`新聞來源 · Sources` section, opens in new tab). When the user wants to verify a
+   big-number claim like "+57.7% EPS surprise" or "Citi PT $169 → $287", one click on
+   the source pill opens the original article.
+
+6. **Respect user edits**: only WRITE `snapshot.newsDetail` / `snapshot.catalyst` /
+   `snapshot.sources` if they're currently **empty** (`null` or `""` / empty array). If
+   the user has manually edited either, log `[info] SYM: keeping existing news` and
+   skip. The reason: the user's hand-curated version is usually better than auto-fetched.
 
 `docs/NEWS_TIME_SPEC.md` is the canonical contract for news formatting. Read it before
 writing news_detail-style content if you need to include `publishedAt`.
@@ -392,6 +409,10 @@ Per-ticker failures NEVER abort the run — finish the other tickers first.
     "tv":        { "latestEPS": -0.32, ..., "chart": {...} }, // Phase 3: earnings only
     "sessions":  [],
     "newsDetail": "5/13 Q1 2026 業績...",                     // Phase 4: only if was empty
+    "sources": [                                              // Phase 4: source URLs (clickable pills)
+      { "label": "Nebius Q1 2026 IR release", "url": "https://group.nebius.com/...", "publishedAt": "2026-05-13T16:00:00-04:00" },
+      { "label": "Reuters — Nebius +621% rev",  "url": "https://www.reuters.com/..." }
+    ],
     "scanDate":  "2026-05-16"
   },
   "ohlcv": {                                                  // Phase 2: every dated study

@@ -1197,6 +1197,38 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .news-detail p { margin: 0 0 14px; line-height: 1.75; font-size: 15px; color: var(--body); }
 .news-detail p:last-child { margin-bottom: 0; }
 /* Editable variant inside Studies — same look as read-only but with focus state + placeholder */
+/* News-detail source links — small pill row at the bottom of the news-detail card listing
+   the original headline URLs that the /SIPs or /update-studies research consulted. Each pill
+   opens in a new tab. Persisted to study.snapshot.sources (and news_detail.json) so the
+   research's source-of-truth is always one click away. */
+.news-detail-sources {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 14px; padding-top: 12px;
+  border-top: 1px dashed var(--hairline);
+}
+.news-detail-sources-label {
+  font-size: 10px; font-weight: 700; color: var(--stone);
+  text-transform: uppercase; letter-spacing: 0.8px;
+  align-self: center; margin-right: 6px;
+}
+.news-source-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 8px; font-size: 11px; font-weight: 500;
+  background: var(--surface-soft); color: var(--mute);
+  border-radius: var(--r-pill); text-decoration: none;
+  font-family: var(--font-body); letter-spacing: 0.1px;
+  transition: background 0.12s, color 0.12s;
+}
+.news-source-link:hover { background: var(--primary); color: #fff; }
+.news-source-link .ext-icon {
+  width: 9px; height: 9px; opacity: 0.6;
+}
+.news-source-link:hover .ext-icon { opacity: 1; }
+.news-source-pub {
+  font-family: var(--font-mono); font-size: 10px;
+  color: var(--stone); margin-left: 4px;
+}
+
 .news-detail-edit {
   min-height: 60px; padding: 4px 0;
   outline: none; font-family: var(--font-body); font-size: 15px; line-height: 1.75; color: var(--body);
@@ -3242,6 +3274,30 @@ async function buildNewsHistory(sym) {
 function clockSvg() {
   return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
 }
+function extLinkSvg() {
+  return `<svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14L21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>`;
+}
+// Render the "source links" footer for news-detail cards. `sources` is the array stored at
+// study.snapshot.sources (or stocks[sym].sources from news_detail.json's per-symbol entry).
+// Each entry: { label: "Reuters", url: "https://...", publishedAt?: "2026-05-14T08:30:00-04:00" }.
+// Returns empty string if no valid sources — caller doesn't need to guard.
+function renderNewsSources(sources) {
+  if (!Array.isArray(sources) || sources.length === 0) return '';
+  const items = sources
+    .filter(s => s && typeof s.url === 'string' && s.url.length > 0)
+    .map(s => {
+      // Derive a readable label: explicit `label` wins, else parse hostname from URL.
+      let label = s.label;
+      if (!label) {
+        try { label = new URL(s.url).hostname.replace(/^www\./, ''); }
+        catch { label = s.url.slice(0, 40); }
+      }
+      const pub = s.publishedAt ? `<span class="news-source-pub">${escapeHtml(String(s.publishedAt).slice(0, 10))}</span>` : '';
+      return `<a class="news-source-link" href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer">${extLinkSvg()}<span>${escapeHtml(label)}</span>${pub}</a>`;
+    });
+  if (items.length === 0) return '';
+  return `<div class="news-detail-sources"><span class="news-detail-sources-label">新聞來源 · Sources</span>${items.join('')}</div>`;
+}
 function fileSvg() {
   return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
 }
@@ -3341,11 +3397,12 @@ async function renderStock(sym) {
   const pubTime = realPub || (fmtNewsTime(DATA.date, DATA.scanTime) + (DATA.scanTime ? ' ET' : '') + ' (scan time)');
   const metaPill = `<div class="news-detail-meta">${clockSvg()}<span>Published ${pubTime}</span></div>`;
   let newsDetailHtml = '';
+  const sourcesHtml = renderNewsSources(s.sources);
   if (detail) {
     const paragraphs = String(detail).split(/\n\n+/).filter(Boolean).map(p => `<p>${escapeHtml(p).replace(/\n/g,'<br>')}</p>`).join('');
-    newsDetailHtml = `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3>${metaPill}${paragraphs}</div>`;
+    newsDetailHtml = `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3>${metaPill}${paragraphs}${sourcesHtml}</div>`;
   } else if (fallbackCatalyst) {
-    newsDetailHtml = `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3>${metaPill}<p>${escapeHtml(fallbackCatalyst)}</p></div>`;
+    newsDetailHtml = `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3>${metaPill}<p>${escapeHtml(fallbackCatalyst)}</p>${sourcesHtml}</div>`;
   }
   // Stock-detail header pills — split into TWO rows:
   //   • headerShortPills:  Short Float + DTC (Finviz-sourced shorts metrics)
@@ -4827,10 +4884,16 @@ async function renderStudyDetail(idOrSym) {
   // not yet filled in newsDetail.
   const userNews = (study.newsDetail != null) ? study.newsDetail : null;
   const snapNews = s.newsDetail || '';
-  const newsContent = (userNews != null && userNews !== '') ? userNews
+  // Source-link footer — read from study.snapshot.sources (preferred, per the schema
+  // populated by /SIPs Phase 7 + /update-studies Phase 4). Falls back to s.sources if the
+  // study was hydrated from a per-day data.json blob that put sources on the stock object.
+  const newsSources = (study.snapshot && Array.isArray(study.snapshot.sources)) ? study.snapshot.sources
+                    : (Array.isArray(s.sources) ? s.sources : null);
+  const sourcesFooter = renderNewsSources(newsSources);
+  const newsContent = ((userNews != null && userNews !== '') ? userNews
                     : snapNews ? String(snapNews).split(/\n\n+/).filter(Boolean).map(p => `<p>${escapeHtml(p).replace(/\n/g,'<br>')}</p>`).join('')
                     : cat ? `<p>${escapeHtml(cat)}</p>`
-                    : '';
+                    : '') + sourcesFooter;
   const newsPlaceholder = 'Add catalyst notes, news headlines, or analyst commentary…';
   // Forward YoY block — copies the renderStock pattern exactly so the Copy button works.
   // If the user has edited the MS table (customChart present), regenerate the YoY text from

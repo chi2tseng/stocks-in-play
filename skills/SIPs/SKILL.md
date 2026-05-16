@@ -545,12 +545,20 @@ After the 繁體中文 brief is written to chat, publish today's scan to the sta
   "MU": {
     "detail": "Q3 FY26 EPS $12.20 +682%、營收 $23.86B +196%、HBM 已售罄至 fiscal 2026 年底。\n\nManagement 在電話會議上提到 ...\n\n分析師反應：Citi 升 PT 至 $X，Morgan Stanley overweight。",
     "publishedAt": "2026-05-13T16:05:00-04:00",
-    "publishedTimezone": "ET"
+    "publishedTimezone": "ET",
+    "sources": [
+      { "label": "Micron Q3 FY26 8-K", "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000723125&type=8-K", "publishedAt": "2026-05-13T16:05:00-04:00" },
+      { "label": "Reuters — Micron HBM sold out", "url": "https://www.reuters.com/technology/micron-q3-fy26-hbm-sold-out-2026-05-13/" },
+      { "label": "Yahoo Finance — earnings call transcript", "url": "https://finance.yahoo.com/news/micron-mu-q3-2026-earnings-call.html" }
+    ]
   },
   "PSIX": {
     "detail": "Q1 2026 營收 $128.6M 大miss 預期 $160.8M (-20%) ...",
     "publishedAt": "2026-05-13T07:00:00-04:00",
-    "publishedTimezone": "ET"
+    "publishedTimezone": "ET",
+    "sources": [
+      { "label": "Power Solutions International press release", "url": "https://www.psiengines.com/news/2026/q1-2026-results.html", "publishedAt": "2026-05-13T07:00:00-04:00" }
+    ]
   }
 }
 ```
@@ -570,6 +578,24 @@ After the 繁體中文 brief is written to chat, publish today's scan to the sta
 - Keep total length ~150-400 chars (3-6 short paragraphs) — readable on a stock detail card
 
 **`publishedAt` rules:** see NEWS_TIME_SPEC.md §3-§4. Always include the TZ offset.
+
+**`sources` rules (REQUIRED for top-10 SIPs and top-4 shorts):**
+- Array of `{ label, url, publishedAt? }` objects pointing to the ORIGINAL articles/filings/press releases that the `detail` field is summarizing.
+- 1-4 sources per ticker — pick the most authoritative + most accessible. Order matters: most authoritative first.
+- **Source priority** (mirror NEWS_TIME_SPEC.md §3 order):
+  1. **Issuer / company sources** — IR press release URLs, SEC filings (8-K / 10-Q permalinks), official investor presentations
+  2. **Tier-1 financial news** — Reuters, Bloomberg, WSJ, FT (avoid paywalled deeper pages unless headline+lede are public)
+  3. **Briefing.com / TheFly** — for analyst-action stories
+  4. **Yahoo Finance** — for earnings call transcripts and consensus aggregations
+  5. **Industry trade press** — only when the above don't carry the story (e.g. STAT News for FDA decisions, Janes/Defense News for defense contracts)
+- **NEVER** use Reddit / Twitter / Stocktwits / aggregator-only headlines as the primary source. They can supplement but not stand alone.
+- `label` should be human-readable (e.g. "Reuters — Micron HBM sold out", not the raw URL). Hostname-only is the rendering fallback if `label` is missing.
+- `url` MUST be a stable permalink. Skip ephemeral search-result URLs, session-id query params, etc.
+- Optional `publishedAt` on each source (ISO 8601 with TZ) — useful when the entry-level `publishedAt` is the EVENT time but a specific source's article publish time differs (e.g. the company filed at 4:05pm but Reuters posted at 5:23pm). If unsure, omit.
+
+The dashboard renders these as small clickable pills below the news-detail body
+(`新聞來源 · Sources` section, opens in new tab). User clicks to verify the underlying
+research, especially for big-number claims like "+682% EPS YoY" or "HBM sold out".
 
 ### 8.2 Run the build
 
