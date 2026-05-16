@@ -909,6 +909,11 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 .studies-filter-popup .sf-count { margin-left: auto; color: var(--stone); font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
 .studies-filter-popup .sf-option.checked .sf-count { display: none; }
 .studies-filter-popup .sf-empty { padding: 18px; text-align: center; color: var(--mute); font-size: 12px; }
+.studies-filter-popup .sf-section-label {
+  padding: 8px 10px 4px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.7px; color: var(--stone);
+}
+.studies-filter-popup .sf-section-label:first-child { padding-top: 2px; }
 
 /* Placeholder badge shown on studies awaiting /SIPs data fill */
 .placeholder-badge {
@@ -1294,6 +1299,54 @@ body.dark .cat-type-fbo { color: #ff9a96; }
   padding: 14px 22px; border-top: 1px solid var(--hairline);
   display: flex; justify-content: flex-end;
 }
+/* Long/Short direction toggle at top of OHLCV modal — drives Gain/Stop column anchors. */
+.ohlcv-direction-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 22px 4px;
+}
+.ohlcv-direction-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px;
+  color: var(--mute);
+}
+.ohlcv-direction-toggle {
+  display: inline-flex; gap: 4px; padding: 3px;
+  background: var(--surface-soft); border-radius: var(--r-pill);
+}
+.ohlcv-direction-toggle .dir-btn {
+  padding: 5px 14px; border: none; cursor: pointer;
+  background: transparent; color: var(--mute);
+  font-size: 12px; font-weight: 700; font-family: var(--font-body); letter-spacing: 0.3px;
+  border-radius: var(--r-pill);
+  transition: background 0.12s, color 0.12s, box-shadow 0.12s;
+}
+.ohlcv-direction-toggle .dir-btn:hover { color: var(--ink); }
+.ohlcv-direction-toggle .dir-btn.active { background: var(--canvas); color: var(--ink); box-shadow: 0 1px 4px rgba(15,15,25,0.06); }
+.ohlcv-direction-toggle .dir-btn[data-direction="long"].active  { color: var(--pos); }
+.ohlcv-direction-toggle .dir-btn[data-direction="short"].active { color: var(--neg); }
+
+/* Header chg readout — gap + move side-by-side, vol on its own line. */
+.chg-readout { display: inline-flex; gap: 12px; align-items: baseline; font-family: var(--font-mono); margin: 4px 0 2px; flex-wrap: wrap; justify-content: flex-end; }
+.chg-cell {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.2px;
+  display: inline-flex; align-items: baseline; gap: 4px;
+}
+.chg-cell.pos { color: var(--pos); }
+.chg-cell.neg { color: var(--neg); }
+.chg-cell > span:first-child { color: var(--mute); font-weight: 500; font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px; }
+.chg-cell.pos > span:first-child, .chg-cell.neg > span:first-child { color: var(--mute); }
+.chg-cell .gap-pct, .chg-cell .move-pct { font-family: var(--font-mono); font-weight: 700; font-size: 14px; }
+.vol-readout { font-family: var(--font-mono); font-size: 12px; color: var(--mute); }
+
+/* Direction pill (LONG / SHORT) before Gain/Stop. */
+.trade-pill.direction-pill { font-weight: 700; letter-spacing: 0.6px; font-size: 11px; }
+.trade-pill.direction-pill.pos { background: rgba(0,168,126,0.10); color: var(--pos); }
+.trade-pill.direction-pill.neg { background: rgba(226,59,74,0.10); color: var(--neg); }
+
+/* gap + move row on preview cards. */
+.sip-card .sip-chg-row { display: flex; gap: 12px; align-items: baseline; margin: 4px 0 10px; font-family: var(--font-mono); flex-wrap: wrap; }
+.sip-card .chg-cell { font-size: 12px; font-weight: 600; display: inline-flex; gap: 4px; align-items: baseline; }
+.sip-card .chg-cell > span:first-child { color: var(--mute); font-weight: 500; font-size: 9px; text-transform: uppercase; letter-spacing: 0.6px; }
+.sip-card .chg-cell .gap-pct, .sip-card .chg-cell .move-pct { font-weight: 700; font-size: 13px; }
 
 /* Editable MS table — cells become flat-styled inputs that look like cells until focused */
 .ms-table-editable .ms-cell-input {
@@ -4192,25 +4245,39 @@ function renderStudies() {
     pop.style.top = `${rect.bottom + 6}px`;
     pop.style.left = `${Math.min(rect.left, window.innerWidth - 296)}px`;
     pop.style.zIndex = '1500';
-    // Count studies per tag so the user sees how many studies each filter would surface.
+    // Count studies per tag + per direction.
     const studies = loadStudies();
     const tagCounts = new Map();
     studies.forEach(st => getStudyTypes(st).forEach(t => tagCounts.set(t, (tagCounts.get(t) || 0) + 1)));
+    const longCount  = studies.filter(st => resolveStudyIntent(st) === 'long').length;
+    const shortCount = studies.filter(st => resolveStudyIntent(st) === 'short').length;
     const renderFilterOptions = () => {
       const all = getAllCatalystOptions();
-      // Also surface any tag used by a study that isn't in CATALYST_PRESETS or custom list
-      // (e.g., legacy single-type snapshots) so the filter is comprehensive.
       const seen = new Set(all.map(o => o.label.toLowerCase()));
       tagCounts.forEach((_, t) => { if (!seen.has(t.toLowerCase())) all.push({ key: t, label: t, cls: '', isCustom: false }); });
-      // Sort: tags actually used (count > 0) first, descending by count, then unused alphabetical
       all.sort((a, b) => {
         const ca = tagCounts.get(a.label) || 0;
         const cb = tagCounts.get(b.label) || 0;
         if (ca !== cb) return cb - ca;
         return a.label.localeCompare(b.label);
       });
-      if (!all.length) return '<div class="sf-empty">No tags yet — save a few studies first.</div>';
-      return all.map(p => {
+      // Direction section — sentinels `__long` / `__short` AND'd with tag filters.
+      const longChecked  = STUDIES_FILTER.has('__long');
+      const shortChecked = STUDIES_FILTER.has('__short');
+      const directionHtml = `
+        <div class="sf-section-label">Direction</div>
+        <div class="sf-option ${longChecked ? 'checked' : ''}" data-key="__long">
+          <span class="tag direction-pill pos" style="font-weight:700;letter-spacing:0.6px;padding:1px 8px;font-size:11px;pointer-events:none;background:rgba(0,168,126,0.10);color:var(--pos)">LONG</span>
+          <span class="sf-count">${longCount}</span>
+        </div>
+        <div class="sf-option ${shortChecked ? 'checked' : ''}" data-key="__short">
+          <span class="tag direction-pill neg" style="font-weight:700;letter-spacing:0.6px;padding:1px 8px;font-size:11px;pointer-events:none;background:rgba(226,59,74,0.10);color:var(--neg)">SHORT</span>
+          <span class="sf-count">${shortCount}</span>
+        </div>
+        <div class="sf-section-label" style="margin-top:8px">Catalyst tag</div>
+      `;
+      if (!all.length) return directionHtml + '<div class="sf-empty">No tags yet — save a few studies first.</div>';
+      const tagHtml = all.map(p => {
         const isChecked = STUDIES_FILTER.has(p.label);
         const n = tagCounts.get(p.label) || 0;
         return `<div class="sf-option ${isChecked ? 'checked' : ''}" data-key="${escapeHtml(p.label)}">
@@ -4218,6 +4285,7 @@ function renderStudies() {
           <span class="sf-count">${n}</span>
         </div>`;
       }).join('');
+      return directionHtml + tagHtml;
     };
     pop.innerHTML = `
       <div class="sf-head">
@@ -4502,45 +4570,25 @@ window.handleSaveStudy = function(sym, btn) {
 // can scan ranks/intent/catalyst at a glance. Clicking the whole card opens the detail page.
 function studyPreviewCardHtml(st, idx) {
   const s = st.snapshot || {};
-  // Day's chgPct: derived from ohlcv (close − prev_close) if filled, else snapshot.chgPct
-  // (which is the gap-%, kept as a soft fallback so older cards aren't blank). Header readout
-  // uses the SAME priority as the detail page so the two views stay consistent.
   const o = st.ohlcv || {};
+  // gap % = original pre/post-market gap (snapshot); move % = intent-aware Open→High/Low.
+  const gapPct = s.chgPct;
+  const intent = resolveStudyIntent(st);
+  const movePct = studyMovePct(st);
+  // Big header chg: priority same as detail page → move > derived (close-prev_close) > gap.
   const derivedChg = (o.close != null && o.prev_close != null && o.prev_close !== 0)
     ? (o.close - o.prev_close) / o.prev_close * 100
     : null;
-  const chg = (st.chgPct != null) ? st.chgPct
-            : (derivedChg != null) ? derivedChg
-            : s.chgPct;
-  const chgCls = (chg == null) ? '' : (chg >= 0 ? 'pos' : 'neg');
-  const chgLabel = (derivedChg != null) ? 'DAY' : (chg != null ? 'GAP' : null);
-  const chgPill = chgLabel
-    ? `<span class="tag" title="${derivedChg != null ? 'Day chgPct (close − prev_close)' : 'Gap % at scan time'}">${chgLabel} <span class="dot dot-${chg >= 0 ? 'up' : 'down'}"></span> ${fmtPctShort(chg)}</span>`
-    : '';
-  // Catalyst types — show first 2 pills from study.customTypes, fallback to single snapshot.type
+  const headerChg = (st.chgPct != null) ? st.chgPct
+                  : (movePct != null)    ? movePct
+                  : (derivedChg != null) ? derivedChg
+                  : gapPct;
+  const headerChgCls = (headerChg == null) ? '' : (headerChg >= 0 ? 'pos' : 'neg');
+  // Catalyst types — first 2 pills (full set on detail page)
   const types = getStudyTypes(st).slice(0, 2);
   const typeBadges = types.map(tt => `<span class="tag catalyst-type-pill ${catalystTypeClass(tt)}" style="padding:2px 8px;font-size:11px">${escapeHtml(tt)}</span>`).join(' ');
-  const intent = st.intent || s.claudeIntent || 'long';
-  const intentBadge = `<span class="tag" style="background:${intent === 'short' ? 'rgba(226,59,74,0.10)' : 'rgba(0,168,126,0.10)'};color:${intent === 'short' ? 'var(--neg)' : 'var(--pos)'}">${intent.toUpperCase()}</span>`;
+  const intentBadge = `<span class="tag direction-pill ${intent === 'long' ? 'pos' : 'neg'}" style="font-weight:700;letter-spacing:0.6px;padding:2px 8px;font-size:11px">${intent.toUpperCase()}</span>`;
   const cat = (st.catalyst != null && st.catalyst !== '') ? st.catalyst : (s.catalyst || '');
-  // Open → High potential: shows how much the stock could have run from open. If filled this is
-  // the most valuable single number on the card — it's the "catalyst-realised return."
-  // Catalyst-realised return — intent-aware so a SHORT study's "potential" is the favourable
-  // move toward Low, not the loss-side move toward High.
-  const previewIntent = st.intent || s.claudeIntent || ((s.chgPct != null && s.chgPct < 0) ? 'short' : 'long');
-  let potentialPct = null, potentialLabel = '→High';
-  if (o.open) {
-    if (previewIntent === 'short' && o.low != null) {
-      potentialPct = (o.open - o.low) / o.open * 100;
-      potentialLabel = '→Low';
-    } else if (o.high != null) {
-      potentialPct = (o.high - o.open) / o.open * 100;
-      potentialLabel = '→High';
-    }
-  }
-  const potentialChip = potentialPct != null
-    ? `<span class="study-potential ${potentialPct >= 0 ? 'pos' : 'neg'}" title="Open → ${potentialLabel === '→Low' ? 'Low (short profit at session low)' : 'High (long profit at session high)'}">${potentialLabel} ${(potentialPct >= 0 ? '+' : '') + potentialPct.toFixed(2)}%</span>`
-    : '';
   // Mini MS table — READ-ONLY snapshot at save time. Shows the latest reported quarter
   // + 4 forward estimates (max 5 quarters total). Hidden entirely if:
   //   • the study has no chart data (placeholder studies, or tickers without TV coverage), OR
@@ -4558,13 +4606,19 @@ function studyPreviewCardHtml(st, idx) {
   const dateTitle = ohlcvDate
     ? `Trading day from OHLCV (set in the Gain/Stop popup). Saved on ${(st.savedAt || '').slice(0, 10)}.`
     : `Saved on this date. Fill OHLCV.date in the Gain/Stop popup to override with the actual trading day.`;
+  // gap / move row — same shape as the detail-page header. Each cell shows label + value.
+  const gapMoveRow = `<div class="sip-chg-row">
+    ${gapPct != null ? `<span class="chg-cell gap-cell ${cls(gapPct)}" title="Gap % at scan time">gap <span class="gap-pct">${fmtPct(gapPct)}</span></span>` : ''}
+    ${movePct != null ? `<span class="chg-cell move-cell ${cls(movePct)}" title="Day's move % from open — ${intent === 'short' ? '(Open − Low) / Open · short profit' : '(High − Open) / Open · long profit'}">move <span class="move-pct">${(movePct >= 0 ? '+' : '') + movePct.toFixed(2)}%</span></span>` : ''}
+  </div>`;
   return `<a class="sip-card" href="#/study/${st.id || st.symbol}" style="text-decoration:none;color:inherit;display:block;position:relative">
     <button class="study-preview-del" data-id="${st.id || st.symbol}" title="Delete study"
             onclick="event.preventDefault();event.stopPropagation();handleDeleteStudyFromList('${st.id || st.symbol}');">✕</button>
     <span class="sip-rank-row"><span class="sip-rank">#${idx + 1}</span><span class="study-saved-on" title="${dateTitle}">${displayDate}</span></span>
-    <div class="sip-header"><div class="sip-sym">${st.symbol}</div><div class="sip-chg ${chgCls}">${fmtPct(chg)}</div></div>
+    <div class="sip-header"><div class="sip-sym">${st.symbol}</div><div class="sip-chg ${headerChgCls}">${fmtPct(headerChg)}</div></div>
     <div class="sip-name">${escapeHtml(s.name || '')}</div>
-    <div class="sip-meta">${chgPill} ${typeBadges} ${intentBadge} ${potentialChip}</div>
+    ${gapMoveRow}
+    <div class="sip-meta">${intentBadge} ${typeBadges}</div>
     ${cat ? `<div class="sip-catalyst" style="margin-top:8px">${escapeHtml(cat)}</div>` : ''}
     ${msHtml ? `<div class="ms-pre-section-divider">Quarterly EPS / Sales (Reported + Estimate · click any value to edit)</div>${msHtml}` : ''}
   </a>`;
@@ -4684,7 +4738,27 @@ function getAllCatalystOptions() {
   return [...presets, ...customs];
 }
 
-// Active filter for the Studies list — Set of catalyst labels. Empty = no filter.
+// Resolve a study's effective trade intent. User override (`study.intent` set via the
+// Long/Short toggle in the OHLCV modal) wins; otherwise derive from the original gap
+// direction (snapshot.chgPct sign). Returns 'long' | 'short'.
+function resolveStudyIntent(st) {
+  if (st && (st.intent === 'long' || st.intent === 'short')) return st.intent;
+  const gap = (st && st.chgPct != null) ? st.chgPct : (st?.snapshot?.chgPct);
+  return (gap != null && gap < 0) ? 'short' : 'long';
+}
+// Day's MOVE % from open — favourable excursion based on intent.
+//   LONG  → (High − Open) / Open · 100
+//   SHORT → (Open − Low)  / Open · 100
+function studyMovePct(st) {
+  const o = st?.ohlcv || {};
+  if (o.open == null) return null;
+  const it = resolveStudyIntent(st);
+  if (it === 'short') return (o.low  != null) ? (o.open - o.low)  / o.open * 100 : null;
+  else                return (o.high != null) ? (o.high - o.open) / o.open * 100 : null;
+}
+
+// Active filter for the Studies list — Set of catalyst labels + intent sentinels.
+// Special keys `__long` and `__short` match against resolved study intent. Empty = no filter.
 // Lives in memory (session state); cleared on full page reload.
 const STUDIES_FILTER = new Set();
 
@@ -4718,15 +4792,16 @@ function sortStudies(arr) {
 }
 function studyMatchesFilter(study) {
   if (STUDIES_FILTER.size === 0) return true;
-  const types = getStudyTypes(study);
-  // Case-insensitive match — also match the "key" form of a preset (kebab) against filter labels
-  return types.some(t => {
-    const tLower = t.toLowerCase();
-    for (const f of STUDIES_FILTER) {
-      if (f.toLowerCase() === tLower) return true;
-    }
-    return false;
-  });
+  // Direction filter (sentinels `__long` / `__short`) AND'd with tag filter (everything else).
+  const directionFilters = new Set();
+  if (STUDIES_FILTER.has('__long'))  directionFilters.add('long');
+  if (STUDIES_FILTER.has('__short')) directionFilters.add('short');
+  if (directionFilters.size > 0 && !directionFilters.has(resolveStudyIntent(study))) return false;
+  // Tag filter — at least one selected catalyst tag must be among the study's customTypes.
+  const tagFilters = Array.from(STUDIES_FILTER).filter(f => f !== '__long' && f !== '__short');
+  if (tagFilters.length === 0) return true;
+  const types = getStudyTypes(study).map(t => t.toLowerCase());
+  return tagFilters.some(f => types.includes(f.toLowerCase()));
 }
 function getStudyTypes(study) {
   // Priority: user override → snapshot.type (legacy single-type) → 'momentum'
@@ -4791,11 +4866,11 @@ async function renderStudyDetail(idOrSym) {
     if (close == null || prev == null || prev === 0) return null;
     return (close - prev) / prev * 100;
   }
-  // Intent locks at study creation — based on the ORIGINAL gap direction (snapshot.chgPct).
-  // Determines which OHLCV column anchors the Gain/Stop math (Open→High vs Open→Low).
-  // It does NOT track the displayed `chg` (which may flip to Gain later).
-  const _baseGap = (study.chgPct != null) ? study.chgPct : s.chgPct;
-  const intent = (_baseGap != null && _baseGap < 0) ? 'short' : 'long';
+  // Intent — user override (study.intent set via OHLCV modal Long/Short toggle) wins;
+  // otherwise derive from snapshot.chgPct gap sign. Determines Gain/Stop column anchors.
+  const intent = resolveStudyIntent(study);
+  // Original gap % from snapshot, kept around so the header can show BOTH gap and move.
+  const gapPct = s.chgPct;
   // Custom chart overrides snapshot's TV chart when user edits MS-table values.
   const baseChart = (s.tv && s.tv.chart) ? s.tv.chart : null;
   // Section visibility (hidden set). Defaults: everything visible. Hide via the X on each card.
@@ -4886,7 +4961,9 @@ async function renderStudyDetail(idOrSym) {
   // Trade pills row — Gain / Stop, click to open OHLCV popup. Pos/neg tinted.
   const gainCls = initGain == null ? '' : (initGain >= 0 ? 'pos' : 'neg');
   const stopCls = initStop == null ? '' : (initStop >= 0 ? 'pos' : 'neg');
+  const dirCls = intent === 'long' ? 'pos' : 'neg';
   const tradePills = `
+    <button class="tag stat-tag trade-pill direction-pill ${dirCls}" type="button" id="study-direction-pill" title="Trade direction (Long / Short) · click to change in OHLCV popup">${intent.toUpperCase()}</button>
     <button class="tag stat-tag trade-pill ${gainCls}" type="button" id="study-gain-pill" title="${intent === 'short' ? 'Gain = (Open − Low) / Open · short-side profit at session low' : 'Gain = (High − Open) / Open · long-side run from open to high'} · click to edit OHLCV">Gain <span id="study-gain-val">${fmtMetric(initGain)}</span></button>
     <button class="tag stat-tag trade-pill ${stopCls}" type="button" id="study-stop-pill" title="${intent === 'short' ? 'Stop = (Open − High) / Open · short-side drawdown at session high' : 'Stop = (Low − Open) / Open · long-side drawdown at session low'} · click to edit OHLCV">Stop <span id="study-stop-val">${fmtMetric(initStop)}</span></button>`;
   // Day-1 badge if applicable (from snapshot's _dayLabel — saved at the time the study was added)
@@ -4956,7 +5033,11 @@ async function renderStudyDetail(idOrSym) {
       </div>
       <div style="margin-left:auto;text-align:right">
         <div class="price price-editable" id="study-price-cell" title="Click to edit price"><span class="price-text">${fmtPrice(displayPrice)}</span></div>
-        <div class="chg ${cls(chg)}" id="study-chg-readout" title="${chgSource}"><span class="chg-pct">${fmtPct(chg)}</span> · Vol <span class="vol-editable" id="study-vol-cell" title="Click to edit volume (linked to OHLCV)"><span class="vol-text">${fmtVol(displayVol)}</span></span></div>
+        <div class="chg-readout" id="study-chg-readout">
+          <span class="chg-cell gap-cell ${cls(gapPct)}" title="Gap % at scan time — pre-market / post-market move that triggered the SIP">gap <span class="gap-pct">${fmtPct(gapPct)}</span></span>
+          <span class="chg-cell move-cell ${cls(initGain)}" title="Day's move % from open — ${intent === 'short' ? '(Open − Low) / Open · short profit at session low' : '(High − Open) / Open · long profit at session high'}">move <span class="move-pct">${fmtPct(initGain)}</span></span>
+        </div>
+        <div class="vol-readout">Vol <span class="vol-editable" id="study-vol-cell" title="Click to edit volume (linked to OHLCV)"><span class="vol-text">${fmtVol(displayVol)}</span></span></div>
       </div>
     </div>
     ${sectionCard('news_detail',
@@ -5376,31 +5457,24 @@ async function renderStudyDetail(idOrSym) {
     });
   });
 
-  // Re-render the %Chg readout in the header — runs whenever OHLCV changes so the auto-derived
-  // day-chgPct flips in real time as user fills close/prev_close.
+  // Re-render the gap + move pair in the header — runs whenever OHLCV changes.
+  // gap = snapshot.chgPct (static), move = intent-aware gain from OHLCV (recomputed live).
   function refreshChgReadout() {
     const cur = loadStudies().find(st => st.id === id);
     if (!cur) return;
     const { gain: liveGain } = computeMetrics();
     const derived = deriveDayChgPct(cur.ohlcv);
-    // Mirror the renderStudyDetail priority — Gain wins over derivedChg wins over gap%.
-    const newChg = (cur.chgPct != null) ? cur.chgPct
-                 : (liveGain != null)   ? liveGain
-                 : (derived != null)    ? derived
-                 : s.chgPct;
-    const src = (cur.chgPct != null) ? 'manual override'
-              : (liveGain != null)   ? `Gain from OHLCV (${intent === 'short' ? '(Open − Low) / Open' : '(High − Open) / Open'})`
-              : (derived != null)    ? "derived from OHLCV (close − prev_close) / prev_close"
-              : 'snapshot gap % (pre/post-market)';
     const el = document.getElementById('study-chg-readout');
     if (el) {
-      el.className = `chg ${cls(newChg)}`;
-      el.title = src;
-      // Only touch the .chg-pct span — vol-editable's click handler must survive refresh.
-      const pctEl = el.querySelector('.chg-pct');
-      if (pctEl) pctEl.textContent = fmtPct(newChg);
+      // Update move-cell text + class
+      const moveCell = el.querySelector('.move-cell');
+      const movePct  = el.querySelector('.move-pct');
+      if (moveCell && movePct) {
+        movePct.textContent = fmtPct(liveGain);
+        moveCell.className = `chg-cell move-cell ${cls(liveGain)}`;
+      }
     }
-    // Day tag (sessTags row) — appear / disappear / update as OHLCV is filled
+    // Day tag (sessTags row) — close-vs-prev_close derived chg. Hidden until both filled.
     const dayTagHost = document.querySelector('.stock-header .stock-header-tags');
     const existing = document.getElementById('study-day-tag');
     if (derived == null) {
@@ -5414,7 +5488,9 @@ async function renderStudyDetail(idOrSym) {
 
   // ── OHLCV popup modal — opens when user clicks either trade metric chip ──
   function openOhlcvModal() {
-    const cur = loadStudies().find(st => st.id === id)?.ohlcv || {};
+    const curStudy = loadStudies().find(st => st.id === id);
+    const cur = curStudy?.ohlcv || {};
+    const curIntent = resolveStudyIntent(curStudy || study);
     const modal = document.createElement('div');
     modal.className = 'ohlcv-modal-overlay';
     modal.innerHTML = `
@@ -5422,6 +5498,13 @@ async function renderStudyDetail(idOrSym) {
         <div class="ohlcv-modal-head">
           <h3>OHLCV — ${sym}</h3>
           <button class="ohlcv-modal-close" type="button">&times;</button>
+        </div>
+        <div class="ohlcv-direction-row" title="Trade direction — flips the Gain/Stop column anchors">
+          <span class="ohlcv-direction-label">Direction</span>
+          <div class="ohlcv-direction-toggle">
+            <button class="dir-btn ${curIntent === 'long'  ? 'active' : ''}" data-direction="long"  type="button">Long</button>
+            <button class="dir-btn ${curIntent === 'short' ? 'active' : ''}" data-direction="short" type="button">Short</button>
+          </div>
         </div>
         <div class="ohlcv-modal-body">
           <label class="study-ohlcv-field"><span>${t('ohlcv-date')}</span><input data-field="date" type="date" value="${cur.date || ''}"></label>
@@ -5470,10 +5553,24 @@ async function renderStudyDetail(idOrSym) {
         }
       });
     });
+    // Direction-toggle buttons inside the modal — set study.intent then re-render the detail
+    // page in place so Gain/Stop anchors, header chg, move %, etc. all flip together.
+    modal.querySelectorAll('.dir-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault(); e.stopPropagation();
+        const dir = btn.dataset.direction;
+        if (dir !== 'long' && dir !== 'short') return;
+        updateStudy(id, { intent: dir });
+        modal.querySelectorAll('.dir-btn').forEach(b => b.classList.toggle('active', b.dataset.direction === dir));
+        renderStudyDetail(id);
+      });
+    });
     // Focus first empty input for fast entry
     const focusInp = Array.from(modal.querySelectorAll('input')).find(i => !i.value) || modal.querySelector('input');
     focusInp?.focus();
   }
+  // All three pills open the same OHLCV modal — Direction toggle lives inside.
+  document.getElementById('study-direction-pill')?.addEventListener('click', openOhlcvModal);
   document.getElementById('study-gain-pill')?.addEventListener('click', openOhlcvModal);
   document.getElementById('study-stop-pill')?.addEventListener('click', openOhlcvModal);
 
