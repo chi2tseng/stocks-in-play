@@ -1803,11 +1803,13 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
   );
 }
 /* Compact readonly preview (Studies cards only) — show ONE reported quarter + 4 forward
-   estimates. Center-align the single reported column so the latest-quarter value reads as
-   anchored to the column rather than crowded against the divider. The 4 est columns stay
-   right-aligned, so the forward-numbers still line up vertically for easy visual scan. */
+   estimates. Keep numbers right-aligned to each other (so decimal points / minus signs in
+   30.1M / +634% / +8% all line up), but bump the right padding so the alignment line
+   shifts toward the column's middle. Without this, the latest-quarter values crowd hard
+   against the divider; with this, they appear visually centered while still aligning
+   vertically among themselves. */
 .ms-table.ms-table-readonly th:first-child,
-.ms-table.ms-table-readonly td:first-child { text-align: center; }
+.ms-table.ms-table-readonly td:first-child { text-align: right; padding-right: 22px; }
 .ms-table .pos { color: var(--pos); font-weight: 600; background: rgba(0, 168, 126, 0.06); }
 .ms-table .neg { color: var(--neg); font-weight: 600; background: rgba(226, 59, 74, 0.06); }
 .ms-table .nm { color: var(--stone); }
