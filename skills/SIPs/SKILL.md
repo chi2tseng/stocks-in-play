@@ -701,12 +701,24 @@ For body text, follow each headline URL and extract `<article>` / `<div class="c
 
 Run this BEFORE Phase 10b so the prev_ohlcv fetch can see the same target ticker set.
 
-### 8.6 Phase 10b — Fetch yesterday's OHLCV for every candidate + every existing Study (NEW)
+### 8.6 Phase 10b — Fetch OHLCV per-target-date for every candidate + every existing Study
 
-After the trading day closes (~5pm ET), fetch the **previous trading day's** OHLCV for two populations:
+After the trading day closes (~5pm ET), fetch OHLCV bars for two populations, **each at its
+own target date**:
 
-1. **Today's scan candidates** — for the Studies-auto-fill case (so clicking "Save to Studies" on a new SIP card pre-populates OHLCV).
-2. **All tickers already in `dashboard/studies/studies.json`** — but **skip any ticker whose study already has manually-filled `ohlcv.open/high/low/close`**. Manual data is sacred; we only auto-fill empty rows. This makes the day's %Chg auto-derive — `(close − prev_close) / prev_close · 100` — work for every Study without the user re-typing yesterday's bar.
+1. **Today's scan candidates** — target date = yesterday's trading day. Saves "Save to
+   Studies" clicks pre-populating with yesterday's bar.
+2. **Every study in `dashboard/studies/studies.json`** — target date = each study's own
+   `ohlcv.date` field. If `ohlcv.date` is empty (or in the future), fall back to yesterday.
+   **Skip studies whose `ohlcv.open` is already filled** — manual data is sacred, only
+   blank rows get auto-filled.
+
+**Why per-study dates matter:** a saved study at `ohlcv.date = 2026-02-04` (e.g. AMD's
+Q4 '25 earnings catalyst) should fetch **2/4's bar**, not yesterday's. If 2/3 was a
+weekend / holiday, `prev_close` should fall back to the most recent trading day BEFORE
+2/4 (so e.g. for a Monday earnings, prev_close = the prior Friday's close). The dashboard's
+day-%Chg readout `(close − prev_close) / prev_close · 100` only makes sense when both
+sides come from consecutive trading days — never a calendar-day diff.
 
 Write the merged result to `./prev_ohlcv.json` at repo root.
 
@@ -714,57 +726,118 @@ Write the merged result to `./prev_ohlcv.json` at repo root.
 ```json
 {
   "FIG":  { "date": "2026-05-14", "open": 22.60, "high": 24.10, "low": 22.45, "close": 23.85, "prev_close": 22.10, "volume": 18200000 },
-  "BOOT": { "date": "2026-05-14", "open": 158.00, "high": 162.80, "low": 156.30, "close": 161.20, "prev_close": 156.95, "volume": 350000 }
+  "AMD":  { "date": "2026-02-04", "open": 215.00, "high": 218.58, "low": 199.15, "close": 200.19, "prev_close": 242.11, "volume": 107173300 }
 }
 ```
 
-**`prev_close` is required** (not optional): it's the close of the day BEFORE the OHLCV `date`, used by the dashboard to derive each Study's day-%Chg. Yahoo's `range=5d` JSON gives you 5 daily bars in one request — take the latest bar as the row above, and the second-latest bar's `close` as `prev_close`.
+Note `AMD` here is the *historical-date* fill — the bar is dated 2026-02-04 because that's
+the study's saved `ohlcv.date`, not the "current yesterday".
+
+**`prev_close` is required** and is the close of the trading day **immediately before the
+matched bar** in Yahoo's returned chart array — NOT calendar day - 1. Holidays + weekends
+are auto-skipped because Yahoo's chart endpoint only returns trading-day bars.
 
 **Build sequence (Python pseudo-code):**
 ```python
-# 1. Read existing studies to know which tickers need filling
+# 1. Read existing studies to know which tickers need filling + at what date
 import json, os
+from datetime import datetime, timedelta, timezone
+import urllib.request
+
 studies = []
 studies_path = 'dashboard/studies/studies.json'
 if os.path.exists(studies_path):
-    with open(studies_path) as f: studies = json.load(f)
+    with open(studies_path, encoding='utf-8') as f: studies = json.load(f)
 
-# 2. Compute target ticker set
-todays_tickers = list(final_candidates_df['Symbol'])
-study_tickers_needing_fill = [
-    st['symbol'] for st in studies
-    if not (st.get('ohlcv') and st['ohlcv'].get('open') is not None)  # skip manually-filled
-]
-all_tickers = list(set(todays_tickers + study_tickers_needing_fill))
+# 2. Build (ticker, target_date) work list.
+#    candidates: target_date = yesterday's trading day (Yahoo will fall back if non-trading)
+#    studies:    target_date = study.ohlcv.date (filled) else yesterday
+yesterday_iso = (datetime.utcnow() - timedelta(days=1)).strftime('%Y-%m-%d')
+work = []
+for sym in todays_tickers:
+    work.append((sym, yesterday_iso))
+for st in studies:
+    if (st.get('ohlcv') or {}).get('open') is not None:
+        continue   # manually-filled — sacred
+    sym  = st['symbol']
+    sdate = (st.get('ohlcv') or {}).get('date') or yesterday_iso
+    # Skip future dates (Yahoo won't have data yet)
+    if sdate > datetime.utcnow().strftime('%Y-%m-%d'):
+        continue
+    work.append((sym, sdate))
 
-# 3. Fetch + merge → prev_ohlcv.json
+# 3. Per (ticker, date), fetch a 14-day window around the date and resolve the matching bar
+def fetch_bar_at(sym, target_iso):
+    t  = datetime.strptime(target_iso, '%Y-%m-%d').replace(tzinfo=timezone.utc)
+    p1 = int(t.timestamp()) - 10*86400
+    p2 = int(t.timestamp()) +  2*86400
+    url = f'https://query1.finance.yahoo.com/v8/finance/chart/{sym}?period1={p1}&period2={p2}&interval=1d'
+    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    with urllib.request.urlopen(req, timeout=15) as r: d = json.load(r)
+    res = d['chart']['result'][0]
+    ts  = res['timestamp']; q = res['indicators']['quote'][0]
+    bars = []
+    for i, t_ in enumerate(ts):
+        if q['open'][i] is None or q['close'][i] is None: continue
+        bars.append({
+            'date': datetime.fromtimestamp(t_, tz=timezone.utc).strftime('%Y-%m-%d'),
+            'open': round(q['open'][i],2),  'high': round(q['high'][i],2),
+            'low':  round(q['low'][i],2),   'close': round(q['close'][i],2),
+            'volume': int(q['volume'][i]) if q['volume'][i] is not None else None,
+        })
+    if not bars: return None
+    # Pick the bar matching the target, else nearest prior (handles weekend/holiday targets)
+    matched = next((b for b in bars if b['date'] == target_iso), None)
+    if matched is None:
+        priors = [b for b in bars if b['date'] <= target_iso]
+        if not priors: return None
+        matched = priors[-1]
+    # prev_close = the bar immediately BEFORE the matched bar in the chart array
+    idx = bars.index(matched)
+    prev_close = bars[idx-1]['close'] if idx > 0 else None
+    return {**matched, 'prev_close': prev_close}
+
 out = {}
-for t in all_tickers:
-    bars = fetch_yahoo_5d(t)           # latest 5 daily bars
-    if len(bars) < 2: continue
-    latest, prior = bars[-1], bars[-2]
-    out[t] = {
-        'date':       latest['date'],
-        'open':       latest['open'],
-        'high':       latest['high'],
-        'low':        latest['low'],
-        'close':      latest['close'],
-        'prev_close': prior['close'],
-        'volume':     latest['volume'],
-    }
+for sym, target_iso in work:
+    bar = fetch_bar_at(sym, target_iso)
+    if bar: out[sym] = bar
+
 with open('prev_ohlcv.json', 'w') as f: json.dump(out, f, indent=2)
 ```
 
+**Key behaviors of `fetch_bar_at`:**
+
+- **Exact-date match wins.** If Yahoo's array contains the target_iso, use it directly.
+- **Weekend/holiday fallback.** If target_iso falls on a non-trading day (or Yahoo simply
+  has no bar for it), use the **nearest prior trading day** in the window. The 10-day
+  preceding buffer in the URL guarantees we have several priors to fall back through.
+- **`prev_close` = previous bar in the array.** Holidays/weekends are naturally skipped
+  because Yahoo's chart endpoint only returns trading-day bars. So for a Monday target,
+  `prev_close` is automatically the prior Friday's close — not "calendar-day minus one".
+- **Per-ticker fetch.** Each (sym, date) pair gets its own HTTP request. The 14-day window
+  is wide enough that 99% of cases resolve in one call. For each ticker, only ONE call is
+  made even when the study and the candidate scan both want it (dedupe by sym+date before
+  the loop if perf matters).
+
 **How to source** (in order of reliability):
-1. **Yahoo Finance** `https://query1.finance.yahoo.com/v8/finance/chart/<TICKER>?interval=1d&range=5d` — public JSON endpoint, no API key, returns 5 bars in one call. **Preferred** because you get `prev_close` for free.
+1. **Yahoo Finance** `https://query1.finance.yahoo.com/v8/finance/chart/<TICKER>?period1=<P1>&period2=<P2>&interval=1d` — public JSON endpoint, no API key. Use `period1` / `period2` to define a 14-day window around the target date (not `range=5d`, which only gives the LATEST 5 bars and can't reach historical targets like 2026-02-04).
 2. **Barchart `https://www.barchart.com/stocks/quotes/<TICKER>/price-history/historical`** — daily OHLCV table. Playwright scrape, XHR intercept on `/proxies/core-api/v1/historical/get?symbol=<TICKER>&type=eod` returns clean JSON.
-3. **Finviz quote page** — has yesterday's OHLCV on the snapshot table but harder to parse than the API options above.
+3. **Finviz quote page** — only has the latest snapshot, no historical lookup. Avoid for studies.
 
 **`build_dashboard.py` behaviour:**
 - For **today's stocks** (in `stocks` dict): exposes `stocks[sym].prevOhlcv = prev_ohlcv_raw.get(sym)`.
-- For **existing studies that need filling**: writes the matching entries into `dashboard/studies/studies.json` directly under each study's `ohlcv` field — but ONLY if `ohlcv.open` is null (manual-fill detection).
+- For **existing studies that need filling**: writes the matching entries into
+  `dashboard/studies/studies.json` directly under each study's `ohlcv` field — but ONLY
+  if `ohlcv.open` is null. Critically, when a study's existing `ohlcv.date` already had
+  a value (e.g. 2026-02-04), the writeback preserves that date — since `fetch_bar_at`
+  returned the bar for that exact date (or the nearest prior trading day), the date in
+  `prev_ohlcv.json` will already match.
+- Also syncs `snapshot.last = ohlcv.close` per the schema (header price-readout uses
+  `snapshot.last` for the big number).
 
-If `prev_ohlcv.json` doesn't exist, the rest of the pipeline runs fine — this step is purely an enhancement that saves the user from re-typing yesterday's bar for every Study every day.
+If `prev_ohlcv.json` doesn't exist, the rest of the pipeline runs fine — this step is
+purely an enhancement that saves the user from re-typing yesterday's bar (or a historical
+bar) for every Study every day.
 
 ### 8.7 Phase 11 — auto-publish to GitHub Pages (REQUIRED for hosted dashboard)
 
