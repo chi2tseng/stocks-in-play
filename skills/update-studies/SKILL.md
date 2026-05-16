@@ -1,79 +1,68 @@
 ---
 name: update-studies
-description: AI-driven daily Studies refresh for the Stocks In Play (SIPs) dashboard — OHLCV + News + TradingView quarterly forecasts (for earnings-tagged tickers). Reads `D:\SIPs\dashboard\studies\studies.json` and, for every study with `ohlcv.date` (or `snapshot.scanDate` fallback), pulls fresh Yahoo daily bars, recent Yahoo news headlines, and — if the study has the `earnings` catalyst tag — runs the same TradingView FQ scrape `/SIPs` uses (`tv-scrape.js` + `parse_tv.py`) to refresh EPS / Sales reported+estimate, Forward YoY, and the editable MS table. Writes back open/high/low/close/prev_close/volume, snapshot.last (= close), snapshot.newsDetail/catalyst (only if currently empty), and snapshot.tv (only for earnings studies). Use when the user types `/update-studies`, says "refresh studies", "update my OHLCV", "pull today's prices and news for my studies", "sync studies", or asks to schedule a daily Studies refresh. Companion to the larger `/SIPs` skill — `/SIPs` does the full daily candidate discovery + classification; `/update-studies` is the per-Study refresh of price + news + (optional) earnings data.
-allowed-tools: Bash, Read, Edit, Write
+description: Daily local refresh of the Studies library (`D:\SIPs\dashboard\studies\studies.json`) — same flow as /SIPs but per-existing-study instead of new-candidate-discovery. For every study with an effective trading-day date (ohlcv.date, or snapshot.scanDate as fallback), refreshes OHLCV (Yahoo chart API), composes News Detail in 繁體中文 (same sourcing pattern as /SIPs Phase 7 — WebFetch / firecrawl / press release), syncs snapshot.last to the closing price, AND — for studies tagged with `earnings` in customTypes — re-runs the SIPs TV scrape pipeline (tv-scrape.js → parse_tv.py) to refresh EPS / Sales Reported+Estimate, Surp%, Forward YoY, and the chart for the editable MS table. Closes with `py build_dashboard.py` + `git add/commit/push` so the hosted Pages mirror stays current. Trigger phrases: `/update-studies`, "refresh studies", "update my studies", "pull today's data for my studies", "sync studies", "refresh OHLCV and news for studies". Companion to `/SIPs` — `/SIPs` discovers TODAY's candidates; this skill refreshes everything you've ALREADY saved.
+allowed-tools: Bash, Read, Edit, Write, WebFetch, WebSearch
 ---
 
-# update-studies — daily Studies OHLCV refresh
+# update-studies — local daily refresh of the Studies library
 
-You are running an unattended daily-refresh workflow over the user's Studies library at
-`D:\SIPs\dashboard\studies\studies.json`. For every study with `ohlcv.date` filled (or a
-non-empty `snapshot.scanDate` fallback if `ohlcv.date` is empty — see §1.4 below), fetch
-fresh OHLCV from Yahoo Finance for that specific trading day and write it back.
+**Runs locally on the user's Windows machine.** Mirrors the `/SIPs` workflow but scoped to
+the existing `dashboard/studies/studies.json` library — i.e. price + news + (optional) TV
+quarterly data for studies the user has already saved. End state: studies.json updated +
+`build_dashboard.py` regenerated + git pushed.
 
-Use the **Read / Edit / Bash** tools directly. **Do NOT shell out to a Python script** —
-the user explicitly asked for an AI-driven workflow. Each step below is a tool call.
+Designed to be invoked manually (`/update-studies`) or wired into an end-of-day routine.
+Not a cloud agent — TV scrape needs Playwright locally, and news composition needs
+Claude's judgment.
 
 ---
 
-## § 1. Boot
+## § Resources
 
-1. **Read** `D:\SIPs\dashboard\studies\studies.json`.
+Mirror `/SIPs`'s resource map exactly. Don't introduce new data sources unless the user
+explicitly asks:
 
-2. Parse the JSON. The file is a top-level array of study objects:
-   ```json
-   [
-     { "id": "FIG-...", "symbol": "FIG",
-       "ohlcv": { "date": "2026-05-15", "open": ..., "high": ..., "low": ..., "close": ..., "prev_close": ..., "volume": ... },
-       "snapshot": { "scanDate": "2026-05-15", ... }, "notes": ..., "customChart": ..., ... }
-   ]
-   ```
+| Layer | Source | How |
+|---|---|---|
+| OHLCV (daily bars) | Yahoo Finance `chart` API | `https://query1.finance.yahoo.com/v8/finance/chart/<SYM>?...` — same as `/SIPs` Phase 10b |
+| TradingView FQ (earnings only) | `tv-scrape.js` + `parse_tv.py` | Playwright scrape → markdown → `tv-summary.json` — same as `/SIPs` Phase 5–6 |
+| News Detail (繁體中文) | WebFetch / WebSearch / firecrawl | Whatever surface you find the headline + body on (Yahoo Finance, Investor's Business Daily, Reuters, company IR pages, SEC filings, etc.) — same pattern as `/SIPs` Phase 7. Use `docs/NEWS_TIME_SPEC.md` for `publishedAt` formatting if you decide to include a timestamp |
+| Static dashboard build | `D:\SIPs\build_dashboard.py` | Same as `/SIPs` Phase 10 |
+| Git publish | `git add / commit / push` | Same as `/SIPs` Phase 11 |
 
-3. **Collect targets** — every study where either:
-   - `ohlcv.date` is a non-empty string, OR
-   - `ohlcv.date` is empty AND `snapshot.scanDate` is a non-empty string (fallback —
-     see §1.4 below).
+The Playwright scrapers (`tv-scrape.js`, `barchart-scrape.js`) are already installed at the
+repo root from the parent `/SIPs` skill — just call them.
 
-   Skip studies whose effective date is in the future (Yahoo has no data yet) — log
-   `[warn] <SYM>: date <date> is in the future, skipping` and continue.
+---
 
-4. **Empty-date fallback** — if `ohlcv.date` is empty but `snapshot.scanDate` is set,
-   use `snapshot.scanDate` as the target trading day AND write it back into
-   `ohlcv.date` so subsequent runs hit the exact-date path. Log the fallback:
-   `[info] <SYM>: empty ohlcv.date, falling back to snapshot.scanDate <date>`.
+## § Phase 1 — Read + classify
 
-5. **Announce the run** in a single line:
-   `Refreshing N studies (SYM₁ on date₁, SYM₂ on date₂, …)`.
+1. `Read` `D:\SIPs\dashboard\studies\studies.json`. If missing or unparseable, ABORT
+   (do not write back).
+2. For each study, determine the **effective target date**:
+   - `study.ohlcv.date` if non-empty, else
+   - `study.snapshot.scanDate` if non-empty (and plan to write it back into
+     `ohlcv.date` so subsequent runs skip the fallback path), else
+   - **skip this study** (no date to query).
+3. Skip studies whose effective date is in the **future** UTC (Yahoo has no data yet).
+4. Classify each remaining study:
+   - **`earnings`** = has `"earnings"` (case-insensitive) in `customTypes` array.
+     Triggers the full TV refresh in Phase 3 below.
+   - **non-earnings** = everything else. Gets OHLCV + News only.
+5. Announce in one line:
+   `Refreshing N studies: M with earnings tag (full refresh), K non-earnings (OHLCV+news).`
 
-## § 2. Fetch loop
+## § Phase 2 — OHLCV refresh (all studies)
 
-For **each** target study, do the following:
-
-### 2a. Compute the Yahoo URL
-
-Yahoo Finance's chart endpoint takes Unix timestamps. For `target_date` (YYYY-MM-DD):
-
-- `period1` = (target_date as UTC midnight) − 10 days, as Unix seconds. Gives ~7 trading
-  days of prior context so `prev_close` is reliable even when target is the Monday after
-  a long weekend.
-- `period2` = (target_date as UTC midnight) + 2 days, as Unix seconds.
-
-URL pattern:
-```
-https://query1.finance.yahoo.com/v8/finance/chart/<TICKER>?period1=<p1>&period2=<p2>&interval=1d
-```
-
-### 2b. Fetch via Bash
-
-Use Python's `urllib` inline (`py -c "..."`) instead of `curl` + separate JSON parser
-— Windows-friendly, no `jq` dependency, gets you a clean list of bars in one Bash call:
+Same code path as `/SIPs` Phase 10b but per-study, with the per-study target date instead
+of "yesterday". For each target study:
 
 ```bash
 py -c "
 from datetime import datetime, timezone
 import urllib.request, json, sys
-target = 'TARGET_DATE_HERE'        # e.g. '2026-05-14'
-sym    = 'TICKER_HERE'             # e.g. 'ONDS'
+target = 'TARGET_DATE'   # YYYY-MM-DD
+sym    = 'TICKER'
 t = datetime.strptime(target, '%Y-%m-%d').replace(tzinfo=timezone.utc)
 p1 = int(t.timestamp()) - 10*86400
 p2 = int(t.timestamp()) + 2*86400
@@ -81,199 +70,172 @@ url = f'https://query1.finance.yahoo.com/v8/finance/chart/{sym}?period1={p1}&per
 req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
 with urllib.request.urlopen(req, timeout=15) as r: d = json.load(r)
 res = d['chart']['result'][0]
-ts = res['timestamp']
-q  = res['indicators']['quote'][0]
+ts = res['timestamp']; q = res['indicators']['quote'][0]
 bars = [{
     'date': datetime.fromtimestamp(t_, tz=timezone.utc).strftime('%Y-%m-%d'),
-    'open': q['open'][i],  'high': q['high'][i],  'low': q['low'][i],
-    'close': q['close'][i],'volume': q['volume'][i]
-} for i, t_ in enumerate(ts)]
+    'open': round(q['open'][i],2),  'high': round(q['high'][i],2),
+    'low':  round(q['low'][i],2),   'close': round(q['close'][i],2),
+    'volume': int(q['volume'][i]) if q['volume'][i] is not None else None
+} for i, t_ in enumerate(ts) if q['open'][i] is not None and q['close'][i] is not None]
 print(json.dumps(bars, indent=2))
 "
 ```
 
-(This is a JSON adapter, NOT a script — it reshapes the Yahoo response inline so you can
-read it. No separate `.py` file involved.)
+Resolve target bar:
+- Exact match `date == target` → use it.
+- Else nearest bar with `date <= target` → use it. Log: `[info] SYM: no bar for TARGET; using nearest prior FALLBACK`.
+- `prev_close` = close of the bar immediately before the matched bar in the returned array.
+- Round prices to 2dp, volume to integer.
 
-### 2c. Resolve the target bar
+Write back to `study.ohlcv`: `{date, open, high, low, close, prev_close, volume}`.
 
-From the returned array of bars:
+**Also sync the price**: `study.snapshot.last = study.ohlcv.close`. The big price readout
+in the header + every preview card uses this, so it should reflect the official daily
+close (was previously the stale scan-time price). `study.price` (manual override) still
+wins on display.
 
-1. **Exact match** — find the bar where `date == target_date`. If found, use it.
-2. **Weekend / holiday fallback** — if no bar matches the exact date, find the bar
-   with the latest date ≤ target. Log: `[info] <SYM>: no bar for <target>; using
-   nearest prior <fallback>`.
-3. **prev_close** — the close of the bar IMMEDIATELY BEFORE the matched bar in the
-   returned array. If the matched bar is the first one returned, `prev_close` stays null.
-4. **Round** open/high/low/close/prev_close to 2 decimals (Yahoo returns float noise);
-   keep volume as integer.
+## § Phase 3 — TradingView FQ refresh (earnings studies only)
 
-### 2d. Build the patch
-
-Apply these field updates to `study.ohlcv`:
-
-| Field         | New value |
-|---------------|-----------|
-| `date`        | the matched bar's date (normalized to `YYYY-MM-DD`) |
-| `open`        | matched bar's `open`, rounded to 2 dp |
-| `high`        | matched bar's `high`, rounded to 2 dp |
-| `low`         | matched bar's `low`,  rounded to 2 dp |
-| `close`       | matched bar's `close`, rounded to 2 dp |
-| `prev_close`  | close of the bar immediately before, rounded to 2 dp |
-| `volume`      | matched bar's `volume` (integer) |
-
-**Never** modify any other study field. Leave alone: `notes`, `customChart`,
-`customTypes`, `intent`, `price`, `snapshot`, `screenshots`, `id`, `savedAt`,
-`hiddenSections`. **Only** the `ohlcv` subtree changes.
-
-### 2e. Throttle
-
-After each fetch wait ~250 ms before the next one so Yahoo doesn't rate-limit a 30+
-ticker library. Either `sleep 0.25` in Bash or rely on Claude's natural per-tool-call
-cadence — both are acceptable.
-
-## § 2f. Sync display price
-
-After successfully writing OHLCV, set `study.snapshot.last = study.ohlcv.close` so the
-big price readout in the header + every preview card uses the official daily close.
-This OVERWRITES any prior `snapshot.last` (it was the scan-time price, which is stale
-by now). The user's manual override `study.price` is NOT touched — that still wins
-on display.
-
-## § 2g. News refresh (always)
-
-For every study just processed, fetch fresh news headlines from Yahoo's search API:
+For each study with `"earnings"` in `customTypes`, mirror `/SIPs` Phase 5–6:
 
 ```bash
-py -c "
-import urllib.request, json
-sym = 'TICKER_HERE'
-url = f'https://query1.finance.yahoo.com/v1/finance/search?q={sym}&newsCount=8&quotesCount=0&enableFuzzyQuery=false'
-req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-with urllib.request.urlopen(req, timeout=15) as r: d = json.load(r)
-for n in (d.get('news') or []):
-    print(f\"  {n.get('publisher')} | {n.get('title')} | {n.get('link')}\")
-"
+cd /d/SIPs && node tv-scrape.js <SYM>          # Playwright, ~30-60s
+cd /d/SIPs && py parse_tv.py <SYM>             # parses *.md → tv-summary.json
 ```
 
-From the headlines, compose a `newsDetail` block in **繁體中文** matching the /SIPs
-format — see `/SIPs` Phase 7 + `docs/NEWS_TIME_SPEC.md` for the exact style. Roughly:
+Then read `tv-summary.json`, find the row with `Ticker == SYM`, convert from the parse
+script's Python keys to the JS schema used in `study.snapshot.tv`:
 
-1. Lead with the catalyst (date + event): `"5/13 Q1 2026 業績電話會議 ..."`
-2. 1–3 supporting facts in **bold** (EPS / Revenue surprise, analyst PT raises, etc.)
-3. Short forward-looking analysis paragraph (downside risk + setup quality).
+| Python (parse_tv) | JS (snapshot.tv) | Notes |
+|---|---|---|
+| `LatestEPS` | `latestEPS` | float |
+| `LatestEPSConsensus` | `consensusEPS` | float |
+| `PriorYrEPS` | `priorYrEPS` | float |
+| `LatestEPSSurprise_pct` | `surpriseEPS_pct` | float |
+| — | `surpriseEPS_dollar` | computed: `latestEPS − consensusEPS` |
+| `LatestRev_M` | `latestRev_M` | float, millions |
+| `LatestRevConsensus_M` | `consensusRev_M` | float, millions |
+| `PriorYrRev_M` | `priorYrRev_M` | float, millions |
+| `LatestRevSurprise_pct` | `surpriseRev_pct` | float |
+| — | `yrYrRev_pct` | computed: `(latestRev_M − priorYrRev_M) / abs(priorYrRev_M) * 100` |
+| — | `epsYoY_pct` | computed: `(latestEPS − priorYrEPS) / abs(priorYrEPS) * 100` |
+| `EpsEst_Next4` | `epsEst_next4` | array of 4 floats |
+| `RevEst_Next4` | `revEst_next4` | array of 4 floats |
+| `YoYBlock` | `yoyBlock` | multi-line string, verbatim |
+| `Chart` | `chart` | object verbatim — `{quarters, eps_reported, eps_estimate, rev_reported_M, rev_estimate_M, latest_idx}` |
 
-Also compose a one-liner `catalyst` (≤200 chars) suitable for the preview-card teaser.
+Write the converted block to `study.snapshot.tv`. Also:
 
-**Respect user edits**: only WRITE `snapshot.catalyst` and `snapshot.newsDetail` if
-they're currently EMPTY (`null` or `""`). If the user has manually edited the news
-detail on the study page, DO NOT overwrite — log `[info] <SYM>: keeping existing
-newsDetail` and continue.
+- If `study.snapshot._placeholder` is `true`, **remove the flag** (we now have real data).
+- From `study.hiddenSections`, **remove** `eps_chart` / `rev_chart` / `ms_table` /
+  `yoy_block` so the dashboard surfaces the freshly-filled sections.
+- If `study.snapshot.name` is empty, set it from `parse_tv` row name (some scrape outputs
+  include the company name in the header; otherwise leave blank — name isn't critical).
 
-## § 2h. TradingView FQ refresh (earnings studies only)
+**Non-earnings studies skip this phase entirely.** TV scrape is expensive and irrelevant
+to M&A / FDA / contract / technical / FBO / short-squeeze / etc.
 
-If the study has `"earnings"` in `customTypes` (case-insensitive), refresh its
-TradingView FQ block — same flow `/SIPs` uses at Phase 5–6:
+## § Phase 4 — News Detail refresh
 
-1. **Scrape**: `node tv-scrape.js <SYMBOL>` from the repo root. Writes
-   `<SYMBOL>-earnings-fq.md` to the repo dir. Takes ~30-60 s per ticker via Playwright.
-2. **Parse**: `py parse_tv.py <SYMBOL>` (or just `py parse_tv.py` to refresh all). Writes
-   `tv-summary.json`.
-3. **Extract**: read `tv-summary.json`, find the row with `Ticker == <SYMBOL>`.
-4. **Convert** the Python keys to the JS schema used in `study.snapshot.tv`:
-   ```
-   LatestEPS              → latestEPS
-   LatestEPSConsensus     → consensusEPS
-   PriorYrEPS             → priorYrEPS
-   LatestEPSSurprise_pct  → surpriseEPS_pct
-   LatestEPS−Consensus    → surpriseEPS_dollar     (computed)
-   LatestRev_M            → latestRev_M
-   LatestRevConsensus_M   → consensusRev_M
-   PriorYrRev_M           → priorYrRev_M
-   LatestRevSurprise_pct  → surpriseRev_pct
-   (rev YoY %)            → yrYrRev_pct            (computed)
-   (eps YoY %)            → epsYoY_pct             (computed)
-   EpsEst_Next4           → epsEst_next4
-   RevEst_Next4           → revEst_next4
-   YoYBlock               → yoyBlock
-   Chart                  → chart                  (verbatim)
-   ```
-5. **Write** to `study.snapshot.tv`. Also:
-   - If `study.snapshot._placeholder` was `true`, REMOVE that flag (we now have real data).
-   - From `study.hiddenSections`, REMOVE `eps_chart` / `rev_chart` / `ms_table` /
-     `yoy_block` so the dashboard surfaces the freshly-filled sections.
+Same sourcing approach as `/SIPs` Phase 7. The user explicitly asked for this — they
+want the news to be FRESH per-study, not stale from when they first saved the study.
 
-For NON-earnings studies, skip this step entirely — TV scrape is expensive (Playwright)
-and unrelated to non-earnings catalysts (M&A, FDA, contract, technical, FBO, etc.).
+For each study (regardless of tag):
 
-A complete patch for an earnings study looks like:
+1. **Source**: pick whichever is most appropriate for the ticker + date:
+   - `WebSearch` for `<TICKER> <date>` to find the day's headline
+   - `WebFetch` on company IR pages, SEC filings, Yahoo Finance news, Reuters, etc.
+   - `firecrawl` for paywalled / JS-heavy pages
+2. **Compose** a `newsDetail` block in **繁體中文 markdown** matching the /SIPs Phase 7
+   style:
+   - Lead: `<date> <時段> <event>` (e.g. "5/13 Q1 2026 業績電話會議後")
+   - 1–3 supporting facts in **bold** (`**EPS $X** vs $Y`)
+   - Short forward-looking analysis paragraph (downside / setup quality)
+   - Paragraphs separated by `\n\n`
+3. **Compose** a one-liner `catalyst` (≤200 chars) for the preview-card teaser.
+4. **Respect user edits**: only WRITE `snapshot.newsDetail` and `snapshot.catalyst` if
+   they're currently **empty** (`null` or `""`). If the user has manually edited either,
+   log `[info] SYM: keeping existing news` and skip. The reason: the user's hand-curated
+   version is usually better than auto-fetched.
 
-```python
-import json, subprocess
-subprocess.run(['node', 'tv-scrape.js', SYM], check=True, cwd='D:/SIPs')
-subprocess.run(['py', 'parse_tv.py', SYM], check=True, cwd='D:/SIPs')
-with open('D:/SIPs/tv-summary.json', encoding='utf-8') as f:
-    tv_rows = json.load(f)
-tv_row = next((r for r in tv_rows if r['Ticker'] == SYM), None)
-if tv_row:
-    study['snapshot']['tv'] = build_js_schema(tv_row)
-    study['snapshot'].pop('_placeholder', None)
-    study['hiddenSections'] = [s for s in study.get('hiddenSections', [])
-                                if s not in ('eps_chart','rev_chart','ms_table','yoy_block')]
-```
+`docs/NEWS_TIME_SPEC.md` is the canonical contract for news formatting. Read it before
+writing news_detail-style content if you need to include `publishedAt`.
 
-## § 3. Write back
+## § Phase 5 — Atomic write
 
-Use the **Edit** tool to update `studies.json` — one Edit per study's `ohlcv` block
-(atomic per study), or one big Write of the full updated array. Either way it's a
-single fs operation per study.
+After processing all studies, write the entire updated array back to
+`D:\SIPs\dashboard\studies\studies.json` in one shot (Write tool with the full updated
+JSON content, or per-study Edit operations). `ensure_ascii=false`, `indent=2` to keep
+the same formatting as the input.
 
-Then print a per-study summary (mention what was touched: OHLCV / news / TV / price):
+Print a per-study summary:
 ```
 [OK] Refreshed N studies:
-  · FIG  @ 2026-05-15  OHLCV + news + TV + last → 23.42
-  · ARM  @ 2026-05-29  OHLCV only (no earnings tag, newsDetail already filled)
-  · ONDS @ 2026-05-14  last → 11.21 (everything else preserved)
   · NBIS @ 2026-05-13  OHLCV + news + TV + last → 207.27 (placeholder → filled)
+  · FIG  @ 2026-05-15  OHLCV + news + TV + last → 23.42
+  · ONDS @ 2026-05-14  OHLCV + news + last → 11.21 (no earnings tag, TV skipped)
+  · ARM  @ 2026-05-29  OHLCV + last → 213.42 (newsDetail already filled, kept)
 ```
 
-## § 4. Optional follow-up
+## § Phase 6 — Rebuild dashboard
 
-After the write, **ask the user** before doing either of these (don't auto-trigger):
+Run `py D:\SIPs\build_dashboard.py`. This regenerates `dashboard/index.html` with the
+new OHLCV / TV / news embedded, AND backfills `prev_ohlcv.json` into existing studies
+where ohlcv.open was null (the `/SIPs` Phase 10b backfill path — see SIPs SKILL.md).
 
-- Regenerate the static dashboard: `py D:\SIPs\build_dashboard.py`. Needed if the
-  hosted Pages mirror should pick up the new OHLCV in the next deploy.
-- Commit + push:
-  ```bash
-  git add dashboard/studies/studies.json
-  git commit -m "studies: daily OHLCV refresh"
-  git push
-  ```
-  Pushes the new JSON to GitHub so the hosted dashboard shows fresh numbers on the
-  user's phone too.
+If the build errors, log it but continue to Phase 7 — `studies.json` is still useful
+even if the static build failed.
 
-## § 5. Error handling
+## § Phase 7 — Commit + push
+
+Same as `/SIPs` Phase 11. ASK THE USER before pushing — don't auto-commit unless they
+said "and push" in the original request.
+
+```powershell
+cd D:\SIPs
+git add dashboard/studies/studies.json dashboard/studies/images dashboard/index.html `
+        dashboard/data.json dashboard/dates.json
+git commit -m "studies: daily refresh — <SYM1>, <SYM2>, ..."
+git push
+```
+
+If zero studies changed, do NOT make an empty commit. Print
+`[OK] No changes — all studies current.`
+
+GitHub Pages auto-deploys in ~30 seconds. Hosted dashboard URL:
+`https://chi2tseng.github.io/stocks-in-play/`.
+
+## § Phase 8 — Final summary
+
+A tight 6–12 line markdown block:
+
+- Total studies in library
+- Effective date count (after fallback)
+- Updated count (≥ 1 field change)
+- TV-refreshed count (= earnings-tagged)
+- News-refreshed count
+- Skipped (no date / future / fetch failed)
+- Placeholder studies that got fully filled this run
+- Whether commit + push succeeded
+
+Stop there — don't add paragraphs of explanation. The user can see the per-study
+detail in Phase 5's output.
+
+---
+
+## Error handling
 
 | Failure | Action |
 |---|---|
-| Yahoo HTTP 4xx/5xx for a single ticker | log `[warn] <SYM>: Yahoo HTTP <code>`, skip, continue |
-| Empty bars array (delisted / suspended ticker) | log `[warn] <SYM>: no bars in window`, skip |
-| No bar at-or-before target in the 10d window | retry once with `period1` further back (-30 d), then warn + skip |
-| Connection timeout | retry once after 5 s, then warn + skip |
-| `studies.json` missing or unparseable | abort the whole run, do NOT write back |
+| Yahoo HTTP 4xx/5xx for one ticker | `[warn] SYM: Yahoo HTTP <code>`, skip, continue |
+| Empty bars in 14d window | retry once with 30d window; if still empty, warn + skip |
+| TV scrape times out / fails | warn, **don't abort**, skip TV for this study; OHLCV + news still applied |
+| News fetch fails | warn, leave newsDetail empty; user can fill it later |
+| `studies.json` unparseable | ABORT entire run, no writes |
+| `build_dashboard.py` errors | log, continue to git |
+| `git push` fails | log error, exit non-zero so the run shows failed |
 
-Per-ticker failures NEVER abort the run — finish all the other tickers first.
-
-## § 6. Final summary
-
-Report concisely (6–12 lines):
-- Total studies in the library
-- Number with effective date (after empty-date fallback)
-- Number actually updated (had ≥ 1 field change)
-- Of those, how many got TV refresh (= earnings-tagged) and how many got fresh news
-- Number skipped (no date / future / fetch failed)
-- Any placeholder studies that just got fully filled
-- Any fallback / warning lines worth surfacing
+Per-ticker failures NEVER abort the run — finish the other tickers first.
 
 ---
 
@@ -281,44 +243,49 @@ Report concisely (6–12 lines):
 
 ```json
 {
-  "id":     "FIG-lhc4x9zabc",
-  "symbol": "FIG",
-  "savedAt": "2026-05-15T18:00:00Z",
-  "ohlcv": {
-    "date":       "2026-05-15",
-    "open":       22.60,
-    "high":       24.10,
-    "low":        22.45,
-    "close":      23.85,
-    "prev_close": 22.10,
-    "volume":     18200000
-  },
+  "id":     "NBIS-mp85qrpt9dk",
+  "symbol": "NBIS",
+  "savedAt": "2026-05-16T09:42:24.977Z",
   "snapshot": {
-    "scanDate": "2026-05-15",
-    "...": "left alone"
+    "name":      "Nebius Group N.V.",
+    "type":      "momentum",
+    "chgPct":    null,
+    "last":      207.27,                                     // Phase 2f: synced to ohlcv.close
+    "catalyst":  "Q1 2026 業績 ...",                          // Phase 4: only if was empty
+    "tv":        { "latestEPS": -0.32, ..., "chart": {...} }, // Phase 3: earnings only
+    "sessions":  [],
+    "newsDetail": "5/13 Q1 2026 業績...",                     // Phase 4: only if was empty
+    "scanDate":  "2026-05-16"
   },
-  "notes":       "<p>...</p>",   // left alone
-  "customChart": { },            // left alone
-  "intent":      "long",         // left alone
-  "price":       null,           // left alone
-  "...":         "everything else also left alone"
+  "ohlcv": {                                                  // Phase 2: every dated study
+    "date":       "2026-05-13",
+    "open":       203.85,  "high": 217.34,  "low": 195.0,
+    "close":      207.27,  "prev_close": 179.11,
+    "volume":     38770000
+  },
+  "customTypes": ["earnings"],
+  "notes":       "...",                                       // left alone
+  "customChart": { },                                         // left alone
+  "intent":      "long",                                      // left alone
+  "price":       null,                                        // left alone (manual override)
+  "screenshots": [],
+  "hiddenSections": []
 }
 ```
 
-## Date format normalization
+## Date normalisation
 
-Accept these date formats from existing studies:
-- `2026-05-15` (ISO — preferred)
-- `05/15/2026` (US)
-- `2026/05/15` (Asian)
+Accept `2026-05-15` / `05/15/2026` / `2026/05/15`. Always WRITE back in ISO `YYYY-MM-DD`.
 
-Always WRITE back in ISO format (`YYYY-MM-DD`) regardless of what was there before.
+## Why not a cloud routine?
 
-## Companion to /SIPs
+`/SIPs` runs locally and so does this. Two hard reasons:
+1. **`tv-scrape.js`** needs Playwright + Chromium, plus the Windows-specific install. The
+   cloud Linux env doesn't have it by default and installing it on every run is slow.
+2. **News composition** needs Claude's judgment + multi-source synthesis. The output is
+   繁體中文 markdown that mirrors `/SIPs` Phase 7 — that's an LLM job, not a Python script.
 
-- **`/SIPs`** — the full daily scan: scrapes Barchart pre+post-market gappers, classifies
-  MAGNA53, pulls TV quarterly forecasts, writes a 繁體中文 brief, regenerates dashboard.
-  Heavy weight, ~5 minutes, hits 5 different data sources.
-- **`/update-studies`** *(this skill)* — lightweight OHLCV-only refresh for studies the
-  user has ALREADY saved. Doesn't touch newcandidates / catalysts / Claude picks.
-  Schedule this daily, schedule `/SIPs` as the morning ritual.
+If you want unattended daily runs, schedule a Windows Task Scheduler entry that opens
+Claude Code + sends `/update-studies` as the first message. Then commit + push happens
+locally and pushes to the same `chi2tseng/stocks-in-play` GitHub repo the hosted Pages
+mirror serves from.
