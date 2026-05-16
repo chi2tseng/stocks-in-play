@@ -3539,10 +3539,11 @@ function isStudySaved(sym, scanDate) {
 function addStudy(stock, opts = {}) {
   const arr = loadStudies();
   const scanDate = opts.scanDate || STATE.date || '';
-  // Dedup on (symbol, scanDate) — same scan's data shouldn't yield two studies, but the
-  // SAME ticker captured on DIFFERENT scan dates SHOULD coexist as separate studies (each
-  // has its own snapshot.tv.chart, catalyst, day chg, etc.).
-  if (arr.some(st => st.symbol === stock.symbol && (st.snapshot?.scanDate || '') === scanDate)) return false;
+  // Default behaviour dedups on (symbol, scanDate) so the SIP-card "Save to Studies" toggle
+  // doesn't accidentally make a duplicate when clicked twice for the same scan. The Studies
+  // search box (and any other "always-add-a-fresh-row" caller) sets `force: true` to bypass
+  // this — that's how duplicate studies for the same ticker on the same date become possible.
+  if (!opts.force && arr.some(st => st.symbol === stock.symbol && (st.snapshot?.scanDate || '') === scanDate)) return false;
   const newId = genStudyId(stock.symbol);
   arr.push({
     id: newId,
@@ -3581,7 +3582,7 @@ function addStudy(stock, opts = {}) {
     screenshots: [],
   });
   saveStudies(arr);
-  return true;
+  return newId;       // caller can use the new study's id (e.g. to navigate / scroll-to / highlight)
 }
 
 // Manually create a placeholder study for a ticker that isn't in any past scan yet.
@@ -3890,18 +3891,27 @@ function renderStudies() {
     searchRes.classList.add('show');
   }
   async function pickSearchResult(sym, scanDate) {
-    // Add from past scan: fetch the snapshot for that date, then call addStudy.
+    // Add from past scan: fetch the snapshot for that date, then force-create a NEW study row.
+    // force: true bypasses the (symbol, scanDate) dedup — so picking the same search result
+    // twice yields TWO independent study records, each with its own notes/ohlcv/customChart.
     const data = await loadDateData(scanDate);
     const snap = data?.stocks?.[sym];
     if (!snap) { alert(`Couldn't load ${sym} from ${scanDate}`); return; }
-    addStudy({ ...snap, symbol: sym }, { scanDate });
-    // Navigate to the just-created study (loadStudies order is push-append, so it's last).
-    const justAdded = loadStudies().slice().reverse().find(s => s.symbol === sym && (s.snapshot?.scanDate || '') === scanDate);
-    location.hash = '#/study/' + (justAdded?.id || sym);
+    addStudy({ ...snap, symbol: sym }, { scanDate, force: true });
+    // Stay on the My Studies list — user explicitly asked NOT to navigate into the detail page.
+    // Clear the search box + close the dropdown, then re-render so the new card appears at the top.
+    if (searchInp) searchInp.value = '';
+    searchRes.classList.remove('show');
+    renderStudies();
   }
   function createSearchResult(sym) {
     const newId = addManualStudy(sym);
-    if (newId) location.hash = '#/study/' + newId;
+    if (!newId) return;
+    // Same UX as pickSearchResult — stay on list, clear search, re-render. The new placeholder
+    // card lands at the top and the user can click into it whenever they want to fill in details.
+    if (searchInp) searchInp.value = '';
+    searchRes.classList.remove('show');
+    renderStudies();
   }
 
   searchInp?.addEventListener('focus', async () => {
@@ -4022,11 +4032,14 @@ function studyPreviewCardHtml(st, idx) {
     ? `<span class="study-potential ${potentialPct >= 0 ? 'pos' : 'neg'}" title="Open → High (catalyst potential)">→High ${(potentialPct >= 0 ? '+' : '') + potentialPct.toFixed(2)}%</span>`
     : '';
   // Mini MS table — READ-ONLY snapshot at save time. Shows the latest reported quarter
-  // + 4 forward estimates (max 5 quarters total). Hidden entirely if the study has no chart
-  // data (placeholder studies, or tickers without TV quarterly coverage). Editing only
-  // happens on the detail page so accidental clicks here don't mutate values.
+  // + 4 forward estimates (max 5 quarters total). Hidden entirely if:
+  //   • the study has no chart data (placeholder studies, or tickers without TV coverage), OR
+  //   • the user has hidden the ms_table section on the detail page (study.hiddenSections
+  //     includes 'ms_table') — the preview tracks the detail-page visibility setting so the
+  //     two views stay consistent. Editing only happens on detail page.
   const chart = st.customChart || (s.tv && s.tv.chart) || null;
-  const msHtml = chart ? renderCompactReadonlyMsTable(chart) : '';
+  const msHiddenByUser = Array.isArray(st.hiddenSections) && st.hiddenSections.includes('ms_table');
+  const msHtml = (chart && !msHiddenByUser) ? renderCompactReadonlyMsTable(chart) : '';
   return `<a class="sip-card" href="#/study/${st.id || st.symbol}" style="text-decoration:none;color:inherit;display:block;position:relative">
     <button class="study-preview-del" data-id="${st.id || st.symbol}" title="Delete study"
             onclick="event.preventDefault();event.stopPropagation();handleDeleteStudyFromList('${st.id || st.symbol}');">✕</button>
@@ -4081,22 +4094,43 @@ function catalystTypeClass(key) {
   const p = CATALYST_PRESETS.find(p => p.key === key.toLowerCase().replace(/\s+/g, '-'));
   return p ? p.cls : '';
 }
-// Custom (user-created) catalyst types — persisted to localStorage so the dropdown remembers
-// them across sessions. NEW types created via "+ Create new <X>" land here. Stored as a flat
-// array of label strings (case preserved). Lookup is case-insensitive.
-// Separate `sips-hidden-preset-catalyst-types` key tracks which built-in presets the user has
-// curated out of the dropdown — they stay defined in code (so existing study pills still
-// color-code correctly) but don't appear as picker options.
-const CUSTOM_CAT_TYPES_KEY  = 'sips-custom-catalyst-types';
-const HIDDEN_CAT_PRESETS_KEY = 'sips-hidden-preset-catalyst-types';
+// Custom (user-created) catalyst types — persisted to localStorage. Two parallel lists:
+//   • `sips-custom-catalyst-types`         — ACTIVE list, shown in the dropdown.
+//   • `sips-custom-catalyst-types-archive` — graveyard. Every type ever created lives here
+//     and NEVER gets pruned on delete. Lets "Reset Tags" actually restore everything the
+//     user has deleted over time, which is what they expected the button to do.
+// Lookup is case-insensitive. Presets (CATALYST_PRESETS) are permanent and never enter
+// either list.
+const CUSTOM_CAT_TYPES_KEY     = 'sips-custom-catalyst-types';
+const CUSTOM_CAT_ARCHIVE_KEY   = 'sips-custom-catalyst-types-archive';
+const HIDDEN_CAT_PRESETS_KEY   = 'sips-hidden-preset-catalyst-types';  // legacy; unused now
 function loadCustomCatTypes() {
   try {
     const arr = JSON.parse(localStorage.getItem(CUSTOM_CAT_TYPES_KEY) || '[]');
-    return Array.isArray(arr) ? arr : [];
+    if (!Array.isArray(arr)) return [];
+    // Bootstrap the archive with currently-active customs so the Restore button can recover
+    // anything created BEFORE the archive feature existed. Idempotent via appendCustomCatArchive
+    // dedup — safe to call on every load.
+    arr.forEach(label => appendCustomCatArchive(label));
+    return arr;
   } catch { return []; }
 }
 function saveCustomCatTypes(arr) {
   localStorage.setItem(CUSTOM_CAT_TYPES_KEY, JSON.stringify(arr));
+}
+function loadCustomCatArchive() {
+  try {
+    const arr = JSON.parse(localStorage.getItem(CUSTOM_CAT_ARCHIVE_KEY) || '[]');
+    return Array.isArray(arr) ? arr : [];
+  } catch { return []; }
+}
+function appendCustomCatArchive(label) {
+  // Idempotent (case-insensitive): never grow the archive beyond unique entries.
+  const arr = loadCustomCatArchive();
+  const lower = label.toLowerCase();
+  if (arr.some(a => a.toLowerCase() === lower)) return;
+  arr.push(label);
+  localStorage.setItem(CUSTOM_CAT_ARCHIVE_KEY, JSON.stringify(arr));
 }
 function rememberCustomCatType(label) {
   const arr = loadCustomCatTypes();
@@ -4105,9 +4139,11 @@ function rememberCustomCatType(label) {
   if (arr.some(a => a.toLowerCase() === lower)) return false;
   arr.push(label);
   saveCustomCatTypes(arr);
+  appendCustomCatArchive(label);   // also stamp into the never-pruned graveyard
   return true;
 }
 function forgetCustomCatType(label) {
+  // Removes from the ACTIVE list only — the archive keeps the entry so Reset can bring it back.
   const arr = loadCustomCatTypes().filter(a => a.toLowerCase() !== label.toLowerCase());
   saveCustomCatTypes(arr);
 }
@@ -4116,11 +4152,6 @@ function loadHiddenPresets() {
     const arr = JSON.parse(localStorage.getItem(HIDDEN_CAT_PRESETS_KEY) || '[]');
     return Array.isArray(arr) ? arr : [];
   } catch { return []; }
-}
-function hidePresetCatType(key) {
-  const arr = loadHiddenPresets();
-  if (!arr.includes(key)) arr.push(key);
-  localStorage.setItem(HIDDEN_CAT_PRESETS_KEY, JSON.stringify(arr));
 }
 // All available options for the picker — built-in presets (minus user-hidden ones) + customs.
 function getAllCatalystOptions() {
@@ -4627,7 +4658,7 @@ async function renderStudyDetail(idOrSym) {
       <input class="cat-search" type="text" placeholder="${placeholder}" autocomplete="off">
       <div class="cat-options-host">${renderOptions('')}</div>
       <div class="cat-popup-foot">
-        <button class="cat-reset" type="button" data-action="reset-customs" title="Forget all custom tags and restore preset defaults">↺ Reset to defaults</button>
+        <button class="cat-reset" type="button" data-action="restore-customs" title="Bring back every custom tag you have ever created (from the archive)">↺ Restore deleted tags</button>
       </div>
     `;
     document.body.appendChild(pop);
@@ -4636,16 +4667,29 @@ async function renderStudyDetail(idOrSym) {
     inp.focus();
     inp.addEventListener('input', () => { host.innerHTML = renderOptions(inp.value); });
     inp.addEventListener('keydown', e => { if (e.key === 'Escape') pop.remove(); });
-    // Reset-to-defaults button (popup footer) — separate listener since it lives outside host
-    pop.querySelector('[data-action="reset-customs"]')?.addEventListener('click', (e) => {
+    // Restore-deleted-tags button (popup footer) — pulls everything ever created from the
+    // archive back into the active dropdown list. Lives outside `host` so it gets its own
+    // listener. Undoable: snackbar Undo reverts to the active list as it was before clicking.
+    pop.querySelector('[data-action="restore-customs"]')?.addEventListener('click', (e) => {
       e.preventDefault(); e.stopPropagation();
-      const before = loadCustomCatTypes();
-      if (!before.length) return;
-      saveCustomCatTypes([]);
-      // Also clear the legacy hidden-presets list if any rows lingered from a previous build.
+      const before  = loadCustomCatTypes();
+      const archive = loadCustomCatArchive();
+      // Compute net additions (archive minus already-active, case-insensitive).
+      const activeLower = new Set(before.map(a => a.toLowerCase()));
+      const newlyRestored = archive.filter(a => !activeLower.has(a.toLowerCase()));
+      if (newlyRestored.length === 0) {
+        const msg = archive.length === 0
+          ? 'No custom tags to restore — none have been created yet (presets are always available).'
+          : `Nothing to restore — all ${archive.length} archived custom tag${archive.length === 1 ? ' is' : 's are'} already in the dropdown.`;
+        showUndoSnackbar(msg, () => {});
+        return;
+      }
+      // Active list = before ∪ archive (dedup'd, archive order appended after current order)
+      saveCustomCatTypes([...before, ...newlyRestored]);
+      // Also clear the legacy hidden-presets list in case it was lingering from older builds.
       localStorage.removeItem(HIDDEN_CAT_PRESETS_KEY);
       host.innerHTML = renderOptions(inp.value);
-      showUndoSnackbar(`Reset to defaults — forgot ${before.length} custom tag${before.length > 1 ? 's' : ''}`, () => {
+      showUndoSnackbar(`Restored ${newlyRestored.length} custom tag${newlyRestored.length === 1 ? '' : 's'}: ${newlyRestored.slice(0, 3).map(escapeHtml).join(', ')}${newlyRestored.length > 3 ? `, +${newlyRestored.length - 3} more` : ''}`, () => {
         saveCustomCatTypes(before);
         const stillOpen = document.querySelector('.catalyst-type-popup .cat-options-host');
         if (stillOpen) stillOpen.innerHTML = renderOptions(inp.value);
