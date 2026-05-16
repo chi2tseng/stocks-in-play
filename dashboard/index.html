@@ -2225,7 +2225,7 @@ function sipCardHtml(s, idx) {
   const sessTags = s.sessions.map(x => `<span class="tag">${x.session.toUpperCase()} <span class="dot dot-${x.direction}"></span> ${fmtPctShort(x.chgPct)}</span>`).join(' ');
   const magnaHtml = magnaChip('M', m.bits.M) + magnaChip('G', m.bits.G) + magnaChip('N', m.bits.N) + magnaChip('A', m.bits.A) + magnaChip('5', m.bits._5) + magnaChip('3', m.bits._3);
   const catalystText = s.catalyst || '(無催化劑資料)';
-  return `<a class="sip-card ${isFeatured ? 'featured' : ''}" href="#/stock/${s.symbol}" style="text-decoration:none;color:inherit;display:block;position:relative">
+  return `<a class="sip-card ${isFeatured ? 'featured' : ''}" href="${buildRouteHash('stock/' + s.symbol)}" style="text-decoration:none;color:inherit;display:block;position:relative">
     ${saveStudyBtnHtml(s.symbol)}
     <span class="sip-rank-row"><span class="sip-rank">#${idx + 1}</span>${dayBadgeHtml(s)}</span>
     <div class="sip-header"><div class="sip-sym">${s.symbol}</div><div class="sip-chg ${chgCls}">${fmtPct(s.chgPct)}</div></div>
@@ -2253,7 +2253,7 @@ function claudePickCardHtml(s, idx) {
   const mismatchBanner = s._claudeDirMismatch
     ? `<div class="dir-mismatch-banner">⚠️ 方向不符：intent=<b>${s._claudeIntent}</b> 但 chgPct=${fmtPctShort(s.chgPct)}</div>`
     : '';
-  return `<a class="sip-card claude-pick ${isFeatured ? 'featured' : ''} ${s._claudeDirMismatch ? 'dir-mismatch' : ''}" href="#/stock/${s.symbol}" style="text-decoration:none;color:inherit;display:block;position:relative">
+  return `<a class="sip-card claude-pick ${isFeatured ? 'featured' : ''} ${s._claudeDirMismatch ? 'dir-mismatch' : ''}" href="${buildRouteHash('stock/' + s.symbol)}" style="text-decoration:none;color:inherit;display:block;position:relative">
     ${saveStudyBtnHtml(s.symbol, s._claudeRationale, s._claudeIntent)}
     <span class="sip-rank-row"><span class="sip-rank claude-rank">#${idx + 1}</span>${dayBadgeHtml(s)}</span>
     ${mismatchBanner}
@@ -2706,7 +2706,7 @@ function renderScanx() {
   // Generic inline: ticker + colored %chg.
   const inlineFmt = lst => lst.map(e => {
     const pctCls = e.chg >= 0 ? 'pos' : 'neg';
-    return `<a class="scanx-entry" href="#/stock/${e.symbol}"><span class="scanx-sym">${e.symbol}</span> <span class="scanx-pct ${pctCls}">${fmtPctShort(e.chg)}</span></a>`;
+    return `<a class="scanx-entry" href="${buildRouteHash('stock/' + e.symbol)}"><span class="scanx-sym">${e.symbol}</span> <span class="scanx-pct ${pctCls}">${fmtPctShort(e.chg)}</span></a>`;
   }).join(', ');
   // Earnings-reaction inline: same as above + (Rev YoY ±N%) appended after the % when TV data exists.
   const earningsInlineFmt = lst => lst.map(e => {
@@ -2718,11 +2718,11 @@ function renderScanx() {
       const cn = v >= 0 ? 'pos' : 'neg';
       revYoY = ` <span class="scanx-yoy ${cn}">(Rev ${v >= 0 ? '+' : ''}${v}%)</span>`;
     }
-    return `<a class="scanx-entry" href="#/stock/${e.symbol}"><span class="scanx-sym">${e.symbol}</span> <span class="scanx-pct ${pctCls}">${fmtPctShort(e.chg)}</span>${revYoY}</a>`;
+    return `<a class="scanx-entry" href="${buildRouteHash('stock/' + e.symbol)}"><span class="scanx-sym">${e.symbol}</span> <span class="scanx-pct ${pctCls}">${fmtPctShort(e.chg)}</span>${revYoY}</a>`;
   }).join(', ');
   const listFmt = lst => lst.map(e => {
     const pctCls = e.chg >= 0 ? 'pos' : 'neg';
-    return `<li><a class="scanx-entry" href="#/stock/${e.symbol}"><span class="scanx-sym">${e.symbol}</span> <span class="scanx-pct ${pctCls}">${fmtPctShort(e.chg)}</span> <span class="scanx-cat">（${escapeHtml(e.catalyst)}）</span></a></li>`;
+    return `<li><a class="scanx-entry" href="${buildRouteHash('stock/' + e.symbol)}"><span class="scanx-sym">${e.symbol}</span> <span class="scanx-pct ${pctCls}">${fmtPctShort(e.chg)}</span> <span class="scanx-cat">（${escapeHtml(e.catalyst)}）</span></a></li>`;
   }).join('');
   app.innerHTML = `
     <h2 class="page-title">SCANX</h2>
@@ -3239,7 +3239,7 @@ async function renderStock(sym) {
     // viewing a stock detail page that just happens to not have a scan entry for this
     // date. Render a slim header with the date so they can still pivot via navigation.
     app.innerHTML = `
-      <div class="breadcrumb"><a href="#/earnings">Earnings</a> · <a href="#/catalyst">Catalyst</a> · <a href="#/scanx">SCANX</a> &nbsp;»&nbsp; <b>${escapeHtml(sym)}</b>${dateBadge}</div>
+      <div class="breadcrumb"><a href="${buildRouteHash('earnings')}">Earnings</a> · <a href="${buildRouteHash('catalyst')}">Catalyst</a> · <a href="${buildRouteHash('scanx')}">SCANX</a> &nbsp;»&nbsp; <b>${escapeHtml(sym)}</b>${dateBadge}</div>
       <div class="empty" style="margin-top:24px">No scan data for <b>${escapeHtml(sym)}</b> on ${escapeHtml(STATE.date || 'this date')}. Try a different date from the calendar.</div>`;
     return;
   }
@@ -3287,7 +3287,7 @@ async function renderStock(sym) {
   ].filter(Boolean).join(' ');
   app.innerHTML = `
     <div class="breadcrumb study-detail-breadcrumb">
-      <span><a href="#/earnings">Earnings</a> · <a href="#/catalyst">Catalyst</a> · <a href="#/scanx">SCANX</a> &nbsp;»&nbsp; <b>${s.symbol}</b>${dateBadge}</span>
+      <span><a href="${buildRouteHash('earnings')}">Earnings</a> · <a href="${buildRouteHash('catalyst')}">Catalyst</a> · <a href="${buildRouteHash('scanx')}">SCANX</a> &nbsp;»&nbsp; <b>${s.symbol}</b>${dateBadge}</span>
       ${saveStudyBtnHtml(s.symbol)}
     </div>
     <div class="stock-header">
