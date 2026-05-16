@@ -135,7 +135,7 @@ Write the converted block to `study.snapshot.tv`. Also:
 **Non-earnings studies skip this phase entirely.** TV scrape is expensive and irrelevant
 to M&A / FDA / contract / technical / FBO / short-squeeze / etc.
 
-## § Phase 4 — News Detail refresh
+## § Phase 4 — News Detail refresh + earnings auto-detect
 
 Same sourcing approach as `/SIPs` Phase 7. The user explicitly asked for this — they
 want the news to be FRESH per-study, not stale from when they first saved the study.
@@ -146,14 +146,38 @@ For each study (regardless of tag):
    - `WebSearch` for `<TICKER> <date>` to find the day's headline
    - `WebFetch` on company IR pages, SEC filings, Yahoo Finance news, Reuters, etc.
    - `firecrawl` for paywalled / JS-heavy pages
-2. **Compose** a `newsDetail` block in **繁體中文 markdown** matching the /SIPs Phase 7
+
+2. **Earnings auto-detect** (NEW — runs BEFORE composing the newsDetail):
+   Scan the headlines + summary text returned in step 1 for any of these signals:
+   - `Q[1-4] 20\d\d earnings` / `Q[1-4] FY20\d\d earnings`
+   - `reported earnings` / `posts Q[1-4]`
+   - `earnings call` / `earnings report` / `earnings release`
+   - `EPS beat` / `EPS miss` / `revenue beat` / `revenue miss`
+   - `業績電話會議` / `Q[1-4] .* 業績` (繁體中文)
+   - The TARGET DATE matching the company's known earnings calendar date (Alphabet,
+     AMD, Microsoft, etc. — well-known reporters)
+
+   If ANY of those signals fire AND `"earnings"` is NOT in `customTypes`:
+   - **Add `"earnings"`** to the study's `customTypes` array
+   - Log: `[info] SYM: news indicates earnings catalyst on TARGET_DATE — auto-tagging`
+   - **Jump back to Phase 3** for THIS study and run the TV scrape (tv-scrape.js +
+     parse_tv.py). Then continue with Phase 4 step 3 below.
+
+   Do NOT auto-add the tag if the news is unrelated to earnings (e.g., M&A
+   announcement, FDA news, contract win) — even if the date happens to coincide
+   with the company's earnings calendar. The signal MUST be present in the actual
+   headlines for the target date.
+
+3. **Compose** a `newsDetail` block in **繁體中文 markdown** matching the /SIPs Phase 7
    style:
    - Lead: `<date> <時段> <event>` (e.g. "5/13 Q1 2026 業績電話會議後")
    - 1–3 supporting facts in **bold** (`**EPS $X** vs $Y`)
    - Short forward-looking analysis paragraph (downside / setup quality)
    - Paragraphs separated by `\n\n`
-3. **Compose** a one-liner `catalyst` (≤200 chars) for the preview-card teaser.
-4. **Respect user edits**: only WRITE `snapshot.newsDetail` and `snapshot.catalyst` if
+
+4. **Compose** a one-liner `catalyst` (≤200 chars) for the preview-card teaser.
+
+5. **Respect user edits**: only WRITE `snapshot.newsDetail` and `snapshot.catalyst` if
    they're currently **empty** (`null` or `""`). If the user has manually edited either,
    log `[info] SYM: keeping existing news` and skip. The reason: the user's hand-curated
    version is usually better than auto-fetched.

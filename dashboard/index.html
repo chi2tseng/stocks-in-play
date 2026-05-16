@@ -661,6 +661,10 @@ body.readonly-mode .vol-editable:hover { background: transparent; }
 .study-delete-outer:hover { color: var(--neg); background: rgba(226,59,74,0.08); border-color: rgba(226,59,74,0.40); }
 .study-delete-outer svg { width: 14px; height: 14px; }
 .study-detail-breadcrumb { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+.study-detail-date {
+  font-family: var(--font-mono); font-size: 12px; color: var(--stone);
+  font-weight: 500; letter-spacing: 0.3px;
+}
 body.readonly-mode .study-delete-outer { display: none !important; }
 
 /* Custom catalyst types — Notion-style multi-select pills */
@@ -3783,8 +3787,13 @@ function addManualStudy(rawSym) {
     ohlcv: { date: '', open: null, high: null, low: null, close: null, prev_close: null, volume: null },
     screenshots: [],
     // Default: hide all data-heavy sections — the placeholder page shows news + notes only.
-    // build_dashboard.py un-hides them once it has real data to display.
+    // build_dashboard.py / /update-studies un-hide them once real TV data lands.
     hiddenSections: ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'],
+    // Default catalyst tag = "earnings" since the vast majority of manually-added
+    // placeholder studies are tracking an earnings event. /update-studies uses this
+    // tag to decide whether to run the TV scrape on next refresh. User can change
+    // the tag from the Catalyst pill if it's actually not an earnings catalyst.
+    customTypes: ['earnings'],
   });
   saveStudies(arr);
   return newId;
@@ -4702,7 +4711,14 @@ async function renderStudyDetail(idOrSym) {
 
   app.innerHTML = `
     <div class="breadcrumb study-detail-breadcrumb">
-      <span><a href="#/studies">← Studies</a> &nbsp;»&nbsp; <b>${sym}</b></span>
+      <span><a href="#/studies">← Studies</a> &nbsp;»&nbsp; <b>${sym}</b>${(() => {
+        const od = (study.ohlcv && study.ohlcv.date) ? study.ohlcv.date : '';
+        const sd = od || (study.savedAt || '').slice(0, 10);
+        const title = od
+          ? `Trading day from OHLCV. Saved on ${(study.savedAt || '').slice(0, 10)}.`
+          : `Saved on this date. Fill OHLCV.date in the Gain/Stop popup to switch to the trading day.`;
+        return sd ? `<span class="study-detail-date" title="${title}">&nbsp;·&nbsp;${sd}</span>` : '';
+      })()}</span>
       <button class="study-delete-outer" id="study-delete" type="button" title="Delete this study">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="3 6 5 6 21 6"></polyline>

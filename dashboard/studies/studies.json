@@ -153,7 +153,7 @@
         "priorYrEPS": -0.41,
         "surpriseEPS_pct": 57.72,
         "surpriseEPS_dollar": 0.45,
-        "latestRev_M": 399.0,
+        "latestRev_M": 399,
         "consensusRev_M": 375.13,
         "priorYrRev_M": 55.3,
         "surpriseRev_pct": 6.36,
@@ -167,9 +167,9 @@
         ],
         "revEst_next4": [
           613.95,
-          940.0,
-          1460.0,
-          2230.0
+          940,
+          1460,
+          2230
         ],
         "yoyBlock": "+21.95% / +621.52%\n--------------------\n-68.42% / +484.16%\n-56.10% / +543.39%\n+45.45% / +541.19%\n+65.62% / +458.90%",
         "chart": {
@@ -223,7 +223,7 @@
             105.1,
             146.1,
             227.7,
-            399.0,
+            399,
             null,
             null,
             null,
@@ -239,9 +239,9 @@
             247.28,
             375.13,
             613.95,
-            940.0,
-            1460.0,
-            2230.0
+            940,
+            1460,
+            2230
           ],
           "latest_idx": 7
         }
@@ -264,7 +264,7 @@
       "date": "2026-05-13",
       "open": 203.85,
       "high": 217.34,
-      "low": 195.0,
+      "low": 195,
       "close": 207.27,
       "prev_close": 179.11,
       "volume": 38770000
@@ -272,6 +272,357 @@
     "screenshots": [],
     "hiddenSections": [],
     "customTypes": [
+      "earnings"
+    ],
+    "focusQuarterIdx": 7,
+    "customChart": {
+      "quarters": [
+        "Q2 '24",
+        "Q3 '24",
+        "Q4 '24",
+        "Q1 '25",
+        "Q2 '25",
+        "Q3 '25",
+        "Q4 '25",
+        "Q1 '26",
+        "Q2 '26",
+        "Q3 '26",
+        "Q4 '26",
+        "Q1 '27"
+      ],
+      "eps_reported": [
+        null,
+        null,
+        -0.37,
+        -0.41,
+        -0.38,
+        -0.41,
+        -0.99,
+        -0.32,
+        null,
+        null,
+        null,
+        null
+      ],
+      "eps_estimate": [
+        null,
+        null,
+        null,
+        -0.48,
+        -0.5,
+        -0.56,
+        -1.03,
+        -0.77,
+        -0.64,
+        -0.64,
+        -0.54,
+        -0.11
+      ],
+      "rev_reported_M": [
+        24.9,
+        43.3,
+        37.9,
+        55.3,
+        105.1,
+        146.1,
+        227.7,
+        399,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rev_estimate_M": [
+        null,
+        null,
+        58.1,
+        57.73,
+        105.37,
+        157.88,
+        247.28,
+        375.13,
+        614,
+        940,
+        1460,
+        2230
+      ],
+      "latest_idx": 7
+    }
+  },
+  {
+    "id": "AMD-mp86cl0v7kw",
+    "symbol": "AMD",
+    "savedAt": "2026-05-16T09:59:22.735Z",
+    "snapshot": {
+      "name": "Advanced Micro Devices, Inc.",
+      "type": "momentum",
+      "chgPct": null,
+      "last": 341.54,
+      "catalyst": "Q1 2026 業績 5/5 盤後揭曉：EPS $1.37 vs $1.29（surprise +6.2%）、營收 $10.25B vs $9.9B（+3.6% surprise）。資料中心營收 +57% YoY 至 $5.8B 為 AI GPU + Server CPU 雙引擎證明。盤後 +4%、5/6 開盤 gap +16%。",
+      "tv": {
+        "latestEPS": 1.37,
+        "consensusEPS": 1.29,
+        "priorYrEPS": 0.96,
+        "surpriseEPS_pct": 6.24,
+        "surpriseEPS_dollar": 0.08,
+        "latestRev_M": 10250,
+        "consensusRev_M": 9900,
+        "priorYrRev_M": 7440,
+        "surpriseRev_pct": 3.57,
+        "yrYrRev_pct": 37.76881720430107,
+        "epsYoY_pct": 42.70833333333335,
+        "epsEst_next4": [
+          1.6,
+          1.83,
+          2.62,
+          2.71
+        ],
+        "revEst_next4": [
+          11240,
+          12410,
+          15600,
+          16290
+        ],
+        "yoyBlock": "+42.71% / +37.77%\n--------------------\n+233.33% / +46.35%\n+52.50% / +34.16%\n+71.24% / +51.90%\n+97.81% / +58.93%",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            0.69,
+            0.92,
+            1.09,
+            0.96,
+            0.48,
+            1.2,
+            1.53,
+            1.37,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.68,
+            0.92,
+            1.08,
+            0.94,
+            0.48,
+            1.17,
+            1.32,
+            1.29,
+            1.6,
+            1.83,
+            2.62,
+            2.71
+          ],
+          "rev_reported_M": [
+            5830,
+            6820,
+            7660,
+            7440,
+            7680,
+            9250,
+            10270,
+            10250,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            5730,
+            6710,
+            7530,
+            7120,
+            7410,
+            8760,
+            9670,
+            9900,
+            11240,
+            12410,
+            15600,
+            16290
+          ],
+          "latest_idx": 7
+        }
+      },
+      "sessions": [],
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "claudeRationale": "",
+      "claudeIntent": null,
+      "newsDetail": "5/5 盤後 Q1 2026 業績電話會議：**EPS $1.37** vs 預估 $1.29（surprise +6.24%），**營收 $10.25B** vs 預估 $9.90B（+3.57% surprise、YoY +37.77%）。\n\n**Data Center +57% YoY 至 $5.8B**（vs Q1 $3.67B）— MI300X / MI325X AI GPU 出貨 + EPYC Server CPU 同步成長雙引擎；Client + Gaming 也回穩。Gross margin 維持 ~55%。\n\n**分析師反應：** Wall Street 大幅上修目標價，多家分析師 PT raise，最高至 **$515**。但 HSBC + Daiwa 因估值因素**降評至 Hold/Underperform** — 短期已大幅 re-rate。\n\n**前瞻指引：** Q2 營收 ~$11.24B 連續加速；管理層 H2 2026 Gaming 因記憶體 + 元件成本上升將顯著下滑，要留意 segment mix shift。\n\n5/4 是 earnings 前最後一天，當天 -5.27%（open 360.31 → close 341.54）為盤前空頭部位調倉。隔日 +16% gap up 是真正催化日。建議 buy-the-dip 策略：earnings 前一日的 reset 反而是入場機會。",
+      "scanDate": "2026-05-16"
+    },
+    "notes": "",
+    "tags": [],
+    "targetPrice": null,
+    "stopLoss": null,
+    "conviction": 3,
+    "ohlcv": {
+      "date": "2026-05-04",
+      "open": 360.31,
+      "high": 361.85,
+      "low": 338.7,
+      "close": 341.54,
+      "prev_close": 360.54,
+      "volume": 42000200
+    },
+    "screenshots": [],
+    "hiddenSections": [],
+    "customTypes": [
+      "earnings"
+    ]
+  },
+  {
+    "id": "GOOG-mp86v51w56r",
+    "symbol": "GOOG",
+    "savedAt": "2026-05-16T10:13:48.500Z",
+    "snapshot": {
+      "name": "Alphabet Inc. Class C",
+      "type": "momentum",
+      "chgPct": null,
+      "last": 381.94,
+      "catalyst": "Q1 2026 業績 4/29 盤後揭曉：EPS $5.11 vs 預估 $2.63 (surprise +94%)，營收 $109.9B vs 預估 $107.2B (+22% YoY 為 2022 以來最快)，Google Cloud $20B vs $18B est、backlog $460B 雙倍 QoQ。4/30 gap +6.9%、收 +9.96% 創歷史新高。",
+      "tv": {
+        "latestEPS": 5.11,
+        "consensusEPS": 2.68,
+        "priorYrEPS": 2.81,
+        "surpriseEPS_pct": 90.44,
+        "surpriseEPS_dollar": 2.43,
+        "latestRev_M": 109900.0,
+        "consensusRev_M": 106960.0,
+        "priorYrRev_M": 90230.0,
+        "surpriseRev_pct": 2.74,
+        "yrYrRev_pct": 21.799844840961985,
+        "epsYoY_pct": 81.85053380782918,
+        "epsEst_next4": [
+          2.88,
+          3.01,
+          3.27,
+          3.33
+        ],
+        "revEst_next4": [
+          116700.0,
+          123230.0,
+          135350.0,
+          131009.99999999999
+        ],
+        "yoyBlock": "+81.85% / +21.80%\n--------------------\n+24.68% / +21.02%\n+4.88% / +20.40%\n+15.96% / +18.91%\n-34.83% / +19.21%",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            1.89,
+            2.12,
+            2.15,
+            2.81,
+            2.31,
+            2.87,
+            2.82,
+            5.11,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            1.85,
+            1.84,
+            2.12,
+            2.02,
+            2.18,
+            2.27,
+            2.63,
+            2.68,
+            2.88,
+            3.01,
+            3.27,
+            3.33
+          ],
+          "rev_reported_M": [
+            84740.0,
+            88270.0,
+            96470.0,
+            90230.0,
+            96430.0,
+            102350.0,
+            113830.0,
+            109900.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            84210.0,
+            86390.0,
+            96700.0,
+            89200.0,
+            94040.0,
+            99940.0,
+            111320.0,
+            106960.0,
+            116700.0,
+            123230.0,
+            135350.0,
+            131009.99999999999
+          ],
+          "latest_idx": 7
+        }
+      },
+      "sessions": [],
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "claudeRationale": "",
+      "claudeIntent": null,
+      "newsDetail": "4/29 盤後 Alphabet Q1 2026 業績電話會議：**EPS $5.11** vs 預估 $2.63（surprise **+94.3%**），**營收 $109.9B** vs 預估 $107.2B（+22% YoY — 自 2022 以來最快），**淨利 $62.58B**（+81% YoY，$5.11 per share）。\n\n**Google Cloud：** Q1 營收 **$20.03B** vs 預估 $18.05B — 連續第 4 季加速。**Backlog 從 $232B 暴增至 $460B**（QoQ 倍增），AI workload deal commit 大量湧入。Capex spend 上修支撐 AI 基礎建設擴張。\n\n**Search + Ads：** 廣告營收 $77.25B（+15.5% YoY）— AI Overviews + Gemini 整合下未見搜尋廣告侵蝕，是 bear case 重要證偽。\n\n4/30 開盤 gap up **+6.9%**（open $371.26 vs prev_close $347.31），盤中最高 $382.63、收盤 **$381.94 創歷史新高、+9.96%**。成交量 44.6M vs 平均 ~17M（**2.6x 正常量**），月內 +34% 為 2004 IPO 後最強單月表現。市值衝上 $4.4T。\n\nMag 7 領頭羊 — AI capex 故事 + Cloud backlog 加速 + 廣告未被 GenAI 侵蝕三重利多齊發。短期 RSI 偏高需消化，但結構性 thesis 仍強。",
+      "scanDate": "2026-05-16"
+    },
+    "notes": "",
+    "tags": [],
+    "targetPrice": null,
+    "stopLoss": null,
+    "conviction": 3,
+    "ohlcv": {
+      "date": "2026-04-30",
+      "open": 371.26,
+      "high": 382.63,
+      "low": 363.09,
+      "close": 381.94,
+      "prev_close": 347.31,
+      "volume": 44570500
+    },
+    "screenshots": [],
+    "hiddenSections": [],
+    "customTypes": [
+      "momentum",
       "earnings"
     ]
   }
