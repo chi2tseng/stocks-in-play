@@ -604,6 +604,75 @@ After publishing, end the chat response with a single line:
 
 Replace N with the candidate count and TICKER with the #1 ranked SIP.
 
+### 8.5b Phase 10a — One-time news fetch for placeholder studies (NEW)
+
+The dashboard lets the user manually create a "placeholder" study via **Studies → search box → "Create new <TICKER>"**. Those entries land in `dashboard/studies/studies.json` with:
+
+```json
+{ "symbol": "XYZ",
+  "snapshot": { "_placeholder": true, "newsDetail": "", "catalyst": "", ... },
+  "ohlcv": { "open": null, ... }, "notes": "", ... }
+```
+
+If the ticker turns up in **today's** scan, Phase 10b's existing logic (below) will replace the snapshot with rich data and un-hide the chart sections automatically — nothing extra to do.
+
+If the ticker is **NOT** in today's scan, do a **one-time** online news scrape so the user has something to read while they wait for the ticker to appear in a future scan. After the fetch, mark `_newsFetched: true` on the snapshot so we don't keep re-fetching every day.
+
+**Algorithm (Python pseudo-code):**
+
+```python
+import json, requests, os
+studies_path = 'dashboard/studies/studies.json'
+if not os.path.exists(studies_path): return
+with open(studies_path, encoding='utf-8') as f:
+    studies = json.load(f)
+
+todays_syms = set(stocks.keys())  # from current /SIPs scan
+changed = False
+for st in studies:
+    sym = st.get('symbol')
+    snap = st.get('snapshot') or {}
+    if not snap.get('_placeholder'):
+        continue          # already filled
+    if sym in todays_syms:
+        continue          # Phase 10b will handle this — skip
+    if snap.get('_newsFetched'):
+        continue          # already done a one-time fetch — don't repeat
+    # One-time fetch: pull recent news for this ticker.
+    # Source order: Yahoo Finance news API → Finviz news section → Barchart news tab.
+    # Pick the latest 1-3 headlines + bodies, concat into newsDetail.
+    news = fetch_recent_news(sym)   # returns dict {headline, publishedAt, body} list, or []
+    if not news:
+        snap['_newsFetched'] = True   # mark even on empty so we don't retry next run
+        changed = True
+        continue
+    snap['catalyst'] = news[0]['headline'][:200]
+    snap['newsDetail'] = '\n\n'.join(f"[{n['publishedAt']}] {n['headline']}\n{n['body']}" for n in news)
+    snap['_newsFetched'] = True
+    snap['scanDate'] = DATE
+    changed = True
+
+if changed:
+    with open(studies_path, 'w', encoding='utf-8') as f:
+        json.dump(studies, f, ensure_ascii=False, indent=2)
+```
+
+**Fetch sources for `fetch_recent_news`** (in order of reliability — stop at first success):
+
+1. **Yahoo Finance news API** (no key): `https://query1.finance.yahoo.com/v1/finance/search?q=<TICKER>&newsCount=5` — returns JSON with `news[].title`, `news[].link`, `news[].providerPublishTime` (Unix timestamp), `news[].publisher`.
+2. **Finviz news section**: scrape `https://finviz.com/quote.ashx?t=<TICKER>` → `<table class="fullview-news-outer">`. Rows have `td` containing the headline link + published-time text.
+3. **Barchart news tab**: Playwright at `https://www.barchart.com/stocks/quotes/<TICKER>/news` — intercept the news XHR.
+
+For body text, follow each headline URL and extract `<article>` / `<div class="caas-body">` / equivalent. Skip if the URL is paywalled or returns < 100 chars.
+
+**Critical invariants:**
+
+- **One-time only**: `_newsFetched: true` guarantees this won't fire again. Manual catalyst edits by the user (`study.catalyst` override) are never touched — we only write into `snapshot.catalyst` / `snapshot.newsDetail`.
+- **Skip tickers already in today's scan**: 8.6 Phase 10b will populate them with much richer data (TV quarterly, sessions, MAGNA, claude rationale). Don't duplicate work.
+- **Empty result is final**: if a ticker has no news anywhere, `_newsFetched: true` still gets stamped so we don't retry every run. User can manually trigger a refresh by removing `_newsFetched` from the JSON.
+
+Run this BEFORE Phase 10b so the prev_ohlcv fetch can see the same target ticker set.
+
 ### 8.6 Phase 10b — Fetch yesterday's OHLCV for every candidate + every existing Study (NEW)
 
 After the trading day closes (~5pm ET), fetch the **previous trading day's** OHLCV for two populations:

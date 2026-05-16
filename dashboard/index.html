@@ -372,7 +372,11 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 .studies-btn-danger:hover { background: rgba(226,59,74,0.06); border-color: var(--neg); }
 
 /* ── Studies search box (typeahead for past-scan tickers + "Create new" fallback) ── */
-.studies-search-wrap { position: relative; flex: 1; max-width: 340px; }
+/* IMPORTANT: parent toolbar gets z-index: 200 so the absolute-positioned results
+   dropdown wins over every .sip-card below it (cards have position:relative which can
+   create stacking contexts under certain transforms / filters). */
+.studies-toolbar { position: relative; z-index: 200; }
+.studies-search-wrap { position: relative; flex: 1; max-width: 340px; z-index: 201; }
 .studies-search {
   width: 100%; padding: 8px 12px 8px 32px; border-radius: var(--r-pill);
   border: 1px solid var(--hairline); background: var(--canvas); color: var(--ink);
@@ -383,7 +387,7 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 }
 .studies-search:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(73,79,223,0.08); }
 .studies-search-results {
-  position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 50;
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 1000;
   background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-md);
   box-shadow: 0 12px 36px -8px rgba(15,15,25,0.14);
   max-height: 360px; overflow-y: auto; display: none;
@@ -537,8 +541,10 @@ body.readonly-mode .save-study-btn { display: none !important; }
 body.dark .undo-snackbar { background: rgba(245, 246, 248, 0.96); color: var(--ink); }
 body.dark .undo-snackbar .undo-btn { border-color: rgba(25,28,31,0.30); color: var(--ink); }
 
-/* ── Study list preview cards ── */
-.studies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 16px; }
+/* ── Study list preview cards ──
+   460px minimum keeps two columns on standard 1280px+ displays. The compact
+   read-only MS table inside the card maxes out around 380-420px wide. */
+.studies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(460px, 1fr)); gap: 16px; }
 .study-saved-on {
   font-family: var(--font-mono); font-size: 10px; color: var(--stone);
   text-transform: uppercase; letter-spacing: 0.4px; margin-left: 8px;
@@ -561,6 +567,138 @@ body.dark .undo-snackbar .undo-btn { border-color: rgba(25,28,31,0.30); color: v
 }
 .study-potential.pos, .study-intraday.pos { color: var(--pos); background: rgba(0, 168, 126, 0.10); }
 .study-potential.neg, .study-intraday.neg { color: var(--neg); background: rgba(226, 59, 74, 0.10); }
+
+/* Mini MS table embedded inside preview cards — narrower than the detail-page one,
+   uses the same .ms-table base styles but tightens cell padding + font for density. */
+.sip-card .ms-table-wrap { margin: 10px 0 0; }
+.sip-card .ms-table { font-size: 11px; }
+.sip-card .ms-table th, .sip-card .ms-table td { padding: 3px 6px; }
+.sip-card .ms-cell-input { width: 50px; font-size: 11px; padding: 2px 4px; }
+.sip-card .ms-rowlabel { font-size: 10px; }
+.sip-card .ms-est-tag { font-size: 8px; padding: 1px 3px; }
+.sip-card .ms-pre-section-divider { padding: 4px 0 0; font-size: 10px; color: var(--mute); margin-top: 8px; border-top: 1px solid var(--hairline-soft); }
+
+/* Editable Vol — same click-to-edit pattern as price */
+.vol-editable {
+  cursor: pointer; border-radius: var(--r-sm); padding: 1px 4px; margin: -1px -4px;
+  transition: background 0.12s; display: inline-block;
+}
+.vol-editable:hover { background: var(--surface-soft); }
+.vol-edit-input {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--ink);
+  background: var(--canvas); border: 1.5px solid var(--primary); border-radius: var(--r-sm);
+  padding: 1px 4px; width: 80px; outline: none; text-align: right;
+}
+body.readonly-mode .vol-editable { cursor: default; }
+body.readonly-mode .vol-editable:hover { background: transparent; }
+
+/* Delete button on study detail — lives in the breadcrumb row (OUTSIDE the stock-header
+   box), so it never overlaps the price column or any header content. Small icon-only with
+   "Delete" label, hover turns red. */
+.study-delete-outer {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; font-size: 12px; font-weight: 600;
+  background: transparent; color: var(--mute); border: 1px solid var(--hairline);
+  border-radius: var(--r-pill); cursor: pointer;
+  font-family: var(--font-body);
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.study-delete-outer:hover { color: var(--neg); background: rgba(226,59,74,0.08); border-color: rgba(226,59,74,0.40); }
+.study-delete-outer svg { width: 14px; height: 14px; }
+.study-detail-breadcrumb { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+body.readonly-mode .study-delete-outer { display: none !important; }
+
+/* Custom catalyst types — Notion-style multi-select pills */
+.catalyst-types-row { display: inline-flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+.catalyst-type-pill {
+  display: inline-flex; align-items: center; gap: 4px; padding: 3px 4px 3px 10px;
+  font-size: 12px; font-weight: 600; border-radius: var(--r-pill);
+  font-family: var(--font-body); letter-spacing: 0.2px;
+  background: var(--surface-soft); color: var(--ink); border: 1px solid var(--hairline);
+  transition: filter 0.12s;
+}
+.catalyst-type-pill[data-action="edit-cat-type"] { cursor: pointer; }
+.catalyst-type-pill[data-action="edit-cat-type"]:hover { filter: brightness(0.95); }
+body.dark .catalyst-type-pill[data-action="edit-cat-type"]:hover { filter: brightness(1.15); }
+.catalyst-type-pill .pill-label { display: inline-block; }
+.catalyst-type-pill .pill-x {
+  background: transparent; border: none; cursor: pointer; padding: 0 4px;
+  font-size: 13px; color: var(--mute); border-radius: 50%; line-height: 1;
+}
+.catalyst-type-pill .pill-x:hover { color: var(--neg); background: rgba(226,59,74,0.10); }
+.catalyst-type-add {
+  display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px;
+  font-size: 12px; font-weight: 600; cursor: pointer;
+  border-radius: var(--r-pill); background: transparent; border: 1px dashed var(--hairline);
+  color: var(--mute); font-family: var(--font-body);
+}
+.catalyst-type-add:hover { color: var(--primary); border-color: var(--primary); }
+
+/* Preset palette colors for catalyst types — keyed by token in JS */
+.cat-type-earnings  { background: rgba(73, 79, 223, 0.10); color: var(--primary); border-color: rgba(73, 79, 223, 0.30); }
+.cat-type-momentum  { background: rgba(255, 178, 30, 0.12); color: #b97c00; border-color: rgba(255,178,30,0.40); }
+.cat-type-fda       { background: rgba(0, 168, 126, 0.12); color: var(--pos); border-color: rgba(0,168,126,0.30); }
+.cat-type-ma        { background: rgba(226, 59, 74, 0.10); color: var(--neg); border-color: rgba(226,59,74,0.30); }
+.cat-type-contract  { background: rgba(94, 158, 214, 0.12); color: #2c6fa3; border-color: rgba(94,158,214,0.35); }
+.cat-type-technical { background: rgba(160, 100, 220, 0.12); color: #6a3fb0; border-color: rgba(160,100,220,0.35); }
+.cat-type-fbo       { background: rgba(255, 105, 100, 0.12); color: #c54848; border-color: rgba(255,105,100,0.35); }
+.cat-type-short-squeeze { background: rgba(255, 178, 30, 0.12); color: #a36500; border-color: rgba(255,178,30,0.40); }
+body.dark .cat-type-momentum, body.dark .cat-type-short-squeeze { color: #ffce6a; }
+body.dark .cat-type-contract { color: #6dc0ff; }
+body.dark .cat-type-technical { color: #c7a4ff; }
+body.dark .cat-type-fbo { color: #ff9a96; }
+
+/* Multi-select popup (Notion-style) */
+.catalyst-type-popup {
+  position: absolute; top: calc(100% + 8px); left: 0; z-index: 1500;
+  background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-md);
+  box-shadow: 0 14px 40px -10px rgba(15,15,25,0.18);
+  width: 240px; padding: 8px; font-family: var(--font-body);
+}
+.catalyst-type-popup input.cat-search {
+  width: 100%; padding: 6px 10px; border-radius: var(--r-sm);
+  border: 1px solid var(--hairline); background: var(--canvas); color: var(--ink);
+  font-size: 13px; outline: none; margin-bottom: 6px;
+}
+.catalyst-type-popup input.cat-search:focus { border-color: var(--primary); }
+.catalyst-type-popup .cat-option {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px; cursor: pointer; border-radius: var(--r-sm);
+  font-size: 13px; color: var(--ink);
+}
+.catalyst-type-popup .cat-option:hover { background: var(--surface-soft); }
+.catalyst-type-popup .cat-option.selected::after { content: '✓'; margin-left: auto; color: var(--pos); padding-left: 4px; }
+/* Small × on user-created options — clicking it forgets the type from the dropdown list */
+.catalyst-type-popup .cat-forget-x {
+  margin-left: auto; padding: 1px 8px;
+  background: transparent; border: none; cursor: pointer;
+  color: var(--stone); font-size: 14px; line-height: 1;
+  border-radius: 50%;
+  opacity: 0; transition: opacity 0.12s, color 0.12s, background 0.12s;
+}
+.catalyst-type-popup .cat-option:hover .cat-forget-x { opacity: 1; }
+.catalyst-type-popup .cat-forget-x:hover { color: var(--neg); background: rgba(226,59,74,0.10); }
+.catalyst-type-popup .cat-option.selected .cat-forget-x { display: none; }
+.catalyst-type-popup .cat-create {
+  padding: 6px 10px; cursor: pointer; border-radius: var(--r-sm);
+  font-size: 12px; color: var(--primary); font-weight: 600;
+  border-top: 1px solid var(--hairline-soft); margin-top: 4px; padding-top: 8px;
+}
+.catalyst-type-popup .cat-create:hover { background: rgba(73,79,223,0.06); }
+
+/* Quarter switcher (on the study detail page, above the MS table) */
+.quarter-switcher-row {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 8px; font-family: var(--font-body); font-size: 12px;
+}
+.quarter-switcher-row .qs-label { color: var(--mute); font-weight: 600; }
+.quarter-switcher-row select.qs-select {
+  padding: 4px 8px; border-radius: var(--r-sm);
+  border: 1px solid var(--hairline); background: var(--canvas); color: var(--ink);
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600; cursor: pointer;
+}
+.quarter-switcher-row select.qs-select:focus { outline: none; border-color: var(--primary); }
+.quarter-switcher-row .qs-hint { font-size: 11px; color: var(--stone); margin-left: auto; }
 
 /* Study detail re-uses .stock-header from the original stock detail page. The only addition
    is the .stock-header-trade pill row (defined above) and per-section X (below). */
@@ -644,8 +782,8 @@ body.dark .undo-snackbar .undo-btn { border-color: rgba(25,28,31,0.30); color: v
 /* Editable MS table — cells become flat-styled inputs that look like cells until focused */
 .ms-table-editable .ms-cell-input {
   width: 100%; min-width: 0;
-  padding: 4px 6px; font-family: var(--font-mono); font-variant-numeric: tabular-nums;
-  font-size: 14px; text-align: right;
+  padding: 2px 4px; font-family: var(--font-mono); font-variant-numeric: tabular-nums;
+  font-size: 12px; text-align: right;
   background: transparent; color: inherit;
   border: 1px solid transparent; border-radius: var(--r-sm);
   outline: none;
@@ -827,6 +965,15 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .stock-card h3 .label-en { font-size: 12px; color: var(--stone); font-weight: 500; margin-left: 6px; }
 .news-detail p { margin: 0 0 14px; line-height: 1.75; font-size: 15px; color: var(--body); }
 .news-detail p:last-child { margin-bottom: 0; }
+/* Editable variant inside Studies — same look as read-only but with focus state + placeholder */
+.news-detail-edit {
+  min-height: 60px; padding: 4px 0;
+  outline: none; font-family: var(--font-body); font-size: 15px; line-height: 1.75; color: var(--body);
+}
+.news-detail-edit:focus { background: rgba(73,79,223,0.03); border-radius: var(--r-sm); padding: 8px 12px; margin: -8px -12px; }
+.news-detail-edit:empty:before { content: attr(data-placeholder); color: var(--stone); pointer-events: none; font-style: italic; }
+.news-detail-edit p { margin: 0 0 14px; line-height: 1.75; font-size: 15px; color: var(--body); }
+.news-detail-edit p:last-child { margin-bottom: 0; }
 .news-detail-placeholder { color: var(--stone); font-style: italic; padding: 12px 0 0; font-size: 13px; }
 .news-detail-meta {
   display: inline-flex; align-items: center; gap: 6px;
@@ -909,10 +1056,25 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .copy-btn { position: absolute; top: 24px; right: 28px; padding: 8px 18px; background: var(--ink); color: #ffffff; border: none; border-radius: var(--r-pill); font-size: 13px; font-weight: 600; font-family: var(--font-body); cursor: pointer; transition: background 0.12s; }
 .copy-btn:hover { background: var(--primary); }
 .copy-btn.copied { background: var(--accent-teal); }
+/* Forward YoY Copy button — nested INSIDE the .yoy-block (the box with the numbers) at its
+   top-right corner. This lets the section-x (delete) keep its outer top-right slot without
+   overlapping. The .yoy-block gains position:relative + right padding to make room. */
+.yoy-block { position: relative; padding-right: 84px !important; }
+.yoy-block .copy-btn.yoy-copy-inside {
+  position: absolute; top: 12px; right: 12px;
+  padding: 5px 12px; font-size: 11px; min-height: 26px;
+  border-radius: 6px;
+}
 .ms-table-wrap { overflow-x: auto; margin: -4px; padding: 4px; }
-.ms-table { border-collapse: separate; border-spacing: 0; font-size: 14px; width: 100%; min-width: 720px; }
-.ms-table th, .ms-table td { padding: 14px 12px; text-align: right; border-bottom: 1px solid var(--hairline); font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 14px; }
-.ms-table th { font-size: 13px; font-weight: 700; color: var(--ink); background: var(--canvas); border-bottom: 2px solid var(--ink); padding: 14px 12px 10px; font-family: var(--font-display); letter-spacing: 0; text-transform: none; }
+/* Compact, no-slider-needed table. Dropped min-width entirely + tightened padding so the
+   11-column view fits in a regular detail-page card width (~960px container) without forcing
+   horizontal scroll. The original 14px/14px-padding spec was tuned for the standalone Earnings
+   page where wide whitespace looked premium — but inside Studies the table sits in a smaller
+   card and the slider was awful UX. Preview cards (.sip-card .ms-table) keep their tighter
+   font-size/padding overrides below. */
+.ms-table { border-collapse: separate; border-spacing: 0; font-size: 12px; width: 100%; table-layout: auto; }
+.ms-table th, .ms-table td { padding: 7px 6px; text-align: right; border-bottom: 1px solid var(--hairline); font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 12px; }
+.ms-table th { font-size: 11px; font-weight: 700; color: var(--ink); background: var(--canvas); border-bottom: 2px solid var(--ink); padding: 8px 6px 6px; font-family: var(--font-display); letter-spacing: 0; text-transform: none; }
 .ms-table th.est-col { color: var(--primary); }
 .ms-table .ms-rowlabel { text-align: left; font-family: var(--font-display); font-weight: 700; color: var(--ink); background: var(--surface-soft); font-size: 14px; padding: 14px 16px; border-left: 1px solid var(--hairline); letter-spacing: -0.1px; min-width: 110px; }
 .ms-table .ms-reported { background: var(--canvas); color: var(--ink); }
@@ -1004,7 +1166,7 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 /* SIPs page cards */
 .sip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 @media (max-width: 960px) { .sip-grid { grid-template-columns: 1fr; } }
-.sip-card { background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-lg); padding: 22px 24px; cursor: pointer; }
+.sip-card { background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-lg); padding: 22px 24px; cursor: pointer; min-width: 0; overflow: hidden; }
 /* Note: .sip-card transition + hover lift are defined in the Motion section below to keep all easing tokens consistent. */
 .sip-card .sip-rank { display: inline-block; padding: 2px 10px; background: var(--ink); color: #ffffff; border-radius: var(--r-pill); font-size: 11px; font-weight: 700; font-family: var(--font-mono); }
 .sip-card.featured .sip-rank { background: var(--primary); }
@@ -2447,9 +2609,82 @@ function renderMarketSurgeTable(chart) {
      1. parse the input value
      2. write it back into study.customChart[arrayName][quarterIdx]
      3. re-render the bar charts + recompute the YoY/Surprise cells in place. */
-function renderEditableMsTable(chart, sym) {
+// Compact READ-ONLY MS table for Studies preview cards.
+// Shows the latest reported quarter + up to 4 forward estimates (5 quarters max). Hides
+// itself entirely (returns empty string) if there's no chart data or fewer than 1 reported
+// quarter. The detail page uses the editable version (with full 11-quarter window).
+function renderCompactReadonlyMsTable(chart) {
+  if (!chart || !chart.quarters || !chart.quarters.length) return '';
+  const q = chart.quarters, er = chart.eps_reported || [], ee = chart.eps_estimate || [],
+        rr = chart.rev_reported_M || [], re = chart.rev_estimate_M || [];
+  // Find latest reported index. If none, bail (placeholder studies have no data).
+  let latest = -1;
+  for (let k = er.length - 1; k >= 0; k--) { if (er[k] != null) { latest = k; break; } }
+  if (latest < 0) return '';
+  // Window: latest reported + 4 forward (cap at array end). Min 1, max 5 quarters.
+  const start = latest;
+  const end = Math.min(q.length, latest + 5);
+  const surpPct = (rep, est) => {
+    if (rep == null || est == null || est === 0) return { txt: '', val: null };
+    const r = Math.round((rep - est) / Math.abs(est) * 100);
+    return { txt: (r >= 0 ? '+' : '') + r + '%', val: r };
+  };
+  const yoyPct = (cur, prior) => {
+    if (cur == null || prior == null) return { txt: 'N/A', val: null };
+    if (prior === 0) return { txt: 'N/M', val: null };
+    const r = Math.round((cur - prior) / Math.abs(prior) * 100);
+    return { txt: (r >= 0 ? '+' : '') + r + '%', val: r };
+  };
+  const cells = [];
+  for (let i = start; i < end; i++) {
+    const isReported = er[i] != null;
+    const eps = isReported ? er[i] : ee[i];
+    const rev = (rr[i] != null) ? rr[i] : re[i];
+    cells.push({
+      q: q[i], eps, rev, isReported,
+      epsYoY: yoyPct(eps, er[i-4] != null ? er[i-4] : null),
+      revYoY: yoyPct(rev, rr[i-4] != null ? rr[i-4] : null),
+      epsSurp: surpPct(er[i], ee[i]),
+      revSurp: surpPct(rr[i], re[i]),
+    });
+  }
+  const firstEstIdx = cells.findIndex(c => !c.isReported);
+  const fmtSales = v => v == null ? '' : (Math.abs(v) >= 1000 ? v.toLocaleString('en-US', {minimumFractionDigits:1, maximumFractionDigits:1}) : v.toFixed(1));
+  const fmtEpsCell = v => v == null ? '' : v.toFixed(2);
+  const fmtYoY = (txt, val) => {
+    if (txt === 'N/M' || txt === 'N/A') return `<span class="nm">${txt}</span>`;
+    const c = val > 0 ? 'pos' : val < 0 ? 'neg' : '';
+    return `<span class="${c}">${txt}</span>`;
+  };
+  let head = '<tr>';
+  cells.forEach((c, i) => {
+    const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
+    const estCls = c.isReported ? '' : 'est-col';
+    const tag = c.isReported ? '' : ' <span class="ms-est-tag">est</span>';
+    head += `<th class="${div} ${estCls}">${c.q}${tag}</th>`;
+  });
+  head += '</tr>';
+  const valueRow = (key, fmt) => '<tr>' + cells.map((c, i) => {
+    const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
+    const klass = c.isReported ? 'ms-reported' : 'ms-estimate';
+    return `<td class="${klass} ${div}">${fmt(c[key])}</td>`;
+  }).join('') + '</tr>';
+  const yoyRow = (key) => '<tr>' + cells.map((c, i) => {
+    const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
+    const klass = c.isReported ? 'ms-reported' : 'ms-estimate';
+    return `<td class="${klass} ${div}">${fmtYoY(c[key].txt, c[key].val)}</td>`;
+  }).join('') + '</tr>';
+  const surpRow = (key) => '<tr class="ms-surprise-row">' + cells.map((c, i) => {
+    const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
+    const content = c.isReported && c[key].val != null ? fmtYoY(c[key].txt, c[key].val) : '';
+    return `<td class="ms-surprise ${div}">${content}</td>`;
+  }).join('') + '</tr>';
+  return `<div class="ms-table-wrap"><table class="ms-table ms-table-readonly"><thead>${head}</thead><tbody>${valueRow('eps', fmtEpsCell)}${yoyRow('epsYoY')}${surpRow('epsSurp')}${valueRow('rev', fmtSales)}${yoyRow('revYoY')}${surpRow('revSurp')}</tbody></table></div>`;
+}
+
+function renderEditableMsTable(chart, sym, focusIdx) {
   if (!chart || !chart.quarters || !chart.quarters.length) return '<div style="color:var(--stone);padding:20px">No quarterly data</div>';
-  const q = chart.quarters, er = chart.eps_reported || [], ee = chart.eps_estimate || [], rr = chart.rev_reported_M || [], re = chart.rev_estimate_M || [], li = chart.latest_idx;
+  const q = chart.quarters, er = chart.eps_reported || [], ee = chart.eps_estimate || [], rr = chart.rev_reported_M || [], re = chart.rev_estimate_M || [], li = (focusIdx != null) ? focusIdx : chart.latest_idx;
   const N = Math.min(11, q.length);
   let start = Math.max(0, li - 4);
   let end = Math.min(q.length, start + N);
@@ -2521,14 +2756,18 @@ function yoyText(curr, prior) {
 //   line 0:  "<eps_yoy> / <rev_yoy>"      ← latest reported quarter vs same Q a year ago
 //   line 1:  "--------------------"        ← separator
 //   line 2+: "<eps_fwd_yoy> / <rev_fwd_yoy>"  ← one line per estimated forward quarter (up to 4)
-function buildYoyBlockText(chart) {
+function buildYoyBlockText(chart, focusIdx) {
   if (!chart) return '';
   const er = chart.eps_reported || [], ee = chart.eps_estimate || [];
   const rr = chart.rev_reported_M || [], re = chart.rev_estimate_M || [];
-  // Find the latest index with a reported EPS value (matches Python's `latest` walk-back).
+  // Find the anchor quarter: explicit focusIdx wins; else walk back to the latest reported.
   let latest = -1;
-  for (let k = er.length - 1; k >= 0; k--) {
-    if (er[k] != null) { latest = k; break; }
+  if (focusIdx != null && focusIdx >= 0 && focusIdx < er.length) {
+    latest = focusIdx;
+  } else {
+    for (let k = er.length - 1; k >= 0; k--) {
+      if (er[k] != null) { latest = k; break; }
+    }
   }
   if (latest < 0) return '';
   const priorEps = (latest >= 4) ? er[latest - 4] : null;
@@ -2550,12 +2789,15 @@ function buildYoyBlockText(chart) {
 }
 
 // Recompute the YoY / Surprise cells based on current customChart arrays.
-function recomputeMsComputedCells(chart) {
+// `rootEl` (optional) scopes the recompute to a single MS-table — needed when multiple
+// MS-tables are on screen (Studies list shows one per card), otherwise the cells of every
+// table get overwritten with the last-edited chart's data.
+function recomputeMsComputedCells(chart, rootEl) {
   if (!chart) return;
   const er = chart.eps_reported || [], ee = chart.eps_estimate || [], rr = chart.rev_reported_M || [], re = chart.rev_estimate_M || [];
   const surp = (rep, est) => (rep == null || est == null || est === 0) ? { txt: '', val: null } : (() => { const r = Math.round((rep - est) / Math.abs(est) * 100); return { txt: (r >= 0 ? '+' : '') + r + '%', val: r }; })();
   const yoy  = (cur, prior) => (cur == null || prior == null) ? { txt: 'N/A', val: null } : (prior === 0 ? { txt: 'N/M', val: null } : (() => { const r = Math.round((cur - prior) / Math.abs(prior) * 100); return { txt: (r >= 0 ? '+' : '') + r + '%', val: r }; })());
-  document.querySelectorAll('td[data-computed]').forEach(td => {
+  (rootEl || document).querySelectorAll('td[data-computed]').forEach(td => {
     const [kind, i] = td.dataset.computed.split('-');
     const idx = parseInt(i, 10);
     let v = { txt: '', val: null };
@@ -3173,8 +3415,21 @@ function downscaleImage(file, maxDim = 1600, quality = 0.88) {
 }
 
 function loadStudies() {
-  try { return JSON.parse(localStorage.getItem(STUDIES_KEY) || '[]'); }
-  catch { return []; }
+  try {
+    const arr = JSON.parse(localStorage.getItem(STUDIES_KEY) || '[]');
+    if (!Array.isArray(arr)) return [];
+    // Backfill missing `id` field for legacy studies (created before duplicate-ticker support).
+    // For those, id = symbol so old URLs `#/study/FIG` still resolve. New saves get a unique
+    // id of form `${sym}-${base36Timestamp}${randomSuffix}`.
+    let mutated = false;
+    arr.forEach(st => { if (st && !st.id) { st.id = st.symbol; mutated = true; } });
+    if (mutated) localStorage.setItem(STUDIES_KEY, JSON.stringify(arr));
+    return arr;
+  } catch { return []; }
+}
+// Generate a unique-ish id keyed off symbol + time. Base36 timestamps are short and sortable.
+function genStudyId(sym) {
+  return `${sym}-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`;
 }
 // Debounced POST to /api/studies/save so rapid keystrokes (notes typing, OHLCV editing,
 // etc.) coalesce into one disk write per ~600 ms. Latest payload wins.
@@ -3206,13 +3461,23 @@ function saveStudies(arr) {
   // Then flush to disk via sidecar (no-op in read-only hosted mode).
   flushStudiesSoon(arr);
 }
-function isStudySaved(sym) {
-  return loadStudies().some(st => st.symbol === sym);
+// `isStudySaved` is now scan-date-aware: returns true if there's a study for this symbol
+// captured on STATE.date (the current SIP scan). A different-date study with the same
+// symbol doesn't count — the Save button should still light up for THIS scan.
+function isStudySaved(sym, scanDate) {
+  const sd = scanDate || STATE.date;
+  return loadStudies().some(st => st.symbol === sym && (st.snapshot?.scanDate || '') === sd);
 }
 function addStudy(stock, opts = {}) {
   const arr = loadStudies();
-  if (arr.some(st => st.symbol === stock.symbol)) return false; // dedupe
+  const scanDate = opts.scanDate || STATE.date || '';
+  // Dedup on (symbol, scanDate) — same scan's data shouldn't yield two studies, but the
+  // SAME ticker captured on DIFFERENT scan dates SHOULD coexist as separate studies (each
+  // has its own snapshot.tv.chart, catalyst, day chg, etc.).
+  if (arr.some(st => st.symbol === stock.symbol && (st.snapshot?.scanDate || '') === scanDate)) return false;
+  const newId = genStudyId(stock.symbol);
   arr.push({
+    id: newId,
     symbol: stock.symbol,
     savedAt: new Date().toISOString(),
     snapshot: {
@@ -3261,12 +3526,12 @@ function addManualStudy(rawSym) {
     alert(`Invalid ticker: "${rawSym}". Expected 1–8 letters/digits, starting with a letter.`);
     return null;
   }
-  if (loadStudies().some(st => st.symbol === sym)) {
-    // Already exists — just navigate there instead of duplicating.
-    return sym;
-  }
+  // Manual placeholder creates ALWAYS make a new study — duplicates allowed by design
+  // since the same ticker may be tracked under different catalysts at different times.
   const arr = loadStudies();
+  const newId = genStudyId(sym);
   arr.push({
+    id: newId,
     symbol: sym,
     savedAt: new Date().toISOString(),
     snapshot: {
@@ -3286,22 +3551,22 @@ function addManualStudy(rawSym) {
     hiddenSections: ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'],
   });
   saveStudies(arr);
-  return sym;
+  return newId;
 }
-async function removeStudy(sym) {
+async function removeStudy(id) {
   // Full wipe — the entire study object (notes, ohlcv, customChart, screenshots, tags,
   // conviction, …) goes when the user removes a ticker. Re-adding via "Save to Studies"
   // builds a fresh record from the current SIP snapshot — no residue from the prior session.
   // (The snackbar undo restores everything from the cached snapshot, including customChart.)
-  const st = loadStudies().find(s => s.symbol === sym);
+  const st = loadStudies().find(s => s.id === id);
   if (st?.screenshots?.length) {
     for (const ss of st.screenshots) { try { await delImg(ss.imgKey); } catch {} }
   }
-  saveStudies(loadStudies().filter(st => st.symbol !== sym));
+  saveStudies(loadStudies().filter(st => st.id !== id));
 }
-function updateStudy(sym, patch) {
+function updateStudy(id, patch) {
   const arr = loadStudies();
-  const idx = arr.findIndex(st => st.symbol === sym);
+  const idx = arr.findIndex(st => st.id === id);
   if (idx === -1) return;
   arr[idx] = { ...arr[idx], ...patch };
   saveStudies(arr);
@@ -3333,7 +3598,7 @@ function renderStudies() {
       ? `<div class="sip-empty">${t('studies-empty')}</div>`
       : `<div class="sip-grid" id="studies-grid">${studies.map(studyPreviewCardHtml).join('')}</div>`}
   `;
-  // Cards are pure links — no wiring needed beyond toolbar handlers below.
+  // Preview cards are read-only — no input wiring. All MS edits happen on detail page.
   // Toolbar
   document.getElementById('studies-export')?.addEventListener('click', async () => {
     // Bundle screenshots inline as base64 so the JSON is self-contained for cross-device transfer.
@@ -3455,13 +3720,14 @@ function renderStudies() {
     const data = await loadDateData(scanDate);
     const snap = data?.stocks?.[sym];
     if (!snap) { alert(`Couldn't load ${sym} from ${scanDate}`); return; }
-    const ok = addStudy({ ...snap, symbol: sym }, { scanDate });
-    if (ok) location.hash = '#/study/' + sym;
-    else { alert(`${sym} is already saved`); location.hash = '#/study/' + sym; }
+    addStudy({ ...snap, symbol: sym }, { scanDate });
+    // Navigate to the just-created study (loadStudies order is push-append, so it's last).
+    const justAdded = loadStudies().slice().reverse().find(s => s.symbol === sym && (s.snapshot?.scanDate || '') === scanDate);
+    location.hash = '#/study/' + (justAdded?.id || sym);
   }
   function createSearchResult(sym) {
-    const s = addManualStudy(sym);
-    if (s) location.hash = '#/study/' + s;
+    const newId = addManualStudy(sym);
+    if (newId) location.hash = '#/study/' + newId;
   }
 
   searchInp?.addEventListener('focus', async () => {
@@ -3528,8 +3794,13 @@ window.handleSaveStudy = function(sym, btn) {
   const s = DATA?.stocks?.[sym];
   if (!s) return;
   const meta = (window.__claudePendingMeta || {})[sym] || {};
-  if (isStudySaved(sym)) {
-    removeStudy(sym);
+  const scanDate = STATE.date;
+  // Toggle save/unsave for THIS scan's study only. Same-symbol entries saved on other
+  // dates are untouched — duplicates across scan dates are now allowed (each captures a
+  // distinct snapshot).
+  const existing = loadStudies().find(st => st.symbol === sym && (st.snapshot?.scanDate || '') === scanDate);
+  if (existing) {
+    removeStudy(existing.id);
     btn.classList.remove('saved');
     btn.textContent = t('save-study');
     btn.title = t('save-study');
@@ -3538,7 +3809,7 @@ window.handleSaveStudy = function(sym, btn) {
       ...s,
       _claudeRationale: meta.rationale || s._claudeRationale,
       _claudeIntent:    meta.intent    || s._claudeIntent,
-    });
+    }, { scanDate });
     btn.classList.add('saved');
     btn.textContent = t('saved');
     btn.title = t('saved');
@@ -3548,35 +3819,58 @@ window.handleSaveStudy = function(sym, btn) {
 // Small preview card for the Studies list — mirrors the layout of sipCardHtml so the user
 // can scan ranks/intent/catalyst at a glance. Clicking the whole card opens the detail page.
 function studyPreviewCardHtml(st, idx) {
-  const s = st.snapshot;
-  const chg = (st.chgPct != null) ? st.chgPct : s.chgPct;
-  const chgCls = chg >= 0 ? 'pos' : 'neg';
+  const s = st.snapshot || {};
+  // Day's chgPct: derived from ohlcv (close − prev_close) if filled, else snapshot.chgPct
+  // (which is the gap-%, kept as a soft fallback so older cards aren't blank). Header readout
+  // uses the SAME priority as the detail page so the two views stay consistent.
+  const o = st.ohlcv || {};
+  const derivedChg = (o.close != null && o.prev_close != null && o.prev_close !== 0)
+    ? (o.close - o.prev_close) / o.prev_close * 100
+    : null;
+  const chg = (st.chgPct != null) ? st.chgPct
+            : (derivedChg != null) ? derivedChg
+            : s.chgPct;
+  const chgCls = (chg == null) ? '' : (chg >= 0 ? 'pos' : 'neg');
+  const chgLabel = (derivedChg != null) ? 'DAY' : (chg != null ? 'GAP' : null);
+  const chgPill = chgLabel
+    ? `<span class="tag" title="${derivedChg != null ? 'Day chgPct (close − prev_close)' : 'Gap % at scan time'}">${chgLabel} <span class="dot dot-${chg >= 0 ? 'up' : 'down'}"></span> ${fmtPctShort(chg)}</span>`
+    : '';
+  // Catalyst types — show first 2 pills from study.customTypes, fallback to single snapshot.type
+  const types = getStudyTypes(st).slice(0, 2);
+  const typeBadges = types.map(tt => `<span class="tag catalyst-type-pill ${catalystTypeClass(tt)}" style="padding:2px 8px;font-size:11px">${escapeHtml(tt)}</span>`).join(' ');
   const intent = st.intent || s.claudeIntent || 'long';
   const intentBadge = `<span class="tag" style="background:${intent === 'short' ? 'rgba(226,59,74,0.10)' : 'rgba(0,168,126,0.10)'};color:${intent === 'short' ? 'var(--neg)' : 'var(--pos)'}">${intent.toUpperCase()}</span>`;
   const cat = (st.catalyst != null && st.catalyst !== '') ? st.catalyst : (s.catalyst || '');
   // Open → High potential: shows how much the stock could have run from open. If filled this is
   // the most valuable single number on the card — it's the "catalyst-realised return."
-  const o = st.ohlcv || {};
   const potentialPct = (o.open && o.high) ? ((o.high - o.open) / o.open * 100) : null;
   const potentialChip = potentialPct != null
     ? `<span class="study-potential ${potentialPct >= 0 ? 'pos' : 'neg'}" title="Open → High (catalyst potential)">→High ${(potentialPct >= 0 ? '+' : '') + potentialPct.toFixed(2)}%</span>`
     : '';
-  return `<a class="sip-card" href="#/study/${st.symbol}" style="text-decoration:none;color:inherit;display:block;position:relative">
-    <button class="study-preview-del" data-sym="${st.symbol}" title="Delete study"
-            onclick="event.preventDefault();event.stopPropagation();handleDeleteStudyFromList('${st.symbol}');">✕</button>
+  // Mini MS table — READ-ONLY snapshot at save time. Shows the latest reported quarter
+  // + 4 forward estimates (max 5 quarters total). Hidden entirely if the study has no chart
+  // data (placeholder studies, or tickers without TV quarterly coverage). Editing only
+  // happens on the detail page so accidental clicks here don't mutate values.
+  const chart = st.customChart || (s.tv && s.tv.chart) || null;
+  const msHtml = chart ? renderCompactReadonlyMsTable(chart) : '';
+  return `<a class="sip-card" href="#/study/${st.id || st.symbol}" style="text-decoration:none;color:inherit;display:block;position:relative">
+    <button class="study-preview-del" data-id="${st.id || st.symbol}" title="Delete study"
+            onclick="event.preventDefault();event.stopPropagation();handleDeleteStudyFromList('${st.id || st.symbol}');">✕</button>
     <span class="sip-rank-row"><span class="sip-rank">#${idx + 1}</span><span class="study-saved-on">${(st.savedAt || '').slice(0, 10)}</span></span>
     <div class="sip-header"><div class="sip-sym">${st.symbol}</div><div class="sip-chg ${chgCls}">${fmtPct(chg)}</div></div>
     <div class="sip-name">${escapeHtml(s.name || '')}</div>
-    <div class="sip-meta">${intentBadge} ${potentialChip}</div>
+    <div class="sip-meta">${chgPill} ${typeBadges} ${intentBadge} ${potentialChip}</div>
     ${cat ? `<div class="sip-catalyst" style="margin-top:8px">${escapeHtml(cat)}</div>` : ''}
+    ${msHtml ? `<div class="ms-pre-section-divider">Quarterly EPS / Sales (Reported + Estimate · click any value to edit)</div>${msHtml}` : ''}
   </a>`;
 }
 
 // Global delete handler used by the preview card's X — collects the full study + its images
-// so the undo snackbar can fully restore. Called from inline onclick.
-window.handleDeleteStudyFromList = async function(sym) {
+// so the undo snackbar can fully restore. Keyed by study id (not symbol) since duplicate
+// tickers are allowed — we delete THIS specific entry, not every study sharing the symbol.
+window.handleDeleteStudyFromList = async function(id) {
   const studies = loadStudies();
-  const st = studies.find(s => s.symbol === sym);
+  const st = studies.find(s => s.id === id) || studies.find(s => s.symbol === id);  // fallback for legacy URLs
   if (!st) return;
   // Snapshot all images attached to this study (from notes <img data-img-key>, legacy screenshots)
   const imgKeys = new Set();
@@ -3585,16 +3879,95 @@ window.handleDeleteStudyFromList = async function(sym) {
   noteImgs.forEach(m => imgKeys.add(m.replace(/data-img-key="|"$/g, '')));
   const beforeImgs = {};
   for (const k of imgKeys) { try { const v = await getImg(k); if (v) beforeImgs[k] = v; } catch {} }
-  // Delete
-  saveStudies(studies.filter(s => s.symbol !== sym));
+  // Delete THIS study only (not all studies sharing this symbol)
+  saveStudies(studies.filter(s => s.id !== st.id));
   for (const k of imgKeys) { try { await delImg(k); } catch {} }
   renderStudies();
-  showUndoSnackbar(`Removed ${sym}`, async () => {
+  showUndoSnackbar(`Removed ${st.symbol}`, async () => {
     saveStudies([...loadStudies(), st]);
     for (const [k, v] of Object.entries(beforeImgs)) { try { await putImg(k, v); } catch {} }
     renderStudies();
   });
 };
+
+/* ═══════ Catalyst-type registry + helpers (used by Studies multi-select pills) ═══════ */
+// Preset catalyst types — each maps to a CSS class for color coding. Users can also add
+// arbitrary custom types via the "+" pill; custom types get the default surface color.
+const CATALYST_PRESETS = [
+  { key: 'earnings',       label: 'earnings',       cls: 'cat-type-earnings' },
+  { key: 'momentum',       label: 'momentum',       cls: 'cat-type-momentum' },
+  { key: 'fda',            label: 'FDA',            cls: 'cat-type-fda' },
+  { key: 'ma',             label: 'M&A',            cls: 'cat-type-ma' },
+  { key: 'contract',       label: 'contract',       cls: 'cat-type-contract' },
+  { key: 'technical',      label: 'technical',      cls: 'cat-type-technical' },
+  { key: 'fbo',            label: 'FBO',            cls: 'cat-type-fbo' },
+  { key: 'short-squeeze',  label: 'short squeeze',  cls: 'cat-type-short-squeeze' },
+];
+function catalystTypeClass(key) {
+  const p = CATALYST_PRESETS.find(p => p.key === key.toLowerCase().replace(/\s+/g, '-'));
+  return p ? p.cls : '';
+}
+// Custom (user-created) catalyst types — persisted to localStorage so the dropdown remembers
+// them across sessions. NEW types created via "+ Create new <X>" land here. Stored as a flat
+// array of label strings (case preserved). Lookup is case-insensitive.
+const CUSTOM_CAT_TYPES_KEY = 'sips-custom-catalyst-types';
+function loadCustomCatTypes() {
+  try {
+    const arr = JSON.parse(localStorage.getItem(CUSTOM_CAT_TYPES_KEY) || '[]');
+    return Array.isArray(arr) ? arr : [];
+  } catch { return []; }
+}
+function saveCustomCatTypes(arr) {
+  localStorage.setItem(CUSTOM_CAT_TYPES_KEY, JSON.stringify(arr));
+}
+function rememberCustomCatType(label) {
+  const arr = loadCustomCatTypes();
+  const lower = label.toLowerCase();
+  // Skip if it matches a preset OR an existing custom (case-insensitive)
+  if (CATALYST_PRESETS.some(p => p.label.toLowerCase() === lower || p.key === lower.replace(/\s+/g, '-'))) return false;
+  if (arr.some(a => a.toLowerCase() === lower)) return false;
+  arr.push(label);
+  saveCustomCatTypes(arr);
+  return true;
+}
+function forgetCustomCatType(label) {
+  const arr = loadCustomCatTypes().filter(a => a.toLowerCase() !== label.toLowerCase());
+  saveCustomCatTypes(arr);
+}
+// All available options for the picker — built-in presets + user-remembered customs.
+function getAllCatalystOptions() {
+  const customs = loadCustomCatTypes().map(label => ({
+    key: label.toLowerCase().replace(/\s+/g, '-'),
+    label,
+    cls: '',           // default surface color (no preset palette)
+    isCustom: true,
+  }));
+  return [...CATALYST_PRESETS, ...customs];
+}
+function getStudyTypes(study) {
+  // Priority: user override → snapshot.type (legacy single-type) → 'momentum'
+  if (Array.isArray(study.customTypes) && study.customTypes.length) return study.customTypes;
+  const fromSnap = study.snapshot?.type;
+  if (fromSnap) return [fromSnap];
+  return ['momentum'];
+}
+
+/* ═══════ OHLCV date → quarter index mapping ═══════
+   Maps an ISO date (YYYY-MM-DD) to a quarter index inside chart.quarters using
+   calendar-quarter convention (Q1=Jan-Mar, Q2=Apr-Jun, Q3=Jul-Sep, Q4=Oct-Dec).
+   Returns null if no quarter matches (e.g. fiscal-year-offset companies, or date
+   out of range).  Quarter labels look like "Q1 '26" — parse "Q<n> '<yy>". */
+function dateToQuarterIdx(isoDate, chart) {
+  if (!isoDate || !chart || !chart.quarters || !chart.quarters.length) return null;
+  const m = isoDate.match(/^(\d{4})-(\d{2})/);
+  if (!m) return null;
+  const year = parseInt(m[1], 10);
+  const month = parseInt(m[2], 10);
+  const q = Math.ceil(month / 3);                       // 1-4
+  const yy = String(year).slice(-2);
+  const target = `Q${q} '${yy}`;
+  return chart.quarters.indexOf(target);
+}
 
 /* ═══════ Study detail page — #/study/<SYM> ═══════
    Same layout as the standard stock detail page, but every value is editable. Changes
@@ -3608,13 +3981,18 @@ window.handleDeleteStudyFromList = async function(sym) {
      • Forward YoY block
      • Notion-style notes (contenteditable + paste/drop images)
    Section visibility configurable via the gear button. */
-async function renderStudyDetail(sym) {
+async function renderStudyDetail(idOrSym) {
   const app = document.getElementById('app');
-  const study = loadStudies().find(st => st.symbol === sym);
+  // Resolve study by id first (new schema); fall back to symbol lookup for legacy URLs
+  // where multiple studies for the same symbol weren't possible.
+  let study = loadStudies().find(st => st.id === idOrSym);
+  if (!study) study = loadStudies().find(st => st.symbol === idOrSym);
   if (!study) {
-    app.innerHTML = `<div class="empty">Study ${sym} not found. <a href="#/studies">← Back to Studies</a></div>`;
+    app.innerHTML = `<div class="empty">Study ${escapeHtml(idOrSym)} not found. <a href="#/studies">← Back to Studies</a></div>`;
     return;
   }
+  const id = study.id;
+  const sym = study.symbol;
   const s = study.snapshot || {};
   // %Chg priority (highest → lowest):
   //   1. study.chgPct        — user's manual override (future-proofing; no UI yet, set via OHLCV modal if you ever add one)
@@ -3639,8 +4017,8 @@ async function renderStudyDetail(sym) {
   // Custom chart overrides snapshot's TV chart when user edits MS-table values.
   const baseChart = (s.tv && s.tv.chart) ? s.tv.chart : null;
   // Section visibility (hidden set). Defaults: everything visible. Hide via the X on each card.
-  const sectionsAll = ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block', 'notes'];
-  const sectionLabels = { eps_chart: 'EPS Quarterly', rev_chart: 'Revenue Quarterly', ms_table: '季度 EPS / Sales', yoy_block: 'Forward YoY', notes: 'Notes' };
+  const sectionsAll = ['news_detail', 'eps_chart', 'rev_chart', 'ms_table', 'yoy_block', 'notes'];
+  const sectionLabels = { news_detail: 'News Detail', eps_chart: 'EPS Quarterly', rev_chart: 'Revenue Quarterly', ms_table: '季度 EPS / Sales', yoy_block: 'Forward YoY', notes: 'Notes' };
   const hidden = new Set(study.hiddenSections || []);
   const sectionShown = id => !hidden.has(id);
   // Migrate legacy thumbnail screenshots into the notes HTML on first detail-view render
@@ -3650,12 +4028,12 @@ async function renderStudyDetail(sym) {
       `<p><span class="notes-img-wrap" contenteditable="false"><img data-img-key="${ss.imgKey}" alt="${escapeHtml(ss.label || '')}"><button class="notes-img-del" type="button" data-img-key="${ss.imgKey}" title="Delete image">&times;</button></span></p>${ss.label ? `<p><em>${escapeHtml(ss.label)}</em></p>` : ''}`
     ).join('');
     notesHtml = (notesHtml || '') + tail;
-    updateStudy(sym, { notes: notesHtml, _migratedShots: true, screenshots: [] });
+    updateStudy(id,{ notes: notesHtml, _migratedShots: true, screenshots: [] });
   }
 
   // Direction-aware metrics. 漲幅 (gain) = (H-O)/O · 止損 (stop) = (L-O)/O · sign-flipped for short.
   function computeMetrics() {
-    const cur = loadStudies().find(st => st.symbol === sym)?.ohlcv || {};
+    const cur = loadStudies().find(st => st.id === id)?.ohlcv || {};
     const dir = intent === 'short' ? -1 : 1;
     const gain = (cur.open && cur.high) ? ((cur.high - cur.open) / cur.open * 100 * dir) : null;
     const stop = (cur.open && cur.low)  ? ((cur.low  - cur.open) / cur.open * 100 * dir) : null;
@@ -3674,7 +4052,19 @@ async function renderStudyDetail(sym) {
     ? ''
     : `<span class="tag" id="study-day-tag" title="Day's chgPct = (close − prev_close) / prev_close · 100">DAY <span class="dot dot-${v >= 0 ? 'up' : 'down'}"></span> ${fmtPctShort(v)}</span>`;
   const sessTags = renderDayTag(_derivedChg);
-  const typeTag = `<span class="tag ${typeTagClass(s.type || 'momentum')}">${s.type || 'momentum'}</span>`;
+  // Catalyst types — Notion-style multi-select. Pulls from study.customTypes (an array),
+  // falls back to the snapshot's single `type` field for legacy/auto-saved studies.
+  // Pill body is clickable to OPEN the type picker in "swap" mode (replaces this pill's
+  // value with the chosen one). The X is a separate remove affordance.
+  function renderCatalystTypesHtml() {
+    const types = getStudyTypes(study);
+    const pills = types.map((tt, ti) => {
+      const cls = catalystTypeClass(tt);
+      return `<span class="tag catalyst-type-pill ${cls}" data-type-idx="${ti}" data-action="edit-cat-type" title="Click to change type"><span class="pill-label">${escapeHtml(tt)}</span><button class="pill-x" type="button" data-action="remove-cat-type" data-type-idx="${ti}" title="Remove">&times;</button></span>`;
+    }).join('');
+    return `<span class="catalyst-types-row" id="catalyst-types-row">${pills}<button class="catalyst-type-add" type="button" id="catalyst-type-add-btn" title="Add catalyst type">+ Add tag</button></span>`;
+  }
+  const typeTag = renderCatalystTypesHtml();
   const _surpPill = (lbl, v, title) => v == null
     ? ''
     : `<span class="tag stat-tag ${v >= 0 ? 'pos' : 'neg'}" title="${title}">${lbl} ${(v >= 0 ? '+' : '') + v.toFixed(1)}%</span>`;
@@ -3696,12 +4086,19 @@ async function renderStudyDetail(sym) {
   const dayChip = (study.snapshot?._dayLabel === 'day1') ? `<span class="day-badge day1">day1</span>` : '';
   // Catalyst row from the snapshot — if user has saved a custom catalyst override, prefer it
   const cat = (study.catalyst != null && study.catalyst !== '') ? study.catalyst : (s.catalyst || '');
-  // News detail (snapshot) — shown like the original stock detail page
-  const detail = s.newsDetail || '';
-  const fallbackCatalyst = cat;
-  const newsBlockHtml = detail
-    ? `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3>${String(detail).split(/\n\n+/).filter(Boolean).map(p => `<p>${escapeHtml(p).replace(/\n/g,'<br>')}</p>`).join('')}</div>`
-    : (fallbackCatalyst ? `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3><p>${escapeHtml(fallbackCatalyst)}</p></div>` : '');
+  // News detail: editable card. User override (`study.newsDetail`) wins over snapshot.newsDetail.
+  // Body is contenteditable so the user can fix/embellish the AI-fetched text inline. Stored as
+  // HTML (innerHTML) so paragraph breaks survive. The section sits inside a sectionCard so it
+  // gets the same X-to-hide / right-click-to-restore treatment as the others. Empty body shows
+  // a placeholder prompt — useful for manually-created placeholder studies where /SIPs has
+  // not yet filled in newsDetail.
+  const userNews = (study.newsDetail != null) ? study.newsDetail : null;
+  const snapNews = s.newsDetail || '';
+  const newsContent = (userNews != null && userNews !== '') ? userNews
+                    : snapNews ? String(snapNews).split(/\n\n+/).filter(Boolean).map(p => `<p>${escapeHtml(p).replace(/\n/g,'<br>')}</p>`).join('')
+                    : cat ? `<p>${escapeHtml(cat)}</p>`
+                    : '';
+  const newsPlaceholder = 'Add catalyst notes, news headlines, or analyst commentary…';
   // Forward YoY block — copies the renderStock pattern exactly so the Copy button works.
   // If the user has edited the MS table (customChart present), regenerate the YoY text from
   // those custom arrays. Otherwise fall back to the snapshot's pre-baked yoyBlock from Python.
@@ -3710,7 +4107,7 @@ async function renderStudyDetail(sym) {
     ? buildYoyBlockText(_customChart)
     : (s.tv && s.tv.yoyBlock) || '';
   const yoyHtml = _initialYoyTxt
-    ? `<button class="copy-btn" data-copy-target="yoy-${sym}">Copy</button><div class="yoy-block" id="yoy-${sym}" data-raw="${escapeHtml(_initialYoyTxt)}">${colorizeYoyBlock(_initialYoyTxt)}</div>`
+    ? `<div class="yoy-block" id="yoy-${sym}" data-raw="${escapeHtml(_initialYoyTxt)}"><button class="copy-btn yoy-copy-inside" data-copy-target="yoy-${sym}">Copy</button>${colorizeYoyBlock(_initialYoyTxt)}</div>`
     : '';
 
   // Helper: render a section card with an X button. Sections can be hidden via the X then
@@ -3721,14 +4118,27 @@ async function renderStudyDetail(sym) {
 
   // Display price — user override (study.price) wins over snapshot.last.
   const displayPrice = (study.price != null) ? study.price : s.last;
-  // Placeholder badge (for manually-created studies awaiting /SIPs auto-fill)
-  const isPlaceholder = !!s._placeholder;
-  const placeholderBadge = isPlaceholder ? '<span class="placeholder-badge" title="Awaiting /SIPs to fill in catalyst, sessions, TV data">Placeholder</span>' : '';
+  // Display volume — user override (study.ohlcv.volume) wins over snapshot.volume.
+  const displayVol = (study.ohlcv?.volume != null) ? study.ohlcv.volume : s.volume;
+  // Placeholder badge — kept in the schema (snapshot._placeholder) so build_dashboard.py
+  // can still detect it for auto-fill on next /SIPs run, but no longer rendered in the UI.
+  // The user found it visual noise and it didn't enable any action they couldn't take anyway.
+  const placeholderBadge = '';
 
   app.innerHTML = `
-    <div class="breadcrumb"><a href="#/studies">← Studies</a> &nbsp;»&nbsp; <b>${sym}</b></div>
+    <div class="breadcrumb study-detail-breadcrumb">
+      <span><a href="#/studies">← Studies</a> &nbsp;»&nbsp; <b>${sym}</b></span>
+      <button class="study-delete-outer" id="study-delete" type="button" title="Delete this study">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+          <path d="M10 11v6M14 11v6"></path>
+          <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+        </svg>
+        <span>Delete study</span>
+      </button>
+    </div>
     <div class="stock-header" style="position:relative">
-      <button class="studies-btn studies-btn-danger" id="study-delete" style="position:absolute;top:18px;right:18px;font-size:11px;padding:5px 12px">Delete</button>
       <div class="sym-big">${sym}${dayChip}${placeholderBadge}</div>
       <div>
         <div class="name">${escapeHtml(s.name || '')}</div>
@@ -3739,41 +4149,69 @@ async function renderStudyDetail(sym) {
       </div>
       <div style="margin-left:auto;text-align:right">
         <div class="price price-editable" id="study-price-cell" title="Click to edit price"><span class="price-text">${fmtPrice(displayPrice)}</span></div>
-        <div class="chg ${cls(chg)}" id="study-chg-readout" title="${chgSource}">${fmtPct(chg)} · Vol ${fmtVol(s.volume)}</div>
+        <div class="chg ${cls(chg)}" id="study-chg-readout" title="${chgSource}">${fmtPct(chg)} · Vol <span class="vol-editable" id="study-vol-cell" title="Click to edit volume (linked to OHLCV)"><span class="vol-text">${fmtVol(displayVol)}</span></span></div>
       </div>
     </div>
-    ${newsBlockHtml}
+    ${sectionCard('news_detail',
+      `<h3>新聞詳情 <span class="label-en">News Detail · click body to edit</span></h3>`,
+      `<div class="news-detail-edit" id="study-news-detail" contenteditable="${STATE.sidecar.available ? 'true' : 'false'}" data-placeholder="${newsPlaceholder}">${newsContent}</div>`)}
     <div class="chart-wrap study-charts-wrap" id="study-chart-wrap">
       ${sectionCard('eps_chart', `<h3>EPS Quarterly <span class="label-en">Reported vs Estimate</span></h3>`, `<div id="study-eps-chart-host"></div>`)}
       ${sectionCard('rev_chart', `<h3>Revenue Quarterly <span class="label-en">Reported vs Estimate</span></h3>`, `<div id="study-rev-chart-host"></div>`)}
     </div>
-    ${sectionCard('ms_table', `<h3>季度 EPS / Sales <span class="label-en">Reported + Estimate · click any value to edit</span></h3>`, `<div id="study-ms-host"></div>`)}
+    ${sectionCard('ms_table', `<h3>季度 EPS / Sales <span class="label-en">Reported + Estimate · click any value to edit</span></h3>`,
+      `<div class="quarter-switcher-row">
+         <span class="qs-label">Focus quarter:</span>
+         <select class="qs-select" id="study-quarter-select"></select>
+         <span class="qs-hint">drives bar charts, MS-table window, Forward YoY · auto-syncs with OHLCV date</span>
+       </div>
+       <div id="study-ms-host"></div>`)}
     ${sectionCard('yoy_block', `<h3>Forward YoY <span class="label-en">TradingView FQ — EPS YoY / Rev YoY</span></h3>`, yoyHtml || '<div style="color:var(--stone)">No TradingView quarterly estimate data</div>')}
     ${sectionCard('notes', `<h3>Notes <span class="label-en">paste images (Ctrl+V) or drag-drop · Ctrl+Z to undo</span></h3>`, `<div class="study-notes-rich" id="study-notes" contenteditable="${STATE.sidecar.available ? 'true' : 'false'}" data-placeholder="${t('studies-note-placeholder')}">${notesHtml}</div>`)}
   `;
 
   // ── Chart + MS-table render helpers (recompute when customChart changes) ──
   function activeChart() {
-    return loadStudies().find(st => st.symbol === sym)?.customChart || baseChart;
+    return loadStudies().find(st => st.id === id)?.customChart || baseChart;
+  }
+  // Focus quarter — user-selected anchor that drives bar-chart highlighting, MS-table window,
+  // and Forward YoY anchor. Default = customChart.latest_idx (which == baseChart.latest_idx
+  // unless the user has edited it). Set via the quarter-select dropdown OR auto-set when the
+  // user changes OHLCV.date.
+  function activeFocusIdx() {
+    const cur = loadStudies().find(st => st.id === id);
+    if (cur?.focusQuarterIdx != null) return cur.focusQuarterIdx;
+    return (cur?.customChart?.latest_idx ?? baseChart?.latest_idx) ?? 0;
+  }
+  // Populate the quarter-select dropdown from chart.quarters.
+  function refreshQuarterSelect() {
+    const sel = document.getElementById('study-quarter-select');
+    const c = activeChart();
+    if (!sel || !c || !c.quarters) return;
+    const cur = activeFocusIdx();
+    sel.innerHTML = c.quarters.map((q, i) => `<option value="${i}" ${i === cur ? 'selected' : ''}>${q}</option>`).join('');
   }
   function renderAllCharts() {
     const c = activeChart();
     if (!c) return;
+    const fi = activeFocusIdx();
     const eps = document.getElementById('study-eps-chart-host');
     const rev = document.getElementById('study-rev-chart-host');
-    if (eps) eps.innerHTML = svgBarChart(c.quarters, c.eps_reported, c.eps_estimate, c.latest_idx, false);
-    if (rev) rev.innerHTML = svgBarChart(c.quarters, c.rev_reported_M, c.rev_estimate_M, c.latest_idx, true);
+    if (eps) eps.innerHTML = svgBarChart(c.quarters, c.eps_reported, c.eps_estimate, fi, false);
+    if (rev) rev.innerHTML = svgBarChart(c.quarters, c.rev_reported_M, c.rev_estimate_M, fi, true);
     const ms = document.getElementById('study-ms-host');
-    if (ms) ms.innerHTML = renderEditableMsTable(c, sym);
-    recomputeMsComputedCells(c);
+    if (ms) ms.innerHTML = renderEditableMsTable(c, sym, fi);
+    const msRoot = document.getElementById('study-ms-host');
+    recomputeMsComputedCells(c, msRoot);
     bindMsTableEditors();
+    refreshQuarterSelect();
   }
   // Editable MS table input listeners — write back into the right array slot of customChart,
   // then re-recompute the dependent YoY/Surp cells + re-render the bar charts.
   function bindMsTableEditors() {
     document.querySelectorAll('.ms-cell-input').forEach(inp => {
       inp.addEventListener('input', () => {
-        const cur = loadStudies().find(st => st.symbol === sym);
+        const cur = loadStudies().find(st => st.id === id);
         if (!cur) return;
         // Lazy-clone the chart so the original snapshot stays untouched
         const c = cur.customChart ? { ...cur.customChart,
@@ -3794,32 +4232,248 @@ async function renderStudyDetail(sym) {
         const v = inp.value === '' ? null : parseFloat(inp.value);
         if (inp.dataset.row === 'eps') { (isRep ? c.eps_reported : c.eps_estimate)[qi] = (v != null && !isNaN(v)) ? v : null; }
         else                            { (isRep ? c.rev_reported_M : c.rev_estimate_M)[qi] = (v != null && !isNaN(v)) ? v : null; }
-        updateStudy(sym, { customChart: c });
-        // Re-render bar charts immediately + update computed cells
+        updateStudy(id,{ customChart: c });
+        // Re-render bar charts immediately + update computed cells (use focus quarter, not raw latest_idx)
+        const fi = activeFocusIdx();
         const epsHost = document.getElementById('study-eps-chart-host');
         const revHost = document.getElementById('study-rev-chart-host');
-        if (epsHost) epsHost.innerHTML = svgBarChart(c.quarters, c.eps_reported, c.eps_estimate, c.latest_idx, false);
-        if (revHost) revHost.innerHTML = svgBarChart(c.quarters, c.rev_reported_M, c.rev_estimate_M, c.latest_idx, true);
-        recomputeMsComputedCells(c);
+        if (epsHost) epsHost.innerHTML = svgBarChart(c.quarters, c.eps_reported, c.eps_estimate, fi, false);
+        if (revHost) revHost.innerHTML = svgBarChart(c.quarters, c.rev_reported_M, c.rev_estimate_M, fi, true);
+        recomputeMsComputedCells(c, document.getElementById('study-ms-host'));
         refreshYoyBlock(c);
       });
     });
   }
   // Re-paint the Forward YoY card from a (possibly customized) chart object so it stays
-  // in sync with MS-table edits. Uses buildYoyBlockText (JS twin of parse_tv.yoy).
+  // in sync with MS-table edits AND the focus-quarter selection. Uses buildYoyBlockText
+  // (JS twin of parse_tv.yoy) — anchored at focusQuarterIdx so the user can compare YoY
+  // around any historical reported quarter, not just the most-recent.
   function refreshYoyBlock(chart) {
     const host = document.getElementById(`yoy-${sym}`);
     if (!host) return;
-    const txt = buildYoyBlockText(chart);
+    const fi = activeFocusIdx();
+    const txt = buildYoyBlockText(chart, fi);
+    const copyBtnHtml = `<button class="copy-btn yoy-copy-inside" data-copy-target="yoy-${sym}">Copy</button>`;
     if (!txt) {
-      host.innerHTML = '<span class="nm">No quarterly data</span>';
+      host.innerHTML = copyBtnHtml + '<span class="nm">No quarterly data</span>';
       host.removeAttribute('data-raw');
       return;
     }
     host.setAttribute('data-raw', txt);
-    host.innerHTML = colorizeYoyBlock(txt);
+    host.innerHTML = copyBtnHtml + colorizeYoyBlock(txt);
+    // Re-bind the freshly-inserted Copy button to the global click handler
+    host.querySelector('.copy-btn')?.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const tgt = document.getElementById(`yoy-${sym}`);
+      const text = tgt?.dataset.raw || tgt?.textContent || '';
+      try { await navigator.clipboard.writeText(text); }
+      catch { const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+      const btn = e.currentTarget;
+      btn.textContent = 'Copied!'; btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1200);
+    });
   }
   renderAllCharts();
+
+  // ── Quarter-select dropdown: user picks an anchor quarter to focus on ──
+  document.getElementById('study-quarter-select')?.addEventListener('change', e => {
+    const newIdx = parseInt(e.target.value, 10);
+    if (Number.isInteger(newIdx)) {
+      updateStudy(id,{ focusQuarterIdx: newIdx });
+      renderAllCharts();
+      refreshYoyBlock(activeChart());
+    }
+  });
+
+  // ── Editable Volume — linked to ohlcv.volume so OHLCV popup stays in sync ──
+  const volCell = document.getElementById('study-vol-cell');
+  volCell?.addEventListener('click', () => {
+    if (!STATE.sidecar.available) return;
+    if (volCell.querySelector('input')) return;
+    const span = volCell.querySelector('.vol-text');
+    const cur = (loadStudies().find(st => st.id === id)?.ohlcv?.volume);
+    const seed = (cur != null) ? cur : s.volume;
+    const inp = document.createElement('input');
+    inp.type = 'number'; inp.step = '1000'; inp.min = '0';
+    inp.className = 'vol-edit-input';
+    inp.value = (seed != null) ? seed : '';
+    inp.placeholder = '—';
+    span.style.display = 'none';
+    volCell.appendChild(inp);
+    inp.focus(); inp.select();
+    let done = false;
+    const finish = (cancel) => {
+      if (done) return; done = true;
+      if (!cancel) {
+        const raw = inp.value.trim();
+        const v = (raw === '') ? null : parseFloat(raw);
+        const final = (v != null && isFinite(v)) ? v : null;
+        const ohlcv = loadStudies().find(st => st.id === id)?.ohlcv || {};
+        updateStudy(id,{ ohlcv: { ...ohlcv, volume: final } });
+        span.textContent = fmtVol(final);
+      }
+      span.style.display = '';
+      inp.remove();
+    };
+    inp.addEventListener('blur', () => finish(false));
+    inp.addEventListener('keydown', ev => {
+      if (ev.key === 'Enter')  { ev.preventDefault(); finish(false); }
+      if (ev.key === 'Escape') { ev.preventDefault(); finish(true); }
+    });
+  });
+
+  // ── Catalyst-types multi-select (Notion-style) ──
+  // One stable click listener on the persistent #catalyst-types-row container, using event
+  // delegation. This way we never re-attach listeners — pill HTML inside the row can be
+  // swapped via innerHTML and the row's click handler keeps firing correctly.
+  // Re-render only updates the row's INNER html (pills + add button) — the outer container
+  // and its listener remain attached.
+  function renderCatalystInner(currentStudy) {
+    const types = getStudyTypes(currentStudy);
+    const pills = types.map((tt, ti) => {
+      const cls = catalystTypeClass(tt);
+      return `<span class="tag catalyst-type-pill ${cls}" data-type-idx="${ti}" data-action="edit-cat-type" title="Click to change type"><span class="pill-label">${escapeHtml(tt)}</span><button class="pill-x" type="button" data-action="remove-cat-type" data-type-idx="${ti}" title="Remove">&times;</button></span>`;
+    }).join('');
+    return pills + `<button class="catalyst-type-add" type="button" id="catalyst-type-add-btn" title="Add catalyst type">+ Add tag</button>`;
+  }
+  function reRenderCatalystRow() {
+    const host = document.getElementById('catalyst-types-row');
+    if (!host) return;
+    host.innerHTML = renderCatalystInner(loadStudies().find(st => st.id === id) || study);
+  }
+  function wireCatalystRow() {
+    const host = document.getElementById('catalyst-types-row');
+    if (!host || host.__wired) return;
+    host.__wired = true;
+    host.addEventListener('click', e => {
+      // Order matters: check most-specific first.
+      const xBtn = e.target.closest('[data-action="remove-cat-type"]');
+      if (xBtn) {
+        e.preventDefault(); e.stopPropagation();
+        const ti = parseInt(xBtn.dataset.typeIdx, 10);
+        const cur = loadStudies().find(st => st.id === id);
+        if (!cur) return;
+        const types = getStudyTypes(cur).slice();
+        types.splice(ti, 1);
+        updateStudy(id, { customTypes: types });
+        reRenderCatalystRow();
+        return;
+      }
+      const addBtn = e.target.closest('#catalyst-type-add-btn');
+      if (addBtn) {
+        e.preventDefault(); e.stopPropagation();
+        openCatalystPopup(addBtn, { mode: 'add' });
+        return;
+      }
+      const editPill = e.target.closest('[data-action="edit-cat-type"]');
+      if (editPill) {
+        e.preventDefault(); e.stopPropagation();
+        const ti = parseInt(editPill.dataset.typeIdx, 10);
+        openCatalystPopup(editPill, { mode: 'swap', editIdx: ti });
+        return;
+      }
+    });
+  }
+  // Notion-style picker popup. `opts.mode` is 'swap' (replace one pill) or 'add' (toggle).
+  // Renders via position: fixed at the BODY level so it can't be clipped by any
+  // ancestor stacking context (the bug where stock-card backgrounds covered it).
+  function openCatalystPopup(anchor, opts = {}) {
+    document.querySelector('.catalyst-type-popup')?.remove();
+    const mode = opts.mode || 'add';
+    const editIdx = (opts.editIdx != null) ? opts.editIdx : -1;
+    const rect = anchor.getBoundingClientRect();
+    const pop = document.createElement('div');
+    pop.className = 'catalyst-type-popup';
+    pop.style.position = 'fixed';
+    pop.style.top = `${rect.bottom + 6}px`;
+    pop.style.left = `${Math.min(rect.left, window.innerWidth - 260)}px`;
+    pop.style.zIndex = '9999';
+    // `selected` recomputed on every renderOptions call so the ✓ ticks track the actual
+    // current store state (not a stale capture from popup-open time).
+    // Option source = built-in presets + user-remembered custom types (from localStorage).
+    // Custom types render with a small "forget" × so the user can clean up the dropdown
+    // list without affecting any study that still uses the type.
+    const renderOptions = (query) => {
+      const cur = loadStudies().find(st => st.id === id);
+      const selected = new Set(getStudyTypes(cur || study));
+      const q = (query || '').toLowerCase().trim();
+      const all = getAllCatalystOptions();
+      const matches = all.filter(p => !q || p.label.toLowerCase().includes(q) || p.key.includes(q));
+      const optHtml = matches.map(p => {
+        const isSel = mode === 'add' && (selected.has(p.label) || selected.has(p.key));
+        const forgetX = p.isCustom
+          ? `<button class="cat-forget-x" type="button" data-action="forget-custom" data-key="${escapeHtml(p.label)}" title="Remove from dropdown list">&times;</button>`
+          : '';
+        return `<div class="cat-option ${isSel ? 'selected' : ''}" data-key="${escapeHtml(p.label)}">
+          <span class="tag catalyst-type-pill ${p.cls}" style="padding:1px 8px;font-size:11px;pointer-events:none">${escapeHtml(p.label)}</span>
+          ${forgetX}
+        </div>`;
+      }).join('');
+      const showCreate = q && !all.some(p => p.label.toLowerCase() === q || p.key === q);
+      const createHtml = showCreate ? `<div class="cat-create" data-action="create" data-key="${escapeHtml(q)}">+ ${mode === 'swap' ? 'Set to' : 'Create'} "${escapeHtml(q)}"</div>` : '';
+      return optHtml + createHtml;
+    };
+    const placeholder = (mode === 'swap') ? 'Change tag to…' : 'Search or create new…';
+    pop.innerHTML = `
+      <input class="cat-search" type="text" placeholder="${placeholder}" autocomplete="off">
+      <div class="cat-options-host">${renderOptions('')}</div>
+    `;
+    document.body.appendChild(pop);
+    const inp = pop.querySelector('input.cat-search');
+    const host = pop.querySelector('.cat-options-host');
+    inp.focus();
+    inp.addEventListener('input', () => { host.innerHTML = renderOptions(inp.value); });
+    inp.addEventListener('keydown', e => { if (e.key === 'Escape') pop.remove(); });
+    host.addEventListener('click', e => {
+      // "forget custom type" X — handled FIRST so its click doesn't also fire the parent option
+      const forgetBtn = e.target.closest('[data-action="forget-custom"]');
+      if (forgetBtn) {
+        e.preventDefault(); e.stopPropagation();
+        forgetCustomCatType(forgetBtn.dataset.key);
+        host.innerHTML = renderOptions(inp.value);
+        return;
+      }
+      const opt = e.target.closest('.cat-option, .cat-create');
+      if (!opt) return;
+      e.preventDefault(); e.stopPropagation();
+      const key = opt.dataset.key;
+      const isCreate = opt.dataset.action === 'create';
+      // If this is a "+ Create new X" click, persist the new type to the global dropdown
+      // remembered-list FIRST so it's available for future sessions (and this one).
+      if (isCreate) rememberCustomCatType(key);
+      const cur = loadStudies().find(st => st.id === id);
+      if (!cur) return;
+      const types = getStudyTypes(cur).slice();
+      if (mode === 'swap' && editIdx >= 0 && editIdx < types.length) {
+        // Swap mode — replace the clicked pill's value in place + close popup
+        types[editIdx] = key;
+        updateStudy(id, { customTypes: types });
+        reRenderCatalystRow();
+        pop.remove();
+      } else {
+        // Add mode — toggle preset/custom membership; "create new" always adds.
+        const existingIdx = types.indexOf(key);
+        if (!isCreate && existingIdx >= 0) {
+          types.splice(existingIdx, 1);   // already present → toggle off
+        } else if (!types.includes(key)) {
+          types.push(key);                  // add new
+        }
+        updateStudy(id, { customTypes: types });
+        reRenderCatalystRow();
+        host.innerHTML = renderOptions(inp.value);
+      }
+    });
+    setTimeout(() => {
+      const onDocClick = (ev) => {
+        if (!pop.contains(ev.target) && !anchor.contains(ev.target)) {
+          pop.remove();
+          document.removeEventListener('click', onDocClick);
+        }
+      };
+      document.addEventListener('click', onDocClick);
+    }, 0);
+  }
+  wireCatalystRow();
 
   // Refresh Gain / Stop trade pills (called from OHLCV popup on every keystroke)
   function refreshTradeMetrics() {
@@ -3842,7 +4496,7 @@ async function renderStudyDetail(sym) {
     if (!STATE.sidecar.available) return;        // read-only
     if (priceCell.querySelector('input')) return; // already editing
     const span = priceCell.querySelector('.price-text');
-    const cur = (loadStudies().find(st => st.symbol === sym)?.price);
+    const cur = (loadStudies().find(st => st.id === id)?.price);
     const seed = (cur != null) ? cur : s.last;
     const inp = document.createElement('input');
     inp.type = 'number'; inp.step = '0.01'; inp.min = '0';
@@ -3860,7 +4514,7 @@ async function renderStudyDetail(sym) {
         const raw = inp.value.trim();
         const v = (raw === '') ? null : parseFloat(raw);
         const final = (v != null && isFinite(v)) ? v : null;
-        updateStudy(sym, { price: final });
+        updateStudy(id,{ price: final });
         span.textContent = fmtPrice(final);
       }
       span.style.display = '';
@@ -3876,7 +4530,7 @@ async function renderStudyDetail(sym) {
   // Re-render the %Chg readout in the header — runs whenever OHLCV changes so the auto-derived
   // day-chgPct flips in real time as user fills close/prev_close.
   function refreshChgReadout() {
-    const cur = loadStudies().find(st => st.symbol === sym);
+    const cur = loadStudies().find(st => st.id === id);
     if (!cur) return;
     const derived = deriveDayChgPct(cur.ohlcv);
     const newChg = (cur.chgPct != null) ? cur.chgPct
@@ -3905,7 +4559,7 @@ async function renderStudyDetail(sym) {
 
   // ── OHLCV popup modal — opens when user clicks either trade metric chip ──
   function openOhlcvModal() {
-    const cur = loadStudies().find(st => st.symbol === sym)?.ohlcv || {};
+    const cur = loadStudies().find(st => st.id === id)?.ohlcv || {};
     const modal = document.createElement('div');
     modal.className = 'ohlcv-modal-overlay';
     modal.innerHTML = `
@@ -3937,11 +4591,28 @@ async function renderStudyDetail(sym) {
     modal.querySelectorAll('input').forEach(inp => {
       inp.addEventListener('input', e => {
         const field = e.target.dataset.field;
-        const ohlcv = loadStudies().find(st => st.symbol === sym)?.ohlcv || {};
+        const ohlcv = loadStudies().find(st => st.id === id)?.ohlcv || {};
         const val = field === 'date' ? e.target.value : (parseFloat(e.target.value) || null);
-        updateStudy(sym, { ohlcv: { ...ohlcv, [field]: val } });
+        updateStudy(id,{ ohlcv: { ...ohlcv, [field]: val } });
         refreshTradeMetrics();
         refreshChgReadout();
+        // Mirror the new volume into the header's Vol readout (kept in sync with ohlcv.volume).
+        if (field === 'volume') {
+          const volSpan = document.querySelector('#study-vol-cell .vol-text');
+          if (volSpan) volSpan.textContent = fmtVol(val);
+        }
+        // OHLCV.date change → auto-snap the focus quarter to the calendar quarter containing it.
+        // This is what the user asked for: editing the Gain/Stop date drives the quarter view,
+        // but manually picking the quarter dropdown below does NOT bounce the date back.
+        if (field === 'date') {
+          const c = activeChart();
+          const qi = dateToQuarterIdx(val, c);
+          if (qi != null && qi >= 0) {
+            updateStudy(id,{ focusQuarterIdx: qi });
+            renderAllCharts();
+            refreshYoyBlock(activeChart());
+          }
+        }
       });
     });
     // Focus first empty input for fast entry
@@ -3956,18 +4627,18 @@ async function renderStudyDetail(sym) {
     btn.addEventListener('click', e => {
       e.preventDefault();
       const sid = e.target.dataset.section;
-      const cur = loadStudies().find(st => st.symbol === sym);
+      const cur = loadStudies().find(st => st.id === id);
       if (!cur) return;
       const next = new Set(cur.hiddenSections || []);
       next.add(sid);
-      updateStudy(sym, { hiddenSections: Array.from(next) });
+      updateStudy(id,{ hiddenSections: Array.from(next) });
       const card = e.target.closest('.study-section');
       if (card) card.remove();
     });
   });
   // Right-click anywhere on the detail page → context menu listing hidden sections to restore
   app.addEventListener('contextmenu', e => {
-    const cur = loadStudies().find(st => st.symbol === sym);
+    const cur = loadStudies().find(st => st.id === id);
     const hiddenList = (cur?.hiddenSections || []).filter(id => sectionsAll.includes(id));
     if (hiddenList.length === 0) return;   // default browser menu wins when nothing to restore
     e.preventDefault();
@@ -3983,9 +4654,9 @@ async function renderStudyDetail(sym) {
     const close = () => menu.remove();
     menu.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
       const sid = b.dataset.section;
-      const cur2 = loadStudies().find(st => st.symbol === sym);
+      const cur2 = loadStudies().find(st => st.id === id);
       const remaining = (cur2?.hiddenSections || []).filter(x => x !== sid);
-      updateStudy(sym, { hiddenSections: remaining });
+      updateStudy(id,{ hiddenSections: remaining });
       close();
       renderStudyDetail(sym);   // re-render so the restored card appears in its original slot
     }));
@@ -4072,7 +4743,7 @@ async function renderStudyDetail(sym) {
   });
   // Delete with snackbar undo (instead of confirm dialog, since clear-all already pattern)
   document.getElementById('study-delete')?.addEventListener('click', async () => {
-    const snapshot = loadStudies().find(st => st.symbol === sym);
+    const snapshot = loadStudies().find(st => st.id === id);
     if (!snapshot) return;
     // Collect image keys for restore
     const imgKeys = new Set();
@@ -4080,13 +4751,13 @@ async function renderStudyDetail(sym) {
     noteImgs.forEach(m => imgKeys.add(m.replace(/data-img-key="|"$/g, '')));
     const beforeImgs = {};
     for (const k of imgKeys) { try { const v = await getImg(k); if (v) beforeImgs[k] = v; } catch {} }
-    saveStudies(loadStudies().filter(s => s.symbol !== sym));
+    saveStudies(loadStudies().filter(s => s.id !== id));
     for (const k of imgKeys) { try { await delImg(k); } catch {} }
     location.hash = '#/studies';
     showUndoSnackbar(`Deleted ${sym}`, async () => {
       saveStudies([...loadStudies(), snapshot]);
       for (const [k, v] of Object.entries(beforeImgs)) { try { await putImg(k, v); } catch {} }
-      location.hash = '#/study/' + sym;
+      location.hash = '#/study/' + id;
     });
   });
   // Notion-style notes — contenteditable with inline image paste/drop. Save innerHTML on input
@@ -4097,13 +4768,21 @@ async function renderStudyDetail(sym) {
     // Strip inline data: URIs from src before storage — images live in IndexedDB by data-img-key
     const clone = notes.cloneNode(true);
     clone.querySelectorAll('img[data-img-key]').forEach(img => img.removeAttribute('src'));
-    updateStudy(sym, { notes: clone.innerHTML });
+    updateStudy(id,{ notes: clone.innerHTML });
   };
   const scheduleSave = () => {
     if (saveTimer) cancelAnimationFrame(saveTimer);
     saveTimer = requestAnimationFrame(flushSave);
   };
   notes?.addEventListener('input', scheduleSave);
+  // News Detail editor — saves to study.newsDetail (user override). Debounced via rAF
+  // so fast typing doesn't slam saveStudies on every keystroke.
+  const newsEl = document.getElementById('study-news-detail');
+  let newsTimer = null;
+  newsEl?.addEventListener('input', () => {
+    if (newsTimer) cancelAnimationFrame(newsTimer);
+    newsTimer = requestAnimationFrame(() => updateStudy(id, { newsDetail: newsEl.innerHTML }));
+  });
   // Image paste handler — insert <span.notes-img-wrap><img><button.notes-img-del>✕</button></span>
   // at cursor via execCommand so browser-native Ctrl+Z still works.
   const insertImgAtCursor = (dataUrl, key) => {
