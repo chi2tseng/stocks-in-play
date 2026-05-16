@@ -743,6 +743,7 @@ body.dark .catalyst-type-pill .pill-x { background: rgba(255,255,255,0.08); }
 .catalyst-type-pill.cat-type-short-squeeze { background: rgba(255, 140, 0, 0.18);  color: #8a4500; }
 .catalyst-type-pill.cat-type-sips          { background: rgba(38, 165, 198, 0.18); color: #0e6e89; }
 .catalyst-type-pill.cat-type-ep            { background: rgba(228, 90, 170, 0.16); color: #a8336d; }
+.catalyst-type-pill.cat-type-dep           { background: rgba(160, 130, 95, 0.18); color: #6b4e23; }
 body.dark .catalyst-type-pill.cat-type-earnings      { color: #a5a9ff; }
 body.dark .catalyst-type-pill.cat-type-momentum,
 body.dark .catalyst-type-pill.cat-type-short-squeeze { color: #ffce6a; }
@@ -753,6 +754,7 @@ body.dark .catalyst-type-pill.cat-type-contract      { color: #6dc0ff; }
 body.dark .catalyst-type-pill.cat-type-technical     { color: #c7a4ff; }
 body.dark .catalyst-type-pill.cat-type-sips          { color: #7ed3ec; }
 body.dark .catalyst-type-pill.cat-type-ep            { color: #ff9bcd; }
+body.dark .catalyst-type-pill.cat-type-dep           { color: #d9bf94; }
 
 /* Multi-select popup (Notion-style) */
 .catalyst-type-popup {
@@ -4495,6 +4497,7 @@ const CATALYST_PRESETS = [
   { key: 'short-squeeze',  label: 'short squeeze',  cls: 'cat-type-short-squeeze' },
   { key: 'sips',           label: 'SIPs',           cls: 'cat-type-sips' },
   { key: 'ep',             label: 'EP',             cls: 'cat-type-ep' },
+  { key: 'dep',            label: 'DEP',            cls: 'cat-type-dep' },
 ];
 function catalystTypeClass(key) {
   const p = CATALYST_PRESETS.find(p => p.key === key.toLowerCase().replace(/\s+/g, '-'));
