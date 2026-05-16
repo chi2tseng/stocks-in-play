@@ -4,22 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Stocks In Play</title>
-<!-- Browser tab favicon — points to logo.png. Listed BEFORE the SVG fallback so browsers
-     that support PNG icons (basically all modern browsers) pick the photographed S-mark.
-     Older browsers without PNG support fall through to the inline-SVG below. -->
-<link rel="icon" type="image/png" sizes="any" href="logo.png">
-<!-- SVG fallback — kept as inline data URI so it ships with the HTML, no extra request.
-     Cobalt rounded square + clean white S; rendered at small sizes if PNG fails to load. -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23494fdf'/><text x='16' y='23' font-family='Inter, system-ui, sans-serif' font-size='22' font-weight='800' fill='white' text-anchor='middle' letter-spacing='-1'>S</text></svg>">
-<!-- Apple-touch + OG social-share preview use the photographed S-mark (high-res PNG). -->
-<link rel="apple-touch-icon" href="logo.png">
+<!-- Browser tab favicon — points to logo.png. Cache-bust query bumped to v=3 whenever the
+     image actually changes, since browsers cache favicons aggressively (often across hard
+     refreshes). No SVG fallback because Chrome was preferring it over the PNG even with
+     the PNG listed first; one PNG link with no alternative forces the textured S to load. -->
+<link rel="icon" type="image/png" href="logo.png?v=3">
+<!-- Apple-touch + OG social-share preview use the same PNG (high-res). -->
+<link rel="apple-touch-icon" href="logo.png?v=3">
 <meta property="og:title" content="Stocks In Play">
 <meta property="og:description" content="Daily NTRT/MTRT gap scanner — top gap candidates, MAGNA53 classification, TradingView quarterly forecasts.">
-<meta property="og:image" content="logo.png">
+<meta property="og:image" content="logo.png?v=3">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chi2tseng.github.io/stocks-in-play/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="logo.png">
+<meta name="twitter:image" content="logo.png?v=3">
 <!-- Webfonts — Inter (variable, with `opsz` axis for display sizes) acts as the Aeonik Pro stand-in
      per DESIGN.md §388 ("Inter Display ... credible substitutes"). JetBrains Mono for tabular numbers. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
