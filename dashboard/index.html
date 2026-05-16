@@ -673,6 +673,26 @@ body.readonly-mode .vol-editable:hover { background: transparent; }
   font-family: var(--font-mono); font-size: 12px; color: var(--stone);
   font-weight: 500; letter-spacing: 0.3px;
 }
+/* Editable date pill in the Study-detail breadcrumb — uses native date picker but styled to
+   look like the read-only .study-detail-date pill it replaces. Hover/focus reveal a subtle
+   border so the user notices it's interactive. */
+.study-detail-date-input {
+  font-family: var(--font-mono); font-size: 12px; color: var(--stone);
+  font-weight: 500; letter-spacing: 0.3px;
+  background: transparent; border: 1px solid transparent; border-radius: var(--r-sm);
+  padding: 2px 6px; margin: -2px 0; cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+.study-detail-date-input:hover { background: var(--canvas); border-color: var(--hairline); color: var(--ink); }
+.study-detail-date-input:focus { background: var(--canvas); border-color: var(--primary); color: var(--ink); outline: none; }
+/* Hide the browser's spinner controls on the date input — keep the visual minimal */
+.study-detail-date-input::-webkit-calendar-picker-indicator {
+  opacity: 0.5; cursor: pointer; padding: 0 2px;
+  transition: opacity 0.12s;
+}
+.study-detail-date-input:hover::-webkit-calendar-picker-indicator,
+.study-detail-date-input:focus::-webkit-calendar-picker-indicator { opacity: 1; }
+body.readonly-mode .study-detail-date-input { pointer-events: none; }
 body.readonly-mode .study-delete-outer { display: none !important; }
 
 /* Custom catalyst types — Notion-style multi-select pills */
@@ -4799,10 +4819,8 @@ async function renderStudyDetail(idOrSym) {
       <span><a href="#/studies">← Studies</a> &nbsp;»&nbsp; <b>${sym}</b>${(() => {
         const od = (study.ohlcv && study.ohlcv.date) ? study.ohlcv.date : '';
         const sd = od || (study.savedAt || '').slice(0, 10);
-        const title = od
-          ? `Trading day from OHLCV. Saved on ${(study.savedAt || '').slice(0, 10)}.`
-          : `Saved on this date. Fill OHLCV.date in the Gain/Stop popup to switch to the trading day.`;
-        return sd ? `<span class="study-detail-date" title="${title}">&nbsp;·&nbsp;${sd}</span>` : '';
+        const title = `Click to change the trading-day date. Auto-snaps the focus quarter; OHLCV bars stay until /update-studies refreshes them.`;
+        return sd ? `&nbsp;·&nbsp;<input type="date" class="study-detail-date-input" id="study-detail-date-input" value="${sd}" title="${title}">` : '';
       })()}</span>
       <button class="study-delete-outer" id="study-delete" type="button" title="Delete this study">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -4969,6 +4987,31 @@ async function renderStudyDetail(idOrSym) {
       renderAllCharts();
       refreshYoyBlock(activeChart());
     }
+  });
+
+  // ── Top-of-page date pill: click to change the study's trading-day date ──
+  // Mirrors the OHLCV-modal's date-field logic (line ~5359): write ohlcv.date,
+  // auto-snap focusQuarterIdx to the calendar quarter containing the new date,
+  // then re-render the whole detail page so charts/MS table/YoY block all
+  // reflect the new anchor. OHLCV bar values (open/high/low/close/volume) are
+  // left intact — they'll go stale until /update-studies refreshes them, but
+  // that's better than blanking them on every date tweak.
+  document.getElementById('study-detail-date-input')?.addEventListener('change', e => {
+    const newDate = e.target.value;   // YYYY-MM-DD from the native date picker
+    if (!newDate) return;
+    const cur = loadStudies().find(st => st.id === id);
+    if (!cur) return;
+    const ohlcv = cur.ohlcv || {};
+    updateStudy(id, { ohlcv: { ...ohlcv, date: newDate } });
+    // Auto-snap focusQuarterIdx to the calendar quarter containing the new date.
+    const c = activeChart();
+    const qi = dateToQuarterIdx(newDate, c);
+    if (qi != null && qi >= 0) {
+      updateStudy(id, { focusQuarterIdx: qi });
+    }
+    // Full re-render — date drives the header price-vs-prev gap %, MS-table
+    // window, YoY anchor, EPS/Rev chart highlight, etc.
+    renderStudyDetail(id);
   });
 
   // ── Editable Volume — linked to ohlcv.volume so OHLCV popup stays in sync ──
