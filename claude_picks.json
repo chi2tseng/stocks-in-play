@@ -2,64 +2,22 @@
   "_comment": "Claude's hand-picked SIP rankings. Read by build_dashboard.py and exposed as DATA.claudePicks. Each pick has an `intent` field: 'long' (default) or 'short'. Direction-match rule (enforced by dashboard JS): long picks must be gap-up (chgPct > 0), short picks must be gap-down (chgPct < 0). Mismatches are silently filtered out — market direction must agree with the thesis. NEVER mark a gap-down ticker as a long pick (or vice versa).",
   "picks": [
     {
-      "symbol": "FIG",
+      "symbol": "UNH",
       "rank": 1,
-      "intent": "long",
-      "rationale": "今日 post-market 場上最乾淨的 Setup A——連續四季營收加速 +46% > +37% > +30% > +25%、NDR 139%、FY26 指引上修至 +35%。盤後 +11.66% 在 $22.60、距 IPO 後 -48% YTD 還有大量空間。標準進場 2.5% 停損，強催化劑可升級 5%。"
+      "intent": "short",
+      "rationale": "**最強做空候選 — 雙重利空清晰 + 流動性充足**\n\nBerkshire Hathaway 在 5/15 盤後 Q1 13F 揭露完全出清 UNH 約 500 萬股 ($1.6B)，距 Buffett 去年才新建倉不到一年；同日 Bloomberg 報導 Optum 強推員工 ChatGPT/Copilot 暗示裁員壓力。盤後 -4.67% 至 $375.46。流動性極佳 (905M float, $358B 市值) 可大規模操作。短期看 $365-370 支撐；Trade not swing — 已從 3 月低點反彈 47% 後遇 Berkshire 出清打斷敘事。"
     },
     {
-      "symbol": "POET",
+      "symbol": "M",
       "rank": 2,
       "intent": "long",
-      "rationale": "與 Lumilens 簽 $50M 首筆訂單 + 5 年累計 $500M 的 AI 光子引擎協議；任命前 Silicon Labs 高管為 COO 是『故事股升級執行』訊號。AI 光子是 HBM 之後資料中心下一波瓶頸；但屬故事股，建議只做日內或短線 swing。"
+      "rationale": "**短線做多 — Berkshire 建倉催化 + 5/27 財報前 follow-through**\n\nBerkshire Hathaway 5/15 13F 揭露建立 Macy's 新倉 304 萬股 / $55M (兩個子帳)。雖然規模屬 Berkshire「子組合」級別 (非 Buffett 親自決策)，但對 Macy's 散戶情緒是強信號。盤後 +5.32%。\n\n**短期 only：** 5/27 Q1 FY26 財報指引偏弱 (comps -0.5% to +1.5%、調整 EPS 接近損益兩平)；如果跑到財報日，幾乎肯定回吐。$20.50 為阻力、$18.50 為短線停損。"
     },
     {
-      "symbol": "WYY",
+      "symbol": "TRT",
       "rank": 3,
       "intent": "long",
-      "rationale": "WidePoint Q1 EPS 由 -$0.08 轉正至 $0.01、EBITDA +714%、FCF +941%、連 35 季 EBITDA 為正；CWMS 3.0 政府 SaaS 為 2026 主軸。微型股 ($89M cap) 流動性偏低，建議 limit order + 半倉以內。"
-    },
-    {
-      "symbol": "PIII",
-      "rank": 4,
-      "intent": "long",
-      "rationale": "Q1 EPS +$0.32 vs 預估 -$4.85（surprise +107%！分析師全錯）、FY EBITDA 指引中位數翻倍至 $40M——Stockbee 經典『EPS surprise ≥ 100%』+ 上修指引組合。盤後 +42.68% 已先吃一段，明天若回測 $5.40-$5.60 為再進場區。"
-    },
-    {
-      "symbol": "GEMI",
-      "rank": 5,
-      "intent": "long",
-      "rationale": "Q1 營收 +42% YoY、獲 Winklevoss Capital $100M BTC 注資（內部人增資是強訊號）；TradingView 估未來 4Q 營收加速至 +62%/+22%/+18%/+35%。屬加密交易所敘事 + 強股東支持；建議與 BTC 同向操作。"
-    },
-    {
-      "symbol": "DXCM",
-      "rank": 6,
-      "intent": "long",
-      "rationale": "Q1 EPS $0.56 +75% YoY +20% beat；Elliott Management 入股並達成合作協議——過去案例如 HPE、Salesforce 都帶動結構性重估與 capital allocation 改革。大盤股 ($24B) 適合中長期 swing，停損可放寬至 4%。"
-    },
-    {
-      "symbol": "GAMB",
-      "rank": 7,
-      "intent": "short",
-      "rationale": "Q1 EPS -$0.03 大 miss $0.06、EPS YoY -80%、營收持平 €40.4M、由淨利轉淨虧 $1.2M、宣布裁員 25% AI 重組——業績疲弱的最強訊號。盤後 -25.6% 在 $3.08 已破支撐；建議等開盤後 15 分鐘觀察，若反彈 $3.20-$3.30 為做空進場區，回補目標 $2.50-$2.70，停損 $3.45。"
-    },
-    {
-      "symbol": "BOOT",
-      "rank": 8,
-      "intent": "long",
-      "rationale": "FQ4 EPS $1.45 微超 $1.43、營收 $539M (+18.7%) 超 $533M、同店銷售 +6.1% 連續 11 季正成長；FY27 指引 $2.58-2.62B + EPS $8.18-8.64 高於 $7.95 共識——典型 beat-and-raise。實體零售龍頭基本面紮實，建議 swing trade（流動性偏低、限 limit order）；標準 2.5% 停損可放寬至 4%。"
-    },
-    {
-      "symbol": "MICC",
-      "rank": 9,
-      "intent": "long",
-      "rationale": "Unilever 冰淇淋業務 Magnum ICE Cream Company 5/15 在 NYSE 雙重上市 day-2；旗下 Magnum / Ben & Jerry's 等品牌年營收 $8.5B、EBITDA margin 19%、underlying sales +4.5% 超預期。獨立 entity 後 re-rating 至 18-22x EV/EBITDA 是 base case；盤前 +13.32% 已先吃一段，open 後若回測 $16 為再進場區。"
-    },
-    {
-      "symbol": "VUZI",
-      "rank": 10,
-      "intent": "short",
-      "rationale": "Q1 營收 $1.39M (-12% YoY)、雖 EPS 微超但**完全未提供 Q2/FY 指引**——小型 AR 股無指引被市場解讀為訂單能見度差。雙 session 大跌（pre -18.51% / post -16.66%）顯示拋售未完；Q1 現金消耗 $5.2M / 跑道剩 4 季增添壓力。建議倉位 0.5R 開始，停損 $2.85 上方。"
+      "rationale": "**強勢 Setup B 但要警惕已超漲 — 等回測**\n\nTrio-Tech Q3 FY26 營收 +124% YoY ($16.5M vs $7.4M)、AI GPU 燒機板訂單 ($5.3M+$2.5M)、馬來西亞擴產。半導體可靠度測試的 AI/EV 受惠者。但過去 12 個月已 +685%、6 個月 +503%；浮動僅 673 萬股、極端波動。\n\n**進場：** 不追高 (盤後 +6.98% 至 $21.45)；等回測 $18 區間或 20 日均線；標準停損 2.5%。設立警報、不主動下單。"
     }
   ]
 }
