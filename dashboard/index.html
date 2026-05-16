@@ -965,18 +965,33 @@ body.dark .trade-pill.direction-pill.neg { background: rgba(255, 84, 102, 0.22) 
 .sip-card .chg-cell.pos .gap-pct, .sip-card .chg-cell.pos .move-pct, .sip-card .chg-cell.pos .day-pct { color: var(--pos) !important; }
 .sip-card .chg-cell.neg .gap-pct, .sip-card .chg-cell.neg .move-pct, .sip-card .chg-cell.neg .day-pct { color: var(--neg) !important; }
 
-/* Editable MS table — cells become flat-styled inputs that look like cells until focused */
+/* Editable MS table — cells become flat-styled inputs that look like cells until focused.
+   text-align: right + tabular-nums right-aligns numbers cleanly across cells.
+   We hide the browser-default number-input spinner buttons (-webkit-spin / -moz appearance)
+   so the right edge is flush — without this, the spinner eats ~12px on the right and
+   shorter numbers like "1.53" look indented vs longer ones like "10270". */
 .ms-table-editable .ms-cell-input {
   width: 100%; min-width: 0;
-  padding: 2px 4px; font-family: var(--font-mono); font-variant-numeric: tabular-nums;
+  padding: 2px 6px; font-family: var(--font-mono); font-variant-numeric: tabular-nums;
   font-size: 12px; text-align: right;
   background: transparent; color: inherit;
   border: 1px solid transparent; border-radius: var(--r-sm);
   outline: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.ms-table-editable .ms-cell-input::-webkit-outer-spin-button,
+.ms-table-editable .ms-cell-input::-webkit-inner-spin-button {
+  -webkit-appearance: none; margin: 0;
 }
 .ms-table-editable .ms-cell-input:hover { background: var(--canvas); border-color: var(--hairline); }
 .ms-table-editable .ms-cell-input:focus { background: var(--canvas); border-color: var(--primary); }
 .ms-table-editable .ms-estimate .ms-cell-input { color: var(--mute); }
+/* Computed YoY/Surprise cells (td[data-computed]) inherit .ms-table td's text-align:right
+   but the inner <span class="pos/neg"> has its own background pill — keep that flush right
+   too by setting a small right padding on the span itself. */
+.ms-table-editable td[data-computed] { text-align: right; padding-right: 8px !important; }
+.ms-table-editable td[data-computed] > span { display: inline-block; min-width: 3.5em; text-align: right; }
 
 /* Notion-style rich notes — contenteditable with inline image embeds */
 .study-notes-rich {
@@ -1881,6 +1896,16 @@ function parseHash() {
   return { date, route: routeVal, arg };
 }
 
+// Build a hash URL that preserves the currently-viewed date. When the user is on a
+// historical date (e.g. browsing 5/14's SIPs), clicking into a stock should keep them
+// in 5/14's context — otherwise the stock detail jumps to today's data and triggers the
+// "Symbol XXX 不在今日掃描中" message for symbols that weren't in today's scan. The latest
+// date never needs to be in the URL (default behavior), so we omit it there.
+function buildRouteHash(routePath) {
+  const isLatest = STATE.date === STATE.dates[0]?.date;
+  return '#/' + (isLatest ? '' : STATE.date + '/') + routePath;
+}
+
 async function route() {
   const { date, route: r, arg } = parseHash();
   const targetDate = date || STATE.dates[0]?.date;
@@ -2400,7 +2425,7 @@ function renderEarnings() {
       tr.style.cursor = 'pointer';
       tr.onclick = () => {
         const sym = tr.querySelector('td.sym')?.textContent?.trim();
-        if (sym) location.hash = `#/stock/${sym}`;
+        if (sym) location.hash = buildRouteHash('stock/' + sym);
       };
     });
   }
@@ -2482,7 +2507,7 @@ async function renderCatalyst() {
         // so .textContent returns "AIIOday2" — strip everything after the first run of ticker chars.
         const raw = tr.querySelector('td.sym')?.textContent || '';
         const sym = raw.match(/^[A-Z][A-Z0-9.\-]*/)?.[0];
-        if (sym) location.hash = `#/stock/${sym}`;
+        if (sym) location.hash = buildRouteHash('stock/' + sym);
       };
     });
   }
@@ -2559,7 +2584,7 @@ function renderSqueeze() {
       tr.onclick = () => {
         const raw = tr.querySelector('td.sym')?.textContent || '';
         const sym = raw.match(/^[A-Z][A-Z0-9.\-]*/)?.[0];
-        if (sym) location.hash = `#/stock/${sym}`;
+        if (sym) location.hash = buildRouteHash('stock/' + sym);
       };
     });
   }
@@ -2647,7 +2672,7 @@ function renderGappers() {
       tr.style.cursor = 'pointer';
       tr.onclick = () => {
         const sym = tr.querySelector('td.sym')?.textContent?.trim();
-        if (sym) location.hash = `#/stock/${sym}`;
+        if (sym) location.hash = buildRouteHash('stock/' + sym);
       };
     });
   }
@@ -3190,7 +3215,21 @@ function renderNewsHistory(sym, history, container) {
 async function renderStock(sym) {
   const s = DATA.stocks[sym];
   const app = document.getElementById('app');
-  if (!s) { app.innerHTML = `<div class="empty">Symbol ${sym} 不在今日掃描中</div>`; return; }
+  // The viewed date (Studies-style label "May 14, Wed"). When the user navigates from
+  // the date-strip into a stock, we preserve the date in the URL via buildRouteHash —
+  // so DATA always reflects the date they were viewing. We still show the label here so
+  // there is no ambiguity about "which day am I looking at".
+  const _viewedDate = STATE.dates.find(d => d.date === STATE.date)?.label || STATE.date || '';
+  const dateBadge = _viewedDate ? `<span class="study-detail-date" title="Viewing scan from ${STATE.date}">&nbsp;·&nbsp;${escapeHtml(_viewedDate)}</span>` : '';
+  if (!s) {
+    // Symbol genuinely absent from this date's data set. Don't shout — the user is
+    // viewing a stock detail page that just happens to not have a scan entry for this
+    // date. Render a slim header with the date so they can still pivot via navigation.
+    app.innerHTML = `
+      <div class="breadcrumb"><a href="#/earnings">Earnings</a> · <a href="#/catalyst">Catalyst</a> · <a href="#/scanx">SCANX</a> &nbsp;»&nbsp; <b>${escapeHtml(sym)}</b>${dateBadge}</div>
+      <div class="empty" style="margin-top:24px">No scan data for <b>${escapeHtml(sym)}</b> on ${escapeHtml(STATE.date || 'this date')}. Try a different date from the calendar.</div>`;
+    return;
+  }
   // Compute day-label for header (only show "day1" — skip day2 / day3 per spec)
   const firstSeen = await getSymbolFirstSeenMap();
   const dLabel = dayLabelWithReset(s.symbol, firstSeen, DATA.date);
@@ -3234,7 +3273,7 @@ async function renderStock(sym) {
     _tv ? _surpPill('Rev Surp', _tv.surpriseRev_pct, 'Revenue surprise vs consensus (TradingView FQ)') : '',
   ].filter(Boolean).join(' ');
   app.innerHTML = `
-    <div class="breadcrumb"><a href="#/earnings">Earnings</a> · <a href="#/catalyst">Catalyst</a> · <a href="#/scanx">SCANX</a> &nbsp;»&nbsp; <b>${s.symbol}</b></div>
+    <div class="breadcrumb"><a href="#/earnings">Earnings</a> · <a href="#/catalyst">Catalyst</a> · <a href="#/scanx">SCANX</a> &nbsp;»&nbsp; <b>${s.symbol}</b>${dateBadge}</div>
     <div class="stock-header" style="position:relative">
       ${saveStudyBtnHtml(s.symbol)}
       <div class="sym-big">${s.symbol}${dayChip}</div>
