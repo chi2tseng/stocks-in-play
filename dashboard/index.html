@@ -694,19 +694,25 @@ body.dark .catalyst-type-pill .pill-x { background: rgba(255,255,255,0.08); }
 }
 .catalyst-type-add:hover { color: var(--primary); border-color: var(--primary); }
 
-/* Preset palette colors for catalyst types — keyed by token in JS */
-.cat-type-earnings  { background: rgba(73, 79, 223, 0.10); color: var(--primary); border-color: rgba(73, 79, 223, 0.30); }
-.cat-type-momentum  { background: rgba(255, 178, 30, 0.12); color: #b97c00; border-color: rgba(255,178,30,0.40); }
-.cat-type-fda       { background: rgba(0, 168, 126, 0.12); color: var(--pos); border-color: rgba(0,168,126,0.30); }
-.cat-type-ma        { background: rgba(226, 59, 74, 0.10); color: var(--neg); border-color: rgba(226,59,74,0.30); }
-.cat-type-contract  { background: rgba(94, 158, 214, 0.12); color: #2c6fa3; border-color: rgba(94,158,214,0.35); }
-.cat-type-technical { background: rgba(160, 100, 220, 0.12); color: #6a3fb0; border-color: rgba(160,100,220,0.35); }
-.cat-type-fbo       { background: rgba(255, 105, 100, 0.12); color: #c54848; border-color: rgba(255,105,100,0.35); }
-.cat-type-short-squeeze { background: rgba(255, 178, 30, 0.12); color: #a36500; border-color: rgba(255,178,30,0.40); }
-body.dark .cat-type-momentum, body.dark .cat-type-short-squeeze { color: #ffce6a; }
-body.dark .cat-type-contract { color: #6dc0ff; }
-body.dark .cat-type-technical { color: #c7a4ff; }
-body.dark .cat-type-fbo { color: #ff9a96; }
+/* Catalyst-type palette — saturated solid-color tints for fast identification.
+   Each preset has its own hue + matching darker text. Borders match the bg hue at 0.5α so
+   the pills feel solid in light mode and still legible in dark mode (text auto-lightens). */
+.cat-type-earnings      { background: rgba(73, 79, 223, 0.22);  color: var(--primary);            border-color: rgba(73, 79, 223, 0.50); }
+.cat-type-momentum      { background: rgba(255, 178, 30, 0.24); color: #8a5800;                   border-color: rgba(255, 178, 30, 0.55); }
+.cat-type-fda           { background: rgba(0, 168, 126, 0.22);  color: var(--pos);                border-color: rgba(0, 168, 126, 0.50); }
+.cat-type-ma            { background: rgba(226, 59, 74, 0.22);  color: var(--neg);                border-color: rgba(226, 59, 74, 0.50); }
+.cat-type-contract      { background: rgba(94, 158, 214, 0.24); color: #1e5d8e;                   border-color: rgba(94, 158, 214, 0.55); }
+.cat-type-technical     { background: rgba(160, 100, 220, 0.22);color: #5928a3;                   border-color: rgba(160, 100, 220, 0.55); }
+.cat-type-fbo           { background: rgba(255, 105, 100, 0.22);color: #b53b3b;                   border-color: rgba(255, 105, 100, 0.55); }
+.cat-type-short-squeeze { background: rgba(255, 140, 0, 0.24);  color: #8a4500;                   border-color: rgba(255, 140, 0, 0.55); }
+body.dark .cat-type-earnings      { color: #a5a9ff; }
+body.dark .cat-type-momentum,
+body.dark .cat-type-short-squeeze { color: #ffce6a; }
+body.dark .cat-type-fda           { color: #56e4b3; }
+body.dark .cat-type-ma,
+body.dark .cat-type-fbo           { color: #ff9a96; }
+body.dark .cat-type-contract      { color: #6dc0ff; }
+body.dark .cat-type-technical     { color: #c7a4ff; }
 
 /* Multi-select popup (Notion-style) */
 .catalyst-type-popup {
@@ -877,7 +883,9 @@ body.dark .cat-type-fbo { color: #ff9a96; }
 .ohlcv-direction-toggle .dir-btn[data-direction="short"].active { color: var(--neg); }
 
 /* Header chg readout — gap + move stacked vertically (one line each), vol on its own line.
-   Label stays muted/grey; the % value picks up green/red from the row's pos/neg class. */
+   Label stays muted/grey; the % value picks up green/red from the row's pos/neg class.
+   !important on the value-colour rules so .chg or .stock-header text-color overrides can't
+   beat them (this trapped the colour before — gap stayed grey when it should have been red). */
 .chg-readout { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; font-family: var(--font-mono); margin: 4px 0 2px; }
 .chg-cell {
   font-size: 13px; font-weight: 600; letter-spacing: 0.2px;
@@ -889,26 +897,46 @@ body.dark .cat-type-fbo { color: #ff9a96; }
 }
 .chg-cell .gap-pct, .chg-cell .move-pct {
   font-family: var(--font-mono); font-weight: 700; font-size: 14px;
+  color: var(--mute);   /* fallback when value is null / no pos/neg class */
 }
-.chg-cell.pos .gap-pct, .chg-cell.pos .move-pct { color: var(--pos); }
-.chg-cell.neg .gap-pct, .chg-cell.neg .move-pct { color: var(--neg); }
+.chg-cell.pos .gap-pct, .chg-cell.pos .move-pct { color: var(--pos) !important; }
+.chg-cell.neg .gap-pct, .chg-cell.neg .move-pct { color: var(--neg) !important; }
 .vol-readout { font-family: var(--font-mono); font-size: 12px; color: var(--mute); margin-top: 2px; }
 
-/* Direction pill (LONG / SHORT) before Gain/Stop — same baseline geometry as other .stat-tag
-   pills (4px/10px padding, 11px font, surface-soft bg). Just adds direction-specific tint. */
-.trade-pill.direction-pill { font-weight: 700; letter-spacing: 0.5px; font-size: 11px; padding: 4px 10px; }
-.trade-pill.direction-pill.pos { background: rgba(0,168,126,0.10); color: var(--pos); }
-.trade-pill.direction-pill.neg { background: rgba(226,59,74,0.10); color: var(--neg); }
-/* Gain / Stop pills inherit .stat-tag look; pos/neg tints are already supplied by their classes. */
-.trade-pill { font-size: 11px; padding: 4px 10px; font-weight: 600; }
+/* Trade pills (LONG/SHORT, Gain, Stop) — buttons that need to LOOK identical to the
+   surrounding span-based .stat-tag pills. Kill the UA <button> defaults: border, native
+   font, focus outline, etc. Match .stock-header-tags .stat-tag's 11px / mono / 4×10 / 600. */
+button.trade-pill {
+  border: none !important;           /* nukes the ~2px UA default border */
+  outline: none;
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  padding: 4px 10px !important;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  text-transform: none;
+  cursor: pointer;
+  line-height: 1.4;
+  border-radius: var(--r-pill);
+}
+button.trade-pill:focus-visible { box-shadow: 0 0 0 2px rgba(73,79,223,0.30); }
+/* Gain / Stop pos/neg tints inherit from .stat-tag.pos / .stat-tag.neg via the markup —
+   nothing more to add for them, they already match Short Float / EPS Surp etc. */
+/* Direction pill (LONG / SHORT) — solid green/red tint backgrounds (stronger than other pills)
+   so the trade direction reads at a glance. Bold uppercase. */
+.trade-pill.direction-pill { font-weight: 700; letter-spacing: 0.6px; }
+.trade-pill.direction-pill.pos { background: rgba(0, 168, 126, 0.22) !important; color: var(--pos) !important; }
+.trade-pill.direction-pill.neg { background: rgba(226, 59, 74, 0.22) !important; color: var(--neg) !important; }
+body.dark .trade-pill.direction-pill.pos { background: rgba(30, 200, 135, 0.20) !important; color: #56e4b3 !important; }
+body.dark .trade-pill.direction-pill.neg { background: rgba(255, 84, 102, 0.22) !important; color: #ff9a96 !important; }
 
 /* gap + move stack on preview cards — same vertical layout as detail-page header. */
 .sip-card .sip-chg-row { display: flex; flex-direction: column; gap: 2px; align-items: flex-start; margin: 4px 0 10px; font-family: var(--font-mono); }
 .sip-card .chg-cell { font-size: 12px; font-weight: 600; display: inline-flex; gap: 6px; align-items: baseline; }
 .sip-card .chg-cell > span:first-child { color: var(--mute) !important; font-weight: 500; font-size: 9px; text-transform: uppercase; letter-spacing: 0.6px; }
 .sip-card .chg-cell .gap-pct, .sip-card .chg-cell .move-pct { font-weight: 700; font-size: 13px; }
-.sip-card .chg-cell.pos .gap-pct, .sip-card .chg-cell.pos .move-pct { color: var(--pos); }
-.sip-card .chg-cell.neg .gap-pct, .sip-card .chg-cell.neg .move-pct { color: var(--neg); }
+.sip-card .chg-cell.pos .gap-pct, .sip-card .chg-cell.pos .move-pct { color: var(--pos) !important; }
+.sip-card .chg-cell.neg .gap-pct, .sip-card .chg-cell.neg .move-pct { color: var(--neg) !important; }
 
 /* Editable MS table — cells become flat-styled inputs that look like cells until focused */
 .ms-table-editable .ms-cell-input {
@@ -4195,7 +4223,7 @@ function studyPreviewCardHtml(st, idx) {
   // gap / move row — same shape as the detail-page header. Each cell shows label + value.
   const gapMoveRow = `<div class="sip-chg-row">
     ${gapPct != null ? `<span class="chg-cell gap-cell ${cls(gapPct)}" title="Gap % at scan time">gap <span class="gap-pct">${fmtPct(gapPct)}</span></span>` : ''}
-    ${movePct != null ? `<span class="chg-cell move-cell ${cls(movePct)}" title="Day's move % from open — ${intent === 'short' ? '(Open − Low) / Open · short profit' : '(High − Open) / Open · long profit'}">move <span class="move-pct">${(movePct >= 0 ? '+' : '') + movePct.toFixed(2)}%</span></span>` : ''}
+    ${movePct != null ? `<span class="chg-cell move-cell ${cls(movePct)}" title="Day's move % from open — ${intent === 'short' ? '(Low − Open) / Open · negative = drop = short profit' : '(High − Open) / Open · positive = rise = long profit'}">move <span class="move-pct">${(movePct >= 0 ? '+' : '') + movePct.toFixed(2)}%</span></span>` : ''}
   </div>`;
   return `<a class="sip-card" href="#/study/${st.id || st.symbol}" style="text-decoration:none;color:inherit;display:block;position:relative">
     <button class="study-preview-del" data-id="${st.id || st.symbol}" title="Delete study"
@@ -4332,14 +4360,15 @@ function resolveStudyIntent(st) {
   const gap = (st && st.chgPct != null) ? st.chgPct : (st?.snapshot?.chgPct);
   return (gap != null && gap < 0) ? 'short' : 'long';
 }
-// Day's MOVE % from open — favourable excursion based on intent.
-//   LONG  → (High − Open) / Open · 100
-//   SHORT → (Open − Low)  / Open · 100
+// Day's MOVE % from open — RAW signed price change at the intent-favored extreme.
+//   LONG  → (High − Open) / Open · 100  → positive when stock ran up    (profit for long)
+//   SHORT → (Low  − Open) / Open · 100  → NEGATIVE when stock fell     (profit for short)
+// Same sign convention as Gain on the trade-pill row, so the two readouts agree.
 function studyMovePct(st) {
   const o = st?.ohlcv || {};
   if (o.open == null) return null;
   const it = resolveStudyIntent(st);
-  if (it === 'short') return (o.low  != null) ? (o.open - o.low)  / o.open * 100 : null;
+  if (it === 'short') return (o.low  != null) ? (o.low  - o.open) / o.open * 100 : null;
   else                return (o.high != null) ? (o.high - o.open) / o.open * 100 : null;
 }
 
@@ -4475,25 +4504,28 @@ async function renderStudyDetail(idOrSym) {
   }
 
   // Direction-aware metrics. 漲幅 (gain) = (H-O)/O · 止損 (stop) = (L-O)/O · sign-flipped for short.
-  // Gain (漲幅) = peak favourable excursion from open · Stop (止損) = worst drawdown from open.
-  // The direction depends on the trade intent:
-  //   LONG  — you bought at open. Gain = how far it ran UP   (Open → High).
-  //                              Stop = how far it dropped   (Open → Low).
-  //   SHORT — you shorted at open. Gain = how far it dropped (Open → Low,  i.e. profit).
-  //                                Stop = how far it ran UP  (Open → High, i.e. loss).
-  // So for SHORT the columns swap: gain is anchored on Low and stop on High. The previous
-  // "* dir" sign-flip kept the column anchors wrong, producing gain on High for short trades
-  // (which is your loss, not profit). Below picks the right anchor per intent.
+  // Gain / Stop now report RAW price movement (signs preserved from the underlying %), so the
+  // user can read the chart's actual peak / trough at a glance instead of interpreting an
+  // intent-flipped sign.
+  //   LONG   Gain = (High − Open) / Open · positive when stock ran up   (your profit)
+  //          Stop = (Low  − Open) / Open · negative when stock dropped  (your drawdown)
+  //   SHORT  Gain = (Low  − Open) / Open · NEGATIVE when stock dropped  (your profit — easier
+  //                                                                       to see "how much it fell")
+  //          Stop = (High − Open) / Open · POSITIVE when stock ran up   (your drawdown)
+  // Color follows raw sign — green = price rose, red = price fell — which matches the chart
+  // and the gap %. The user knows from the LONG/SHORT pill which sign means profit.
   function computeMetrics() {
     const cur = loadStudies().find(st => st.id === id)?.ohlcv || {};
     if (!cur.open) return { gain: null, stop: null };
     let gain = null, stop = null;
     if (intent === 'short') {
-      if (cur.low  != null) gain = (cur.open - cur.low)  / cur.open * 100;   // → positive when profitable
-      if (cur.high != null) stop = (cur.open - cur.high) / cur.open * 100;   // → negative (max drawdown)
+      // Gain anchors on LOW, Stop anchors on HIGH. Signs are RAW price direction.
+      if (cur.low  != null) gain = (cur.low  - cur.open) / cur.open * 100;   // negative when dropped
+      if (cur.high != null) stop = (cur.high - cur.open) / cur.open * 100;   // positive when rose
     } else {
-      if (cur.high != null) gain = (cur.high - cur.open) / cur.open * 100;   // → positive
-      if (cur.low  != null) stop = (cur.low  - cur.open) / cur.open * 100;   // → negative
+      // LONG — Gain on HIGH (positive), Stop on LOW (negative).
+      if (cur.high != null) gain = (cur.high - cur.open) / cur.open * 100;
+      if (cur.low  != null) stop = (cur.low  - cur.open) / cur.open * 100;
     }
     return { gain, stop };
   }
@@ -4550,8 +4582,8 @@ async function renderStudyDetail(idOrSym) {
   const dirCls = intent === 'long' ? 'pos' : 'neg';
   const tradePills = `
     <button class="tag stat-tag trade-pill direction-pill ${dirCls}" type="button" id="study-direction-pill" title="Trade direction (Long / Short) · click to change in OHLCV popup">${intent.toUpperCase()}</button>
-    <button class="tag stat-tag trade-pill ${gainCls}" type="button" id="study-gain-pill" title="${intent === 'short' ? 'Gain = (Open − Low) / Open · short-side profit at session low' : 'Gain = (High − Open) / Open · long-side run from open to high'} · click to edit OHLCV">Gain <span id="study-gain-val">${fmtMetric(initGain)}</span></button>
-    <button class="tag stat-tag trade-pill ${stopCls}" type="button" id="study-stop-pill" title="${intent === 'short' ? 'Stop = (Open − High) / Open · short-side drawdown at session high' : 'Stop = (Low − Open) / Open · long-side drawdown at session low'} · click to edit OHLCV">Stop <span id="study-stop-val">${fmtMetric(initStop)}</span></button>`;
+    <button class="tag stat-tag trade-pill ${gainCls}" type="button" id="study-gain-pill" title="${intent === 'short' ? 'Gain = (Low − Open) / Open · raw signed drop · negative = short profit · click to edit OHLCV' : 'Gain = (High − Open) / Open · raw signed rise · positive = long profit · click to edit OHLCV'}">Gain <span id="study-gain-val">${fmtMetric(initGain)}</span></button>
+    <button class="tag stat-tag trade-pill ${stopCls}" type="button" id="study-stop-pill" title="${intent === 'short' ? 'Stop = (High − Open) / Open · raw signed rise · positive = short drawdown · click to edit OHLCV' : 'Stop = (Low − Open) / Open · raw signed drop · negative = long drawdown · click to edit OHLCV'}">Stop <span id="study-stop-val">${fmtMetric(initStop)}</span></button>`;
   // Day-1 badge if applicable (from snapshot's _dayLabel — saved at the time the study was added)
   const dayChip = (study.snapshot?._dayLabel === 'day1') ? `<span class="day-badge day1">day1</span>` : '';
   // Catalyst row from the snapshot — if user has saved a custom catalyst override, prefer it
@@ -4621,7 +4653,7 @@ async function renderStudyDetail(idOrSym) {
         <div class="price price-editable" id="study-price-cell" title="Click to edit price"><span class="price-text">${fmtPrice(displayPrice)}</span></div>
         <div class="chg-readout" id="study-chg-readout">
           <span class="chg-cell gap-cell ${cls(gapPct)}" title="Gap % at scan time — pre-market / post-market move that triggered the SIP">gap <span class="gap-pct">${fmtPct(gapPct)}</span></span>
-          <span class="chg-cell move-cell ${cls(initGain)}" title="Day's move % from open — ${intent === 'short' ? '(Open − Low) / Open · short profit at session low' : '(High − Open) / Open · long profit at session high'}">move <span class="move-pct">${fmtPct(initGain)}</span></span>
+          <span class="chg-cell move-cell ${cls(initGain)}" title="Day's move % from open — raw price change at the favourable extreme. ${intent === 'short' ? '(Low − Open) / Open · negative = drop = short profit.' : '(High − Open) / Open · positive = rise = long profit.'}">move <span class="move-pct">${fmtPct(initGain)}</span></span>
         </div>
         <div class="vol-readout">Vol <span class="vol-editable" id="study-vol-cell" title="Click to edit volume (linked to OHLCV)"><span class="vol-text">${fmtVol(displayVol)}</span></span></div>
       </div>
