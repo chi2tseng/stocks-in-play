@@ -860,6 +860,56 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 .studies-search-create:hover { background: rgba(73,79,223,0.10); }
 .studies-search-empty { padding: 18px; text-align: center; color: var(--mute); font-size: 12px; }
 
+/* Filter button (next to search) — funnel icon + active-count badge */
+.studies-filter-btn {
+  position: relative; display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 12px; border-radius: var(--r-pill);
+  background: var(--canvas); border: 1px solid var(--hairline);
+  font-size: 13px; font-weight: 600; color: var(--ink); cursor: pointer;
+  font-family: var(--font-body); transition: background 0.12s, border-color 0.12s;
+}
+.studies-filter-btn:hover { background: var(--surface-soft); border-color: var(--ink); }
+.studies-filter-btn.active { background: rgba(73,79,223,0.08); border-color: var(--primary); color: var(--primary); }
+.studies-filter-btn svg { width: 14px; height: 14px; }
+.studies-filter-count {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 18px; height: 18px; padding: 0 5px;
+  background: var(--primary); color: #fff;
+  border-radius: 9px; font-size: 11px; font-weight: 700; font-family: var(--font-mono);
+}
+
+/* Filter popup — same patterns as the catalyst-type-popup but wider */
+.studies-filter-popup {
+  position: absolute; z-index: 1500;
+  background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-md);
+  box-shadow: 0 14px 40px -10px rgba(15,15,25,0.18);
+  width: 280px; padding: 10px; font-family: var(--font-body);
+}
+.studies-filter-popup .sf-head {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; font-weight: 700; color: var(--mute);
+  text-transform: uppercase; letter-spacing: 0.6px;
+  padding: 2px 4px 8px; border-bottom: 1px solid var(--hairline-soft); margin-bottom: 6px;
+}
+.studies-filter-popup .sf-clear {
+  background: transparent; border: none; cursor: pointer;
+  color: var(--neg); font-size: 11px; font-weight: 600;
+  padding: 2px 6px; border-radius: var(--r-sm);
+}
+.studies-filter-popup .sf-clear:hover { background: rgba(226,59,74,0.08); }
+.studies-filter-popup .sf-clear:disabled { color: var(--stone); cursor: default; background: transparent; }
+.studies-filter-popup .sf-option {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px; cursor: pointer; border-radius: var(--r-sm);
+  font-size: 13px; color: var(--ink);
+}
+.studies-filter-popup .sf-option:hover { background: var(--surface-soft); }
+.studies-filter-popup .sf-option.checked { background: rgba(73,79,223,0.06); }
+.studies-filter-popup .sf-option.checked::after { content: '✓'; margin-left: auto; color: var(--primary); font-weight: 700; }
+.studies-filter-popup .sf-count { margin-left: auto; color: var(--stone); font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
+.studies-filter-popup .sf-option.checked .sf-count { display: none; }
+.studies-filter-popup .sf-empty { padding: 18px; text-align: center; color: var(--mute); font-size: 12px; }
+
 /* Placeholder badge shown on studies awaiting /SIPs data fill */
 .placeholder-badge {
   display: inline-block; padding: 2px 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.6px;
@@ -1143,6 +1193,14 @@ body.dark .cat-type-fbo { color: #ff9a96; }
   border-top: 1px solid var(--hairline-soft); margin-top: 4px; padding-top: 8px;
 }
 .catalyst-type-popup .cat-create:hover { background: rgba(73,79,223,0.06); }
+.catalyst-type-popup .cat-popup-foot { border-top: 1px solid var(--hairline-soft); margin-top: 6px; padding-top: 6px; }
+.catalyst-type-popup .cat-reset {
+  width: 100%; padding: 6px 10px; cursor: pointer;
+  background: transparent; border: 1px solid transparent; border-radius: var(--r-sm);
+  color: var(--mute); font-size: 12px; font-weight: 600; font-family: var(--font-body);
+  text-align: left;
+}
+.catalyst-type-popup .cat-reset:hover { color: var(--neg); background: rgba(226,59,74,0.06); border-color: rgba(226,59,74,0.30); }
 
 /* Quarter switcher (on the study detail page, above the MS table) */
 .quarter-switcher-row {
@@ -4037,7 +4095,9 @@ function updateStudy(id, patch) {
    The card is purely read-only here; all editing happens on the detail page. */
 function renderStudies() {
   const app = document.getElementById('app');
-  const studies = loadStudies().slice().sort((a, b) => (b.savedAt || '').localeCompare(a.savedAt || ''));
+  // Filter by active catalyst-tag filter, then sort newest-first by savedAt.
+  const allStudies = loadStudies().slice().sort((a, b) => (b.savedAt || '').localeCompare(a.savedAt || ''));
+  const studies = allStudies.filter(studyMatchesFilter);
   app.innerHTML = `
     <h2 class="page-title">My Studies</h2>
     <div class="studies-toolbar">
@@ -4047,13 +4107,22 @@ function renderStudies() {
                placeholder="Add ticker — search past scans or create new" autocomplete="off" spellcheck="false">
         <div class="studies-search-results" id="studies-search-results"></div>
       </div>
+      <button class="studies-filter-btn ${STUDIES_FILTER.size > 0 ? 'active' : ''}" id="studies-filter-btn" type="button" title="Filter by catalyst tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+        </svg>
+        <span>Filter</span>
+        ${STUDIES_FILTER.size > 0 ? `<span class="studies-filter-count">${STUDIES_FILTER.size}</span>` : ''}
+      </button>
       <button class="studies-btn" id="studies-export" style="margin-left:auto">${t('studies-export')}</button>
       <button class="studies-btn" id="studies-import">${t('studies-import')}</button>
       <input type="file" id="studies-import-file" accept="application/json" style="display:none">
       <button class="studies-btn studies-btn-danger" id="studies-clear">${t('studies-clear')}</button>
     </div>
     ${studies.length === 0
-      ? `<div class="sip-empty">${t('studies-empty')}</div>`
+      ? `<div class="sip-empty">${STUDIES_FILTER.size > 0
+          ? `No studies match the active filter (${Array.from(STUDIES_FILTER).map(escapeHtml).join(', ')}). Clear the filter to see all ${allStudies.length} saved.`
+          : t('studies-empty')}</div>`
       : `<div class="sip-grid" id="studies-grid">${studies.map(studyPreviewCardHtml).join('')}</div>`}
   `;
   // Preview cards are read-only — no input wiring. All MS edits happen on detail page.
@@ -4100,6 +4169,101 @@ function renderStudies() {
     };
     reader.readAsText(f);
   });
+  // ── Filter button (catalyst-tag) ──
+  // Popup uses absolute positioning relative to the search-wrap (which has the same
+  // stacking-context boost as the search dropdown — guaranteed above stock cards).
+  document.getElementById('studies-filter-btn')?.addEventListener('click', e => {
+    e.preventDefault(); e.stopPropagation();
+    const existing = document.querySelector('.studies-filter-popup');
+    if (existing) { existing.remove(); return; }
+    const btn = e.currentTarget;
+    const rect = btn.getBoundingClientRect();
+    const pop = document.createElement('div');
+    pop.className = 'studies-filter-popup';
+    pop.style.position = 'fixed';
+    pop.style.top = `${rect.bottom + 6}px`;
+    pop.style.left = `${Math.min(rect.left, window.innerWidth - 296)}px`;
+    pop.style.zIndex = '1500';
+    // Count studies per tag so the user sees how many studies each filter would surface.
+    const studies = loadStudies();
+    const tagCounts = new Map();
+    studies.forEach(st => getStudyTypes(st).forEach(t => tagCounts.set(t, (tagCounts.get(t) || 0) + 1)));
+    const renderFilterOptions = () => {
+      const all = getAllCatalystOptions();
+      // Also surface any tag used by a study that isn't in CATALYST_PRESETS or custom list
+      // (e.g., legacy single-type snapshots) so the filter is comprehensive.
+      const seen = new Set(all.map(o => o.label.toLowerCase()));
+      tagCounts.forEach((_, t) => { if (!seen.has(t.toLowerCase())) all.push({ key: t, label: t, cls: '', isCustom: false }); });
+      // Sort: tags actually used (count > 0) first, descending by count, then unused alphabetical
+      all.sort((a, b) => {
+        const ca = tagCounts.get(a.label) || 0;
+        const cb = tagCounts.get(b.label) || 0;
+        if (ca !== cb) return cb - ca;
+        return a.label.localeCompare(b.label);
+      });
+      if (!all.length) return '<div class="sf-empty">No tags yet — save a few studies first.</div>';
+      return all.map(p => {
+        const isChecked = STUDIES_FILTER.has(p.label);
+        const n = tagCounts.get(p.label) || 0;
+        return `<div class="sf-option ${isChecked ? 'checked' : ''}" data-key="${escapeHtml(p.label)}">
+          <span class="tag catalyst-type-pill ${p.cls}" style="padding:1px 8px;font-size:11px;pointer-events:none">${escapeHtml(p.label)}</span>
+          <span class="sf-count">${n}</span>
+        </div>`;
+      }).join('');
+    };
+    pop.innerHTML = `
+      <div class="sf-head">
+        <span>Filter by tag</span>
+        <button class="sf-clear" type="button" ${STUDIES_FILTER.size ? '' : 'disabled'}>Clear all</button>
+      </div>
+      <div class="sf-options-host">${renderFilterOptions()}</div>
+    `;
+    document.body.appendChild(pop);
+    // Click an option → toggle inclusion
+    pop.querySelector('.sf-options-host').addEventListener('click', ev => {
+      const opt = ev.target.closest('.sf-option');
+      if (!opt) return;
+      ev.preventDefault(); ev.stopPropagation();
+      const key = opt.dataset.key;
+      if (STUDIES_FILTER.has(key)) STUDIES_FILTER.delete(key);
+      else STUDIES_FILTER.add(key);
+      pop.querySelector('.sf-options-host').innerHTML = renderFilterOptions();
+      pop.querySelector('.sf-clear').disabled = STUDIES_FILTER.size === 0;
+      renderStudies();
+      // After renderStudies, the popup gets re-anchored. Re-position to match the new button.
+      const newBtn = document.getElementById('studies-filter-btn');
+      if (newBtn) {
+        const r = newBtn.getBoundingClientRect();
+        pop.style.top = `${r.bottom + 6}px`;
+        pop.style.left = `${Math.min(r.left, window.innerWidth - 296)}px`;
+      }
+    });
+    pop.querySelector('.sf-clear').addEventListener('click', ev => {
+      ev.preventDefault(); ev.stopPropagation();
+      STUDIES_FILTER.clear();
+      pop.querySelector('.sf-options-host').innerHTML = renderFilterOptions();
+      pop.querySelector('.sf-clear').disabled = true;
+      renderStudies();
+      const newBtn = document.getElementById('studies-filter-btn');
+      if (newBtn) {
+        const r = newBtn.getBoundingClientRect();
+        pop.style.top = `${r.bottom + 6}px`;
+        pop.style.left = `${Math.min(r.left, window.innerWidth - 296)}px`;
+      }
+    });
+    // Close on outside click
+    setTimeout(() => {
+      const onDocClick = (ev) => {
+        const btnNow = document.getElementById('studies-filter-btn');
+        if (!pop.contains(ev.target) && !(btnNow && btnNow.contains(ev.target))) {
+          pop.remove();
+          document.removeEventListener('click', onDocClick);
+        }
+      };
+      document.addEventListener('click', onDocClick);
+    }, 0);
+  });
+
   document.getElementById('studies-clear')?.addEventListener('click', async () => {
     const before = loadStudies();
     if (!before.length) return;
@@ -4417,6 +4581,22 @@ function getAllCatalystOptions() {
     isCustom: true,
   }));
   return [...presets, ...customs];
+}
+
+// Active filter for the Studies list — Set of catalyst labels. Empty = no filter.
+// Lives in memory (session state); cleared on full page reload.
+const STUDIES_FILTER = new Set();
+function studyMatchesFilter(study) {
+  if (STUDIES_FILTER.size === 0) return true;
+  const types = getStudyTypes(study);
+  // Case-insensitive match — also match the "key" form of a preset (kebab) against filter labels
+  return types.some(t => {
+    const tLower = t.toLowerCase();
+    for (const f of STUDIES_FILTER) {
+      if (f.toLowerCase() === tLower) return true;
+    }
+    return false;
+  });
 }
 function getStudyTypes(study) {
   // Priority: user override → snapshot.type (legacy single-type) → 'momentum'
@@ -4875,11 +5055,12 @@ async function renderStudyDetail(idOrSym) {
       const matches = all.filter(p => !q || p.label.toLowerCase().includes(q) || p.key.includes(q));
       const optHtml = matches.map(p => {
         const isSel = mode === 'add' && (selected.has(p.label) || selected.has(p.key));
-        // Every option (preset OR custom) gets a delete-X. Presets get hidden from the dropdown
-        // (still rendered when used in studies), customs get fully forgotten from localStorage.
-        const action = p.isCustom ? 'forget-custom' : 'hide-preset';
-        const title = p.isCustom ? 'Forget this custom tag' : 'Hide this preset from the dropdown';
-        const forgetX = `<button class="cat-forget-x" type="button" data-action="${action}" data-key="${escapeHtml(p.isCustom ? p.label : p.key)}" title="${title}">&times;</button>`;
+        // Only CUSTOM tags get a delete-X. Built-in presets can't be removed from the
+        // dropdown — they're the always-available baseline. Use the Reset button at the
+        // bottom of the popup to wipe all customs back to defaults.
+        const forgetX = p.isCustom
+          ? `<button class="cat-forget-x" type="button" data-action="forget-custom" data-key="${escapeHtml(p.label)}" title="Forget this custom tag (undoable)">&times;</button>`
+          : '';
         return `<div class="cat-option ${isSel ? 'selected' : ''}" data-key="${escapeHtml(p.label)}">
           <span class="tag catalyst-type-pill ${p.cls}" style="padding:1px 8px;font-size:11px;pointer-events:none">${escapeHtml(p.label)}</span>
           ${forgetX}
@@ -4893,6 +5074,9 @@ async function renderStudyDetail(idOrSym) {
     pop.innerHTML = `
       <input class="cat-search" type="text" placeholder="${placeholder}" autocomplete="off">
       <div class="cat-options-host">${renderOptions('')}</div>
+      <div class="cat-popup-foot">
+        <button class="cat-reset" type="button" data-action="reset-customs" title="Forget all custom tags and restore preset defaults">↺ Reset to defaults</button>
+      </div>
     `;
     document.body.appendChild(pop);
     const inp = pop.querySelector('input.cat-search');
@@ -4900,23 +5084,36 @@ async function renderStudyDetail(idOrSym) {
     inp.focus();
     inp.addEventListener('input', () => { host.innerHTML = renderOptions(inp.value); });
     inp.addEventListener('keydown', e => { if (e.key === 'Escape') pop.remove(); });
+    // Reset-to-defaults button (popup footer) — separate listener since it lives outside host
+    pop.querySelector('[data-action="reset-customs"]')?.addEventListener('click', (e) => {
+      e.preventDefault(); e.stopPropagation();
+      const before = loadCustomCatTypes();
+      if (!before.length) return;
+      saveCustomCatTypes([]);
+      // Also clear the legacy hidden-presets list if any rows lingered from a previous build.
+      localStorage.removeItem(HIDDEN_CAT_PRESETS_KEY);
+      host.innerHTML = renderOptions(inp.value);
+      showUndoSnackbar(`Reset to defaults — forgot ${before.length} custom tag${before.length > 1 ? 's' : ''}`, () => {
+        saveCustomCatTypes(before);
+        const stillOpen = document.querySelector('.catalyst-type-popup .cat-options-host');
+        if (stillOpen) stillOpen.innerHTML = renderOptions(inp.value);
+      });
+    });
+
     host.addEventListener('click', e => {
-      // Forget/hide X — handled FIRST so the click doesn't bubble to the parent option (which
-      // would otherwise toggle/swap the tag). Custom types get fully forgotten; presets get
-      // hidden from the dropdown but the built-in CATALYST_PRESETS entry stays in code so any
-      // existing study pill still color-codes correctly.
+      // Forget X (custom tags only) — undoable via snackbar. Click stops here so it doesn't
+      // bubble to the parent .cat-option (which would otherwise toggle/swap the tag).
       const forgetBtn = e.target.closest('[data-action="forget-custom"]');
       if (forgetBtn) {
         e.preventDefault(); e.stopPropagation();
-        forgetCustomCatType(forgetBtn.dataset.key);
+        const removed = forgetBtn.dataset.key;
+        forgetCustomCatType(removed);
         host.innerHTML = renderOptions(inp.value);
-        return;
-      }
-      const hideBtn = e.target.closest('[data-action="hide-preset"]');
-      if (hideBtn) {
-        e.preventDefault(); e.stopPropagation();
-        hidePresetCatType(hideBtn.dataset.key);
-        host.innerHTML = renderOptions(inp.value);
+        showUndoSnackbar(`Forgot custom tag "${removed}"`, () => {
+          rememberCustomCatType(removed);
+          const stillOpen = document.querySelector('.catalyst-type-popup .cat-options-host');
+          if (stillOpen) stillOpen.innerHTML = renderOptions(inp.value);
+        });
         return;
       }
       const opt = e.target.closest('.cat-option, .cat-create');
