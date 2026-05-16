@@ -697,25 +697,26 @@ body.dark .catalyst-type-pill .pill-x { background: rgba(255,255,255,0.08); }
 }
 .catalyst-type-add:hover { color: var(--primary); border-color: var(--primary); }
 
-/* Catalyst-type palette — matches the SIP page's .tag-earnings design system: solid pastel
-   tint background (~0.14 alpha) + bold deep-tone text. Each preset has its own hue. The
-   text colour is intentionally darker than the bg so it pops without needing a border. */
-.cat-type-earnings      { background: rgba(73, 79, 223, 0.14);  color: var(--primary-deep); }
-.cat-type-momentum      { background: rgba(255, 178, 30, 0.18); color: #8a5800; }
-.cat-type-fda           { background: rgba(0, 168, 126, 0.16);  color: #008060; }
-.cat-type-ma            { background: rgba(226, 59, 74, 0.14);  color: #b03040; }
-.cat-type-contract      { background: rgba(94, 158, 214, 0.18); color: #1e5d8e; }
-.cat-type-technical     { background: rgba(160, 100, 220, 0.16);color: #5928a3; }
-.cat-type-fbo           { background: rgba(255, 105, 100, 0.16);color: #b53b3b; }
-.cat-type-short-squeeze { background: rgba(255, 140, 0, 0.18);  color: #8a4500; }
-body.dark .cat-type-earnings      { color: #a5a9ff; }
-body.dark .cat-type-momentum,
-body.dark .cat-type-short-squeeze { color: #ffce6a; }
-body.dark .cat-type-fda           { color: #56e4b3; }
-body.dark .cat-type-ma,
-body.dark .cat-type-fbo           { color: #ff9a96; }
-body.dark .cat-type-contract      { color: #6dc0ff; }
-body.dark .cat-type-technical     { color: #c7a4ff; }
+/* Catalyst-type palette — solid pastel tint + bold deep-tone text. Selectors are compound
+   (.catalyst-type-pill.cat-type-*) to beat `.tag`'s base background/color rules, which are
+   declared later in the file with equal single-class specificity. Without the compound
+   selector .tag wins via cascade order and all the pills render grey. */
+.catalyst-type-pill.cat-type-earnings      { background: rgba(73, 79, 223, 0.14);  color: var(--primary-deep); }
+.catalyst-type-pill.cat-type-momentum      { background: rgba(255, 178, 30, 0.18); color: #8a5800; }
+.catalyst-type-pill.cat-type-fda           { background: rgba(0, 168, 126, 0.16);  color: #008060; }
+.catalyst-type-pill.cat-type-ma            { background: rgba(226, 59, 74, 0.14);  color: #b03040; }
+.catalyst-type-pill.cat-type-contract      { background: rgba(94, 158, 214, 0.18); color: #1e5d8e; }
+.catalyst-type-pill.cat-type-technical     { background: rgba(160, 100, 220, 0.16);color: #5928a3; }
+.catalyst-type-pill.cat-type-fbo           { background: rgba(255, 105, 100, 0.16);color: #b53b3b; }
+.catalyst-type-pill.cat-type-short-squeeze { background: rgba(255, 140, 0, 0.18);  color: #8a4500; }
+body.dark .catalyst-type-pill.cat-type-earnings      { color: #a5a9ff; }
+body.dark .catalyst-type-pill.cat-type-momentum,
+body.dark .catalyst-type-pill.cat-type-short-squeeze { color: #ffce6a; }
+body.dark .catalyst-type-pill.cat-type-fda           { color: #56e4b3; }
+body.dark .catalyst-type-pill.cat-type-ma,
+body.dark .catalyst-type-pill.cat-type-fbo           { color: #ff9a96; }
+body.dark .catalyst-type-pill.cat-type-contract      { color: #6dc0ff; }
+body.dark .catalyst-type-pill.cat-type-technical     { color: #c7a4ff; }
 
 /* Multi-select popup (Notion-style) */
 .catalyst-type-popup {
