@@ -839,6 +839,103 @@ If `prev_ohlcv.json` doesn't exist, the rest of the pipeline runs fine — this 
 purely an enhancement that saves the user from re-typing yesterday's bar (or a historical
 bar) for every Study every day.
 
+### 8.6b Phase 10c — Deep Studies refresh (TV + news + earnings auto-detect + rewind)
+
+Phase 10b only handled OHLCV. This phase covers the rest of the per-study refresh that
+the standalone `/update-studies` skill normally performs, so running `/SIPs` alone gives
+a complete Studies-library update. Walk every study in `dashboard/studies/studies.json`
+and apply the relevant sub-phases below. Skip studies whose date is in the future and
+respect manual edits throughout (never overwrite a non-empty `newsDetail`, `tv`, or
+`customTypes` entry that was filled by the user).
+
+**Full per-phase specs live at `D:\SIPs\skills\update-studies\SKILL.md`** — this section
+is the integration checklist, not a re-copy of the algorithms. Read that file for
+edge-case handling, Python→JS schema-conversion tables, and the universal YoY formula.
+
+#### 10c.1 — News refresh + earnings auto-detect (all studies)
+
+For each study (regardless of tag), if `snapshot.newsDetail` is empty OR
+`snapshot.scanDate < study.ohlcv.date` (stale):
+
+1. **Source** the news for `<TICKER>` near `study.ohlcv.date` via WebSearch / WebFetch /
+   firecrawl. Same sourcing pattern as `/SIPs § 7` (the news-detail composer).
+2. **Earnings auto-detect** — scan the headlines + body text for any of these signals:
+   - `Q[1-4] 20\d\d earnings` / `Q[1-4] FY20\d\d earnings`
+   - `reported earnings` / `posts Q[1-4]` / `earnings call` / `earnings release`
+   - `EPS beat` / `EPS miss` / `revenue beat` / `revenue miss`
+   - `業績電話會議` / `Q[1-4] .* 業績`
+   - The target date matching a well-known reporter's known earnings calendar
+3. If ANY signal fires AND `"earnings"` is not in `study.customTypes`:
+   - Add `"earnings"` to `customTypes`
+   - Jump to Phase 10c.2 for THIS study (TV scrape) before composing the newsDetail
+4. **Compose** the `newsDetail` in **繁體中文 markdown**, same format as `/SIPs § 7`:
+   - Lead: `<date> <時段> <event>`
+   - 1–3 supporting facts in **bold** (`**EPS $X** vs $Y`)
+   - Short forward-looking analysis paragraph
+   - Paragraphs separated by `\n\n`
+5. **Compose** a `catalyst` one-liner (≤200 chars) for the preview-card teaser.
+6. **Respect user edits**: only write `newsDetail` / `catalyst` if they're empty.
+
+#### 10c.2 — TradingView FQ refresh (earnings-tagged studies only)
+
+For each study with `"earnings"` in `customTypes` AND empty/stale `snapshot.tv`:
+
+```bash
+cd D:\SIPs && node tv-scrape.js <SYM>       # Playwright, ~30-60s
+cd D:\SIPs && py parse_tv.py <SYM>          # writes tv-summary.json
+```
+
+Read `tv-summary.json`, find the row with `Ticker == SYM`, convert Python keys to the
+JS schema used in `study.snapshot.tv`. The conversion table lives at
+`update-studies/SKILL.md § Phase 3` — do not re-derive it here.
+
+After writing `study.snapshot.tv`:
+- Remove `_placeholder: true` from `study.snapshot` if present
+- Remove `eps_chart` / `rev_chart` / `ms_table` / `yoy_block` from `study.hiddenSections`
+  so the dashboard surfaces the freshly-filled sections
+
+**Non-earnings studies skip this phase entirely.**
+
+#### 10c.3 — Historical-quarter rewind (earnings studies dated in the past)
+
+For each earnings-tagged study whose `ohlcv.date` is more than ~3 trading days old, the
+fresh TV scrape from 10c.2 returns TODAY's latest quarter as `chart.latest_idx` — which
+is WRONG for a historical earnings event. Apply the rewind:
+
+1. For each quarter, compute its end date (Q1→Mar 31, Q2→Jun 30, Q3→Sep 30, Q4→Dec 31).
+2. Add the company's typical **report lag** (~30d large-caps / ~45d smaller names) to get
+   the reporting date. The highest-index quarter where `(qend + lag) <= ohlcv.date` is
+   the new `target_idx`.
+3. Clear `chart.eps_reported[i]` and `chart.rev_reported_M[i]` for every `i > target_idx`.
+4. Set `chart.latest_idx = target_idx` and `study.focusQuarterIdx = target_idx`.
+5. Recompute the `tv` summary (`latestEPS` / `consensusEPS` / `priorYrEPS` / surprise /
+   YoY / `yoyBlock` / `epsEst_next4` / `revEst_next4`) from the rewound chart anchored at
+   `target_idx`. See `update-studies/SKILL.md § Phase 3b` for the exact formulas + the
+   verified AMD @ 2026-02-04 example.
+
+Add a `>⚠️` blockquote to the composed `newsDetail` noting that forward 4 estimates are
+TradingView's CURRENT consensus, not the at-the-time consensus.
+
+#### 10c.4 — Atomic writeback
+
+Once all studies have been processed, write the updated array back to
+`dashboard/studies/studies.json` in one shot (`ensure_ascii=false`, `indent=2`).
+
+Also sync `snapshot.last = ohlcv.close` (header big-price-readout source). Phase 10b's
+backfill loop already did this for studies it filled — this is just a defensive pass for
+studies whose ohlcv was already manually filled but whose `snapshot.last` drifted.
+
+#### 10c.5 — Error handling
+
+Per-ticker failures NEVER abort the run. Finish the other tickers first.
+
+| Failure | Action |
+|---|---|
+| TV scrape times out / fails | `[warn] SYM: tv-scrape failed`; skip TV, continue |
+| News fetch returns nothing | leave `newsDetail` empty; user can fill it manually |
+| Yahoo HTTP error during a rewind double-check | log + skip the rewind, keep current tv |
+| `studies.json` unparseable | ABORT (don't corrupt the user's library) |
+
 ### 8.7 Phase 11 — auto-publish to GitHub Pages (REQUIRED for hosted dashboard)
 
 This repo is wired with `.github/workflows/pages.yml`. Every push that touches `dashboard/**` triggers an auto-deploy to **https://chi2tseng.github.io/stocks-in-play/** within ~30 seconds.
