@@ -3171,10 +3171,15 @@ function yoyPct(curr, prior, isEps) {
 function renderMarketSurgeTable(chart) {
   if (!chart || !chart.quarters || !chart.quarters.length) return '<div style="color:var(--stone);padding:20px">No quarterly data</div>';
   const q = chart.quarters, er = chart.eps_reported, ee = chart.eps_estimate, rr = chart.rev_reported_M, re = chart.rev_estimate_M, li = chart.latest_idx;
-  const N = Math.min(11, q.length);
-  let start = Math.max(0, li - 4);
-  let end = Math.min(q.length, start + N);
-  start = Math.max(0, end - N);
+  // 8-col window: 4 reported (ending at li) + 4 forward estimates — same shape the
+  // Studies detail-page editable table uses, so the two views feel consistent.
+  const N = Math.min(8, q.length);
+  let start = Math.max(0, li - 3);
+  let end   = Math.min(q.length, li + 5);
+  if (end - start < N) {
+    if (start === 0)         end   = Math.min(q.length, N);
+    else if (end === q.length) start = Math.max(0, q.length - N);
+  }
   const cells = [];
   // Surprise %: reported beat/missed estimate for the SAME quarter, computed via universal formula
   // (curr - prior) / |prior| * 100 so negative-consensus (e.g. ONDS) doesn't blank out.
@@ -3340,10 +3345,16 @@ function renderCompactReadonlyMsTable(chart) {
 function renderEditableMsTable(chart, sym, focusIdx) {
   if (!chart || !chart.quarters || !chart.quarters.length) return '<div style="color:var(--stone);padding:20px">No quarterly data</div>';
   const q = chart.quarters, er = chart.eps_reported || [], ee = chart.eps_estimate || [], rr = chart.rev_reported_M || [], re = chart.rev_estimate_M || [], li = (focusIdx != null) ? focusIdx : chart.latest_idx;
-  const N = Math.min(11, q.length);
-  let start = Math.max(0, li - 4);
-  let end = Math.min(q.length, start + N);
-  start = Math.max(0, end - N);
+  // Window: at most 8 columns — 4 reported (latest 4 ending at focus) + 4 forward estimates.
+  // Standard layout the user asked for; gives a clean "past growth → forward consensus" read.
+  const N = Math.min(8, q.length);
+  let start = Math.max(0, li - 3);          // 4 reported including li
+  let end   = Math.min(q.length, li + 5);   // 4 forward estimates after li
+  // Edge handling: if we'd render fewer than N cols at the array boundary, slide the window.
+  if (end - start < N) {
+    if (start === 0)         end   = Math.min(q.length, N);
+    else if (end === q.length) start = Math.max(0, q.length - N);
+  }
   const cells = [];
   for (let i = start; i < end; i++) {
     const isReported = er[i] != null;
@@ -3816,6 +3827,23 @@ function installChartTooltip() {
 
 function svgBarChart(quarters, reported, estimate, latestIdx, isRev) {
   const W = 540, H = 240, PAD_L = 44, PAD_R = 12, PAD_T = 24, PAD_B = 40;
+  // Slice to the same 8-column window the MS table uses: 4 reported ending at latestIdx
+  // + 4 forward estimates. Keeps bar chart and table in visual lock-step and avoids
+  // squishing 11+ quarters into the same chart width.
+  const totalQs = quarters.length;
+  if (totalQs === 0) return '<div style="color:var(--stone);padding:20px">no data</div>';
+  const Ntarget = Math.min(8, totalQs);
+  const li = (latestIdx != null && latestIdx >= 0) ? latestIdx : (totalQs - 1);
+  let wStart = Math.max(0, li - 3);
+  let wEnd   = Math.min(totalQs, li + 5);
+  if (wEnd - wStart < Ntarget) {
+    if (wStart === 0)         wEnd   = Math.min(totalQs, Ntarget);
+    else if (wEnd === totalQs) wStart = Math.max(0, totalQs - Ntarget);
+  }
+  quarters = quarters.slice(wStart, wEnd);
+  reported = reported.slice(wStart, wEnd);
+  estimate = estimate.slice(wStart, wEnd);
+  latestIdx = latestIdx - wStart;   // re-index relative to the sliced view (may be negative if out of window)
   const n = Math.max(quarters.length, reported.length, estimate.length);
   if (n === 0) return '<div style="color:var(--stone);padding:20px">no data</div>';
   const all = [];
