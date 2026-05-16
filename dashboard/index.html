@@ -4,10 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Stocks In Play</title>
-<!-- Custom "S" favicon — cobalt-violet rounded square + white S. Inline SVG data URI so it
-     ships with the HTML, no extra request. Works in Chrome / Safari / Firefox tabs and PWA. -->
+<!-- Browser tab favicon — points to logo.png. Listed BEFORE the SVG fallback so browsers
+     that support PNG icons (basically all modern browsers) pick the photographed S-mark.
+     Older browsers without PNG support fall through to the inline-SVG below. -->
+<link rel="icon" type="image/png" sizes="any" href="logo.png">
+<!-- SVG fallback — kept as inline data URI so it ships with the HTML, no extra request.
+     Cobalt rounded square + clean white S; rendered at small sizes if PNG fails to load. -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23494fdf'/><text x='16' y='23' font-family='Inter, system-ui, sans-serif' font-size='22' font-weight='800' fill='white' text-anchor='middle' letter-spacing='-1'>S</text></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%23494fdf'/><text x='90' y='128' font-family='Inter, system-ui, sans-serif' font-size='120' font-weight='800' fill='white' text-anchor='middle' letter-spacing='-5'>S</text></svg>">
+<!-- Apple-touch + OG social-share preview use the photographed S-mark (high-res PNG). -->
+<link rel="apple-touch-icon" href="logo.png">
+<meta property="og:title" content="Stocks In Play">
+<meta property="og:description" content="Daily NTRT/MTRT gap scanner — top gap candidates, MAGNA53 classification, TradingView quarterly forecasts.">
+<meta property="og:image" content="logo.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chi2tseng.github.io/stocks-in-play/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="logo.png">
 <!-- Webfonts — Inter (variable, with `opsz` axis for display sizes) acts as the Aeonik Pro stand-in
      per DESIGN.md §388 ("Inter Display ... credible substitutes"). JetBrains Mono for tabular numbers. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -155,6 +167,24 @@ nav.topbar .brand {
   cursor: pointer;
   text-decoration: none;
   user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+/* Logo mark — black square with textured "S". The square's black bg looks great on the
+   light-mode canvas. In dark mode the square edges fade into the topbar (intentional —
+   the white S becomes the standalone mark). Falls back to text-only "SIPs" gracefully if
+   logo.png is missing (no broken-image icon since we use object-fit + onerror). */
+nav.topbar .brand-logo {
+  width: 32px; height: 32px;
+  border-radius: 7px;
+  object-fit: cover;
+  display: block;
+  /* Subtle shadow so the square reads as a distinct mark on both themes */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+body.dark nav.topbar .brand-logo {
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
 }
 nav.topbar .nav-links {
   display: flex;
@@ -182,7 +212,8 @@ nav.topbar .nav-links a.active { color: var(--ink); background: var(--surface-so
 nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
 @media (max-width: 900px) {
   nav.topbar { padding: 0 16px; height: 56px; }
-  nav.topbar .brand { font-size: 18px; margin-right: 16px; }
+  nav.topbar .brand { font-size: 18px; margin-right: 16px; gap: 8px; }
+  nav.topbar .brand-logo { width: 28px; height: 28px; border-radius: 6px; }
   nav.topbar .nav-links a { padding: 6px 10px; font-size: 13px; }
 }
 
@@ -1730,7 +1761,7 @@ td.sym a { transition: background 140ms ease, color 140ms ease; }
 <body>
 <nav class="topbar" id="nav">
   <div class="topbar-inner">
-    <a class="brand" href="#/sips">SIPs</a>
+    <a class="brand" href="#/sips"><img class="brand-logo" src="logo.png" alt="" onerror="this.style.display='none'">SIPs</a>
     <div class="nav-links">
       <a data-route="sips">Today's SIPs</a>
       <a data-route="squeeze">Short Squeeze</a>
