@@ -1786,6 +1786,7 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .sip-card .sip-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; }
 .sip-card .sip-sym { font-size: 32px; font-weight: 700; color: var(--ink); font-family: var(--font-mono); letter-spacing: -1px; }
 .sip-card .sip-chg { font-size: 16px; font-weight: 600; font-family: var(--font-mono); }
+.sip-card .sip-price { font-size: 18px; font-weight: 700; font-family: var(--font-mono); color: var(--ink); margin-right: auto; }
 .sip-card .sip-name { font-size: 14px; color: var(--mute); margin-bottom: 16px; }
 .sip-card .sip-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
 .sip-card .magna-bits { display: flex; gap: 4px; margin-bottom: 14px; font-family: var(--font-mono); font-size: 12px; }
@@ -4650,6 +4651,11 @@ function studyPreviewCardHtml(st, idx) {
                   : (derivedChg != null) ? derivedChg
                   : gapPct;
   const headerChgCls = (headerChg == null) ? '' : (headerChg >= 0 ? 'pos' : 'neg');
+  // Price — user override (study.price) wins; ohlcv.close is the next-best signal of
+  // "current/closing price for that day"; snapshot.last is the scan-time fallback.
+  const displayPrice = (st.price != null) ? st.price
+                     : (o.close != null) ? o.close
+                     : s.last;
   // Catalyst types — first 2 pills (full set on detail page)
   const types = getStudyTypes(st).slice(0, 2);
   const typeBadges = types.map(tt => `<span class="tag catalyst-type-pill ${catalystTypeClass(tt)}" style="padding:2px 8px;font-size:11px">${escapeHtml(tt)}</span>`).join(' ');
@@ -4684,7 +4690,7 @@ function studyPreviewCardHtml(st, idx) {
     <button class="study-preview-del" data-id="${st.id || st.symbol}" title="Delete study"
             onclick="event.preventDefault();event.stopPropagation();handleDeleteStudyFromList('${st.id || st.symbol}');">✕</button>
     <span class="sip-rank-row"><span class="sip-rank">#${idx + 1}</span><span class="study-saved-on" title="${dateTitle}">${displayDate}</span></span>
-    <div class="sip-header"><div class="sip-sym">${st.symbol}</div><div class="sip-chg ${headerChgCls}">${fmtPct(headerChg)}</div></div>
+    <div class="sip-header"><div class="sip-sym">${st.symbol}</div><div class="sip-price">${fmtPrice(displayPrice)}</div><div class="sip-chg ${headerChgCls}">${fmtPct(headerChg)}</div></div>
     <div class="sip-name">${escapeHtml(s.name || '')}</div>
     ${gapMoveRow}
     <div class="sip-meta">${intentBadge} ${typeBadges}</div>
