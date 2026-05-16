@@ -876,29 +876,39 @@ body.dark .cat-type-fbo { color: #ff9a96; }
 .ohlcv-direction-toggle .dir-btn[data-direction="long"].active  { color: var(--pos); }
 .ohlcv-direction-toggle .dir-btn[data-direction="short"].active { color: var(--neg); }
 
-/* Header chg readout — gap + move side-by-side, vol on its own line. */
-.chg-readout { display: inline-flex; gap: 12px; align-items: baseline; font-family: var(--font-mono); margin: 4px 0 2px; flex-wrap: wrap; justify-content: flex-end; }
+/* Header chg readout — gap + move stacked vertically (one line each), vol on its own line.
+   Label stays muted/grey; the % value picks up green/red from the row's pos/neg class. */
+.chg-readout { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; font-family: var(--font-mono); margin: 4px 0 2px; }
 .chg-cell {
   font-size: 13px; font-weight: 600; letter-spacing: 0.2px;
-  display: inline-flex; align-items: baseline; gap: 4px;
+  display: inline-flex; align-items: baseline; gap: 6px;
 }
-.chg-cell.pos { color: var(--pos); }
-.chg-cell.neg { color: var(--neg); }
-.chg-cell > span:first-child { color: var(--mute); font-weight: 500; font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px; }
-.chg-cell.pos > span:first-child, .chg-cell.neg > span:first-child { color: var(--mute); }
-.chg-cell .gap-pct, .chg-cell .move-pct { font-family: var(--font-mono); font-weight: 700; font-size: 14px; }
-.vol-readout { font-family: var(--font-mono); font-size: 12px; color: var(--mute); }
+.chg-cell > span:first-child {
+  color: var(--mute) !important; font-weight: 500; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.6px;
+}
+.chg-cell .gap-pct, .chg-cell .move-pct {
+  font-family: var(--font-mono); font-weight: 700; font-size: 14px;
+}
+.chg-cell.pos .gap-pct, .chg-cell.pos .move-pct { color: var(--pos); }
+.chg-cell.neg .gap-pct, .chg-cell.neg .move-pct { color: var(--neg); }
+.vol-readout { font-family: var(--font-mono); font-size: 12px; color: var(--mute); margin-top: 2px; }
 
-/* Direction pill (LONG / SHORT) before Gain/Stop. */
-.trade-pill.direction-pill { font-weight: 700; letter-spacing: 0.6px; font-size: 11px; }
+/* Direction pill (LONG / SHORT) before Gain/Stop — same baseline geometry as other .stat-tag
+   pills (4px/10px padding, 11px font, surface-soft bg). Just adds direction-specific tint. */
+.trade-pill.direction-pill { font-weight: 700; letter-spacing: 0.5px; font-size: 11px; padding: 4px 10px; }
 .trade-pill.direction-pill.pos { background: rgba(0,168,126,0.10); color: var(--pos); }
 .trade-pill.direction-pill.neg { background: rgba(226,59,74,0.10); color: var(--neg); }
+/* Gain / Stop pills inherit .stat-tag look; pos/neg tints are already supplied by their classes. */
+.trade-pill { font-size: 11px; padding: 4px 10px; font-weight: 600; }
 
-/* gap + move row on preview cards. */
-.sip-card .sip-chg-row { display: flex; gap: 12px; align-items: baseline; margin: 4px 0 10px; font-family: var(--font-mono); flex-wrap: wrap; }
-.sip-card .chg-cell { font-size: 12px; font-weight: 600; display: inline-flex; gap: 4px; align-items: baseline; }
-.sip-card .chg-cell > span:first-child { color: var(--mute); font-weight: 500; font-size: 9px; text-transform: uppercase; letter-spacing: 0.6px; }
+/* gap + move stack on preview cards — same vertical layout as detail-page header. */
+.sip-card .sip-chg-row { display: flex; flex-direction: column; gap: 2px; align-items: flex-start; margin: 4px 0 10px; font-family: var(--font-mono); }
+.sip-card .chg-cell { font-size: 12px; font-weight: 600; display: inline-flex; gap: 6px; align-items: baseline; }
+.sip-card .chg-cell > span:first-child { color: var(--mute) !important; font-weight: 500; font-size: 9px; text-transform: uppercase; letter-spacing: 0.6px; }
 .sip-card .chg-cell .gap-pct, .sip-card .chg-cell .move-pct { font-weight: 700; font-size: 13px; }
+.sip-card .chg-cell.pos .gap-pct, .sip-card .chg-cell.pos .move-pct { color: var(--pos); }
+.sip-card .chg-cell.neg .gap-pct, .sip-card .chg-cell.neg .move-pct { color: var(--neg); }
 
 /* Editable MS table — cells become flat-styled inputs that look like cells until focused */
 .ms-table-editable .ms-cell-input {
@@ -1590,9 +1600,33 @@ const fmtRev = v => {
 };
 const fmtVol = v => {
   if (v == null) return '—';
+  if (v >= 1e9) return (v/1e9).toFixed(2) + 'B';
   if (v >= 1e6) return (v/1e6).toFixed(2) + 'M';
   return (v/1000).toFixed(0) + 'K';
 };
+// Parse a volume string with optional suffix (K / M / B) and optional commas.
+// "1,500,000" → 1500000 · "1.5M" → 1500000 · "2.3 b" → 2.3e9 · "" → null.
+// Returns null on unparseable input.
+function parseVolumeStr(raw) {
+  if (raw == null) return null;
+  const s = String(raw).replace(/[,\s]/g, '').trim();
+  if (!s) return null;
+  const m = s.match(/^(-?\d+(?:\.\d+)?)([kmb])?$/i);
+  if (!m) return null;
+  const n = parseFloat(m[1]);
+  if (!isFinite(n)) return null;
+  const suffix = (m[2] || '').toLowerCase();
+  const mult = suffix === 'b' ? 1e9 : suffix === 'm' ? 1e6 : suffix === 'k' ? 1e3 : 1;
+  return n * mult;
+}
+// Format a number with thousand-separators ("1500000" → "1,500,000"). Used in the OHLCV
+// volume INPUT (where the user wants to see the raw value with commas while editing).
+function fmtVolFull(v) {
+  if (v == null || v === '') return '';
+  const n = (typeof v === 'number') ? v : parseFloat(String(v).replace(/,/g, ''));
+  if (!isFinite(n)) return '';
+  return Math.round(n).toLocaleString('en-US');
+}
 const fmtPrice = v => v == null ? '—' : '$' + v.toFixed(2);
 const cls = v => v == null ? '' : (v > 0 ? 'pos' : v < 0 ? 'neg' : '');
 function escapeHtml(s) {
@@ -4734,10 +4768,12 @@ async function renderStudyDetail(idOrSym) {
     const cur = (loadStudies().find(st => st.id === id)?.ohlcv?.volume);
     const seed = (cur != null) ? cur : s.volume;
     const inp = document.createElement('input');
-    inp.type = 'number'; inp.step = '1000'; inp.min = '0';
+    // Text input so we can accept "1.5M" / "1,500,000" / "1500000". Parser handles the rest.
+    inp.type = 'text'; inp.inputMode = 'decimal';
     inp.className = 'vol-edit-input';
-    inp.value = (seed != null) ? seed : '';
-    inp.placeholder = '—';
+    inp.style.width = '110px';
+    inp.value = fmtVolFull(seed);
+    inp.placeholder = '1.5M / 1,500,000';
     span.style.display = 'none';
     volCell.appendChild(inp);
     inp.focus(); inp.select();
@@ -4745,9 +4781,7 @@ async function renderStudyDetail(idOrSym) {
     const finish = (cancel) => {
       if (done) return; done = true;
       if (!cancel) {
-        const raw = inp.value.trim();
-        const v = (raw === '') ? null : parseFloat(raw);
-        const final = (v != null && isFinite(v)) ? v : null;
+        const final = parseVolumeStr(inp.value);
         const ohlcv = loadStudies().find(st => st.id === id)?.ohlcv || {};
         updateStudy(id,{ ohlcv: { ...ohlcv, volume: final } });
         span.textContent = fmtVol(final);
@@ -5065,7 +5099,7 @@ async function renderStudyDetail(idOrSym) {
           <label class="study-ohlcv-field"><span>${t('ohlcv-low')}</span><input data-field="low" type="number" step="0.01" value="${cur.low ?? ''}" placeholder="—"></label>
           <label class="study-ohlcv-field"><span>${t('ohlcv-close')}</span><input data-field="close" type="number" step="0.01" value="${cur.close ?? ''}" placeholder="—"></label>
           <label class="study-ohlcv-field" title="Prior-day close — drives the day's %Chg derivation. Auto-filled by /SIPs Phase 10b when available."><span>${t('ohlcv-prev-close')}</span><input data-field="prev_close" type="number" step="0.01" value="${cur.prev_close ?? ''}" placeholder="—"></label>
-          <label class="study-ohlcv-field"><span>${t('ohlcv-volume')}</span><input data-field="volume" type="number" step="1000" value="${cur.volume ?? ''}" placeholder="—"></label>
+          <label class="study-ohlcv-field" title="Accepts plain numbers (1500000), commas (1,500,000), and shorthand suffixes (1.5M, 800K, 1.2B)."><span>${t('ohlcv-volume')}</span><input data-field="volume" type="text" inputmode="decimal" value="${fmtVolFull(cur.volume)}" placeholder="e.g. 1.5M or 1,500,000"></label>
         </div>
         <div class="ohlcv-modal-foot">
           <button class="studies-btn" type="button" id="ohlcv-modal-done">Done</button>
@@ -5082,7 +5116,10 @@ async function renderStudyDetail(idOrSym) {
       inp.addEventListener('input', e => {
         const field = e.target.dataset.field;
         const ohlcv = loadStudies().find(st => st.id === id)?.ohlcv || {};
-        const val = field === 'date' ? e.target.value : (parseFloat(e.target.value) || null);
+        let val;
+        if (field === 'date')        val = e.target.value;
+        else if (field === 'volume') val = parseVolumeStr(e.target.value);   // 1.5M / 1,500,000 / 1500000 all OK
+        else                          val = (parseFloat(e.target.value) || null);
         updateStudy(id,{ ohlcv: { ...ohlcv, [field]: val } });
         refreshTradeMetrics();
         refreshChgReadout();
@@ -5354,7 +5391,55 @@ function openShotLightbox(dataUrl, caption) {
 // ── Undo snackbar ───────────────────────────────────────────────
 // Reusable bottom-of-screen toast for destructive actions. Caller passes
 // (message, undoFn). 10s auto-dismiss; click Undo to invoke undoFn.
+/* ═══════ Multi-step undo stack ═══════
+   Every destructive operation that calls showUndoSnackbar also gets pushed onto a global
+   UNDO_STACK so it can be reverted later (long after the snackbar expired). Press Ctrl+Z
+   (or Cmd+Z on macOS) anywhere outside an input/contenteditable to pop and replay the
+   most recent inverse. Stack is capped to 100 entries to avoid unbounded memory growth.
+   Each entry already executed once via the snackbar Undo button is removed from the stack
+   so we don't undo it twice. */
+const UNDO_STACK = [];
+const UNDO_STACK_MAX = 100;
+function pushUndoStack(label, undoFn) {
+  UNDO_STACK.push({ label, undoFn, ts: Date.now() });
+  if (UNDO_STACK.length > UNDO_STACK_MAX) UNDO_STACK.shift();
+}
+async function popUndoOne() {
+  const entry = UNDO_STACK.pop();
+  if (!entry) return null;
+  try { await entry.undoFn(); } catch (e) { console.warn('[undo]', entry.label, e); }
+  return entry;
+}
+// Lightweight toast (no Undo button) — used to confirm Ctrl+Z replays.
+function showToast(message, ms = 2200) {
+  const old = document.getElementById('undo-toast');
+  if (old) old.remove();
+  const t = document.createElement('div');
+  t.id = 'undo-toast';
+  t.className = 'undo-snackbar';
+  t.style.background = 'rgba(15,15,25,0.92)';
+  t.innerHTML = `<span></span>`;
+  t.querySelector('span').textContent = message;
+  document.body.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('show'));
+  setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 300); }, ms);
+}
+// Global Ctrl/Cmd+Z handler — undoes the latest stack entry. Ignored while focus is in
+// inputs / textareas / contenteditable so the browser's native undo still works there.
+document.addEventListener('keydown', async (e) => {
+  if (!(e.ctrlKey || e.metaKey) || e.key !== 'z' || e.shiftKey) return;
+  const t = e.target;
+  if (t && (t.matches('input, textarea, select') || t.isContentEditable)) return;
+  if (UNDO_STACK.length === 0) return;
+  e.preventDefault();
+  const entry = await popUndoOne();
+  if (entry) showToast(`Undone: ${entry.label}${UNDO_STACK.length ? ` · ${UNDO_STACK.length} more in history` : ''}`);
+});
+
 function showUndoSnackbar(message, undoFn, ms = 10000) {
+  // Push into the multi-step stack first so Ctrl+Z still works after the snackbar expires.
+  // The snackbar's Undo button pops the entry directly so we don't risk a double-undo.
+  pushUndoStack(message, undoFn);
   const old = document.getElementById('undo-snackbar');
   if (old) old.remove();
   const snack = document.createElement('div');
@@ -5373,6 +5458,10 @@ function showUndoSnackbar(message, undoFn, ms = 10000) {
   const timer = setTimeout(dismiss, ms);
   snack.querySelector('.undo-btn').onclick = async () => {
     clearTimeout(timer);
+    // Locate this entry in the stack (by reference identity) and remove it BEFORE running
+    // the undo function — otherwise Ctrl+Z could replay the same undo a second time.
+    const idx = UNDO_STACK.findIndex(e => e.undoFn === undoFn);
+    if (idx >= 0) UNDO_STACK.splice(idx, 1);
     try { await undoFn(); } catch (e) { console.warn('undo failed', e); }
     dismiss();
   };
