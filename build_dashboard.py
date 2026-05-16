@@ -1769,8 +1769,20 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .ms-table .ms-surprise .pos,
 .ms-table .ms-surprise .neg  { background: transparent; }
 .ms-table .ms-surprise-label { background: var(--surface-soft); color: var(--charcoal); font-weight: 600; }
-.ms-table .ms-divider { border-left: 3px solid var(--primary); }
-.ms-table th.ms-divider { border-left: 3px solid var(--primary); }
+/* Reported→Estimate divider. Drawn as a pseudo-element offset INTO the first estimate cell
+   rather than as a flush border-left on that cell. Reason: cell content is right-aligned, so
+   the last reported value (e.g. "30.1") sits right against the column boundary while the
+   first estimate value (e.g. "39.4") sits FAR from it. A border at the boundary visually
+   hugs the reported number and feels off-center. Pushing the line ~35% into the est cell
+   places it closer to the optical midpoint between the two adjacent values. */
+.ms-table .ms-divider,
+.ms-table th.ms-divider { position: relative; }
+.ms-table .ms-divider::before {
+  content: ''; position: absolute;
+  left: 35%; top: 0; bottom: 0;
+  width: 3px; background: var(--primary);
+  pointer-events: none;
+}
 .ms-table .pos { color: var(--pos); font-weight: 600; background: rgba(0, 168, 126, 0.06); }
 .ms-table .neg { color: var(--neg); font-weight: 600; background: rgba(226, 59, 74, 0.06); }
 .ms-table .nm { color: var(--stone); }
