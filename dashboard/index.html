@@ -130,7 +130,12 @@ nav.topbar {
   padding: 0 32px;
   position: sticky;
   top: 0;
-  z-index: 20;
+  /* Topmost in-page layer (5000) — must exceed every page-level dropdown so the topbar's
+     own content (nav links, calendar button, search box inside the topbar on the Studies
+     page) doesn't get covered by studies-search-results (1000), filter-popup (1500), or
+     the .save-study-btn (2). Cal-popup at 9999 + image lightbox at 99998+ still sit on
+     top of the topbar — intentional, those are full-page overlays. */
+  z-index: 5000;
 }
 nav.topbar .topbar-inner {
   display: flex;
