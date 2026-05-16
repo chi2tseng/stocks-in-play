@@ -623,20 +623,20 @@ nav.topbar .brand {
   align-items: center;
   gap: 10px;
 }
-/* Logo mark — black square with textured "S". The square's black bg looks great on the
-   light-mode canvas. In dark mode the square edges fade into the topbar (intentional —
-   the white S becomes the standalone mark). Falls back to text-only "SIPs" gracefully if
-   logo.png is missing (no broken-image icon since we use object-fit + onerror). */
+/* Logo mark — source image is black square + white textured S. CSS-inverted at render
+   time (filter: invert(1)) so it displays as white square + black textured S, which feels
+   cleaner against the light-mode canvas (the white square edges fade into the topbar,
+   leaving the black S as a standalone mark). In dark mode we drop the filter so the
+   original black-bg renders, fading the square into the dark topbar instead. */
 nav.topbar .brand-logo {
   width: 32px; height: 32px;
   border-radius: 7px;
   object-fit: cover;
   display: block;
-  /* Subtle shadow so the square reads as a distinct mark on both themes */
-  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  filter: invert(1);
 }
 body.dark nav.topbar .brand-logo {
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+  filter: none;
 }
 nav.topbar .nav-links {
   display: flex;
