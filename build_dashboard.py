@@ -1157,6 +1157,8 @@ body.dark .catalyst-type-pill .pill-x { background: rgba(255,255,255,0.08); }
 .catalyst-type-pill.cat-type-technical     { background: rgba(160, 100, 220, 0.16);color: #5928a3; }
 .catalyst-type-pill.cat-type-fbo           { background: rgba(255, 105, 100, 0.16);color: #b53b3b; }
 .catalyst-type-pill.cat-type-short-squeeze { background: rgba(255, 140, 0, 0.18);  color: #8a4500; }
+.catalyst-type-pill.cat-type-sips          { background: rgba(38, 165, 198, 0.18); color: #0e6e89; }
+.catalyst-type-pill.cat-type-ep            { background: rgba(228, 90, 170, 0.16); color: #a8336d; }
 body.dark .catalyst-type-pill.cat-type-earnings      { color: #a5a9ff; }
 body.dark .catalyst-type-pill.cat-type-momentum,
 body.dark .catalyst-type-pill.cat-type-short-squeeze { color: #ffce6a; }
@@ -1165,6 +1167,8 @@ body.dark .catalyst-type-pill.cat-type-ma,
 body.dark .catalyst-type-pill.cat-type-fbo           { color: #ff9a96; }
 body.dark .catalyst-type-pill.cat-type-contract      { color: #6dc0ff; }
 body.dark .catalyst-type-pill.cat-type-technical     { color: #c7a4ff; }
+body.dark .catalyst-type-pill.cat-type-sips          { color: #7ed3ec; }
+body.dark .catalyst-type-pill.cat-type-ep            { color: #ff9bcd; }
 
 /* Multi-select popup (Notion-style) */
 .catalyst-type-popup {
@@ -4736,6 +4740,8 @@ const CATALYST_PRESETS = [
   { key: 'technical',      label: 'technical',      cls: 'cat-type-technical' },
   { key: 'fbo',            label: 'FBO',            cls: 'cat-type-fbo' },
   { key: 'short-squeeze',  label: 'short squeeze',  cls: 'cat-type-short-squeeze' },
+  { key: 'sips',           label: 'SIPs',           cls: 'cat-type-sips' },
+  { key: 'ep',             label: 'EP',             cls: 'cat-type-ep' },
 ];
 function catalystTypeClass(key) {
   const p = CATALYST_PRESETS.find(p => p.key === key.toLowerCase().replace(/\s+/g, '-'));
