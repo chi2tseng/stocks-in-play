@@ -3648,8 +3648,8 @@ function updateStudy(id, patch) {
    The card is purely read-only here; all editing happens on the detail page. */
 function renderStudies() {
   const app = document.getElementById('app');
-  // Filter by active catalyst-tag filter, then sort newest-first by savedAt.
-  const allStudies = loadStudies().slice().sort((a, b) => (b.savedAt || '').localeCompare(a.savedAt || ''));
+  // Sort first (so the filter doesn't depend on order), then filter by active catalyst tags.
+  const allStudies = sortStudies(loadStudies());
   const studies = allStudies.filter(studyMatchesFilter);
   app.innerHTML = `
     <h2 class="page-title">My Studies</h2>
@@ -3666,6 +3666,13 @@ function renderStudies() {
         </svg>
         <span>Filter</span>
         ${STUDIES_FILTER.size > 0 ? `<span class="studies-filter-count">${STUDIES_FILTER.size}</span>` : ''}
+      </button>
+      <button class="studies-filter-btn ${STUDIES_SORT !== 'date-desc' ? 'active' : ''}" id="studies-sort-btn" type="button" title="Sort the Studies list">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6h13M3 12h9M3 18h5"></path>
+          <path d="M17 16l3 3 3-3M20 19V9"></path>
+        </svg>
+        <span>Sort</span>
       </button>
       <button class="studies-btn" id="studies-export" style="margin-left:auto">${t('studies-export')}</button>
       <button class="studies-btn" id="studies-import">${t('studies-import')}</button>
@@ -3808,6 +3815,49 @@ function renderStudies() {
     setTimeout(() => {
       const onDocClick = (ev) => {
         const btnNow = document.getElementById('studies-filter-btn');
+        if (!pop.contains(ev.target) && !(btnNow && btnNow.contains(ev.target))) {
+          pop.remove();
+          document.removeEventListener('click', onDocClick);
+        }
+      };
+      document.addEventListener('click', onDocClick);
+    }, 0);
+  });
+
+  // ── Sort button — opens a small popup of sort options, reuses .studies-filter-popup styling ──
+  document.getElementById('studies-sort-btn')?.addEventListener('click', e => {
+    e.preventDefault(); e.stopPropagation();
+    const existing = document.querySelector('.studies-filter-popup.sort-popup');
+    if (existing) { existing.remove(); return; }
+    const btn = e.currentTarget;
+    const rect = btn.getBoundingClientRect();
+    const pop = document.createElement('div');
+    pop.className = 'studies-filter-popup sort-popup';
+    pop.style.position = 'fixed';
+    pop.style.top = `${rect.bottom + 6}px`;
+    pop.style.left = `${Math.min(rect.left, window.innerWidth - 256)}px`;
+    pop.style.zIndex = '1500';
+    pop.style.width = '240px';
+    pop.innerHTML = `
+      <div class="sf-head"><span>Sort by</span></div>
+      <div class="sf-options-host">${STUDIES_SORT_OPTIONS.map(opt =>
+        `<div class="sf-option ${STUDIES_SORT === opt.key ? 'checked' : ''}" data-key="${opt.key}">
+          <span>${escapeHtml(opt.label)}</span>
+        </div>`
+      ).join('')}</div>
+    `;
+    document.body.appendChild(pop);
+    pop.querySelector('.sf-options-host').addEventListener('click', ev => {
+      const opt = ev.target.closest('.sf-option');
+      if (!opt) return;
+      ev.preventDefault(); ev.stopPropagation();
+      STUDIES_SORT = opt.dataset.key;
+      pop.remove();
+      renderStudies();
+    });
+    setTimeout(() => {
+      const onDocClick = (ev) => {
+        const btnNow = document.getElementById('studies-sort-btn');
         if (!pop.contains(ev.target) && !(btnNow && btnNow.contains(ev.target))) {
           pop.remove();
           document.removeEventListener('click', onDocClick);
@@ -4177,6 +4227,35 @@ function getAllCatalystOptions() {
 // Active filter for the Studies list — Set of catalyst labels. Empty = no filter.
 // Lives in memory (session state); cleared on full page reload.
 const STUDIES_FILTER = new Set();
+
+// Active sort order for the Studies list. Values: 'date-desc' (default, newest first),
+// 'date-asc', 'sym-asc', 'sym-desc'. Date sort uses the DISPLAY date — `ohlcv.date` once
+// the user fills it in the Gain/Stop popup, otherwise `savedAt` — so the order matches what
+// the user sees on each card. Session state; doesn't survive page reload.
+let STUDIES_SORT = 'date-desc';
+const STUDIES_SORT_OPTIONS = [
+  { key: 'date-desc', label: 'Date — newest first' },
+  { key: 'date-asc',  label: 'Date — oldest first' },
+  { key: 'sym-asc',   label: 'Symbol A → Z' },
+  { key: 'sym-desc',  label: 'Symbol Z → A' },
+];
+function studyDisplayDate(st) {
+  return (st.ohlcv && st.ohlcv.date) ? st.ohlcv.date : (st.savedAt || '').slice(0, 10);
+}
+function sortStudies(arr) {
+  const a = arr.slice();
+  switch (STUDIES_SORT) {
+    case 'date-asc':  return a.sort((x, y) => studyDisplayDate(x).localeCompare(studyDisplayDate(y))
+                                            || (x.savedAt || '').localeCompare(y.savedAt || ''));
+    case 'sym-asc':   return a.sort((x, y) => x.symbol.localeCompare(y.symbol)
+                                            || (y.savedAt || '').localeCompare(x.savedAt || ''));
+    case 'sym-desc':  return a.sort((x, y) => y.symbol.localeCompare(x.symbol)
+                                            || (y.savedAt || '').localeCompare(x.savedAt || ''));
+    case 'date-desc':
+    default:          return a.sort((x, y) => studyDisplayDate(y).localeCompare(studyDisplayDate(x))
+                                            || (y.savedAt || '').localeCompare(x.savedAt || ''));
+  }
+}
 function studyMatchesFilter(study) {
   if (STUDIES_FILTER.size === 0) return true;
   const types = getStudyTypes(study);
