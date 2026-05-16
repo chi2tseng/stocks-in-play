@@ -2926,15 +2926,20 @@ function renderEditableMsTable(chart, sym, focusIdx) {
     head += `<th class="${div} ${estCls}">${c.q}${tag}</th>`;
   });
   head += '<th class="ms-rowlabel"></th></tr>';
-  // Editable value row generator
-  function inputRow(label, repArr, estArr, fmtVal, stepVal, dataKey) {
+  // Editable value row generator.
+  // `unitScale` = the storage→display multiplier inverse: storage = display × unitScale.
+  // For EPS this is always 1 (stored in $/share, displayed in $/share).
+  // For Sales this is 1 when displayed in $M (same as storage) or 1000 when displayed in $B
+  // (one B = 1000 M, so to recover storage from a "10.27" we multiply by 1000).
+  function inputRow(label, repArr, estArr, fmtVal, stepVal, dataKey, unitScale) {
+    const us = unitScale || 1;
     let html = '<tr>';
     cells.forEach((c, idx) => {
       const div = (idx === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
       const klass = c.isReported ? 'ms-reported' : 'ms-estimate';
       const v = c.isReported ? repArr[c.i] : estArr[c.i];
-      const valStr = (v != null) ? fmtVal(v) : '';
-      html += `<td class="${klass} ${div}"><input class="ms-cell-input" type="number" step="${stepVal}" data-sym="${sym}" data-row="${dataKey}" data-qi="${c.i}" data-isrep="${c.isReported ? 1 : 0}" value="${valStr}" placeholder="—"></td>`;
+      const valStr = (v != null) ? fmtVal(v / us) : '';
+      html += `<td class="${klass} ${div}"><input class="ms-cell-input" type="number" step="${stepVal}" data-sym="${sym}" data-row="${dataKey}" data-qi="${c.i}" data-isrep="${c.isReported ? 1 : 0}" data-scale="${us}" value="${valStr}" placeholder="—"></td>`;
     });
     html += `<td class="ms-rowlabel">${label}</td></tr>`;
     return html;
@@ -2950,13 +2955,25 @@ function renderEditableMsTable(chart, sym, focusIdx) {
     html += `<td class="ms-rowlabel ${isSurp ? 'ms-surprise-label' : ''}">${label}</td></tr>`;
     return html;
   }
+  // Decide Sales display unit: if any visible cell carries ≥ $1000M (= $1B), show the whole
+  // row in $B for readability (large-cap names like AMD: $10,270M → "10.27"). Smaller names
+  // (ONDS: $30.1M) stay in $M. The unit is per-row, not per-cell, so YoY/Surprise math
+  // remains internally in millions (storage unit) — only the display + input scale changes.
+  let revUnitScale = 1, revUnitLabel = 'M', revStep = '0.1', fmtRev = v => v.toFixed(1);
+  const revMax = cells.reduce((m, c) => {
+    const v = c.isReported ? rr[c.i] : re[c.i];
+    return (v != null && Math.abs(v) > m) ? Math.abs(v) : m;
+  }, 0);
+  if (revMax >= 1000) {
+    revUnitScale = 1000; revUnitLabel = 'B'; revStep = '0.01';
+    fmtRev = v => v.toFixed(2);
+  }
   const fmtEps  = v => v.toFixed(2);
-  const fmtRev  = v => (Math.abs(v) >= 1000 ? v.toFixed(1) : v.toFixed(1));
   return `<div class="ms-table-wrap"><table class="ms-table ms-table-editable"><thead>${head}</thead><tbody>` +
-    inputRow('EPS ($)',     er, ee, fmtEps, '0.01', 'eps') +
+    inputRow('EPS ($)',                er, ee, fmtEps, '0.01',  'eps', 1) +
     computedRow('YoY % Chg', 'epsYoY', true, false) +
     computedRow('Surprise %','epsSurp', true, true) +
-    inputRow('Sales ($M)',  rr, re, fmtRev, '0.1',  'rev') +
+    inputRow(`Sales ($${revUnitLabel})`, rr, re, fmtRev, revStep, 'rev', revUnitScale) +
     computedRow('YoY % Chg', 'revYoY', false, false) +
     computedRow('Surprise %','revSurp', false, true) +
   `</tbody></table></div>`;
@@ -4825,9 +4842,14 @@ async function renderStudyDetail(idOrSym) {
         };
         const qi = parseInt(inp.dataset.qi, 10);
         const isRep = inp.dataset.isrep === '1';
-        const v = inp.value === '' ? null : parseFloat(inp.value);
-        if (inp.dataset.row === 'eps') { (isRep ? c.eps_reported : c.eps_estimate)[qi] = (v != null && !isNaN(v)) ? v : null; }
-        else                            { (isRep ? c.rev_reported_M : c.rev_estimate_M)[qi] = (v != null && !isNaN(v)) ? v : null; }
+        // data-scale is the storage-unit multiplier: 1 for $M (or EPS), 1000 for $B.
+        // The user types in the displayed unit (e.g. "10.27" when row is $B); we multiply
+        // back to millions before persisting so YoY/Surprise/charts all stay in storage unit.
+        const scale = parseFloat(inp.dataset.scale || '1') || 1;
+        const raw = inp.value === '' ? null : parseFloat(inp.value);
+        const v = (raw != null && !isNaN(raw)) ? raw * scale : null;
+        if (inp.dataset.row === 'eps') { (isRep ? c.eps_reported : c.eps_estimate)[qi] = v; }
+        else                            { (isRep ? c.rev_reported_M : c.rev_estimate_M)[qi] = v; }
         updateStudy(id,{ customChart: c });
         // Re-render bar charts immediately + update computed cells (use focus quarter, not raw latest_idx)
         const fi = activeFocusIdx();
