@@ -1802,18 +1802,18 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
     rgba(73, 79, 223, 0.04) var(--ms-divider-offset)
   );
 }
-/* Compact readonly preview (Studies cards only) — show ONE reported quarter + 4 forward
-   estimates. Symmetric horizontal padding so each cell has equal breathing room on its
-   left and right edges (no more cramped right edge or asymmetric left bias):
-     · est columns:  14px on both sides
-     · first column: 22px on both sides — extra padding keeps the right-aligned reported
-       values visually anchored toward the center of the column rather than hugging the
-       divider.
-   Numbers stay right-aligned to each other (decimals + minus signs line up vertically). */
+/* Compact readonly preview (Studies cards only) — center-align every cell so the empty
+   space on the left of each value mirrors the empty space on the right. With right-align
+   + symmetric padding the visual gaps were still unequal: content was pinned to the right
+   edge, leaving extra slack on the left side. Center-align is the only way to actually
+   balance the gaps around each value. Trade-off: decimal points + minus signs no longer
+   line up vertically across rows — but the user prioritized visual balance over column
+   alignment for the compact preview. */
 .ms-table.ms-table-readonly th,
-.ms-table.ms-table-readonly td { padding-left: 14px; padding-right: 14px; }
-.ms-table.ms-table-readonly th:first-child,
-.ms-table.ms-table-readonly td:first-child { text-align: right; padding-left: 22px; padding-right: 22px; }
+.ms-table.ms-table-readonly td {
+  padding-left: 14px; padding-right: 14px;
+  text-align: center;
+}
 .ms-table .pos { color: var(--pos); font-weight: 600; background: rgba(0, 168, 126, 0.06); }
 .ms-table .neg { color: var(--neg); font-weight: 600; background: rgba(226, 59, 74, 0.06); }
 .ms-table .nm { color: var(--stone); }
