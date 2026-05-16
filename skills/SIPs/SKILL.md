@@ -374,6 +374,34 @@ Do not add commentary inside either block. All narrative (新聞、SIP 判斷) l
 
 ---
 
+### 6.4 Historical-quarter rewind (when the target date is a PAST earnings date)
+
+`/SIPs` normally scans TODAY's candidates, so `chart.latest_idx` naturally points at
+the most-recent reported quarter. **But** if the user is studying a past earnings event
+(via `/update-studies` for a saved study, or feeding `/SIPs` an historical date), the
+raw TV scrape will mark TODAY's latest quarter as `latest_idx` — which is **wrong** for
+the target date. Example: AMD scraped 2026-05-16 returns `latest_idx=7` (Q1 '26), but
+for a study dated 2026-02-04 the latest reported quarter was **Q4 '25 (idx=6)**.
+
+The full rewind procedure lives in `/update-studies` § Phase 3b (`D:\SIPs\skills\update-studies\SKILL.md`).
+For /SIPs the rule is simply: **if the candidate's effective date is more than ~3 trading
+days in the past, perform the same rewind before writing `tv` / `chart` blocks**:
+
+1. For each quarter, compute end date (Q1→Mar 31, Q2→Jun 30, Q3→Sep 30, Q4→Dec 31).
+2. Add the company's typical report lag — **~30d for large-caps** (AMD/NVDA/INTC/AAPL/MSFT/GOOG/META), **~45d for smaller names** (ONDS/NBIS/etc).
+3. The highest-index quarter with `(quarter_end + lag) <= target_date` is the new
+   `target_idx`. Clear `eps_reported[i] = rev_reported_M[i] = null` for every `i > target_idx`. Set `chart.latest_idx = target_idx` and `study.focusQuarterIdx = target_idx`.
+4. Recompute the `tv` summary (latestEPS/consensusEPS/priorYrEPS/surprise/YoY/yoyBlock/epsEst_next4/revEst_next4) from the rewound chart anchored at `target_idx`.
+5. Note in the newsDetail (>⚠️ blockquote) that forward 4 estimates are **today's**
+   consensus, not at-the-time consensus — historical estimates drift after each report.
+
+This rule applies to BOTH /SIPs (when fed a historical date) and /update-studies
+(every time a study's `ohlcv.date` is in the past). The fact that `tv-summary.json`
+is shared between the two flows means the rewind happens to the JSON before any
+template renders — both skills produce correct historical views.
+
+---
+
 ## § 7. Phase 6 — Final 繁體中文 deliverable
 
 Compose the full report. Order: 🟢 SIPs first (ranked best→worst), then 🔴 short candidates. Skip NULL-setup candidates entirely.

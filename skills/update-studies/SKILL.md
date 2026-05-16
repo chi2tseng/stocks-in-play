@@ -135,6 +135,71 @@ Write the converted block to `study.snapshot.tv`. Also:
 **Non-earnings studies skip this phase entirely.** TV scrape is expensive and irrelevant
 to M&A / FDA / contract / technical / FBO / short-squeeze / etc.
 
+## § Phase 3b — Historical-quarter rewind (CRITICAL for past earnings dates)
+
+TradingView's FQ scrape always returns the **latest** quarter as `latest_idx`. If the
+study's target date is in the **past** (e.g., AMD @ 2026-02-04 for Q4 '25 earnings), the
+scrape will mark Q1 '26 as the reported latest — but at the time of the catalyst, **Q4
+'25 was the latest reported quarter**. The MS table, EPS/Rev charts, and Forward YoY
+must anchor at THAT historical quarter, not today's latest.
+
+After Phase 3 writes the scraped `chart` block, **rewind**:
+
+1. **Determine the target quarter** — the most-recent quarter that had been reported as
+   of `study.ohlcv.date`. Heuristic: for each quarter label in `chart.quarters`, compute
+   its end date (`Q1` → Mar 31, `Q2` → Jun 30, `Q3` → Sep 30, `Q4` → Dec 31). Then add
+   the company's typical **report lag**:
+   - **~30 days** for most large-caps (AMD, NVDA, INTC, AAPL, MSFT, GOOG, META)
+   - **~45 days** for smaller / less-mature companies (ONDS, NBIS, etc.) — they have
+     fewer auditors and report slower
+   - When unsure, look at the **previous quarter's actual report date** for the same
+     ticker (search news for `<TICKER> Q[1-4] 20[0-9][0-9] earnings`) and use that lag.
+     Example: AMD reported Q3 '25 on Nov 4 2025 (35 days), Q2 '25 on Aug 5 2025 (36
+     days) → use ~34 days for Q4 '25 estimate.
+
+   A quarter is "reported by target" iff
+   `(quarter_end + report_lag_days) <= study.ohlcv.date`.
+
+   Choose the **highest-index** quarter that passes — call this `target_idx`.
+
+2. **If `target_idx == chart.latest_idx`** (study date is current — most common case):
+   no rewind needed. Skip the rest of this phase.
+
+3. **Otherwise rewind**:
+   - For every `i > target_idx`:
+     - `chart.eps_reported[i] = null`
+     - `chart.rev_reported_M[i] = null`
+   - `chart.latest_idx = target_idx`
+   - Set `study.focusQuarterIdx = target_idx` so the MS table window + bar chart
+     highlight + Forward YoY all anchor there.
+
+4. **Recompute the tv summary fields** from the rewound chart:
+   - `latestEPS` = `eps_reported[target_idx]`
+   - `consensusEPS` = `eps_estimate[target_idx]`
+   - `priorYrEPS` = `eps_reported[target_idx - 4]` (same quarter, prior year)
+   - `surpriseEPS_pct` = `(latestEPS − consensusEPS) / abs(consensusEPS) * 100`
+   - `surpriseEPS_dollar` = `latestEPS − consensusEPS`
+   - `latestRev_M`, `consensusRev_M`, `priorYrRev_M`, `surpriseRev_pct` — same pattern
+   - `yrYrRev_pct` = `(latestRev_M − priorYrRev_M) / abs(priorYrRev_M) * 100`
+   - `epsYoY_pct` = `(latestEPS − priorYrEPS) / abs(priorYrEPS) * 100`
+   - `epsEst_next4` = `eps_estimate[target_idx+1 .. target_idx+4]` (forward 4)
+   - `revEst_next4` = `rev_estimate_M[target_idx+1 .. target_idx+4]`
+   - `yoyBlock`: rebuild with target_idx as the header line, then 4 forward lines
+
+5. **Note on estimate accuracy** — Forward 4 estimates from TV are the CURRENT
+   consensus, not the at-the-time consensus from the historical date. Document this
+   limitation in newsDetail (use a `> ⚠️` blockquote like the AMD@2026-02-04 entry):
+   `> 表格中的 forward 4 季 estimates 是 TradingView 目前的 consensus，並非 <DATE> 當時的數字`.
+   The historical reported actuals are accurate; the forward estimates drift.
+
+**Verified example — AMD @ 2026-02-04** (Q4 '25 earnings reported 2/3):
+- Q4 '25 end = Dec 31 2025; lag ~34d → cutoff = Feb 3 ≤ Feb 4 ✓ (reported)
+- Q1 '26 end = Mar 31 2026; lag ~34d → cutoff = May 4 > Feb 4 ✗ (not yet reported)
+- → `target_idx = 6` (Q4 '25)
+- → `eps_reported[6] = 1.53, rev_reported_M[6] = 10270`, `eps_reported[7+] = null`
+- → `latestEPS = 1.53, consensusEPS = 1.32, priorYrEPS = 1.09` (Q4 '24)
+- → `surpriseEPS_pct = +15.91%`, `epsYoY_pct = +40.37%`
+
 ## § Phase 4 — News Detail refresh + earnings auto-detect
 
 Same sourcing approach as `/SIPs` Phase 7. The user explicitly asked for this — they
