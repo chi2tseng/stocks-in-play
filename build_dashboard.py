@@ -980,16 +980,24 @@ body.readonly-mode .readonly-badge { display: inline-flex; }
 }
 .study-tags:focus, .study-notes:focus { outline: none; border-color: var(--primary); }
 
-/* "Save to Studies" button on SIP cards + stock detail header */
+/* "Save to Studies" button. Two layouts depending on parent:
+   • SIP cards / study cards: absolute-positioned in the top-right corner of the card.
+   • Stock-detail breadcrumb: normal flex item, sits next to the breadcrumb text,
+     well clear of the price block in the .stock-header below. */
 .save-study-btn {
   position: absolute; top: 14px; right: 16px; padding: 5px 12px;
   background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-pill);
   font-size: 11px; font-weight: 600; color: var(--mute); cursor: pointer;
   font-family: var(--font-body); transition: background 0.12s, color 0.12s, border-color 0.12s;
-  z-index: 2;
+  z-index: 2; white-space: nowrap;
 }
 .save-study-btn:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
 .save-study-btn.saved { background: rgba(0,168,126,0.10); color: var(--pos); border-color: var(--pos); }
+/* Breadcrumb-context overrides: drop absolute positioning so the flex layout in
+   .study-detail-breadcrumb (justify-content: space-between) cleanly right-aligns it. */
+.study-detail-breadcrumb .save-study-btn {
+  position: static; top: auto; right: auto; flex-shrink: 0;
+}
 body.readonly-mode .save-study-btn { display: none !important; }
 
 /* ── OHLCV row + intraday chip ── */
@@ -3721,9 +3729,11 @@ async function renderStock(sym) {
     _tv ? _surpPill('Rev Surp', _tv.surpriseRev_pct, 'Revenue surprise vs consensus (TradingView FQ)') : '',
   ].filter(Boolean).join(' ');
   app.innerHTML = `
-    <div class="breadcrumb"><a href="#/earnings">Earnings</a> · <a href="#/catalyst">Catalyst</a> · <a href="#/scanx">SCANX</a> &nbsp;»&nbsp; <b>${s.symbol}</b>${dateBadge}</div>
-    <div class="stock-header" style="position:relative">
+    <div class="breadcrumb study-detail-breadcrumb">
+      <span><a href="#/earnings">Earnings</a> · <a href="#/catalyst">Catalyst</a> · <a href="#/scanx">SCANX</a> &nbsp;»&nbsp; <b>${s.symbol}</b>${dateBadge}</span>
       ${saveStudyBtnHtml(s.symbol)}
+    </div>
+    <div class="stock-header">
       <div class="sym-big">${s.symbol}${dayChip}</div>
       <div>
         <div class="name">${escapeHtml(s.name)}</div>
