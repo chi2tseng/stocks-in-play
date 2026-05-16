@@ -4237,8 +4237,14 @@ window.handleSaveStudy = function(sym, btn) {
 function studyPreviewCardHtml(st, idx) {
   const s = st.snapshot || {};
   const o = st.ohlcv || {};
-  // gap % = original pre/post-market gap (snapshot); move % = intent-aware Open→High/Low.
-  const gapPct = s.chgPct;
+  // gap % priority — derived from OHLCV (open − prev_close) once /update-studies has filled
+  // those, otherwise fall back to snapshot.chgPct (the pre/post-market gap captured at scan).
+  // The derived form is the OFFICIAL opening gap of the regular session and aligns with what
+  // chart sites publish; snapshot.chgPct is a faster but rougher pre-open estimate.
+  const derivedGap = (o.open != null && o.prev_close != null && o.prev_close !== 0)
+    ? (o.open - o.prev_close) / o.prev_close * 100
+    : null;
+  const gapPct = (derivedGap != null) ? derivedGap : s.chgPct;
   const intent = resolveStudyIntent(st);
   const movePct = studyMovePct(st);
   // Big header chg: priority same as detail page → move > derived (close-prev_close) > gap.
@@ -4281,7 +4287,7 @@ function studyPreviewCardHtml(st, idx) {
   // day = (close − prev_close) / prev_close · 100 — filled by /update-studies once OHLCV
   // close + prev_close are present.
   const gapMoveRow = `<div class="sip-chg-row">
-    ${gapPct != null ? `<span class="chg-cell gap-cell ${cls(gapPct)}" title="Gap % at scan time"><span class="chg-label">gap</span> <span class="gap-pct">${fmtPct(gapPct)}</span></span>` : ''}
+    ${gapPct != null ? `<span class="chg-cell gap-cell ${cls(gapPct)}" title="${derivedGap != null ? 'Gap % from OHLCV: (Open − Prev close) / Prev close · 100' : 'Gap % at scan time (pre/post-market)'}"><span class="chg-label">gap</span> <span class="gap-pct">${fmtPct(gapPct)}</span></span>` : ''}
     ${movePct != null ? `<span class="chg-cell move-cell ${cls(movePct)}" title="Day's move % from open — ${intent === 'short' ? '(Low − Open) / Open · negative = drop = short profit' : '(High − Open) / Open · positive = rise = long profit'}"><span class="chg-label">move</span> <span class="move-pct">${(movePct >= 0 ? '+' : '') + movePct.toFixed(2)}%</span></span>` : ''}
     ${derivedChg != null ? `<span class="chg-cell day-cell ${cls(derivedChg)}" title="Day's % change — (Close − Prev close) / Prev close · 100"><span class="chg-label">day</span> <span class="day-pct">${(derivedChg >= 0 ? '+' : '') + derivedChg.toFixed(2)}%</span></span>` : ''}
   </div>`;
@@ -4546,8 +4552,13 @@ async function renderStudyDetail(idOrSym) {
   // Intent — user override (study.intent set via OHLCV modal Long/Short toggle) wins;
   // otherwise derive from snapshot.chgPct gap sign. Determines Gain/Stop column anchors.
   const intent = resolveStudyIntent(study);
-  // Original gap % from snapshot, kept around so the header can show BOTH gap and move.
-  const gapPct = s.chgPct;
+  // gap % — derived from OHLCV (open − prev_close) once /update-studies has filled those;
+  // falls back to snapshot.chgPct (the pre/post-market gap captured at SIP scan time).
+  // Derived form is the official regular-session opening gap and aligns with chart sites.
+  const derivedGap = (study.ohlcv && study.ohlcv.open != null && study.ohlcv.prev_close != null && study.ohlcv.prev_close !== 0)
+    ? (study.ohlcv.open - study.ohlcv.prev_close) / study.ohlcv.prev_close * 100
+    : null;
+  const gapPct = (derivedGap != null) ? derivedGap : s.chgPct;
   // Custom chart overrides snapshot's TV chart when user edits MS-table values.
   const baseChart = (s.tv && s.tv.chart) ? s.tv.chart : null;
   // Section visibility (hidden set). Defaults: everything visible. Hide via the X on each card.
@@ -4714,7 +4725,7 @@ async function renderStudyDetail(idOrSym) {
       <div style="margin-left:auto;text-align:right">
         <div class="price price-editable" id="study-price-cell" title="Click to edit price"><span class="price-text">${fmtPrice(displayPrice)}</span></div>
         <div class="chg-readout" id="study-chg-readout">
-          <span class="chg-cell gap-cell ${cls(gapPct)}" title="Gap % at scan time — pre/post-market move that triggered the SIP"><span class="chg-label">gap</span> <span class="gap-pct">${fmtPct(gapPct)}</span></span>
+          <span class="chg-cell gap-cell ${cls(gapPct)}" title="${derivedGap != null ? 'Gap % derived from OHLCV: (Open − Prev close) / Prev close · 100. Refreshed by /update-studies.' : 'Gap % at scan time (pre/post-market). Fill OHLCV to switch to the official regular-session opening gap.'}"><span class="chg-label">gap</span> <span class="gap-pct">${fmtPct(gapPct)}</span></span>
           <span class="chg-cell move-cell ${cls(initGain)}" title="Day's move % from open — raw price change at the favourable extreme. ${intent === 'short' ? '(Low − Open) / Open · negative = drop = short profit.' : '(High − Open) / Open · positive = rise = long profit.'}"><span class="chg-label">move</span> <span class="move-pct">${fmtPct(initGain)}</span></span>
           <span class="chg-cell day-cell ${cls(_derivedChg)}" title="Day's % change — (Close − Prev close) / Prev close · 100. Filled by /update-studies once both fields are present."><span class="chg-label">day</span> <span class="day-pct">${fmtPct(_derivedChg)}</span></span>
         </div>
@@ -5145,14 +5156,38 @@ async function renderStudyDetail(idOrSym) {
     if (!cur) return;
     const { gain: liveGain } = computeMetrics();
     const derived = deriveDayChgPct(cur.ohlcv);
+    // Live gap derivation — matches the static-render priority: derived from OHLCV when both
+    // open + prev_close are present, otherwise fall back to snapshot.chgPct.
+    const co = cur.ohlcv || {};
+    const liveDerivedGap = (co.open != null && co.prev_close != null && co.prev_close !== 0)
+      ? (co.open - co.prev_close) / co.prev_close * 100
+      : null;
+    const liveGap = (liveDerivedGap != null) ? liveDerivedGap : s.chgPct;
     const el = document.getElementById('study-chg-readout');
     if (el) {
+      // Update gap-cell text + class
+      const gapCell = el.querySelector('.gap-cell');
+      const gapPctEl = el.querySelector('.gap-pct');
+      if (gapCell && gapPctEl) {
+        gapPctEl.textContent = fmtPct(liveGap);
+        gapCell.className = `chg-cell gap-cell ${cls(liveGap)}`;
+        gapCell.title = (liveDerivedGap != null)
+          ? 'Gap % derived from OHLCV: (Open − Prev close) / Prev close · 100. Refreshed by /update-studies.'
+          : 'Gap % at scan time (pre/post-market). Fill OHLCV to switch to the official regular-session opening gap.';
+      }
       // Update move-cell text + class
       const moveCell = el.querySelector('.move-cell');
       const movePct  = el.querySelector('.move-pct');
       if (moveCell && movePct) {
         movePct.textContent = fmtPct(liveGain);
         moveCell.className = `chg-cell move-cell ${cls(liveGain)}`;
+      }
+      // Update day-cell text + class
+      const dayCell = el.querySelector('.day-cell');
+      const dayPctEl = el.querySelector('.day-pct');
+      if (dayCell && dayPctEl) {
+        dayPctEl.textContent = fmtPct(derived);
+        dayCell.className = `chg-cell day-cell ${cls(derived)}`;
       }
     }
     // Day tag (sessTags row) — close-vs-prev_close derived chg. Hidden until both filled.
