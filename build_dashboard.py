@@ -4492,7 +4492,12 @@ function loadStudies() {
 // Fields that are DATE-BOUND — they describe a specific dated research session and live
 // inside datedSnapshots[d] per slot. Anything else (id, symbol, conviction, target/stop,
 // intent, price, screenshots, savedAt, tags) is study-level and persists across dates.
-const DATE_BOUND_FIELDS = ['snapshot', 'ohlcv', 'hiddenSections', 'notes', 'customTypes', 'customChart', 'focusQuarterIdx'];
+//
+// newsDetail (top-level) is here because the news-detail contenteditable writes to it
+// directly as HTML — separate from snapshot.newsDetail which holds the /SIPs-auto-fill
+// plain-text/markdown version. Both are date-bound: snapshot.newsDetail mirrors via the
+// snapshot field, study.newsDetail (the user's HTML override) mirrors via this entry.
+const DATE_BOUND_FIELDS = ['snapshot', 'ohlcv', 'hiddenSections', 'notes', 'customTypes', 'customChart', 'focusQuarterIdx', 'newsDetail'];
 // One-shot migration: take a study with flat date-bound fields (legacy schema) and seed
 // its datedSnapshots map with one entry keyed by the current ohlcv.date. After this,
 // st.datedSnapshots always exists, and the flat fields are the "active view" mirroring
@@ -4520,6 +4525,7 @@ function buildDatedSlot(st) {
     customTypes: [...(st.customTypes || [])],
     customChart: st.customChart ? { ...st.customChart } : null,
     focusQuarterIdx: (st.focusQuarterIdx != null) ? st.focusQuarterIdx : null,
+    newsDetail: st.newsDetail || null,
   };
 }
 // List the dates a study has researched data for, sorted newest first. Used for the
@@ -4545,6 +4551,9 @@ function hasResearchData(slot) {
   if (o.open != null || o.close != null) return true;
   if (slot.notes && String(slot.notes).trim()) return true;
   if (Array.isArray(slot.customTypes) && slot.customTypes.length > 0) return true;
+  // The user's HTML newsDetail override counts as research data too — typing into the
+  // News Detail card on a fresh date should bump the chip count immediately.
+  if (slot.newsDetail && String(slot.newsDetail).trim()) return true;
   return false;
 }
 // Generate a unique-ish id keyed off symbol + time. Base36 timestamps are short and sortable.
@@ -5922,6 +5931,7 @@ async function renderStudyDetail(idOrSym) {
         customTypes: [...(existing.customTypes || [])],
         customChart: existing.customChart ? { ...existing.customChart } : null,
         focusQuarterIdx: (existing.focusQuarterIdx != null) ? existing.focusQuarterIdx : null,
+        newsDetail: existing.newsDetail || null,
       };
     } else {
       // NEW DATE — blank placeholder so /update-studies + /SIPs fill it on next run.
@@ -5953,10 +5963,11 @@ async function renderStudyDetail(idOrSym) {
         // Each date gets a fresh layout: data-dependent sections collapse since they'd
         // render empty "No data" cards. Notes section is visible by default for new dates.
         hiddenSections: ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'],
-        notes: '',          // notes are date-bound now — fresh date starts with empty notes
-        customTypes: [],    // customTypes are date-bound — fresh date starts with no tags
+        notes: '',           // notes are date-bound now — fresh date starts with empty notes
+        customTypes: [],     // customTypes are date-bound — fresh date starts with no tags
         customChart: null,
         focusQuarterIdx: null,
+        newsDetail: null,    // user's HTML newsDetail override is date-bound too — clear on fresh date
       };
     }
     updateStudy(id, patch);
@@ -6027,6 +6038,7 @@ async function renderStudyDetail(idOrSym) {
           customTypes: [...(cur2.customTypes || [])],
           customChart: cur2.customChart ? JSON.parse(JSON.stringify(cur2.customChart)) : null,
           focusQuarterIdx: cur2.focusQuarterIdx ?? null,
+          newsDetail: cur2.newsDetail ?? null,
         } : null;
         const dated = { ...(cur2.datedSnapshots || {}) };
         delete dated[d];
@@ -6047,6 +6059,7 @@ async function renderStudyDetail(idOrSym) {
               customTypes: [...(slot.customTypes || [])],
               customChart: slot.customChart ? { ...slot.customChart } : null,
               focusQuarterIdx: (slot.focusQuarterIdx != null) ? slot.focusQuarterIdx : null,
+              newsDetail: slot.newsDetail || null,
             });
           } else {
             const oldSnap = cur2.snapshot || {};
@@ -6057,7 +6070,7 @@ async function renderStudyDetail(idOrSym) {
                 publishedAt: null, publishedTimezone: null, scanDate: '', _placeholder: true, _newsFetched: false },
               ohlcv: { date: '', open: null, high: null, low: null, close: null, prev_close: null, volume: null },
               hiddenSections: ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'],
-              notes: '', customTypes: [], customChart: null, focusQuarterIdx: null,
+              notes: '', customTypes: [], customChart: null, focusQuarterIdx: null, newsDetail: null,
             });
           }
           renderStudyDetail(id);
@@ -6087,6 +6100,7 @@ async function renderStudyDetail(idOrSym) {
               customTypes: preActive.customTypes,
               customChart: preActive.customChart,
               focusQuarterIdx: preActive.focusQuarterIdx,
+              newsDetail: preActive.newsDetail,
             });
             renderStudyDetail(id);
           } else {
