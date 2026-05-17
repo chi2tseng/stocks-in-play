@@ -776,6 +776,27 @@ body.readonly-mode .study-detail-date-input { pointer-events: none; }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .research-date-item .rd-preview.rd-blank { color: var(--stone); opacity: 0.6; font-style: italic; }
+/* Per-date row: wraps the selection button + the delete button. Hovering the row reveals
+   the delete on the right; non-hover state hides it to keep the popup clean. */
+.research-date-row {
+  display: flex; align-items: stretch;
+  border-radius: var(--r-sm);
+  transition: background 0.10s;
+}
+.research-date-row .research-date-item { flex: 1 1 auto; border-radius: 0; }
+.research-date-row.active { background: rgba(73, 79, 223, 0.10); }
+.research-date-row.active .research-date-item { background: transparent; color: var(--primary-deep); }
+.research-date-row.active .research-date-item::before { content: '●'; color: var(--primary); margin-right: -8px; font-size: 10px; }
+.research-date-del {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; padding: 0 8px;
+  background: transparent; border: none; cursor: pointer;
+  color: var(--stone); opacity: 0; transition: opacity 0.12s, color 0.12s, background 0.12s;
+  border-radius: var(--r-sm);
+}
+.research-date-row:hover .research-date-del { opacity: 1; }
+.research-date-del:hover { color: var(--neg); background: rgba(226,59,74,0.08); }
+body.readonly-mode .research-date-del { display: none !important; }
 body.readonly-mode .research-dates-chip { pointer-events: none; opacity: 0.5; }
 body.readonly-mode .study-delete-outer { display: none !important; }
 
@@ -4140,9 +4161,12 @@ function addStudy(stock, opts = {}) {
     // Daily OHLCV — auto-filled from stock.prevOhlcv (if /SIPs ran the prev-day fetch),
     // otherwise blank for user to enter via the popup modal. `prev_close` drives the day's
     // %Chg derivation: (close − prev_close) / prev_close · 100.
+    // The `date` field ALWAYS falls back to scanDate — that's the canonical trading day
+    // the study is anchored to. Leaving date="" when prevOhlcv is missing caused the
+    // breadcrumb to display today's date instead of the scan day (ONDS-5/14 bug).
     ohlcv: stock.prevOhlcv && typeof stock.prevOhlcv === 'object'
-      ? { date: stock.prevOhlcv.date || '', open: stock.prevOhlcv.open ?? null, high: stock.prevOhlcv.high ?? null, low: stock.prevOhlcv.low ?? null, close: stock.prevOhlcv.close ?? null, prev_close: stock.prevOhlcv.prev_close ?? null, volume: stock.prevOhlcv.volume ?? null }
-      : { date: '', open: null, high: null, low: null, close: null, prev_close: null, volume: null },
+      ? { date: stock.prevOhlcv.date || scanDate || '', open: stock.prevOhlcv.open ?? null, high: stock.prevOhlcv.high ?? null, low: stock.prevOhlcv.low ?? null, close: stock.prevOhlcv.close ?? null, prev_close: stock.prevOhlcv.prev_close ?? null, volume: stock.prevOhlcv.volume ?? null }
+      : { date: scanDate || '', open: null, high: null, low: null, close: null, prev_close: null, volume: null },
     // Screenshots — array of { id, label, caption, imgKey }. Image data lives in IndexedDB.
     screenshots: [],
   });
@@ -5147,8 +5171,13 @@ async function renderStudyDetail(idOrSym) {
   // the breadcrumb <span> (a <div> inside a <span> is invalid HTML — browsers auto-correct
   // by closing the span early, which broke the popup positioning + click behavior).
   const breadcrumbParts = (() => {
+    // Date the breadcrumb pill shows: prefer the explicit ohlcv.date (trading day), then
+    // fall back to snapshot.scanDate (the day this research was about), THEN savedAt as
+    // last resort. Previously skipped scanDate and went straight to savedAt, which made
+    // studies added via search show today's date instead of the historical scan day.
     const od = (study.ohlcv && study.ohlcv.date) ? study.ohlcv.date : '';
-    const sd = od || (study.savedAt || '').slice(0, 10);
+    const scan = (study.snapshot && study.snapshot.scanDate) ? study.snapshot.scanDate : '';
+    const sd = od || scan || (study.savedAt || '').slice(0, 10);
     const title = `Click to change the trading-day date. Switching to a previously-researched date restores its saved data; switching to a new date creates a blank slot for /update-studies to fill.`;
     const dates = listResearchedDates(study);
     const chipHtml = (dates.length >= 1) ? `<button class="research-dates-chip" id="research-dates-chip" type="button"
@@ -5163,11 +5192,16 @@ async function renderStudyDetail(idOrSym) {
           const has = hasResearchData(slot);
           const isActive = (d === sd);
           const cat = (slot.snapshot?.catalyst || '').slice(0, 60);
-          return `<button class="research-date-item ${isActive ? 'active' : ''} ${has ? '' : 'blank'}"
-                          data-date="${d}" type="button" role="menuitem">
-                    <span class="rd-date">${d}</span>
-                    ${has ? `<span class="rd-preview">${escapeHtml(cat)}</span>` : '<span class="rd-preview rd-blank">— blank —</span>'}
-                  </button>`;
+          return `<div class="research-date-row ${isActive ? 'active' : ''}">
+                    <button class="research-date-item ${has ? '' : 'blank'}"
+                            data-date="${d}" type="button" role="menuitem">
+                      <span class="rd-date">${d}</span>
+                      ${has ? `<span class="rd-preview">${escapeHtml(cat)}</span>` : '<span class="rd-preview rd-blank">— blank —</span>'}
+                    </button>
+                    <button class="research-date-del" data-date="${d}" type="button" title="Delete ${d}'s research" aria-label="Delete ${d}">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6M14 11v6"></path></svg>
+                    </button>
+                  </div>`;
         }).join('')}
       </div>` : '';
     const datePill = sd ? `&nbsp;·&nbsp;<input type="date" class="study-detail-date-input" id="study-detail-date-input" value="${sd}" title="${title}">${chipHtml}` : '';
@@ -5456,13 +5490,18 @@ async function renderStudyDetail(idOrSym) {
       const isActive = (d === currentDate);
       const cat = (slot.snapshot?.catalyst || '').slice(0, 60);
       const has = hasResearchData(slot);
-      return `<button class="research-date-item ${isActive ? 'active' : ''} ${has ? '' : 'blank'}"
-                      data-date="${d}" type="button" role="menuitem">
-                <span class="rd-date">${d}</span>
-                ${has ? `<span class="rd-preview">${escapeHtml(cat)}</span>` : '<span class="rd-preview rd-blank">— blank —</span>'}
-              </button>`;
+      return `<div class="research-date-row ${isActive ? 'active' : ''}">
+                <button class="research-date-item ${has ? '' : 'blank'}"
+                        data-date="${d}" type="button" role="menuitem">
+                  <span class="rd-date">${d}</span>
+                  ${has ? `<span class="rd-preview">${escapeHtml(cat)}</span>` : '<span class="rd-preview rd-blank">— blank —</span>'}
+                </button>
+                <button class="research-date-del" data-date="${d}" type="button" title="Delete ${d}'s research" aria-label="Delete ${d}">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6M14 11v6"></path></svg>
+                </button>
+              </div>`;
     }).join('');
-    // Re-bind item clicks (they were lost when we replaced innerHTML)
+    // Re-bind item clicks (lost when we replaced innerHTML)
     popup.querySelectorAll('.research-date-item').forEach(item => {
       item.addEventListener('click', e => {
         e.stopPropagation();
@@ -5472,6 +5511,67 @@ async function renderStudyDetail(idOrSym) {
         if (inp) { inp.value = d; inp.dispatchEvent(new Event('change', { bubbles: true })); }
         popup.classList.remove('open');
         document.getElementById('research-dates-chip')?.setAttribute('aria-expanded', 'false');
+      });
+    });
+    // Re-bind delete-date clicks. Removes just THIS dated slot from datedSnapshots,
+    // leaving the rest of the study intact. If deleting the currently-active date,
+    // automatically switches to the most-recent remaining date (or to blank if empty).
+    popup.querySelectorAll('.research-date-del').forEach(del => {
+      del.addEventListener('click', async e => {
+        e.stopPropagation();
+        const d = del.dataset.date;
+        if (!d) return;
+        if (!window.confirm(`Delete ${d}'s research for this stock?\n\n` +
+            `This removes the catalyst, news, TV data, notes, tags, and OHLCV bar for ${d}. ` +
+            `Other researched dates for this stock are preserved.`)) return;
+        const cur2 = loadStudies().find(st => st.id === id);
+        if (!cur2) return;
+        const dated = { ...(cur2.datedSnapshots || {}) };
+        delete dated[d];
+        const wasActive = (cur2.ohlcv?.date === d);
+        if (wasActive) {
+          // Switch to the most-recent remaining researched date (or blank study if empty).
+          const remaining = Object.keys(dated)
+            .filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k))
+            .filter(k => hasResearchData(dated[k]))
+            .sort().reverse();
+          if (remaining.length > 0) {
+            const target = remaining[0];
+            const slot = dated[target];
+            updateStudy(id, {
+              datedSnapshots: dated,
+              snapshot: { ...(slot.snapshot || {}) },
+              ohlcv: { ...(slot.ohlcv || {}) },
+              hiddenSections: [...(slot.hiddenSections || [])],
+              notes: slot.notes || '',
+              customTypes: [...(slot.customTypes || [])],
+              customChart: slot.customChart ? { ...slot.customChart } : null,
+              focusQuarterIdx: (slot.focusQuarterIdx != null) ? slot.focusQuarterIdx : null,
+            });
+          } else {
+            // No dates left — reset to blank placeholder of the same stock (keeps identity).
+            const oldSnap = cur2.snapshot || {};
+            updateStudy(id, {
+              datedSnapshots: dated,
+              snapshot: { name: oldSnap.name || '', type: oldSnap.type || '?', catalyst: '',
+                newsDetail: '', sources: null, tv: null, sessions: [], chgPct: null, last: null,
+                publishedAt: null, publishedTimezone: null, scanDate: '', _placeholder: true, _newsFetched: false },
+              ohlcv: { date: '', open: null, high: null, low: null, close: null, prev_close: null, volume: null },
+              hiddenSections: ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'],
+              notes: '', customTypes: [], customChart: null, focusQuarterIdx: null,
+            });
+          }
+          renderStudyDetail(id);
+        } else {
+          // Deleted a non-active date — just trim the archive, no view change needed.
+          updateStudy(id, { datedSnapshots: dated });
+          rebuildResearchDatesPopupItems();
+          const countEl = document.getElementById('research-dates-count');
+          if (countEl) {
+            const dates = listResearchedDates(loadStudies().find(st => st.id === id) || {});
+            countEl.textContent = dates.length;
+          }
+        }
       });
     });
   }
@@ -5526,21 +5626,9 @@ async function renderStudyDetail(idOrSym) {
     window.addEventListener('scroll', () => {
       if (chipPopup.classList.contains('open')) closePopup();
     }, { passive: true });
-    // Click a date item → trigger the date-input change handler with the chosen date.
-    chipPopup.querySelectorAll('.research-date-item').forEach(item => {
-      item.addEventListener('click', e => {
-        e.stopPropagation();
-        const d = item.dataset.date;
-        if (!d) return;
-        const inp = document.getElementById('study-detail-date-input');
-        if (inp) {
-          inp.value = d;
-          inp.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-        chipPopup.classList.remove('open');
-        chipBtn.setAttribute('aria-expanded', 'false');
-      });
-    });
+    // Bind item-click + delete-button handlers via the consolidated rebuild helper.
+    // That function is the single source of truth for the popup's interactive bindings.
+    rebuildResearchDatesPopupItems();
   }
 
   // ── Editable Volume — linked to ohlcv.volume so OHLCV popup stays in sync ──
