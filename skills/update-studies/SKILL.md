@@ -126,6 +126,33 @@ in the header + every preview card uses this, so it should reflect the official 
 close (was previously the stale scan-time price). `study.price` (manual override) still
 wins on display.
 
+**Also sync chgPct**: `study.snapshot.chgPct = (close − prev_close) / prev_close * 100`.
+The header chg %, the preview card chg %, and the intent-default rule (next paragraph)
+all read this. Without the sync, fresh OHLCV would leave chgPct stale.
+
+**Default the trade intent from the gap direction.** ONLY when `study.intent` is null /
+undefined (the user hasn't manually set a direction) — never overwrite an existing
+intent, even in `refresh` mode. The rule:
+
+| chgPct after sync | study.intent default |
+|---|---|
+| > 0 (gap up) | `'long'` |
+| < 0 (gap down) | `'short'` |
+| 0 or null | leave unset |
+
+This is what makes a fresh study auto-classify based on the scan day's gap direction.
+Users who want to override (e.g., shorting a gap-up reversal) just click the LONG/SHORT
+pill on the detail page — that becomes the manual override and we never touch it again.
+
+```python
+# Pseudo-code that runs right after writing ohlcv + snapshot.last + snapshot.chgPct:
+if study.get('intent') is None and snap.get('chgPct') is not None:
+    chg = snap['chgPct']
+    if chg > 0:    study['intent'] = 'long'
+    elif chg < 0:  study['intent'] = 'short'
+    # zero is a no-op — wait for the user to decide
+```
+
 ## § Phase 3 — TradingView FQ refresh (earnings studies, default: blanks only)
 
 **Default behaviour = safe / blanks only.** For each study with `"earnings"` in
