@@ -984,7 +984,13 @@ def has_research_data(slot):
     if s.get('newsDetail') or s.get('catalyst') or s.get('tv'): return True
     if o.get('open') is not None or o.get('close') is not None: return True
     if (slot.get('notes') or '').strip(): return True
-    if slot.get('customTypes'): return True
+    # customTypes default ['earnings'] alone doesn't count — pre-seeded so /update-studies
+    # auto-runs the TV scrape, not user research. 2+ tags OR a single non-earnings tag
+    # means the user diverged from the default and the date should archive.
+    ct = slot.get('customTypes') or []
+    if isinstance(ct, list):
+        if len(ct) >= 2: return True
+        if len(ct) == 1 and str(ct[0]).lower() != 'earnings': return True
     if slot.get('newsDetail') and str(slot['newsDetail']).strip(): return True
     return False
 

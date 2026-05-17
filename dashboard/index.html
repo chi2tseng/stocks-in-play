@@ -4120,7 +4120,15 @@ function hasResearchData(slot) {
   if (s.newsDetail || s.catalyst || s.tv) return true;
   if (o.open != null || o.close != null) return true;
   if (slot.notes && String(slot.notes).trim()) return true;
-  if (Array.isArray(slot.customTypes) && slot.customTypes.length > 0) return true;
+  // customTypes counts as research ONLY when the user has diverged from the system
+  // default. Switching to a fresh date pre-seeds ['earnings'] so /update-studies knows
+  // to run the TV scrape next time — that alone shouldn't mark the date as researched.
+  // Counts as research if: 2+ tags, OR a single tag that isn't 'earnings'.
+  if (Array.isArray(slot.customTypes)) {
+    const ct = slot.customTypes;
+    if (ct.length >= 2) return true;
+    if (ct.length === 1 && String(ct[0]).toLowerCase() !== 'earnings') return true;
+  }
   // The user's HTML newsDetail override counts as research data too — typing into the
   // News Detail card on a fresh date should bump the chip count immediately.
   if (slot.newsDetail && String(slot.newsDetail).trim()) return true;

@@ -372,7 +372,13 @@ def has_research_data(slot):
     if s.get('newsDetail') or s.get('catalyst') or s.get('tv'): return True
     if o.get('open') is not None or o.get('close') is not None: return True
     if (slot.get('notes') or '').strip(): return True
-    if slot.get('customTypes'): return True
+    # customTypes counts as research ONLY when the user has diverged from the system
+    # default. Switching to a fresh date pre-seeds ['earnings']; that alone isn't
+    # research. Counts if: 2+ tags OR a single tag that isn't 'earnings'.
+    ct = slot.get('customTypes') or []
+    if isinstance(ct, list):
+        if len(ct) >= 2: return True
+        if len(ct) == 1 and str(ct[0]).lower() != 'earnings': return True
     if slot.get('newsDetail') and str(slot['newsDetail']).strip(): return True
     return False
 
