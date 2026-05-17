@@ -955,7 +955,55 @@ TradingView's CURRENT consensus, not the at-the-time consensus.
 
 #### 10c.4 — Atomic writeback
 
-Once all studies have been processed, write the updated array back to
+**BEFORE writing back, mirror every touched study's flat date-bound fields into its
+`datedSnapshots[ohlcv.date]` slot.** REQUIRED — the dashboard's "researched dates" chip
+reads from this map, so a refresh that only updates the flat fields leaves the new date
+invisible in the UI. The dashboard's `updateStudy()` does this mirror automatically on
+every edit, but skill writes bypass it by hitting JSON directly. Replicate the mirror
+here. Same exact rule as `/update-studies` Phase 5:
+
+```python
+DATE_BOUND_FIELDS = ['snapshot','ohlcv','hiddenSections','notes','customTypes',
+                     'customChart','focusQuarterIdx','newsDetail']
+
+def build_dated_slot(st):
+    return {
+        'snapshot':       dict(st.get('snapshot') or {}),
+        'ohlcv':          dict(st.get('ohlcv') or {}),
+        'hiddenSections': list(st.get('hiddenSections') or []),
+        'notes':          st.get('notes') or '',
+        'customTypes':    list(st.get('customTypes') or []),
+        'customChart':    (dict(st['customChart']) if st.get('customChart') else None),
+        'focusQuarterIdx': st.get('focusQuarterIdx'),
+        'newsDetail':     st.get('newsDetail'),
+    }
+
+def has_research_data(slot):
+    s = slot.get('snapshot') or {}
+    o = slot.get('ohlcv') or {}
+    if s.get('newsDetail') or s.get('catalyst') or s.get('tv'): return True
+    if o.get('open') is not None or o.get('close') is not None: return True
+    if (slot.get('notes') or '').strip(): return True
+    if slot.get('customTypes'): return True
+    if slot.get('newsDetail') and str(slot['newsDetail']).strip(): return True
+    return False
+
+for st in studies:
+    od = (st.get('ohlcv') or {}).get('date','')
+    if not od: continue
+    st.setdefault('datedSnapshots', {})
+    slot = build_dated_slot(st)
+    if has_research_data(slot):
+        st['datedSnapshots'][od] = slot
+    elif od in st['datedSnapshots']:
+        del st['datedSnapshots'][od]
+```
+
+Keep `DATE_BOUND_FIELDS` / `build_dated_slot` / `has_research_data` in sync with the JS
+versions in `dashboard/index.html` — both `/SIPs` Phase 10c.4 and `/update-studies`
+Phase 5 use this same logic.
+
+THEN write the updated array back to
 `dashboard/studies/studies.json` in one shot (`ensure_ascii=false`, `indent=2`).
 
 Also sync `snapshot.last = ohlcv.close` (header big-price-readout source). Phase 10b's

@@ -268,7 +268,16 @@
           "close": 11.21,
           "prev_close": 8.86,
           "volume": 244801000
-        }
+        },
+        "hiddenSections": [],
+        "notes": "",
+        "customTypes": [
+          "contract",
+          "EP"
+        ],
+        "customChart": null,
+        "focusQuarterIdx": null,
+        "newsDetail": null
       }
     }
   },
@@ -608,7 +617,88 @@
           "close": 207.27,
           "prev_close": 179.11,
           "volume": 38770000
-        }
+        },
+        "hiddenSections": [],
+        "notes": "",
+        "customTypes": [
+          "earnings",
+          "SIPs"
+        ],
+        "customChart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            null,
+            null,
+            -0.37,
+            -0.41,
+            -0.38,
+            -0.41,
+            -0.99,
+            -0.32,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            null,
+            null,
+            null,
+            -0.48,
+            -0.5,
+            -0.56,
+            -1.03,
+            -0.77,
+            -0.64,
+            -0.64,
+            -0.54,
+            -0.11
+          ],
+          "rev_reported_M": [
+            24.9,
+            43.3,
+            37.9,
+            55.3,
+            105.1,
+            146.1,
+            227.7,
+            399,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            null,
+            null,
+            58.1,
+            57.73,
+            105.37,
+            157.88,
+            247.28,
+            375.13,
+            614,
+            940,
+            1460,
+            2230
+          ],
+          "latest_idx": 7
+        },
+        "focusQuarterIdx": 7,
+        "newsDetail": null
       }
     }
   },
@@ -1096,6 +1186,137 @@
         "customTypes": [],
         "customChart": null,
         "focusQuarterIdx": null,
+        "newsDetail": null
+      },
+      "2026-02-25": {
+        "snapshot": {
+          "name": "Circle Internet Group Inc",
+          "type": "momentum",
+          "catalyst": "2/25 盤前 Q4 + FY 2025 業績：EPS $0.43 vs 預估 $0.16（surprise +168.75%）、Q4 營收 $770M (+77% YoY) vs 預估 $749M。USDC 流通量 $75.3B (+72% YoY)，調整後 EBITDA $167M (+412%)。",
+          "newsDetail": "2/25 盤前 Q4 2025 + FY 2025 業績電話會議：**EPS $0.43** vs 預估 $0.16（surprise **+168.75%**），**Q4 營收 $770M** (+77% YoY) vs 預估 $749M（+2.80% surprise）。FY 2025 全年營收 $2.747B (+64%)、調整後 EBITDA $582M (+104%)。\n\n**USDC 流通量 $75.3B (+72% YoY)** — 穩定幣供應量持續擴張，市佔率穩固。Q4 調整後 EBITDA $167M (+412% YoY) — 利潤率大幅改善，規模效應 + 利息收入提升雙重貢獻。\n\n**盤中反應：** 業績後 gap up + 全日走強，收 **$83.14 (+35.47%)**（前收 $61.37），盤中高點 **$83.35**，成交量 **63.85M** (~7× 平均)。50 日均線突破，技術面從 2/5 $49.90 低點反彈 +66%。\n\n**前瞻：** 下 4 季 EPS 估 $0.19 / $0.18 / $0.23 / $0.26，營收估 $714M / $732M / $784M / $843M — 逐季提升。穩定幣 GENIUS Act 立法 + USDC 採用率擴張為長期 thesis；估值已大幅 re-rate 留意拉回機會。\n\n> ⚠️ 表格中的 forward 4 季 estimates 是 TradingView 目前的 consensus，並非 2026-02-25 當時的數字。歷史 reported actuals (Q4 '25 0.43 EPS / $770M Rev) 為真實 historical 數據。",
+          "sources": [
+            {
+              "label": "Circle Q4 + FY 2025 IR release",
+              "url": "https://investor.circle.com/news-releases/news-release-details/circle-reports-fourth-quarter-and-full-year-2025-results",
+              "publishedAt": "2026-02-25T06:30:00-05:00"
+            },
+            {
+              "label": "Yahoo Finance — CRCL coverage",
+              "url": "https://finance.yahoo.com/quote/CRCL/"
+            },
+            {
+              "label": "StockTitan — CRCL latest news",
+              "url": "https://www.stocktitan.net/news/CRCL/"
+            }
+          ],
+          "tv": {
+            "latestEPS": 0.43,
+            "consensusEPS": 0.16,
+            "priorYrEPS": null,
+            "surpriseEPS_pct": 168.75,
+            "surpriseEPS_dollar": 0.27,
+            "latestRev_M": 770.23,
+            "consensusRev_M": 749.23,
+            "priorYrRev_M": 435.16,
+            "surpriseRev_pct": 2.8,
+            "yrYrRev_pct": 77.05,
+            "epsYoY_pct": null,
+            "epsEst_next4": [
+              0.19,
+              0.18,
+              0.23,
+              0.26
+            ],
+            "revEst_next4": [
+              714.7,
+              732.71,
+              783.96,
+              842.97
+            ],
+            "yoyBlock": "N/M / +77.05%\n--------------------\n-36.67% / +23.52%\n+104.02% / +11.34%\n-64.06% / +5.97%\n-39.53% / +9.44%",
+            "chart": {
+              "quarters": [
+                "Q1 '25",
+                "Q2 '25",
+                "Q3 '25",
+                "Q4 '25",
+                "Q1 '26",
+                "Q2 '26",
+                "Q3 '26",
+                "Q4 '26",
+                "Q1 '27"
+              ],
+              "eps_reported": [
+                0.3,
+                -4.48,
+                0.64,
+                0.43,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "eps_estimate": [
+                null,
+                -1.1,
+                0.19,
+                0.16,
+                0.19,
+                0.18,
+                0.23,
+                0.26,
+                0.31
+              ],
+              "rev_reported_M": [
+                578.59,
+                658.08,
+                739.76,
+                770.23,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "rev_estimate_M": [
+                null,
+                645.7,
+                708.22,
+                749.23,
+                714.7,
+                732.71,
+                783.96,
+                842.97,
+                909.29
+              ],
+              "latest_idx": 3
+            }
+          },
+          "sessions": [],
+          "chgPct": 35.47,
+          "last": 83.14,
+          "publishedAt": null,
+          "publishedTimezone": null,
+          "scanDate": "2026-02-25",
+          "_newsFetched": true
+        },
+        "ohlcv": {
+          "date": "2026-02-25",
+          "open": 73.77,
+          "high": 83.35,
+          "low": 71.19,
+          "close": 83.14,
+          "prev_close": 61.37,
+          "volume": 63849900
+        },
+        "hiddenSections": [],
+        "notes": "",
+        "customTypes": [
+          "earnings"
+        ],
+        "customChart": null,
+        "focusQuarterIdx": 3,
         "newsDetail": null
       }
     },

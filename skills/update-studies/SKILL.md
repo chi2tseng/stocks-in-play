@@ -339,7 +339,59 @@ writing news_detail-style content if you need to include `publishedAt`.
 
 ## § Phase 5 — Atomic write
 
-After processing all studies, write the entire updated array back to
+**BEFORE writing back, mirror every updated study's flat date-bound fields into its
+`datedSnapshots[ohlcv.date]` slot.** This is REQUIRED — without it, the dashboard's
+"researched dates" chip won't see the freshly-refreshed date and the user can't
+switch between research sessions for that ticker.
+
+Why this step exists: the dashboard's JS auto-mirrors flat → datedSnapshots on every
+edit (via `updateStudy()`), but this skill bypasses that by writing JSON directly to
+disk. So we must replicate the mirror manually as part of the atomic write.
+
+For every study that was touched in Phases 2-4:
+
+```python
+DATE_BOUND_FIELDS = ['snapshot','ohlcv','hiddenSections','notes','customTypes',
+                     'customChart','focusQuarterIdx','newsDetail']
+
+def build_dated_slot(st):
+    return {
+        'snapshot':       dict(st.get('snapshot') or {}),
+        'ohlcv':          dict(st.get('ohlcv') or {}),
+        'hiddenSections': list(st.get('hiddenSections') or []),
+        'notes':          st.get('notes') or '',
+        'customTypes':    list(st.get('customTypes') or []),
+        'customChart':    (dict(st['customChart']) if st.get('customChart') else None),
+        'focusQuarterIdx': st.get('focusQuarterIdx'),
+        'newsDetail':     st.get('newsDetail'),
+    }
+
+def has_research_data(slot):
+    s = slot.get('snapshot') or {}
+    o = slot.get('ohlcv') or {}
+    if s.get('newsDetail') or s.get('catalyst') or s.get('tv'): return True
+    if o.get('open') is not None or o.get('close') is not None: return True
+    if (slot.get('notes') or '').strip(): return True
+    if slot.get('customTypes'): return True
+    if slot.get('newsDetail') and str(slot['newsDetail']).strip(): return True
+    return False
+
+# Per study:
+od = (st.get('ohlcv') or {}).get('date','')
+if od:
+    st.setdefault('datedSnapshots', {})
+    slot = build_dated_slot(st)
+    if has_research_data(slot):
+        st['datedSnapshots'][od] = slot   # MUST do this — chip reads from here
+    elif od in st['datedSnapshots']:
+        del st['datedSnapshots'][od]      # blank slots removed (no clutter)
+```
+
+This mirror logic is identical to what the dashboard's `updateStudy()` does on every
+write — same `DATE_BOUND_FIELDS`, same `buildDatedSlot`, same `hasResearchData`. Keep
+the two in sync if either ever changes.
+
+THEN write the entire updated array back to
 `D:\SIPs\dashboard\studies\studies.json` in one shot (Write tool with the full updated
 JSON content, or per-study Edit operations). `ensure_ascii=false`, `indent=2` to keep
 the same formatting as the input.
