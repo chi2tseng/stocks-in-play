@@ -139,7 +139,138 @@
     "customTypes": [
       "contract",
       "EP"
-    ]
+    ],
+    "datedSnapshots": {
+      "2026-05-14": {
+        "snapshot": {
+          "name": "Ondas Inc",
+          "type": "contract",
+          "chgPct": 15.69,
+          "last": 11.21,
+          "catalyst": "5/14 盤前 Q1 2026 業績前，宣布 $175M 收購 Mistral 國防、Israel 邊境掃雷 $80M、INDO Earth Moving 初始 $68M（$140M 多年計畫），積壓訂單達 $457M（含 World View）。",
+          "tv": {
+            "latestEPS": -0.34,
+            "consensusEPS": -0.05,
+            "priorYrEPS": -0.15,
+            "surpriseEPS_pct": -590.37,
+            "surpriseEPS_dollar": -0.29000000000000004,
+            "latestRev_M": 30.1,
+            "consensusRev_M": 27.82,
+            "priorYrRev_M": 4.1,
+            "surpriseRev_pct": 8.2,
+            "yrYrRev_pct": 634.1463414634147,
+            "epsYoY_pct": null,
+            "epsEst_next4": [
+              -0.05,
+              -0.06,
+              -0.05,
+              -0.04
+            ],
+            "revEst_next4": [
+              39.36,
+              63.91,
+              114.12,
+              161.68
+            ],
+            "yoyBlock": "-126.67% / +634.15%\n--------------------\n+66.67% / +826.12%\n+25.00% / +919.30%\n-66.67% / +1029.90%\n+88.24% / +437.14%",
+            "chart": {
+              "quarters": [
+                "Q1 '24",
+                "Q2 '24",
+                "Q3 '24",
+                "Q4 '24",
+                "Q1 '25",
+                "Q2 '25",
+                "Q3 '25",
+                "Q4 '25",
+                "Q1 '26",
+                "Q2 '26",
+                "Q3 '26",
+                "Q4 '26"
+              ],
+              "eps_reported": [
+                -0.17,
+                -0.14,
+                -0.15,
+                -0.15,
+                -0.15,
+                -0.08,
+                -0.03,
+                -0.34,
+                null,
+                null,
+                null,
+                null
+              ],
+              "eps_estimate": [
+                -0.16,
+                -0.14,
+                -0.12,
+                -0.09,
+                -0.1,
+                -0.08,
+                -0.04,
+                -0.05,
+                -0.05,
+                -0.06,
+                -0.05,
+                -0.04
+              ],
+              "rev_reported_M": [
+                0.62501,
+                0.9578500000000001,
+                1.48,
+                4.1,
+                4.25,
+                6.27,
+                10.1,
+                30.1,
+                null,
+                null,
+                null,
+                null
+              ],
+              "rev_estimate_M": [
+                3.76,
+                1.24,
+                1.85,
+                5.75,
+                4.94,
+                5.18,
+                7.03,
+                27.82,
+                39.36,
+                63.91,
+                114.12,
+                161.68
+              ],
+              "latest_idx": 7
+            }
+          },
+          "sessions": [
+            {
+              "last": 10.25,
+              "chgPct": 15.69,
+              "volume": 8373935,
+              "session": "pre",
+              "direction": "up",
+              "name": "Ondas Inc"
+            }
+          ],
+          "newsDetail": "5/14 上午 8:30 ET Q1 2026 業績電話會議前，Ondas 公布多項合約進度：**$175M 收購 Mistral 國防（pro forma backlog +$264M）、Israel $1.7B Eastern Border Security Barrier 中拿下 ~$80M 訂單、INDO Earth Moving 初始 $68M（$140M 多年計畫，2026 開始交貨）**。\n\nPro forma 含 World View 總積壓訂單達 **$457M（截至 2026/03/31）**。\n\nRev YoY +634% 是真的爆發 (從 $4.1M 到 $30.1M)，但 EPS 虧損擴大 -127% 是 capital burn。今日靠 backlog 故事拉漲、但電話會議 8:30am 是關鍵風險點——若 cash burn 數據令市場失望，盤中可能 reverse 至 -10%。建議 8:30 電話會議後再進。",
+          "scanDate": "2026-05-14"
+        },
+        "ohlcv": {
+          "date": "2026-05-14",
+          "open": 9.99,
+          "high": 11.73,
+          "low": 9.6,
+          "close": 11.21,
+          "prev_close": 8.86,
+          "volume": 244801000
+        }
+      }
+    }
   },
   {
     "id": "NBIS-mp85qrpt9dk",
@@ -352,146 +483,134 @@
         2230
       ],
       "latest_idx": 7
-    }
-  },
-  {
-    "id": "AMD-mp8bp0rckwm",
-    "symbol": "AMD",
-    "savedAt": "2026-05-16T12:29:01.080Z",
-    "snapshot": {
-      "name": "Advanced Micro Devices, Inc.",
-      "type": "momentum",
-      "chgPct": null,
-      "last": 421.39,
-      "catalyst": "5/5 盤後 Q1 2026 EPS $1.37 vs 預估 $1.29、營收 $10.25B vs $9.90B（YoY +37.8%），Data Center 營收 $5.8B（YoY +57%）成主要驅動，Q2 指引 $11.2B（中位 YoY +46%）。5/6 開盤 gap up 至 $421（+18.6%）。",
-      "tv": {
-        "latestEPS": 1.37,
-        "consensusEPS": 1.29,
-        "priorYrEPS": 0.96,
-        "surpriseEPS_pct": 6.24,
-        "surpriseEPS_dollar": 0.08,
-        "latestRev_M": 10250,
-        "consensusRev_M": 9900,
-        "priorYrRev_M": 7440,
-        "surpriseRev_pct": 3.57,
-        "yrYrRev_pct": 37.76881720430107,
-        "epsYoY_pct": 42.70833333333333,
-        "epsEst_next4": [
-          1.6,
-          1.83,
-          2.62,
-          2.71
-        ],
-        "revEst_next4": [
-          11240,
-          12410,
-          15600,
-          16290
-        ],
-        "yoyBlock": "+42.71% / +37.77%\n--------------------\n+233.33% / +46.35%\n+52.50% / +34.16%\n+71.24% / +51.90%\n+97.81% / +58.93%",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27"
-          ],
-          "eps_reported": [
-            0.69,
-            0.92,
-            1.09,
-            0.96,
-            0.48,
-            1.2,
-            1.53,
-            1.37,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.68,
-            0.92,
-            1.08,
-            0.94,
-            0.48,
-            1.17,
-            1.32,
-            1.29,
-            1.6,
-            1.83,
-            2.62,
-            2.71
-          ],
-          "rev_reported_M": [
-            5830,
-            6820,
-            7660,
-            7440,
-            7680,
-            9250,
-            10270,
-            10250,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            5730,
-            6710,
-            7530,
-            7120,
-            7410,
-            8760,
-            9670,
-            9900,
-            11240,
-            12410,
-            15600,
-            16290
-          ],
-          "latest_idx": 7
+    },
+    "datedSnapshots": {
+      "2026-05-13": {
+        "snapshot": {
+          "name": "Nebius Group N.V.",
+          "type": "momentum",
+          "chgPct": null,
+          "last": 207.27,
+          "catalyst": "Q1 2026 業績電話會議：EPS -$0.32 vs 預估 -$0.77（surprise +57.7%）、營收 $399M vs 預估 $375M（+6.4% surprise），YoY 營收 +621% 為連 8 季加速。Citigroup 上調 PT 至 $287（前值 $169），Morgan Stanley、DA Davidson、Citizens 同步上修目標價。",
+          "tv": {
+            "latestEPS": -0.32,
+            "consensusEPS": -0.77,
+            "priorYrEPS": -0.41,
+            "surpriseEPS_pct": 57.72,
+            "surpriseEPS_dollar": 0.45,
+            "latestRev_M": 399,
+            "consensusRev_M": 375.13,
+            "priorYrRev_M": 55.3,
+            "surpriseRev_pct": 6.36,
+            "yrYrRev_pct": 621.5189873417722,
+            "epsYoY_pct": 21.951219512195117,
+            "epsEst_next4": [
+              -0.64,
+              -0.64,
+              -0.54,
+              -0.11
+            ],
+            "revEst_next4": [
+              597.82,
+              940.92,
+              1490,
+              2240
+            ],
+            "yoyBlock": "+21.95% / +621.52%\n--------------------\n-68.42% / +468.81%\n-56.10% / +544.02%\n+45.45% / +554.37%\n+65.62% / +461.40%",
+            "chart": {
+              "quarters": [
+                "Q2 '24",
+                "Q3 '24",
+                "Q4 '24",
+                "Q1 '25",
+                "Q2 '25",
+                "Q3 '25",
+                "Q4 '25",
+                "Q1 '26",
+                "Q2 '26",
+                "Q3 '26",
+                "Q4 '26",
+                "Q1 '27"
+              ],
+              "eps_reported": [
+                null,
+                null,
+                -0.37,
+                -0.41,
+                -0.38,
+                -0.41,
+                -0.99,
+                -0.32,
+                null,
+                null,
+                null,
+                null
+              ],
+              "eps_estimate": [
+                null,
+                null,
+                null,
+                -0.48,
+                -0.5,
+                -0.56,
+                -1.03,
+                -0.77,
+                -0.64,
+                -0.64,
+                -0.54,
+                -0.11
+              ],
+              "rev_reported_M": [
+                24.9,
+                43.3,
+                37.9,
+                55.3,
+                105.1,
+                146.1,
+                227.7,
+                399,
+                null,
+                null,
+                null,
+                null
+              ],
+              "rev_estimate_M": [
+                null,
+                null,
+                58.1,
+                57.73,
+                105.37,
+                157.88,
+                247.28,
+                375.13,
+                597.82,
+                940.92,
+                1490,
+                2240
+              ],
+              "latest_idx": 7
+            }
+          },
+          "sessions": [],
+          "shortFloat": null,
+          "shortRatio": null,
+          "marketCap_M": null,
+          "claudeRationale": "",
+          "claudeIntent": null,
+          "newsDetail": "5/13 Q1 2026 業績電話會議前夕，Nebius 公布大幅優於預期的營收 **$399M**（YoY +621.5%）— 為 8 個季度連續加速，AI 雲基礎設施需求極強。\n\nEPS **-$0.32**（虧損縮窄）vs 預估 -$0.77，surprise **+57.7%**。\n\n**分析師反應：** Citigroup PT $169 → **$287**（buy），DA Davidson + Citizens 上修目標價，Morgan Stanley reset。\n\n**前瞻：** 下 4 季營收估 $614M / $940M / $1.46B / $2.23B — 連續翻倍。盤前 +13.81%。AI 基礎建設長期 thesis，但短期估值已大幅 re-rating，留意 200 SMA 附近的回測。",
+          "scanDate": "2026-05-16"
+        },
+        "ohlcv": {
+          "date": "2026-05-13",
+          "open": 203.85,
+          "high": 217.34,
+          "low": 195,
+          "close": 207.27,
+          "prev_close": 179.11,
+          "volume": 38770000
         }
-      },
-      "sessions": [],
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "claudeRationale": "",
-      "claudeIntent": null,
-      "newsDetail": "5/5 盤後 Q1 2026 業績電話會議：AMD 報出 **EPS $1.37 vs 預估 $1.29（surprise +6.24%）、營收 $10.25B vs 預估 $9.90B（+3.57% surprise）**，YoY 營收 +37.8%、Data Center 部門營收 **$5.8B（YoY +57%）** — 首次明確成為主要營收與獲利成長引擎。\n\n**Q2 2026 指引：** 營收約 $11.2B（±$300M），中位點 YoY +46%，毛利率預估 56%。\n\n**Lisa Su 評論：** Data Center 業務「對 AI 營收能在明年達到數十百億美金規模有強烈且增加的信心，並能超過長期 >80% 的成長目標」。MI355 客戶 traction 強勁，多項 benchmark 領先。\n\n**分析師反應：** Susquehanna PT $375（earnings 前已上修）、Bank of America 同步上調。盤後 +16%、5/6 開盤 gap up 至 $421（自 $355.26，+18.6%），盤中觸及高點 $430.60。\n\n**前瞻：** 下 4 季 EPS 估 $1.60 / $1.83 / $2.62 / $2.71，營收估 $11.24B / $12.41B / $15.60B / $16.29B — 連續加速。Data Center YoY 加速 + AI GPU 路線圖（MI350/MI400）為主要 thesis。風險：單日 +18% gap 已大幅 re-rating，短期需消化，可留意 5DSMA / 10DSMA 附近的回測。",
-      "scanDate": "2026-05-16"
-    },
-    "notes": "",
-    "tags": [],
-    "targetPrice": null,
-    "stopLoss": null,
-    "conviction": 3,
-    "ohlcv": {
-      "date": "2026-05-06",
-      "open": 409.49,
-      "high": 430.6,
-      "low": 402.04,
-      "close": 421.39,
-      "prev_close": 355.26,
-      "volume": 87732200
-    },
-    "screenshots": [],
-    "hiddenSections": [],
-    "customTypes": [
-      "earnings"
-    ],
-    "focusQuarterIdx": 7
+      }
+    }
   },
   {
     "id": "CRML-mp8lfjvm4xm",
@@ -507,10 +626,10 @@
         "latestEPS": -0.18,
         "consensusEPS": -0.05,
         "priorYrEPS": null,
-        "surpriseEPS_pct": -260.0,
+        "surpriseEPS_pct": -260,
         "surpriseEPS_dollar": -0.13,
-        "latestRev_M": 0.0,
-        "consensusRev_M": 0.0,
+        "latestRev_M": 0,
+        "consensusRev_M": 0,
         "priorYrRev_M": null,
         "surpriseRev_pct": null,
         "yrYrRev_pct": null,
@@ -522,7 +641,7 @@
           0.42
         ],
         "revEst_next4": [
-          0.0,
+          0,
           4.33,
           120.67,
           220.37
@@ -551,15 +670,15 @@
             0.42
           ],
           "rev_reported_M": [
-            0.0,
+            0,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            0.0,
-            0.0,
+            0,
+            0,
             4.33,
             120.67,
             220.37
@@ -604,13 +723,389 @@
     },
     "screenshots": [],
     "hiddenSections": [
-      "eps_chart",
-      "rev_chart",
-      "ms_table",
       "yoy_block"
     ],
     "customTypes": [
       "earnings"
-    ]
+    ],
+    "datedSnapshots": {
+      "2026-04-17": {
+        "snapshot": {
+          "name": "Critical Metals Corp.",
+          "type": "momentum",
+          "chgPct": null,
+          "last": 12.56,
+          "catalyst": "4/17 格陵蘭政府核准 Tanbreez 最後 50.5% 股權移轉，CRML 持股由 42% 升至 92.5%。併行催化含 $1.5B 沙烏地 JV、EXIM $120M、Texas Capital Buy PT $20。當日 +35%，4月累計 +60%。",
+          "tv": {
+            "latestEPS": -0.18,
+            "consensusEPS": -0.05,
+            "priorYrEPS": null,
+            "surpriseEPS_pct": -260,
+            "surpriseEPS_dollar": -0.13,
+            "latestRev_M": 0,
+            "consensusRev_M": 0,
+            "priorYrRev_M": null,
+            "surpriseRev_pct": null,
+            "yrYrRev_pct": null,
+            "epsYoY_pct": null,
+            "epsEst_next4": [
+              -0.45,
+              -0.17,
+              0.2,
+              0.42
+            ],
+            "revEst_next4": [
+              0,
+              4.33,
+              120.67,
+              220.37
+            ],
+            "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M\nN/M / N/M\n+333.33% / N/M",
+            "chart": {
+              "quarters": [
+                "FY '25",
+                "FY '26",
+                "FY '27",
+                "FY '28",
+                "FY '29"
+              ],
+              "eps_reported": [
+                -0.18,
+                null,
+                null,
+                null,
+                null
+              ],
+              "eps_estimate": [
+                -0.05,
+                -0.45,
+                -0.17,
+                0.2,
+                0.42
+              ],
+              "rev_reported_M": [
+                0,
+                null,
+                null,
+                null,
+                null
+              ],
+              "rev_estimate_M": [
+                0,
+                0,
+                4.33,
+                120.67,
+                220.37
+              ],
+              "latest_idx": 0
+            }
+          },
+          "sessions": [],
+          "shortFloat": null,
+          "shortRatio": null,
+          "marketCap_M": null,
+          "claudeRationale": "",
+          "claudeIntent": null,
+          "newsDetail": "4/17 開盤前，Critical Metals 公告 **格陵蘭政府核准 Tanbreez Mining Greenland 最後 50.5% 股權移轉**，使 CRML 持股由 42% 提升至 **92.5%**（European Lithium Ltd 由 57.5% 降至 7.5%）。Tanbreez 為全球最大重稀土元素（HREE）礦床之一，位於南格陵蘭，具全年深水峽灣航運條件。\n\n**進度時程：** 2026/3 冶金測試顯示精礦品級提升約 **40%**；5 月啟動 pilot plant；6 月大量取樣（bulk sampling）；目標投產 **2028 末 – 2029 初**、2029 Q3 開始出口精礦。\n\n**併行催化：** $1.5B 沙烏地 JV term sheet、美國 EXIM **$120M** 支持、Texas Capital 啟動覆蓋（Buy，PT **$20**） — 構成美國 / 西方稀土供應鏈安全主題的核心受惠標的。Chairman Tony Sage：\"game-changing moment for Critical Metals Corp. and for Western rare earth supply security\"。\n\n**價量：** 4/17 開盤 $11.31（前日收 $9.27，+22% gap），盤中觸高 $13.75，收 $12.56（+35.5%），量 73.67M（前日 9.16M ×8）。4 月份累計約 **+60%**。\n\n**前瞻 / 風險：** 4/21 隨即公告 $60M 私募增資（pre-revenue 公司 dilution 風險顯化）；產能距離出貨仍有 2–3 年，現階段純粹是「**資源 + 政策 + 地緣**」主題股，consensus 仍預估 FY26 EPS -$0.45（虧損擴大）、營收為零。看多者依 thesis 持倉，但任何供應鏈 / 沙烏地 JV / 美中稀土政策變動都可能引發單日 ±20% re-rate。\n\n> ⚠️ 表格中的 EPS / 營收為 **年度** 數據（TradingView 對 CRML 僅提供年度顆粒度，無季度），FY 25 報出 EPS -$0.18 vs 預估 -$0.05（surprise -260%）為 pre-revenue 礦業階段常見現象。",
+          "sources": [
+            {
+              "label": "Critical Metals — Greenland approves Tanbreez 50.5% transfer",
+              "url": "https://www.criticalmetalscorp.com/greenland-government-approves-transfer-of-final-50-5-of-tanbreez-taking-critical-metals-corp-to-92-5-ownership/",
+              "publishedAt": "2026-04-17"
+            },
+            {
+              "label": "GlobeNewswire — CRML $60M Private Placement",
+              "url": "https://www.globenewswire.com/news-release/2026/04/21/3277957/0/en/Critical-Metals-Corp-Nasdaq-CRML-Announces-Private-Placement-of-Ordinary-Shares-for-Proceeds-of-60-Million.html",
+              "publishedAt": "2026-04-21"
+            }
+          ],
+          "scanDate": "2026-05-17"
+        },
+        "ohlcv": {
+          "date": "2026-04-17",
+          "open": 11.31,
+          "high": 13.75,
+          "low": 11.15,
+          "close": 12.56,
+          "prev_close": 9.27,
+          "volume": 73669800
+        },
+        "hiddenSections": [
+          "yoy_block"
+        ],
+        "notes": "",
+        "customTypes": [
+          "earnings"
+        ],
+        "customChart": null,
+        "focusQuarterIdx": null,
+        "newsDetail": null
+      }
+    }
+  },
+  {
+    "id": "CRCL-mp9pe5zkold",
+    "symbol": "CRCL",
+    "savedAt": "2026-05-17T11:40:15.440Z",
+    "snapshot": {
+      "name": "Circle Internet Group Inc",
+      "type": "momentum",
+      "catalyst": "2/25 盤前 Q4 + FY 2025 業績：EPS $0.43 vs 預估 $0.16（surprise +168.75%）、Q4 營收 $770M (+77% YoY) vs 預估 $749M。USDC 流通量 $75.3B (+72% YoY)，調整後 EBITDA $167M (+412%)。",
+      "newsDetail": "2/25 盤前 Q4 2025 + FY 2025 業績電話會議：**EPS $0.43** vs 預估 $0.16（surprise **+168.75%**），**Q4 營收 $770M** (+77% YoY) vs 預估 $749M（+2.80% surprise）。FY 2025 全年營收 $2.747B (+64%)、調整後 EBITDA $582M (+104%)。\n\n**USDC 流通量 $75.3B (+72% YoY)** — 穩定幣供應量持續擴張，市佔率穩固。Q4 調整後 EBITDA $167M (+412% YoY) — 利潤率大幅改善，規模效應 + 利息收入提升雙重貢獻。\n\n**盤中反應：** 業績後 gap up + 全日走強，收 **$83.14 (+35.47%)**（前收 $61.37），盤中高點 **$83.35**，成交量 **63.85M** (~7× 平均)。50 日均線突破，技術面從 2/5 $49.90 低點反彈 +66%。\n\n**前瞻：** 下 4 季 EPS 估 $0.19 / $0.18 / $0.23 / $0.26，營收估 $714M / $732M / $784M / $843M — 逐季提升。穩定幣 GENIUS Act 立法 + USDC 採用率擴張為長期 thesis；估值已大幅 re-rate 留意拉回機會。\n\n> ⚠️ 表格中的 forward 4 季 estimates 是 TradingView 目前的 consensus，並非 2026-02-25 當時的數字。歷史 reported actuals (Q4 '25 0.43 EPS / $770M Rev) 為真實 historical 數據。",
+      "sources": [
+        {
+          "label": "Circle Q4 + FY 2025 IR release",
+          "url": "https://investor.circle.com/news-releases/news-release-details/circle-reports-fourth-quarter-and-full-year-2025-results",
+          "publishedAt": "2026-02-25T06:30:00-05:00"
+        },
+        {
+          "label": "Yahoo Finance — CRCL coverage",
+          "url": "https://finance.yahoo.com/quote/CRCL/"
+        },
+        {
+          "label": "StockTitan — CRCL latest news",
+          "url": "https://www.stocktitan.net/news/CRCL/"
+        }
+      ],
+      "tv": {
+        "latestEPS": 0.43,
+        "consensusEPS": 0.16,
+        "priorYrEPS": null,
+        "surpriseEPS_pct": 168.75,
+        "surpriseEPS_dollar": 0.27,
+        "latestRev_M": 770.23,
+        "consensusRev_M": 749.23,
+        "priorYrRev_M": 435.16,
+        "surpriseRev_pct": 2.8,
+        "yrYrRev_pct": 77.05,
+        "epsYoY_pct": null,
+        "epsEst_next4": [
+          0.19,
+          0.18,
+          0.23,
+          0.26
+        ],
+        "revEst_next4": [
+          714.7,
+          732.71,
+          783.96,
+          842.97
+        ],
+        "yoyBlock": "N/M / +77.05%\n--------------------\n-36.67% / +23.52%\n+104.02% / +11.34%\n-64.06% / +5.97%\n-39.53% / +9.44%",
+        "chart": {
+          "quarters": [
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            0.3,
+            -4.48,
+            0.64,
+            0.43,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            null,
+            -1.1,
+            0.19,
+            0.16,
+            0.19,
+            0.18,
+            0.23,
+            0.26,
+            0.31
+          ],
+          "rev_reported_M": [
+            578.59,
+            658.08,
+            739.76,
+            770.23,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            null,
+            645.7,
+            708.22,
+            749.23,
+            714.7,
+            732.71,
+            783.96,
+            842.97,
+            909.29
+          ],
+          "latest_idx": 3
+        }
+      },
+      "sessions": [],
+      "chgPct": 35.47,
+      "last": 83.14,
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "scanDate": "2026-02-25",
+      "_newsFetched": true
+    },
+    "notes": "",
+    "tags": [],
+    "targetPrice": null,
+    "stopLoss": null,
+    "conviction": 3,
+    "ohlcv": {
+      "date": "2026-02-25",
+      "open": 73.77,
+      "high": 83.35,
+      "low": 71.19,
+      "close": 83.14,
+      "prev_close": 61.37,
+      "volume": 63849900
+    },
+    "screenshots": [],
+    "datedSnapshots": {
+      "2026-05-15": {
+        "snapshot": {
+          "name": "Circle Internet Group Inc Cl A",
+          "type": "earnings",
+          "chgPct": -5.46,
+          "last": 117.11,
+          "catalyst": "Q1 營收 $694M 不及共識 $715M（季減自 $770M），營運費用年增 76% 至 $242M，疊加 Clarity Act 對 stablecoin 收益限制疑慮。",
+          "tv": {
+            "latestEPS": 0.21,
+            "consensusEPS": 0.19,
+            "priorYrEPS": 0.3,
+            "surpriseEPS_pct": 8.11,
+            "surpriseEPS_dollar": 0.01999999999999999,
+            "latestRev_M": 694.13,
+            "consensusRev_M": 714.7,
+            "priorYrRev_M": 578.59,
+            "surpriseRev_pct": -2.88,
+            "yrYrRev_pct": 19.96923555540192,
+            "epsYoY_pct": -30,
+            "epsEst_next4": [
+              0.18,
+              0.23,
+              0.26,
+              0.31
+            ],
+            "revEst_next4": [
+              732.71,
+              783.96,
+              842.97,
+              909.29
+            ],
+            "yoyBlock": "-30.00% / +19.97%\n--------------------\n+104.02% / +11.34%\n-64.06% / +5.97%\n-39.53% / +9.44%\n+47.62% / +31.00%",
+            "chart": {
+              "quarters": [
+                "Q1 '25",
+                "Q2 '25",
+                "Q3 '25",
+                "Q4 '25",
+                "Q1 '26",
+                "Q2 '26",
+                "Q3 '26",
+                "Q4 '26",
+                "Q1 '27"
+              ],
+              "eps_reported": [
+                0.3,
+                -4.48,
+                0.64,
+                0.43,
+                0.21,
+                null,
+                null,
+                null,
+                null
+              ],
+              "eps_estimate": [
+                null,
+                -1.1,
+                0.19,
+                0.16,
+                0.19,
+                0.18,
+                0.23,
+                0.26,
+                0.31
+              ],
+              "rev_reported_M": [
+                578.59,
+                658.08,
+                739.76,
+                770.23,
+                694.13,
+                null,
+                null,
+                null,
+                null
+              ],
+              "rev_estimate_M": [
+                null,
+                645.7,
+                708.22,
+                749.23,
+                714.7,
+                732.71,
+                783.96,
+                842.97,
+                909.29
+              ],
+              "latest_idx": 4
+            }
+          },
+          "sessions": [
+            {
+              "last": 117.11,
+              "chgPct": -5.46,
+              "volume": 1112885,
+              "session": "pre",
+              "direction": "down",
+              "name": "Circle Internet Group Inc Cl A"
+            }
+          ],
+          "shortFloat": 12.19,
+          "shortRatio": 1.26,
+          "marketCap_M": 28340,
+          "newsDetail": null,
+          "scanDate": "2026-05-16"
+        },
+        "ohlcv": {
+          "date": "2026-05-15",
+          "open": 117.47,
+          "high": 118.26,
+          "low": 111.39,
+          "close": 114,
+          "prev_close": 123.88,
+          "volume": 17834500
+        },
+        "hiddenSections": [],
+        "notes": "",
+        "customTypes": [],
+        "customChart": null,
+        "focusQuarterIdx": null,
+        "newsDetail": null
+      }
+    },
+    "hiddenSections": [],
+    "customTypes": [
+      "earnings"
+    ],
+    "customChart": null,
+    "focusQuarterIdx": 3,
+    "newsDetail": null,
+    "intent": "long"
   }
 ]
