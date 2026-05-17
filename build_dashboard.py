@@ -1161,49 +1161,50 @@ body.readonly-mode .vol-editable:hover { background: transparent; }
   font-family: var(--font-mono); font-size: 12px; color: var(--stone);
   font-weight: 500; letter-spacing: 0.3px;
 }
-/* Editable date pill in the Study-detail breadcrumb — uses native date picker but styled to
-   look like the read-only .study-detail-date pill it replaces. Hover/focus reveal a subtle
-   border so the user notices it's interactive.
-
-   color-scheme: light here is the critical fix for the "brief black flash" the user
-   reported. Chrome on Windows defaults <input type="date"> to the OS color scheme. With
-   Windows on dark mode the picker popup initially renders dark before our CSS applies —
-   the user sees a black flash. Forcing color-scheme: light keeps the popup light from
-   the start. Body.dark below overrides to dark when our own dark-mode is active.
-
-   accent-color tints the highlighted day + "Today" button in the native picker so the
-   popup feels like ours (not a generic Windows blue circle on the picked day). */
-.study-detail-date-input {
-  font-family: var(--font-mono); font-size: 12px; color: var(--stone);
+/* Date pill in the Study-detail breadcrumb — fully custom calendar popup (no native
+   <input type=date>). The native picker had two unsolvable problems: it briefly flashed
+   the OS dark theme before our color-scheme applied, and the popup popup itself couldn't
+   be fully styled to match our design system. The replacement is a button that opens our
+   own .study-detail-cal-popup, which reuses the topbar calendar's .cal-day/.cal-grid
+   styles for a cohesive look. */
+.study-detail-date-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 12px;
   font-weight: 500; letter-spacing: 0.3px;
-  background: transparent; border: 1px solid transparent; border-radius: var(--r-sm);
-  padding: 2px 6px; margin: -2px 0; cursor: pointer;
-  /* No transition on focus — eliminates the brief style swap that showed through as a
-     flicker when the picker opened. Hover transition stays since it doesn't compete
-     with picker-open. */
-  transition: background 0.12s, border-color 0.12s;
-  color-scheme: light;
-  accent-color: var(--primary);
+  color: var(--stone);
+  background: transparent; border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  padding: 3px 8px; margin: -2px 0;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
 }
-body.dark .study-detail-date-input { color-scheme: dark; }
-.study-detail-date-input:hover { background: var(--canvas); border-color: var(--hairline); color: var(--ink); }
-.study-detail-date-input:focus { background: var(--canvas); border-color: var(--primary); color: var(--ink); outline: none; }
-/* Custom calendar indicator — replace Chrome's default black SVG with our own using an
-   inline data URI. Color matches --primary (cobalt). Without this swap, the indicator
-   briefly shows its native dark icon before our opacity/hover rules apply. */
-.study-detail-date-input::-webkit-calendar-picker-indicator {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23494fdf' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='18' height='18' rx='2'/><line x1='16' y1='2' x2='16' y2='6'/><line x1='8' y1='2' x2='8' y2='6'/><line x1='3' y1='10' x2='21' y2='10'/></svg>");
-  background-repeat: no-repeat; background-position: center; background-size: 12px 12px;
-  width: 14px; height: 14px; cursor: pointer; padding: 0;
-  opacity: 0.55; transition: opacity 0.12s;
+.study-detail-date-btn:hover { background: var(--canvas); border-color: var(--hairline); color: var(--ink); }
+.study-detail-date-btn.open { background: var(--canvas); border-color: var(--primary); color: var(--ink); }
+.study-detail-date-btn svg { width: 11px; height: 11px; opacity: 0.55; transition: opacity 0.12s; flex: 0 0 11px; }
+.study-detail-date-btn:hover svg, .study-detail-date-btn.open svg { opacity: 1; }
+body.readonly-mode .study-detail-date-btn { pointer-events: none; opacity: 0.6; }
+/* Custom calendar popup — fixed position so it escapes any ancestor stacking context.
+   Reuses the topbar calendar's .cal-header / .cal-grid / .cal-day rules (defined further
+   down in this file) for a single source of truth on the calendar's visual language. */
+.study-detail-cal-popup {
+  position: fixed; z-index: 10000;
+  background: var(--canvas); border: 1px solid var(--hairline);
+  border-radius: var(--r-md); padding: 16px; width: 280px;
+  box-shadow: 0 12px 32px -6px rgba(0,0,0,0.15);
+  display: none;
+  font-family: var(--font-body);
 }
-body.dark .study-detail-date-input::-webkit-calendar-picker-indicator {
-  /* Lighter cobalt in dark mode so the icon stays visible on the dark topbar bg */
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a5a9ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='18' height='18' rx='2'/><line x1='16' y1='2' x2='16' y2='6'/><line x1='8' y1='2' x2='8' y2='6'/><line x1='3' y1='10' x2='21' y2='10'/></svg>");
+.study-detail-cal-popup.open { display: block; }
+/* "Today" cell — subtle ring around today's date for orientation. Doesn't conflict with
+   .active (currently-selected date gets the solid purple fill) or .has-data (researched
+   dates get the soft purple tint background). */
+.study-detail-cal-popup .cal-day.today:not(.active) {
+  box-shadow: inset 0 0 0 1px var(--primary);
 }
-.study-detail-date-input:hover::-webkit-calendar-picker-indicator,
-.study-detail-date-input:focus::-webkit-calendar-picker-indicator { opacity: 1; }
-body.readonly-mode .study-detail-date-input { pointer-events: none; }
+/* "Future" cells — slightly muted but still clickable (user might want to pre-create a
+   study for an upcoming earnings event). */
+.study-detail-cal-popup .cal-day.future { color: var(--stone); opacity: 0.55; }
+.study-detail-cal-popup .cal-day.future:hover { opacity: 1; }
 
 /* Research-dates chip — shows next to the date input when a study has 2+ dated snapshots.
    Clicking opens a small popup of all researched dates with a 1-line catalyst preview, so
@@ -5727,8 +5728,18 @@ async function renderStudyDetail(idOrSym) {
                   </div>`;
         }).join('')}
       </div>` : '';
-    const datePill = sd ? `&nbsp;·&nbsp;<input type="date" class="study-detail-date-input" id="study-detail-date-input" value="${sd}" title="${title}">${chipHtml}` : '';
-    return { datePill, popupHtml };
+    // Date pill button — calendar icon + ISO date label. Clicking opens our custom
+    // .study-detail-cal-popup (rendered as a sibling of the breadcrumb below).
+    const dateBtnHtml = sd ? `<button class="study-detail-date-btn" id="study-detail-date-btn" type="button" aria-haspopup="dialog" aria-expanded="false" title="${title}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span>${sd}</span>
+      </button>` : '';
+    const datePill = sd ? `&nbsp;·&nbsp;${dateBtnHtml}${chipHtml}` : '';
+    // The calendar popup container — rendered as a sibling of the breadcrumb div (NOT
+    // inside the span, same fix as the research-dates popup) so its position: fixed
+    // escapes the breadcrumb's stacking context cleanly.
+    const calPopupHtml = sd ? `<div class="study-detail-cal-popup" id="study-detail-cal-popup" role="dialog" aria-hidden="true"></div>` : '';
+    return { datePill, popupHtml, calPopupHtml };
   })();
 
   app.innerHTML = `
@@ -5745,6 +5756,7 @@ async function renderStudyDetail(idOrSym) {
       </button>
     </div>
     ${breadcrumbParts.popupHtml}
+    ${breadcrumbParts.calPopupHtml}
     <div class="stock-header" style="position:relative">
       <div class="sym-big">${sym}${dayChip}${placeholderBadge}</div>
       <div>
@@ -5918,8 +5930,11 @@ async function renderStudyDetail(idOrSym) {
   //
   // Study-level fields (notes, tags, customTypes, conviction, target/stop, intent,
   // price, screenshots) are NOT date-bound and persist across all dates.
-  document.getElementById('study-detail-date-input')?.addEventListener('change', e => {
-    const newDate = e.target.value;   // YYYY-MM-DD from the native date picker
+  //
+  // Extracted into a function so the custom calendar popup AND the research-dates chip
+  // popup AND any other caller can trigger the same flow. Previously was inlined as the
+  // native input.change handler.
+  function applyStudyDateChange(newDate) {
     if (!newDate) return;
     const cur = loadStudies().find(st => st.id === id);
     if (!cur) return;
@@ -5995,7 +6010,105 @@ async function renderStudyDetail(idOrSym) {
     }
     updateStudy(id, patch);
     renderStudyDetail(id);
-  });
+  }
+
+  // ── Custom calendar popup: toggle on date-pill click ──
+  // Replaces the native <input type=date> to eliminate the OS-themed black flash and to
+  // give us full control over styling. Calendar reuses .cal-grid / .cal-day from the
+  // topbar calendar but allows ANY date (the topbar calendar restricts to scan dates).
+  const dateBtn = document.getElementById('study-detail-date-btn');
+  const datePop = document.getElementById('study-detail-cal-popup');
+  if (dateBtn && datePop) {
+    let __studyCalMonth = null;
+    const openDatePopup = () => {
+      const live = loadStudies().find(st => st.id === id) || {};
+      const cur = (live.ohlcv && live.ohlcv.date) || (live.snapshot && live.snapshot.scanDate) || '';
+      const refDate = (cur && /^\d{4}-\d{2}-\d{2}$/.test(cur)) ? new Date(cur + 'T00:00:00') : new Date();
+      __studyCalMonth = { year: refDate.getFullYear(), month: refDate.getMonth() };
+      renderStudyCalendar();
+      datePop.classList.add('open');
+      dateBtn.classList.add('open');
+      dateBtn.setAttribute('aria-expanded', 'true');
+      const r = dateBtn.getBoundingClientRect();
+      datePop.style.left = r.left + 'px';
+      datePop.style.top  = (r.bottom + 6) + 'px';
+    };
+    const closeDatePopup = () => {
+      datePop.classList.remove('open');
+      dateBtn.classList.remove('open');
+      dateBtn.setAttribute('aria-expanded', 'false');
+    };
+    function renderStudyCalendar() {
+      const { year, month } = __studyCalMonth;
+      const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      const dowNames = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+      const startWeekday = firstDay.getDay();
+      const daysInMonth = lastDay.getDate();
+      const live = loadStudies().find(st => st.id === id) || {};
+      const activeIso = (live.ohlcv && live.ohlcv.date) || '';
+      const researchedSet = new Set(listResearchedDates(live));
+      const todayIso = new Date().toISOString().slice(0,10);
+      let html = `<div class="cal-header"><button class="cal-nav-btn" type="button" data-nav="prev" aria-label="Previous month">‹</button><div class="month-label">${monthNames[month]} ${year}</div><button class="cal-nav-btn" type="button" data-nav="next" aria-label="Next month">›</button></div><div class="cal-grid">`;
+      dowNames.forEach(d => html += `<div class="cal-dow">${d}</div>`);
+      for (let i = 0; i < startWeekday; i++) {
+        const prevDate = new Date(year, month, -startWeekday + i + 1);
+        html += `<button class="cal-day outside" type="button" disabled>${prevDate.getDate()}</button>`;
+      }
+      for (let day = 1; day <= daysInMonth; day++) {
+        const iso = `${year}-${String(month + 1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+        const isResearched = researchedSet.has(iso);
+        const isActive = iso === activeIso;
+        const isToday = iso === todayIso;
+        const isFuture = iso > todayIso;
+        const classes = ['cal-day'];
+        if (isActive) classes.push('active');
+        else if (isResearched) classes.push('has-data');
+        if (isToday && !isActive) classes.push('today');
+        if (isFuture && !isActive) classes.push('future');
+        html += `<button class="${classes.join(' ')}" type="button" data-iso="${iso}">${day}</button>`;
+      }
+      html += '</div>';
+      datePop.innerHTML = html;
+      datePop.querySelectorAll('.cal-nav-btn').forEach(b => {
+        b.addEventListener('click', evt => {
+          evt.stopPropagation();
+          const dir = b.dataset.nav;
+          if (dir === 'prev') {
+            __studyCalMonth.month--;
+            if (__studyCalMonth.month < 0) { __studyCalMonth.month = 11; __studyCalMonth.year--; }
+          } else {
+            __studyCalMonth.month++;
+            if (__studyCalMonth.month > 11) { __studyCalMonth.month = 0; __studyCalMonth.year++; }
+          }
+          renderStudyCalendar();
+        });
+      });
+      datePop.querySelectorAll('.cal-day:not(.outside)').forEach(b => {
+        b.addEventListener('click', evt => {
+          evt.stopPropagation();
+          const iso = b.dataset.iso;
+          if (!iso) return;
+          closeDatePopup();
+          applyStudyDateChange(iso);
+        });
+      });
+    }
+    dateBtn.addEventListener('click', evt => {
+      evt.stopPropagation();
+      if (datePop.classList.contains('open')) closeDatePopup();
+      else openDatePopup();
+    });
+    document.addEventListener('click', evt => {
+      if (!datePop.classList.contains('open')) return;
+      if (datePop.contains(evt.target) || dateBtn.contains(evt.target)) return;
+      closeDatePopup();
+    });
+    window.addEventListener('scroll', () => {
+      if (datePop.classList.contains('open')) closeDatePopup();
+    }, { passive: true });
+  }
 
   // ── Research-dates chip: toggle the dates popup ──
   // Click chip to open list of all researched dates for this study. Click an item to
@@ -6032,10 +6145,11 @@ async function renderStudyDetail(idOrSym) {
         e.stopPropagation();
         const d = item.dataset.date;
         if (!d) return;
-        const inp = document.getElementById('study-detail-date-input');
-        if (inp) { inp.value = d; inp.dispatchEvent(new Event('change', { bubbles: true })); }
         popup.classList.remove('open');
         document.getElementById('research-dates-chip')?.setAttribute('aria-expanded', 'false');
+        // Direct call (no synthetic input.change event needed — input is gone, replaced
+        // by the custom calendar popup which also calls applyStudyDateChange).
+        applyStudyDateChange(d);
       });
     });
     // Re-bind delete-date clicks. Deletes immediately (no confirm dialog — that broke the
