@@ -5653,8 +5653,16 @@ async function renderStudyDetail(idOrSym) {
     }
     dateBtn.addEventListener('click', evt => {
       evt.stopPropagation();
-      if (datePop.classList.contains('open')) closeDatePopup();
-      else openDatePopup();
+      if (datePop.classList.contains('open')) { closeDatePopup(); return; }
+      // Close the research-dates popup if it's open — only one breadcrumb popup visible
+      // at a time. Same mutual-close pattern as the studies-toolbar Filter / Sort buttons.
+      const chipPop = document.getElementById('research-dates-popup');
+      const chipBtnEl = document.getElementById('research-dates-chip');
+      if (chipPop?.classList.contains('open')) {
+        chipPop.classList.remove('open');
+        chipBtnEl?.setAttribute('aria-expanded', 'false');
+      }
+      openDatePopup();
     });
     document.addEventListener('click', evt => {
       if (!datePop.classList.contains('open')) return;
@@ -5840,6 +5848,15 @@ async function renderStudyDetail(idOrSym) {
       e.stopPropagation();
       const isOpen = chipPopup.classList.contains('open');
       if (isOpen) { closePopup(); return; }
+      // Close the calendar date popup if it's open — mutual-close pattern matching the
+      // date-button side. Only one breadcrumb popup visible at a time.
+      const datePop = document.getElementById('study-detail-cal-popup');
+      const dateBtnEl = document.getElementById('study-detail-date-btn');
+      if (datePop?.classList.contains('open')) {
+        datePop.classList.remove('open');
+        dateBtnEl?.classList.remove('open');
+        dateBtnEl?.setAttribute('aria-expanded', 'false');
+      }
       // Position below chip using viewport coords (matches position:fixed in CSS so the
       // popup stays anchored even when the topbar's stacking context would otherwise
       // trap an absolutely-positioned child).
