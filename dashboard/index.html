@@ -727,6 +727,52 @@ body.readonly-mode .vol-editable:hover { background: transparent; }
 .study-detail-date-input:hover::-webkit-calendar-picker-indicator,
 .study-detail-date-input:focus::-webkit-calendar-picker-indicator { opacity: 1; }
 body.readonly-mode .study-detail-date-input { pointer-events: none; }
+
+/* Research-dates chip — shows next to the date input when a study has 2+ dated snapshots.
+   Clicking opens a small popup of all researched dates with a 1-line catalyst preview, so
+   the user can jump between (e.g.) CRCL @ 5/15 ↔ CRCL @ 4/30 without manually typing dates. */
+.research-dates-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-left: 6px; padding: 3px 8px;
+  background: var(--surface-soft); color: var(--mute);
+  border: 1px solid var(--hairline); border-radius: var(--r-pill);
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  cursor: pointer; transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.research-dates-chip:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.research-dates-chip[aria-expanded="true"] { background: var(--primary); color: #fff; border-color: var(--primary); }
+.research-dates-chip svg { opacity: 0.7; }
+.research-dates-chip:hover svg, .research-dates-chip[aria-expanded="true"] svg { opacity: 1; }
+
+.research-dates-popup {
+  position: absolute; z-index: 6000;
+  background: var(--canvas); border: 1px solid var(--hairline);
+  border-radius: var(--r-md); padding: 6px;
+  min-width: 280px; max-width: 360px;
+  box-shadow: 0 12px 32px -6px rgba(0,0,0,0.15);
+  display: none;
+}
+.research-dates-popup.open { display: block; }
+.research-date-item {
+  display: flex; align-items: baseline; gap: 12px;
+  width: 100%; padding: 8px 12px;
+  background: transparent; border: none; border-radius: var(--r-sm);
+  text-align: left; cursor: pointer; font-family: var(--font-body);
+  color: var(--ink); transition: background 0.10s;
+}
+.research-date-item:hover { background: var(--surface-soft); }
+.research-date-item.active { background: rgba(73, 79, 223, 0.10); color: var(--primary-deep); }
+.research-date-item.active::before { content: '●'; color: var(--primary); margin-right: -8px; font-size: 10px; }
+.research-date-item .rd-date {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+  flex: 0 0 auto; letter-spacing: 0.3px;
+}
+.research-date-item .rd-preview {
+  font-size: 11px; color: var(--stone); flex: 1 1 auto;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.research-date-item .rd-preview.rd-blank { color: var(--stone); opacity: 0.6; font-style: italic; }
+body.readonly-mode .research-dates-chip { pointer-events: none; opacity: 0.5; }
 body.readonly-mode .study-delete-outer { display: none !important; }
 
 /* Custom catalyst types — Notion-style multi-select pills */
@@ -3939,10 +3985,48 @@ function loadStudies() {
     // For those, id = symbol so old URLs `#/study/FIG` still resolve. New saves get a unique
     // id of form `${sym}-${base36Timestamp}${randomSuffix}`.
     let mutated = false;
-    arr.forEach(st => { if (st && !st.id) { st.id = st.symbol; mutated = true; } });
+    arr.forEach(st => {
+      if (st && !st.id) { st.id = st.symbol; mutated = true; }
+      // Migration: every study gets a datedSnapshots map keyed by ISO date. The flat
+      // st.snapshot + st.ohlcv represent the CURRENTLY ACTIVE date's view; datedSnapshots
+      // is the archive of all previously-researched dates. Switching the date pill swaps
+      // entries in/out of the active slot. New studies start with one entry (the date they
+      // were saved on). See migrateStudyToDated() for the migration logic.
+      if (st && !st.datedSnapshots) { migrateStudyToDated(st); mutated = true; }
+    });
     if (mutated) localStorage.setItem(STUDIES_KEY, JSON.stringify(arr));
     return arr;
   } catch { return []; }
+}
+// One-shot migration: take a study with flat snapshot+ohlcv (legacy schema) and seed its
+// datedSnapshots map with one entry keyed by the current ohlcv.date (or snapshot.scanDate
+// fallback). After this, st.datedSnapshots always exists, and st.snapshot/st.ohlcv are
+// just the "active view" mirroring datedSnapshots[currentDate].
+// Idempotent: no-op if datedSnapshots already present.
+function migrateStudyToDated(st) {
+  if (!st || st.datedSnapshots) return st;
+  const key = (st.ohlcv && st.ohlcv.date) || (st.snapshot && st.snapshot.scanDate) || '';
+  if (!key) { st.datedSnapshots = {}; return st; }
+  st.datedSnapshots = {
+    [key]: {
+      snapshot: { ...(st.snapshot || {}) },
+      ohlcv: { ...(st.ohlcv || {}) },
+    },
+  };
+  return st;
+}
+// List the dates a study has researched data for, sorted newest first. Used for the
+// "researched dates" dropdown on the study-detail breadcrumb.
+function listResearchedDates(st) {
+  if (!st || !st.datedSnapshots) return [];
+  return Object.keys(st.datedSnapshots).filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort().reverse();
+}
+// Does this dated slot contain real research (vs. an empty placeholder)?
+function hasResearchData(slot) {
+  if (!slot) return false;
+  const s = slot.snapshot || {};
+  const o = slot.ohlcv || {};
+  return Boolean(s.newsDetail || s.catalyst || s.tv || o.open != null || o.close != null);
 }
 // Generate a unique-ish id keyed off symbol + time. Base36 timestamps are short and sortable.
 function genStudyId(sym) {
@@ -4091,7 +4175,25 @@ function updateStudy(id, patch) {
   const arr = loadStudies();
   const idx = arr.findIndex(st => st.id === id);
   if (idx === -1) return;
-  arr[idx] = { ...arr[idx], ...patch };
+  const next = { ...arr[idx], ...patch };
+  // Auto-sync the flat snapshot+ohlcv into datedSnapshots[currentDate]. Whenever a write
+  // touches either field, mirror the result into the archive so date-pill switches later
+  // can restore exactly what's on screen now. The "currentDate" key is whatever ohlcv.date
+  // is after applying the patch — that's the authoritative "which date am I viewing".
+  if (next.datedSnapshots && (Object.prototype.hasOwnProperty.call(patch, 'snapshot') ||
+                              Object.prototype.hasOwnProperty.call(patch, 'ohlcv'))) {
+    const d = next.ohlcv && next.ohlcv.date;
+    if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) {
+      next.datedSnapshots = {
+        ...next.datedSnapshots,
+        [d]: {
+          snapshot: { ...(next.snapshot || {}) },
+          ohlcv: { ...(next.ohlcv || {}) },
+        },
+      };
+    }
+  }
+  arr[idx] = next;
   saveStudies(arr);
 }
 
@@ -4999,8 +5101,33 @@ async function renderStudyDetail(idOrSym) {
       <span><a href="#/studies">← Studies</a> &nbsp;»&nbsp; <b>${sym}</b>${(() => {
         const od = (study.ohlcv && study.ohlcv.date) ? study.ohlcv.date : '';
         const sd = od || (study.savedAt || '').slice(0, 10);
-        const title = `Click to change the trading-day date. Auto-snaps the focus quarter; OHLCV bars stay until /update-studies refreshes them.`;
-        return sd ? `&nbsp;·&nbsp;<input type="date" class="study-detail-date-input" id="study-detail-date-input" value="${sd}" title="${title}">` : '';
+        const title = `Click to change the trading-day date. Switching to a previously-researched date restores its saved data automatically; switching to a new date creates a blank slot for /update-studies to fill.`;
+        const dates = listResearchedDates(study);
+        // Researched-dates chip: only render if there are 2+ dates (single-date studies
+        // don't need a switcher — that's just the date input itself). Clicking opens a
+        // tiny dropdown of all dates with data, sorted newest first.
+        const chip = (dates.length > 1) ? `
+          <button class="research-dates-chip" id="research-dates-chip" type="button"
+                  title="${dates.length} researched dates — click to switch"
+                  aria-haspopup="true" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:11px;height:11px"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>${dates.length}</span>
+          </button>
+          <div class="research-dates-popup" id="research-dates-popup" role="menu" aria-hidden="true">
+            ${dates.map(d => {
+              const slot = study.datedSnapshots[d] || {};
+              const has = hasResearchData(slot);
+              const isActive = (d === sd);
+              const cat = (slot.snapshot?.catalyst || '').slice(0, 60);
+              return `<button class="research-date-item ${isActive ? 'active' : ''} ${has ? '' : 'blank'}"
+                              data-date="${d}" type="button" role="menuitem">
+                        <span class="rd-date">${d}</span>
+                        ${has ? `<span class="rd-preview">${escapeHtml(cat)}</span>` : '<span class="rd-preview rd-blank">— blank —</span>'}
+                      </button>`;
+            }).join('')}
+          </div>
+        ` : '';
+        return sd ? `&nbsp;·&nbsp;<input type="date" class="study-detail-date-input" id="study-detail-date-input" value="${sd}" title="${title}">${chip}` : '';
       })()}</span>
       <button class="study-delete-outer" id="study-delete" type="button" title="Delete this study">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -5169,77 +5296,135 @@ async function renderStudyDetail(idOrSym) {
     }
   });
 
-  // ── Top-of-page date pill: click to change the study's trading-day date ──
-  // Behavior: blanks the date-bound fields (ohlcv bar + scan-time snapshot of last/chgPct/
-  // newsDetail/catalyst/tv) so /update-studies can pull fresh data for the NEW date next
-  // time it runs. Without this reset, the study would keep showing the previous date's
-  // OHLCV + news with just the date label changed — visually confusing.
+  // ── Top-of-page date pill: change the study's active date ──
+  // Archive/restore model: every study carries a datedSnapshots map keyed by ISO date.
+  // The flat study.snapshot + study.ohlcv mirror datedSnapshots[currentDate]. Switching
+  // the date pill:
+  //   1. Saves the current view (with any pending edits) to datedSnapshots[oldDate]
+  //   2. If datedSnapshots[newDate] EXISTS → restore it (user gets back their previous
+  //      research on this ticker for that date — catalyst, news, TV, OHLCV all intact)
+  //   3. If datedSnapshots[newDate] is NEW → create a blank placeholder slot so the
+  //      next /update-studies run pulls fresh data for the new date
   //
-  // Preserved across the date change:
-  //   - study.notes / study.tags / study.conviction / study.targetPrice / study.stopLoss
-  //   - study.customTypes (user-chosen catalyst tags carry over)
-  //   - study.intent / study.price (manual overrides)
-  //   - study.screenshots / customChart (user-edited MS table values)
-  //   - snapshot.name / snapshot.type (identity, not date-bound)
+  // This lets a single CRCL study hold multiple dated catalysts: research 5/15, switch
+  // to 4/30 (blank → /update-studies fills it), switch back to 5/15 → original 5/15
+  // catalyst + news returns. No re-entry needed.
+  //
+  // Study-level fields (notes, tags, customTypes, conviction, target/stop, intent,
+  // price, screenshots) are NOT date-bound and persist across all dates.
   document.getElementById('study-detail-date-input')?.addEventListener('change', e => {
     const newDate = e.target.value;   // YYYY-MM-DD from the native date picker
     if (!newDate) return;
     const cur = loadStudies().find(st => st.id === id);
     if (!cur) return;
+    migrateStudyToDated(cur);   // defensive — ensures datedSnapshots exists before we touch it
     const oldDate = cur.ohlcv?.date || '';
-    if (newDate === oldDate) return;   // no-op if user picked the same date
-    // Confirm before blanking — date changes are rare enough to deserve a quick check, and
-    // the user might have just mis-clicked the date field. Skip the confirm only when the
-    // current ohlcv has no real data to lose.
-    const hasData = (cur.ohlcv?.open != null) || (cur.snapshot?.newsDetail) || (cur.snapshot?.catalyst);
-    if (hasData) {
-      const ok = window.confirm(
-        `Change date from ${oldDate || '(none)'} to ${newDate}?\n\n` +
-        `This will CLEAR the OHLCV bar, news detail, catalyst, and TV data so /update-studies ` +
-        `can fetch fresh data for the new date. Your notes, tags, custom types, conviction, ` +
-        `target/stop, and screenshots are preserved.`
-      );
-      if (!ok) {
-        // Revert the input to the original date so the UI matches storage.
-        e.target.value = oldDate;
-        return;
-      }
+    if (newDate === oldDate) return;
+    // STEP 1: archive the current view to datedSnapshots[oldDate] BEFORE swapping.
+    // updateStudy() also does this on every write, but doing it explicitly here makes the
+    // intent obvious and guards against unsaved edits.
+    const dated = { ...(cur.datedSnapshots || {}) };
+    if (oldDate && /^\d{4}-\d{2}-\d{2}$/.test(oldDate)) {
+      dated[oldDate] = {
+        snapshot: { ...(cur.snapshot || {}) },
+        ohlcv: { ...(cur.ohlcv || {}) },
+      };
     }
-    // Wipe date-bound ohlcv to null fields (keep the date itself + the volume override
-    // structure so /update-studies recognizes this as a fillable row).
-    const blankOhlcv = { date: newDate, open: null, high: null, low: null, close: null, prev_close: null, volume: null };
-    // Wipe the date-bound parts of the snapshot. Anything stable (name, type) stays.
-    const oldSnap = cur.snapshot || {};
-    const blankSnap = {
-      ...oldSnap,
-      catalyst: '',
-      newsDetail: '',
-      sources: null,
-      tv: null,
-      sessions: [],
-      chgPct: null,
-      last: null,
-      publishedAt: null,
-      publishedTimezone: null,
-      scanDate: newDate,
-      _placeholder: true,   // marks for /update-studies + /SIPs to refill on next run
-      _newsFetched: false,   // re-enables Phase 10a's one-time news fetch
-    };
-    // Also clear customChart so the MS table is reset (otherwise the previous date's
-    // edited chart would still display under the new date). Quarter focus also gets
-    // recomputed below from the new date.
+    // STEP 2 or 3: does newDate have research already?
+    const existing = dated[newDate];
+    let newSnapshot, newOhlcv;
+    if (existing && hasResearchData(existing)) {
+      // RESTORE — bring back the saved snapshot/ohlcv exactly as it was.
+      newSnapshot = { ...(existing.snapshot || {}) };
+      newOhlcv = { ...(existing.ohlcv || {}) };
+    } else {
+      // NEW DATE — blank placeholder so /update-studies + /SIPs fill it on next run.
+      // Identity fields (name, type) come from the existing snapshot since the ticker
+      // identity is stable across dates.
+      const oldSnap = cur.snapshot || {};
+      newSnapshot = {
+        name: oldSnap.name || '',
+        type: oldSnap.type || '?',
+        catalyst: '',
+        newsDetail: '',
+        sources: null,
+        tv: null,
+        sessions: [],
+        chgPct: null,
+        last: null,
+        publishedAt: null,
+        publishedTimezone: null,
+        scanDate: newDate,
+        _placeholder: true,
+        _newsFetched: false,
+      };
+      newOhlcv = { date: newDate, open: null, high: null, low: null, close: null, prev_close: null, volume: null };
+      // Seed the slot so updateStudy() can keep it in sync on subsequent writes.
+      dated[newDate] = { snapshot: { ...newSnapshot }, ohlcv: { ...newOhlcv } };
+    }
+    // Atomic write: swap snapshot+ohlcv+datedSnapshots in one updateStudy call.
     updateStudy(id, {
-      ohlcv: blankOhlcv,
-      snapshot: blankSnap,
+      datedSnapshots: dated,
+      snapshot: newSnapshot,
+      ohlcv: newOhlcv,
+      // customChart was the user-edited MS table for the previous date. Each date has its
+      // own implied chart from snapshot.tv.chart, so clearing the override lets the new
+      // date render from its own source.
       customChart: null,
       focusQuarterIdx: null,
-      // Hide chart/MS sections until /update-studies fills them — same pattern as
-      // newly-created placeholder studies.
-      hiddenSections: ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'],
+      // Sections that depend on tv data: only hide if the new date is a placeholder.
+      hiddenSections: (existing && hasResearchData(existing))
+        ? (cur.hiddenSections || [])
+        : ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'],
     });
-    // Full re-render — the placeholder state shows a "run /update-studies to fill" hint.
     renderStudyDetail(id);
   });
+
+  // ── Research-dates chip: toggle the dates popup ──
+  // Click chip to open list of all researched dates for this study. Click an item to
+  // switch the active date — uses the same archive/restore flow as the date input so the
+  // current view's edits get saved first, then the chosen date's snapshot is restored.
+  const chipBtn = document.getElementById('research-dates-chip');
+  const chipPopup = document.getElementById('research-dates-popup');
+  if (chipBtn && chipPopup) {
+    chipBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      const isOpen = chipPopup.classList.contains('open');
+      if (isOpen) {
+        chipPopup.classList.remove('open');
+        chipBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        // Position the popup below the chip, aligned to its left edge.
+        const r = chipBtn.getBoundingClientRect();
+        chipPopup.style.left = (window.scrollX + r.left) + 'px';
+        chipPopup.style.top  = (window.scrollY + r.bottom + 6) + 'px';
+        chipPopup.classList.add('open');
+        chipBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+    // Close on outside click
+    document.addEventListener('click', evt => {
+      if (!chipPopup.classList.contains('open')) return;
+      if (chipPopup.contains(evt.target) || chipBtn.contains(evt.target)) return;
+      chipPopup.classList.remove('open');
+      chipBtn.setAttribute('aria-expanded', 'false');
+    }, { once: true });
+    // Click a date item → trigger the date-input change handler with the chosen date.
+    chipPopup.querySelectorAll('.research-date-item').forEach(item => {
+      item.addEventListener('click', e => {
+        e.stopPropagation();
+        const d = item.dataset.date;
+        if (!d) return;
+        const inp = document.getElementById('study-detail-date-input');
+        if (inp) {
+          inp.value = d;
+          inp.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        chipPopup.classList.remove('open');
+        chipBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
   // ── Editable Volume — linked to ohlcv.volume so OHLCV popup stays in sync ──
   const volCell = document.getElementById('study-vol-cell');
