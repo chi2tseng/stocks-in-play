@@ -4235,6 +4235,13 @@ function updateStudy(id, patch) {
   }
   arr[idx] = next;
   saveStudies(arr);
+  // Fire a custom event so the study-detail page's chip / popup can refresh in place
+  // without a full re-render. This is what makes the chip count tick up to "2" the
+  // moment the user types content or adds a tag on a fresh date — no need to switch
+  // away and back. Listener in renderStudyDetail subscribes via AbortController so the
+  // hook auto-disposes on route change.
+  try { document.dispatchEvent(new CustomEvent('study-data-changed', { detail: { id, fields: Object.keys(patch) } })); }
+  catch (e) { /* CustomEvent not supported on ancient browsers — ignore */ }
 }
 
 /* ═══════ Studies list view — small preview cards like Today's SIPs ═══════
@@ -5136,40 +5143,40 @@ async function renderStudyDetail(idOrSym) {
   // The user found it visual noise and it didn't enable any action they couldn't take anyway.
   const placeholderBadge = '';
 
+  // Build the date-pill + chip + popup as separate strings so the popup can live OUTSIDE
+  // the breadcrumb <span> (a <div> inside a <span> is invalid HTML — browsers auto-correct
+  // by closing the span early, which broke the popup positioning + click behavior).
+  const breadcrumbParts = (() => {
+    const od = (study.ohlcv && study.ohlcv.date) ? study.ohlcv.date : '';
+    const sd = od || (study.savedAt || '').slice(0, 10);
+    const title = `Click to change the trading-day date. Switching to a previously-researched date restores its saved data; switching to a new date creates a blank slot for /update-studies to fill.`;
+    const dates = listResearchedDates(study);
+    const chipHtml = (dates.length >= 1) ? `<button class="research-dates-chip" id="research-dates-chip" type="button"
+              title="${dates.length} researched dates — click to switch"
+              aria-haspopup="true" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:11px;height:11px"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span id="research-dates-count">${dates.length}</span>
+      </button>` : '';
+    const popupHtml = (dates.length >= 1) ? `<div class="research-dates-popup" id="research-dates-popup" role="menu" aria-hidden="true">
+        ${dates.map(d => {
+          const slot = study.datedSnapshots[d] || {};
+          const has = hasResearchData(slot);
+          const isActive = (d === sd);
+          const cat = (slot.snapshot?.catalyst || '').slice(0, 60);
+          return `<button class="research-date-item ${isActive ? 'active' : ''} ${has ? '' : 'blank'}"
+                          data-date="${d}" type="button" role="menuitem">
+                    <span class="rd-date">${d}</span>
+                    ${has ? `<span class="rd-preview">${escapeHtml(cat)}</span>` : '<span class="rd-preview rd-blank">— blank —</span>'}
+                  </button>`;
+        }).join('')}
+      </div>` : '';
+    const datePill = sd ? `&nbsp;·&nbsp;<input type="date" class="study-detail-date-input" id="study-detail-date-input" value="${sd}" title="${title}">${chipHtml}` : '';
+    return { datePill, popupHtml };
+  })();
+
   app.innerHTML = `
     <div class="breadcrumb study-detail-breadcrumb">
-      <span><a href="#/studies">← Studies</a> &nbsp;»&nbsp; <b>${sym}</b>${(() => {
-        const od = (study.ohlcv && study.ohlcv.date) ? study.ohlcv.date : '';
-        const sd = od || (study.savedAt || '').slice(0, 10);
-        const title = `Click to change the trading-day date. Switching to a previously-researched date restores its saved data automatically; switching to a new date creates a blank slot for /update-studies to fill.`;
-        const dates = listResearchedDates(study);
-        // Researched-dates chip: shows whenever at least one date has saved research.
-        // Lets the user view + switch between dated catalysts they've already done.
-        // Even with a single entry, the chip surfaces the archived date so the user knows
-        // it's there to come back to.
-        const chip = (dates.length >= 1) ? `
-          <button class="research-dates-chip" id="research-dates-chip" type="button"
-                  title="${dates.length} researched dates — click to switch"
-                  aria-haspopup="true" aria-expanded="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:11px;height:11px"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            <span>${dates.length}</span>
-          </button>
-          <div class="research-dates-popup" id="research-dates-popup" role="menu" aria-hidden="true">
-            ${dates.map(d => {
-              const slot = study.datedSnapshots[d] || {};
-              const has = hasResearchData(slot);
-              const isActive = (d === sd);
-              const cat = (slot.snapshot?.catalyst || '').slice(0, 60);
-              return `<button class="research-date-item ${isActive ? 'active' : ''} ${has ? '' : 'blank'}"
-                              data-date="${d}" type="button" role="menuitem">
-                        <span class="rd-date">${d}</span>
-                        ${has ? `<span class="rd-preview">${escapeHtml(cat)}</span>` : '<span class="rd-preview rd-blank">— blank —</span>'}
-                      </button>`;
-            }).join('')}
-          </div>
-        ` : '';
-        return sd ? `&nbsp;·&nbsp;<input type="date" class="study-detail-date-input" id="study-detail-date-input" value="${sd}" title="${title}">${chip}` : '';
-      })()}</span>
+      <span><a href="#/studies">← Studies</a> &nbsp;»&nbsp; <b>${sym}</b>${breadcrumbParts.datePill}</span>
       <button class="study-delete-outer" id="study-delete" type="button" title="Delete this study">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="3 6 5 6 21 6"></polyline>
@@ -5180,6 +5187,7 @@ async function renderStudyDetail(idOrSym) {
         <span>Delete study</span>
       </button>
     </div>
+    ${breadcrumbParts.popupHtml}
     <div class="stock-header" style="position:relative">
       <div class="sym-big">${sym}${dayChip}${placeholderBadge}</div>
       <div>
@@ -5434,6 +5442,57 @@ async function renderStudyDetail(idOrSym) {
   // Click chip to open list of all researched dates for this study. Click an item to
   // switch the active date — uses the same archive/restore flow as the date input so the
   // current view's edits get saved first, then the chosen date's snapshot is restored.
+  // Rebuild the research-dates popup body in place — used by both the initial wiring AND
+  // the live-update hook below. Re-binds item click handlers on each rebuild.
+  function rebuildResearchDatesPopupItems() {
+    const popup = document.getElementById('research-dates-popup');
+    if (!popup) return;
+    const updated = loadStudies().find(st => st.id === id);
+    if (!updated) return;
+    const dates = listResearchedDates(updated);
+    const currentDate = (updated.ohlcv && updated.ohlcv.date) || '';
+    popup.innerHTML = dates.map(d => {
+      const slot = updated.datedSnapshots[d] || {};
+      const isActive = (d === currentDate);
+      const cat = (slot.snapshot?.catalyst || '').slice(0, 60);
+      const has = hasResearchData(slot);
+      return `<button class="research-date-item ${isActive ? 'active' : ''} ${has ? '' : 'blank'}"
+                      data-date="${d}" type="button" role="menuitem">
+                <span class="rd-date">${d}</span>
+                ${has ? `<span class="rd-preview">${escapeHtml(cat)}</span>` : '<span class="rd-preview rd-blank">— blank —</span>'}
+              </button>`;
+    }).join('');
+    // Re-bind item clicks (they were lost when we replaced innerHTML)
+    popup.querySelectorAll('.research-date-item').forEach(item => {
+      item.addEventListener('click', e => {
+        e.stopPropagation();
+        const d = item.dataset.date;
+        if (!d) return;
+        const inp = document.getElementById('study-detail-date-input');
+        if (inp) { inp.value = d; inp.dispatchEvent(new Event('change', { bubbles: true })); }
+        popup.classList.remove('open');
+        document.getElementById('research-dates-chip')?.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Refresh chip count + popup contents whenever updateStudy fires a data-changed event
+  // for THIS study. AbortController scopes the listener to this render — it disposes
+  // automatically when the user navigates away via hashchange, no leak.
+  const chipUpdateCtrl = new AbortController();
+  document.addEventListener('study-data-changed', evt => {
+    if (evt.detail?.id !== id) return;
+    const updated = loadStudies().find(st => st.id === id);
+    if (!updated) return;
+    const dates = listResearchedDates(updated);
+    const countEl = document.getElementById('research-dates-count');
+    const chipBtn = document.getElementById('research-dates-chip');
+    if (countEl) countEl.textContent = dates.length;
+    if (chipBtn) chipBtn.title = `${dates.length} researched dates — click to switch`;
+    rebuildResearchDatesPopupItems();
+  }, { signal: chipUpdateCtrl.signal });
+  window.addEventListener('hashchange', () => chipUpdateCtrl.abort(), { once: true });
+
   const chipBtn = document.getElementById('research-dates-chip');
   const chipPopup = document.getElementById('research-dates-popup');
   if (chipBtn && chipPopup) {
