@@ -4860,8 +4860,14 @@ function renderStudies() {
   // stacking-context boost as the search dropdown — guaranteed above stock cards).
   document.getElementById('studies-filter-btn')?.addEventListener('click', e => {
     e.preventDefault(); e.stopPropagation();
-    const existing = document.querySelector('.studies-filter-popup');
-    if (existing) { existing.remove(); return; }
+    // Close OWN popup if it's already open — toggle behavior on the filter button.
+    // Selector excludes .sort-popup so we only match the filter version, not the sort
+    // popup (which shares the .studies-filter-popup class for styling).
+    const ownPopup = document.querySelector('.studies-filter-popup:not(.sort-popup)');
+    if (ownPopup) { ownPopup.remove(); return; }
+    // Otherwise close any OTHER open popup (sort) before opening this one, so the user
+    // doesn't end up with both visible at once.
+    document.querySelector('.studies-filter-popup.sort-popup')?.remove();
     const btn = e.currentTarget;
     const rect = btn.getBoundingClientRect();
     const pop = document.createElement('div');
@@ -4968,8 +4974,12 @@ function renderStudies() {
   // ── Sort button — opens a small popup of sort options, reuses .studies-filter-popup styling ──
   document.getElementById('studies-sort-btn')?.addEventListener('click', e => {
     e.preventDefault(); e.stopPropagation();
-    const existing = document.querySelector('.studies-filter-popup.sort-popup');
-    if (existing) { existing.remove(); return; }
+    // Toggle own popup if already open.
+    const ownPopup = document.querySelector('.studies-filter-popup.sort-popup');
+    if (ownPopup) { ownPopup.remove(); return; }
+    // Close the filter popup (the OTHER popup using the shared class) if it's open, so
+    // only one popup is visible at a time — symmetric with the filter button's behavior.
+    document.querySelector('.studies-filter-popup:not(.sort-popup)')?.remove();
     const btn = e.currentTarget;
     const rect = btn.getBoundingClientRect();
     const pop = document.createElement('div');
