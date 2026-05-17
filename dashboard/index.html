@@ -2622,10 +2622,10 @@ async function renderSips(subtab) {
   app.innerHTML = `
     <h2 class="page-title">Today's SIPs</h2>
     <div class="subtabs" id="sips-subtabs">
-      <div class="subtab ${tab === 'claude' ? 'active' : ''}" data-sub="claude">Claude 精選</div>
-      <div class="subtab ${tab === 'codex'  ? 'active' : ''}" data-sub="codex">ChatGPT 精選</div>
-      <div class="subtab ${tab === 'gemini' ? 'active' : ''}" data-sub="gemini">Gemini 精選</div>
-      <div class="subtab ${tab === 'magna'  ? 'active' : ''}" data-sub="magna">MAGNA53 排序</div>
+      <div class="subtab ${tab === 'claude' ? 'active' : ''}" data-sub="claude">Claude</div>
+      <div class="subtab ${tab === 'codex'  ? 'active' : ''}" data-sub="codex">ChatGPT</div>
+      <div class="subtab ${tab === 'gemini' ? 'active' : ''}" data-sub="gemini">Gemini</div>
+      <div class="subtab ${tab === 'magna'  ? 'active' : ''}" data-sub="magna">MAGNA53</div>
       <span class="subtab-hint" id="sips-hint"></span>
       ${isPicksTab ? `<button class="mismatch-toggle ${SHOW_MISMATCHED_PICKS ? 'on' : ''}" id="mismatch-toggle" title="顯示方向不符的 picks（intent vs chgPct 不一致）">
         ${SHOW_MISMATCHED_PICKS ? '✓ 包含方向不符' : '⊘ 隱藏方向不符'}
@@ -2699,7 +2699,7 @@ async function renderSips(subtab) {
       const cmdHint = tab === 'claude'
         ? '在 Claude Code 跑 <code>/SIPs</code>。'
         : `在 ${tab === 'codex' ? 'Codex' : 'Gemini'} CLI 跑 <code>/SIPs-${tab}-full</code> 或 <code>/SIPs-${tab}-picks</code>。`;
-      stack.innerHTML = `<div class="sip-empty">尚無 ${srcMeta.label} 精選清單${hiddenNote}。<br><br>${cmdHint}<br><br>或在 <code>D:\\SIPs\\${srcMeta.picksFile}</code> 手動加入 <code>{"picks":[{"symbol":"X","rank":1,"rationale":"...","intent":"long"}]}</code> 後 rebuild dashboard 即可看到。</div>`;
+      stack.innerHTML = `<div class="sip-empty">尚無 ${srcMeta.label} 的清單${hiddenNote}。<br><br>${cmdHint}<br><br>或在 <code>D:\\SIPs\\${srcMeta.picksFile}</code> 手動加入 <code>{"picks":[{"symbol":"X","rank":1,"rationale":"...","intent":"long"}]}</code> 後 rebuild dashboard 即可看到。</div>`;
       return;
     }
     if (!SHOW_MISMATCHED_PICKS && droppedCount > 0) {
