@@ -1209,6 +1209,10 @@ body.readonly-mode .study-detail-date-input { pointer-events: none; }
   min-width: 280px; max-width: 360px;
   box-shadow: 0 12px 32px -6px rgba(0,0,0,0.15);
   display: none;
+  /* overflow: hidden trims any child that would extend past the rounded edge — the
+     delete button at the right side of each row would otherwise poke past the popup
+     when its hover/icon-padding stacked beyond the inner content width. */
+  overflow: hidden; box-sizing: border-box;
 }
 .research-dates-popup.open { display: block; }
 .research-date-item {
@@ -1220,7 +1224,6 @@ body.readonly-mode .study-detail-date-input { pointer-events: none; }
 }
 .research-date-item:hover { background: var(--surface-soft); }
 .research-date-item.active { background: rgba(73, 79, 223, 0.10); color: var(--primary-deep); }
-.research-date-item.active::before { content: '●'; color: var(--primary); margin-right: -8px; font-size: 10px; }
 .research-date-item .rd-date {
   font-family: var(--font-mono); font-size: 12px; font-weight: 700;
   flex: 0 0 auto; letter-spacing: 0.3px;
@@ -1236,20 +1239,29 @@ body.readonly-mode .study-detail-date-input { pointer-events: none; }
   display: flex; align-items: stretch;
   border-radius: var(--r-sm);
   transition: background 0.10s;
+  /* Row spans the popup's inner content (popup padding: 6px). min-width: 0 lets the
+     flex children shrink past their min-content size if the catalyst preview is long. */
+  min-width: 0;
 }
-.research-date-row .research-date-item { flex: 1 1 auto; border-radius: 0; }
+.research-date-row .research-date-item {
+  flex: 1 1 auto; border-radius: 0;
+  /* Trim the right padding when the row has a delete button next to it so the catalyst
+     text and the trash icon can comfortably share the row width without overflow. */
+  padding-right: 4px; min-width: 0;
+}
 .research-date-row.active { background: rgba(73, 79, 223, 0.10); }
 .research-date-row.active .research-date-item { background: transparent; color: var(--primary-deep); }
-.research-date-row.active .research-date-item::before { content: '●'; color: var(--primary); margin-right: -8px; font-size: 10px; }
 .research-date-del {
+  flex: 0 0 26px;
   display: flex; align-items: center; justify-content: center;
-  width: 32px; padding: 0 8px;
+  width: 26px; height: 26px; margin: auto 4px auto 0;   /* vertically center, hug right edge with small breather */
+  padding: 0;
   background: transparent; border: none; cursor: pointer;
   color: var(--stone); opacity: 0; transition: opacity 0.12s, color 0.12s, background 0.12s;
   border-radius: var(--r-sm);
 }
 .research-date-row:hover .research-date-del { opacity: 1; }
-.research-date-del:hover { color: var(--neg); background: rgba(226,59,74,0.08); }
+.research-date-del:hover { color: var(--neg); background: rgba(226,59,74,0.10); }
 body.readonly-mode .research-date-del { display: none !important; }
 body.readonly-mode .research-dates-chip { pointer-events: none; opacity: 0.5; }
 body.readonly-mode .study-delete-outer { display: none !important; }
@@ -5003,7 +5015,26 @@ function renderStudies() {
     if (!query) { searchRes.classList.remove('show'); searchRes.innerHTML = ''; return; }
     const idx = __searchIndex || new Map();
     const q = query.toUpperCase().trim();
-    const savedSyms = new Set(loadStudies().map(s => s.symbol));
+    // Build a map of symbol → newest-research preview for symbols the user has already
+    // saved. When the search result hits one of those, prefer the catalyst from the
+    // user's NEWEST dated snapshot over the past-scan default. This matters when the
+    // user has researched the same ticker on multiple dates — the preview should reflect
+    // their latest research thinking, not the original scan's snapshot.
+    const allStudies = loadStudies();
+    const savedSyms = new Set(allStudies.map(s => s.symbol));
+    const newestBySym = new Map();
+    for (const st of allStudies) {
+      const dates = listResearchedDates(st);
+      if (dates.length === 0) continue;
+      const newest = dates[0];   // already sorted newest-first
+      const slot = st.datedSnapshots?.[newest];
+      if (slot?.snapshot) {
+        const prev = newestBySym.get(st.symbol);
+        if (!prev || newest > prev.date) {
+          newestBySym.set(st.symbol, { date: newest, snap: slot.snapshot });
+        }
+      }
+    }
     // Prefix match wins over substring match; cap at 8 results.
     const all = Array.from(idx.entries()).map(([sym, info]) => ({ sym, ...info }));
     const prefix = all.filter(r => r.sym.startsWith(q));
@@ -5015,13 +5046,19 @@ function renderStudies() {
       html += `<div class="studies-search-empty">No past scan matches "${escapeHtml(q)}"</div>`;
     } else {
       html += __currentMatches.map((r, i) => {
-        const s = r.snapshot || {};
-        const cat = (s.catalyst_en || s.catalyst || s.name || '').toString().slice(0, 80);
         const alreadySaved = savedSyms.has(r.sym);
+        // Prefer the newest dated-snapshot preview when the user has researched this
+        // symbol. Falls back to the past-scan snapshot for tickers they haven't saved.
+        const fresh = newestBySym.get(r.sym);
+        const s = fresh ? fresh.snap : (r.snapshot || {});
+        const dateShown = fresh ? fresh.date : r.scanDate;
+        const cat = (s.catalyst_en || s.catalyst || s.name || '').toString().slice(0, 80);
+        // Mark whether the preview text came from the user's saved research vs raw scan.
+        const sourceLabel = alreadySaved ? ' <em style="color:var(--pos)">· already saved</em>' : '';
         return `<div class="studies-search-item ${i === __activeIdx ? 'active' : ''}" data-action="add" data-sym="${r.sym}" data-date="${r.scanDate}">
           <span class="studies-search-sym">${r.sym}</span>
-          <span class="studies-search-meta">${escapeHtml(cat)}${alreadySaved ? ' <em style="color:var(--pos)">· already saved</em>' : ''}</span>
-          <span class="studies-search-date">${r.scanDate}</span>
+          <span class="studies-search-meta">${escapeHtml(cat)}${sourceLabel}</span>
+          <span class="studies-search-date">${dateShown}</span>
         </div>`;
       }).join('');
     }
@@ -5967,24 +6004,33 @@ async function renderStudyDetail(idOrSym) {
         document.getElementById('research-dates-chip')?.setAttribute('aria-expanded', 'false');
       });
     });
-    // Re-bind delete-date clicks. Removes just THIS dated slot from datedSnapshots,
-    // leaving the rest of the study intact. If deleting the currently-active date,
-    // automatically switches to the most-recent remaining date (or to blank if empty).
+    // Re-bind delete-date clicks. Deletes immediately (no confirm dialog — that broke the
+    // flow) and shows an Undo snackbar with a 10s grace period. Click Undo OR press Ctrl+Z
+    // to restore. Uses the same showUndoSnackbar infra as "Delete study" / "Delete image".
     popup.querySelectorAll('.research-date-del').forEach(del => {
       del.addEventListener('click', async e => {
         e.stopPropagation();
         const d = del.dataset.date;
         if (!d) return;
-        if (!window.confirm(`Delete ${d}'s research for this stock?\n\n` +
-            `This removes the catalyst, news, TV data, notes, tags, and OHLCV bar for ${d}. ` +
-            `Other researched dates for this stock are preserved.`)) return;
         const cur2 = loadStudies().find(st => st.id === id);
         if (!cur2) return;
+        // Capture the slot BEFORE deletion so Undo can restore it byte-for-byte.
+        const deletedSlot = cur2.datedSnapshots?.[d] ? JSON.parse(JSON.stringify(cur2.datedSnapshots[d])) : null;
+        const wasActive = (cur2.ohlcv?.date === d);
+        // Also capture the pre-delete flat snapshot/ohlcv if we're about to switch away,
+        // so undo can restore the entire view exactly.
+        const preActive = wasActive ? {
+          snapshot: JSON.parse(JSON.stringify(cur2.snapshot || {})),
+          ohlcv: JSON.parse(JSON.stringify(cur2.ohlcv || {})),
+          hiddenSections: [...(cur2.hiddenSections || [])],
+          notes: cur2.notes || '',
+          customTypes: [...(cur2.customTypes || [])],
+          customChart: cur2.customChart ? JSON.parse(JSON.stringify(cur2.customChart)) : null,
+          focusQuarterIdx: cur2.focusQuarterIdx ?? null,
+        } : null;
         const dated = { ...(cur2.datedSnapshots || {}) };
         delete dated[d];
-        const wasActive = (cur2.ohlcv?.date === d);
         if (wasActive) {
-          // Switch to the most-recent remaining researched date (or blank study if empty).
           const remaining = Object.keys(dated)
             .filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k))
             .filter(k => hasResearchData(dated[k]))
@@ -6003,7 +6049,6 @@ async function renderStudyDetail(idOrSym) {
               focusQuarterIdx: (slot.focusQuarterIdx != null) ? slot.focusQuarterIdx : null,
             });
           } else {
-            // No dates left — reset to blank placeholder of the same stock (keeps identity).
             const oldSnap = cur2.snapshot || {};
             updateStudy(id, {
               datedSnapshots: dated,
@@ -6017,7 +6062,6 @@ async function renderStudyDetail(idOrSym) {
           }
           renderStudyDetail(id);
         } else {
-          // Deleted a non-active date — just trim the archive, no view change needed.
           updateStudy(id, { datedSnapshots: dated });
           rebuildResearchDatesPopupItems();
           const countEl = document.getElementById('research-dates-count');
@@ -6026,6 +6070,37 @@ async function renderStudyDetail(idOrSym) {
             countEl.textContent = dates.length;
           }
         }
+        // Undo handler — restore the deleted slot, plus the pre-active flat view if we
+        // were on this date. Re-render so the UI reflects the restored state.
+        const undoFn = async () => {
+          const live = loadStudies().find(st => st.id === id);
+          if (!live) return;
+          const restoredDated = { ...(live.datedSnapshots || {}) };
+          if (deletedSlot) restoredDated[d] = deletedSlot;
+          if (preActive) {
+            updateStudy(id, {
+              datedSnapshots: restoredDated,
+              snapshot: preActive.snapshot,
+              ohlcv: preActive.ohlcv,
+              hiddenSections: preActive.hiddenSections,
+              notes: preActive.notes,
+              customTypes: preActive.customTypes,
+              customChart: preActive.customChart,
+              focusQuarterIdx: preActive.focusQuarterIdx,
+            });
+            renderStudyDetail(id);
+          } else {
+            updateStudy(id, { datedSnapshots: restoredDated });
+            rebuildResearchDatesPopupItems();
+            const countEl = document.getElementById('research-dates-count');
+            if (countEl) {
+              const dates = listResearchedDates(loadStudies().find(st => st.id === id) || {});
+              countEl.textContent = dates.length;
+            }
+          }
+        };
+        showUndoSnackbar(`Deleted ${d}`, undoFn);
+        pushUndoStack(`Deleted ${d}`, undoFn);
       });
     });
   }
