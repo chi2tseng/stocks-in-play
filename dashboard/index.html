@@ -5558,7 +5558,11 @@ async function renderStudyDetail(idOrSym) {
         // render empty "No data" cards. Notes section is visible by default for new dates.
         hiddenSections: ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'],
         notes: '',           // notes are date-bound now — fresh date starts with empty notes
-        customTypes: [],     // customTypes are date-bound — fresh date starts with no tags
+        // customTypes are date-bound. Default to ['earnings'] on a fresh date — most
+        // study work centers around earnings catalysts, and /update-studies relies on
+        // the earnings tag to trigger the TV scrape on the next refresh. User can
+        // remove the tag if the new date is actually an M&A / FDA / contract event.
+        customTypes: ['earnings'],
         customChart: null,
         focusQuarterIdx: null,
         newsDetail: null,    // user's HTML newsDetail override is date-bound too — clear on fresh date
