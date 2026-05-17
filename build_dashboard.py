@@ -2207,15 +2207,32 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .stock-header-tags .stat-tag.pos { color: var(--pos); }
 .stock-header-tags .stat-tag.neg { color: var(--neg); }
 
-/* ── Claude's Pick card variant ── */
+/* ── Pick-card variants — each agent has its own brand color used consistently across
+   the card (border + rank pill), the subtab (active state, see below), and the rationale
+   block (label color + box tint + left border).
+   Claude  = cobalt #494fdf  (matches --primary)
+   ChatGPT = green  #10a37f  (OpenAI brand)
+   Gemini  = amber  #e58431  (Google Gemini gradient hint) */
 .sip-card.claude-pick { border-color: rgba(73,79,223,0.20); }
 .sip-rank.claude-rank { background: var(--primary); }
-/* ChatGPT picks: green accent (matches OpenAI brand). */
 .sip-card.codex-pick  { border-color: rgba(16, 163, 127, 0.28); }
 .sip-rank.codex-rank  { background: #10a37f; }
-/* Gemini picks: warm amber/gold accent (Google Gemini gradient hint). */
 .sip-card.gemini-pick { border-color: rgba(229, 132, 49, 0.28); }
 .sip-rank.gemini-rank { background: #e58431; }
+
+/* Per-agent subtab active state — overrides the generic .subtab.active (uses --ink).
+   Specificity needs to beat `body.dark .subtab.active` (0,3,1), so we include
+   the dark-mode selector explicitly. */
+.subtab[data-sub="claude"].active,
+body.dark .subtab[data-sub="claude"].active { background: var(--primary); border-color: var(--primary); color: #fff; }
+.subtab[data-sub="codex"].active,
+body.dark .subtab[data-sub="codex"].active  { background: #10a37f;        border-color: #10a37f;        color: #fff; }
+.subtab[data-sub="gemini"].active,
+body.dark .subtab[data-sub="gemini"].active { background: #e58431;        border-color: #e58431;        color: #fff; }
+
+/* Rationale label + box — default is Claude cobalt; overrides nest under the
+   parent .codex-pick / .gemini-pick card so the color matches whichever agent's
+   card we're inside. */
 .claude-rationale-label {
   font-size: 10px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.8px;
   font-weight: 700; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--hairline-soft);
@@ -2225,6 +2242,10 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
   background: rgba(73,79,223,0.04); border-left: 3px solid var(--primary);
   border-radius: var(--r-sm); padding: 12px 14px;
 }
+.sip-card.codex-pick  .claude-rationale-label { color: #10a37f; }
+.sip-card.codex-pick  .claude-rationale       { background: rgba(16,163,127,0.05); border-left-color: #10a37f; }
+.sip-card.gemini-pick .claude-rationale-label { color: #e58431; }
+.sip-card.gemini-pick .claude-rationale       { background: rgba(229,132,49,0.06); border-left-color: #e58431; }
 .claude-rationale-empty {
   background: var(--surface-soft); border-left-color: var(--hairline);
   color: var(--mute); font-style: italic; font-size: 13px;
