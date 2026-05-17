@@ -175,17 +175,23 @@ if prev_ohlcv_raw and os.path.exists(studies_json_path):
     except Exception as e:
         print(f'[prev_ohlcv] backfill skipped (non-fatal): {e}')
 
-# --- Load optional Claude picks file ---
-# Schema: { "picks": [ { "symbol": "X", "rank": 1, "rationale": "..." }, ... ] }
-claude_picks_path = os.path.join(DIR, 'claude_picks.json')
-claude_picks_list = []
-if os.path.exists(claude_picks_path):
-    with open(claude_picks_path, 'r', encoding='utf-8') as f:
+# --- Load optional per-agent picks files ---
+# Same schema for all three: { "picks": [ { "symbol": "X", "rank": 1, "rationale": "...", "intent": "long" }, ... ] }
+# Each agent (Claude / ChatGPT-via-Codex / Gemini) runs its own SIPs variant and writes to
+# its own picks file, so the three lists can coexist + drive separate subtabs on the
+# dashboard without overwriting each other.
+def _load_picks(path):
+    if not os.path.exists(path): return []
+    with open(path, 'r', encoding='utf-8') as f:
         _cp = json.load(f)
-        if isinstance(_cp, dict):
-            claude_picks_list = _cp.get('picks', []) or []
-        elif isinstance(_cp, list):
-            claude_picks_list = _cp
+    if isinstance(_cp, dict): return _cp.get('picks', []) or []
+    if isinstance(_cp, list): return _cp
+    return []
+
+claude_picks_path = os.path.join(DIR, 'claude_picks.json')
+claude_picks_list = _load_picks(claude_picks_path)
+codex_picks_list  = _load_picks(os.path.join(DIR, 'codex_picks.json'))     # ChatGPT via Codex CLI
+gemini_picks_list = _load_picks(os.path.join(DIR, 'gemini_picks.json'))    # Google Gemini
 
 # --- Load optional day_resets.json — symbols whose day-count should reset to day1 today
 # because a NEW MAJOR catalyst is the primary cause of the move (curated by Claude per scan). ---
@@ -330,24 +336,30 @@ for sym, s in stocks.items():
 for lst in [gap_up_e, gap_up_o, gap_dn_e, gap_dn_o]:
     lst.sort(key=lambda e: -abs(e['chg']))
 
-# Filter Claude picks to symbols that are actually in today's candidate set
-# (so a stale claude_picks.json never points at delisted tickers).
-# Also: if a pick carries a `neglected` flag, propagate it to the stock row so the MAGNA N
-# bit lights up. Default is None → bits.N stays 'maybe' in the dashboard.
-claude_picks_clean = []
-for p in claude_picks_list:
-    sym = p.get('symbol')
-    if sym not in stocks:
-        continue
-    claude_picks_clean.append({
-        'symbol': sym,
-        'rank': p.get('rank'),
-        'intent': p.get('intent', 'long'),         # 'long' (default) | 'short' — dashboard filters by direction match
-        'rationale': p.get('rationale', ''),
-        'neglected': p.get('neglected'),
-    })
-    if 'neglected' in p:
-        stocks[sym]['neglected'] = p.get('neglected')
+# Filter per-agent picks to symbols that are actually in today's candidate set
+# (so a stale picks file never points at delisted tickers). Each agent's picks are
+# cleaned independently — Claude's neglected flag still propagates to the stock row
+# for MAGNA N bit (since Claude is the canonical curator of that flag).
+def _clean_picks(picks_list, propagate_neglected=False):
+    out = []
+    for p in picks_list:
+        sym = p.get('symbol')
+        if sym not in stocks:
+            continue
+        out.append({
+            'symbol': sym,
+            'rank': p.get('rank'),
+            'intent': p.get('intent', 'long'),       # 'long' (default) | 'short'
+            'rationale': p.get('rationale', ''),
+            'neglected': p.get('neglected'),
+        })
+        if propagate_neglected and 'neglected' in p:
+            stocks[sym]['neglected'] = p.get('neglected')
+    return out
+
+claude_picks_clean = _clean_picks(claude_picks_list, propagate_neglected=True)
+codex_picks_clean  = _clean_picks(codex_picks_list)
+gemini_picks_clean = _clean_picks(gemini_picks_list)
 
 # Filter day_resets to symbols actually in today's candidate set (drop stale entries silently).
 day_resets_clean = {sym: reason for sym, reason in day_resets_map.items() if sym in stocks}
@@ -417,6 +429,8 @@ data = {
     'rawGappers': raw_gappers,    # ALL Barchart rows from today's scrape, before the ±4%/100k filter
     'rawGappersFilter': {'chgMin': CHG_MIN, 'volMin': VOL_MIN},
     'claudePicks': claude_picks_clean,
+    'codexPicks':  codex_picks_clean,         # ChatGPT (via Codex CLI) — surfaced in 'ChatGPT 精選' subtab
+    'geminiPicks': gemini_picks_clean,        # Google Gemini — surfaced in 'Gemini 精選' subtab
     'dayResets': day_resets_clean,    # symbols whose day-count resets to day1 today (new major catalyst)
     'scanx': {
         'gapUpEarnings': gap_up_e, 'gapUpOther': gap_up_o,
