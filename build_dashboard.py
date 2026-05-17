@@ -4458,8 +4458,10 @@ function loadStudies() {
 }
 // One-shot migration: take a study with flat snapshot+ohlcv (legacy schema) and seed its
 // datedSnapshots map with one entry keyed by the current ohlcv.date (or snapshot.scanDate
-// fallback). After this, st.datedSnapshots always exists, and st.snapshot/st.ohlcv are
-// just the "active view" mirroring datedSnapshots[currentDate].
+// fallback). After this, st.datedSnapshots always exists, and st.snapshot/st.ohlcv +
+// st.hiddenSections are the "active view" mirroring datedSnapshots[currentDate].
+// hiddenSections is date-bound — each date remembers which sections (EPS chart, MS table,
+// etc.) the user had hidden when viewing it. Switching dates restores that layout.
 // Idempotent: no-op if datedSnapshots already present.
 function migrateStudyToDated(st) {
   if (!st || st.datedSnapshots) return st;
@@ -4469,6 +4471,7 @@ function migrateStudyToDated(st) {
     [key]: {
       snapshot: { ...(st.snapshot || {}) },
       ohlcv: { ...(st.ohlcv || {}) },
+      hiddenSections: [...(st.hiddenSections || [])],
     },
   };
   return st;
@@ -4639,13 +4642,15 @@ function updateStudy(id, patch) {
   const idx = arr.findIndex(st => st.id === id);
   if (idx === -1) return;
   const next = { ...arr[idx], ...patch };
-  // Auto-sync the flat snapshot+ohlcv into datedSnapshots[currentDate]. Only mirror when
-  // the resulting state has REAL research data (catalyst, newsDetail, tv, or any ohlcv
-  // bar value) — empty placeholders (date set but everything else null) shouldn't pollute
-  // the archive. This is what makes the "researched dates" chip only count dates the user
-  // actually researched, not every date they cycled through.
-  if (next.datedSnapshots && (Object.prototype.hasOwnProperty.call(patch, 'snapshot') ||
-                              Object.prototype.hasOwnProperty.call(patch, 'ohlcv'))) {
+  // Auto-sync date-bound fields (snapshot + ohlcv + hiddenSections) into
+  // datedSnapshots[currentDate]. Triggered when the patch touches ANY of those three
+  // fields — they all describe how a specific date looks. Only mirror when the resulting
+  // state has REAL research data (catalyst, newsDetail, tv, or any ohlcv bar value) so
+  // empty placeholders don't pollute the archive.
+  const touchesDated = Object.prototype.hasOwnProperty.call(patch, 'snapshot') ||
+                       Object.prototype.hasOwnProperty.call(patch, 'ohlcv') ||
+                       Object.prototype.hasOwnProperty.call(patch, 'hiddenSections');
+  if (next.datedSnapshots && touchesDated) {
     const d = next.ohlcv && next.ohlcv.date;
     if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) {
       const slotPreview = { snapshot: next.snapshot || {}, ohlcv: next.ohlcv || {} };
@@ -4655,6 +4660,7 @@ function updateStudy(id, patch) {
           [d]: {
             snapshot: { ...(next.snapshot || {}) },
             ohlcv: { ...(next.ohlcv || {}) },
+            hiddenSections: [...(next.hiddenSections || [])],
           },
         };
       } else {
@@ -5579,10 +5585,11 @@ async function renderStudyDetail(idOrSym) {
         const sd = od || (study.savedAt || '').slice(0, 10);
         const title = `Click to change the trading-day date. Switching to a previously-researched date restores its saved data automatically; switching to a new date creates a blank slot for /update-studies to fill.`;
         const dates = listResearchedDates(study);
-        // Researched-dates chip: only render if there are 2+ dates (single-date studies
-        // don't need a switcher — that's just the date input itself). Clicking opens a
-        // tiny dropdown of all dates with data, sorted newest first.
-        const chip = (dates.length > 1) ? `
+        // Researched-dates chip: shows whenever at least one date has saved research.
+        // Lets the user view + switch between dated catalysts they've already done.
+        // Even with a single entry, the chip surfaces the archived date so the user knows
+        // it's there to come back to.
+        const chip = (dates.length >= 1) ? `
           <button class="research-dates-chip" id="research-dates-chip" type="button"
                   title="${dates.length} researched dates — click to switch"
                   aria-haspopup="true" aria-expanded="false">
@@ -5799,6 +5806,8 @@ async function renderStudyDetail(idOrSym) {
     // STEP 1: archive the current view to datedSnapshots[oldDate] BEFORE swapping —
     // but ONLY if it has real research data. Empty placeholders shouldn't pollute the
     // archive (otherwise cycling through dates would record each visit even when blank).
+    // hiddenSections is archived too so each date remembers its own layout (which charts
+    // / MS table / YoY block were visible vs. collapsed).
     const dated = { ...(cur.datedSnapshots || {}) };
     if (oldDate && /^\d{4}-\d{2}-\d{2}$/.test(oldDate)) {
       const oldSlot = { snapshot: cur.snapshot || {}, ohlcv: cur.ohlcv || {} };
@@ -5806,6 +5815,7 @@ async function renderStudyDetail(idOrSym) {
         dated[oldDate] = {
           snapshot: { ...(cur.snapshot || {}) },
           ohlcv: { ...(cur.ohlcv || {}) },
+          hiddenSections: [...(cur.hiddenSections || [])],
         };
       } else {
         // Old view was a blank placeholder — drop any stale entry to keep the archive clean.
@@ -5814,11 +5824,13 @@ async function renderStudyDetail(idOrSym) {
     }
     // STEP 2 or 3: does newDate have research already?
     const existing = dated[newDate];
-    let newSnapshot, newOhlcv;
+    let newSnapshot, newOhlcv, newHiddenSections;
     if (existing && hasResearchData(existing)) {
-      // RESTORE — bring back the saved snapshot/ohlcv exactly as it was.
+      // RESTORE — bring back the saved snapshot/ohlcv + the saved section layout exactly
+      // as the user last left them on this date.
       newSnapshot = { ...(existing.snapshot || {}) };
       newOhlcv = { ...(existing.ohlcv || {}) };
+      newHiddenSections = [...(existing.hiddenSections || [])];
     } else {
       // NEW DATE — blank placeholder so /update-studies + /SIPs fill it on next run.
       // Identity fields (name, type) come from the existing snapshot since the ticker
@@ -5841,25 +5853,22 @@ async function renderStudyDetail(idOrSym) {
         _newsFetched: false,
       };
       newOhlcv = { date: newDate, open: null, high: null, low: null, close: null, prev_close: null, volume: null };
+      // Default hide for blank placeholders: data-dependent sections collapse since they'd
+      // render empty "No data" cards. The notes section stays visible (study-level field).
+      newHiddenSections = ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'];
       // Don't seed datedSnapshots[newDate] yet — it's a blank placeholder, and we only
       // want to record dates that have real research. updateStudy()'s auto-mirror will
       // add the entry as soon as the user (or /update-studies) writes actual data.
       delete dated[newDate];
     }
-    // Atomic write: swap snapshot+ohlcv+datedSnapshots in one updateStudy call.
+    // Atomic write: swap snapshot+ohlcv+hiddenSections+datedSnapshots in one call.
     updateStudy(id, {
       datedSnapshots: dated,
       snapshot: newSnapshot,
       ohlcv: newOhlcv,
-      // customChart was the user-edited MS table for the previous date. Each date has its
-      // own implied chart from snapshot.tv.chart, so clearing the override lets the new
-      // date render from its own source.
       customChart: null,
       focusQuarterIdx: null,
-      // Sections that depend on tv data: only hide if the new date is a placeholder.
-      hiddenSections: (existing && hasResearchData(existing))
-        ? (cur.hiddenSections || [])
-        : ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'],
+      hiddenSections: newHiddenSections,
     });
     renderStudyDetail(id);
   });
