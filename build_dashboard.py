@@ -955,6 +955,35 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 }
 .studies-filter-popup .sf-section-label:first-child { padding-top: 2px; }
 
+/* Sort popup rows — 3 grouped sort dimensions (Date / Added / Symbol). Each row toggles
+   direction via the arrow on the right; active row gets a primary-tinted background +
+   highlighted arrow. dir-desc shows down-chevron; dir-asc rotates it 180° for up-chevron. */
+.studies-filter-popup.sort-popup .sort-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 10px; cursor: pointer; border-radius: var(--r-sm);
+  font-size: 13px; color: var(--ink);
+  transition: background 0.10s;
+}
+.studies-filter-popup.sort-popup .sort-row:hover { background: var(--surface-soft); }
+.studies-filter-popup.sort-popup .sort-row.active {
+  background: rgba(73,79,223,0.10); color: var(--primary-deep);
+}
+.studies-filter-popup.sort-popup .sort-label { flex: 1 1 auto; font-weight: 600; }
+.studies-filter-popup.sort-popup .sort-dir {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 500; color: var(--mute);
+  font-family: var(--font-body);
+}
+.studies-filter-popup.sort-popup .sort-row.active .sort-dir { color: var(--primary); font-weight: 600; }
+.studies-filter-popup.sort-popup .sort-dir-icon {
+  width: 13px; height: 13px;
+  transition: transform 0.15s, opacity 0.12s;
+  opacity: 0.45;
+}
+.studies-filter-popup.sort-popup .sort-row.active .sort-dir-icon { opacity: 1; }
+.studies-filter-popup.sort-popup .sort-row:hover .sort-dir-icon { opacity: 0.85; }
+.studies-filter-popup.sort-popup .sort-row.dir-asc .sort-dir-icon { transform: rotate(180deg); }
+
 /* Placeholder badge shown on studies awaiting /SIPs data fill */
 .placeholder-badge {
   display: inline-block; padding: 2px 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.6px;
@@ -4997,20 +5026,44 @@ function renderStudies() {
     pop.style.left = `${Math.min(rect.left, window.innerWidth - 256)}px`;
     pop.style.zIndex = '1500';
     pop.style.width = '240px';
+    // 3-row grouped layout: each row = one sort dimension (Date / Added / Symbol) with a
+    // direction arrow on the right. Click the row to either ACTIVATE it (if not active) or
+    // FLIP its direction (if already active). Inactive rows show their default direction
+    // muted so the user can predict where activation will land them.
+    const { group: curGroup, dir: curDir } = parseSortKey();
     pop.innerHTML = `
       <div class="sf-head"><span>Sort by</span></div>
-      <div class="sf-options-host">${STUDIES_SORT_OPTIONS.map(opt =>
-        `<div class="sf-option ${STUDIES_SORT === opt.key ? 'checked' : ''}" data-key="${opt.key}">
-          <span>${escapeHtml(opt.label)}</span>
-        </div>`
-      ).join('')}</div>
+      <div class="sf-options-host">${STUDIES_SORT_GROUPS.map(g => {
+        const isActive = (curGroup === g.key);
+        const dir = isActive ? curDir : g.defaultDir;
+        const dirText = dir === 'desc' ? g.descLabel : g.ascLabel;
+        return `<div class="sort-row ${isActive ? 'active' : ''} dir-${dir}" data-group="${g.key}">
+          <span class="sort-label">${escapeHtml(g.label)}</span>
+          <span class="sort-dir">
+            <span class="sort-dir-text">${escapeHtml(dirText)}</span>
+            <svg class="sort-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
+        </div>`;
+      }).join('')}</div>
     `;
     document.body.appendChild(pop);
     pop.querySelector('.sf-options-host').addEventListener('click', ev => {
-      const opt = ev.target.closest('.sf-option');
-      if (!opt) return;
+      const row = ev.target.closest('.sort-row');
+      if (!row) return;
       ev.preventDefault(); ev.stopPropagation();
-      STUDIES_SORT = opt.dataset.key;
+      const group = row.dataset.group;
+      const groupDef = STUDIES_SORT_GROUPS.find(g => g.key === group);
+      if (!groupDef) return;
+      const { group: prevGroup, dir: prevDir } = parseSortKey();
+      let newDir;
+      if (prevGroup === group) {
+        // Click on active row → flip direction
+        newDir = prevDir === 'desc' ? 'asc' : 'desc';
+      } else {
+        // Click on inactive row → activate with its default direction
+        newDir = groupDef.defaultDir;
+      }
+      STUDIES_SORT = `${group}-${newDir}`;
       pop.remove();
       renderStudies();
     });
@@ -5453,13 +5506,18 @@ const STUDIES_FILTER = new Set();
 // the user fills it in the Gain/Stop popup, otherwise `savedAt` — so the order matches what
 // the user sees on each card. Session state; doesn't survive page reload.
 let STUDIES_SORT = 'date-desc';
-const STUDIES_SORT_OPTIONS = [
-  { key: 'date-desc',  label: 'Date — newest first' },
-  { key: 'date-asc',   label: 'Date — oldest first' },
-  { key: 'added-desc', label: 'Added — newest first' },
-  { key: 'sym-asc',    label: 'Symbol A → Z' },
-  { key: 'sym-desc',   label: 'Symbol Z → A' },
+// Sort groups: 3 logical buckets (Date, Added, Symbol). Each toggles between asc/desc via
+// the arrow on the right side of the row in the dropdown. STUDIES_SORT stores the combined
+// key (e.g., 'date-desc', 'added-asc', 'sym-asc') so legacy storage still parses cleanly.
+const STUDIES_SORT_GROUPS = [
+  { key: 'date',  label: 'Date',   descLabel: 'Newest first', ascLabel: 'Oldest first', defaultDir: 'desc' },
+  { key: 'added', label: 'Added',  descLabel: 'Newest first', ascLabel: 'Oldest first', defaultDir: 'desc' },
+  { key: 'sym',   label: 'Symbol', descLabel: 'Z → A',         ascLabel: 'A → Z',         defaultDir: 'asc'  },
 ];
+function parseSortKey() {
+  const [group, dir] = String(STUDIES_SORT || 'date-desc').split('-');
+  return { group: group || 'date', dir: dir === 'asc' ? 'asc' : 'desc' };
+}
 function studyDisplayDate(st) {
   return (st.ohlcv && st.ohlcv.date) ? st.ohlcv.date : (st.savedAt || '').slice(0, 10);
 }
@@ -5472,6 +5530,8 @@ function sortStudies(arr) {
     // studies bubble up regardless of which trading day their ohlcv points at. Tiebreak by
     // symbol so studies created in the same second still order deterministically.
     case 'added-desc': return a.sort((x, y) => (y.savedAt || '').localeCompare(x.savedAt || '')
+                                             || x.symbol.localeCompare(y.symbol));
+    case 'added-asc':  return a.sort((x, y) => (x.savedAt || '').localeCompare(y.savedAt || '')
                                              || x.symbol.localeCompare(y.symbol));
     case 'sym-asc':    return a.sort((x, y) => x.symbol.localeCompare(y.symbol)
                                              || (y.savedAt || '').localeCompare(x.savedAt || ''));
