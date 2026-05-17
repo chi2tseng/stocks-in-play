@@ -1198,8 +1198,12 @@ body.readonly-mode .study-detail-date-input { pointer-events: none; }
 .research-dates-chip svg { opacity: 0.7; }
 .research-dates-chip:hover svg, .research-dates-chip[aria-expanded="true"] svg { opacity: 1; }
 
+/* position:fixed so the popup escapes every ancestor stacking context (the study-detail
+   page sits inside #app which sits below nav.topbar at z-index 5000 — without fixed the
+   popup got trapped under the topbar). z-index 10000 keeps it above the topbar AND below
+   the image lightbox (99999). */
 .research-dates-popup {
-  position: absolute; z-index: 6000;
+  position: fixed; z-index: 10000;
   background: var(--canvas); border: 1px solid var(--hairline);
   border-radius: var(--r-md); padding: 6px;
   min-width: 280px; max-width: 360px;
@@ -4470,10 +4474,15 @@ function migrateStudyToDated(st) {
   return st;
 }
 // List the dates a study has researched data for, sorted newest first. Used for the
-// "researched dates" dropdown on the study-detail breadcrumb.
+// "researched dates" dropdown on the study-detail breadcrumb. Filters out blank
+// placeholder slots — only dates with real research data show in the chip + popup.
 function listResearchedDates(st) {
   if (!st || !st.datedSnapshots) return [];
-  return Object.keys(st.datedSnapshots).filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort().reverse();
+  return Object.keys(st.datedSnapshots)
+    .filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d))
+    .filter(d => hasResearchData(st.datedSnapshots[d]))
+    .sort()
+    .reverse();
 }
 // Does this dated slot contain real research (vs. an empty placeholder)?
 function hasResearchData(slot) {
@@ -4630,21 +4639,34 @@ function updateStudy(id, patch) {
   const idx = arr.findIndex(st => st.id === id);
   if (idx === -1) return;
   const next = { ...arr[idx], ...patch };
-  // Auto-sync the flat snapshot+ohlcv into datedSnapshots[currentDate]. Whenever a write
-  // touches either field, mirror the result into the archive so date-pill switches later
-  // can restore exactly what's on screen now. The "currentDate" key is whatever ohlcv.date
-  // is after applying the patch — that's the authoritative "which date am I viewing".
+  // Auto-sync the flat snapshot+ohlcv into datedSnapshots[currentDate]. Only mirror when
+  // the resulting state has REAL research data (catalyst, newsDetail, tv, or any ohlcv
+  // bar value) — empty placeholders (date set but everything else null) shouldn't pollute
+  // the archive. This is what makes the "researched dates" chip only count dates the user
+  // actually researched, not every date they cycled through.
   if (next.datedSnapshots && (Object.prototype.hasOwnProperty.call(patch, 'snapshot') ||
                               Object.prototype.hasOwnProperty.call(patch, 'ohlcv'))) {
     const d = next.ohlcv && next.ohlcv.date;
     if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) {
-      next.datedSnapshots = {
-        ...next.datedSnapshots,
-        [d]: {
-          snapshot: { ...(next.snapshot || {}) },
-          ohlcv: { ...(next.ohlcv || {}) },
-        },
-      };
+      const slotPreview = { snapshot: next.snapshot || {}, ohlcv: next.ohlcv || {} };
+      if (hasResearchData(slotPreview)) {
+        next.datedSnapshots = {
+          ...next.datedSnapshots,
+          [d]: {
+            snapshot: { ...(next.snapshot || {}) },
+            ohlcv: { ...(next.ohlcv || {}) },
+          },
+        };
+      } else {
+        // The new state is a blank placeholder. Drop any stale archive entry for this date
+        // so cycling through dates doesn't leave breadcrumbs behind. (If the user later
+        // adds research, the next mirror will recreate the entry.)
+        if (next.datedSnapshots[d]) {
+          const cleaned = { ...next.datedSnapshots };
+          delete cleaned[d];
+          next.datedSnapshots = cleaned;
+        }
+      }
     }
   }
   arr[idx] = next;
@@ -5774,15 +5796,21 @@ async function renderStudyDetail(idOrSym) {
     migrateStudyToDated(cur);   // defensive — ensures datedSnapshots exists before we touch it
     const oldDate = cur.ohlcv?.date || '';
     if (newDate === oldDate) return;
-    // STEP 1: archive the current view to datedSnapshots[oldDate] BEFORE swapping.
-    // updateStudy() also does this on every write, but doing it explicitly here makes the
-    // intent obvious and guards against unsaved edits.
+    // STEP 1: archive the current view to datedSnapshots[oldDate] BEFORE swapping —
+    // but ONLY if it has real research data. Empty placeholders shouldn't pollute the
+    // archive (otherwise cycling through dates would record each visit even when blank).
     const dated = { ...(cur.datedSnapshots || {}) };
     if (oldDate && /^\d{4}-\d{2}-\d{2}$/.test(oldDate)) {
-      dated[oldDate] = {
-        snapshot: { ...(cur.snapshot || {}) },
-        ohlcv: { ...(cur.ohlcv || {}) },
-      };
+      const oldSlot = { snapshot: cur.snapshot || {}, ohlcv: cur.ohlcv || {} };
+      if (hasResearchData(oldSlot)) {
+        dated[oldDate] = {
+          snapshot: { ...(cur.snapshot || {}) },
+          ohlcv: { ...(cur.ohlcv || {}) },
+        };
+      } else {
+        // Old view was a blank placeholder — drop any stale entry to keep the archive clean.
+        delete dated[oldDate];
+      }
     }
     // STEP 2 or 3: does newDate have research already?
     const existing = dated[newDate];
@@ -5813,8 +5841,10 @@ async function renderStudyDetail(idOrSym) {
         _newsFetched: false,
       };
       newOhlcv = { date: newDate, open: null, high: null, low: null, close: null, prev_close: null, volume: null };
-      // Seed the slot so updateStudy() can keep it in sync on subsequent writes.
-      dated[newDate] = { snapshot: { ...newSnapshot }, ohlcv: { ...newOhlcv } };
+      // Don't seed datedSnapshots[newDate] yet — it's a blank placeholder, and we only
+      // want to record dates that have real research. updateStudy()'s auto-mirror will
+      // add the entry as soon as the user (or /update-studies) writes actual data.
+      delete dated[newDate];
     }
     // Atomic write: swap snapshot+ohlcv+datedSnapshots in one updateStudy call.
     updateStudy(id, {
@@ -5841,28 +5871,36 @@ async function renderStudyDetail(idOrSym) {
   const chipBtn = document.getElementById('research-dates-chip');
   const chipPopup = document.getElementById('research-dates-popup');
   if (chipBtn && chipPopup) {
+    const closePopup = () => {
+      chipPopup.classList.remove('open');
+      chipBtn.setAttribute('aria-expanded', 'false');
+    };
     chipBtn.addEventListener('click', e => {
       e.stopPropagation();
       const isOpen = chipPopup.classList.contains('open');
-      if (isOpen) {
-        chipPopup.classList.remove('open');
-        chipBtn.setAttribute('aria-expanded', 'false');
-      } else {
-        // Position the popup below the chip, aligned to its left edge.
-        const r = chipBtn.getBoundingClientRect();
-        chipPopup.style.left = (window.scrollX + r.left) + 'px';
-        chipPopup.style.top  = (window.scrollY + r.bottom + 6) + 'px';
-        chipPopup.classList.add('open');
-        chipBtn.setAttribute('aria-expanded', 'true');
-      }
+      if (isOpen) { closePopup(); return; }
+      // Position below chip using viewport coords (matches position:fixed in CSS so the
+      // popup stays anchored even when the topbar's stacking context would otherwise
+      // trap an absolutely-positioned child).
+      const r = chipBtn.getBoundingClientRect();
+      chipPopup.style.left = r.left + 'px';
+      chipPopup.style.top  = (r.bottom + 6) + 'px';
+      chipPopup.classList.add('open');
+      chipBtn.setAttribute('aria-expanded', 'true');
     });
-    // Close on outside click
-    document.addEventListener('click', evt => {
+    // Close on outside click (use document-level listener that lives as long as the popup
+    // does — single shot was too brittle when other handlers re-rendered the page).
+    const outsideHandler = (evt) => {
       if (!chipPopup.classList.contains('open')) return;
       if (chipPopup.contains(evt.target) || chipBtn.contains(evt.target)) return;
-      chipPopup.classList.remove('open');
-      chipBtn.setAttribute('aria-expanded', 'false');
-    }, { once: true });
+      closePopup();
+    };
+    document.addEventListener('click', outsideHandler);
+    // Close on scroll — fixed-position popup would otherwise stay anchored to its viewport
+    // coords while the underlying page scrolls away from the chip.
+    window.addEventListener('scroll', () => {
+      if (chipPopup.classList.contains('open')) closePopup();
+    }, { passive: true });
     // Click a date item → trigger the date-input change handler with the chosen date.
     chipPopup.querySelectorAll('.research-date-item').forEach(item => {
       item.addEventListener('click', e => {
