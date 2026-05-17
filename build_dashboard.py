@@ -2210,6 +2210,12 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 /* ── Claude's Pick card variant ── */
 .sip-card.claude-pick { border-color: rgba(73,79,223,0.20); }
 .sip-rank.claude-rank { background: var(--primary); }
+/* ChatGPT picks: green accent (matches OpenAI brand). */
+.sip-card.codex-pick  { border-color: rgba(16, 163, 127, 0.28); }
+.sip-rank.codex-rank  { background: #10a37f; }
+/* Gemini picks: warm amber/gold accent (Google Gemini gradient hint). */
+.sip-card.gemini-pick { border-color: rgba(229, 132, 49, 0.28); }
+.sip-rank.gemini-rank { background: #e58431; }
 .claude-rationale-label {
   font-size: 10px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.8px;
   font-weight: 700; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--hairline-soft);
@@ -3020,58 +3026,80 @@ function sipCardHtml(s, idx) {
   </a>`;
 }
 
-// Claude's Pick card — emphasizes Claude's per-ticker rationale.
-// Forward YoY block is shown when available (catalyst-only tickers without TV data simply skip it).
-function claudePickCardHtml(s, idx) {
+// Per-agent labels + picks-file paths. Used by pickCardHtml() to render the correct
+// empty-state message and by renderSips() to drive subtab rendering.
+const PICK_SOURCES = {
+  claude: { label: 'Claude',  picksFile: 'claude_picks.json', cssClass: 'claude-pick', rankClass: 'claude-rank' },
+  codex:  { label: 'ChatGPT', picksFile: 'codex_picks.json',  cssClass: 'codex-pick',  rankClass: 'codex-rank'  },
+  gemini: { label: 'Gemini',  picksFile: 'gemini_picks.json', cssClass: 'gemini-pick', rankClass: 'gemini-rank' },
+};
+
+// Generic Pick card — renders any of the 3 agents (claude / codex / gemini) with the
+// right colors + empty-state message. Card uses generic _pickRationale / _pickIntent /
+// _pickDirMismatch fields on the stock object; legacy _claudeRationale / _claudeIntent
+// fields are still populated for the Claude tab so saveStudyBtnHtml + any older callers
+// keep working without modification.
+function pickCardHtml(s, idx, sourceKey = 'claude') {
+  const src = PICK_SOURCES[sourceKey] || PICK_SOURCES.claude;
   const isFeatured = idx < 3;
   const chgCls = s.chgPct >= 0 ? 'pos' : 'neg';
   const sessTags = s.sessions.map(x => `<span class="tag">${x.session.toUpperCase()} <span class="dot dot-${x.direction}"></span> ${fmtPctShort(x.chgPct)}</span>`).join(' ');
-  const rationale = s._claudeRationale || '';
+  const rationale = s._pickRationale || s._claudeRationale || '';
   const rationaleHtml = rationale
     ? `<div class="claude-rationale">${escapeHtml(rationale).replace(/\n/g, '<br>')}</div>`
-    : `<div class="claude-rationale claude-rationale-empty">（Claude 尚未提供分析——在 <code>D:\\SIPs\\claude_picks.json</code> 寫入 <code>{"symbol":"${s.symbol}","rationale":"..."}</code> 後 rebuild 即可。）</div>`;
-  // Direction-mismatch banner — only shown when the toolbar toggle is ON and this pick's
-  // declared intent disagrees with the actual chgPct sign.
-  const mismatchBanner = s._claudeDirMismatch
-    ? `<div class="dir-mismatch-banner">⚠️ 方向不符：intent=<b>${s._claudeIntent}</b> 但 chgPct=${fmtPctShort(s.chgPct)}</div>`
+    : `<div class="claude-rationale claude-rationale-empty">（${src.label} 尚未提供分析——在 <code>D:\\SIPs\\${src.picksFile}</code> 寫入 <code>{"symbol":"${s.symbol}","rationale":"..."}</code> 後 rebuild 即可。）</div>`;
+  const intent = s._pickIntent || s._claudeIntent;
+  const mismatchBanner = s._pickDirMismatch
+    ? `<div class="dir-mismatch-banner">⚠️ 方向不符：intent=<b>${intent}</b> 但 chgPct=${fmtPctShort(s.chgPct)}</div>`
     : '';
-  return `<a class="sip-card claude-pick ${isFeatured ? 'featured' : ''} ${s._claudeDirMismatch ? 'dir-mismatch' : ''}" href="${buildRouteHash('stock/' + s.symbol)}" style="text-decoration:none;color:inherit;display:block;position:relative">
-    ${saveStudyBtnHtml(s.symbol, s._claudeRationale, s._claudeIntent)}
-    <span class="sip-rank-row"><span class="sip-rank claude-rank">#${idx + 1}</span>${dayBadgeHtml(s)}</span>
+  return `<a class="sip-card ${src.cssClass} ${isFeatured ? 'featured' : ''} ${s._pickDirMismatch ? 'dir-mismatch' : ''}" href="${buildRouteHash('stock/' + s.symbol)}" style="text-decoration:none;color:inherit;display:block;position:relative">
+    ${saveStudyBtnHtml(s.symbol, rationale, intent)}
+    <span class="sip-rank-row"><span class="sip-rank ${src.rankClass}">#${idx + 1}</span>${dayBadgeHtml(s)}</span>
     ${mismatchBanner}
     <div class="sip-header"><div class="sip-sym">${s.symbol}</div><div class="sip-chg ${chgCls}">${fmtPct(s.chgPct)}</div></div>
     <div class="sip-name">${escapeHtml(s.name)}</div>
     <div class="sip-meta">${sessTags} <span class="tag ${typeTagClass(s.type)}">${s.type}</span></div>
     ${shortPerfLine(s)}
-    <div class="claude-rationale-label">${t('claude-rationale-label')}</div>
+    <div class="claude-rationale-label">${src.label} 分析</div>
     ${rationaleHtml}
     ${forwardYoyBlock(s)}
   </a>`;
 }
+
+// Backwards-compat alias for any older callers that reference the previous name.
+const claudePickCardHtml = (s, idx) => pickCardHtml(s, idx, 'claude');
 
 // Module-level toggle: when ON, the Claude tab also shows picks whose `intent` doesn't match
 // today's chgPct direction (e.g. a "long" pick on a stock that gapped down). Default OFF.
 let SHOW_MISMATCHED_PICKS = false;
 
 async function renderSips(subtab) {
-  // Subtabs: 'claude' (default) — Claude-curated picks with rationale | 'magna' — MAGNA53 algorithmic score.
-  // Default is Claude per user spec: algorithmic ranking includes shorts mixed in with longs, which is
-  // confusing on a "Today's SIPs" landing. Claude's curated list is direction-aware (see filter below).
-  const tab = (subtab === 'magna') ? 'magna' : 'claude';
+  // Subtabs (4 total):
+  //   'claude' (default) — Claude-curated picks  → reads DATA.claudePicks
+  //   'codex'            — ChatGPT (via Codex CLI) picks → reads DATA.codexPicks
+  //   'gemini'           — Google Gemini picks            → reads DATA.geminiPicks
+  //   'magna'            — MAGNA53 algorithmic ranking
+  // The three picks tabs share pickCardHtml() — colors / labels from PICK_SOURCES.
+  // URL routing: '/sips' (default Claude), '/sips/codex', '/sips/gemini', '/sips/magna'.
+  const validTabs = ['claude', 'codex', 'gemini', 'magna'];
+  const tab = validTabs.includes(subtab) ? subtab : 'claude';
+  const isPicksTab = (tab === 'claude' || tab === 'codex' || tab === 'gemini');
   const app = document.getElementById('app');
   app.innerHTML = `
     <h2 class="page-title">Today's SIPs</h2>
     <div class="subtabs" id="sips-subtabs">
       <div class="subtab ${tab === 'claude' ? 'active' : ''}" data-sub="claude">Claude 精選</div>
+      <div class="subtab ${tab === 'codex'  ? 'active' : ''}" data-sub="codex">ChatGPT 精選</div>
+      <div class="subtab ${tab === 'gemini' ? 'active' : ''}" data-sub="gemini">Gemini 精選</div>
       <div class="subtab ${tab === 'magna'  ? 'active' : ''}" data-sub="magna">MAGNA53 排序</div>
       <span class="subtab-hint" id="sips-hint"></span>
-      ${tab === 'claude' ? `<button class="mismatch-toggle ${SHOW_MISMATCHED_PICKS ? 'on' : ''}" id="mismatch-toggle" title="顯示方向不符的 picks（intent vs chgPct 不一致）">
+      ${isPicksTab ? `<button class="mismatch-toggle ${SHOW_MISMATCHED_PICKS ? 'on' : ''}" id="mismatch-toggle" title="顯示方向不符的 picks（intent vs chgPct 不一致）">
         ${SHOW_MISMATCHED_PICKS ? '✓ 包含方向不符' : '⊘ 隱藏方向不符'}
       </button>` : ''}
     </div>
     <div id="sips-stack"></div>`;
-  // Wire subtab clicks → re-route via hash so URL is shareable. Claude is now the default
-  // (no suffix); /magna is the explicit override.
+  // Wire subtab clicks → re-route via hash. Claude is the default (no suffix), others get
+  // a /<tab> suffix.
   document.querySelectorAll('#sips-subtabs .subtab').forEach(t => {
     t.onclick = () => {
       const sub = t.dataset.sub;
@@ -3102,30 +3130,42 @@ async function renderSips(subtab) {
     }
     stack.innerHTML = '<div class="sip-grid">' + top.map((s, idx) => sipCardHtml(s, idx)).join('') + '</div>';
   } else {
-    // Claude picks come from DATA.claudePicks (an array of {symbol, rank, rationale, intent?}).
-    // Direction-match rule (per user spec): a `long` pick must be gap-up (chgPct > 0), a `short`
-    // pick must be gap-down (chgPct < 0). When SHOW_MISMATCHED_PICKS is false (default), mismatches
-    // are silently dropped. When true (via the toolbar toggle), mismatches are SHOWN but marked
-    // with `_claudeDirMismatch: true` so the card can render a visual warning.
-    // `intent` defaults to "long" when missing (legacy schema).
-    const picks = Array.isArray(DATA.claudePicks) ? DATA.claudePicks.slice() : [];
+    // Picks tabs (claude / codex / gemini) — same render logic, different source array.
+    // Each agent's picks come from DATA.<source>Picks. Direction-match rule: long pick
+    // must be gap-up (chgPct > 0), short pick must be gap-down. SHOW_MISMATCHED_PICKS
+    // toggles dropping mismatches vs. showing them with a warning banner.
+    const srcMeta = PICK_SOURCES[tab];
+    const pickArrayField = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks' }[tab];
+    const picks = Array.isArray(DATA[pickArrayField]) ? DATA[pickArrayField].slice() : [];
     picks.sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
     const bySym = Object.fromEntries(rows.map(r => [r.symbol, r]));
     const isMismatch = s => {
-      if (s._claudeIntent === 'long')  return !(s.chgPct > 0);
-      if (s._claudeIntent === 'short') return !(s.chgPct < 0);
+      if (s._pickIntent === 'long')  return !(s.chgPct > 0);
+      if (s._pickIntent === 'short') return !(s.chgPct < 0);
       return false;
     };
     const all = picks
       .map(p => bySym[p.symbol]
-        ? { ...bySym[p.symbol], _claudeRationale: p.rationale, _claudeIntent: p.intent || 'long' }
+        ? {
+            ...bySym[p.symbol],
+            _pickRationale:   p.rationale,
+            _pickIntent:      p.intent || 'long',
+            // Legacy _claude* fields populated when on the Claude tab so saveStudyBtnHtml
+            // + any older callers keep working unchanged.
+            _claudeRationale: tab === 'claude' ? p.rationale : undefined,
+            _claudeIntent:    tab === 'claude' ? (p.intent || 'long') : undefined,
+          }
         : null)
       .filter(Boolean)
-      .map(s => ({ ...s, _claudeDirMismatch: isMismatch(s) }));
-    const enriched = SHOW_MISMATCHED_PICKS ? all : all.filter(s => !s._claudeDirMismatch);
+      .map(s => ({ ...s, _pickDirMismatch: isMismatch(s) }));
+    const enriched = SHOW_MISMATCHED_PICKS ? all : all.filter(s => !s._pickDirMismatch);
     const droppedCount = all.length - enriched.length;
     if (enriched.length === 0) {
-      stack.innerHTML = `<div class="sip-empty">尚無 Claude 精選清單${droppedCount > 0 ? `（${droppedCount} 筆方向跟市場不符已隱藏，按上方 toggle 顯示）` : ''}。<br><br>在 <code>D:\\SIPs\\claude_picks.json</code> 加入 <code>{"picks":[{"symbol":"X","rank":1,"rationale":"...","intent":"long"}]}</code> 後 rebuild dashboard 即可看到。</div>`;
+      const hiddenNote = droppedCount > 0 ? `（${droppedCount} 筆方向跟市場不符已隱藏，按上方 toggle 顯示）` : '';
+      const cmdHint = tab === 'claude'
+        ? '在 Claude Code 跑 <code>/SIPs</code>。'
+        : `在 ${tab === 'codex' ? 'Codex' : 'Gemini'} CLI 跑 <code>/SIPs-${tab}-full</code> 或 <code>/SIPs-${tab}-picks</code>。`;
+      stack.innerHTML = `<div class="sip-empty">尚無 ${srcMeta.label} 精選清單${hiddenNote}。<br><br>${cmdHint}<br><br>或在 <code>D:\\SIPs\\${srcMeta.picksFile}</code> 手動加入 <code>{"picks":[{"symbol":"X","rank":1,"rationale":"...","intent":"long"}]}</code> 後 rebuild dashboard 即可看到。</div>`;
       return;
     }
     if (!SHOW_MISMATCHED_PICKS && droppedCount > 0) {
@@ -3133,7 +3173,7 @@ async function renderSips(subtab) {
     } else if (SHOW_MISMATCHED_PICKS) {
       hint.textContent = `${enriched.length} picks shown (including mismatched)`;
     }
-    stack.innerHTML = '<div class="sip-grid">' + enriched.map((s, idx) => claudePickCardHtml(s, idx)).join('') + '</div>';
+    stack.innerHTML = '<div class="sip-grid">' + enriched.map((s, idx) => pickCardHtml(s, idx, tab)).join('') + '</div>';
   }
   staggerChildren('.sip-grid > .sip-card', 12);
   // Wire up Copy buttons (don't navigate when clicking copy)
