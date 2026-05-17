@@ -5454,10 +5454,11 @@ const STUDIES_FILTER = new Set();
 // the user sees on each card. Session state; doesn't survive page reload.
 let STUDIES_SORT = 'date-desc';
 const STUDIES_SORT_OPTIONS = [
-  { key: 'date-desc', label: 'Date — newest first' },
-  { key: 'date-asc',  label: 'Date — oldest first' },
-  { key: 'sym-asc',   label: 'Symbol A → Z' },
-  { key: 'sym-desc',  label: 'Symbol Z → A' },
+  { key: 'date-desc',  label: 'Date — newest first' },
+  { key: 'date-asc',   label: 'Date — oldest first' },
+  { key: 'added-desc', label: 'Added — newest first' },
+  { key: 'sym-asc',    label: 'Symbol A → Z' },
+  { key: 'sym-desc',   label: 'Symbol Z → A' },
 ];
 function studyDisplayDate(st) {
   return (st.ohlcv && st.ohlcv.date) ? st.ohlcv.date : (st.savedAt || '').slice(0, 10);
@@ -5465,15 +5466,20 @@ function studyDisplayDate(st) {
 function sortStudies(arr) {
   const a = arr.slice();
   switch (STUDIES_SORT) {
-    case 'date-asc':  return a.sort((x, y) => studyDisplayDate(x).localeCompare(studyDisplayDate(y))
-                                            || (x.savedAt || '').localeCompare(y.savedAt || ''));
-    case 'sym-asc':   return a.sort((x, y) => x.symbol.localeCompare(y.symbol)
-                                            || (y.savedAt || '').localeCompare(x.savedAt || ''));
-    case 'sym-desc':  return a.sort((x, y) => y.symbol.localeCompare(x.symbol)
-                                            || (y.savedAt || '').localeCompare(x.savedAt || ''));
+    case 'date-asc':   return a.sort((x, y) => studyDisplayDate(x).localeCompare(studyDisplayDate(y))
+                                             || (x.savedAt || '').localeCompare(y.savedAt || ''));
+    // 'added-desc' uses savedAt only — pure addition order. This is what makes recently-added
+    // studies bubble up regardless of which trading day their ohlcv points at. Tiebreak by
+    // symbol so studies created in the same second still order deterministically.
+    case 'added-desc': return a.sort((x, y) => (y.savedAt || '').localeCompare(x.savedAt || '')
+                                             || x.symbol.localeCompare(y.symbol));
+    case 'sym-asc':    return a.sort((x, y) => x.symbol.localeCompare(y.symbol)
+                                             || (y.savedAt || '').localeCompare(x.savedAt || ''));
+    case 'sym-desc':   return a.sort((x, y) => y.symbol.localeCompare(x.symbol)
+                                             || (y.savedAt || '').localeCompare(x.savedAt || ''));
     case 'date-desc':
-    default:          return a.sort((x, y) => studyDisplayDate(y).localeCompare(studyDisplayDate(x))
-                                            || (y.savedAt || '').localeCompare(x.savedAt || ''));
+    default:           return a.sort((x, y) => studyDisplayDate(y).localeCompare(studyDisplayDate(x))
+                                             || (y.savedAt || '').localeCompare(x.savedAt || ''));
   }
 }
 function studyMatchesFilter(study) {
