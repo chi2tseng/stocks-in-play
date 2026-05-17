@@ -2502,6 +2502,10 @@ function buildRouteHash(routePath) {
 }
 
 async function route() {
+  // Always dismiss the chart-tooltip when navigating — otherwise it stays floating on the
+  // new page (anchored to a bar that no longer exists). Going back from a stock detail
+  // page after hovering a quarterly bar used to leave the tooltip stuck on the list view.
+  if (typeof window.__hideChartTooltip === 'function') window.__hideChartTooltip();
   const { date, route: r, arg } = parseHash();
   const targetDate = date || STATE.dates[0]?.date;
   if (targetDate && targetDate !== STATE.date) {
@@ -4032,7 +4036,10 @@ function installChartTooltip() {
     setCellHtml(estEl, est);
     activateHighlight(rect);
     const wasVisible = tip.classList.contains('visible');
+    // Force layout + cache dimensions before position() so position() uses the new content's
+    // size (different quarters can have different value widths).
     void tip.offsetWidth;
+    measureTip();
     if (!wasVisible) {
       tip.classList.add('snap');
       position(ev);
@@ -4044,34 +4051,66 @@ function installChartTooltip() {
     }
     tip.setAttribute('aria-hidden', 'false');
   }
+  // Cached tooltip dimensions — getBoundingClientRect() on every mousemove was the perf hot
+  // spot (forced sync layout each call). The tooltip size only changes when its content
+  // changes (different quarter values), so we measure once per show() + reuse across moves.
+  let __tipW = 0, __tipH = 0;
+  function measureTip() {
+    const r = tip.getBoundingClientRect();
+    __tipW = r.width; __tipH = r.height;
+  }
   function position(ev) {
     const margin = 14;
-    const rect = tip.getBoundingClientRect();
     let x = ev.clientX + margin;
-    let y = ev.clientY - rect.height - margin;
-    if (x + rect.width > window.innerWidth - 8)  x = ev.clientX - rect.width - margin;
-    if (y < 8)                                   y = ev.clientY + margin;
+    let y = ev.clientY - __tipH - margin;
+    if (x + __tipW > window.innerWidth - 8)  x = ev.clientX - __tipW - margin;
+    if (y < 8)                                y = ev.clientY + margin;
     // CSS custom props feed `transform: translate3d(--tx, --ty, 0)` — compositor-only, animates
     // smoothly under the outer's transform transition rule.
     tip.style.setProperty('--tx', x + 'px');
     tip.style.setProperty('--ty', y + 'px');
   }
+  // rAF-throttled mousemove handler. Without this, every pixel of cursor movement triggered
+  // a position() call + a getBoundingClientRect(), which causes the chrome dev-tools "Forced
+  // Synchronous Layout" warning and visible jank during hover. Now the handler just stores
+  // the latest event and lets the browser's next paint frame consume it.
+  let __pendingEv = null, __rafQueued = false;
+  function scheduleReposition() {
+    if (__rafQueued) return;
+    __rafQueued = true;
+    requestAnimationFrame(() => {
+      __rafQueued = false;
+      if (__pendingEv && tip.classList.contains('visible')) position(__pendingEv);
+      __pendingEv = null;
+    });
+  }
   function hide() {
     tip.classList.remove('visible');
     tip.setAttribute('aria-hidden', 'true');
     clearHighlight();
+    __pendingEv = null;
   }
+  // Expose hide() globally so route() can dismiss the tooltip when the user navigates away
+  // (fixes the "tooltip lingers after going back" bug).
+  window.__hideChartTooltip = hide;
   document.addEventListener('mouseover', e => {
     const hit = e.target.closest && e.target.closest('rect.bar-hit');
-    if (hit) show(hit, e);
+    if (hit) { show(hit, e); measureTip(); }
   });
   document.addEventListener('mousemove', e => {
-    if (tip.classList.contains('visible')) position(e);
-  });
+    if (!tip.classList.contains('visible')) return;
+    __pendingEv = e;
+    scheduleReposition();
+  }, { passive: true });
   document.addEventListener('mouseout', e => {
     const hit = e.target.closest && e.target.closest('rect.bar-hit');
     if (hit && (!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest('rect.bar-hit'))) hide();
   });
+  // Hide on scroll too — the tooltip's anchor (the hovered bar) can scroll out from under
+  // the cursor without firing mouseout, leaving the tooltip floating in mid-air.
+  window.addEventListener('scroll', () => {
+    if (tip.classList.contains('visible')) hide();
+  }, { passive: true });
 }
 
 function svgBarChart(quarters, reported, estimate, latestIdx, isRev) {
@@ -5585,27 +5624,74 @@ async function renderStudyDetail(idOrSym) {
   });
 
   // ── Top-of-page date pill: click to change the study's trading-day date ──
-  // Mirrors the OHLCV-modal's date-field logic (line ~5359): write ohlcv.date,
-  // auto-snap focusQuarterIdx to the calendar quarter containing the new date,
-  // then re-render the whole detail page so charts/MS table/YoY block all
-  // reflect the new anchor. OHLCV bar values (open/high/low/close/volume) are
-  // left intact — they'll go stale until /update-studies refreshes them, but
-  // that's better than blanking them on every date tweak.
+  // Behavior: blanks the date-bound fields (ohlcv bar + scan-time snapshot of last/chgPct/
+  // newsDetail/catalyst/tv) so /update-studies can pull fresh data for the NEW date next
+  // time it runs. Without this reset, the study would keep showing the previous date's
+  // OHLCV + news with just the date label changed — visually confusing.
+  //
+  // Preserved across the date change:
+  //   - study.notes / study.tags / study.conviction / study.targetPrice / study.stopLoss
+  //   - study.customTypes (user-chosen catalyst tags carry over)
+  //   - study.intent / study.price (manual overrides)
+  //   - study.screenshots / customChart (user-edited MS table values)
+  //   - snapshot.name / snapshot.type (identity, not date-bound)
   document.getElementById('study-detail-date-input')?.addEventListener('change', e => {
     const newDate = e.target.value;   // YYYY-MM-DD from the native date picker
     if (!newDate) return;
     const cur = loadStudies().find(st => st.id === id);
     if (!cur) return;
-    const ohlcv = cur.ohlcv || {};
-    updateStudy(id, { ohlcv: { ...ohlcv, date: newDate } });
-    // Auto-snap focusQuarterIdx to the calendar quarter containing the new date.
-    const c = activeChart();
-    const qi = dateToQuarterIdx(newDate, c);
-    if (qi != null && qi >= 0) {
-      updateStudy(id, { focusQuarterIdx: qi });
+    const oldDate = cur.ohlcv?.date || '';
+    if (newDate === oldDate) return;   // no-op if user picked the same date
+    // Confirm before blanking — date changes are rare enough to deserve a quick check, and
+    // the user might have just mis-clicked the date field. Skip the confirm only when the
+    // current ohlcv has no real data to lose.
+    const hasData = (cur.ohlcv?.open != null) || (cur.snapshot?.newsDetail) || (cur.snapshot?.catalyst);
+    if (hasData) {
+      const ok = window.confirm(
+        `Change date from ${oldDate || '(none)'} to ${newDate}?\n\n` +
+        `This will CLEAR the OHLCV bar, news detail, catalyst, and TV data so /update-studies ` +
+        `can fetch fresh data for the new date. Your notes, tags, custom types, conviction, ` +
+        `target/stop, and screenshots are preserved.`
+      );
+      if (!ok) {
+        // Revert the input to the original date so the UI matches storage.
+        e.target.value = oldDate;
+        return;
+      }
     }
-    // Full re-render — date drives the header price-vs-prev gap %, MS-table
-    // window, YoY anchor, EPS/Rev chart highlight, etc.
+    // Wipe date-bound ohlcv to null fields (keep the date itself + the volume override
+    // structure so /update-studies recognizes this as a fillable row).
+    const blankOhlcv = { date: newDate, open: null, high: null, low: null, close: null, prev_close: null, volume: null };
+    // Wipe the date-bound parts of the snapshot. Anything stable (name, type) stays.
+    const oldSnap = cur.snapshot || {};
+    const blankSnap = {
+      ...oldSnap,
+      catalyst: '',
+      newsDetail: '',
+      sources: null,
+      tv: null,
+      sessions: [],
+      chgPct: null,
+      last: null,
+      publishedAt: null,
+      publishedTimezone: null,
+      scanDate: newDate,
+      _placeholder: true,   // marks for /update-studies + /SIPs to refill on next run
+      _newsFetched: false,   // re-enables Phase 10a's one-time news fetch
+    };
+    // Also clear customChart so the MS table is reset (otherwise the previous date's
+    // edited chart would still display under the new date). Quarter focus also gets
+    // recomputed below from the new date.
+    updateStudy(id, {
+      ohlcv: blankOhlcv,
+      snapshot: blankSnap,
+      customChart: null,
+      focusQuarterIdx: null,
+      // Hide chart/MS sections until /update-studies fills them — same pattern as
+      // newly-created placeholder studies.
+      hiddenSections: ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'],
+    });
+    // Full re-render — the placeholder state shows a "run /update-studies to fill" hint.
     renderStudyDetail(id);
   });
 
