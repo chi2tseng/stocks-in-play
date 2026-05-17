@@ -1861,6 +1861,23 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .news-detail-edit:empty:before { content: attr(data-placeholder); color: var(--stone); pointer-events: none; font-style: italic; }
 .news-detail-edit p { margin: 0 0 14px; line-height: 1.75; font-size: 15px; color: var(--body); }
 .news-detail-edit p:last-child { margin-bottom: 0; }
+/* Bold text inside the news body — used for emphasized facts the /update-studies skill
+   writes via **markdown**. Both contexts (.news-detail in the /stock/ page and
+   .news-detail-edit in study-detail) get the same treatment. */
+.news-detail strong, .news-detail-edit strong { font-weight: 700; color: var(--ink); }
+.news-detail b, .news-detail-edit b { font-weight: 700; color: var(--ink); }
+/* Markdown blockquote — used by /update-studies for warnings like the rewind disclaimer
+   (`> ⚠️ 表格中的 forward 4 季 estimates ...`). Subtle left-border + indent so it reads
+   as a callout but doesn't compete with the body text. */
+.news-detail .news-blockquote, .news-detail-edit .news-blockquote {
+  margin: 0 0 14px; padding: 10px 14px;
+  border-left: 3px solid var(--primary);
+  background: rgba(73,79,223,0.05);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  font-size: 13px; line-height: 1.65; color: var(--mute);
+}
+.news-detail .news-blockquote:last-child, .news-detail-edit .news-blockquote:last-child { margin-bottom: 0; }
+.news-detail .news-blockquote strong, .news-detail-edit .news-blockquote strong { color: var(--ink); }
 .news-detail-placeholder { color: var(--stone); font-style: italic; padding: 12px 0 0; font-size: 13px; }
 .news-detail-meta {
   display: inline-flex; align-items: center; gap: 6px;
@@ -2433,6 +2450,30 @@ const fmtPrice = v => v == null ? '—' : '$' + v.toFixed(2);
 const cls = v => v == null ? '' : (v > 0 ? 'pos' : v < 0 ? 'neg' : '');
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+// Parse the lightweight markdown subset our news-detail bodies use:
+//   - paragraphs separated by blank lines (\n\n)
+//   - **bold** → <strong>
+//   - blockquote lines starting with `>` → <blockquote>
+//   - single \n inside paragraph → <br>
+// Used by both renderStock (stock detail from /sips/) and renderStudyDetail when no
+// user-edited HTML override is present. We escape HTML FIRST so user-typed angle brackets
+// can't inject markup, then run inline markdown rules on the already-escaped text — the
+// markdown markers (* and >) survive escapeHtml since they're not in the escape list.
+function mdNewsToHtml(raw) {
+  if (raw == null || raw === '') return '';
+  const paragraphs = String(raw).split(/\n\n+/).filter(Boolean);
+  return paragraphs.map(p => {
+    const isQuote = /^>\s*/.test(p);
+    // Strip the > prefix (and any > on continuation lines) when it's a blockquote
+    const body = isQuote ? p.replace(/^>\s*/, '').replace(/\n>\s*/g, '\n') : p;
+    let html = escapeHtml(body);
+    // **bold** — non-greedy match. Asterisks aren't escaped by escapeHtml so this is safe.
+    html = html.replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>');
+    // Single newlines inside the paragraph become <br>
+    html = html.replace(/\n/g, '<br>');
+    return isQuote ? `<blockquote class="news-blockquote">${html}</blockquote>` : `<p>${html}</p>`;
+  }).join('');
 }
 // Colorize a Forward YoY block (multiline text) — wraps each numeric value in a span.
 // Positive numbers → green (.pos), negative → red (.neg), N/M and N/A → muted (.nm).
@@ -4027,7 +4068,7 @@ async function renderStock(sym) {
   let newsDetailHtml = '';
   const sourcesHtml = renderNewsSources(s.sources);
   if (detail) {
-    const paragraphs = String(detail).split(/\n\n+/).filter(Boolean).map(p => `<p>${escapeHtml(p).replace(/\n/g,'<br>')}</p>`).join('');
+    const paragraphs = mdNewsToHtml(detail);
     newsDetailHtml = `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3>${metaPill}${paragraphs}${sourcesHtml}</div>`;
   } else if (fallbackCatalyst) {
     newsDetailHtml = `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3>${metaPill}<p>${escapeHtml(fallbackCatalyst)}</p>${sourcesHtml}</div>`;
@@ -5745,7 +5786,7 @@ async function renderStudyDetail(idOrSym) {
                     : (Array.isArray(s.sources) ? s.sources : null);
   const sourcesFooter = renderNewsSources(newsSources);
   const newsContent = ((userNews != null && userNews !== '') ? userNews
-                    : snapNews ? String(snapNews).split(/\n\n+/).filter(Boolean).map(p => `<p>${escapeHtml(p).replace(/\n/g,'<br>')}</p>`).join('')
+                    : snapNews ? mdNewsToHtml(snapNews)
                     : cat ? `<p>${escapeHtml(cat)}</p>`
                     : '') + sourcesFooter;
   const newsPlaceholder = 'Add catalyst notes, news headlines, or analyst commentary…';
