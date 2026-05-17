@@ -4002,25 +4002,38 @@ function loadStudies() {
     return arr;
   } catch { return []; }
 }
-// One-shot migration: take a study with flat snapshot+ohlcv (legacy schema) and seed its
-// datedSnapshots map with one entry keyed by the current ohlcv.date (or snapshot.scanDate
-// fallback). After this, st.datedSnapshots always exists, and st.snapshot/st.ohlcv +
-// st.hiddenSections are the "active view" mirroring datedSnapshots[currentDate].
-// hiddenSections is date-bound — each date remembers which sections (EPS chart, MS table,
-// etc.) the user had hidden when viewing it. Switching dates restores that layout.
+// Fields that are DATE-BOUND — they describe a specific dated research session and live
+// inside datedSnapshots[d] per slot. Anything else (id, symbol, conviction, target/stop,
+// intent, price, screenshots, savedAt, tags) is study-level and persists across dates.
+const DATE_BOUND_FIELDS = ['snapshot', 'ohlcv', 'hiddenSections', 'notes', 'customTypes', 'customChart', 'focusQuarterIdx'];
+// One-shot migration: take a study with flat date-bound fields (legacy schema) and seed
+// its datedSnapshots map with one entry keyed by the current ohlcv.date. After this,
+// st.datedSnapshots always exists, and the flat fields are the "active view" mirroring
+// datedSnapshots[currentDate]. Each dated slot stores all date-bound fields together so
+// switching dates restores the full per-date context — snapshot, ohlcv, hiddenSections,
+// notes, customTypes, customChart, focusQuarterIdx.
 // Idempotent: no-op if datedSnapshots already present.
 function migrateStudyToDated(st) {
   if (!st || st.datedSnapshots) return st;
   const key = (st.ohlcv && st.ohlcv.date) || (st.snapshot && st.snapshot.scanDate) || '';
   if (!key) { st.datedSnapshots = {}; return st; }
   st.datedSnapshots = {
-    [key]: {
-      snapshot: { ...(st.snapshot || {}) },
-      ohlcv: { ...(st.ohlcv || {}) },
-      hiddenSections: [...(st.hiddenSections || [])],
-    },
+    [key]: buildDatedSlot(st),
   };
   return st;
+}
+// Pluck the date-bound subset out of a study object into a slot. Used by migration +
+// archive-on-date-change + updateStudy auto-mirror.
+function buildDatedSlot(st) {
+  return {
+    snapshot: { ...(st.snapshot || {}) },
+    ohlcv: { ...(st.ohlcv || {}) },
+    hiddenSections: [...(st.hiddenSections || [])],
+    notes: st.notes || '',
+    customTypes: [...(st.customTypes || [])],
+    customChart: st.customChart ? { ...st.customChart } : null,
+    focusQuarterIdx: (st.focusQuarterIdx != null) ? st.focusQuarterIdx : null,
+  };
 }
 // List the dates a study has researched data for, sorted newest first. Used for the
 // "researched dates" dropdown on the study-detail breadcrumb. Filters out blank
@@ -4034,11 +4047,18 @@ function listResearchedDates(st) {
     .reverse();
 }
 // Does this dated slot contain real research (vs. an empty placeholder)?
+// "Research" = any meaningful user action on this date: catalyst written, news fetched,
+// TV scrape filled, OHLCV bar present, notes written, or custom tags applied. ANY of
+// these counts the date as something worth archiving.
 function hasResearchData(slot) {
   if (!slot) return false;
   const s = slot.snapshot || {};
   const o = slot.ohlcv || {};
-  return Boolean(s.newsDetail || s.catalyst || s.tv || o.open != null || o.close != null);
+  if (s.newsDetail || s.catalyst || s.tv) return true;
+  if (o.open != null || o.close != null) return true;
+  if (slot.notes && String(slot.notes).trim()) return true;
+  if (Array.isArray(slot.customTypes) && slot.customTypes.length > 0) return true;
+  return false;
 }
 // Generate a unique-ish id keyed off symbol + time. Base36 timestamps are short and sortable.
 function genStudyId(sym) {
@@ -4188,31 +4208,23 @@ function updateStudy(id, patch) {
   const idx = arr.findIndex(st => st.id === id);
   if (idx === -1) return;
   const next = { ...arr[idx], ...patch };
-  // Auto-sync date-bound fields (snapshot + ohlcv + hiddenSections) into
-  // datedSnapshots[currentDate]. Triggered when the patch touches ANY of those three
-  // fields — they all describe how a specific date looks. Only mirror when the resulting
-  // state has REAL research data (catalyst, newsDetail, tv, or any ohlcv bar value) so
-  // empty placeholders don't pollute the archive.
-  const touchesDated = Object.prototype.hasOwnProperty.call(patch, 'snapshot') ||
-                       Object.prototype.hasOwnProperty.call(patch, 'ohlcv') ||
-                       Object.prototype.hasOwnProperty.call(patch, 'hiddenSections');
+  // Auto-sync ALL date-bound fields into datedSnapshots[currentDate] whenever the patch
+  // touches any of them. Date-bound = anything that describes a specific dated research
+  // session (snapshot, ohlcv, hiddenSections, notes, customTypes, customChart, focus
+  // quarter). The flat fields stay as the "active view" + the archive mirrors them.
+  const touchesDated = DATE_BOUND_FIELDS.some(f => Object.prototype.hasOwnProperty.call(patch, f));
   if (next.datedSnapshots && touchesDated) {
     const d = next.ohlcv && next.ohlcv.date;
     if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) {
-      const slotPreview = { snapshot: next.snapshot || {}, ohlcv: next.ohlcv || {} };
+      const slotPreview = buildDatedSlot(next);
       if (hasResearchData(slotPreview)) {
         next.datedSnapshots = {
           ...next.datedSnapshots,
-          [d]: {
-            snapshot: { ...(next.snapshot || {}) },
-            ohlcv: { ...(next.ohlcv || {}) },
-            hiddenSections: [...(next.hiddenSections || [])],
-          },
+          [d]: slotPreview,
         };
       } else {
-        // The new state is a blank placeholder. Drop any stale archive entry for this date
-        // so cycling through dates doesn't leave breadcrumbs behind. (If the user later
-        // adds research, the next mirror will recreate the entry.)
+        // Blank placeholder — drop any stale archive entry so cycling through dates
+        // doesn't leave breadcrumbs. The next mirror with real data recreates it.
         if (next.datedSnapshots[d]) {
           const cleaned = { ...next.datedSnapshots };
           delete cleaned[d];
@@ -5352,37 +5364,38 @@ async function renderStudyDetail(idOrSym) {
     // STEP 1: archive the current view to datedSnapshots[oldDate] BEFORE swapping —
     // but ONLY if it has real research data. Empty placeholders shouldn't pollute the
     // archive (otherwise cycling through dates would record each visit even when blank).
-    // hiddenSections is archived too so each date remembers its own layout (which charts
-    // / MS table / YoY block were visible vs. collapsed).
+    // The full date-bound slot is archived: snapshot, ohlcv, hiddenSections, notes,
+    // customTypes, customChart, focusQuarterIdx — so the new date is a clean swap.
     const dated = { ...(cur.datedSnapshots || {}) };
     if (oldDate && /^\d{4}-\d{2}-\d{2}$/.test(oldDate)) {
-      const oldSlot = { snapshot: cur.snapshot || {}, ohlcv: cur.ohlcv || {} };
+      const oldSlot = buildDatedSlot(cur);
       if (hasResearchData(oldSlot)) {
-        dated[oldDate] = {
-          snapshot: { ...(cur.snapshot || {}) },
-          ohlcv: { ...(cur.ohlcv || {}) },
-          hiddenSections: [...(cur.hiddenSections || [])],
-        };
+        dated[oldDate] = oldSlot;
       } else {
-        // Old view was a blank placeholder — drop any stale entry to keep the archive clean.
         delete dated[oldDate];
       }
     }
     // STEP 2 or 3: does newDate have research already?
     const existing = dated[newDate];
-    let newSnapshot, newOhlcv, newHiddenSections;
+    let patch;
     if (existing && hasResearchData(existing)) {
-      // RESTORE — bring back the saved snapshot/ohlcv + the saved section layout exactly
-      // as the user last left them on this date.
-      newSnapshot = { ...(existing.snapshot || {}) };
-      newOhlcv = { ...(existing.ohlcv || {}) };
-      newHiddenSections = [...(existing.hiddenSections || [])];
+      // RESTORE — bring back the full per-date context exactly as the user left it.
+      patch = {
+        datedSnapshots: dated,
+        snapshot: { ...(existing.snapshot || {}) },
+        ohlcv: { ...(existing.ohlcv || {}) },
+        hiddenSections: [...(existing.hiddenSections || [])],
+        notes: existing.notes || '',
+        customTypes: [...(existing.customTypes || [])],
+        customChart: existing.customChart ? { ...existing.customChart } : null,
+        focusQuarterIdx: (existing.focusQuarterIdx != null) ? existing.focusQuarterIdx : null,
+      };
     } else {
       // NEW DATE — blank placeholder so /update-studies + /SIPs fill it on next run.
       // Identity fields (name, type) come from the existing snapshot since the ticker
       // identity is stable across dates.
       const oldSnap = cur.snapshot || {};
-      newSnapshot = {
+      const blankSnapshot = {
         name: oldSnap.name || '',
         type: oldSnap.type || '?',
         catalyst: '',
@@ -5398,24 +5411,22 @@ async function renderStudyDetail(idOrSym) {
         _placeholder: true,
         _newsFetched: false,
       };
-      newOhlcv = { date: newDate, open: null, high: null, low: null, close: null, prev_close: null, volume: null };
-      // Default hide for blank placeholders: data-dependent sections collapse since they'd
-      // render empty "No data" cards. The notes section stays visible (study-level field).
-      newHiddenSections = ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'];
-      // Don't seed datedSnapshots[newDate] yet — it's a blank placeholder, and we only
-      // want to record dates that have real research. updateStudy()'s auto-mirror will
-      // add the entry as soon as the user (or /update-studies) writes actual data.
-      delete dated[newDate];
+      const blankOhlcv = { date: newDate, open: null, high: null, low: null, close: null, prev_close: null, volume: null };
+      delete dated[newDate];   // don't seed blank placeholder into archive
+      patch = {
+        datedSnapshots: dated,
+        snapshot: blankSnapshot,
+        ohlcv: blankOhlcv,
+        // Each date gets a fresh layout: data-dependent sections collapse since they'd
+        // render empty "No data" cards. Notes section is visible by default for new dates.
+        hiddenSections: ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'],
+        notes: '',          // notes are date-bound now — fresh date starts with empty notes
+        customTypes: [],    // customTypes are date-bound — fresh date starts with no tags
+        customChart: null,
+        focusQuarterIdx: null,
+      };
     }
-    // Atomic write: swap snapshot+ohlcv+hiddenSections+datedSnapshots in one call.
-    updateStudy(id, {
-      datedSnapshots: dated,
-      snapshot: newSnapshot,
-      ohlcv: newOhlcv,
-      customChart: null,
-      focusQuarterIdx: null,
-      hiddenSections: newHiddenSections,
-    });
+    updateStudy(id, patch);
     renderStudyDetail(id);
   });
 
