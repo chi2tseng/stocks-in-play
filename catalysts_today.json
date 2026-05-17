@@ -1,9 +1,398 @@
 {
-  "TRT": {"Type":"earnings","Catalyst":"Trio-Tech Q3 FY26 (季末 3/31/26) 營收 $16.51M 年增 +124%（去年同期 $7.4M）、EPS 由 -$0.06 翻正至持平、SBS 半導體後段測試業務受惠 AI 算力與 EV 晶片需求暴增（測試需求由中國轉向其他 APAC 市場）、新簽馬來西亞 104,000 平方呎廠擴產，盤後 +6.98%。"},
-  "PIII": {"Type":"earnings","Catalyst":"P3 Health Q1 2026 EPS $0.32 大超預期 -$4.85（surprise +106.6%、YoY 由 -$6.28 翻正）、營收 $386.4M (+3.5% YoY)、調整 EBITDA 約 $26M、FY26 EBITDA 中位數上修至 $40M。但 10-Q 揭露營運資金赤字 $353.3M、現金燒錢仍激烈，管理層警告「持續經營疑慮 (going concern)」，盤中暴漲後盤後 -19.31% 大幅獲利回吐。"},
-  "SLE": {"Type":"earnings","Catalyst":"Super League Q1 2026 營收 $3.0M 超預期 $2.8M (+3.5%, YoY +10%)、EPS surprise +33%（虧損縮減）、毛利率擴至 36%、宣布完成 Misfits Ads Division 收購、$11.4M 現金支撐 FY26 EBITDA 轉正路徑。盤中 +44% 後盤後 -8.44% 為微浮動 (1.41M float) 獲利回吐。"},
-  "M": {"Type":"guidance","Catalyst":"Macy's 5/15 投資人活動中 CFO 表示 3-4 月同店銷售已優於 Q4 表現、5 月延續強勢、「Bold New Chapter」轉型計畫初見成效；維持 FY26 指引營收 $21.4-21.65B、調整 EPS $1.90-2.10；5/27 將公布 Q1 FY26 正式財報。盤後 +5.32%。"},
-  "UNH": {"Type":"news","Catalyst":"Berkshire Hathaway 13F 揭露 Buffett 在 Q1 已完全清空 UnitedHealth、Amazon、Visa、Mastercard 部位，加碼買入 Delta 與 Alphabet。疊加 DOJ Medicare Advantage 調查與獲利能力擔憂，盤後 -4.67%。情緒性事件，未見基本面惡化證據。"},
-  "QUCY": {"Type":"momentum","Catalyst":"Quantum Cyber 自 4 月底 $0.40 暴漲至 5/15 收盤 $3.46（~10 倍）；催化包括 BP United 自主無人機 IP 獨家授權、聘前美退伍軍人事務代理部長 O'Rourke 加入董事會、推出 quantum-cyber.ai 國土安全平台。基本面年營收僅 $0.54M、P/S >30 純投機；盤後 -8.38% 為高位震盪獲利了結。"},
-  "SKK": {"Type":"M&A","Catalyst":"SKK Holdings 5/4 宣布以 $258.8M 收購 Houston 無人機公司 Rantizo 資產，從土木工程轉型精準農業無人機平台；月內股價暴漲 ~600-700%。市值僅 $11.6M、流通股 1.35M 為極低浮動，盤後 -10.06% 為小成交量 (116k) 純技術性回檔。"}
+  "TRT": {
+    "Type": "earnings",
+    "Catalyst": "Trio-Tech Q3 FY26 (季末 3/31/26) 營收 $16.51M 年增 +124%（去年同期 $7.4M）、EPS 由 -$0.06 翻正至持平、SBS 半導體後段測試業務受惠 AI 算力與 EV 晶片需求暴增（測試需求由中國轉向其他 APAC 市場）、新簽馬來西亞 104,000 平方呎廠擴產，盤後 +6.98%。"
+  },
+  "PIII": {
+    "Type": "earnings",
+    "Catalyst": "P3 Health Q1 2026 EPS $0.32 大超預期 -$4.85（surprise +106.6%、YoY 由 -$6.28 翻正）、營收 $386.4M (+3.5% YoY)、調整 EBITDA 約 $26M、FY26 EBITDA 中位數上修至 $40M。但 10-Q 揭露營運資金赤字 $353.3M、現金燒錢仍激烈，管理層警告「持續經營疑慮 (going concern)」，盤中暴漲後盤後 -19.31% 大幅獲利回吐。"
+  },
+  "SLE": {
+    "Type": "earnings",
+    "Catalyst": "Super League Q1 2026 營收 $3.0M 超預期 $2.8M (+3.5%, YoY +10%)、EPS surprise +33%（虧損縮減）、毛利率擴至 36%、宣布完成 Misfits Ads Division 收購、$11.4M 現金支撐 FY26 EBITDA 轉正路徑。盤中 +44% 後盤後 -8.44% 為微浮動 (1.41M float) 獲利回吐。"
+  },
+  "M": {
+    "Type": "guidance",
+    "Catalyst": "Macy's 5/15 投資人活動中 CFO 表示 3-4 月同店銷售已優於 Q4 表現、5 月延續強勢、「Bold New Chapter」轉型計畫初見成效；維持 FY26 指引營收 $21.4-21.65B、調整 EPS $1.90-2.10；5/27 將公布 Q1 FY26 正式財報。盤後 +5.32%。"
+  },
+  "UNH": {
+    "Type": "news",
+    "Catalyst": "Berkshire Hathaway 13F 揭露 Buffett 在 Q1 已完全清空 UnitedHealth、Amazon、Visa、Mastercard 部位，加碼買入 Delta 與 Alphabet。疊加 DOJ Medicare Advantage 調查與獲利能力擔憂，盤後 -4.67%。情緒性事件，未見基本面惡化證據。"
+  },
+  "QUCY": {
+    "Type": "momentum",
+    "Catalyst": "Quantum Cyber 自 4 月底 $0.40 暴漲至 5/15 收盤 $3.46（~10 倍）；催化包括 BP United 自主無人機 IP 獨家授權、聘前美退伍軍人事務代理部長 O'Rourke 加入董事會、推出 quantum-cyber.ai 國土安全平台。基本面年營收僅 $0.54M、P/S >30 純投機；盤後 -8.38% 為高位震盪獲利了結。"
+  },
+  "SKK": {
+    "Type": "M&A",
+    "Catalyst": "SKK Holdings 5/4 宣布以 $258.8M 收購 Houston 無人機公司 Rantizo 資產，從土木工程轉型精準農業無人機平台；月內股價暴漲 ~600-700%。市值僅 $11.6M、流通股 1.35M 為極低浮動，盤後 -10.06% 為小成交量 (116k) 純技術性回檔。"
+  },
+  "AAOI": {
+    "Type": "news",
+    "Catalyst": "Applied Optoelectronics Expands Beyond AI With Mediacom DOCSIS 4.0 Deal"
+  },
+  "AARD": {
+    "Type": "news",
+    "Catalyst": "Sector Update: Healthcare Stocks Decline Late Afternoon"
+  },
+  "AEHL": {
+    "Type": "news",
+    "Catalyst": "Bitcoin Treasury Strategy Generates $190,000 Gain as Antelope (AEHL) Authorizes Share Buyback"
+  },
+  "AEHR": {
+    "Type": "news",
+    "Catalyst": "Aehr Test Systems Contract Spurs Questions On AI Demand And Valuation"
+  },
+  "AG": {
+    "Type": "news",
+    "Catalyst": "Four Sub-$30 Silver Stocks To Buy Now"
+  },
+  "AIIO": {
+    "Type": "news",
+    "Catalyst": "Update: Robo.ai Shares Rise After Unit Launches NeuroStream Platform to Cut AI Data Storage Costs"
+  },
+  "ALAB": {
+    "Type": "news",
+    "Catalyst": "If I Could Only Buy 1 Artificial Intelligence Stock for the Rest of 2026, This Would Be It"
+  },
+  "ALMU": {
+    "Type": "news",
+    "Catalyst": "Top Midday Decliners"
+  },
+  "APLD": {
+    "Type": "news",
+    "Catalyst": "A Look At Applied Digital (APLD) Valuation After $300 Million Goldman Sachs Bridge Loan For AI Data Center Expansion"
+  },
+  "ARM": {
+    "Type": "news",
+    "Catalyst": "FTC Probe Tests Arm Holdings Rally And Rich Valuation Premium"
+  },
+  "ASM": {
+    "Type": "news",
+    "Catalyst": "Avino Silver & Gold Mines Q1 Earnings Call Highlights"
+  },
+  "ASTS": {
+    "Type": "news",
+    "Catalyst": "AST SpaceMobile Shares Rise As Investors Weigh Launch Timeline Against Earnings Miss"
+  },
+  "AUUD": {
+    "Type": "news",
+    "Catalyst": "BC-Most Active Stocks"
+  },
+  "BE": {
+    "Type": "news",
+    "Catalyst": "Bloom Energy (BE) Is Up 5.7% After Oracle AI Deal And Revenue Outlook Boost - What's Changed"
+  },
+  "BHP": {
+    "Type": "news",
+    "Catalyst": "European Equities Traded in the US as American Depositary Receipts Down Sharply in Friday Trading"
+  },
+  "BLDP": {
+    "Type": "news",
+    "Catalyst": "Assessing Ballard Power Systems (TSX:BLDP) Valuation After A Sharp Multi‑Month Share Price Rally"
+  },
+  "BNKK": {
+    "Type": "news",
+    "Catalyst": "BNKK Swings to Operating Profit as Q1 Revenue Climbs to $4.3 Million"
+  },
+  "BW": {
+    "Type": "news",
+    "Catalyst": "Exchange-Traded Funds, Equity Futures Lower Pre-Bell Friday Amid Oil Surge, Higher Yields, Geopolitical Uncertainty"
+  },
+  "CBRS": {
+    "Type": "news",
+    "Catalyst": "Cerebras stock faces sharp reality check after massive IPO debut"
+  },
+  "CDE": {
+    "Type": "news",
+    "Catalyst": "Stocks Slide as Inflation Fears Lift Bond Yields"
+  },
+  "COHR": {
+    "Type": "news",
+    "Catalyst": "Why Coherent (COHR) Is Up 14.1% After Strong Q3 Results And Expanded NVIDIA AI Partnership"
+  },
+  "CRCL": {
+    "Type": "news",
+    "Catalyst": "U.S. Clarity Act Puts Circle’s USDC And AI Payments In Focus"
+  },
+  "DGXX": {
+    "Type": "news",
+    "Catalyst": "Digi Power X reports Q1 2026 results with first AI revenue, $125 million in cash"
+  },
+  "DLO": {
+    "Type": "news",
+    "Catalyst": "Is It Time to Buy Latin America's Top Fintech Stocks at a Discount?"
+  },
+  "EXK": {
+    "Type": "news",
+    "Catalyst": "Four Sub-$30 Silver Stocks To Buy Now"
+  },
+  "FCEL": {
+    "Type": "news",
+    "Catalyst": "Why FuelCell Energy (FCEL) Stock Is Up Today"
+  },
+  "FCX": {
+    "Type": "news",
+    "Catalyst": "Stocks Slide as Inflation Fears Lift Bond Yields"
+  },
+  "FIG": {
+    "Type": "news",
+    "Catalyst": "Why Figma (FIG) Is Up 10.9% After AI-Fueled Revenue Surges Despite a Swing to Losses"
+  },
+  "FLNC": {
+    "Type": "news",
+    "Catalyst": "5 Must-Read Analyst Questions From Fluence Energy’s Q1 Earnings Call"
+  },
+  "FRMI": {
+    "Type": "news",
+    "Catalyst": "The Texas-Size Fight Over Rick Perry’s Nuclear Power Startup"
+  },
+  "GAMB": {
+    "Type": "news",
+    "Catalyst": "Gambling Layoffs Increase as Prediction Markets and AI Reshape Sports Betting"
+  },
+  "GEMI": {
+    "Type": "news",
+    "Catalyst": "Gemini Space Station (GEMI) Is Up 11.6% After Winklevoss Funding Amid IPO Lawsuits and Pivot"
+  },
+  "GFI": {
+    "Type": "news",
+    "Catalyst": "Gold Fields Q1 Earnings Call Highlights"
+  },
+  "GLW": {
+    "Type": "news",
+    "Catalyst": "AI Supercharged This Flatlining U.S. Manufacturing Stock. Now It's Just Scored a Massive New Nvidia Partnership."
+  },
+  "GSIT": {
+    "Type": "news",
+    "Catalyst": "Gsi Technology Insider Sold Shares Worth $427,088, According to a Recent SEC Filing"
+  },
+  "HIMX": {
+    "Type": "news",
+    "Catalyst": "Asian Equities Traded in the US as American Depositary Receipts Fall Sharply in Friday Trading"
+  },
+  "HIVE": {
+    "Type": "news",
+    "Catalyst": "Should You Buy, Sell or Hold MSTR Stock After Mixed Q1 Earnings?"
+  },
+  "HL": {
+    "Type": "news",
+    "Catalyst": "Four Sub-$30 Silver Stocks To Buy Now"
+  },
+  "HMY": {
+    "Type": "news",
+    "Catalyst": "If You Invested $1000 in Harmony Gold 10 Years Ago, This Is How Much You'd Have Now"
+  },
+  "HTCO": {
+    "Type": "news",
+    "Catalyst": "High‑Trend International Group Announces Cancellation and Retirement of 630,000 Class A Ordinary Shares"
+  },
+  "HYLN": {
+    "Type": "news",
+    "Catalyst": "3 Growth Companies With High Insider Ownership And Up To 71% Earnings Growth"
+  },
+  "INFQ": {
+    "Type": "news",
+    "Catalyst": "Meet the Quantum Computing Stock That Could Crush IonQ in 2026"
+  },
+  "INTC": {
+    "Type": "news",
+    "Catalyst": "Where Could Palantir Be in 10 Years? The Bull and Bear Cases."
+  },
+  "INV": {
+    "Type": "news",
+    "Catalyst": "Innventure, Inc. Q1 2026 Earnings Call Summary"
+  },
+  "IONQ": {
+    "Type": "news",
+    "Catalyst": "The Top 5 Analyst Questions From IonQ’s Q1 Earnings Call"
+  },
+  "IPWR": {
+    "Type": "news",
+    "Catalyst": "Ideal Power CEO discusses AI center demand for B-TRAN tech - ICYMI"
+  },
+  "KEEL": {
+    "Type": "news",
+    "Catalyst": "News Flash: 6 Analysts Think Keel Infrastructure Corp. (NASDAQ:KEEL) Earnings Are Under Threat"
+  },
+  "KULR": {
+    "Type": "news",
+    "Catalyst": "A Look At KULR Technology Group’s (KULR) Valuation After Mixed Q1 Results And Growth Expansion Plans"
+  },
+  "LAES": {
+    "Type": "news",
+    "Catalyst": "SEALSQ Advances Quantum-Resilient Space Security With Pilot And Patent Moves"
+  },
+  "LESL": {
+    "Type": "news",
+    "Catalyst": "Leslie's (LESL) Reports Earnings Tomorrow: What To Expect"
+  },
+  "LITE": {
+    "Type": "news",
+    "Catalyst": "Why Everyone Is Talking About Lumentum Stock -- and Why Investors Should Care"
+  },
+  "LODE": {
+    "Type": "news",
+    "Catalyst": "Comstock Inc. (LODE) Reports Q1 Loss, Lags Revenue Estimates"
+  },
+  "LWLG": {
+    "Type": "news",
+    "Catalyst": "Lightwave Logic, Inc. Q1 2026 Earnings Call Summary"
+  },
+  "MICC": {
+    "Type": "news",
+    "Catalyst": "Magnum (MICC) ‘Eyed for Takeover’, Climbs 11%"
+  },
+  "MLGO": {
+    "Type": "news",
+    "Catalyst": "MicroAlgo Inc. Develops Multi-Objective Evolutionary Algorithm to Advance Quantum Circuit Innovation"
+  },
+  "MOBX": {
+    "Type": "news",
+    "Catalyst": "Mobix Labs Announces Amendment to Senior Secured Convertible Note and Entry into Investor Rights Agreement with Leviston Resources"
+  },
+  "MRAM": {
+    "Type": "news",
+    "Catalyst": "If You Invested $100 In Everspin Technologies Stock 5 Years Ago, You Would Have This Much Today"
+  },
+  "MRVL": {
+    "Type": "news",
+    "Catalyst": "Jim Cramer on Marvell: “It Can Go Higher”"
+  },
+  "MT": {
+    "Type": "news",
+    "Catalyst": "Cushman & Wakefield, Lovesac, Vail Resorts, CBRE, and Newmark Shares Are Falling, What You Need To Know"
+  },
+  "MU": {
+    "Type": "news",
+    "Catalyst": "Micron's and Sandisk's Futures Are Heavily Influenced by 2 Foreign Chip Companies. Here's How to Buy Them."
+  },
+  "MXL": {
+    "Type": "news",
+    "Catalyst": "MaxLinear Launches Trinity Platform for Faster, Cost-Efficient, Cloud-Managed, AI-Enabled Wireless Backhaul for 5G Networks"
+  },
+  "NOK": {
+    "Type": "news",
+    "Catalyst": "European Equities Traded in the US as American Depositary Receipts Down Sharply in Friday Trading"
+  },
+  "NU": {
+    "Type": "news",
+    "Catalyst": "Is It Time to Buy Latin America's Top Fintech Stocks at a Discount?"
+  },
+  "NUAI": {
+    "Type": "news",
+    "Catalyst": "New Era Energy & Digital highlights financing progress, data center expansion"
+  },
+  "NVTS": {
+    "Type": "news",
+    "Catalyst": "Growth Investors: Industry Analysts Just Upgraded Their Navitas Semiconductor Corporation (NASDAQ:NVTS) Revenue Forecasts By 12%"
+  },
+  "PAAS": {
+    "Type": "news",
+    "Catalyst": "Four Sub-$30 Silver Stocks To Buy Now"
+  },
+  "POET": {
+    "Type": "news",
+    "Catalyst": "Why Poet Technologies Stock Skyrocketed This Week"
+  },
+  "PZZA": {
+    "Type": "news",
+    "Catalyst": "Stocks Slide as Inflation Fears Lift Bond Yields"
+  },
+  "QS": {
+    "Type": "news",
+    "Catalyst": "Why QuantumScape (QS) Is Up 17.0% After Launching Eagle Line Pilot Production And First Customer Billings"
+  },
+  "RIO": {
+    "Type": "news",
+    "Catalyst": "A Look At Rio Tinto Group’s Valuation After Recent Share Price Momentum"
+  },
+  "RR": {
+    "Type": "news",
+    "Catalyst": "SoundHound AI (SOUN) Is Down 5.3% After $300 Million ATM, OASYS Launch, M&A Push – What's Changed"
+  },
+  "RUM": {
+    "Type": "news",
+    "Catalyst": "Rumble Targets Cloud And Sports Growth With Northern Data And Enhanced Games"
+  },
+  "RXT": {
+    "Type": "news",
+    "Catalyst": "Here is Why Advanced Micro Devices (AMD) is Among the 9 Best American Semiconductor Stocks to Buy According to Analysts"
+  },
+  "SBSW": {
+    "Type": "news",
+    "Catalyst": "Is Sibanye-Stillwater (SBSW) One of the Best African Stocks to Buy According to Hedge Funds?"
+  },
+  "SEDG": {
+    "Type": "news",
+    "Catalyst": "SolarEdge (SEDG) Hits 2-Year High on Strong Q2 Hopes"
+  },
+  "SIDU": {
+    "Type": "news",
+    "Catalyst": "Sidus Space (SIDU) Valuation After Expanded Lonestar Deal And Progress On Next Generation Platforms"
+  },
+  "SKYQ": {
+    "Type": "news",
+    "Catalyst": "Energy Emergencies Drive Urgent Action in Nevada Fuel Supply"
+  },
+  "SPAI": {
+    "Type": "news",
+    "Catalyst": "Safe Pro Group Inc. (SPAI) Reports Q1 Loss, Beats Revenue Estimates"
+  },
+  "SPCE": {
+    "Type": "news",
+    "Catalyst": "Virgin Galactic Q1 Earnings Call Highlights"
+  },
+  "SPRY": {
+    "Type": "news",
+    "Catalyst": "ARS Pharmaceuticals Inc (SPRY) Q1 2026 Earnings Call Highlights: Strong Revenue Growth and ..."
+  },
+  "STM": {
+    "Type": "news",
+    "Catalyst": "US Equity Markets End Lower as Rising Oil, Bond Yields Stoke Inflation Concerns"
+  },
+  "SVM": {
+    "Type": "news",
+    "Catalyst": "Silvercorp Metals (TSX:SVM) Valuation Check After Strong Share Price Rally And Reported Net Income Loss"
+  },
+  "TECK": {
+    "Type": "news",
+    "Catalyst": "Titan Mining to Collaborate with Teck Resources on Germanium Recovery from Empire State Mines"
+  },
+  "UMAC": {
+    "Type": "news",
+    "Catalyst": "Unusual Machines Inc (UMAC) Q1 2026 Earnings Call Highlights: Record Revenue Growth and ..."
+  },
+  "USAS": {
+    "Type": "news",
+    "Catalyst": "Americas Gold and Silver Q1 Earnings Call Highlights"
+  },
+  "VIVO": {
+    "Type": "news",
+    "Catalyst": "VivoPower to join KBRA panel on AI infrastructure and data center capital markets"
+  },
+  "VLN": {
+    "Type": "news",
+    "Catalyst": "Valens Semiconductor Ltd. (NYSE:VLN) Released Earnings Last Week And Analysts Lifted Their Price Target To US$4.33"
+  },
+  "VUZI": {
+    "Type": "news",
+    "Catalyst": "Why Vuzix Stock Sank Today"
+  },
+  "WOLF": {
+    "Type": "news",
+    "Catalyst": "Wolfspeed Is Surging on Bullish Analyst Note. What Comes Next for WOLF Stock."
+  },
+  "WYFI": {
+    "Type": "news",
+    "Catalyst": "WhiteFiber Expands AI Data Centers As Growth Outpaces Current Capacity"
+  },
+  "XNDU": {
+    "Type": "news",
+    "Catalyst": "Assessing Xanadu Quantum Technologies (TSX:XNDU) Valuation After Recent Share Price Weakness"
+  },
+  "YMAT": {
+    "Type": "news",
+    "Catalyst": "12 Consumer Discretionary Stocks Moving In Wednesday's Intraday Session"
+  }
 }
