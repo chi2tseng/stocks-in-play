@@ -962,6 +962,33 @@ Also sync `snapshot.last = ohlcv.close` (header big-price-readout source). Phase
 backfill loop already did this for studies it filled — this is just a defensive pass for
 studies whose ohlcv was already manually filled but whose `snapshot.last` drifted.
 
+Also sync `snapshot.chgPct = (close − prev_close) / prev_close * 100` so the header
+chg %, preview-card chg %, and intent-default rule (next paragraph) all read fresh
+values.
+
+**Default the trade intent from the gap direction.** Mirror `/update-studies` Phase 2's
+rule exactly: ONLY when `study.intent` is null / undefined (the user hasn't manually set
+a direction), derive a default from the synced chgPct. Never overwrite an existing
+intent — manual choice is sacred.
+
+| chgPct after sync | study.intent default |
+|---|---|
+| > 0 (gap up) | `'long'` |
+| < 0 (gap down) | `'short'` |
+| 0 or null | leave unset |
+
+Implementation mirrors the Python pseudo-code in `update-studies/SKILL.md § Phase 2` —
+this is one rule that applies identically to both skills so a study auto-classified by
+/SIPs at scan time and a study auto-classified by /update-studies at refresh time end
+up with the same intent.
+
+```python
+if study.get('intent') is None and snap.get('chgPct') is not None:
+    chg = snap['chgPct']
+    if chg > 0:    study['intent'] = 'long'
+    elif chg < 0:  study['intent'] = 'short'
+```
+
 #### 10c.5 — Error handling
 
 Per-ticker failures NEVER abort the run. Finish the other tickers first.
