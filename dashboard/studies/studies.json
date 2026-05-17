@@ -1334,20 +1334,131 @@
     "symbol": "AMD",
     "savedAt": "2026-05-17T13:21:24.331Z",
     "snapshot": {
-      "name": "",
+      "name": "Advanced Micro Devices, Inc.",
       "type": "momentum",
-      "catalyst": "",
-      "newsDetail": "",
-      "sources": null,
-      "tv": null,
+      "catalyst": "2/24 8-K：AMD-Meta 6 GW Instinct GPU 採購協議公告，附 160M 股認股權證（行使價 $0.01，vesting 與 GPU 採購里程碑 + AMD 股價 $600 目標綁定）。",
+      "newsDetail": "2/24 盤前 8-K 揭露 **AMD-Meta 策略合作協議**：Meta 將購買 **1 GW Instinct GPU 起步（可擴展至 6 GW）**，為繼 OpenAI 6 GW 後另一指標性 AI infra hyperscaler 合作。\n\n**認股權證結構：** AMD 發行 Meta **160M 股 (4.93%) 認股權證**，行使價 **$0.01/股**，5 年期至 2031/2/23。Vesting tranches 與兩條件綁定：(1) Meta 達成 GPU 採購里程碑、(2) AMD 股價達到階梯目標，最後 tranche 全 vesting 需股價達 **$600/股**。\n\n**盤中反應：** Gap up open **$211.63** (+7.6% vs prev close $196.60)，盤中高點 **$216.71**，收盤 **$213.84 (+8.77%)**，成交量 **81.37M** (~3× 平均)。Meta 的 AI capex 故事 + AMD 多家 hyperscaler 客戶滲透 (OpenAI / Meta) 強化 AI GPU 第二供應商定位，與 NVIDIA 競爭路徑明確。\n\n**前瞻：** 中長期關注 GPU 出貨 ramp + 股價門檻達成節奏。Vesting 結構意味 Meta 有股權誘因協助拉抬股價，形成正反饋。短期估值已大幅 re-rate，留意 200 SMA 附近回測機會。\n\n> ⚠️ 表格中的歷史財報資料為 Q4 '25（2/3 公告）— 為 2/24 catalyst 前最近一次 earnings 報告。Forward 4 季 estimates 是 TradingView 目前的 consensus，非 2/24 當時的數字。",
+      "sources": [
+        {
+          "label": "AMD 8-K filing — Meta warrant agreement",
+          "url": "https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000045/amd-20260223.htm",
+          "publishedAt": "2026-02-24T06:00:00-05:00"
+        },
+        {
+          "label": "AMD IR Press Releases",
+          "url": "https://ir.amd.com/news-events/press-releases"
+        },
+        {
+          "label": "Yahoo Finance — AMD coverage",
+          "url": "https://finance.yahoo.com/quote/AMD/"
+        }
+      ],
+      "tv": {
+        "latestEPS": 1.53,
+        "consensusEPS": 1.32,
+        "priorYrEPS": 1.09,
+        "surpriseEPS_pct": 15.91,
+        "surpriseEPS_dollar": 0.21,
+        "latestRev_M": 10270.0,
+        "consensusRev_M": 9670.0,
+        "priorYrRev_M": 7660.0,
+        "surpriseRev_pct": 6.2,
+        "yrYrRev_pct": 34.07,
+        "epsYoY_pct": 40.37,
+        "epsEst_next4": [
+          1.29,
+          1.6,
+          1.83,
+          2.62
+        ],
+        "revEst_next4": [
+          9900.0,
+          11240.0,
+          12410.0,
+          15600.0
+        ],
+        "yoyBlock": "+40.37% / +34.07%\n--------------------\n+34.38% / +33.06%\n+233.33% / +46.35%\n+52.50% / +34.16%\n+71.24% / +51.90%",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            0.69,
+            0.92,
+            1.09,
+            0.96,
+            0.48,
+            1.2,
+            1.53,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.68,
+            0.92,
+            1.08,
+            0.94,
+            0.48,
+            1.17,
+            1.32,
+            1.29,
+            1.6,
+            1.83,
+            2.62,
+            2.71
+          ],
+          "rev_reported_M": [
+            5830.0,
+            6820.0,
+            7660.0,
+            7440.0,
+            7680.0,
+            9250.0,
+            10270.0,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            5730.0,
+            6710.0,
+            7530.0,
+            7120.0,
+            7410.0,
+            8760.0,
+            9670.0,
+            9900.0,
+            11240.0,
+            12410.0,
+            15600.0,
+            16290.0
+          ],
+          "latest_idx": 6
+        }
+      },
       "sessions": [],
-      "chgPct": null,
-      "last": null,
+      "chgPct": 8.77,
+      "last": 213.84,
       "publishedAt": null,
       "publishedTimezone": null,
-      "scanDate": "2026-05-08",
-      "_placeholder": true,
-      "_newsFetched": false
+      "scanDate": "2026-02-24",
+      "_newsFetched": true
     },
     "notes": "",
     "tags": [],
@@ -1355,27 +1466,170 @@
     "stopLoss": null,
     "conviction": 3,
     "ohlcv": {
-      "date": "2026-05-08",
-      "open": null,
-      "high": null,
-      "low": null,
-      "close": null,
-      "prev_close": null,
-      "volume": null
+      "date": "2026-02-24",
+      "open": 211.63,
+      "high": 216.71,
+      "low": 206.5,
+      "close": 213.84,
+      "prev_close": 196.6,
+      "volume": 81367000
     },
     "screenshots": [],
-    "hiddenSections": [
-      "eps_chart",
-      "rev_chart",
-      "ms_table",
-      "yoy_block"
-    ],
+    "hiddenSections": [],
     "customTypes": [
       "earnings"
     ],
-    "datedSnapshots": {},
+    "datedSnapshots": {
+      "2026-02-24": {
+        "snapshot": {
+          "name": "Advanced Micro Devices, Inc.",
+          "type": "momentum",
+          "catalyst": "2/24 8-K：AMD-Meta 6 GW Instinct GPU 採購協議公告，附 160M 股認股權證（行使價 $0.01，vesting 與 GPU 採購里程碑 + AMD 股價 $600 目標綁定）。",
+          "newsDetail": "2/24 盤前 8-K 揭露 **AMD-Meta 策略合作協議**：Meta 將購買 **1 GW Instinct GPU 起步（可擴展至 6 GW）**，為繼 OpenAI 6 GW 後另一指標性 AI infra hyperscaler 合作。\n\n**認股權證結構：** AMD 發行 Meta **160M 股 (4.93%) 認股權證**，行使價 **$0.01/股**，5 年期至 2031/2/23。Vesting tranches 與兩條件綁定：(1) Meta 達成 GPU 採購里程碑、(2) AMD 股價達到階梯目標，最後 tranche 全 vesting 需股價達 **$600/股**。\n\n**盤中反應：** Gap up open **$211.63** (+7.6% vs prev close $196.60)，盤中高點 **$216.71**，收盤 **$213.84 (+8.77%)**，成交量 **81.37M** (~3× 平均)。Meta 的 AI capex 故事 + AMD 多家 hyperscaler 客戶滲透 (OpenAI / Meta) 強化 AI GPU 第二供應商定位，與 NVIDIA 競爭路徑明確。\n\n**前瞻：** 中長期關注 GPU 出貨 ramp + 股價門檻達成節奏。Vesting 結構意味 Meta 有股權誘因協助拉抬股價，形成正反饋。短期估值已大幅 re-rate，留意 200 SMA 附近回測機會。\n\n> ⚠️ 表格中的歷史財報資料為 Q4 '25（2/3 公告）— 為 2/24 catalyst 前最近一次 earnings 報告。Forward 4 季 estimates 是 TradingView 目前的 consensus，非 2/24 當時的數字。",
+          "sources": [
+            {
+              "label": "AMD 8-K filing — Meta warrant agreement",
+              "url": "https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000045/amd-20260223.htm",
+              "publishedAt": "2026-02-24T06:00:00-05:00"
+            },
+            {
+              "label": "AMD IR Press Releases",
+              "url": "https://ir.amd.com/news-events/press-releases"
+            },
+            {
+              "label": "Yahoo Finance — AMD coverage",
+              "url": "https://finance.yahoo.com/quote/AMD/"
+            }
+          ],
+          "tv": {
+            "latestEPS": 1.53,
+            "consensusEPS": 1.32,
+            "priorYrEPS": 1.09,
+            "surpriseEPS_pct": 15.91,
+            "surpriseEPS_dollar": 0.21,
+            "latestRev_M": 10270.0,
+            "consensusRev_M": 9670.0,
+            "priorYrRev_M": 7660.0,
+            "surpriseRev_pct": 6.2,
+            "yrYrRev_pct": 34.07,
+            "epsYoY_pct": 40.37,
+            "epsEst_next4": [
+              1.29,
+              1.6,
+              1.83,
+              2.62
+            ],
+            "revEst_next4": [
+              9900.0,
+              11240.0,
+              12410.0,
+              15600.0
+            ],
+            "yoyBlock": "+40.37% / +34.07%\n--------------------\n+34.38% / +33.06%\n+233.33% / +46.35%\n+52.50% / +34.16%\n+71.24% / +51.90%",
+            "chart": {
+              "quarters": [
+                "Q2 '24",
+                "Q3 '24",
+                "Q4 '24",
+                "Q1 '25",
+                "Q2 '25",
+                "Q3 '25",
+                "Q4 '25",
+                "Q1 '26",
+                "Q2 '26",
+                "Q3 '26",
+                "Q4 '26",
+                "Q1 '27"
+              ],
+              "eps_reported": [
+                0.69,
+                0.92,
+                1.09,
+                0.96,
+                0.48,
+                1.2,
+                1.53,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "eps_estimate": [
+                0.68,
+                0.92,
+                1.08,
+                0.94,
+                0.48,
+                1.17,
+                1.32,
+                1.29,
+                1.6,
+                1.83,
+                2.62,
+                2.71
+              ],
+              "rev_reported_M": [
+                5830.0,
+                6820.0,
+                7660.0,
+                7440.0,
+                7680.0,
+                9250.0,
+                10270.0,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "rev_estimate_M": [
+                5730.0,
+                6710.0,
+                7530.0,
+                7120.0,
+                7410.0,
+                8760.0,
+                9670.0,
+                9900.0,
+                11240.0,
+                12410.0,
+                15600.0,
+                16290.0
+              ],
+              "latest_idx": 6
+            }
+          },
+          "sessions": [],
+          "chgPct": 8.77,
+          "last": 213.84,
+          "publishedAt": null,
+          "publishedTimezone": null,
+          "scanDate": "2026-02-24",
+          "_newsFetched": true
+        },
+        "ohlcv": {
+          "date": "2026-02-24",
+          "open": 211.63,
+          "high": 216.71,
+          "low": 206.5,
+          "close": 213.84,
+          "prev_close": 196.6,
+          "volume": 81367000
+        },
+        "hiddenSections": [],
+        "notes": "",
+        "customTypes": [
+          "earnings"
+        ],
+        "customChart": null,
+        "focusQuarterIdx": 6,
+        "newsDetail": null
+      }
+    },
     "customChart": null,
-    "focusQuarterIdx": null,
-    "newsDetail": null
+    "focusQuarterIdx": 6,
+    "newsDetail": null,
+    "intent": "long"
   }
 ]
