@@ -1163,20 +1163,43 @@ body.readonly-mode .vol-editable:hover { background: transparent; }
 }
 /* Editable date pill in the Study-detail breadcrumb — uses native date picker but styled to
    look like the read-only .study-detail-date pill it replaces. Hover/focus reveal a subtle
-   border so the user notices it's interactive. */
+   border so the user notices it's interactive.
+
+   color-scheme: light here is the critical fix for the "brief black flash" the user
+   reported. Chrome on Windows defaults <input type="date"> to the OS color scheme. With
+   Windows on dark mode the picker popup initially renders dark before our CSS applies —
+   the user sees a black flash. Forcing color-scheme: light keeps the popup light from
+   the start. Body.dark below overrides to dark when our own dark-mode is active.
+
+   accent-color tints the highlighted day + "Today" button in the native picker so the
+   popup feels like ours (not a generic Windows blue circle on the picked day). */
 .study-detail-date-input {
   font-family: var(--font-mono); font-size: 12px; color: var(--stone);
   font-weight: 500; letter-spacing: 0.3px;
   background: transparent; border: 1px solid transparent; border-radius: var(--r-sm);
   padding: 2px 6px; margin: -2px 0; cursor: pointer;
-  transition: background 0.12s, border-color 0.12s, color 0.12s;
+  /* No transition on focus — eliminates the brief style swap that showed through as a
+     flicker when the picker opened. Hover transition stays since it doesn't compete
+     with picker-open. */
+  transition: background 0.12s, border-color 0.12s;
+  color-scheme: light;
+  accent-color: var(--primary);
 }
+body.dark .study-detail-date-input { color-scheme: dark; }
 .study-detail-date-input:hover { background: var(--canvas); border-color: var(--hairline); color: var(--ink); }
 .study-detail-date-input:focus { background: var(--canvas); border-color: var(--primary); color: var(--ink); outline: none; }
-/* Hide the browser's spinner controls on the date input — keep the visual minimal */
+/* Custom calendar indicator — replace Chrome's default black SVG with our own using an
+   inline data URI. Color matches --primary (cobalt). Without this swap, the indicator
+   briefly shows its native dark icon before our opacity/hover rules apply. */
 .study-detail-date-input::-webkit-calendar-picker-indicator {
-  opacity: 0.5; cursor: pointer; padding: 0 2px;
-  transition: opacity 0.12s;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23494fdf' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='18' height='18' rx='2'/><line x1='16' y1='2' x2='16' y2='6'/><line x1='8' y1='2' x2='8' y2='6'/><line x1='3' y1='10' x2='21' y2='10'/></svg>");
+  background-repeat: no-repeat; background-position: center; background-size: 12px 12px;
+  width: 14px; height: 14px; cursor: pointer; padding: 0;
+  opacity: 0.55; transition: opacity 0.12s;
+}
+body.dark .study-detail-date-input::-webkit-calendar-picker-indicator {
+  /* Lighter cobalt in dark mode so the icon stays visible on the dark topbar bg */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a5a9ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='18' height='18' rx='2'/><line x1='16' y1='2' x2='16' y2='6'/><line x1='8' y1='2' x2='8' y2='6'/><line x1='3' y1='10' x2='21' y2='10'/></svg>");
 }
 .study-detail-date-input:hover::-webkit-calendar-picker-indicator,
 .study-detail-date-input:focus::-webkit-calendar-picker-indicator { opacity: 1; }
