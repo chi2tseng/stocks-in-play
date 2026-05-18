@@ -1714,6 +1714,12 @@ body.dark .trade-pill.direction-pill.neg { background: rgba(255, 84, 102, 0.22) 
 .cal-day.has-data:hover { background: rgba(73,79,223,0.18); }
 .cal-day.active { background: var(--primary); color: #ffffff; font-weight: 600; }
 .cal-day.no-data { color: var(--stone); cursor: not-allowed; }
+/* Weekends — markets closed, render grayed-out and disable interaction. Applied
+   to both the topbar calendar (date pill in nav) and the study-detail calendar. */
+.cal-day.weekend { color: var(--stone); cursor: not-allowed; opacity: 0.35; }
+.cal-day.weekend:hover { background: transparent; transform: none; }
+/* Sa/Su column headers also grayed for visual consistency. */
+.cal-dow.weekend { color: var(--stone); opacity: 0.55; }
 main { padding: 32px; max-width: 1280px; margin: 0 auto; background: var(--surface-soft); min-height: calc(100vh - 60px); }
 @media (max-width: 900px) { main { padding: 20px 16px; } }
 body { background: var(--surface-soft); }
@@ -2837,7 +2843,8 @@ function renderCalendar() {
   const daysInMonth = lastDay.getDate();
   const dateSet = new Set(STATE.dates.map(d => d.date));
   let html = `<div class="cal-header"><button class="cal-nav-btn" id="cal-prev">‹</button><div class="month-label">${monthNames[month]} ${year}</div><button class="cal-nav-btn" id="cal-next">›</button></div><div class="cal-grid">`;
-  dowNames.forEach(d => html += `<div class="cal-dow">${d}</div>`);
+  // Sa (idx 6) + Su (idx 0) headers get the .weekend class so they render grayed.
+  dowNames.forEach((d, i) => html += `<div class="cal-dow${(i === 0 || i === 6) ? ' weekend' : ''}">${d}</div>`);
   for (let i = 0; i < startWeekday; i++) {
     const prevDate = new Date(year, month, -startWeekday + i + 1);
     html += `<button class="cal-day outside" disabled>${prevDate.getDate()}</button>`;
@@ -2846,11 +2853,16 @@ function renderCalendar() {
     const iso = `${year}-${String(month + 1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
     const hasData = dateSet.has(iso);
     const isActive = iso === STATE.date;
+    const dow = new Date(year, month, day).getDay();
+    const isWeekend = (dow === 0 || dow === 6);
     const classes = ['cal-day'];
     if (isActive) classes.push('active');
+    else if (isWeekend) classes.push('weekend');
     else if (hasData) classes.push('has-data');
     else classes.push('no-data');
-    html += `<button class="${classes.join(' ')}" data-iso="${iso}" ${!hasData ? 'disabled' : ''}>${day}</button>`;
+    // Weekends are always disabled (US market closed). Mismatched data + weekday cells use the existing no-data rule.
+    const disabled = isWeekend || !hasData;
+    html += `<button class="${classes.join(' ')}" data-iso="${iso}" ${disabled ? 'disabled' : ''}>${day}</button>`;
   }
   html += '</div>';
   popup.innerHTML = html;
@@ -6236,7 +6248,8 @@ async function renderStudyDetail(idOrSym) {
       const researchedSet = new Set(listResearchedDates(live));
       const todayIso = new Date().toISOString().slice(0,10);
       let html = `<div class="cal-header"><button class="cal-nav-btn" type="button" data-nav="prev" aria-label="Previous month">‹</button><div class="month-label">${monthNames[month]} ${year}</div><button class="cal-nav-btn" type="button" data-nav="next" aria-label="Next month">›</button></div><div class="cal-grid">`;
-      dowNames.forEach(d => html += `<div class="cal-dow">${d}</div>`);
+      // Sa (idx 6) + Su (idx 0) headers get the .weekend class so they render grayed.
+      dowNames.forEach((d, i) => html += `<div class="cal-dow${(i === 0 || i === 6) ? ' weekend' : ''}">${d}</div>`);
       for (let i = 0; i < startWeekday; i++) {
         const prevDate = new Date(year, month, -startWeekday + i + 1);
         html += `<button class="cal-day outside" type="button" disabled>${prevDate.getDate()}</button>`;
@@ -6247,12 +6260,17 @@ async function renderStudyDetail(idOrSym) {
         const isActive = iso === activeIso;
         const isToday = iso === todayIso;
         const isFuture = iso > todayIso;
+        const dow = new Date(year, month, day).getDay();
+        const isWeekend = (dow === 0 || dow === 6);
         const classes = ['cal-day'];
         if (isActive) classes.push('active');
+        else if (isWeekend) classes.push('weekend');
         else if (isResearched) classes.push('has-data');
         if (isToday && !isActive) classes.push('today');
         if (isFuture && !isActive) classes.push('future');
-        html += `<button class="${classes.join(' ')}" type="button" data-iso="${iso}">${day}</button>`;
+        // Weekends disabled (US market closed).
+        const disabled = isWeekend;
+        html += `<button class="${classes.join(' ')}" type="button" data-iso="${iso}" ${disabled ? 'disabled' : ''}>${day}</button>`;
       }
       html += '</div>';
       datePop.innerHTML = html;
