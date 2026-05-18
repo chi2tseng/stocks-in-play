@@ -4302,48 +4302,70 @@ function isStudySaved(sym, scanDate) {
 function addStudy(stock, opts = {}) {
   const arr = loadStudies();
   const scanDate = opts.scanDate || STATE.date || '';
-  // Default behaviour dedups on (symbol, scanDate) so the SIP-card "Save to Studies" toggle
-  // doesn't accidentally make a duplicate when clicked twice for the same scan. The Studies
-  // search box (and any other "always-add-a-fresh-row" caller) sets `force: true` to bypass
-  // this — that's how duplicate studies for the same ticker on the same date become possible.
-  if (!opts.force && arr.some(st => st.symbol === stock.symbol && (st.snapshot?.scanDate || '') === scanDate)) return false;
+  // Build the snapshot + ohlcv for this scan day (reused by both code paths below).
+  const snapshot = {
+    name: stock.name,
+    type: stock.type,
+    chgPct: stock.chgPct,
+    last: stock.last,
+    catalyst: stock.catalyst,
+    catalyst_en: stock.catalyst_en,
+    tv: stock.tv,
+    sessions: stock.sessions,
+    shortFloat: stock.shortFloat,
+    shortRatio: stock.shortRatio,
+    marketCap_M: stock.marketCap_M,
+    claudeRationale: stock._claudeRationale,
+    claudeRationale_en: stock._claudeRationale_en,
+    claudeIntent: stock._claudeIntent,
+    newsDetail: stock.newsDetail,
+    scanDate,
+  };
+  // Daily OHLCV — auto-filled from stock.prevOhlcv (if /SIPs ran the prev-day fetch),
+  // otherwise blank for user to enter via the popup modal. `prev_close` drives the day's
+  // %Chg derivation: (close − prev_close) / prev_close · 100.
+  // The `date` field ALWAYS falls back to scanDate — that's the canonical trading day
+  // the study is anchored to. Leaving date="" when prevOhlcv is missing caused the
+  // breadcrumb to display today's date instead of the scan day (ONDS-5/14 bug).
+  const ohlcv = stock.prevOhlcv && typeof stock.prevOhlcv === 'object'
+    ? { date: stock.prevOhlcv.date || scanDate || '', open: stock.prevOhlcv.open ?? null, high: stock.prevOhlcv.high ?? null, low: stock.prevOhlcv.low ?? null, close: stock.prevOhlcv.close ?? null, prev_close: stock.prevOhlcv.prev_close ?? null, volume: stock.prevOhlcv.volume ?? null }
+    : { date: scanDate || '', open: null, high: null, low: null, close: null, prev_close: null, volume: null };
+  // Dedupe by symbol — same ticker = same study (research accumulates across days).
+  // Previously the dedupe key was (symbol + scanDate), which let duplicates accumulate
+  // for the same ticker across days; the user couldn't tell whether a ticker had
+  // already been researched. Fixed 2026-05-18 — now we ALWAYS dedupe by symbol and
+  // merge each new scan-day's snapshot into existing.datedSnapshots[scanDate].
+  // The `opts.force` flag is kept for backwards compat but is now a no-op.
+  const existing = arr.find(st => st.symbol === stock.symbol);
+  if (existing) {
+    if (scanDate) {
+      existing.datedSnapshots = existing.datedSnapshots || {};
+      if (!existing.datedSnapshots[scanDate]) {
+        existing.datedSnapshots[scanDate] = {
+          snapshot: { ...snapshot },
+          ohlcv:    { ...ohlcv },
+          customTypes: [],
+          hiddenSections: [],
+          notes: '',
+        };
+        saveStudies(arr);
+      }
+    }
+    return existing.id;
+  }
+  // No existing study — create a fresh one.
   const newId = genStudyId(stock.symbol);
   arr.push({
     id: newId,
     symbol: stock.symbol,
     savedAt: new Date().toISOString(),
-    snapshot: {
-      name: stock.name,
-      type: stock.type,
-      chgPct: stock.chgPct,
-      last: stock.last,
-      catalyst: stock.catalyst,
-      catalyst_en: stock.catalyst_en,
-      tv: stock.tv,
-      sessions: stock.sessions,
-      shortFloat: stock.shortFloat,
-      shortRatio: stock.shortRatio,
-      marketCap_M: stock.marketCap_M,
-      claudeRationale: stock._claudeRationale,
-      claudeRationale_en: stock._claudeRationale_en,
-      claudeIntent: stock._claudeIntent,
-      newsDetail: stock.newsDetail,
-      scanDate: opts.scanDate || STATE.date,
-    },
+    snapshot,
     notes: '',
     tags: [],
     targetPrice: null,
     stopLoss: null,
     conviction: 3,
-    // Daily OHLCV — auto-filled from stock.prevOhlcv (if /SIPs ran the prev-day fetch),
-    // otherwise blank for user to enter via the popup modal. `prev_close` drives the day's
-    // %Chg derivation: (close − prev_close) / prev_close · 100.
-    // The `date` field ALWAYS falls back to scanDate — that's the canonical trading day
-    // the study is anchored to. Leaving date="" when prevOhlcv is missing caused the
-    // breadcrumb to display today's date instead of the scan day (ONDS-5/14 bug).
-    ohlcv: stock.prevOhlcv && typeof stock.prevOhlcv === 'object'
-      ? { date: stock.prevOhlcv.date || scanDate || '', open: stock.prevOhlcv.open ?? null, high: stock.prevOhlcv.high ?? null, low: stock.prevOhlcv.low ?? null, close: stock.prevOhlcv.close ?? null, prev_close: stock.prevOhlcv.prev_close ?? null, volume: stock.prevOhlcv.volume ?? null }
-      : { date: scanDate || '', open: null, high: null, low: null, close: null, prev_close: null, volume: null },
+    ohlcv,
     // Screenshots — array of { id, label, caption, imgKey }. Image data lives in IndexedDB.
     screenshots: [],
   });
@@ -4361,9 +4383,14 @@ function addManualStudy(rawSym) {
     alert(`Invalid ticker: "${rawSym}". Expected 1–8 letters/digits, starting with a letter.`);
     return null;
   }
-  // Manual placeholder creates ALWAYS make a new study — duplicates allowed by design
-  // since the same ticker may be tracked under different catalysts at different times.
+  // Dedupe by symbol — if a study for this ticker already exists, return its id so
+  // the caller navigates to the existing study (preserves prior research: news,
+  // notes, dated snapshots, screenshots, OHLCV history). Previously this function
+  // unconditionally created new studies, which led to duplicate symbols and made
+  // users unable to tell if they'd already researched a ticker. Fixed 2026-05-18.
   const arr = loadStudies();
+  const existingForSym = arr.find(st => st.symbol === sym);
+  if (existingForSym) return existingForSym.id;
   const newId = genStudyId(sym);
   arr.push({
     id: newId,
