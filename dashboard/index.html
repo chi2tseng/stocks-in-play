@@ -445,6 +445,12 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 }
 .studies-search-create:hover { background: rgba(73,79,223,0.10); }
 .studies-search-empty { padding: 18px; text-align: center; color: var(--mute); font-size: 12px; }
+/* Section dividers in the search dropdown — "已存在的研究" / "過去的掃描資料". */
+.studies-search-section-header {
+  padding: 8px 14px 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; color: var(--stone); background: var(--canvas);
+  border-bottom: 1px solid var(--hairline);
+}
 
 /* Filter button (next to search) — funnel icon + active-count badge */
 .studies-filter-btn {
@@ -4330,30 +4336,42 @@ function addStudy(stock, opts = {}) {
   const ohlcv = stock.prevOhlcv && typeof stock.prevOhlcv === 'object'
     ? { date: stock.prevOhlcv.date || scanDate || '', open: stock.prevOhlcv.open ?? null, high: stock.prevOhlcv.high ?? null, low: stock.prevOhlcv.low ?? null, close: stock.prevOhlcv.close ?? null, prev_close: stock.prevOhlcv.prev_close ?? null, volume: stock.prevOhlcv.volume ?? null }
     : { date: scanDate || '', open: null, high: null, low: null, close: null, prev_close: null, volume: null };
-  // Dedupe by symbol — same ticker = same study (research accumulates across days).
-  // Previously the dedupe key was (symbol + scanDate), which let duplicates accumulate
-  // for the same ticker across days; the user couldn't tell whether a ticker had
-  // already been researched. Fixed 2026-05-18 — now we ALWAYS dedupe by symbol and
-  // merge each new scan-day's snapshot into existing.datedSnapshots[scanDate].
-  // The `opts.force` flag is kept for backwards compat but is now a no-op.
-  const existing = arr.find(st => st.symbol === stock.symbol);
-  if (existing) {
-    if (scanDate) {
-      existing.datedSnapshots = existing.datedSnapshots || {};
-      if (!existing.datedSnapshots[scanDate]) {
-        existing.datedSnapshots[scanDate] = {
-          snapshot: { ...snapshot },
-          ohlcv:    { ...ohlcv },
-          customTypes: [],
-          hiddenSections: [],
-          notes: '',
-        };
-        saveStudies(arr);
-      }
-    }
-    return existing.id;
+  // Multiple studies per symbol ARE allowed by design — each represents a separate
+  // research session (e.g. shorting the gap-up reversal vs. longing the breakout, or
+  // different catalysts on different days). What we DON'T want is to lose prior
+  // research when creating a new study for an already-researched symbol. So we
+  // inherit datedSnapshots / newsDetail / catalyst from the most-recent existing
+  // study for the same symbol. The user can edit the new study independently
+  // (changes don't sync back to the source), but they start with the existing
+  // research baseline. Fixed 2026-05-18 per user feedback.
+  //
+  // Light dedupe still applies: if THIS exact (symbol, scanDate) was just saved
+  // and opts.force is not set, return that study's id (prevents accidental dupes
+  // from the SIP-card "Save to Studies" being double-clicked). force=true bypasses.
+  if (!opts.force) {
+    const sameKey = arr.find(st => st.symbol === stock.symbol && (st.snapshot?.scanDate || '') === scanDate);
+    if (sameKey) return sameKey.id;
   }
-  // No existing study — create a fresh one.
+  // Find newest existing study for this symbol → seed inherited data.
+  const existing = arr.filter(st => st.symbol === stock.symbol)
+                      .sort((a, b) => (b.savedAt || '').localeCompare(a.savedAt || ''))[0];
+  const inheritedDatedSnapshots = existing?.datedSnapshots ? JSON.parse(JSON.stringify(existing.datedSnapshots)) : {};
+  // Inherit news / catalyst from existing if the incoming stock doesn't already have it.
+  if (existing?.snapshot) {
+    if (!snapshot.newsDetail && existing.snapshot.newsDetail) snapshot.newsDetail = existing.snapshot.newsDetail;
+    if (!snapshot.catalyst   && existing.snapshot.catalyst)   snapshot.catalyst   = existing.snapshot.catalyst;
+    if (!snapshot.catalyst_en && existing.snapshot.catalyst_en) snapshot.catalyst_en = existing.snapshot.catalyst_en;
+  }
+  // Make sure this scan's snapshot is reflected in datedSnapshots so calendar shows it.
+  if (scanDate && !inheritedDatedSnapshots[scanDate]) {
+    inheritedDatedSnapshots[scanDate] = {
+      snapshot: { ...snapshot },
+      ohlcv:    { ...ohlcv },
+      customTypes: [],
+      hiddenSections: [],
+      notes: '',
+    };
+  }
   const newId = genStudyId(stock.symbol);
   arr.push({
     id: newId,
@@ -4366,6 +4384,7 @@ function addStudy(stock, opts = {}) {
     stopLoss: null,
     conviction: 3,
     ohlcv,
+    datedSnapshots: inheritedDatedSnapshots,
     // Screenshots — array of { id, label, caption, imgKey }. Image data lives in IndexedDB.
     screenshots: [],
   });
@@ -4383,39 +4402,56 @@ function addManualStudy(rawSym) {
     alert(`Invalid ticker: "${rawSym}". Expected 1–8 letters/digits, starting with a letter.`);
     return null;
   }
-  // Dedupe by symbol — if a study for this ticker already exists, return its id so
-  // the caller navigates to the existing study (preserves prior research: news,
-  // notes, dated snapshots, screenshots, OHLCV history). Previously this function
-  // unconditionally created new studies, which led to duplicate symbols and made
-  // users unable to tell if they'd already researched a ticker. Fixed 2026-05-18.
+  // Multiple manual studies per symbol allowed — but inherit research data
+  // (newsDetail, datedSnapshots, catalyst) from the newest existing study for the
+  // same symbol so the user doesn't lose their prior work. The new placeholder
+  // study is independent (editing it doesn't sync back), but starts pre-filled.
+  // Fixed 2026-05-18 per user feedback.
   const arr = loadStudies();
-  const existingForSym = arr.find(st => st.symbol === sym);
-  if (existingForSym) return existingForSym.id;
+  const existingNewest = arr.filter(st => st.symbol === sym)
+                            .sort((a, b) => (b.savedAt || '').localeCompare(a.savedAt || ''))[0];
+  const inheritedDatedSnapshots = existingNewest?.datedSnapshots
+    ? JSON.parse(JSON.stringify(existingNewest.datedSnapshots)) : {};
+  const inheritedNews = existingNewest?.snapshot?.newsDetail || '';
+  const inheritedCatalyst = existingNewest?.snapshot?.catalyst || '';
+  const inheritedCustomTypes = existingNewest?.customTypes ? [...existingNewest.customTypes] : ['earnings'];
+  const inheritedHidden = existingNewest && (existingNewest.snapshot?.tv || existingNewest.snapshot?.newsDetail)
+    ? []   // existing has real data → don't hide anything in the new one
+    : ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'];
   const newId = genStudyId(sym);
+  // Build the new snapshot — inheriting newsDetail / catalyst from the previous
+  // same-symbol study if one exists (so the user doesn't lose research when adding
+  // another entry). Placeholder flag is dropped if the inherited data is real.
+  const hasInheritedData = !!(inheritedNews || inheritedCatalyst || existingNewest?.snapshot?.tv);
+  const inheritedTv = existingNewest?.snapshot?.tv || null;
   arr.push({
     id: newId,
     symbol: sym,
     savedAt: new Date().toISOString(),
     snapshot: {
-      name: '', type: 'momentum', chgPct: null, last: null,
-      catalyst: '', tv: null, sessions: [],
+      name: existingNewest?.snapshot?.name || '',
+      type: existingNewest?.snapshot?.type || 'momentum',
+      chgPct: null, last: null,
+      catalyst: inheritedCatalyst,
+      catalyst_en: existingNewest?.snapshot?.catalyst_en || '',
+      tv: inheritedTv,
+      sessions: existingNewest?.snapshot?.sessions || [],
       shortFloat: null, shortRatio: null, marketCap_M: null,
       claudeRationale: '', claudeIntent: null,
-      newsDetail: '',
+      newsDetail: inheritedNews,
       scanDate: STATE.date || '',
-      _placeholder: true,   // ← marks this study as awaiting /SIPs auto-fill
+      ...(hasInheritedData ? {} : { _placeholder: true }),
     },
     notes: '', tags: [], targetPrice: null, stopLoss: null, conviction: 3,
     ohlcv: { date: '', open: null, high: null, low: null, close: null, prev_close: null, volume: null },
+    datedSnapshots: inheritedDatedSnapshots,
     screenshots: [],
-    // Default: hide all data-heavy sections — the placeholder page shows news + notes only.
-    // build_dashboard.py / /update-studies un-hide them once real TV data lands.
-    hiddenSections: ['eps_chart', 'rev_chart', 'ms_table', 'yoy_block'],
-    // Default catalyst tag = "earnings" since the vast majority of manually-added
-    // placeholder studies are tracking an earnings event. /update-studies uses this
-    // tag to decide whether to run the TV scrape on next refresh. User can change
-    // the tag from the Catalyst pill if it's actually not an earnings catalyst.
-    customTypes: ['earnings'],
+    // Hidden sections — if existing same-symbol study has real data, expose all;
+    // otherwise hide chart/MS/YoY sections (this is a placeholder).
+    hiddenSections: inheritedHidden,
+    // Catalyst tag inherited from existing same-symbol study; defaults to 'earnings'
+    // for first-time placeholder creates (matches user's most-common workflow).
+    customTypes: inheritedCustomTypes,
   });
   saveStudies(arr);
   return newId;
@@ -4787,59 +4823,85 @@ function renderStudies() {
     if (!query) { searchRes.classList.remove('show'); searchRes.innerHTML = ''; return; }
     const idx = __searchIndex || new Map();
     const q = query.toUpperCase().trim();
-    // Build a map of symbol → newest-research preview for symbols the user has already
-    // saved. When the search result hits one of those, prefer the catalyst from the
-    // user's NEWEST dated snapshot over the past-scan default. This matters when the
-    // user has researched the same ticker on multiple dates — the preview should reflect
-    // their latest research thinking, not the original scan's snapshot.
     const allStudies = loadStudies();
-    const savedSyms = new Set(allStudies.map(s => s.symbol));
+    // ── Section 1: existing saved studies matching this query ──
+    // The user's #1 question is "have I researched this before?" — surface that
+    // answer at the very top of the dropdown. Click an item to OPEN the existing
+    // study (NOT create a new one). Multiple studies for the same symbol all
+    // show up as separate rows. Sorted newest-first (most recently saved).
+    const existingStudies = allStudies
+      .filter(st => (st.symbol || '').includes(q))
+      .sort((a, b) => (b.savedAt || '').localeCompare(a.savedAt || ''))
+      .slice(0, 10);
+    // Build a map of symbol → newest-research preview (used by past-scan section).
     const newestBySym = new Map();
     for (const st of allStudies) {
       const dates = listResearchedDates(st);
       if (dates.length === 0) continue;
-      const newest = dates[0];   // already sorted newest-first
+      const newest = dates[0];
       const slot = st.datedSnapshots?.[newest];
       if (slot?.snapshot) {
         const prev = newestBySym.get(st.symbol);
-        if (!prev || newest > prev.date) {
-          newestBySym.set(st.symbol, { date: newest, snap: slot.snapshot });
-        }
+        if (!prev || newest > prev.date) newestBySym.set(st.symbol, { date: newest, snap: slot.snapshot });
       }
     }
-    // Prefix match wins over substring match; cap at 8 results.
+    // Past-scan matches: prefix wins over substring; cap at 8.
     const all = Array.from(idx.entries()).map(([sym, info]) => ({ sym, ...info }));
     const prefix = all.filter(r => r.sym.startsWith(q));
     const substr = all.filter(r => !r.sym.startsWith(q) && r.sym.includes(q));
     __currentMatches = [...prefix, ...substr].slice(0, 8);
     const exact = idx.has(q);
+    const symbolsInExisting = new Set(existingStudies.map(st => st.symbol));
     let html = '';
-    if (__currentMatches.length === 0 && !exact) {
-      html += `<div class="studies-search-empty">No past scan matches "${escapeHtml(q)}"</div>`;
-    } else {
-      html += __currentMatches.map((r, i) => {
-        const alreadySaved = savedSyms.has(r.sym);
-        // Prefer the newest dated-snapshot preview when the user has researched this
-        // symbol. Falls back to the past-scan snapshot for tickers they haven't saved.
+    let runningIdx = 0;
+    // Render existing saved studies first.
+    if (existingStudies.length > 0) {
+      html += `<div class="studies-search-section-header">已存在的研究 (${existingStudies.length}) — 點擊開啟</div>`;
+      existingStudies.forEach(st => {
+        const dates = listResearchedDates(st);
+        const dateLabel = dates[0] || (st.snapshot?.scanDate || '');
+        const dateCount = dates.length > 1 ? ` <span style="color:var(--stone)">(+${dates.length - 1} 日期)</span>` : '';
+        const rawNews = (st.snapshot?.newsDetail || st.snapshot?.catalyst || '').replace(/<[^>]*>/g,'').replace(/\*\*/g,'').replace(/\n+/g,' ').trim();
+        const meta = rawNews.slice(0, 70) || '(no research yet)';
+        const isActive = runningIdx === __activeIdx;
+        html += `<div class="studies-search-item ${isActive ? 'active' : ''}" data-action="open-existing" data-id="${st.id}">
+          <span class="studies-search-sym">${st.symbol}</span>
+          <span class="studies-search-meta">${escapeHtml(meta)}</span>
+          <span class="studies-search-date">${dateLabel}${dateCount}</span>
+        </div>`;
+        runningIdx++;
+      });
+    }
+    // Past-scan matches section.
+    if (__currentMatches.length === 0 && !exact && existingStudies.length === 0) {
+      html += `<div class="studies-search-empty">No past scan or saved study matches "${escapeHtml(q)}"</div>`;
+    } else if (__currentMatches.length > 0) {
+      if (existingStudies.length > 0) html += `<div class="studies-search-section-header">過去的掃描資料 — 點擊新增為 study</div>`;
+      __currentMatches.forEach(r => {
+        const alreadySaved = symbolsInExisting.has(r.sym);
         const fresh = newestBySym.get(r.sym);
         const s = fresh ? fresh.snap : (r.snapshot || {});
         const dateShown = fresh ? fresh.date : r.scanDate;
         const cat = (s.catalyst_en || s.catalyst || s.name || '').toString().slice(0, 80);
-        // Mark whether the preview text came from the user's saved research vs raw scan.
-        const sourceLabel = alreadySaved ? ' <em style="color:var(--pos)">· already saved</em>' : '';
-        return `<div class="studies-search-item ${i === __activeIdx ? 'active' : ''}" data-action="add" data-sym="${r.sym}" data-date="${r.scanDate}">
+        const sourceLabel = alreadySaved ? ' <em style="color:var(--pos)">· 已有 study (新增會繼承)</em>' : '';
+        const isActive = runningIdx === __activeIdx;
+        html += `<div class="studies-search-item ${isActive ? 'active' : ''}" data-action="add" data-sym="${r.sym}" data-date="${r.scanDate}">
           <span class="studies-search-sym">${r.sym}</span>
           <span class="studies-search-meta">${escapeHtml(cat)}${sourceLabel}</span>
           <span class="studies-search-date">${dateShown}</span>
         </div>`;
-      }).join('');
+        runningIdx++;
+      });
     }
-    // Show "Create new" if query is a plausible ticker AND there's no exact match in past scans
-    if (!exact && /^[A-Z][A-Z0-9.\-]{0,7}$/.test(q)) {
-      const createIdx = __currentMatches.length; // arrow-key index after matches
-      html += `<div class="studies-search-create ${createIdx === __activeIdx ? 'active' : ''}" data-action="create" data-sym="${q}">
-        <span>+ Create new <strong>${q}</strong></span>
-        <span style="color:var(--mute);font-weight:400;font-size:11px;margin-left:auto">awaits /SIPs data fill</span>
+    // "+ Create / Add another" — always show when query is a plausible ticker.
+    if (/^[A-Z][A-Z0-9.\-]{0,7}$/.test(q)) {
+      const hasExisting = existingStudies.length > 0;
+      const isActive = runningIdx === __activeIdx;
+      const labelMain = hasExisting ? `+ 新增另一筆 <strong>${q}</strong>` : `+ Create new <strong>${q}</strong>`;
+      const labelHint = hasExisting ? '繼承既有研究資料 (news / OHLCV)' : 'awaits /SIPs data fill';
+      html += `<div class="studies-search-create ${isActive ? 'active' : ''}" data-action="create" data-sym="${q}">
+        <span>${labelMain}</span>
+        <span style="color:var(--mute);font-weight:400;font-size:11px;margin-left:auto">${labelHint}</span>
       </div>`;
     }
     searchRes.innerHTML = html;
@@ -4879,7 +4941,8 @@ function renderStudies() {
     renderSearchDropdown(searchInp.value);
   });
   searchInp?.addEventListener('keydown', e => {
-    const maxIdx = __currentMatches.length + (/^[A-Z][A-Z0-9.\-]{0,7}$/.test(searchInp.value.toUpperCase()) && !(__searchIndex?.has(searchInp.value.toUpperCase())) ? 0 : -1);
+    // Count all interactive items currently in the dropdown to drive arrow-key nav.
+    const maxIdx = (searchRes?.querySelectorAll('[data-action]').length || 0) - 1;
     // maxIdx points to the create-new row (matches.length) if shown; else matches.length-1
     if (e.key === 'ArrowDown') {
       e.preventDefault();
@@ -4891,13 +4954,15 @@ function renderStudies() {
       renderSearchDropdown(searchInp.value);
     } else if (e.key === 'Enter') {
       e.preventDefault();
-      // If a row is highlighted, pick it. Otherwise default to "Create new" with whatever they typed.
+      // If a row is highlighted, pick it. Otherwise default to the last item (which is
+      // "Create new" with whatever they typed, when a valid ticker is in the input).
       const items = searchRes.querySelectorAll('[data-action]');
       const target = (__activeIdx >= 0 && items[__activeIdx]) ? items[__activeIdx] : items[items.length - 1];
       if (!target) return;
       const action = target.dataset.action;
-      if (action === 'add')    pickSearchResult(target.dataset.sym, target.dataset.date);
-      if (action === 'create') createSearchResult(target.dataset.sym);
+      if (action === 'open-existing') openExistingStudy(target.dataset.id);
+      if (action === 'add')           pickSearchResult(target.dataset.sym, target.dataset.date);
+      if (action === 'create')        createSearchResult(target.dataset.sym);
     } else if (e.key === 'Escape') {
       searchRes.classList.remove('show');
       searchInp.blur();
@@ -4908,9 +4973,18 @@ function renderStudies() {
     const item = e.target.closest('[data-action]');
     if (!item) return;
     e.preventDefault();
-    if (item.dataset.action === 'add')    pickSearchResult(item.dataset.sym, item.dataset.date);
-    if (item.dataset.action === 'create') createSearchResult(item.dataset.sym);
+    if (item.dataset.action === 'open-existing') openExistingStudy(item.dataset.id);
+    if (item.dataset.action === 'add')           pickSearchResult(item.dataset.sym, item.dataset.date);
+    if (item.dataset.action === 'create')        createSearchResult(item.dataset.sym);
   });
+  // Click an "已存在的研究" item → navigate to that study's detail page.
+  // Clears the search input + closes the dropdown for a clean transition.
+  function openExistingStudy(id) {
+    if (!id) return;
+    if (searchInp) searchInp.value = '';
+    searchRes?.classList.remove('show');
+    location.hash = '#/studies/' + id;
+  }
   searchInp?.addEventListener('blur', () => {
     // Defer hide so click handlers on the dropdown run first
     setTimeout(() => searchRes?.classList.remove('show'), 150);
