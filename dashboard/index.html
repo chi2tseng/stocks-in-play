@@ -1650,6 +1650,31 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 }
 #chart-tooltip.visible .ct-inner { transform: scale(1); }
 
+/* ── Candlestick chart (6-month daily bars) — used in SIP-card preview (mini)
+   and stock-detail page (full). Pure SVG, no external libs. ─────────── */
+.candle-chart { width: 100%; display: block; }
+.candle-up   { fill: var(--pos); stroke: var(--pos); stroke-width: 1; }
+.candle-down { fill: var(--neg); stroke: var(--neg); stroke-width: 1; }
+body.dark .candle-up   { fill: #4cd2a0; stroke: #4cd2a0; }
+body.dark .candle-down { fill: #ff5a6e; stroke: #ff5a6e; }
+.candle-chart-mini { height: 56px; margin-top: 8px; }
+.candle-chart-full { height: 280px; }
+.candle-axis-text { font-size: 10px; fill: var(--mute); font-family: var(--font-mono); }
+.candle-axis-line { stroke: var(--hairline-soft); stroke-width: 1; }
+.candle-chart-section { background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--r-md); padding: 18px 16px 12px; }
+/* Custom hover tooltip for the full candle chart — lighter weight than the EPS
+   chart's #chart-tooltip; appears on mousemove over the chart area. */
+.candle-tooltip {
+  position: fixed; z-index: 9999;
+  background: rgba(25, 28, 31, 0.96); color: #fff;
+  border-radius: var(--r-sm); padding: 8px 11px;
+  font-size: 11px; font-family: var(--font-mono); line-height: 1.55;
+  pointer-events: none; display: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.20);
+  white-space: nowrap;
+}
+.candle-tooltip b { color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.4px; font-size: 10px; font-weight: 700; }
+
 #chart-tooltip .ct-q { font-size: 11px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.6px; font-weight: 700; margin-bottom: 6px; }
 #chart-tooltip .ct-row { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
 #chart-tooltip .ct-row:first-child { margin-top: 0; }
@@ -1964,6 +1989,10 @@ td.sym a { transition: background 140ms ease, color 140ms ease; }
 <div id="chart-tooltip" role="tooltip" aria-hidden="true"></div>
 <script>
 const STATE = { date: null, dates: [], data: null,
+  // 6-month daily candle bars keyed by symbol — fetched once at boot from
+  // `candles.json` (built by fetch_candles.py). Used by SIP card mini-chart +
+  // stock-detail 股價走勢 section. {} when not loaded / no data.
+  candles: {},
   // Sidecar mode = the local Python sidecar at 127.0.0.1:5510 is running.
   //   true  → Studies edits write through to disk (dashboard/studies/*).
   //   false → hosted GitHub Pages: read-only, all edit affordances disabled.
@@ -2118,6 +2147,11 @@ async function boot() {
     STATE.date = STATE.data.date;
     STATE.dates = [{date: STATE.date, label: STATE.date}];
   }
+  // Load 6-month daily candles (one file, all symbols). Non-fatal if missing.
+  try {
+    const r = await fetch('candles.json', {cache: 'no-store'});
+    if (r.ok) STATE.candles = await r.json();
+  } catch (_) { STATE.candles = {}; }
   // Sidecar probe + studies hydration happen in parallel with route render.
   await detectSidecar();
   await hydrateStudiesFromDisk();
@@ -2604,6 +2638,12 @@ function pickCardHtml(s, idx, sourceKey = 'claude') {
   const mismatchBanner = s._pickDirMismatch
     ? `<div class="dir-mismatch-banner">⚠️ 方向不符：intent=<b>${intent}</b> 但 chgPct=${fmtPctShort(s.chgPct)}</div>`
     : '';
+  // Mini candle chart (~6 months daily bars, no axes, no tooltip). Slices to
+  // bars at or before STATE.date so archived views show the as-of price action.
+  const candleBars = STATE.candles?.[s.symbol];
+  const miniCandle = candleBars
+    ? candleChartHtml(candleBars, { mode: 'mini', endDate: STATE.date })
+    : '';
   return `<a class="sip-card ${src.cssClass} ${isFeatured ? 'featured' : ''} ${s._pickDirMismatch ? 'dir-mismatch' : ''}" href="${buildRouteHash('stock/' + s.symbol)}" style="text-decoration:none;color:inherit;display:block;position:relative">
     ${saveStudyBtnHtml(s.symbol, rationale, intent)}
     <span class="sip-rank-row"><span class="sip-rank ${src.rankClass}">#${idx + 1}</span>${dayBadgeHtml(s)}</span>
@@ -2612,6 +2652,7 @@ function pickCardHtml(s, idx, sourceKey = 'claude') {
     <div class="sip-name">${escapeHtml(s.name)}</div>
     <div class="sip-meta">${sessTags} <span class="tag ${typeTagClass(s.type)}">${s.type}</span></div>
     ${shortPerfLine(s)}
+    ${miniCandle}
     <div class="claude-rationale-label">${src.label} 分析</div>
     ${rationaleHtml}
     ${forwardYoyBlock(s)}
@@ -3713,6 +3754,10 @@ async function renderStock(sym) {
       </div>
     </div>
     ${newsDetailHtml}
+    ${(STATE.candles?.[s.symbol]) ? `<div class="stock-card">
+      <h3>股價走勢 <span class="label-en">Price · Last 6 Months</span></h3>
+      ${candleChartHtml(STATE.candles[s.symbol], { mode: 'full', endDate: DATA.date })}
+    </div>` : ''}
     <div class="chart-wrap">
       <div class="stock-card"><h3>EPS Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.eps || ''}</div>
       <div class="stock-card"><h3>Revenue Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.rev || ''}</div>
@@ -3727,6 +3772,8 @@ async function renderStock(sym) {
     </div>
     <div class="news-history-card" id="news-history-${s.symbol}"></div>
   `;
+  // Wire candle-chart tooltips (full-mode chart in the 股價走勢 section).
+  attachCandleTooltips(app);
   // Async-load news history from all available date files
   buildNewsHistory(s.symbol).then(hist => {
     const container = document.getElementById(`news-history-${s.symbol}`);
@@ -3742,6 +3789,114 @@ async function renderStock(sym) {
       btn.textContent = 'Copied!'; btn.classList.add('copied');
       setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1200);
     };
+  });
+}
+
+// Render a candlestick chart from a list of daily OHLC bars.
+//   `bars`    — array of {date, open, high, low, close, volume}
+//   opts.mode — 'mini' (SIP-card preview, no axes/tooltip) or 'full' (detail page)
+//   opts.endDate — optional ISO date; slices bars to those with date <= endDate
+//                  (so archived scan views show price action up to that scan day)
+// Returns SVG string. For full-mode tooltips, call attachCandleTooltips(container)
+// after the SVG is in the DOM.
+function candleChartHtml(bars, opts = {}) {
+  if (!Array.isArray(bars) || bars.length < 2) return '';
+  const mode = opts.mode || 'mini';
+  if (opts.endDate) bars = bars.filter(b => b.date <= opts.endDate);
+  if (bars.length < 2) return '';
+  const isMini = (mode === 'mini');
+  const W = isMini ? 280 : 800;
+  const H = isMini ? 56  : 260;
+  const padL = isMini ? 2 : 4;
+  const padR = isMini ? 2 : 54;
+  const padT = isMini ? 4 : 8;
+  const padB = isMini ? 4 : 22;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+  // Price range
+  let minP = Infinity, maxP = -Infinity;
+  for (const b of bars) {
+    if (b.high > maxP) maxP = b.high;
+    if (b.low  < minP) minP = b.low;
+  }
+  const pad = Math.max(0.01, (maxP - minP) * 0.04);
+  minP -= pad; maxP += pad;
+  const xScale = i => padL + (i / (bars.length - 1 || 1)) * plotW;
+  const candleW = Math.max(1, (plotW / bars.length) * 0.7);
+  const yScale = p => padT + (1 - (p - minP) / (maxP - minP || 1)) * plotH;
+  // Bars (wicks + bodies)
+  let body = '';
+  for (let i = 0; i < bars.length; i++) {
+    const b = bars[i];
+    const x = xScale(i);
+    const cls = (b.close >= b.open) ? 'candle-up' : 'candle-down';
+    const yH = yScale(b.high), yL = yScale(b.low);
+    const yO = yScale(b.open), yC = yScale(b.close);
+    const bodyTop = Math.min(yO, yC);
+    const bodyH = Math.max(1, Math.abs(yO - yC));
+    body += `<line class="${cls}" x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${yH.toFixed(1)}" y2="${yL.toFixed(1)}"/>`;
+    body += `<rect class="${cls}" x="${(x - candleW/2).toFixed(1)}" y="${bodyTop.toFixed(1)}" width="${candleW.toFixed(1)}" height="${bodyH.toFixed(1)}"/>`;
+  }
+  // Axes (full mode only)
+  let axes = '';
+  if (!isMini) {
+    const priceTicks = 5;
+    for (let t = 0; t <= priceTicks; t++) {
+      const p = minP + (maxP - minP) * (t / priceTicks);
+      const y = yScale(p);
+      axes += `<line class="candle-axis-line" x1="${padL}" x2="${W - padR}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" opacity="0.5"/>`;
+      axes += `<text class="candle-axis-text" x="${W - padR + 4}" y="${(y + 3).toFixed(1)}">$${p.toFixed(2)}</text>`;
+    }
+    const dateLabels = 6;
+    for (let t = 0; t <= dateLabels; t++) {
+      const idx = Math.floor((t / dateLabels) * (bars.length - 1));
+      const x = xScale(idx);
+      axes += `<text class="candle-axis-text" x="${x.toFixed(1)}" y="${(H - 6).toFixed(1)}" text-anchor="middle">${bars[idx].date.slice(5)}</text>`;
+    }
+  }
+  // Embed bars JSON for tooltip lookup (full mode only)
+  const dataAttr = isMini ? '' : ` data-bars='${JSON.stringify(bars).replace(/'/g, '&apos;')}' data-padl="${padL}" data-padr="${padR}"`;
+  const hoverZone = isMini ? '' : `<rect x="${padL}" y="${padT}" width="${plotW}" height="${plotH}" fill="transparent" class="candle-hover-zone"/>`;
+  return `<svg class="candle-chart candle-chart-${mode}" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"${dataAttr}>${axes}${body}${hoverZone}</svg>`;
+}
+
+// Attach hover tooltips to all full-mode candle charts under `container`.
+// Call after the SVG is in the DOM. Idempotent (re-running re-binds handlers).
+function attachCandleTooltips(container) {
+  if (!container) return;
+  // Lazy-create the singleton tooltip element.
+  let tt = document.getElementById('candle-tooltip-singleton');
+  if (!tt) {
+    tt = document.createElement('div');
+    tt.id = 'candle-tooltip-singleton';
+    tt.className = 'candle-tooltip';
+    document.body.appendChild(tt);
+  }
+  container.querySelectorAll('.candle-chart-full').forEach(svg => {
+    if (svg.__candleBound) return;
+    svg.__candleBound = true;
+    let bars;
+    try { bars = JSON.parse(svg.getAttribute('data-bars') || '[]'); } catch (_) { bars = []; }
+    if (!bars.length) return;
+    const padL = parseFloat(svg.getAttribute('data-padl') || 4);
+    const padR = parseFloat(svg.getAttribute('data-padr') || 54);
+    const W = svg.viewBox.baseVal.width;
+    const plotW = W - padL - padR;
+    svg.addEventListener('mousemove', e => {
+      const rect = svg.getBoundingClientRect();
+      const xView = (e.clientX - rect.left) * (W / rect.width);
+      const ratio = Math.max(0, Math.min(1, (xView - padL) / plotW));
+      const idx = Math.round(ratio * (bars.length - 1));
+      const b = bars[idx];
+      if (!b) return;
+      const up = b.close >= b.open;
+      const chgPct = b.open ? ((b.close - b.open) / b.open * 100) : 0;
+      tt.innerHTML = `<b>${b.date}</b><br>O ${b.open.toFixed(2)} · H ${b.high.toFixed(2)}<br>L ${b.low.toFixed(2)} · C ${b.close.toFixed(2)}<br><span style="color:${up?'#4cd2a0':'#ff5a6e'}">${chgPct>=0?'+':''}${chgPct.toFixed(2)}%</span> · Vol ${b.volume?(b.volume>=1e6?(b.volume/1e6).toFixed(1)+'M':(b.volume/1e3).toFixed(0)+'K'):'—'}`;
+      tt.style.left = (e.clientX + 14) + 'px';
+      tt.style.top  = (e.clientY + 14) + 'px';
+      tt.style.display = 'block';
+    });
+    svg.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
   });
 }
 
