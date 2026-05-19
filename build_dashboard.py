@@ -1311,6 +1311,34 @@ body.readonly-mode .vol-editable:hover { background: transparent; }
 .study-delete-outer:hover { color: var(--neg); background: rgba(226,59,74,0.08); border-color: rgba(226,59,74,0.40); }
 .study-delete-outer svg { width: 14px; height: 14px; }
 .study-detail-breadcrumb { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+/* Prev/next nav strip — shown in the detail-page breadcrumb between the
+   trail (left) and the action button (right). Buttons are compact circles
+   with arrow glyphs; clicking navigates the hash route. */
+.detail-nav {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-left: auto;
+}
+.detail-nav-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  border-radius: var(--r-sm);
+  background: var(--surface-soft); border: 1px solid var(--hairline);
+  color: var(--ink);
+  font-family: var(--font-mono); font-size: 18px; font-weight: 600;
+  text-decoration: none; line-height: 1;
+  transition: background 120ms, border-color 120ms, transform 90ms;
+  cursor: pointer; user-select: none;
+}
+.detail-nav-btn:hover { background: var(--canvas); border-color: var(--ink); }
+.detail-nav-btn:active { transform: scale(0.94); }
+.detail-nav-btn.disabled {
+  opacity: 0.35; pointer-events: none; cursor: default;
+}
+.detail-nav-pos {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--mute); font-weight: 600;
+  letter-spacing: 0.4px; min-width: 52px; text-align: center;
+}
 .study-detail-date {
   font-family: var(--font-mono); font-size: 12px; color: var(--stone);
   font-weight: 500; letter-spacing: 0.3px;
@@ -3035,6 +3063,28 @@ function buildRouteHash(routePath) {
   return '#/' + (isLatest ? '' : STATE.date + '/') + routePath;
 }
 
+// Build the prev/next navigation strip for a detail page. Inserted into the
+// breadcrumb row of both renderStock and renderStudyDetail.
+//   basePath  — 'stock' or 'study' (used in buildRouteHash)
+//   list      — ordered array of { id, label } (id is the slug, label shown in tooltip)
+//   currentId — id of the current page
+// Returns HTML. Empty string when list has <2 items or current isn't found.
+function detailNavHtml(basePath, list, currentId) {
+  if (!Array.isArray(list) || list.length < 2) return '';
+  const idx = list.findIndex(it => it.id === currentId);
+  if (idx < 0) return '';
+  const prev = idx > 0 ? list[idx - 1] : null;
+  const next = idx < list.length - 1 ? list[idx + 1] : null;
+  const mkHref = item => buildRouteHash(basePath + '/' + item.id);
+  const prevBtn = prev
+    ? `<a class="detail-nav-btn" href="${mkHref(prev)}" title="Previous: ${escapeHtml(prev.label)}" aria-label="Previous">‹</a>`
+    : `<span class="detail-nav-btn disabled" title="At the start" aria-disabled="true">‹</span>`;
+  const nextBtn = next
+    ? `<a class="detail-nav-btn" href="${mkHref(next)}" title="Next: ${escapeHtml(next.label)}" aria-label="Next">›</a>`
+    : `<span class="detail-nav-btn disabled" title="At the end" aria-disabled="true">›</span>`;
+  return `<div class="detail-nav">${prevBtn}<span class="detail-nav-pos">${idx + 1} / ${list.length}</span>${nextBtn}</div>`;
+}
+
 async function route() {
   // Always dismiss the chart-tooltip when navigating — otherwise it stays floating on the
   // new page (anchored to a bar that no longer exists). Going back from a stock detail
@@ -4733,9 +4783,16 @@ async function renderStock(sym) {
     _tv ? _surpPill('EPS Surp', _tv.surpriseEPS_pct, 'EPS surprise vs consensus (TradingView FQ)') : '',
     _tv ? _surpPill('Rev Surp', _tv.surpriseRev_pct, 'Revenue surprise vs consensus (TradingView FQ)') : '',
   ].filter(Boolean).join(' ');
+  // Build prev/next nav across today's stocks, sorted by |chgPct| desc so the
+  // biggest movers come first (matches the implicit ranking in most views).
+  const _stockNavList = Object.entries(DATA.stocks)
+    .map(([k, st]) => ({ id: k, label: k, _chg: Math.abs(st.chgPct || 0) }))
+    .sort((a, b) => b._chg - a._chg);
+  const _stockNavHtml = detailNavHtml('stock', _stockNavList, sym);
   app.innerHTML = `
     <div class="breadcrumb study-detail-breadcrumb">
       <span><a href="${buildRouteHash('earnings')}">Earnings</a> · <a href="${buildRouteHash('catalyst')}">Catalyst</a> · <a href="${buildRouteHash('scanx')}">SCANX</a> &nbsp;»&nbsp; <b>${s.symbol}</b>${dateBadge}</span>
+      ${_stockNavHtml}
       ${saveStudyBtnHtml(s.symbol)}
     </div>
     <div class="stock-header">
@@ -7382,9 +7439,16 @@ async function renderStudyDetail(idOrSym) {
     return { datePill, popupHtml, calPopupHtml };
   })();
 
+  // Build prev/next nav across the user's CURRENT studies view (same sort +
+  // filter as the My Studies list), so navigating ◀/▶ walks them in the
+  // order they're shown on the list page.
+  const _studyNavList = sortStudies(loadStudies().filter(studyMatchesFilter))
+    .map(st => ({ id: st.id, label: st.symbol }));
+  const _studyNavHtml = detailNavHtml('study', _studyNavList, id);
   app.innerHTML = `
     <div class="breadcrumb study-detail-breadcrumb">
       <span><a href="#/studies">← Studies</a> &nbsp;»&nbsp; <b>${sym}</b>${breadcrumbParts.datePill}</span>
+      ${_studyNavHtml}
       <button class="study-delete-outer" id="study-delete" type="button" title="Delete this study">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="3 6 5 6 21 6"></polyline>
