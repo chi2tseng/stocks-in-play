@@ -1,43 +1,122 @@
 {
-  "ABCL": {"Type":"earnings","Catalyst":"Q1 2026 營收 $8.3M 大超預期 $5.4M (+53.6%)、年增 +96%、EPS -$0.14 優於 -$0.17 (+18%)；現金 $530M、ABCL-635 第二期試驗啟動。"},
-  "AIIO": {"Type":"M&A","Catalyst":"子公司 Neurovia 推出 NeuroStream 4K 影片壓縮 95% 平台 + $100M 全股票收購案；trailing 營收約 $950，極端投機型微型股。"},
-  "ASBP": {"Type":"news","Catalyst":"完成第二輪私募 $21M、推進 $30M 收購 Dura Control，並於今日生效 1:30 反向分割，刺激低浮動拉抬。"},
-  "ASX": {"Type":"earnings","Catalyst":"Q1 2026 EPS $0.20 超預期 $0.17 (+14.6%)、營收 $5.5B 超預期 $5.32B、Rev YoY +18.8%、下季 EPS YoY 預估 +118%。"},
-  "ATAI": {"Type":"analyst","Catalyst":"BPL-003 抗憂鬱第三期 Q2 啟動、現金 $209.9M 可撐至 2029；分析師強烈買進共識推升 +5.35%。"},
-  "BIDU": {"Type":"earnings","Catalyst":"Q1 2026 EPS $1.75 vs $1.67 預期 (+4.5%)、營收 $4.65B 超預期 $4.54B、AI 雲核心業務首次過半、非 GAAP 營業利益季增 39% 至 RMB 4.0B。"},
-  "BNAI": {"Type":"contract","Catalyst":"5/11 簽下全球車隊 AI 經銷協議、4/30 宣布 $19.5M 收購 Cataneo GmbH 強化德國電視/媒體 AI 滲透。"},
-  "CBRG": {"Type":"ETF","Catalyst":"Leverage Shares 2X Long CBRS Daily ETF；追蹤 CBRS 槓桿產品,無基本面催化、隨標的波動。"},
-  "CGEN": {"Type":"earnings","Catalyst":"Q1 2026 EPS -$0.08 略遜 -$0.07 預期、營收 $2.18M 超預期 $1.57M (+38%)；AstraZeneca TIGIT 雙抗合作推進,現金 $145.6M 可至 2029。"},
-  "CMPS": {"Type":"FDA","Catalyst":"FDA 核准 COMP360 滾動式 NDA + 國家優先審查券、Q1 淨利 $91.2M、現金 $466M；憂鬱症 psychedelic 標靶療法重大里程碑。"},
-  "D": {"Type":"M&A","Catalyst":"NextEra 以 0.8138 換股比例 / 每股 $76 全股收購 Dominion Energy,總交易約 $66B、溢價 21%；公用事業史上最大規模整合。"},
-  "DSGN": {"Type":"FDA","Catalyst":"RESTORE-FA Phase 2 試驗 DT-216P2 四週後 FXN mRNA +65%、mFARS 改善 6.4 點,5/18 盤前公布；FA 病重大數據解讀。"},
-  "GCTS": {"Type":"contract","Catalyst":"5/7 與大型衛星通訊商簽署參考平台協議、Q1 出貨 5G 晶片 3000 顆季增 58%、營收年增 287%；衛星 + 5G 雙主題催化。"},
-  "GOVX": {"Type":"momentum","Catalyst":"無明顯新聞催化（市值僅 ~$3.8M、現金緊張）；今日 +165% 屬低浮動微型股動能炒作,警惕。"},
-  "HCAI": {"Type":"momentum","Catalyst":"4/13 完成 1:30 反向分割後波動劇烈,今日 +82% 屬技術性低浮動跟風、無明確基本面催化。"},
-  "HIVE": {"Type":"contract","Catalyst":"BUZZ HPC 宣布大多倫多 320 MW 主權 AI 基礎設施、目標 2026 年 ARR $750M；比特幣礦商轉型 HPC/AI 主題。"},
-  "IBRX": {"Type":"news","Catalyst":"Q1 初步營收 $44.2M 由 ANKTIVA 帶動、市場關注 FDA 研討會與日本 BCG 新合作機會。"},
-  "KULR": {"Type":"earnings","Catalyst":"Q1 2026 EPS -$0.61 大幅遜於 -$0.08 預期、營收 $4.85M 低於 $8.5M (-43%),但 Rev YoY +98%；比特幣按市值損失 $20.8M 拖累。"},
-  "LI": {"Type":"guidance","Catalyst":"Q1 交付 95,142 輛超指引上限 90,000,但營收指引 RMB 20.4-21.6B 偏保守；5/28 發布財報前獲利了結 -9%。"},
-  "LUNR": {"Type":"contract","Catalyst":"$180.4M NASA 月球南極合約 + $6.2B 太空軍 Andromeda IDIQ、Q1 營收破紀錄 $186.73M；月球經濟主題股。"},
-  "MNTS": {"Type":"guidance","Catalyst":"CEO 股東信展望 2026 營收 $10M (9 倍年增)、現金 $26.2M 可撐 12 個月以上；太空軌道服務概念股。"},
-  "NOW": {"Type":"M&A","Catalyst":"$4B 債券再融資以支應 4 月 $7.75B 收購 Armis、Q1 營收年增 22%；ServiceNow 加碼網路資安併購。"},
-  "PIII": {"Type":"earnings","Catalyst":"Q1 EPS $0.32 大幅扭虧 (去年 -$6.28、+106% 驚奇)、營收 $386.4M 年增 4%、調整 EBITDA $26M 上調全年展望；但盤前 -23% 疑為二次發行或大型賣壓。"},
-  "POET": {"Type":"contract","Catalyst":"與 Lumilens 簽 $50M 首批訂單 (總額最高 $500M) 光學引擎協議、5/18 完成 $400M 定增,光子整合 AI 基建主題股。"},
-  "QUCY": {"Type":"contract","Catalyst":"取得 BP United 自主防禦無人機平台獨家 IP 授權、推出 quantum-cyber.ai 國防平台；量子防禦概念。"},
-  "RAMP": {"Type":"M&A","Catalyst":"Publicis 以每股 $38.50 全現金 (總價 $2.5B、溢價 30%) 收購 LiveRamp、Q4 EPS $0.52 超預期 (+6.1%)；廣告科技整併。"},
-  "RDW": {"Type":"contract","Catalyst":"Q1 美國海軍陸戰隊 Stalker 無人機追加 $20M 訂單、book-to-bill 1.92、backlog $498M (+58% YoY)；國防衛星主題持續。"},
-  "SBFM": {"Type":"news","Catalyst":"推出加拿大新處方學名藥 (市場 $933M),無明確大型催化；今日 +621%、Vol 190M 為極端低浮動 pump-and-dump 警示。"},
-  "SIDU": {"Type":"contract","Catalyst":"擴大與 Lonestar StarVault 軌道資料儲存合約、新增第二顆酬載；太空資料中心概念。"},
-  "SKK": {"Type":"M&A","Catalyst":"以 $258.8M 估值簽署收購 Rantizo 無人機資產協議、Rantizo 將取得多數股權；換股稀釋擔憂導致 -14%。"},
-  "SLE": {"Type":"earnings","Catalyst":"Q1 2026 EPS -$0.98 優於 -$1.82 (+46.2%)、營收 $3.0M 超預期 $2.8M (+7.25%)、Rev YoY +10.3%；但持續虧損且後續稀釋風險導致 -15%。"},
-  "SLNH": {"Type":"news","Catalyst":"兩份合計 ~28.97M 股的轉售 S-1 登記引發稀釋賣壓,雖有 Briscoe 風電場併購利多；今日 -7.23% 拋售。"},
-  "SLS": {"Type":"FDA","Catalyst":"REGAL Phase 3 AML 試驗已達 78/80 事件、接近觸發 80 事件期中分析的關鍵讀數；資料 readout 近期催化。"},
-  "TE": {"Type":"earnings","Catalyst":"Q1 2026 營收 $177.65M 大超預期 $95.46M (+86%)、Rev YoY +175%、EPS -$0.08 優於 -$0.12；與 Treaty Oak 簽 3 年 900MW 太陽能模組合約。"},
-  "AGYS": {"Type":"earnings","Catalyst":"Q4 FY26 EPS $0.63 vs $0.50 (+26.7%)、營收 $82.95M vs $81.56M (+1.7%)；第 17 季連續創紀錄、訂閱 +24% YoY、毛利 64.4%；FY27 指引 EPS +27-38% YoY、營收 +12-15% YoY；盤後 +13.75%。"},
-  "BKKT": {"Type":"news","Catalyst":"董事 Michael Alfred 透過 Alpine Fox LP 於 5/15、5/18 兩日合計買進 585k 股共 $4.85M、CEO Naheta 同期執行 33.5k 選擇權；5/11 弱 Q1 後內部人押注信號。"},
-  "FATN": {"Type":"earnings","Catalyst":"Q4 FY26 非 GAAP EPS $0.39 vs $0.117 (+233%)、營收 $7.23M vs $6.32M (+14.5%)、Rev YoY +90%、recurring +56% YoY、Adj EBITDA $3.0-3.2M (yr-ago $0.2M)；微型股 $71M 市值放量。"},
-  "PENG": {"Type":"news","Catalyst":"5/18 4:15pm 任命 David Heard 為董事強化 AI Factory Platform 戰略；4/1 Q2 FY26 EPS $0.52 vs $0.42、Rev $343M、Rosenblatt PT $54；short float 17.96% 有軋空潛力。"},
-  "PURR": {"Type":"momentum","Catalyst":"加密題材 — Goldman 出脫 XRP/Solana ETF 部位、Hyperliquid 曝險浮現 (5/18)；Q1 2026 利潤 $152.5M 受 HYPE 反彈帶動；Maxim 4/24 起始 Buy / 目標 $10。"},
-  "SHMD": {"Type":"earnings","Catalyst":"5/18 9:30 ET 投資人電話會議公布 FY2025 年報 + Q1 訂單 €13.6M / 營收 €18.2M / Order book €49M；重申 2026 全年 >€100M 營收、EBITDA margin >12%、訂單 €114M；€30.75M 抵帳發新股 (5/20 股東會表決)。"},
-  "WVE": {"Type":"FDA","Catalyst":"5/18 4:36pm 公布 RestorAATion-2 Phase 1b/2a 期中數據 — RNA 編輯 WVE-006 達到保護性 MZ-like AAT 表型、編輯持續性良好；AAT 缺乏症 RNA 編輯里程碑。"}
+  "AGYS": {
+    "Type": "earnings",
+    "Catalyst": "Q4 FY26 EPS $0.63 超預期 26%（vs $0.50）、營收 $82.9M +11.7% YoY，FY27 指引營收 $365–370M，盤後 +16.10%。"
+  },
+  "CBRG": {
+    "Type": "news",
+    "Catalyst": "Leverage Shares 2X Long CBRE 槓桿 ETF，跟隨 CBRE 上漲衍生 +4.63%（無獨立催化劑）。"
+  },
+  "FATN": {
+    "Type": "earnings",
+    "Catalyst": "Q4 FY26 Non-GAAP EPS $0.39 超預期 3 倍以上（vs $0.117）、營收 $7.23M +90% YoY，但盤後 -4.47%（sell-the-news）。"
+  },
+  "GOVX": {
+    "Type": "guidance",
+    "Catalyst": "前一日 +163% 暴拉後公告 $3M PIPE 增發稀釋（2.03M 股），盤後 -9.95%。"
+  },
+  "HCAI": {
+    "Type": "momentum",
+    "Catalyst": "4/13 完成 1-for-30 反向分割 + 智慧停車進軍 LA/NY，前一日盤中暴拉至 $16.96 後重挫，盤後 -17.64% 回吐。"
+  },
+  "PENG": {
+    "Type": "news",
+    "Catalyst": "任命 Nokia 網絡基建總裁 David Heard 為董事，強化 AI Factory Platform 策略 + Rosenblatt PT 由 $32 升至 $54，盤後 +6.67%。"
+  },
+  "SHMD": {
+    "Type": "earnings",
+    "Catalyst": "FY2025 年報 + Q1 2026 業務更新（Q1 訂單 €13.6M、營收 €18.2M、訂單簿 €49M），重申 2026 指引：營收 >€100M、Adj EBITDA >12%，盤後 +5.61%。"
+  },
+  "TE": {
+    "Type": "earnings",
+    "Catalyst": "Q1 2026 EPS -$0.08 優於預期 -$0.13（+38%）、營收 $755.3M、Rev YoY +174.79%，Situational Awareness LP 揭露 10M 股部位，盤後 +5.57%。"
+  },
+  "WVE": {
+    "Type": "FDA",
+    "Catalyst": "RestorAATion-2 Phase 1b/2a 試驗 WVE-006 公布更新數據（200mg q2w / 400mg q4w 達 MZ-like 表型、Z-AAT 降 70%），中期將與 FDA 討論加速審批路徑，盤後 +5.47%。"
+  },
+  "AMST": {
+    "Type": "contract",
+    "Catalyst": "宣布迄今最大企業部署，新客戶將於 2,700 床位導入 AI 原生 NurseMagic 文件平台；Q3 營收僅 $83,330 但 YoY +171%，盤前低流動性 micro-cap 拉抬 +180%。"
+  },
+  "ASX": {
+    "Type": "news",
+    "Catalyst": "董事 Jeffrey Chen 連日公開市場拋售，近三月內部人累計賣出 $312.9M、零內部買盤，盤前 -5.5% 反映 ADR 賣壓加劇（基本面仍強：Q1 EPS YoY +82%、Rev +19%）。"
+  },
+  "AUUD": {
+    "Type": "M&A",
+    "Catalyst": "提交 S-4 與 Thramann Holdings 合併（合併後改名 McCarthy Finney 代號 MCFN），加上 4/27 收盤 $12M 公開發行（$2.36/股），稀釋 + 套利壓力盤前 -13.7%。"
+  },
+  "BKKT": {
+    "Type": "news",
+    "Catalyst": "Q1 EPS -$0.41 大 miss、營收 $243.59M 短少 21.65%，但董事 Alpine Fox 開放市場買進 585,000 股（$8.20–8.34）、CEO 行使選擇權，內部人接盤帶動盤前 +11%。"
+  },
+  "CISS": {
+    "Type": "earnings",
+    "Catalyst": "Q1 調整後淨利年增 358% 至 $5.5M、調整後 EBITDA +132% 至 $6.9M、營收 $11.6M（+34%），週一拉升 48.5% 後盤前 -16.5% 獲利了結回吐。"
+  },
+  "CMBT": {
+    "Type": "earnings",
+    "Catalyst": "今日盤前公布 Q1 2026 業績並 8:00 ET 召開電話會議：EPS $1.26 大破 $0.43 預期（+193%）、營收 $515M 超 $435M（+18%）、Rev YoY +130%、EPS YoY +530%，加上 11 艘氨動力船訂單與中國 CEEC 松原綠氨 158,000 噸/年 off-take。"
+  },
+  "CRWV": {
+    "Type": "earnings",
+    "Catalyst": "5/7 Q1 EPS -$1.11 vs -$0.92 預估（miss 21%）、Q2 營收指引 $2.45-2.6B 中值低於 $2.69B 共識，2026 capex 上修至 $31-35B 引發賣壓，盤前續跌 -4.5%。"
+  },
+  "GCTS": {
+    "Type": "earnings",
+    "Catalyst": "Q1 營收 $1.92M（YoY +287.1%）、5G 晶片組出貨季增 ~58% 至 3,000 顆，週一狂飆 +26.97% 後盤前 -12.79% 獲利了結。"
+  },
+  "LI": {
+    "Type": "analyst",
+    "Catalyst": "Goldman Sachs 5/19 將 Li Auto 自「買進」降至「中性」、目標價設 $19；5/28 將召開董事會審議 Q1 業績，且最新 Q EPS YoY -92%、Rev YoY -32%，盤前 -4.7%。"
+  },
+  "MOBX": {
+    "Type": "news",
+    "Catalyst": "5/13 修訂 Leviston Resources 優先擔保可轉債（本金 $3M→$4M、新增 ~$833K 現金），加上最大股東突然減持帶來稀釋壓力，盤前 -10%。"
+  },
+  "NBIS": {
+    "Type": "analyst",
+    "Catalyst": "Q1 營收 $399M YoY +684% 大超預期帶動 5/13 狂飆 +21%，但隨後分析師「中性」覆蓋指長線需求強短線 upside 有限，盤前 -4.2% 獲利了結。"
+  },
+  "NOW": {
+    "Type": "analyst",
+    "Catalyst": "Knowledge 2026 大會發表 AI Control Tower、對話式 AI 介面 Otto、Autonomous Workforce 系列；Bank of America 啟始 Buy、Bernstein 將目標價自 $226 升至 $236，盤前 +5.4%（注：Barchart 顯示價格 $109 疑為資料異常，實際 ServiceNow 市值 ~$107B）。"
+  },
+  "PLYX": {
+    "Type": "news",
+    "Catalyst": "5/14 獲 GHP Healthcare 兩項獎項（Best Pediatric LSD Therapeutics、Rare Neurodegenerative Drug Development Excellence），但 5/18 無新催化、盤前 -10% 獲利了結。"
+  },
+  "PMAX": {
+    "Type": "M&A",
+    "Catalyst": "5/13 +31.15% 後消化獲利，已簽署非約束性 LOI 以 $9.0M（含承擔最多 $7.0M 債務）收購 Boston Solar（2025 營收 +22% 至 $24M），定案協議預計 5/16 簽署，盤前 -9.6%。"
+  },
+  "PURR": {
+    "Type": "momentum",
+    "Catalyst": "Q3 淨利 $152.5M 主要來自所持 20M HYPE 代幣升值至 ~$799M（現金 $103M、零負債）、EPS 大超 +252%；5/11 起與 Unit Labs 啟動 validator 合作深化 HYPE 國庫收益，盤前 +16.16%。"
+  },
+  "QUCY": {
+    "Type": "contract",
+    "Catalyst": "成立全資 Quantum Drones Corporation（內華達），由前 VA Acting Secretary Peter O'Rourke 領軍主攻美國自主無人機與反 UAS 國防採購；5/18-21 Tampa SOF Week 展示 25 km 自主 UAV，週一 +22% 後盤前 -4.55%。"
+  },
+  "RLAY": {
+    "Type": "FDA",
+    "Catalyst": "5/19 ISSVA 世界年會公布 zovegalisib（RLY-2608）於約 20 名血管異常患者初步臨床數據；公司現金 $642.1M、PFS 中位 11.1 個月，2 月已獲 FDA 突破性療法認定，盤前 +14%。"
+  },
+  "RUBI": {
+    "Type": "contract",
+    "Catalyst": "兩艘 ECO Suezmax 油輪租約展期：2027/1/11 前日租 $32,850、後續 4 年 $29,990，承租人持兩個 1 年延長選擇權（$34,750、$36,750），合約 backlog $120.8M；近期 1:7.8 + 1:10 反向分割，盤前 +155%。"
+  },
+  "SAP": {
+    "Type": "analyst",
+    "Catalyst": "Sapphire 2026 推出統一 SAP Business AI Platform、深化與 Anthropic / AWS / Google Cloud / Microsoft / NVIDIA / Palantir 合作；JPMorgan Chase 宣布以 SAP 換掉總帳系統，UBS / Jefferies / BofA 紛紛上調，盤前 +4.5%。"
+  },
+  "SEGG": {
+    "Type": "contract",
+    "Catalyst": "與 Polymarket 獨家技術合作為 Sports.com Predict 提供動力（交易型分潤）；整合 Veloce Media（5,500 萬訂閱、5 億月觀看）、任命 Daniel Bailey 為 CCO 及 Jack Clarke 為 CSO，瞄準 2026 FIFA 世界盃前夏季上線，盤前 +5.4%。"
+  },
+  "WNW": {
+    "Type": "momentum",
+    "Catalyst": "無 5/18-19 明確消息，疑似低流動性 micro-cap 拉抬（4/6 已執行 1:100 反向分割、3 月完成 $14M 註冊直接發行附 warrants），盤前 +97%。"
+  }
 }
