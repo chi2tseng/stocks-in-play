@@ -1721,26 +1721,38 @@ body.dark .candle-crosshair-label-text { fill: var(--surface); }
 /* Measure popup (TC2000-style) — fixed corner based on drag direction.
    .mp-left:  end position on the RIGHT half of chart → popup top-LEFT
    .mp-right: end position on the LEFT half of chart  → popup top-RIGHT
-   Either way it's pinned to a fixed corner (does NOT follow the cursor). */
+   Pinned to fixed corner (does NOT follow cursor). Background is
+   theme-aware: white card in light mode, dark in dark mode. */
 .candle-measure-popup {
   position: absolute; top: 6px;
-  background: rgba(25, 28, 31, 0.96); color: #fff;
-  border-radius: var(--r-sm); padding: 8px 11px;
+  background: var(--surface-elevated); color: var(--ink);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-sm); padding: 9px 12px;
   font-family: var(--font-mono); font-size: 11px; line-height: 1.45;
   pointer-events: none; z-index: 3;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
   min-width: 170px;
+}
+body.dark .candle-measure-popup {
+  background: rgba(25, 28, 31, 0.96); color: #fff;
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 /* Top offset 52px keeps the measure popup BELOW the OHLCV display
    (which sits at top:6px and is ~36px tall) instead of overlapping it. */
 .candle-measure-popup.mp-left  { left: 8px;  right: auto; top: 52px; }
 .candle-measure-popup.mp-right { right: 70px; left: auto; top: 52px; }
-.candle-measure-popup .mp-row1 { font-size: 10px; color: rgba(255,255,255,0.6); font-weight: 600; }
-.candle-measure-popup .mp-row2 { font-size: 10px; color: rgba(255,255,255,0.5); }
-.candle-measure-popup .mp-row-price { font-size: 10px; color: rgba(255,255,255,0.7); font-weight: 600; margin-top: 1px; }
-.candle-measure-popup .mp-row3 { font-size: 14px; font-weight: 700; margin-top: 3px; }
-.candle-measure-popup .mp-row3.pos { color: #4cd2a0; }
-.candle-measure-popup .mp-row3.neg { color: #ff5a6e; }
+.candle-measure-popup .mp-row1 { font-size: 10px; color: var(--mute); font-weight: 600; }
+.candle-measure-popup .mp-row2 { font-size: 10px; color: var(--stone); }
+.candle-measure-popup .mp-row-price { font-size: 10px; color: var(--body); font-weight: 600; margin-top: 1px; }
+.candle-measure-popup .mp-row3 { font-size: 14px; font-weight: 700; margin-top: 3px; color: var(--ink); }
+.candle-measure-popup .mp-row3.pos { color: var(--pos); }
+.candle-measure-popup .mp-row3.neg { color: var(--neg); }
+body.dark .candle-measure-popup .mp-row1 { color: rgba(255,255,255,0.6); }
+body.dark .candle-measure-popup .mp-row2 { color: rgba(255,255,255,0.5); }
+body.dark .candle-measure-popup .mp-row-price { color: rgba(255,255,255,0.75); }
+body.dark .candle-measure-popup .mp-row3.pos { color: #4cd2a0; }
+body.dark .candle-measure-popup .mp-row3.neg { color: #ff5a6e; }
 
 /* News popup (when clicking a news marker) — mirrors the .news-detail card's
    typography (color: var(--body), strong: var(--ink) at weight 700) so the
@@ -1782,7 +1794,7 @@ body.dark .candle-crosshair-label-text { fill: var(--surface); }
   text-align: left !important;
   font-size: 13.5px;
   line-height: 1.72;
-  color: var(--body);
+  color: var(--ink) !important;          /* full-contrast text in both modes */
   font-weight: 400;
   word-break: break-word;
   float: none !important;
@@ -1791,7 +1803,7 @@ body.dark .candle-crosshair-label-text { fill: var(--surface); }
 .candle-news-popup .news-popup-body strong {
   display: inline !important;
   float: none !important;
-  color: var(--ink) !important;
+  color: var(--primary) !important;       /* bold = primary accent */
   font-weight: 700 !important;
   text-align: inherit !important;
 }
@@ -1806,24 +1818,29 @@ body.dark .candle-crosshair-label-text { fill: var(--surface); }
   font-style: normal;
   text-align: left !important;
 }
+/* Footer is now CENTERED — the link button sits in the middle of the row
+   (was left-aligned). The popup itself is strictly centered on the marker,
+   so the link button + popup arrow all line up vertically with the marker. */
 .candle-news-popup .news-popup-footer {
   padding: 10px 14px; border-top: 1px solid var(--hairline-soft);
   background: var(--canvas);
   border-radius: 0 0 var(--r-md) var(--r-md);
+  display: flex;
+  justify-content: center;
 }
 .candle-news-popup .news-popup-link {
   display: inline-block; font-size: 12px; font-weight: 600;
   color: var(--primary); text-decoration: none;
-  padding: 6px 12px; border-radius: var(--r-sm);
+  padding: 7px 16px; border-radius: var(--r-sm);
   background: rgba(73,79,223,0.08); border: 1px solid rgba(73,79,223,0.2);
   transition: background 120ms;
 }
 .candle-news-popup .news-popup-link:hover { background: rgba(73,79,223,0.18); }
-/* Arrow — pseudo replaced by a real element so its X position can be set
-   dynamically (so the arrow keeps pointing at the marker even when the
-   popup got shifted to fit in the container). */
+/* Arrow — real DOM element (centered at popup's horizontal mid-point by default).
+   When the popup itself is centered on the marker, the arrow lines up perfectly. */
 .candle-news-popup .news-popup-arrow {
   position: absolute; width: 0; height: 0;
+  left: 50%; transform: translateX(-50%);
   border-left: 8px solid transparent; border-right: 8px solid transparent;
 }
 .candle-news-popup .news-popup-arrow.arrow-down {
@@ -4007,21 +4024,26 @@ async function renderStock(sym) {
 //
 // Bars schema: [ {date, open, high, low, close, volume}, ... ] sorted oldest→newest
 
-// --- MINI: 3-month preview SVG (no events) ---
+// --- MINI: 1-month preview SVG (no events) ---
+// Last ~22 trading days. Includes a rightInset (8 svg-px) so the latest
+// candle has visual breathing room before the right edge (matches the
+// detail page's much larger right margin).
 function candleChartMiniHtml(bars, opts = {}) {
   if (!Array.isArray(bars) || bars.length < 2) return '';
   if (opts.endDate) bars = bars.filter(b => b.date <= opts.endDate);
-  // Cap at last ~60 trading days (~3 months).
-  if (bars.length > 60) bars = bars.slice(-60);
+  if (bars.length > 22) bars = bars.slice(-22);
   if (bars.length < 2) return '';
   const W = 280, H = 56, padL = 2, padR = 2, padT = 4, padB = 4;
-  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const rightInset = 8;
+  const plotW = W - padL - padR;
+  const effectivePlotW = plotW - rightInset;
+  const plotH = H - padT - padB;
   let minP = Infinity, maxP = -Infinity;
   for (const b of bars) { if (b.high > maxP) maxP = b.high; if (b.low < minP) minP = b.low; }
   const pad = Math.max(0.01, (maxP - minP) * 0.04);
   minP -= pad; maxP += pad;
-  const xScale = i => padL + (i / (bars.length - 1 || 1)) * plotW;
-  const candleW = Math.max(1, (plotW / bars.length) * 0.7);
+  const xScale = i => padL + (i / (bars.length - 1 || 1)) * effectivePlotW;
+  const candleW = Math.max(1, (effectivePlotW / bars.length) * 0.7);
   const yScale = p => padT + (1 - (p - minP) / (maxP - minP || 1)) * plotH;
   let body = '';
   for (let i = 0; i < bars.length; i++) {
@@ -4088,19 +4110,20 @@ function renderCandleChartFull(container, allBars, opts = {}) {
   //   • rightInset 28 — bars stop ~28px from the price axis so the latest
   //     candle has visual breathing room (matches TC2000 / TradingView).
   const W = 940, H = 520;
-  const padL = 4, padR = 64, padT = 28, padB = 30;
-  const volH = 90, newsRowH = 24, separatorMargin = 18;
-  // rightInset 28 → 56: keep more breathing room between the latest candle and
-  // the right-side price axis (the original ~28px was still too cramped).
+  const padL = 4, padR = 64, padT = 28, padB = 28;
+  const volH = 88, newsRowH = 22;
   const rightInset = 56;
+  // News markers now live BETWEEN the price pane and the volume pane (was
+  // below the volume) — TradingView pattern: catalyst icons sit just under
+  // the candles so it's obvious which day they belong to.
   const mainTop = padT;
-  const mainBottom = H - padB - volH - newsRowH - separatorMargin;
+  const volBottom = H - padB;                 // anchor volume to the bottom (above date labels)
+  const volTop    = volBottom - volH;
+  const newsRowY  = volTop - newsRowH - 2;    // markers row above volume, 2px gap
+  const mainBottom = newsRowY - 2;            // tiny 2px gap between candles and markers
   const mainH = mainBottom - mainTop;
-  const volTop = mainBottom + separatorMargin;
-  const volBottom = volTop + volH;
-  const newsRowY = volBottom + 4;
   const plotW = W - padL - padR;
-  const effectivePlotW = plotW - rightInset;   // bars are drawn inside [padL, padL+effectivePlotW]
+  const effectivePlotW = plotW - rightInset;
 
   // Helpers updated on each render — keep them in closure scope so event handlers
   // can convert client coords → SVG coords → prices / bar indices consistently.
@@ -4210,8 +4233,8 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     });
     parts.push(`</g>`);
 
-    // 6. Pane separator
-    parts.push(`<line class="candle-grid" x1="${padL}" x2="${W - padR}" y1="${(mainBottom + separatorMargin / 2).toFixed(1)}" y2="${(mainBottom + separatorMargin / 2).toFixed(1)}" opacity="0.8"/>`);
+    // 6. Pane separator — implicit (the news-marker row + small gaps already
+    // visually separates the price pane from the volume pane). No explicit line.
 
     // 7. Candles (main pane, inside clip)
     parts.push(`<g clip-path="url(#${uid}-mainClip)">`);
@@ -4363,7 +4386,8 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     // Build content — body + a link to the per-date stock detail page (or study
     // detail page if the news source was from a saved study, not a scan archive).
     const linkHash = news.sourceLink || ('#/' + date + '/stock/' + opts.sym);
-    const linkLabel = news.sourceType === 'study' ? '📚 開啟 Study 詳細頁' : `📊 開啟 ${date} 詳細頁`;
+    // No emojis per user request — keep label clean and centered in footer.
+    const linkLabel = news.sourceType === 'study' ? '開啟 Study 詳細頁' : `開啟 ${date} 詳細頁`;
     newsPopup.innerHTML = `
       <div class="news-popup-arrow"></div>
       <div class="news-popup-header">
@@ -4376,9 +4400,10 @@ function renderCandleChartFull(container, allBars, opts = {}) {
       </div>
     `;
     newsPopup.style.display = 'block';
-    // Position popup so its horizontal center sits ON the marker. If that would
-    // overflow the container, shift to fit; the arrow at the bottom of the popup
-    // is then moved to still point at the marker correctly.
+    // STRICT centering on the marker per user request: popup's horizontal
+    // center sits exactly on the marker's X. No overflow-aware shifting —
+    // we accept that a marker near the chart edge may push the popup partly
+    // outside the chart container (the dashboard's page area still contains it).
     const svgRect = svg.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
     const markerScreenX = svgRect.left + markerSvgX * (svgRect.width / W);
@@ -4388,23 +4413,21 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     const popupH = popupRect.height;
     const markerInContainerX = markerScreenX - containerRect.left;
     const markerInContainerY = markerScreenY - containerRect.top;
-    let left = markerInContainerX - popupW / 2;
-    if (left < 8) left = 8;
-    if (left + popupW > container.clientWidth - 8) left = container.clientWidth - popupW - 8;
-    // Try ABOVE the marker first (price area side). Fall back to below.
+    const left = markerInContainerX - popupW / 2;
+    // Try ABOVE the marker first; fall back to below if not enough room.
     let top = markerInContainerY - popupH - 14;
     let arrowAtBottom = true;
-    if (top < 8) {
+    if (top < 4) {
       top = markerInContainerY + 22;
       arrowAtBottom = false;
     }
     newsPopup.style.left = left + 'px';
     newsPopup.style.top  = top + 'px';
-    // Position arrow to still point at the marker even if popup was shifted.
+    // Arrow stays at horizontal center (popup IS centered on marker, so the
+    // CSS-default 50%-centered arrow already points at the marker correctly).
     const arrow = newsPopup.querySelector('.news-popup-arrow');
     if (arrow) {
-      const arrowX = Math.max(12, Math.min(popupW - 12, markerInContainerX - left));
-      arrow.style.left = (arrowX - 8) + 'px';   // 8 = half of arrow base
+      arrow.style.left = '';   // clear any inline override
       arrow.classList.toggle('arrow-down', arrowAtBottom);
       arrow.classList.toggle('arrow-up',   !arrowAtBottom);
     }
