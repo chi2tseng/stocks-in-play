@@ -43,6 +43,7 @@ explicitly asks:
 |---|---|---|
 | OHLCV (daily bars) | Yahoo Finance `chart` API | `https://query1.finance.yahoo.com/v8/finance/chart/<SYM>?...` — same as `/SIPs` Phase 10b |
 | TradingView FQ (earnings only) | `tv-scrape.js` + `parse_tv.py` | Playwright scrape → markdown → `tv-summary.json` — same as `/SIPs` Phase 5–6 |
+| 6-month candle bars (every study) | `fetch_candles.py` | Yahoo Finance daily OHLCV → `dashboard/candles.json` (8 workers, ~5s for 50 syms) |
 | News Detail (繁體中文) | WebFetch / WebSearch / firecrawl | Whatever surface you find the headline + body on (Yahoo Finance, Investor's Business Daily, Reuters, company IR pages, SEC filings, etc.) — same pattern as `/SIPs` Phase 7. Use `docs/NEWS_TIME_SPEC.md` for `publishedAt` formatting if you decide to include a timestamp |
 | Static dashboard build | `D:\SIPs\build_dashboard.py` | Same as `/SIPs` Phase 10 |
 | Git publish | `git add / commit / push` | Same as `/SIPs` Phase 11 |
@@ -411,11 +412,42 @@ Print a per-study summary:
   · ARM  @ 2026-05-29  OHLCV + last → 213.42 (newsDetail already filled, kept)
 ```
 
+## § Phase 5b — Refresh candle bars (`股價走勢` chart on the detail page)
+
+After `studies.json` is saved, run `fetch_candles.py` so the dashboard's
+`股價走勢` (6-month daily candle) section on each study's detail page shows
+up-to-date bars. The script auto-collects symbols from:
+
+- Today's `dashboard/data/<today>.json` (current SIPs scan)
+- All three picks files (claude/codex/gemini)
+- `dashboard/studies/studies.json` ← THIS IS WHY we run it AFTER Phase 5 saves
+
+```powershell
+cd D:\SIPs
+py fetch_candles.py
+```
+
+Output: `D:\SIPs\dashboard\candles.json` (~6KB per symbol, all symbols in one
+JSON file keyed by ticker; sliced to last 200 trading days).
+
+**Throughput**: 8-worker ThreadPool against Yahoo Finance's free chart API.
+Typical run hits ~50 unique symbols in ~5 seconds. No auth required, no API
+key needed. Daily bars only (`interval=1d`) — no pre/post market data.
+
+If the fetch fails for a symbol (rate-limit, delisted, etc.), it's logged
+and skipped — partial coverage doesn't fail the run.
+
+**Skip condition**: in `dry-run` mode, skip fetch_candles too (don't touch
+the network).
+
 ## § Phase 6 — Rebuild dashboard
 
 Run `py D:\SIPs\build_dashboard.py`. This regenerates `dashboard/index.html` with the
 new OHLCV / TV / news embedded, AND backfills `prev_ohlcv.json` into existing studies
 where ohlcv.open was null (the `/SIPs` Phase 10b backfill path — see SIPs SKILL.md).
+
+build_dashboard.py reads `candles.json` for the dashboard's candle chart subsystem,
+so running Phase 5b BEFORE Phase 6 ensures every detail page has fresh bars.
 
 If the build errors, log it but continue to Phase 7 — `studies.json` is still useful
 even if the static build failed.
@@ -431,7 +463,7 @@ is the `dry-run` arg.
 ```powershell
 cd D:\SIPs
 git add dashboard/studies/studies.json dashboard/studies/images dashboard/index.html `
-        dashboard/data.json dashboard/dates.json
+        dashboard/data.json dashboard/dates.json dashboard/candles.json
 git commit -m "studies: daily refresh — <SYM1>, <SYM2>, ..."
 git push
 ```
