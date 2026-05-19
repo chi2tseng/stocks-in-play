@@ -1339,6 +1339,17 @@ body.readonly-mode .vol-editable:hover { background: transparent; }
   color: var(--mute); font-weight: 600;
   letter-spacing: 0.4px; min-width: 52px; text-align: center;
 }
+/* Source badge — shows which list (Claude / ChatGPT / Gemini / MAGNA53 / All)
+   the prev/next nav is walking. Click a SIP card on a specific tab → that
+   tab's name appears here when you reach the detail page. */
+.detail-nav-source {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 4px 8px; border-radius: var(--r-sm);
+  background: rgba(73,79,223,0.08); color: var(--primary);
+  border: 1px solid rgba(73,79,223,0.2);
+  margin-right: 4px;
+}
 .study-detail-date {
   font-family: var(--font-mono); font-size: 12px; color: var(--stone);
   font-weight: 500; letter-spacing: 0.3px;
@@ -3065,11 +3076,12 @@ function buildRouteHash(routePath) {
 
 // Build the prev/next navigation strip for a detail page. Inserted into the
 // breadcrumb row of both renderStock and renderStudyDetail.
-//   basePath  — 'stock' or 'study' (used in buildRouteHash)
-//   list      — ordered array of { id, label } (id is the slug, label shown in tooltip)
-//   currentId — id of the current page
+//   basePath    — 'stock' or 'study' (used in buildRouteHash)
+//   list        — ordered array of { id, label } (id is the slug, label shown in tooltip)
+//   currentId   — id of the current page
+//   sourceLabel — optional badge label (e.g. "Claude", "MAGNA53")
 // Returns HTML. Empty string when list has <2 items or current isn't found.
-function detailNavHtml(basePath, list, currentId) {
+function detailNavHtml(basePath, list, currentId, sourceLabel) {
   if (!Array.isArray(list) || list.length < 2) return '';
   const idx = list.findIndex(it => it.id === currentId);
   if (idx < 0) return '';
@@ -3082,8 +3094,20 @@ function detailNavHtml(basePath, list, currentId) {
   const nextBtn = next
     ? `<a class="detail-nav-btn" href="${mkHref(next)}" title="Next: ${escapeHtml(next.label)}" aria-label="Next">›</a>`
     : `<span class="detail-nav-btn disabled" title="At the end" aria-disabled="true">›</span>`;
-  return `<div class="detail-nav">${prevBtn}<span class="detail-nav-pos">${idx + 1} / ${list.length}</span>${nextBtn}</div>`;
+  const srcBadge = sourceLabel ? `<span class="detail-nav-source" title="Walking through the ${escapeHtml(sourceLabel)} list">${escapeHtml(sourceLabel)}</span>` : '';
+  return `<div class="detail-nav">${srcBadge}${prevBtn}<span class="detail-nav-pos">${idx + 1} / ${list.length}</span>${nextBtn}</div>`;
 }
+
+// Tracks which list the user was viewing when they clicked into a stock detail.
+// Set by event delegation below: any click on an element with [data-nav-source]
+// captures the source. The renderStock page reads this to build the correct
+// prev/next list. Persists across hash navigations (in-memory) but resets on
+// full page reload (sessionStorage would survive reload — not needed for now).
+let __detailNavSource = null;   // 'claude' | 'codex' | 'gemini' | 'magna' | null (=all)
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-nav-source]');
+  if (el) __detailNavSource = el.dataset.navSource || null;
+}, true);   // capture phase so we run BEFORE the <a> default navigation
 
 async function route() {
   // Always dismiss the chart-tooltip when navigating — otherwise it stays floating on the
@@ -3413,7 +3437,7 @@ function sipCardHtml(s, idx) {
   const sessTags = s.sessions.map(x => `<span class="tag">${x.session.toUpperCase()} <span class="dot dot-${x.direction}"></span> ${fmtPctShort(x.chgPct)}</span>`).join(' ');
   const magnaHtml = magnaChip('M', m.bits.M) + magnaChip('G', m.bits.G) + magnaChip('N', m.bits.N) + magnaChip('A', m.bits.A) + magnaChip('5', m.bits._5) + magnaChip('3', m.bits._3);
   const catalystText = s.catalyst || '(無催化劑資料)';
-  return `<a class="sip-card ${isFeatured ? 'featured' : ''}" href="${buildRouteHash('stock/' + s.symbol)}" style="text-decoration:none;color:inherit;display:block;position:relative">
+  return `<a class="sip-card ${isFeatured ? 'featured' : ''}" data-nav-source="magna" href="${buildRouteHash('stock/' + s.symbol)}" style="text-decoration:none;color:inherit;display:block;position:relative">
     ${saveStudyBtnHtml(s.symbol)}
     <span class="sip-rank-row"><span class="sip-rank">#${idx + 1}</span>${dayBadgeHtml(s)}</span>
     <div class="sip-header"><div class="sip-sym">${s.symbol}</div><div class="sip-chg ${chgCls}">${fmtPct(s.chgPct)}</div></div>
@@ -3455,7 +3479,7 @@ function pickCardHtml(s, idx, sourceKey = 'claude') {
   // (Mini preview candle chart removed per user request — too much vertical
   // real estate for a thumbnail. Full chart still shown on the stock-detail page.)
   const miniCandle = '';
-  return `<a class="sip-card ${src.cssClass} ${isFeatured ? 'featured' : ''} ${s._pickDirMismatch ? 'dir-mismatch' : ''}" href="${buildRouteHash('stock/' + s.symbol)}" style="text-decoration:none;color:inherit;display:block;position:relative">
+  return `<a class="sip-card ${src.cssClass} ${isFeatured ? 'featured' : ''} ${s._pickDirMismatch ? 'dir-mismatch' : ''}" data-nav-source="${sourceKey}" href="${buildRouteHash('stock/' + s.symbol)}" style="text-decoration:none;color:inherit;display:block;position:relative">
     ${saveStudyBtnHtml(s.symbol, rationale, intent)}
     <span class="sip-rank-row"><span class="sip-rank ${src.rankClass}">#${idx + 1}</span>${dayBadgeHtml(s)}</span>
     ${mismatchBanner}
@@ -4783,12 +4807,30 @@ async function renderStock(sym) {
     _tv ? _surpPill('EPS Surp', _tv.surpriseEPS_pct, 'EPS surprise vs consensus (TradingView FQ)') : '',
     _tv ? _surpPill('Rev Surp', _tv.surpriseRev_pct, 'Revenue surprise vs consensus (TradingView FQ)') : '',
   ].filter(Boolean).join(' ');
-  // Build prev/next nav across today's stocks, sorted by |chgPct| desc so the
-  // biggest movers come first (matches the implicit ranking in most views).
-  const _stockNavList = Object.entries(DATA.stocks)
-    .map(([k, st]) => ({ id: k, label: k, _chg: Math.abs(st.chgPct || 0) }))
-    .sort((a, b) => b._chg - a._chg);
-  const _stockNavHtml = detailNavHtml('stock', _stockNavList, sym);
+  // Build prev/next nav based on which tab the user came FROM (captured by
+  // the data-nav-source attribute on the SIP card they clicked).
+  //   • claude/codex/gemini → that agent's picks, sorted by rank
+  //   • magna               → MAGNA53 top-12, sorted by score desc
+  //   • null (direct nav / breadcrumb / news marker) → all stocks by |chgPct|
+  let _stockNavList, _stockNavLabel = null;
+  const _src = __detailNavSource;
+  if (_src === 'magna') {
+    const ranked = Object.values(DATA.stocks).map(st => ({ ...st, _m53: magna53(st) }));
+    ranked.sort((a, b) => b._m53.score - a._m53.score);
+    _stockNavList  = ranked.filter(r => r._m53.score >= 4).slice(0, 12).map(r => ({ id: r.symbol, label: r.symbol }));
+    _stockNavLabel = 'MAGNA53';
+  } else if (_src === 'claude' || _src === 'codex' || _src === 'gemini') {
+    const picksKey = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks' }[_src];
+    const picks = (DATA[picksKey] || []).slice().sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
+    _stockNavList  = picks.filter(p => DATA.stocks[p.symbol]).map(p => ({ id: p.symbol, label: p.symbol }));
+    _stockNavLabel = { claude: 'Claude', codex: 'ChatGPT', gemini: 'Gemini' }[_src];
+  } else {
+    _stockNavList = Object.entries(DATA.stocks)
+      .map(([k, st]) => ({ id: k, label: k, _chg: Math.abs(st.chgPct || 0) }))
+      .sort((a, b) => b._chg - a._chg);
+    _stockNavLabel = 'All';
+  }
+  const _stockNavHtml = detailNavHtml('stock', _stockNavList, sym, _stockNavLabel);
   app.innerHTML = `
     <div class="breadcrumb study-detail-breadcrumb">
       <span><a href="${buildRouteHash('earnings')}">Earnings</a> · <a href="${buildRouteHash('catalyst')}">Catalyst</a> · <a href="${buildRouteHash('scanx')}">SCANX</a> &nbsp;»&nbsp; <b>${s.symbol}</b>${dateBadge}</span>
@@ -7444,7 +7486,7 @@ async function renderStudyDetail(idOrSym) {
   // order they're shown on the list page.
   const _studyNavList = sortStudies(loadStudies().filter(studyMatchesFilter))
     .map(st => ({ id: st.id, label: st.symbol }));
-  const _studyNavHtml = detailNavHtml('study', _studyNavList, id);
+  const _studyNavHtml = detailNavHtml('study', _studyNavList, id, 'Studies');
   app.innerHTML = `
     <div class="breadcrumb study-detail-breadcrumb">
       <span><a href="#/studies">← Studies</a> &nbsp;»&nbsp; <b>${sym}</b>${breadcrumbParts.datePill}</span>
