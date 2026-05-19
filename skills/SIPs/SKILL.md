@@ -33,6 +33,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 | 7. Final brief | Claude composes the 繁體中文 brief | — | — | inline in chat |
 | **8. Write news_detail.json** | **Claude curates per-symbol `detail` + `publishedAt` for the top 10 SIPs** | ~3 min | $0 | `news_detail.json` (top-10 only; rest auto-fallback to catalyst sentence) |
 | **9. Write claude_picks.json** | **Claude writes hand-picked rankings + 繁中 rationale + `intent: long\|short` for 5-10 highest-conviction picks** | ~2 min | $0 | `claude_picks.json` ([{symbol, rank, intent, rationale}]) — drives the **default "Claude 精選"** subtab on Today's SIPs. **Direction-match rule:** `intent: long` only for gap-up tickers (chgPct > 0); `intent: short` only for gap-down (chgPct < 0). Dashboard silently drops mismatches. |
+| **9b. Fetch 6-month candles** | `py fetch_candles.py` (Yahoo Finance daily bars, parallel) | ~5-10s | $0 | `dashboard/candles.json` (~150-200KB; powers the 股價走勢 chart on stock-detail pages) |
 | **10. Publish dashboard** | `py build_dashboard.py` (no args = today's ISO date) | <1s | $0 | `dashboard/data/<DATE>.json`, `dates.json`, `data.json`, `index.html` |
 
 **Total runtime:** ~5-10 min including news-detail curation. **Total cost:** $0.
@@ -44,6 +45,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 - `parse_tv.py` — extracts Reported + Estimate raw figures + YoY block from TradingView markdown
 - `build_report.py` — merges candidates.csv + tv-summary.json + catalysts dict → final-candidates.csv
 - `gen_tables.py` — produces 3 sorted markdown views (|%Chg| / Session / Price)
+- **`fetch_candles.py`** — Yahoo Finance daily-bar scraper. Pulls last ~130 trading days (~6 months) for every ticker in today's candidates + claude/codex/gemini picks + saved studies. Parallel (8 workers), ~5-10s for 50-100 tickers. Output: `dashboard/candles.json` (~150-200KB) consumed by the stock-detail page's 股價走勢 TradingView-style chart.
 - **`build_dashboard.py`** — assembles `dashboard/data/<DATE>.json` + writes the static SPA at `dashboard/index.html` (revolut design system, "Stocks In Play" branding). Merges `shorts.json` + `claude_picks.json` if present.
 - **`news_detail.json`** — per-symbol detail + `publishedAt` (real news publication time). Optional input; spec at `NEWS_TIME_SPEC.md`.
 - **`claude_picks.json`** — `{ "picks": [ {"symbol", "rank", "intent": "long"|"short", "rationale", "neglected"?: bool} ] }`. Drives the **default "Claude 精選"** subtab on Today's SIPs. **Direction-match rule:** longs must be gap-up, shorts must be gap-down — mismatches are silently filtered out by the dashboard. Symbols not in today's candidates also drop.
@@ -1073,6 +1075,32 @@ Per-ticker failures NEVER abort the run. Finish the other tickers first.
 | Yahoo HTTP error during a rewind double-check | log + skip the rewind, keep current tv |
 | `studies.json` unparseable | ABORT (don't corrupt the user's library) |
 
+### 8.7b Phase 10d — Fetch 6-month daily candles (Yahoo)
+
+Powers the **股價走勢** TradingView-style chart on the stock-detail page. Pulls last ~130 trading days (~6 months) of OHLCV bars from Yahoo Finance for the **union of** today's candidates + claude/codex/gemini picks + every saved study.
+
+**Run AFTER Phase 9 (claude_picks.json written) and AFTER studies refresh (Phase 10a-c), but BEFORE Phase 10 (build_dashboard.py)** so:
+1. `fetch_candles.py` reads the latest `dashboard/data/<DATE>.json`, picks files, and `studies.json` to know which symbols to fetch.
+2. `build_dashboard.py` runs after — it doesn't need to know about candles (dashboard loads `candles.json` directly via fetch).
+
+**Command:**
+```powershell
+py fetch_candles.py
+```
+
+The script (at `./fetch_candles.py`):
+1. Walks the 3 sources to collect a unique symbol set
+2. Parallelizes Yahoo Finance `query1.finance.yahoo.com/v8/finance/chart/<SYM>?interval=1d` calls (8 workers)
+3. Slices each ticker to the last 130 bars (~6 months) and writes `dashboard/candles.json`
+
+**Speed/cost:** ~5-10s for 50-100 tickers. $0 (Yahoo's chart endpoint is unauthenticated and rate-limit-friendly at this scale).
+
+**Failure mode:** if a symbol returns < 10 bars or 404s (typically delisted / not in Yahoo's coverage), it's silently skipped. Logged at the end as `[skipped] N symbols (Yahoo lookup failed): SYM1, SYM2, ...`. The chart on the stock-detail page falls back to "沒有歷史 K 線資料" for those symbols.
+
+**Note on session-agnostic data:** Yahoo's `interval=1d` returns one OHLC bar per trading day (regular session only, 9:30 AM - 4:00 PM ET). It does NOT include pre-market or post-market trades. So the candle chart's latest bar always represents the last completed regular session, regardless of when the scrape runs.
+
+---
+
 ### 8.7 Phase 11 — auto-publish to GitHub Pages (REQUIRED for hosted dashboard)
 
 This repo is wired with `.github/workflows/pages.yml`. Every push that touches `dashboard/**` triggers an auto-deploy to **https://chi2tseng.github.io/stocks-in-play/** within ~30 seconds.
@@ -1081,6 +1109,7 @@ This repo is wired with `.github/workflows/pages.yml`. Every push that touches `
 
 ```bash
 git add dashboard/data/<DATE>.json dashboard/data.json dashboard/dates.json dashboard/index.html \
+        dashboard/candles.json \
         dashboard/studies/studies.json dashboard/studies/images \
         claude_picks.json news_detail.json day_resets.json catalysts_today.json
 git commit -m "scan: <DATE> — top SIP <TICKER>, <N> candidates"
