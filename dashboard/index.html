@@ -1718,41 +1718,35 @@ body.dark .candle-crosshair-label-text { fill: var(--surface); }
 .candle-ohlcv-display .ohlcv-row2 .pos b { color: var(--pos); }
 .candle-ohlcv-display .ohlcv-row2 .neg b { color: var(--neg); }
 
-/* Measure popup (TC2000-style) — fixed corner based on drag direction.
-   .mp-left:  end position on the RIGHT half of chart → popup top-LEFT
-   .mp-right: end position on the LEFT half of chart  → popup top-RIGHT
-   Pinned to fixed corner (does NOT follow cursor). Background is
-   theme-aware: white card in light mode, dark in dark mode. */
+/* Measure popup (TC2000-style) — theme-aware. Same design tokens as the news
+   popup, so light mode = white card + dark text; dark mode = dark card +
+   light text. The colors come from CSS vars that auto-switch with the theme,
+   so NO body.dark override is needed.
+   ⚠ Do NOT use var(--surface-elevated) here — that token is intentionally
+   dark in BOTH themes (it's the EPS chart's tooltip background).
+   Use var(--canvas) for the body, var(--ink)/--mute/--stone for text. */
 .candle-measure-popup {
   position: absolute; top: 6px;
-  background: var(--surface-elevated); color: var(--ink);
+  background: var(--canvas);
+  color: var(--ink);
   border: 1px solid var(--hairline);
-  border-radius: var(--r-sm); padding: 9px 12px;
-  font-family: var(--font-mono); font-size: 11px; line-height: 1.45;
+  border-radius: var(--r-md);
+  padding: 10px 13px;
+  font-family: var(--font-mono); font-size: 11px; line-height: 1.5;
   pointer-events: none; z-index: 3;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
   min-width: 170px;
 }
-body.dark .candle-measure-popup {
-  background: rgba(25, 28, 31, 0.96); color: #fff;
-  border-color: rgba(255,255,255,0.08);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
-/* Top offset 52px keeps the measure popup BELOW the OHLCV display
-   (which sits at top:6px and is ~36px tall) instead of overlapping it. */
+body.dark .candle-measure-popup { box-shadow: 0 8px 24px rgba(0,0,0,0.36); }
+/* Top offset 52px keeps the popup BELOW the OHLCV display (top:6px, ~36px tall). */
 .candle-measure-popup.mp-left  { left: 8px;  right: auto; top: 52px; }
 .candle-measure-popup.mp-right { right: 70px; left: auto; top: 52px; }
-.candle-measure-popup .mp-row1 { font-size: 10px; color: var(--mute); font-weight: 600; }
-.candle-measure-popup .mp-row2 { font-size: 10px; color: var(--stone); }
-.candle-measure-popup .mp-row-price { font-size: 10px; color: var(--body); font-weight: 600; margin-top: 1px; }
-.candle-measure-popup .mp-row3 { font-size: 14px; font-weight: 700; margin-top: 3px; color: var(--ink); }
+.candle-measure-popup .mp-row1      { font-size: 10px; color: var(--mute);  font-weight: 600; }
+.candle-measure-popup .mp-row2      { font-size: 10px; color: var(--stone); }
+.candle-measure-popup .mp-row-price { font-size: 10px; color: var(--body);  font-weight: 600; margin-top: 1px; }
+.candle-measure-popup .mp-row3      { font-size: 15px; font-weight: 700; margin-top: 3px; color: var(--ink); }
 .candle-measure-popup .mp-row3.pos { color: var(--pos); }
 .candle-measure-popup .mp-row3.neg { color: var(--neg); }
-body.dark .candle-measure-popup .mp-row1 { color: rgba(255,255,255,0.6); }
-body.dark .candle-measure-popup .mp-row2 { color: rgba(255,255,255,0.5); }
-body.dark .candle-measure-popup .mp-row-price { color: rgba(255,255,255,0.75); }
-body.dark .candle-measure-popup .mp-row3.pos { color: #4cd2a0; }
-body.dark .candle-measure-popup .mp-row3.neg { color: #ff5a6e; }
 
 /* ─────────── News-marker popup ───────────────────────────────────────
    Design rules per user spec:
