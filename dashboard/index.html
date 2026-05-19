@@ -4211,7 +4211,9 @@ async function renderStock(sym) {
   const chartHost = document.getElementById(`candle-chart-container-${s.symbol}`);
   const symBars = STATE.candles?.[s.symbol];
   if (chartHost && symBars) {
-    renderCandleChartFull(chartHost, symBars, { sym: s.symbol, endDate: DATA.date, newsHistory: {} });
+    // anchorDate = scan date for Today's SIPs (chart centered on scan day, with
+    // 6-month default view = -4mo to +2mo from anchor, 1 year of scrollback data).
+    renderCandleChartFull(chartHost, symBars, { sym: s.symbol, anchorDate: DATA.date, newsHistory: {} });
   }
   // Async-load news history → re-render chart with markers + build news-history card.
   // newsMap accumulates from TWO sources:
@@ -4255,7 +4257,7 @@ async function renderStock(sym) {
         });
       });
     } catch (_) {}
-    renderCandleChartFull(chartHost, symBars, { sym: s.symbol, endDate: DATA.date, newsHistory: newsMap });
+    renderCandleChartFull(chartHost, symBars, { sym: s.symbol, anchorDate: DATA.date, newsHistory: newsMap });
   });
   app.querySelectorAll('.copy-btn').forEach(btn => {
     btn.onclick = async () => {
@@ -4327,10 +4329,38 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     container.innerHTML = '<div style="padding:20px;color:var(--mute);text-align:center;font-size:13px">沒有歷史 K 線資料</div>';
     return;
   }
-  // Slice to bars at-or-before endDate (so archived scan views show as-of).
-  let bars = opts.endDate ? allBars.filter(b => b.date <= opts.endDate) : allBars.slice();
+  // ── Window logic ──
+  // opts.anchorDate (preferred) → chart is anchored on this date:
+  //   • default visible window = [anchor - 4 months, min(today, anchor + 2 months)]  (~6 months wide)
+  //   • bar data extends to [anchor - 10 months, min(today, anchor + 2 months)] (~1 year wide)
+  //   • user can wheel-zoom OUT to see the extra backward data
+  // opts.endDate (legacy) → bars are simply sliced to date <= endDate, no anchoring.
+  const todayIso = new Date().toISOString().slice(0, 10);
+  function addMonths(iso, months) {
+    const d = new Date(iso + 'T00:00:00Z');
+    d.setUTCMonth(d.getUTCMonth() + months);
+    return d.toISOString().slice(0, 10);
+  }
+  let dataFrom = null, dataTo = null;       // bounds for the data slice we'll work with
+  let viewFrom = null, viewTo = null;       // default-visible window inside that slice
+  if (opts.anchorDate) {
+    dataFrom = addMonths(opts.anchorDate, -10);
+    dataTo   = addMonths(opts.anchorDate, 2);
+    if (dataTo > todayIso) dataTo = todayIso;
+    viewFrom = addMonths(opts.anchorDate, -4);
+    viewTo   = addMonths(opts.anchorDate, 2);
+    if (viewTo > todayIso) viewTo = todayIso;
+  }
+  let bars;
+  if (opts.anchorDate) {
+    bars = allBars.filter(b => b.date >= dataFrom && b.date <= dataTo);
+  } else if (opts.endDate) {
+    bars = allBars.filter(b => b.date <= opts.endDate);
+  } else {
+    bars = allBars.slice();
+  }
   if (bars.length < 2) {
-    container.innerHTML = '<div style="padding:20px;color:var(--mute);text-align:center;font-size:13px">沒有此日期之前的 K 線資料</div>';
+    container.innerHTML = '<div style="padding:20px;color:var(--mute);text-align:center;font-size:13px">沒有此日期區間的 K 線資料</div>';
     return;
   }
 
@@ -4342,14 +4372,20 @@ function renderCandleChartFull(container, allBars, opts = {}) {
   const uid = 'c' + Math.random().toString(36).slice(2, 8);
 
   // ============ STATE ============
-  // measure.start / measure.end:
-  //   { idx, price, snap, snapLabel }   idx = ABSOLUTE bar index in bars[]
-  //                                      price = Y value (snapped to OHLC if close,
-  //                                              else free = cursor-Y → price)
-  //                                      snap = bool, snapLabel = 'O'|'H'|'L'|'C'|null
+  // Initial visible window = the 6-month "view" range when anchored; otherwise all bars.
+  let initStart = 0, initEnd = bars.length - 1;
+  if (viewFrom && viewTo) {
+    initStart = bars.findIndex(b => b.date >= viewFrom);
+    if (initStart < 0) initStart = 0;
+    // findLast in browsers that support it; otherwise reverse-scan
+    let lastIdx = -1;
+    for (let i = bars.length - 1; i >= 0; i--) { if (bars[i].date <= viewTo) { lastIdx = i; break; } }
+    initEnd = (lastIdx >= 0) ? lastIdx : bars.length - 1;
+    if (initEnd < initStart) initEnd = initStart;
+  }
   const state = {
-    visibleStart: 0,
-    visibleEnd: bars.length - 1,
+    visibleStart: initStart,
+    visibleEnd: initEnd,
     yManualScale: 1.0,
     volManualScale: 1.0,        // independent Y zoom for the volume sub-pane
     crosshair: null,
@@ -6530,8 +6566,8 @@ async function renderStudyDetail(idOrSym) {
   // Custom chart overrides snapshot's TV chart when user edits MS-table values.
   const baseChart = (s.tv && s.tv.chart) ? s.tv.chart : null;
   // Section visibility (hidden set). Defaults: everything visible. Hide via the X on each card.
-  const sectionsAll = ['news_detail', 'eps_chart', 'rev_chart', 'ms_table', 'yoy_block', 'notes'];
-  const sectionLabels = { news_detail: 'News Detail', eps_chart: 'EPS Quarterly', rev_chart: 'Revenue Quarterly', ms_table: '季度 EPS / Sales', yoy_block: 'Forward YoY', notes: 'Notes' };
+  const sectionsAll = ['news_detail', 'eps_chart', 'rev_chart', 'ms_table', 'yoy_block', 'price_chart', 'notes'];
+  const sectionLabels = { news_detail: 'News Detail', eps_chart: 'EPS Quarterly', rev_chart: 'Revenue Quarterly', ms_table: '季度 EPS / Sales', yoy_block: 'Forward YoY', price_chart: '股價走勢', notes: 'Notes' };
   const hidden = new Set(study.hiddenSections || []);
   const sectionShown = id => !hidden.has(id);
   // Migrate legacy thumbnail screenshots into the notes HTML on first detail-view render
@@ -6774,6 +6810,7 @@ async function renderStudyDetail(idOrSym) {
        </div>
        <div id="study-ms-host"></div>`)}
     ${sectionCard('yoy_block', `<h3>Forward YoY <span class="label-en">TradingView FQ — EPS YoY / Rev YoY</span></h3>`, yoyHtml || '<div style="color:var(--stone)">No TradingView quarterly estimate data</div>')}
+    ${sectionCard('price_chart', `<h3>股價走勢 <span class="label-en">Price · 6M Daily (anchored on study date)</span></h3>`, `<div id="study-candle-chart-host" class="candle-chart-host"></div>`)}
     ${sectionCard('notes', `<h3>Notes <span class="label-en">paste images (Ctrl+V) or drag-drop · Ctrl+Z to undo</span></h3>`, `<div class="study-notes-rich" id="study-notes" contenteditable="${STATE.sidecar.available ? 'true' : 'false'}" data-placeholder="${t('studies-note-placeholder')}">${notesHtml}</div>`)}
   `;
 
@@ -6813,6 +6850,45 @@ async function renderStudyDetail(idOrSym) {
     bindMsTableEditors();
     refreshQuarterSelect();
   }
+  // ── 股價走勢 candle chart ──
+  // Anchor on the study's effective date (ohlcv.date → snapshot.scanDate → today).
+  // Display window = [anchor - 4mo, min(today, anchor + 2mo)] (~6 months); data
+  // extends to [anchor - 10mo, anchor + 2mo] (~1 year) so the user can scroll back
+  // beyond the default view. News markers are loaded from buildNewsHistory + the
+  // study's own datedSnapshots so per-date research is clickable on the chart.
+  (function renderStudyCandleChart() {
+    const chartHost = document.getElementById('study-candle-chart-host');
+    if (!chartHost) return;
+    const symBars = STATE.candles?.[sym];
+    if (!symBars || symBars.length < 2) {
+      chartHost.innerHTML = '<div style="padding:20px;color:var(--mute);text-align:center;font-size:13px">沒有歷史 K 線資料（下次跑 /SIPs 會自動抓）</div>';
+      return;
+    }
+    const anchor = (study.ohlcv && study.ohlcv.date) || study.snapshot?.scanDate || new Date().toISOString().slice(0,10);
+    // First-pass render with no news markers (instant).
+    renderCandleChartFull(chartHost, symBars, { sym, anchorDate: anchor, newsHistory: {} });
+    // Async: load news history (cross-scan archive + this study's datedSnapshots),
+    // then re-render with markers.
+    buildNewsHistory(sym).then(hist => {
+      const newsMap = {};
+      (hist || []).forEach(h => {
+        if (h.detail || h.title) {
+          newsMap[h.date] = { detail: h.detail || h.title, title: h.title,
+                              sourceType: 'scan', sourceLink: '#/' + h.date + '/stock/' + sym };
+        }
+      });
+      // Study-only dates (research saved manually for dates not in the scan archive)
+      const ds = study.datedSnapshots || {};
+      Object.entries(ds).forEach(([date, slot]) => {
+        const sn = slot && slot.snapshot;
+        const news = sn && (sn.newsDetail || sn.catalyst);
+        if (!news || newsMap[date]) return;
+        newsMap[date] = { detail: news, title: sn.catalyst || '',
+                          sourceType: 'study', sourceLink: '#/studies/' + id };
+      });
+      renderCandleChartFull(chartHost, symBars, { sym, anchorDate: anchor, newsHistory: newsMap });
+    });
+  })();
   // Editable MS table input listeners — write back into the right array slot of customChart,
   // then re-recompute the dependent YoY/Surp cells + re-render the bar charts.
   function bindMsTableEditors() {
