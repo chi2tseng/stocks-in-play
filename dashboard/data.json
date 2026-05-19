@@ -1,8 +1,328 @@
 {
   "date": "2026-05-19",
-  "scanTime": "15:52",
-  "scanTimestamp": "2026-05-19T15:52",
+  "scanTime": "16:00",
+  "scanTimestamp": "2026-05-19T16:00",
   "stocks": {
+    "GOVX": {
+      "symbol": "GOVX",
+      "name": "Geovax Labs Inc",
+      "type": "momentum",
+      "catalyst": "無明顯新聞催化（市值僅 ~$3.8M、現金緊張）；今日 +165% 屬低浮動微型股動能炒作,警惕。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=GOVX"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/GOVX"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-GOVX/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 1.99,
+          "chgPct": -9.95,
+          "volume": 2495268,
+          "session": "post",
+          "direction": "down",
+          "name": "Geovax Labs Inc",
+          "sessionDate": "2026-05-18",
+          "targetDate": "2026-05-19"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 1.99,
+      "chgPct": -9.95,
+      "volume": 2495268,
+      "tv": null,
+      "shortFloat": 8.8,
+      "shortRatio": 1.1,
+      "marketCap_M": 4.27,
+      "floatShares_M": 2.89,
+      "perf1M": 0,
+      "perf3M": -26.79,
+      "perf6M": -90.12,
+      "perfYTD": -71.23,
+      "perf12M": -94.58,
+      "prevOhlcv": {
+        "date": "2026-05-15",
+        "open": 1.33,
+        "high": 1.33,
+        "low": 1.2,
+        "close": 1.23,
+        "volume": 321900,
+        "prev_close": 1.26
+      }
+    },
+    "BKKT": {
+      "symbol": "BKKT",
+      "name": "Bakkt Inc",
+      "type": "?",
+      "catalyst": "",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=BKKT"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/BKKT"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-BKKT/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 10.13,
+          "chgPct": 16.17,
+          "volume": 419016,
+          "session": "post",
+          "direction": "up",
+          "name": "Bakkt Inc",
+          "sessionDate": "2026-05-18",
+          "targetDate": "2026-05-19"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 10.13,
+      "chgPct": 16.17,
+      "volume": 419016,
+      "tv": null,
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": null,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": null,
+      "perf12M": null,
+      "prevOhlcv": null
+    },
+    "AGYS": {
+      "symbol": "AGYS",
+      "name": "Agilysys Inc",
+      "type": "?",
+      "catalyst": "",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=AGYS"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/AGYS"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AGYS/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 81.5,
+          "chgPct": 16.1,
+          "volume": 220944,
+          "session": "post",
+          "direction": "up",
+          "name": "Agilysys Inc",
+          "sessionDate": "2026-05-18",
+          "targetDate": "2026-05-19"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 81.5,
+      "chgPct": 16.1,
+      "volume": 220944,
+      "tv": null,
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": null,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": null,
+      "perf12M": null,
+      "prevOhlcv": null
+    },
+    "SHMD": {
+      "symbol": "SHMD",
+      "name": "Schmid Group N.V. Cl A",
+      "type": "?",
+      "catalyst": "",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=SHMD"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/SHMD"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SHMD/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 7.9,
+          "chgPct": 5.61,
+          "volume": 119401,
+          "session": "post",
+          "direction": "up",
+          "name": "Schmid Group N.V. Cl A",
+          "sessionDate": "2026-05-18",
+          "targetDate": "2026-05-19"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 7.9,
+      "chgPct": 5.61,
+      "volume": 119401,
+      "tv": null,
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": null,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": null,
+      "perf12M": null,
+      "prevOhlcv": null
+    },
+    "WVE": {
+      "symbol": "WVE",
+      "name": "Wave Life Sci Ord Sh",
+      "type": "?",
+      "catalyst": "",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=WVE"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/WVE"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-WVE/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 6.75,
+          "chgPct": 5.47,
+          "volume": 383652,
+          "session": "post",
+          "direction": "up",
+          "name": "Wave Life Sci Ord Sh",
+          "sessionDate": "2026-05-18",
+          "targetDate": "2026-05-19"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 6.75,
+      "chgPct": 5.47,
+      "volume": 383652,
+      "tv": null,
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": null,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": null,
+      "perf12M": null,
+      "prevOhlcv": null
+    },
+    "PURR": {
+      "symbol": "PURR",
+      "name": "Hyperliquid Strategies Inc",
+      "type": "?",
+      "catalyst": "",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=PURR"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/PURR"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-PURR/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 7.8,
+          "chgPct": 12.54,
+          "volume": 1778235,
+          "session": "post",
+          "direction": "up",
+          "name": "Hyperliquid Strategies Inc",
+          "sessionDate": "2026-05-18",
+          "targetDate": "2026-05-19"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 7.8,
+      "chgPct": 12.54,
+      "volume": 1778235,
+      "tv": null,
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": null,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": null,
+      "perf12M": null,
+      "prevOhlcv": null
+    },
     "TE": {
       "symbol": "TE",
       "name": "T1 Energy Inc",
@@ -175,6 +495,151 @@
         "prev_close": 5.73
       }
     },
+    "AUUD": {
+      "symbol": "AUUD",
+      "name": "Auddia Inc",
+      "type": "?",
+      "catalyst": "",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=AUUD"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/AUUD"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AUUD/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 2.2635,
+          "chgPct": -4.49,
+          "volume": 1797343,
+          "session": "post",
+          "direction": "down",
+          "name": "Auddia Inc",
+          "sessionDate": "2026-05-18",
+          "targetDate": "2026-05-19"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 2.2635,
+      "chgPct": -4.49,
+      "volume": 1797343,
+      "tv": {
+        "latestEPS": -31.49,
+        "consensusEPS": -43.2,
+        "priorYrEPS": null,
+        "surpriseEPS_pct": 27.10648148148149,
+        "surpriseEPS_dollar": 11.710000000000004,
+        "latestRev_M": 0.0,
+        "consensusRev_M": 0.0,
+        "priorYrRev_M": null,
+        "surpriseRev_pct": null,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": null,
+        "epsEst_next4": [
+          -20.94,
+          -14.55,
+          -8.32,
+          0.62
+        ],
+        "revEst_next4": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\n+71.50% / N/M\n+81.31% / N/M\n+101.97% / N/M",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26"
+          ],
+          "eps_reported": [
+            -51.05,
+            -44.51,
+            -31.49,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -51.05,
+            -44.51,
+            -43.2,
+            -20.94,
+            -14.55,
+            -8.32,
+            0.62,
+            -5.0,
+            -3.85,
+            -3.08,
+            0.39
+          ],
+          "rev_reported_M": [
+            0.0,
+            0.0,
+            0.0,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "latest_idx": 2
+        }
+      },
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": null,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": null,
+      "perf12M": null,
+      "prevOhlcv": null
+    },
     "CBRG": {
       "symbol": "CBRG",
       "name": "Leverage Shares 2X Long Cbrs Daily ETF",
@@ -227,24 +692,24 @@
       "perf12M": null,
       "prevOhlcv": null
     },
-    "SHMD": {
-      "symbol": "SHMD",
-      "name": "Schmid Group N.V. Cl A",
+    "CISS": {
+      "symbol": "CISS",
+      "name": "C3Is Inc",
       "type": "?",
       "catalyst": "",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=SHMD"
+          "url": "https://finviz.com/quote.ashx?t=CISS"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/SHMD"
+          "url": "https://finance.yahoo.com/quote/CISS"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-SHMD/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-CISS/news/"
         }
       ],
       "publishedAt": null,
@@ -252,125 +717,21 @@
       "sources": null,
       "sessions": [
         {
-          "last": 7.9,
-          "chgPct": 5.61,
-          "volume": 119401,
+          "last": 2.82,
+          "chgPct": -10.91,
+          "volume": 247709,
           "session": "post",
-          "direction": "up",
-          "name": "Schmid Group N.V. Cl A",
+          "direction": "down",
+          "name": "C3Is Inc",
           "sessionDate": "2026-05-18",
           "targetDate": "2026-05-19"
         }
       ],
       "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 7.9,
-      "chgPct": 5.61,
-      "volume": 119401,
-      "tv": null,
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
-      "prevOhlcv": null
-    },
-    "WVE": {
-      "symbol": "WVE",
-      "name": "Wave Life Sci Ord Sh",
-      "type": "?",
-      "catalyst": "",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=WVE"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/WVE"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-WVE/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 6.75,
-          "chgPct": 5.47,
-          "volume": 383652,
-          "session": "post",
-          "direction": "up",
-          "name": "Wave Life Sci Ord Sh",
-          "sessionDate": "2026-05-18",
-          "targetDate": "2026-05-19"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 6.75,
-      "chgPct": 5.47,
-      "volume": 383652,
-      "tv": null,
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
-      "prevOhlcv": null
-    },
-    "PENG": {
-      "symbol": "PENG",
-      "name": "Penguin Solutions Inc",
-      "type": "?",
-      "catalyst": "",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=PENG"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/PENG"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-PENG/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 48.76,
-          "chgPct": 6.67,
-          "volume": 130952,
-          "session": "post",
-          "direction": "up",
-          "name": "Penguin Solutions Inc",
-          "sessionDate": "2026-05-18",
-          "targetDate": "2026-05-19"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 48.76,
-      "chgPct": 6.67,
-      "volume": 130952,
+      "primaryDirection": "down",
+      "last": 2.82,
+      "chgPct": -10.91,
+      "volume": 247709,
       "tv": null,
       "shortFloat": null,
       "shortRatio": null,
@@ -538,58 +899,6 @@
         "prev_close": 3.0
       }
     },
-    "BKKT": {
-      "symbol": "BKKT",
-      "name": "Bakkt Inc",
-      "type": "?",
-      "catalyst": "",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=BKKT"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/BKKT"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-BKKT/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 10.13,
-          "chgPct": 16.17,
-          "volume": 419016,
-          "session": "post",
-          "direction": "up",
-          "name": "Bakkt Inc",
-          "sessionDate": "2026-05-18",
-          "targetDate": "2026-05-19"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 10.13,
-      "chgPct": 16.17,
-      "volume": 419016,
-      "tv": null,
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
-      "prevOhlcv": null
-    },
     "FATN": {
       "symbol": "FATN",
       "name": "Fatpipe Inc",
@@ -631,203 +940,6 @@
       "chgPct": -4.47,
       "volume": 221513,
       "tv": null,
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
-      "prevOhlcv": null
-    },
-    "AGYS": {
-      "symbol": "AGYS",
-      "name": "Agilysys Inc",
-      "type": "?",
-      "catalyst": "",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AGYS"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AGYS"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AGYS/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 81.5,
-          "chgPct": 16.1,
-          "volume": 220944,
-          "session": "post",
-          "direction": "up",
-          "name": "Agilysys Inc",
-          "sessionDate": "2026-05-18",
-          "targetDate": "2026-05-19"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 81.5,
-      "chgPct": 16.1,
-      "volume": 220944,
-      "tv": null,
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
-      "prevOhlcv": null
-    },
-    "AUUD": {
-      "symbol": "AUUD",
-      "name": "Auddia Inc",
-      "type": "?",
-      "catalyst": "",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AUUD"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AUUD"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AUUD/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 2.2635,
-          "chgPct": -4.49,
-          "volume": 1797343,
-          "session": "post",
-          "direction": "down",
-          "name": "Auddia Inc",
-          "sessionDate": "2026-05-18",
-          "targetDate": "2026-05-19"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 2.2635,
-      "chgPct": -4.49,
-      "volume": 1797343,
-      "tv": {
-        "latestEPS": -31.49,
-        "consensusEPS": -43.2,
-        "priorYrEPS": null,
-        "surpriseEPS_pct": 27.10648148148149,
-        "surpriseEPS_dollar": 11.710000000000004,
-        "latestRev_M": 0.0,
-        "consensusRev_M": 0.0,
-        "priorYrRev_M": null,
-        "surpriseRev_pct": null,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": null,
-        "epsEst_next4": [
-          -20.94,
-          -14.55,
-          -8.32,
-          0.62
-        ],
-        "revEst_next4": [
-          0.0,
-          0.0,
-          0.0,
-          0.0
-        ],
-        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\n+71.50% / N/M\n+81.31% / N/M\n+101.97% / N/M",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26"
-          ],
-          "eps_reported": [
-            -51.05,
-            -44.51,
-            -31.49,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -51.05,
-            -44.51,
-            -43.2,
-            -20.94,
-            -14.55,
-            -8.32,
-            0.62,
-            -5.0,
-            -3.85,
-            -3.08,
-            0.39
-          ],
-          "rev_reported_M": [
-            0.0,
-            0.0,
-            0.0,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "latest_idx": 2
-        }
-      },
       "shortFloat": null,
       "shortRatio": null,
       "marketCap_M": null,
@@ -899,24 +1011,24 @@
         "prev_close": 6.49
       }
     },
-    "CISS": {
-      "symbol": "CISS",
-      "name": "C3Is Inc",
+    "PENG": {
+      "symbol": "PENG",
+      "name": "Penguin Solutions Inc",
       "type": "?",
       "catalyst": "",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=CISS"
+          "url": "https://finviz.com/quote.ashx?t=PENG"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/CISS"
+          "url": "https://finance.yahoo.com/quote/PENG"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-CISS/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-PENG/news/"
         }
       ],
       "publishedAt": null,
@@ -924,133 +1036,21 @@
       "sources": null,
       "sessions": [
         {
-          "last": 2.82,
-          "chgPct": -10.91,
-          "volume": 247709,
-          "session": "post",
-          "direction": "down",
-          "name": "C3Is Inc",
-          "sessionDate": "2026-05-18",
-          "targetDate": "2026-05-19"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 2.82,
-      "chgPct": -10.91,
-      "volume": 247709,
-      "tv": null,
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
-      "prevOhlcv": null
-    },
-    "GOVX": {
-      "symbol": "GOVX",
-      "name": "Geovax Labs Inc",
-      "type": "momentum",
-      "catalyst": "無明顯新聞催化（市值僅 ~$3.8M、現金緊張）；今日 +165% 屬低浮動微型股動能炒作,警惕。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=GOVX"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/GOVX"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-GOVX/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 1.99,
-          "chgPct": -9.95,
-          "volume": 2495268,
-          "session": "post",
-          "direction": "down",
-          "name": "Geovax Labs Inc",
-          "sessionDate": "2026-05-18",
-          "targetDate": "2026-05-19"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 1.99,
-      "chgPct": -9.95,
-      "volume": 2495268,
-      "tv": null,
-      "shortFloat": 8.8,
-      "shortRatio": 1.1,
-      "marketCap_M": 4.27,
-      "floatShares_M": 2.89,
-      "perf1M": 0,
-      "perf3M": -26.79,
-      "perf6M": -90.12,
-      "perfYTD": -71.23,
-      "perf12M": -94.58,
-      "prevOhlcv": {
-        "date": "2026-05-15",
-        "open": 1.33,
-        "high": 1.33,
-        "low": 1.2,
-        "close": 1.23,
-        "volume": 321900,
-        "prev_close": 1.26
-      }
-    },
-    "PURR": {
-      "symbol": "PURR",
-      "name": "Hyperliquid Strategies Inc",
-      "type": "?",
-      "catalyst": "",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=PURR"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/PURR"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-PURR/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 7.8,
-          "chgPct": 12.54,
-          "volume": 1778235,
+          "last": 48.76,
+          "chgPct": 6.67,
+          "volume": 130952,
           "session": "post",
           "direction": "up",
-          "name": "Hyperliquid Strategies Inc",
+          "name": "Penguin Solutions Inc",
           "sessionDate": "2026-05-18",
           "targetDate": "2026-05-19"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "up",
-      "last": 7.8,
-      "chgPct": 12.54,
-      "volume": 1778235,
+      "last": 48.76,
+      "chgPct": 6.67,
+      "volume": 130952,
       "tv": null,
       "shortFloat": null,
       "shortRatio": null,

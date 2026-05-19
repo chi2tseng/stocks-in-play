@@ -2537,6 +2537,13 @@ function staggerChildren(selector, cap = 12) {
 }
 
 window.addEventListener('hashchange', route);
+// Any route change → auto-dismiss the news-popup singleton (it lives in <body>
+// outside the #app render container, so route() doesn't unmount it). Belt-and-
+// suspenders alongside the link's own onclick handler.
+window.addEventListener('hashchange', () => {
+  const p = document.getElementById('candle-news-popup-singleton');
+  if (p) p.style.display = 'none';
+});
 document.querySelectorAll('nav .nav-links a').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
@@ -4252,7 +4259,7 @@ async function renderStock(sym) {
             detail: news,
             title: sn.catalyst || '',
             sourceType: 'study',
-            sourceLink: '#/studies/' + st.id,
+            sourceLink: '#/study/' + st.id,    // singular `study` route (renderStudyDetail)
           };
         });
       });
@@ -4753,7 +4760,13 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     const top  = markerPageY - popupH - 14;
     newsPopup.style.left = left + 'px';
     newsPopup.style.top  = top + 'px';
-    newsPopup.querySelector('.news-popup-close').onclick = () => { newsPopup.style.display = 'none'; };
+    const hidePopup = () => { newsPopup.style.display = 'none'; };
+    newsPopup.querySelector('.news-popup-close').onclick = hidePopup;
+    // Dismiss the popup when the user clicks "開啟 …詳細頁" (the link triggers
+    // a hash route change; the popup is body-singleton and otherwise wouldn't
+    // notice the navigation).
+    const link = newsPopup.querySelector('.news-popup-link');
+    if (link) link.addEventListener('click', hidePopup);
   }
 
   // ============ EVENT HANDLERS ============
@@ -6219,7 +6232,7 @@ function renderStudies() {
     if (!id) return;
     if (searchInp) searchInp.value = '';
     searchRes?.classList.remove('show');
-    location.hash = '#/studies/' + id;
+    location.hash = '#/study/' + id;    // singular `study` route → renderStudyDetail
   }
   searchInp?.addEventListener('blur', () => {
     // Defer hide so click handlers on the dropdown run first
@@ -6927,7 +6940,7 @@ async function renderStudyDetail(idOrSym) {
         const news = sn && (sn.newsDetail || sn.catalyst);
         if (!news || newsMap[date]) return;
         newsMap[date] = { detail: news, title: sn.catalyst || '',
-                          sourceType: 'study', sourceLink: '#/studies/' + id };
+                          sourceType: 'study', sourceLink: '#/study/' + id };
       });
       renderCandleChartFull(chartHost, symBars, { sym, anchorDate: anchor, newsHistory: newsMap });
     });
