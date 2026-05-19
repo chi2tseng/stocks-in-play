@@ -3361,9 +3361,11 @@ function openSipsFilterPopup(btn, subtab) {
   const rect = btn.getBoundingClientRect();
   const pop = document.createElement('div');
   pop.className = 'studies-filter-popup sips-filter-popup';
-  pop.style.position = 'fixed';
-  pop.style.top = `${rect.bottom + 6}px`;
-  pop.style.left = `${Math.min(rect.left, window.innerWidth - 312)}px`;
+  // position: ABSOLUTE so the popup tracks the button as the user scrolls.
+  // Coords are in DOCUMENT space (viewport + scrollX/scrollY).
+  pop.style.position = 'absolute';
+  pop.style.top  = `${rect.bottom + window.pageYOffset + 6}px`;
+  pop.style.left = `${Math.min(rect.left + window.pageXOffset, document.documentElement.clientWidth + window.pageXOffset - 312)}px`;
   pop.style.zIndex = '1500';
   // Count rows from THE CURRENT TAB's visible row-set, not all DATA.stocks.
   //   • magna tab   → MAGNA53 top-12 (score >= 4)
@@ -3464,12 +3466,12 @@ function openSipsFilterPopup(btn, subtab) {
     pop.querySelector('.sf-options-host').innerHTML = renderOptions();
     pop.querySelector('.sf-clear').disabled = SIPS_FILTER.size === 0;
     renderSips(subtab);
-    // After renderSips rebuilds the toolbar, re-anchor the popup.
+    // After renderSips rebuilds the toolbar, re-anchor the popup (document coords).
     const newBtn = document.getElementById('sips-filter-btn');
     if (newBtn) {
       const r = newBtn.getBoundingClientRect();
-      pop.style.top = `${r.bottom + 6}px`;
-      pop.style.left = `${Math.min(r.left, window.innerWidth - 312)}px`;
+      pop.style.top  = `${r.bottom + window.pageYOffset + 6}px`;
+      pop.style.left = `${Math.min(r.left + window.pageXOffset, document.documentElement.clientWidth + window.pageXOffset - 312)}px`;
     }
   };
   pop.querySelector('.sf-options-host').addEventListener('click', ev => {
@@ -6167,9 +6169,13 @@ function renderStudies() {
     const rect = btn.getBoundingClientRect();
     const pop = document.createElement('div');
     pop.className = 'studies-filter-popup';
-    pop.style.position = 'fixed';
-    pop.style.top = `${rect.bottom + 6}px`;
-    pop.style.left = `${Math.min(rect.left, window.innerWidth - 296)}px`;
+    // ABSOLUTE positioning (document coords) so the popup tracks the button
+    // when the user scrolls. Fixed positioning made it stick to the viewport
+    // and float away from the anchor — same bug class as the news popup
+    // and the SIPs filter popup.
+    pop.style.position = 'absolute';
+    pop.style.top  = `${rect.bottom + window.pageYOffset + 6}px`;
+    pop.style.left = `${Math.min(rect.left + window.pageXOffset, document.documentElement.clientWidth + window.pageXOffset - 296)}px`;
     pop.style.zIndex = '1500';
     // Count studies per tag + per direction.
     const studies = loadStudies();
@@ -6232,12 +6238,12 @@ function renderStudies() {
       pop.querySelector('.sf-options-host').innerHTML = renderFilterOptions();
       pop.querySelector('.sf-clear').disabled = STUDIES_FILTER.size === 0;
       renderStudies();
-      // After renderStudies, the popup gets re-anchored. Re-position to match the new button.
+      // Re-anchor (document coords).
       const newBtn = document.getElementById('studies-filter-btn');
       if (newBtn) {
         const r = newBtn.getBoundingClientRect();
-        pop.style.top = `${r.bottom + 6}px`;
-        pop.style.left = `${Math.min(r.left, window.innerWidth - 296)}px`;
+        pop.style.top  = `${r.bottom + window.pageYOffset + 6}px`;
+        pop.style.left = `${Math.min(r.left + window.pageXOffset, document.documentElement.clientWidth + window.pageXOffset - 296)}px`;
       }
     });
     pop.querySelector('.sf-clear').addEventListener('click', ev => {
@@ -6249,8 +6255,8 @@ function renderStudies() {
       const newBtn = document.getElementById('studies-filter-btn');
       if (newBtn) {
         const r = newBtn.getBoundingClientRect();
-        pop.style.top = `${r.bottom + 6}px`;
-        pop.style.left = `${Math.min(r.left, window.innerWidth - 296)}px`;
+        pop.style.top  = `${r.bottom + window.pageYOffset + 6}px`;
+        pop.style.left = `${Math.min(r.left + window.pageXOffset, document.documentElement.clientWidth + window.pageXOffset - 296)}px`;
       }
     });
     // Close on outside click
@@ -6279,9 +6285,11 @@ function renderStudies() {
     const rect = btn.getBoundingClientRect();
     const pop = document.createElement('div');
     pop.className = 'studies-filter-popup sort-popup';
-    pop.style.position = 'fixed';
-    pop.style.top = `${rect.bottom + 6}px`;
-    pop.style.left = `${Math.min(rect.left, window.innerWidth - 256)}px`;
+    // ABSOLUTE (document coords) — same fix as the filter popups so it tracks
+    // the button when the user scrolls.
+    pop.style.position = 'absolute';
+    pop.style.top  = `${rect.bottom + window.pageYOffset + 6}px`;
+    pop.style.left = `${Math.min(rect.left + window.pageXOffset, document.documentElement.clientWidth + window.pageXOffset - 256)}px`;
     pop.style.zIndex = '1500';
     pop.style.width = '240px';
     // 3-row grouped layout: each row = one sort dimension (Date / Added / Symbol) with a
