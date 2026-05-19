@@ -3311,9 +3311,170 @@ function pickCardHtml(s, idx, sourceKey = 'claude') {
 // Backwards-compat alias for any older callers that reference the previous name.
 const claudePickCardHtml = (s, idx) => pickCardHtml(s, idx, 'claude');
 
-// Module-level toggle: when ON, the Claude tab also shows picks whose `intent` doesn't match
-// today's chgPct direction (e.g. a "long" pick on a stock that gapped down). Default OFF.
-let SHOW_MISMATCHED_PICKS = false;
+// Today's SIPs filter — same shape as STUDIES_FILTER (Set of keys).
+// Sentinel keys (start with `__`) act as section filters; tag labels are
+// regular strings AND'd with the section filters:
+//   __long  / __short          — direction (intent for picks tabs, chgPct sign for MAGNA)
+//   __day1 / __day2 / __day3   — day classification (per dayLabelWithReset)
+//   <tag>                      — catalyst type (earnings / M&A / FDA / contract / …)
+// Empty set = no filter, show everything (replaces the old SHOW_MISMATCHED_PICKS).
+const SIPS_FILTER = new Set();
+
+// Returns true if a stock row matches the active filter. `isPicksTab` flips the
+// direction-detection rule between intent-based (picks tabs) and chgPct-based (MAGNA).
+function sipsMatchesFilter(s, isPicksTab) {
+  if (SIPS_FILTER.size === 0) return true;
+  const dirOptions = ['__long', '__short'].filter(k => SIPS_FILTER.has(k));
+  if (dirOptions.length > 0) {
+    const dir = isPicksTab
+      ? (s._pickIntent || (s.chgPct > 0 ? 'long' : 'short'))
+      : (s.chgPct > 0 ? 'long' : 'short');
+    if (!dirOptions.includes('__' + dir)) return false;
+  }
+  const dayOptions = ['__day1', '__day2', '__day3'].filter(k => SIPS_FILTER.has(k));
+  if (dayOptions.length > 0) {
+    const dl = '__' + (s._dayLabel || 'day1');
+    if (!dayOptions.includes(dl)) return false;
+  }
+  const tagOptions = [...SIPS_FILTER].filter(k => !k.startsWith('__'));
+  if (tagOptions.length > 0) {
+    const t = (s.type || '').toLowerCase();
+    if (!tagOptions.some(tag => (tag || '').toLowerCase() === t)) return false;
+  }
+  return true;
+}
+
+// Cached symbol→first-seen map for the SIPs filter popup. Populated by renderSips()
+// immediately before each paint so the Day count section can show numbers
+// without an extra async fetch.
+let __sipsFirstSeenCache = null;
+
+// Opens the Today's-SIPs filter popup. Three sections:
+//   • Direction (LONG / SHORT)
+//   • Day (day1 / day2 / day3)
+//   • Catalyst tag (earnings / M&A / FDA / contract / news / …)
+// Selecting within a section = OR. Across sections = AND. Mirrors the My
+// Studies filter popup so the UX is consistent.
+function openSipsFilterPopup(btn, subtab) {
+  // Close other popup variants first (only one open at a time).
+  document.querySelectorAll('.sips-filter-popup, .studies-filter-popup').forEach(p => p.remove());
+  const rect = btn.getBoundingClientRect();
+  const pop = document.createElement('div');
+  pop.className = 'studies-filter-popup sips-filter-popup';
+  pop.style.position = 'fixed';
+  pop.style.top = `${rect.bottom + 6}px`;
+  pop.style.left = `${Math.min(rect.left, window.innerWidth - 312)}px`;
+  pop.style.zIndex = '1500';
+  // Build counts from the current TODAY's data + the day-label map.
+  // __sipsFirstSeenCache is populated by renderSips() right before painting,
+  // so the popup almost always has it. Fallback: day labels default to day1.
+  const rowsForCount = Object.values(DATA.stocks).map(s => ({ ...s, _dayLabel: 'day1' }));
+  if (__sipsFirstSeenCache) {
+    for (const r of rowsForCount) r._dayLabel = dayLabelWithReset(r.symbol, __sipsFirstSeenCache, DATA.date);
+  }
+  const longCount  = rowsForCount.filter(r => r.chgPct > 0).length;
+  const shortCount = rowsForCount.filter(r => r.chgPct < 0).length;
+  const day1Count  = rowsForCount.filter(r => (r._dayLabel || 'day1') === 'day1').length;
+  const day2Count  = rowsForCount.filter(r => r._dayLabel === 'day2').length;
+  const day3Count  = rowsForCount.filter(r => r._dayLabel === 'day3').length;
+  const tagCounts = new Map();
+  rowsForCount.forEach(r => {
+    const t = (r.type || '').trim();
+    if (!t) return;
+    tagCounts.set(t, (tagCounts.get(t) || 0) + 1);
+  });
+  const renderOptions = () => {
+    const longChecked  = SIPS_FILTER.has('__long');
+    const shortChecked = SIPS_FILTER.has('__short');
+    const day1Checked  = SIPS_FILTER.has('__day1');
+    const day2Checked  = SIPS_FILTER.has('__day2');
+    const day3Checked  = SIPS_FILTER.has('__day3');
+    const dirHtml = `
+      <div class="sf-section-label">Direction</div>
+      <div class="sf-option ${longChecked ? 'checked' : ''}" data-key="__long">
+        <span class="tag direction-pill pos" style="font-weight:700;letter-spacing:0.6px;padding:1px 8px;font-size:11px;pointer-events:none;background:rgba(0,168,126,0.10);color:var(--pos)">LONG</span>
+        <span class="sf-count">${longCount}</span>
+      </div>
+      <div class="sf-option ${shortChecked ? 'checked' : ''}" data-key="__short">
+        <span class="tag direction-pill neg" style="font-weight:700;letter-spacing:0.6px;padding:1px 8px;font-size:11px;pointer-events:none;background:rgba(226,59,74,0.10);color:var(--neg)">SHORT</span>
+        <span class="sf-count">${shortCount}</span>
+      </div>
+    `;
+    const dayHtml = `
+      <div class="sf-section-label" style="margin-top:8px">Day</div>
+      <div class="sf-option ${day1Checked ? 'checked' : ''}" data-key="__day1">
+        <span class="day-badge day1" style="pointer-events:none">day1</span>
+        <span class="sf-count">${day1Count}</span>
+      </div>
+      <div class="sf-option ${day2Checked ? 'checked' : ''}" data-key="__day2">
+        <span class="day-badge" style="pointer-events:none;background:rgba(73,79,223,0.10);color:var(--primary);padding:1px 8px;border-radius:var(--r-pill);font-size:11px;font-weight:700">day2</span>
+        <span class="sf-count">${day2Count}</span>
+      </div>
+      <div class="sf-option ${day3Checked ? 'checked' : ''}" data-key="__day3">
+        <span class="day-badge" style="pointer-events:none;background:rgba(160,164,170,0.18);color:var(--mute);padding:1px 8px;border-radius:var(--r-pill);font-size:11px;font-weight:700">day3</span>
+        <span class="sf-count">${day3Count}</span>
+      </div>
+    `;
+    let tagHtml = '<div class="sf-section-label" style="margin-top:8px">Catalyst tag</div>';
+    if (tagCounts.size === 0) {
+      tagHtml += '<div class="sf-empty" style="padding:8px 14px 4px">No catalyst tags in this scan.</div>';
+    } else {
+      const sortedTags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1]);
+      tagHtml += sortedTags.map(([tag, n]) => {
+        const isChecked = SIPS_FILTER.has(tag);
+        return `<div class="sf-option ${isChecked ? 'checked' : ''}" data-key="${escapeHtml(tag)}">
+          <span class="tag ${typeTagClass(tag)}" style="padding:1px 8px;font-size:11px;pointer-events:none">${escapeHtml(tag)}</span>
+          <span class="sf-count">${n}</span>
+        </div>`;
+      }).join('');
+    }
+    return dirHtml + dayHtml + tagHtml;
+  };
+  pop.innerHTML = `
+    <div class="sf-head">
+      <span>Filter</span>
+      <button class="sf-clear" type="button" ${SIPS_FILTER.size ? '' : 'disabled'}>Clear all</button>
+    </div>
+    <div class="sf-options-host">${renderOptions()}</div>
+  `;
+  document.body.appendChild(pop);
+  const rerenderPopupAndSips = () => {
+    pop.querySelector('.sf-options-host').innerHTML = renderOptions();
+    pop.querySelector('.sf-clear').disabled = SIPS_FILTER.size === 0;
+    renderSips(subtab);
+    // After renderSips rebuilds the toolbar, re-anchor the popup.
+    const newBtn = document.getElementById('sips-filter-btn');
+    if (newBtn) {
+      const r = newBtn.getBoundingClientRect();
+      pop.style.top = `${r.bottom + 6}px`;
+      pop.style.left = `${Math.min(r.left, window.innerWidth - 312)}px`;
+    }
+  };
+  pop.querySelector('.sf-options-host').addEventListener('click', ev => {
+    const opt = ev.target.closest('.sf-option');
+    if (!opt) return;
+    ev.preventDefault(); ev.stopPropagation();
+    const key = opt.dataset.key;
+    if (SIPS_FILTER.has(key)) SIPS_FILTER.delete(key);
+    else SIPS_FILTER.add(key);
+    rerenderPopupAndSips();
+  });
+  pop.querySelector('.sf-clear').addEventListener('click', ev => {
+    ev.preventDefault(); ev.stopPropagation();
+    SIPS_FILTER.clear();
+    rerenderPopupAndSips();
+  });
+  setTimeout(() => {
+    const onDocClick = ev => {
+      const btnNow = document.getElementById('sips-filter-btn');
+      if (!pop.contains(ev.target) && !(btnNow && btnNow.contains(ev.target))) {
+        pop.remove();
+        document.removeEventListener('click', onDocClick);
+      }
+    };
+    document.addEventListener('click', onDocClick);
+  }, 0);
+}
 
 async function renderSips(subtab) {
   // Subtabs (4 total):
@@ -3335,9 +3496,13 @@ async function renderSips(subtab) {
       <div class="subtab ${tab === 'gemini' ? 'active' : ''}" data-sub="gemini">Gemini</div>
       <div class="subtab ${tab === 'magna'  ? 'active' : ''}" data-sub="magna">MAGNA53</div>
       <span class="subtab-hint" id="sips-hint"></span>
-      ${isPicksTab ? `<button class="mismatch-toggle ${SHOW_MISMATCHED_PICKS ? 'on' : ''}" id="mismatch-toggle" title="顯示方向不符的 picks（intent vs chgPct 不一致）">
-        ${SHOW_MISMATCHED_PICKS ? '✓ 包含方向不符' : '⊘ 隱藏方向不符'}
-      </button>` : ''}
+      <button class="studies-filter-btn ${SIPS_FILTER.size > 0 ? 'active' : ''}" id="sips-filter-btn" type="button" title="Filter by direction / day / catalyst tag" style="margin-left:auto">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+        </svg>
+        <span>Filter</span>
+        ${SIPS_FILTER.size > 0 ? `<span class="studies-filter-count">${SIPS_FILTER.size}</span>` : ''}
+      </button>
     </div>
     <div id="sips-stack"></div>`;
   // Wire subtab clicks → re-route via hash. Claude is the default (no suffix), others get
@@ -3349,12 +3514,17 @@ async function renderSips(subtab) {
       location.hash = '#/' + (isLatest ? '' : STATE.date + '/') + 'sips' + (sub === 'claude' ? '' : '/' + sub);
     };
   });
-  // Wire mismatch-filter toggle (only present on Claude tab) → flip the module flag + re-render in place.
-  const mt = document.getElementById('mismatch-toggle');
-  if (mt) mt.onclick = () => { SHOW_MISMATCHED_PICKS = !SHOW_MISMATCHED_PICKS; renderSips(subtab); };
+  // Wire SIPs filter button — opens a popup with Direction / Day / Catalyst sections.
+  document.getElementById('sips-filter-btn')?.addEventListener('click', e => {
+    e.preventDefault(); e.stopPropagation();
+    const ownPopup = document.querySelector('.sips-filter-popup');
+    if (ownPopup) { ownPopup.remove(); return; }
+    openSipsFilterPopup(e.currentTarget, subtab);
+  });
   // Day1/2/3 label: walk previous date snapshots so a ticker that already showed up earlier in the
   // week gets tagged day2 / day3 instead of day1. The map is cached across calls within a session.
   const firstSeen = await getSymbolFirstSeenMap();
+  __sipsFirstSeenCache = firstSeen;   // expose for the filter popup's day-count section
   const rows = Object.values(DATA.stocks).map(s => ({
     ...s,
     _m53: magna53(s),
@@ -3362,14 +3532,19 @@ async function renderSips(subtab) {
   }));
   const stack = document.getElementById('sips-stack');
   const hint = document.getElementById('sips-hint');
-  hint.textContent = '';   // hint slot reserved but no count text per user spec
+  hint.textContent = '';
   if (tab === 'magna') {
     rows.sort((a, b) => b._m53.score - a._m53.score);
-    const top = rows.filter(r => r._m53.score >= 4).slice(0, 12);
+    const topAll = rows.filter(r => r._m53.score >= 4).slice(0, 12);
+    const top = topAll.filter(s => sipsMatchesFilter(s, false));
+    const droppedCount = topAll.length - top.length;
     if (top.length === 0) {
-      stack.innerHTML = `<div class="sip-empty">No SIPs for ${STATE.date}. Use the date selector to view another day's scan.</div>`;
+      stack.innerHTML = topAll.length === 0
+        ? `<div class="sip-empty">No SIPs for ${STATE.date}. Use the date selector to view another day's scan.</div>`
+        : `<div class="sip-empty">All ${topAll.length} MAGNA53 candidates filtered out. Adjust the Filter to see them.</div>`;
       return;
     }
+    if (droppedCount > 0) hint.textContent = `${top.length} shown · ${droppedCount} filtered`;
     stack.innerHTML = '<div class="sip-grid">' + top.map((s, idx) => sipCardHtml(s, idx)).join('') + '</div>';
   } else {
     // Picks tabs (claude / codex / gemini) — same render logic, different source array.
@@ -3392,28 +3567,27 @@ async function renderSips(subtab) {
             ...bySym[p.symbol],
             _pickRationale:   p.rationale,
             _pickIntent:      p.intent || 'long',
-            // Legacy _claude* fields populated when on the Claude tab so saveStudyBtnHtml
-            // + any older callers keep working unchanged.
             _claudeRationale: tab === 'claude' ? p.rationale : undefined,
             _claudeIntent:    tab === 'claude' ? (p.intent || 'long') : undefined,
           }
         : null)
       .filter(Boolean)
       .map(s => ({ ...s, _pickDirMismatch: isMismatch(s) }));
-    const enriched = SHOW_MISMATCHED_PICKS ? all : all.filter(s => !s._pickDirMismatch);
+    // Picks are no longer hidden by direction mismatch automatically. Mismatched
+    // picks still get the warning banner + red border (see pickCardHtml + CSS).
+    // To hide them, user filters by direction in the Filter popup.
+    const enriched = all.filter(s => sipsMatchesFilter(s, true));
     const droppedCount = all.length - enriched.length;
     if (enriched.length === 0) {
-      const hiddenNote = droppedCount > 0 ? `（${droppedCount} 筆方向跟市場不符已隱藏，按上方 toggle 顯示）` : '';
+      const hiddenNote = droppedCount > 0 ? `（${droppedCount} 筆被 Filter 隱藏，按上方 Filter 調整）` : '';
       const cmdHint = tab === 'claude'
         ? '在 Claude Code 跑 <code>/SIPs</code>。'
         : `在 ${tab === 'codex' ? 'Codex' : 'Gemini'} CLI 跑 <code>/SIPs-${tab}-full</code> 或 <code>/SIPs-${tab}-picks</code>。`;
       stack.innerHTML = `<div class="sip-empty">尚無 ${srcMeta.label} 的清單${hiddenNote}。<br><br>${cmdHint}<br><br>或在 <code>D:\\SIPs\\${srcMeta.picksFile}</code> 手動加入 <code>{"picks":[{"symbol":"X","rank":1,"rationale":"...","intent":"long"}]}</code> 後 rebuild dashboard 即可看到。</div>`;
       return;
     }
-    if (!SHOW_MISMATCHED_PICKS && droppedCount > 0) {
-      hint.textContent = `${enriched.length} picks shown · ${droppedCount} hidden (direction mismatch)`;
-    } else if (SHOW_MISMATCHED_PICKS) {
-      hint.textContent = `${enriched.length} picks shown (including mismatched)`;
+    if (droppedCount > 0) {
+      hint.textContent = `${enriched.length} shown · ${droppedCount} filtered`;
     }
     stack.innerHTML = '<div class="sip-grid">' + enriched.map((s, idx) => pickCardHtml(s, idx, tab)).join('') + '</div>';
   }
