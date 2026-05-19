@@ -5198,15 +5198,23 @@ function renderCandleChartFull(container, allBars, opts = {}) {
   }
 
   function updateOHLCV() {
-    let bar;
+    let absIdx;
     if (state.crosshair) {
-      bar = bars[state.visibleStart + state.crosshair.barIdx];
+      absIdx = state.visibleStart + state.crosshair.barIdx;
     } else {
-      bar = bars[state.visibleEnd];   // default = last visible
+      absIdx = state.visibleEnd;   // default = last visible
     }
+    const bar = bars[absIdx];
     if (!bar) { ohlcvBox.innerHTML = ''; return; }
-    const chgAbs = bar.close - bar.open;
-    const chgPct = bar.open ? (chgAbs / bar.open * 100) : 0;
+    // Day's change = (today's close − YESTERDAY's close) / yesterday's close * 100.
+    // This is the standard "daily %" trading quote (overnight gap + intraday).
+    // Fall back to (close - open) only for the very first bar in the series
+    // where no previous day is available.
+    const prevBar = (absIdx > 0) ? bars[absIdx - 1] : null;
+    const prevClose = prevBar ? prevBar.close : null;
+    const refPrice = (prevClose != null) ? prevClose : bar.open;
+    const chgAbs = bar.close - refPrice;
+    const chgPct = refPrice ? (chgAbs / refPrice * 100) : 0;
     const cls = chgPct >= 0 ? 'pos' : 'neg';
     const fmtVol = v => v ? (v >= 1e6 ? (v / 1e6).toFixed(1) + 'M' : (v / 1e3).toFixed(0) + 'K') : '—';
     ohlcvBox.innerHTML = `
