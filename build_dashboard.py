@@ -3103,11 +3103,88 @@ function detailNavHtml(basePath, list, currentId, sourceLabel) {
 // captures the source. The renderStock page reads this to build the correct
 // prev/next list. Persists across hash navigations (in-memory) but resets on
 // full page reload (sessionStorage would survive reload — not needed for now).
-let __detailNavSource = null;   // 'claude' | 'codex' | 'gemini' | 'magna' | null (=all)
+let __detailNavSource = null;   // 'claude' | 'codex' | 'gemini' | 'magna' |
+                                 // 'scanx' | 'gappers' | 'earnings' | 'catalyst' | null (=all)
 document.addEventListener('click', (e) => {
   const el = e.target.closest('[data-nav-source]');
   if (el) __detailNavSource = el.dataset.navSource || null;
 }, true);   // capture phase so we run BEFORE the <a> default navigation
+
+// Build the prev/next nav list for the Stock detail page given the source the
+// user came from. Returns { list: [{id, label}], label: 'CLAUDE' | ... }.
+function buildStockNavList(source) {
+  // 1. Agent picks tabs (claude/codex/gemini) → that agent's list, rank-sorted
+  if (source === 'claude' || source === 'codex' || source === 'gemini') {
+    const picksKey = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks' }[source];
+    const picks = (DATA[picksKey] || []).slice().sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
+    return {
+      list:  picks.filter(p => DATA.stocks[p.symbol]).map(p => ({ id: p.symbol, label: p.symbol })),
+      label: { claude: 'Claude', codex: 'ChatGPT', gemini: 'Gemini' }[source],
+    };
+  }
+  // 2. MAGNA53 top-12 by score desc
+  if (source === 'magna') {
+    const ranked = Object.values(DATA.stocks).map(st => ({ ...st, _m53: magna53(st) }));
+    ranked.sort((a, b) => b._m53.score - a._m53.score);
+    return {
+      list:  ranked.filter(r => r._m53.score >= 4).slice(0, 12).map(r => ({ id: r.symbol, label: r.symbol })),
+      label: 'MAGNA53',
+    };
+  }
+  // 3. SCANX — concat all 4 sections in display order
+  if (source === 'scanx') {
+    const sx = DATA.scanx || {};
+    const all = [
+      ...(sx.gapUpEarnings   || []),
+      ...(sx.gapUpOther      || []),
+      ...(sx.gapDownEarnings || []),
+      ...(sx.gapDownOther    || []),
+    ];
+    return {
+      list:  all.filter(e => DATA.stocks[e.symbol]).map(e => ({ id: e.symbol, label: e.symbol })),
+      label: 'SCANX',
+    };
+  }
+  // 4. Gappers — full rawGappers sorted by |chgPct| desc, dedup'd by symbol.
+  //    (No DATA.stocks filter — gappers can include rows that didn't pass the
+  //    ±4% / 100k threshold; clicking those still goes to renderStock which
+  //    shows a slim "no scan data" page. Better to keep them in the nav list
+  //    so the user can walk past them.)
+  if (source === 'gappers') {
+    const gappers = (DATA.rawGappers || []).slice()
+      .sort((a, b) => Math.abs(b.chgPct || 0) - Math.abs(a.chgPct || 0));
+    const seen = new Set();
+    const deduped = [];
+    for (const g of gappers) {
+      if (!g.symbol || seen.has(g.symbol)) continue;
+      seen.add(g.symbol);
+      deduped.push({ id: g.symbol, label: g.symbol });
+    }
+    return { list: deduped, label: 'GAPPERS' };
+  }
+  // 5. Earnings page — DATA.stocks where type in (earnings, guidance)
+  if (source === 'earnings') {
+    const arr = Object.entries(DATA.stocks)
+      .filter(([_, st]) => st.type === 'earnings' || st.type === 'guidance')
+      .sort((a, b) => Math.abs(b[1].chgPct || 0) - Math.abs(a[1].chgPct || 0))
+      .map(([k]) => ({ id: k, label: k }));
+    return { list: arr, label: 'Earnings' };
+  }
+  // 6. Catalyst page — all stocks, |chgPct| desc
+  if (source === 'catalyst') {
+    const arr = Object.entries(DATA.stocks)
+      .sort((a, b) => Math.abs(b[1].chgPct || 0) - Math.abs(a[1].chgPct || 0))
+      .map(([k]) => ({ id: k, label: k }));
+    return { list: arr, label: 'Catalyst' };
+  }
+  // Default fallback: all DATA.stocks by |chgPct| desc
+  return {
+    list: Object.entries(DATA.stocks)
+      .map(([k, st]) => ({ id: k, label: k, _chg: Math.abs(st.chgPct || 0) }))
+      .sort((a, b) => b._chg - a._chg),
+    label: 'All',
+  };
+}
 
 async function route() {
   // Always dismiss the chart-tooltip when navigating — otherwise it stays floating on the
@@ -3918,6 +3995,7 @@ function renderEarnings() {
   function bindEarningsRowClicks(container) {
     container.querySelectorAll('tbody tr').forEach(tr => {
       tr.style.cursor = 'pointer';
+      tr.dataset.navSource = 'earnings';   // captured by document click handler
       tr.onclick = () => {
         const sym = tr.querySelector('td.sym')?.textContent?.trim();
         if (sym) location.hash = buildRouteHash('stock/' + sym);
@@ -4076,6 +4154,7 @@ function renderSqueeze() {
   function bindClicks() {
     body.querySelectorAll('tbody tr').forEach(tr => {
       tr.style.cursor = 'pointer';
+      tr.dataset.navSource = 'catalyst';   // captured by document click handler
       tr.onclick = () => {
         const raw = tr.querySelector('td.sym')?.textContent || '';
         const sym = raw.match(/^[A-Z][A-Z0-9.\-]*/)?.[0];
@@ -4165,6 +4244,7 @@ function renderGappers() {
   function bindRows() {
     panel.querySelectorAll('tbody tr').forEach(tr => {
       tr.style.cursor = 'pointer';
+      tr.dataset.navSource = 'gappers';   // captured by document click handler
       tr.onclick = () => {
         const sym = tr.querySelector('td.sym')?.textContent?.trim();
         if (sym) location.hash = buildRouteHash('stock/' + sym);
@@ -4193,7 +4273,7 @@ function renderScanx() {
   // Generic inline: ticker + colored %chg.
   const inlineFmt = lst => lst.map(e => {
     const pctCls = e.chg >= 0 ? 'pos' : 'neg';
-    return `<a class="scanx-entry" href="${buildRouteHash('stock/' + e.symbol)}"><span class="scanx-sym">${e.symbol}</span> <span class="scanx-pct ${pctCls}">${fmtPctShort(e.chg)}</span></a>`;
+    return `<a class="scanx-entry" data-nav-source="scanx" href="${buildRouteHash('stock/' + e.symbol)}"><span class="scanx-sym">${e.symbol}</span> <span class="scanx-pct ${pctCls}">${fmtPctShort(e.chg)}</span></a>`;
   }).join(', ');
   // Earnings-reaction inline: same as above + (Rev YoY ±N%) appended after the % when TV data exists.
   const earningsInlineFmt = lst => lst.map(e => {
@@ -4205,11 +4285,11 @@ function renderScanx() {
       const cn = v >= 0 ? 'pos' : 'neg';
       revYoY = ` <span class="scanx-yoy ${cn}">(Rev ${v >= 0 ? '+' : ''}${v}%)</span>`;
     }
-    return `<a class="scanx-entry" href="${buildRouteHash('stock/' + e.symbol)}"><span class="scanx-sym">${e.symbol}</span> <span class="scanx-pct ${pctCls}">${fmtPctShort(e.chg)}</span>${revYoY}</a>`;
+    return `<a class="scanx-entry" data-nav-source="scanx" href="${buildRouteHash('stock/' + e.symbol)}"><span class="scanx-sym">${e.symbol}</span> <span class="scanx-pct ${pctCls}">${fmtPctShort(e.chg)}</span>${revYoY}</a>`;
   }).join(', ');
   const listFmt = lst => lst.map(e => {
     const pctCls = e.chg >= 0 ? 'pos' : 'neg';
-    return `<li><a class="scanx-entry" href="${buildRouteHash('stock/' + e.symbol)}"><span class="scanx-sym">${e.symbol}</span> <span class="scanx-pct ${pctCls}">${fmtPctShort(e.chg)}</span> <span class="scanx-cat">（${escapeHtml(e.catalyst)}）</span></a></li>`;
+    return `<li><a class="scanx-entry" data-nav-source="scanx" href="${buildRouteHash('stock/' + e.symbol)}"><span class="scanx-sym">${e.symbol}</span> <span class="scanx-pct ${pctCls}">${fmtPctShort(e.chg)}</span> <span class="scanx-cat">（${escapeHtml(e.catalyst)}）</span></a></li>`;
   }).join('');
   app.innerHTML = `
     <h2 class="page-title">SCANX</h2>
@@ -4807,29 +4887,7 @@ async function renderStock(sym) {
     _tv ? _surpPill('EPS Surp', _tv.surpriseEPS_pct, 'EPS surprise vs consensus (TradingView FQ)') : '',
     _tv ? _surpPill('Rev Surp', _tv.surpriseRev_pct, 'Revenue surprise vs consensus (TradingView FQ)') : '',
   ].filter(Boolean).join(' ');
-  // Build prev/next nav based on which tab the user came FROM (captured by
-  // the data-nav-source attribute on the SIP card they clicked).
-  //   • claude/codex/gemini → that agent's picks, sorted by rank
-  //   • magna               → MAGNA53 top-12, sorted by score desc
-  //   • null (direct nav / breadcrumb / news marker) → all stocks by |chgPct|
-  let _stockNavList, _stockNavLabel = null;
-  const _src = __detailNavSource;
-  if (_src === 'magna') {
-    const ranked = Object.values(DATA.stocks).map(st => ({ ...st, _m53: magna53(st) }));
-    ranked.sort((a, b) => b._m53.score - a._m53.score);
-    _stockNavList  = ranked.filter(r => r._m53.score >= 4).slice(0, 12).map(r => ({ id: r.symbol, label: r.symbol }));
-    _stockNavLabel = 'MAGNA53';
-  } else if (_src === 'claude' || _src === 'codex' || _src === 'gemini') {
-    const picksKey = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks' }[_src];
-    const picks = (DATA[picksKey] || []).slice().sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
-    _stockNavList  = picks.filter(p => DATA.stocks[p.symbol]).map(p => ({ id: p.symbol, label: p.symbol }));
-    _stockNavLabel = { claude: 'Claude', codex: 'ChatGPT', gemini: 'Gemini' }[_src];
-  } else {
-    _stockNavList = Object.entries(DATA.stocks)
-      .map(([k, st]) => ({ id: k, label: k, _chg: Math.abs(st.chgPct || 0) }))
-      .sort((a, b) => b._chg - a._chg);
-    _stockNavLabel = 'All';
-  }
+  const { list: _stockNavList, label: _stockNavLabel } = buildStockNavList(__detailNavSource);
   const _stockNavHtml = detailNavHtml('stock', _stockNavList, sym, _stockNavLabel);
   app.innerHTML = `
     <div class="breadcrumb study-detail-breadcrumb">
