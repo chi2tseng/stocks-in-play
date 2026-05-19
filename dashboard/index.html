@@ -1690,6 +1690,7 @@ body.dark .candle-crosshair-label-text { fill: var(--surface); }
 .candle-measure-band { fill: var(--primary); opacity: 0.06; pointer-events: none; }
 .candle-measure-line { stroke: var(--primary); stroke-width: 2; stroke-dasharray: 4,3; pointer-events: none; }
 .candle-measure-dot  { fill: var(--primary); stroke: var(--surface); stroke-width: 1.5; pointer-events: none; }
+.candle-measure-snap { fill: var(--primary); font-size: 9px; font-weight: 700; font-family: var(--font-mono); pointer-events: none; }
 
 /* DOM overlays inside the chart wrapper */
 .candle-chart-host { position: relative; width: 100%; }
@@ -1712,22 +1713,27 @@ body.dark .candle-crosshair-label-text { fill: var(--surface); }
 .candle-ohlcv-display .ohlcv-row2 .pos b { color: var(--pos); }
 .candle-ohlcv-display .ohlcv-row2 .neg b { color: var(--neg); }
 
-/* Measure popup (TC2000-style) — fixed top-right of chart while dragging */
+/* Measure popup (TC2000-style) — fixed corner based on drag direction.
+   .mp-left:  end position on the RIGHT half of chart → popup top-LEFT
+   .mp-right: end position on the LEFT half of chart  → popup top-RIGHT
+   Either way it's pinned to a fixed corner (does NOT follow the cursor). */
 .candle-measure-popup {
-  position: absolute; top: 6px; right: 70px;
+  position: absolute; top: 6px;
   background: rgba(25, 28, 31, 0.96); color: #fff;
   border-radius: var(--r-sm); padding: 8px 11px;
   font-family: var(--font-mono); font-size: 11px; line-height: 1.45;
   pointer-events: none; z-index: 3;
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  min-width: 160px;
+  min-width: 170px;
 }
+.candle-measure-popup.mp-left  { left: 8px;  right: auto; }
+.candle-measure-popup.mp-right { right: 70px; left: auto; }
 .candle-measure-popup .mp-row1 { font-size: 10px; color: rgba(255,255,255,0.6); font-weight: 600; }
-.candle-measure-popup .mp-row2 { font-size: 10px; color: rgba(255,255,255,0.55); }
+.candle-measure-popup .mp-row2 { font-size: 10px; color: rgba(255,255,255,0.5); }
+.candle-measure-popup .mp-row-price { font-size: 10px; color: rgba(255,255,255,0.7); font-weight: 600; margin-top: 1px; }
 .candle-measure-popup .mp-row3 { font-size: 14px; font-weight: 700; margin-top: 3px; }
 .candle-measure-popup .mp-row3.pos { color: #4cd2a0; }
 .candle-measure-popup .mp-row3.neg { color: #ff5a6e; }
-.candle-measure-popup .mp-row4 { font-size: 10px; color: rgba(255,255,255,0.55); }
 
 /* News popup (when clicking a news marker) */
 .candle-news-popup {
@@ -1751,11 +1757,29 @@ body.dark .candle-crosshair-label-text { fill: var(--surface); }
 }
 .candle-news-popup .news-popup-close:hover { color: var(--ink); }
 .candle-news-popup .news-popup-body {
-  padding: 12px 14px; max-height: 280px; overflow-y: auto;
+  padding: 12px 14px; max-height: 240px; overflow-y: auto;
   font-size: 12.5px; line-height: 1.65;
 }
 .candle-news-popup .news-popup-body p { margin: 0 0 8px; }
 .candle-news-popup .news-popup-body strong { color: var(--primary); }
+.candle-news-popup .news-popup-footer {
+  padding: 10px 14px; border-top: 1px solid var(--hairline-soft);
+  background: var(--canvas);
+}
+.candle-news-popup .news-popup-link {
+  display: inline-block; font-size: 12px; font-weight: 600;
+  color: var(--primary); text-decoration: none;
+  padding: 6px 12px; border-radius: var(--r-sm);
+  background: rgba(73,79,223,0.08); border: 1px solid rgba(73,79,223,0.2);
+  transition: background 120ms;
+}
+.candle-news-popup .news-popup-link:hover { background: rgba(73,79,223,0.18); }
+/* Small triangle pointing down from popup to news marker — visual link cue */
+.candle-news-popup::after {
+  content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
+  width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent;
+  border-top: 8px solid var(--surface-elevated);
+}
 
 /* Tiny help text at the bottom-right of the chart */
 .candle-help-hint {
@@ -3869,14 +3893,48 @@ async function renderStock(sym) {
     renderCandleChartFull(chartHost, symBars, { sym: s.symbol, endDate: DATA.date, newsHistory: {} });
   }
   // Async-load news history → re-render chart with markers + build news-history card.
+  // newsMap accumulates from TWO sources:
+  //   1. Scan archive (buildNewsHistory) — dashboard/data/<date>.json files
+  //   2. My Studies datedSnapshots — per-date research the user saved
+  // Each entry stores its sourceLink so the popup's "open detail page" button
+  // navigates correctly (scan → /<date>/stock/sym, study → /studies/<id>).
   buildNewsHistory(s.symbol).then(hist => {
     const container = document.getElementById(`news-history-${s.symbol}`);
     if (container) renderNewsHistory(s.symbol, hist, container);
-    if (chartHost && symBars && hist && hist.length) {
-      const newsMap = {};
-      hist.forEach(h => { newsMap[h.date] = { detail: h.detail || h.title, title: h.title }; });
-      renderCandleChartFull(chartHost, symBars, { sym: s.symbol, endDate: DATA.date, newsHistory: newsMap });
-    }
+    if (!chartHost || !symBars) return;
+    const newsMap = {};
+    // 1. Scan archive
+    (hist || []).forEach(h => {
+      if (h.detail || h.title) {
+        newsMap[h.date] = {
+          detail: h.detail || h.title,
+          title: h.title,
+          sourceType: 'scan',
+          sourceLink: '#/' + h.date + '/stock/' + s.symbol,
+        };
+      }
+    });
+    // 2. My Studies — any saved study for this symbol contributes its datedSnapshots.
+    //    A study-only date (no scan archive coverage) gets a link to the study page.
+    try {
+      const myStudies = (typeof loadStudies === 'function' ? loadStudies() : []) || [];
+      myStudies.filter(st => st.symbol === s.symbol).forEach(st => {
+        const ds = st.datedSnapshots || {};
+        Object.entries(ds).forEach(([date, slot]) => {
+          const sn = slot && slot.snapshot;
+          const news = sn && (sn.newsDetail || sn.catalyst);
+          if (!news) return;
+          if (newsMap[date]) return;   // scan-archive version wins
+          newsMap[date] = {
+            detail: news,
+            title: sn.catalyst || '',
+            sourceType: 'study',
+            sourceLink: '#/studies/' + st.id,
+          };
+        });
+      });
+    } catch (_) {}
+    renderCandleChartFull(chartHost, symBars, { sym: s.symbol, endDate: DATA.date, newsHistory: newsMap });
   });
   app.querySelectorAll('.copy-btn').forEach(btn => {
     btn.onclick = async () => {
@@ -3954,23 +4012,36 @@ function renderCandleChartFull(container, allBars, opts = {}) {
   const prev = __candleChartRegistry.get(container);
   if (prev && typeof prev.dispose === 'function') prev.dispose();
 
+  // Unique id suffix so multiple charts on same page don't collide on clipPath ids.
+  const uid = 'c' + Math.random().toString(36).slice(2, 8);
+
   // ============ STATE ============
+  // measure.start / measure.end:
+  //   { idx, price, snap, snapLabel }   idx = ABSOLUTE bar index in bars[]
+  //                                      price = Y value (snapped to OHLC if close,
+  //                                              else free = cursor-Y → price)
+  //                                      snap = bool, snapLabel = 'O'|'H'|'L'|'C'|null
   const state = {
     visibleStart: 0,
     visibleEnd: bars.length - 1,
-    yManualScale: 1.0,           // user-drag adjustment to Y range
-    crosshair: null,              // {px, py, barIdx (relative to visible)} | null
+    yManualScale: 1.0,
+    crosshair: null,           // {px, py, barIdx (relative to visible)} | null
     isDraggingY: false,
     yDragStartClientY: 0,
     yDragStartScale: 1,
     isMeasuring: false,
-    measure: null,                // {startIdx, endIdx} in ABSOLUTE bars[] index
+    measure: null,
   };
 
   // ============ LAYOUT (SVG viewBox units) ============
+  // Layout fixes vs previous version:
+  //   • separatorMargin 6 → 18 (avoids price/vol label crowding on right axis)
+  //   • rightInset 28 — bars stop ~28px from the price axis so the latest
+  //     candle has visual breathing room (matches TC2000 / TradingView).
   const W = 940, H = 520;
   const padL = 4, padR = 64, padT = 28, padB = 30;
-  const volH = 90, newsRowH = 22, separatorMargin = 6;
+  const volH = 90, newsRowH = 24, separatorMargin = 18;
+  const rightInset = 28;
   const mainTop = padT;
   const mainBottom = H - padB - volH - newsRowH - separatorMargin;
   const mainH = mainBottom - mainTop;
@@ -3978,6 +4049,13 @@ function renderCandleChartFull(container, allBars, opts = {}) {
   const volBottom = volTop + volH;
   const newsRowY = volBottom + 4;
   const plotW = W - padL - padR;
+  const effectivePlotW = plotW - rightInset;   // bars are drawn inside [padL, padL+effectivePlotW]
+
+  // Helpers updated on each render — keep them in closure scope so event handlers
+  // can convert client coords → SVG coords → prices / bar indices consistently.
+  let _yPriceOf = null;        // fn(price) → svgY
+  let _priceAtY = null;        // fn(svgY) → price
+  let _adjMin = 0, _adjMax = 0;
 
   // Build DOM scaffold once; mutated on each render.
   container.innerHTML = `
@@ -4010,27 +4088,41 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     const halfRange = (rawRange / 2 + basePad) * state.yManualScale;
     const adjMin = yMid - halfRange;
     const adjMax = yMid + halfRange;
+    _adjMin = adjMin; _adjMax = adjMax;
 
     // Volume range
     let vMax = 0;
     for (const b of vis) if ((b.volume || 0) > vMax) vMax = b.volume;
     if (vMax === 0) vMax = 1;
 
-    const candleW = Math.max(1, (plotW / N) * 0.72);
-    const xScale = i => padL + ((N === 1) ? plotW / 2 : (i / (N - 1)) * plotW);
+    const candleW = Math.max(1, (effectivePlotW / N) * 0.72);
+    // X bars use effectivePlotW so the rightmost candle is rightInset px before the axis.
+    const xScale = i => padL + ((N === 1) ? effectivePlotW / 2 : (i / (N - 1)) * effectivePlotW);
     const yPrice = p => mainTop + (1 - (p - adjMin) / (adjMax - adjMin || 1)) * mainH;
     const yVol   = v => volTop + (1 - v / vMax) * volH;
+    _yPriceOf = yPrice;
+    _priceAtY = y => adjMax - (y - mainTop) / mainH * (adjMax - adjMin);
 
     let parts = [];
 
-    // 1. Watermark — large semi-transparent ticker in center of main pane
-    const wmX = padL + plotW / 2;
-    const wmY = mainTop + mainH / 2;
-    parts.push(`<text x="${wmX}" y="${wmY - 8}" text-anchor="middle" class="candle-watermark-sym">${(opts.sym || '').toUpperCase()}</text>`);
-    parts.push(`<text x="${wmX}" y="${wmY + 28}" text-anchor="middle" class="candle-watermark-tf">1D</text>`);
+    // ── Clip paths so candles + volume bars never overflow their panes
+    // (matters during Y-axis zoom — without this, expanded candles would spill
+    // onto the volume sub-pane / above the OHLCV display).
+    parts.push(`<defs>`);
+    parts.push(`  <clipPath id="${uid}-mainClip"><rect x="${padL}" y="${mainTop}" width="${plotW}" height="${mainH}"/></clipPath>`);
+    parts.push(`  <clipPath id="${uid}-volClip"><rect x="${padL}" y="${volTop}" width="${plotW}" height="${volH}"/></clipPath>`);
+    parts.push(`</defs>`);
 
-    // 2. Horizontal grid + price labels (right axis)
-    const priceTicks = 8;
+    // 1. Watermark — large semi-transparent ticker in center of main pane (inside clip)
+    const wmX = padL + effectivePlotW / 2;
+    const wmY = mainTop + mainH / 2;
+    parts.push(`<g clip-path="url(#${uid}-mainClip)">`);
+    parts.push(`  <text x="${wmX}" y="${wmY - 8}" text-anchor="middle" class="candle-watermark-sym">${(opts.sym || '').toUpperCase()}</text>`);
+    parts.push(`  <text x="${wmX}" y="${wmY + 28}" text-anchor="middle" class="candle-watermark-tf">1D</text>`);
+    parts.push(`</g>`);
+
+    // 2. Horizontal grid + price labels (right axis) — grid lines clipped to main pane width
+    const priceTicks = 7;
     for (let t = 0; t <= priceTicks; t++) {
       const p = adjMin + (adjMax - adjMin) * (t / priceTicks);
       const y = yPrice(p);
@@ -4046,14 +4138,14 @@ function renderCandleChartFull(container, allBars, opts = {}) {
       parts.push(`<text class="candle-axis-text" x="${x.toFixed(1)}" y="${(H - 14).toFixed(1)}" text-anchor="middle">${vis[idx].date.slice(5)}</text>`);
     }
 
-    // 4. Volume labels (right axis, vol pane)
-    [vMax, vMax * 0.5].forEach(v => {
-      const y = yVol(v);
-      const lbl = v >= 1e6 ? (v / 1e6).toFixed(1) + 'M' : (v / 1e3).toFixed(0) + 'K';
-      parts.push(`<text class="candle-axis-text" x="${W - padR + 5}" y="${(y + 3).toFixed(1)}">${lbl}</text>`);
-    });
+    // 4. Volume labels — only show max (inside volume pane top, with a slight inset
+    // so the label doesn't visually crowd the lowest price label above).
+    const volLblY = volTop + 11;
+    const volLblTxt = vMax >= 1e6 ? (vMax / 1e6).toFixed(1) + 'M' : (vMax / 1e3).toFixed(0) + 'K';
+    parts.push(`<text class="candle-axis-text" x="${W - padR + 5}" y="${volLblY.toFixed(1)}">${volLblTxt}</text>`);
 
-    // 5. Volume bars
+    // 5. Volume bars (inside vol clip)
+    parts.push(`<g clip-path="url(#${uid}-volClip)">`);
     vis.forEach((b, i) => {
       const x = xScale(i);
       const up = b.close >= b.open;
@@ -4061,11 +4153,13 @@ function renderCandleChartFull(container, allBars, opts = {}) {
       const h = volBottom - y;
       parts.push(`<rect class="${up ? 'candle-up' : 'candle-down'}" x="${(x - candleW/2).toFixed(1)}" y="${y.toFixed(1)}" width="${candleW.toFixed(1)}" height="${h.toFixed(1)}" opacity="0.55"/>`);
     });
+    parts.push(`</g>`);
 
     // 6. Pane separator
-    parts.push(`<line class="candle-grid" x1="${padL}" x2="${W - padR}" y1="${(mainBottom + 3).toFixed(1)}" y2="${(mainBottom + 3).toFixed(1)}" opacity="0.8"/>`);
+    parts.push(`<line class="candle-grid" x1="${padL}" x2="${W - padR}" y1="${(mainBottom + separatorMargin / 2).toFixed(1)}" y2="${(mainBottom + separatorMargin / 2).toFixed(1)}" opacity="0.8"/>`);
 
-    // 7. Candles (main pane)
+    // 7. Candles (main pane, inside clip)
+    parts.push(`<g clip-path="url(#${uid}-mainClip)">`);
     vis.forEach((b, i) => {
       const x = xScale(i);
       const up = b.close >= b.open;
@@ -4077,8 +4171,9 @@ function renderCandleChartFull(container, allBars, opts = {}) {
       parts.push(`<line class="${cls}" x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${yH.toFixed(1)}" y2="${yL.toFixed(1)}"/>`);
       parts.push(`<rect class="${cls}" x="${(x - candleW/2).toFixed(1)}" y="${bodyTop.toFixed(1)}" width="${candleW.toFixed(1)}" height="${bodyH.toFixed(1)}"/>`);
     });
+    parts.push(`</g>`);
 
-    // 8. News markers (below volume pane)
+    // 8. News markers (below volume pane) — drawn OUTSIDE clip so they're fully visible
     if (opts.newsHistory) {
       vis.forEach((b, i) => {
         if (opts.newsHistory[b.date]) {
@@ -4091,37 +4186,42 @@ function renderCandleChartFull(container, allBars, opts = {}) {
       });
     }
 
-    // 9. Measure overlay
-    if (state.measure && state.measure.startIdx != null && state.measure.endIdx != null) {
-      const startVis = state.measure.startIdx - vStart;
-      const endVis = state.measure.endIdx - vStart;
-      if (startVis >= 0 && endVis >= 0 && startVis < N && endVis < N) {
-        const x1 = xScale(startVis), x2 = xScale(endVis);
-        const startBar = bars[state.measure.startIdx];
-        const endBar = bars[state.measure.endIdx];
+    // 9. Measure overlay — uses absolute prices (snapped or free) from state.measure
+    if (state.measure && state.measure.start && state.measure.end) {
+      const sV = state.measure.start.idx - vStart;
+      const eV = state.measure.end.idx - vStart;
+      if (sV >= 0 && eV >= 0 && sV < N && eV < N) {
+        const x1 = xScale(sV), x2 = xScale(eV);
+        const y1 = yPrice(state.measure.start.price);
+        const y2 = yPrice(state.measure.end.price);
         const minX = Math.min(x1, x2), wid = Math.abs(x2 - x1);
-        parts.push(`<rect class="candle-measure-band" x="${minX.toFixed(1)}" y="${mainTop}" width="${wid.toFixed(1)}" height="${mainH.toFixed(1)}"/>`);
-        parts.push(`<line class="candle-measure-line" x1="${x1.toFixed(1)}" x2="${x2.toFixed(1)}" y1="${yPrice(startBar.close).toFixed(1)}" y2="${yPrice(endBar.close).toFixed(1)}"/>`);
-        parts.push(`<circle class="candle-measure-dot" cx="${x1.toFixed(1)}" cy="${yPrice(startBar.close).toFixed(1)}" r="3"/>`);
-        parts.push(`<circle class="candle-measure-dot" cx="${x2.toFixed(1)}" cy="${yPrice(endBar.close).toFixed(1)}" r="3"/>`);
+        parts.push(`<g clip-path="url(#${uid}-mainClip)">`);
+        parts.push(`  <rect class="candle-measure-band" x="${minX.toFixed(1)}" y="${mainTop}" width="${wid.toFixed(1)}" height="${mainH.toFixed(1)}"/>`);
+        parts.push(`  <line class="candle-measure-line" x1="${x1.toFixed(1)}" x2="${x2.toFixed(1)}" y1="${y1.toFixed(1)}" y2="${y2.toFixed(1)}"/>`);
+        parts.push(`  <circle class="candle-measure-dot" cx="${x1.toFixed(1)}" cy="${y1.toFixed(1)}" r="${state.measure.start.snap ? 4 : 3}"/>`);
+        parts.push(`  <circle class="candle-measure-dot" cx="${x2.toFixed(1)}" cy="${y2.toFixed(1)}" r="${state.measure.end.snap ? 4 : 3}"/>`);
+        // Snap-label badges (small text above each dot when snapped)
+        if (state.measure.start.snap) {
+          parts.push(`  <text class="candle-measure-snap" x="${x1.toFixed(1)}" y="${(y1 - 8).toFixed(1)}" text-anchor="middle">${state.measure.start.snapLabel}</text>`);
+        }
+        if (state.measure.end.snap) {
+          parts.push(`  <text class="candle-measure-snap" x="${x2.toFixed(1)}" y="${(y2 - 8).toFixed(1)}" text-anchor="middle">${state.measure.end.snapLabel}</text>`);
+        }
+        parts.push(`</g>`);
       }
     }
 
-    // 10. Crosshair
+    // 10. Crosshair (outside clips so it spans full chart)
     if (state.crosshair) {
       const { px, py, barIdx } = state.crosshair;
       const x = xScale(barIdx);
-      // Vertical line spans both panes
       parts.push(`<line class="candle-crosshair" x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${mainTop}" y2="${volBottom}"/>`);
-      // Horizontal line — only if cursor in main pane
       if (py >= mainTop && py <= mainBottom) {
         parts.push(`<line class="candle-crosshair" x1="${padL}" x2="${W - padR}" y1="${py.toFixed(1)}" y2="${py.toFixed(1)}"/>`);
-        // Price label on right
-        const priceAtCursor = adjMax - (py - mainTop) / mainH * (adjMax - adjMin);
+        const priceAtCursor = _priceAtY(py);
         parts.push(`<rect class="candle-crosshair-label" x="${W - padR + 1}" y="${(py - 9).toFixed(1)}" width="${padR - 4}" height="18"/>`);
         parts.push(`<text class="candle-crosshair-label-text" x="${W - padR + 4 + (padR - 8) / 2}" y="${(py + 3).toFixed(1)}" text-anchor="middle">${priceAtCursor.toFixed(2)}</text>`);
       }
-      // Date label at bottom
       const bar = vis[barIdx];
       if (bar) {
         parts.push(`<rect class="candle-crosshair-label" x="${(x - 40).toFixed(1)}" y="${(H - 25).toFixed(1)}" width="80" height="16"/>`);
@@ -4163,50 +4263,80 @@ function renderCandleChartFull(container, allBars, opts = {}) {
   }
 
   function updateMeasurePopup() {
-    if (!state.measure || state.measure.startIdx == null || state.measure.endIdx == null ||
-        state.measure.startIdx === state.measure.endIdx) {
+    if (!state.measure || !state.measure.start || !state.measure.end ||
+        state.measure.start.idx === state.measure.end.idx) {
       measurePopup.style.display = 'none';
+      measurePopup.classList.remove('mp-left', 'mp-right');
       return;
     }
-    const a = bars[state.measure.startIdx];
-    const b = bars[state.measure.endIdx];
+    const a = bars[state.measure.start.idx];
+    const b = bars[state.measure.end.idx];
     if (!a || !b) { measurePopup.style.display = 'none'; return; }
-    const start = a.close, end = b.close;
-    const chgAbs = end - start;
-    const chgPct = start ? (chgAbs / start) * 100 : 0;
-    const barsSpan = Math.abs(state.measure.endIdx - state.measure.startIdx);
+    const startP = state.measure.start.price;
+    const endP   = state.measure.end.price;
+    const chgAbs = endP - startP;
+    const chgPct = startP ? (chgAbs / startP) * 100 : 0;
+    const barsSpan = Math.abs(state.measure.end.idx - state.measure.start.idx);
     const days = Math.abs((new Date(b.date) - new Date(a.date)) / 86400000);
-    const annualized = days > 0 ? (Math.pow(1 + chgPct / 100, 365 / days) - 1) * 100 : 0;
     const cls = chgPct >= 0 ? 'pos' : 'neg';
+    const fromTo = (state.measure.start.idx <= state.measure.end.idx)
+      ? `${a.date} → ${b.date}` : `${b.date} → ${a.date}`;
+    // Price annotation: "from $X (snap) → $Y (free)" hint
+    const fromTxt = `${startP.toFixed(2)}${state.measure.start.snap ? ' ('+state.measure.start.snapLabel+')' : ''}`;
+    const toTxt   = `${endP.toFixed(2)}${state.measure.end.snap ? ' ('+state.measure.end.snapLabel+')' : ''}`;
     measurePopup.innerHTML = `
-      <div class="mp-row1">${a.date} → ${b.date}</div>
+      <div class="mp-row1">${fromTo}</div>
       <div class="mp-row2">${days.toFixed(0)} 日 · ${barsSpan} bars</div>
+      <div class="mp-row-price">$${fromTxt} → $${toTxt}</div>
       <div class="mp-row3 ${cls}">${chgAbs >= 0 ? '+' : ''}${chgAbs.toFixed(2)} (${chgAbs >= 0 ? '+' : ''}${chgPct.toFixed(2)}%)</div>
-      <div class="mp-row4">Annualized ${annualized >= 0 ? '+' : ''}${annualized.toFixed(1)}%</div>
     `;
+    // Position: end on right half → popup top-LEFT; end on left half → popup top-RIGHT.
+    const vStart = state.visibleStart;
+    const N = state.visibleEnd - vStart + 1;
+    const endVis = state.measure.end.idx - vStart;
+    const endX = padL + ((N === 1) ? effectivePlotW / 2 : (endVis / (N - 1)) * effectivePlotW);
+    const onRightHalf = endX > (padL + effectivePlotW / 2);
+    measurePopup.classList.remove('mp-left', 'mp-right');
+    measurePopup.classList.add(onRightHalf ? 'mp-left' : 'mp-right');
     measurePopup.style.display = 'block';
   }
 
-  function showNewsPopup(date, clientX, clientY) {
+  function showNewsPopup(date, markerSvgX, markerSvgY) {
     const news = opts.newsHistory?.[date];
     if (!news) { newsPopup.style.display = 'none'; return; }
-    const containerRect = container.getBoundingClientRect();
+    // Build content — body + a link to the per-date stock detail page (or study
+    // detail page if the news source was from a saved study, not a scan archive).
+    const linkHash = news.sourceLink || ('#/' + date + '/stock/' + opts.sym);
+    const linkLabel = news.sourceType === 'study' ? '📚 開啟 Study 詳細頁' : `📊 開啟 ${date} 詳細頁`;
     newsPopup.innerHTML = `
       <div class="news-popup-header">
         <span class="news-popup-date">${opts.sym} · ${date}</span>
         <button class="news-popup-close" type="button">×</button>
       </div>
       <div class="news-popup-body">${typeof mdNewsToHtml === 'function' ? mdNewsToHtml(news.detail || news.title || '') : (news.detail || news.title || '')}</div>
+      <div class="news-popup-footer">
+        <a class="news-popup-link" href="${linkHash}">${linkLabel}</a>
+      </div>
     `;
     newsPopup.style.display = 'block';
-    // Position to avoid overflow
-    const popupW = 360;
-    let left = clientX - containerRect.left + 12;
-    if (left + popupW > container.clientWidth) left = container.clientWidth - popupW - 8;
+    // Position ABOVE the marker, centered horizontally on it. Need to measure
+    // popup after it's visible to know its height (so we can place top correctly).
+    const svgRect = svg.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+    const markerScreenX = svgRect.left + markerSvgX * (svgRect.width / W);
+    const markerScreenY = svgRect.top  + markerSvgY * (svgRect.height / H);
+    const popupRect = newsPopup.getBoundingClientRect();
+    const popupW = popupRect.width;
+    const popupH = popupRect.height;
+    let left = markerScreenX - containerRect.left - popupW / 2;
     if (left < 8) left = 8;
-    let top = clientY - containerRect.top + 12;
+    if (left + popupW > container.clientWidth - 8) left = container.clientWidth - popupW - 8;
+    // Default: place popup so its bottom is 14px above the marker (price-area side)
+    let top = markerScreenY - containerRect.top - popupH - 14;
+    // Fallback: if not enough room above, place below the marker
+    if (top < 8) top = markerScreenY - containerRect.top + 24;
     newsPopup.style.left = left + 'px';
-    newsPopup.style.top = top + 'px';
+    newsPopup.style.top  = top + 'px';
     newsPopup.querySelector('.news-popup-close').onclick = () => { newsPopup.style.display = 'none'; };
   }
 
@@ -4226,6 +4356,31 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     return Math.round(ratio * (N - 1));
   }
 
+  // Compute a measure endpoint from cursor position.
+  // Snap-to-OHLC only when cursor is within SNAP_THRESHOLD svg-pixels of any
+  // OHLC value of the bar under cursor. Otherwise free Y position (use cursor's
+  // implied price). This matches TC2000: weak/optional magnetic snap.
+  const SNAP_THRESHOLD = 6;
+  function computeMeasurePoint(absIdx, cursorPy) {
+    const bar = bars[absIdx];
+    if (!bar || !_yPriceOf) return { idx: absIdx, price: bar?.close ?? 0, snap: false, snapLabel: null };
+    const candidates = [
+      { name: 'O', price: bar.open  },
+      { name: 'H', price: bar.high  },
+      { name: 'L', price: bar.low   },
+      { name: 'C', price: bar.close },
+    ];
+    let best = null, bestDist = SNAP_THRESHOLD + 0.01;
+    for (const c of candidates) {
+      const yc = _yPriceOf(c.price);
+      const d = Math.abs(cursorPy - yc);
+      if (d < bestDist) { bestDist = d; best = c; }
+    }
+    if (best) return { idx: absIdx, price: best.price, snap: true, snapLabel: best.name };
+    // Free: convert cursor Y → price
+    return { idx: absIdx, price: _priceAtY(cursorPy), snap: false, snapLabel: null };
+  }
+
   function onSvgMouseMove(e) {
     const { px, py } = clientToSvgCoords(e.clientX, e.clientY);
     const inMain = (px >= padL && px <= W - padR && py >= mainTop && py <= volBottom);
@@ -4234,8 +4389,11 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     } else {
       state.crosshair = null;
     }
+    // Update measure end (with snap-or-free Y).
     if (state.isMeasuring && state.crosshair) {
-      state.measure = { startIdx: state.measure.startIdx, endIdx: state.visibleStart + state.crosshair.barIdx };
+      const absIdx = state.visibleStart + state.crosshair.barIdx;
+      state.measure = state.measure || { start: null, end: null };
+      state.measure.end = computeMeasurePoint(absIdx, py);
     }
     render();
   }
@@ -4250,13 +4408,11 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     const factor = e.deltaY < 0 ? 0.82 : 1.22;
     let newVisible = Math.round(currentVisible * factor);
     newVisible = Math.max(8, Math.min(bars.length, newVisible));
-    // Keep right edge fixed (zoom anchors at most-recent)
     state.visibleStart = Math.max(0, state.visibleEnd - newVisible + 1);
     render();
   }
 
   function onSvgMouseDown(e) {
-    // News-marker click → handled separately on click event
     if (e.target.closest('.news-marker-group')) return;
     if (e.target.classList?.contains('candle-y-axis-zone')) {
       state.isDraggingY = true;
@@ -4265,17 +4421,23 @@ function renderCandleChartFull(container, allBars, opts = {}) {
       e.preventDefault();
       return;
     }
-    // Otherwise start measure (chart drag)
     e.preventDefault();
+    const { px, py } = clientToSvgCoords(e.clientX, e.clientY);
+    if (px < padL || px > W - padR || py < mainTop || py > mainBottom) return;
     const barIdx = clientToBarIdx(e.clientX);
+    const absIdx = state.visibleStart + barIdx;
+    const startPoint = computeMeasurePoint(absIdx, py);
     state.isMeasuring = true;
-    state.measure = { startIdx: state.visibleStart + barIdx, endIdx: state.visibleStart + barIdx };
+    state.measure = { start: startPoint, end: startPoint };
   }
   function onSvgClick(e) {
     const grp = e.target.closest('.news-marker-group');
     if (grp) {
       e.stopPropagation();
-      showNewsPopup(grp.dataset.date, e.clientX, e.clientY);
+      const circle = grp.querySelector('.news-marker-circle');
+      const cx = circle ? parseFloat(circle.getAttribute('cx')) : null;
+      const cy = circle ? parseFloat(circle.getAttribute('cy')) : null;
+      if (cx != null && cy != null) showNewsPopup(grp.dataset.date, cx, cy);
     }
   }
   function onDocMouseMove(e) {
@@ -4293,8 +4455,9 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     if (state.isDraggingY) state.isDraggingY = false;
     if (state.isMeasuring) {
       state.isMeasuring = false;
-      // Clear if no movement (single click, not drag)
-      if (state.measure && state.measure.startIdx === state.measure.endIdx) {
+      // Clear if no horizontal movement (single click, not a drag).
+      if (state.measure && state.measure.start && state.measure.end &&
+          state.measure.start.idx === state.measure.end.idx) {
         state.measure = null;
         render();
       }
