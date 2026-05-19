@@ -1769,7 +1769,10 @@ body.dark .candle-measure-popup .mp-row3.neg { color: #ff5a6e; }
    • z-index 99999 so the popup floats above all chart overlays.
 */
 .candle-news-popup {
-  position: fixed;
+  /* position: absolute → popup is anchored to the DOCUMENT (page coords),
+     not the viewport. So when the user scrolls, the popup tracks the
+     news marker on the chart instead of staying glued to the screen. */
+  position: absolute;
   z-index: 99999;
   width: 400px; max-width: 92vw;
   background: var(--canvas);
@@ -4329,9 +4332,13 @@ function renderCandleChartFull(container, allBars, opts = {}) {
       }
     }
 
-    // 11. Right-axis hot zones (Y drag-zoom) — separate for price + volume panes.
-    parts.push(`<rect class="candle-y-axis-zone" x="${W - padR}" y="${mainTop}" width="${padR}" height="${mainH}" fill="transparent" style="cursor:ns-resize"/>`);
-    parts.push(`<rect class="candle-vol-y-axis-zone" x="${W - padR}" y="${volTop}" width="${padR}" height="${volH}" fill="transparent" style="cursor:ns-resize"/>`);
+    // 11. Right-axis hot zones (Y drag-zoom) — extended ABOVE / BELOW the
+    // pane bounds so the hover highlight covers the topmost & bottommost
+    // labels' full glyph extents (a label centered on y=mainTop renders
+    // its ascender above mainTop; without extension, the highlight would
+    // clip the top of the "15.45" / volume "39.8M" / bottom labels).
+    parts.push(`<rect class="candle-y-axis-zone" x="${W - padR}" y="${mainTop - 14}" width="${padR}" height="${mainH + 24}" fill="transparent" style="cursor:ns-resize"/>`);
+    parts.push(`<rect class="candle-vol-y-axis-zone" x="${W - padR}" y="${volTop - 10}" width="${padR}" height="${volH + 20}" fill="transparent" style="cursor:ns-resize"/>`);
 
     svg.innerHTML = parts.join('');
     updateOHLCV();
@@ -4421,9 +4428,8 @@ function renderCandleChartFull(container, allBars, opts = {}) {
       </div>
       <div class="news-popup-arrow"></div>
     `;
-    // POSITION: FIXED (viewport-relative) + ALWAYS ABOVE the marker per
-    // explicit user spec. Popup escapes the chart container; if it would
-    // overflow the viewport top, the page scrolls naturally to show it.
+    // POSITION: ABSOLUTE (document-relative, so popup tracks the marker
+    // when the user scrolls) + ALWAYS ABOVE the marker per user spec.
     newsPopup.style.display = 'block';
     newsPopup.style.left = '-9999px';
     newsPopup.style.top  = '-9999px';
@@ -4431,11 +4437,13 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     const popupW = popupRect.width;
     const popupH = popupRect.height;
     const svgRect = svg.getBoundingClientRect();
-    const markerViewportX = svgRect.left + markerSvgX * (svgRect.width / W);
-    const markerViewportY = svgRect.top  + markerSvgY * (svgRect.height / H);
-    // Center horizontally on the marker, position above (always).
-    const left = markerViewportX - popupW / 2;
-    const top  = markerViewportY - popupH - 14;
+    // Marker position in DOCUMENT coords (viewport + scroll offset)
+    const scrollX = window.pageXOffset || document.documentElement.scrollLeft || 0;
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop  || 0;
+    const markerPageX = svgRect.left + scrollX + markerSvgX * (svgRect.width / W);
+    const markerPageY = svgRect.top  + scrollY + markerSvgY * (svgRect.height / H);
+    const left = markerPageX - popupW / 2;
+    const top  = markerPageY - popupH - 14;
     newsPopup.style.left = left + 'px';
     newsPopup.style.top  = top + 'px';
     newsPopup.querySelector('.news-popup-close').onclick = () => { newsPopup.style.display = 'none'; };
