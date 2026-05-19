@@ -4833,37 +4833,56 @@ function renderCandleChartFull(container, allBars, opts = {}) {
   }
 
   function updateMeasurePopup() {
-    if (!state.measure || !state.measure.start || !state.measure.end ||
-        state.measure.start.idx === state.measure.end.idx) {
+    if (!state.measure || !state.measure.start || !state.measure.end) {
       measurePopup.style.display = 'none';
       measurePopup.classList.remove('mp-left', 'mp-right');
       return;
     }
-    const a = bars[state.measure.start.idx];
-    const b = bars[state.measure.end.idx];
+    const m = state.measure;
+    const sameBar   = m.start.idx === m.end.idx;
+    const samePrice = Math.abs(m.start.price - m.end.price) < 1e-6;
+    // Hide ONLY when truly no movement (a real click, not a drag).
+    // Same-bar with Y-axis movement = intraday measurement (open→close range,
+    // etc.) — that's a valid measure and the popup should show.
+    if (sameBar && samePrice) {
+      measurePopup.style.display = 'none';
+      measurePopup.classList.remove('mp-left', 'mp-right');
+      return;
+    }
+    const a = bars[m.start.idx];
+    const b = bars[m.end.idx];
     if (!a || !b) { measurePopup.style.display = 'none'; return; }
-    const startP = state.measure.start.price;
-    const endP   = state.measure.end.price;
+    const startP = m.start.price;
+    const endP   = m.end.price;
     const chgAbs = endP - startP;
     const chgPct = startP ? (chgAbs / startP) * 100 : 0;
-    const barsSpan = Math.abs(state.measure.end.idx - state.measure.start.idx);
-    const days = Math.abs((new Date(b.date) - new Date(a.date)) / 86400000);
     const cls = chgPct >= 0 ? 'pos' : 'neg';
-    const fromTo = (state.measure.start.idx <= state.measure.end.idx)
-      ? `${a.date} → ${b.date}` : `${b.date} → ${a.date}`;
-    // Price annotation: "from $X (snap) → $Y (free)" hint
-    const fromTxt = `${startP.toFixed(2)}${state.measure.start.snap ? ' ('+state.measure.start.snapLabel+')' : ''}`;
-    const toTxt   = `${endP.toFixed(2)}${state.measure.end.snap ? ' ('+state.measure.end.snapLabel+')' : ''}`;
+    // Header label: single date for intraday, range for cross-day.
+    const fromTo = sameBar
+      ? `${a.date} 盤中`
+      : (m.start.idx <= m.end.idx ? `${a.date} → ${b.date}` : `${b.date} → ${a.date}`);
+    // Span label: "intraday" for same-bar, "X 日 / Y bars" for cross-day.
+    let spanLine;
+    if (sameBar) {
+      spanLine = 'Intraday (盤中)';
+    } else {
+      const barsSpan = Math.abs(m.end.idx - m.start.idx);
+      const days = Math.abs((new Date(b.date) - new Date(a.date)) / 86400000);
+      spanLine = `${days.toFixed(0)} 日 · ${barsSpan} bars`;
+    }
+    const fromTxt = `${startP.toFixed(2)}${m.start.snap ? ' ('+m.start.snapLabel+')' : ''}`;
+    const toTxt   = `${endP.toFixed(2)}${m.end.snap ? ' ('+m.end.snapLabel+')' : ''}`;
     measurePopup.innerHTML = `
       <div class="mp-row1">${fromTo}</div>
-      <div class="mp-row2">${days.toFixed(0)} 日 · ${barsSpan} bars</div>
+      <div class="mp-row2">${spanLine}</div>
       <div class="mp-row-price">$${fromTxt} → $${toTxt}</div>
       <div class="mp-row3 ${cls}">${chgAbs >= 0 ? '+' : ''}${chgAbs.toFixed(2)} (${chgAbs >= 0 ? '+' : ''}${chgPct.toFixed(2)}%)</div>
     `;
     // Position: end on right half → popup top-LEFT; end on left half → popup top-RIGHT.
+    // For intraday (same-bar) measurement use start.idx for the side decision.
     const vStart = state.visibleStart;
     const N = state.visibleEnd - vStart + 1;
-    const endVis = state.measure.end.idx - vStart;
+    const endVis = m.end.idx - vStart;
     const endX = padL + ((N === 1) ? effectivePlotW / 2 : (endVis / (N - 1)) * effectivePlotW);
     const onRightHalf = endX > (padL + effectivePlotW / 2);
     measurePopup.classList.remove('mp-left', 'mp-right');
