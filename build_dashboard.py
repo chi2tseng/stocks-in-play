@@ -3488,6 +3488,21 @@ function openSipsFilterPopup(btn, subtab) {
     SIPS_FILTER.clear();
     rerenderPopupAndSips();
   });
+  // Auto-close on mouseleave (200ms grace period so the cursor can briefly
+  // dip out without dismissing the popup). Click-outside fallback below.
+  let __leaveTimer = null;
+  const __scheduleClose = () => {
+    if (__leaveTimer) clearTimeout(__leaveTimer);
+    __leaveTimer = setTimeout(() => { pop.remove(); }, 200);
+  };
+  const __cancelClose = () => {
+    if (__leaveTimer) { clearTimeout(__leaveTimer); __leaveTimer = null; }
+  };
+  pop.addEventListener('mouseleave', __scheduleClose);
+  pop.addEventListener('mouseenter', __cancelClose);
+  // Also cancel if user moves mouse over the button (so moving back-and-forth
+  // between button and popup doesn't accidentally trigger close).
+  btn.addEventListener('mouseenter', __cancelClose);
   setTimeout(() => {
     const onDocClick = ev => {
       const btnNow = document.getElementById('sips-filter-btn');
@@ -6259,7 +6274,14 @@ function renderStudies() {
         pop.style.left = `${Math.min(r.left + window.pageXOffset, document.documentElement.clientWidth + window.pageXOffset - 296)}px`;
       }
     });
-    // Close on outside click
+    // Auto-close on mouseleave (200ms grace period).
+    let __leaveTimer = null;
+    const __scheduleClose = () => { if (__leaveTimer) clearTimeout(__leaveTimer); __leaveTimer = setTimeout(() => { pop.remove(); }, 200); };
+    const __cancelClose = () => { if (__leaveTimer) { clearTimeout(__leaveTimer); __leaveTimer = null; } };
+    pop.addEventListener('mouseleave', __scheduleClose);
+    pop.addEventListener('mouseenter', __cancelClose);
+    btn.addEventListener('mouseenter', __cancelClose);
+    // Close on outside click (fallback)
     setTimeout(() => {
       const onDocClick = (ev) => {
         const btnNow = document.getElementById('studies-filter-btn');
@@ -6333,6 +6355,14 @@ function renderStudies() {
       pop.remove();
       renderStudies();
     });
+    // Auto-close on mouseleave (200ms grace period).
+    let __leaveTimer = null;
+    const __scheduleClose = () => { if (__leaveTimer) clearTimeout(__leaveTimer); __leaveTimer = setTimeout(() => { pop.remove(); }, 200); };
+    const __cancelClose = () => { if (__leaveTimer) { clearTimeout(__leaveTimer); __leaveTimer = null; } };
+    pop.addEventListener('mouseleave', __scheduleClose);
+    pop.addEventListener('mouseenter', __cancelClose);
+    btn.addEventListener('mouseenter', __cancelClose);
+    // Close on outside click (fallback)
     setTimeout(() => {
       const onDocClick = (ev) => {
         const btnNow = document.getElementById('studies-sort-btn');
