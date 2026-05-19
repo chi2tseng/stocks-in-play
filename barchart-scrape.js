@@ -2,10 +2,19 @@
 // Auto-paginates: keeps fetching pages until a page returns 0 qualifying candidates.
 //
 // Usage:
-//   node barchart-scrape.js              → scrape both pre + post (4 URLs)
+//   node barchart-scrape.js              → AUTO-detect session by ET clock (default)
+//   node barchart-scrape.js auto         → same as default
 //   node barchart-scrape.js pre          → scrape pre-market only (2 URLs)
 //   node barchart-scrape.js post         → scrape post-market only (2 URLs)
-//   node barchart-scrape.js both         → same as default (4 URLs)
+//   node barchart-scrape.js both         → scrape pre + post (4 URLs)
+//
+// AUTO session rule (US Eastern Time):
+//   • 04:00 ET ≤ now < 16:00 ET → 'pre'    (pre-market or regular hours; today's
+//                                          pre-market is the most recent gap data)
+//   • else                       → 'post'  (post-market or overnight; today's
+//                                          post-market is the most recent — OR
+//                                          yesterday's if we're past midnight
+//                                          before the next pre-market opens at 4 AM)
 //
 // Output:
 //   .firecrawl/barchart-{session}-{direction}-pN.json  (raw API responses, one per page)
@@ -15,10 +24,41 @@ const { chromium } = require('@playwright/test');
 const fs = require('fs');
 const path = require('path');
 
-const sessionArg = (process.argv[2] || 'both').toLowerCase();
-if (!['pre','post','both'].includes(sessionArg)) {
-  console.error(`Invalid session arg: "${sessionArg}". Must be one of: pre, post, both`);
+// ── ET clock helpers (handles DST automatically via Intl) ───────────────
+function nowInET() {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/New_York',
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: 'numeric', minute: 'numeric', hour12: false,
+    weekday: 'short',
+  }).formatToParts(new Date());
+  const get = key => parts.find(p => p.type === key)?.value;
+  let hour = parseInt(get('hour'), 10);
+  if (hour === 24) hour = 0;   // Intl quirk: midnight is sometimes "24"
+  return {
+    date: `${get('year')}-${get('month')}-${get('day')}`,
+    hour,
+    minute: parseInt(get('minute'), 10),
+    weekday: get('weekday'),
+    totalMinutes: hour * 60 + parseInt(get('minute'), 10),
+  };
+}
+function autoDetectSession() {
+  const et = nowInET();
+  const sess = (et.totalMinutes >= 4 * 60 && et.totalMinutes < 16 * 60) ? 'pre' : 'post';
+  return { session: sess, et };
+}
+
+const rawArg = (process.argv[2] || 'auto').toLowerCase();
+if (!['auto','pre','post','both'].includes(rawArg)) {
+  console.error(`Invalid session arg: "${rawArg}". Must be one of: auto, pre, post, both`);
   process.exit(1);
+}
+let sessionArg = rawArg;
+if (rawArg === 'auto') {
+  const det = autoDetectSession();
+  sessionArg = det.session;
+  process.stderr.write(`[barchart-scrape] auto-detect: ET ${det.et.weekday} ${det.et.date} ${String(det.et.hour).padStart(2,'0')}:${String(det.et.minute).padStart(2,'0')} → session=${sessionArg}\n`);
 }
 
 // Location-agnostic: defaults to the directory containing this script. Override with SIPS_DIR env var.

@@ -105,30 +105,49 @@ Default mindset: **day trade first**. Upgrade to multi-day only if strong story 
 
 ## § 2. Phase 1 — Gap scan (skip if `$ARGUMENTS` provided)
 
-### Step 1: scrape Barchart pre-market + post-market gappers — **Playwright with XHR intercept (default since 2026-05-13)**
+### Step 1: scrape Barchart gappers — **Playwright with XHR intercept + auto session detect**
 
 Barchart renders the gapper table inside a `<bc-data-grid>` Shadow DOM custom element, with the actual ticker data fetched from `/proxies/core-api/v1/quotes/get` as JSON. Text scraping (Firecrawl markdown / Playwright `innerText`) misses the shadow DOM. **The clean approach is to intercept the API response directly.**
 
-**Default command:**
+**Default command (auto-detect session by ET clock):**
 ```powershell
 cd C:\Users\chi2t
 node barchart-scrape.js
 ```
 
+Default arg = `auto`. The script picks `pre` vs `post` based on US Eastern Time so it doesn't scrape stale sessions:
+
+| ET time window | Session scraped | What's fresh |
+|---|---|---|
+| **04:00 ET ≤ now < 16:00 ET** | `pre`  | Today's pre-market (in progress 4-9:30 AM, or this morning's data during regular hours) |
+| **16:00 ET ≤ now < 04:00 ET next day** | `post` | Today's post-market (in progress 4-8 PM, or this evening / overnight) |
+
+Examples:
+- 5/19 01:30 ET (Tue overnight) → `post` → scrapes 5/18 post-market (5/19 pre-market hasn't started yet)
+- 5/19 06:00 ET (Tue pre-market) → `pre`  → scrapes 5/19 pre-market (currently happening)
+- 5/19 14:00 ET (Tue intraday)    → `pre`  → scrapes 5/19 pre-market (this morning's gap data is still the latest)
+- 5/19 17:00 ET (Tue after close) → `post` → scrapes 5/19 post-market
+
+**Manual override:**
+```powershell
+node barchart-scrape.js pre    # force pre-market only
+node barchart-scrape.js post   # force post-market only
+node barchart-scrape.js both   # scrape all 4 URLs (pre + post, both directions)
+```
+
 This script (at `./barchart-scrape.js`):
-1. Launches headless Chromium with Playwright
-2. Visits each of the 4 Barchart URLs (pre/post × advances/declines)
-3. Listens for the `/proxies/core-api/v1/quotes/get` JSON response triggered by page load
-4. Parses the JSON `data` array → ticker objects with `symbol, preMarketLastPrice, preMarketPercentChange, preMarketVolume` (or `postMarket*` equivalents)
-5. Filters to `abs(ChgPct) >= 4.0 AND Volume >= 100_000`
-6. Dedupes by `(Symbol, Session, Direction)` triple — keeps row with largest `|ChgPct|`
-7. Writes:
+1. Determines which session to scrape (auto by default; explicit arg overrides)
+2. Launches headless Chromium with Playwright
+3. Visits the relevant Barchart URLs (2 if pre or post; 4 if both)
+4. Listens for the `/proxies/core-api/v1/quotes/get` JSON response triggered by page load
+5. Parses the JSON `data` array → ticker objects with `symbol, preMarketLastPrice, preMarketPercentChange, preMarketVolume` (or `postMarket*` equivalents)
+6. Filters to `abs(ChgPct) >= 4.0 AND Volume >= 100_000`
+7. Dedupes by `(Symbol, Session, Direction)` triple — keeps row with largest `|ChgPct|`
+8. Writes:
    - `barchart-{session}-{direction}.json` — raw API responses (1 per source)
    - `candidates.csv` — final filtered + deduped list with BOM for Excel
 
-**Verified 2026-05-13:** 84 unique candidates returned (23+34+21+6 from pre-adv/pre-dec/post-adv/post-dec), byte-for-byte matching the Firecrawl-based count.
-
-**Speed/cost:** ~7 seconds total, 0 Firecrawl credits, no parsing of bidi-mark-wrapped markdown.
+**Speed/cost:** ~3-4 seconds for single session, ~7 seconds for both. 0 Firecrawl credits.
 
 **Pagination note:** API returns `total: 200` per source but `count: 100` per call. The 100 rows we get are sorted by `|%chg|` descending (for advances) or ascending (for declines), so rows 101-200 are below the 4% threshold and don't qualify. **No pagination needed** — page 1 captures all ±4% candidates.
 
