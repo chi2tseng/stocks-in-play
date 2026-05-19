@@ -23,15 +23,37 @@ with open(os.path.join(DIR, 'tv-summary.json'), 'r', encoding='utf-8') as f:
     tv_list = json.load(f)
 tv = {t['Ticker']: t for t in tv_list}
 
+# --- Session → target date routing helpers ---
+# A row's "target date" = the dashboard data file it belongs in. The user wants
+# each <DATE>.json to represent "the gap view heading into <DATE>'s trading day":
+#   pre row,  SessionDate=X → X.json                       (today's pre-market into today's open)
+#   post row, SessionDate=X → next_trading_day(X).json     (X's after-hours into NEXT open)
+# Example: a Mon post-market row routes to Tue's file, Fri post routes to Mon.
+def _next_trading_day(iso):
+    d = datetime.date.fromisoformat(iso)
+    while True:
+        d += datetime.timedelta(days=1)
+        if d.weekday() < 5:    # Mon..Fri
+            return d.isoformat()
+def _session_target_date(session, session_date):
+    return session_date if session == 'pre' else _next_trading_day(session_date)
+
 # --- Load candidates ---
 cands_by_sym = {}
 with open(os.path.join(DIR, 'candidates.csv'), 'r', encoding='utf-8-sig') as f:
     for r in csv.DictReader(f):
         sym = r['Symbol']
+        session = r['Session']
+        # SessionDate column (added by barchart-scrape.js commit 556adfe). Old
+        # CSVs without it fall back to the scan date (DATE).
+        sd = r.get('SessionDate') or DATE
+        target = _session_target_date(session, sd)
         cands_by_sym.setdefault(sym, []).append({
             'last': float(r['Last']), 'chgPct': float(r['ChgPct']),
-            'volume': int(r['Volume']), 'session': r['Session'],
+            'volume': int(r['Volume']), 'session': session,
             'direction': r['Direction'], 'name': r['Name'],
+            'sessionDate': sd,
+            'targetDate': target,
         })
 
 # --- Load RAW barchart pages (every stock Barchart returned, before the ±4% / 100k filter) ---
@@ -421,29 +443,95 @@ if os.path.exists(studies_json_path):
         print(f'[studies] placeholder backfill skipped (non-fatal): {e}')
 
 _now = datetime.datetime.now()
-data = {
-    'date': DATE,
-    'scanTime': _now.strftime('%H:%M'),
-    'scanTimestamp': _now.isoformat(timespec='minutes'),
-    'stocks': stocks,
-    'rawGappers': raw_gappers,    # ALL Barchart rows from today's scrape, before the ±4%/100k filter
-    'rawGappersFilter': {'chgMin': CHG_MIN, 'volMin': VOL_MIN},
-    'claudePicks': claude_picks_clean,
-    'codexPicks':  codex_picks_clean,         # ChatGPT (via Codex CLI) — surfaced in 'ChatGPT 精選' subtab
-    'geminiPicks': gemini_picks_clean,        # Google Gemini — surfaced in 'Gemini 精選' subtab
-    'dayResets': day_resets_clean,    # symbols whose day-count resets to day1 today (new major catalyst)
-    'scanx': {
-        'gapUpEarnings': gap_up_e, 'gapUpOther': gap_up_o,
-        'gapDownEarnings': gap_dn_e, 'gapDownOther': gap_dn_o,
-    },
-}
 
+# ─────────────────────────────────────────────────────────────────────────────
+# Multi-target-date write logic.
+# Each session row knows its targetDate (= the dashboard file it belongs to per
+# the routing rule above). We split the stocks dict by target date, write each
+# date's file separately, and preserve picks/rawGappers in older files that
+# the current scrape doesn't touch.
+# ─────────────────────────────────────────────────────────────────────────────
+target_dates_set = set()
+for sym, s in stocks.items():
+    for sess in s['sessions']:
+        target_dates_set.add(sess.get('targetDate') or DATE)
+target_dates_set.add(DATE)   # always write the scan-date file even if empty
+
+def _build_data_for(td):
+    """Build the data dict for a single target date. Filters stocks/sessions
+    down to those that route to this date. Picks + dayResets + rawGappers
+    belong to the SCAN-date file only (picks are made for the scan day's
+    trading session — they don't apply retroactively to older target dates)."""
+    is_scan = (td == DATE)
+    filtered_stocks = {}
+    for sym, s in stocks.items():
+        td_sess = [sess for sess in s['sessions'] if (sess.get('targetDate') or DATE) == td]
+        if not td_sess:
+            continue
+        primary = max(td_sess, key=lambda c: abs(c['chgPct']))
+        filtered_stocks[sym] = {
+            **s,
+            'sessions': td_sess,
+            'primarySession':   primary['session'],
+            'primaryDirection': primary['direction'],
+            'last':             primary['last'],
+            'chgPct':           primary['chgPct'],
+            'volume':           primary['volume'],
+        }
+    syms_set = set(filtered_stocks.keys())
+    f_gap_up_e = [e for e in gap_up_e if e['symbol'] in syms_set]
+    f_gap_up_o = [e for e in gap_up_o if e['symbol'] in syms_set]
+    f_gap_dn_e = [e for e in gap_dn_e if e['symbol'] in syms_set]
+    f_gap_dn_o = [e for e in gap_dn_o if e['symbol'] in syms_set]
+    cp  = [p for p in claude_picks_clean if p['symbol'] in syms_set] if is_scan else []
+    cdx = [p for p in codex_picks_clean  if p['symbol'] in syms_set] if is_scan else []
+    gp  = [p for p in gemini_picks_clean if p['symbol'] in syms_set] if is_scan else []
+    drs = {s: r for s, r in day_resets_clean.items() if s in syms_set} if is_scan else {}
+    return {
+        'date': td,
+        'scanTime': _now.strftime('%H:%M'),
+        'scanTimestamp': _now.isoformat(timespec='minutes'),
+        'stocks': filtered_stocks,
+        'rawGappers': raw_gappers if is_scan else [],
+        'rawGappersFilter': {'chgMin': CHG_MIN, 'volMin': VOL_MIN},
+        'claudePicks': cp,
+        'codexPicks':  cdx,
+        'geminiPicks': gp,
+        'dayResets':   drs,
+        'scanx': {
+            'gapUpEarnings':   f_gap_up_e, 'gapUpOther':   f_gap_up_o,
+            'gapDownEarnings': f_gap_dn_e, 'gapDownOther': f_gap_dn_o,
+        },
+    }
+
+# Write each target-date file. For older target dates (not the scan date) that
+# already exist, preserve any picks/rawGappers/scanx that were committed by a
+# previous scan — today's scan only refreshes the stocks/sessions data.
+written = {}
+for td in sorted(target_dates_set):
+    new_data = _build_data_for(td)
+    out_path = os.path.join(DATA_DIR, f'{td}.json')
+    if td != DATE and os.path.exists(out_path):
+        try:
+            with open(out_path, encoding='utf-8') as f:
+                old = json.load(f)
+            for key in ('claudePicks', 'codexPicks', 'geminiPicks',
+                        'dayResets', 'rawGappers', 'rawGappersFilter', 'scanx'):
+                if not new_data.get(key) and old.get(key):
+                    new_data[key] = old[key]
+        except Exception:
+            pass
+    # Skip writing empty stock files unless they're the scan date.
+    if not new_data['stocks'] and td != DATE:
+        continue
+    with open(out_path, 'w', encoding='utf-8') as f:
+        json.dump(new_data, f, ensure_ascii=False, indent=2)
+    written[td] = len(new_data['stocks'])
+
+# Backward-compat: dashboard/data.json mirrors the SCAN-date file.
 day_path = os.path.join(DATA_DIR, f'{DATE}.json')
-with open(day_path, 'w', encoding='utf-8') as f:
-    json.dump(data, f, ensure_ascii=False, indent=2)
-
-# Backward-compat: also copy to dashboard/data.json (latest)
-shutil.copyfile(day_path, os.path.join(DASH_DIR, 'data.json'))
+if os.path.exists(day_path):
+    shutil.copyfile(day_path, os.path.join(DASH_DIR, 'data.json'))
 
 # Regenerate dates.json by scanning data/*.json
 def _label(d):
@@ -463,7 +551,8 @@ dates_list.sort(key=lambda x: x['date'], reverse=True)
 with open(os.path.join(DASH_DIR, 'dates.json'), 'w', encoding='utf-8') as f:
     json.dump(dates_list, f, ensure_ascii=False, indent=2)
 
-print(f'[OK] {DATE}: {len(stocks)} stocks; {len(raw_gappers)} raw Barchart rows; archive has {len(dates_list)} day(s)')
+_per_date = ', '.join(f'{d}={n}' for d, n in sorted(written.items()))
+print(f'[OK] {DATE}: {len(raw_gappers)} raw Barchart rows; wrote {len(written)} date file(s) [{_per_date}]; archive has {len(dates_list)} day(s)')
 
 # --- Build index.html ---
 INDEX_HTML = r'''<!DOCTYPE html>
