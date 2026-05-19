@@ -2118,30 +2118,119 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 }
 #chart-tooltip.visible .ct-inner { transform: scale(1); }
 
-/* ── Candlestick chart (6-month daily bars) — used in SIP-card preview (mini)
-   and stock-detail page (full). Pure SVG, no external libs. ─────────── */
-.candle-chart { width: 100%; display: block; }
+/* ══════════ Candlestick chart — TradingView-style ══════════
+   MINI (SIP-card preview): 3-month, pure SVG, no events.
+   FULL (stock-detail page): main + volume panes, OHLCV display, watermark,
+   crosshair, news markers, wheel-zoom X, drag-zoom Y, drag-measure tool. */
+
+/* Body colors (shared by both modes) */
+.candle-chart { width: 100%; display: block; user-select: none; }
 .candle-up   { fill: var(--pos); stroke: var(--pos); stroke-width: 1; }
 .candle-down { fill: var(--neg); stroke: var(--neg); stroke-width: 1; }
 body.dark .candle-up   { fill: #4cd2a0; stroke: #4cd2a0; }
 body.dark .candle-down { fill: #ff5a6e; stroke: #ff5a6e; }
 .candle-chart-mini { height: 56px; margin-top: 8px; }
-.candle-chart-full { height: 280px; }
+.candle-chart-full { height: auto; cursor: crosshair; }
+
+/* Axes (full mode) */
 .candle-axis-text { font-size: 10px; fill: var(--mute); font-family: var(--font-mono); }
-.candle-axis-line { stroke: var(--hairline-soft); stroke-width: 1; }
-.candle-chart-section { background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--r-md); padding: 18px 16px 12px; }
-/* Custom hover tooltip for the full candle chart — lighter weight than the EPS
-   chart's #chart-tooltip; appears on mousemove over the chart area. */
-.candle-tooltip {
-  position: fixed; z-index: 9999;
+.candle-grid { stroke: var(--hairline-soft); stroke-width: 1; stroke-dasharray: 2,3; opacity: 0.45; }
+
+/* Watermark (semi-transparent ticker in center of main pane) */
+.candle-watermark-sym { fill: var(--ink); opacity: 0.07; font-size: 64px; font-weight: 700; font-family: var(--font-display, inherit); letter-spacing: 1px; }
+.candle-watermark-tf  { fill: var(--ink); opacity: 0.05; font-size: 20px; font-weight: 500; font-family: var(--font-body, inherit); }
+
+/* Crosshair lines + axis labels under cursor */
+.candle-crosshair { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3,3; opacity: 0.5; pointer-events: none; }
+.candle-crosshair-label { fill: var(--ink); opacity: 0.92; rx: 2; ry: 2; }
+.candle-crosshair-label-text { fill: var(--canvas); font-size: 10px; font-family: var(--font-mono); font-weight: 600; pointer-events: none; }
+body.dark .candle-crosshair-label-text { fill: var(--surface); }
+
+/* Right-axis hot zone (drag to compress / expand Y) */
+.candle-y-axis-zone:hover { fill: rgba(73,79,223,0.04); }
+
+/* News markers (clickable circles below volume pane) */
+.news-marker-circle { fill: var(--primary); stroke: var(--surface); stroke-width: 2; transition: r 120ms; }
+.news-marker-group:hover .news-marker-circle { fill: #6e74e3; }
+.news-marker-label { fill: #fff; font-size: 10px; font-weight: 700; font-family: var(--font-body); pointer-events: none; }
+
+/* Measure-tool overlay (drag on chart) */
+.candle-measure-band { fill: var(--primary); opacity: 0.06; pointer-events: none; }
+.candle-measure-line { stroke: var(--primary); stroke-width: 2; stroke-dasharray: 4,3; pointer-events: none; }
+.candle-measure-dot  { fill: var(--primary); stroke: var(--surface); stroke-width: 1.5; pointer-events: none; }
+
+/* DOM overlays inside the chart wrapper */
+.candle-chart-host { position: relative; width: 100%; }
+.candle-chart-wrap { position: relative; width: 100%; max-width: 940px; margin: 0 auto; }
+
+/* Top-left OHLCV display (always visible; updates on crosshair move) */
+.candle-ohlcv-display {
+  position: absolute; top: 6px; left: 8px;
+  font-family: var(--font-mono); font-size: 11px; line-height: 1.4;
+  pointer-events: none; z-index: 2;
+}
+.candle-ohlcv-display .ohlcv-row1 { font-weight: 700; font-size: 12px; margin-bottom: 1px; }
+.candle-ohlcv-display .ohlcv-sym  { color: var(--ink); margin-right: 6px; }
+.candle-ohlcv-display .ohlcv-date { color: var(--mute); font-weight: 500; font-size: 10px; }
+.candle-ohlcv-display .ohlcv-row2 { color: var(--mute); }
+.candle-ohlcv-display .ohlcv-row2 span { margin-right: 8px; }
+.candle-ohlcv-display .ohlcv-row2 b { color: var(--ink); font-weight: 600; }
+.candle-ohlcv-display .ohlcv-row2 .pos { color: var(--pos); }
+.candle-ohlcv-display .ohlcv-row2 .neg { color: var(--neg); }
+.candle-ohlcv-display .ohlcv-row2 .pos b { color: var(--pos); }
+.candle-ohlcv-display .ohlcv-row2 .neg b { color: var(--neg); }
+
+/* Measure popup (TC2000-style) — fixed top-right of chart while dragging */
+.candle-measure-popup {
+  position: absolute; top: 6px; right: 70px;
   background: rgba(25, 28, 31, 0.96); color: #fff;
   border-radius: var(--r-sm); padding: 8px 11px;
-  font-size: 11px; font-family: var(--font-mono); line-height: 1.55;
-  pointer-events: none; display: none;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.20);
-  white-space: nowrap;
+  font-family: var(--font-mono); font-size: 11px; line-height: 1.45;
+  pointer-events: none; z-index: 3;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  min-width: 160px;
 }
-.candle-tooltip b { color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.4px; font-size: 10px; font-weight: 700; }
+.candle-measure-popup .mp-row1 { font-size: 10px; color: rgba(255,255,255,0.6); font-weight: 600; }
+.candle-measure-popup .mp-row2 { font-size: 10px; color: rgba(255,255,255,0.55); }
+.candle-measure-popup .mp-row3 { font-size: 14px; font-weight: 700; margin-top: 3px; }
+.candle-measure-popup .mp-row3.pos { color: #4cd2a0; }
+.candle-measure-popup .mp-row3.neg { color: #ff5a6e; }
+.candle-measure-popup .mp-row4 { font-size: 10px; color: rgba(255,255,255,0.55); }
+
+/* News popup (when clicking a news marker) */
+.candle-news-popup {
+  position: absolute; z-index: 10;
+  width: 360px; max-width: 90%;
+  background: var(--surface-elevated); border: 1px solid var(--hairline);
+  border-radius: var(--r-md); padding: 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  font-size: 12px; color: var(--ink);
+  pointer-events: auto;
+}
+.candle-news-popup .news-popup-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; border-bottom: 1px solid var(--hairline-soft);
+  background: var(--canvas);
+}
+.candle-news-popup .news-popup-date { font-weight: 700; font-family: var(--font-mono); font-size: 12px; }
+.candle-news-popup .news-popup-close {
+  background: none; border: none; cursor: pointer; font-size: 20px;
+  color: var(--mute); line-height: 1; padding: 0 4px;
+}
+.candle-news-popup .news-popup-close:hover { color: var(--ink); }
+.candle-news-popup .news-popup-body {
+  padding: 12px 14px; max-height: 280px; overflow-y: auto;
+  font-size: 12.5px; line-height: 1.65;
+}
+.candle-news-popup .news-popup-body p { margin: 0 0 8px; }
+.candle-news-popup .news-popup-body strong { color: var(--primary); }
+
+/* Tiny help text at the bottom-right of the chart */
+.candle-help-hint {
+  position: absolute; bottom: 4px; left: 8px;
+  font-size: 10px; color: var(--stone); font-family: var(--font-body);
+  pointer-events: none; opacity: 0.65;
+}
 
 #chart-tooltip .ct-q { font-size: 11px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.6px; font-weight: 700; margin-bottom: 6px; }
 #chart-tooltip .ct-row { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
@@ -3106,11 +3195,11 @@ function pickCardHtml(s, idx, sourceKey = 'claude') {
   const mismatchBanner = s._pickDirMismatch
     ? `<div class="dir-mismatch-banner">⚠️ 方向不符：intent=<b>${intent}</b> 但 chgPct=${fmtPctShort(s.chgPct)}</div>`
     : '';
-  // Mini candle chart (~6 months daily bars, no axes, no tooltip). Slices to
-  // bars at or before STATE.date so archived views show the as-of price action.
+  // Mini candle chart — 3-month preview (~60 bars), no interactivity.
+  // candleChartMiniHtml handles the slice to STATE.date and the 60-bar cap.
   const candleBars = STATE.candles?.[s.symbol];
   const miniCandle = candleBars
-    ? candleChartHtml(candleBars, { mode: 'mini', endDate: STATE.date })
+    ? candleChartMiniHtml(candleBars, { endDate: STATE.date })
     : '';
   return `<a class="sip-card ${src.cssClass} ${isFeatured ? 'featured' : ''} ${s._pickDirMismatch ? 'dir-mismatch' : ''}" href="${buildRouteHash('stock/' + s.symbol)}" style="text-decoration:none;color:inherit;display:block;position:relative">
     ${saveStudyBtnHtml(s.symbol, rationale, intent)}
@@ -4223,8 +4312,8 @@ async function renderStock(sym) {
     </div>
     ${newsDetailHtml}
     ${(STATE.candles?.[s.symbol]) ? `<div class="stock-card">
-      <h3>股價走勢 <span class="label-en">Price · Last 6 Months</span></h3>
-      ${candleChartHtml(STATE.candles[s.symbol], { mode: 'full', endDate: DATA.date })}
+      <h3>股價走勢 <span class="label-en">Price · 6M Daily</span></h3>
+      <div id="candle-chart-container-${s.symbol}" class="candle-chart-host"></div>
     </div>` : ''}
     <div class="chart-wrap">
       <div class="stock-card"><h3>EPS Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.eps || ''}</div>
@@ -4240,12 +4329,22 @@ async function renderStock(sym) {
     </div>
     <div class="news-history-card" id="news-history-${s.symbol}"></div>
   `;
-  // Wire candle-chart tooltips (full-mode chart in the 股價走勢 section).
-  attachCandleTooltips(app);
-  // Async-load news history from all available date files
+  // Render interactive TradingView-style candle chart in the 股價走勢 section.
+  // News markers are added in a second pass once buildNewsHistory resolves.
+  const chartHost = document.getElementById(`candle-chart-container-${s.symbol}`);
+  const symBars = STATE.candles?.[s.symbol];
+  if (chartHost && symBars) {
+    renderCandleChartFull(chartHost, symBars, { sym: s.symbol, endDate: DATA.date, newsHistory: {} });
+  }
+  // Async-load news history → re-render chart with markers + build news-history card.
   buildNewsHistory(s.symbol).then(hist => {
     const container = document.getElementById(`news-history-${s.symbol}`);
     if (container) renderNewsHistory(s.symbol, hist, container);
+    if (chartHost && symBars && hist && hist.length) {
+      const newsMap = {};
+      hist.forEach(h => { newsMap[h.date] = { detail: h.detail || h.title, title: h.title }; });
+      renderCandleChartFull(chartHost, symBars, { sym: s.symbol, endDate: DATA.date, newsHistory: newsMap });
+    }
   });
   app.querySelectorAll('.copy-btn').forEach(btn => {
     btn.onclick = async () => {
@@ -4260,39 +4359,33 @@ async function renderStock(sym) {
   });
 }
 
-// Render a candlestick chart from a list of daily OHLC bars.
-//   `bars`    — array of {date, open, high, low, close, volume}
-//   opts.mode — 'mini' (SIP-card preview, no axes/tooltip) or 'full' (detail page)
-//   opts.endDate — optional ISO date; slices bars to those with date <= endDate
-//                  (so archived scan views show price action up to that scan day)
-// Returns SVG string. For full-mode tooltips, call attachCandleTooltips(container)
-// after the SVG is in the DOM.
-function candleChartHtml(bars, opts = {}) {
+// ============================================================================
+// Candlestick chart — mini (SIP-card preview) + full (stock-detail page)
+// ============================================================================
+//
+// MINI: pure SVG, 3-month slice (~60 bars), no interactivity. Just a glance.
+// FULL: TradingView-style — OHLCV display, watermark, crosshair, volume sub-
+//       pane, news-event markers, wheel-zoom (X), drag-zoom (Y on right axis),
+//       drag-measure tool (TC2000 style).
+//
+// Bars schema: [ {date, open, high, low, close, volume}, ... ] sorted oldest→newest
+
+// --- MINI: 3-month preview SVG (no events) ---
+function candleChartMiniHtml(bars, opts = {}) {
   if (!Array.isArray(bars) || bars.length < 2) return '';
-  const mode = opts.mode || 'mini';
   if (opts.endDate) bars = bars.filter(b => b.date <= opts.endDate);
+  // Cap at last ~60 trading days (~3 months).
+  if (bars.length > 60) bars = bars.slice(-60);
   if (bars.length < 2) return '';
-  const isMini = (mode === 'mini');
-  const W = isMini ? 280 : 800;
-  const H = isMini ? 56  : 260;
-  const padL = isMini ? 2 : 4;
-  const padR = isMini ? 2 : 54;
-  const padT = isMini ? 4 : 8;
-  const padB = isMini ? 4 : 22;
-  const plotW = W - padL - padR;
-  const plotH = H - padT - padB;
-  // Price range
+  const W = 280, H = 56, padL = 2, padR = 2, padT = 4, padB = 4;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
   let minP = Infinity, maxP = -Infinity;
-  for (const b of bars) {
-    if (b.high > maxP) maxP = b.high;
-    if (b.low  < minP) minP = b.low;
-  }
+  for (const b of bars) { if (b.high > maxP) maxP = b.high; if (b.low < minP) minP = b.low; }
   const pad = Math.max(0.01, (maxP - minP) * 0.04);
   minP -= pad; maxP += pad;
   const xScale = i => padL + (i / (bars.length - 1 || 1)) * plotW;
   const candleW = Math.max(1, (plotW / bars.length) * 0.7);
   const yScale = p => padT + (1 - (p - minP) / (maxP - minP || 1)) * plotH;
-  // Bars (wicks + bodies)
   let body = '';
   for (let i = 0; i < bars.length; i++) {
     const b = bars[i];
@@ -4305,67 +4398,406 @@ function candleChartHtml(bars, opts = {}) {
     body += `<line class="${cls}" x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${yH.toFixed(1)}" y2="${yL.toFixed(1)}"/>`;
     body += `<rect class="${cls}" x="${(x - candleW/2).toFixed(1)}" y="${bodyTop.toFixed(1)}" width="${candleW.toFixed(1)}" height="${bodyH.toFixed(1)}"/>`;
   }
-  // Axes (full mode only)
-  let axes = '';
-  if (!isMini) {
-    const priceTicks = 5;
-    for (let t = 0; t <= priceTicks; t++) {
-      const p = minP + (maxP - minP) * (t / priceTicks);
-      const y = yScale(p);
-      axes += `<line class="candle-axis-line" x1="${padL}" x2="${W - padR}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" opacity="0.5"/>`;
-      axes += `<text class="candle-axis-text" x="${W - padR + 4}" y="${(y + 3).toFixed(1)}">$${p.toFixed(2)}</text>`;
-    }
-    const dateLabels = 6;
-    for (let t = 0; t <= dateLabels; t++) {
-      const idx = Math.floor((t / dateLabels) * (bars.length - 1));
-      const x = xScale(idx);
-      axes += `<text class="candle-axis-text" x="${x.toFixed(1)}" y="${(H - 6).toFixed(1)}" text-anchor="middle">${bars[idx].date.slice(5)}</text>`;
-    }
-  }
-  // Embed bars JSON for tooltip lookup (full mode only)
-  const dataAttr = isMini ? '' : ` data-bars='${JSON.stringify(bars).replace(/'/g, '&apos;')}' data-padl="${padL}" data-padr="${padR}"`;
-  const hoverZone = isMini ? '' : `<rect x="${padL}" y="${padT}" width="${plotW}" height="${plotH}" fill="transparent" class="candle-hover-zone"/>`;
-  return `<svg class="candle-chart candle-chart-${mode}" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"${dataAttr}>${axes}${body}${hoverZone}</svg>`;
+  return `<svg class="candle-chart candle-chart-mini" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">${body}</svg>`;
 }
 
-// Attach hover tooltips to all full-mode candle charts under `container`.
-// Call after the SVG is in the DOM. Idempotent (re-running re-binds handlers).
-function attachCandleTooltips(container) {
+// --- FULL: TradingView-style interactive chart ---
+// Registry for cleanup — re-rendering a chart in the same container disposes the
+// previous instance's document-level event listeners.
+const __candleChartRegistry = new WeakMap();
+function renderCandleChartFull(container, allBars, opts = {}) {
   if (!container) return;
-  // Lazy-create the singleton tooltip element.
-  let tt = document.getElementById('candle-tooltip-singleton');
-  if (!tt) {
-    tt = document.createElement('div');
-    tt.id = 'candle-tooltip-singleton';
-    tt.className = 'candle-tooltip';
-    document.body.appendChild(tt);
+  if (!Array.isArray(allBars) || allBars.length < 2) {
+    container.innerHTML = '<div style="padding:20px;color:var(--mute);text-align:center;font-size:13px">沒有歷史 K 線資料</div>';
+    return;
   }
-  container.querySelectorAll('.candle-chart-full').forEach(svg => {
-    if (svg.__candleBound) return;
-    svg.__candleBound = true;
-    let bars;
-    try { bars = JSON.parse(svg.getAttribute('data-bars') || '[]'); } catch (_) { bars = []; }
-    if (!bars.length) return;
-    const padL = parseFloat(svg.getAttribute('data-padl') || 4);
-    const padR = parseFloat(svg.getAttribute('data-padr') || 54);
-    const W = svg.viewBox.baseVal.width;
-    const plotW = W - padL - padR;
-    svg.addEventListener('mousemove', e => {
-      const rect = svg.getBoundingClientRect();
-      const xView = (e.clientX - rect.left) * (W / rect.width);
-      const ratio = Math.max(0, Math.min(1, (xView - padL) / plotW));
-      const idx = Math.round(ratio * (bars.length - 1));
-      const b = bars[idx];
-      if (!b) return;
-      const up = b.close >= b.open;
-      const chgPct = b.open ? ((b.close - b.open) / b.open * 100) : 0;
-      tt.innerHTML = `<b>${b.date}</b><br>O ${b.open.toFixed(2)} · H ${b.high.toFixed(2)}<br>L ${b.low.toFixed(2)} · C ${b.close.toFixed(2)}<br><span style="color:${up?'#4cd2a0':'#ff5a6e'}">${chgPct>=0?'+':''}${chgPct.toFixed(2)}%</span> · Vol ${b.volume?(b.volume>=1e6?(b.volume/1e6).toFixed(1)+'M':(b.volume/1e3).toFixed(0)+'K'):'—'}`;
-      tt.style.left = (e.clientX + 14) + 'px';
-      tt.style.top  = (e.clientY + 14) + 'px';
-      tt.style.display = 'block';
+  // Slice to bars at-or-before endDate (so archived scan views show as-of).
+  let bars = opts.endDate ? allBars.filter(b => b.date <= opts.endDate) : allBars.slice();
+  if (bars.length < 2) {
+    container.innerHTML = '<div style="padding:20px;color:var(--mute);text-align:center;font-size:13px">沒有此日期之前的 K 線資料</div>';
+    return;
+  }
+
+  // Dispose any previous chart bound to this container.
+  const prev = __candleChartRegistry.get(container);
+  if (prev && typeof prev.dispose === 'function') prev.dispose();
+
+  // ============ STATE ============
+  const state = {
+    visibleStart: 0,
+    visibleEnd: bars.length - 1,
+    yManualScale: 1.0,           // user-drag adjustment to Y range
+    crosshair: null,              // {px, py, barIdx (relative to visible)} | null
+    isDraggingY: false,
+    yDragStartClientY: 0,
+    yDragStartScale: 1,
+    isMeasuring: false,
+    measure: null,                // {startIdx, endIdx} in ABSOLUTE bars[] index
+  };
+
+  // ============ LAYOUT (SVG viewBox units) ============
+  const W = 940, H = 520;
+  const padL = 4, padR = 64, padT = 28, padB = 30;
+  const volH = 90, newsRowH = 22, separatorMargin = 6;
+  const mainTop = padT;
+  const mainBottom = H - padB - volH - newsRowH - separatorMargin;
+  const mainH = mainBottom - mainTop;
+  const volTop = mainBottom + separatorMargin;
+  const volBottom = volTop + volH;
+  const newsRowY = volBottom + 4;
+  const plotW = W - padL - padR;
+
+  // Build DOM scaffold once; mutated on each render.
+  container.innerHTML = `
+    <div class="candle-chart-wrap">
+      <svg class="candle-chart candle-chart-full" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="candle-ohlcv-display"></div>
+      <div class="candle-measure-popup" style="display:none"></div>
+      <div class="candle-news-popup" style="display:none"></div>
+      <div class="candle-help-hint">滾輪: 縮放橫軸 · 拖曳右側價格軸: 縮放縱軸 · 拖曳圖表: 測量</div>
+    </div>
+  `;
+  const svg = container.querySelector('svg');
+  const ohlcvBox = container.querySelector('.candle-ohlcv-display');
+  const measurePopup = container.querySelector('.candle-measure-popup');
+  const newsPopup = container.querySelector('.candle-news-popup');
+
+  // ============ RENDER ============
+  function render() {
+    const vStart = state.visibleStart, vEnd = state.visibleEnd;
+    const vis = bars.slice(vStart, vEnd + 1);
+    const N = vis.length;
+    if (N < 1) return;
+
+    // Price range (with manual Y zoom)
+    let yMin = Infinity, yMax = -Infinity;
+    for (const b of vis) { if (b.high > yMax) yMax = b.high; if (b.low < yMin) yMin = b.low; }
+    const rawRange = (yMax - yMin) || 1;
+    const basePad = rawRange * 0.06;
+    const yMid = (yMax + yMin) / 2;
+    const halfRange = (rawRange / 2 + basePad) * state.yManualScale;
+    const adjMin = yMid - halfRange;
+    const adjMax = yMid + halfRange;
+
+    // Volume range
+    let vMax = 0;
+    for (const b of vis) if ((b.volume || 0) > vMax) vMax = b.volume;
+    if (vMax === 0) vMax = 1;
+
+    const candleW = Math.max(1, (plotW / N) * 0.72);
+    const xScale = i => padL + ((N === 1) ? plotW / 2 : (i / (N - 1)) * plotW);
+    const yPrice = p => mainTop + (1 - (p - adjMin) / (adjMax - adjMin || 1)) * mainH;
+    const yVol   = v => volTop + (1 - v / vMax) * volH;
+
+    let parts = [];
+
+    // 1. Watermark — large semi-transparent ticker in center of main pane
+    const wmX = padL + plotW / 2;
+    const wmY = mainTop + mainH / 2;
+    parts.push(`<text x="${wmX}" y="${wmY - 8}" text-anchor="middle" class="candle-watermark-sym">${(opts.sym || '').toUpperCase()}</text>`);
+    parts.push(`<text x="${wmX}" y="${wmY + 28}" text-anchor="middle" class="candle-watermark-tf">1D</text>`);
+
+    // 2. Horizontal grid + price labels (right axis)
+    const priceTicks = 8;
+    for (let t = 0; t <= priceTicks; t++) {
+      const p = adjMin + (adjMax - adjMin) * (t / priceTicks);
+      const y = yPrice(p);
+      parts.push(`<line class="candle-grid" x1="${padL}" x2="${W - padR}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}"/>`);
+      parts.push(`<text class="candle-axis-text" x="${W - padR + 5}" y="${(y + 3).toFixed(1)}">${p.toFixed(2)}</text>`);
+    }
+
+    // 3. Date labels (bottom)
+    const dateTicks = 7;
+    for (let t = 0; t <= dateTicks; t++) {
+      const idx = Math.floor((t / dateTicks) * (N - 1));
+      const x = xScale(idx);
+      parts.push(`<text class="candle-axis-text" x="${x.toFixed(1)}" y="${(H - 14).toFixed(1)}" text-anchor="middle">${vis[idx].date.slice(5)}</text>`);
+    }
+
+    // 4. Volume labels (right axis, vol pane)
+    [vMax, vMax * 0.5].forEach(v => {
+      const y = yVol(v);
+      const lbl = v >= 1e6 ? (v / 1e6).toFixed(1) + 'M' : (v / 1e3).toFixed(0) + 'K';
+      parts.push(`<text class="candle-axis-text" x="${W - padR + 5}" y="${(y + 3).toFixed(1)}">${lbl}</text>`);
     });
-    svg.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
-  });
+
+    // 5. Volume bars
+    vis.forEach((b, i) => {
+      const x = xScale(i);
+      const up = b.close >= b.open;
+      const y = yVol(b.volume || 0);
+      const h = volBottom - y;
+      parts.push(`<rect class="${up ? 'candle-up' : 'candle-down'}" x="${(x - candleW/2).toFixed(1)}" y="${y.toFixed(1)}" width="${candleW.toFixed(1)}" height="${h.toFixed(1)}" opacity="0.55"/>`);
+    });
+
+    // 6. Pane separator
+    parts.push(`<line class="candle-grid" x1="${padL}" x2="${W - padR}" y1="${(mainBottom + 3).toFixed(1)}" y2="${(mainBottom + 3).toFixed(1)}" opacity="0.8"/>`);
+
+    // 7. Candles (main pane)
+    vis.forEach((b, i) => {
+      const x = xScale(i);
+      const up = b.close >= b.open;
+      const cls = up ? 'candle-up' : 'candle-down';
+      const yH = yPrice(b.high), yL = yPrice(b.low);
+      const yO = yPrice(b.open), yC = yPrice(b.close);
+      const bodyTop = Math.min(yO, yC);
+      const bodyH = Math.max(1, Math.abs(yO - yC));
+      parts.push(`<line class="${cls}" x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${yH.toFixed(1)}" y2="${yL.toFixed(1)}"/>`);
+      parts.push(`<rect class="${cls}" x="${(x - candleW/2).toFixed(1)}" y="${bodyTop.toFixed(1)}" width="${candleW.toFixed(1)}" height="${bodyH.toFixed(1)}"/>`);
+    });
+
+    // 8. News markers (below volume pane)
+    if (opts.newsHistory) {
+      vis.forEach((b, i) => {
+        if (opts.newsHistory[b.date]) {
+          const x = xScale(i);
+          parts.push(`<g class="news-marker-group" data-date="${b.date}" style="cursor:pointer">`);
+          parts.push(`  <circle cx="${x.toFixed(1)}" cy="${(newsRowY + 11).toFixed(1)}" r="9" class="news-marker-circle"/>`);
+          parts.push(`  <text x="${x.toFixed(1)}" y="${(newsRowY + 15).toFixed(1)}" text-anchor="middle" class="news-marker-label">N</text>`);
+          parts.push(`</g>`);
+        }
+      });
+    }
+
+    // 9. Measure overlay
+    if (state.measure && state.measure.startIdx != null && state.measure.endIdx != null) {
+      const startVis = state.measure.startIdx - vStart;
+      const endVis = state.measure.endIdx - vStart;
+      if (startVis >= 0 && endVis >= 0 && startVis < N && endVis < N) {
+        const x1 = xScale(startVis), x2 = xScale(endVis);
+        const startBar = bars[state.measure.startIdx];
+        const endBar = bars[state.measure.endIdx];
+        const minX = Math.min(x1, x2), wid = Math.abs(x2 - x1);
+        parts.push(`<rect class="candle-measure-band" x="${minX.toFixed(1)}" y="${mainTop}" width="${wid.toFixed(1)}" height="${mainH.toFixed(1)}"/>`);
+        parts.push(`<line class="candle-measure-line" x1="${x1.toFixed(1)}" x2="${x2.toFixed(1)}" y1="${yPrice(startBar.close).toFixed(1)}" y2="${yPrice(endBar.close).toFixed(1)}"/>`);
+        parts.push(`<circle class="candle-measure-dot" cx="${x1.toFixed(1)}" cy="${yPrice(startBar.close).toFixed(1)}" r="3"/>`);
+        parts.push(`<circle class="candle-measure-dot" cx="${x2.toFixed(1)}" cy="${yPrice(endBar.close).toFixed(1)}" r="3"/>`);
+      }
+    }
+
+    // 10. Crosshair
+    if (state.crosshair) {
+      const { px, py, barIdx } = state.crosshair;
+      const x = xScale(barIdx);
+      // Vertical line spans both panes
+      parts.push(`<line class="candle-crosshair" x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${mainTop}" y2="${volBottom}"/>`);
+      // Horizontal line — only if cursor in main pane
+      if (py >= mainTop && py <= mainBottom) {
+        parts.push(`<line class="candle-crosshair" x1="${padL}" x2="${W - padR}" y1="${py.toFixed(1)}" y2="${py.toFixed(1)}"/>`);
+        // Price label on right
+        const priceAtCursor = adjMax - (py - mainTop) / mainH * (adjMax - adjMin);
+        parts.push(`<rect class="candle-crosshair-label" x="${W - padR + 1}" y="${(py - 9).toFixed(1)}" width="${padR - 4}" height="18"/>`);
+        parts.push(`<text class="candle-crosshair-label-text" x="${W - padR + 4 + (padR - 8) / 2}" y="${(py + 3).toFixed(1)}" text-anchor="middle">${priceAtCursor.toFixed(2)}</text>`);
+      }
+      // Date label at bottom
+      const bar = vis[barIdx];
+      if (bar) {
+        parts.push(`<rect class="candle-crosshair-label" x="${(x - 40).toFixed(1)}" y="${(H - 25).toFixed(1)}" width="80" height="16"/>`);
+        parts.push(`<text class="candle-crosshair-label-text" x="${x.toFixed(1)}" y="${(H - 13).toFixed(1)}" text-anchor="middle">${bar.date}</text>`);
+      }
+    }
+
+    // 11. Right-axis hot zone (Y drag-zoom)
+    parts.push(`<rect class="candle-y-axis-zone" x="${W - padR}" y="${mainTop}" width="${padR}" height="${mainH}" fill="transparent" style="cursor:ns-resize"/>`);
+
+    svg.innerHTML = parts.join('');
+    updateOHLCV();
+    updateMeasurePopup();
+  }
+
+  function updateOHLCV() {
+    let bar;
+    if (state.crosshair) {
+      bar = bars[state.visibleStart + state.crosshair.barIdx];
+    } else {
+      bar = bars[state.visibleEnd];   // default = last visible
+    }
+    if (!bar) { ohlcvBox.innerHTML = ''; return; }
+    const chgAbs = bar.close - bar.open;
+    const chgPct = bar.open ? (chgAbs / bar.open * 100) : 0;
+    const cls = chgPct >= 0 ? 'pos' : 'neg';
+    const fmtVol = v => v ? (v >= 1e6 ? (v / 1e6).toFixed(1) + 'M' : (v / 1e3).toFixed(0) + 'K') : '—';
+    ohlcvBox.innerHTML = `
+      <div class="ohlcv-row1"><span class="ohlcv-sym">${opts.sym}</span><span class="ohlcv-date">${bar.date}</span></div>
+      <div class="ohlcv-row2">
+        <span>O <b>${bar.open.toFixed(2)}</b></span>
+        <span>H <b>${bar.high.toFixed(2)}</b></span>
+        <span>L <b>${bar.low.toFixed(2)}</b></span>
+        <span>C <b>${bar.close.toFixed(2)}</b></span>
+        <span class="${cls}"><b>${chgAbs >= 0 ? '+' : ''}${chgAbs.toFixed(2)} (${chgPct >= 0 ? '+' : ''}${chgPct.toFixed(2)}%)</b></span>
+        <span>Vol <b>${fmtVol(bar.volume)}</b></span>
+      </div>
+    `;
+  }
+
+  function updateMeasurePopup() {
+    if (!state.measure || state.measure.startIdx == null || state.measure.endIdx == null ||
+        state.measure.startIdx === state.measure.endIdx) {
+      measurePopup.style.display = 'none';
+      return;
+    }
+    const a = bars[state.measure.startIdx];
+    const b = bars[state.measure.endIdx];
+    if (!a || !b) { measurePopup.style.display = 'none'; return; }
+    const start = a.close, end = b.close;
+    const chgAbs = end - start;
+    const chgPct = start ? (chgAbs / start) * 100 : 0;
+    const barsSpan = Math.abs(state.measure.endIdx - state.measure.startIdx);
+    const days = Math.abs((new Date(b.date) - new Date(a.date)) / 86400000);
+    const annualized = days > 0 ? (Math.pow(1 + chgPct / 100, 365 / days) - 1) * 100 : 0;
+    const cls = chgPct >= 0 ? 'pos' : 'neg';
+    measurePopup.innerHTML = `
+      <div class="mp-row1">${a.date} → ${b.date}</div>
+      <div class="mp-row2">${days.toFixed(0)} 日 · ${barsSpan} bars</div>
+      <div class="mp-row3 ${cls}">${chgAbs >= 0 ? '+' : ''}${chgAbs.toFixed(2)} (${chgAbs >= 0 ? '+' : ''}${chgPct.toFixed(2)}%)</div>
+      <div class="mp-row4">Annualized ${annualized >= 0 ? '+' : ''}${annualized.toFixed(1)}%</div>
+    `;
+    measurePopup.style.display = 'block';
+  }
+
+  function showNewsPopup(date, clientX, clientY) {
+    const news = opts.newsHistory?.[date];
+    if (!news) { newsPopup.style.display = 'none'; return; }
+    const containerRect = container.getBoundingClientRect();
+    newsPopup.innerHTML = `
+      <div class="news-popup-header">
+        <span class="news-popup-date">${opts.sym} · ${date}</span>
+        <button class="news-popup-close" type="button">×</button>
+      </div>
+      <div class="news-popup-body">${typeof mdNewsToHtml === 'function' ? mdNewsToHtml(news.detail || news.title || '') : (news.detail || news.title || '')}</div>
+    `;
+    newsPopup.style.display = 'block';
+    // Position to avoid overflow
+    const popupW = 360;
+    let left = clientX - containerRect.left + 12;
+    if (left + popupW > container.clientWidth) left = container.clientWidth - popupW - 8;
+    if (left < 8) left = 8;
+    let top = clientY - containerRect.top + 12;
+    newsPopup.style.left = left + 'px';
+    newsPopup.style.top = top + 'px';
+    newsPopup.querySelector('.news-popup-close').onclick = () => { newsPopup.style.display = 'none'; };
+  }
+
+  // ============ EVENT HANDLERS ============
+  function clientToSvgCoords(clientX, clientY) {
+    const rect = svg.getBoundingClientRect();
+    return {
+      px: (clientX - rect.left) * (W / rect.width),
+      py: (clientY - rect.top)  * (H / rect.height),
+    };
+  }
+  function clientToBarIdx(clientX) {
+    const { px } = clientToSvgCoords(clientX, 0);
+    const N = state.visibleEnd - state.visibleStart + 1;
+    if (N <= 1) return 0;
+    const ratio = Math.max(0, Math.min(1, (px - padL) / plotW));
+    return Math.round(ratio * (N - 1));
+  }
+
+  function onSvgMouseMove(e) {
+    const { px, py } = clientToSvgCoords(e.clientX, e.clientY);
+    const inMain = (px >= padL && px <= W - padR && py >= mainTop && py <= volBottom);
+    if (inMain) {
+      state.crosshair = { px, py, barIdx: clientToBarIdx(e.clientX) };
+    } else {
+      state.crosshair = null;
+    }
+    if (state.isMeasuring && state.crosshair) {
+      state.measure = { startIdx: state.measure.startIdx, endIdx: state.visibleStart + state.crosshair.barIdx };
+    }
+    render();
+  }
+  function onSvgMouseLeave() {
+    if (!state.isMeasuring) state.crosshair = null;
+    render();
+  }
+
+  function onSvgWheel(e) {
+    e.preventDefault();
+    const currentVisible = state.visibleEnd - state.visibleStart + 1;
+    const factor = e.deltaY < 0 ? 0.82 : 1.22;
+    let newVisible = Math.round(currentVisible * factor);
+    newVisible = Math.max(8, Math.min(bars.length, newVisible));
+    // Keep right edge fixed (zoom anchors at most-recent)
+    state.visibleStart = Math.max(0, state.visibleEnd - newVisible + 1);
+    render();
+  }
+
+  function onSvgMouseDown(e) {
+    // News-marker click → handled separately on click event
+    if (e.target.closest('.news-marker-group')) return;
+    if (e.target.classList?.contains('candle-y-axis-zone')) {
+      state.isDraggingY = true;
+      state.yDragStartClientY = e.clientY;
+      state.yDragStartScale = state.yManualScale;
+      e.preventDefault();
+      return;
+    }
+    // Otherwise start measure (chart drag)
+    e.preventDefault();
+    const barIdx = clientToBarIdx(e.clientX);
+    state.isMeasuring = true;
+    state.measure = { startIdx: state.visibleStart + barIdx, endIdx: state.visibleStart + barIdx };
+  }
+  function onSvgClick(e) {
+    const grp = e.target.closest('.news-marker-group');
+    if (grp) {
+      e.stopPropagation();
+      showNewsPopup(grp.dataset.date, e.clientX, e.clientY);
+    }
+  }
+  function onDocMouseMove(e) {
+    if (state.isDraggingY) {
+      const dy = e.clientY - state.yDragStartClientY;
+      // Drag down = compress (smaller scale), drag up = expand (larger scale)
+      // Actually TradingView: drag down on right axis = ZOOM IN (smaller range visible), drag up = zoom out.
+      // Smaller scale value = smaller half-range = zoom in. So dy > 0 → scale decrease.
+      const factor = Math.exp(-dy / 250);
+      state.yManualScale = Math.max(0.15, Math.min(8, state.yDragStartScale * factor));
+      render();
+    }
+  }
+  function onDocMouseUp(e) {
+    if (state.isDraggingY) state.isDraggingY = false;
+    if (state.isMeasuring) {
+      state.isMeasuring = false;
+      // Clear if no movement (single click, not drag)
+      if (state.measure && state.measure.startIdx === state.measure.endIdx) {
+        state.measure = null;
+        render();
+      }
+    }
+  }
+  function onDocClick(e) {
+    // Click outside the chart container OR outside news popup → close popup
+    if (!container.contains(e.target)) return;
+    if (newsPopup.style.display === 'block' &&
+        !newsPopup.contains(e.target) &&
+        !e.target.closest('.news-marker-group')) {
+      newsPopup.style.display = 'none';
+    }
+  }
+
+  // Bind
+  svg.addEventListener('mousemove', onSvgMouseMove);
+  svg.addEventListener('mouseleave', onSvgMouseLeave);
+  svg.addEventListener('wheel', onSvgWheel, { passive: false });
+  svg.addEventListener('mousedown', onSvgMouseDown);
+  svg.addEventListener('click', onSvgClick);
+  document.addEventListener('mousemove', onDocMouseMove);
+  document.addEventListener('mouseup', onDocMouseUp);
+  document.addEventListener('click', onDocClick, true);
+
+  // Register cleanup so a re-render disposes these handlers.
+  const dispose = () => {
+    document.removeEventListener('mousemove', onDocMouseMove);
+    document.removeEventListener('mouseup', onDocMouseUp);
+    document.removeEventListener('click', onDocClick, true);
+  };
+  __candleChartRegistry.set(container, { dispose });
+
+  // Initial paint
+  render();
 }
 
 function renderChart(c) {
