@@ -3162,7 +3162,15 @@ function buildStockNavList(source) {
     }
     return { list: deduped, label: 'GAPPERS' };
   }
-  // 5. Earnings page — DATA.stocks where type in (earnings, guidance)
+  // 5. Short Squeeze — stocks with shortRatio present, sorted by DTC desc (matches default table sort)
+  if (source === 'squeeze') {
+    const arr = Object.values(DATA.stocks)
+      .filter(s => s.shortRatio != null)
+      .sort((a, b) => b.shortRatio - a.shortRatio)
+      .map(s => ({ id: s.symbol, label: s.symbol }));
+    return { list: arr, label: 'Short Squeeze' };
+  }
+  // 6. Earnings page — DATA.stocks where type in (earnings, guidance)
   if (source === 'earnings') {
     const arr = Object.entries(DATA.stocks)
       .filter(([_, st]) => st.type === 'earnings' || st.type === 'guidance')
@@ -3360,8 +3368,29 @@ function renderCalendar() {
   });
 }
 
-function makeTable(container, rows, columns, defaultSortIdx, defaultDesc) {
+// Generic sortable table renderer. Pass a `sortKey` string to persist the user's
+// chosen sort column+direction across page navigation (e.g. clicking into a stock
+// detail then coming back). The state is stored in localStorage under
+// `sips-table-sort-<sortKey>`. Without sortKey, behaves exactly like before.
+function makeTable(container, rows, columns, defaultSortIdx, defaultDesc, sortKey) {
   let sortIdx = defaultSortIdx, sortDir = (defaultDesc === true) ? -1 : 1;
+  // Restore prior sort if a key was supplied.
+  if (sortKey) {
+    try {
+      const saved = localStorage.getItem('sips-table-sort-' + sortKey);
+      if (saved) {
+        const [savedIdx, savedDir] = saved.split(',').map(Number);
+        if (Number.isInteger(savedIdx) && savedIdx >= 0 && savedIdx < columns.length) {
+          sortIdx = savedIdx;
+          sortDir = savedDir === 1 ? 1 : -1;
+        }
+      }
+    } catch (_) { /* localStorage may be unavailable; fall back to defaults */ }
+  }
+  const _persist = () => {
+    if (!sortKey) return;
+    try { localStorage.setItem('sips-table-sort-' + sortKey, `${sortIdx},${sortDir}`); } catch (_) {}
+  };
   let isFirstRender = true;
   function render() {
     const sorted = [...rows].sort((a, b) => {
@@ -3395,6 +3424,7 @@ function makeTable(container, rows, columns, defaultSortIdx, defaultDesc) {
         const i = +th.dataset.i;
         if (i === sortIdx) sortDir = -sortDir;
         else { sortIdx = i; sortDir = -1; }
+        _persist();
         render();
       };
     });
@@ -4016,7 +4046,7 @@ function renderEarnings() {
       wrap.innerHTML = `<div class="panel-header">Pre-Market / Post-Market</div><div class="panel-body"></div>`;
       stack.appendChild(wrap);
       body = wrap.querySelector('.panel-body');
-      makeTable(body, combined, combinedCols, 11, true);   // default sort: YoY Rev desc
+      makeTable(body, combined, combinedCols, 11, true, 'earnings-combined');   // default sort: YoY Rev desc
     } else {
       const sess = active.has('pre') ? 'pre' : 'post';
       const data = sess === 'pre' ? pre : post;
@@ -4025,7 +4055,7 @@ function renderEarnings() {
       wrap.innerHTML = `<div class="panel-body"></div>`;
       stack.appendChild(wrap);
       body = wrap.querySelector('.panel-body');
-      makeTable(body, data, baseCols, 10, true);   // default sort: YoY Rev desc
+      makeTable(body, data, baseCols, 10, true, 'earnings-base');   // default sort: YoY Rev desc
     }
     bindEarningsRowClicks(body);
     new MutationObserver(() => bindEarningsRowClicks(body)).observe(body, { childList: true, subtree: true });
@@ -4069,15 +4099,14 @@ async function renderCatalyst() {
     { label: 'Type', sortVal: r => r.type, render: r => `<td><span class="tag ${typeTagClass(r.type)}">${r.type}</span></td>` },
     { label: 'Catalyst', sortVal: r => r.catalyst, render: r => `<td style="font-size:13px;line-height:1.5;max-width:600px;color:var(--body)">${escapeHtml(r.catalyst)}</td>` },
   ];
-  makeTable(document.getElementById('cat-panel'), rows, cols, 2, true);
+  makeTable(document.getElementById('cat-panel'), rows, cols, 2, true, 'catalyst');
   // Make the whole row clickable as a button → stock detail page
   const panel = document.getElementById('cat-panel');
   function bindRowClicks() {
     panel.querySelectorAll('tbody tr').forEach((tr, i) => {
       tr.style.cursor = 'pointer';
+      tr.dataset.navSource = 'catalyst';   // captured by document click handler
       tr.onclick = (e) => {
-        // The td.sym contains <text>SYMBOL</text><span class="day-badge">day2</span>
-        // so .textContent returns "AIIOday2" — strip everything after the first run of ticker chars.
         const raw = tr.querySelector('td.sym')?.textContent || '';
         const sym = raw.match(/^[A-Z][A-Z0-9.\-]*/)?.[0];
         if (sym) location.hash = buildRouteHash('stock/' + sym);
@@ -4149,12 +4178,12 @@ function renderSqueeze() {
   ];
 
   // Default sort: DTC desc (col index 2).
-  makeTable(body, rows, cols, 2, true);
+  makeTable(body, rows, cols, 2, true, 'squeeze');
 
   function bindClicks() {
     body.querySelectorAll('tbody tr').forEach(tr => {
       tr.style.cursor = 'pointer';
-      tr.dataset.navSource = 'catalyst';   // captured by document click handler
+      tr.dataset.navSource = 'squeeze';   // captured by document click handler
       tr.onclick = () => {
         const raw = tr.querySelector('td.sym')?.textContent || '';
         const sym = raw.match(/^[A-Z][A-Z0-9.\-]*/)?.[0];
@@ -4258,7 +4287,7 @@ function renderGappers() {
     else if (passFilter === 'failed') data = data.filter(r => !r.passedFilter);
     document.querySelectorAll('.subtab[data-dir]').forEach(t => t.classList.toggle('active', t.dataset.dir === dirFilter));
     document.querySelectorAll('.subtab[data-pass]').forEach(t => t.classList.toggle('active', t.dataset.pass === passFilter));
-    makeTable(panel, data, cols, 4, true);   // default sort: |%Chg| desc (col idx 4)
+    makeTable(panel, data, cols, 4, true, 'gappers');   // default sort: |%Chg| desc (col idx 4)
     bindRows();
   }
   document.querySelectorAll('.subtab[data-dir]').forEach(t => { t.onclick = () => { dirFilter = t.dataset.dir; rerender(); }; });
