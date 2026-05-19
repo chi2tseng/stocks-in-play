@@ -2825,12 +2825,9 @@ function pickCardHtml(s, idx, sourceKey = 'claude') {
   const mismatchBanner = s._pickDirMismatch
     ? `<div class="dir-mismatch-banner">⚠️ 方向不符：intent=<b>${intent}</b> 但 chgPct=${fmtPctShort(s.chgPct)}</div>`
     : '';
-  // Mini candle chart — 3-month preview (~60 bars), no interactivity.
-  // candleChartMiniHtml handles the slice to STATE.date and the 60-bar cap.
-  const candleBars = STATE.candles?.[s.symbol];
-  const miniCandle = candleBars
-    ? candleChartMiniHtml(candleBars, { endDate: STATE.date })
-    : '';
+  // (Mini preview candle chart removed per user request — too much vertical
+  // real estate for a thumbnail. Full chart still shown on the stock-detail page.)
+  const miniCandle = '';
   return `<a class="sip-card ${src.cssClass} ${isFeatured ? 'featured' : ''} ${s._pickDirMismatch ? 'dir-mismatch' : ''}" href="${buildRouteHash('stock/' + s.symbol)}" style="text-decoration:none;color:inherit;display:block;position:relative">
     ${saveStudyBtnHtml(s.symbol, rationale, intent)}
     <span class="sip-rank-row"><span class="sip-rank ${src.rankClass}">#${idx + 1}</span>${dayBadgeHtml(s)}</span>
@@ -4142,21 +4139,36 @@ function renderCandleChartFull(container, allBars, opts = {}) {
   let _adjMin = 0, _adjMax = 0;
 
   // Build DOM scaffold once; mutated on each render.
-  // (help-hint removed per user request — controls are intuitive enough)
+  // Notes:
+  //   • help-hint removed per user request
+  //   • news popup is NOT in the container — see getNewsPopupSingleton below.
+  //     Putting position:fixed elements inside a container whose ancestors may
+  //     have transform / filter creates a new "containing block" for fixed
+  //     descendants, which broke the popup positioning (popup ended up far
+  //     from the marker). Lifting the popup to <body> avoids that entirely.
   container.innerHTML = `
     <div class="candle-chart-wrap">
       <svg class="candle-chart candle-chart-full" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet"></svg>
       <div class="candle-ohlcv-display"></div>
       <div class="candle-measure-popup" style="display:none"></div>
-      <div class="candle-news-popup" style="display:none">
-        <div class="news-popup-arrow"></div>
-      </div>
     </div>
   `;
   const svg = container.querySelector('svg');
   const ohlcvBox = container.querySelector('.candle-ohlcv-display');
   const measurePopup = container.querySelector('.candle-measure-popup');
-  const newsPopup = container.querySelector('.candle-news-popup');
+  // Singleton popup at <body> level so position:fixed coords map directly to
+  // viewport. Lazy-created and reused across all chart instances.
+  const newsPopup = (function getNewsPopupSingleton() {
+    let p = document.getElementById('candle-news-popup-singleton');
+    if (!p) {
+      p = document.createElement('div');
+      p.id = 'candle-news-popup-singleton';
+      p.className = 'candle-news-popup';
+      p.style.display = 'none';
+      document.body.appendChild(p);
+    }
+    return p;
+  })();
 
   // ============ RENDER ============
   function render() {
