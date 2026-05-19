@@ -2129,7 +2129,10 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .candle-down { fill: var(--neg); stroke: var(--neg); stroke-width: 1; }
 body.dark .candle-up   { fill: #4cd2a0; stroke: #4cd2a0; }
 body.dark .candle-down { fill: #ff5a6e; stroke: #ff5a6e; }
-.candle-chart-mini { height: 56px; margin-top: 8px; }
+/* Mini preview chart — height bumped 56→100px so candles aren't squashed.
+   ViewBox is still 280x56 with preserveAspectRatio="none", so candles
+   stretch vertically to fill — matches the detail page's main pane ratio. */
+.candle-chart-mini { height: 100px; margin-top: 8px; }
 .candle-chart-full { height: auto; cursor: crosshair; }
 
 /* Axes (full mode) */
@@ -2146,8 +2149,10 @@ body.dark .candle-down { fill: #ff5a6e; stroke: #ff5a6e; }
 .candle-crosshair-label-text { fill: var(--canvas); font-size: 10px; font-family: var(--font-mono); font-weight: 600; pointer-events: none; }
 body.dark .candle-crosshair-label-text { fill: var(--surface); }
 
-/* Right-axis hot zone (drag to compress / expand Y) */
-.candle-y-axis-zone:hover { fill: rgba(73,79,223,0.04); }
+/* Right-axis hot zones — drag down = shrink, drag up = enlarge (matches TC2000).
+   Separate zones for the price pane and the volume pane below it. */
+.candle-y-axis-zone:hover,
+.candle-vol-y-axis-zone:hover { fill: rgba(73,79,223,0.04); }
 
 /* News markers (clickable circles below volume pane) */
 .news-marker-circle { fill: var(--primary); stroke: var(--surface); stroke-width: 2; transition: r 120ms; }
@@ -2194,8 +2199,10 @@ body.dark .candle-crosshair-label-text { fill: var(--surface); }
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
   min-width: 170px;
 }
-.candle-measure-popup.mp-left  { left: 8px;  right: auto; }
-.candle-measure-popup.mp-right { right: 70px; left: auto; }
+/* Top offset 52px keeps the measure popup BELOW the OHLCV display
+   (which sits at top:6px and is ~36px tall) instead of overlapping it. */
+.candle-measure-popup.mp-left  { left: 8px;  right: auto; top: 52px; }
+.candle-measure-popup.mp-right { right: 70px; left: auto; top: 52px; }
 .candle-measure-popup .mp-row1 { font-size: 10px; color: rgba(255,255,255,0.6); font-weight: 600; }
 .candle-measure-popup .mp-row2 { font-size: 10px; color: rgba(255,255,255,0.5); }
 .candle-measure-popup .mp-row-price { font-size: 10px; color: rgba(255,255,255,0.7); font-weight: 600; margin-top: 1px; }
@@ -2203,36 +2210,74 @@ body.dark .candle-crosshair-label-text { fill: var(--surface); }
 .candle-measure-popup .mp-row3.pos { color: #4cd2a0; }
 .candle-measure-popup .mp-row3.neg { color: #ff5a6e; }
 
-/* News popup (when clicking a news marker) */
+/* News popup (when clicking a news marker) — mirrors the .news-detail card's
+   typography (color: var(--body), strong: var(--ink) at weight 700) so the
+   content reads as the same design system as the in-page news cards.
+   All inner styles use the .candle-news-popup ancestor selector and a few
+   !important fences to neutralize any inherited float / text-align from
+   surrounding card styles. */
 .candle-news-popup {
   position: absolute; z-index: 10;
-  width: 360px; max-width: 90%;
+  width: 400px; max-width: 92%;
   background: var(--surface-elevated); border: 1px solid var(--hairline);
   border-radius: var(--r-md); padding: 0;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  font-size: 12px; color: var(--ink);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.16);
+  font-size: 13px; color: var(--ink);
   pointer-events: auto;
+  text-align: left;
 }
 .candle-news-popup .news-popup-header {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 14px; border-bottom: 1px solid var(--hairline-soft);
+  padding: 11px 14px; border-bottom: 1px solid var(--hairline-soft);
   background: var(--canvas);
 }
-.candle-news-popup .news-popup-date { font-weight: 700; font-family: var(--font-mono); font-size: 12px; }
+.candle-news-popup .news-popup-date {
+  font-weight: 700; font-family: var(--font-mono); font-size: 13px;
+  color: var(--ink);
+}
 .candle-news-popup .news-popup-close {
-  background: none; border: none; cursor: pointer; font-size: 20px;
+  background: none; border: none; cursor: pointer; font-size: 22px;
   color: var(--mute); line-height: 1; padding: 0 4px;
 }
 .candle-news-popup .news-popup-close:hover { color: var(--ink); }
 .candle-news-popup .news-popup-body {
-  padding: 12px 14px; max-height: 240px; overflow-y: auto;
-  font-size: 12.5px; line-height: 1.65;
+  padding: 14px 16px; max-height: 280px; overflow-y: auto;
+  text-align: left !important;
 }
-.candle-news-popup .news-popup-body p { margin: 0 0 8px; }
-.candle-news-popup .news-popup-body strong { color: var(--primary); }
+.candle-news-popup .news-popup-body p {
+  display: block !important;
+  margin: 0 0 12px !important;
+  text-align: left !important;
+  font-size: 13.5px;
+  line-height: 1.72;
+  color: var(--body);
+  font-weight: 400;
+  word-break: break-word;
+  float: none !important;
+}
+.candle-news-popup .news-popup-body p:last-child { margin-bottom: 0 !important; }
+.candle-news-popup .news-popup-body strong {
+  display: inline !important;
+  float: none !important;
+  color: var(--ink) !important;
+  font-weight: 700 !important;
+  text-align: inherit !important;
+}
+.candle-news-popup .news-popup-body blockquote {
+  display: block !important;
+  margin: 0 0 12px !important;
+  padding: 8px 12px;
+  background: var(--canvas);
+  border-left: 3px solid var(--mute);
+  color: var(--mute);
+  font-size: 12.5px;
+  font-style: normal;
+  text-align: left !important;
+}
 .candle-news-popup .news-popup-footer {
   padding: 10px 14px; border-top: 1px solid var(--hairline-soft);
   background: var(--canvas);
+  border-radius: 0 0 var(--r-md) var(--r-md);
 }
 .candle-news-popup .news-popup-link {
   display: inline-block; font-size: 12px; font-weight: 600;
@@ -2242,19 +2287,21 @@ body.dark .candle-crosshair-label-text { fill: var(--surface); }
   transition: background 120ms;
 }
 .candle-news-popup .news-popup-link:hover { background: rgba(73,79,223,0.18); }
-/* Small triangle pointing down from popup to news marker — visual link cue */
-.candle-news-popup::after {
-  content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
-  width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent;
-  border-top: 8px solid var(--surface-elevated);
+/* Arrow — pseudo replaced by a real element so its X position can be set
+   dynamically (so the arrow keeps pointing at the marker even when the
+   popup got shifted to fit in the container). */
+.candle-news-popup .news-popup-arrow {
+  position: absolute; width: 0; height: 0;
+  border-left: 8px solid transparent; border-right: 8px solid transparent;
+}
+.candle-news-popup .news-popup-arrow.arrow-down {
+  bottom: -8px; border-top: 8px solid var(--surface-elevated);
+}
+.candle-news-popup .news-popup-arrow.arrow-up {
+  top: -8px; border-bottom: 8px solid var(--surface-elevated);
 }
 
-/* Tiny help text at the bottom-right of the chart */
-.candle-help-hint {
-  position: absolute; bottom: 4px; left: 8px;
-  font-size: 10px; color: var(--stone); font-family: var(--font-body);
-  pointer-events: none; opacity: 0.65;
-}
+/* (help hint removed per user request) */
 
 #chart-tooltip .ct-q { font-size: 11px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.6px; font-weight: 700; margin-bottom: 6px; }
 #chart-tooltip .ct-row { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
@@ -4493,8 +4540,10 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     visibleStart: 0,
     visibleEnd: bars.length - 1,
     yManualScale: 1.0,
-    crosshair: null,           // {px, py, barIdx (relative to visible)} | null
+    volManualScale: 1.0,        // independent Y zoom for the volume sub-pane
+    crosshair: null,
     isDraggingY: false,
+    isDraggingVolY: false,
     yDragStartClientY: 0,
     yDragStartScale: 1,
     isMeasuring: false,
@@ -4509,7 +4558,9 @@ function renderCandleChartFull(container, allBars, opts = {}) {
   const W = 940, H = 520;
   const padL = 4, padR = 64, padT = 28, padB = 30;
   const volH = 90, newsRowH = 24, separatorMargin = 18;
-  const rightInset = 28;
+  // rightInset 28 → 56: keep more breathing room between the latest candle and
+  // the right-side price axis (the original ~28px was still too cramped).
+  const rightInset = 56;
   const mainTop = padT;
   const mainBottom = H - padB - volH - newsRowH - separatorMargin;
   const mainH = mainBottom - mainTop;
@@ -4526,13 +4577,15 @@ function renderCandleChartFull(container, allBars, opts = {}) {
   let _adjMin = 0, _adjMax = 0;
 
   // Build DOM scaffold once; mutated on each render.
+  // (help-hint removed per user request — controls are intuitive enough)
   container.innerHTML = `
     <div class="candle-chart-wrap">
       <svg class="candle-chart candle-chart-full" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet"></svg>
       <div class="candle-ohlcv-display"></div>
       <div class="candle-measure-popup" style="display:none"></div>
-      <div class="candle-news-popup" style="display:none"></div>
-      <div class="candle-help-hint">滾輪: 縮放橫軸 · 拖曳右側價格軸: 縮放縱軸 · 拖曳圖表: 測量</div>
+      <div class="candle-news-popup" style="display:none">
+        <div class="news-popup-arrow"></div>
+      </div>
     </div>
   `;
   const svg = container.querySelector('svg');
@@ -4558,10 +4611,12 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     const adjMax = yMid + halfRange;
     _adjMin = adjMin; _adjMax = adjMax;
 
-    // Volume range
+    // Volume range — volManualScale lets the user expand/compress the volume
+    // sub-pane independently of price (matches TradingView behavior).
     let vMax = 0;
     for (const b of vis) if ((b.volume || 0) > vMax) vMax = b.volume;
     if (vMax === 0) vMax = 1;
+    vMax *= state.volManualScale;   // scale > 1 = bigger ceiling = smaller bars
 
     const candleW = Math.max(1, (effectivePlotW / N) * 0.72);
     // X bars use effectivePlotW so the rightmost candle is rightInset px before the axis.
@@ -4697,8 +4752,9 @@ function renderCandleChartFull(container, allBars, opts = {}) {
       }
     }
 
-    // 11. Right-axis hot zone (Y drag-zoom)
+    // 11. Right-axis hot zones (Y drag-zoom) — separate for price + volume panes.
     parts.push(`<rect class="candle-y-axis-zone" x="${W - padR}" y="${mainTop}" width="${padR}" height="${mainH}" fill="transparent" style="cursor:ns-resize"/>`);
+    parts.push(`<rect class="candle-vol-y-axis-zone" x="${W - padR}" y="${volTop}" width="${padR}" height="${volH}" fill="transparent" style="cursor:ns-resize"/>`);
 
     svg.innerHTML = parts.join('');
     updateOHLCV();
@@ -4777,6 +4833,7 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     const linkHash = news.sourceLink || ('#/' + date + '/stock/' + opts.sym);
     const linkLabel = news.sourceType === 'study' ? '📚 開啟 Study 詳細頁' : `📊 開啟 ${date} 詳細頁`;
     newsPopup.innerHTML = `
+      <div class="news-popup-arrow"></div>
       <div class="news-popup-header">
         <span class="news-popup-date">${opts.sym} · ${date}</span>
         <button class="news-popup-close" type="button">×</button>
@@ -4787,8 +4844,9 @@ function renderCandleChartFull(container, allBars, opts = {}) {
       </div>
     `;
     newsPopup.style.display = 'block';
-    // Position ABOVE the marker, centered horizontally on it. Need to measure
-    // popup after it's visible to know its height (so we can place top correctly).
+    // Position popup so its horizontal center sits ON the marker. If that would
+    // overflow the container, shift to fit; the arrow at the bottom of the popup
+    // is then moved to still point at the marker correctly.
     const svgRect = svg.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
     const markerScreenX = svgRect.left + markerSvgX * (svgRect.width / W);
@@ -4796,15 +4854,28 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     const popupRect = newsPopup.getBoundingClientRect();
     const popupW = popupRect.width;
     const popupH = popupRect.height;
-    let left = markerScreenX - containerRect.left - popupW / 2;
+    const markerInContainerX = markerScreenX - containerRect.left;
+    const markerInContainerY = markerScreenY - containerRect.top;
+    let left = markerInContainerX - popupW / 2;
     if (left < 8) left = 8;
     if (left + popupW > container.clientWidth - 8) left = container.clientWidth - popupW - 8;
-    // Default: place popup so its bottom is 14px above the marker (price-area side)
-    let top = markerScreenY - containerRect.top - popupH - 14;
-    // Fallback: if not enough room above, place below the marker
-    if (top < 8) top = markerScreenY - containerRect.top + 24;
+    // Try ABOVE the marker first (price area side). Fall back to below.
+    let top = markerInContainerY - popupH - 14;
+    let arrowAtBottom = true;
+    if (top < 8) {
+      top = markerInContainerY + 22;
+      arrowAtBottom = false;
+    }
     newsPopup.style.left = left + 'px';
     newsPopup.style.top  = top + 'px';
+    // Position arrow to still point at the marker even if popup was shifted.
+    const arrow = newsPopup.querySelector('.news-popup-arrow');
+    if (arrow) {
+      const arrowX = Math.max(12, Math.min(popupW - 12, markerInContainerX - left));
+      arrow.style.left = (arrowX - 8) + 'px';   // 8 = half of arrow base
+      arrow.classList.toggle('arrow-down', arrowAtBottom);
+      arrow.classList.toggle('arrow-up',   !arrowAtBottom);
+    }
     newsPopup.querySelector('.news-popup-close').onclick = () => { newsPopup.style.display = 'none'; };
   }
 
@@ -4820,7 +4891,8 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     const { px } = clientToSvgCoords(clientX, 0);
     const N = state.visibleEnd - state.visibleStart + 1;
     if (N <= 1) return 0;
-    const ratio = Math.max(0, Math.min(1, (px - padL) / plotW));
+    // Use effectivePlotW (matches xScale) so crosshair perfectly tracks cursor.
+    const ratio = Math.max(0, Math.min(1, (px - padL) / effectivePlotW));
     return Math.round(ratio * (N - 1));
   }
 
@@ -4889,6 +4961,13 @@ function renderCandleChartFull(container, allBars, opts = {}) {
       e.preventDefault();
       return;
     }
+    if (e.target.classList?.contains('candle-vol-y-axis-zone')) {
+      state.isDraggingVolY = true;
+      state.yDragStartClientY = e.clientY;
+      state.yDragStartScale = state.volManualScale;
+      e.preventDefault();
+      return;
+    }
     e.preventDefault();
     const { px, py } = clientToSvgCoords(e.clientX, e.clientY);
     if (px < padL || px > W - padR || py < mainTop || py > mainBottom) return;
@@ -4909,26 +4988,30 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     }
   }
   function onDocMouseMove(e) {
-    if (state.isDraggingY) {
+    if (state.isDraggingY || state.isDraggingVolY) {
       const dy = e.clientY - state.yDragStartClientY;
-      // Drag down = compress (smaller scale), drag up = expand (larger scale)
-      // Actually TradingView: drag down on right axis = ZOOM IN (smaller range visible), drag up = zoom out.
-      // Smaller scale value = smaller half-range = zoom in. So dy > 0 → scale decrease.
-      const factor = Math.exp(-dy / 250);
-      state.yManualScale = Math.max(0.15, Math.min(8, state.yDragStartScale * factor));
+      // Per user spec: drag DOWN → shrink (larger range visible, smaller bars);
+      //                drag UP   → enlarge (smaller range visible, bigger bars).
+      // scale > 1 = wider range = bars shrink → factor = exp(+dy/250) gives this.
+      const factor = Math.exp(dy / 250);
+      if (state.isDraggingY) {
+        state.yManualScale = Math.max(0.15, Math.min(8, state.yDragStartScale * factor));
+      }
+      if (state.isDraggingVolY) {
+        state.volManualScale = Math.max(0.15, Math.min(8, state.yDragStartScale * factor));
+      }
       render();
     }
   }
   function onDocMouseUp(e) {
-    if (state.isDraggingY) state.isDraggingY = false;
+    if (state.isDraggingY)    state.isDraggingY = false;
+    if (state.isDraggingVolY) state.isDraggingVolY = false;
     if (state.isMeasuring) {
       state.isMeasuring = false;
-      // Clear if no horizontal movement (single click, not a drag).
-      if (state.measure && state.measure.start && state.measure.end &&
-          state.measure.start.idx === state.measure.end.idx) {
-        state.measure = null;
-        render();
-      }
+      // Per user spec: measure overlay disappears the instant the user releases
+      // the mouse button (was: persisted until next interaction).
+      state.measure = null;
+      render();
     }
   }
   function onDocClick(e) {
