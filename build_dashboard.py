@@ -3365,15 +3365,37 @@ function openSipsFilterPopup(btn, subtab) {
   pop.style.top = `${rect.bottom + 6}px`;
   pop.style.left = `${Math.min(rect.left, window.innerWidth - 312)}px`;
   pop.style.zIndex = '1500';
-  // Build counts from the current TODAY's data + the day-label map.
-  // __sipsFirstSeenCache is populated by renderSips() right before painting,
-  // so the popup almost always has it. Fallback: day labels default to day1.
-  const rowsForCount = Object.values(DATA.stocks).map(s => ({ ...s, _dayLabel: 'day1' }));
+  // Count rows from THE CURRENT TAB's visible row-set, not all DATA.stocks.
+  //   • magna tab   → MAGNA53 top-12 (score >= 4)
+  //   • picks tabs  → that agent's picks (intersected with DATA.stocks)
+  // This matches the counts the user sees in the rendered grid.
+  const bySym = DATA.stocks || {};
+  let rowsForCount = [];
+  const isPicksTab = (subtab === 'claude' || subtab === 'codex' || subtab === 'gemini');
+  if (subtab === 'magna') {
+    const all = Object.values(bySym).map(s => ({ ...s, _m53: magna53(s) }));
+    all.sort((a, b) => b._m53.score - a._m53.score);
+    rowsForCount = all.filter(r => r._m53.score >= 4).slice(0, 12);
+  } else if (isPicksTab) {
+    const pickArrayField = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks' }[subtab];
+    const picks = Array.isArray(DATA[pickArrayField]) ? DATA[pickArrayField] : [];
+    rowsForCount = picks
+      .map(p => bySym[p.symbol] ? { ...bySym[p.symbol], _pickIntent: p.intent || 'long' } : null)
+      .filter(Boolean);
+  } else {
+    rowsForCount = Object.values(bySym);
+  }
+  // Apply day labels (cached firstSeen map populated by renderSips).
   if (__sipsFirstSeenCache) {
     for (const r of rowsForCount) r._dayLabel = dayLabelWithReset(r.symbol, __sipsFirstSeenCache, DATA.date);
+  } else {
+    for (const r of rowsForCount) r._dayLabel = 'day1';
   }
-  const longCount  = rowsForCount.filter(r => r.chgPct > 0).length;
-  const shortCount = rowsForCount.filter(r => r.chgPct < 0).length;
+  const dirOf = r => isPicksTab
+    ? (r._pickIntent || (r.chgPct > 0 ? 'long' : 'short'))
+    : (r.chgPct > 0 ? 'long' : 'short');
+  const longCount  = rowsForCount.filter(r => dirOf(r) === 'long').length;
+  const shortCount = rowsForCount.filter(r => dirOf(r) === 'short').length;
   const day1Count  = rowsForCount.filter(r => (r._dayLabel || 'day1') === 'day1').length;
   const day2Count  = rowsForCount.filter(r => r._dayLabel === 'day2').length;
   const day3Count  = rowsForCount.filter(r => r._dayLabel === 'day3').length;
