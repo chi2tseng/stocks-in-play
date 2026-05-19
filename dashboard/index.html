@@ -470,12 +470,28 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
   border-radius: 9px; font-size: 11px; font-weight: 700; font-family: var(--font-mono);
 }
 
-/* Filter popup — same patterns as the catalyst-type-popup but wider */
+/* Filter popup — same patterns as the catalyst-type-popup but wider.
+   Includes a fade-in / fade-out transition. Initial state = invisible +
+   small lift; the JS adds .show on the next frame to fade in, and adds
+   .fading on close (then removes the DOM after 180ms). */
 .studies-filter-popup {
   position: absolute; z-index: 1500;
   background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-md);
   box-shadow: 0 14px 40px -10px rgba(15,15,25,0.18);
   width: 280px; padding: 10px; font-family: var(--font-body);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 160ms ease-out, transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.studies-filter-popup.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.studies-filter-popup.fading {
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
 }
 .studies-filter-popup .sf-head {
   display: flex; align-items: center; justify-content: space-between;
@@ -2881,6 +2897,25 @@ function sipsMatchesFilter(s, isPicksTab) {
 // without an extra async fetch.
 let __sipsFirstSeenCache = null;
 
+// ── Filter / sort popup show + dismiss helpers (with fade in/out) ──
+// Shared by the SIPs filter popup, Studies filter popup, Studies sort popup.
+// CSS handles the actual transition; JS toggles .show/.fading classes and
+// schedules removeChild after the transition window so DOM stays clean.
+function showFilterPopup(pop) {
+  // Double rAF: the first frame paints with opacity:0; the next frame
+  // toggles .show so the transition actually animates the change. A single
+  // rAF often skips the transition because the styles get coalesced.
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => pop.classList.add('show'));
+  });
+}
+function dismissFilterPopup(pop) {
+  if (!pop || !pop.parentNode || pop.classList.contains('fading')) return;
+  pop.classList.add('fading');
+  pop.classList.remove('show');
+  setTimeout(() => { try { pop.remove(); } catch (_) {} }, 200);
+}
+
 // Opens the Today's-SIPs filter popup. Three sections:
 //   • Direction (LONG / SHORT)
 //   • Day (day1 / day2 / day3)
@@ -2888,8 +2923,9 @@ let __sipsFirstSeenCache = null;
 // Selecting within a section = OR. Across sections = AND. Mirrors the My
 // Studies filter popup so the UX is consistent.
 function openSipsFilterPopup(btn, subtab) {
-  // Close other popup variants first (only one open at a time).
-  document.querySelectorAll('.sips-filter-popup, .studies-filter-popup').forEach(p => p.remove());
+  // Close other popup variants first (only one open at a time). Fade them out
+  // so the swap between popup types feels smooth.
+  document.querySelectorAll('.sips-filter-popup, .studies-filter-popup').forEach(p => dismissFilterPopup(p));
   const rect = btn.getBoundingClientRect();
   const pop = document.createElement('div');
   pop.className = 'studies-filter-popup sips-filter-popup';
@@ -2994,6 +3030,7 @@ function openSipsFilterPopup(btn, subtab) {
     <div class="sf-options-host">${renderOptions()}</div>
   `;
   document.body.appendChild(pop);
+  showFilterPopup(pop);
   const rerenderPopupAndSips = () => {
     pop.querySelector('.sf-options-host').innerHTML = renderOptions();
     pop.querySelector('.sf-clear').disabled = SIPS_FILTER.size === 0;
@@ -3025,21 +3062,19 @@ function openSipsFilterPopup(btn, subtab) {
   let __leaveTimer = null;
   const __scheduleClose = () => {
     if (__leaveTimer) clearTimeout(__leaveTimer);
-    __leaveTimer = setTimeout(() => { pop.remove(); }, 200);
+    __leaveTimer = setTimeout(() => { dismissFilterPopup(pop); }, 200);
   };
   const __cancelClose = () => {
     if (__leaveTimer) { clearTimeout(__leaveTimer); __leaveTimer = null; }
   };
   pop.addEventListener('mouseleave', __scheduleClose);
   pop.addEventListener('mouseenter', __cancelClose);
-  // Also cancel if user moves mouse over the button (so moving back-and-forth
-  // between button and popup doesn't accidentally trigger close).
   btn.addEventListener('mouseenter', __cancelClose);
   setTimeout(() => {
     const onDocClick = ev => {
       const btnNow = document.getElementById('sips-filter-btn');
       if (!pop.contains(ev.target) && !(btnNow && btnNow.contains(ev.target))) {
-        pop.remove();
+        dismissFilterPopup(pop);
         document.removeEventListener('click', onDocClick);
       }
     };
@@ -3093,8 +3128,8 @@ async function renderSips(subtab) {
   // even when the Claude tab only had 10 picks).
   document.getElementById('sips-filter-btn')?.addEventListener('click', e => {
     e.preventDefault(); e.stopPropagation();
-    const ownPopup = document.querySelector('.sips-filter-popup');
-    if (ownPopup) { ownPopup.remove(); return; }
+    const ownPopup = document.querySelector('.sips-filter-popup:not(.fading)');
+    if (ownPopup) { dismissFilterPopup(ownPopup); return; }
     openSipsFilterPopup(e.currentTarget, tab);
   });
   // Day1/2/3 label: walk previous date snapshots so a ticker that already showed up earlier in the
@@ -5705,13 +5740,11 @@ function renderStudies() {
   document.getElementById('studies-filter-btn')?.addEventListener('click', e => {
     e.preventDefault(); e.stopPropagation();
     // Close OWN popup if it's already open — toggle behavior on the filter button.
-    // Selector excludes .sort-popup so we only match the filter version, not the sort
-    // popup (which shares the .studies-filter-popup class for styling).
-    const ownPopup = document.querySelector('.studies-filter-popup:not(.sort-popup)');
-    if (ownPopup) { ownPopup.remove(); return; }
-    // Otherwise close any OTHER open popup (sort) before opening this one, so the user
-    // doesn't end up with both visible at once.
-    document.querySelector('.studies-filter-popup.sort-popup')?.remove();
+    const ownPopup = document.querySelector('.studies-filter-popup:not(.sort-popup):not(.fading)');
+    if (ownPopup) { dismissFilterPopup(ownPopup); return; }
+    // Otherwise fade out any OTHER open popup (sort) before opening this one.
+    const otherPopup = document.querySelector('.studies-filter-popup.sort-popup:not(.fading)');
+    if (otherPopup) dismissFilterPopup(otherPopup);
     const btn = e.currentTarget;
     const rect = btn.getBoundingClientRect();
     const pop = document.createElement('div');
@@ -5774,6 +5807,7 @@ function renderStudies() {
       <div class="sf-options-host">${renderFilterOptions()}</div>
     `;
     document.body.appendChild(pop);
+    showFilterPopup(pop);
     // Click an option → toggle inclusion
     pop.querySelector('.sf-options-host').addEventListener('click', ev => {
       const opt = ev.target.closest('.sf-option');
@@ -5808,7 +5842,7 @@ function renderStudies() {
     });
     // Auto-close on mouseleave (200ms grace period).
     let __leaveTimer = null;
-    const __scheduleClose = () => { if (__leaveTimer) clearTimeout(__leaveTimer); __leaveTimer = setTimeout(() => { pop.remove(); }, 200); };
+    const __scheduleClose = () => { if (__leaveTimer) clearTimeout(__leaveTimer); __leaveTimer = setTimeout(() => { dismissFilterPopup(pop); }, 200); };
     const __cancelClose = () => { if (__leaveTimer) { clearTimeout(__leaveTimer); __leaveTimer = null; } };
     pop.addEventListener('mouseleave', __scheduleClose);
     pop.addEventListener('mouseenter', __cancelClose);
@@ -5818,7 +5852,7 @@ function renderStudies() {
       const onDocClick = (ev) => {
         const btnNow = document.getElementById('studies-filter-btn');
         if (!pop.contains(ev.target) && !(btnNow && btnNow.contains(ev.target))) {
-          pop.remove();
+          dismissFilterPopup(pop);
           document.removeEventListener('click', onDocClick);
         }
       };
@@ -5830,11 +5864,11 @@ function renderStudies() {
   document.getElementById('studies-sort-btn')?.addEventListener('click', e => {
     e.preventDefault(); e.stopPropagation();
     // Toggle own popup if already open.
-    const ownPopup = document.querySelector('.studies-filter-popup.sort-popup');
-    if (ownPopup) { ownPopup.remove(); return; }
-    // Close the filter popup (the OTHER popup using the shared class) if it's open, so
-    // only one popup is visible at a time — symmetric with the filter button's behavior.
-    document.querySelector('.studies-filter-popup:not(.sort-popup)')?.remove();
+    const ownPopup = document.querySelector('.studies-filter-popup.sort-popup:not(.fading)');
+    if (ownPopup) { dismissFilterPopup(ownPopup); return; }
+    // Fade out the filter popup so the swap is smooth.
+    const otherPopup = document.querySelector('.studies-filter-popup:not(.sort-popup):not(.fading)');
+    if (otherPopup) dismissFilterPopup(otherPopup);
     const btn = e.currentTarget;
     const rect = btn.getBoundingClientRect();
     const pop = document.createElement('div');
@@ -5867,6 +5901,7 @@ function renderStudies() {
       }).join('')}</div>
     `;
     document.body.appendChild(pop);
+    showFilterPopup(pop);
     pop.querySelector('.sf-options-host').addEventListener('click', ev => {
       const row = ev.target.closest('.sort-row');
       if (!row) return;
@@ -5877,19 +5912,17 @@ function renderStudies() {
       const { group: prevGroup, dir: prevDir } = parseSortKey();
       let newDir;
       if (prevGroup === group) {
-        // Click on active row → flip direction
         newDir = prevDir === 'desc' ? 'asc' : 'desc';
       } else {
-        // Click on inactive row → activate with its default direction
         newDir = groupDef.defaultDir;
       }
       STUDIES_SORT = `${group}-${newDir}`;
-      pop.remove();
+      dismissFilterPopup(pop);
       renderStudies();
     });
     // Auto-close on mouseleave (200ms grace period).
     let __leaveTimer = null;
-    const __scheduleClose = () => { if (__leaveTimer) clearTimeout(__leaveTimer); __leaveTimer = setTimeout(() => { pop.remove(); }, 200); };
+    const __scheduleClose = () => { if (__leaveTimer) clearTimeout(__leaveTimer); __leaveTimer = setTimeout(() => { dismissFilterPopup(pop); }, 200); };
     const __cancelClose = () => { if (__leaveTimer) { clearTimeout(__leaveTimer); __leaveTimer = null; } };
     pop.addEventListener('mouseleave', __scheduleClose);
     pop.addEventListener('mouseenter', __cancelClose);
@@ -5899,7 +5932,7 @@ function renderStudies() {
       const onDocClick = (ev) => {
         const btnNow = document.getElementById('studies-sort-btn');
         if (!pop.contains(ev.target) && !(btnNow && btnNow.contains(ev.target))) {
-          pop.remove();
+          dismissFilterPopup(pop);
           document.removeEventListener('click', onDocClick);
         }
       };
