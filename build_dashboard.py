@@ -2129,10 +2129,10 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .candle-down { fill: var(--neg); stroke: var(--neg); stroke-width: 1; }
 body.dark .candle-up   { fill: #4cd2a0; stroke: #4cd2a0; }
 body.dark .candle-down { fill: #ff5a6e; stroke: #ff5a6e; }
-/* Mini preview chart — height bumped 56→100px so candles aren't squashed.
-   ViewBox is still 280x56 with preserveAspectRatio="none", so candles
-   stretch vertically to fill — matches the detail page's main pane ratio. */
-.candle-chart-mini { height: 100px; margin-top: 8px; }
+/* Mini preview chart — height 130px (was 100px). The viewBox is 280x56 with
+   preserveAspectRatio="none" so candles stretch vertically to fill, giving
+   a much taller thumbnail that doesn't look squished. */
+.candle-chart-mini { height: 130px; margin-top: 8px; }
 .candle-chart-full { height: auto; cursor: crosshair; }
 
 /* Axes (full mode) */
@@ -2222,26 +2222,41 @@ body.dark .candle-measure-popup .mp-row-price { color: rgba(255,255,255,0.75); }
 body.dark .candle-measure-popup .mp-row3.pos { color: #4cd2a0; }
 body.dark .candle-measure-popup .mp-row3.neg { color: #ff5a6e; }
 
-/* News popup (when clicking a news marker) — mirrors the .news-detail card's
-   typography (color: var(--body), strong: var(--ink) at weight 700) so the
-   content reads as the same design system as the in-page news cards.
-   All inner styles use the .candle-news-popup ancestor selector and a few
-   !important fences to neutralize any inherited float / text-align from
-   surrounding card styles. */
+/* ─────────── News-marker popup ───────────────────────────────────────
+   Design rules per user spec:
+   • position: FIXED so the popup escapes the chart-container and always
+     pops UP above the marker (the previous absolute-positioning was
+     constrained by the parent's height → forced fallback to below).
+   • Light mode = white card + dark text. Dark mode = dark card + light text.
+     Backgrounds come from var(--canvas) (page bg = WHITE in light) NOT
+     var(--surface-elevated) (which is the dark tooltip background, even
+     in light mode — that's why the popup was previously rendering black
+     on a white page).
+   • Border-radius var(--r-md) (12px) with overflow: hidden so the inner
+     header/footer panes get the rounded corners.
+   • z-index 99999 so the popup floats above all chart overlays.
+*/
 .candle-news-popup {
-  position: absolute; z-index: 10;
-  width: 400px; max-width: 92%;
-  background: var(--surface-elevated); border: 1px solid var(--hairline);
-  border-radius: var(--r-md); padding: 0;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.16);
-  font-size: 13px; color: var(--ink);
-  pointer-events: auto;
+  position: fixed;
+  z-index: 99999;
+  width: 400px; max-width: 92vw;
+  background: var(--canvas);
+  color: var(--ink);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.14);
+  font-size: 13px;
   text-align: left;
+  pointer-events: auto;
+}
+body.dark .candle-news-popup {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.42);
 }
 .candle-news-popup .news-popup-header {
   display: flex; align-items: center; justify-content: space-between;
   padding: 11px 14px; border-bottom: 1px solid var(--hairline-soft);
-  background: var(--canvas);
+  background: var(--surface-soft);
 }
 .candle-news-popup .news-popup-date {
   font-weight: 700; font-family: var(--font-mono); font-size: 13px;
@@ -2253,7 +2268,8 @@ body.dark .candle-measure-popup .mp-row3.neg { color: #ff5a6e; }
 }
 .candle-news-popup .news-popup-close:hover { color: var(--ink); }
 .candle-news-popup .news-popup-body {
-  padding: 14px 16px; max-height: 280px; overflow-y: auto;
+  padding: 14px 16px; max-height: 260px; overflow-y: auto;
+  background: var(--canvas);
   text-align: left !important;
 }
 .candle-news-popup .news-popup-body p {
@@ -2279,43 +2295,37 @@ body.dark .candle-measure-popup .mp-row3.neg { color: #ff5a6e; }
   display: block !important;
   margin: 0 0 12px !important;
   padding: 8px 12px;
-  background: var(--canvas);
+  background: var(--surface-soft);
   border-left: 3px solid var(--mute);
   color: var(--mute);
   font-size: 12.5px;
   font-style: normal;
   text-align: left !important;
 }
-/* Footer is now CENTERED — the link button sits in the middle of the row
-   (was left-aligned). The popup itself is strictly centered on the marker,
-   so the link button + popup arrow all line up vertically with the marker. */
 .candle-news-popup .news-popup-footer {
-  padding: 10px 14px; border-top: 1px solid var(--hairline-soft);
-  background: var(--canvas);
-  border-radius: 0 0 var(--r-md) var(--r-md);
+  padding: 12px 14px; border-top: 1px solid var(--hairline-soft);
+  background: var(--surface-soft);
   display: flex;
   justify-content: center;
 }
 .candle-news-popup .news-popup-link {
   display: inline-block; font-size: 12px; font-weight: 600;
   color: var(--primary); text-decoration: none;
-  padding: 7px 16px; border-radius: var(--r-sm);
+  padding: 8px 18px; border-radius: var(--r-sm);
   background: rgba(73,79,223,0.08); border: 1px solid rgba(73,79,223,0.2);
   transition: background 120ms;
 }
 .candle-news-popup .news-popup-link:hover { background: rgba(73,79,223,0.18); }
-/* Arrow — real DOM element (centered at popup's horizontal mid-point by default).
-   When the popup itself is centered on the marker, the arrow lines up perfectly. */
+/* Triangle arrow — popup is always ABOVE the marker, so arrow points DOWN.
+   Color matches the footer background (since the bottom of the popup is the
+   footer area). */
 .candle-news-popup .news-popup-arrow {
   position: absolute; width: 0; height: 0;
   left: 50%; transform: translateX(-50%);
-  border-left: 8px solid transparent; border-right: 8px solid transparent;
-}
-.candle-news-popup .news-popup-arrow.arrow-down {
-  bottom: -8px; border-top: 8px solid var(--surface-elevated);
-}
-.candle-news-popup .news-popup-arrow.arrow-up {
-  top: -8px; border-bottom: 8px solid var(--surface-elevated);
+  border-left: 9px solid transparent; border-right: 9px solid transparent;
+  bottom: -9px;
+  border-top: 9px solid var(--surface-soft);
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.08));
 }
 
 /* (help hint removed per user request) */
@@ -4399,10 +4409,6 @@ async function renderStock(sym) {
       </div>
     </div>
     ${newsDetailHtml}
-    ${(STATE.candles?.[s.symbol]) ? `<div class="stock-card">
-      <h3>股價走勢 <span class="label-en">Price · 6M Daily</span></h3>
-      <div id="candle-chart-container-${s.symbol}" class="candle-chart-host"></div>
-    </div>` : ''}
     <div class="chart-wrap">
       <div class="stock-card"><h3>EPS Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.eps || ''}</div>
       <div class="stock-card"><h3>Revenue Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.rev || ''}</div>
@@ -4415,6 +4421,10 @@ async function renderStock(sym) {
       <h3>Forward YoY <span class="label-en">TradingView FQ — EPS YoY / Rev YoY</span></h3>
       ${yoyHtml}
     </div>
+    ${(STATE.candles?.[s.symbol]) ? `<div class="stock-card">
+      <h3>股價走勢 <span class="label-en">Price · 6M Daily</span></h3>
+      <div id="candle-chart-container-${s.symbol}" class="candle-chart-host"></div>
+    </div>` : ''}
     <div class="news-history-card" id="news-history-${s.symbol}"></div>
   `;
   // Render interactive TradingView-style candle chart in the 股價走勢 section.
@@ -4857,7 +4867,6 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     // No emojis per user request — keep label clean and centered in footer.
     const linkLabel = news.sourceType === 'study' ? '開啟 Study 詳細頁' : `開啟 ${date} 詳細頁`;
     newsPopup.innerHTML = `
-      <div class="news-popup-arrow"></div>
       <div class="news-popup-header">
         <span class="news-popup-date">${opts.sym} · ${date}</span>
         <button class="news-popup-close" type="button">×</button>
@@ -4866,39 +4875,25 @@ function renderCandleChartFull(container, allBars, opts = {}) {
       <div class="news-popup-footer">
         <a class="news-popup-link" href="${linkHash}">${linkLabel}</a>
       </div>
+      <div class="news-popup-arrow"></div>
     `;
+    // POSITION: FIXED (viewport-relative) + ALWAYS ABOVE the marker per
+    // explicit user spec. Popup escapes the chart container; if it would
+    // overflow the viewport top, the page scrolls naturally to show it.
     newsPopup.style.display = 'block';
-    // STRICT centering on the marker per user request: popup's horizontal
-    // center sits exactly on the marker's X. No overflow-aware shifting —
-    // we accept that a marker near the chart edge may push the popup partly
-    // outside the chart container (the dashboard's page area still contains it).
-    const svgRect = svg.getBoundingClientRect();
-    const containerRect = container.getBoundingClientRect();
-    const markerScreenX = svgRect.left + markerSvgX * (svgRect.width / W);
-    const markerScreenY = svgRect.top  + markerSvgY * (svgRect.height / H);
+    newsPopup.style.left = '-9999px';
+    newsPopup.style.top  = '-9999px';
     const popupRect = newsPopup.getBoundingClientRect();
     const popupW = popupRect.width;
     const popupH = popupRect.height;
-    const markerInContainerX = markerScreenX - containerRect.left;
-    const markerInContainerY = markerScreenY - containerRect.top;
-    const left = markerInContainerX - popupW / 2;
-    // Try ABOVE the marker first; fall back to below if not enough room.
-    let top = markerInContainerY - popupH - 14;
-    let arrowAtBottom = true;
-    if (top < 4) {
-      top = markerInContainerY + 22;
-      arrowAtBottom = false;
-    }
+    const svgRect = svg.getBoundingClientRect();
+    const markerViewportX = svgRect.left + markerSvgX * (svgRect.width / W);
+    const markerViewportY = svgRect.top  + markerSvgY * (svgRect.height / H);
+    // Center horizontally on the marker, position above (always).
+    const left = markerViewportX - popupW / 2;
+    const top  = markerViewportY - popupH - 14;
     newsPopup.style.left = left + 'px';
     newsPopup.style.top  = top + 'px';
-    // Arrow stays at horizontal center (popup IS centered on marker, so the
-    // CSS-default 50%-centered arrow already points at the marker correctly).
-    const arrow = newsPopup.querySelector('.news-popup-arrow');
-    if (arrow) {
-      arrow.style.left = '';   // clear any inline override
-      arrow.classList.toggle('arrow-down', arrowAtBottom);
-      arrow.classList.toggle('arrow-up',   !arrowAtBottom);
-    }
     newsPopup.querySelector('.news-popup-close').onclick = () => { newsPopup.style.display = 'none'; };
   }
 
@@ -5038,8 +5033,9 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     }
   }
   function onDocClick(e) {
-    // Click outside the chart container OR outside news popup → close popup
-    if (!container.contains(e.target)) return;
+    // Close popup on click outside the popup body OR outside a news marker.
+    // Popup is now position:fixed (renders outside container), so no longer
+    // restricted to the container's bounds.
     if (newsPopup.style.display === 'block' &&
         !newsPopup.contains(e.target) &&
         !e.target.closest('.news-marker-group')) {
