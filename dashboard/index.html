@@ -3069,11 +3069,16 @@ async function renderSips(subtab) {
     };
   });
   // Wire SIPs filter button — opens a popup with Direction / Day / Catalyst sections.
+  // Pass the RESOLVED `tab` (always 'claude'/'codex'/'gemini'/'magna') not the raw
+  // `subtab` parameter — which is `undefined` when the user lands on the default
+  // Claude route. Passing undefined caused the popup to fall through to the
+  // "all DATA.stocks" branch, giving wrong counts (e.g. 28 long + 6 short = 34
+  // even when the Claude tab only had 10 picks).
   document.getElementById('sips-filter-btn')?.addEventListener('click', e => {
     e.preventDefault(); e.stopPropagation();
     const ownPopup = document.querySelector('.sips-filter-popup');
     if (ownPopup) { ownPopup.remove(); return; }
-    openSipsFilterPopup(e.currentTarget, subtab);
+    openSipsFilterPopup(e.currentTarget, tab);
   });
   // Day1/2/3 label: walk previous date snapshots so a ticker that already showed up earlier in the
   // week gets tagged day2 / day3 instead of day1. The map is cached across calls within a session.
