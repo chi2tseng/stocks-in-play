@@ -4855,7 +4855,7 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     visibleStart: initStart,
     visibleEnd: initEnd,
     yManualScale: 1.0,
-    volManualScale: 1.0,        // independent Y zoom for the volume sub-pane
+    volManualScale: 1.0,
     crosshair: null,
     isDraggingY: false,
     isDraggingVolY: false,
@@ -4863,6 +4863,11 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     yDragStartScale: 1,
     isMeasuring: false,
     measure: null,
+    // Middle-button drag = pan time axis (TradingView-style horizontal scroll).
+    isPanning: false,
+    panStartClientX: 0,
+    panStartVisibleStart: 0,
+    panStartVisibleEnd: 0,
   };
 
   // ============ LAYOUT (SVG viewBox units) ============
@@ -5293,6 +5298,19 @@ function renderCandleChartFull(container, allBars, opts = {}) {
   }
 
   function onSvgMouseDown(e) {
+    // Middle button (button === 1) → pan time axis (drag right = scroll back in time).
+    // Suppress the browser's middle-click auto-scroll cursor.
+    if (e.button === 1) {
+      e.preventDefault();
+      state.isPanning = true;
+      state.panStartClientX = e.clientX;
+      state.panStartVisibleStart = state.visibleStart;
+      state.panStartVisibleEnd = state.visibleEnd;
+      svg.style.cursor = 'grabbing';
+      return;
+    }
+    // (left button only past this point — right button intentionally ignored)
+    if (e.button !== 0) return;
     if (e.target.closest('.news-marker-group')) return;
     if (e.target.classList?.contains('candle-y-axis-zone')) {
       state.isDraggingY = true;
@@ -5317,6 +5335,9 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     state.isMeasuring = true;
     state.measure = { start: startPoint, end: startPoint };
   }
+  // Suppress the browser's "auto-scroll" cursor that pops up on middle-click
+  // anywhere inside the chart. We're using middle-button for our own pan gesture.
+  function onSvgAuxClick(e) { if (e.button === 1) e.preventDefault(); }
   function onSvgClick(e) {
     const grp = e.target.closest('.news-marker-group');
     if (grp) {
@@ -5328,11 +5349,30 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     }
   }
   function onDocMouseMove(e) {
+    if (state.isPanning) {
+      // Pan: convert client-pixel delta into bar-index delta. Drag RIGHT (dx>0)
+      // shifts the visible window LEFT (earlier dates appear). Window width
+      // (count of visible bars) stays constant.
+      const svgRect = svg.getBoundingClientRect();
+      const screenPlotW = svgRect.width * (effectivePlotW / W);
+      const winN = state.panStartVisibleEnd - state.panStartVisibleStart + 1;
+      const pxPerBar = screenPlotW / Math.max(1, winN);
+      const dx = e.clientX - state.panStartClientX;
+      const barShift = Math.round(dx / pxPerBar);
+      let newStart = state.panStartVisibleStart - barShift;
+      let newEnd   = state.panStartVisibleEnd   - barShift;
+      // Clamp to bars[] boundaries without changing the window width.
+      if (newStart < 0) { newEnd -= newStart; newStart = 0; }
+      const maxEnd = bars.length - 1;
+      if (newEnd > maxEnd) { newStart -= (newEnd - maxEnd); newEnd = maxEnd; }
+      if (newStart < 0) newStart = 0;
+      state.visibleStart = newStart;
+      state.visibleEnd   = newEnd;
+      render();
+      return;
+    }
     if (state.isDraggingY || state.isDraggingVolY) {
       const dy = e.clientY - state.yDragStartClientY;
-      // Per user spec: drag DOWN → shrink (larger range visible, smaller bars);
-      //                drag UP   → enlarge (smaller range visible, bigger bars).
-      // scale > 1 = wider range = bars shrink → factor = exp(+dy/250) gives this.
       const factor = Math.exp(dy / 250);
       if (state.isDraggingY) {
         state.yManualScale = Math.max(0.15, Math.min(8, state.yDragStartScale * factor));
@@ -5344,12 +5384,14 @@ function renderCandleChartFull(container, allBars, opts = {}) {
     }
   }
   function onDocMouseUp(e) {
+    if (state.isPanning) {
+      state.isPanning = false;
+      svg.style.cursor = '';
+    }
     if (state.isDraggingY)    state.isDraggingY = false;
     if (state.isDraggingVolY) state.isDraggingVolY = false;
     if (state.isMeasuring) {
       state.isMeasuring = false;
-      // Per user spec: measure overlay disappears the instant the user releases
-      // the mouse button (was: persisted until next interaction).
       state.measure = null;
       render();
     }
@@ -5370,6 +5412,7 @@ function renderCandleChartFull(container, allBars, opts = {}) {
   svg.addEventListener('mouseleave', onSvgMouseLeave);
   svg.addEventListener('wheel', onSvgWheel, { passive: false });
   svg.addEventListener('mousedown', onSvgMouseDown);
+  svg.addEventListener('auxclick', onSvgAuxClick);   // suppress middle-click default
   svg.addEventListener('click', onSvgClick);
   document.addEventListener('mousemove', onDocMouseMove);
   document.addEventListener('mouseup', onDocMouseUp);
