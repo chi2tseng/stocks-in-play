@@ -107,49 +107,73 @@ Default mindset: **day trade first**. Upgrade to multi-day only if strong story 
 
 ## § 2. Phase 1 — Gap scan (skip if `$ARGUMENTS` provided)
 
-### Step 1: scrape Barchart gappers — **Playwright with XHR intercept + auto session detect**
+### Step 1: scrape Barchart gappers — **Playwright with XHR intercept + per-row session-date tagging**
 
 Barchart renders the gapper table inside a `<bc-data-grid>` Shadow DOM custom element, with the actual ticker data fetched from `/proxies/core-api/v1/quotes/get` as JSON. Text scraping (Firecrawl markdown / Playwright `innerText`) misses the shadow DOM. **The clean approach is to intercept the API response directly.**
 
-**Default command (auto-detect session by ET clock):**
+**Default command:**
 ```powershell
 cd C:\Users\chi2t
 node barchart-scrape.js
 ```
 
-Default arg = `auto`. The script picks `pre` vs `post` based on US Eastern Time so it doesn't scrape stale sessions:
+Default arg = `auto` (alias of `both`). The script **always scrapes BOTH pre-market and post-market endpoints**, then computes per-row session dates from the ET clock:
 
-| ET time window | Session scraped | What's fresh |
-|---|---|---|
-| **04:00 ET ≤ now < 16:00 ET** | `pre`  | Today's pre-market (in progress 4-9:30 AM, or this morning's data during regular hours) |
-| **16:00 ET ≤ now < 04:00 ET next day** | `post` | Today's post-market (in progress 4-8 PM, or this evening / overnight) |
+#### Session-date rule (US Eastern Time)
 
-Examples:
-- 5/19 01:30 ET (Tue overnight) → `post` → scrapes 5/18 post-market (5/19 pre-market hasn't started yet)
-- 5/19 06:00 ET (Tue pre-market) → `pre`  → scrapes 5/19 pre-market (currently happening)
-- 5/19 14:00 ET (Tue intraday)    → `pre`  → scrapes 5/19 pre-market (this morning's gap data is still the latest)
-- 5/19 17:00 ET (Tue after close) → `post` → scrapes 5/19 post-market
+| Session  | Date assigned to row |
+|----------|----------------------|
+| `pre`    | TODAY (ET) if current ET hour ≥ 4  (4 AM); else YESTERDAY |
+| `post`   | TODAY (ET) if current ET hour ≥ 16 (4 PM); else YESTERDAY |
+
+**Why:** pre-market opens at 4 AM ET. Before that, the "current" pre-market endpoint still shows yesterday's morning session (frozen since 9:30 AM yesterday). Same logic for post-market with the 4 PM boundary.
+
+Each row in `candidates.csv` carries a **`SessionDate`** column (ISO YYYY-MM-DD) so downstream tools can place rows in the correct day's view without re-inferring.
+
+#### Examples (the rule's full coverage)
+
+| ET clock at scrape | pre rows tagged | post rows tagged | Note |
+|--------------------|-----------------|------------------|------|
+| Tue 02:00 ET (overnight) | Mon | Mon | Both sessions are yesterday's (Mon pre + Mon post). 5/19 pre hasn't started yet. |
+| Tue 05:00 ET (pre-market in progress) | Tue | Mon | The overnight-gap classic: Mon's after-hours + Tue's incoming open. |
+| Tue 09:00 ET (still pre-market) | Tue | Mon | Same as above. |
+| Tue 11:00 ET (regular hours) | Tue | Mon | Mon post-market still frozen on Barchart. |
+| Tue 15:30 ET (regular hours) | Tue | Mon | Same as above. |
+| Tue 16:00 ET (post-market opens) | Tue | Tue | Today's post-market starts; Mon's post-market scrolls off. |
+| Tue 20:00 ET (post-market in progress) | Tue | Tue | Both sessions are today's. |
+
+**Boot log** prints the resolved dates so the user can sanity-check:
+```
+[barchart-scrape] ET Tue 2026-05-19 05:00 · session-dates: pre=2026-05-19  post=2026-05-18  arg=auto
+```
+
+**JSON output** (printed to stdout) includes a `rowsByDateSession` breakdown:
+```json
+"rowsByDateSession": {
+  "2026-05-19_pre": 23,   // Tue pre-market gappers
+  "2026-05-18_post": 14   // Mon post-market gappers
+}
+```
 
 **Manual override:**
 ```powershell
-node barchart-scrape.js pre    # force pre-market only
-node barchart-scrape.js post   # force post-market only
-node barchart-scrape.js both   # scrape all 4 URLs (pre + post, both directions)
+node barchart-scrape.js pre    # only pre-market endpoint (2 URLs) — still tagged with session date
+node barchart-scrape.js post   # only post-market endpoint (2 URLs) — still tagged
 ```
 
 This script (at `./barchart-scrape.js`):
-1. Determines which session to scrape (auto by default; explicit arg overrides)
+1. Reads ET clock, computes pre/post session dates per the rule above
 2. Launches headless Chromium with Playwright
-3. Visits the relevant Barchart URLs (2 if pre or post; 4 if both)
+3. Visits the relevant Barchart URLs (2 if pre/post; 4 if auto/both — default)
 4. Listens for the `/proxies/core-api/v1/quotes/get` JSON response triggered by page load
-5. Parses the JSON `data` array → ticker objects with `symbol, preMarketLastPrice, preMarketPercentChange, preMarketVolume` (or `postMarket*` equivalents)
+5. Parses the JSON `data` array → ticker objects with `symbol, preMarketLastPrice, …`
 6. Filters to `abs(ChgPct) >= 4.0 AND Volume >= 100_000`
 7. Dedupes by `(Symbol, Session, Direction)` triple — keeps row with largest `|ChgPct|`
 8. Writes:
    - `barchart-{session}-{direction}.json` — raw API responses (1 per source)
-   - `candidates.csv` — final filtered + deduped list with BOM for Excel
+   - `candidates.csv` — final filtered + deduped list with `SessionDate` column, BOM for Excel
 
-**Speed/cost:** ~3-4 seconds for single session, ~7 seconds for both. 0 Firecrawl credits.
+**Speed/cost:** ~5-7 seconds for the default (both endpoints). 0 Firecrawl credits.
 
 **Pagination note:** API returns `total: 200` per source but `count: 100` per call. The 100 rows we get are sorted by `|%chg|` descending (for advances) or ascending (for declines), so rows 101-200 are below the 4% threshold and don't qualify. **No pagination needed** — page 1 captures all ±4% candidates.
 

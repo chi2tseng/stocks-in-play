@@ -1,20 +1,45 @@
 // Playwright Barchart gappers scraper — intercepts the core-api JSON response.
-// Auto-paginates: keeps fetching pages until a page returns 0 qualifying candidates.
 //
 // Usage:
-//   node barchart-scrape.js              → AUTO-detect session by ET clock (default)
+//   node barchart-scrape.js              → AUTO mode (default; always scrapes both
+//                                          pre + post, tags each row with the
+//                                          actual session date — see below)
 //   node barchart-scrape.js auto         → same as default
 //   node barchart-scrape.js pre          → scrape pre-market only (2 URLs)
 //   node barchart-scrape.js post         → scrape post-market only (2 URLs)
-//   node barchart-scrape.js both         → scrape pre + post (4 URLs)
+//   node barchart-scrape.js both         → alias of auto (kept for back-compat)
 //
-// AUTO session rule (US Eastern Time):
-//   • 04:00 ET ≤ now < 16:00 ET → 'pre'    (pre-market or regular hours; today's
-//                                          pre-market is the most recent gap data)
-//   • else                       → 'post'  (post-market or overnight; today's
-//                                          post-market is the most recent — OR
-//                                          yesterday's if we're past midnight
-//                                          before the next pre-market opens at 4 AM)
+// ════ Session-date rule (per-row tag, computed at scrape time, US Eastern Time) ════
+//
+// Barchart's pre-market and post-market endpoints each represent the MOST RECENT
+// session of that type. The actual SESSION DATE depends on the ET clock:
+//
+//   Pre-market session date  = TODAY (ET) if current ET hour >= 4 (4 AM)
+//                              else YESTERDAY (ET)
+//   Post-market session date = TODAY (ET) if current ET hour >= 16 (4 PM)
+//                              else YESTERDAY (ET)
+//
+// Why: pre-market opens at 4 AM ET each weekday. Before 4 AM, the "current"
+// pre-market is still yesterday's morning session (frozen since 9:30 AM yest).
+// Same logic for post-market with the 4 PM ET boundary.
+//
+// Typical morning scan (e.g. Tue 7 AM ET):
+//   • pre endpoint → "Tue pre-market" (in progress, just started 3 hours ago)
+//   • post endpoint → "Mon post-market" (last completed, ended 11 hours ago)
+//   • Result: rows tagged with SessionDate = Tue OR Mon depending on session
+//
+// Late-night / overnight scan (e.g. Tue 2 AM ET):
+//   • pre endpoint → "Mon pre-market" (frozen since 9:30 AM Mon)
+//   • post endpoint → "Mon post-market" (ended ~6 hours ago)
+//   • Result: all rows tagged SessionDate = Mon
+//
+// After-close scan (e.g. Tue 5 PM ET, post-market in progress):
+//   • pre endpoint → "Tue pre-market" (this morning, frozen)
+//   • post endpoint → "Tue post-market" (in progress now)
+//   • Result: all rows tagged SessionDate = Tue
+//
+// The SessionDate column in candidates.csv lets downstream tools (build_dashboard.py,
+// the dashboard) place each row in the correct day's view without re-inferring.
 //
 // Output:
 //   .firecrawl/barchart-{session}-{direction}-pN.json  (raw API responses, one per page)
@@ -43,10 +68,18 @@ function nowInET() {
     totalMinutes: hour * 60 + parseInt(get('minute'), 10),
   };
 }
-function autoDetectSession() {
-  const et = nowInET();
-  const sess = (et.totalMinutes >= 4 * 60 && et.totalMinutes < 16 * 60) ? 'pre' : 'post';
-  return { session: sess, et };
+// Given an ET clock reading, return the ISO date that each session represents.
+function computeSessionDates(et) {
+  const isoToday = et.date;
+  const isoYest = (() => {
+    const d = new Date(et.date + 'T00:00:00Z');
+    d.setUTCDate(d.getUTCDate() - 1);
+    return d.toISOString().slice(0, 10);
+  })();
+  return {
+    pre:  (et.totalMinutes >= 4  * 60) ? isoToday : isoYest,
+    post: (et.totalMinutes >= 16 * 60) ? isoToday : isoYest,
+  };
 }
 
 const rawArg = (process.argv[2] || 'auto').toLowerCase();
@@ -54,12 +87,12 @@ if (!['auto','pre','post','both'].includes(rawArg)) {
   console.error(`Invalid session arg: "${rawArg}". Must be one of: auto, pre, post, both`);
   process.exit(1);
 }
-let sessionArg = rawArg;
-if (rawArg === 'auto') {
-  const det = autoDetectSession();
-  sessionArg = det.session;
-  process.stderr.write(`[barchart-scrape] auto-detect: ET ${det.et.weekday} ${det.et.date} ${String(det.et.hour).padStart(2,'0')}:${String(det.et.minute).padStart(2,'0')} → session=${sessionArg}\n`);
-}
+// `auto` and `both` both mean "scrape both endpoints, tag each row with its
+// computed session date". `pre` and `post` are manual single-endpoint overrides.
+const sessionArg = (rawArg === 'auto' || rawArg === 'both') ? 'both' : rawArg;
+const _et = nowInET();
+const SESSION_DATES = computeSessionDates(_et);
+process.stderr.write(`[barchart-scrape] ET ${_et.weekday} ${_et.date} ${String(_et.hour).padStart(2,'0')}:${String(_et.minute).padStart(2,'0')} · session-dates: pre=${SESSION_DATES.pre}  post=${SESSION_DATES.post}  arg=${rawArg}\n`);
 
 // Location-agnostic: defaults to the directory containing this script. Override with SIPS_DIR env var.
 const OUT_DIR  = process.env.SIPS_DIR ? path.resolve(process.env.SIPS_DIR) : __dirname;
@@ -89,6 +122,7 @@ function extractRow(row, session, dirTag) {
     ChgPct: dirTag === 'down' ? -Math.abs(chg) : Math.abs(chg),
     Volume: vol,
     Session: session,
+    SessionDate: SESSION_DATES[session],   // ISO date of the actual market session
     Direction: dirTag,
   };
 }
@@ -184,20 +218,34 @@ async function fetchPage(page, baseUrl, pageNum) {
   }
   const final = Object.values(dedupe).sort((a, b) => a.Symbol.localeCompare(b.Symbol));
 
-  // Save CSV (UTF-8 BOM for Excel) — separate files per session so pre + post don't clobber
+  // Save CSV (UTF-8 BOM for Excel). New SessionDate column tags each row with
+  // its actual market-session date (computed at scrape time from the ET clock —
+  // see "Session-date rule" comment at the top of this file).
   const csvName = sessionArg === 'both' ? 'candidates.csv' : `candidates-${sessionArg}.csv`;
   const csvPath = path.join(OUT_DIR, csvName);
-  const header = 'Symbol,Last,ChgPct,Volume,Session,Direction,Name\n';
+  const header = 'Symbol,Last,ChgPct,Volume,Session,SessionDate,Direction,Name\n';
   const lines  = final.map(r =>
-    `${r.Symbol},${r.Last},${r.ChgPct},${r.Volume},${r.Session},${r.Direction},"${(r.Name||'').replace(/"/g,'""')}"`
+    `${r.Symbol},${r.Last},${r.ChgPct},${r.Volume},${r.Session},${r.SessionDate},${r.Direction},"${(r.Name||'').replace(/"/g,'""')}"`
   ).join('\n');
   fs.writeFileSync(csvPath, '﻿' + header + lines, 'utf-8');
 
+  // Per-session-date breakdown for the JSON output (lets downstream tools see
+  // exactly how many rows belong to each date).
+  const byDate = {};
+  for (const r of final) {
+    const key = `${r.SessionDate}_${r.Session}`;
+    byDate[key] = (byDate[key] || 0) + 1;
+  }
+
   console.log(JSON.stringify({
-    sessionArg,
+    arg: rawArg,
+    resolvedSessions: sessionArg,
+    etNow: `${_et.weekday} ${_et.date} ${String(_et.hour).padStart(2,'0')}:${String(_et.minute).padStart(2,'0')}`,
+    sessionDates: SESSION_DATES,
     filters: { CHG_MIN, VOL_MIN, MAX_PAGE },
     pagesScraped: meta,
     totalUnique: final.length,
+    rowsByDateSession: byDate,
     csvPath,
   }, null, 2));
 })();
