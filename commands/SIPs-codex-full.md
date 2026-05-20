@@ -62,8 +62,11 @@ Same input data as Claude. The full pipeline is:
 5. **MAGNA53 classification** → in-memory only, no file output.
 6. **Brief composition** in 繁體中文 → for chat output (not file).
 7. **Phase 8 — write `codex_picks.json`** ← your only file write.
-8. **Phase 10 — `py D:\SIPs\build_dashboard.py`** → rebuilds dashboard.
-9. **Phase 11 — auto git push** (user has standing approval, no confirmation needed).
+8. **Phase 9 — `py D:\SIPs\fetch_candles.py`** → refresh 6-month candle bars
+   (Yahoo, ~5s). Must run BEFORE Phase 10 so the dashboard's 股價走勢 section
+   on detail pages has fresh bars for your picks.
+9. **Phase 10 — `py D:\SIPs\build_dashboard.py`** → rebuilds dashboard.
+10. **Phase 11 — auto git push** (user has standing approval, no confirmation needed).
 
 ## What you must NOT touch
 
