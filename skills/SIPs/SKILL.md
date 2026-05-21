@@ -211,31 +211,91 @@ Combine gainers + losers into one list. Mark each row as `direction = up | down`
 
 **Critical:** %chg is the *filter*, not the *ranking*. The best SIP may be the +5% candidate with a clean earnings beat, not the +30% low-float pumper. Hunt catalysts on **every single candidate** that passed Phase 1's filter. Do NOT truncate to "top 20 by %chg" — that loses signal.
 
-**Efficient delegation pattern:** if there are >25 candidates, delegate the catalyst hunt to a `general-purpose` Agent. Pass the full candidate list and ask the agent to return a structured markdown table with columns `Ticker | Type | 繁體中文 catalyst | EPS surprise | Rev surprise | EPS YoY | Rev YoY` (Type ∈ {earnings, analyst, guidance, contract, M&A, FDA, news, momentum, macro}). The agent parallelizes WebSearches internally, which keeps the main context lean.
+### 2.0 — Macro / policy / sector pre-scan (RUN THIS BEFORE PER-TICKER LOOKUPS)
 
-For each candidate (parallelize in batches of ~5 in your own context, or delegate to the agent above), run all three in parallel:
+**Why this exists:** RGTI on 2026-05-21 gapped +12.7% pre-market on a $2B Trump quantum-subsidy announcement (WSJ overnight). A naive per-ticker `RGTI news today` search returns generic Rigetti coverage and misses the sector driver. The catalyst is "ALL quantum stocks are up because of a White House policy" — so you have to look for the ROOT NEWS first, then map it back to the tickers that moved on it.
 
-1. **Finviz news block**
+**Always start Phase 2 by running these in parallel** (single message, multiple WebSearch tool uses) BEFORE touching individual tickers. The goal is a 5-10 row "policy / sector cluster map" of today's biggest catalysts.
+
+Resolve today's date once at the top of the phase (e.g. `2026-05-21`) and inject it into EVERY query — the LLM will otherwise serve cached results from weeks ago.
+
+| Source | What to look for | Query / URL |
+|---|---|---|
+| **WSJ / Reuters / Bloomberg overnight + premarket** | Policy actions, executive orders, government contracts, regulatory rulings, sector-wide M&A | `WebSearch: "site:wsj.com OR site:reuters.com OR site:bloomberg.com <YYYY-MM-DD> premarket movers OR overnight news"` |
+| **White House / Treasury / SEC / FDA / DoD press releases** | Direct primary-source policy text (executive orders, drug approvals, defense contracts) | `WebSearch: "site:whitehouse.gov OR site:treasury.gov OR site:fda.gov OR site:defense.gov <YYYY-MM-DD>"` |
+| **Briefing.com "What's Going On" / TheFly "Daily Movers"** | Aggregator of all today's tickers with single-sentence catalysts | `firecrawl.cmd scrape "https://www.briefing.com/InPlay" --wait-for 5000` |
+| **Today's biggest market-themed Reuters story** | Sector-level macro (chips, AI, biotech, banks, energy) | `WebSearch: "what is moving stocks today <YYYY-MM-DD> sector"` |
+| **CNBC / MarketWatch premarket recap** | A clean "today's pre-market movers" list with ticker-by-ticker reasons | `WebSearch: "premarket movers <YYYY-MM-DD>"` + `firecrawl.cmd scrape "https://www.cnbc.com/pre-markets/"` |
+
+**Extract from this pre-scan a cluster map**:
+
+```
+quantum_policy  = { root: "White House $2B quantum subsidy + minority govt stake (WSJ 5/20 overnight)",
+                    affected: ["RGTI","IONQ","QBTS","QUBT","ARQQ"] }
+ai_infra        = { root: "DOE National AI Initiative grant cycle awards announced 5/21",
+                    affected: ["NBIS","BNKK","CRWV"] }
+fda_thursday    = { root: "FDA PDUFA decisions 5/21 — KRTX accelerated approval",
+                    affected: ["KRTX"] }
+```
+
+Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker lookups: if a candidate appears in an `affected` list, write the cluster's `root` as its catalyst and **only** chase ticker-specific details (sales numbers, magnitude of beat, etc.) — don't re-hunt the root story from scratch.
+
+### 2.1 — Per-ticker catalyst hunt
+
+**Efficient delegation pattern:** if there are >25 candidates, delegate the catalyst hunt to a `general-purpose` Agent. **Always pass the Phase 2.0 cluster map in the agent's prompt** so it can short-circuit by-cluster instead of researching each ticker from scratch. Ask the agent to return a structured markdown table with columns `Ticker | Type | Cluster | 繁體中文 catalyst | EPS surprise | Rev surprise | EPS YoY | Rev YoY` (Type ∈ {earnings, analyst, guidance, contract, M&A, FDA, news, momentum, macro, **policy**}).
+
+For each candidate (parallelize in batches of ~5 in your own context, or delegate to the agent above), run these in parallel:
+
+1. **Cluster lookup (first — short-circuit if hit)** — if the ticker is in any `affected` list from Phase 2.0, the catalyst is the cluster `root`. Skip to fundamentals lookup; don't re-run the news search.
+
+2. **Finviz news block** (always — gives fundamentals + a list of today's headlines)
    ```powershell
    firecrawl.cmd scrape "https://finviz.com/quote.ashx?t=<TICKER>" --only-main-content --wait-for 3000
    ```
-   Look for the news table + the fundamentals snapshot (EPS, Sales, Inst Own%, Short Float, etc.).
+   Look for the news table (sort by date — TODAY's entries first) + the fundamentals snapshot (EPS, Sales, Inst Own%, Short Float, etc.).
 
-2. **WebSearch** the ticker:
-   - If earnings season: `<TICKER> earnings beat surprise revenue`
-   - Otherwise: `<TICKER> news today why stock up/down`
+3. **WebSearch — multi-angle, date-anchored.** Use **3-4 queries** per ticker, not just 1, and ALWAYS include today's ISO date verbatim:
 
-3. **X / Twitter cashtag**:
-   ```powershell
-   firecrawl.cmd search "$<TICKER> earnings OR news" --limit 5
+   | Catalyst hypothesis | Query template (substitute `<DATE>` = today's ISO date) |
+   |---|---|
+   | Earnings | `<TICKER> Q[1-4] earnings beat OR miss revenue <DATE>` |
+   | Policy / government | `<TICKER> government policy OR executive order OR contract <DATE>` |
+   | Contract / partnership | `<TICKER> contract OR partnership OR deal announcement <DATE>` |
+   | Analyst action | `<TICKER> upgrade OR downgrade OR price target <DATE>` |
+   | FDA / regulatory | `<TICKER> FDA OR approval OR clinical OR PDUFA <DATE>` (biotech only) |
+   | Tier-1 catch-all | `<TICKER> news <DATE> site:reuters.com OR site:bloomberg.com OR site:wsj.com OR site:cnbc.com` |
+
+   Pick the 3-4 most likely hypotheses based on the candidate's sector. **The "Tier-1 catch-all" should ALWAYS be one of them** — it filters out the SEO-spam result pages that dominate generic `<TICKER> news today` queries.
+
+4. **SEC EDGAR 8-K filed today** (catches M&A, executive changes, material contracts that wire-services may not have indexed yet):
    ```
+   https://efts.sec.gov/LATEST/search-index?q=%22<TICKER>%22&forms=8-K&dateRange=custom&startdt=<DATE>&enddt=<DATE>
+   ```
+   Or via the SEC submissions API (the `fetch_sec()` helper in `fetch_earnings_dates.py` already knows how to walk `data.sec.gov/submissions/CIK<cik>.json` — extend it if needed).
+
+5. **X / Twitter cashtag (fallback only)** — only if 1-4 returned nothing:
+   ```powershell
+   firecrawl.cmd search "$<TICKER> <DATE>" --limit 5
+   ```
+   Twitter is unreliable as a primary source (rumors, copy-paste, bots) but can surface a story the wire services haven't published yet.
 
 Synthesize a **single 繁體中文 sentence** explaining why each stock moved, e.g.:
 - 「Q3 財報每股盈餘 $0.82 超預期 42%，營收 +38% YoY，盤後 +12%。」
 - 「FDA 完整核准糖尿病新藥 Tirzepatide，分析師調高目標價至 $XXX。」
 - 「Q2 營收較預期短少 9%，下修 FY 指引，盤後 -18%。」
+- 「量子板塊集體跳漲 — 川普政府 $2B 量子計算補助方案 (WSJ 5/20 報導)，<TICKER> 隨族群 +12.7%。」 ← cluster pattern
 
-Capture in working memory per ticker: `catalyst_zh, eps_surprise_pct, rev_surprise_pct, annual_sales, inst_own_pct, short_float, days_to_cover, pt_raises_30d`.
+Capture in working memory per ticker: `catalyst_zh, cluster_id (if any), eps_surprise_pct, rev_surprise_pct, annual_sales, inst_own_pct, short_float, days_to_cover, pt_raises_30d`.
+
+### 2.2 — Cluster cross-check pass (after 2.1)
+
+Once all per-ticker catalysts are written, **walk the list once more** and look for tickers that ended up with vague/generic catalysts (e.g. "<TICKER> 隨大盤上漲", "盤前無重大消息", "暫無明確催化劑"). For each of these:
+
+1. Check if it sits in the same SECTOR as a cluster from 2.0 (use Finviz sector field).
+2. If yes — confirm the cluster's catalyst applies (check the ticker's actual % move + correlation with the cluster).
+3. Rewrite the catalyst with the cluster's root news. This is what catches the "RGTI ran +12% on the quantum policy because every quantum stock was up 8-15%" pattern that a per-ticker search misses.
+
+The cluster cross-check is cheap (just rewrites text from already-fetched data) but high-yield — it's the difference between "RGTI: 暫無明確催化劑" and "RGTI: 量子族群集體跳漲 (政府 $2B 補助)".
 
 ---
 
