@@ -3151,6 +3151,9 @@ function buildStockNavList(source) {
   //    shows a slim "no scan data" page. Better to keep them in the nav list
   //    so the user can walk past them.)
   if (source === 'gappers') {
+    if (window.__currentGappersNavList) {
+      return { list: window.__currentGappersNavList, label: 'GAPPERS' };
+    }
     const gappers = (DATA.rawGappers || []).slice()
       .sort((a, b) => Math.abs(b.chgPct || 0) - Math.abs(a.chgPct || 0));
     const seen = new Set();
@@ -4289,6 +4292,15 @@ function renderGappers() {
     document.querySelectorAll('.subtab[data-pass]').forEach(t => t.classList.toggle('active', t.dataset.pass === passFilter));
     makeTable(panel, data, cols, 4, true, 'gappers');   // default sort: |%Chg| desc (col idx 4)
     bindRows();
+    const sortedData = data.slice().sort((a, b) => Math.abs(b.chgPct || 0) - Math.abs(a.chgPct || 0));
+    const seen = new Set();
+    const deduped = [];
+    for (const r of sortedData) {
+      if (!r.symbol || seen.has(r.symbol)) continue;
+      seen.add(r.symbol);
+      deduped.push({ id: r.symbol, label: r.symbol });
+    }
+    window.__currentGappersNavList = deduped;
   }
   document.querySelectorAll('.subtab[data-dir]').forEach(t => { t.onclick = () => { dirFilter = t.dataset.dir; rerender(); }; });
   document.querySelectorAll('.subtab[data-pass]').forEach(t => { t.onclick = () => { passFilter = t.dataset.pass; rerender(); }; });
@@ -4864,12 +4876,22 @@ async function renderStock(sym) {
   // there is no ambiguity about "which day am I looking at".
   const _viewedDate = STATE.dates.find(d => d.date === STATE.date)?.label || STATE.date || '';
   const dateBadge = _viewedDate ? `<span class="study-detail-date" title="Viewing scan from ${STATE.date}">&nbsp;·&nbsp;${escapeHtml(_viewedDate)}</span>` : '';
+
+  const { list: _stockNavList, label: _stockNavLabel } = buildStockNavList(__detailNavSource);
+  const _stockNavHtml = detailNavHtml('stock', _stockNavList, sym, _stockNavLabel);
+
   if (!s) {
     // Symbol genuinely absent from this date's data set. Don't shout — the user is
     // viewing a stock detail page that just happens to not have a scan entry for this
     // date. Render a slim header with the date so they can still pivot via navigation.
     app.innerHTML = `
-      <div class="breadcrumb"><a href="${buildRouteHash('earnings')}">Earnings</a> · <a href="${buildRouteHash('catalyst')}">Catalyst</a> · <a href="${buildRouteHash('scanx')}">SCANX</a> &nbsp;»&nbsp; <b>${escapeHtml(sym)}</b>${dateBadge}</div>
+      <div class="breadcrumb study-detail-breadcrumb">
+        <span><a href="${buildRouteHash('earnings')}">Earnings</a> · <a href="${buildRouteHash('catalyst')}">Catalyst</a> · <a href="${buildRouteHash('scanx')}">SCANX</a> &nbsp;»&nbsp; <b>${escapeHtml(sym)}</b>${dateBadge}</span>
+        <div style="display:flex;align-items:center;gap:16px;">
+          ${_stockNavHtml}
+          ${saveStudyBtnHtml(sym)}
+        </div>
+      </div>
       <div class="empty" style="margin-top:24px">No scan data for <b>${escapeHtml(sym)}</b> on ${escapeHtml(STATE.date || 'this date')}. Try a different date from the calendar.</div>`;
     return;
   }
@@ -4916,13 +4938,13 @@ async function renderStock(sym) {
     _tv ? _surpPill('EPS Surp', _tv.surpriseEPS_pct, 'EPS surprise vs consensus (TradingView FQ)') : '',
     _tv ? _surpPill('Rev Surp', _tv.surpriseRev_pct, 'Revenue surprise vs consensus (TradingView FQ)') : '',
   ].filter(Boolean).join(' ');
-  const { list: _stockNavList, label: _stockNavLabel } = buildStockNavList(__detailNavSource);
-  const _stockNavHtml = detailNavHtml('stock', _stockNavList, sym, _stockNavLabel);
   app.innerHTML = `
     <div class="breadcrumb study-detail-breadcrumb">
       <span><a href="${buildRouteHash('earnings')}">Earnings</a> · <a href="${buildRouteHash('catalyst')}">Catalyst</a> · <a href="${buildRouteHash('scanx')}">SCANX</a> &nbsp;»&nbsp; <b>${s.symbol}</b>${dateBadge}</span>
-      ${_stockNavHtml}
-      ${saveStudyBtnHtml(s.symbol)}
+      <div style="display:flex;align-items:center;gap:16px;">
+        ${_stockNavHtml}
+        ${saveStudyBtnHtml(s.symbol)}
+      </div>
     </div>
     <div class="stock-header">
       <div class="sym-big">${s.symbol}${dayChip}</div>
