@@ -1591,7 +1591,7 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
    font-size/padding overrides below. */
 .ms-table { border-collapse: separate; border-spacing: 0; font-size: 12px; width: 100%; table-layout: fixed; }
 .ms-table th, .ms-table td { padding: 7px 6px; text-align: right; border-bottom: 1px solid var(--hairline); font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 12px; }
-.ms-table th { font-size: 11px; font-weight: 700; color: var(--ink); background: var(--canvas); border-bottom: 2px solid var(--ink); padding: 8px 6px 6px; font-family: var(--font-display); letter-spacing: 0; text-transform: none; text-align: left; }
+.ms-table th { font-size: 11px; font-weight: 700; color: var(--ink); background: var(--canvas); border-bottom: 2px solid var(--ink); padding: 8px 6px 6px; font-family: var(--font-display); letter-spacing: 0; text-transform: none; text-align: right; }
 .ms-table th.est-col { color: var(--primary); }
 .ms-table .ms-rowlabel { text-align: left; font-family: var(--font-display); font-weight: 700; color: var(--ink); background: var(--surface-soft); font-size: 14px; padding: 14px 16px; border-left: 1px solid var(--hairline); letter-spacing: -0.1px; min-width: 110px; width: 140px; }
 /* With table-layout: fixed (set above), giving the label column an explicit width forces all
@@ -1656,7 +1656,7 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 /* Earnings publication date — small grey caption above the latest reported
    quarter column header (e.g. "5/6" sitting on top of Q1 '26). Source:
    TV markdown's "Latest report date" → tv.latestReportDate. NOT a news date. */
-.ms-pub-row th { padding: 2px 6px 0; background: transparent; border: none; font-weight: 400; text-align: left; }
+.ms-pub-row th { padding: 2px 6px 0; background: transparent; border: none; font-weight: 400; text-align: right; }
 .ms-pub-date {
   font-size: 10px; font-weight: 400;
   color: var(--stone);
@@ -1664,10 +1664,6 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
   font-family: var(--font-mono);
   white-space: nowrap;
 }
-/* Latest-reported column — both the small grey date AND the data numbers below
-   share the same flush-left alignment so they sit visually in a single column.
-   Other columns stay right-aligned per financial-table convention. */
-.ms-table td.ms-col-latest { text-align: left; }
 /* Responsive collapse — when the viewport gets narrow enough that the 8-col MS table
    would squish the Q-labels into each other, hide:
      1. the older reported columns (only latest + 4 forward estimates remain)
