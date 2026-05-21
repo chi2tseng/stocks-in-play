@@ -2214,7 +2214,7 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 /* Earnings publication date — small grey caption above the latest reported
    quarter column header (e.g. "5/6" sitting on top of Q1 '26). Source:
    TV markdown's "Latest report date" → tv.latestReportDate. NOT a news date. */
-.ms-pub-row th { padding: 2px 6px 0; background: transparent; border: none; font-weight: 400; text-align: right; }
+.ms-pub-row th { padding: 2px 6px 0; background: transparent; border: none; font-weight: 400; text-align: left; }
 .ms-pub-date {
   font-size: 10px; font-weight: 400;
   color: var(--stone);
