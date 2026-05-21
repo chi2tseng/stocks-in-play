@@ -1,8 +1,158 @@
 {
   "date": "2026-05-21",
-  "scanTime": "11:16",
-  "scanTimestamp": "2026-05-21T11:16",
+  "scanTime": "14:06",
+  "scanTimestamp": "2026-05-21T14:06",
   "stocks": {
+    "RKLB": {
+      "symbol": "RKLB",
+      "name": "Rocket Lab Corporation",
+      "type": "momentum",
+      "catalyst": "延續近期創紀錄的 Q1 營收與調升的 Q2 財測表現，加上 Abacus Wealth Partners 等機構建倉買進，股價穩步上漲逾 3.8%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=RKLB"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/RKLB"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-RKLB/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 123.05,
+          "chgPct": -8.36,
+          "volume": 2125842,
+          "session": "post",
+          "direction": "down",
+          "name": "Rocket Lab Corporation",
+          "sessionDate": "2026-05-20",
+          "targetDate": "2026-05-21"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 123.05,
+      "chgPct": -8.36,
+      "volume": 2125842,
+      "tv": {
+        "latestEPS": -0.07,
+        "consensusEPS": -0.07,
+        "priorYrEPS": -0.12,
+        "surpriseEPS_pct": -4.35,
+        "surpriseEPS_dollar": 0.0,
+        "latestRev_M": 200.35,
+        "consensusRev_M": 189.65,
+        "priorYrRev_M": 122.57,
+        "surpriseRev_pct": 5.64,
+        "yrYrRev_pct": 63.457616056131194,
+        "epsYoY_pct": 41.66666666666666,
+        "epsEst_next4": [
+          -0.06,
+          -0.05,
+          -0.04,
+          -0.03
+        ],
+        "revEst_next4": [
+          227.23,
+          231.91,
+          246.83,
+          264.44
+        ],
+        "yoyBlock": "+41.67% / +63.46%\n--------------------\n+53.85% / +57.25%\n-66.67% / +49.62%\n+55.56% / +37.39%\n+57.14% / +31.99%",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            -0.08,
+            -0.1,
+            -0.1,
+            -0.12,
+            -0.13,
+            -0.03,
+            -0.09,
+            -0.07,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -0.08,
+            -0.09,
+            -0.09,
+            -0.11,
+            -0.1,
+            -0.1,
+            -0.1,
+            -0.07,
+            -0.06,
+            -0.05,
+            -0.04,
+            -0.03
+          ],
+          "rev_reported_M": [
+            106.25,
+            104.81,
+            132.39,
+            122.57,
+            144.5,
+            155.0,
+            179.65,
+            200.35,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            105.47,
+            102.28,
+            130.57,
+            121.4,
+            135.41,
+            151.8,
+            176.83,
+            189.65,
+            227.23,
+            231.91,
+            246.83,
+            264.44
+          ],
+          "latest_idx": 7
+        }
+      },
+      "shortFloat": 5.83,
+      "shortRatio": 1.39,
+      "marketCap_M": 77710,
+      "floatShares_M": 570.96,
+      "perf1M": 54.99,
+      "perf3M": 75.35,
+      "perf6M": 210.04,
+      "perfYTD": 92.49,
+      "perf12M": 416.46,
+      "prevOhlcv": null
+    },
     "BORR": {
       "symbol": "BORR",
       "name": "Borr Drilling Ltd",
@@ -151,268 +301,6 @@
       "perf6M": 95.57,
       "perfYTD": 53.35,
       "perf12M": 265.68,
-      "prevOhlcv": null
-    },
-    "WNW": {
-      "symbol": "WNW",
-      "name": "Meiwu Technology Ltd",
-      "type": "momentum",
-      "catalyst": "宣佈以私募方式融資 1565 萬美元推出 AI 護膚平台後，股價經歷 74% 的日內劇烈震盪，最終獲利了結收跌 18.32%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=WNW"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/WNW"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-WNW/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 4.96,
-          "chgPct": 27.74,
-          "volume": 174860,
-          "session": "post",
-          "direction": "up",
-          "name": "Meiwu Technology Ltd",
-          "sessionDate": "2026-05-20",
-          "targetDate": "2026-05-21"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 4.96,
-      "chgPct": 27.74,
-      "volume": 174860,
-      "tv": null,
-      "shortFloat": 0.79,
-      "shortRatio": 0.01,
-      "marketCap_M": 5.16,
-      "floatShares_M": 1.2,
-      "perf1M": -5.13,
-      "perf3M": -97.23,
-      "perf6M": -97.6,
-      "perfYTD": -97.21,
-      "perf12M": -97.77,
-      "prevOhlcv": {
-        "date": "2026-05-18",
-        "open": 3.15,
-        "high": 3.15,
-        "low": 2.25,
-        "close": 2.41,
-        "volume": 199000,
-        "prev_close": 3.12
-      }
-    },
-    "APLD": {
-      "symbol": "APLD",
-      "name": "Applied Digital Corp",
-      "type": "contract",
-      "catalyst": "宣布與美國頂級雲端服務商簽署 15 年期、價值高達 75 億美元的 AI 數據中心基礎設施租賃合約，盤後大漲逾 8%。",
-      "newsDetail": "Applied Digital 宣布與一家美國頂級雲端服務商簽署了為期 15 年的 AI 數據中心基礎設施租賃合約。\n\n該合約總價值高達 75 億美元，將為公司帶來長期且穩定的現金流。管理層表示，這標誌著公司在高效能運算 (HPC) 與 AI 基礎設施領域的重要里程碑。\n\n這項百億級別的超級長約引發資金熱烈追捧，盤後大漲逾 8%。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=APLD"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/APLD"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-APLD/news/"
-        }
-      ],
-      "publishedAt": "2026-05-20T16:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": null,
-      "sessions": [
-        {
-          "last": 42.55,
-          "chgPct": 7.67,
-          "volume": 2780674,
-          "session": "post",
-          "direction": "up",
-          "name": "Applied Digital Corp",
-          "sessionDate": "2026-05-20",
-          "targetDate": "2026-05-21"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 42.55,
-      "chgPct": 7.67,
-      "volume": 2780674,
-      "tv": {
-        "latestEPS": -0.36,
-        "consensusEPS": -0.15,
-        "priorYrEPS": -0.08,
-        "surpriseEPS_pct": -138.41,
-        "surpriseEPS_dollar": -0.21,
-        "latestRev_M": 126.64,
-        "consensusRev_M": 75.52,
-        "priorYrRev_M": 52.92,
-        "surpriseRev_pct": 67.69,
-        "yrYrRev_pct": 139.30461073318216,
-        "epsYoY_pct": -349.99999999999994,
-        "epsEst_next4": [
-          -0.22,
-          -0.26,
-          -0.2,
-          -0.18
-        ],
-        "revEst_next4": [
-          91.71,
-          111.48,
-          156.15,
-          185.43
-        ],
-        "yoyBlock": "-350.00% / +139.30%\n--------------------\n-633.33% / +141.28%\n-766.67% / +73.59%\n-185.71% / +23.35%\n+50.00% / +46.42%",
-        "chart": {
-          "quarters": [
-            "Q4 '23",
-            "Q1 '24",
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26"
-          ],
-          "eps_reported": [
-            -0.52,
-            -0.03,
-            -0.06,
-            -0.08,
-            -0.03,
-            -0.03,
-            -0.07,
-            -0.36,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -0.22,
-            -0.27,
-            -0.14,
-            -0.1,
-            -0.15,
-            -0.13,
-            -0.12,
-            -0.15,
-            -0.22,
-            -0.26,
-            -0.2,
-            -0.18
-          ],
-          "rev_reported_M": [
-            43.7,
-            60.7,
-            63.87,
-            52.92,
-            38.01,
-            64.22,
-            126.59,
-            126.64,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            37.61,
-            54.85,
-            62.41,
-            64.82,
-            37.84,
-            49.97,
-            85.34,
-            75.52,
-            91.71,
-            111.48,
-            156.15,
-            185.43
-          ],
-          "latest_idx": 7
-        }
-      },
-      "shortFloat": 30.95,
-      "shortRatio": 3.81,
-      "marketCap_M": 11290,
-      "floatShares_M": 258.69,
-      "perf1M": 26.18,
-      "perf3M": 25.34,
-      "perf6M": 72.31,
-      "perfYTD": 61.17,
-      "perf12M": 487.22,
-      "prevOhlcv": null
-    },
-    "MTVA": {
-      "symbol": "MTVA",
-      "name": "Metavia Inc",
-      "type": "news",
-      "catalyst": "在同行評審期刊上發表研究，證實其候選藥物 vanoglipel 具備治療肝纖維化的潛力，推升股價大幅上漲。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=MTVA"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/MTVA"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-MTVA/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 2.65,
-          "chgPct": -8.3,
-          "volume": 1149645,
-          "session": "post",
-          "direction": "down",
-          "name": "Metavia Inc",
-          "sessionDate": "2026-05-20",
-          "targetDate": "2026-05-21"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 2.65,
-      "chgPct": -8.3,
-      "volume": 1149645,
-      "tv": null,
-      "shortFloat": 2.42,
-      "shortRatio": 0.05,
-      "marketCap_M": 14.93,
-      "floatShares_M": 3.34,
-      "perf1M": 80.63,
-      "perf3M": 85.26,
-      "perf6M": -65.03,
-      "perfYTD": -65.68,
-      "perf12M": -61.95,
       "prevOhlcv": null
     },
     "INTU": {
@@ -565,24 +453,24 @@
       "perf12M": -42.8,
       "prevOhlcv": null
     },
-    "ODV": {
-      "symbol": "ODV",
-      "name": "Osisko Dev Corp",
+    "AMPG": {
+      "symbol": "AMPG",
+      "name": "Amplitech Group",
       "type": "news",
-      "catalyst": "宣布發行 2.25 億美元於 2031 年到期的可轉換優先票據，引發市場對股權稀釋的擔憂，盤後大跌約 15%。",
+      "catalyst": "獲美國 FCC 與加拿大 ISED 全面認證其 5G 原生分散式天線系統，可立即在北美展開商業銷售，股價大漲近 15%。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=ODV"
+          "url": "https://finviz.com/quote.ashx?t=AMPG"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/ODV"
+          "url": "https://finance.yahoo.com/quote/AMPG"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-ODV/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AMPG/news/"
         }
       ],
       "publishedAt": null,
@@ -590,31 +478,340 @@
       "sources": null,
       "sessions": [
         {
-          "last": 2.57,
-          "chgPct": -12.6,
-          "volume": 159935,
+          "last": 4.63,
+          "chgPct": 4.51,
+          "volume": 219364,
+          "session": "post",
+          "direction": "up",
+          "name": "Amplitech Group",
+          "sessionDate": "2026-05-20",
+          "targetDate": "2026-05-21"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 4.63,
+      "chgPct": 4.51,
+      "volume": 219364,
+      "tv": {
+        "latestEPS": -0.06,
+        "consensusEPS": -0.05,
+        "priorYrEPS": -0.09,
+        "surpriseEPS_pct": -20.0,
+        "surpriseEPS_dollar": -0.009999999999999995,
+        "latestRev_M": 5.35,
+        "consensusRev_M": 5.0,
+        "priorYrRev_M": 3.6,
+        "surpriseRev_pct": 6.99,
+        "yrYrRev_pct": 48.6111111111111,
+        "epsYoY_pct": 33.33333333333333,
+        "epsEst_next4": [
+          -0.02,
+          0.12,
+          0.21,
+          null
+        ],
+        "revEst_next4": [
+          8.0,
+          16.0,
+          20.7,
+          null
+        ],
+        "yoyBlock": "+33.33% / +48.61%\n--------------------\n+77.78% / -27.47%\n+1300.00% / +162.73%\n+250.00% / +562.05%",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26"
+          ],
+          "eps_reported": [
+            -0.16,
+            -0.12,
+            -0.31,
+            -0.09,
+            -0.09,
+            -0.01,
+            -0.14,
+            -0.06,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -0.12,
+            -0.17,
+            -0.12,
+            -0.08,
+            -0.06,
+            -0.09,
+            -0.07,
+            -0.05,
+            -0.02,
+            0.12,
+            0.21
+          ],
+          "rev_reported_M": [
+            2.5,
+            2.8,
+            1.85,
+            3.6,
+            11.03,
+            6.09,
+            -4.48,
+            5.35,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            3.0,
+            2.7,
+            3.0,
+            3.0,
+            4.4,
+            5.0,
+            4.3,
+            5.0,
+            8.0,
+            16.0,
+            20.7
+          ],
+          "latest_idx": 7
+        }
+      },
+      "shortFloat": 5.53,
+      "shortRatio": 1.23,
+      "marketCap_M": 112.25,
+      "floatShares_M": 22.1,
+      "perf1M": 124.87,
+      "perf3M": 61.09,
+      "perf6M": 45.72,
+      "perfYTD": 48.16,
+      "perf12M": 104.15,
+      "prevOhlcv": null
+    },
+    "WNW": {
+      "symbol": "WNW",
+      "name": "Meiwu Technology Ltd",
+      "type": "momentum",
+      "catalyst": "宣佈以私募方式融資 1565 萬美元推出 AI 護膚平台後，股價經歷 74% 的日內劇烈震盪，最終獲利了結收跌 18.32%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=WNW"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/WNW"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-WNW/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 4.96,
+          "chgPct": 27.74,
+          "volume": 174860,
+          "session": "post",
+          "direction": "up",
+          "name": "Meiwu Technology Ltd",
+          "sessionDate": "2026-05-20",
+          "targetDate": "2026-05-21"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 4.96,
+      "chgPct": 27.74,
+      "volume": 174860,
+      "tv": null,
+      "shortFloat": 0.79,
+      "shortRatio": 0.01,
+      "marketCap_M": 5.16,
+      "floatShares_M": 1.2,
+      "perf1M": -5.13,
+      "perf3M": -97.23,
+      "perf6M": -97.6,
+      "perfYTD": -97.21,
+      "perf12M": -97.77,
+      "prevOhlcv": {
+        "date": "2026-05-18",
+        "open": 3.15,
+        "high": 3.15,
+        "low": 2.25,
+        "close": 2.41,
+        "volume": 199000,
+        "prev_close": 3.12
+      }
+    },
+    "MLGO": {
+      "symbol": "MLGO",
+      "name": "Microalgo Inc",
+      "type": "news",
+      "catalyst": "宣布開發出專為雜訊影像設計的新型量子圖像邊緣提取演算法，帶動股價單日大漲近 40%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=MLGO"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/MLGO"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-MLGO/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 5.11,
+          "chgPct": -4.66,
+          "volume": 156245,
           "session": "post",
           "direction": "down",
-          "name": "Osisko Dev Corp",
+          "name": "Microalgo Inc",
           "sessionDate": "2026-05-20",
           "targetDate": "2026-05-21"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "down",
-      "last": 2.57,
-      "chgPct": -12.6,
-      "volume": 159935,
+      "last": 5.11,
+      "chgPct": -4.66,
+      "volume": 156245,
       "tv": null,
-      "shortFloat": 3.33,
-      "shortRatio": 3.31,
-      "marketCap_M": 895.52,
-      "floatShares_M": 221.07,
-      "perf1M": -15.27,
-      "perf3M": -21.39,
-      "perf6M": -6.96,
-      "perfYTD": -15.76,
-      "perf12M": 56.38,
+      "shortFloat": 8.92,
+      "shortRatio": 1.7,
+      "marketCap_M": 66.67,
+      "floatShares_M": 5.81,
+      "perf1M": 34,
+      "perf3M": 44.09,
+      "perf6M": -17.67,
+      "perfYTD": 21.27,
+      "perf12M": -85.93,
+      "prevOhlcv": null
+    },
+    "STFS": {
+      "symbol": "STFS",
+      "name": "Star Fashion Culture Holdings Limited Cl A",
+      "type": "momentum",
+      "catalyst": "近期缺乏明顯企業利多，受微型股高波動性及低交易量影響，股價連續三日走弱，單日跌幅 6.13%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=STFS"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/STFS"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-STFS/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 12.6,
+          "chgPct": 33.19,
+          "volume": 187223,
+          "session": "post",
+          "direction": "up",
+          "name": "Star Fashion Culture Holdings Limited Cl A",
+          "sessionDate": "2026-05-20",
+          "targetDate": "2026-05-21"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 12.6,
+      "chgPct": 33.19,
+      "volume": 187223,
+      "tv": null,
+      "shortFloat": 1.32,
+      "shortRatio": 0.06,
+      "marketCap_M": 11.3,
+      "floatShares_M": 1.12,
+      "perf1M": 135.32,
+      "perf3M": 134.16,
+      "perf6M": 52.19,
+      "perfYTD": 135.79,
+      "perf12M": -80.13,
+      "prevOhlcv": null
+    },
+    "JAGX": {
+      "symbol": "JAGX",
+      "name": "Jaguar Health Inc",
+      "type": "news",
+      "catalyst": "宣布將提交 Q1 的 10-Q 財報並舉行投資人會議，但管理層近期示警公司恐存在持續經營的「重大疑慮」。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=JAGX"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/JAGX"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-JAGX/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 3.32,
+          "chgPct": -9.5,
+          "volume": 515645,
+          "session": "post",
+          "direction": "down",
+          "name": "Jaguar Health Inc",
+          "sessionDate": "2026-05-20",
+          "targetDate": "2026-05-21"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 3.32,
+      "chgPct": -9.5,
+      "volume": 515645,
+      "tv": null,
+      "shortFloat": 29.07,
+      "shortRatio": 2.48,
+      "marketCap_M": 1.48,
+      "floatShares_M": 0.37,
+      "perf1M": -74.2,
+      "perf3M": -83.5,
+      "perf6M": -94.19,
+      "perfYTD": -88.74,
+      "perf12M": -98.2,
       "prevOhlcv": null
     },
     "ELF": {
@@ -765,582 +962,6 @@
       "perf6M": -30.32,
       "perfYTD": -33.3,
       "perf12M": -37.77,
-      "prevOhlcv": null
-    },
-    "HCWB": {
-      "symbol": "HCWB",
-      "name": "Hcw Biologics Inc",
-      "type": "earnings",
-      "catalyst": "Q1 財報因與 Beijing Trimmune Biotech 的授權協議帶來 650 萬美元營收與 350 萬美元淨利潤，股價盤中暴漲逾 126%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=HCWB"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/HCWB"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-HCWB/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 2.03,
-          "chgPct": -16.46,
-          "volume": 4991799,
-          "session": "post",
-          "direction": "down",
-          "name": "Hcw Biologics Inc",
-          "sessionDate": "2026-05-20",
-          "targetDate": "2026-05-21"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 2.03,
-      "chgPct": -16.46,
-      "volume": 4991799,
-      "tv": {
-        "latestEPS": 0.37,
-        "consensusEPS": -0.44,
-        "priorYrEPS": -2.0,
-        "surpriseEPS_pct": 184.09,
-        "surpriseEPS_dollar": 0.81,
-        "latestRev_M": 0.0054,
-        "consensusRev_M": 7.01,
-        "priorYrRev_M": 0.39480000000000004,
-        "surpriseRev_pct": -99.92,
-        "yrYrRev_pct": -98.63221884498479,
-        "epsYoY_pct": 118.5,
-        "epsEst_next4": [
-          -0.2,
-          -0.21,
-          -0.22,
-          null
-        ],
-        "revEst_next4": [
-          null,
-          null,
-          null,
-          null
-        ],
-        "yoyBlock": "+118.50% / -98.63%\n--------------------\n+97.05% / N/M\n+94.92% / N/M\n+78.43% / N/M",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26"
-          ],
-          "eps_reported": [
-            null,
-            -4.0,
-            -3.2,
-            -2.0,
-            -6.79,
-            -4.13,
-            -1.02,
-            0.37,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -7.2,
-            -5.2,
-            3.6,
-            null,
-            1.8,
-            1.58,
-            -0.84,
-            -0.44,
-            -0.2,
-            -0.21,
-            -0.22
-          ],
-          "rev_reported_M": [
-            0.61475,
-            0.61885,
-            0.85285,
-            0.39480000000000004,
-            0.005070000000000001,
-            0.0013100000000000002,
-            0.08528000000000001,
-            0.0054,
-            6.53,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            null,
-            null,
-            null,
-            7.0,
-            null,
-            7.0,
-            7.0,
-            7.01,
-            null,
-            null,
-            null,
-            null
-          ],
-          "latest_idx": 7
-        }
-      },
-      "shortFloat": 11.19,
-      "shortRatio": 0.03,
-      "marketCap_M": 16.37,
-      "floatShares_M": 5.1,
-      "perf1M": 537.8,
-      "perf3M": 302.99,
-      "perf6M": -20.59,
-      "perfYTD": 150.36,
-      "perf12M": -73.53,
-      "prevOhlcv": null
-    },
-    "PURR": {
-      "symbol": "PURR",
-      "name": "Hyperliquid Strategies Inc",
-      "type": "analyst",
-      "catalyst": "Chardan Capital 給予「買入」評級並將目標價從 8.45 美元上調至 9.75 美元，推升這檔數位資產概念股大漲逾 9%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=PURR"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/PURR"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-PURR/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 8.54,
-          "chgPct": 5.17,
-          "volume": 2361080,
-          "session": "post",
-          "direction": "up",
-          "name": "Hyperliquid Strategies Inc",
-          "sessionDate": "2026-05-20",
-          "targetDate": "2026-05-21"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 8.54,
-      "chgPct": 5.17,
-      "volume": 2361080,
-      "tv": {
-        "latestEPS": 1.01,
-        "consensusEPS": -0.67,
-        "priorYrEPS": null,
-        "surpriseEPS_pct": 251.5,
-        "surpriseEPS_dollar": 1.6800000000000002,
-        "latestRev_M": 2.6,
-        "consensusRev_M": 1.8,
-        "priorYrRev_M": null,
-        "surpriseRev_pct": 44.44,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": null,
-        "epsEst_next4": [
-          -0.01,
-          0.0,
-          -1.85,
-          0.17
-        ],
-        "revEst_next4": [
-          3.43,
-          4.37,
-          4.28,
-          4.58
-        ],
-        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M\n-1323.08% / +756.00%\n-83.17% / +76.15%",
-        "chart": {
-          "quarters": [
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q3 '27"
-          ],
-          "eps_reported": [
-            -0.13,
-            1.01,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -2.67,
-            -0.67,
-            -0.01,
-            0.0,
-            -1.85,
-            0.17
-          ],
-          "rev_reported_M": [
-            0.5,
-            2.6,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            0.0,
-            1.8,
-            3.43,
-            4.37,
-            4.28,
-            4.58
-          ],
-          "latest_idx": 1
-        }
-      },
-      "shortFloat": 7.51,
-      "shortRatio": 1.31,
-      "marketCap_M": 1090,
-      "floatShares_M": 110.95,
-      "perf1M": 43.97,
-      "perf3M": 101.99,
-      "perf6M": null,
-      "perfYTD": 128.09,
-      "perf12M": null,
-      "prevOhlcv": {
-        "date": "2026-05-18",
-        "open": 7.03,
-        "high": 7.13,
-        "low": 6.72,
-        "close": 6.93,
-        "volume": 9591200,
-        "prev_close": 6.99
-      }
-    },
-    "MLGO": {
-      "symbol": "MLGO",
-      "name": "Microalgo Inc",
-      "type": "news",
-      "catalyst": "宣布開發出專為雜訊影像設計的新型量子圖像邊緣提取演算法，帶動股價單日大漲近 40%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=MLGO"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/MLGO"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-MLGO/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 5.11,
-          "chgPct": -4.66,
-          "volume": 156245,
-          "session": "post",
-          "direction": "down",
-          "name": "Microalgo Inc",
-          "sessionDate": "2026-05-20",
-          "targetDate": "2026-05-21"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 5.11,
-      "chgPct": -4.66,
-      "volume": 156245,
-      "tv": null,
-      "shortFloat": 8.92,
-      "shortRatio": 1.7,
-      "marketCap_M": 66.67,
-      "floatShares_M": 5.81,
-      "perf1M": 34,
-      "perf3M": 44.09,
-      "perf6M": -17.67,
-      "perfYTD": 21.27,
-      "perf12M": -85.93,
-      "prevOhlcv": null
-    },
-    "JAGX": {
-      "symbol": "JAGX",
-      "name": "Jaguar Health Inc",
-      "type": "news",
-      "catalyst": "宣布將提交 Q1 的 10-Q 財報並舉行投資人會議，但管理層近期示警公司恐存在持續經營的「重大疑慮」。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=JAGX"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/JAGX"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-JAGX/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 3.32,
-          "chgPct": -9.5,
-          "volume": 515645,
-          "session": "post",
-          "direction": "down",
-          "name": "Jaguar Health Inc",
-          "sessionDate": "2026-05-20",
-          "targetDate": "2026-05-21"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 3.32,
-      "chgPct": -9.5,
-      "volume": 515645,
-      "tv": null,
-      "shortFloat": 29.07,
-      "shortRatio": 2.48,
-      "marketCap_M": 1.48,
-      "floatShares_M": 0.37,
-      "perf1M": -74.2,
-      "perf3M": -83.5,
-      "perf6M": -94.19,
-      "perfYTD": -88.74,
-      "perf12M": -98.2,
-      "prevOhlcv": null
-    },
-    "AMPG": {
-      "symbol": "AMPG",
-      "name": "Amplitech Group",
-      "type": "news",
-      "catalyst": "獲美國 FCC 與加拿大 ISED 全面認證其 5G 原生分散式天線系統，可立即在北美展開商業銷售，股價大漲近 15%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AMPG"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AMPG"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AMPG/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 4.63,
-          "chgPct": 4.51,
-          "volume": 219364,
-          "session": "post",
-          "direction": "up",
-          "name": "Amplitech Group",
-          "sessionDate": "2026-05-20",
-          "targetDate": "2026-05-21"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 4.63,
-      "chgPct": 4.51,
-      "volume": 219364,
-      "tv": {
-        "latestEPS": -0.06,
-        "consensusEPS": -0.05,
-        "priorYrEPS": -0.09,
-        "surpriseEPS_pct": -20.0,
-        "surpriseEPS_dollar": -0.009999999999999995,
-        "latestRev_M": 5.35,
-        "consensusRev_M": 5.0,
-        "priorYrRev_M": 3.6,
-        "surpriseRev_pct": 6.99,
-        "yrYrRev_pct": 48.6111111111111,
-        "epsYoY_pct": 33.33333333333333,
-        "epsEst_next4": [
-          -0.02,
-          0.12,
-          0.21,
-          null
-        ],
-        "revEst_next4": [
-          8.0,
-          16.0,
-          20.7,
-          null
-        ],
-        "yoyBlock": "+33.33% / +48.61%\n--------------------\n+77.78% / -27.47%\n+1300.00% / +162.73%\n+250.00% / +562.05%",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26"
-          ],
-          "eps_reported": [
-            -0.16,
-            -0.12,
-            -0.31,
-            -0.09,
-            -0.09,
-            -0.01,
-            -0.14,
-            -0.06,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -0.12,
-            -0.17,
-            -0.12,
-            -0.08,
-            -0.06,
-            -0.09,
-            -0.07,
-            -0.05,
-            -0.02,
-            0.12,
-            0.21
-          ],
-          "rev_reported_M": [
-            2.5,
-            2.8,
-            1.85,
-            3.6,
-            11.03,
-            6.09,
-            -4.48,
-            5.35,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            3.0,
-            2.7,
-            3.0,
-            3.0,
-            4.4,
-            5.0,
-            4.3,
-            5.0,
-            8.0,
-            16.0,
-            20.7
-          ],
-          "latest_idx": 7
-        }
-      },
-      "shortFloat": 5.53,
-      "shortRatio": 1.23,
-      "marketCap_M": 112.25,
-      "floatShares_M": 22.1,
-      "perf1M": 124.87,
-      "perf3M": 61.09,
-      "perf6M": 45.72,
-      "perfYTD": 48.16,
-      "perf12M": 104.15,
-      "prevOhlcv": null
-    },
-    "AIIO": {
-      "symbol": "AIIO",
-      "name": "Robo.Ai Inc",
-      "type": "news",
-      "catalyst": "子公司 Neurovia AI 參與 ISNR2026 展會展示其視覺數據壓縮平台 NeuroStream，股價受到相關新聞與市場情緒推動。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AIIO"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AIIO"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AIIO/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 3.62,
-          "chgPct": -4.23,
-          "volume": 532905,
-          "session": "post",
-          "direction": "down",
-          "name": "Robo.Ai Inc",
-          "sessionDate": "2026-05-20",
-          "targetDate": "2026-05-21"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 3.62,
-      "chgPct": -4.23,
-      "volume": 532905,
-      "tv": null,
-      "shortFloat": 2.55,
-      "shortRatio": 0.03,
-      "marketCap_M": 74.11,
-      "floatShares_M": 13.79,
-      "perf1M": 454.82,
-      "perf3M": 59.49,
-      "perf6M": -66.67,
-      "perfYTD": -38.05,
-      "perf12M": -91.92,
       "prevOhlcv": null
     },
     "HTCR": {
@@ -1540,174 +1161,24 @@
       "perf12M": -98.16,
       "prevOhlcv": null
     },
-    "RKLB": {
-      "symbol": "RKLB",
-      "name": "Rocket Lab Corporation",
-      "type": "momentum",
-      "catalyst": "延續近期創紀錄的 Q1 營收與調升的 Q2 財測表現，加上 Abacus Wealth Partners 等機構建倉買進，股價穩步上漲逾 3.8%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=RKLB"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/RKLB"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-RKLB/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 123.05,
-          "chgPct": -8.36,
-          "volume": 2125842,
-          "session": "post",
-          "direction": "down",
-          "name": "Rocket Lab Corporation",
-          "sessionDate": "2026-05-20",
-          "targetDate": "2026-05-21"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 123.05,
-      "chgPct": -8.36,
-      "volume": 2125842,
-      "tv": {
-        "latestEPS": -0.07,
-        "consensusEPS": -0.07,
-        "priorYrEPS": -0.12,
-        "surpriseEPS_pct": -4.35,
-        "surpriseEPS_dollar": 0.0,
-        "latestRev_M": 200.35,
-        "consensusRev_M": 189.65,
-        "priorYrRev_M": 122.57,
-        "surpriseRev_pct": 5.64,
-        "yrYrRev_pct": 63.457616056131194,
-        "epsYoY_pct": 41.66666666666666,
-        "epsEst_next4": [
-          -0.06,
-          -0.05,
-          -0.04,
-          -0.03
-        ],
-        "revEst_next4": [
-          227.23,
-          231.91,
-          246.83,
-          264.44
-        ],
-        "yoyBlock": "+41.67% / +63.46%\n--------------------\n+53.85% / +57.25%\n-66.67% / +49.62%\n+55.56% / +37.39%\n+57.14% / +31.99%",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27"
-          ],
-          "eps_reported": [
-            -0.08,
-            -0.1,
-            -0.1,
-            -0.12,
-            -0.13,
-            -0.03,
-            -0.09,
-            -0.07,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -0.08,
-            -0.09,
-            -0.09,
-            -0.11,
-            -0.1,
-            -0.1,
-            -0.1,
-            -0.07,
-            -0.06,
-            -0.05,
-            -0.04,
-            -0.03
-          ],
-          "rev_reported_M": [
-            106.25,
-            104.81,
-            132.39,
-            122.57,
-            144.5,
-            155.0,
-            179.65,
-            200.35,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            105.47,
-            102.28,
-            130.57,
-            121.4,
-            135.41,
-            151.8,
-            176.83,
-            189.65,
-            227.23,
-            231.91,
-            246.83,
-            264.44
-          ],
-          "latest_idx": 7
-        }
-      },
-      "shortFloat": 5.83,
-      "shortRatio": 1.39,
-      "marketCap_M": 77710,
-      "floatShares_M": 570.96,
-      "perf1M": 54.99,
-      "perf3M": 75.35,
-      "perf6M": 210.04,
-      "perfYTD": 92.49,
-      "perf12M": 416.46,
-      "prevOhlcv": null
-    },
-    "ALGN": {
-      "symbol": "ALGN",
-      "name": "Align Technology",
+    "OUST": {
+      "symbol": "OUST",
+      "name": "Ouster Inc",
       "type": "news",
-      "catalyst": "股東大會通過所有議案及高管薪酬，無負債與股票回購計畫帶來市場信心，股價上漲 5.3%。",
+      "catalyst": "公司內部人士向 SEC 提交 Form 144 文件，擬透過摩根士丹利出售 1 萬股普通股（價值約 35 萬美元），使股價承壓。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=ALGN"
+          "url": "https://finviz.com/quote.ashx?t=OUST"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/ALGN"
+          "url": "https://finance.yahoo.com/quote/OUST"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-ALGN/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-OUST/news/"
         }
       ],
       "publishedAt": null,
@@ -1715,46 +1186,46 @@
       "sources": null,
       "sessions": [
         {
-          "last": 153.82,
-          "chgPct": -5.85,
-          "volume": 152026,
+          "last": 32.19,
+          "chgPct": 4.28,
+          "volume": 131790,
           "session": "post",
-          "direction": "down",
-          "name": "Align Technology",
+          "direction": "up",
+          "name": "Ouster Inc",
           "sessionDate": "2026-05-20",
           "targetDate": "2026-05-21"
         }
       ],
       "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 153.82,
-      "chgPct": -5.85,
-      "volume": 152026,
+      "primaryDirection": "up",
+      "last": 32.19,
+      "chgPct": 4.28,
+      "volume": 131790,
       "tv": {
-        "latestEPS": 2.58,
-        "consensusEPS": 2.3,
-        "priorYrEPS": 2.13,
-        "surpriseEPS_pct": 12.4,
-        "surpriseEPS_dollar": 0.28000000000000025,
-        "latestRev_M": 1040.0,
-        "consensusRev_M": 1020.0,
-        "priorYrRev_M": 979.26,
-        "surpriseRev_pct": 1.84,
-        "yrYrRev_pct": 6.202642811919206,
-        "epsYoY_pct": 21.12676056338029,
+        "latestEPS": -0.13,
+        "consensusEPS": -0.12,
+        "priorYrEPS": -0.26,
+        "surpriseEPS_pct": -15.71,
+        "surpriseEPS_dollar": -0.010000000000000009,
+        "latestRev_M": 48.58,
+        "consensusRev_M": 46.15,
+        "priorYrRev_M": 32.63,
+        "surpriseRev_pct": 5.26,
+        "yrYrRev_pct": 48.88139748697516,
+        "epsYoY_pct": 50.0,
         "epsEst_next4": [
-          2.64,
-          2.91,
-          3.29,
-          2.63
+          -0.11,
+          -0.07,
+          -0.02,
+          -0.02
         ],
         "revEst_next4": [
-          1060.0,
-          1030.0,
-          1070.0,
-          1080.0
+          50.86,
+          57.48,
+          63.6,
+          63.67
         ],
-        "yoyBlock": "+21.13% / +6.20%\n--------------------\n+6.02% / +4.95%\n+11.49% / +3.44%\n+0.00% / +1.90%\n+1.94% / +3.85%",
+        "yoyBlock": "+50.00% / +48.88%\n--------------------\n+21.43% / +45.11%\n+58.82% / +45.45%\n-110.00% / +2.28%\n+84.62% / +31.06%",
         "chart": {
           "quarters": [
             "Q2 '24",
@@ -1771,73 +1242,73 @@
             "Q1 '27"
           ],
           "eps_reported": [
-            2.41,
-            2.35,
-            2.44,
-            2.13,
-            2.49,
-            2.61,
-            3.29,
-            2.58,
+            -0.29,
+            -0.3,
+            -0.3,
+            -0.26,
+            -0.14,
+            -0.17,
+            0.2,
+            -0.13,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            2.34,
-            2.31,
-            2.45,
-            1.99,
-            2.57,
-            2.4,
-            2.97,
-            2.3,
-            2.64,
-            2.91,
-            3.29,
-            2.63
+            -0.31,
+            -0.27,
+            -0.26,
+            -0.25,
+            -0.2,
+            -0.18,
+            -0.13,
+            -0.12,
+            -0.11,
+            -0.07,
+            -0.02,
+            -0.02
           ],
           "rev_reported_M": [
-            1030.0,
-            977.87,
-            995.22,
-            979.26,
-            1010.0,
-            995.7,
-            1050.0,
-            1040.0,
+            26.99,
+            28.07,
+            30.09,
+            32.63,
+            35.05,
+            39.52,
+            62.18,
+            48.58,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            1040.0,
-            990.05,
-            996.9,
-            975.25,
-            1060.0,
-            976.35,
-            1030.0,
-            1020.0,
-            1060.0,
-            1030.0,
-            1070.0,
-            1080.0
+            27.04,
+            28.03,
+            29.8,
+            30.87,
+            33.77,
+            37.07,
+            41.12,
+            46.15,
+            50.86,
+            57.48,
+            63.6,
+            63.67
           ],
           "latest_idx": 7
         }
       },
-      "shortFloat": 6.17,
-      "shortRatio": 3.72,
-      "marketCap_M": 11700,
-      "floatShares_M": 69.07,
-      "perf1M": -16.3,
-      "perf3M": -13.74,
-      "perf6M": 23.2,
-      "perfYTD": 4.63,
-      "perf12M": -10.52,
+      "shortFloat": 8.88,
+      "shortRatio": 1.81,
+      "marketCap_M": 1970,
+      "floatShares_M": 59.09,
+      "perf1M": 11.81,
+      "perf3M": 61.79,
+      "perf6M": 47.56,
+      "perfYTD": 42.65,
+      "perf12M": 200.29,
       "prevOhlcv": null
     },
     "AVEX": {
@@ -1960,56 +1431,154 @@
       "perf12M": null,
       "prevOhlcv": null
     },
-    "STFS": {
-      "symbol": "STFS",
-      "name": "Star Fashion Culture Holdings Limited Cl A",
-      "type": "momentum",
-      "catalyst": "近期缺乏明顯企業利多，受微型股高波動性及低交易量影響，股價連續三日走弱，單日跌幅 6.13%。",
-      "newsDetail": null,
+    "APLD": {
+      "symbol": "APLD",
+      "name": "Applied Digital Corp",
+      "type": "contract",
+      "catalyst": "宣布與美國頂級雲端服務商簽署 15 年期、價值高達 75 億美元的 AI 數據中心基礎設施租賃合約，盤後大漲逾 8%。",
+      "newsDetail": "Applied Digital 宣布與一家美國頂級雲端服務商簽署了為期 15 年的 AI 數據中心基礎設施租賃合約。\n\n該合約總價值高達 75 億美元，將為公司帶來長期且穩定的現金流。管理層表示，這標誌著公司在高效能運算 (HPC) 與 AI 基礎設施領域的重要里程碑。\n\n這項百億級別的超級長約引發資金熱烈追捧，盤後大漲逾 8%。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=STFS"
+          "url": "https://finviz.com/quote.ashx?t=APLD"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/STFS"
+          "url": "https://finance.yahoo.com/quote/APLD"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-STFS/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-APLD/news/"
         }
       ],
-      "publishedAt": null,
-      "publishedTimezone": null,
+      "publishedAt": "2026-05-20T16:30:00-04:00",
+      "publishedTimezone": "ET",
       "sources": null,
       "sessions": [
         {
-          "last": 12.6,
-          "chgPct": 33.19,
-          "volume": 187223,
+          "last": 42.55,
+          "chgPct": 7.67,
+          "volume": 2780674,
           "session": "post",
           "direction": "up",
-          "name": "Star Fashion Culture Holdings Limited Cl A",
+          "name": "Applied Digital Corp",
           "sessionDate": "2026-05-20",
           "targetDate": "2026-05-21"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "up",
-      "last": 12.6,
-      "chgPct": 33.19,
-      "volume": 187223,
-      "tv": null,
-      "shortFloat": 1.32,
-      "shortRatio": 0.06,
-      "marketCap_M": 11.3,
-      "floatShares_M": 1.12,
-      "perf1M": 135.32,
-      "perf3M": 134.16,
-      "perf6M": 52.19,
-      "perfYTD": 135.79,
-      "perf12M": -80.13,
+      "last": 42.55,
+      "chgPct": 7.67,
+      "volume": 2780674,
+      "tv": {
+        "latestEPS": -0.36,
+        "consensusEPS": -0.15,
+        "priorYrEPS": -0.08,
+        "surpriseEPS_pct": -138.41,
+        "surpriseEPS_dollar": -0.21,
+        "latestRev_M": 126.64,
+        "consensusRev_M": 75.52,
+        "priorYrRev_M": 52.92,
+        "surpriseRev_pct": 67.69,
+        "yrYrRev_pct": 139.30461073318216,
+        "epsYoY_pct": -349.99999999999994,
+        "epsEst_next4": [
+          -0.22,
+          -0.26,
+          -0.2,
+          -0.18
+        ],
+        "revEst_next4": [
+          91.71,
+          111.48,
+          156.15,
+          185.43
+        ],
+        "yoyBlock": "-350.00% / +139.30%\n--------------------\n-633.33% / +141.28%\n-766.67% / +73.59%\n-185.71% / +23.35%\n+50.00% / +46.42%",
+        "chart": {
+          "quarters": [
+            "Q4 '23",
+            "Q1 '24",
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26"
+          ],
+          "eps_reported": [
+            -0.52,
+            -0.03,
+            -0.06,
+            -0.08,
+            -0.03,
+            -0.03,
+            -0.07,
+            -0.36,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -0.22,
+            -0.27,
+            -0.14,
+            -0.1,
+            -0.15,
+            -0.13,
+            -0.12,
+            -0.15,
+            -0.22,
+            -0.26,
+            -0.2,
+            -0.18
+          ],
+          "rev_reported_M": [
+            43.7,
+            60.7,
+            63.87,
+            52.92,
+            38.01,
+            64.22,
+            126.59,
+            126.64,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            37.61,
+            54.85,
+            62.41,
+            64.82,
+            37.84,
+            49.97,
+            85.34,
+            75.52,
+            91.71,
+            111.48,
+            156.15,
+            185.43
+          ],
+          "latest_idx": 7
+        }
+      },
+      "shortFloat": 30.95,
+      "shortRatio": 3.81,
+      "marketCap_M": 11290,
+      "floatShares_M": 258.69,
+      "perf1M": 26.18,
+      "perf3M": 25.34,
+      "perf6M": 72.31,
+      "perfYTD": 61.17,
+      "perf12M": 487.22,
       "prevOhlcv": null
     },
     "MRAM": {
@@ -2170,24 +1739,24 @@
         "prev_close": 37.57
       }
     },
-    "OUST": {
-      "symbol": "OUST",
-      "name": "Ouster Inc",
+    "ODV": {
+      "symbol": "ODV",
+      "name": "Osisko Dev Corp",
       "type": "news",
-      "catalyst": "公司內部人士向 SEC 提交 Form 144 文件，擬透過摩根士丹利出售 1 萬股普通股（價值約 35 萬美元），使股價承壓。",
+      "catalyst": "宣布發行 2.25 億美元於 2031 年到期的可轉換優先票據，引發市場對股權稀釋的擔憂，盤後大跌約 15%。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=OUST"
+          "url": "https://finviz.com/quote.ashx?t=ODV"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/OUST"
+          "url": "https://finance.yahoo.com/quote/ODV"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-OUST/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-ODV/news/"
         }
       ],
       "publishedAt": null,
@@ -2195,46 +1764,98 @@
       "sources": null,
       "sessions": [
         {
-          "last": 32.19,
-          "chgPct": 4.28,
-          "volume": 131790,
+          "last": 2.57,
+          "chgPct": -12.6,
+          "volume": 159935,
           "session": "post",
-          "direction": "up",
-          "name": "Ouster Inc",
+          "direction": "down",
+          "name": "Osisko Dev Corp",
           "sessionDate": "2026-05-20",
           "targetDate": "2026-05-21"
         }
       ],
       "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 32.19,
-      "chgPct": 4.28,
-      "volume": 131790,
+      "primaryDirection": "down",
+      "last": 2.57,
+      "chgPct": -12.6,
+      "volume": 159935,
+      "tv": null,
+      "shortFloat": 3.33,
+      "shortRatio": 3.31,
+      "marketCap_M": 895.52,
+      "floatShares_M": 221.07,
+      "perf1M": -15.27,
+      "perf3M": -21.39,
+      "perf6M": -6.96,
+      "perfYTD": -15.76,
+      "perf12M": 56.38,
+      "prevOhlcv": null
+    },
+    "ALGN": {
+      "symbol": "ALGN",
+      "name": "Align Technology",
+      "type": "news",
+      "catalyst": "股東大會通過所有議案及高管薪酬，無負債與股票回購計畫帶來市場信心，股價上漲 5.3%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=ALGN"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/ALGN"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-ALGN/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 153.82,
+          "chgPct": -5.85,
+          "volume": 152026,
+          "session": "post",
+          "direction": "down",
+          "name": "Align Technology",
+          "sessionDate": "2026-05-20",
+          "targetDate": "2026-05-21"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 153.82,
+      "chgPct": -5.85,
+      "volume": 152026,
       "tv": {
-        "latestEPS": -0.13,
-        "consensusEPS": -0.12,
-        "priorYrEPS": -0.26,
-        "surpriseEPS_pct": -15.71,
-        "surpriseEPS_dollar": -0.010000000000000009,
-        "latestRev_M": 48.58,
-        "consensusRev_M": 46.15,
-        "priorYrRev_M": 32.63,
-        "surpriseRev_pct": 5.26,
-        "yrYrRev_pct": 48.88139748697516,
-        "epsYoY_pct": 50.0,
+        "latestEPS": 2.58,
+        "consensusEPS": 2.3,
+        "priorYrEPS": 2.13,
+        "surpriseEPS_pct": 12.4,
+        "surpriseEPS_dollar": 0.28000000000000025,
+        "latestRev_M": 1040.0,
+        "consensusRev_M": 1020.0,
+        "priorYrRev_M": 979.26,
+        "surpriseRev_pct": 1.84,
+        "yrYrRev_pct": 6.202642811919206,
+        "epsYoY_pct": 21.12676056338029,
         "epsEst_next4": [
-          -0.11,
-          -0.07,
-          -0.02,
-          -0.02
+          2.64,
+          2.91,
+          3.29,
+          2.63
         ],
         "revEst_next4": [
-          50.86,
-          57.48,
-          63.6,
-          63.67
+          1060.0,
+          1030.0,
+          1070.0,
+          1080.0
         ],
-        "yoyBlock": "+50.00% / +48.88%\n--------------------\n+21.43% / +45.11%\n+58.82% / +45.45%\n-110.00% / +2.28%\n+84.62% / +31.06%",
+        "yoyBlock": "+21.13% / +6.20%\n--------------------\n+6.02% / +4.95%\n+11.49% / +3.44%\n+0.00% / +1.90%\n+1.94% / +3.85%",
         "chart": {
           "quarters": [
             "Q2 '24",
@@ -2251,73 +1872,452 @@
             "Q1 '27"
           ],
           "eps_reported": [
-            -0.29,
-            -0.3,
-            -0.3,
-            -0.26,
-            -0.14,
-            -0.17,
-            0.2,
-            -0.13,
+            2.41,
+            2.35,
+            2.44,
+            2.13,
+            2.49,
+            2.61,
+            3.29,
+            2.58,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            -0.31,
-            -0.27,
-            -0.26,
-            -0.25,
-            -0.2,
-            -0.18,
-            -0.13,
-            -0.12,
-            -0.11,
-            -0.07,
-            -0.02,
-            -0.02
+            2.34,
+            2.31,
+            2.45,
+            1.99,
+            2.57,
+            2.4,
+            2.97,
+            2.3,
+            2.64,
+            2.91,
+            3.29,
+            2.63
           ],
           "rev_reported_M": [
-            26.99,
-            28.07,
-            30.09,
-            32.63,
-            35.05,
-            39.52,
-            62.18,
-            48.58,
+            1030.0,
+            977.87,
+            995.22,
+            979.26,
+            1010.0,
+            995.7,
+            1050.0,
+            1040.0,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            27.04,
-            28.03,
-            29.8,
-            30.87,
-            33.77,
-            37.07,
-            41.12,
-            46.15,
-            50.86,
-            57.48,
-            63.6,
-            63.67
+            1040.0,
+            990.05,
+            996.9,
+            975.25,
+            1060.0,
+            976.35,
+            1030.0,
+            1020.0,
+            1060.0,
+            1030.0,
+            1070.0,
+            1080.0
           ],
           "latest_idx": 7
         }
       },
-      "shortFloat": 8.88,
-      "shortRatio": 1.81,
-      "marketCap_M": 1970,
-      "floatShares_M": 59.09,
-      "perf1M": 11.81,
-      "perf3M": 61.79,
-      "perf6M": 47.56,
-      "perfYTD": 42.65,
-      "perf12M": 200.29,
+      "shortFloat": 6.17,
+      "shortRatio": 3.72,
+      "marketCap_M": 11700,
+      "floatShares_M": 69.07,
+      "perf1M": -16.3,
+      "perf3M": -13.74,
+      "perf6M": 23.2,
+      "perfYTD": 4.63,
+      "perf12M": -10.52,
+      "prevOhlcv": null
+    },
+    "MTVA": {
+      "symbol": "MTVA",
+      "name": "Metavia Inc",
+      "type": "news",
+      "catalyst": "在同行評審期刊上發表研究，證實其候選藥物 vanoglipel 具備治療肝纖維化的潛力，推升股價大幅上漲。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=MTVA"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/MTVA"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-MTVA/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 2.65,
+          "chgPct": -8.3,
+          "volume": 1149645,
+          "session": "post",
+          "direction": "down",
+          "name": "Metavia Inc",
+          "sessionDate": "2026-05-20",
+          "targetDate": "2026-05-21"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 2.65,
+      "chgPct": -8.3,
+      "volume": 1149645,
+      "tv": null,
+      "shortFloat": 2.42,
+      "shortRatio": 0.05,
+      "marketCap_M": 14.93,
+      "floatShares_M": 3.34,
+      "perf1M": 80.63,
+      "perf3M": 85.26,
+      "perf6M": -65.03,
+      "perfYTD": -65.68,
+      "perf12M": -61.95,
+      "prevOhlcv": null
+    },
+    "PURR": {
+      "symbol": "PURR",
+      "name": "Hyperliquid Strategies Inc",
+      "type": "analyst",
+      "catalyst": "Chardan Capital 給予「買入」評級並將目標價從 8.45 美元上調至 9.75 美元，推升這檔數位資產概念股大漲逾 9%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=PURR"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/PURR"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-PURR/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 8.54,
+          "chgPct": 5.17,
+          "volume": 2361080,
+          "session": "post",
+          "direction": "up",
+          "name": "Hyperliquid Strategies Inc",
+          "sessionDate": "2026-05-20",
+          "targetDate": "2026-05-21"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 8.54,
+      "chgPct": 5.17,
+      "volume": 2361080,
+      "tv": {
+        "latestEPS": 1.01,
+        "consensusEPS": -0.67,
+        "priorYrEPS": null,
+        "surpriseEPS_pct": 251.5,
+        "surpriseEPS_dollar": 1.6800000000000002,
+        "latestRev_M": 2.6,
+        "consensusRev_M": 1.8,
+        "priorYrRev_M": null,
+        "surpriseRev_pct": 44.44,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": null,
+        "epsEst_next4": [
+          -0.01,
+          0.0,
+          -1.85,
+          0.17
+        ],
+        "revEst_next4": [
+          3.43,
+          4.37,
+          4.28,
+          4.58
+        ],
+        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M\n-1323.08% / +756.00%\n-83.17% / +76.15%",
+        "chart": {
+          "quarters": [
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q3 '27"
+          ],
+          "eps_reported": [
+            -0.13,
+            1.01,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -2.67,
+            -0.67,
+            -0.01,
+            0.0,
+            -1.85,
+            0.17
+          ],
+          "rev_reported_M": [
+            0.5,
+            2.6,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            0.0,
+            1.8,
+            3.43,
+            4.37,
+            4.28,
+            4.58
+          ],
+          "latest_idx": 1
+        }
+      },
+      "shortFloat": 7.51,
+      "shortRatio": 1.31,
+      "marketCap_M": 1090,
+      "floatShares_M": 110.95,
+      "perf1M": 43.97,
+      "perf3M": 101.99,
+      "perf6M": null,
+      "perfYTD": 128.09,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-05-18",
+        "open": 7.03,
+        "high": 7.13,
+        "low": 6.72,
+        "close": 6.93,
+        "volume": 9591200,
+        "prev_close": 6.99
+      }
+    },
+    "HCWB": {
+      "symbol": "HCWB",
+      "name": "Hcw Biologics Inc",
+      "type": "earnings",
+      "catalyst": "Q1 財報因與 Beijing Trimmune Biotech 的授權協議帶來 650 萬美元營收與 350 萬美元淨利潤，股價盤中暴漲逾 126%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=HCWB"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/HCWB"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-HCWB/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 2.03,
+          "chgPct": -16.46,
+          "volume": 4991799,
+          "session": "post",
+          "direction": "down",
+          "name": "Hcw Biologics Inc",
+          "sessionDate": "2026-05-20",
+          "targetDate": "2026-05-21"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 2.03,
+      "chgPct": -16.46,
+      "volume": 4991799,
+      "tv": {
+        "latestEPS": 0.37,
+        "consensusEPS": -0.44,
+        "priorYrEPS": -2.0,
+        "surpriseEPS_pct": 184.09,
+        "surpriseEPS_dollar": 0.81,
+        "latestRev_M": 0.0054,
+        "consensusRev_M": 7.01,
+        "priorYrRev_M": 0.39480000000000004,
+        "surpriseRev_pct": -99.92,
+        "yrYrRev_pct": -98.63221884498479,
+        "epsYoY_pct": 118.5,
+        "epsEst_next4": [
+          -0.2,
+          -0.21,
+          -0.22,
+          null
+        ],
+        "revEst_next4": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "yoyBlock": "+118.50% / -98.63%\n--------------------\n+97.05% / N/M\n+94.92% / N/M\n+78.43% / N/M",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26"
+          ],
+          "eps_reported": [
+            null,
+            -4.0,
+            -3.2,
+            -2.0,
+            -6.79,
+            -4.13,
+            -1.02,
+            0.37,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -7.2,
+            -5.2,
+            3.6,
+            null,
+            1.8,
+            1.58,
+            -0.84,
+            -0.44,
+            -0.2,
+            -0.21,
+            -0.22
+          ],
+          "rev_reported_M": [
+            0.61475,
+            0.61885,
+            0.85285,
+            0.39480000000000004,
+            0.005070000000000001,
+            0.0013100000000000002,
+            0.08528000000000001,
+            0.0054,
+            6.53,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            null,
+            null,
+            null,
+            7.0,
+            null,
+            7.0,
+            7.0,
+            7.01,
+            null,
+            null,
+            null,
+            null
+          ],
+          "latest_idx": 7
+        }
+      },
+      "shortFloat": 11.19,
+      "shortRatio": 0.03,
+      "marketCap_M": 16.37,
+      "floatShares_M": 5.1,
+      "perf1M": 537.8,
+      "perf3M": 302.99,
+      "perf6M": -20.59,
+      "perfYTD": 150.36,
+      "perf12M": -73.53,
+      "prevOhlcv": null
+    },
+    "AIIO": {
+      "symbol": "AIIO",
+      "name": "Robo.Ai Inc",
+      "type": "news",
+      "catalyst": "子公司 Neurovia AI 參與 ISNR2026 展會展示其視覺數據壓縮平台 NeuroStream，股價受到相關新聞與市場情緒推動。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=AIIO"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/AIIO"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AIIO/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 3.62,
+          "chgPct": -4.23,
+          "volume": 532905,
+          "session": "post",
+          "direction": "down",
+          "name": "Robo.Ai Inc",
+          "sessionDate": "2026-05-20",
+          "targetDate": "2026-05-21"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 3.62,
+      "chgPct": -4.23,
+      "volume": 532905,
+      "tv": null,
+      "shortFloat": 2.55,
+      "shortRatio": 0.03,
+      "marketCap_M": 74.11,
+      "floatShares_M": 13.79,
+      "perf1M": 454.82,
+      "perf3M": 59.49,
+      "perf6M": -66.67,
+      "perfYTD": -38.05,
+      "perf12M": -91.92,
       "prevOhlcv": null
     }
   },
