@@ -28,6 +28,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 | 2. Catalyst hunt | Claude `general-purpose` agent doing parallel WebSearches on **all** candidates | ~5 min | $0 | inline markdown table → updates `catalysts` dict in `build_report.py` |
 | 3. TradingView FQ | `node ./tv-scrape.js TICKER1 TICKER2 ...` | ~3-5s per ticker | $0 | `<TICKER>-earnings-fq.md` |
 | 4. Parse TV | `py ./parse_tv.py` | <1s | $0 | `tv-summary.json` + `tv-summary.csv` |
+| 4b. Backfill earnings dates | `py ./fetch_earnings_dates.py` | ~5-15s | $0 | Updates `tv-summary.json` in place. For tickers TV showed "Next report date" (no past date), queries NASDAQ's earnings-surprise endpoint for the most recent `dateReported`. Pushes coverage from ~70% → ~94%. |
 | **5. Finviz shorts + perf** | `node ./finviz-shorts.js` (parallel, throttled) | ~70-90s | $0 | `shorts.json` (shortFloat / shortRatio / marketCap_M / perf1M-12M for every candidate) |
 | 6. Build report | `py build_report.py` + `py gen_tables.py` | <1s | $0 | `final-candidates.csv` + `sorted-views.md` |
 | 7. Final brief | Claude composes the 繁體中文 brief | — | — | inline in chat |
