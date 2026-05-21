@@ -300,6 +300,7 @@ for sym in all_syms:
             'revEst_next4': t.get('RevEst_Next4'),
             'yoyBlock': t.get('YoYBlock'),
             'chart': t.get('Chart'),
+            'latestReportDate': t.get('LatestReportDate'),   # ISO YYYY-MM-DD parsed from TV markdown
         }
     # If a ticker appears in both pre and post, store both, but pick primary by larger |%chg|
     primary = max(cands, key=lambda c: abs(c['chgPct']))
@@ -2210,18 +2211,14 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .ms-table .neg { color: var(--neg); font-weight: 600; background: rgba(226, 59, 74, 0.06); }
 .ms-table .nm { color: var(--stone); }
 .ms-est-tag { color: var(--primary); font-weight: 700; font-size: 11px; margin-left: 4px; letter-spacing: 0.3px; }
-/* Publication-date badge above the LATEST REPORTED column header — e.g.
-   "公布 5/15" sitting on top of the Q1 '26 column when that's the latest
-   reported quarter. The whole row is empty except for the one badge cell. */
-.ms-pub-row th { padding: 4px 4px 2px; background: transparent; border: none; font-weight: 400; text-align: center; }
-.ms-pub-badge {
-  display: inline-block;
-  font-size: 10px; font-weight: 600;
-  color: var(--primary);
-  background: rgba(73, 79, 223, 0.08);
-  border: 1px solid rgba(73, 79, 223, 0.20);
-  padding: 2px 8px; border-radius: 4px;
-  letter-spacing: 0.3px;
+/* Earnings publication date — small grey caption above the latest reported
+   quarter column header (e.g. "5/6" sitting on top of Q1 '26). Source:
+   TV markdown's "Latest report date" → tv.latestReportDate. NOT a news date. */
+.ms-pub-row th { padding: 2px 4px 0; background: transparent; border: none; font-weight: 400; text-align: center; }
+.ms-pub-date {
+  font-size: 10px; font-weight: 400;
+  color: var(--stone);
+  letter-spacing: 0.2px;
   font-family: var(--font-mono);
   white-space: nowrap;
 }
@@ -4380,19 +4377,20 @@ function yoyPct(curr, prior, isEps) {
   return { txt: (r >= 0 ? '+' : '') + r + '%', val: r };
 }
 
-// Helpers for the publication-date badge on the MS table (shown above the
-// LATEST REPORTED column header — e.g. "公布 5/15" sitting on top of Q1 '26).
+// Helpers for the earnings-report date caption on the MS table (shown above
+// the LATEST REPORTED column header — e.g. "5/6" sitting on top of Q1 '26).
+// Source: TV markdown's "Latest report date" line, parsed by parse_tv.py
+// into the `tv.latestReportDate` field. NOT the news-publication date.
 function _fmtPubDate(iso) {
   if (!iso) return null;
-  try {
-    const d = new Date(iso);
-    if (isNaN(d.getTime())) return null;
-    return `${d.getMonth() + 1}/${d.getDate()}`;
-  } catch { return null; }
+  // Plain string parse to avoid timezone shifts (treat ISO date as local-day).
+  const m = String(iso).match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!m) return null;
+  return `${parseInt(m[2], 10)}/${parseInt(m[3], 10)}`;
 }
-function _msPubRowHtml(cells, firstEstIdx, publishedAt, includeRowLabel) {
-  if (!publishedAt || !cells.length) return '';
-  const pubStr = _fmtPubDate(publishedAt);
+function _msPubRowHtml(cells, firstEstIdx, latestReportDate, includeRowLabel) {
+  if (!latestReportDate || !cells.length) return '';
+  const pubStr = _fmtPubDate(latestReportDate);
   if (!pubStr) return '';
   // Pick latest reported column inside the visible window.
   let latestReportedIdx;
@@ -4402,7 +4400,7 @@ function _msPubRowHtml(cells, firstEstIdx, publishedAt, includeRowLabel) {
   let row = '<tr class="ms-pub-row">';
   cells.forEach((_c, i) => {
     const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
-    const content = (i === latestReportedIdx) ? `<span class="ms-pub-badge">公布 ${pubStr}</span>` : '';
+    const content = (i === latestReportedIdx) ? `<span class="ms-pub-date">${pubStr}</span>` : '';
     row += `<th class="ms-pub-cell ${div}">${content}</th>`;
   });
   if (includeRowLabel) row += '<th class="ms-pub-cell ms-rowlabel"></th>';
@@ -4509,7 +4507,7 @@ function renderMarketSurgeTable(chart, opts) {
     html += `<td class="ms-rowlabel ms-surprise-label">${label}</td></tr>`;
     return html;
   }
-  const pubRow = _msPubRowHtml(cells, firstEstIdx, (opts || {}).publishedAt, true);
+  const pubRow = _msPubRowHtml(cells, firstEstIdx, (opts || {}).latestReportDate, true);
   return `<div class="ms-table-wrap"><table class="ms-table"><thead>${pubRow}${head}</thead><tbody>${row('EPS ($)','eps',fmtEpsCell)}${yoyRow('YoY % Chg','epsYoY')}${surpRow('Surprise %','epsSurp')}${row(`Sales ($${revUnit})`,'rev',fmtSales)}${yoyRow('YoY % Chg','revYoY')}${surpRow('Surprise %','revSurp')}</tbody></table></div>`;
 }
 
@@ -4597,7 +4595,7 @@ function renderCompactReadonlyMsTable(chart, opts) {
     const content = c.isReported && c[key].val != null ? fmtYoY(c[key].txt, c[key].val) : '';
     return `<td class="ms-surprise ${div}">${content}</td>`;
   }).join('') + '</tr>';
-  const pubRow = _msPubRowHtml(cells, firstEstIdx, (opts || {}).publishedAt, false);
+  const pubRow = _msPubRowHtml(cells, firstEstIdx, (opts || {}).latestReportDate, false);
   return `<div class="ms-table-wrap"><table class="ms-table ms-table-readonly"><thead>${pubRow}${head}</thead><tbody>${valueRow('eps', fmtEpsCell)}${yoyRow('epsYoY')}${surpRow('epsSurp')}${valueRow('rev', fmtSales)}${yoyRow('revYoY')}${surpRow('revSurp')}</tbody></table></div>`;
 }
 
@@ -4672,7 +4670,7 @@ function renderEditableMsTable(chart, sym, focusIdx, opts) {
     fmtRev = v => v.toFixed(2);
   }
   const fmtEps  = v => v.toFixed(2);
-  const pubRow = _msPubRowHtml(cells, firstEstIdx, (opts || {}).publishedAt, true);
+  const pubRow = _msPubRowHtml(cells, firstEstIdx, (opts || {}).latestReportDate, true);
   return `<div class="ms-table-wrap"><table class="ms-table ms-table-editable"><thead>${pubRow}${head}</thead><tbody>` +
     inputRow('EPS ($)',                er, ee, fmtEps, '0.01',  'eps', 1) +
     computedRow('YoY % Chg', 'epsYoY', true, false) +
@@ -4954,7 +4952,7 @@ async function renderStock(sym) {
   if (s.tv) {
     chartHtml = renderChart(s.tv.chart);
     const t = s.tv;
-    msHtml = renderMarketSurgeTable(t.chart, { publishedAt: s.publishedAt });
+    msHtml = renderMarketSurgeTable(t.chart, { latestReportDate: t.latestReportDate });
     yoyHtml = `<button class="copy-btn" data-copy-target="yoy-${s.symbol}">Copy</button><div class="yoy-block" id="yoy-${s.symbol}" data-raw="${escapeHtml(t.yoyBlock || '')}">${colorizeYoyBlock(t.yoyBlock || '')}</div>`;
   }
   const detail = s.newsDetail || '';
@@ -7141,7 +7139,7 @@ function studyPreviewCardHtml(st, idx) {
   //     two views stay consistent. Editing only happens on detail page.
   const chart = st.customChart || (s.tv && s.tv.chart) || null;
   const msHiddenByUser = Array.isArray(st.hiddenSections) && st.hiddenSections.includes('ms_table');
-  const msHtml = (chart && !msHiddenByUser) ? renderCompactReadonlyMsTable(chart, { publishedAt: s.publishedAt }) : '';
+  const msHtml = (chart && !msHiddenByUser) ? renderCompactReadonlyMsTable(chart, { latestReportDate: s.tv?.latestReportDate }) : '';
   // Date display priority: ohlcv.date (user-filled in the Gain/Stop popup) wins over
   // savedAt (default = creation time). Hover-title spells out which source is being shown
   // so the user can tell at a glance.
@@ -7728,7 +7726,7 @@ async function renderStudyDetail(idOrSym) {
     if (eps) eps.innerHTML = svgBarChart(c.quarters, c.eps_reported, c.eps_estimate, fi, false);
     if (rev) rev.innerHTML = svgBarChart(c.quarters, c.rev_reported_M, c.rev_estimate_M, fi, true);
     const ms = document.getElementById('study-ms-host');
-    if (ms) ms.innerHTML = renderEditableMsTable(c, sym, fi, { publishedAt: study.snapshot?.publishedAt });
+    if (ms) ms.innerHTML = renderEditableMsTable(c, sym, fi, { latestReportDate: study.snapshot?.tv?.latestReportDate });
     const msRoot = document.getElementById('study-ms-host');
     recomputeMsComputedCells(c, msRoot);
     bindMsTableEditors();

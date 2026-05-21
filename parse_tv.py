@@ -46,6 +46,19 @@ def fmt_rev(v):
     if abs(v) >= 1000: return f'{v/1000:.2f}B'
     return f'{v:.1f}M' if abs(v) >= 1 else f'{v*1000:.0f}K'
 
+def parse_latest_report_date(content):
+    """Extract 'Latest report date' from TV markdown. Returns ISO YYYY-MM-DD or None."""
+    import datetime
+    m = re.search(r'Latest report date\s*\n\s*([A-Z][a-z]+\s+\d{1,2},\s+\d{4})', content)
+    if not m: return None
+    raw = m.group(1)
+    for fmt in ('%b %d, %Y', '%B %d, %Y'):
+        try:
+            return datetime.datetime.strptime(raw, fmt).strftime('%Y-%m-%d')
+        except Exception:
+            pass
+    return None
+
 def parse_file(path):
     with open(path, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -193,6 +206,7 @@ def parse_file(path):
     n_quarters = max(len(eps_rep), len(eps_est))
     quarters = quarters[-n_quarters:] if len(quarters) >= n_quarters else quarters
 
+    latest_report_date = parse_latest_report_date(content)
     ticker = os.path.basename(path).replace('-earnings-fq.md', '')
     return {
         'Ticker': ticker,
@@ -208,6 +222,7 @@ def parse_file(path):
         'RevEst_Next4': [rev_est[latest+i] if (latest+i) < len(rev_est) else None for i in range(1,5)],
         'YoYBlock': '\n'.join(block),
         'Raw': raw,
+        'LatestReportDate': latest_report_date,   # ISO YYYY-MM-DD, parsed from TV's "Latest report date" line
         # Full arrays for the detail-page chart
         'Chart': {
             'quarters': quarters,
