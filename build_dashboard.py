@@ -2210,6 +2210,21 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .ms-table .neg { color: var(--neg); font-weight: 600; background: rgba(226, 59, 74, 0.06); }
 .ms-table .nm { color: var(--stone); }
 .ms-est-tag { color: var(--primary); font-weight: 700; font-size: 11px; margin-left: 4px; letter-spacing: 0.3px; }
+/* Publication-date badge above the LATEST REPORTED column header — e.g.
+   "公布 5/15" sitting on top of the Q1 '26 column when that's the latest
+   reported quarter. The whole row is empty except for the one badge cell. */
+.ms-pub-row th { padding: 4px 4px 2px; background: transparent; border: none; font-weight: 400; text-align: center; }
+.ms-pub-badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 600;
+  color: var(--primary);
+  background: rgba(73, 79, 223, 0.08);
+  border: 1px solid rgba(73, 79, 223, 0.20);
+  padding: 2px 8px; border-radius: 4px;
+  letter-spacing: 0.3px;
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
 .chart-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 900px) { .chart-wrap { grid-template-columns: 1fr; } }
 .chart { width: 100%; height: 240px; }
@@ -4365,7 +4380,37 @@ function yoyPct(curr, prior, isEps) {
   return { txt: (r >= 0 ? '+' : '') + r + '%', val: r };
 }
 
-function renderMarketSurgeTable(chart) {
+// Helpers for the publication-date badge on the MS table (shown above the
+// LATEST REPORTED column header — e.g. "公布 5/15" sitting on top of Q1 '26).
+function _fmtPubDate(iso) {
+  if (!iso) return null;
+  try {
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return null;
+    return `${d.getMonth() + 1}/${d.getDate()}`;
+  } catch { return null; }
+}
+function _msPubRowHtml(cells, firstEstIdx, publishedAt, includeRowLabel) {
+  if (!publishedAt || !cells.length) return '';
+  const pubStr = _fmtPubDate(publishedAt);
+  if (!pubStr) return '';
+  // Pick latest reported column inside the visible window.
+  let latestReportedIdx;
+  if (firstEstIdx === -1)      latestReportedIdx = cells.length - 1;   // all reported
+  else if (firstEstIdx === 0)  return '';                              // all estimates, nothing reported
+  else                          latestReportedIdx = firstEstIdx - 1;
+  let row = '<tr class="ms-pub-row">';
+  cells.forEach((_c, i) => {
+    const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
+    const content = (i === latestReportedIdx) ? `<span class="ms-pub-badge">公布 ${pubStr}</span>` : '';
+    row += `<th class="ms-pub-cell ${div}">${content}</th>`;
+  });
+  if (includeRowLabel) row += '<th class="ms-pub-cell ms-rowlabel"></th>';
+  row += '</tr>';
+  return row;
+}
+
+function renderMarketSurgeTable(chart, opts) {
   if (!chart || !chart.quarters || !chart.quarters.length) return '<div style="color:var(--stone);padding:20px">No quarterly data</div>';
   const q = chart.quarters, er = chart.eps_reported, ee = chart.eps_estimate, rr = chart.rev_reported_M, re = chart.rev_estimate_M, li = chart.latest_idx;
   // 8-col window: 4 reported (ending at li) + 4 forward estimates — same shape the
@@ -4464,7 +4509,8 @@ function renderMarketSurgeTable(chart) {
     html += `<td class="ms-rowlabel ms-surprise-label">${label}</td></tr>`;
     return html;
   }
-  return `<div class="ms-table-wrap"><table class="ms-table"><thead>${head}</thead><tbody>${row('EPS ($)','eps',fmtEpsCell)}${yoyRow('YoY % Chg','epsYoY')}${surpRow('Surprise %','epsSurp')}${row(`Sales ($${revUnit})`,'rev',fmtSales)}${yoyRow('YoY % Chg','revYoY')}${surpRow('Surprise %','revSurp')}</tbody></table></div>`;
+  const pubRow = _msPubRowHtml(cells, firstEstIdx, (opts || {}).publishedAt, true);
+  return `<div class="ms-table-wrap"><table class="ms-table"><thead>${pubRow}${head}</thead><tbody>${row('EPS ($)','eps',fmtEpsCell)}${yoyRow('YoY % Chg','epsYoY')}${surpRow('Surprise %','epsSurp')}${row(`Sales ($${revUnit})`,'rev',fmtSales)}${yoyRow('YoY % Chg','revYoY')}${surpRow('Surprise %','revSurp')}</tbody></table></div>`;
 }
 
 /* Editable MS table for Studies — cells in EPS ($) / Sales ($M) rows are <input>; YoY % Chg
@@ -4477,7 +4523,7 @@ function renderMarketSurgeTable(chart) {
 // Shows the latest reported quarter + up to 4 forward estimates (5 quarters max). Hides
 // itself entirely (returns empty string) if there's no chart data or fewer than 1 reported
 // quarter. The detail page uses the editable version (with full 11-quarter window).
-function renderCompactReadonlyMsTable(chart) {
+function renderCompactReadonlyMsTable(chart, opts) {
   if (!chart || !chart.quarters || !chart.quarters.length) return '';
   const q = chart.quarters, er = chart.eps_reported || [], ee = chart.eps_estimate || [],
         rr = chart.rev_reported_M || [], re = chart.rev_estimate_M || [];
@@ -4551,10 +4597,11 @@ function renderCompactReadonlyMsTable(chart) {
     const content = c.isReported && c[key].val != null ? fmtYoY(c[key].txt, c[key].val) : '';
     return `<td class="ms-surprise ${div}">${content}</td>`;
   }).join('') + '</tr>';
-  return `<div class="ms-table-wrap"><table class="ms-table ms-table-readonly"><thead>${head}</thead><tbody>${valueRow('eps', fmtEpsCell)}${yoyRow('epsYoY')}${surpRow('epsSurp')}${valueRow('rev', fmtSales)}${yoyRow('revYoY')}${surpRow('revSurp')}</tbody></table></div>`;
+  const pubRow = _msPubRowHtml(cells, firstEstIdx, (opts || {}).publishedAt, false);
+  return `<div class="ms-table-wrap"><table class="ms-table ms-table-readonly"><thead>${pubRow}${head}</thead><tbody>${valueRow('eps', fmtEpsCell)}${yoyRow('epsYoY')}${surpRow('epsSurp')}${valueRow('rev', fmtSales)}${yoyRow('revYoY')}${surpRow('revSurp')}</tbody></table></div>`;
 }
 
-function renderEditableMsTable(chart, sym, focusIdx) {
+function renderEditableMsTable(chart, sym, focusIdx, opts) {
   if (!chart || !chart.quarters || !chart.quarters.length) return '<div style="color:var(--stone);padding:20px">No quarterly data</div>';
   const q = chart.quarters, er = chart.eps_reported || [], ee = chart.eps_estimate || [], rr = chart.rev_reported_M || [], re = chart.rev_estimate_M || [], li = (focusIdx != null) ? focusIdx : chart.latest_idx;
   // Window: at most 8 columns — 4 reported (latest 4 ending at focus) + 4 forward estimates.
@@ -4625,7 +4672,8 @@ function renderEditableMsTable(chart, sym, focusIdx) {
     fmtRev = v => v.toFixed(2);
   }
   const fmtEps  = v => v.toFixed(2);
-  return `<div class="ms-table-wrap"><table class="ms-table ms-table-editable"><thead>${head}</thead><tbody>` +
+  const pubRow = _msPubRowHtml(cells, firstEstIdx, (opts || {}).publishedAt, true);
+  return `<div class="ms-table-wrap"><table class="ms-table ms-table-editable"><thead>${pubRow}${head}</thead><tbody>` +
     inputRow('EPS ($)',                er, ee, fmtEps, '0.01',  'eps', 1) +
     computedRow('YoY % Chg', 'epsYoY', true, false) +
     computedRow('Surprise %','epsSurp', true, true) +
@@ -4906,7 +4954,7 @@ async function renderStock(sym) {
   if (s.tv) {
     chartHtml = renderChart(s.tv.chart);
     const t = s.tv;
-    msHtml = renderMarketSurgeTable(t.chart);
+    msHtml = renderMarketSurgeTable(t.chart, { publishedAt: s.publishedAt });
     yoyHtml = `<button class="copy-btn" data-copy-target="yoy-${s.symbol}">Copy</button><div class="yoy-block" id="yoy-${s.symbol}" data-raw="${escapeHtml(t.yoyBlock || '')}">${colorizeYoyBlock(t.yoyBlock || '')}</div>`;
   }
   const detail = s.newsDetail || '';
@@ -7093,7 +7141,7 @@ function studyPreviewCardHtml(st, idx) {
   //     two views stay consistent. Editing only happens on detail page.
   const chart = st.customChart || (s.tv && s.tv.chart) || null;
   const msHiddenByUser = Array.isArray(st.hiddenSections) && st.hiddenSections.includes('ms_table');
-  const msHtml = (chart && !msHiddenByUser) ? renderCompactReadonlyMsTable(chart) : '';
+  const msHtml = (chart && !msHiddenByUser) ? renderCompactReadonlyMsTable(chart, { publishedAt: s.publishedAt }) : '';
   // Date display priority: ohlcv.date (user-filled in the Gain/Stop popup) wins over
   // savedAt (default = creation time). Hover-title spells out which source is being shown
   // so the user can tell at a glance.
@@ -7680,7 +7728,7 @@ async function renderStudyDetail(idOrSym) {
     if (eps) eps.innerHTML = svgBarChart(c.quarters, c.eps_reported, c.eps_estimate, fi, false);
     if (rev) rev.innerHTML = svgBarChart(c.quarters, c.rev_reported_M, c.rev_estimate_M, fi, true);
     const ms = document.getElementById('study-ms-host');
-    if (ms) ms.innerHTML = renderEditableMsTable(c, sym, fi);
+    if (ms) ms.innerHTML = renderEditableMsTable(c, sym, fi, { publishedAt: study.snapshot?.publishedAt });
     const msRoot = document.getElementById('study-ms-host');
     recomputeMsComputedCells(c, msRoot);
     bindMsTableEditors();
