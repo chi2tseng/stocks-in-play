@@ -2149,7 +2149,7 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
    font-size/padding overrides below. */
 .ms-table { border-collapse: separate; border-spacing: 0; font-size: 12px; width: 100%; table-layout: fixed; }
 .ms-table th, .ms-table td { padding: 7px 6px; text-align: right; border-bottom: 1px solid var(--hairline); font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 12px; }
-.ms-table th { font-size: 11px; font-weight: 700; color: var(--ink); background: var(--canvas); border-bottom: 2px solid var(--ink); padding: 8px 6px 6px; font-family: var(--font-display); letter-spacing: 0; text-transform: none; }
+.ms-table th { font-size: 11px; font-weight: 700; color: var(--ink); background: var(--canvas); border-bottom: 2px solid var(--ink); padding: 8px 6px 6px; font-family: var(--font-display); letter-spacing: 0; text-transform: none; text-align: left; }
 .ms-table th.est-col { color: var(--primary); }
 .ms-table .ms-rowlabel { text-align: left; font-family: var(--font-display); font-weight: 700; color: var(--ink); background: var(--surface-soft); font-size: 14px; padding: 14px 16px; border-left: 1px solid var(--hairline); letter-spacing: -0.1px; min-width: 110px; width: 140px; }
 /* With table-layout: fixed (set above), giving the label column an explicit width forces all
@@ -2223,17 +2223,21 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
   white-space: nowrap;
 }
 /* Responsive collapse — when the viewport gets narrow enough that the 8-col MS table
-   would squish the Q-labels into each other, hide the older reported columns AND the
-   "Q1 25 / Q2 25..." header row entirely. Only the latest reported (anchored by the
-   small grey pub date) + 4 forward estimates remain. The pub row stays visible because
-   it labels which column is the latest report; the est-tag inside each estimate cell
-   communicates "est" without the column header. */
+   would squish the Q-labels into each other, hide:
+     1. the older reported columns (only latest + 4 forward estimates remain)
+     2. the "Q1 25 / Q2 25..." header row (the pub-date row stays as the column anchor)
+     3. the YoY % Chg + Surprise % rows — keep only the raw EPS / Sales numbers
+   The pub-date row stays so the user still sees which column is the latest reported,
+   and the per-cell "est" tag communicates which columns are forward estimates without
+   needing the column header row. */
 @media (max-width: 720px) {
   .ms-table thead tr:not(.ms-pub-row) { display: none; }
   .ms-table .ms-col-old-1,
   .ms-table .ms-col-old-2,
   .ms-table .ms-col-old-3,
   .ms-table .ms-col-old-many { display: none; }
+  .ms-table .ms-yoy-row,
+  .ms-table .ms-surprise-row { display: none; }
 }
 .chart-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 900px) { .chart-wrap { grid-template-columns: 1fr; } }
@@ -4512,7 +4516,7 @@ function renderMarketSurgeTable(chart, opts) {
     return html;
   }
   function yoyRow(label, key) {
-    let html = '<tr>';
+    let html = '<tr class="ms-yoy-row">';
     cells.forEach((c, i) => {
       const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
       const klass = c.isReported ? 'ms-reported' : 'ms-estimate';
@@ -4619,7 +4623,7 @@ function renderCompactReadonlyMsTable(chart, opts) {
     const pos = _msPosClass(i, firstEstIdx, cells.length);
     return `<td class="${klass} ${div} ${pos}">${fmt(c[key])}</td>`;
   }).join('') + '</tr>';
-  const yoyRow = (key) => '<tr>' + cells.map((c, i) => {
+  const yoyRow = (key) => '<tr class="ms-yoy-row">' + cells.map((c, i) => {
     const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
     const klass = c.isReported ? 'ms-reported' : 'ms-estimate';
     const pos = _msPosClass(i, firstEstIdx, cells.length);
@@ -4685,7 +4689,8 @@ function renderEditableMsTable(chart, sym, focusIdx, opts) {
   }
   // Computed-only row generator (YoY % Chg + Surprise %)
   function computedRow(label, kind, isEps, isSurp) {
-    let html = `<tr ${isSurp ? 'class="ms-surprise-row"' : ''}>`;
+    const rowClass = isSurp ? 'ms-surprise-row' : 'ms-yoy-row';
+    let html = `<tr class="${rowClass}">`;
     cells.forEach((c, idx) => {
       const div = (idx === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
       const klass = isSurp ? 'ms-surprise' : (c.isReported ? 'ms-reported' : 'ms-estimate');
