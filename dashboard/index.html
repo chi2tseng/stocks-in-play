@@ -1664,6 +1664,10 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
   font-family: var(--font-mono);
   white-space: nowrap;
 }
+/* Latest-reported column — both the small grey date AND the data numbers below
+   share the same flush-left alignment so they sit visually in a single column.
+   Other columns stay right-aligned per financial-table convention. */
+.ms-table td.ms-col-latest { text-align: left; }
 /* Responsive collapse — when the viewport gets narrow enough that the 8-col MS table
    would squish the Q-labels into each other, hide:
      1. the older reported columns (only latest + 4 forward estimates remain)
