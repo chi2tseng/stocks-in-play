@@ -2226,7 +2226,8 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
    would squish the Q-labels into each other, hide:
      1. the older reported columns (only latest + 4 forward estimates remain)
      2. the "Q1 25 / Q2 25..." header row (the pub-date row stays as the column anchor)
-     3. the YoY % Chg + Surprise % rows — keep only the raw EPS / Sales numbers
+     3. the right-hand row-label column ("EPS ($)", "YoY % Chg", "Surprise %",
+        "Sales ($M)", ...) — which is the widest single column in the table
    The pub-date row stays so the user still sees which column is the latest reported,
    and the per-cell "est" tag communicates which columns are forward estimates without
    needing the column header row. */
@@ -2236,8 +2237,7 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
   .ms-table .ms-col-old-2,
   .ms-table .ms-col-old-3,
   .ms-table .ms-col-old-many { display: none; }
-  .ms-table .ms-yoy-row,
-  .ms-table .ms-surprise-row { display: none; }
+  .ms-table .ms-rowlabel { display: none; }
 }
 .chart-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 900px) { .chart-wrap { grid-template-columns: 1fr; } }
