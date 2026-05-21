@@ -3050,8 +3050,12 @@ function pickCardHtml(s, idx, sourceKey = 'claude') {
   const chgCls = s.chgPct >= 0 ? 'pos' : 'neg';
   const sessTags = s.sessions.map(x => `<span class="tag">${x.session.toUpperCase()} <span class="dot dot-${x.direction}"></span> ${fmtPctShort(x.chgPct)}</span>`).join(' ');
   const rationale = s._pickRationale || s._claudeRationale || '';
+  // Render the agent's rationale with the same lightweight markdown subset as
+  // news-detail bodies: **bold** → <strong>, single \n → <br>. Without this
+  // the literal "**...**" asterisks leak through into the card (a recurring
+  // user complaint — see memory feedback_verify_render_after_data_changes).
   const rationaleHtml = rationale
-    ? `<div class="claude-rationale">${escapeHtml(rationale).replace(/\n/g, '<br>')}</div>`
+    ? `<div class="claude-rationale">${escapeHtml(rationale).replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')}</div>`
     : `<div class="claude-rationale claude-rationale-empty">（${src.label} 尚未提供分析——在 <code>D:\\SIPs\\${src.picksFile}</code> 寫入 <code>{"symbol":"${s.symbol}","rationale":"..."}</code> 後 rebuild 即可。）</div>`;
   const intent = s._pickIntent || s._claudeIntent;
   const mismatchBanner = s._pickDirMismatch
