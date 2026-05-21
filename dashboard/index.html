@@ -1656,13 +1656,26 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 /* Earnings publication date — small grey caption above the latest reported
    quarter column header (e.g. "5/6" sitting on top of Q1 '26). Source:
    TV markdown's "Latest report date" → tv.latestReportDate. NOT a news date. */
-.ms-pub-row th { padding: 2px 4px 0; background: transparent; border: none; font-weight: 400; text-align: center; }
+.ms-pub-row th { padding: 2px 6px 0; background: transparent; border: none; font-weight: 400; text-align: right; }
 .ms-pub-date {
   font-size: 10px; font-weight: 400;
   color: var(--stone);
   letter-spacing: 0.2px;
   font-family: var(--font-mono);
   white-space: nowrap;
+}
+/* Responsive collapse — when the viewport gets narrow enough that the 8-col MS table
+   would squish the Q-labels into each other, hide the older reported columns AND the
+   "Q1 25 / Q2 25..." header row entirely. Only the latest reported (anchored by the
+   small grey pub date) + 4 forward estimates remain. The pub row stays visible because
+   it labels which column is the latest report; the est-tag inside each estimate cell
+   communicates "est" without the column header. */
+@media (max-width: 720px) {
+  .ms-table thead tr:not(.ms-pub-row) { display: none; }
+  .ms-table .ms-col-old-1,
+  .ms-table .ms-col-old-2,
+  .ms-table .ms-col-old-3,
+  .ms-table .ms-col-old-many { display: none; }
 }
 .chart-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 900px) { .chart-wrap { grid-template-columns: 1fr; } }
@@ -3819,31 +3832,46 @@ function yoyPct(curr, prior, isEps) {
   return { txt: (r >= 0 ? '+' : '') + r + '%', val: r };
 }
 
-// Helpers for the earnings-report date caption on the MS table (shown above
-// the LATEST REPORTED column header — e.g. "5/6" sitting on top of Q1 '26).
-// Source: TV markdown's "Latest report date" line, parsed by parse_tv.py
-// into the `tv.latestReportDate` field. NOT the news-publication date.
+// Helpers for the earnings-report date caption on the MS table.
 function _fmtPubDate(iso) {
   if (!iso) return null;
-  // Plain string parse to avoid timezone shifts (treat ISO date as local-day).
   const m = String(iso).match(/^(\d{4})-(\d{2})-(\d{2})/);
   if (!m) return null;
   return `${parseInt(m[2], 10)}/${parseInt(m[3], 10)}`;
+}
+// Position class per column — used by responsive CSS to hide the 3 oldest
+// reported quarters at narrow widths (leaving latest reported + 4 estimates).
+//   ms-col-latest         — the latest reported column (always shown)
+//   ms-col-old-{1,2,3}    — older reported columns (hidden at narrow widths)
+//   ms-col-old-many       — anything older (also hidden)
+//   ms-col-est-{1,2,3,4}  — the 4 forward estimate columns (always shown)
+function _msPosClass(i, firstEstIdx, cellsLen) {
+  if (firstEstIdx === -1) {
+    // All cells reported — latest is at the end.
+    const offset = (cellsLen - 1) - i;
+    return ['ms-col-latest','ms-col-old-1','ms-col-old-2','ms-col-old-3'][offset] || 'ms-col-old-many';
+  }
+  if (i >= firstEstIdx) {
+    const k = i - firstEstIdx + 1;
+    return k <= 4 ? `ms-col-est-${k}` : 'ms-col-est-many';
+  }
+  const offset = (firstEstIdx - 1) - i;
+  return ['ms-col-latest','ms-col-old-1','ms-col-old-2','ms-col-old-3'][offset] || 'ms-col-old-many';
 }
 function _msPubRowHtml(cells, firstEstIdx, latestReportDate, includeRowLabel) {
   if (!latestReportDate || !cells.length) return '';
   const pubStr = _fmtPubDate(latestReportDate);
   if (!pubStr) return '';
-  // Pick latest reported column inside the visible window.
   let latestReportedIdx;
-  if (firstEstIdx === -1)      latestReportedIdx = cells.length - 1;   // all reported
-  else if (firstEstIdx === 0)  return '';                              // all estimates, nothing reported
+  if (firstEstIdx === -1)      latestReportedIdx = cells.length - 1;
+  else if (firstEstIdx === 0)  return '';
   else                          latestReportedIdx = firstEstIdx - 1;
   let row = '<tr class="ms-pub-row">';
   cells.forEach((_c, i) => {
     const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
+    const pos = _msPosClass(i, firstEstIdx, cells.length);
     const content = (i === latestReportedIdx) ? `<span class="ms-pub-date">${pubStr}</span>` : '';
-    row += `<th class="ms-pub-cell ${div}">${content}</th>`;
+    row += `<th class="ms-pub-cell ${div} ${pos}">${content}</th>`;
   });
   if (includeRowLabel) row += '<th class="ms-pub-cell ms-rowlabel"></th>';
   row += '</tr>';
@@ -3909,8 +3937,9 @@ function renderMarketSurgeTable(chart, opts) {
   cells.forEach((c, i) => {
     const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
     const estCls = c.isReported ? '' : 'est-col';
+    const pos = _msPosClass(i, firstEstIdx, cells.length);
     const tag = c.isReported ? '' : ' <span class="ms-est-tag">est</span>';
-    head += `<th class="${div} ${estCls}">${c.q}${tag}</th>`;
+    head += `<th class="${div} ${estCls} ${pos}">${c.q}${tag}</th>`;
   });
   head += '<th class="ms-rowlabel"></th></tr>';
   function row(label, key, fmt) {
@@ -3918,7 +3947,8 @@ function renderMarketSurgeTable(chart, opts) {
     cells.forEach((c, i) => {
       const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
       const klass = c.isReported ? 'ms-reported' : 'ms-estimate';
-      html += `<td class="${klass} ${div}">${fmt(c[key])}</td>`;
+      const pos = _msPosClass(i, firstEstIdx, cells.length);
+      html += `<td class="${klass} ${div} ${pos}">${fmt(c[key])}</td>`;
     });
     html += `<td class="ms-rowlabel">${label}</td></tr>`;
     return html;
@@ -3928,7 +3958,8 @@ function renderMarketSurgeTable(chart, opts) {
     cells.forEach((c, i) => {
       const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
       const klass = c.isReported ? 'ms-reported' : 'ms-estimate';
-      html += `<td class="${klass} ${div}">${fmtYoY(c[key].txt, c[key].val)}</td>`;
+      const pos = _msPosClass(i, firstEstIdx, cells.length);
+      html += `<td class="${klass} ${div} ${pos}">${fmtYoY(c[key].txt, c[key].val)}</td>`;
     });
     html += `<td class="ms-rowlabel">${label}</td></tr>`;
     return html;
@@ -3940,11 +3971,12 @@ function renderMarketSurgeTable(chart, opts) {
     let html = '<tr class="ms-surprise-row">';
     cells.forEach((c, i) => {
       const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
+      const pos = _msPosClass(i, firstEstIdx, cells.length);
       // Blank cell for non-reported quarters or when surprise is N/A.
       const content = c.isReported && c[key].val != null
         ? fmtYoY(c[key].txt, c[key].val)
         : '';
-      html += `<td class="ms-surprise ${div}">${content}</td>`;
+      html += `<td class="ms-surprise ${div} ${pos}">${content}</td>`;
     });
     html += `<td class="ms-rowlabel ms-surprise-label">${label}</td></tr>`;
     return html;
@@ -4018,24 +4050,28 @@ function renderCompactReadonlyMsTable(chart, opts) {
   cells.forEach((c, i) => {
     const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
     const estCls = c.isReported ? '' : 'est-col';
+    const pos = _msPosClass(i, firstEstIdx, cells.length);
     const tag = c.isReported ? '' : ' <span class="ms-est-tag">est</span>';
-    head += `<th class="${div} ${estCls}">${c.q}${tag}</th>`;
+    head += `<th class="${div} ${estCls} ${pos}">${c.q}${tag}</th>`;
   });
   head += '</tr>';
   const valueRow = (key, fmt) => '<tr>' + cells.map((c, i) => {
     const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
     const klass = c.isReported ? 'ms-reported' : 'ms-estimate';
-    return `<td class="${klass} ${div}">${fmt(c[key])}</td>`;
+    const pos = _msPosClass(i, firstEstIdx, cells.length);
+    return `<td class="${klass} ${div} ${pos}">${fmt(c[key])}</td>`;
   }).join('') + '</tr>';
   const yoyRow = (key) => '<tr>' + cells.map((c, i) => {
     const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
     const klass = c.isReported ? 'ms-reported' : 'ms-estimate';
-    return `<td class="${klass} ${div}">${fmtYoY(c[key].txt, c[key].val)}</td>`;
+    const pos = _msPosClass(i, firstEstIdx, cells.length);
+    return `<td class="${klass} ${div} ${pos}">${fmtYoY(c[key].txt, c[key].val)}</td>`;
   }).join('') + '</tr>';
   const surpRow = (key) => '<tr class="ms-surprise-row">' + cells.map((c, i) => {
     const div = (i === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
+    const pos = _msPosClass(i, firstEstIdx, cells.length);
     const content = c.isReported && c[key].val != null ? fmtYoY(c[key].txt, c[key].val) : '';
-    return `<td class="ms-surprise ${div}">${content}</td>`;
+    return `<td class="ms-surprise ${div} ${pos}">${content}</td>`;
   }).join('') + '</tr>';
   const pubRow = _msPubRowHtml(cells, firstEstIdx, (opts || {}).latestReportDate, false);
   return `<div class="ms-table-wrap"><table class="ms-table ms-table-readonly"><thead>${pubRow}${head}</thead><tbody>${valueRow('eps', fmtEpsCell)}${yoyRow('epsYoY')}${surpRow('epsSurp')}${valueRow('rev', fmtSales)}${yoyRow('revYoY')}${surpRow('revSurp')}</tbody></table></div>`;
@@ -4065,8 +4101,9 @@ function renderEditableMsTable(chart, sym, focusIdx, opts) {
   cells.forEach((c, idx) => {
     const div = (idx === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
     const estCls = c.isReported ? '' : 'est-col';
+    const pos = _msPosClass(idx, firstEstIdx, cells.length);
     const tag = c.isReported ? '' : ' <span class="ms-est-tag">est</span>';
-    head += `<th class="${div} ${estCls}">${c.q}${tag}</th>`;
+    head += `<th class="${div} ${estCls} ${pos}">${c.q}${tag}</th>`;
   });
   head += '<th class="ms-rowlabel"></th></tr>';
   // Editable value row generator.
@@ -4080,9 +4117,10 @@ function renderEditableMsTable(chart, sym, focusIdx, opts) {
     cells.forEach((c, idx) => {
       const div = (idx === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
       const klass = c.isReported ? 'ms-reported' : 'ms-estimate';
+      const pos = _msPosClass(idx, firstEstIdx, cells.length);
       const v = c.isReported ? repArr[c.i] : estArr[c.i];
       const valStr = (v != null) ? fmtVal(v / us) : '';
-      html += `<td class="${klass} ${div}"><input class="ms-cell-input" type="number" step="${stepVal}" data-sym="${sym}" data-row="${dataKey}" data-qi="${c.i}" data-isrep="${c.isReported ? 1 : 0}" data-scale="${us}" value="${valStr}" placeholder="—"></td>`;
+      html += `<td class="${klass} ${div} ${pos}"><input class="ms-cell-input" type="number" step="${stepVal}" data-sym="${sym}" data-row="${dataKey}" data-qi="${c.i}" data-isrep="${c.isReported ? 1 : 0}" data-scale="${us}" value="${valStr}" placeholder="—"></td>`;
     });
     html += `<td class="ms-rowlabel">${label}</td></tr>`;
     return html;
@@ -4093,7 +4131,8 @@ function renderEditableMsTable(chart, sym, focusIdx, opts) {
     cells.forEach((c, idx) => {
       const div = (idx === firstEstIdx && firstEstIdx > 0) ? 'ms-divider' : '';
       const klass = isSurp ? 'ms-surprise' : (c.isReported ? 'ms-reported' : 'ms-estimate');
-      html += `<td class="${klass} ${div}" data-computed="${kind}-${c.i}"></td>`;
+      const pos = _msPosClass(idx, firstEstIdx, cells.length);
+      html += `<td class="${klass} ${div} ${pos}" data-computed="${kind}-${c.i}"></td>`;
     });
     html += `<td class="ms-rowlabel ${isSurp ? 'ms-surprise-label' : ''}">${label}</td></tr>`;
     return html;
