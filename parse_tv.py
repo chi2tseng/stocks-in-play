@@ -114,10 +114,10 @@ def parse_file(path):
     if latest < 0: return None
 
     # YoY block
-    prior_eps = eps_rep[latest-4] if latest >= 4 else None
-    prior_rev = rev_rep[latest-4] if latest >= 4 else None
-    cur_eps_y = yoy(eps_rep[latest], prior_eps)
-    cur_rev_y = yoy(rev_rep[latest], prior_rev)
+    prior_eps = eps_rep[latest-4] if latest >= 4 and (latest-4) < len(eps_rep) else None
+    prior_rev = rev_rep[latest-4] if latest >= 4 and (latest-4) < len(rev_rep) else None
+    cur_eps_y = yoy(eps_rep[latest], prior_eps) if latest < len(eps_rep) else 'N/M'
+    cur_rev_y = yoy(rev_rep[latest], prior_rev) if latest < len(rev_rep) else 'N/M'
     block = [f'{cur_eps_y} / {cur_rev_y}', '-'*20]
     for fwd in range(1, 5):
         fi = latest + fwd
@@ -132,8 +132,8 @@ def parse_file(path):
     # Raw figures section
     raw = {
         'Reported': {
-            'EPS': fmt_eps(eps_rep[latest]),
-            'Revenue': fmt_rev(rev_rep[latest]),
+            'EPS': fmt_eps(eps_rep[latest]) if latest < len(eps_rep) else '—',
+            'Revenue': fmt_rev(rev_rep[latest]) if latest < len(rev_rep) else '—',
         },
         'PriorYearReported': {
             'EPS': fmt_eps(prior_eps),
@@ -210,11 +210,11 @@ def parse_file(path):
     ticker = os.path.basename(path).replace('-earnings-fq.md', '')
     return {
         'Ticker': ticker,
-        'LatestEPS': eps_rep[latest],
+        'LatestEPS': eps_rep[latest] if latest < len(eps_rep) else None,
         'LatestEPSConsensus': latest_eps_consensus,
         'LatestEPSSurprise_pct': latest_eps_surprise,
         'PriorYrEPS': prior_eps,
-        'LatestRev_M': rev_rep[latest],
+        'LatestRev_M': rev_rep[latest] if latest < len(rev_rep) else None,
         'LatestRevConsensus_M': latest_rev_consensus,
         'LatestRevSurprise_pct': latest_rev_surprise,
         'PriorYrRev_M': prior_rev,
