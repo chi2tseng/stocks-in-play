@@ -1,8 +1,141 @@
 {
   "date": "2026-05-25",
-  "scanTime": "16:23",
-  "scanTimestamp": "2026-05-23T16:23",
+  "scanTime": "21:14",
+  "scanTimestamp": "2026-05-23T21:14",
   "stocks": {
+    "AIIO": {
+      "symbol": "AIIO",
+      "name": "Robo.Ai Inc",
+      "type": "momentum",
+      "catalyst": "子公司 Neurovia AI 推出 NeuroStream 4K 視訊壓縮平台 (95% 壓縮率)，無 5/22 重大企業新聞；盤後 -6% 為低浮動小型股震盪。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=AIIO"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/AIIO"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AIIO/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 2.42,
+          "chgPct": -6.2,
+          "volume": 409249,
+          "session": "post",
+          "direction": "down",
+          "name": "Robo.Ai Inc",
+          "sessionDate": "2026-05-22",
+          "targetDate": "2026-05-25"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 2.42,
+      "chgPct": -6.2,
+      "volume": 409249,
+      "tv": null,
+      "shortFloat": 2.55,
+      "shortRatio": 0.03,
+      "marketCap_M": 50.58,
+      "floatShares_M": 13.79,
+      "perf1M": 272.67,
+      "perf3M": 18.13,
+      "perf6M": -76.55,
+      "perfYTD": -57.72,
+      "perf12M": -92.95,
+      "prevOhlcv": {
+        "date": "2026-05-21",
+        "open": 3.38,
+        "high": 3.84,
+        "low": 2.74,
+        "close": 3.23,
+        "volume": 7826200,
+        "prev_close": 3.78
+      }
+    },
+    "LFS": {
+      "symbol": "LFS",
+      "name": "Leifras Co. Ltd ADR",
+      "type": "M&A",
+      "catalyst": "Leifras 5/20 簽署 100% 收購 40 年老牌日本 Tokai Sports (6/1 完成、加 1,200 名會員、20 個合作幼兒園)；盤前 +89% 暴衝後盤後 -17.46% 爆量回吐 (Japanese ADR 板塊 pump fade)。",
+      "newsDetail": "Leifras (日本運動學校 + 社會事業) 5/20 簽署 100% 收購 40 年老牌 **Tokai Sports** (預計 6/1 完成、加 1,200 會員、20 個合作幼兒園/托兒所、強化名古屋/尾張旭地區)。\n\n股價 5/22 盤前 +89% 至 $5.56 高點、日內衝至約 $4.58 後**盤後 -17.46% 殺至 $2.93** (成交量 5.75M 股)。資產面：總資產 $4.68B、現金 $2.52B (54%) — 但併購規模極小 (1,200 會員) 無法支撐 +89% 重估。\n\n板塊行為：LFS 屬於 5/22 集體爆衝的 **Japanese ADR low-float pump 族群** (LFS / PCLA +171% / RYOJ / TKLF +20%)，盤後 LFS / PCLA / RYOJ 均爆量回吐 — 籌碼出場結構明確。\n\n下週一觀察：開盤跌破 $2.93 直接追空、目標 $2.20 (前波突破點)；若拉高反彈至 $3.50-3.80 提供更好空點。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=LFS"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/LFS"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-LFS/news/"
+        }
+      ],
+      "publishedAt": "2026-05-20T08:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Stocktitan — Leifras to acquire Tokai Sports",
+          "url": "https://www.stocktitan.net/news/LFS/leifras-co-ltd-to-acquire-tokai-sports-as-wholly-owned-subsidiary-to-bnn4fblsir2z.html"
+        },
+        {
+          "label": "StocksToTrade — LFS breakout volume + landmark contract wins",
+          "url": "https://stockstotrade.com/news/leifras-co-ltd-lfs-news-2026_05_22/"
+        },
+        {
+          "label": "Timothy Sykes — LFS volatility after intraday spike",
+          "url": "https://www.timothysykes.com/news/leifras-co-ltd-lfs-news-2026_05_22/"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 2.93,
+          "chgPct": -17.46,
+          "volume": 5753114,
+          "session": "post",
+          "direction": "down",
+          "name": "Leifras Co. Ltd ADR",
+          "sessionDate": "2026-05-22",
+          "targetDate": "2026-05-25"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 2.93,
+      "chgPct": -17.46,
+      "volume": 5753114,
+      "tv": null,
+      "shortFloat": null,
+      "shortRatio": 0.64,
+      "marketCap_M": 92.87,
+      "floatShares_M": null,
+      "perf1M": 75.31,
+      "perf3M": 32.46,
+      "perf6M": -29.14,
+      "perfYTD": 28.16,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-05-21",
+        "open": 1.9,
+        "high": 2.05,
+        "low": 1.85,
+        "close": 1.88,
+        "volume": 692400,
+        "prev_close": 1.85
+      }
+    },
     "FJET": {
       "symbol": "FJET",
       "name": "Starfighters Space Inc",
@@ -107,24 +240,97 @@
       "perf12M": -49.22,
       "prevOhlcv": null
     },
-    "MTVA": {
-      "symbol": "MTVA",
-      "name": "Metavia Inc",
-      "type": "biotech",
-      "catalyst": "MetaVia 公告 DA-1726 + vanoglipel 三篇晚期摘要被 ADA 2026 (6/5-8 紐奧良) 接受作壁報展示；DA-1726 48mg Phase 1 顯示 9.1% 減重；Biomolecules 期刊發表 vanoglipel MASH 抗纖維化數據；盤後小幅回吐 -5%。",
+    "PCLA": {
+      "symbol": "PCLA",
+      "name": "Picocela Inc ADR",
+      "type": "momentum",
+      "catalyst": "PicoCELA 盤前 +171% 爆衝後盤後 -13.29% 回吐 — 無實質催化劑，純為 Japanese ADR low-float 投機 (IPO 1/2025 @ $4.00、市值 $229M、float 34M 股)。",
+      "newsDetail": "PicoCELA (東京企業無線網狀網路 PCWL 系列) 5/22 盤前 **+171.56% 至 $6.11**、日內衝至 $6.62 收盤後**盤後 -13.29% 回吐至 $5.74** (成交量 1.11M 股)。\n\n**無任何企業催化劑** — 純粹 low-float Japanese ADR 投機行為。基本面：FY24 營收僅 $5.5M、IPO 2025/1/16 @ $4.00、市值 $229M、float 34M 股、近 1 個月 +181.7%、近 12 個月 -60.6%。\n\n板塊行為：與 LFS / RYOJ / TKLF 同屬 5/22 Japanese ADR pump 族群，無基本面支撐而 P/S 已被推至離譜倍數。盤後爆量殺出即為散戶與 momentum 籌碼出場訊號。\n\n下週一觀察：開盤跌破 $5.74 即追空、目標 $4.00 (IPO 價區);若拉高反彈至 $6.20-6.50 提供加碼空點。風險：日本 ADR 板塊若再次集體投機 (隨 LFS/RYOJ/TKLF) 可能逆襲，做空控制部位。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=PCLA"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/PCLA"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-PCLA/news/"
+        }
+      ],
+      "publishedAt": "2026-05-22T09:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Investing.com — PicoCELA ADR live quote",
+          "url": "https://www.investing.com/equities/picocela-adr"
+        },
+        {
+          "label": "Stocktitan — PicoCELA news feed",
+          "url": "https://www.stocktitan.net/news/PCLA/"
+        },
+        {
+          "label": "Finviz — PCLA quote + news block",
+          "url": "https://finviz.com/quote.ashx?t=PCLA"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 5.74,
+          "chgPct": -13.29,
+          "volume": 1109415,
+          "session": "post",
+          "direction": "down",
+          "name": "Picocela Inc ADR",
+          "sessionDate": "2026-05-22",
+          "targetDate": "2026-05-25"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 5.74,
+      "chgPct": -13.29,
+      "volume": 1109415,
+      "tv": null,
+      "shortFloat": 0.02,
+      "shortRatio": 0.01,
+      "marketCap_M": 229.18,
+      "floatShares_M": 34.14,
+      "perf1M": 181.7,
+      "perf3M": 43.85,
+      "perf6M": -28.82,
+      "perfYTD": -26.93,
+      "perf12M": -60.59,
+      "prevOhlcv": {
+        "date": "2026-05-21",
+        "open": 1.73,
+        "high": 2.64,
+        "low": 1.41,
+        "close": 2.25,
+        "volume": 40815700,
+        "prev_close": 1.4
+      }
+    },
+    "RYOJ": {
+      "symbol": "RYOJ",
+      "name": "Ryojbaba Co. Ltd",
+      "type": "momentum",
+      "catalyst": "rYojbaba (日本勞工顧問+健康服務公司) 盤前 +21% / 日內衝至 $5 後盤後 -17.80% — 無明確消息，跟隨 LFS/PCLA/TKLF Japanese ADR 投機族群 (float 僅 2.3M 股)。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=MTVA"
+          "url": "https://finviz.com/quote.ashx?t=RYOJ"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/MTVA"
+          "url": "https://finance.yahoo.com/quote/RYOJ"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-MTVA/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-RYOJ/news/"
         }
       ],
       "publishedAt": null,
@@ -132,191 +338,39 @@
       "sources": null,
       "sessions": [
         {
-          "last": 3.65,
-          "chgPct": -5.19,
-          "volume": 524457,
+          "last": 4.11,
+          "chgPct": -17.8,
+          "volume": 1002560,
           "session": "post",
           "direction": "down",
-          "name": "Metavia Inc",
+          "name": "Ryojbaba Co. Ltd",
           "sessionDate": "2026-05-22",
           "targetDate": "2026-05-25"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "down",
-      "last": 3.65,
-      "chgPct": -5.19,
-      "volume": 524457,
-      "tv": {
-        "latestEPS": -0.79,
-        "consensusEPS": -0.74,
-        "priorYrEPS": -3.96,
-        "surpriseEPS_pct": -6.28,
-        "surpriseEPS_dollar": -0.050000000000000044,
-        "latestRev_M": null,
-        "consensusRev_M": null,
-        "priorYrRev_M": null,
-        "surpriseRev_pct": null,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": 80.05050505050505,
-        "epsEst_next4": [
-          -0.82,
-          -0.75,
-          -0.78,
-          -0.3
-        ],
-        "revEst_next4": [
-          null,
-          null,
-          null,
-          null
-        ],
-        "yoyBlock": "+80.05% / N/M\n--------------------\n+71.33% / N/M\n+51.30% / N/M\n-177.23% / N/M\n+62.03% / N/M",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27"
-          ],
-          "eps_reported": [
-            -20.35,
-            -6.05,
-            1.76,
-            -3.96,
-            -2.86,
-            -1.54,
-            1.01,
-            -0.79,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -12.36,
-            -8.03,
-            -7.45,
-            -4.29,
-            -2.46,
-            -2.75,
-            -1.82,
-            -0.74,
-            -0.82,
-            -0.75,
-            -0.78,
-            -0.3
-          ],
-          "rev_reported_M": [
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            0.0,
-            null
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-05-15"
-      },
-      "shortFloat": 2.42,
-      "shortRatio": 0.03,
-      "marketCap_M": 19.88,
-      "floatShares_M": 3.34,
-      "perf1M": 153.29,
-      "perf3M": 154.97,
-      "perf6M": -54.19,
-      "perfYTD": -54.28,
-      "perf12M": -56.78,
-      "prevOhlcv": {
-        "date": "2026-05-21",
-        "open": 2.6,
-        "high": 3.04,
-        "low": 2.4,
-        "close": 2.87,
-        "volume": 5284900,
-        "prev_close": 2.89
-      }
-    },
-    "LFS": {
-      "symbol": "LFS",
-      "name": "Leifras Co. Ltd ADR",
-      "type": "M&A",
-      "catalyst": "Leifras 5/20 簽署 100% 收購 40 年老牌日本 Tokai Sports (6/1 完成、加 1,200 名會員、20 個合作幼兒園)；盤前 +89% 暴衝後盤後 -17.46% 爆量回吐 (Japanese ADR 板塊 pump fade)。",
-      "newsDetail": "Leifras (日本運動學校 + 社會事業) 5/20 簽署 100% 收購 40 年老牌 **Tokai Sports** (預計 6/1 完成、加 1,200 會員、20 個合作幼兒園/托兒所、強化名古屋/尾張旭地區)。\n\n股價 5/22 盤前 +89% 至 $5.56 高點、日內衝至約 $4.58 後**盤後 -17.46% 殺至 $2.93** (成交量 5.75M 股)。資產面：總資產 $4.68B、現金 $2.52B (54%) — 但併購規模極小 (1,200 會員) 無法支撐 +89% 重估。\n\n板塊行為：LFS 屬於 5/22 集體爆衝的 **Japanese ADR low-float pump 族群** (LFS / PCLA +171% / RYOJ / TKLF +20%)，盤後 LFS / PCLA / RYOJ 均爆量回吐 — 籌碼出場結構明確。\n\n下週一觀察：開盤跌破 $2.93 直接追空、目標 $2.20 (前波突破點)；若拉高反彈至 $3.50-3.80 提供更好空點。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=LFS"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/LFS"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-LFS/news/"
-        }
-      ],
-      "publishedAt": "2026-05-20T08:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Stocktitan — Leifras to acquire Tokai Sports",
-          "url": "https://www.stocktitan.net/news/LFS/leifras-co-ltd-to-acquire-tokai-sports-as-wholly-owned-subsidiary-to-bnn4fblsir2z.html"
-        },
-        {
-          "label": "StocksToTrade — LFS breakout volume + landmark contract wins",
-          "url": "https://stockstotrade.com/news/leifras-co-ltd-lfs-news-2026_05_22/"
-        },
-        {
-          "label": "Timothy Sykes — LFS volatility after intraday spike",
-          "url": "https://www.timothysykes.com/news/leifras-co-ltd-lfs-news-2026_05_22/"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 2.93,
-          "chgPct": -17.46,
-          "volume": 5753114,
-          "session": "post",
-          "direction": "down",
-          "name": "Leifras Co. Ltd ADR",
-          "sessionDate": "2026-05-22",
-          "targetDate": "2026-05-25"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 2.93,
-      "chgPct": -17.46,
-      "volume": 5753114,
+      "last": 4.11,
+      "chgPct": -17.8,
+      "volume": 1002560,
       "tv": null,
-      "shortFloat": null,
-      "shortRatio": 0.64,
-      "marketCap_M": 92.87,
-      "floatShares_M": null,
-      "perf1M": 75.31,
-      "perf3M": 32.46,
-      "perf6M": -29.14,
-      "perfYTD": 28.16,
+      "shortFloat": 0.08,
+      "shortRatio": 0.01,
+      "marketCap_M": 57.75,
+      "floatShares_M": 2.3,
+      "perf1M": 143.9,
+      "perf3M": 81.82,
+      "perf6M": 19.05,
+      "perfYTD": 63.93,
       "perf12M": null,
       "prevOhlcv": {
         "date": "2026-05-21",
-        "open": 1.9,
-        "high": 2.05,
-        "low": 1.85,
-        "close": 1.88,
-        "volume": 692400,
-        "prev_close": 1.85
+        "open": 1.83,
+        "high": 2.26,
+        "low": 1.56,
+        "close": 2.01,
+        "volume": 10228600,
+        "prev_close": 1.96
       }
     },
     "HLIT": {
@@ -495,24 +549,24 @@
         "prev_close": 12.31
       }
     },
-    "RYOJ": {
-      "symbol": "RYOJ",
-      "name": "Ryojbaba Co. Ltd",
-      "type": "momentum",
-      "catalyst": "rYojbaba (日本勞工顧問+健康服務公司) 盤前 +21% / 日內衝至 $5 後盤後 -17.80% — 無明確消息，跟隨 LFS/PCLA/TKLF Japanese ADR 投機族群 (float 僅 2.3M 股)。",
+    "MTVA": {
+      "symbol": "MTVA",
+      "name": "Metavia Inc",
+      "type": "biotech",
+      "catalyst": "MetaVia 公告 DA-1726 + vanoglipel 三篇晚期摘要被 ADA 2026 (6/5-8 紐奧良) 接受作壁報展示；DA-1726 48mg Phase 1 顯示 9.1% 減重；Biomolecules 期刊發表 vanoglipel MASH 抗纖維化數據；盤後小幅回吐 -5%。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=RYOJ"
+          "url": "https://finviz.com/quote.ashx?t=MTVA"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/RYOJ"
+          "url": "https://finance.yahoo.com/quote/MTVA"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-RYOJ/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-MTVA/news/"
         }
       ],
       "publishedAt": null,
@@ -520,99 +574,118 @@
       "sources": null,
       "sessions": [
         {
-          "last": 4.11,
-          "chgPct": -17.8,
-          "volume": 1002560,
+          "last": 3.65,
+          "chgPct": -5.19,
+          "volume": 524457,
           "session": "post",
           "direction": "down",
-          "name": "Ryojbaba Co. Ltd",
+          "name": "Metavia Inc",
           "sessionDate": "2026-05-22",
           "targetDate": "2026-05-25"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "down",
-      "last": 4.11,
-      "chgPct": -17.8,
-      "volume": 1002560,
-      "tv": null,
-      "shortFloat": 0.08,
-      "shortRatio": 0.01,
-      "marketCap_M": 57.75,
-      "floatShares_M": 2.3,
-      "perf1M": 143.9,
-      "perf3M": 81.82,
-      "perf6M": 19.05,
-      "perfYTD": 63.93,
-      "perf12M": null,
-      "prevOhlcv": {
-        "date": "2026-05-21",
-        "open": 1.83,
-        "high": 2.26,
-        "low": 1.56,
-        "close": 2.01,
-        "volume": 10228600,
-        "prev_close": 1.96
-      }
-    },
-    "AIIO": {
-      "symbol": "AIIO",
-      "name": "Robo.Ai Inc",
-      "type": "momentum",
-      "catalyst": "子公司 Neurovia AI 推出 NeuroStream 4K 視訊壓縮平台 (95% 壓縮率)，無 5/22 重大企業新聞；盤後 -6% 為低浮動小型股震盪。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AIIO"
+      "last": 3.65,
+      "chgPct": -5.19,
+      "volume": 524457,
+      "tv": {
+        "latestEPS": -0.79,
+        "consensusEPS": -0.74,
+        "priorYrEPS": -3.96,
+        "surpriseEPS_pct": -6.28,
+        "surpriseEPS_dollar": -0.050000000000000044,
+        "latestRev_M": null,
+        "consensusRev_M": null,
+        "priorYrRev_M": null,
+        "surpriseRev_pct": null,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": 80.05050505050505,
+        "epsEst_next4": [
+          -0.82,
+          -0.75,
+          -0.78,
+          -0.3
+        ],
+        "revEst_next4": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "yoyBlock": "+80.05% / N/M\n--------------------\n+71.33% / N/M\n+51.30% / N/M\n-177.23% / N/M\n+62.03% / N/M",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            -20.35,
+            -6.05,
+            1.76,
+            -3.96,
+            -2.86,
+            -1.54,
+            1.01,
+            -0.79,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -12.36,
+            -8.03,
+            -7.45,
+            -4.29,
+            -2.46,
+            -2.75,
+            -1.82,
+            -0.74,
+            -0.82,
+            -0.75,
+            -0.78,
+            -0.3
+          ],
+          "rev_reported_M": [
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            0.0,
+            null
+          ],
+          "latest_idx": 7
         },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AIIO"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AIIO/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 2.42,
-          "chgPct": -6.2,
-          "volume": 409249,
-          "session": "post",
-          "direction": "down",
-          "name": "Robo.Ai Inc",
-          "sessionDate": "2026-05-22",
-          "targetDate": "2026-05-25"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 2.42,
-      "chgPct": -6.2,
-      "volume": 409249,
-      "tv": null,
-      "shortFloat": 2.55,
+        "latestReportDate": "2026-05-15"
+      },
+      "shortFloat": 2.42,
       "shortRatio": 0.03,
-      "marketCap_M": 50.58,
-      "floatShares_M": 13.79,
-      "perf1M": 272.67,
-      "perf3M": 18.13,
-      "perf6M": -76.55,
-      "perfYTD": -57.72,
-      "perf12M": -92.95,
+      "marketCap_M": 19.88,
+      "floatShares_M": 3.34,
+      "perf1M": 153.29,
+      "perf3M": 154.97,
+      "perf6M": -54.19,
+      "perfYTD": -54.28,
+      "perf12M": -56.78,
       "prevOhlcv": {
         "date": "2026-05-21",
-        "open": 3.38,
-        "high": 3.84,
-        "low": 2.74,
-        "close": 3.23,
-        "volume": 7826200,
-        "prev_close": 3.78
+        "open": 2.6,
+        "high": 3.04,
+        "low": 2.4,
+        "close": 2.87,
+        "volume": 5284900,
+        "prev_close": 2.89
       }
     },
     "AKTX": {
@@ -690,79 +763,6 @@
         "close": 5.14,
         "volume": 2153300,
         "prev_close": 3.43
-      }
-    },
-    "PCLA": {
-      "symbol": "PCLA",
-      "name": "Picocela Inc ADR",
-      "type": "momentum",
-      "catalyst": "PicoCELA 盤前 +171% 爆衝後盤後 -13.29% 回吐 — 無實質催化劑，純為 Japanese ADR low-float 投機 (IPO 1/2025 @ $4.00、市值 $229M、float 34M 股)。",
-      "newsDetail": "PicoCELA (東京企業無線網狀網路 PCWL 系列) 5/22 盤前 **+171.56% 至 $6.11**、日內衝至 $6.62 收盤後**盤後 -13.29% 回吐至 $5.74** (成交量 1.11M 股)。\n\n**無任何企業催化劑** — 純粹 low-float Japanese ADR 投機行為。基本面：FY24 營收僅 $5.5M、IPO 2025/1/16 @ $4.00、市值 $229M、float 34M 股、近 1 個月 +181.7%、近 12 個月 -60.6%。\n\n板塊行為：與 LFS / RYOJ / TKLF 同屬 5/22 Japanese ADR pump 族群，無基本面支撐而 P/S 已被推至離譜倍數。盤後爆量殺出即為散戶與 momentum 籌碼出場訊號。\n\n下週一觀察：開盤跌破 $5.74 即追空、目標 $4.00 (IPO 價區);若拉高反彈至 $6.20-6.50 提供加碼空點。風險：日本 ADR 板塊若再次集體投機 (隨 LFS/RYOJ/TKLF) 可能逆襲，做空控制部位。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=PCLA"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/PCLA"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-PCLA/news/"
-        }
-      ],
-      "publishedAt": "2026-05-22T09:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Investing.com — PicoCELA ADR live quote",
-          "url": "https://www.investing.com/equities/picocela-adr"
-        },
-        {
-          "label": "Stocktitan — PicoCELA news feed",
-          "url": "https://www.stocktitan.net/news/PCLA/"
-        },
-        {
-          "label": "Finviz — PCLA quote + news block",
-          "url": "https://finviz.com/quote.ashx?t=PCLA"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 5.74,
-          "chgPct": -13.29,
-          "volume": 1109415,
-          "session": "post",
-          "direction": "down",
-          "name": "Picocela Inc ADR",
-          "sessionDate": "2026-05-22",
-          "targetDate": "2026-05-25"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 5.74,
-      "chgPct": -13.29,
-      "volume": 1109415,
-      "tv": null,
-      "shortFloat": 0.02,
-      "shortRatio": 0.01,
-      "marketCap_M": 229.18,
-      "floatShares_M": 34.14,
-      "perf1M": 181.7,
-      "perf3M": 43.85,
-      "perf6M": -28.82,
-      "perfYTD": -26.93,
-      "perf12M": -60.59,
-      "prevOhlcv": {
-        "date": "2026-05-21",
-        "open": 1.73,
-        "high": 2.64,
-        "low": 1.41,
-        "close": 2.25,
-        "volume": 40815700,
-        "prev_close": 1.4
       }
     },
     "DVA": {
