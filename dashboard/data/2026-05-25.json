@@ -1,26 +1,26 @@
 {
   "date": "2026-05-25",
-  "scanTime": "21:14",
-  "scanTimestamp": "2026-05-23T21:14",
+  "scanTime": "14:06",
+  "scanTimestamp": "2026-05-24T14:06",
   "stocks": {
-    "AIIO": {
-      "symbol": "AIIO",
-      "name": "Robo.Ai Inc",
-      "type": "momentum",
-      "catalyst": "子公司 Neurovia AI 推出 NeuroStream 4K 視訊壓縮平台 (95% 壓縮率)，無 5/22 重大企業新聞；盤後 -6% 為低浮動小型股震盪。",
+    "FJET": {
+      "symbol": "FJET",
+      "name": "Starfighters Space Inc",
+      "type": "news",
+      "catalyst": "Starfighters Space 5/22 公告 $17.5M 戰略私募 (5,223,879 股 @ $3.35/股，5/27 交割) 推進 STARLAUNCH 平台 — 發行價遠低於 $7.18 收盤價，稀釋風險高但盤後仍 +5.97%。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AIIO"
+          "url": "https://finviz.com/quote.ashx?t=FJET"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AIIO"
+          "url": "https://finance.yahoo.com/quote/FJET"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AIIO/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-FJET/news/"
         }
       ],
       "publishedAt": null,
@@ -28,40 +28,32 @@
       "sources": null,
       "sessions": [
         {
-          "last": 2.42,
-          "chgPct": -6.2,
-          "volume": 409249,
+          "last": 7.63,
+          "chgPct": 5.97,
+          "volume": 823962,
           "session": "post",
-          "direction": "down",
-          "name": "Robo.Ai Inc",
+          "direction": "up",
+          "name": "Starfighters Space Inc",
           "sessionDate": "2026-05-22",
           "targetDate": "2026-05-25"
         }
       ],
       "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 2.42,
-      "chgPct": -6.2,
-      "volume": 409249,
+      "primaryDirection": "up",
+      "last": 7.63,
+      "chgPct": 5.97,
+      "volume": 823962,
       "tv": null,
-      "shortFloat": 2.55,
-      "shortRatio": 0.03,
-      "marketCap_M": 50.58,
-      "floatShares_M": 13.79,
-      "perf1M": 272.67,
-      "perf3M": 18.13,
-      "perf6M": -76.55,
-      "perfYTD": -57.72,
-      "perf12M": -92.95,
-      "prevOhlcv": {
-        "date": "2026-05-21",
-        "open": 3.38,
-        "high": 3.84,
-        "low": 2.74,
-        "close": 3.23,
-        "volume": 7826200,
-        "prev_close": 3.78
-      }
+      "shortFloat": 6.23,
+      "shortRatio": 1.63,
+      "marketCap_M": 318.05,
+      "floatShares_M": 29.36,
+      "perf1M": 19.01,
+      "perf3M": -11.11,
+      "perf6M": null,
+      "perfYTD": -38.2,
+      "perf12M": null,
+      "prevOhlcv": null
     },
     "LFS": {
       "symbol": "LFS",
@@ -134,243 +126,6 @@
         "close": 1.88,
         "volume": 692400,
         "prev_close": 1.85
-      }
-    },
-    "FJET": {
-      "symbol": "FJET",
-      "name": "Starfighters Space Inc",
-      "type": "news",
-      "catalyst": "Starfighters Space 5/22 公告 $17.5M 戰略私募 (5,223,879 股 @ $3.35/股，5/27 交割) 推進 STARLAUNCH 平台 — 發行價遠低於 $7.18 收盤價，稀釋風險高但盤後仍 +5.97%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=FJET"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/FJET"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-FJET/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 7.63,
-          "chgPct": 5.97,
-          "volume": 823962,
-          "session": "post",
-          "direction": "up",
-          "name": "Starfighters Space Inc",
-          "sessionDate": "2026-05-22",
-          "targetDate": "2026-05-25"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 7.63,
-      "chgPct": 5.97,
-      "volume": 823962,
-      "tv": null,
-      "shortFloat": 6.23,
-      "shortRatio": 1.63,
-      "marketCap_M": 318.05,
-      "floatShares_M": 29.36,
-      "perf1M": 19.01,
-      "perf3M": -11.11,
-      "perf6M": null,
-      "perfYTD": -38.2,
-      "perf12M": null,
-      "prevOhlcv": null
-    },
-    "TKLF": {
-      "symbol": "TKLF",
-      "name": "Tokyo Lifestyle Ltd ADR",
-      "type": "news",
-      "catalyst": "Tokyo Lifestyle 代表董事 Mei Kanayama 3-5 月持續內部增持 ~24,760 股 @ $2.18-2.25 + 跟漲 Japanese ADR 族群 (LFS/PCLA/RYOJ)；市值僅 $8.25M 微型股，float 4M 股。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=TKLF"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/TKLF"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-TKLF/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 2.34,
-          "chgPct": 20.0,
-          "volume": 3663309,
-          "session": "post",
-          "direction": "up",
-          "name": "Tokyo Lifestyle Ltd ADR",
-          "sessionDate": "2026-05-22",
-          "targetDate": "2026-05-25"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 2.34,
-      "chgPct": 20.0,
-      "volume": 3663309,
-      "tv": null,
-      "shortFloat": 3.56,
-      "shortRatio": 5.01,
-      "marketCap_M": 8.25,
-      "floatShares_M": 4,
-      "perf1M": -7.57,
-      "perf3M": -31.58,
-      "perf6M": -28.83,
-      "perfYTD": -36.48,
-      "perf12M": -49.22,
-      "prevOhlcv": null
-    },
-    "PCLA": {
-      "symbol": "PCLA",
-      "name": "Picocela Inc ADR",
-      "type": "momentum",
-      "catalyst": "PicoCELA 盤前 +171% 爆衝後盤後 -13.29% 回吐 — 無實質催化劑，純為 Japanese ADR low-float 投機 (IPO 1/2025 @ $4.00、市值 $229M、float 34M 股)。",
-      "newsDetail": "PicoCELA (東京企業無線網狀網路 PCWL 系列) 5/22 盤前 **+171.56% 至 $6.11**、日內衝至 $6.62 收盤後**盤後 -13.29% 回吐至 $5.74** (成交量 1.11M 股)。\n\n**無任何企業催化劑** — 純粹 low-float Japanese ADR 投機行為。基本面：FY24 營收僅 $5.5M、IPO 2025/1/16 @ $4.00、市值 $229M、float 34M 股、近 1 個月 +181.7%、近 12 個月 -60.6%。\n\n板塊行為：與 LFS / RYOJ / TKLF 同屬 5/22 Japanese ADR pump 族群，無基本面支撐而 P/S 已被推至離譜倍數。盤後爆量殺出即為散戶與 momentum 籌碼出場訊號。\n\n下週一觀察：開盤跌破 $5.74 即追空、目標 $4.00 (IPO 價區);若拉高反彈至 $6.20-6.50 提供加碼空點。風險：日本 ADR 板塊若再次集體投機 (隨 LFS/RYOJ/TKLF) 可能逆襲，做空控制部位。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=PCLA"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/PCLA"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-PCLA/news/"
-        }
-      ],
-      "publishedAt": "2026-05-22T09:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Investing.com — PicoCELA ADR live quote",
-          "url": "https://www.investing.com/equities/picocela-adr"
-        },
-        {
-          "label": "Stocktitan — PicoCELA news feed",
-          "url": "https://www.stocktitan.net/news/PCLA/"
-        },
-        {
-          "label": "Finviz — PCLA quote + news block",
-          "url": "https://finviz.com/quote.ashx?t=PCLA"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 5.74,
-          "chgPct": -13.29,
-          "volume": 1109415,
-          "session": "post",
-          "direction": "down",
-          "name": "Picocela Inc ADR",
-          "sessionDate": "2026-05-22",
-          "targetDate": "2026-05-25"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 5.74,
-      "chgPct": -13.29,
-      "volume": 1109415,
-      "tv": null,
-      "shortFloat": 0.02,
-      "shortRatio": 0.01,
-      "marketCap_M": 229.18,
-      "floatShares_M": 34.14,
-      "perf1M": 181.7,
-      "perf3M": 43.85,
-      "perf6M": -28.82,
-      "perfYTD": -26.93,
-      "perf12M": -60.59,
-      "prevOhlcv": {
-        "date": "2026-05-21",
-        "open": 1.73,
-        "high": 2.64,
-        "low": 1.41,
-        "close": 2.25,
-        "volume": 40815700,
-        "prev_close": 1.4
-      }
-    },
-    "RYOJ": {
-      "symbol": "RYOJ",
-      "name": "Ryojbaba Co. Ltd",
-      "type": "momentum",
-      "catalyst": "rYojbaba (日本勞工顧問+健康服務公司) 盤前 +21% / 日內衝至 $5 後盤後 -17.80% — 無明確消息，跟隨 LFS/PCLA/TKLF Japanese ADR 投機族群 (float 僅 2.3M 股)。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=RYOJ"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/RYOJ"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-RYOJ/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 4.11,
-          "chgPct": -17.8,
-          "volume": 1002560,
-          "session": "post",
-          "direction": "down",
-          "name": "Ryojbaba Co. Ltd",
-          "sessionDate": "2026-05-22",
-          "targetDate": "2026-05-25"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 4.11,
-      "chgPct": -17.8,
-      "volume": 1002560,
-      "tv": null,
-      "shortFloat": 0.08,
-      "shortRatio": 0.01,
-      "marketCap_M": 57.75,
-      "floatShares_M": 2.3,
-      "perf1M": 143.9,
-      "perf3M": 81.82,
-      "perf6M": 19.05,
-      "perfYTD": 63.93,
-      "perf12M": null,
-      "prevOhlcv": {
-        "date": "2026-05-21",
-        "open": 1.83,
-        "high": 2.26,
-        "low": 1.56,
-        "close": 2.01,
-        "volume": 10228600,
-        "prev_close": 1.96
       }
     },
     "HLIT": {
@@ -549,6 +304,380 @@
         "prev_close": 12.31
       }
     },
+    "RYOJ": {
+      "symbol": "RYOJ",
+      "name": "Ryojbaba Co. Ltd",
+      "type": "momentum",
+      "catalyst": "rYojbaba (日本勞工顧問+健康服務公司) 盤前 +21% / 日內衝至 $5 後盤後 -17.80% — 無明確消息，跟隨 LFS/PCLA/TKLF Japanese ADR 投機族群 (float 僅 2.3M 股)。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=RYOJ"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/RYOJ"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-RYOJ/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 4.11,
+          "chgPct": -17.8,
+          "volume": 1002560,
+          "session": "post",
+          "direction": "down",
+          "name": "Ryojbaba Co. Ltd",
+          "sessionDate": "2026-05-22",
+          "targetDate": "2026-05-25"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 4.11,
+      "chgPct": -17.8,
+      "volume": 1002560,
+      "tv": null,
+      "shortFloat": 0.08,
+      "shortRatio": 0.01,
+      "marketCap_M": 57.75,
+      "floatShares_M": 2.3,
+      "perf1M": 143.9,
+      "perf3M": 81.82,
+      "perf6M": 19.05,
+      "perfYTD": 63.93,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-05-21",
+        "open": 1.83,
+        "high": 2.26,
+        "low": 1.56,
+        "close": 2.01,
+        "volume": 10228600,
+        "prev_close": 1.96
+      }
+    },
+    "AKTX": {
+      "symbol": "AKTX",
+      "name": "Akari Therapeutics ADR",
+      "type": "biotech",
+      "catalyst": "AKTX-101 + KRAS 抑制劑 (adagrasib) 於 KRAS G12D/G12C 突變胰臟癌前臨床顯示協同細胞殺傷活性 (ASCO 2026 abstract) + 定價 $5.5M ADS/warrant 私募；盤前 +93% 後盤後 -27.48% 爆量回吐 (典型 pump-and-dump)。",
+      "newsDetail": "Akari Therapeutics 5/22 盤前公布 AKTX-101 與 KRAS 抑制劑 adagrasib 於 KRAS G12D 與 KRAS G12C 突變胰臟癌前臨床模型顯示**協同細胞殺傷活性** (ASCO 2026 大會 abstract)。同步**定價 $5.5M ADS 加 warrant 私募**用於 KRAS-mutant 胰臟癌計畫推進。\n\n股價盤前一度 +93% 至 $9.92、日內衝至約 $18.27 高點 (+122%)，**盤後爆量 -27.48% 回吐至 $13.25** (成交量 1.64M 股)。市值僅 $20.83M、float 1.14M 股、近 1 個月 +204.5%。\n\n結構問題：**(1)** 前臨床數據距離臨床試驗仍有 12-18 個月、(2) 同步發行私募稀釋現有股東、(3) ADC 概念已連續 pump 多次 (近 12 個月 -63.6%)、(4) 盤後爆量殺出即為機構與 momentum 籌碼出場訊號。\n\n下週一觀察：若開盤 < $13.25 直接追空、目標 $9 區間 (回測前波突破點)；若拉高再衝 $15-16 區間反而提供更好空點。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=AKTX"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/AKTX"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AKTX/news/"
+        }
+      ],
+      "publishedAt": "2026-05-22T07:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Manila Times — AKTX-101 + KRAS preclinical breakthrough",
+          "url": "https://www.manilatimes.net/2026/05/22/tmt-newswire/globenewswire/akari-therapeutics-reports-breakthrough-preclinical-data-demonstrating-synergistic-activity-of-aktx-101-with-kras-inhibition-in-kras-mutated-pancreatic-cancer-models/2349705"
+        },
+        {
+          "label": "Stocktitan — $5.5M ADS + warrant private placement 8-K",
+          "url": "https://www.stocktitan.net/sec-filings/AKTX/8-k-akari-therapeutics-plc-reports-material-event-71f6b2bbbe05.html"
+        },
+        {
+          "label": "Benzinga — Akari jumps on preclinical data",
+          "url": "https://www.benzinga.com/trading-ideas/movers/26/05/52748332/akari-therapeutics-stock-jumps-on-promising-preclinical-data"
+        },
+        {
+          "label": "Seeking Alpha — preclinical cancer therapy gains",
+          "url": "https://seekingalpha.com/news/4596133-akari-therapeutics-gains-on-positive-preclinical-data-for-cancer-therapy"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 13.25,
+          "chgPct": -27.48,
+          "volume": 1639285,
+          "session": "post",
+          "direction": "down",
+          "name": "Akari Therapeutics ADR",
+          "sessionDate": "2026-05-22",
+          "targetDate": "2026-05-25"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 13.25,
+      "chgPct": -27.48,
+      "volume": 1639285,
+      "tv": null,
+      "shortFloat": 1.42,
+      "shortRatio": 0.12,
+      "marketCap_M": 20.83,
+      "floatShares_M": 1.14,
+      "perf1M": 204.5,
+      "perf3M": 87.96,
+      "perf6M": -8.41,
+      "perfYTD": 58.04,
+      "perf12M": -63.6,
+      "prevOhlcv": {
+        "date": "2026-05-21",
+        "open": 3.15,
+        "high": 5.18,
+        "low": 3.15,
+        "close": 5.14,
+        "volume": 2153300,
+        "prev_close": 3.43
+      }
+    },
+    "AIIO": {
+      "symbol": "AIIO",
+      "name": "Robo.Ai Inc",
+      "type": "momentum",
+      "catalyst": "子公司 Neurovia AI 推出 NeuroStream 4K 視訊壓縮平台 (95% 壓縮率)，無 5/22 重大企業新聞；盤後 -6% 為低浮動小型股震盪。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=AIIO"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/AIIO"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AIIO/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 2.42,
+          "chgPct": -6.2,
+          "volume": 409249,
+          "session": "post",
+          "direction": "down",
+          "name": "Robo.Ai Inc",
+          "sessionDate": "2026-05-22",
+          "targetDate": "2026-05-25"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 2.42,
+      "chgPct": -6.2,
+      "volume": 409249,
+      "tv": null,
+      "shortFloat": 2.55,
+      "shortRatio": 0.03,
+      "marketCap_M": 50.58,
+      "floatShares_M": 13.79,
+      "perf1M": 272.67,
+      "perf3M": 18.13,
+      "perf6M": -76.55,
+      "perfYTD": -57.72,
+      "perf12M": -92.95,
+      "prevOhlcv": {
+        "date": "2026-05-21",
+        "open": 3.38,
+        "high": 3.84,
+        "low": 2.74,
+        "close": 3.23,
+        "volume": 7826200,
+        "prev_close": 3.78
+      }
+    },
+    "PCLA": {
+      "symbol": "PCLA",
+      "name": "Picocela Inc ADR",
+      "type": "momentum",
+      "catalyst": "PicoCELA 盤前 +171% 爆衝後盤後 -13.29% 回吐 — 無實質催化劑，純為 Japanese ADR low-float 投機 (IPO 1/2025 @ $4.00、市值 $229M、float 34M 股)。",
+      "newsDetail": "PicoCELA (東京企業無線網狀網路 PCWL 系列) 5/22 盤前 **+171.56% 至 $6.11**、日內衝至 $6.62 收盤後**盤後 -13.29% 回吐至 $5.74** (成交量 1.11M 股)。\n\n**無任何企業催化劑** — 純粹 low-float Japanese ADR 投機行為。基本面：FY24 營收僅 $5.5M、IPO 2025/1/16 @ $4.00、市值 $229M、float 34M 股、近 1 個月 +181.7%、近 12 個月 -60.6%。\n\n板塊行為：與 LFS / RYOJ / TKLF 同屬 5/22 Japanese ADR pump 族群，無基本面支撐而 P/S 已被推至離譜倍數。盤後爆量殺出即為散戶與 momentum 籌碼出場訊號。\n\n下週一觀察：開盤跌破 $5.74 即追空、目標 $4.00 (IPO 價區);若拉高反彈至 $6.20-6.50 提供加碼空點。風險：日本 ADR 板塊若再次集體投機 (隨 LFS/RYOJ/TKLF) 可能逆襲，做空控制部位。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=PCLA"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/PCLA"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-PCLA/news/"
+        }
+      ],
+      "publishedAt": "2026-05-22T09:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Investing.com — PicoCELA ADR live quote",
+          "url": "https://www.investing.com/equities/picocela-adr"
+        },
+        {
+          "label": "Stocktitan — PicoCELA news feed",
+          "url": "https://www.stocktitan.net/news/PCLA/"
+        },
+        {
+          "label": "Finviz — PCLA quote + news block",
+          "url": "https://finviz.com/quote.ashx?t=PCLA"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 5.74,
+          "chgPct": -13.29,
+          "volume": 1109415,
+          "session": "post",
+          "direction": "down",
+          "name": "Picocela Inc ADR",
+          "sessionDate": "2026-05-22",
+          "targetDate": "2026-05-25"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 5.74,
+      "chgPct": -13.29,
+      "volume": 1109415,
+      "tv": null,
+      "shortFloat": 0.02,
+      "shortRatio": 0.01,
+      "marketCap_M": 229.18,
+      "floatShares_M": 34.14,
+      "perf1M": 181.7,
+      "perf3M": 43.85,
+      "perf6M": -28.82,
+      "perfYTD": -26.93,
+      "perf12M": -60.59,
+      "prevOhlcv": {
+        "date": "2026-05-21",
+        "open": 1.73,
+        "high": 2.64,
+        "low": 1.41,
+        "close": 2.25,
+        "volume": 40815700,
+        "prev_close": 1.4
+      }
+    },
+    "TKLF": {
+      "symbol": "TKLF",
+      "name": "Tokyo Lifestyle Ltd ADR",
+      "type": "news",
+      "catalyst": "Tokyo Lifestyle 代表董事 Mei Kanayama 3-5 月持續內部增持 ~24,760 股 @ $2.18-2.25 + 跟漲 Japanese ADR 族群 (LFS/PCLA/RYOJ)；市值僅 $8.25M 微型股，float 4M 股。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=TKLF"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/TKLF"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-TKLF/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 2.34,
+          "chgPct": 20.0,
+          "volume": 3663309,
+          "session": "post",
+          "direction": "up",
+          "name": "Tokyo Lifestyle Ltd ADR",
+          "sessionDate": "2026-05-22",
+          "targetDate": "2026-05-25"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 2.34,
+      "chgPct": 20.0,
+      "volume": 3663309,
+      "tv": null,
+      "shortFloat": 3.56,
+      "shortRatio": 5.01,
+      "marketCap_M": 8.25,
+      "floatShares_M": 4,
+      "perf1M": -7.57,
+      "perf3M": -31.58,
+      "perf6M": -28.83,
+      "perfYTD": -36.48,
+      "perf12M": -49.22,
+      "prevOhlcv": null
+    },
+    "DVA": {
+      "symbol": "DVA",
+      "name": "Davita Healthcare Partners",
+      "type": "news",
+      "catalyst": "DaVita 盤後僅 17.9 萬股低成交量 -5.46%，5/22 未有 8-K 或新聞觸發；推測為 Berkshire 5/1 賣出 $182.8M 後的延續調倉雜訊。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=DVA"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/DVA"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-DVA/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 187.69,
+          "chgPct": -5.46,
+          "volume": 179397,
+          "session": "post",
+          "direction": "down",
+          "name": "Davita Healthcare Partners",
+          "sessionDate": "2026-05-22",
+          "targetDate": "2026-05-25"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 187.69,
+      "chgPct": -5.46,
+      "volume": 179397,
+      "tv": null,
+      "shortFloat": 9.96,
+      "shortRatio": 7.05,
+      "marketCap_M": 12740,
+      "floatShares_M": 62.74,
+      "perf1M": 28.05,
+      "perf3M": 31.23,
+      "perf6M": 72.33,
+      "perfYTD": 74.74,
+      "perf12M": 43.32,
+      "prevOhlcv": null
+    },
     "MTVA": {
       "symbol": "MTVA",
       "name": "Metavia Inc",
@@ -687,135 +816,6 @@
         "volume": 5284900,
         "prev_close": 2.89
       }
-    },
-    "AKTX": {
-      "symbol": "AKTX",
-      "name": "Akari Therapeutics ADR",
-      "type": "biotech",
-      "catalyst": "AKTX-101 + KRAS 抑制劑 (adagrasib) 於 KRAS G12D/G12C 突變胰臟癌前臨床顯示協同細胞殺傷活性 (ASCO 2026 abstract) + 定價 $5.5M ADS/warrant 私募；盤前 +93% 後盤後 -27.48% 爆量回吐 (典型 pump-and-dump)。",
-      "newsDetail": "Akari Therapeutics 5/22 盤前公布 AKTX-101 與 KRAS 抑制劑 adagrasib 於 KRAS G12D 與 KRAS G12C 突變胰臟癌前臨床模型顯示**協同細胞殺傷活性** (ASCO 2026 大會 abstract)。同步**定價 $5.5M ADS 加 warrant 私募**用於 KRAS-mutant 胰臟癌計畫推進。\n\n股價盤前一度 +93% 至 $9.92、日內衝至約 $18.27 高點 (+122%)，**盤後爆量 -27.48% 回吐至 $13.25** (成交量 1.64M 股)。市值僅 $20.83M、float 1.14M 股、近 1 個月 +204.5%。\n\n結構問題：**(1)** 前臨床數據距離臨床試驗仍有 12-18 個月、(2) 同步發行私募稀釋現有股東、(3) ADC 概念已連續 pump 多次 (近 12 個月 -63.6%)、(4) 盤後爆量殺出即為機構與 momentum 籌碼出場訊號。\n\n下週一觀察：若開盤 < $13.25 直接追空、目標 $9 區間 (回測前波突破點)；若拉高再衝 $15-16 區間反而提供更好空點。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AKTX"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AKTX"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AKTX/news/"
-        }
-      ],
-      "publishedAt": "2026-05-22T07:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Manila Times — AKTX-101 + KRAS preclinical breakthrough",
-          "url": "https://www.manilatimes.net/2026/05/22/tmt-newswire/globenewswire/akari-therapeutics-reports-breakthrough-preclinical-data-demonstrating-synergistic-activity-of-aktx-101-with-kras-inhibition-in-kras-mutated-pancreatic-cancer-models/2349705"
-        },
-        {
-          "label": "Stocktitan — $5.5M ADS + warrant private placement 8-K",
-          "url": "https://www.stocktitan.net/sec-filings/AKTX/8-k-akari-therapeutics-plc-reports-material-event-71f6b2bbbe05.html"
-        },
-        {
-          "label": "Benzinga — Akari jumps on preclinical data",
-          "url": "https://www.benzinga.com/trading-ideas/movers/26/05/52748332/akari-therapeutics-stock-jumps-on-promising-preclinical-data"
-        },
-        {
-          "label": "Seeking Alpha — preclinical cancer therapy gains",
-          "url": "https://seekingalpha.com/news/4596133-akari-therapeutics-gains-on-positive-preclinical-data-for-cancer-therapy"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 13.25,
-          "chgPct": -27.48,
-          "volume": 1639285,
-          "session": "post",
-          "direction": "down",
-          "name": "Akari Therapeutics ADR",
-          "sessionDate": "2026-05-22",
-          "targetDate": "2026-05-25"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 13.25,
-      "chgPct": -27.48,
-      "volume": 1639285,
-      "tv": null,
-      "shortFloat": 1.42,
-      "shortRatio": 0.12,
-      "marketCap_M": 20.83,
-      "floatShares_M": 1.14,
-      "perf1M": 204.5,
-      "perf3M": 87.96,
-      "perf6M": -8.41,
-      "perfYTD": 58.04,
-      "perf12M": -63.6,
-      "prevOhlcv": {
-        "date": "2026-05-21",
-        "open": 3.15,
-        "high": 5.18,
-        "low": 3.15,
-        "close": 5.14,
-        "volume": 2153300,
-        "prev_close": 3.43
-      }
-    },
-    "DVA": {
-      "symbol": "DVA",
-      "name": "Davita Healthcare Partners",
-      "type": "news",
-      "catalyst": "DaVita 盤後僅 17.9 萬股低成交量 -5.46%，5/22 未有 8-K 或新聞觸發；推測為 Berkshire 5/1 賣出 $182.8M 後的延續調倉雜訊。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=DVA"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/DVA"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-DVA/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 187.69,
-          "chgPct": -5.46,
-          "volume": 179397,
-          "session": "post",
-          "direction": "down",
-          "name": "Davita Healthcare Partners",
-          "sessionDate": "2026-05-22",
-          "targetDate": "2026-05-25"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 187.69,
-      "chgPct": -5.46,
-      "volume": 179397,
-      "tv": null,
-      "shortFloat": 9.96,
-      "shortRatio": 7.05,
-      "marketCap_M": 12740,
-      "floatShares_M": 62.74,
-      "perf1M": 28.05,
-      "perf3M": 31.23,
-      "perf6M": 72.33,
-      "perfYTD": 74.74,
-      "perf12M": 43.32,
-      "prevOhlcv": null
     }
   },
   "rawGappers": [],
