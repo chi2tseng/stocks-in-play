@@ -1,147 +1,119 @@
 {
   "DELL": {
-    "detail": "Dell 公佈 Q1 FY27 財報全面碾壓預期：營收 **$43.8B**（市場估 $35.8B）、調整後 **EPS $4.86**（估 $3.00），AI 伺服器營收衝上 **$16.1B**。\n\n最受矚目的是 AI 訂單積壓（backlog）暴增至 **$51.3B**，顯示 hyperscaler 與企業端對 GPU 整機櫃需求仍處於加速期。管理層同步將全年營收指引上調至 **$165–169B**。\n\nDell 這份財報是本週「AI 基建」族群的領頭羊，外溢帶動 NTAP、HPE、HPQ、SMCI、MDB 同步走強。\n\n觀察重點：開盤後是否守住跳空缺口；若 AI server 毛利率受 GPU 成本壓縮的疑慮浮現，可能出現獲利了結賣壓。",
-    "publishedAt": "2026-05-29T16:05:00-04:00",
+    "detail": "Dell 公佈 Q1 FY27 財報全面碾壓預期：營收創紀錄 **$43.8B**、非GAAP **EPS $4.86**（+213% YoY），AI 伺服器營收衝上 **$16.1B**（年增逾 7 倍）。\n\nAI 訂單積壓（backlog）達 **$24.4B**，顯示 hyperscaler 與企業端對 GPU 整機櫃需求仍在加速。管理層將全年 AI 伺服器出貨目標上修至 **$60B**、總營收指引上修至 **$167B**。\n\n這份財報是本週「AI 基建」族群的領頭羊，外溢帶動 NTAP、HPE、HPQ、SMCI、TSSI 同步走強。\n\n觀察重點：開盤後是否守住跳空缺口；若 AI server 毛利率受 GPU 成本壓縮疑慮浮現，可能出現獲利了結賣壓。",
+    "publishedAt": "2026-05-28T16:05:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {"label": "Dell Technologies Q1 FY27 Press Release (IR)", "url": "https://investors.delltechnologies.com/news-releases", "publishedAt": "2026-05-29T16:05:00-04:00"},
-      {"label": "Reuters — Dell raises annual forecast on AI server demand", "url": "https://www.reuters.com/technology/"},
-      {"label": "CNBC — Dell earnings", "url": "https://www.cnbc.com/quotes/DELL"}
-    ]
-  },
-  "TEAM": {
-    "detail": "Atlassian 財報營收年增 **+31.7%**（超估 5.4%），調整後 **EPS $1.75** vs 去年 $0.97（**+80% YoY**），財報後一度大漲約 29.6%。\n\n雲端遷移與 AI 功能（Rovo、Atlassian Intelligence）滲透是成長主軸；付費席次與大客戶擴張續強。\n\nTV 前瞻顯示下季 EPS YoY 仍 +52%、營收 +20%，成長動能尚未失速。屬本週 SaaS 贏家族群中體質最乾淨的一檔。",
-    "publishedAt": "2026-05-29T16:05:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      {"label": "Atlassian Q3 FY26 Shareholder Letter (IR)", "url": "https://investors.atlassian.com/"},
-      {"label": "Reuters — Atlassian results", "url": "https://www.reuters.com/technology/"}
+      { "label": "Dell Q1 FY27 press release (IR)", "url": "https://investors.delltechnologies.com/news-releases", "publishedAt": "2026-05-28T16:05:00-04:00" },
+      { "label": "Reuters — Dell AI server backlog", "url": "https://www.reuters.com/technology/" },
+      { "label": "CNBC — Dell earnings", "url": "https://www.cnbc.com/quotes/DELL" }
     ]
   },
   "MDB": {
-    "detail": "MongoDB Q1 FY27 營收 **$687.6M（+25% YoY）**、調整後 **EPS $1.32**（估 $0.89，**+48% surprise**），核心 **Atlas 雲端營收年增 +29%**。\n\nAI 應用催生的向量資料庫與文件型資料庫需求是長線題材，新客戶與既有客戶 expansion 雙引擎驅動。\n\nTV 前瞻下季 EPS YoY +57%、營收 +24%，加速度明顯。Short float 約 5%，題材純度高。",
-    "publishedAt": "2026-05-29T16:05:00-04:00",
+    "detail": "MongoDB Q1 FY27 營收 **$687.6M**（+25% YoY）、非GAAP **EPS $1.32**（估 $0.89，超預期約 48%），核心雲端產品 **Atlas +29.4%**、單季新增營收 $117M 創歷史紀錄。\n\n公司超越所有指引並**上調全年展望**，反映 AI 應用驅動的文件/向量資料庫需求。Short float 僅約 5%，籌碼結構偏多。\n\n觀察重點：forward 下季 EPS YoY 仍 +59%，動能未失速；留意軟體股估值在利率環境下的整體壓縮風險。",
+    "publishedAt": "2026-05-28T16:05:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {"label": "MongoDB Q1 FY27 Press Release (IR)", "url": "https://investors.mongodb.com/"},
-      {"label": "CNBC — MongoDB earnings", "url": "https://www.cnbc.com/quotes/MDB"}
+      { "label": "MongoDB Q1 FY27 results (IR)", "url": "https://investors.mongodb.com/news-releases", "publishedAt": "2026-05-28T16:05:00-04:00" },
+      { "label": "CNBC — MongoDB earnings", "url": "https://www.cnbc.com/quotes/MDB" }
+    ]
+  },
+  "TEAM": {
+    "detail": "Atlassian Q3 FY26 營收 **$1.79B**（+32% YoY、超估約 5.4%）、調整後 **EPS $1.75**（估 $1.33，超預期約 31%），雲端營收 +29%。\n\n雲端遷移 + Rovo/AI 滲透雙引擎推升成長，FY26 成長指引上修至約 24%，多家券商上調目標價。\n\n觀察重點：forward 下季 EPS YoY +52%、Rev +20%，SaaS 贏家中體質最乾淨；風險在於高估值對任何成長放緩訊號敏感。",
+    "publishedAt": "2026-05-28T16:05:00-04:00",
+    "publishedTimezone": "ET",
+    "sources": [
+      { "label": "Atlassian Q3 FY26 shareholder letter (IR)", "url": "https://investors.atlassian.com/financials/quarterly-results", "publishedAt": "2026-05-28T16:05:00-04:00" },
+      { "label": "Bloomberg — Atlassian results", "url": "https://www.bloomberg.com/quote/TEAM:US" }
     ]
   },
   "NTAP": {
-    "detail": "NetApp FY26 Q4 **EPS $2.43**（估 $2.27）、營收 **$1.95B**（估 $1.87B），FY27 指引遠超預期，股價衝破 2000 年網路泡沫時期的歷史高點。\n\nAI 資料管線與全快閃儲存（all-flash）需求是成長主軸，Keystone 訂閱與雲端業務同步擴張。\n\nTV 顯示最新季 EPS YoY +26%、營收 +13%，成長穩健但加速度不及純 SaaS 名。Short ratio 高達 9.7 天 → 軋空燃料充足。",
-    "publishedAt": "2026-05-29T16:05:00-04:00",
+    "detail": "NetApp Q4 FY26 營收 **$1.95B**（+12% YoY）、非GAAP **EPS $2.43**（+26% YoY、估 $2.27），全閃存陣列營收 **$1.2B**（+18%），Google Cloud 多年合約帶動產品營收 +14%。\n\nFY27 EPS 指引 **$8.70–9.00** 遠超預期，AI 儲存與 all-flash 需求強勁。Short ratio 高達 **9.73 天**，回補燃料充足。\n\n觀察重點：Rev YoY +12% 加速度遜於純 SaaS，屬穩健成長 + 軋空題材；留意儲存業循環性。",
+    "publishedAt": "2026-05-28T16:05:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {"label": "NetApp Q4 FY26 Press Release (IR)", "url": "https://www.netapp.com/company/news/press-releases/"},
-      {"label": "Reuters — NetApp forecast", "url": "https://www.reuters.com/technology/"}
+      { "label": "NetApp Q4 FY26 press release (IR)", "url": "https://investors.netapp.com/news-and-events/news", "publishedAt": "2026-05-28T16:05:00-04:00" },
+      { "label": "CNBC — NetApp earnings", "url": "https://www.cnbc.com/quotes/NTAP" }
     ]
   },
   "OKTA": {
-    "detail": "Okta Q1（截至 4/30）營收 **$765M**（估 $752M），管理層上調 FY27 全年指引，受惠 AI 驅動的企業身分與資安需求。\n\n獲利能力持續改善，cRPO（已簽約剩餘履約義務）增長顯示後續營收能見度佳。\n\nTV 前瞻 EPS YoY 約 +5–15%、營收 +9% 區間。Short float 約 5%，估值修復行情。",
-    "publishedAt": "2026-05-27T16:05:00-04:00",
+    "detail": "Okta Q1 FY27 beat & raise：營收 **$765M**（+11% YoY、估 $752M）、調整後 **EPS $0.91**（估 $0.85），FY27 營收指引上修至 **$3.185–3.205B**。\n\nagentic AI 帶動的企業身分安全需求是核心驅動，cRPO 增長強化營收能見度。\n\n觀察重點：+14% 屬估值修復行情、forward Rev YoY +9% 穩定；中大型結構乾淨，可作中線。",
+    "publishedAt": "2026-05-28T16:05:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {"label": "Okta Q1 FY27 Press Release (IR)", "url": "https://investor.okta.com/"},
-      {"label": "CNBC — Okta earnings", "url": "https://www.cnbc.com/quotes/OKTA"}
+      { "label": "Okta Q1 FY27 results (IR)", "url": "https://investor.okta.com/news-releases", "publishedAt": "2026-05-28T16:05:00-04:00" },
+      { "label": "Reuters — Okta raises forecast", "url": "https://www.reuters.com/technology/" }
     ]
   },
-  "NOW": {
-    "detail": "ServiceNow 財報超預期，agentic AI（Now Assist）需求強勁，與 Dell 同為本週企業 AI 漲勢領頭羊，股價 +8.7%。\n\nTV 顯示最新季 EPS YoY +20%、營收 +22%，且未來四季營收 YoY 維持 +19–22% 高檔，成長持續性佳。\n\n大型 SaaS 平台龍頭，題材純度與基本面兼具，屬可中線持有的 AI 受惠股。",
-    "publishedAt": "2026-05-29T16:05:00-04:00",
+  "PD": {
+    "detail": "PagerDuty Q1 FY27 營收 **$121M**、**EPS $0.32**（超預期約 29%），達成**連續第 4 季 GAAP 獲利**。\n\n公司同步宣布 **$100M 庫藏股**並任命新任 CEO **John DiLullo**，盤前 +25%。\n\n觀察重點：基本面轉佳 + 庫藏股支撐，但 Rev YoY 僅 +1%，屬獲利改善故事而非高成長；中小型股波動較大，控制部位。",
+    "publishedAt": "2026-05-28T16:05:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {"label": "ServiceNow Investor Relations", "url": "https://investors.servicenow.com/"},
-      {"label": "CNBC — ServiceNow", "url": "https://www.cnbc.com/quotes/NOW"}
-    ]
-  },
-  "ASAN": {
-    "detail": "Asana Q1 FY27 營收 **$205.1M（+9.5% YoY）**、超指引上緣，非 GAAP 營業利益率躍升至 **11.5%（+720bp）**，調整後 **EPS $0.10** vs 去年 $0.05（**+100%**）。\n\n淨收入留存率（NRR）連四季回升至 97%，顯示客戶流失趨穩；AI Studio 變現開始貢獻。\n\n空頭部位極高（**short float 35%**）→ 財報轉佳易觸發軋空。但營收年增僅 +9.5%，純度不如 TEAM/MDB。",
-    "publishedAt": "2026-05-29T16:05:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      {"label": "Asana Q1 FY27 Press Release (IR)", "url": "https://investors.asana.com/"},
-      {"label": "Reuters — Asana results", "url": "https://www.reuters.com/technology/"}
-    ]
-  },
-  "HPE": {
-    "detail": "Hewlett Packard Enterprise 將於 **6/1（週一）公佈 Q2 財報**（市場估 EPS $0.53、營收 $9.77B），本日 +11.3% 為 Dell 強勁財報外溢的提前卡位。\n\n公司先前已調高自由現金流指引至至少 **$20億**，Juniper Networks 整合進展與 AI 網路訂單是看點。\n\nTV 顯示最新季 EPS YoY +33%、營收 +18%。屬「財報前卡位」性質 → 風險在於若 6/1 結果不如預期，跳空缺口恐快速回補。",
-    "publishedAt": "2026-05-30T08:00:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      {"label": "HPE Investor Relations", "url": "https://investors.hpe.com/"},
-      {"label": "CNBC — HPE", "url": "https://www.cnbc.com/quotes/HPE"}
+      { "label": "PagerDuty Q1 FY27 press release (IR)", "url": "https://investor.pagerduty.com/news-and-events/press-releases", "publishedAt": "2026-05-28T16:05:00-04:00" },
+      { "label": "Business Wire — PagerDuty CEO transition", "url": "https://www.businesswire.com" }
     ]
   },
   "REPL": {
-    "detail": "Replimune 宣布將在數日內**重新遞交 RP1 黑色素瘤 BLA**，市場押注因 FDA 局長 Makary 去職、前次 CRL（完整回應信）拒絕有望被翻案，盤前一度 **+70%**。\n\n這是純事件驅動 + 高空頭軋空（**short float 31%**）的組合，波動極大。\n\n屬高風險高報酬的生技投機；務必用小部位、嚴設停損，避免追在盤前最高點。任何 FDA 受理/拒絕的後續消息都會引發劇烈雙向波動。",
-    "publishedAt": "2026-05-30T07:30:00-04:00",
+    "detail": "Replimune 宣布與 FDA 達成 **RP1（黑色素瘤）BLA 重新遞交路徑**，FDA 將給予**優先審查**；先前曾收到 CRL（完整回覆信）。\n\n加上 ASCO 公布的**三年總存活期（mOS 32.9 月）**數據強化療效論點，盤前一度 **+69.7%**。Short float 高達 **31%**，軋空條件充足。\n\n觀察重點：純事件驅動、波動極大，務必小部位（≤0.5x）、嚴設停損，勿追盤前高點。後續關鍵為正式重新遞交與 PDUFA 日期。",
+    "publishedAt": "2026-05-29T07:00:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {"label": "Replimune Group Press Release (IR)", "url": "https://investors.replimune.com/"},
-      {"label": "STAT News — RP1 FDA resubmission", "url": "https://www.statnews.com/"}
+      { "label": "Replimune FDA RP1 update (IR)", "url": "https://ir.replimune.com/news-releases", "publishedAt": "2026-05-29T07:00:00-04:00" },
+      { "label": "STAT News — Replimune RP1 resubmission", "url": "https://www.statnews.com" }
     ]
   },
-  "OUST": {
-    "detail": "Ouster 與德國 **ARGUS Interception** 簽訂反無人機（counter-UAS）合作協議，將其數位光達整合進歐洲防空系統。\n\nQ1 營收 **$48.6M（+49% YoY）**，Rosenblatt 上調目標價至 **$53**。光達在國防/反無人機的新應用打開第二成長曲線。\n\n+6% 屬合約題材，量能溫和；可留意國防無人機族群的連動性。",
-    "publishedAt": "2026-05-30T08:30:00-04:00",
+  "NOW": {
+    "detail": "ServiceNow 與 **Experian** 達成多年全球夥伴關係（將 Ascend 資料嵌入其 AI 平台）、擴大與 **Boomi** 合作，**BofA 重啟 Buy / 目標 $130**，agentic AI（Now Assist）治理題材推升 +8.7%。\n\n最新季 EPS YoY +20%、Rev +22%，未來四季 Rev YoY 維持 +19–22% 高檔。\n\n觀察重點：大型 SaaS 龍頭，題材 + 基本面兼具，可中線持有；非新財報，屬分析師/夥伴關係驅動。",
+    "publishedAt": "2026-05-29T08:00:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {"label": "Ouster Press Release (IR)", "url": "https://investors.ouster.com/"},
-      {"label": "Rosenblatt research note (via Benzinga)", "url": "https://www.benzinga.com/quote/OUST"}
+      { "label": "ServiceNow–Experian partnership (IR)", "url": "https://www.servicenow.com/company/media/press-room.html", "publishedAt": "2026-05-29T08:00:00-04:00" },
+      { "label": "TheFly — BofA reinstates ServiceNow Buy", "url": "https://thefly.com" }
     ]
   },
-  "QURE": {
-    "detail": "uniQure +15.3%，受 Replimune FDA 重啟消息帶動生技 sentiment，加上自家 **AMT-130（亨丁頓舞蹈症基因療法）**在英國近期上市前景，分析師上調目標價。\n\nShort float 約 18% → 具軋空條件。屬族群連動 + 自身管線雙催化。\n\n生技事件股波動大，建議搭配 REPL 一起觀察 FDA sentiment；獨立催化（AMT-130 進度）是與純跟風股的區別。",
-    "publishedAt": "2026-05-30T07:30:00-04:00",
+  "ASAN": {
+    "detail": "Asana Q1 FY27 營收 **$205.1M**（+9.5% YoY、超指引上緣）、**EPS $0.10**（超預期約 33%），AI 產品佔淨新增 ARR 達 **17%**，並完成收購 **StackAI**；NRR 連 4 季改善至 **97%**。\n\nShort float 偏高 → 財報轉佳易引發軋空。\n\n觀察重點：Rev YoY 僅 +9.5%，純度不及 TEAM/MDB；屬營益率改善 + 軋空題材，留意成長能否重新加速。",
+    "publishedAt": "2026-05-28T16:05:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {"label": "uniQure Investor Relations", "url": "https://www.uniqure.com/investors-newsroom"},
-      {"label": "Yahoo Finance — QURE", "url": "https://finance.yahoo.com/quote/QURE"}
+      { "label": "Asana Q1 FY27 results (IR)", "url": "https://investors.asana.com/news/default.aspx", "publishedAt": "2026-05-28T16:05:00-04:00" }
     ]
   },
   "GAP": {
-    "detail": "Gap Inc Q1 **EPS $0.38** vs 去年 $0.51（**−25.49% YoY**），與美鷹（AEO）同遭關稅成本上升與服飾需求疲軟的零售賣壓拖累，股價下跌 **−15%**。\n\nTV 前瞻顯示下季 EPS YoY 續為 −12%，獲利壓力延續至下半年。關稅對庫存成本的衝擊尚未完全反映。\n\n這是本日做空螢幕中**最乾淨的一檔**（EPS YoY 跌幅達 −25% 門檻）。開盤跌破前低可順勢做空，停損設於跳空缺口上緣。",
-    "publishedAt": "2026-05-29T16:05:00-04:00",
+    "detail": "Gap Inc Q1 FY26 營收 **$3.5B**（+1% YoY）、調整後 **EPS $0.38**，但**最新季 EPS YoY -25.5%**——本日唯一通過做空螢幕（EPS YoY ≤ -25%）的乾淨標的。\n\n公司**下調全年銷售指引至 +1–2%**，**Athleta 同店 -11%**、Old Navy / Banana Republic 不如預期，關稅成本壓力浮現，盤前 -15%。\n\n觀察重點：開盤破前低順勢做空、停損設跳空缺口上緣；Short float 11%，留意零售族群整體反彈風險。",
+    "publishedAt": "2026-05-28T16:15:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {"label": "Gap Inc Q1 Press Release (IR)", "url": "https://investors.gapinc.com/"},
-      {"label": "Reuters — Gap tariff pressure", "url": "https://www.reuters.com/business/retail-consumer/"}
+      { "label": "Gap Inc Q1 FY26 press release (IR)", "url": "https://investors.gapinc.com/news-events/press-releases", "publishedAt": "2026-05-28T16:15:00-04:00" },
+      { "label": "Reuters — Gap cuts sales outlook", "url": "https://www.reuters.com/business/retail-consumer/" }
     ]
   },
   "S": {
-    "detail": "SentinelOne Q1 營收 **$276.7M**（估 $277.4M）小幅未達標，並宣布**裁員 8%** 將資源轉投 AI，Q2 與全年指引偏弱，股價 **−14.5%**。\n\n雖然 EPS YoY +100%（基期極低），但營收未達標 + 指引下修 + 裁員的組合屬負面訊號，市場解讀為成長失速。\n\n做空判斷：與同業 CrowdStrike/Palo Alto 的相對弱勢明顯。開盤反彈無力即可進場做空；風險在於資安族群若整體反彈會壓縮空單。",
-    "publishedAt": "2026-05-29T16:05:00-04:00",
+    "detail": "SentinelOne Q1 FY27 營收 **$277M**（+21% YoY）、淨新增 ARR 成長 55%，但宣布**裁員（年省 $45M）**並將 FY27 營收成長放緩至**約 20%** 指引，令市場失望，盤前 -14.5%。\n\n成長失速訊號明確，相對 CRWD / PANW 弱勢。\n\n觀察重點：開盤反彈無力即進場做空；風險為資安族群整體反彈壓縮空單，停損設跳空缺口上緣。",
+    "publishedAt": "2026-05-28T16:05:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {"label": "SentinelOne Q1 FY27 Press Release (IR)", "url": "https://investors.sentinelone.com/"},
-      {"label": "CNBC — SentinelOne layoffs", "url": "https://www.cnbc.com/quotes/S"}
+      { "label": "SentinelOne Q1 FY27 results (IR)", "url": "https://investors.sentinelone.com/news-releases", "publishedAt": "2026-05-28T16:05:00-04:00" },
+      { "label": "CNBC — SentinelOne layoffs", "url": "https://www.cnbc.com/quotes/S" }
+    ]
+  },
+  "OCS": {
+    "detail": "Oculis **DIAMOND 兩項 OCS-01 滴眼劑**治療糖尿病黃斑水腫（DME）三期試驗**主要終點失敗**，盤後暴跌 **-33.9%**。公司表示將轉攻 Privosegtor / Licaminlimab 管線。\n\n這是基本面論點最乾淨的空方標的：臨床 binary 利空、催化劑明確。\n\n觀察重點：已大幅跳空、不宜直接追低；待反彈至跳空缺口下緣再分批做空，生技反彈劇烈務必嚴設停損。",
+    "publishedAt": "2026-05-29T07:00:00-04:00",
+    "publishedTimezone": "ET",
+    "sources": [
+      { "label": "Oculis DIAMOND topline (IR)", "url": "https://www.oculis.com/investors-media/news", "publishedAt": "2026-05-29T07:00:00-04:00" },
+      { "label": "STAT News — Oculis Phase 3 miss", "url": "https://www.statnews.com" }
     ]
   },
   "AEO": {
-    "detail": "American Eagle Q1 營收創紀錄 **$12億（+10% YoY）**，但**同店銷售 −2%**、關稅推升庫存成本，全年營業利潤指引偏謹慎，股價重挫 **−18%**。\n\n注意：EPS YoY 其實大幅轉正（去年同期虧損），但市場聚焦在**保守的全年指引**與關稅逆風 → sell-the-news。\n\n做空判斷：屬「指引下修」型做空，不像 GAP 那樣 EPS 直接衰退，因此空方論述較弱、反彈風險較高。建議僅在開盤確認跌勢後小部位參與。",
-    "publishedAt": "2026-05-29T16:05:00-04:00",
+    "detail": "American Eagle Q1 2026 營收 **$1.2B**（+10% YoY）、**EPS $0.14**（估 $0.12），但**營業利益與淨利明顯收縮**、AE 品牌同店 **-2%**；重申全年營益指引但市場失望，盤前 -18.3%。\n\n關稅成本 + 促銷加深壓抑獲利能力。\n\n觀察重點：屬獲利率惡化型做空，但營收仍正成長、EPS YoY 未跌破 -25%，純度遜於 GAP；可作對沖性空單，留意零售反彈。",
+    "publishedAt": "2026-05-28T16:05:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {"label": "American Eagle Q1 Press Release (IR)", "url": "https://investors.ae.com/"},
-      {"label": "Reuters — American Eagle guidance", "url": "https://www.reuters.com/business/retail-consumer/"}
-    ]
-  },
-  "ESTC": {
-    "detail": "Elastic Q4 營收 **$451M（+16% YoY）**，但 Q1 FY27 指引 **$469–470M**（年增僅約 13%）顯示成長放緩，令市場失望，股價 **−7.8%**。\n\n搜尋與可觀測性（observability）的 AI 變現尚未完全反映在指引，市場擔憂競爭加劇。\n\n做空判斷：指引減速型賣壓，但 Elastic 體質尚可（仍 +16% 成長），不算重度衰退。屬偏弱的做空標的，反彈風險中等。",
-    "publishedAt": "2026-05-29T16:05:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      {"label": "Elastic N.V. Q4 FY26 Press Release (IR)", "url": "https://ir.elastic.co/"},
-      {"label": "Yahoo Finance — ESTC", "url": "https://finance.yahoo.com/quote/ESTC"}
-    ]
-  },
-  "ADSK": {
-    "detail": "Autodesk Q1 **EPS $2.99**（估 $2.70，beat 10.7%），但 FY27 指引未驚艷，股價回落 **−7.3%**。\n\n屬「beat 但不夠驚喜」的 sell-the-news；TV 顯示成長仍穩（最新季 EPS YoY +31%、營收 +18%），基本面並未轉壞。\n\n做空判斷：這是估值回吐而非基本面衰退，**做空風險高**——逢低承接的買盤可能很快回補缺口。不建議作為主力空單。",
-    "publishedAt": "2026-05-29T16:05:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      {"label": "Autodesk Q1 FY27 Press Release (IR)", "url": "https://investors.autodesk.com/"},
-      {"label": "CNBC — Autodesk", "url": "https://www.cnbc.com/quotes/ADSK"}
+      { "label": "American Eagle Q1 2026 press release (IR)", "url": "https://investors.ae.com/news-and-events/news", "publishedAt": "2026-05-28T16:05:00-04:00" },
+      { "label": "Reuters — American Eagle margins", "url": "https://www.reuters.com/business/retail-consumer/" }
     ]
   }
 }
