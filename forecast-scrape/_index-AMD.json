@@ -1,0 +1,152 @@
+[
+  {
+    "name": "yahoo",
+    "url": "https://finance.yahoo.com/quote/AMD/analysis/",
+    "status": 200,
+    "size": 4957,
+    "hasQuarterly": false,
+    "quarterHits": 0,
+    "epsHits": 1,
+    "revHits": 1,
+    "outFile": "D:\\SIPs\\forecast-scrape\\yahoo-AMD.txt"
+  },
+  {
+    "name": "nasdaq",
+    "url": "https://www.nasdaq.com/market-activity/stocks/amd/earnings",
+    "status": "err",
+    "size": 0,
+    "hasQuarterly": false,
+    "err": "Error: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.nasdaq.com/market-activity/stocks/amd/earnings\nCall log:\n\u001b[2m  - navigating to \"https://www.nasdaq.com/market-activity/stocks/amd/earning"
+  },
+  {
+    "name": "marketbeat",
+    "url": "https://www.marketbeat.com/stocks/NASDAQ/AMD/forecast/",
+    "status": 200,
+    "size": 23887,
+    "hasQuarterly": false,
+    "quarterHits": 0,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\marketbeat-AMD.txt"
+  },
+  {
+    "name": "tipranks",
+    "url": "https://www.tipranks.com/stocks/amd/forecast",
+    "status": "err",
+    "size": 0,
+    "hasQuarterly": false,
+    "err": "TimeoutError: page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://www.tipranks.com/stocks/amd/forecast\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  },
+  {
+    "name": "zacks",
+    "url": "https://www.zacks.com/stock/quote/AMD/detailed-estimates",
+    "status": 200,
+    "size": 0,
+    "hasQuarterly": false,
+    "quarterHits": 0,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\zacks-AMD.txt"
+  },
+  {
+    "name": "investing",
+    "url": "https://www.investing.com/equities/advanced-micro-devices-earnings",
+    "status": 404,
+    "size": 0,
+    "hasQuarterly": false
+  },
+  {
+    "name": "stockanalysis-q",
+    "url": "https://stockanalysis.com/stocks/amd/forecast/?p=quarterly",
+    "status": 200,
+    "size": 4253,
+    "hasQuarterly": false,
+    "quarterHits": 0,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\stockanalysis-q-AMD.txt"
+  },
+  {
+    "name": "morningstar",
+    "url": "https://www.morningstar.com/stocks/xnas/amd/forecast",
+    "status": 404,
+    "size": 0,
+    "hasQuarterly": false
+  },
+  {
+    "name": "roic",
+    "url": "https://www.roic.ai/quote/AMD",
+    "status": 200,
+    "size": 9373,
+    "hasQuarterly": false,
+    "quarterHits": 1,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\roic-AMD.txt"
+  },
+  {
+    "name": "streetinsider",
+    "url": "https://www.streetinsider.com/earnings/AMD",
+    "status": 200,
+    "size": 4619,
+    "hasQuarterly": false,
+    "quarterHits": 0,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\streetinsider-AMD.txt"
+  },
+  {
+    "name": "estimize",
+    "url": "https://www.estimize.com/AMD/eps",
+    "status": 404,
+    "size": 0,
+    "hasQuarterly": false
+  },
+  {
+    "name": "wsj",
+    "url": "https://www.wsj.com/market-data/quotes/AMD/financials",
+    "status": 401,
+    "size": 0,
+    "hasQuarterly": false
+  },
+  {
+    "name": "tipranks-earn",
+    "url": "https://www.tipranks.com/stocks/amd/earnings",
+    "status": 200,
+    "size": 9737,
+    "hasQuarterly": false,
+    "quarterHits": 3,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\tipranks-earn-AMD.txt"
+  },
+  {
+    "name": "gurufocus",
+    "url": "https://www.gurufocus.com/stock/AMD/forecast",
+    "status": 200,
+    "size": 3933,
+    "hasQuarterly": false,
+    "quarterHits": 0,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\gurufocus-AMD.txt"
+  },
+  {
+    "name": "simplywall",
+    "url": "https://simplywall.st/stocks/us/semiconductors/nasdaq-amd/advanced-micro-devices/future",
+    "status": 200,
+    "size": 261,
+    "hasQuarterly": false,
+    "quarterHits": 0,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\simplywall-AMD.txt"
+  },
+  {
+    "name": "discountingcf",
+    "url": "https://discountingcashflows.com/company/AMD/analyst-estimates/",
+    "status": 404,
+    "size": 0,
+    "hasQuarterly": false
+  }
+]

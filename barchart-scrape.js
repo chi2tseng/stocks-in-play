@@ -142,8 +142,12 @@ async function fetchPage(page, baseUrl, pageNum) {
   };
   page.on('response', handler);
   try {
-    await page.goto(pageUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    const deadline = Date.now() + 25000;
+    try {
+      await page.goto(pageUrl, { waitUntil: 'domcontentloaded', timeout: 90000 });
+    } catch (e) {
+      process.stderr.write(`(goto-timeout, listening anyway) `);
+    }
+    const deadline = Date.now() + 45000;
     while (!captured && Date.now() < deadline) await page.waitForTimeout(500);
   } finally {
     page.off('response', handler);

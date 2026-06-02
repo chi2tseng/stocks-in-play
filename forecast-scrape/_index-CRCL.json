@@ -1,0 +1,151 @@
+[
+  {
+    "name": "yahoo",
+    "url": "https://finance.yahoo.com/quote/CRCL/analysis/",
+    "status": 200,
+    "size": 4938,
+    "hasQuarterly": false,
+    "quarterHits": 0,
+    "epsHits": 1,
+    "revHits": 1,
+    "outFile": "D:\\SIPs\\forecast-scrape\\yahoo-CRCL.txt"
+  },
+  {
+    "name": "nasdaq",
+    "url": "https://www.nasdaq.com/market-activity/stocks/crcl/earnings",
+    "status": "err",
+    "size": 0,
+    "hasQuarterly": false,
+    "err": "Error: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.nasdaq.com/market-activity/stocks/crcl/earnings\nCall log:\n\u001b[2m  - navigating to \"https://www.nasdaq.com/market-activity/stocks/crcl/earni"
+  },
+  {
+    "name": "marketbeat",
+    "url": "https://www.marketbeat.com/stocks/NASDAQ/CRCL/forecast/",
+    "status": 200,
+    "size": 16153,
+    "hasQuarterly": false,
+    "quarterHits": 0,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\marketbeat-CRCL.txt"
+  },
+  {
+    "name": "tipranks",
+    "url": "https://www.tipranks.com/stocks/crcl/forecast",
+    "status": 200,
+    "size": 8444,
+    "hasQuarterly": true,
+    "quarterHits": 4,
+    "epsHits": 3,
+    "revHits": 2,
+    "outFile": "D:\\SIPs\\forecast-scrape\\tipranks-CRCL.txt"
+  },
+  {
+    "name": "zacks",
+    "url": "https://www.zacks.com/stock/quote/CRCL/detailed-estimates",
+    "status": 200,
+    "size": 0,
+    "hasQuarterly": false,
+    "quarterHits": 0,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\zacks-CRCL.txt"
+  },
+  {
+    "name": "investing",
+    "url": "https://www.investing.com/equities/crcl-earnings",
+    "status": 404,
+    "size": 0,
+    "hasQuarterly": false
+  },
+  {
+    "name": "stockanalysis-q",
+    "url": "https://stockanalysis.com/stocks/crcl/forecast/?p=quarterly",
+    "status": 200,
+    "size": 3984,
+    "hasQuarterly": false,
+    "quarterHits": 0,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\stockanalysis-q-CRCL.txt"
+  },
+  {
+    "name": "morningstar",
+    "url": "https://www.morningstar.com/stocks/xnas/crcl/forecast",
+    "status": 404,
+    "size": 0,
+    "hasQuarterly": false
+  },
+  {
+    "name": "roic",
+    "url": "https://www.roic.ai/quote/CRCL",
+    "status": 200,
+    "size": 8835,
+    "hasQuarterly": false,
+    "quarterHits": 1,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\roic-CRCL.txt"
+  },
+  {
+    "name": "streetinsider",
+    "url": "https://www.streetinsider.com/earnings/CRCL",
+    "status": 200,
+    "size": 4605,
+    "hasQuarterly": false,
+    "quarterHits": 0,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\streetinsider-CRCL.txt"
+  },
+  {
+    "name": "estimize",
+    "url": "https://www.estimize.com/CRCL/eps",
+    "status": 404,
+    "size": 0,
+    "hasQuarterly": false
+  },
+  {
+    "name": "wsj",
+    "url": "https://www.wsj.com/market-data/quotes/CRCL/financials",
+    "status": 401,
+    "size": 0,
+    "hasQuarterly": false
+  },
+  {
+    "name": "tipranks-earn",
+    "url": "https://www.tipranks.com/stocks/crcl/earnings",
+    "status": 200,
+    "size": 10523,
+    "hasQuarterly": false,
+    "quarterHits": 3,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\tipranks-earn-CRCL.txt"
+  },
+  {
+    "name": "gurufocus",
+    "url": "https://www.gurufocus.com/stock/CRCL/forecast",
+    "status": 200,
+    "size": 3927,
+    "hasQuarterly": false,
+    "quarterHits": 0,
+    "epsHits": 0,
+    "revHits": 0,
+    "outFile": "D:\\SIPs\\forecast-scrape\\gurufocus-CRCL.txt"
+  },
+  {
+    "name": "simplywall",
+    "url": "https://simplywall.st/stocks/us/semiconductors/nasdaq-crcl/crcl/future",
+    "status": 404,
+    "size": 0,
+    "hasQuarterly": false
+  },
+  {
+    "name": "discountingcf",
+    "url": "https://discountingcashflows.com/company/CRCL/analyst-estimates/",
+    "status": 404,
+    "size": 0,
+    "hasQuarterly": false
+  }
+]
