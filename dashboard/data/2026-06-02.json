@@ -1,605 +1,8 @@
 {
   "date": "2026-06-02",
-  "scanTime": "15:47",
-  "scanTimestamp": "2026-06-02T15:47",
+  "scanTime": "16:24",
+  "scanTimestamp": "2026-06-02T16:24",
   "stocks": {
-    "FULC": {
-      "symbol": "FULC",
-      "name": "Fulcrum Therapeutics Inc",
-      "type": "FDA",
-      "catalyst": "終止唯一臨床計畫 pociredir（鎌狀細胞病）：FDA 對 PRC2 抑制劑致二次血液惡性腫瘤風險疑慮；啟動策略檢討，盤後 -49.7%。",
-      "newsDetail": "Fulcrum Therapeutics 6/1 盤後 **-49.7%**，公司宣布**終止其唯一臨床計畫 pociredir（鎌狀細胞病）**。\n\n原因：FDA 對 PRC2 抑制劑類藥物致**二次血液惡性腫瘤風險**有安全疑慮（同類 Tazverik 已於 3 月全球撤市）。公司同步啟動**策略檢討**（potential sale / 清算）。\n\n管線歸零、現金成為唯一價值支撐。EPS 估計持平於 -$0.27 附近、無營收。屬基本面已 de-risk 向下的破底股，反彈僅靠現金/併購投機；做空風險在於現金價值若高於股價時的軋空。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=FULC"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/FULC"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-FULC/news/"
-        }
-      ],
-      "publishedAt": "2026-06-01T16:15:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Fulcrum Therapeutics IR",
-          "url": "https://ir.fulcrumtx.com/"
-        },
-        {
-          "label": "SEC EDGAR — FULC 8-K",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=FULC&type=8-K"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 3.23,
-          "chgPct": -49.69,
-          "volume": 2417991,
-          "session": "post",
-          "direction": "down",
-          "name": "Fulcrum Therapeutics Inc",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 3.23,
-      "chgPct": -49.69,
-      "volume": 2417991,
-      "tv": {
-        "latestEPS": -0.25,
-        "consensusEPS": -0.29,
-        "priorYrEPS": -0.28,
-        "surpriseEPS_pct": 15.04,
-        "surpriseEPS_dollar": 0.03999999999999998,
-        "latestRev_M": 0.0,
-        "consensusRev_M": 0.0,
-        "priorYrRev_M": 0.0,
-        "surpriseRev_pct": null,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": 10.714285714285724,
-        "epsEst_next4": [
-          -0.27,
-          -0.28,
-          -0.29,
-          -0.28
-        ],
-        "revEst_next4": [
-          0.0,
-          0.0,
-          0.0,
-          0.0
-        ],
-        "yoyBlock": "+10.71% / N/M\n--------------------\n+3.57% / N/M\n+9.68% / N/M\n+6.45% / N/M\n-12.00% / N/M",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27"
-          ],
-          "eps_reported": [
-            0.87,
-            -0.35,
-            -0.31,
-            -0.28,
-            -0.28,
-            -0.31,
-            -0.31,
-            -0.25,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -0.41,
-            -0.4,
-            -0.28,
-            -0.29,
-            -0.29,
-            -0.29,
-            -0.3,
-            -0.29,
-            -0.27,
-            -0.28,
-            -0.29,
-            -0.28
-          ],
-          "rev_reported_M": [
-            80.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            14.82,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null
-      },
-      "shortFloat": 13.82,
-      "shortRatio": 8.45,
-      "marketCap_M": 427.78,
-      "floatShares_M": 56.43,
-      "perf1M": -9.96,
-      "perf3M": -17.8,
-      "perf6M": -43.29,
-      "perfYTD": -43.24,
-      "perf12M": -6.62,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 7.02,
-        "high": 7.02,
-        "low": 6.38,
-        "close": 6.42,
-        "volume": 2798000,
-        "prev_close": 6.92
-      }
-    },
-    "LAC": {
-      "symbol": "LAC",
-      "name": "Lithium Americas Corp",
-      "type": "earnings",
-      "catalyst": "Q1 首度轉盈，淨利 $460 萬；Thacker Pass 進展+阿根廷營運，看漲選擇權流 3x，+17.4%。",
-      "newsDetail": "Lithium Americas 6/1 盤後 +17.4%，**Q1 首度轉盈**：淨利約 $460 萬（去年同期虧損）。\n\n營運面：Thacker Pass 鋰礦專案進展 + 阿根廷營運貢獻。選擇權市場異常活躍——**看漲選擇權 39,464 口、約常態 3 倍**，IV +3pt 至 92.39，顯示市場押注延續性。\n\n屬鋰價築底 + 轉盈拐點題材，小型高 beta 動能標的。風險：鋰價反覆、礦業專案執行風險。日內波動大，嚴設停損、避免在 IV 高檔追高。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=LAC"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/LAC"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-LAC/news/"
-        }
-      ],
-      "publishedAt": "2026-06-01T16:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Lithium Americas IR",
-          "url": "https://www.lithiumamericas.com/investors/"
-        },
-        {
-          "label": "SEC EDGAR — LAC",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=LAC&type=10-Q"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 6.47,
-          "chgPct": 17.37,
-          "volume": 4361121,
-          "session": "post",
-          "direction": "up",
-          "name": "Lithium Americas Corp",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 6.47,
-      "chgPct": 17.37,
-      "volume": 4361121,
-      "tv": null,
-      "shortFloat": 15.49,
-      "shortRatio": 2.93,
-      "marketCap_M": 1910,
-      "floatShares_M": 184.49,
-      "perf1M": -3.84,
-      "perf3M": 7.62,
-      "perf6M": 4.75,
-      "perfYTD": 26.38,
-      "perf12M": 107.14,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 5.11,
-        "high": 5.52,
-        "low": 5.04,
-        "close": 5.51,
-        "volume": 18008500,
-        "prev_close": 5.21
-      }
-    },
-    "FOFO": {
-      "symbol": "FOFO",
-      "name": "Hang Feng Technology Innovation Co. Ltd",
-      "type": "?",
-      "catalyst": "(無催化劑資料)",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=FOFO"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/FOFO"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-FOFO/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 2.44,
-          "chgPct": -17.85,
-          "volume": 187879,
-          "session": "post",
-          "direction": "down",
-          "name": "Hang Feng Technology Innovation Co. Ltd",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 2.44,
-      "chgPct": -17.85,
-      "volume": 187879,
-      "tv": null,
-      "shortFloat": 0.35,
-      "shortRatio": 0.18,
-      "marketCap_M": 22.49,
-      "floatShares_M": 3.03,
-      "perf1M": -3.57,
-      "perf3M": -1,
-      "perf6M": -71.11,
-      "perfYTD": -69.29,
-      "perf12M": null,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 2.14,
-        "high": 5.35,
-        "low": 2.14,
-        "close": 2.97,
-        "volume": 3784500,
-        "prev_close": 2.1
-      }
-    },
-    "SKM": {
-      "symbol": "SKM",
-      "name": "Sk Telecom Corp ADR",
-      "type": "analyst",
-      "catalyst": "HSBC 評級 Reduce→Hold；5G 擴張樂觀，盤前 +9.1%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=SKM"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/SKM"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-SKM/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 46.3,
-          "chgPct": 4.21,
-          "volume": 236917,
-          "session": "post",
-          "direction": "up",
-          "name": "Sk Telecom Corp ADR",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 46.3,
-      "chgPct": 4.21,
-      "volume": 236917,
-      "tv": null,
-      "shortFloat": 0.95,
-      "shortRatio": 1.82,
-      "marketCap_M": 16890,
-      "floatShares_M": 380.14,
-      "perf1M": 18.77,
-      "perf3M": 47.12,
-      "perf6M": 119.62,
-      "perfYTD": 116.41,
-      "perf12M": 116.31,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 40.6,
-        "high": 44.79,
-        "low": 39.49,
-        "close": 44.43,
-        "volume": 7686900,
-        "prev_close": 37.34
-      }
-    },
-    "ABTS": {
-      "symbol": "ABTS",
-      "name": "Abits Group Inc",
-      "type": "momentum",
-      "catalyst": "Abits Group 開盤衝高再砸回；營收約 $913 萬但稅前利潤率 -355%，純動能 +40%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=ABTS"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/ABTS"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-ABTS/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 2.99,
-          "chgPct": 39.72,
-          "volume": 4454537,
-          "session": "post",
-          "direction": "up",
-          "name": "Abits Group Inc",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 2.99,
-      "chgPct": 39.72,
-      "volume": 4454537,
-      "tv": null,
-      "shortFloat": 3.83,
-      "shortRatio": 0.17,
-      "marketCap_M": 6.34,
-      "floatShares_M": 2.18,
-      "perf1M": 62.12,
-      "perf3M": -16.73,
-      "perf6M": -63.42,
-      "perfYTD": -58.45,
-      "perf12M": -47.8,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 1.58,
-        "high": 3.23,
-        "low": 1.42,
-        "close": 2.14,
-        "volume": 100597400,
-        "prev_close": 0.99
-      }
-    },
-    "ELMT": {
-      "symbol": "ELMT",
-      "name": "The Elmet Group Co.",
-      "type": "momentum",
-      "catalyst": "未見具體新聞，低浮動拉抬，+26%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=ELMT"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/ELMT"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-ELMT/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 20.38,
-          "chgPct": 7.55,
-          "volume": 122166,
-          "session": "post",
-          "direction": "up",
-          "name": "The Elmet Group Co.",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 20.38,
-      "chgPct": 7.55,
-      "volume": 122166,
-      "tv": null,
-      "shortFloat": 43.52,
-      "shortRatio": 1.34,
-      "marketCap_M": 568.12,
-      "floatShares_M": 2.86,
-      "perf1M": 15.9,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": 5.81,
-      "perf12M": null,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 19.05,
-        "high": 22.5,
-        "low": 18.75,
-        "close": 18.95,
-        "volume": 4970100,
-        "prev_close": 15.28
-      }
-    },
-    "CTNT": {
-      "symbol": "CTNT",
-      "name": "Cheetah Net Supply Chain Service Inc Cl A",
-      "type": "momentum",
-      "catalyst": "低浮動中概拉抬，無明確新聞，+71%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=CTNT"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/CTNT"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-CTNT/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 3.11,
-          "chgPct": 71.04,
-          "volume": 6299539,
-          "session": "post",
-          "direction": "up",
-          "name": "Cheetah Net Supply Chain Service Inc Cl A",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 3.11,
-      "chgPct": 71.04,
-      "volume": 6299539,
-      "tv": null,
-      "shortFloat": 1.53,
-      "shortRatio": 0.06,
-      "marketCap_M": 5.38,
-      "floatShares_M": 2.96,
-      "perf1M": -44,
-      "perf3M": -99.56,
-      "perf6M": -99.36,
-      "perfYTD": -99.23,
-      "perf12M": -99.34,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 1.63,
-        "high": 1.82,
-        "low": 1.63,
-        "close": 1.82,
-        "volume": 1286300,
-        "prev_close": 1.66
-      }
-    },
-    "JZ": {
-      "symbol": "JZ",
-      "name": "Jianzhi Education Technology Group ADR",
-      "type": "momentum",
-      "catalyst": "Jianzhi Education 公告 AI 智慧影像里程碑，低浮動拉抬後回落，題材薄弱，-30%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=JZ"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/JZ"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-JZ/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 2.16,
-          "chgPct": -30.32,
-          "volume": 5971777,
-          "session": "post",
-          "direction": "down",
-          "name": "Jianzhi Education Technology Group ADR",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 2.16,
-      "chgPct": -30.32,
-      "volume": 5971777,
-      "tv": null,
-      "shortFloat": null,
-      "shortRatio": 0.21,
-      "marketCap_M": 143.65,
-      "floatShares_M": null,
-      "perf1M": 246.37,
-      "perf3M": 244.98,
-      "perf6M": 121.43,
-      "perfYTD": 200.97,
-      "perf12M": -12.97,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 0.97,
-        "high": 3.28,
-        "low": 0.93,
-        "close": 3.1,
-        "volume": 46763400,
-        "prev_close": 0.73
-      }
-    },
     "EQ": {
       "symbol": "EQ",
       "name": "Equillium Inc",
@@ -658,1287 +61,6 @@
         "close": 3.08,
         "volume": 4891400,
         "prev_close": 2.9
-      }
-    },
-    "MCHP": {
-      "symbol": "MCHP",
-      "name": "Microchip Technology",
-      "type": "momentum",
-      "catalyst": "無個別新聞，隨 AI 半導體族群動能重評，盤後 +9.3%。",
-      "newsDetail": "Microchip 6/1 盤後 +9.3%，**EPS $0.57 超估 $0.50（+12.9%）、營收 $13.1 億超估 +3.8%**。\n\n關鍵在循環復甦訊號：**YoY EPS +418%**——自類比/MCU 庫存週期谷底大幅回升，暗示下游需求與通路庫存去化接近尾聲。\n\n屬 earnings + 半導體循環觸底反彈的雙重題材，量大波動足。未來 4Q EPS 維持高速 YoY，若庫存週期確認轉折，具多日延續潛力。觀察管理層對通路庫存與訂單能見度的評論。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=MCHP"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/MCHP"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-MCHP/news/"
-        }
-      ],
-      "publishedAt": "2026-06-01T16:05:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Microchip IR",
-          "url": "https://www.microchip.com/en-us/about/investor-relations"
-        },
-        {
-          "label": "SEC EDGAR — MCHP 8-K",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=MCHP&type=8-K"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 100.0,
-          "chgPct": 9.27,
-          "volume": 424230,
-          "session": "post",
-          "direction": "up",
-          "name": "Microchip Technology",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 100.0,
-      "chgPct": 9.27,
-      "volume": 424230,
-      "tv": {
-        "latestEPS": 0.57,
-        "consensusEPS": 0.5,
-        "priorYrEPS": 0.11,
-        "surpriseEPS_pct": 12.9,
-        "surpriseEPS_dollar": 0.06999999999999995,
-        "latestRev_M": 1310.0,
-        "consensusRev_M": 1260.0,
-        "priorYrRev_M": 970.5,
-        "surpriseRev_pct": 3.78,
-        "yrYrRev_pct": 34.98196805770222,
-        "epsYoY_pct": 418.1818181818182,
-        "epsEst_next4": [
-          0.7,
-          0.79,
-          0.8,
-          0.86
-        ],
-        "revEst_next4": [
-          1460.0,
-          1550.0,
-          1560.0,
-          1620.0
-        ],
-        "yoyBlock": "+418.18% / +34.98%\n--------------------\n+159.26% / +35.19%\n+125.71% / +35.96%\n+81.82% / +31.09%\n+50.88% / +23.66%",
-        "chart": {
-          "quarters": [
-            "Q1 '24",
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26"
-          ],
-          "eps_reported": [
-            0.53,
-            0.46,
-            0.2,
-            0.11,
-            0.27,
-            0.35,
-            0.44,
-            0.57,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.52,
-            0.43,
-            0.28,
-            0.1,
-            0.24,
-            0.34,
-            0.43,
-            0.5,
-            0.7,
-            0.79,
-            0.8,
-            0.86
-          ],
-          "rev_reported_M": [
-            1240.0,
-            1160.0,
-            1030.0,
-            970.5,
-            1080.0,
-            1140.0,
-            1190.0,
-            1310.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            1240.0,
-            1150.0,
-            1050.0,
-            962.58,
-            1060.0,
-            1140.0,
-            1180.0,
-            1260.0,
-            1460.0,
-            1550.0,
-            1560.0,
-            1620.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null
-      },
-      "shortFloat": 5.51,
-      "shortRatio": 2.95,
-      "marketCap_M": 49610,
-      "floatShares_M": 531.24,
-      "perf1M": -1.5,
-      "perf3M": 23.16,
-      "perf6M": 74.09,
-      "perfYTD": 43.63,
-      "perf12M": 57.68,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 92.88,
-        "high": 94.2,
-        "low": 90.23,
-        "close": 91.52,
-        "volume": 11318500,
-        "prev_close": 94.65
-      }
-    },
-    "ZJYL": {
-      "symbol": "ZJYL",
-      "name": "Jin Medical International Ltd",
-      "type": "momentum",
-      "catalyst": "低浮動中概拉抬，無實質催化劑，+32%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=ZJYL"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/ZJYL"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-ZJYL/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 3.22,
-          "chgPct": 31.97,
-          "volume": 578135,
-          "session": "post",
-          "direction": "up",
-          "name": "Jin Medical International Ltd",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 3.22,
-      "chgPct": 31.97,
-      "volume": 578135,
-      "tv": null,
-      "shortFloat": 0.71,
-      "shortRatio": 0.7,
-      "marketCap_M": 19.1,
-      "floatShares_M": 1.83,
-      "perf1M": 15.64,
-      "perf3M": -14.08,
-      "perf6M": -52.29,
-      "perfYTD": -44.55,
-      "perf12M": -83.75,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 2.33,
-        "high": 2.58,
-        "low": 2.33,
-        "close": 2.44,
-        "volume": 8000,
-        "prev_close": 2.24
-      }
-    },
-    "FRGT": {
-      "symbol": "FRGT",
-      "name": "Freight Technologies Inc",
-      "type": "?",
-      "catalyst": "(無催化劑資料)",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=FRGT"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/FRGT"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-FRGT/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 4.0,
-          "chgPct": -4.31,
-          "volume": 779273,
-          "session": "post",
-          "direction": "down",
-          "name": "Freight Technologies Inc",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 4.0,
-      "chgPct": -4.31,
-      "volume": 779273,
-      "tv": null,
-      "shortFloat": 1.62,
-      "shortRatio": 0.08,
-      "marketCap_M": 2.39,
-      "floatShares_M": 0.51,
-      "perf1M": 10,
-      "perf3M": -28.55,
-      "perf6M": -78.12,
-      "perfYTD": -50.24,
-      "perf12M": -92.19,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 4.2,
-        "high": 4.24,
-        "low": 3.92,
-        "close": 4.18,
-        "volume": 1047300,
-        "prev_close": 4.36
-      }
-    },
-    "ORIC": {
-      "symbol": "ORIC",
-      "name": "Oric Pharmaceuticals Inc",
-      "type": "analyst",
-      "catalyst": "推進前列腺癌藥至 Phase 3 但市場對安全/劑量反應，-9.8%。",
-      "newsDetail": "ORIC Pharmaceuticals 6/1 盤後 **-9.8%**，推進前列腺癌候選藥（rinzimetostat 調整至 400mg 劑量）至 Phase 3，但市場對其**安全性 / 劑量反應**仍有疑慮（先前 3 月曾因劑量調整重挫，此為餘波重定價）。\n\n屬臨床期生技的劑量/安全重定價型負催化，無營收、持續燒錢。\n\n做空為小型高波動標的，反彈劇烈，僅適合日內、嚴設停損；留意現金部位與任何後續臨床更新可能引發的軋空。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=ORIC"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/ORIC"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-ORIC/news/"
-        }
-      ],
-      "publishedAt": "2026-06-01T16:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "ORIC Pharmaceuticals IR",
-          "url": "https://ir.oricpharma.com/"
-        },
-        {
-          "label": "SEC EDGAR — ORIC",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=ORIC&type=8-K"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 8.1,
-          "chgPct": -9.8,
-          "volume": 155856,
-          "session": "post",
-          "direction": "down",
-          "name": "Oric Pharmaceuticals Inc",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 8.1,
-      "chgPct": -9.8,
-      "volume": 155856,
-      "tv": null,
-      "shortFloat": 35.8,
-      "shortRatio": 11.98,
-      "marketCap_M": 929.58,
-      "floatShares_M": 61.3,
-      "perf1M": -9.11,
-      "perf3M": -35.3,
-      "perf6M": -24.03,
-      "perfYTD": 9.78,
-      "perf12M": 9.91,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 8.5,
-        "high": 9.13,
-        "low": 8.24,
-        "close": 8.98,
-        "volume": 3624700,
-        "prev_close": 8.45
-      }
-    },
-    "CING": {
-      "symbol": "CING",
-      "name": "Cingulate Inc",
-      "type": "?",
-      "catalyst": "(無催化劑資料)",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=CING"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/CING"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-CING/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 3.76,
-          "chgPct": 4.44,
-          "volume": 147831,
-          "session": "post",
-          "direction": "up",
-          "name": "Cingulate Inc",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 3.76,
-      "chgPct": 4.44,
-      "volume": 147831,
-      "tv": null,
-      "shortFloat": 14.88,
-      "shortRatio": 2.79,
-      "marketCap_M": 47.8,
-      "floatShares_M": 10.6,
-      "perf1M": -30.1,
-      "perf3M": -44.95,
-      "perf6M": -1.91,
-      "perfYTD": -17.05,
-      "perf12M": -8.16,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 3.7,
-        "high": 3.77,
-        "low": 3.16,
-        "close": 3.6,
-        "volume": 2179100,
-        "prev_close": 4.16
-      }
-    },
-    "HKIT": {
-      "symbol": "HKIT",
-      "name": "Hitek Global Inc Ordinary Share",
-      "type": "momentum",
-      "catalyst": "投機動能：$1 區跳空衝高後砸回，純波動拉抬無實質催化，+118% 盤前/-17% 盤後。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=HKIT"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/HKIT"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-HKIT/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 5.46,
-          "chgPct": -17.02,
-          "volume": 1484888,
-          "session": "post",
-          "direction": "down",
-          "name": "Hitek Global Inc Ordinary Share",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 5.46,
-      "chgPct": -17.02,
-      "volume": 1484888,
-      "tv": null,
-      "shortFloat": 24.99,
-      "shortRatio": 0.25,
-      "marketCap_M": 59,
-      "floatShares_M": 0.42,
-      "perf1M": 167.51,
-      "perf3M": -97.64,
-      "perf6M": -97.22,
-      "perfYTD": -98.03,
-      "perf12M": -96.8,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 3.19,
-        "high": 8.8,
-        "low": 3.01,
-        "close": 6.58,
-        "volume": 90185700,
-        "prev_close": 1.46
-      }
-    },
-    "EEIQ": {
-      "symbol": "EEIQ",
-      "name": "Epicquest Education Group Intl Ltd",
-      "type": "?",
-      "catalyst": "(無催化劑資料)",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=EEIQ"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/EEIQ"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-EEIQ/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 3.35,
-          "chgPct": -5.9,
-          "volume": 999237,
-          "session": "post",
-          "direction": "down",
-          "name": "Epicquest Education Group Intl Ltd",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 3.35,
-      "chgPct": -5.9,
-      "volume": 999237,
-      "tv": null,
-      "shortFloat": 2.8,
-      "shortRatio": 0.01,
-      "marketCap_M": 5.26,
-      "floatShares_M": 0.85,
-      "perf1M": 9.88,
-      "perf3M": 47.72,
-      "perf6M": -27.43,
-      "perfYTD": 0.88,
-      "perf12M": -62.67,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 3.34,
-        "high": 3.86,
-        "low": 3.23,
-        "close": 3.56,
-        "volume": 1482300,
-        "prev_close": 3.22
-      }
-    },
-    "ANY": {
-      "symbol": "ANY",
-      "name": "Sphere 3D Corp",
-      "type": "momentum",
-      "catalyst": "Sphere 3D 活躍小盤動能，無實質催化劑，+67%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=ANY"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/ANY"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-ANY/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 5.15,
-          "chgPct": 28.11,
-          "volume": 11833697,
-          "session": "post",
-          "direction": "up",
-          "name": "Sphere 3D Corp",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 5.15,
-      "chgPct": 28.11,
-      "volume": 11833697,
-      "tv": null,
-      "shortFloat": 3.63,
-      "shortRatio": 0.25,
-      "marketCap_M": 17.05,
-      "floatShares_M": 4.1,
-      "perf1M": 173.47,
-      "perf3M": 175.34,
-      "perf6M": -20.69,
-      "perfYTD": 35.08,
-      "perf12M": -46.97,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 3.16,
-        "high": 4.83,
-        "low": 2.86,
-        "close": 4.02,
-        "volume": 126685900,
-        "prev_close": 1.9
-      }
-    },
-    "ABVX": {
-      "symbol": "ABVX",
-      "name": "Abivax Sa ADR",
-      "type": "news",
-      "catalyst": "obefazimod 44週 Phase 3 維持期達主要終點，但近期 ADS 增發+轉售登記造成賣壓、獲利了結，盤後 -25%。",
-      "newsDetail": "Abivax 6/1 盤後 **-25.2%**——一個「**好數據、壞反應**」的稀釋型殺盤。\n\nobefazimod 的 **44 週 Phase 3 維持期達主要終點**（25mg/50mg 劑量均達臨床緩解），數據本身是利多。但近期公司進行 **ADS 增發 + 轉售登記**，造成股本稀釋與賣壓，疊加數據公布後的獲利了結，引發回落。\n\n做空邏輯是技術面（稀釋 + 過度延伸後修正）而非基本面崩壞——核心藥物數據仍佳。因此反彈可能劇烈，做空僅適合日內、嚴控風險，避免與基本面利多對作過久。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=ABVX"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/ABVX"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-ABVX/news/"
-        }
-      ],
-      "publishedAt": "2026-06-01T16:20:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Abivax press release",
-          "url": "https://www.abivax.com/en/media/press-releases/"
-        },
-        {
-          "label": "SEC EDGAR — ABVX 6-K",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=ABVX&type=6-K"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 97.01,
-          "chgPct": -25.2,
-          "volume": 6563958,
-          "session": "post",
-          "direction": "down",
-          "name": "Abivax Sa ADR",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 97.01,
-      "chgPct": -25.2,
-      "volume": 6563958,
-      "tv": {
-        "latestEPS": -0.71,
-        "consensusEPS": -0.94,
-        "priorYrEPS": -0.97,
-        "surpriseEPS_pct": 24.12,
-        "surpriseEPS_dollar": 0.22999999999999998,
-        "latestRev_M": null,
-        "consensusRev_M": 0.89712,
-        "priorYrRev_M": 1.33,
-        "surpriseRev_pct": null,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": 26.804123711340207,
-        "epsEst_next4": [
-          -0.87,
-          -0.75,
-          -0.77,
-          -0.98
-        ],
-        "revEst_next4": [
-          0.8909199999999999,
-          0.9202400000000001,
-          0.92773,
-          null
-        ],
-        "yoyBlock": "+26.80% / N/M\n--------------------\n+10.31% / -62.88%\n+69.64% / +79.22%\n+36.89% / -38.56%\n-38.03% / N/M",
-        "chart": {
-          "quarters": [
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27"
-          ],
-          "eps_reported": [
-            -1.94,
-            -1.44,
-            -1.68,
-            -0.97,
-            -0.97,
-            -2.47,
-            -1.22,
-            -0.71,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -0.91,
-            -1.5,
-            -1.59,
-            -0.76,
-            -0.93,
-            -0.79,
-            -1.35,
-            -0.94,
-            -0.87,
-            -0.75,
-            -0.77,
-            -0.98
-          ],
-          "rev_reported_M": [
-            7.16,
-            6.37,
-            1.16,
-            1.33,
-            2.4,
-            0.51346,
-            1.51,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            3.78,
-            2.83,
-            3.35,
-            1.39,
-            1.35,
-            1.8,
-            0.40113,
-            0.89712,
-            0.8909199999999999,
-            0.9202400000000001,
-            0.92773
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-05-23"
-      },
-      "shortFloat": 3.64,
-      "shortRatio": 2.47,
-      "marketCap_M": 10330,
-      "floatShares_M": 68.13,
-      "perf1M": 10.49,
-      "perf3M": 14.66,
-      "perf6M": 3.19,
-      "perfYTD": -3.83,
-      "perf12M": 2054.32,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 133.15,
-        "high": 133.27,
-        "low": 128.37,
-        "close": 129.69,
-        "volume": 7341200,
-        "prev_close": 132.63
-      }
-    },
-    "VSA": {
-      "symbol": "VSA",
-      "name": "Visionsys AI Inc ADR",
-      "type": "momentum",
-      "catalyst": "極端軋空（空單佔比 465%），盤前 +105%，低浮動 +67%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=VSA"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/VSA"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-VSA/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 7.17,
-          "chgPct": 67.52,
-          "volume": 1936396,
-          "session": "post",
-          "direction": "up",
-          "name": "Visionsys AI Inc ADR",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 7.17,
-      "chgPct": 67.52,
-      "volume": 1936396,
-      "tv": null,
-      "shortFloat": 11.13,
-      "shortRatio": 0.06,
-      "marketCap_M": 2.65,
-      "floatShares_M": 0.61,
-      "perf1M": -46.53,
-      "perf3M": -68.76,
-      "perf6M": -93.13,
-      "perfYTD": -82.39,
-      "perf12M": -98.92,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 3.88,
-        "high": 4.52,
-        "low": 3.88,
-        "close": 4.28,
-        "volume": 270300,
-        "prev_close": 3.88
-      }
-    },
-    "HPE": {
-      "symbol": "HPE",
-      "name": "Hewlett Packard Enterprise",
-      "type": "earnings",
-      "catalyst": "Q2 FY26 EPS $0.79 遠超估 $0.54 (+46%)，營收 $106.8 億超估 $7.9 億；AI 訂單與 backlog 近翻倍、Juniper $140 億併購整合，盤後 +28%。",
-      "newsDetail": "HPE 於 6/1 盤後公布 Q2 FY26（截至 4/30）財報，**EPS $0.79 遠超市場預期 $0.53（+47.8% surprise）**，營收 **$106.8 億超估 $97.8 億（+9.2%）、YoY +40%**。\n\n爆發點在 AI 伺服器：管理層表示 **AI 系統訂單與 backlog 近翻倍**，傳統伺服器訂單亦翻倍；同時 **$140 億併購 Juniper Networks** 的網路業務整合進度優於預期。前一年同期 EPS 僅 $0.38，本季 YoY EPS +107.9%。\n\n公司上調全年展望，盤後一度 +28%、收盤 +9.35%。\n\n注意：未來 4Q EPS 估計 $0.64→$0.72→$0.69→$0.69，YoY 動能在第四季轉負（-12.66%），暗示本季為基期偏低放大的爆量，追高需留意開盤後 15 分鐘量能是否延續。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=HPE"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/HPE"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-HPE/news/"
-        }
-      ],
-      "publishedAt": "2026-06-01T16:05:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "HPE Q2 FY26 IR",
-          "url": "https://investors.hpe.com/",
-          "publishedAt": "2026-06-01T16:05:00-04:00"
-        },
-        {
-          "label": "Reuters — Technology",
-          "url": "https://www.reuters.com/technology/"
-        },
-        {
-          "label": "SEC EDGAR — HPE 8-K",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=HPE&type=8-K"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 60.18,
-          "chgPct": 28.04,
-          "volume": 32879250,
-          "session": "post",
-          "direction": "up",
-          "name": "Hewlett Packard Enterprise",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 60.18,
-      "chgPct": 28.04,
-      "volume": 32879250,
-      "tv": {
-        "latestEPS": 0.79,
-        "consensusEPS": 0.53,
-        "priorYrEPS": 0.38,
-        "surpriseEPS_pct": 47.75,
-        "surpriseEPS_dollar": 0.26,
-        "latestRev_M": 10680.0,
-        "consensusRev_M": 9780.0,
-        "priorYrRev_M": 7630.0,
-        "surpriseRev_pct": 9.19,
-        "yrYrRev_pct": 39.973787680209696,
-        "epsYoY_pct": 107.89473684210526,
-        "epsEst_next4": [
-          0.64,
-          0.72,
-          0.69,
-          0.69
-        ],
-        "revEst_next4": [
-          11100.0,
-          11270.0,
-          10590.0,
-          10830.0
-        ],
-        "yoyBlock": "+107.89% / +39.97%\n--------------------\n+45.45% / +21.44%\n+16.13% / +16.43%\n+6.15% / +13.87%\n-12.66% / +1.40%",
-        "chart": {
-          "quarters": [
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q1 '21"
-          ],
-          "eps_reported": [
-            0.5,
-            0.58,
-            0.49,
-            0.38,
-            0.44,
-            0.62,
-            0.65,
-            0.79,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.47,
-            0.56,
-            0.5,
-            0.35,
-            0.42,
-            0.58,
-            0.59,
-            0.53,
-            0.64,
-            0.72,
-            0.69,
-            0.69
-          ],
-          "rev_reported_M": [
-            7710.0,
-            8460.0,
-            7850.0,
-            7630.0,
-            9140.0,
-            9680.0,
-            9300.0,
-            10680.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            7670.0,
-            8250.0,
-            7810.0,
-            7490.0,
-            8840.0,
-            9900.0,
-            9350.0,
-            9780.0,
-            11100.0,
-            11270.0,
-            10590.0,
-            10830.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-06-02"
-      },
-      "shortFloat": 5.14,
-      "shortRatio": 3.63,
-      "marketCap_M": 62360,
-      "floatShares_M": 1320,
-      "perf1M": 63.36,
-      "perf3M": 112.38,
-      "perf6M": 118.3,
-      "perfYTD": 95.67,
-      "perf12M": 171.99,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 44.18,
-        "high": 47.97,
-        "low": 43.4,
-        "close": 47.0,
-        "volume": 109709800,
-        "prev_close": 43.04
-      }
-    },
-    "NU": {
-      "symbol": "NU",
-      "name": "Nu Holdings Ltd Cl A",
-      "type": "momentum",
-      "catalyst": "無明確個別新聞，隨風險偏好/拉美科技回落，-5%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=NU"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/NU"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-NU/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 12.34,
-          "chgPct": -5.0,
-          "volume": 14437375,
-          "session": "post",
-          "direction": "down",
-          "name": "Nu Holdings Ltd Cl A",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 12.34,
-      "chgPct": -5.0,
-      "volume": 14437375,
-      "tv": {
-        "latestEPS": 0.18,
-        "consensusEPS": 0.2,
-        "priorYrEPS": 0.11,
-        "surpriseEPS_pct": -9.91,
-        "surpriseEPS_dollar": -0.020000000000000018,
-        "latestRev_M": 4970.0,
-        "consensusRev_M": 5060.0,
-        "priorYrRev_M": 3250.0,
-        "surpriseRev_pct": -1.82,
-        "yrYrRev_pct": 52.92307692307693,
-        "epsYoY_pct": 63.636363636363626,
-        "epsEst_next4": [
-          0.21,
-          0.22,
-          0.25,
-          0.27
-        ],
-        "revEst_next4": [
-          5400.0,
-          5550.0,
-          5870.0,
-          5820.0
-        ],
-        "yoyBlock": "+63.64% / +52.92%\n--------------------\n+50.00% / +45.95%\n+37.50% / +33.09%\n+38.89% / +19.80%\n+50.00% / +17.10%",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27"
-          ],
-          "eps_reported": [
-            0.1,
-            0.11,
-            0.11,
-            0.11,
-            0.14,
-            0.16,
-            0.18,
-            0.18,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.09,
-            0.11,
-            0.12,
-            0.12,
-            0.13,
-            0.16,
-            0.19,
-            0.2,
-            0.21,
-            0.22,
-            0.25,
-            0.27
-          ],
-          "rev_reported_M": [
-            2850.0,
-            2940.0,
-            2990.0,
-            3250.0,
-            3700.0,
-            4170.0,
-            4900.0,
-            4970.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            2570.0,
-            2610.0,
-            2760.0,
-            2830.0,
-            3190.0,
-            3590.0,
-            4570.0,
-            5060.0,
-            5400.0,
-            5550.0,
-            5870.0,
-            5820.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null
-      },
-      "shortFloat": 3.92,
-      "shortRatio": 2.82,
-      "marketCap_M": 63140,
-      "floatShares_M": 3670,
-      "perf1M": -10.29,
-      "perf3M": -14.48,
-      "perf6M": -24.7,
-      "perfYTD": -22.4,
-      "perf12M": 8.16,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 13.0,
-        "high": 13.15,
-        "low": 12.91,
-        "close": 12.99,
-        "volume": 59523900,
-        "prev_close": 13.13
-      }
-    },
-    "NUAI": {
-      "symbol": "NUAI",
-      "name": "New Era Energy & Digital Inc",
-      "type": "momentum",
-      "catalyst": "低浮動拉抬，無實質催化劑。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=NUAI"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/NUAI"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-NUAI/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 5.9,
-          "chgPct": 5.17,
-          "volume": 187952,
-          "session": "post",
-          "direction": "up",
-          "name": "New Era Energy & Digital Inc",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 5.9,
-      "chgPct": 5.17,
-      "volume": 187952,
-      "tv": {
-        "latestEPS": -0.32,
-        "consensusEPS": null,
-        "priorYrEPS": null,
-        "surpriseEPS_pct": null,
-        "surpriseEPS_dollar": null,
-        "latestRev_M": 0.19,
-        "consensusRev_M": null,
-        "priorYrRev_M": null,
-        "surpriseRev_pct": null,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": null,
-        "epsEst_next4": [
-          -0.07,
-          -0.08,
-          -0.09,
-          -0.15
-        ],
-        "revEst_next4": [
-          0.05,
-          0.05,
-          0.05,
-          0.05
-        ],
-        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M\nN/M / N/M\n+53.12% / -73.68%",
-        "chart": {
-          "quarters": [
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27"
-          ],
-          "eps_reported": [
-            -0.32,
-            null,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            null,
-            -0.07,
-            -0.08,
-            -0.09,
-            -0.15,
-            -0.24
-          ],
-          "rev_reported_M": [
-            0.19,
-            null,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            null,
-            0.05,
-            0.05,
-            0.05,
-            0.05,
-            0.05
-          ],
-          "latest_idx": 0
-        },
-        "latestReportDate": "2026-05-15"
-      },
-      "shortFloat": 8.62,
-      "shortRatio": 1.37,
-      "marketCap_M": 568.24,
-      "floatShares_M": 84.64,
-      "perf1M": 42.39,
-      "perf3M": 27.5,
-      "perf6M": 10.65,
-      "perfYTD": 91.47,
-      "perf12M": 1006.29,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 4.83,
-        "high": 6.15,
-        "low": 4.56,
-        "close": 5.61,
-        "volume": 19085600,
-        "prev_close": 4.77
       }
     },
     "ADEA": {
@@ -2001,24 +123,24 @@
         "prev_close": 26.71
       }
     },
-    "FLNC": {
-      "symbol": "FLNC",
-      "name": "Fluence Energy Inc Cl A",
+    "ELMT": {
+      "symbol": "ELMT",
+      "name": "The Elmet Group Co.",
       "type": "momentum",
-      "catalyst": "無明確個別新聞，電池儲能需求題材帶動，盤前 +24%、盤後 +6.6%。",
+      "catalyst": "未見具體新聞，低浮動拉抬，+26%。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=FLNC"
+          "url": "https://finviz.com/quote.ashx?t=ELMT"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/FLNC"
+          "url": "https://finance.yahoo.com/quote/ELMT"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-FLNC/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-ELMT/news/"
         }
       ],
       "publishedAt": null,
@@ -2026,426 +148,103 @@
       "sources": null,
       "sessions": [
         {
-          "last": 28.93,
-          "chgPct": 6.56,
-          "volume": 1256646,
+          "last": 20.38,
+          "chgPct": 7.55,
+          "volume": 122166,
           "session": "post",
           "direction": "up",
-          "name": "Fluence Energy Inc Cl A",
+          "name": "The Elmet Group Co.",
           "sessionDate": "2026-06-01",
           "targetDate": "2026-06-02"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "up",
-      "last": 28.93,
-      "chgPct": 6.56,
-      "volume": 1256646,
+      "last": 20.38,
+      "chgPct": 7.55,
+      "volume": 122166,
       "tv": {
-        "latestEPS": -0.16,
-        "consensusEPS": -0.17,
-        "priorYrEPS": -0.24,
-        "surpriseEPS_pct": 5.81,
-        "surpriseEPS_dollar": 0.010000000000000009,
-        "latestRev_M": 464.89,
-        "consensusRev_M": 614.93,
-        "priorYrRev_M": 431.62,
-        "surpriseRev_pct": -24.4,
-        "yrYrRev_pct": 7.7081692229275705,
-        "epsYoY_pct": 33.33333333333333,
+        "latestEPS": 0.23,
+        "consensusEPS": -0.01,
+        "priorYrEPS": null,
+        "surpriseEPS_pct": 2.66,
+        "surpriseEPS_dollar": 0.24000000000000002,
+        "latestRev_M": 56.01,
+        "consensusRev_M": 54.56,
+        "priorYrRev_M": null,
+        "surpriseRev_pct": 2.657624633431077,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": null,
         "epsEst_next4": [
-          0.01,
-          0.36,
-          -0.21,
-          -0.16
+          0.06,
+          0.12,
+          0.13,
+          0.1
         ],
         "revEst_next4": [
-          857.69,
-          1550.0,
-          575.26,
-          638.67
+          58.12,
+          61.66,
+          62.66,
+          61.88
         ],
-        "yoyBlock": "+33.33% / +7.71%\n--------------------\n+0.00% / +42.35%\n+176.92% / +49.04%\n+38.24% / +21.05%\n+0.00% / +37.38%",
+        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M\nN/M / N/M\n-56.52% / +10.48%",
         "chart": {
           "quarters": [
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
             "Q1 '26",
             "Q2 '26",
             "Q3 '26",
             "Q4 '26",
-            "Q1 '27",
-            "Q2 '27"
+            "Q1 '27"
           ],
           "eps_reported": [
-            0.07,
-            0.34,
-            -0.32,
-            -0.24,
-            0.01,
-            0.13,
-            -0.34,
-            -0.16,
+            0.23,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            -0.13,
-            0.28,
-            -0.19,
-            -0.2,
             -0.01,
-            0.19,
-            -0.21,
-            -0.17,
-            0.01,
-            0.36,
-            -0.21,
-            -0.16
+            0.06,
+            0.12,
+            0.13,
+            0.1
           ],
           "rev_reported_M": [
-            483.32,
-            1230.0,
-            186.79,
-            431.62,
-            602.53,
-            1040.0,
-            475.23,
-            464.89,
+            56.01,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            420.8,
-            1290.0,
-            362.53,
-            328.06,
-            741.58,
-            1390.0,
-            481.24,
-            614.93,
-            857.69,
-            1550.0,
-            575.26,
-            638.67
+            54.56,
+            58.12,
+            61.66,
+            62.66,
+            61.88
           ],
-          "latest_idx": 7
+          "latest_idx": 0
         },
-        "latestReportDate": null
+        "latestReportDate": "2026-05-29"
       },
-      "shortFloat": 25.13,
-      "shortRatio": 3.33,
-      "marketCap_M": 5000,
-      "floatShares_M": 100.24,
-      "perf1M": 122.91,
-      "perf3M": 79.56,
-      "perf6M": 42.97,
-      "perfYTD": 37.26,
-      "perf12M": 477.66,
+      "shortFloat": 43.52,
+      "shortRatio": 1.34,
+      "marketCap_M": 568.12,
+      "floatShares_M": 2.86,
+      "perf1M": 15.9,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": 5.81,
+      "perf12M": null,
       "prevOhlcv": {
         "date": "2026-06-01",
-        "open": 23.42,
-        "high": 28.88,
-        "low": 23.24,
-        "close": 27.15,
-        "volume": 45812400,
-        "prev_close": 18.88
-      }
-    },
-    "CRDO": {
-      "symbol": "CRDO",
-      "name": "Credo Technology Group Holding Ltd",
-      "type": "earnings",
-      "catalyst": "Q4 EPS $1.16 超估 $1.02、營收 $4.37 億 +157% YoY 全面 beat 但「不夠強」獲利了結，盤後 -11.7%。",
-      "newsDetail": "Credo Technology 6/1 盤後 **-11.7%**，這是一個「**beat 但不夠強**」的獲利了結案例。\n\nQ4（截至 5/2）**EPS $1.16 超估 $1.02、營收 $4.37 億 YoY +157%**，全面超預期。但股價在財報前已大漲、預期過高，數字未能再超出 buy-side whisper，引發拉回。\n\n未來 4Q EPS 估 $1.11→$1.17→$1.46→$1.87，YoY 仍 +74~113% 高速成長——基本面並未轉壞。屬「強財報 + 弱反應」的短線做空/觀望，但中期趨勢仍多，不宜重壓空方；適合日內回補。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=CRDO"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/CRDO"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-CRDO/news/"
-        }
-      ],
-      "publishedAt": "2026-06-01T16:05:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Credo Q4 FY26 IR",
-          "url": "https://investors.credosemi.com/"
-        },
-        {
-          "label": "SEC EDGAR — CRDO 8-K",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=CRDO&type=8-K"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 199.55,
-          "chgPct": -11.74,
-          "volume": 2819323,
-          "session": "post",
-          "direction": "down",
-          "name": "Credo Technology Group Holding Ltd",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 199.55,
-      "chgPct": -11.74,
-      "volume": 2819323,
-      "tv": {
-        "latestEPS": 1.16,
-        "consensusEPS": 1.02,
-        "priorYrEPS": 0.35,
-        "surpriseEPS_pct": 13.18,
-        "surpriseEPS_dollar": 0.1399999999999999,
-        "latestRev_M": 437.0,
-        "consensusRev_M": 431.79,
-        "priorYrRev_M": 170.0,
-        "surpriseRev_pct": 1.21,
-        "yrYrRev_pct": 157.05882352941177,
-        "epsYoY_pct": 231.42857142857142,
-        "epsEst_next4": [
-          1.11,
-          1.17,
-          1.46,
-          1.87
-        ],
-        "revEst_next4": [
-          465.09,
-          498.5,
-          603.88,
-          738.61
-        ],
-        "yoyBlock": "+231.43% / +157.06%\n--------------------\n+113.46% / +108.50%\n+74.63% / +85.99%\n+36.45% / +48.37%\n+61.21% / +69.02%",
-        "chart": {
-          "quarters": [
-            "Q1 '24",
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26"
-          ],
-          "eps_reported": [
-            0.04,
-            0.07,
-            0.25,
-            0.35,
-            0.52,
-            0.67,
-            1.07,
-            1.16,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.04,
-            0.05,
-            0.18,
-            0.27,
-            0.36,
-            0.49,
-            0.91,
-            1.02,
-            1.11,
-            1.17,
-            1.46,
-            1.87
-          ],
-          "rev_reported_M": [
-            59.71,
-            72.0,
-            135.0,
-            170.0,
-            223.07,
-            268.03,
-            407.01,
-            437.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            59.48,
-            66.81,
-            120.36,
-            159.59,
-            190.63,
-            234.99,
-            406.17,
-            431.79,
-            465.09,
-            498.5,
-            603.88,
-            738.61
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-06-02"
-      },
-      "shortFloat": 6.77,
-      "shortRatio": 1.54,
-      "marketCap_M": 41700,
-      "floatShares_M": 165.34,
-      "perf1M": 29.94,
-      "perf3M": 97.95,
-      "perf6M": 37.86,
-      "perfYTD": 57.13,
-      "perf12M": 270.9,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 240.02,
-        "high": 243.21,
-        "low": 223.54,
-        "close": 226.1,
-        "volume": 12771800,
-        "prev_close": 236.03
-      }
-    },
-    "ZNB": {
-      "symbol": "ZNB",
-      "name": "Zeta Network Group",
-      "type": "momentum",
-      "catalyst": "低浮動拉抬，無實質催化劑，+28%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=ZNB"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/ZNB"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-ZNB/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 2.26,
-          "chgPct": 27.68,
-          "volume": 961738,
-          "session": "post",
-          "direction": "up",
-          "name": "Zeta Network Group",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 2.26,
-      "chgPct": 27.68,
-      "volume": 961738,
-      "tv": null,
-      "shortFloat": 8.61,
-      "shortRatio": 1.31,
-      "marketCap_M": 2.8,
-      "floatShares_M": 1.58,
-      "perf1M": 5.36,
-      "perf3M": -92.45,
-      "perf6M": -97.85,
-      "perfYTD": -96.94,
-      "perf12M": -99.93,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 1.77,
-        "high": 2.03,
-        "low": 1.73,
-        "close": 1.77,
-        "volume": 107700,
-        "prev_close": 1.75
-      }
-    },
-    "DXST": {
-      "symbol": "DXST",
-      "name": "Decent Holding Inc",
-      "type": "news",
-      "catalyst": "董事長 Dingxin Sun 申報購入 40 萬股 Class B；市值僅 $290 萬，低浮動 +148%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=DXST"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/DXST"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-DXST/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 3.97,
-          "chgPct": 148.12,
-          "volume": 10025312,
-          "session": "post",
-          "direction": "up",
-          "name": "Decent Holding Inc",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 3.97,
-      "chgPct": 148.12,
-      "volume": 10025312,
-      "tv": null,
-      "shortFloat": 1.42,
-      "shortRatio": 0.01,
-      "marketCap_M": 2.9,
-      "floatShares_M": 1.22,
-      "perf1M": -18.37,
-      "perf3M": -34.89,
-      "perf6M": -96.02,
-      "perfYTD": -95.4,
-      "perf12M": -95.22,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 1.5,
-        "high": 1.69,
-        "low": 1.5,
-        "close": 1.6,
-        "volume": 4305600,
-        "prev_close": 1.56
+        "open": 19.05,
+        "high": 22.5,
+        "low": 18.75,
+        "close": 18.95,
+        "volume": 4970100,
+        "prev_close": 15.28
       }
     },
     "SPCE": {
@@ -2602,12 +401,1747 @@
         "prev_close": 6.18
       }
     },
+    "PURR": {
+      "symbol": "PURR",
+      "name": "Hyperliquid Strategies Inc",
+      "type": "momentum",
+      "catalyst": "低浮動拉抬，無實質催化劑，+16%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=PURR"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/PURR"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-PURR/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 11.5,
+          "chgPct": 5.8,
+          "volume": 662412,
+          "session": "post",
+          "direction": "up",
+          "name": "Hyperliquid Strategies Inc",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 11.5,
+      "chgPct": 5.8,
+      "volume": 662412,
+      "tv": {
+        "latestEPS": 1.01,
+        "consensusEPS": -0.67,
+        "priorYrEPS": null,
+        "surpriseEPS_pct": 251.5,
+        "surpriseEPS_dollar": 1.6800000000000002,
+        "latestRev_M": 2.6,
+        "consensusRev_M": 1.8,
+        "priorYrRev_M": null,
+        "surpriseRev_pct": 44.44,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": null,
+        "epsEst_next4": [
+          -0.01,
+          0.0,
+          -1.85,
+          0.17
+        ],
+        "revEst_next4": [
+          3.43,
+          4.37,
+          4.28,
+          4.58
+        ],
+        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M\n-1323.08% / +756.00%\n-83.17% / +76.15%",
+        "chart": {
+          "quarters": [
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q3 '27"
+          ],
+          "eps_reported": [
+            -0.13,
+            1.01,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -2.67,
+            -0.67,
+            -0.01,
+            0.0,
+            -1.85,
+            0.17
+          ],
+          "rev_reported_M": [
+            0.5,
+            2.6,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            0.0,
+            1.8,
+            3.43,
+            4.37,
+            4.28,
+            4.58
+          ],
+          "latest_idx": 1
+        },
+        "latestReportDate": "2026-05-08"
+      },
+      "shortFloat": 8.22,
+      "shortRatio": 1.11,
+      "marketCap_M": 1460,
+      "floatShares_M": 112.34,
+      "perf1M": 80.56,
+      "perf3M": 123.66,
+      "perf6M": null,
+      "perfYTD": 205.34,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 11.62,
+        "high": 11.62,
+        "low": 10.38,
+        "close": 10.87,
+        "volume": 41294300,
+        "prev_close": 9.99
+      }
+    },
+    "ANY": {
+      "symbol": "ANY",
+      "name": "Sphere 3D Corp",
+      "type": "momentum",
+      "catalyst": "Sphere 3D 活躍小盤動能，無實質催化劑，+67%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=ANY"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/ANY"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-ANY/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 5.15,
+          "chgPct": 28.11,
+          "volume": 11833697,
+          "session": "post",
+          "direction": "up",
+          "name": "Sphere 3D Corp",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 5.15,
+      "chgPct": 28.11,
+      "volume": 11833697,
+      "tv": null,
+      "shortFloat": 3.63,
+      "shortRatio": 0.25,
+      "marketCap_M": 17.06,
+      "floatShares_M": 4.1,
+      "perf1M": 173.47,
+      "perf3M": 175.34,
+      "perf6M": -20.69,
+      "perfYTD": 35.08,
+      "perf12M": -46.97,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 3.16,
+        "high": 4.83,
+        "low": 2.86,
+        "close": 4.02,
+        "volume": 126685900,
+        "prev_close": 1.9
+      }
+    },
+    "CRDO": {
+      "symbol": "CRDO",
+      "name": "Credo Technology Group Holding Ltd",
+      "type": "earnings",
+      "catalyst": "Q4 EPS $1.16 超估 $1.02、營收 $4.37 億 +157% YoY 全面 beat 但「不夠強」獲利了結，盤後 -11.7%。",
+      "newsDetail": "Credo Technology 公布 FY26 Q4 財報，**營收 $437M（YoY +157%）、Non-GAAP EPS $1.16（YoY +231%）**，數字本身極為亮眼（AI 連接/AEC 線材需求爆發），但盤後仍**下跌 -11.74%**，典型「利多出盡」。\n\nTradingView FQ：最新季 EPS YoY +231.43% / Rev YoY +157.06%，但未來四季成長率呈**逐季放緩**（Rev YoY 由 +109% → +86% → +52%），市場擔憂高基期下的減速。\n\n做空判斷：屬「財報超預期但股價見光死」的動能反轉，過去一年已 +271%、估值偏高。觀察重點：開盤反彈無力即為弱勢確認；惟 DTC 僅 1.54、基本面強勁，不宜重倉追空，留意快速回補。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=CRDO"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/CRDO"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-CRDO/news/"
+        }
+      ],
+      "publishedAt": "2026-06-01T16:05:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Credo Technology FY26 Q4 results (Credo IR)",
+          "url": "https://investors.credosemi.com/"
+        },
+        {
+          "label": "Reuters — Credo earnings reaction",
+          "url": "https://www.reuters.com/markets/companies/CRDO.O/"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 199.55,
+          "chgPct": -11.74,
+          "volume": 2819323,
+          "session": "post",
+          "direction": "down",
+          "name": "Credo Technology Group Holding Ltd",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 199.55,
+      "chgPct": -11.74,
+      "volume": 2819323,
+      "tv": {
+        "latestEPS": 1.16,
+        "consensusEPS": 1.02,
+        "priorYrEPS": 0.35,
+        "surpriseEPS_pct": 13.18,
+        "surpriseEPS_dollar": 0.1399999999999999,
+        "latestRev_M": 437.0,
+        "consensusRev_M": 431.79,
+        "priorYrRev_M": 170.0,
+        "surpriseRev_pct": 1.21,
+        "yrYrRev_pct": 157.05882352941177,
+        "epsYoY_pct": 231.42857142857142,
+        "epsEst_next4": [
+          1.12,
+          1.18,
+          1.5,
+          1.9
+        ],
+        "revEst_next4": [
+          465.31,
+          498.45,
+          618.53,
+          751.61
+        ],
+        "yoyBlock": "+231.43% / +157.06%\n--------------------\n+115.38% / +108.59%\n+76.12% / +85.97%\n+40.19% / +51.97%\n+63.79% / +71.99%",
+        "chart": {
+          "quarters": [
+            "Q1 '24",
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26"
+          ],
+          "eps_reported": [
+            0.04,
+            0.07,
+            0.25,
+            0.35,
+            0.52,
+            0.67,
+            1.07,
+            1.16,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.04,
+            0.05,
+            0.18,
+            0.27,
+            0.36,
+            0.49,
+            0.91,
+            1.02,
+            1.12,
+            1.18,
+            1.5,
+            1.9
+          ],
+          "rev_reported_M": [
+            59.71,
+            72.0,
+            135.0,
+            170.0,
+            223.07,
+            268.03,
+            407.01,
+            437.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            59.48,
+            66.81,
+            120.36,
+            159.59,
+            190.63,
+            234.99,
+            406.17,
+            431.79,
+            465.31,
+            498.45,
+            618.53,
+            751.61
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-06-02"
+      },
+      "shortFloat": 6.77,
+      "shortRatio": 1.54,
+      "marketCap_M": 41700,
+      "floatShares_M": 165.34,
+      "perf1M": 29.94,
+      "perf3M": 97.95,
+      "perf6M": 37.86,
+      "perfYTD": 57.13,
+      "perf12M": 270.9,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 240.02,
+        "high": 243.21,
+        "low": 223.54,
+        "close": 226.1,
+        "volume": 12771800,
+        "prev_close": 236.03
+      }
+    },
+    "ZNB": {
+      "symbol": "ZNB",
+      "name": "Zeta Network Group",
+      "type": "momentum",
+      "catalyst": "低浮動拉抬，無實質催化劑，+28%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=ZNB"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/ZNB"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-ZNB/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 2.26,
+          "chgPct": 27.68,
+          "volume": 961738,
+          "session": "post",
+          "direction": "up",
+          "name": "Zeta Network Group",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 2.26,
+      "chgPct": 27.68,
+      "volume": 961738,
+      "tv": null,
+      "shortFloat": 8.61,
+      "shortRatio": 1.31,
+      "marketCap_M": 2.8,
+      "floatShares_M": 1.58,
+      "perf1M": 5.36,
+      "perf3M": -92.45,
+      "perf6M": -97.85,
+      "perfYTD": -96.94,
+      "perf12M": -99.93,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 1.77,
+        "high": 2.03,
+        "low": 1.73,
+        "close": 1.77,
+        "volume": 107700,
+        "prev_close": 1.75
+      }
+    },
+    "HKIT": {
+      "symbol": "HKIT",
+      "name": "Hitek Global Inc Ordinary Share",
+      "type": "momentum",
+      "catalyst": "投機動能：$1 區跳空衝高後砸回，純波動拉抬無實質催化，+118% 盤前/-17% 盤後。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=HKIT"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/HKIT"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-HKIT/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 5.46,
+          "chgPct": -17.02,
+          "volume": 1484888,
+          "session": "post",
+          "direction": "down",
+          "name": "Hitek Global Inc Ordinary Share",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 5.46,
+      "chgPct": -17.02,
+      "volume": 1484888,
+      "tv": null,
+      "shortFloat": 24.99,
+      "shortRatio": 0.25,
+      "marketCap_M": 57.13,
+      "floatShares_M": 0.42,
+      "perf1M": 167.51,
+      "perf3M": -97.64,
+      "perf6M": -97.22,
+      "perfYTD": -98.03,
+      "perf12M": -96.8,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 3.19,
+        "high": 8.8,
+        "low": 3.01,
+        "close": 6.58,
+        "volume": 90185700,
+        "prev_close": 1.46
+      }
+    },
+    "LFVN": {
+      "symbol": "LFVN",
+      "name": "Lifevantage Corp",
+      "type": "momentum",
+      "catalyst": "LifeVantage 小盤動能，未見具體新聞，+13%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=LFVN"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/LFVN"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-LFVN/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 10.69,
+          "chgPct": 13.36,
+          "volume": 105564,
+          "session": "post",
+          "direction": "up",
+          "name": "Lifevantage Corp",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 10.69,
+      "chgPct": 13.36,
+      "volume": 105564,
+      "tv": null,
+      "shortFloat": 34.23,
+      "shortRatio": 18.01,
+      "marketCap_M": 118.97,
+      "floatShares_M": 10.49,
+      "perf1M": 86.73,
+      "perf3M": 108.63,
+      "perf6M": 39.5,
+      "perfYTD": 53.08,
+      "perf12M": -27.74,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 8.34,
+        "high": 9.5,
+        "low": 7.76,
+        "close": 9.43,
+        "volume": 1177300,
+        "prev_close": 7.87
+      }
+    },
+    "NU": {
+      "symbol": "NU",
+      "name": "Nu Holdings Ltd Cl A",
+      "type": "momentum",
+      "catalyst": "無明確個別新聞，隨風險偏好/拉美科技回落，-5%。",
+      "newsDetail": "Nu Holdings 盤後 **-5%**，BofA **連續兩季稱其財報「令人失望」並下調目標價**，主要憂慮巴西雷亞爾走弱下的淨利預估（下修 6%/9%）與信貸品質惡化（NPL 上升）。\n\n短缺持股比 3.92%、市值 $631 億，過去半年已 -24.7%。做空判斷：屬分析師驅動 + 新興市場匯率/信貸利空的連續性弱勢，趨勢向下；觀察 $12 心理關卡。留意巴西央行政策或財報季的反彈風險。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=NU"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/NU"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-NU/news/"
+        }
+      ],
+      "publishedAt": "2026-06-01T17:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "BofA cuts Nu Holdings estimates (TheFly)",
+          "url": "https://thefly.com/"
+        },
+        {
+          "label": "Bloomberg — Nubank credit quality",
+          "url": "https://www.bloomberg.com/quote/NU:US"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 12.34,
+          "chgPct": -5.0,
+          "volume": 14437375,
+          "session": "post",
+          "direction": "down",
+          "name": "Nu Holdings Ltd Cl A",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 12.34,
+      "chgPct": -5.0,
+      "volume": 14437375,
+      "tv": {
+        "latestEPS": 0.18,
+        "consensusEPS": 0.2,
+        "priorYrEPS": 0.11,
+        "surpriseEPS_pct": -9.91,
+        "surpriseEPS_dollar": -0.020000000000000018,
+        "latestRev_M": 4970.0,
+        "consensusRev_M": 5060.0,
+        "priorYrRev_M": 3250.0,
+        "surpriseRev_pct": -1.82,
+        "yrYrRev_pct": 52.92307692307693,
+        "epsYoY_pct": 63.636363636363626,
+        "epsEst_next4": [
+          0.21,
+          0.22,
+          0.25,
+          0.27
+        ],
+        "revEst_next4": [
+          5400.0,
+          5550.0,
+          5870.0,
+          5820.0
+        ],
+        "yoyBlock": "+63.64% / +52.92%\n--------------------\n+50.00% / +45.95%\n+37.50% / +33.09%\n+38.89% / +19.80%\n+50.00% / +17.10%",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            0.1,
+            0.11,
+            0.11,
+            0.11,
+            0.14,
+            0.16,
+            0.18,
+            0.18,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.09,
+            0.11,
+            0.12,
+            0.12,
+            0.13,
+            0.16,
+            0.19,
+            0.2,
+            0.21,
+            0.22,
+            0.25,
+            0.27
+          ],
+          "rev_reported_M": [
+            2850.0,
+            2940.0,
+            2990.0,
+            3250.0,
+            3700.0,
+            4170.0,
+            4900.0,
+            4970.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            2570.0,
+            2610.0,
+            2760.0,
+            2830.0,
+            3190.0,
+            3590.0,
+            4570.0,
+            5060.0,
+            5400.0,
+            5550.0,
+            5870.0,
+            5820.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null
+      },
+      "shortFloat": 3.92,
+      "shortRatio": 2.82,
+      "marketCap_M": 63140,
+      "floatShares_M": 3670,
+      "perf1M": -10.29,
+      "perf3M": -14.48,
+      "perf6M": -24.7,
+      "perfYTD": -22.4,
+      "perf12M": 8.16,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 13.0,
+        "high": 13.15,
+        "low": 12.91,
+        "close": 12.99,
+        "volume": 59523900,
+        "prev_close": 13.13
+      }
+    },
+    "FOFO": {
+      "symbol": "FOFO",
+      "name": "Hang Feng Technology Innovation Co. Ltd",
+      "type": "?",
+      "catalyst": "(無催化劑資料)",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=FOFO"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/FOFO"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-FOFO/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 2.44,
+          "chgPct": -17.85,
+          "volume": 187879,
+          "session": "post",
+          "direction": "down",
+          "name": "Hang Feng Technology Innovation Co. Ltd",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 2.44,
+      "chgPct": -17.85,
+      "volume": 187879,
+      "tv": null,
+      "shortFloat": 0.35,
+      "shortRatio": 0.18,
+      "marketCap_M": 22.49,
+      "floatShares_M": 3.03,
+      "perf1M": -3.57,
+      "perf3M": -1,
+      "perf6M": -71.11,
+      "perfYTD": -69.29,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 2.14,
+        "high": 5.35,
+        "low": 2.14,
+        "close": 2.97,
+        "volume": 3784500,
+        "prev_close": 2.1
+      }
+    },
+    "ABVX": {
+      "symbol": "ABVX",
+      "name": "Abivax Sa ADR",
+      "type": "news",
+      "catalyst": "obefazimod 44週 Phase 3 維持期達主要終點，但近期 ADS 增發+轉售登記造成賣壓、獲利了結，盤後 -25%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=ABVX"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/ABVX"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-ABVX/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 97.01,
+          "chgPct": -25.2,
+          "volume": 6563958,
+          "session": "post",
+          "direction": "down",
+          "name": "Abivax Sa ADR",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 97.01,
+      "chgPct": -25.2,
+      "volume": 6563958,
+      "tv": {
+        "latestEPS": -0.71,
+        "consensusEPS": -0.94,
+        "priorYrEPS": -0.97,
+        "surpriseEPS_pct": 24.12,
+        "surpriseEPS_dollar": 0.22999999999999998,
+        "latestRev_M": null,
+        "consensusRev_M": 0.89712,
+        "priorYrRev_M": 1.33,
+        "surpriseRev_pct": null,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": 26.804123711340207,
+        "epsEst_next4": [
+          -0.87,
+          -0.75,
+          -0.77,
+          -0.98
+        ],
+        "revEst_next4": [
+          0.8909199999999999,
+          0.9202400000000001,
+          0.92773,
+          null
+        ],
+        "yoyBlock": "+26.80% / N/M\n--------------------\n+10.31% / -62.88%\n+69.64% / +79.22%\n+36.89% / -38.56%\n-38.03% / N/M",
+        "chart": {
+          "quarters": [
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            -1.94,
+            -1.44,
+            -1.68,
+            -0.97,
+            -0.97,
+            -2.47,
+            -1.22,
+            -0.71,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -0.91,
+            -1.5,
+            -1.59,
+            -0.76,
+            -0.93,
+            -0.79,
+            -1.35,
+            -0.94,
+            -0.87,
+            -0.75,
+            -0.77,
+            -0.98
+          ],
+          "rev_reported_M": [
+            7.16,
+            6.37,
+            1.16,
+            1.33,
+            2.4,
+            0.51346,
+            1.51,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            3.78,
+            2.83,
+            3.35,
+            1.39,
+            1.35,
+            1.8,
+            0.40113,
+            0.89712,
+            0.8909199999999999,
+            0.9202400000000001,
+            0.92773
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-05-23"
+      },
+      "shortFloat": 3.64,
+      "shortRatio": 2.47,
+      "marketCap_M": 10330,
+      "floatShares_M": 68.13,
+      "perf1M": 10.49,
+      "perf3M": 14.66,
+      "perf6M": 3.19,
+      "perfYTD": -3.83,
+      "perf12M": 2054.32,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 133.15,
+        "high": 133.27,
+        "low": 128.37,
+        "close": 129.69,
+        "volume": 7341200,
+        "prev_close": 132.63
+      }
+    },
+    "CING": {
+      "symbol": "CING",
+      "name": "Cingulate Inc",
+      "type": "?",
+      "catalyst": "(無催化劑資料)",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=CING"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/CING"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-CING/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 3.76,
+          "chgPct": 4.44,
+          "volume": 147831,
+          "session": "post",
+          "direction": "up",
+          "name": "Cingulate Inc",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 3.76,
+      "chgPct": 4.44,
+      "volume": 147831,
+      "tv": null,
+      "shortFloat": 14.88,
+      "shortRatio": 2.79,
+      "marketCap_M": 48.49,
+      "floatShares_M": 10.6,
+      "perf1M": -30.1,
+      "perf3M": -44.95,
+      "perf6M": -1.91,
+      "perfYTD": -17.05,
+      "perf12M": -8.16,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 3.7,
+        "high": 3.77,
+        "low": 3.16,
+        "close": 3.6,
+        "volume": 2179100,
+        "prev_close": 4.16
+      }
+    },
+    "DG": {
+      "symbol": "DG",
+      "name": "Dollar General Corp",
+      "type": "earnings",
+      "catalyst": "Q1 FY26 財報 6/2 盤前公布；市場估營收 $108.2 億、EPS $1.89，盤後預期走強 +5.3%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=DG"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/DG"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-DG/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 115.76,
+          "chgPct": 5.3,
+          "volume": 329372,
+          "session": "post",
+          "direction": "up",
+          "name": "Dollar General Corp",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 115.76,
+      "chgPct": 5.3,
+      "volume": 329372,
+      "tv": {
+        "latestEPS": 1.93,
+        "consensusEPS": 1.66,
+        "priorYrEPS": 1.68,
+        "surpriseEPS_pct": 16.37,
+        "surpriseEPS_dollar": 0.27,
+        "latestRev_M": 10910.0,
+        "consensusRev_M": 10810.0,
+        "priorYrRev_M": 10300.0,
+        "surpriseRev_pct": 0.92,
+        "yrYrRev_pct": 5.922330097087379,
+        "epsYoY_pct": 14.880952380952381,
+        "epsEst_next4": [
+          1.89,
+          1.98,
+          1.38,
+          1.98
+        ],
+        "revEst_next4": [
+          10810.0,
+          11170.0,
+          11090.0,
+          11330.0
+        ],
+        "yoyBlock": "+14.88% / +5.92%\n--------------------\n+6.18% / +3.54%\n+6.45% / +4.10%\n+7.81% / +4.13%\n+2.59% / +3.85%",
+        "chart": {
+          "quarters": [
+            "Q1 '24",
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26"
+          ],
+          "eps_reported": [
+            1.65,
+            1.7,
+            0.89,
+            1.68,
+            1.78,
+            1.86,
+            1.28,
+            1.93,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            1.58,
+            1.79,
+            0.94,
+            1.51,
+            1.48,
+            1.58,
+            0.95,
+            1.66,
+            1.89,
+            1.98,
+            1.38,
+            1.98
+          ],
+          "rev_reported_M": [
+            9910.0,
+            10210.0,
+            10180.0,
+            10300.0,
+            10440.0,
+            10730.0,
+            10650.0,
+            10910.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            9890.0,
+            10370.0,
+            10140.0,
+            10260.0,
+            10290.0,
+            10680.0,
+            10620.0,
+            10810.0,
+            10810.0,
+            11170.0,
+            11090.0,
+            11330.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null
+      },
+      "shortFloat": 3.77,
+      "shortRatio": 2.34,
+      "marketCap_M": 24210,
+      "floatShares_M": 218.52,
+      "perf1M": -5.13,
+      "perf3M": -27.97,
+      "perf6M": 1.07,
+      "perfYTD": -17.2,
+      "perf12M": 13.04,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 111.05,
+        "high": 111.99,
+        "low": 108.15,
+        "close": 109.93,
+        "volume": 7079500,
+        "prev_close": 110.61
+      }
+    },
+    "VSA": {
+      "symbol": "VSA",
+      "name": "Visionsys AI Inc ADR",
+      "type": "momentum",
+      "catalyst": "極端軋空（空單佔比 465%），盤前 +105%，低浮動 +67%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=VSA"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/VSA"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-VSA/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 7.17,
+          "chgPct": 67.52,
+          "volume": 1936396,
+          "session": "post",
+          "direction": "up",
+          "name": "Visionsys AI Inc ADR",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 7.17,
+      "chgPct": 67.52,
+      "volume": 1936396,
+      "tv": null,
+      "shortFloat": 11.13,
+      "shortRatio": 0.06,
+      "marketCap_M": 2.65,
+      "floatShares_M": 0.61,
+      "perf1M": -46.53,
+      "perf3M": -68.76,
+      "perf6M": -93.13,
+      "perfYTD": -82.39,
+      "perf12M": -98.92,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 3.88,
+        "high": 4.52,
+        "low": 3.88,
+        "close": 4.28,
+        "volume": 270300,
+        "prev_close": 3.88
+      }
+    },
+    "ZJYL": {
+      "symbol": "ZJYL",
+      "name": "Jin Medical International Ltd",
+      "type": "momentum",
+      "catalyst": "低浮動中概拉抬，無實質催化劑，+32%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=ZJYL"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/ZJYL"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-ZJYL/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 3.22,
+          "chgPct": 31.97,
+          "volume": 578135,
+          "session": "post",
+          "direction": "up",
+          "name": "Jin Medical International Ltd",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 3.22,
+      "chgPct": 31.97,
+      "volume": 578135,
+      "tv": null,
+      "shortFloat": 0.71,
+      "shortRatio": 0.7,
+      "marketCap_M": 19.1,
+      "floatShares_M": 1.83,
+      "perf1M": 15.64,
+      "perf3M": -14.08,
+      "perf6M": -52.29,
+      "perfYTD": -44.55,
+      "perf12M": -83.75,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 2.33,
+        "high": 2.58,
+        "low": 2.33,
+        "close": 2.44,
+        "volume": 8000,
+        "prev_close": 2.24
+      }
+    },
+    "NUAI": {
+      "symbol": "NUAI",
+      "name": "New Era Energy & Digital Inc",
+      "type": "momentum",
+      "catalyst": "低浮動拉抬，無實質催化劑。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=NUAI"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/NUAI"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-NUAI/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 5.9,
+          "chgPct": 5.17,
+          "volume": 187952,
+          "session": "post",
+          "direction": "up",
+          "name": "New Era Energy & Digital Inc",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 5.9,
+      "chgPct": 5.17,
+      "volume": 187952,
+      "tv": {
+        "latestEPS": -0.32,
+        "consensusEPS": null,
+        "priorYrEPS": null,
+        "surpriseEPS_pct": null,
+        "surpriseEPS_dollar": null,
+        "latestRev_M": 0.19,
+        "consensusRev_M": null,
+        "priorYrRev_M": null,
+        "surpriseRev_pct": null,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": null,
+        "epsEst_next4": [
+          -0.07,
+          -0.08,
+          -0.09,
+          -0.15
+        ],
+        "revEst_next4": [
+          0.05,
+          0.05,
+          0.05,
+          0.05
+        ],
+        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M\nN/M / N/M\n+53.12% / -73.68%",
+        "chart": {
+          "quarters": [
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            -0.32,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            null,
+            -0.07,
+            -0.08,
+            -0.09,
+            -0.15,
+            -0.24
+          ],
+          "rev_reported_M": [
+            0.19,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            null,
+            0.05,
+            0.05,
+            0.05,
+            0.05,
+            0.05
+          ],
+          "latest_idx": 0
+        },
+        "latestReportDate": "2026-05-15"
+      },
+      "shortFloat": 8.62,
+      "shortRatio": 1.37,
+      "marketCap_M": 568.24,
+      "floatShares_M": 84.64,
+      "perf1M": 42.39,
+      "perf3M": 27.5,
+      "perf6M": 10.65,
+      "perfYTD": 91.47,
+      "perf12M": 1006.29,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 4.83,
+        "high": 6.15,
+        "low": 4.56,
+        "close": 5.61,
+        "volume": 19085600,
+        "prev_close": 4.77
+      }
+    },
+    "SKM": {
+      "symbol": "SKM",
+      "name": "Sk Telecom Corp ADR",
+      "type": "analyst",
+      "catalyst": "HSBC 評級 Reduce→Hold；5G 擴張樂觀，盤前 +9.1%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=SKM"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/SKM"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SKM/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 46.3,
+          "chgPct": 4.21,
+          "volume": 236917,
+          "session": "post",
+          "direction": "up",
+          "name": "Sk Telecom Corp ADR",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 46.3,
+      "chgPct": 4.21,
+      "volume": 236917,
+      "tv": null,
+      "shortFloat": 0.95,
+      "shortRatio": 1.82,
+      "marketCap_M": 16890,
+      "floatShares_M": 380.14,
+      "perf1M": 18.77,
+      "perf3M": 47.12,
+      "perf6M": 119.62,
+      "perfYTD": 116.41,
+      "perf12M": 116.31,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 40.6,
+        "high": 44.79,
+        "low": 39.49,
+        "close": 44.43,
+        "volume": 7686900,
+        "prev_close": 37.34
+      }
+    },
+    "DXST": {
+      "symbol": "DXST",
+      "name": "Decent Holding Inc",
+      "type": "news",
+      "catalyst": "董事長 Dingxin Sun 申報購入 40 萬股 Class B；市值僅 $290 萬，低浮動 +148%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=DXST"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/DXST"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-DXST/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 3.97,
+          "chgPct": 148.12,
+          "volume": 10025312,
+          "session": "post",
+          "direction": "up",
+          "name": "Decent Holding Inc",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 3.97,
+      "chgPct": 148.12,
+      "volume": 10025312,
+      "tv": null,
+      "shortFloat": 1.42,
+      "shortRatio": 0.01,
+      "marketCap_M": 2.9,
+      "floatShares_M": 1.22,
+      "perf1M": -18.37,
+      "perf3M": -34.89,
+      "perf6M": -96.02,
+      "perfYTD": -95.4,
+      "perf12M": -95.22,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 1.5,
+        "high": 1.69,
+        "low": 1.5,
+        "close": 1.6,
+        "volume": 4305600,
+        "prev_close": 1.56
+      }
+    },
+    "JZ": {
+      "symbol": "JZ",
+      "name": "Jianzhi Education Technology Group ADR",
+      "type": "momentum",
+      "catalyst": "Jianzhi Education 公告 AI 智慧影像里程碑，低浮動拉抬後回落，題材薄弱，-30%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=JZ"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/JZ"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-JZ/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 2.16,
+          "chgPct": -30.32,
+          "volume": 5971777,
+          "session": "post",
+          "direction": "down",
+          "name": "Jianzhi Education Technology Group ADR",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 2.16,
+      "chgPct": -30.32,
+      "volume": 5971777,
+      "tv": null,
+      "shortFloat": null,
+      "shortRatio": 0.21,
+      "marketCap_M": 143.65,
+      "floatShares_M": null,
+      "perf1M": 246.37,
+      "perf3M": 244.98,
+      "perf6M": 121.43,
+      "perfYTD": 200.97,
+      "perf12M": -12.97,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 0.97,
+        "high": 3.28,
+        "low": 0.93,
+        "close": 3.1,
+        "volume": 46763400,
+        "prev_close": 0.73
+      }
+    },
+    "MCHP": {
+      "symbol": "MCHP",
+      "name": "Microchip Technology",
+      "type": "momentum",
+      "catalyst": "無個別新聞，隨 AI 半導體族群動能重評，盤後 +9.3%。",
+      "newsDetail": "Microchip Technology 公布財報，**Non-GAAP EPS $0.57** 勝先前財測中值，並給出**強勁的 6 月季財測（中值 $1.456B，YoY +35.3%、環比 +11%）**，確認類比/微控制器庫存去化結束、需求復甦。\n\nTradingView FQ：最新季 EPS YoY +418%（去年同期僅 $0.11 低基期）、Rev YoY +34.98%，未來四季 Rev YoY 估計持續維持 +23~36% 的加速軌道。\n\n盤後 +9.27%。觀察重點：開盤回補缺口的支撐強度，以及財報後分析師是否上調目標價（半導體週期反轉的確認）。屬 Setup B，惟 EPS 成長率受低基期放大，重點看營收加速的可持續性。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=MCHP"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/MCHP"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-MCHP/news/"
+        }
+      ],
+      "publishedAt": "2026-06-01T16:15:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Microchip fiscal Q4 results (Microchip IR)",
+          "url": "https://www.microchip.com/en-us/about/investor-relations"
+        },
+        {
+          "label": "Reuters — Microchip guidance",
+          "url": "https://www.reuters.com/markets/companies/MCHP.O/"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 100.0,
+          "chgPct": 9.27,
+          "volume": 424230,
+          "session": "post",
+          "direction": "up",
+          "name": "Microchip Technology",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 100.0,
+      "chgPct": 9.27,
+      "volume": 424230,
+      "tv": {
+        "latestEPS": 0.57,
+        "consensusEPS": 0.5,
+        "priorYrEPS": 0.11,
+        "surpriseEPS_pct": 12.9,
+        "surpriseEPS_dollar": 0.06999999999999995,
+        "latestRev_M": 1310.0,
+        "consensusRev_M": 1260.0,
+        "priorYrRev_M": 970.5,
+        "surpriseRev_pct": 3.78,
+        "yrYrRev_pct": 34.98196805770222,
+        "epsYoY_pct": 418.1818181818182,
+        "epsEst_next4": [
+          0.7,
+          0.79,
+          0.8,
+          0.86
+        ],
+        "revEst_next4": [
+          1460.0,
+          1550.0,
+          1560.0,
+          1620.0
+        ],
+        "yoyBlock": "+418.18% / +34.98%\n--------------------\n+159.26% / +35.19%\n+125.71% / +35.96%\n+81.82% / +31.09%\n+50.88% / +23.66%",
+        "chart": {
+          "quarters": [
+            "Q1 '24",
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26"
+          ],
+          "eps_reported": [
+            0.53,
+            0.46,
+            0.2,
+            0.11,
+            0.27,
+            0.35,
+            0.44,
+            0.57,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.52,
+            0.43,
+            0.28,
+            0.1,
+            0.24,
+            0.34,
+            0.43,
+            0.5,
+            0.7,
+            0.79,
+            0.8,
+            0.86
+          ],
+          "rev_reported_M": [
+            1240.0,
+            1160.0,
+            1030.0,
+            970.5,
+            1080.0,
+            1140.0,
+            1190.0,
+            1310.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            1240.0,
+            1150.0,
+            1050.0,
+            962.58,
+            1060.0,
+            1140.0,
+            1180.0,
+            1260.0,
+            1460.0,
+            1550.0,
+            1560.0,
+            1620.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null
+      },
+      "shortFloat": 5.51,
+      "shortRatio": 2.95,
+      "marketCap_M": 49610,
+      "floatShares_M": 531.24,
+      "perf1M": -1.5,
+      "perf3M": 23.16,
+      "perf6M": 74.09,
+      "perfYTD": 43.63,
+      "perf12M": 57.68,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 92.88,
+        "high": 94.2,
+        "low": 90.23,
+        "close": 91.52,
+        "volume": 11318500,
+        "prev_close": 94.65
+      }
+    },
     "SMCI": {
       "symbol": "SMCI",
       "name": "Super Micro Computer",
       "type": "analyst",
       "catalyst": "Mizuho 上調目標 $36→$44（維持 Neutral），引述 agentic AI 需求；推 12 款 Intel Xeon 6+ 新伺服器平台，+5%。",
-      "newsDetail": "Super Micro 6/1 盤後 +5%，財報呈現**獲利強、營收弱**的混合訊號：**EPS $0.84 超估 $0.62（+36% surprise）**，但**營收 $102.4 億 miss 估 -17.3%**。\n\n分析師面：Mizuho 上調目標 $36→$44（維持 Neutral），引述 agentic AI 伺服器需求；公司推出 12 款 Intel Xeon 6+ 新伺服器平台。\n\n最新季 YoY EPS +171%、營收 +123%，成長仍高速但營收 miss 反映拉貨節奏與供應鏈波動。搭 HPE 同向 AI-infra 題材，但營收 miss 限制追高空間，宜留意毛利率與下季指引。",
+      "newsDetail": "Super Micro Computer 發布搭載 **NVIDIA Vera Rubin NVL72 / HGX Rubin** 的下一代資料中心藍圖（GW 級 AI 工廠規格），疊加對中 AI 晶片出口限制下美系供應鏈受惠的利多，盤後 +5.02%，本週累計 +38%。\n\n短缺持股比 **15.7%**，AI 伺服器組裝龍頭地位重申。觀察重點：毛利率能否在液冷高階機櫃放量下回穩，以及先前財報重編疑慮是否徹底落幕。屬產品/路線圖催化劑，動能交易為主。",
       "newsLinks": [
         {
           "label": "Finviz",
@@ -2622,16 +2156,16 @@
           "url": "https://www.tradingview.com/symbols/NASDAQ-SMCI/news/"
         }
       ],
-      "publishedAt": "2026-06-01T16:10:00-04:00",
+      "publishedAt": "2026-06-01T16:30:00-04:00",
       "publishedTimezone": "ET",
       "sources": [
         {
-          "label": "Super Micro IR",
-          "url": "https://ir.supermicro.com/"
+          "label": "Supermicro Vera Rubin platform roadmap (Supermicro)",
+          "url": "https://www.supermicro.com/en/pressreleases"
         },
         {
-          "label": "SEC EDGAR — SMCI 8-K",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=SMCI&type=8-K"
+          "label": "CNBC — Supermicro AI server roadmap",
+          "url": "https://www.cnbc.com/quotes/SMCI"
         }
       ],
       "sessions": [
@@ -2770,273 +2304,374 @@
         "prev_close": 46.09
       }
     },
-    "LFVN": {
-      "symbol": "LFVN",
-      "name": "Lifevantage Corp",
-      "type": "momentum",
-      "catalyst": "LifeVantage 小盤動能，未見具體新聞，+13%。",
-      "newsDetail": null,
+    "HPE": {
+      "symbol": "HPE",
+      "name": "Hewlett Packard Enterprise",
+      "type": "earnings",
+      "catalyst": "Q2 FY26 EPS $0.79 遠超估 $0.54 (+46%)，營收 $106.8 億超估 $7.9 億；AI 訂單與 backlog 近翻倍、Juniper $140 億併購整合，盤後 +28%。",
+      "newsDetail": "Hewlett Packard Enterprise 公布 Q2 FY26 財報，**EPS $0.79 大勝市場預期 $0.54（+46% 超預期）**，營收創歷史新高 **$10.68B（YoY +40%）** 勝預期 $9.79B。\n\n成長主要來自 AI 伺服器（AI 系統訂單與 backlog 近翻倍）與網路（Juniper Networks $140 億併購整併綜效顯現），管理層同步**上調全年展望**。\n\nTradingView FQ 顯示 EPS YoY +107.89%、Rev YoY +39.97%；惟未來四季 EPS YoY 逐季放緩（+64% → +34% → +22% → +3%），暗示本季為低基期放大的爆量。\n\n盤後一度飆升 +28%、成交量 3,288 萬股（近期均量數倍），屬典型 Setup B「巨型財報衝擊」。觀察重點：開盤後 15 分鐘能否守住缺口下緣，以及 AI 訂單能見度的後續法說補充。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=LFVN"
+          "url": "https://finviz.com/quote.ashx?t=HPE"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/LFVN"
+          "url": "https://finance.yahoo.com/quote/HPE"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-LFVN/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-HPE/news/"
         }
       ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
+      "publishedAt": "2026-06-01T16:05:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "HPE Q2 FY26 press release (HPE IR)",
+          "url": "https://investors.hpe.com/"
+        },
+        {
+          "label": "Reuters — HPE raises forecast on AI server demand",
+          "url": "https://www.reuters.com/technology/"
+        },
+        {
+          "label": "CNBC — HPE earnings beat",
+          "url": "https://www.cnbc.com/quotes/HPE"
+        }
+      ],
       "sessions": [
         {
-          "last": 10.69,
-          "chgPct": 13.36,
-          "volume": 105564,
+          "last": 60.18,
+          "chgPct": 28.04,
+          "volume": 32879250,
           "session": "post",
           "direction": "up",
-          "name": "Lifevantage Corp",
+          "name": "Hewlett Packard Enterprise",
           "sessionDate": "2026-06-01",
           "targetDate": "2026-06-02"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "up",
-      "last": 10.69,
-      "chgPct": 13.36,
-      "volume": 105564,
-      "tv": null,
-      "shortFloat": 34.23,
-      "shortRatio": 18.01,
-      "marketCap_M": 118.97,
-      "floatShares_M": 10.49,
-      "perf1M": 86.73,
-      "perf3M": 108.63,
-      "perf6M": 39.5,
-      "perfYTD": 53.08,
-      "perf12M": -27.74,
-      "prevOhlcv": {
-        "date": "2026-06-01",
-        "open": 8.34,
-        "high": 9.5,
-        "low": 7.76,
-        "close": 9.43,
-        "volume": 1177300,
-        "prev_close": 7.87
-      }
-    },
-    "PURR": {
-      "symbol": "PURR",
-      "name": "Hyperliquid Strategies Inc",
-      "type": "momentum",
-      "catalyst": "低浮動拉抬，無實質催化劑，+16%。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=PURR"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/PURR"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-PURR/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 11.5,
-          "chgPct": 5.8,
-          "volume": 662412,
-          "session": "post",
-          "direction": "up",
-          "name": "Hyperliquid Strategies Inc",
-          "sessionDate": "2026-06-01",
-          "targetDate": "2026-06-02"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 11.5,
-      "chgPct": 5.8,
-      "volume": 662412,
+      "last": 60.18,
+      "chgPct": 28.04,
+      "volume": 32879250,
       "tv": {
-        "latestEPS": 1.01,
-        "consensusEPS": -0.67,
-        "priorYrEPS": null,
-        "surpriseEPS_pct": 251.5,
-        "surpriseEPS_dollar": 1.6800000000000002,
-        "latestRev_M": 2.6,
-        "consensusRev_M": 1.8,
-        "priorYrRev_M": null,
-        "surpriseRev_pct": 44.44,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": null,
+        "latestEPS": 0.79,
+        "consensusEPS": 0.53,
+        "priorYrEPS": 0.38,
+        "surpriseEPS_pct": 47.75,
+        "surpriseEPS_dollar": 0.26,
+        "latestRev_M": 10680.0,
+        "consensusRev_M": 9780.0,
+        "priorYrRev_M": 7630.0,
+        "surpriseRev_pct": 9.19,
+        "yrYrRev_pct": 39.973787680209696,
+        "epsYoY_pct": 107.89473684210526,
         "epsEst_next4": [
-          -0.01,
-          0.0,
-          -1.85,
-          0.17
+          0.72,
+          0.83,
+          0.79,
+          0.81
         ],
         "revEst_next4": [
-          3.43,
-          4.37,
-          4.28,
-          4.58
+          11270.0,
+          11570.0,
+          10940.0,
+          11310.0
         ],
-        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M\n-1323.08% / +756.00%\n-83.17% / +76.15%",
+        "yoyBlock": "+107.89% / +39.97%\n--------------------\n+63.64% / +23.30%\n+33.87% / +19.52%\n+21.54% / +17.63%\n+2.53% / +5.90%",
         "chart": {
           "quarters": [
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
             "Q2 '26",
             "Q3 '26",
             "Q4 '26",
             "Q1 '27",
             "Q2 '27",
-            "Q3 '27"
+            "Q1 '21"
           ],
           "eps_reported": [
-            -0.13,
-            1.01,
+            0.5,
+            0.58,
+            0.49,
+            0.38,
+            0.44,
+            0.62,
+            0.65,
+            0.79,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            -2.67,
-            -0.67,
-            -0.01,
-            0.0,
-            -1.85,
-            0.17
+            0.47,
+            0.56,
+            0.5,
+            0.35,
+            0.42,
+            0.58,
+            0.59,
+            0.53,
+            0.72,
+            0.83,
+            0.79,
+            0.81
           ],
           "rev_reported_M": [
-            0.5,
-            2.6,
+            7710.0,
+            8460.0,
+            7850.0,
+            7630.0,
+            9140.0,
+            9680.0,
+            9300.0,
+            10680.0,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            0.0,
-            1.8,
-            3.43,
-            4.37,
-            4.28,
-            4.58
+            7670.0,
+            8250.0,
+            7810.0,
+            7490.0,
+            8840.0,
+            9900.0,
+            9350.0,
+            9780.0,
+            11270.0,
+            11570.0,
+            10940.0,
+            11310.0
           ],
-          "latest_idx": 1
+          "latest_idx": 7
         },
-        "latestReportDate": "2026-05-08"
+        "latestReportDate": "2026-06-02"
       },
-      "shortFloat": 8.22,
-      "shortRatio": 1.11,
-      "marketCap_M": 1460,
-      "floatShares_M": 112.34,
-      "perf1M": 80.56,
-      "perf3M": 123.66,
-      "perf6M": null,
-      "perfYTD": 205.34,
-      "perf12M": null,
+      "shortFloat": 5.14,
+      "shortRatio": 3.63,
+      "marketCap_M": 62360,
+      "floatShares_M": 1320,
+      "perf1M": 63.36,
+      "perf3M": 112.38,
+      "perf6M": 118.3,
+      "perfYTD": 95.67,
+      "perf12M": 171.99,
       "prevOhlcv": {
         "date": "2026-06-01",
-        "open": 11.62,
-        "high": 11.62,
-        "low": 10.38,
-        "close": 10.87,
-        "volume": 41294300,
-        "prev_close": 9.99
+        "open": 44.18,
+        "high": 47.97,
+        "low": 43.4,
+        "close": 47.0,
+        "volume": 109709800,
+        "prev_close": 43.04
       }
     },
-    "DG": {
-      "symbol": "DG",
-      "name": "Dollar General Corp",
-      "type": "earnings",
-      "catalyst": "Q1 FY26 財報 6/2 盤前公布；市場估營收 $108.2 億、EPS $1.89，盤後預期走強 +5.3%。",
-      "newsDetail": "Dollar General 6/2 +5.3%，Q1 FY26 財報 beat：**EPS $1.93 超估 $1.66（+16.4% surprise）**，營收 $109.1 億微超估、YoY +5.9%。\n\n必需消費通路防禦性題材：通膨環境下低價零售客流穩健，毛利率改善。最新季 YoY EPS +14.9%，回到成長軌道。\n\n未來 4Q EPS 估 YoY +6~15%，營收溫和成長。屬大型流動性佳、波動可控的穩健 earnings 長單。觀察同店銷售（SSS）與全年指引是否同步上修，以及消費降級趨勢對其客群的助益。",
+    "ABTS": {
+      "symbol": "ABTS",
+      "name": "Abits Group Inc",
+      "type": "momentum",
+      "catalyst": "Abits Group 開盤衝高再砸回；營收約 $913 萬但稅前利潤率 -355%，純動能 +40%。",
+      "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=DG"
+          "url": "https://finviz.com/quote.ashx?t=ABTS"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/DG"
+          "url": "https://finance.yahoo.com/quote/ABTS"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-DG/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-ABTS/news/"
         }
       ],
-      "publishedAt": "2026-06-02T06:55:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Dollar General IR",
-          "url": "https://investor.dollargeneral.com/",
-          "publishedAt": "2026-06-02T06:55:00-04:00"
-        },
-        {
-          "label": "Reuters — Retail",
-          "url": "https://www.reuters.com/business/retail-consumer/"
-        }
-      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
       "sessions": [
         {
-          "last": 115.76,
-          "chgPct": 5.3,
-          "volume": 329372,
+          "last": 2.99,
+          "chgPct": 39.72,
+          "volume": 4454537,
           "session": "post",
           "direction": "up",
-          "name": "Dollar General Corp",
+          "name": "Abits Group Inc",
           "sessionDate": "2026-06-01",
           "targetDate": "2026-06-02"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "up",
-      "last": 115.76,
-      "chgPct": 5.3,
-      "volume": 329372,
+      "last": 2.99,
+      "chgPct": 39.72,
+      "volume": 4454537,
+      "tv": null,
+      "shortFloat": 3.83,
+      "shortRatio": 0.17,
+      "marketCap_M": 6.34,
+      "floatShares_M": 2.18,
+      "perf1M": 62.12,
+      "perf3M": -16.73,
+      "perf6M": -63.42,
+      "perfYTD": -58.45,
+      "perf12M": -47.8,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 1.58,
+        "high": 3.23,
+        "low": 1.42,
+        "close": 2.14,
+        "volume": 100597400,
+        "prev_close": 0.99
+      }
+    },
+    "FRGT": {
+      "symbol": "FRGT",
+      "name": "Freight Technologies Inc",
+      "type": "?",
+      "catalyst": "(無催化劑資料)",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=FRGT"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/FRGT"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-FRGT/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 4.0,
+          "chgPct": -4.31,
+          "volume": 779273,
+          "session": "post",
+          "direction": "down",
+          "name": "Freight Technologies Inc",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 4.0,
+      "chgPct": -4.31,
+      "volume": 779273,
+      "tv": null,
+      "shortFloat": 1.62,
+      "shortRatio": 0.08,
+      "marketCap_M": 2.39,
+      "floatShares_M": 0.51,
+      "perf1M": 10,
+      "perf3M": -28.55,
+      "perf6M": -78.12,
+      "perfYTD": -50.24,
+      "perf12M": -92.19,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 4.2,
+        "high": 4.24,
+        "low": 3.92,
+        "close": 4.18,
+        "volume": 1047300,
+        "prev_close": 4.36
+      }
+    },
+    "FULC": {
+      "symbol": "FULC",
+      "name": "Fulcrum Therapeutics Inc",
+      "type": "FDA",
+      "catalyst": "終止唯一臨床計畫 pociredir（鎌狀細胞病）：FDA 對 PRC2 抑制劑致二次血液惡性腫瘤風險疑慮；啟動策略檢討，盤後 -49.7%。",
+      "newsDetail": "Fulcrum Therapeutics 盤後**暴跌 -49.69%**——FDA 因 PRC2 抑制劑的**致癌風險顧慮，全面終止其唯一臨床階段藥物 pociredir** 的開發，公司同步啟動策略評估（potential 出售/合併）。\n\n失去唯一在研管線後，公司僅剩現金價值支撐（市值已殺至約 $4.3 億），TradingView 顯示無營收、EPS 持續為負。短缺持股比 13.82%、DTC 高達 **8.45**（已被大量放空）。\n\n做空判斷：基本面最乾淨的利空，但**股價已腰斬、放空成本與軋空風險俱高**（DTC 8.45 代表回補需 8 天以上），追空性價比低；較適合觀察反彈無力後的續弱，而非追殺第一根。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=FULC"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/FULC"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-FULC/news/"
+        }
+      ],
+      "publishedAt": "2026-06-01T16:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Fulcrum Therapeutics pipeline update (Fulcrum IR)",
+          "url": "https://ir.fulcrumtx.com/"
+        },
+        {
+          "label": "STAT News — FDA halts Fulcrum lead drug",
+          "url": "https://www.statnews.com/"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 3.23,
+          "chgPct": -49.69,
+          "volume": 2417991,
+          "session": "post",
+          "direction": "down",
+          "name": "Fulcrum Therapeutics Inc",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 3.23,
+      "chgPct": -49.69,
+      "volume": 2417991,
       "tv": {
-        "latestEPS": 1.93,
-        "consensusEPS": 1.66,
-        "priorYrEPS": 1.68,
-        "surpriseEPS_pct": 16.37,
-        "surpriseEPS_dollar": 0.27,
-        "latestRev_M": 10910.0,
-        "consensusRev_M": 10810.0,
-        "priorYrRev_M": 10300.0,
-        "surpriseRev_pct": 0.92,
-        "yrYrRev_pct": 5.922330097087379,
-        "epsYoY_pct": 14.880952380952381,
+        "latestEPS": -0.25,
+        "consensusEPS": -0.29,
+        "priorYrEPS": -0.28,
+        "surpriseEPS_pct": 15.04,
+        "surpriseEPS_dollar": 0.03999999999999998,
+        "latestRev_M": 0.0,
+        "consensusRev_M": 0.0,
+        "priorYrRev_M": 0.0,
+        "surpriseRev_pct": null,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": 10.714285714285724,
         "epsEst_next4": [
-          1.89,
-          1.98,
-          1.38,
-          1.98
+          -0.24,
+          -0.23,
+          -0.25,
+          -0.28
         ],
         "revEst_next4": [
-          10810.0,
-          11170.0,
-          11090.0,
-          11330.0
+          0.0,
+          0.0,
+          0.0,
+          0.0
         ],
-        "yoyBlock": "+14.88% / +5.92%\n--------------------\n+6.18% / +3.54%\n+6.45% / +4.10%\n+7.81% / +4.13%\n+2.59% / +3.85%",
+        "yoyBlock": "+10.71% / N/M\n--------------------\n+14.29% / N/M\n+25.81% / N/M\n+19.35% / N/M\n-12.00% / N/M",
         "chart": {
           "quarters": [
-            "Q1 '24",
             "Q2 '24",
             "Q3 '24",
             "Q4 '24",
@@ -3047,85 +2682,587 @@
             "Q1 '26",
             "Q2 '26",
             "Q3 '26",
-            "Q4 '26"
+            "Q4 '26",
+            "Q1 '27"
           ],
           "eps_reported": [
-            1.65,
-            1.7,
-            0.89,
-            1.68,
-            1.78,
-            1.86,
-            1.28,
-            1.93,
+            0.87,
+            -0.35,
+            -0.31,
+            -0.28,
+            -0.28,
+            -0.31,
+            -0.31,
+            -0.25,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            1.58,
-            1.79,
-            0.94,
-            1.51,
-            1.48,
-            1.58,
-            0.95,
-            1.66,
-            1.89,
-            1.98,
-            1.38,
-            1.98
+            -0.41,
+            -0.4,
+            -0.28,
+            -0.29,
+            -0.29,
+            -0.29,
+            -0.3,
+            -0.29,
+            -0.24,
+            -0.23,
+            -0.25,
+            -0.28
           ],
           "rev_reported_M": [
-            9910.0,
-            10210.0,
-            10180.0,
-            10300.0,
-            10440.0,
-            10730.0,
-            10650.0,
-            10910.0,
+            80.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            9890.0,
-            10370.0,
-            10140.0,
-            10260.0,
-            10290.0,
-            10680.0,
-            10620.0,
-            10810.0,
-            10810.0,
-            11170.0,
-            11090.0,
-            11330.0
+            14.82,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
           ],
           "latest_idx": 7
         },
         "latestReportDate": null
       },
-      "shortFloat": 3.77,
-      "shortRatio": 2.34,
-      "marketCap_M": 24210,
-      "floatShares_M": 218.52,
-      "perf1M": -5.13,
-      "perf3M": -27.97,
-      "perf6M": 1.07,
-      "perfYTD": -17.2,
-      "perf12M": 13.04,
+      "shortFloat": 13.82,
+      "shortRatio": 8.45,
+      "marketCap_M": 427.79,
+      "floatShares_M": 56.43,
+      "perf1M": -9.96,
+      "perf3M": -17.8,
+      "perf6M": -43.29,
+      "perfYTD": -43.24,
+      "perf12M": -6.62,
       "prevOhlcv": {
         "date": "2026-06-01",
-        "open": 111.05,
-        "high": 111.99,
-        "low": 108.15,
-        "close": 109.93,
-        "volume": 7079500,
-        "prev_close": 110.61
+        "open": 7.02,
+        "high": 7.02,
+        "low": 6.38,
+        "close": 6.42,
+        "volume": 2798000,
+        "prev_close": 6.92
+      }
+    },
+    "CTNT": {
+      "symbol": "CTNT",
+      "name": "Cheetah Net Supply Chain Service Inc Cl A",
+      "type": "momentum",
+      "catalyst": "低浮動中概拉抬，無明確新聞，+71%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=CTNT"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/CTNT"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-CTNT/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 3.11,
+          "chgPct": 71.04,
+          "volume": 6299539,
+          "session": "post",
+          "direction": "up",
+          "name": "Cheetah Net Supply Chain Service Inc Cl A",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 3.11,
+      "chgPct": 71.04,
+      "volume": 6299539,
+      "tv": null,
+      "shortFloat": 1.53,
+      "shortRatio": 0.06,
+      "marketCap_M": 5.39,
+      "floatShares_M": 2.96,
+      "perf1M": -44,
+      "perf3M": -99.56,
+      "perf6M": -99.36,
+      "perfYTD": -99.23,
+      "perf12M": -99.34,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 1.63,
+        "high": 1.82,
+        "low": 1.63,
+        "close": 1.82,
+        "volume": 1286300,
+        "prev_close": 1.66
+      }
+    },
+    "ORIC": {
+      "symbol": "ORIC",
+      "name": "Oric Pharmaceuticals Inc",
+      "type": "analyst",
+      "catalyst": "推進前列腺癌藥至 Phase 3 但市場對安全/劑量反應，-9.8%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=ORIC"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/ORIC"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-ORIC/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 8.1,
+          "chgPct": -9.8,
+          "volume": 155856,
+          "session": "post",
+          "direction": "down",
+          "name": "Oric Pharmaceuticals Inc",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 8.1,
+      "chgPct": -9.8,
+      "volume": 155856,
+      "tv": null,
+      "shortFloat": 35.8,
+      "shortRatio": 11.98,
+      "marketCap_M": 929.59,
+      "floatShares_M": 61.3,
+      "perf1M": -9.11,
+      "perf3M": -35.3,
+      "perf6M": -24.03,
+      "perfYTD": 9.78,
+      "perf12M": 9.91,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 8.5,
+        "high": 9.13,
+        "low": 8.24,
+        "close": 8.98,
+        "volume": 3624700,
+        "prev_close": 8.45
+      }
+    },
+    "EEIQ": {
+      "symbol": "EEIQ",
+      "name": "Epicquest Education Group Intl Ltd",
+      "type": "?",
+      "catalyst": "(無催化劑資料)",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=EEIQ"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/EEIQ"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-EEIQ/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 3.35,
+          "chgPct": -5.9,
+          "volume": 999237,
+          "session": "post",
+          "direction": "down",
+          "name": "Epicquest Education Group Intl Ltd",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 3.35,
+      "chgPct": -5.9,
+      "volume": 999237,
+      "tv": null,
+      "shortFloat": 2.8,
+      "shortRatio": 0.01,
+      "marketCap_M": 5.27,
+      "floatShares_M": 0.85,
+      "perf1M": 9.88,
+      "perf3M": 47.72,
+      "perf6M": -27.43,
+      "perfYTD": 0.88,
+      "perf12M": -62.67,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 3.34,
+        "high": 3.86,
+        "low": 3.23,
+        "close": 3.56,
+        "volume": 1482300,
+        "prev_close": 3.22
+      }
+    },
+    "LAC": {
+      "symbol": "LAC",
+      "name": "Lithium Americas Corp",
+      "type": "earnings",
+      "catalyst": "Q1 首度轉盈，淨利 $460 萬；Thacker Pass 進展+阿根廷營運，看漲選擇權流 3x，+17.4%。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=LAC"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/LAC"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-LAC/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 6.47,
+          "chgPct": 17.37,
+          "volume": 4361121,
+          "session": "post",
+          "direction": "up",
+          "name": "Lithium Americas Corp",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 6.47,
+      "chgPct": 17.37,
+      "volume": 4361121,
+      "tv": {
+        "latestEPS": 0.0,
+        "consensusEPS": -0.07,
+        "priorYrEPS": -0.05,
+        "surpriseEPS_pct": 100.0,
+        "surpriseEPS_dollar": 0.07,
+        "latestRev_M": null,
+        "consensusRev_M": 0.0,
+        "priorYrRev_M": 0.0,
+        "surpriseRev_pct": null,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": 100.0,
+        "epsEst_next4": [
+          -0.04,
+          -0.05,
+          -0.06,
+          -0.05
+        ],
+        "revEst_next4": [
+          0.0,
+          null,
+          null,
+          null
+        ],
+        "yoyBlock": "+100.00% / N/M\n--------------------\n+33.33% / N/M\n+93.98% / N/M\n-117.65% / N/M\nN/M / N/M",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            -0.03,
+            -0.04,
+            -0.1,
+            -0.05,
+            -0.06,
+            -0.83,
+            0.34,
+            0.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -0.03,
+            -0.02,
+            -0.02,
+            -0.03,
+            -0.04,
+            -0.05,
+            -0.07,
+            -0.07,
+            -0.04,
+            -0.05,
+            -0.06,
+            -0.05
+          ],
+          "rev_reported_M": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null
+      },
+      "shortFloat": 15.49,
+      "shortRatio": 2.93,
+      "marketCap_M": 1910,
+      "floatShares_M": 184.49,
+      "perf1M": -3.84,
+      "perf3M": 7.62,
+      "perf6M": 4.75,
+      "perfYTD": 26.38,
+      "perf12M": 107.14,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 5.11,
+        "high": 5.52,
+        "low": 5.04,
+        "close": 5.51,
+        "volume": 18008500,
+        "prev_close": 5.21
+      }
+    },
+    "FLNC": {
+      "symbol": "FLNC",
+      "name": "Fluence Energy Inc Cl A",
+      "type": "momentum",
+      "catalyst": "無明確個別新聞，電池儲能需求題材帶動，盤前 +24%、盤後 +6.6%。",
+      "newsDetail": "Fluence Energy 獲選為 **Siemens 為 NVIDIA「AI 工廠」參考設計的唯一電池儲能合作夥伴**，其 SmartStack 儲能系統將整合進資料中心電力架構，盤前 +23.94%（前一交易日延伸至約 +47%）。\n\n這是 AI 資料中心「電力瓶頸」主題的直接受惠標的——算力擴張需要穩定電力與儲能緩衝。短缺持股比 **25.1%**（DTC 3.33），過去一個月已 +123%，軋空動能強。\n\n屬合約型催化劑（無財報 YoY），觀察重點：合約規模與營收貢獻的後續揭露，以及高位是否出現獲利了結賣壓。市值僅約 $50 億，波動度高。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=FLNC"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/FLNC"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-FLNC/news/"
+        }
+      ],
+      "publishedAt": "2026-06-01T08:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Fluence–Siemens SmartStack announcement (Fluence IR)",
+          "url": "https://fluenceenergy.com/news/"
+        },
+        {
+          "label": "Reuters — Siemens NVIDIA AI factory reference design",
+          "url": "https://www.reuters.com/technology/"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 28.93,
+          "chgPct": 6.56,
+          "volume": 1256646,
+          "session": "post",
+          "direction": "up",
+          "name": "Fluence Energy Inc Cl A",
+          "sessionDate": "2026-06-01",
+          "targetDate": "2026-06-02"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 28.93,
+      "chgPct": 6.56,
+      "volume": 1256646,
+      "tv": {
+        "latestEPS": -0.16,
+        "consensusEPS": -0.17,
+        "priorYrEPS": -0.24,
+        "surpriseEPS_pct": 5.81,
+        "surpriseEPS_dollar": 0.010000000000000009,
+        "latestRev_M": 464.89,
+        "consensusRev_M": 614.93,
+        "priorYrRev_M": 431.62,
+        "surpriseRev_pct": -24.4,
+        "yrYrRev_pct": 7.7081692229275705,
+        "epsYoY_pct": 33.33333333333333,
+        "epsEst_next4": [
+          0.01,
+          0.36,
+          -0.21,
+          -0.16
+        ],
+        "revEst_next4": [
+          857.69,
+          1550.0,
+          575.26,
+          638.67
+        ],
+        "yoyBlock": "+33.33% / +7.71%\n--------------------\n+0.00% / +42.35%\n+176.92% / +49.04%\n+38.24% / +21.05%\n+0.00% / +37.38%",
+        "chart": {
+          "quarters": [
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27"
+          ],
+          "eps_reported": [
+            0.07,
+            0.34,
+            -0.32,
+            -0.24,
+            0.01,
+            0.13,
+            -0.34,
+            -0.16,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -0.13,
+            0.28,
+            -0.19,
+            -0.2,
+            -0.01,
+            0.19,
+            -0.21,
+            -0.17,
+            0.01,
+            0.36,
+            -0.21,
+            -0.16
+          ],
+          "rev_reported_M": [
+            483.32,
+            1230.0,
+            186.79,
+            431.62,
+            602.53,
+            1040.0,
+            475.23,
+            464.89,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            420.8,
+            1290.0,
+            362.53,
+            328.06,
+            741.58,
+            1390.0,
+            481.24,
+            614.93,
+            857.69,
+            1550.0,
+            575.26,
+            638.67
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null
+      },
+      "shortFloat": 25.13,
+      "shortRatio": 3.33,
+      "marketCap_M": 5000,
+      "floatShares_M": 100.24,
+      "perf1M": 122.91,
+      "perf3M": 79.56,
+      "perf6M": 42.97,
+      "perfYTD": 37.26,
+      "perf12M": 477.66,
+      "prevOhlcv": {
+        "date": "2026-06-01",
+        "open": 23.42,
+        "high": 28.88,
+        "low": 23.24,
+        "close": 27.15,
+        "volume": 45812400,
+        "prev_close": 18.88
       }
     }
   },
@@ -15940,70 +16077,42 @@
       "symbol": "HPE",
       "rank": 1,
       "intent": "long",
-      "rationale": "今日最乾淨的 SIP。Q2 FY26 EPS $0.79 超估 +47.8%、營收 +40% YoY，AI 系統訂單與 backlog 近翻倍、Juniper 整合超預期。爆量 +28% 盤後、3,280 萬股，教科書級 Massive Earnings Shock（Setup B）。標準開盤進場 2.5% 停損，強催化可升級 5%。保留：未來 Q4 YoY 動能轉負屬基期放大，追高留意開盤 15 分量能。",
-      "neglected": null
-    },
-    {
-      "symbol": "DG",
-      "rank": 2,
-      "intent": "long",
-      "rationale": "Dollar General Q1 FY26 EPS $1.93 超估 $1.66（+16.4% surprise）、營收 $109.1 億微超，必需消費防禦性財報 beat。+5.3% gap，大型流動性佳、波動可控，屬穩健型 earnings 長單。觀察同店銷售與全年指引是否同步上修。",
-      "neglected": null
-    },
-    {
-      "symbol": "SMCI",
-      "rank": 3,
-      "intent": "long",
-      "rationale": "AI 伺服器：EPS $0.84 超估 $0.62（+36% surprise），但**營收 miss -17.3%**——獲利強、營收弱的混合財報。Mizuho 上調目標 $36→$44、推 12 款 Intel Xeon 6+ 平台。+5% gap，搭 HPE 同向 AI-infra 題材，但營收 miss 限制追高空間。",
+      "rationale": "今日最乾淨的 SIP。Q2 FY26 EPS $0.79 超估 +46%、營收創高 $10.68B（YoY +40%）勝估，AI 系統訂單與 backlog 近翻倍、Juniper 整合超預期，上調全年展望。爆量 +28% 盤後、3,288 萬股，教科書級 Massive Earnings Shock（Setup B）。標準開盤進場 2.5% 停損，強催化可升級 5%。保留：未來 Q4 EPS YoY 動能轉個位數屬基期放大，追高留意開盤 15 分量能。",
       "neglected": null
     },
     {
       "symbol": "MCHP",
-      "rank": 4,
+      "rank": 2,
       "intent": "long",
-      "rationale": "類比/MCU 半導體 EPS $0.57 超估 $0.50（+12.9%）、營收超估 +3.8%，YoY EPS +418% 自谷底大幅回升（庫存週期觸底訊號）。+9.3% post，搭半導體族群動能。catalyst 偏 earnings+循環復甦，量大波動足。",
-      "neglected": null
-    },
-    {
-      "symbol": "LAC",
-      "rank": 5,
-      "intent": "long",
-      "rationale": "Lithium Americas Q1 首度轉盈（淨利 $460 萬，去年同期虧損），Thacker Pass 進展 + 阿根廷營運。看漲選擇權流 3x（39,464 calls，IV +3pt）。+17.4% gap，鋰價築底題材，小型高 beta 動能標的，嚴設停損。",
+      "rationale": "類比/MCU 半導體：EPS $0.57 勝財測，並給強勁 6 月季財測（中值 $1.456B，YoY +35.3%、環比 +11%），確認庫存去化結束、循環反轉。最新季 EPS YoY +418%（去年 $0.11 低基期）、Rev YoY +35%。+9.3% post，半導體族群動能強。Setup B，重點看營收加速可持續性。",
       "neglected": null
     },
     {
       "symbol": "FLNC",
+      "rank": 4,
+      "intent": "long",
+      "rationale": "Fluence 獲選 Siemens 為 NVIDIA「AI 工廠」參考設計的唯一電池儲能夥伴（SmartStack），盤前 +24%。直接受惠 AI 資料中心電力瓶頸主題。短缺持股比 25.1%、過去一月 +123%，軋空動能強。屬合約型催化（無財報 YoY），市值僅 $50 億波動高，部位宜控、嚴設停損。",
+      "neglected": null
+    },
+    {
+      "symbol": "SMCI",
       "rank": 6,
       "intent": "long",
-      "rationale": "Fluence Energy 電池儲能需求題材，盤前 +24%、盤後 +6.6%。EPS -$0.16 略優於估、營收 miss -24.4% 但 YoY +7.7%。屬族群動能型，無乾淨個別硬催化，僅適合動能交易、部位宜小。",
+      "rationale": "發布搭載 NVIDIA Vera Rubin NVL72/HGX Rubin 的 GW 級 AI 工廠藍圖，疊加對中出口限制下美系供應鏈受惠，盤後 +5%、本週 +38%。短缺持股比 15.7%，AI 伺服器組裝龍頭。屬路線圖/動能催化，觀察液冷高階機櫃放量下的毛利率回穩。",
       "neglected": null
     },
     {
       "symbol": "FULC",
-      "rank": 7,
+      "rank": 9,
       "intent": "short",
-      "rationale": "今日最強做空催化。唯一臨床計畫 pociredir 因 FDA 安全疑慮終止、啟動策略檢討，管線歸零，盤後 -49.7%。基本面已 de-risk 向下的破底股。唯一風險是現金價值若高於市值的軋空，做空設好停損、避免追低。",
-      "neglected": null
-    },
-    {
-      "symbol": "ABVX",
-      "rank": 8,
-      "intent": "short",
-      "rationale": "obefazimod 44週 Phase 3 維持期達主要終點（利多），但近期 ADS 增發 + 轉售登記造成稀釋賣壓 + 獲利了結，盤後 -25%。屬「好數據壞反應」的稀釋型殺盤，做空邏輯是技術面而非基本面崩壞，反彈劇烈、需嚴控風險。",
+      "rationale": "FDA 因致癌風險全面終止唯一臨床藥 pociredir、啟動策略檢討，管線歸零，盤後 -49.7%。基本面最乾淨的利空、破底股。但股價已腰斬，DTC 高達 8.45（已被大量放空、回補需 8 天+），追空性價比低、軋空風險高；較適合觀察反彈無力後續弱而非追殺第一根。",
       "neglected": null
     },
     {
       "symbol": "CRDO",
-      "rank": 9,
-      "intent": "short",
-      "rationale": "「beat 但不夠強」獲利了結：EPS $1.16 超估、營收 +157% YoY 全面超預期，但預期過高、財報前已大漲，盤後 -11.7%。中期趨勢仍多（未來 EPS YoY +74~113%），不宜重壓空方，屬日內超漲回吐短空。",
-      "neglected": null
-    },
-    {
-      "symbol": "ORIC",
       "rank": 10,
       "intent": "short",
-      "rationale": "ORIC Pharmaceuticals 推進前列腺癌藥至 Phase 3，但市場對安全/劑量反應疑慮，-9.8%。屬生技重定價型負催化，小型高波動，做空僅適合日內、嚴設停損。",
+      "rationale": "「beat 但見光死」：FY26 Q4 營收 $437M（+157% YoY）、EPS $1.16（+231% YoY）全面超預期，但財報前已大漲、預期過高，盤後 -11.74%。未來四季成長率逐季放緩（Rev YoY 109%→86%→52%）引發減速憂慮。中期趨勢仍多、DTC 僅 1.54，屬日內超漲回吐短空，不宜重壓、留意快速回補。",
       "neglected": null
     }
   ],
