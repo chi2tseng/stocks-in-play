@@ -1,334 +1,56 @@
 {
- "HPE": {
-  "Type": "earnings",
-  "Catalyst": "Q2 FY26 EPS $0.79 遠超估 $0.54 (+46%)，營收 $106.8 億超估 $7.9 億；AI 訂單與 backlog 近翻倍、Juniper $140 億併購整合，盤後 +28%。"
- },
- "MCHP": {
-  "Type": "momentum",
-  "Catalyst": "無個別新聞，隨 AI 半導體族群動能重評，盤後 +9.3%。"
- },
- "SMCI": {
-  "Type": "analyst",
-  "Catalyst": "Mizuho 上調目標 $36→$44（維持 Neutral），引述 agentic AI 需求；推 12 款 Intel Xeon 6+ 新伺服器平台，+5%。"
- },
- "ARM": {
-  "Type": "analyst",
-  "Catalyst": "連續財報 beat + Computex 助攻；RBC 目標 $175→$260（資料中心權利金翻倍）、Mizuho $360，盤前 +10.5%。"
- },
- "IBM": {
-  "Type": "analyst",
-  "Catalyst": "Barclays 啟動 Overweight、目標 $350；美政府約 $2B 量子支持包，盤前一度 +10%。"
- },
- "NOW": {
-  "Type": "momentum",
-  "Catalyst": "無新財報；企業軟體族群龍頭領漲，Huang Computex 為 agentic AI 放大軟體用量背書，+8.1%。"
- },
- "ASAN": {
-  "Type": "earnings",
-  "Catalyst": "Q1 FY27 營收 $2.051 億 +9.5% YoY、EPS $0.10 超估 $0.08；non-GAAP 營益率創 11.5% 紀錄，+8.3%。"
- },
- "TEAM": {
-  "Type": "momentum",
-  "Catalyst": "隨企業軟體族群與 AI 採用題材走強；近季 Q1 FY26 營收 $17.9 億 +31.7%，+6.8%。"
- },
- "SAP": {
-  "Type": "momentum",
-  "Catalyst": "企業軟體族群帶動；近季營收 $111.8 億 +17.9% YoY、EPS $2.01，+6.8%。"
- },
- "CRM": {
-  "Type": "momentum",
-  "Catalyst": "軟體族群帶動；Agentforce+Data Cloud ARR $14 億 +114% YoY（Agentforce +330%），+4.3%。"
- },
- "WDAY": {
-  "Type": "momentum",
-  "Catalyst": "企業軟體族群帶動，無個別催化，+4.3%。"
- },
- "OKTA": {
-  "Type": "earnings",
-  "Catalyst": "前一交易日財報後創紀錄 +30%，當日延續；管理層稱 agentic AI 迫使企業加碼身分安全，+4.2%。"
- },
- "ADBE": {
-  "Type": "momentum",
-  "Catalyst": "軟體族群帶動 + AI 組合題材，6/11 財報前佈局，+4.2%。"
- },
- "CDNS": {
-  "Type": "guidance",
-  "Catalyst": "推出 ChipStack AI Super Agent（晶片驗證 5週→<1天）；全年營收指引上修至 $61.25–62.25 億；BofA 目標升 $400，+4.8%。"
- },
- "NBIS": {
-  "Type": "news",
-  "Catalyst": "前 OpenAI 研究員 Aschenbrenner 13G 揭 5.6% 持股；Q1 營收 $3.99 億 +684% YoY，+5.4%。"
- },
- "CRWV": {
-  "Type": "news",
-  "Catalyst": "首家部署驗證 NVIDIA Vera Rubin NVL72（推理每瓦效能達 10x）；6/26 納入 Russell 3000，+4.8%。"
- },
- "DG": {
-  "Type": "earnings",
-  "Catalyst": "Q1 FY26 財報 6/2 盤前公布；市場估營收 $108.2 億、EPS $1.89，盤後預期走強 +5.3%。"
- },
- "TMHC": {
-  "Type": "M&A",
-  "Catalyst": "Berkshire Hathaway 全現金併購 $72.50/股、總額 $68 億，溢價 24%，+22.3%。"
- },
- "FLNC": {
-  "Type": "momentum",
-  "Catalyst": "無明確個別新聞，電池儲能需求題材帶動，盤前 +24%、盤後 +6.6%。"
- },
- "EWTX": {
-  "Type": "news",
-  "Catalyst": "肌肉疾病管線進展：EDG-7500 (HCM) Q2 CIRRUS 數據在即且無顯著 LVEF 下降；sevasemten 中期數據佳，+19.8%。"
- },
- "MGM": {
-  "Type": "M&A",
-  "Catalyst": "People Inc.（前 IAC，已持 26.1%）非約束性提案 $48.30/股現金收購剩餘 73.9%，估值 >$180 億，溢價 10.6%，+11.3%。"
- },
- "BILI": {
-  "Type": "news",
-  "Catalyst": "Q1 營收 RMB75 億 +7% YoY、廣告 +30%（連13季雙位數），動能延續 +4%。"
- },
- "SKM": {
-  "Type": "analyst",
-  "Catalyst": "HSBC 評級 Reduce→Hold；5G 擴張樂觀，盤前 +9.1%。"
- },
- "LAC": {
-  "Type": "earnings",
-  "Catalyst": "Q1 首度轉盈，淨利 $460 萬；Thacker Pass 進展+阿根廷營運，看漲選擇權流 3x，+17.4%。"
- },
- "SPCE": {
-  "Type": "news",
-  "Catalyst": "RichRich Capital 揭約 4.6% 持股、VSS Unity 滑翔測試復飛，創 52週高，+18%。"
- },
- "RLYB": {
-  "Type": "M&A",
-  "Catalyst": "與 Avenzo Therapeutics 反向併購（腫瘤）+ $215M 私募，合併後更名 Avenzo、代號 AVZO，+16%。"
- },
- "MASK": {
-  "Type": "momentum",
-  "Catalyst": "低浮動中概拉抬，未見具體新聞，+49%。"
- },
- "NAMM": {
-  "Type": "momentum",
-  "Catalyst": "低浮動拉抬，未見具體新聞，+47%。"
- },
- "ELMT": {
-  "Type": "momentum",
-  "Catalyst": "未見具體新聞，低浮動拉抬，+26%。"
- },
- "PURR": {
-  "Type": "momentum",
-  "Catalyst": "低浮動拉抬，無實質催化劑，+16%。"
- },
- "VCIG": {
-  "Type": "momentum",
-  "Catalyst": "低浮動中概拉抬，無實質催化劑，+14%。"
- },
- "LFVN": {
-  "Type": "momentum",
-  "Catalyst": "LifeVantage 小盤動能，未見具體新聞，+13%。"
- },
- "GOVX": {
-  "Type": "analyst",
-  "Catalyst": "GeoVax Zacks Rank #2 升評，GEO-MVA(mpox/天花)+Gedeptin 題材，+11%。"
- },
- "EC": {
-  "Type": "news",
-  "Catalyst": "Ecopetrol 對巴西 Brava Energia 收購要約 + 油價走高（地緣），+9.7%。"
- },
- "TGHL": {
-  "Type": "momentum",
-  "Catalyst": "揭露與 EnChem America 反向併購框架 + 動能爆拉，低浮動 +524%。"
- },
- "DXST": {
-  "Type": "news",
-  "Catalyst": "董事長 Dingxin Sun 申報購入 40 萬股 Class B；市值僅 $290 萬，低浮動 +148%。"
- },
- "HKIT": {
-  "Type": "momentum",
-  "Catalyst": "投機動能：$1 區跳空衝高後砸回，純波動拉抬無實質催化，+118% 盤前/-17% 盤後。"
- },
- "CTNT": {
-  "Type": "momentum",
-  "Catalyst": "低浮動中概拉抬，無明確新聞，+71%。"
- },
- "VSA": {
-  "Type": "momentum",
-  "Catalyst": "極端軋空（空單佔比 465%），盤前 +105%，低浮動 +67%。"
- },
- "ANY": {
-  "Type": "momentum",
-  "Catalyst": "Sphere 3D 活躍小盤動能，無實質催化劑，+67%。"
- },
- "ABTS": {
-  "Type": "momentum",
-  "Catalyst": "Abits Group 開盤衝高再砸回；營收約 $913 萬但稅前利潤率 -355%，純動能 +40%。"
- },
- "CRE": {
-  "Type": "momentum",
-  "Catalyst": "低浮動拉抬，無實質催化劑，+36%。"
- },
- "ZJYL": {
-  "Type": "momentum",
-  "Catalyst": "低浮動中概拉抬，無實質催化劑，+32%。"
- },
- "AIIO": {
-  "Type": "momentum",
-  "Catalyst": "Robo.ai 低浮動拉抬，無實質催化劑，+29%。"
- },
- "ZNB": {
-  "Type": "momentum",
-  "Catalyst": "低浮動拉抬，無實質催化劑，+28%。"
- },
- "AIRJ": {
-  "Type": "news",
-  "Catalyst": "AirJoule 相關題材，低浮動小盤動能。"
- },
- "ATPC": {
-  "Type": "momentum",
-  "Catalyst": "低浮動拉抬族群，未見具體催化劑。"
- },
- "LSTA": {
-  "Type": "momentum",
-  "Catalyst": "Lisata Therapeutics 小盤動能，未見具體催化劑。"
- },
- "WNW": {
-  "Type": "momentum",
-  "Catalyst": "低浮動中概拉抬，無實質催化劑。"
- },
- "NUAI": {
-  "Type": "momentum",
-  "Catalyst": "低浮動拉抬，無實質催化劑。"
- },
- "FULC": {
-  "Type": "FDA",
-  "Catalyst": "終止唯一臨床計畫 pociredir（鎌狀細胞病）：FDA 對 PRC2 抑制劑致二次血液惡性腫瘤風險疑慮；啟動策略檢討，盤後 -49.7%。"
- },
- "ABVX": {
-  "Type": "news",
-  "Catalyst": "obefazimod 44週 Phase 3 維持期達主要終點，但近期 ADS 增發+轉售登記造成賣壓、獲利了結，盤後 -25%。"
- },
- "OCS": {
-  "Type": "FDA",
-  "Catalyst": "DIAMOND-1/-2（糖尿病黃斑水腫）Phase 3 主終點失敗，放棄 FDA 申請，-30%。"
- },
- "STG": {
-  "Type": "guidance",
-  "Catalyst": "Sunlands Q2 營收指引 YoY -20%~-24%，學生報名數驟降，-31%。"
- },
- "JZ": {
-  "Type": "momentum",
-  "Catalyst": "Jianzhi Education 公告 AI 智慧影像里程碑，低浮動拉抬後回落，題材薄弱，-30%。"
- },
- "CRDO": {
-  "Type": "earnings",
-  "Catalyst": "Q4 EPS $1.16 超估 $1.02、營收 $4.37 億 +157% YoY 全面 beat 但「不夠強」獲利了結，盤後 -11.7%。"
- },
- "CRSR": {
-  "Type": "analyst",
-  "Catalyst": "Craig-Hallum 降評 Buy→Hold、目標 $10；憂 FY26 消費疲弱+記憶體漲價壓毛利，-15.6%。"
- },
- "QCOM": {
-  "Type": "news",
-  "Catalyst": "NVIDIA Computex 發表 RTX Spark Windows-on-Arm 晶片，直接威脅 Snapdragon X Elite AI PC，-6.9%。"
- },
- "NU": {
-  "Type": "momentum",
-  "Catalyst": "無明確個別新聞，隨風險偏好/拉美科技回落，-5%。"
- },
- "AXTI": {
-  "Type": "momentum",
-  "Catalyst": "無明確個別新聞，隨半導體小盤波動，-7.8%。"
- },
- "RKLB": {
-  "Type": "news",
-  "Catalyst": "Blue Origin 火箭爆炸引發發射安全疑慮拖累整個太空族群 + SpaceX IPO 不安，-7.8%。"
- },
- "WOLF": {
-  "Type": "news",
-  "Catalyst": "Wolfspeed 推出資料中心解決方案團隊但市場存疑（即時貢獻有限），-8%。"
- },
- "TSSI": {
-  "Type": "earnings",
-  "Catalyst": "Q1 EPS $0.08 超估 $0.03，但營收 $5,530 萬 -44% YoY（採購服務縮減）、營收組合疑慮，盤後 -9.2%。"
- },
- "CODX": {
-  "Type": "momentum",
-  "Catalyst": "Co-Diagnostics 無明確新聞，1月完成 1:30 反分割，低浮動波動，-18.5%。"
- },
- "ASTC": {
-  "Type": "momentum",
-  "Catalyst": "Astrotech 5/29 因 SpaceX IPO 熱潮三日 +2,500% 後回吐，純題材動能，-18.7%。"
- },
- "INTC": {
-  "Type": "news",
-  "Catalyst": "NVIDIA RTX Spark PC 超級晶片正面挑戰 Intel PC 主導地位，-4.5%。"
- },
- "COIN": {
-  "Type": "macro",
-  "Catalyst": "BTC 跌破 $72k（MSTR 賣幣引發）+ Fed 升息機率題材，-5.2%。"
- },
- "HOOD": {
-  "Type": "macro",
-  "Catalyst": "加密回落 + 利率疑慮，-4.7%。"
- },
- "MSTR": {
-  "Type": "news",
-  "Catalyst": "8-K 揭四年來首度賣 BTC（用於特別股分配）；BTC 跌破 $72k，-6.7%。"
- },
- "CEG": {
-  "Type": "momentum",
-  "Catalyst": "無明確個別新聞，隨 AI 電力族群回吐，-5.4%。"
- },
- "SMMT": {
-  "Type": "analyst",
-  "Catalyst": "ASCO ivonescimab OS 數據後 sell-the-news；Bernstein 啟動 Underperform 目標 $7.70 並建議做空，-5.4%。"
- },
- "ORIC": {
-  "Type": "analyst",
-  "Catalyst": "推進前列腺癌藥至 Phase 3 但市場對安全/劑量反應，-9.8%。"
- },
- "AAOI": {
-  "Type": "momentum",
-  "Catalyst": "Applied Optoelectronics 隨光通訊/AI 族群回吐，盤前 -5.3%。"
- },
- "JBLU": {
-  "Type": "news",
-  "Catalyst": "JetBlue 航空需求疑慮，-4.6%。"
- },
- "PL": {
-  "Type": "momentum",
-  "Catalyst": "Planet Labs 隨太空族群回落，-4.5%。"
- },
- "NVTS": {
-  "Type": "news",
-  "Catalyst": "Navitas 半導體小盤回吐，-4.5%。"
- },
- "MX": {
-  "Type": "momentum",
-  "Catalyst": "Magnachip 半導體小盤波動，-4.4%。"
- },
- "WULF": {
-  "Type": "macro",
-  "Catalyst": "TeraWulf 隨加密/挖礦族群回落，-4.4%。"
- },
- "ASTS": {
-  "Type": "momentum",
-  "Catalyst": "AST SpaceMobile 隨太空族群回吐，-4.1%。"
- },
- "BMNR": {
-  "Type": "macro",
-  "Catalyst": "Bitmine 隨加密回落，-4.1%。"
- },
- "UMAC": {
-  "Type": "momentum",
-  "Catalyst": "Unusual Machines 無人機小盤回吐，-4.7%。"
- },
- "GFI": {
-  "Type": "momentum",
-  "Catalyst": "Gold Fields 黃金股回吐，-5%。"
- },
- "RZLV": {
-  "Type": "momentum",
-  "Catalyst": "Rezolve AI 小盤回落，-5.7%。"
- }
+  "MRVL": {"Type": "analyst", "Catalyst": "Computex 上 Nvidia 執行長黃仁勳稱 Marvell 為「下一家兆美元公司」，激勵股價盤前跳漲約 21%；Q1 FY27 EPS $0.80、營收 $2.42B（+27% YoY）符合預期。"},
+  "AVGO": {"Type": "earnings", "Catalyst": "將於 6/3 盤後公佈 Q2 FY26 財報（市場估 EPS $2.40、營收 $22.1B、AI 營收年增約 140%），盤前隨半導體買盤先行走高 +6.6%。"},
+  "HPE": {"Type": "earnings", "Catalyst": "6/1 盤後 Q2 FY26 EPS $0.79（估 $0.53、+48%）、營收 $10.68B（+40% YoY、超預期 9%），FY26 EPS 指引由 $2.30-2.50 大幅上調至 $3.35-3.45，AI 系統在手訂單 $5.9B。"},
+  "AAOI": {"Type": "momentum", "Catalyst": "光通訊族群同步走強（AI 800G 收發模組需求），AAOI 今年迄今暴漲逾 400%，跟漲 MRVL／光學題材。"},
+  "LITE": {"Type": "momentum", "Catalyst": "光學元件跟漲 AI 資料中心需求；最新季 EPS $2.37（+316% YoY）、營收 $808M（+90% YoY），今年迄今約 +134%。"},
+  "COHR": {"Type": "momentum", "Catalyst": "光通訊族群跟漲（AI 收發模組需求）；最新季 EPS $1.41（+55% YoY）、營收 $1.81B（+21% YoY），今年迄今約 +96%。"},
+  "GLW": {"Type": "momentum", "Catalyst": "康寧光纖／AI 資料中心需求題材跟漲，今年迄今約 +111%。"},
+  "LWLG": {"Type": "momentum", "Catalyst": "電光高分子（光學運算）小型股跟漲光學族群，無個別催化（Q1 營收僅約 $29K）。"},
+  "POET": {"Type": "momentum", "Catalyst": "矽光子小型股跟漲 AI 光學整體買盤，無個別新聞。"},
+  "AXTI": {"Type": "momentum", "Catalyst": "化合物半導體基板跟漲光學／AI 半導體族群買盤。"},
+  "MXL": {"Type": "momentum", "Catalyst": "MaxLinear 跟漲 MRVL 帶動的網通／光學晶片買盤。"},
+  "MCHP": {"Type": "momentum", "Catalyst": "微晶片隨半導體族群走強；自身 6 月季指引中值 $1.456B（年增約 35%）。"},
+  "STM": {"Type": "momentum", "Catalyst": "意法半導體跟漲 SOX 指數（今年迄今約 +65%）整體買盤。"},
+  "WOLF": {"Type": "momentum", "Catalyst": "Wolfspeed 自半導體賣壓中反彈，跟漲 MRVL 帶動的族群行情。"},
+  "NVTS": {"Type": "momentum", "Catalyst": "Navitas 功率半導體跟漲 AI 資料中心電源題材。"},
+  "SMCI": {"Type": "momentum", "Catalyst": "超微電腦跟漲 HPE 財報＋AI 伺服器需求題材。"},
+  "MX": {"Type": "news", "Catalyst": "MagnaChip 將於 6/9-11 德國 PCIM Europe 展出 AI 伺服器／資料中心電源用中壓 MOSFET，股價衝 29 個月高。"},
+  "NBIS": {"Type": "momentum", "Catalyst": "Nebius 跟漲 AI 雲端基建族群（Q1 營收年增 684%），sympathy 行情。"},
+  "CRWV": {"Type": "momentum", "Catalyst": "CoreWeave 跟漲 AI neocloud 族群（Q1 營收年增 112% 至 $2.1B），sympathy 行情。"},
+  "HSAI": {"Type": "momentum", "Catalyst": "禾賽光達 Q1 獲利超預期＋光達成長題材，跟漲中概＋AI 買盤。"},
+  "BABA": {"Type": "macro", "Catalyst": "中概股族群盤前走高，跟隨中國刺激政策／資金回流情緒。"},
+  "JD": {"Type": "macro", "Catalyst": "京東跟漲中概電商族群（刺激政策受惠）。"},
+  "LI": {"Type": "macro", "Catalyst": "理想汽車 5 月交付 33,350 輛，跟漲中概 EV 族群。"},
+  "XPEV": {"Type": "macro", "Catalyst": "小鵬汽車跟漲中概 EV 族群買盤。"},
+  "LAC": {"Type": "news", "Catalyst": "鋰價＋美國政府入股題材推升，看漲選擇權流量達常態 3 倍、IV 升至 92%，Thacker Pass 一期建設推進。"},
+  "SDST": {"Type": "news", "Catalyst": "Stardust Power 6/2 召開股東年會（表決 Lind 融資與增股授權），鋰精煉題材小型股。"},
+  "AIRJ": {"Type": "guidance", "Catalyst": "約 6/1 完成 $15M 註冊直接增發（366 萬股），資金用於 AirJoule 系統商業化，分析師「強力買進」目標價 $8.50。"},
+  "INFQ": {"Type": "news", "Catalyst": "Infleqtion 簽署 CHIPS 法案 $100M 補助意向書、6/2 舉行 CEO 爐邊談話，消息一度帶動盤前 +35%。"},
+  "QUCY": {"Type": "contract", "Catalyst": "Quantum Cyber 6/2 宣布修訂與 BP United 的 IP 授權，由第三方供應改為自主製造無人機產品，並保留永久專屬授權。"},
+  "DG": {"Type": "earnings", "Catalyst": "Dollar General Q1 FY26 EPS $2.00（+12.4% YoY、優於估 6.2%）、營收 $10.79B（+3.4% YoY、同店 +2.0%），上調全年 EPS 指引至約 $7.33 中值。"},
+  "ANY": {"Type": "M&A", "Catalyst": "Sphere 3D 股東通過與 Cathedra Bitcoin 合併案，組成零負債比特幣挖礦＋電力基建平台（5 座資料中心 53MW）。"},
+  "ABTS": {"Type": "momentum", "Catalyst": "Abits Group 比特幣挖礦小型股延續週一 +63% 的低流通量動能，無個別實質催化。"},
+  "DXST": {"Type": "momentum", "Catalyst": "Decent Holding 揭露董事長 6/1 以每股 $2.00 買入 40 萬股 B 類股（共 $80 萬），盤後一度 +148%。"},
+  "CTNT": {"Type": "momentum", "Catalyst": "Cheetah Net 完成 1 比 200 反向分割＋$100M ATM 增發後的低流通量暴衝，週一盤後曾 +71%。"},
+  "VSA": {"Type": "momentum", "Catalyst": "VisionSys AI 完成 1 比 10 反向 ADS 分割後的超低流通量動能，無基本面催化。"},
+  "SBFM": {"Type": "momentum", "Catalyst": "Sunshine Biopharma 學名藥上市題材＋低價股動能，無 6/2 個別重大新聞。"},
+  "ZJYL": {"Type": "momentum", "Catalyst": "Jin Medical 復健設備中概小型股低流通量動能，無實質催化。"},
+  "BJDX": {"Type": "momentum", "Catalyst": "Bluejay Diagnostics +200%，超低流通量診斷小型股的純動能爆發，查無對應實質催化。"},
+  "OSTX": {"Type": "news", "Catalyst": "OS Therapies OST-HER2 骨肉瘤 2b 期數據佳（兩年總存活率 75% vs 歷史對照 40%），自 1 月底累漲約 45%。"},
+  "ABVX": {"Type": "FDA", "Catalyst": "Abivax 潰瘍性結腸炎藥 obefazimod 三期 ABTECT 維持試驗達標（44 週緩解率約 51% vs 安慰劑 10.4%），但高劑量組出現癌症病例，Jefferies 降評至 Hold、目標價 $160→$90，股價暴跌逾 30%。"},
+  "FULC": {"Type": "FDA", "Catalyst": "Fulcrum 因 FDA 對 PRC2 抑制劑致癌風險疑慮，全面停止主力鐮刀型貧血藥 pociredir 並啟動策略檢討，盤後重挫約 50% 至 $3.23。"},
+  "ODD": {"Type": "earnings", "Catalyst": "Oddity Tech 雖 Q4 EPS $0.20 超預期，但下季指引轉虧（EPS 估 -$0.03、營收年減約 30%），延續廣告夥伴演算法衝擊，盤前重挫約 25%。"},
+  "NU": {"Type": "earnings", "Catalyst": "Nubank 財報後管理層稱 2026 為「轉折年」，市場保守看待，當週累跌約 13%，今年迄今自高點回落約 31%。"},
+  "ORCL": {"Type": "macro", "Catalyst": "甲骨文隨軟體／AI 雲族群走弱，市場對其激進 AI 資本支出疑慮加深，今年迄今約 -24%。"},
+  "GTLB": {"Type": "earnings", "Catalyst": "GitLab Q1 EPS $0.30（超預期 30%）、營收 $260.4M（+23% YoY）雖佳，但與 Zeta、Oracle、Cloudflare 同步走低，反映軟體／AI 估值回調情緒，盤前 -4%。"},
+  "ZETA": {"Type": "momentum", "Catalyst": "Zeta Global 跟隨軟體族群回調（前一交易日曾 +13.4%，獲利了結）。"},
+  "FIG": {"Type": "momentum", "Catalyst": "Figma 跟隨軟體／AI 估值回調的 sympathy 賣壓，無個別重大新聞。"},
+  "SPCE": {"Type": "momentum", "Catalyst": "Virgin Galactic 週一因 Delta 機型測試時程大漲 26% 後，今日獲利了結回吐。"},
+  "GMAB": {"Type": "momentum", "Catalyst": "Genmab 跟隨生技族群小幅回落，無 6/2 個別利空（DARZALEX 季銷售年增 22%）。"},
+  "AIB": {"Type": "momentum", "Catalyst": "AGM Group Holdings 為維持 Nasdaq 掛牌而反覆反向分割的稀釋型小型股動能，無實質基本面催化。"},
+  "ASTC": {"Type": "momentum", "Catalyst": "Astrotech 質譜技術小型股，技術面轉空，盤前回調為動能性質而非個別新聞。"},
+  "HKIT": {"Type": "momentum", "Catalyst": "Hitek Global 為維持 Nasdaq 合規宣布 3 併 1 反向分割（5/29 生效），極端波動的低流通量小型股。"},
+  "VCIG": {"Type": "guidance", "Catalyst": "VCI Global 完成 $5M 註冊直接增發（每股 $1.80，折價）並逾期未交 20-F，過去一年股數暴增逾 1462 倍、嚴重稀釋。"},
+  "MASK": {"Type": "momentum", "Catalyst": "3E Network 芬蘭 AI 資料中心（Aurora Core）題材小型股，今日為動能性回調。"}
 }
