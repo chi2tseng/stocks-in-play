@@ -1,11 +1,41 @@
 {
-  "_comment": "Claude's hand-picked SIP rankings for 2026-06-04 (Thu) — 6/4 pre-market run capturing 6/3 after-hours earnings movers (POST session routes to 6/4.json). Dominant theme: AVGO Broadcom Q2 record beat ($22.2B rev +48%, AI $10.8B +143%, EPS $2.44) but SELL-THE-NEWS → AI-semiconductor/AI-infra selloff drags whole complex (MRVL post -6.44, NVTS post -7.25, NBIS, VRT, NET, ORCL all down). Software-earnings cluster: CRWD beat -11.21, NTSK -19.76, VEEV -5.93, PANW. Retail earnings: TLYS beat +19.14 (standout long), FIVE -12.51, WOOF -12.46, PVH -19.39 (guide cut). NOTE: marquee pre-market gap-ups (INTC +7.87, GME +11.52, NVTS-pre +18.33, MRVL-pre +9.36) are PRE rows → route to 6/3.json, not 6/4. Top SIP = TLYS.",
+  "_comment": "Claude's hand-picked SIP rankings for 2026-06-04 (Thu) — 6/4 pre-market run capturing 6/3 after-hours earnings movers. Dominant theme: AVGO Broadcom FY26Q2 record beat ($22.2B rev +48%, AI $10.8B +143%, EPS $2.44) but SELL-THE-NEWS -13.78% → AI-semiconductor/AI-infra complex-wide selloff (MRVL, MU, ARM, NBIS, VRT, NET, ORCL, crypto miners all down on sympathy, no company-specific bad news). Software-earnings cluster: CRWD beat -11.21, NTSK -19.76, VEEV -5.93. Retail earnings: TLYS beat +19.14 (standout long), FIVE beat but -12.51, WOOF miss -12.46, PVH guide-cut -19.39. Top SIP = TLYS.",
   "picks": [
-    {"symbol":"TLYS","rank":1,"intent":"long","rationale":"今日 6/4 唯一乾淨的成長型多方 SIP：Tilly's Q1 營收 $124.7M (+15.9% YoY、勝估 2.8%)、同店銷售 +22.9%、毛利率大幅擴張 910bp 至 28.9%，下季營收指引 $157M 高於市場。屬被忽略的小型零售股 (Neglect ✓) 出現財報加速 (Setup A 成長點火)，盤後 +19.14%。觀察開盤後 15 分鐘量價，若守住 $5 上方可標準進場、2.5% 停損。"},
-    {"symbol":"PVH","rank":2,"intent":"short","rationale":"最乾淨的做空：PVH 雖 Q1 EPS $1.90 略勝，但全年 adj. EPS 指引中值 $11.95 低於市場、且調整後 EPS 年減 -12.6%，疊加關稅與消費疲軟結構性逆風，盤後重挫 -19.39%。指引下修 + 獲利衰退符合反向 MAGNA，是當日首選空方。"},
-    {"symbol":"WOOF","rank":3,"intent":"short","rationale":"Petco Q1 營收 $15.0 億持平 YoY (零成長)、GAAP 每股仍虧 $0.05，寵物零售需求疲弱、轉型未見起色，-12.46%。基本面無成長 + GAAP 虧損，是結構性弱勢的做空標的。"},
-    {"symbol":"NTSK","rank":4,"intent":"short","rationale":"Netskope 雖營收 +28%、ARR +29% 仍強，但全年指引 +24% 明顯放緩、高估值資安股利多出盡，盤後 -19.76%。屬動能轉弱的賣壓追空 (成長仍在，須嚴設停損、提防反彈)。"},
-    {"symbol":"VSTM","rank":5,"intent":"long","rationale":"Verastem 獲 FDA 授予肺癌新藥 VS-7375 (KRAS G12D 突變 NSCLC) 快速通道資格，盤後 +4.96%。為真實法規催化劑的小型生技多方，惟流動性低、波動大，宜小部位。"},
-    {"symbol":"DDD","rank":6,"intent":"short","rationale":"3D Systems 宣布 $4,000 萬普通股增發 (含 15% 超額配售)，純稀釋性利空使市值蒸發約 $1.04 億、-14.68%。增發稀釋無基本面支撐，順勢做空。"}
+    {
+      "symbol": "TLYS",
+      "rank": 1,
+      "intent": "long",
+      "rationale": "今日最乾淨的 SIP。FY26Q1 營收 $1.247 億 (+15.9% YoY)、同店銷售 +22.9% (實體與電商雙雙 >20%)、毛利率由去年 19.8% 跳升至 28.9%、淨虧損由 -$0.74 大幅收窄至 -$0.26，並給出 Q2 轉盈指引 (EPS $0.13-0.20)。極低浮動 (22M 股)、市值僅 $103M、Neglect 充分，盤後 +19.14%。在一片 AI 半導體賣壓中，這是唯一財報大超 + 基本面實質轉折的零售 SIP。"
+    },
+    {
+      "symbol": "PVH",
+      "rank": 2,
+      "intent": "short",
+      "rationale": "今日最乾淨的做空。FY26Q1 雖 EPS $2.01 略勝，但管理層下修全年營收指引由「成長」改為「大致持平」，並納入中東衝突負面影響，是明確的基本面惡化訊號。EPS YoY -12.61%。Calvin Klein/Tommy Hilfiger 需求轉弱 + 指引下修，殺 -19.39%，短倉比 8.8%、3.45 天回補。"
+    },
+    {
+      "symbol": "SAP",
+      "rank": 3,
+      "intent": "long",
+      "rationale": "大型權值股中少數逆勢上漲者。宣布雙重 AI 併購 (Dremio 資料基礎設施 + Prior Labs 結構化資料 AI 模型)、投資逾 €10 億強化「自主企業」AI 平台，+4.88%。今年 YTD -25%、估值已壓縮，這是基本面驅動的逆勢突破，品質遠高於今日多數低浮動投機標的。"
+    },
+    {
+      "symbol": "NTSK",
+      "rank": 4,
+      "intent": "short",
+      "rationale": "資安軟體新股「好財報壞反應」。FY26Q1 營收 $2.02 億 (+28%)、ARR +29%，但 Q2/全年指引 (約 +24%) 未達高標、估值偏高，IPO 後鎖倉解禁壓力，殺 -19.76%。動能型做空 (注意：基本面仍在成長，非結構性衰退，須嚴設停損防 V 轉)。"
+    },
+    {
+      "symbol": "BMBL",
+      "rank": 5,
+      "intent": "long",
+      "rationale": "轉機股。重組進度超預期 (裁員 30%、年省 $40M)、Q2 將推 Bumble 2.0 AI 改版，JPMorgan 升至 Neutral、UBS 上調目標價至 $4.50，+7.17%。低價 ($3) + 短倉比 12.8% 帶軋空潛力，但 12 個月 -47%、營收仍 YoY 下滑，屬投機性反彈。"
+    },
+    {
+      "symbol": "DDD",
+      "rank": 6,
+      "intent": "short",
+      "rationale": "稀釋型做空。3D Systems 宣布 $40M 普通股增發 (含 15% 超額配售)、全部新股，明確稀釋利空殺 -14.68%。風險：短倉比已高達 31%、回補 11.2 天，軋空風險顯著，須小部位 + 嚴設停損。"
+    }
   ]
 }
