@@ -1,13 +1,59 @@
 {
-  "_comment": "Claude's hand-picked SIP rankings for 2026-06-09 (Tue). Theme: 記憶體/HBM 半導體族群在 Micron HBM4 Nvidia 認證 + 分析師上修目標價帶動下集體反彈 (MU 領漲、SNDK/WOLF/AXTI/VSH/AAOI 隨族群)。最強硬催化 = NUVL (GSK $106 億現金併購，但價格已逼近成交價、上行受限)。最佳可交易結構多單 = MU。最佳基本面做空 = AVO (Q2 轉虧、營收 -24% YoY)。大量中國/低浮籌微型股 (CCTG +361%/CHAI +479%/ELPW +236%/RGNT +157%/MTEN +90%/ZTG +201%) 為無實質催化的拉抬，刻意排除於信念名單外。",
+  "_comment": "Claude's hand-picked SIP rankings for 2026-06-09 (Tue). Theme: 記憶體/HBM 半導體族群在 Nvidia-SK Hynix 結盟 + 分析師上修目標價帶動下集體反彈 (MU 領漲)。最強硬催化 = NUVL (GSK $106 億現金併購，但價格已逼近成交價、上行受限)。最佳可交易結構多單 = MU/APLD/VSH。最佳基本面做空 = AVO (Q2 轉虧、營收 -24% YoY)。大量中國/低浮籌微型股 (AZI +640%/CCTG +359%/CHAI +309%/RGNT +123%/MTEN +91%) 為無實質催化的拉抬，刻意排除於信念名單外。",
   "picks": [
-    {"symbol": "MU", "rank": 1, "intent": "long", "neglected": false, "rationale": "今日最佳可交易結構多單：取得 Nvidia Vera-Rubin 平台 HBM4 認證，疊加 Wells Fargo ($1,220)、Susquehanna ($1,750) 上修目標價，並受 6/7 Nvidia/SK 海力士結盟延伸帶動。上季 EPS $12.20 (+682% YoY)、營收 $23.86B (+196% YoY)，HBM 售罄至 fiscal 2026 底，Forward YoY 仍三位數成長。$1.07T 大型權值、流動性極佳、催化乾淨且與基本面同向 (近月 +47%/近半年 +319%)，是整個記憶體族群 (SNDK/WOLF/AXTI/VSH/AAOI) 的代表多單。"},
-    {"symbol": "NUVL", "rank": 2, "intent": "long", "neglected": false, "rationale": "最強硬催化但報酬受限：GSK 以每股 $124 現金 (溢價 40%)、總額 $106 億收購，取得三款後期 NSCLC 標靶藥。確定性極高的併購，但股價 $122.78 已逼近成交價，剩餘上行僅約 1%，屬套利型而非趨勢型。short float 9.39%。風險為監管審查時程延宕。"},
-    {"symbol": "VSH", "rank": 3, "intent": "long", "neglected": false, "rationale": "半導體反彈日的中型結構多單：被動元件廠 Q1 營收 +17% 超預期、Q2 指引優於季節性，獲利由虧轉盈 (EPS $0.05 vs 去年 -$0.03)，Forward YoY 全正。年內 +110%、近半年 +278%，6/9 PCIM Europe 開展。short float 9.15%，題材 + 基本面雙引擎。"},
-    {"symbol": "GPCR", "rank": 4, "intent": "long", "neglected": false, "rationale": "最佳臨床催化多單：ADA 2026 公布口服 GLP-1 aleniglipron 二期 ACCESS 減重 16.2% (《Nature Medicine》)，Q3 啟動三期。口服 GLP-1 是肥胖症下一戰場。short float 8.14%、days-to-cover 6.37 提供軋空燃料。風險為減重幅度 vs 禮來 orforglipron 的市場比較。"},
-    {"symbol": "AVO", "rank": 5, "intent": "short", "neglected": false, "rationale": "今日最佳基本面做空：Mission Produce Q2 營收 $290.9M (-24% YoY，酪梨單價暴跌 36%)、每股轉虧 -$0.10 (去年 +$0.04)，Forward YoY 全負 (EPS -91.67%/Rev -23.51%)。基本面崩壞乾淨、days-to-cover 6.08。風險為酪梨價格季節性反彈與空頭擁擠。"},
-    {"symbol": "GLOO", "rank": 6, "intent": "long", "neglected": false, "rationale": "成長加速型多單：Q2 營收 $44M 超預期 $42.7M、上修全年至 $1.95 億 (Q1 +238%)，目標 Q3 EBITDA 損平。Forward Rev YoY +163%。市值 $419M 小型成長股，基本面加速明確但仍虧損 (EPS -$0.22)，獲利路徑尚未到位。"},
-    {"symbol": "AVTR", "rank": 7, "intent": "short", "neglected": false, "rationale": "指引下修做空：新任 CEO 給出疲弱 2026 展望 (調整後 EPS $0.77-0.83 低於 2025 的 $0.90)、營收續減，CFO 6 月底離職加深管理層不確定。days-to-cover 3.99。風險：近月仍 +16.6%、估值偏低易技術反彈。"},
-    {"symbol": "FAC", "rank": 8, "intent": "long", "neglected": true, "rationale": "事件型動能多單：固態電池廠 Factorial 經 SPAC 合併登 Nasdaq (+50%)，Mercedes EQS 測試達單次充電 1,205km。固態電池聖杯題材，但商業化時程長、新上市無 short data、波動極大，僅宜短打並嚴設停損。"}
+    {
+      "symbol": "MU",
+      "rank": 1,
+      "intent": "long",
+      "rationale": "今日最佳 SIP。記憶體/HBM 族群在 Nvidia-SK Hynix 6/7 結盟 + 分析師集體上修 PT(Goldman $400→$900、Susquehanna $1,750)帶動下集體反彈，MU 為龍頭。基本面最硬：上季 EPS $12.20 +682% YoY、營收 $238.6 億 +196% YoY，HBM4 已通過 Nvidia Vera-Rubin 認證、FY26 產能售罄。週五崩 13% 後 V 轉，回補缺口的動能 + 真實財報背書，是品質最高的做多標的。Forward YoY 全綠且加速(+935%/+270% next Q)。"
+    },
+    {
+      "symbol": "APLD",
+      "rank": 2,
+      "intent": "long",
+      "rationale": "結構性最強做多。第 3 份 15 年 hyperscaler 資料中心租約，新增合約收入 +$52 億(續約上看 $127 億)，前一日剛完成 $5.5 億融資去化資金疑慮。AI datacenter 算力/電力主題的純正受益者，short float 30%(3.6 days)具軋空燃料。盤前 +11%。"
+    },
+    {
+      "symbol": "VSH",
+      "rank": 3,
+      "intent": "long",
+      "rationale": "功率半導體族群反彈 sympathy + 自身 Q1 EPS surprise +114.6%、營收 +17% 超預期、Q2 指引優於季節性、訂單滿手，多家上修 PT。+10.1%，機構持股 99%、short float 9.15%(2.55 days)。Forward YoY 全綠。半導體 risk-on 日的高品質實財報名稱。"
+    },
+    {
+      "symbol": "NUVL",
+      "rank": 4,
+      "intent": "long",
+      "rationale": "今日最硬催化劑(GSK 全現金 $124/股、溢價 ~40%、總值 $106 億收購)，但 +38.8% 已逼近成交價，上行空間有限——屬事件套利而非趨勢做多，不建議追高，僅作為當日最乾淨的併購事件記錄。10 日內啟動 tender offer。"
+    },
+    {
+      "symbol": "AVO",
+      "rank": 5,
+      "intent": "short",
+      "rationale": "今日最佳基本面做空。Q2 營收 $290.9M(-24% YoY，酪梨均價跌 36%)轉 GAAP 淨損 $(0.10)，EPS YoY -91.7%、Rev YoY -23.5%，符合做空篩選。前 1M/3M 已跌 24%/26%，趨勢向下 + 財報坐實衰退，盤後 -5.4%。"
+    },
+    {
+      "symbol": "GPCR",
+      "rank": 6,
+      "intent": "long",
+      "rationale": "口服 GLP-1 aleniglipron Phase 2b ACCESS 登 Nature Medicine、減重 16.2%(6/5 暴漲 102%)，今日續漲 +8.5%、FDA Type B 會議 + Phase III 規劃。obesity GLP-1 熱度延續，臨床數據紮實；但屬臨床期生技、波動大，部位需控管。"
+    },
+    {
+      "symbol": "AVTR",
+      "rank": 7,
+      "intent": "short",
+      "rationale": "新 CEO 2026 指引疲弱(EPS $0.77-0.83 低於 $0.90 共識)+ CFO 離任，bioprocessing 成長停滯。最新季 EPS YoY -26%、營收持平，符合做空篩選；管理層更替 + 弱指引雙重利空，盤後 -4.2%。"
+    },
+    {
+      "symbol": "SAIL",
+      "rank": 8,
+      "intent": "short",
+      "rationale": "Q1 FY27 sell-the-news：EPS 小 miss、營收僅 +0.66%、FY27 ARR 增速降至 ~21%，盤前 -12.1%。雖 YoY 仍為正(未達 -25% 篩選)，但軟指引 + 高估值 + short float 19.2% 的擠壓回吐，是當日最乾淨的盤前財報做空。"
+    },
+    {
+      "symbol": "NBIS",
+      "rank": 9,
+      "intent": "long",
+      "rationale": "BofA 上修 PT $240→$280(Buy)，算力需求轉強，AI neocloud 動能延續(YTD +170%)。+4.1% 屬分析師驅動的溫和續攻；short float 22.3% 提供軋空潛能，但已大漲、追高風險需留意。"
+    }
   ]
 }
