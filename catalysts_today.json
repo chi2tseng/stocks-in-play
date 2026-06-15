@@ -1,80 +1,362 @@
 {
-  "MU": {"Type":"analyst","Catalyst":"記憶體超級循環領頭羊 — TD Cowen 上修目標價至 $1,500 (原 $660)、RBC 升至 $1,200 (原 $525)，HBM/DRAM 定價持續走強；最新季 EPS $12.20 +682% YoY、營收 $23.86B +196%、雙率大超預期 (EPS beat +32.8% / Rev +19.5%)，盤前 +8.06%。"},
-  "SNDK": {"Type":"earnings","Catalyst":"記憶體上行週期最純標的 — 最新季 EPS $23.41 (去年同期 -$0.30、YoY +7903%)、營收 $5.95B +250%，雙率大超 (EPS +60% / Rev +26%)，NAND/HBM 定價暴衝隨 MU read-through，+6.87%。"},
-  "WDC": {"Type":"earnings","Catalyst":"硬碟/儲存記憶體循環 — 最新季 EPS $2.72 +100% YoY、營收 $3.34B +45.9%，雙率超預期，隨 MU 記憶體題材走強，+6.91%。"},
-  "AXTI": {"Type":"policy","Catalyst":"中國放寬磷化銦 (InP) 出口限制 — InP/GaAs 基板供應鏈直接受惠；最新季 EPS -$0.01 vs 估 -$0.05 (surprise +78%)、營收 $26.9M +39% YoY，未來 4 季轉盈 ($0.07→$0.15)，+12.71%。"},
-  "NVTS": {"Type":"contract","Catalyst":"與 NVIDIA MGX 生態系合作加速 800 VDC AI 資料中心供電架構 — GaN 功率半導體題材；最新季營收 $8.6M (YoY -38.7% 仍衰退) 但前瞻轉強，Barron's 報導 Nvidia 認證，+9.72%。"},
-  "WOLF": {"Type":"news","Catalyst":"800V SiC 功率題材 — NVIDIA/Google 800V AI 電力轉換加速碳化矽需求，Ch.11 重整後超賣反彈，+12.56%。"},
-  "NBIS": {"Type":"earnings","Catalyst":"AI 雲端基建 (neocloud) — 最新季營收 $399M +621% YoY、EPS -$0.32 vs 估 -$0.77 (beat +57.7%)，隨記憶體/AI 資料中心題材走強，+8.24%。"},
-  "TRIP": {"Type":"M&A","Catalyst":"今晨 7:09 ET 宣布以 $700M 全現金將 TheFork 賣給 American Express (TheFork LTM 營收 $232M、調整後 EBITDA $28M)，落實策略檢討聚焦 Experiences，潛在用途回購/還債，+14.83%。"},
-  "VSH": {"Type":"earnings","Catalyst":"類比/分立元件循環觸底回升 — 最新季 EPS $0.05 vs 估 $0.02 (surprise +114%)、營收 $839M +17.3% YoY，半導體族群帶動，+6.6%。"},
-  "FLY": {"Type":"analyst","Catalyst":"KeyBanc 升評 Overweight、目標價 $50 — 引用 NASA 登月合約 + 國防追蹤軟體成長 (子公司 SciTec 獲美空軍 ABMS 選擇權)，+4.56%。"},
-  "AAOI": {"Type":"momentum","Catalyst":"光通訊/資料中心光模組 — 隨 AI 基建 + 半導體族群走強，+5.83%。"},
-  "GCTS": {"Type":"momentum","Catalyst":"5G 數據機晶片 — 隨半導體族群動能，+4.74%，低浮籌。"},
-  "LAES": {"Type":"momentum","Catalyst":"SEALSQ 量子安全晶片 — 隨量子 + 半導體題材，+5.81%，微型投機股。"},
-  "AG": {"Type":"macro","Catalyst":"貴金屬族群 — 美伊和平協議/荷莫茲海峽重開 + 停火，金價站上 $4,300 (+2.77%)、銀價走升、油價跌至兩月低、Fed 本週料按兵不動；First Majestic 白銀礦商 +7.08%。"},
-  "CDE": {"Type":"macro","Catalyst":"貴金屬族群 — 金銀價走升 (美伊和平 + Fed 料持平)，Coeur Mining 金銀礦 +6.69%。"},
-  "GFI": {"Type":"macro","Catalyst":"貴金屬族群 — 金價站上 $4,300，Gold Fields 金礦 ADR +8.27%。"},
-  "HL": {"Type":"macro","Catalyst":"貴金屬族群 — 金銀價走升，Hecla Mining +7.63%。"},
-  "HMY": {"Type":"macro","Catalyst":"貴金屬族群 — 金價走升，Harmony Gold ADR +10.53%。"},
-  "SBSW": {"Type":"macro","Catalyst":"貴金屬族群 — 金/PGM 走升，Sibanye-Stillwater ADR +10.85%。"},
-  "ITRG": {"Type":"macro","Catalyst":"貴金屬族群 — 金價走升，Integra Resources +11.11%，微型金礦股。"},
-  "UAMY": {"Type":"macro","Catalyst":"關鍵金屬 — 銻 (antimony) 戰略金屬題材 + 貴金屬族群帶動，United States Antimony +5.11%。"},
-  "USAR": {"Type":"macro","Catalyst":"稀土/關鍵礦物題材 + 金屬族群，USA Rare Earth +5.63%。"},
-  "UEC": {"Type":"macro","Catalyst":"鈾/核能燃料 — 隨核能 + 關鍵礦物題材，Uranium Energy +5.08%。"},
-  "MSTR": {"Type":"momentum","Catalyst":"比特幣反彈 + Saylor 暗示恢復累積 BTC、Fed 會議前；Strategy +6.15%。"},
-  "COIN": {"Type":"momentum","Catalyst":"加密族群反彈 (BTC 走升、Fed 前)；Coinbase +5.27% (惟最新季 EPS -$1.49 巨額 miss、營收 -30% YoY，純題材 beta)。"},
-  "MARA": {"Type":"momentum","Catalyst":"比特幣礦商 — BTC 反彈帶動，MARA Holdings +5.61%。"},
-  "RIOT": {"Type":"momentum","Catalyst":"比特幣礦商 — BTC 反彈，Riot Platforms +6.35%。"},
-  "CLSK": {"Type":"momentum","Catalyst":"比特幣礦商 — BTC 反彈，CleanSpark +5.83%。"},
-  "HIVE": {"Type":"momentum","Catalyst":"比特幣礦商 — BTC 反彈，HIVE Digital +6.7%。"},
-  "IREN": {"Type":"momentum","Catalyst":"比特幣礦商/AI 資料中心 — BTC 反彈 + AI 算力題材，IREN +5.7%。"},
-  "WULF": {"Type":"momentum","Catalyst":"比特幣礦商/AI 算力 — BTC 反彈，TeraWulf +5.92%。"},
-  "CIFR": {"Type":"momentum","Catalyst":"比特幣礦商/HPC — BTC 反彈，Cipher Mining +6.16%。"},
-  "BMNR": {"Type":"momentum","Catalyst":"加密/數位資產 treasury 概念 — BTC 反彈，Bitmine Immersion +6.21%，高波動低浮籌。"},
-  "SBET": {"Type":"momentum","Catalyst":"加密 treasury 概念股 (ETH) — 加密族群反彈，SharpLink +5.81%，微型投機。"},
-  "PURR": {"Type":"momentum","Catalyst":"Hyperliquid Strategies 數位資產 treasury — 加密反彈，+10.03%，低浮籌投機。"},
-  "BE": {"Type":"momentum","Catalyst":"潔淨能源/燃料電池 — AI 資料中心電力需求題材，Bloom Energy +6.06% (無個別頭條，板塊 beta)。"},
-  "EOSE": {"Type":"momentum","Catalyst":"儲能 (鋅電池) — 電網/AI 電力題材板塊 beta，Eos Energy +6.2%。"},
-  "FLNC": {"Type":"momentum","Catalyst":"電網儲能系統 — 電力題材板塊 beta，Fluence Energy +5.84%。"},
-  "SMR": {"Type":"momentum","Catalyst":"小型模組化核反應爐 (SMR) — AI 資料中心核能供電題材，NuScale +5.86% (板塊 beta)。"},
-  "TE": {"Type":"momentum","Catalyst":"太陽能/儲能 — 潔淨能源板塊 beta，T1 Energy +5.65%。"},
-  "SLDP": {"Type":"momentum","Catalyst":"固態電池 — 電動車/電池題材板塊 beta，Solid Power +5.37%。"},
-  "KEEL": {"Type":"momentum","Catalyst":"基礎建設/能源 — 板塊 beta，Keel Infrastructure +6.62%。"},
-  "APLD": {"Type":"momentum","Catalyst":"AI 資料中心/HPC 租賃 — AI 基建題材，Applied Digital +5.57%。"},
-  "CRWV": {"Type":"momentum","Catalyst":"AI 雲端 GPU 算力 (neocloud) — AI 基建題材，CoreWeave +5.32%。"},
-  "RXT": {"Type":"momentum","Catalyst":"混合雲/AI 基建 — 板塊 beta，Rackspace +4.6%。"},
-  "IONQ": {"Type":"momentum","Catalyst":"量子運算族群 — 隨科技/AI 動能反彈 (無個別新催化劑)，IonQ +5.65%。"},
-  "QBTS": {"Type":"momentum","Catalyst":"量子運算族群 — 板塊動能，D-Wave +5.65%。"},
-  "QUBT": {"Type":"momentum","Catalyst":"量子運算族群 — 板塊動能，Quantum Computing +5.44%。"},
-  "RGTI": {"Type":"momentum","Catalyst":"量子運算族群 — 板塊動能，Rigetti +5.62%。"},
-  "INFQ": {"Type":"momentum","Catalyst":"量子運算 (中性原子) — 量子族群動能，Infleqtion +6.71%。"},
-  "SATL": {"Type":"momentum","Catalyst":"太空族群 — SpaceX IPO 預期帶動衛星影像板塊，Satellogic +4.35% (無個別新聞)。"},
-  "MNTS": {"Type":"momentum","Catalyst":"太空族群 — 板塊動能，Momentus +4.69%，惟近期 ATM 募資 ~$25M 稀釋，漲勢脆弱。"},
-  "ELTX": {"Type":"FDA","Catalyst":"Phase 2 AMPLIFY-7P (ELI-002 7P) 胰臟癌輔助試驗未達主要終點 — 雖 T 細胞反應強 (99% 受試者) 但無提早終止/療效里程碑，盤前崩跌 -50.91%；惟 14.4 天回補 + 已腰斬，追空軋空風險高。"},
-  "SDOT": {"Type":"news","Catalyst":"6 個月選擇權 (6/4 簽、6/10 修訂) 可收購洛杉磯 7 處住宅組合 (估值 $125.5M、147 戶、承擔 $56M 貸款) — +41.89%，屬選擇權題材 + 低浮籌，非營運基本面。"},
-  "CAST": {"Type":"contract","Catalyst":"DIRECTV 合作擴大 (接入 FreeCast D2C 與 PaaS 夥伴網路) — 股價翻倍 +240.65%、量 >66M；惟 Q1 營收僅 $92,909、淨損 $4.53M、有 going-concern 警示，低浮籌極端投機。"},
-  "VSME": {"Type":"news","Catalyst":"盤前公告 AI 轉型 + $3.8M 債轉股形成 41.52% 持股 — VS Media +73.37%，低浮籌 + AI 敘事拉抬。"},
-  "GMM": {"Type":"news","Catalyst":"盤前公告與 ByteDance AI 微短劇合作 — Global Mofy AI +16.68%，有題材但低浮籌投機。"},
-  "HTCO": {"Type":"momentum","Catalyst":"盤前無明確催化劑 (Finviz 標示 No clear catalyst)，低浮籌拉抬，High-Trend +19.1%。"},
-  "DXST": {"Type":"news","Catalyst":"盤前公告 Taihao Robotics 合作 — Decent Holding +13.6%，題材薄、投機性高。"},
-  "CIIT": {"Type":"news","Catalyst":"物流股 — pending 增發 (unit+warrant) / Greypole MOU 投機 (尚未定價或具約束力)，Tianci Intl +11.36%，市值僅 ~$4.8M，稀釋風險。"},
-  "KXIN": {"Type":"momentum","Catalyst":"盤前低浮籌軋空、無實質消息，Kaixin +5.8%。"},
-  "MTEN": {"Type":"momentum","Catalyst":"盤前無明確催化劑 (Finviz No clear catalyst)，低浮籌拉抬，Mingteng +6.07%。"},
-  "CRMT": {"Type":"earnings","Catalyst":"今日 (6/15) 9:30 ET Q4 FY26 財報前跑高 +10.53% — 分析師估 EPS -$0.74、營收 $315.85M；前一季巨虧 -$2.71/股，財報前置投機，數字待確認。"},
-  "AMPG": {"Type":"momentum","Catalyst":"AmpliTech 5G/毫米波元件 — 隨半導體/國防題材動能 +5.18%，1 個月 +242%，低浮籌追高。"},
-  "NUAI": {"Type":"momentum","Catalyst":"New Era Energy & Digital — AI/能源敘事拉抬 +6.61%，微型投機股。"},
-  "FOXA": {"Type":"M&A","Catalyst":"6/15 宣布以企業價值約 $220 億 (每股 $160 = $96 現金 + 0.9693 股 Fox A 股) 收購 Roku — 以股換股大額併購稀釋 Fox A 股 (現有股東持股降至約 73%)，市場視為高價收購，-13.44%。"},
-  "CUPR": {"Type":"news","Catalyst":"6/11 剛恢復 Nasdaq 合規 (治癒 $1.00 最低價)，同時擬授權超過 20% 流通股的未來融資 (潛在稀釋/控制權變更) — 拉抬退潮 + 稀釋疑慮，盤前 -6.05% / 盤後 -14.86%。"},
-  "EDHL": {"Type":"news","Catalyst":"盤前公告 F-1 申報造成 12.9 倍股本懸頂 (share overhang) — 巨量稀釋疑慮，Everbright Digital 盤後 -21.18%。"},
-  "ROMA": {"Type":"news","Catalyst":"今晨 7:10 公告非約束性 LOI 擬投 US$15M 取得 AI/HPC 開發商 BlueFlare 5% 股權 (屬正面題材) — -13.07% 應為前期拉抬退潮/對小公司大額投資的稀釋擔憂，非乾淨基本面利空。"},
-  "STI": {"Type":"news","Catalyst":"Q1 2026 首見營收僅 $85,426 (多為政府補助) 仍深虧；同時重組 2024/8 股權融資、消除預融資權證以降低未來稀釋 — 利空有限，-8.61% 偏拉抬退潮。"},
-  "VG": {"Type":"macro","Catalyst":"LNG — 美伊和平協議使油價跌至兩月低、能源價格回落，Venture Global -6.04%。"},
-  "WTI": {"Type":"macro","Catalyst":"油價暴跌 — 美伊和平協議/荷莫茲海峽重開使原油跌至兩月低，W&T Offshore -10.71%。"},
-  "WYHG": {"Type":"news","Catalyst":"6/1 起停牌 (news pending)，消息未明 — 盤前 -20.09%，屬停牌前後不確定性，缺明確基本面利空，避免。"},
-  "XNDU": {"Type":"momentum","Catalyst":"Xanadu Quantum — 量子運算族群動能 (光量子)，+7.04%，隨 IONQ/QBTS/RGTI 板塊反彈。"},
-  "SPCX": {"Type":"momentum","Catalyst":"太空/SpaceX 概念 — 太空族群動能，+5.62%。"},
-  "JBLU": {"Type":"macro","Catalyst":"航空股 — 美伊和平協議使油價跌至兩月低、燃油成本下降利多航空，JetBlue +5.99% (惟 S&P 近期下調信評，基本面承壓)。"},
-  "STLA": {"Type":"momentum","Catalyst":"汽車股 — Stellantis 隨車廠/週期股反彈 + 油價回落題材，+5.68%。"},
-  "VYX": {"Type":"momentum","Catalyst":"NCR Voyix — 數位商務/支付，盤後 +6.38%，板塊動能。"}
+ "MU": {
+  "Type": "analyst",
+  "Catalyst": "記憶體超級循環領頭羊 — TD Cowen 上修目標價至 $1,500 (原 $660)、RBC 升至 $1,200 (原 $525)，HBM/DRAM 定價持續走強；最新季 EPS $12.20 +682% YoY、營收 $23.86B +196%、雙率大超預期 (EPS beat +32.8% / Rev +19.5%)，盤前 +8.06%。"
+ },
+ "SNDK": {
+  "Type": "earnings",
+  "Catalyst": "記憶體上行週期最純標的 — 最新季 EPS $23.41 (去年同期 -$0.30、YoY +7903%)、營收 $5.95B +250%，雙率大超 (EPS +60% / Rev +26%)，NAND/HBM 定價暴衝隨 MU read-through，+6.87%。"
+ },
+ "WDC": {
+  "Type": "earnings",
+  "Catalyst": "硬碟/儲存記憶體循環 — 最新季 EPS $2.72 +100% YoY、營收 $3.34B +45.9%，雙率超預期，隨 MU 記憶體題材走強，+6.91%。"
+ },
+ "AXTI": {
+  "Type": "policy",
+  "Catalyst": "中國放寬磷化銦 (InP) 出口限制 — InP/GaAs 基板供應鏈直接受惠；最新季 EPS -$0.01 vs 估 -$0.05 (surprise +78%)、營收 $26.9M +39% YoY，未來 4 季轉盈 ($0.07→$0.15)，+12.71%。"
+ },
+ "NVTS": {
+  "Type": "contract",
+  "Catalyst": "與 NVIDIA MGX 生態系合作加速 800 VDC AI 資料中心供電架構 — GaN 功率半導體題材；最新季營收 $8.6M (YoY -38.7% 仍衰退) 但前瞻轉強，Barron's 報導 Nvidia 認證，+9.72%。"
+ },
+ "WOLF": {
+  "Type": "news",
+  "Catalyst": "800V SiC 功率題材 — NVIDIA/Google 800V AI 電力轉換加速碳化矽需求，Ch.11 重整後超賣反彈，+12.56%。"
+ },
+ "NBIS": {
+  "Type": "earnings",
+  "Catalyst": "AI 雲端基建 (neocloud) — 最新季營收 $399M +621% YoY、EPS -$0.32 vs 估 -$0.77 (beat +57.7%)，隨記憶體/AI 資料中心題材走強，+8.24%。"
+ },
+ "TRIP": {
+  "Type": "M&A",
+  "Catalyst": "今晨 7:09 ET 宣布以 $700M 全現金將 TheFork 賣給 American Express (TheFork LTM 營收 $232M、調整後 EBITDA $28M)，落實策略檢討聚焦 Experiences，潛在用途回購/還債，+14.83%。"
+ },
+ "VSH": {
+  "Type": "earnings",
+  "Catalyst": "類比/分立元件循環觸底回升 — 最新季 EPS $0.05 vs 估 $0.02 (surprise +114%)、營收 $839M +17.3% YoY，半導體族群帶動，+6.6%。"
+ },
+ "FLY": {
+  "Type": "analyst",
+  "Catalyst": "KeyBanc 升評 Overweight、目標價 $50 — 引用 NASA 登月合約 + 國防追蹤軟體成長 (子公司 SciTec 獲美空軍 ABMS 選擇權)，+4.56%。"
+ },
+ "AAOI": {
+  "Type": "momentum",
+  "Catalyst": "光通訊/資料中心光模組 — 隨 AI 基建 + 半導體族群走強，+5.83%。"
+ },
+ "GCTS": {
+  "Type": "momentum",
+  "Catalyst": "5G 數據機晶片 — 隨半導體族群動能，+4.74%，低浮籌。"
+ },
+ "LAES": {
+  "Type": "momentum",
+  "Catalyst": "SEALSQ 量子安全晶片 — 隨量子 + 半導體題材，+5.81%，微型投機股。"
+ },
+ "AG": {
+  "Type": "macro",
+  "Catalyst": "貴金屬族群 — 美伊和平協議/荷莫茲海峽重開 + 停火，金價站上 $4,300 (+2.77%)、銀價走升、油價跌至兩月低、Fed 本週料按兵不動；First Majestic 白銀礦商 +7.08%。"
+ },
+ "CDE": {
+  "Type": "macro",
+  "Catalyst": "貴金屬族群 — 金銀價走升 (美伊和平 + Fed 料持平)，Coeur Mining 金銀礦 +6.69%。"
+ },
+ "GFI": {
+  "Type": "macro",
+  "Catalyst": "貴金屬族群 — 金價站上 $4,300，Gold Fields 金礦 ADR +8.27%。"
+ },
+ "HL": {
+  "Type": "macro",
+  "Catalyst": "貴金屬族群 — 金銀價走升，Hecla Mining +7.63%。"
+ },
+ "HMY": {
+  "Type": "macro",
+  "Catalyst": "貴金屬族群 — 金價走升，Harmony Gold ADR +10.53%。"
+ },
+ "SBSW": {
+  "Type": "macro",
+  "Catalyst": "貴金屬族群 — 金/PGM 走升，Sibanye-Stillwater ADR +10.85%。"
+ },
+ "ITRG": {
+  "Type": "macro",
+  "Catalyst": "貴金屬族群 — 金價走升，Integra Resources +11.11%，微型金礦股。"
+ },
+ "UAMY": {
+  "Type": "macro",
+  "Catalyst": "關鍵金屬 — 銻 (antimony) 戰略金屬題材 + 貴金屬族群帶動，United States Antimony +5.11%。"
+ },
+ "USAR": {
+  "Type": "macro",
+  "Catalyst": "稀土/關鍵礦物題材 + 金屬族群，USA Rare Earth +5.63%。"
+ },
+ "UEC": {
+  "Type": "macro",
+  "Catalyst": "鈾/核能燃料 — 隨核能 + 關鍵礦物題材，Uranium Energy +5.08%。"
+ },
+ "MSTR": {
+  "Type": "momentum",
+  "Catalyst": "比特幣反彈 + Saylor 暗示恢復累積 BTC、Fed 會議前；Strategy +6.15%。"
+ },
+ "COIN": {
+  "Type": "momentum",
+  "Catalyst": "加密族群反彈 (BTC 走升、Fed 前)；Coinbase +5.27% (惟最新季 EPS -$1.49 巨額 miss、營收 -30% YoY，純題材 beta)。"
+ },
+ "MARA": {
+  "Type": "momentum",
+  "Catalyst": "比特幣礦商 — BTC 反彈帶動，MARA Holdings +5.61%。"
+ },
+ "RIOT": {
+  "Type": "momentum",
+  "Catalyst": "比特幣礦商 — BTC 反彈，Riot Platforms +6.35%。"
+ },
+ "CLSK": {
+  "Type": "momentum",
+  "Catalyst": "比特幣礦商 — BTC 反彈，CleanSpark +5.83%。"
+ },
+ "HIVE": {
+  "Type": "momentum",
+  "Catalyst": "比特幣礦商 — BTC 反彈，HIVE Digital +6.7%。"
+ },
+ "IREN": {
+  "Type": "momentum",
+  "Catalyst": "比特幣礦商/AI 資料中心 — BTC 反彈 + AI 算力題材，IREN +5.7%。"
+ },
+ "WULF": {
+  "Type": "momentum",
+  "Catalyst": "比特幣礦商/AI 算力 — BTC 反彈，TeraWulf +5.92%。"
+ },
+ "CIFR": {
+  "Type": "momentum",
+  "Catalyst": "比特幣礦商/HPC — BTC 反彈，Cipher Mining +6.16%。"
+ },
+ "BMNR": {
+  "Type": "momentum",
+  "Catalyst": "加密/數位資產 treasury 概念 — BTC 反彈，Bitmine Immersion +6.21%，高波動低浮籌。"
+ },
+ "SBET": {
+  "Type": "momentum",
+  "Catalyst": "加密 treasury 概念股 (ETH) — 加密族群反彈，SharpLink +5.81%，微型投機。"
+ },
+ "PURR": {
+  "Type": "momentum",
+  "Catalyst": "Hyperliquid Strategies 數位資產 treasury — 加密反彈，+10.03%，低浮籌投機。"
+ },
+ "BE": {
+  "Type": "momentum",
+  "Catalyst": "潔淨能源/燃料電池 — AI 資料中心電力需求題材，Bloom Energy +6.06% (無個別頭條，板塊 beta)。"
+ },
+ "EOSE": {
+  "Type": "momentum",
+  "Catalyst": "儲能 (鋅電池) — 電網/AI 電力題材板塊 beta，Eos Energy +6.2%。"
+ },
+ "FLNC": {
+  "Type": "momentum",
+  "Catalyst": "電網儲能系統 — 電力題材板塊 beta，Fluence Energy +5.84%。"
+ },
+ "SMR": {
+  "Type": "momentum",
+  "Catalyst": "小型模組化核反應爐 (SMR) — AI 資料中心核能供電題材，NuScale +5.86% (板塊 beta)。"
+ },
+ "TE": {
+  "Type": "momentum",
+  "Catalyst": "太陽能/儲能 — 潔淨能源板塊 beta，T1 Energy +5.65%。"
+ },
+ "SLDP": {
+  "Type": "momentum",
+  "Catalyst": "固態電池 — 電動車/電池題材板塊 beta，Solid Power +5.37%。"
+ },
+ "KEEL": {
+  "Type": "momentum",
+  "Catalyst": "基礎建設/能源 — 板塊 beta，Keel Infrastructure +6.62%。"
+ },
+ "APLD": {
+  "Type": "momentum",
+  "Catalyst": "AI 資料中心/HPC 租賃 — AI 基建題材，Applied Digital +5.57%。"
+ },
+ "CRWV": {
+  "Type": "momentum",
+  "Catalyst": "AI 雲端 GPU 算力 (neocloud) — AI 基建題材，CoreWeave +5.32%。"
+ },
+ "RXT": {
+  "Type": "momentum",
+  "Catalyst": "混合雲/AI 基建 — 板塊 beta，Rackspace +4.6%。"
+ },
+ "IONQ": {
+  "Type": "momentum",
+  "Catalyst": "量子運算族群 — 隨科技/AI 動能反彈 (無個別新催化劑)，IonQ +5.65%。"
+ },
+ "QBTS": {
+  "Type": "momentum",
+  "Catalyst": "量子運算族群 — 板塊動能，D-Wave +5.65%。"
+ },
+ "QUBT": {
+  "Type": "momentum",
+  "Catalyst": "量子運算族群 — 板塊動能，Quantum Computing +5.44%。"
+ },
+ "RGTI": {
+  "Type": "momentum",
+  "Catalyst": "量子運算族群 — 板塊動能，Rigetti +5.62%。"
+ },
+ "INFQ": {
+  "Type": "momentum",
+  "Catalyst": "量子運算 (中性原子) — 量子族群動能，Infleqtion +6.71%。"
+ },
+ "SATL": {
+  "Type": "momentum",
+  "Catalyst": "太空族群 — SpaceX IPO 預期帶動衛星影像板塊，Satellogic +4.35% (無個別新聞)。"
+ },
+ "MNTS": {
+  "Type": "momentum",
+  "Catalyst": "太空族群 — 板塊動能，Momentus +4.69%，惟近期 ATM 募資 ~$25M 稀釋，漲勢脆弱。"
+ },
+ "ELTX": {
+  "Type": "FDA",
+  "Catalyst": "Phase 2 AMPLIFY-7P (ELI-002 7P) 胰臟癌輔助試驗未達主要終點 — 雖 T 細胞反應強 (99% 受試者) 但無提早終止/療效里程碑，盤前崩跌 -50.91%；惟 14.4 天回補 + 已腰斬，追空軋空風險高。"
+ },
+ "SDOT": {
+  "Type": "news",
+  "Catalyst": "6 個月選擇權 (6/4 簽、6/10 修訂) 可收購洛杉磯 7 處住宅組合 (估值 $125.5M、147 戶、承擔 $56M 貸款) — +41.89%，屬選擇權題材 + 低浮籌，非營運基本面。"
+ },
+ "CAST": {
+  "Type": "contract",
+  "Catalyst": "DIRECTV 合作擴大 (接入 FreeCast D2C 與 PaaS 夥伴網路) — 股價翻倍 +240.65%、量 >66M；惟 Q1 營收僅 $92,909、淨損 $4.53M、有 going-concern 警示，低浮籌極端投機。"
+ },
+ "VSME": {
+  "Type": "news",
+  "Catalyst": "盤前公告 AI 轉型 + $3.8M 債轉股形成 41.52% 持股 — VS Media +73.37%，低浮籌 + AI 敘事拉抬。"
+ },
+ "GMM": {
+  "Type": "news",
+  "Catalyst": "盤前公告與 ByteDance AI 微短劇合作 — Global Mofy AI +16.68%，有題材但低浮籌投機。"
+ },
+ "HTCO": {
+  "Type": "momentum",
+  "Catalyst": "盤前無明確催化劑 (Finviz 標示 No clear catalyst)，低浮籌拉抬，High-Trend +19.1%。"
+ },
+ "DXST": {
+  "Type": "news",
+  "Catalyst": "盤前公告 Taihao Robotics 合作 — Decent Holding +13.6%，題材薄、投機性高。"
+ },
+ "CIIT": {
+  "Type": "news",
+  "Catalyst": "物流股 — pending 增發 (unit+warrant) / Greypole MOU 投機 (尚未定價或具約束力)，Tianci Intl +11.36%，市值僅 ~$4.8M，稀釋風險。"
+ },
+ "KXIN": {
+  "Type": "momentum",
+  "Catalyst": "盤前低浮籌軋空、無實質消息，Kaixin +5.8%。"
+ },
+ "MTEN": {
+  "Type": "momentum",
+  "Catalyst": "盤前無明確催化劑 (Finviz No clear catalyst)，低浮籌拉抬，Mingteng +6.07%。"
+ },
+ "CRMT": {
+  "Type": "earnings",
+  "Catalyst": "今日 (6/15) 9:30 ET Q4 FY26 財報前跑高 +10.53% — 分析師估 EPS -$0.74、營收 $315.85M；前一季巨虧 -$2.71/股，財報前置投機，數字待確認。"
+ },
+ "AMPG": {
+  "Type": "momentum",
+  "Catalyst": "AmpliTech 5G/毫米波元件 — 隨半導體/國防題材動能 +5.18%，1 個月 +242%，低浮籌追高。"
+ },
+ "NUAI": {
+  "Type": "momentum",
+  "Catalyst": "New Era Energy & Digital — AI/能源敘事拉抬 +6.61%，微型投機股。"
+ },
+ "FOXA": {
+  "Type": "M&A",
+  "Catalyst": "6/15 宣布以企業價值約 $220 億 (每股 $160 = $96 現金 + 0.9693 股 Fox A 股) 收購 Roku — 以股換股大額併購稀釋 Fox A 股 (現有股東持股降至約 73%)，市場視為高價收購，-13.44%。"
+ },
+ "CUPR": {
+  "Type": "news",
+  "Catalyst": "6/11 剛恢復 Nasdaq 合規 (治癒 $1.00 最低價)，同時擬授權超過 20% 流通股的未來融資 (潛在稀釋/控制權變更) — 拉抬退潮 + 稀釋疑慮，盤前 -6.05% / 盤後 -14.86%。"
+ },
+ "EDHL": {
+  "Type": "news",
+  "Catalyst": "盤前公告 F-1 申報造成 12.9 倍股本懸頂 (share overhang) — 巨量稀釋疑慮，Everbright Digital 盤後 -21.18%。"
+ },
+ "ROMA": {
+  "Type": "news",
+  "Catalyst": "今晨 7:10 公告非約束性 LOI 擬投 US$15M 取得 AI/HPC 開發商 BlueFlare 5% 股權 (屬正面題材) — -13.07% 應為前期拉抬退潮/對小公司大額投資的稀釋擔憂，非乾淨基本面利空。"
+ },
+ "STI": {
+  "Type": "news",
+  "Catalyst": "Q1 2026 首見營收僅 $85,426 (多為政府補助) 仍深虧；同時重組 2024/8 股權融資、消除預融資權證以降低未來稀釋 — 利空有限，-8.61% 偏拉抬退潮。"
+ },
+ "VG": {
+  "Type": "macro",
+  "Catalyst": "LNG — 美伊和平協議使油價跌至兩月低、能源價格回落，Venture Global -6.04%。"
+ },
+ "WTI": {
+  "Type": "macro",
+  "Catalyst": "油價暴跌 — 美伊和平協議/荷莫茲海峽重開使原油跌至兩月低，W&T Offshore -10.71%。"
+ },
+ "WYHG": {
+  "Type": "news",
+  "Catalyst": "6/1 起停牌 (news pending)，消息未明 — 盤前 -20.09%，屬停牌前後不確定性，缺明確基本面利空，避免。"
+ },
+ "XNDU": {
+  "Type": "momentum",
+  "Catalyst": "Xanadu Quantum — 量子運算族群動能 (光量子)，+7.04%，隨 IONQ/QBTS/RGTI 板塊反彈。"
+ },
+ "SPCX": {
+  "Type": "momentum",
+  "Catalyst": "太空/SpaceX 概念 — 太空族群動能，+5.62%。"
+ },
+ "JBLU": {
+  "Type": "macro",
+  "Catalyst": "航空股 — 美伊和平協議使油價跌至兩月低、燃油成本下降利多航空，JetBlue +5.99% (惟 S&P 近期下調信評，基本面承壓)。"
+ },
+ "STLA": {
+  "Type": "momentum",
+  "Catalyst": "汽車股 — Stellantis 隨車廠/週期股反彈 + 油價回落題材，+5.68%。"
+ },
+ "VYX": {
+  "Type": "momentum",
+  "Catalyst": "NCR Voyix — 數位商務/支付，盤後 +6.38%，板塊動能。"
+ },
+ "ASM": {
+  "Type": "macro",
+  "Catalyst": "貴金屬族群集體飆升 — 美伊和平協議 6/19 瑞士簽署 + 荷莫茲海峽重開，金價站上 $4,331/盎司、銀價衝 $70.8，銀礦商 Avino 隨族群跳漲，+7.76%。"
+ },
+ "AU": {
+  "Type": "macro",
+  "Catalyst": "金價突破 $4,300/盎司 (+$110) 推升大型金礦商，AngloGold Ashanti ADR 隨金價同步跳漲，+8.37%。"
+ },
+ "CMTL": {
+  "Type": "M&A",
+  "Catalyst": "Gilat 宣布以 $157.5M 現金收購 Comtech 衛星與太空通訊事業群 (Satellite & Space Communications，預計 2026 年底完成)，市場視為解鎖低估資產 + 修補資產負債表關鍵催化，+14.08%。"
+ },
+ "EQX": {
+  "Type": "macro",
+  "Catalyst": "美伊和平協議引爆金價站上 $4,331/盎司，中型金礦商 Equinox Gold 隨族群集體跳漲，+6.83%。"
+ },
+ "EXK": {
+  "Type": "macro",
+  "Catalyst": "銀價衝向 $70.8/盎司 + 美元走弱，白銀礦商 Endeavour Silver 隨貴金屬族群飆升，+7.1%。"
+ },
+ "FISV": {
+  "Type": "analyst",
+  "Catalyst": "多家分析師接連降評 — BNP Paribas 降至 Underperform/PT $46、Raymond James 降至 Market Perform、Wells Fargo 砍目標價，聚焦有機營收放緩 (Q1 有機 -4%) 與 Merchant 利潤率惡化 (34%→26%)，盤前 -7.07%。"
+ },
+ "FSM": {
+  "Type": "macro",
+  "Catalyst": "金價站上 $4,331、銀價衝 $70.8，金銀雙礦商 Fortuna Mining 隨貴金屬族群集體跳漲，+6.38%。"
+ },
+ "KOS": {
+  "Type": "macro",
+  "Catalyst": "美伊和平談判使 WTI 暴跌 4.7%/Brent 跌 2.87% 至兩月低，戰爭溢價消退衝擊高損益平衡離岸生產商 Kosmos 現金流與股利覆蓋，盤前 -4.15%。"
+ },
+ "LRCX": {
+  "Type": "analyst",
+  "Catalyst": "記憶體設備受惠 — Morgan Stanley 升評 Overweight/PT $331 + Wells Fargo/UBS/Mizuho 連環上修，押注 DRAM/NAND/HBM 定價強勁 + Lam 上修 2026 WFE 市場至 $1,400 億，+5.5%。"
+ },
+ "OUST": {
+  "Type": "contract",
+  "Catalyst": "與 FieldAI 商業合作，Rev8 原生彩色數位光達整合進通用型移動機器人；加上 ARGUS 反無人機 + Rosenblatt 目標價 $40→$53，+7.29%。"
+ },
+ "RR": {
+  "Type": "momentum",
+  "Catalyst": "6/15-18 San Antonio HITEC 2026 展演 ADAM 雙臂餐飲機器人 + DUST-E S 清潔機器人重獲能見度 (惟有 6/9 財報重編 + Nasdaq 未合規風險)，+5.63%。"
+ },
+ "STX": {
+  "Type": "analyst",
+  "Catalyst": "AI 驅動 HDD 需求 + 供給吃緊連環上修 — Citi PT $1,150、Mizuho $1,090、BofA $1,000、JPMorgan $920，疊加 HAMR 平台 + 雲端商多年期 build-to-order 協議，+7.84%。"
+ }
 }
