@@ -1,26 +1,26 @@
 {
   "date": "2026-06-16",
-  "scanTime": "21:16",
-  "scanTimestamp": "2026-06-16T21:16",
+  "scanTime": "21:17",
+  "scanTimestamp": "2026-06-16T21:17",
   "stocks": {
-    "QTEX": {
-      "symbol": "QTEX",
-      "name": "Qtrex Quantum Ltd",
+    "AIIO": {
+      "symbol": "AIIO",
+      "name": "Robo.Ai Inc",
       "type": "momentum",
-      "catalyst": "與前五大量子運算商策略合作 + AME 增材電子達 97% 良率；曾單日 +140%，6/25-26 Quantum.Tech 世界展；營收僅 $28.9 萬高度投機。",
+      "catalyst": "6/1 完成 Neurovia AI 100% 收購 ($100M 換股)、NeuroStream 4K 影像壓縮 96.37% 題材已炒過，今回吐獲利了結；曾自 <$1 衝破 $9。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=QTEX"
+          "url": "https://finviz.com/quote.ashx?t=AIIO"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/QTEX"
+          "url": "https://finance.yahoo.com/quote/AIIO"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-QTEX/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AIIO/news/"
         }
       ],
       "publishedAt": null,
@@ -28,51 +28,119 @@
       "sources": null,
       "sessions": [
         {
-          "last": 2.37,
-          "chgPct": 7.73,
-          "volume": 4577949,
+          "last": 2.64,
+          "chgPct": -4.35,
+          "volume": 141978,
+          "session": "pre",
+          "direction": "down",
+          "name": "Robo.Ai Inc",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "down",
+      "last": 2.64,
+      "chgPct": -4.35,
+      "volume": 141978,
+      "tv": null,
+      "shortFloat": 13.9,
+      "shortRatio": 0.16,
+      "marketCap_M": 54.11,
+      "floatShares_M": 13.7,
+      "perf1M": -51.06,
+      "perf3M": 10.58,
+      "perf6M": -75.86,
+      "perfYTD": -54.77,
+      "perf12M": -92.99,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 2.78,
+        "high": 2.97,
+        "low": 2.65,
+        "close": 2.72,
+        "volume": 1507400,
+        "prev_close": 3.02
+      }
+    },
+    "UPC": {
+      "symbol": "UPC",
+      "name": "Universe Pharmaceuticals Inc",
+      "type": "momentum",
+      "catalyst": "低浮籌中概股投機性拉抬，中藥 (老年保健) holding，薄量假期後散戶炒作，無明確消息。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=UPC"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/UPC"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-UPC/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 4.0,
+          "chgPct": 28.21,
+          "volume": 4092248,
           "session": "pre",
           "direction": "up",
-          "name": "Qtrex Quantum Ltd",
+          "name": "Universe Pharmaceuticals Inc",
           "sessionDate": "2026-06-16",
           "targetDate": "2026-06-16"
         }
       ],
       "primarySession": "pre",
       "primaryDirection": "up",
-      "last": 2.37,
-      "chgPct": 7.73,
-      "volume": 4577949,
+      "last": 4.0,
+      "chgPct": 28.21,
+      "volume": 4092248,
       "tv": null,
-      "shortFloat": 19.29,
-      "shortRatio": 0.31,
-      "marketCap_M": 95.87,
-      "floatShares_M": 42.6,
-      "perf1M": 455.98,
-      "perf3M": 265.02,
-      "perf6M": 94.69,
-      "perfYTD": 144.44,
-      "perf12M": 203.07,
-      "prevOhlcv": null
+      "shortFloat": 3.2,
+      "shortRatio": 0.46,
+      "marketCap_M": 1.97,
+      "floatShares_M": 0.29,
+      "perf1M": 16.41,
+      "perf3M": 20.18,
+      "perf6M": -25.18,
+      "perfYTD": -18.11,
+      "perf12M": -21.61,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 3.11,
+        "high": 3.24,
+        "low": 3.1,
+        "close": 3.24,
+        "volume": 5100,
+        "prev_close": 3.25
+      }
     },
-    "SLXN": {
-      "symbol": "SLXN",
-      "name": "Silexion Therapeutics Corp",
-      "type": "momentum",
-      "catalyst": "RNAi 胰腺癌生技 ($0.43 低價股)，無新消息，前波拉抬後技術性回檔；Phase 2/3 H1 2026 目標。",
+    "ALVO": {
+      "symbol": "ALVO",
+      "name": "Alvotech",
+      "type": "news",
+      "catalyst": "生物相似藥商個股利空回檔，近期 FDA Form 483、AGM、做市協議等中性事件交雜，無單一明確催化，股價低位 ($3.5)。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=SLXN"
+          "url": "https://finviz.com/quote.ashx?t=ALVO"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/SLXN"
+          "url": "https://finance.yahoo.com/quote/ALVO"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-SLXN/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-ALVO/news/"
         }
       ],
       "publishedAt": null,
@@ -80,51 +148,59 @@
       "sources": null,
       "sessions": [
         {
-          "last": 2.61,
-          "chgPct": -5.17,
-          "volume": 807804,
+          "last": 3.91,
+          "chgPct": -7.78,
+          "volume": 126081,
           "session": "post",
           "direction": "down",
-          "name": "Silexion Therapeutics Corp",
+          "name": "Alvotech",
           "sessionDate": "2026-06-15",
           "targetDate": "2026-06-16"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "down",
-      "last": 2.61,
-      "chgPct": -5.17,
-      "volume": 807804,
+      "last": 3.91,
+      "chgPct": -7.78,
+      "volume": 126081,
       "tv": null,
-      "shortFloat": 38.74,
-      "shortRatio": 0.26,
-      "marketCap_M": 1.15,
-      "floatShares_M": 0.4,
-      "perf1M": -44.87,
-      "perf3M": -82.48,
-      "perf6M": -90.95,
-      "perfYTD": -85.68,
-      "perf12M": -97.9,
-      "prevOhlcv": null
+      "shortFloat": 2.6,
+      "shortRatio": 5.17,
+      "marketCap_M": 1320,
+      "floatShares_M": 112.67,
+      "perf1M": 23.62,
+      "perf3M": 17.45,
+      "perf6M": -26.26,
+      "perfYTD": -17.35,
+      "perf12M": -56.47,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 4.31,
+        "high": 4.45,
+        "low": 4.16,
+        "close": 4.17,
+        "volume": 531900,
+        "prev_close": 4.22
+      }
     },
-    "VLN": {
-      "symbol": "VLN",
-      "name": "Valens Semiconductor Ltd",
-      "type": "contract",
-      "catalyst": "6/16 宣布 HDBaseT 晶片組入選 Barco ClickShare USB-C over CAT 延伸套件連接基礎；此前 Q1 EPS beat 曾帶動 +5%。",
+    "RGNT": {
+      "symbol": "RGNT",
+      "name": "Regentis Biomaterials Ltd",
+      "type": "news",
+      "catalyst": "6/15 因 GelrinC 軟骨療法 Q3 啟動歐洲外科醫師培訓暴漲近 174% ($1.50→$4.02) 後獲利了結；同時撤回 F-1 公開發行 (減少稀釋疑慮但漲多回吐)。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=VLN"
+          "url": "https://finviz.com/quote.ashx?t=RGNT"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/VLN"
+          "url": "https://finance.yahoo.com/quote/RGNT"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-VLN/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-RGNT/news/"
         }
       ],
       "publishedAt": null,
@@ -132,131 +208,120 @@
       "sources": null,
       "sessions": [
         {
-          "last": 2.55,
-          "chgPct": 4.08,
-          "volume": 108465,
+          "last": 7.94,
+          "chgPct": -15.53,
+          "volume": 2345100,
+          "session": "pre",
+          "direction": "down",
+          "name": "Regentis Biomaterials Ltd",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        },
+        {
+          "last": 8.54,
+          "chgPct": -9.15,
+          "volume": 7747892,
+          "session": "post",
+          "direction": "down",
+          "name": "Regentis Biomaterials Ltd",
+          "sessionDate": "2026-06-15",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "down",
+      "last": 7.94,
+      "chgPct": -15.53,
+      "volume": 2345100,
+      "tv": null,
+      "shortFloat": 1.03,
+      "shortRatio": 0.01,
+      "marketCap_M": 48.69,
+      "floatShares_M": 2.48,
+      "perf1M": 358.54,
+      "perf3M": 195.59,
+      "perf6M": 31.65,
+      "perfYTD": 39.47,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 1.85,
+        "high": 1.86,
+        "low": 1.5,
+        "close": 1.5,
+        "volume": 1061500,
+        "prev_close": 1.9
+      }
+    },
+    "LTH": {
+      "symbol": "LTH",
+      "name": "Life Time Group Holdings Inc",
+      "type": "analyst",
+      "catalyst": "高端健身/健康會員題材獲多家券商上調目標 (RBC→$43、Jefferies→$41 Buy)，14 位分析師『強力買進』共識；Q1 EPS $0.40 營收 $788.7M (+12%)。",
+      "newsDetail": "Life Time Group 盤後 +10.5%，高端健身/健康會員題材獲多家券商上調目標價 — **RBC→$43、Jefferies→$41 (Buy)**，14 位分析師維持『強力買進』共識。\n\n最新季 (Q1) **EPS $0.40、營收 $788.7M (+12% YoY)**，會員費與高端設施帶動穩定現金流，去槓桿進度持續。\n\n股價 3 個月 +31%、YTD +29%，動能穩健且非低浮籌投機。\n\n關注重點：消費韌性與高端會員續約率，留意整體大盤情緒對非必需消費類股的影響。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=LTH"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/LTH"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-LTH/news/"
+        }
+      ],
+      "publishedAt": "2026-06-15T16:05:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "RBC / Jefferies research notes (Briefing.com)",
+          "url": "https://www.briefing.com/"
+        },
+        {
+          "label": "Yahoo Finance — LTH",
+          "url": "https://finance.yahoo.com/quote/LTH/"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 37.84,
+          "chgPct": 10.49,
+          "volume": 125070,
           "session": "post",
           "direction": "up",
-          "name": "Valens Semiconductor Ltd",
+          "name": "Life Time Group Holdings Inc",
           "sessionDate": "2026-06-15",
           "targetDate": "2026-06-16"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "up",
-      "last": 2.55,
-      "chgPct": 4.08,
-      "volume": 108465,
-      "tv": {
-        "latestEPS": -0.05,
-        "consensusEPS": -0.06,
-        "priorYrEPS": -0.03,
-        "surpriseEPS_pct": 21.05,
-        "surpriseEPS_dollar": 0.009999999999999995,
-        "latestRev_M": 16.86,
-        "consensusRev_M": 16.47,
-        "priorYrRev_M": 16.83,
-        "surpriseRev_pct": 2.38,
-        "yrYrRev_pct": 0.1782531194295968,
-        "epsYoY_pct": -66.66666666666669,
-        "epsEst_next4": [
-          -0.04,
-          -0.03,
-          -0.02,
-          -0.03
-        ],
-        "revEst_next4": [
-          17.4,
-          19.37,
-          21.97,
-          20.67
-        ],
-        "yoyBlock": "-66.67% / +0.18%\n--------------------\n+0.00% / +1.99%\n+25.00% / +11.71%\n+50.00% / +13.25%\n+40.00% / +22.60%",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27"
-          ],
-          "eps_reported": [
-            -0.04,
-            -0.03,
-            -0.02,
-            -0.03,
-            -0.04,
-            -0.04,
-            -0.04,
-            -0.05,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -0.08,
-            -0.06,
-            -0.03,
-            -0.03,
-            -0.03,
-            -0.06,
-            -0.04,
-            -0.06,
-            -0.04,
-            -0.03,
-            -0.02,
-            -0.03
-          ],
-          "rev_reported_M": [
-            13.6,
-            16.04,
-            16.66,
-            16.83,
-            17.06,
-            17.34,
-            19.4,
-            16.86,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            12.71,
-            15.1,
-            16.2,
-            16.48,
-            16.7,
-            15.39,
-            18.77,
-            16.47,
-            17.4,
-            19.37,
-            21.97,
-            20.67
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null
+      "last": 37.84,
+      "chgPct": 10.49,
+      "volume": 125070,
+      "tv": null,
+      "shortFloat": 5.72,
+      "shortRatio": 3.07,
+      "marketCap_M": 7620,
+      "floatShares_M": 164.86,
+      "perf1M": 1.45,
+      "perf3M": 31.13,
+      "perf6M": 32.24,
+      "perfYTD": 28.86,
+      "perf12M": 26.2,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 35.0,
+        "high": 35.03,
+        "low": 34.17,
+        "close": 34.31,
+        "volume": 2215500,
+        "prev_close": 34.87
       },
-      "shortFloat": 2.15,
-      "shortRatio": 0.56,
-      "marketCap_M": 257.97,
-      "floatShares_M": 76.26,
-      "perf1M": -27.3,
-      "perf3M": 84.21,
-      "perf6M": 50.31,
-      "perfYTD": 72.54,
-      "perf12M": 18.93,
-      "prevOhlcv": null
+      "neglected": false
     },
     "STX": {
       "symbol": "STX",
@@ -328,24 +393,24 @@
       },
       "neglected": false
     },
-    "YDES": {
-      "symbol": "YDES",
-      "name": "Yd Bio Limited",
+    "SLXN": {
+      "symbol": "SLXN",
+      "name": "Silexion Therapeutics Corp",
       "type": "momentum",
-      "catalyst": "血液癌篩/幹細胞生技，無明確消息，技術面 MACD/Aroon 轉空回檔 (前波拉抬後)。",
+      "catalyst": "RNAi 胰腺癌生技 ($0.43 低價股)，無新消息，前波拉抬後技術性回檔；Phase 2/3 H1 2026 目標。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=YDES"
+          "url": "https://finviz.com/quote.ashx?t=SLXN"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/YDES"
+          "url": "https://finance.yahoo.com/quote/SLXN"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-YDES/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SLXN/news/"
         }
       ],
       "publishedAt": null,
@@ -353,51 +418,59 @@
       "sources": null,
       "sessions": [
         {
-          "last": 2.9,
-          "chgPct": -14.46,
-          "volume": 158370,
-          "session": "pre",
+          "last": 2.61,
+          "chgPct": -5.17,
+          "volume": 807804,
+          "session": "post",
           "direction": "down",
-          "name": "Yd Bio Limited",
-          "sessionDate": "2026-06-16",
+          "name": "Silexion Therapeutics Corp",
+          "sessionDate": "2026-06-15",
           "targetDate": "2026-06-16"
         }
       ],
-      "primarySession": "pre",
+      "primarySession": "post",
       "primaryDirection": "down",
-      "last": 2.9,
-      "chgPct": -14.46,
-      "volume": 158370,
+      "last": 2.61,
+      "chgPct": -5.17,
+      "volume": 807804,
       "tv": null,
-      "shortFloat": 0.12,
-      "shortRatio": 0.89,
-      "marketCap_M": 239.98,
-      "floatShares_M": 14.13,
-      "perf1M": -33,
-      "perf3M": -56.4,
-      "perf6M": -73.03,
-      "perfYTD": -72.19,
-      "perf12M": -71.75,
-      "prevOhlcv": null
+      "shortFloat": 38.74,
+      "shortRatio": 0.26,
+      "marketCap_M": 1.15,
+      "floatShares_M": 0.4,
+      "perf1M": -44.87,
+      "perf3M": -82.48,
+      "perf6M": -90.95,
+      "perfYTD": -85.68,
+      "perf12M": -97.9,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 3.14,
+        "high": 3.19,
+        "low": 3.0,
+        "close": 3.13,
+        "volume": 36200,
+        "prev_close": 3.09
+      }
     },
-    "SHMD": {
-      "symbol": "SHMD",
-      "name": "Schmid Group N.V. Cl A",
+    "CRVO": {
+      "symbol": "CRVO",
+      "name": "Cervomed Inc",
       "type": "news",
-      "catalyst": "太陽能/半導體設備商；消息為中山番禺 €11M 中國新廠 (產能近翻倍，2027 中投產)，6/12 一度因該案下跌、今反彈。",
+      "catalyst": "neflamapimod DLB Phase 3 收案完成 + 6/15 出席 H.C. Wainwright Neuro 峰會 + 董事 Boger 6/11 內部人增持 $3.0M (95.5 萬股@$3.14)；惟 6/10 有 $10.5M 私募稀釋。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=SHMD"
+          "url": "https://finviz.com/quote.ashx?t=CRVO"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/SHMD"
+          "url": "https://finance.yahoo.com/quote/CRVO"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-SHMD/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-CRVO/news/"
         }
       ],
       "publishedAt": null,
@@ -405,222 +478,69 @@
       "sources": null,
       "sessions": [
         {
-          "last": 6.95,
-          "chgPct": 11.56,
-          "volume": 272719,
+          "last": 3.1,
+          "chgPct": 25.0,
+          "volume": 12370220,
           "session": "pre",
           "direction": "up",
-          "name": "Schmid Group N.V. Cl A",
-          "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "up",
-      "last": 6.95,
-      "chgPct": 11.56,
-      "volume": 272719,
-      "tv": null,
-      "shortFloat": 6.16,
-      "shortRatio": 1.64,
-      "marketCap_M": 432.1,
-      "floatShares_M": 26.38,
-      "perf1M": -6.17,
-      "perf3M": -4.45,
-      "perf6M": 20.27,
-      "perfYTD": 0.56,
-      "perf12M": 133.33,
-      "prevOhlcv": null
-    },
-    "HITI": {
-      "symbol": "HITI",
-      "name": "High Tide Inc",
-      "type": "earnings",
-      "catalyst": "6/15 盤後 Q2 FY26 創紀錄營收 C$179.3M (YoY +30% vs C$137.8M)、Adj. EBITDA C$13.9M；加拿大最大大麻零售連鎖。",
-      "newsDetail": "High Tide 於 6/15 盤後公布 Q2 FY26 (截至 4/30) 財報，**營收創紀錄 C$179.3M、YoY +30%** (去年同期 C$137.8M)，連續多季維持雙位數成長。\n\n**Adj. EBITDA C$13.9M**、連續 25 季為正，自由現金流持續轉強；公司為加拿大最大大麻零售連鎖 (Canna Cabana)，並以 Cabana Club 會員模式累積黏著度。\n\n管理層重申 FY26 全年營收與 Adj. EBITDA 指引，並持續以併購整併加拿大零售市佔。\n\n關注重點：開盤後能否守住 C$179M 營收里程碑帶來的動能，以及大麻類股族群 (TLRY/CGC) 是否同向。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=HITI"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/HITI"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-HITI/news/"
-        }
-      ],
-      "publishedAt": "2026-06-15T16:01:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "High Tide Q2 FY26 業績新聞稿 (IR)",
-          "url": "https://www.hightideinc.com/investors/"
-        },
-        {
-          "label": "Yahoo Finance — HITI",
-          "url": "https://finance.yahoo.com/quote/HITI/"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 2.59,
-          "chgPct": 15.11,
-          "volume": 3242794,
-          "session": "pre",
-          "direction": "up",
-          "name": "High Tide Inc",
+          "name": "Cervomed Inc",
           "sessionDate": "2026-06-16",
           "targetDate": "2026-06-16"
         },
         {
-          "last": 2.62,
-          "chgPct": 16.39,
-          "volume": 3658247,
+          "last": 3.36,
+          "chgPct": 35.4,
+          "volume": 9368704,
           "session": "post",
           "direction": "up",
-          "name": "High Tide Inc",
+          "name": "Cervomed Inc",
           "sessionDate": "2026-06-15",
           "targetDate": "2026-06-16"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "up",
-      "last": 2.62,
-      "chgPct": 16.39,
-      "volume": 3658247,
-      "tv": {
-        "latestEPS": 0.01,
-        "consensusEPS": -0.02,
-        "priorYrEPS": -0.03,
-        "surpriseEPS_pct": 150.0,
-        "surpriseEPS_dollar": 0.03,
-        "latestRev_M": 131.91,
-        "consensusRev_M": 125.93,
-        "priorYrRev_M": 99.86,
-        "surpriseRev_pct": 4.75,
-        "yrYrRev_pct": 32.09493290606849,
-        "epsYoY_pct": 133.33333333333334,
-        "epsEst_next4": [
-          0.01,
-          0.02,
-          0.03,
-          0.03
-        ],
-        "revEst_next4": [
-          131.04,
-          135.21,
-          139.56,
-          137.41
-        ],
-        "yoyBlock": "+133.33% / +32.09%\n--------------------\n+0.00% / +21.29%\n+104.35% / +15.54%\n+200.00% / +6.63%\n+200.00% / +4.17%",
-        "chart": {
-          "quarters": [
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q1 '21"
-          ],
-          "eps_reported": [
-            0.01,
-            -0.04,
-            -0.02,
-            -0.03,
-            0.01,
-            -0.46,
-            0.01,
-            0.01,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -0.01,
-            -0.01,
-            -0.02,
-            -0.03,
-            0.0,
-            0.0,
-            0.0,
-            -0.02,
-            0.01,
-            0.02,
-            0.03,
-            0.03
-          ],
-          "rev_reported_M": [
-            95.36,
-            99.22,
-            98.02,
-            99.86,
-            108.04,
-            117.02,
-            130.88,
-            131.91,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            92.66,
-            97.11,
-            92.5,
-            100.35,
-            106.42,
-            113.5,
-            127.34,
-            125.93,
-            131.04,
-            135.21,
-            139.56,
-            137.41
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-06-16"
-      },
-      "shortFloat": 0.58,
-      "shortRatio": 0.89,
-      "marketCap_M": 197.78,
-      "floatShares_M": 76.67,
-      "perf1M": -6.25,
-      "perf3M": -9.64,
-      "perf6M": -14.45,
-      "perfYTD": -15.09,
-      "perf12M": -1.32,
-      "prevOhlcv": null,
-      "neglected": true
+      "last": 3.36,
+      "chgPct": 35.4,
+      "volume": 9368704,
+      "tv": null,
+      "shortFloat": 5.48,
+      "shortRatio": 1.19,
+      "marketCap_M": 22.96,
+      "floatShares_M": 4.8,
+      "perf1M": -34.04,
+      "perf3M": -42.46,
+      "perf6M": -69.72,
+      "perfYTD": -68.61,
+      "perf12M": -65.17,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 2.49,
+        "high": 2.61,
+        "low": 2.37,
+        "close": 2.45,
+        "volume": 131800,
+        "prev_close": 2.44
+      }
     },
-    "SPCQ": {
-      "symbol": "SPCQ",
-      "name": "Defiance Daily Target 2X Short Spacex ETF",
-      "type": "macro",
-      "catalyst": "Defiance 2X Short SpaceX ETF (-200% SPCX 日報酬)；SpaceX 持續飆漲使反向 ETF 重挫，與 SPAX 鏡像。",
+    "CAST": {
+      "symbol": "CAST",
+      "name": "Freecast Inc Cl A",
+      "type": "momentum",
+      "catalyst": "上週五因 DIRECTV 住宅/PaaS 擴約暴漲 >100% 後獲利了結；財報僅 $9.3 萬營收、$453 萬淨損、現金 $11.9 萬並列『持續經營重大疑慮』。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=SPCQ"
+          "url": "https://finviz.com/quote.ashx?t=CAST"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/SPCQ"
+          "url": "https://finance.yahoo.com/quote/CAST"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-SPCQ/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-CAST/news/"
         }
       ],
       "publishedAt": null,
@@ -628,272 +548,50 @@
       "sources": null,
       "sessions": [
         {
-          "last": 10.67,
-          "chgPct": -12.68,
-          "volume": 817078,
+          "last": 3.36,
+          "chgPct": -10.4,
+          "volume": 1106031,
           "session": "pre",
           "direction": "down",
-          "name": "Defiance Daily Target 2X Short Spacex ETF",
-          "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "down",
-      "last": 10.67,
-      "chgPct": -12.68,
-      "volume": 817078,
-      "tv": null,
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
-      "prevOhlcv": null
-    },
-    "CUPR": {
-      "symbol": "CUPR",
-      "name": "Cuprina Holdings [Cayman] Limited",
-      "type": "FDA",
-      "catalyst": "MEDIFLY 蛆蟲清創產品獲美 FDA 510(k) 首例 Lucilia cuprina 許可，週一盤中暴漲 112% 至 $8.41 後獲利了結回吐；負淨值 -$4.46M。",
-      "newsDetail": "Cuprina Holdings 的 MEDIFLY 蛆蟲清創產品獲美國 **FDA 510(k) 首例 Lucilia cuprina 許可**，週一盤中一度暴漲 112% 至 $8.41。\n\n隨後獲利了結回吐，盤後 -22%、盤前再 -26%，呈典型 FDA 利多後的 boom-fade。\n\n基本面薄弱：**負淨值 -$4.46M**、市值僅 $7.74M、浮籌極低 (0.92M 股)，本益比/市銷比極端。\n\n關注重點：純消息面投機股，方向劇烈雙向，做空需留意低浮籌軋空風險。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=CUPR"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/CUPR"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-CUPR/news/"
-        }
-      ],
-      "publishedAt": "2026-06-16T07:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Cuprina FDA 510(k) 新聞稿",
-          "url": "https://www.cuprina.com/"
-        },
-        {
-          "label": "Yahoo Finance — CUPR",
-          "url": "https://finance.yahoo.com/quote/CUPR/"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 6.21,
-          "chgPct": -26.17,
-          "volume": 180732,
-          "session": "pre",
-          "direction": "down",
-          "name": "Cuprina Holdings [Cayman] Limited",
+          "name": "Freecast Inc Cl A",
           "sessionDate": "2026-06-16",
           "targetDate": "2026-06-16"
         },
         {
-          "last": 6.52,
-          "chgPct": -22.47,
-          "volume": 470860,
+          "last": 3.15,
+          "chgPct": -16.0,
+          "volume": 1957991,
           "session": "post",
           "direction": "down",
-          "name": "Cuprina Holdings [Cayman] Limited",
+          "name": "Freecast Inc Cl A",
           "sessionDate": "2026-06-15",
           "targetDate": "2026-06-16"
         }
       ],
-      "primarySession": "pre",
+      "primarySession": "post",
       "primaryDirection": "down",
-      "last": 6.21,
-      "chgPct": -26.17,
-      "volume": 180732,
+      "last": 3.15,
+      "chgPct": -16.0,
+      "volume": 1957991,
       "tv": null,
-      "shortFloat": 9.26,
-      "shortRatio": 0.04,
-      "marketCap_M": 7.74,
-      "floatShares_M": 0.92,
-      "perf1M": 292.26,
-      "perf3M": 191.61,
-      "perf6M": 112.37,
-      "perfYTD": 162.75,
-      "perf12M": -81.65,
+      "shortFloat": 0.68,
+      "shortRatio": 0.02,
+      "marketCap_M": 155.03,
+      "floatShares_M": 16.52,
+      "perf1M": 101.61,
+      "perf3M": 23.76,
+      "perf6M": null,
+      "perfYTD": -58.93,
+      "perf12M": null,
       "prevOhlcv": {
         "date": "2026-06-12",
-        "open": 3.26,
-        "high": 8.23,
-        "low": 3.21,
-        "close": 3.97,
-        "volume": 83262200,
-        "prev_close": 2.41
+        "open": 0.6,
+        "high": 2.0,
+        "low": 0.58,
+        "close": 1.55,
+        "volume": 208124900,
+        "prev_close": 0.64
       }
-    },
-    "QCOM": {
-      "symbol": "QCOM",
-      "name": "Qualcomm Inc",
-      "type": "news",
-      "catalyst": "CEO Amon 宣布開發 40+ 款 AI 裝置押注『後 App 時代』，市場盛傳 $100 億 Tenstorrent 交易；近期 Baird→$300、JPM→$265 升評，6/24 Investor Day。",
-      "newsDetail": "Qualcomm 盤前 +5%，CEO Cristiano Amon 公開宣示將開發 **40+ 款 AI 裝置**，押注『後 App 時代』的端側 AI 運算佈局。\n\n市場同時盛傳 Qualcomm 接近敲定 **約 $100 億的 Tenstorrent 交易** (AI 加速器/RISC-V IP)，強化資料中心與 AI 推論版圖。\n\n近期分析師動作偏多：**Baird 上調目標價至 $300、JPMorgan 至 $265**，估值仍相對同業折價。\n\n催化劑時程：**6/24 Investor Day** 將揭露更多 AI/汽車/IoT 多元化進度，為短中期關鍵事件。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=QCOM"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/QCOM"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-QCOM/news/"
-        }
-      ],
-      "publishedAt": "2026-06-16T07:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Reuters — Qualcomm AI device strategy",
-          "url": "https://www.reuters.com/technology/"
-        },
-        {
-          "label": "Qualcomm Investor Relations",
-          "url": "https://investor.qualcomm.com/"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 232.21,
-          "chgPct": 5.16,
-          "volume": 400120,
-          "session": "pre",
-          "direction": "up",
-          "name": "Qualcomm Inc",
-          "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "up",
-      "last": 232.21,
-      "chgPct": 5.16,
-      "volume": 400120,
-      "tv": {
-        "latestEPS": 2.65,
-        "consensusEPS": 2.56,
-        "priorYrEPS": 2.85,
-        "surpriseEPS_pct": 3.58,
-        "surpriseEPS_dollar": 0.08999999999999986,
-        "latestRev_M": 10600.0,
-        "consensusRev_M": 10590.0,
-        "priorYrRev_M": 10840.0,
-        "surpriseRev_pct": 0.08,
-        "yrYrRev_pct": -2.214022140221402,
-        "epsYoY_pct": -7.0175438596491295,
-        "epsEst_next4": [
-          2.21,
-          2.35,
-          2.69,
-          2.52
-        ],
-        "revEst_next4": [
-          9660.0,
-          10000.0,
-          10770.0,
-          10400.0
-        ],
-        "yoyBlock": "-7.02% / -2.21%\n--------------------\n-20.22% / -6.85%\n-21.67% / -11.27%\n-23.14% / -12.08%\n-4.91% / -1.89%",
-        "chart": {
-          "quarters": [
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27"
-          ],
-          "eps_reported": [
-            2.33,
-            2.69,
-            3.41,
-            2.85,
-            2.77,
-            3.0,
-            3.5,
-            2.65,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            2.25,
-            2.56,
-            2.96,
-            2.82,
-            2.71,
-            2.87,
-            3.39,
-            2.56,
-            2.21,
-            2.35,
-            2.69,
-            2.52
-          ],
-          "rev_reported_M": [
-            9390.0,
-            10240.0,
-            11670.0,
-            10840.0,
-            10370.0,
-            11270.0,
-            12250.0,
-            10600.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            9210.0,
-            9900.0,
-            10910.0,
-            10640.0,
-            10330.0,
-            10770.0,
-            12120.0,
-            10590.0,
-            9660.0,
-            10000.0,
-            10770.0,
-            10400.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null
-      },
-      "shortFloat": 4.28,
-      "shortRatio": 2.17,
-      "marketCap_M": 232730,
-      "floatShares_M": 1050,
-      "perf1M": 10.36,
-      "perf3M": 70.65,
-      "perf6M": 21.81,
-      "perfYTD": 29.09,
-      "perf12M": 42.72,
-      "prevOhlcv": null,
-      "neglected": false
     },
     "WDC": {
       "symbol": "WDC",
@@ -1064,193 +762,24 @@
       },
       "neglected": false
     },
-    "RXT": {
-      "symbol": "RXT",
-      "name": "Rackspace Technology Inc",
-      "type": "contract",
-      "catalyst": "6/16 與 AMD 簽定協議分階段部署初始 30MW AMD 運算 (2026 末-2028)，將 5/7 MOU 落地；2026 年來股價近翻四倍。",
-      "newsDetail": "Rackspace Technology 盤前 +19.7%，宣布 **與 AMD 簽定協議分階段部署初始 30MW 的 AMD 運算容量** (2026 年底至 2028 年)，將 5/7 的 MOU 正式落地。\n\n此舉強化 Rackspace 從傳統託管轉型 AI 雲端基礎設施的敘事，提供 AMD Instinct GPU 的 AI 訓練/推論服務。\n\n股價 **2026 年來已近翻四倍** (YTD +509%)，動能極強但估值與股本稀釋已大幅反映利多。\n\n關注重點：合約金額與毛利貢獻細節尚未完全揭露，高位追價風險高，嚴設停損。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=RXT"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/RXT"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-RXT/news/"
-        }
-      ],
-      "publishedAt": "2026-06-16T07:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Rackspace / AMD 部署協議新聞稿",
-          "url": "https://www.rackspace.com/newsroom"
-        },
-        {
-          "label": "Yahoo Finance — RXT",
-          "url": "https://finance.yahoo.com/quote/RXT/"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 7.08,
-          "chgPct": 19.7,
-          "volume": 9038323,
-          "session": "pre",
-          "direction": "up",
-          "name": "Rackspace Technology Inc",
-          "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "up",
-      "last": 7.08,
-      "chgPct": 19.7,
-      "volume": 9038323,
-      "tv": {
-        "latestEPS": -0.06,
-        "consensusEPS": -0.03,
-        "priorYrEPS": -0.06,
-        "surpriseEPS_pct": -86.52,
-        "surpriseEPS_dollar": -0.03,
-        "latestRev_M": 678.1,
-        "consensusRev_M": 660.83,
-        "priorYrRev_M": 665.4,
-        "surpriseRev_pct": 2.61,
-        "yrYrRev_pct": 1.9086263901412752,
-        "epsYoY_pct": 0.0,
-        "epsEst_next4": [
-          -0.05,
-          -0.1,
-          -0.08,
-          -0.07
-        ],
-        "revEst_next4": [
-          659.04,
-          653.34,
-          662.38,
-          690.16
-        ],
-        "yoyBlock": "+0.00% / +1.91%\n--------------------\n+16.67% / -1.09%\n-100.00% / -2.66%\n-700.00% / -2.99%\n-16.67% / +1.78%",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27"
-          ],
-          "eps_reported": [
-            -0.08,
-            -0.04,
-            -0.02,
-            -0.06,
-            -0.06,
-            -0.05,
-            -0.01,
-            -0.06,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -0.11,
-            -0.07,
-            -0.04,
-            -0.08,
-            -0.05,
-            -0.05,
-            -0.04,
-            -0.03,
-            -0.05,
-            -0.1,
-            -0.08,
-            -0.07
-          ],
-          "rev_reported_M": [
-            684.9,
-            675.8,
-            685.6,
-            665.4,
-            666.3,
-            671.2,
-            682.8,
-            678.1,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            673.6,
-            675.14,
-            674.88,
-            658.18,
-            659.4,
-            666.83,
-            672.37,
-            660.83,
-            659.04,
-            653.34,
-            662.38,
-            690.16
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-05-07"
-      },
-      "shortFloat": 15.93,
-      "shortRatio": 0.78,
-      "marketCap_M": 1470,
-      "floatShares_M": 96.35,
-      "perf1M": -18.86,
-      "perf3M": 203.33,
-      "perf6M": 423.45,
-      "perfYTD": 509.23,
-      "perf12M": 365.75,
-      "prevOhlcv": {
-        "date": "2026-06-12",
-        "open": 5.52,
-        "high": 6.32,
-        "low": 5.32,
-        "close": 5.44,
-        "volume": 21665400,
-        "prev_close": 5.6
-      },
-      "neglected": false
-    },
-    "CRVO": {
-      "symbol": "CRVO",
-      "name": "Cervomed Inc",
-      "type": "news",
-      "catalyst": "neflamapimod DLB Phase 3 收案完成 + 6/15 出席 H.C. Wainwright Neuro 峰會 + 董事 Boger 6/11 內部人增持 $3.0M (95.5 萬股@$3.14)；惟 6/10 有 $10.5M 私募稀釋。",
+    "PCLA": {
+      "symbol": "PCLA",
+      "name": "Picocela Inc ADR",
+      "type": "momentum",
+      "catalyst": "日本企業級 Wi-Fi mesh ADR，6/15 盤後 +28% 無明確催化，低浮籌投機性拉抬。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=CRVO"
+          "url": "https://finviz.com/quote.ashx?t=PCLA"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/CRVO"
+          "url": "https://finance.yahoo.com/quote/PCLA"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-CRVO/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-PCLA/news/"
         }
       ],
       "publishedAt": null,
@@ -1258,42 +787,40 @@
       "sources": null,
       "sessions": [
         {
-          "last": 3.1,
-          "chgPct": 25.0,
-          "volume": 12370220,
-          "session": "pre",
-          "direction": "up",
-          "name": "Cervomed Inc",
-          "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        },
-        {
-          "last": 3.36,
-          "chgPct": 35.4,
-          "volume": 9368704,
+          "last": 6.08,
+          "chgPct": 26.67,
+          "volume": 401252,
           "session": "post",
           "direction": "up",
-          "name": "Cervomed Inc",
+          "name": "Picocela Inc ADR",
           "sessionDate": "2026-06-15",
           "targetDate": "2026-06-16"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "up",
-      "last": 3.36,
-      "chgPct": 35.4,
-      "volume": 9368704,
+      "last": 6.08,
+      "chgPct": 26.67,
+      "volume": 401252,
       "tv": null,
-      "shortFloat": 5.48,
-      "shortRatio": 1.19,
-      "marketCap_M": 22.96,
-      "floatShares_M": 4.8,
-      "perf1M": -34.04,
-      "perf3M": -42.46,
-      "perf6M": -69.72,
-      "perfYTD": -68.61,
-      "perf12M": -65.17,
-      "prevOhlcv": null
+      "shortFloat": 1.33,
+      "shortRatio": 0.09,
+      "marketCap_M": 46.13,
+      "floatShares_M": 9.56,
+      "perf1M": 211.69,
+      "perf3M": 105.64,
+      "perf6M": -39.65,
+      "perfYTD": -47.02,
+      "perf12M": -86.32,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 5.74,
+        "high": 5.79,
+        "low": 4.81,
+        "close": 4.81,
+        "volume": 20200,
+        "prev_close": 6.12
+      }
     },
     "SPAX": {
       "symbol": "SPAX",
@@ -1347,85 +874,24 @@
       "perf12M": null,
       "prevOhlcv": null
     },
-    "INGM": {
-      "symbol": "INGM",
-      "name": "Ingram Micro Holding Corp",
-      "type": "news",
-      "catalyst": "Platinum Equity 旗下 Ingram Holdco 二次發售約 900 萬股@$22.25，全數歸賣方、籌碼壓力導致下跌 (非基本面，Q1 營收 +13.7% YoY 達 $13.96B)。",
-      "newsDetail": "Ingram Micro 盤後 -4.3%，係 **Platinum Equity 旗下 Ingram Holdco 二次發售約 900 萬股@$22.25** 所致，發行所得全數歸出售股東。\n\n此為**籌碼/技術面壓力，非基本面惡化** — Q1 營收 +13.7% YoY 達 $13.96B，IT 配銷主業穩健。\n\nShort Float 9.52%、Days-to-cover 3.0，二次發售後浮籌增加。\n\n關注重點：二次發售屬一次性事件，下殺後若守穩 $22.25 發行價附近，反而可能止穩；不宜當作純基本面空單。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=INGM"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/INGM"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-INGM/news/"
-        }
-      ],
-      "publishedAt": "2026-06-15T16:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Ingram Micro 二次發售 8-K / 新聞稿",
-          "url": "https://investors.ingrammicro.com/"
-        },
-        {
-          "label": "Yahoo Finance — INGM",
-          "url": "https://finance.yahoo.com/quote/INGM/"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 28.8,
-          "chgPct": -4.29,
-          "volume": 273704,
-          "session": "post",
-          "direction": "down",
-          "name": "Ingram Micro Holding Corp",
-          "sessionDate": "2026-06-15",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 28.8,
-      "chgPct": -4.29,
-      "volume": 273704,
-      "tv": null,
-      "shortFloat": 9.52,
-      "shortRatio": 3,
-      "marketCap_M": 6970,
-      "floatShares_M": 46.74,
-      "perf1M": 15.91,
-      "perf3M": 35.36,
-      "perf6M": 29.59,
-      "perfYTD": 41,
-      "perf12M": 59.38,
-      "prevOhlcv": null
-    },
-    "PCLA": {
-      "symbol": "PCLA",
-      "name": "Picocela Inc ADR",
-      "type": "momentum",
-      "catalyst": "日本企業級 Wi-Fi mesh ADR，6/15 盤後 +28% 無明確催化，低浮籌投機性拉抬。",
+    "VLN": {
+      "symbol": "VLN",
+      "name": "Valens Semiconductor Ltd",
+      "type": "contract",
+      "catalyst": "6/16 宣布 HDBaseT 晶片組入選 Barco ClickShare USB-C over CAT 延伸套件連接基礎；此前 Q1 EPS beat 曾帶動 +5%。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=PCLA"
+          "url": "https://finviz.com/quote.ashx?t=VLN"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/PCLA"
+          "url": "https://finance.yahoo.com/quote/VLN"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-PCLA/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-VLN/news/"
         }
       ],
       "publishedAt": null,
@@ -1433,919 +899,318 @@
       "sources": null,
       "sessions": [
         {
-          "last": 6.08,
-          "chgPct": 26.67,
-          "volume": 401252,
+          "last": 2.55,
+          "chgPct": 4.08,
+          "volume": 108465,
           "session": "post",
           "direction": "up",
-          "name": "Picocela Inc ADR",
+          "name": "Valens Semiconductor Ltd",
           "sessionDate": "2026-06-15",
           "targetDate": "2026-06-16"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "up",
-      "last": 6.08,
-      "chgPct": 26.67,
-      "volume": 401252,
-      "tv": null,
-      "shortFloat": 1.33,
-      "shortRatio": 0.09,
-      "marketCap_M": 46.13,
-      "floatShares_M": 9.56,
-      "perf1M": 211.69,
-      "perf3M": 105.64,
-      "perf6M": -39.65,
-      "perfYTD": -47.02,
-      "perf12M": -86.32,
-      "prevOhlcv": null
-    },
-    "ALVO": {
-      "symbol": "ALVO",
-      "name": "Alvotech",
-      "type": "news",
-      "catalyst": "生物相似藥商個股利空回檔，近期 FDA Form 483、AGM、做市協議等中性事件交雜，無單一明確催化，股價低位 ($3.5)。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=ALVO"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/ALVO"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-ALVO/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 3.91,
-          "chgPct": -7.78,
-          "volume": 126081,
-          "session": "post",
-          "direction": "down",
-          "name": "Alvotech",
-          "sessionDate": "2026-06-15",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 3.91,
-      "chgPct": -7.78,
-      "volume": 126081,
-      "tv": null,
-      "shortFloat": 2.6,
-      "shortRatio": 5.17,
-      "marketCap_M": 1320,
-      "floatShares_M": 112.67,
-      "perf1M": 23.62,
-      "perf3M": 17.45,
-      "perf6M": -26.26,
-      "perfYTD": -17.35,
-      "perf12M": -56.47,
-      "prevOhlcv": null
-    },
-    "CMTL": {
-      "symbol": "CMTL",
-      "name": "Comtech Telecom Company",
-      "type": "M&A",
-      "catalyst": "Gilat (GILT) 以 $157.5M 現金收購 Comtech 衛星與太空通訊事業群 (該部門 FY25 營收 $187.8M / EBITDA $14.9M)，賣資產去槓桿。",
-      "newsDetail": "Comtech Telecommunications 宣布 **Gilat Satellite Networks (GILT) 以 $157.5M 現金收購其衛星與太空通訊事業群**。\n\n該事業群 FY25 營收 $187.8M、EBITDA $14.9M；交易讓負債沉重的 Comtech 透過賣資產**去槓桿、改善資產負債表**。\n\n股價盤後 +4.2%，市場視為清理資產、聚焦核心地面網路與 NG-911 業務的正面訊號。\n\n關注重點：交易完成後的剩餘業務體質與現金部位，以及是否引發進一步的策略檢討。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=CMTL"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/CMTL"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-CMTL/news/"
-        }
-      ],
-      "publishedAt": "2026-06-15T16:15:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Comtech / Gilat 交易新聞稿",
-          "url": "https://www.comtech.com/news/"
-        },
-        {
-          "label": "Reuters — Gilat acquires Comtech satellite unit",
-          "url": "https://www.reuters.com/markets/deals/"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 2.87,
-          "chgPct": 4.22,
-          "volume": 150499,
-          "session": "post",
-          "direction": "up",
-          "name": "Comtech Telecom Company",
-          "sessionDate": "2026-06-15",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 2.87,
-      "chgPct": 4.22,
-      "volume": 150499,
-      "tv": null,
-      "shortFloat": 1.29,
-      "shortRatio": 0.92,
-      "marketCap_M": 81.92,
-      "floatShares_M": 26.76,
-      "perf1M": -29.54,
-      "perf3M": -43.2,
-      "perf6M": -23.9,
-      "perfYTD": -47.92,
-      "perf12M": 41.28,
-      "prevOhlcv": {
-        "date": "2026-06-12",
-        "open": 4.72,
-        "high": 4.87,
-        "low": 4.61,
-        "close": 4.83,
-        "volume": 301000,
-        "prev_close": 4.59
-      },
-      "neglected": true
-    },
-    "LTH": {
-      "symbol": "LTH",
-      "name": "Life Time Group Holdings Inc",
-      "type": "analyst",
-      "catalyst": "高端健身/健康會員題材獲多家券商上調目標 (RBC→$43、Jefferies→$41 Buy)，14 位分析師『強力買進』共識；Q1 EPS $0.40 營收 $788.7M (+12%)。",
-      "newsDetail": "Life Time Group 盤後 +10.5%，高端健身/健康會員題材獲多家券商上調目標價 — **RBC→$43、Jefferies→$41 (Buy)**，14 位分析師維持『強力買進』共識。\n\n最新季 (Q1) **EPS $0.40、營收 $788.7M (+12% YoY)**，會員費與高端設施帶動穩定現金流，去槓桿進度持續。\n\n股價 3 個月 +31%、YTD +29%，動能穩健且非低浮籌投機。\n\n關注重點：消費韌性與高端會員續約率，留意整體大盤情緒對非必需消費類股的影響。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=LTH"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/LTH"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-LTH/news/"
-        }
-      ],
-      "publishedAt": "2026-06-15T16:05:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "RBC / Jefferies research notes (Briefing.com)",
-          "url": "https://www.briefing.com/"
-        },
-        {
-          "label": "Yahoo Finance — LTH",
-          "url": "https://finance.yahoo.com/quote/LTH/"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 37.84,
-          "chgPct": 10.49,
-          "volume": 125070,
-          "session": "post",
-          "direction": "up",
-          "name": "Life Time Group Holdings Inc",
-          "sessionDate": "2026-06-15",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 37.84,
-      "chgPct": 10.49,
-      "volume": 125070,
-      "tv": null,
-      "shortFloat": 5.72,
-      "shortRatio": 3.07,
-      "marketCap_M": 7620,
-      "floatShares_M": 164.86,
-      "perf1M": 1.45,
-      "perf3M": 31.13,
-      "perf6M": 32.24,
-      "perfYTD": 28.86,
-      "perf12M": 26.2,
-      "prevOhlcv": null,
-      "neglected": false
-    },
-    "STI": {
-      "symbol": "STI",
-      "name": "Solidion Technology Inc",
-      "type": "momentum",
-      "catalyst": "石墨烯電池商；Gen-ECB 極端氣候電池 (衛星/LEO 資料中心/月球) 題材 6/4-8 暴漲約 668% + $35M 私募 + 7 項新專利，搭 SpaceX 經濟熱潮，今續強。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=STI"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/STI"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-STI/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 22.2,
-          "chgPct": 6.22,
-          "volume": 416747,
-          "session": "pre",
-          "direction": "up",
-          "name": "Solidion Technology Inc",
-          "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "up",
-      "last": 22.2,
-      "chgPct": 6.22,
-      "volume": 416747,
-      "tv": null,
-      "shortFloat": 1.95,
-      "shortRatio": 0.02,
-      "marketCap_M": 161.88,
-      "floatShares_M": 2.8,
-      "perf1M": 267.31,
-      "perf3M": 335.42,
-      "perf6M": 171.43,
-      "perfYTD": 194.78,
-      "perf12M": 545.06,
-      "prevOhlcv": {
-        "date": "2026-06-12",
-        "open": 24.21,
-        "high": 28.0,
-        "low": 24.21,
-        "close": 25.27,
-        "volume": 1347900,
-        "prev_close": 25.83
-      }
-    },
-    "UPC": {
-      "symbol": "UPC",
-      "name": "Universe Pharmaceuticals Inc",
-      "type": "momentum",
-      "catalyst": "低浮籌中概股投機性拉抬，中藥 (老年保健) holding，薄量假期後散戶炒作，無明確消息。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=UPC"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/UPC"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-UPC/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 4.0,
-          "chgPct": 28.21,
-          "volume": 4092248,
-          "session": "pre",
-          "direction": "up",
-          "name": "Universe Pharmaceuticals Inc",
-          "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "up",
-      "last": 4.0,
-      "chgPct": 28.21,
-      "volume": 4092248,
-      "tv": null,
-      "shortFloat": 3.2,
-      "shortRatio": 0.46,
-      "marketCap_M": 1.97,
-      "floatShares_M": 0.29,
-      "perf1M": 16.41,
-      "perf3M": 20.18,
-      "perf6M": -25.18,
-      "perfYTD": -18.11,
-      "perf12M": -21.61,
-      "prevOhlcv": null
-    },
-    "VSME": {
-      "symbol": "VSME",
-      "name": "vs Media Holdings Limited Cl A",
-      "type": "momentum",
-      "catalyst": "低浮籌中概股；『AI Smart Living』智慧家庭題材 6/10 衝高 ($3.70→$5.38) 後崩跌，管理層自承尚無營收/合約。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=VSME"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/VSME"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-VSME/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 2.66,
-          "chgPct": -18.15,
-          "volume": 418569,
-          "session": "pre",
-          "direction": "down",
-          "name": "vs Media Holdings Limited Cl A",
-          "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        },
-        {
-          "last": 3.0,
-          "chgPct": -7.69,
-          "volume": 539814,
-          "session": "post",
-          "direction": "down",
-          "name": "vs Media Holdings Limited Cl A",
-          "sessionDate": "2026-06-15",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "down",
-      "last": 2.66,
-      "chgPct": -18.15,
-      "volume": 418569,
-      "tv": null,
-      "shortFloat": 2.69,
-      "shortRatio": 0.01,
-      "marketCap_M": 8.99,
-      "floatShares_M": 2.57,
-      "perf1M": 276.72,
-      "perf3M": 182.61,
-      "perf6M": 79.16,
-      "perfYTD": 61.53,
-      "perf12M": -84.01,
-      "prevOhlcv": {
-        "date": "2026-06-12",
-        "open": 1.76,
-        "high": 2.34,
-        "low": 1.52,
-        "close": 1.69,
-        "volume": 88234700,
-        "prev_close": 1.11
-      }
-    },
-    "AIIO": {
-      "symbol": "AIIO",
-      "name": "Robo.Ai Inc",
-      "type": "momentum",
-      "catalyst": "6/1 完成 Neurovia AI 100% 收購 ($100M 換股)、NeuroStream 4K 影像壓縮 96.37% 題材已炒過，今回吐獲利了結；曾自 <$1 衝破 $9。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AIIO"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AIIO"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AIIO/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 2.64,
-          "chgPct": -4.35,
-          "volume": 141978,
-          "session": "pre",
-          "direction": "down",
-          "name": "Robo.Ai Inc",
-          "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "down",
-      "last": 2.64,
-      "chgPct": -4.35,
-      "volume": 141978,
-      "tv": null,
-      "shortFloat": 13.9,
-      "shortRatio": 0.16,
-      "marketCap_M": 54.11,
-      "floatShares_M": 13.7,
-      "perf1M": -51.06,
-      "perf3M": 10.58,
-      "perf6M": -75.86,
-      "perfYTD": -54.77,
-      "perf12M": -92.99,
-      "prevOhlcv": null
-    },
-    "SSYS": {
-      "symbol": "SSYS",
-      "name": "Stratasys Ltd",
-      "type": "news",
-      "catalyst": "3D 列印商；Q1 (5/7) 維持全年指引、推 J850 Core 機型與夏季 Additive App Suite；隨增材製造/太空題材族群同向走強。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=SSYS"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/SSYS"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-SSYS/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 9.31,
-          "chgPct": 4.61,
-          "volume": 180139,
-          "session": "post",
-          "direction": "up",
-          "name": "Stratasys Ltd",
-          "sessionDate": "2026-06-15",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 9.31,
-      "chgPct": 4.61,
-      "volume": 180139,
-      "tv": null,
-      "shortFloat": 4.53,
-      "shortRatio": 3.16,
-      "marketCap_M": 766.94,
-      "floatShares_M": 62.23,
-      "perf1M": 1.48,
-      "perf3M": 11.11,
-      "perf6M": -5.72,
-      "perfYTD": 2.53,
-      "perf12M": -12.75,
-      "prevOhlcv": null
-    },
-    "PURR": {
-      "symbol": "PURR",
-      "name": "Hyperliquid Strategies Inc",
-      "type": "momentum",
-      "catalyst": "HYPE 代幣金庫公司，分析師喊 GameStop 式 gamma 軋空 + 6/26 納入 Russell 2000/3000 題材 (Chardan 目標 $9.75)；高波動雙向劇烈。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=PURR"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/PURR"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-PURR/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 10.48,
-          "chgPct": 12.21,
-          "volume": 857561,
-          "session": "pre",
-          "direction": "up",
-          "name": "Hyperliquid Strategies Inc",
-          "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "up",
-      "last": 10.48,
-      "chgPct": 12.21,
-      "volume": 857561,
+      "last": 2.55,
+      "chgPct": 4.08,
+      "volume": 108465,
       "tv": {
-        "latestEPS": 1.01,
-        "consensusEPS": -0.67,
-        "priorYrEPS": null,
-        "surpriseEPS_pct": 251.5,
-        "surpriseEPS_dollar": 1.6800000000000002,
-        "latestRev_M": 2.6,
-        "consensusRev_M": 1.8,
-        "priorYrRev_M": null,
-        "surpriseRev_pct": 44.44,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": null,
+        "latestEPS": -0.05,
+        "consensusEPS": -0.06,
+        "priorYrEPS": -0.03,
+        "surpriseEPS_pct": 21.05,
+        "surpriseEPS_dollar": 0.009999999999999995,
+        "latestRev_M": 16.86,
+        "consensusRev_M": 16.47,
+        "priorYrRev_M": 16.83,
+        "surpriseRev_pct": 2.38,
+        "yrYrRev_pct": 0.1782531194295968,
+        "epsYoY_pct": -66.66666666666669,
         "epsEst_next4": [
+          -0.04,
+          -0.03,
           -0.02,
-          0.0,
-          -0.01,
-          -0.01
+          -0.03
         ],
         "revEst_next4": [
-          5.42,
-          4.2,
-          4.47,
-          4.93
+          17.4,
+          19.37,
+          21.97,
+          20.67
         ],
-        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M\n+92.31% / +794.00%\n-100.99% / +89.62%",
+        "yoyBlock": "-66.67% / +0.18%\n--------------------\n+0.00% / +1.99%\n+25.00% / +11.71%\n+50.00% / +13.25%\n+40.00% / +22.60%",
         "chart": {
           "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
             "Q2 '26",
             "Q3 '26",
             "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q3 '27"
+            "Q1 '27"
           ],
           "eps_reported": [
-            -0.13,
-            1.01,
+            -0.04,
+            -0.03,
+            -0.02,
+            -0.03,
+            -0.04,
+            -0.04,
+            -0.04,
+            -0.05,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            -2.67,
-            -0.67,
+            -0.08,
+            -0.06,
+            -0.03,
+            -0.03,
+            -0.03,
+            -0.06,
+            -0.04,
+            -0.06,
+            -0.04,
+            -0.03,
             -0.02,
-            0.0,
-            -0.01,
-            -0.01
+            -0.03
           ],
           "rev_reported_M": [
-            0.5,
-            2.6,
+            13.6,
+            16.04,
+            16.66,
+            16.83,
+            17.06,
+            17.34,
+            19.4,
+            16.86,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            0.0,
-            1.8,
-            5.42,
-            4.2,
-            4.47,
-            4.93
+            12.71,
+            15.1,
+            16.2,
+            16.48,
+            16.7,
+            15.39,
+            18.77,
+            16.47,
+            17.4,
+            19.37,
+            21.97,
+            20.67
           ],
-          "latest_idx": 1
+          "latest_idx": 7
         },
         "latestReportDate": null
       },
-      "shortFloat": 6.51,
-      "shortRatio": 0.73,
-      "marketCap_M": 1350,
-      "floatShares_M": 122.43,
-      "perf1M": 30.81,
-      "perf3M": 57.5,
-      "perf6M": 173.1,
-      "perfYTD": 162.36,
-      "perf12M": null,
+      "shortFloat": 2.15,
+      "shortRatio": 0.56,
+      "marketCap_M": 257.97,
+      "floatShares_M": 76.26,
+      "perf1M": -27.3,
+      "perf3M": 84.21,
+      "perf6M": 50.31,
+      "perfYTD": 72.54,
+      "perf12M": 18.93,
       "prevOhlcv": {
         "date": "2026-06-12",
-        "open": 8.58,
-        "high": 9.14,
-        "low": 8.46,
-        "close": 8.7,
-        "volume": 16037000,
-        "prev_close": 8.49
+        "open": 2.18,
+        "high": 2.28,
+        "low": 2.12,
+        "close": 2.21,
+        "volume": 1846800,
+        "prev_close": 2.21
       }
     },
-    "SLBT": {
-      "symbol": "SLBT",
-      "name": "SL Science Holding Limited",
-      "type": "M&A",
-      "catalyst": "SL Bio 與 Horizon Space Acquisition II SPAC 合併 (隱含估值約 $55.68 億) 6/15 掛牌首日；Gamma delta T 細胞實體瘤免疫療法，首日 $3-$21 劇烈波動。",
-      "newsDetail": null,
+    "HITI": {
+      "symbol": "HITI",
+      "name": "High Tide Inc",
+      "type": "earnings",
+      "catalyst": "6/15 盤後 Q2 FY26 創紀錄營收 C$179.3M (YoY +30% vs C$137.8M)、Adj. EBITDA C$13.9M；加拿大最大大麻零售連鎖。",
+      "newsDetail": "High Tide 於 6/15 盤後公布 Q2 FY26 (截至 4/30) 財報，**營收創紀錄 C$179.3M、YoY +30%** (去年同期 C$137.8M)，連續多季維持雙位數成長。\n\n**Adj. EBITDA C$13.9M**、連續 25 季為正，自由現金流持續轉強；公司為加拿大最大大麻零售連鎖 (Canna Cabana)，並以 Cabana Club 會員模式累積黏著度。\n\n管理層重申 FY26 全年營收與 Adj. EBITDA 指引，並持續以併購整併加拿大零售市佔。\n\n關注重點：開盤後能否守住 C$179M 營收里程碑帶來的動能，以及大麻類股族群 (TLRY/CGC) 是否同向。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=SLBT"
+          "url": "https://finviz.com/quote.ashx?t=HITI"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/SLBT"
+          "url": "https://finance.yahoo.com/quote/HITI"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-SLBT/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-HITI/news/"
         }
       ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
+      "publishedAt": "2026-06-15T16:01:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "High Tide Q2 FY26 業績新聞稿 (IR)",
+          "url": "https://www.hightideinc.com/investors/"
+        },
+        {
+          "label": "Yahoo Finance — HITI",
+          "url": "https://finance.yahoo.com/quote/HITI/"
+        }
+      ],
       "sessions": [
         {
-          "last": 13.53,
-          "chgPct": 306.31,
-          "volume": 9069189,
+          "last": 2.59,
+          "chgPct": 15.11,
+          "volume": 3242794,
           "session": "pre",
           "direction": "up",
-          "name": "SL Science Holding Limited",
-          "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "up",
-      "last": 13.53,
-      "chgPct": 306.31,
-      "volume": 9069189,
-      "tv": null,
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
-      "prevOhlcv": null
-    },
-    "CAST": {
-      "symbol": "CAST",
-      "name": "Freecast Inc Cl A",
-      "type": "momentum",
-      "catalyst": "上週五因 DIRECTV 住宅/PaaS 擴約暴漲 >100% 後獲利了結；財報僅 $9.3 萬營收、$453 萬淨損、現金 $11.9 萬並列『持續經營重大疑慮』。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=CAST"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/CAST"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-CAST/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 3.36,
-          "chgPct": -10.4,
-          "volume": 1106031,
-          "session": "pre",
-          "direction": "down",
-          "name": "Freecast Inc Cl A",
+          "name": "High Tide Inc",
           "sessionDate": "2026-06-16",
           "targetDate": "2026-06-16"
         },
         {
-          "last": 3.15,
-          "chgPct": -16.0,
-          "volume": 1957991,
+          "last": 2.62,
+          "chgPct": 16.39,
+          "volume": 3658247,
           "session": "post",
-          "direction": "down",
-          "name": "Freecast Inc Cl A",
+          "direction": "up",
+          "name": "High Tide Inc",
           "sessionDate": "2026-06-15",
           "targetDate": "2026-06-16"
         }
       ],
       "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 3.15,
-      "chgPct": -16.0,
-      "volume": 1957991,
-      "tv": null,
-      "shortFloat": 0.68,
-      "shortRatio": 0.02,
-      "marketCap_M": 155.03,
-      "floatShares_M": 16.52,
-      "perf1M": 101.61,
-      "perf3M": 23.76,
-      "perf6M": null,
-      "perfYTD": -58.93,
-      "perf12M": null,
+      "primaryDirection": "up",
+      "last": 2.62,
+      "chgPct": 16.39,
+      "volume": 3658247,
+      "tv": {
+        "latestEPS": 0.01,
+        "consensusEPS": -0.02,
+        "priorYrEPS": -0.03,
+        "surpriseEPS_pct": 150.0,
+        "surpriseEPS_dollar": 0.03,
+        "latestRev_M": 131.91,
+        "consensusRev_M": 125.93,
+        "priorYrRev_M": 99.86,
+        "surpriseRev_pct": 4.75,
+        "yrYrRev_pct": 32.09493290606849,
+        "epsYoY_pct": 133.33333333333334,
+        "epsEst_next4": [
+          0.01,
+          0.02,
+          0.03,
+          0.03
+        ],
+        "revEst_next4": [
+          131.04,
+          135.21,
+          139.56,
+          137.41
+        ],
+        "yoyBlock": "+133.33% / +32.09%\n--------------------\n+0.00% / +21.29%\n+104.35% / +15.54%\n+200.00% / +6.63%\n+200.00% / +4.17%",
+        "chart": {
+          "quarters": [
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q1 '21"
+          ],
+          "eps_reported": [
+            0.01,
+            -0.04,
+            -0.02,
+            -0.03,
+            0.01,
+            -0.46,
+            0.01,
+            0.01,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -0.01,
+            -0.01,
+            -0.02,
+            -0.03,
+            0.0,
+            0.0,
+            0.0,
+            -0.02,
+            0.01,
+            0.02,
+            0.03,
+            0.03
+          ],
+          "rev_reported_M": [
+            95.36,
+            99.22,
+            98.02,
+            99.86,
+            108.04,
+            117.02,
+            130.88,
+            131.91,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            92.66,
+            97.11,
+            92.5,
+            100.35,
+            106.42,
+            113.5,
+            127.34,
+            125.93,
+            131.04,
+            135.21,
+            139.56,
+            137.41
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-06-16"
+      },
+      "shortFloat": 0.58,
+      "shortRatio": 0.89,
+      "marketCap_M": 197.78,
+      "floatShares_M": 76.67,
+      "perf1M": -6.25,
+      "perf3M": -9.64,
+      "perf6M": -14.45,
+      "perfYTD": -15.09,
+      "perf12M": -1.32,
       "prevOhlcv": {
         "date": "2026-06-12",
-        "open": 0.6,
-        "high": 2.0,
-        "low": 0.58,
-        "close": 1.55,
-        "volume": 208124900,
-        "prev_close": 0.64
-      }
-    },
-    "CMND": {
-      "symbol": "CMND",
-      "name": "Clearmind Medicine Inc",
-      "type": "news",
-      "catalyst": "CMND-100 (MEAI) 酒癮試驗獲 Johns Hopkins IRB 批准進入後段 + Yissum 肥胖研究授權 + 日本專利，6/5 已大漲 35%，今續強。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=CMND"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/CMND"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-CMND/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 3.58,
-          "chgPct": 6.23,
-          "volume": 803424,
-          "session": "pre",
-          "direction": "up",
-          "name": "Clearmind Medicine Inc",
-          "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "up",
-      "last": 3.58,
-      "chgPct": 6.23,
-      "volume": 803424,
-      "tv": null,
-      "shortFloat": 3.97,
-      "shortRatio": 0.02,
-      "marketCap_M": 3.43,
-      "floatShares_M": 1.02,
-      "perf1M": -36.25,
-      "perf3M": -54.46,
-      "perf6M": -88.25,
-      "perfYTD": -81.38,
-      "perf12M": -99.02,
-      "prevOhlcv": null
-    },
-    "TDIC": {
-      "symbol": "TDIC",
-      "name": "Dreamland Limited Cl A",
-      "type": "momentum",
-      "catalyst": "低浮籌中概股；6/15 生效 1:25 反向分割造成價格機械式跳升；前波 Trendic AI 影像 MOU 題材已過，純投機。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=TDIC"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/TDIC"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-TDIC/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 8.27,
-          "chgPct": 52.24,
-          "volume": 7302857,
-          "session": "pre",
-          "direction": "up",
-          "name": "Dreamland Limited Cl A",
-          "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "up",
-      "last": 8.27,
-      "chgPct": 52.24,
-      "volume": 7302857,
-      "tv": null,
-      "shortFloat": 0.72,
-      "shortRatio": 0.01,
-      "marketCap_M": 8.2,
-      "floatShares_M": 0.62,
-      "perf1M": -72.85,
-      "perf3M": -73.69,
-      "perf6M": -85.2,
-      "perfYTD": -76.59,
-      "perf12M": null,
-      "prevOhlcv": null
-    },
-    "RGNT": {
-      "symbol": "RGNT",
-      "name": "Regentis Biomaterials Ltd",
-      "type": "news",
-      "catalyst": "6/15 因 GelrinC 軟骨療法 Q3 啟動歐洲外科醫師培訓暴漲近 174% ($1.50→$4.02) 後獲利了結；同時撤回 F-1 公開發行 (減少稀釋疑慮但漲多回吐)。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=RGNT"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/RGNT"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-RGNT/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 7.94,
-          "chgPct": -15.53,
-          "volume": 2345100,
-          "session": "pre",
-          "direction": "down",
-          "name": "Regentis Biomaterials Ltd",
-          "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        },
-        {
-          "last": 8.54,
-          "chgPct": -9.15,
-          "volume": 7747892,
-          "session": "post",
-          "direction": "down",
-          "name": "Regentis Biomaterials Ltd",
-          "sessionDate": "2026-06-15",
-          "targetDate": "2026-06-16"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "down",
-      "last": 7.94,
-      "chgPct": -15.53,
-      "volume": 2345100,
-      "tv": null,
-      "shortFloat": 1.03,
-      "shortRatio": 0.01,
-      "marketCap_M": 48.69,
-      "floatShares_M": 2.48,
-      "perf1M": 358.54,
-      "perf3M": 195.59,
-      "perf6M": 31.65,
-      "perfYTD": 39.47,
-      "perf12M": null,
-      "prevOhlcv": null
+        "open": 2.32,
+        "high": 2.35,
+        "low": 2.29,
+        "close": 2.31,
+        "volume": 295700,
+        "prev_close": 2.33
+      },
+      "neglected": true
     },
     "PLAY": {
       "symbol": "PLAY",
@@ -2515,27 +1380,35 @@
       "perf6M": -40.51,
       "perfYTD": -24,
       "perf12M": -59.16,
-      "prevOhlcv": null,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 13.17,
+        "high": 13.6,
+        "low": 12.87,
+        "close": 12.93,
+        "volume": 1350900,
+        "prev_close": 13.18
+      },
       "neglected": false
     },
-    "AHMA": {
-      "symbol": "AHMA",
-      "name": "Ambitions Enterprise Management Cl A",
+    "WNW": {
+      "symbol": "WNW",
+      "name": "Meiwu Technology Ltd",
       "type": "momentum",
-      "catalyst": "低浮籌中概股投機性拉抬；唯一消息為子公司 Multiple Events 連三年承辦杜拜 MECES 電子展，純題材無實質催化。",
+      "catalyst": "低浮籌中概股 (功能性護膚 + AI 題材)；4/6 完成 1:100 反向分割、5 月 $15.65M PIPE，無今日新消息，純投機性拉抬。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AHMA"
+          "url": "https://finviz.com/quote.ashx?t=WNW"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AHMA"
+          "url": "https://finance.yahoo.com/quote/WNW"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AHMA/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-WNW/news/"
         }
       ],
       "publishedAt": null,
@@ -2543,42 +1416,650 @@
       "sources": null,
       "sessions": [
         {
-          "last": 2.11,
-          "chgPct": 9.33,
-          "volume": 1411274,
+          "last": 3.55,
+          "chgPct": 8.9,
+          "volume": 9853933,
           "session": "pre",
           "direction": "up",
-          "name": "Ambitions Enterprise Management Cl A",
+          "name": "Meiwu Technology Ltd",
           "sessionDate": "2026-06-16",
-          "targetDate": "2026-06-16"
-        },
-        {
-          "last": 2.04,
-          "chgPct": 5.66,
-          "volume": 291371,
-          "session": "post",
-          "direction": "up",
-          "name": "Ambitions Enterprise Management Cl A",
-          "sessionDate": "2026-06-15",
           "targetDate": "2026-06-16"
         }
       ],
       "primarySession": "pre",
       "primaryDirection": "up",
-      "last": 2.11,
-      "chgPct": 9.33,
-      "volume": 1411274,
+      "last": 3.55,
+      "chgPct": 8.9,
+      "volume": 9853933,
       "tv": null,
-      "shortFloat": 6.24,
+      "shortFloat": 2.66,
       "shortRatio": 0.02,
-      "marketCap_M": 57.37,
-      "floatShares_M": 2.15,
-      "perf1M": 67.83,
-      "perf3M": -61.86,
-      "perf6M": -71.58,
-      "perfYTD": -60.93,
+      "marketCap_M": 4.34,
+      "floatShares_M": 1.2,
+      "perf1M": 1.24,
+      "perf3M": -98.48,
+      "perf6M": -97.86,
+      "perfYTD": -97.65,
+      "perf12M": -97.94,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 3.51,
+        "high": 3.69,
+        "low": 3.22,
+        "close": 3.28,
+        "volume": 76900,
+        "prev_close": 3.79
+      }
+    },
+    "VSME": {
+      "symbol": "VSME",
+      "name": "vs Media Holdings Limited Cl A",
+      "type": "momentum",
+      "catalyst": "低浮籌中概股；『AI Smart Living』智慧家庭題材 6/10 衝高 ($3.70→$5.38) 後崩跌，管理層自承尚無營收/合約。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=VSME"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/VSME"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-VSME/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 2.66,
+          "chgPct": -18.15,
+          "volume": 418569,
+          "session": "pre",
+          "direction": "down",
+          "name": "vs Media Holdings Limited Cl A",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        },
+        {
+          "last": 3.0,
+          "chgPct": -7.69,
+          "volume": 539814,
+          "session": "post",
+          "direction": "down",
+          "name": "vs Media Holdings Limited Cl A",
+          "sessionDate": "2026-06-15",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "down",
+      "last": 2.66,
+      "chgPct": -18.15,
+      "volume": 418569,
+      "tv": null,
+      "shortFloat": 2.69,
+      "shortRatio": 0.01,
+      "marketCap_M": 8.99,
+      "floatShares_M": 2.57,
+      "perf1M": 276.72,
+      "perf3M": 182.61,
+      "perf6M": 79.16,
+      "perfYTD": 61.53,
+      "perf12M": -84.01,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 1.76,
+        "high": 2.34,
+        "low": 1.52,
+        "close": 1.69,
+        "volume": 88234700,
+        "prev_close": 1.11
+      }
+    },
+    "CMND": {
+      "symbol": "CMND",
+      "name": "Clearmind Medicine Inc",
+      "type": "news",
+      "catalyst": "CMND-100 (MEAI) 酒癮試驗獲 Johns Hopkins IRB 批准進入後段 + Yissum 肥胖研究授權 + 日本專利，6/5 已大漲 35%，今續強。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=CMND"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/CMND"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-CMND/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 3.58,
+          "chgPct": 6.23,
+          "volume": 803424,
+          "session": "pre",
+          "direction": "up",
+          "name": "Clearmind Medicine Inc",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "up",
+      "last": 3.58,
+      "chgPct": 6.23,
+      "volume": 803424,
+      "tv": null,
+      "shortFloat": 3.97,
+      "shortRatio": 0.02,
+      "marketCap_M": 3.43,
+      "floatShares_M": 1.02,
+      "perf1M": -36.25,
+      "perf3M": -54.46,
+      "perf6M": -88.25,
+      "perfYTD": -81.38,
+      "perf12M": -99.02,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 3.28,
+        "high": 3.55,
+        "low": 3.26,
+        "close": 3.34,
+        "volume": 162200,
+        "prev_close": 3.34
+      }
+    },
+    "SHMD": {
+      "symbol": "SHMD",
+      "name": "Schmid Group N.V. Cl A",
+      "type": "news",
+      "catalyst": "太陽能/半導體設備商；消息為中山番禺 €11M 中國新廠 (產能近翻倍，2027 中投產)，6/12 一度因該案下跌、今反彈。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=SHMD"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/SHMD"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SHMD/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 6.95,
+          "chgPct": 11.56,
+          "volume": 272719,
+          "session": "pre",
+          "direction": "up",
+          "name": "Schmid Group N.V. Cl A",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "up",
+      "last": 6.95,
+      "chgPct": 11.56,
+      "volume": 272719,
+      "tv": null,
+      "shortFloat": 6.16,
+      "shortRatio": 1.64,
+      "marketCap_M": 432.1,
+      "floatShares_M": 26.38,
+      "perf1M": -6.17,
+      "perf3M": -4.45,
+      "perf6M": 20.27,
+      "perfYTD": 0.56,
+      "perf12M": 133.33,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 5.69,
+        "high": 5.87,
+        "low": 5.29,
+        "close": 5.38,
+        "volume": 772500,
+        "prev_close": 5.72
+      }
+    },
+    "STI": {
+      "symbol": "STI",
+      "name": "Solidion Technology Inc",
+      "type": "momentum",
+      "catalyst": "石墨烯電池商；Gen-ECB 極端氣候電池 (衛星/LEO 資料中心/月球) 題材 6/4-8 暴漲約 668% + $35M 私募 + 7 項新專利，搭 SpaceX 經濟熱潮，今續強。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=STI"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/STI"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-STI/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 22.2,
+          "chgPct": 6.22,
+          "volume": 416747,
+          "session": "pre",
+          "direction": "up",
+          "name": "Solidion Technology Inc",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "up",
+      "last": 22.2,
+      "chgPct": 6.22,
+      "volume": 416747,
+      "tv": null,
+      "shortFloat": 1.95,
+      "shortRatio": 0.02,
+      "marketCap_M": 161.88,
+      "floatShares_M": 2.8,
+      "perf1M": 267.31,
+      "perf3M": 335.42,
+      "perf6M": 171.43,
+      "perfYTD": 194.78,
+      "perf12M": 545.06,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 24.21,
+        "high": 28.0,
+        "low": 24.21,
+        "close": 25.27,
+        "volume": 1347900,
+        "prev_close": 25.83
+      }
+    },
+    "CUPR": {
+      "symbol": "CUPR",
+      "name": "Cuprina Holdings [Cayman] Limited",
+      "type": "FDA",
+      "catalyst": "MEDIFLY 蛆蟲清創產品獲美 FDA 510(k) 首例 Lucilia cuprina 許可，週一盤中暴漲 112% 至 $8.41 後獲利了結回吐；負淨值 -$4.46M。",
+      "newsDetail": "Cuprina Holdings 的 MEDIFLY 蛆蟲清創產品獲美國 **FDA 510(k) 首例 Lucilia cuprina 許可**，週一盤中一度暴漲 112% 至 $8.41。\n\n隨後獲利了結回吐，盤後 -22%、盤前再 -26%，呈典型 FDA 利多後的 boom-fade。\n\n基本面薄弱：**負淨值 -$4.46M**、市值僅 $7.74M、浮籌極低 (0.92M 股)，本益比/市銷比極端。\n\n關注重點：純消息面投機股，方向劇烈雙向，做空需留意低浮籌軋空風險。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=CUPR"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/CUPR"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-CUPR/news/"
+        }
+      ],
+      "publishedAt": "2026-06-16T07:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Cuprina FDA 510(k) 新聞稿",
+          "url": "https://www.cuprina.com/"
+        },
+        {
+          "label": "Yahoo Finance — CUPR",
+          "url": "https://finance.yahoo.com/quote/CUPR/"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 6.21,
+          "chgPct": -26.17,
+          "volume": 180732,
+          "session": "pre",
+          "direction": "down",
+          "name": "Cuprina Holdings [Cayman] Limited",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        },
+        {
+          "last": 6.52,
+          "chgPct": -22.47,
+          "volume": 470860,
+          "session": "post",
+          "direction": "down",
+          "name": "Cuprina Holdings [Cayman] Limited",
+          "sessionDate": "2026-06-15",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "down",
+      "last": 6.21,
+      "chgPct": -26.17,
+      "volume": 180732,
+      "tv": null,
+      "shortFloat": 9.26,
+      "shortRatio": 0.04,
+      "marketCap_M": 7.74,
+      "floatShares_M": 0.92,
+      "perf1M": 292.26,
+      "perf3M": 191.61,
+      "perf6M": 112.37,
+      "perfYTD": 162.75,
+      "perf12M": -81.65,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 3.26,
+        "high": 8.23,
+        "low": 3.21,
+        "close": 3.97,
+        "volume": 83262200,
+        "prev_close": 2.41
+      }
+    },
+    "TDIC": {
+      "symbol": "TDIC",
+      "name": "Dreamland Limited Cl A",
+      "type": "momentum",
+      "catalyst": "低浮籌中概股；6/15 生效 1:25 反向分割造成價格機械式跳升；前波 Trendic AI 影像 MOU 題材已過，純投機。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=TDIC"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/TDIC"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-TDIC/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 8.27,
+          "chgPct": 52.24,
+          "volume": 7302857,
+          "session": "pre",
+          "direction": "up",
+          "name": "Dreamland Limited Cl A",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "up",
+      "last": 8.27,
+      "chgPct": 52.24,
+      "volume": 7302857,
+      "tv": null,
+      "shortFloat": 0.72,
+      "shortRatio": 0.01,
+      "marketCap_M": 8.2,
+      "floatShares_M": 0.62,
+      "perf1M": -72.85,
+      "perf3M": -73.69,
+      "perf6M": -85.2,
+      "perfYTD": -76.59,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 7.0,
+        "high": 7.1,
+        "low": 5.05,
+        "close": 5.75,
+        "volume": 382384,
+        "prev_close": 7.82
+      }
+    },
+    "SLBT": {
+      "symbol": "SLBT",
+      "name": "SL Science Holding Limited",
+      "type": "M&A",
+      "catalyst": "SL Bio 與 Horizon Space Acquisition II SPAC 合併 (隱含估值約 $55.68 億) 6/15 掛牌首日；Gamma delta T 細胞實體瘤免疫療法，首日 $3-$21 劇烈波動。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=SLBT"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/SLBT"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SLBT/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 13.53,
+          "chgPct": 306.31,
+          "volume": 9069189,
+          "session": "pre",
+          "direction": "up",
+          "name": "SL Science Holding Limited",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "up",
+      "last": 13.53,
+      "chgPct": 306.31,
+      "volume": 9069189,
+      "tv": null,
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": null,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": null,
       "perf12M": null,
       "prevOhlcv": null
+    },
+    "RXT": {
+      "symbol": "RXT",
+      "name": "Rackspace Technology Inc",
+      "type": "contract",
+      "catalyst": "6/16 與 AMD 簽定協議分階段部署初始 30MW AMD 運算 (2026 末-2028)，將 5/7 MOU 落地；2026 年來股價近翻四倍。",
+      "newsDetail": "Rackspace Technology 盤前 +19.7%，宣布 **與 AMD 簽定協議分階段部署初始 30MW 的 AMD 運算容量** (2026 年底至 2028 年)，將 5/7 的 MOU 正式落地。\n\n此舉強化 Rackspace 從傳統託管轉型 AI 雲端基礎設施的敘事，提供 AMD Instinct GPU 的 AI 訓練/推論服務。\n\n股價 **2026 年來已近翻四倍** (YTD +509%)，動能極強但估值與股本稀釋已大幅反映利多。\n\n關注重點：合約金額與毛利貢獻細節尚未完全揭露，高位追價風險高，嚴設停損。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=RXT"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/RXT"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-RXT/news/"
+        }
+      ],
+      "publishedAt": "2026-06-16T07:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Rackspace / AMD 部署協議新聞稿",
+          "url": "https://www.rackspace.com/newsroom"
+        },
+        {
+          "label": "Yahoo Finance — RXT",
+          "url": "https://finance.yahoo.com/quote/RXT/"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 7.08,
+          "chgPct": 19.7,
+          "volume": 9038323,
+          "session": "pre",
+          "direction": "up",
+          "name": "Rackspace Technology Inc",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "up",
+      "last": 7.08,
+      "chgPct": 19.7,
+      "volume": 9038323,
+      "tv": {
+        "latestEPS": -0.06,
+        "consensusEPS": -0.03,
+        "priorYrEPS": -0.06,
+        "surpriseEPS_pct": -86.52,
+        "surpriseEPS_dollar": -0.03,
+        "latestRev_M": 678.1,
+        "consensusRev_M": 660.83,
+        "priorYrRev_M": 665.4,
+        "surpriseRev_pct": 2.61,
+        "yrYrRev_pct": 1.9086263901412752,
+        "epsYoY_pct": 0.0,
+        "epsEst_next4": [
+          -0.05,
+          -0.1,
+          -0.08,
+          -0.07
+        ],
+        "revEst_next4": [
+          659.04,
+          653.34,
+          662.38,
+          690.16
+        ],
+        "yoyBlock": "+0.00% / +1.91%\n--------------------\n+16.67% / -1.09%\n-100.00% / -2.66%\n-700.00% / -2.99%\n-16.67% / +1.78%",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            -0.08,
+            -0.04,
+            -0.02,
+            -0.06,
+            -0.06,
+            -0.05,
+            -0.01,
+            -0.06,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -0.11,
+            -0.07,
+            -0.04,
+            -0.08,
+            -0.05,
+            -0.05,
+            -0.04,
+            -0.03,
+            -0.05,
+            -0.1,
+            -0.08,
+            -0.07
+          ],
+          "rev_reported_M": [
+            684.9,
+            675.8,
+            685.6,
+            665.4,
+            666.3,
+            671.2,
+            682.8,
+            678.1,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            673.6,
+            675.14,
+            674.88,
+            658.18,
+            659.4,
+            666.83,
+            672.37,
+            660.83,
+            659.04,
+            653.34,
+            662.38,
+            690.16
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-05-07"
+      },
+      "shortFloat": 15.93,
+      "shortRatio": 0.78,
+      "marketCap_M": 1470,
+      "floatShares_M": 96.35,
+      "perf1M": -18.86,
+      "perf3M": 203.33,
+      "perf6M": 423.45,
+      "perfYTD": 509.23,
+      "perf12M": 365.75,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 5.52,
+        "high": 6.32,
+        "low": 5.32,
+        "close": 5.44,
+        "volume": 21665400,
+        "prev_close": 5.6
+      },
+      "neglected": false
     },
     "CRE": {
       "symbol": "CRE",
@@ -2630,7 +2111,15 @@
       "perf6M": -30.88,
       "perfYTD": 13.49,
       "perf12M": null,
-      "prevOhlcv": null
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 2.78,
+        "high": 3.58,
+        "low": 2.78,
+        "close": 2.94,
+        "volume": 269200,
+        "prev_close": 2.75
+      }
     },
     "GMM": {
       "symbol": "GMM",
@@ -2692,24 +2181,24 @@
         "prev_close": 2.88
       }
     },
-    "WNW": {
-      "symbol": "WNW",
-      "name": "Meiwu Technology Ltd",
+    "PURR": {
+      "symbol": "PURR",
+      "name": "Hyperliquid Strategies Inc",
       "type": "momentum",
-      "catalyst": "低浮籌中概股 (功能性護膚 + AI 題材)；4/6 完成 1:100 反向分割、5 月 $15.65M PIPE，無今日新消息，純投機性拉抬。",
+      "catalyst": "HYPE 代幣金庫公司，分析師喊 GameStop 式 gamma 軋空 + 6/26 納入 Russell 2000/3000 題材 (Chardan 目標 $9.75)；高波動雙向劇烈。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=WNW"
+          "url": "https://finviz.com/quote.ashx?t=PURR"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/WNW"
+          "url": "https://finance.yahoo.com/quote/PURR"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-WNW/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-PURR/news/"
         }
       ],
       "publishedAt": null,
@@ -2717,32 +2206,719 @@
       "sources": null,
       "sessions": [
         {
-          "last": 3.55,
-          "chgPct": 8.9,
-          "volume": 9853933,
+          "last": 10.48,
+          "chgPct": 12.21,
+          "volume": 857561,
           "session": "pre",
           "direction": "up",
-          "name": "Meiwu Technology Ltd",
+          "name": "Hyperliquid Strategies Inc",
           "sessionDate": "2026-06-16",
           "targetDate": "2026-06-16"
         }
       ],
       "primarySession": "pre",
       "primaryDirection": "up",
-      "last": 3.55,
-      "chgPct": 8.9,
-      "volume": 9853933,
+      "last": 10.48,
+      "chgPct": 12.21,
+      "volume": 857561,
+      "tv": {
+        "latestEPS": 1.01,
+        "consensusEPS": -0.67,
+        "priorYrEPS": null,
+        "surpriseEPS_pct": 251.5,
+        "surpriseEPS_dollar": 1.6800000000000002,
+        "latestRev_M": 2.6,
+        "consensusRev_M": 1.8,
+        "priorYrRev_M": null,
+        "surpriseRev_pct": 44.44,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": null,
+        "epsEst_next4": [
+          -0.02,
+          0.0,
+          -0.01,
+          -0.01
+        ],
+        "revEst_next4": [
+          5.42,
+          4.2,
+          4.47,
+          4.93
+        ],
+        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M\n+92.31% / +794.00%\n-100.99% / +89.62%",
+        "chart": {
+          "quarters": [
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q3 '27"
+          ],
+          "eps_reported": [
+            -0.13,
+            1.01,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -2.67,
+            -0.67,
+            -0.02,
+            0.0,
+            -0.01,
+            -0.01
+          ],
+          "rev_reported_M": [
+            0.5,
+            2.6,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            0.0,
+            1.8,
+            5.42,
+            4.2,
+            4.47,
+            4.93
+          ],
+          "latest_idx": 1
+        },
+        "latestReportDate": null
+      },
+      "shortFloat": 6.51,
+      "shortRatio": 0.73,
+      "marketCap_M": 1350,
+      "floatShares_M": 122.43,
+      "perf1M": 30.81,
+      "perf3M": 57.5,
+      "perf6M": 173.1,
+      "perfYTD": 162.36,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 8.58,
+        "high": 9.14,
+        "low": 8.46,
+        "close": 8.7,
+        "volume": 16037000,
+        "prev_close": 8.49
+      }
+    },
+    "QTEX": {
+      "symbol": "QTEX",
+      "name": "Qtrex Quantum Ltd",
+      "type": "momentum",
+      "catalyst": "與前五大量子運算商策略合作 + AME 增材電子達 97% 良率；曾單日 +140%，6/25-26 Quantum.Tech 世界展；營收僅 $28.9 萬高度投機。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=QTEX"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/QTEX"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-QTEX/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 2.37,
+          "chgPct": 7.73,
+          "volume": 4577949,
+          "session": "pre",
+          "direction": "up",
+          "name": "Qtrex Quantum Ltd",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "up",
+      "last": 2.37,
+      "chgPct": 7.73,
+      "volume": 4577949,
       "tv": null,
-      "shortFloat": 2.66,
-      "shortRatio": 0.02,
-      "marketCap_M": 4.34,
-      "floatShares_M": 1.2,
-      "perf1M": 1.24,
-      "perf3M": -98.48,
-      "perf6M": -97.86,
-      "perfYTD": -97.65,
-      "perf12M": -97.94,
+      "shortFloat": 19.29,
+      "shortRatio": 0.31,
+      "marketCap_M": 95.87,
+      "floatShares_M": 42.6,
+      "perf1M": 455.98,
+      "perf3M": 265.02,
+      "perf6M": 94.69,
+      "perfYTD": 144.44,
+      "perf12M": 203.07,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 1.41,
+        "high": 1.43,
+        "low": 1.27,
+        "close": 1.29,
+        "volume": 4636000,
+        "prev_close": 1.52
+      }
+    },
+    "INGM": {
+      "symbol": "INGM",
+      "name": "Ingram Micro Holding Corp",
+      "type": "news",
+      "catalyst": "Platinum Equity 旗下 Ingram Holdco 二次發售約 900 萬股@$22.25，全數歸賣方、籌碼壓力導致下跌 (非基本面，Q1 營收 +13.7% YoY 達 $13.96B)。",
+      "newsDetail": "Ingram Micro 盤後 -4.3%，係 **Platinum Equity 旗下 Ingram Holdco 二次發售約 900 萬股@$22.25** 所致，發行所得全數歸出售股東。\n\n此為**籌碼/技術面壓力，非基本面惡化** — Q1 營收 +13.7% YoY 達 $13.96B，IT 配銷主業穩健。\n\nShort Float 9.52%、Days-to-cover 3.0，二次發售後浮籌增加。\n\n關注重點：二次發售屬一次性事件，下殺後若守穩 $22.25 發行價附近，反而可能止穩；不宜當作純基本面空單。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=INGM"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/INGM"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-INGM/news/"
+        }
+      ],
+      "publishedAt": "2026-06-15T16:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Ingram Micro 二次發售 8-K / 新聞稿",
+          "url": "https://investors.ingrammicro.com/"
+        },
+        {
+          "label": "Yahoo Finance — INGM",
+          "url": "https://finance.yahoo.com/quote/INGM/"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 28.8,
+          "chgPct": -4.29,
+          "volume": 273704,
+          "session": "post",
+          "direction": "down",
+          "name": "Ingram Micro Holding Corp",
+          "sessionDate": "2026-06-15",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 28.8,
+      "chgPct": -4.29,
+      "volume": 273704,
+      "tv": null,
+      "shortFloat": 9.52,
+      "shortRatio": 3,
+      "marketCap_M": 6970,
+      "floatShares_M": 46.74,
+      "perf1M": 15.91,
+      "perf3M": 35.36,
+      "perf6M": 29.59,
+      "perfYTD": 41,
+      "perf12M": 59.38,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 29.46,
+        "high": 29.79,
+        "low": 28.88,
+        "close": 29.75,
+        "volume": 1418700,
+        "prev_close": 29.25
+      }
+    },
+    "YDES": {
+      "symbol": "YDES",
+      "name": "Yd Bio Limited",
+      "type": "momentum",
+      "catalyst": "血液癌篩/幹細胞生技，無明確消息，技術面 MACD/Aroon 轉空回檔 (前波拉抬後)。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=YDES"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/YDES"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-YDES/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 2.9,
+          "chgPct": -14.46,
+          "volume": 158370,
+          "session": "pre",
+          "direction": "down",
+          "name": "Yd Bio Limited",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "down",
+      "last": 2.9,
+      "chgPct": -14.46,
+      "volume": 158370,
+      "tv": null,
+      "shortFloat": 0.12,
+      "shortRatio": 0.89,
+      "marketCap_M": 239.98,
+      "floatShares_M": 14.13,
+      "perf1M": -33,
+      "perf3M": -56.4,
+      "perf6M": -73.03,
+      "perfYTD": -72.19,
+      "perf12M": -71.75,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 3.36,
+        "high": 3.55,
+        "low": 3.25,
+        "close": 3.27,
+        "volume": 15400,
+        "prev_close": 3.25
+      }
+    },
+    "CMTL": {
+      "symbol": "CMTL",
+      "name": "Comtech Telecom Company",
+      "type": "M&A",
+      "catalyst": "Gilat (GILT) 以 $157.5M 現金收購 Comtech 衛星與太空通訊事業群 (該部門 FY25 營收 $187.8M / EBITDA $14.9M)，賣資產去槓桿。",
+      "newsDetail": "Comtech Telecommunications 宣布 **Gilat Satellite Networks (GILT) 以 $157.5M 現金收購其衛星與太空通訊事業群**。\n\n該事業群 FY25 營收 $187.8M、EBITDA $14.9M；交易讓負債沉重的 Comtech 透過賣資產**去槓桿、改善資產負債表**。\n\n股價盤後 +4.2%，市場視為清理資產、聚焦核心地面網路與 NG-911 業務的正面訊號。\n\n關注重點：交易完成後的剩餘業務體質與現金部位，以及是否引發進一步的策略檢討。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=CMTL"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/CMTL"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-CMTL/news/"
+        }
+      ],
+      "publishedAt": "2026-06-15T16:15:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Comtech / Gilat 交易新聞稿",
+          "url": "https://www.comtech.com/news/"
+        },
+        {
+          "label": "Reuters — Gilat acquires Comtech satellite unit",
+          "url": "https://www.reuters.com/markets/deals/"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 2.87,
+          "chgPct": 4.22,
+          "volume": 150499,
+          "session": "post",
+          "direction": "up",
+          "name": "Comtech Telecom Company",
+          "sessionDate": "2026-06-15",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 2.87,
+      "chgPct": 4.22,
+      "volume": 150499,
+      "tv": null,
+      "shortFloat": 1.29,
+      "shortRatio": 0.92,
+      "marketCap_M": 81.92,
+      "floatShares_M": 26.76,
+      "perf1M": -29.54,
+      "perf3M": -43.2,
+      "perf6M": -23.9,
+      "perfYTD": -47.92,
+      "perf12M": 41.28,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 4.72,
+        "high": 4.87,
+        "low": 4.61,
+        "close": 4.83,
+        "volume": 301000,
+        "prev_close": 4.59
+      },
+      "neglected": true
+    },
+    "SPCQ": {
+      "symbol": "SPCQ",
+      "name": "Defiance Daily Target 2X Short Spacex ETF",
+      "type": "macro",
+      "catalyst": "Defiance 2X Short SpaceX ETF (-200% SPCX 日報酬)；SpaceX 持續飆漲使反向 ETF 重挫，與 SPAX 鏡像。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=SPCQ"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/SPCQ"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SPCQ/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 10.67,
+          "chgPct": -12.68,
+          "volume": 817078,
+          "session": "pre",
+          "direction": "down",
+          "name": "Defiance Daily Target 2X Short Spacex ETF",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "down",
+      "last": 10.67,
+      "chgPct": -12.68,
+      "volume": 817078,
+      "tv": null,
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": null,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": null,
+      "perf12M": null,
       "prevOhlcv": null
+    },
+    "AHMA": {
+      "symbol": "AHMA",
+      "name": "Ambitions Enterprise Management Cl A",
+      "type": "momentum",
+      "catalyst": "低浮籌中概股投機性拉抬；唯一消息為子公司 Multiple Events 連三年承辦杜拜 MECES 電子展，純題材無實質催化。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=AHMA"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/AHMA"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AHMA/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 2.11,
+          "chgPct": 9.33,
+          "volume": 1411274,
+          "session": "pre",
+          "direction": "up",
+          "name": "Ambitions Enterprise Management Cl A",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        },
+        {
+          "last": 2.04,
+          "chgPct": 5.66,
+          "volume": 291371,
+          "session": "post",
+          "direction": "up",
+          "name": "Ambitions Enterprise Management Cl A",
+          "sessionDate": "2026-06-15",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "up",
+      "last": 2.11,
+      "chgPct": 9.33,
+      "volume": 1411274,
+      "tv": null,
+      "shortFloat": 6.24,
+      "shortRatio": 0.02,
+      "marketCap_M": 57.37,
+      "floatShares_M": 2.15,
+      "perf1M": 67.83,
+      "perf3M": -61.86,
+      "perf6M": -71.58,
+      "perfYTD": -60.93,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 1.44,
+        "high": 1.55,
+        "low": 1.31,
+        "close": 1.35,
+        "volume": 525300,
+        "prev_close": 1.4
+      }
+    },
+    "QCOM": {
+      "symbol": "QCOM",
+      "name": "Qualcomm Inc",
+      "type": "news",
+      "catalyst": "CEO Amon 宣布開發 40+ 款 AI 裝置押注『後 App 時代』，市場盛傳 $100 億 Tenstorrent 交易；近期 Baird→$300、JPM→$265 升評，6/24 Investor Day。",
+      "newsDetail": "Qualcomm 盤前 +5%，CEO Cristiano Amon 公開宣示將開發 **40+ 款 AI 裝置**，押注『後 App 時代』的端側 AI 運算佈局。\n\n市場同時盛傳 Qualcomm 接近敲定 **約 $100 億的 Tenstorrent 交易** (AI 加速器/RISC-V IP)，強化資料中心與 AI 推論版圖。\n\n近期分析師動作偏多：**Baird 上調目標價至 $300、JPMorgan 至 $265**，估值仍相對同業折價。\n\n催化劑時程：**6/24 Investor Day** 將揭露更多 AI/汽車/IoT 多元化進度，為短中期關鍵事件。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=QCOM"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/QCOM"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-QCOM/news/"
+        }
+      ],
+      "publishedAt": "2026-06-16T07:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Reuters — Qualcomm AI device strategy",
+          "url": "https://www.reuters.com/technology/"
+        },
+        {
+          "label": "Qualcomm Investor Relations",
+          "url": "https://investor.qualcomm.com/"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 232.21,
+          "chgPct": 5.16,
+          "volume": 400120,
+          "session": "pre",
+          "direction": "up",
+          "name": "Qualcomm Inc",
+          "sessionDate": "2026-06-16",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "up",
+      "last": 232.21,
+      "chgPct": 5.16,
+      "volume": 400120,
+      "tv": {
+        "latestEPS": 2.65,
+        "consensusEPS": 2.56,
+        "priorYrEPS": 2.85,
+        "surpriseEPS_pct": 3.58,
+        "surpriseEPS_dollar": 0.08999999999999986,
+        "latestRev_M": 10600.0,
+        "consensusRev_M": 10590.0,
+        "priorYrRev_M": 10840.0,
+        "surpriseRev_pct": 0.08,
+        "yrYrRev_pct": -2.214022140221402,
+        "epsYoY_pct": -7.0175438596491295,
+        "epsEst_next4": [
+          2.21,
+          2.35,
+          2.69,
+          2.52
+        ],
+        "revEst_next4": [
+          9660.0,
+          10000.0,
+          10770.0,
+          10400.0
+        ],
+        "yoyBlock": "-7.02% / -2.21%\n--------------------\n-20.22% / -6.85%\n-21.67% / -11.27%\n-23.14% / -12.08%\n-4.91% / -1.89%",
+        "chart": {
+          "quarters": [
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27"
+          ],
+          "eps_reported": [
+            2.33,
+            2.69,
+            3.41,
+            2.85,
+            2.77,
+            3.0,
+            3.5,
+            2.65,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            2.25,
+            2.56,
+            2.96,
+            2.82,
+            2.71,
+            2.87,
+            3.39,
+            2.56,
+            2.21,
+            2.35,
+            2.69,
+            2.52
+          ],
+          "rev_reported_M": [
+            9390.0,
+            10240.0,
+            11670.0,
+            10840.0,
+            10370.0,
+            11270.0,
+            12250.0,
+            10600.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            9210.0,
+            9900.0,
+            10910.0,
+            10640.0,
+            10330.0,
+            10770.0,
+            12120.0,
+            10590.0,
+            9660.0,
+            10000.0,
+            10770.0,
+            10400.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null
+      },
+      "shortFloat": 4.28,
+      "shortRatio": 2.17,
+      "marketCap_M": 232730,
+      "floatShares_M": 1050,
+      "perf1M": 10.36,
+      "perf3M": 70.65,
+      "perf6M": 21.81,
+      "perfYTD": 29.09,
+      "perf12M": 42.72,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 201.85,
+        "high": 215.01,
+        "low": 200.1,
+        "close": 211.72,
+        "volume": 14123700,
+        "prev_close": 202.96
+      },
+      "neglected": false
+    },
+    "SSYS": {
+      "symbol": "SSYS",
+      "name": "Stratasys Ltd",
+      "type": "news",
+      "catalyst": "3D 列印商；Q1 (5/7) 維持全年指引、推 J850 Core 機型與夏季 Additive App Suite；隨增材製造/太空題材族群同向走強。",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=SSYS"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/SSYS"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SSYS/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 9.31,
+          "chgPct": 4.61,
+          "volume": 180139,
+          "session": "post",
+          "direction": "up",
+          "name": "Stratasys Ltd",
+          "sessionDate": "2026-06-15",
+          "targetDate": "2026-06-16"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 9.31,
+      "chgPct": 4.61,
+      "volume": 180139,
+      "tv": null,
+      "shortFloat": 4.53,
+      "shortRatio": 3.16,
+      "marketCap_M": 766.94,
+      "floatShares_M": 62.23,
+      "perf1M": 1.48,
+      "perf3M": 11.11,
+      "perf6M": -5.72,
+      "perfYTD": 2.53,
+      "perf12M": -12.75,
+      "prevOhlcv": {
+        "date": "2026-06-12",
+        "open": 9.08,
+        "high": 9.13,
+        "low": 8.83,
+        "close": 8.92,
+        "volume": 829800,
+        "prev_close": 9.0
+      }
     }
   },
   "rawGappers": [
