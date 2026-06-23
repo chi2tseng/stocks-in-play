@@ -1,13 +1,60 @@
 {
   "picks": [
-    {"symbol": "PRIM", "rank": 1, "intent": "short", "rationale": "今日最乾淨的基本面做空。Q1 真實財報雙重利空：EPS $0.59 vs 預期 $0.85 (-30.6% surprise)、營收 $1.6B vs $1.73B (-9.8%)，且 FY26 adj EPS 指引由 $5.80-6.00 大砍至 $4.80-5.00，再疊加 COO 離職與太陽能專案成本超支。盤後 -31.8%，是 MTRT/NTRT 教科書級做空 — 真實財報 miss + 雙重指引砍 + 高管異動，與低浮籌噪音完全不同。"},
-    {"symbol": "IBM", "rank": 2, "intent": "long", "rationale": "今日唯一乾淨的大型權值反向做多。川普 6/22 簽署兩道量子行政命令 (2028 前部署科研級量子電腦、2031 前聯邦遷移至抗量子加密)，公開稱讚 IBM 量子領導，IBM 獲 $1B 配套資金。在整個記憶體/AI 晶片族群崩跌之際逆勢走強，且盤前 (+4.8%) 與盤後皆同向 — 雙時段確認是真實買盤而非單一時段噪音。政策催化劑硬、流動性高。"},
-    {"symbol": "NXTS", "rank": 3, "intent": "short", "rationale": "拉高出貨後融資的典型做空。前日因 AI 製藥消息暴漲 +115% 至 ~$11，6/22 隨即宣布註冊直接發行 410,998 股 @ $7.056 (遠低於高點) + 等量認股權證募 ~$2.9M。發行價深度折讓 + 認股權證套牢 + 淨損 ~$6.6M，-48.2% 崩跌，稀釋論點清晰。"},
-    {"symbol": "ZETA", "rank": 4, "intent": "long", "rationale": "真實 AI 成長股逆勢走強。Cannes Lions 前宣布 agentic AI 行銷助理 Athena 擴展至廣告代理商 (整合 OpenAI 模型)，背景 Q1 營收 +49.9% YoY、$100M 回購。TradingView 顯示最新季 Rev YoY +49.88%，未來四季皆雙位數成長 — 不是 meme，是有營收加速的 AI agent 題材，+8.4%。"},
-    {"symbol": "AMC", "rank": 5, "intent": "short", "rationale": "稀釋 + 過熱反轉做空。6/11 完成 $150M ATM 增發 (~105.3M 新股 @ $1.03-1.50) 帶來結構性稀釋壓力，股價自 $1.56→$2.76 過熱後反轉，街道目標均價 ~$1.96 已低於現價。連環稀釋迷因股軋空後衰退，-20.7%。"},
-    {"symbol": "INFQ", "rank": 6, "intent": "long", "rationale": "量子族群中催化劑最具體者。川普 6/22 量子行政命令，CEO Kinsella 親自出席白宮簽署，並獲 $100M 聯邦配套資金，同日推出「美國量子太空計畫」。+13.3% 為族群中漲幅最大且有專屬資金分配，但仍為高 beta 投機標的，部位宜小。"},
-    {"symbol": "WOLF", "rank": 7, "intent": "short", "rationale": "記憶體/AI 晶片 rout 中最弱的半導體 sympathy 標的。-9.5% 為族群最大跌幅，SiC 功率半導體基本面疲弱 (TradingView 顯示 EPS 連續為負)，處於明確下降趨勢。屬 macro 同情做空，須留意整體晶片族群盤中反彈風險。"},
-    {"symbol": "QUBT", "rank": 8, "intent": "long", "rationale": "量子動能領頭股。川普 6/22 行政命令 + 與 Planck Dynamics 簽 NeuraWave 光子系統框架協議，近 3 個月 +34.7% 領先族群。盤後 +5.5%，純政策題材投機，停損須緊。"},
-    {"symbol": "MBRX", "rank": 9, "intent": "short", "rationale": "二元事件前稀釋折價做空。定價公開發行 16,080,000 股 + Series E 認股權證 @ 合併 $0.37 募 ~$5.9M，趕在 6/30 MIRACLE Phase 2b/3 AML 期中揭盲前折價發行，~3x 認股權證套牢，-13.5%。風險：揭盲若正向可瞬間軋空，部位宜極小。"}
+    {
+      "symbol": "PRIM",
+      "rank": 1,
+      "intent": "short",
+      "neglected": false,
+      "rationale": "今日最乾淨做空。6/22 Q1 EPS $0.59 vs $0.85 (-30.6% surprise)、營收 $1.56B 比共識 $1.73B 短少 9.8%，FY26 指引由共識 $4.85 砍至淨利 $71-101M (近乎腰斬) + COO Kinch 離職三重利空。盤後 -31.8% 後盤前再 -34.5% 續跌，UBS 目標砍 $212→$186。TradingView 顯示最新季 EPS YoY -39.8%、營收 -5.45%，未來兩季估值仍負成長。基本面崩壞型做空，非低浮籌噪音。"
+    },
+    {
+      "symbol": "IBM",
+      "rank": 2,
+      "intent": "long",
+      "neglected": false,
+      "rationale": "全場最逆勢做多。在記憶體/AI 晶片全族群 -5~9% 的 rout 中逆勢 +5.6%，盤前+盤後雙時段同向。催化劑為川普簽署兩道量子行政命令 (2028 前交付科研級量子電腦、2031 前聯邦遷移抗量子加密)，IBM 為政策直接受惠者並延續 $1B CHIPS 量子代工。大型股品質、流動性佳，是 risk-off 日少數可做多的標的。"
+    },
+    {
+      "symbol": "ZETA",
+      "rank": 3,
+      "intent": "long",
+      "neglected": false,
+      "rationale": "今日最乾淨的基本面財報多單。延續 OpenAI×Athena agentic AI 行銷整合動能，逆勢 +9.8%。TradingView 顯示最新季 EPS YoY +30%、營收 +49.9% (扎實高成長)，未來四季營收估計續維持 +17~37% YoY。分析師上調目標至 $30-36。在族群殺盤日逆勢走強，題材+成長雙具備。"
+    },
+    {
+      "symbol": "CRMT",
+      "rank": 4,
+      "intent": "short",
+      "neglected": false,
+      "rationale": "乾淨財報做空。FY26 Q4 GAAP EPS -$9.25 巨額虧損 (去年同期 +$0.37，淨虧約 $76.7M)，營收 $286.8M 比共識短少 12.9%。次貸車商信用損失惡化，TradingView 顯示最新季 EPS YoY -2600%、未來兩季仍預估虧損。基本面實質惡化型做空。"
+    },
+    {
+      "symbol": "EPC",
+      "rank": 5,
+      "intent": "long",
+      "neglected": false,
+      "rationale": "乾淨事件型做多。Edgewell 完成女性護理事業以 $340M 出售給 Essity，聚焦核心刮鬍/防曬/美妝業務，分析師情緒正面，逆勢 +10%。非科技、非 AI 的防禦型消費標的，在 risk-off 日具相對抗跌特性。"
+    },
+    {
+      "symbol": "AMC",
+      "rank": 6,
+      "intent": "short",
+      "neglected": false,
+      "rationale": "稀釋型做空。6/23 宣布註冊直接發行 9,525 萬股 @$2.10，募資約 $2 億，大幅稀釋現有股東，盤前 -23.9%。本身股價已貼近發行價 $2.10，續弱機率高。"
+    },
+    {
+      "symbol": "INFQ",
+      "rank": 7,
+      "intent": "long",
+      "neglected": true,
+      "rationale": "量子族群政策做多。受川普量子行政命令推動，加上 $100M CHIPS 資金 + 政府入股題材，盤前+盤後雙時段同向 (+5.6%/+13.3%)。量子板塊龍頭之一，但屬高 beta 政策題材，部位宜小、嚴設停損。"
+    },
+    {
+      "symbol": "NXTS",
+      "rank": 8,
+      "intent": "short",
+      "neglected": true,
+      "rationale": "拉高即增發型做空。6/22 因 MitoCareX×Boltz AI 製藥題材 + $2.9M 股權/認股權證融資狂漲 156%，盤後/盤前 -46~48% 崩回。典型低浮籌拉高出貨後稀釋，但波動極大屬高風險噪音做空。"
+    }
   ]
 }
