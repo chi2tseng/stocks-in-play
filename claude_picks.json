@@ -1,60 +1,13 @@
 {
   "picks": [
-    {
-      "symbol": "PRIM",
-      "rank": 1,
-      "intent": "short",
-      "neglected": false,
-      "rationale": "今日最乾淨做空。6/22 Q1 EPS $0.59 vs $0.85 (-30.6% surprise)、營收 $1.56B 比共識 $1.73B 短少 9.8%，FY26 指引由共識 $4.85 砍至淨利 $71-101M (近乎腰斬) + COO Kinch 離職三重利空。盤後 -31.8% 後盤前再 -34.5% 續跌，UBS 目標砍 $212→$186。TradingView 顯示最新季 EPS YoY -39.8%、營收 -5.45%，未來兩季估值仍負成長。基本面崩壞型做空，非低浮籌噪音。"
-    },
-    {
-      "symbol": "IBM",
-      "rank": 2,
-      "intent": "long",
-      "neglected": false,
-      "rationale": "全場最逆勢做多。在記憶體/AI 晶片全族群 -5~9% 的 rout 中逆勢 +5.6%，盤前+盤後雙時段同向。催化劑為川普簽署兩道量子行政命令 (2028 前交付科研級量子電腦、2031 前聯邦遷移抗量子加密)，IBM 為政策直接受惠者並延續 $1B CHIPS 量子代工。大型股品質、流動性佳，是 risk-off 日少數可做多的標的。"
-    },
-    {
-      "symbol": "ZETA",
-      "rank": 3,
-      "intent": "long",
-      "neglected": false,
-      "rationale": "今日最乾淨的基本面財報多單。延續 OpenAI×Athena agentic AI 行銷整合動能，逆勢 +9.8%。TradingView 顯示最新季 EPS YoY +30%、營收 +49.9% (扎實高成長)，未來四季營收估計續維持 +17~37% YoY。分析師上調目標至 $30-36。在族群殺盤日逆勢走強，題材+成長雙具備。"
-    },
-    {
-      "symbol": "CRMT",
-      "rank": 4,
-      "intent": "short",
-      "neglected": false,
-      "rationale": "乾淨財報做空。FY26 Q4 GAAP EPS -$9.25 巨額虧損 (去年同期 +$0.37，淨虧約 $76.7M)，營收 $286.8M 比共識短少 12.9%。次貸車商信用損失惡化，TradingView 顯示最新季 EPS YoY -2600%、未來兩季仍預估虧損。基本面實質惡化型做空。"
-    },
-    {
-      "symbol": "EPC",
-      "rank": 5,
-      "intent": "long",
-      "neglected": false,
-      "rationale": "乾淨事件型做多。Edgewell 完成女性護理事業以 $340M 出售給 Essity，聚焦核心刮鬍/防曬/美妝業務，分析師情緒正面，逆勢 +10%。非科技、非 AI 的防禦型消費標的，在 risk-off 日具相對抗跌特性。"
-    },
-    {
-      "symbol": "AMC",
-      "rank": 6,
-      "intent": "short",
-      "neglected": false,
-      "rationale": "稀釋型做空。6/23 宣布註冊直接發行 9,525 萬股 @$2.10，募資約 $2 億，大幅稀釋現有股東，盤前 -23.9%。本身股價已貼近發行價 $2.10，續弱機率高。"
-    },
-    {
-      "symbol": "INFQ",
-      "rank": 7,
-      "intent": "long",
-      "neglected": true,
-      "rationale": "量子族群政策做多。受川普量子行政命令推動，加上 $100M CHIPS 資金 + 政府入股題材，盤前+盤後雙時段同向 (+5.6%/+13.3%)。量子板塊龍頭之一，但屬高 beta 政策題材，部位宜小、嚴設停損。"
-    },
-    {
-      "symbol": "NXTS",
-      "rank": 8,
-      "intent": "short",
-      "neglected": true,
-      "rationale": "拉高即增發型做空。6/22 因 MitoCareX×Boltz AI 製藥題材 + $2.9M 股權/認股權證融資狂漲 156%，盤後/盤前 -46~48% 崩回。典型低浮籌拉高出貨後稀釋，但波動極大屬高風險噪音做空。"
-    }
+    {"symbol":"FDX","rank":1,"intent":"short","rationale":"今日最乾淨的做空 — 也是當日的 macro 印鈔。FY26 Q4 adj EPS $6.31 / 營收 $25B 雙超預期，但 CY2026 EPS 指引 $16.90-18.10 遠低於分析師 $19.86 共識，疊加 Freight 分拆滯留成本與新飛行員合約成本壓力。大型權值股、流動性佳、催化劑明確 (指引下修)，盤後 -6.5%。"},
+    {"symbol":"ICLR","rank":2,"intent":"long","rationale":"今日最乾淨的機構級財報多單。Q1 2026 non-GAAP EPS $2.50 (估 $2.43) / 營收 $2.03B (估 $2.00B) 雙 beat、book-to-bill 1.42 顯示需求回溫、重申 FY26 指引。大型 CRO、低風險。唯一瑕疵是 YoY 仍負 (-21.6% EPS) 因高基期，屬 beat-but-declining，但乾淨度高，盤後 +5.8%。"},
+    {"symbol":"BLZE","rank":3,"intent":"long","rationale":"AI 儲存合約多單 — 拿下 CoreWeave 五年 $3.35 億雲端儲存合約，對一家市值僅 $700M 的公司而言規模巨大，疊加分析師上調評等/目標價。AI 基建題材純度高。風險：前一日已 +43.6%、動能延伸，需慎防獲利了結，盤後再 +7%。"},
+    {"symbol":"CBRS","rank":4,"intent":"short","rationale":"Cerebras 首份上市後財報做空 — 營收年增 +110% 但 adj 虧損超預期、Q2 毛利指引疲弱，連 $20B OpenAI 大單也壓不住賣壓，雙時段 -11%。高飛 post-IPO 名字。注意 17.78% 高空頭比例，反向軋空風險需嚴設停損。"},
+    {"symbol":"DFTX","rank":5,"intent":"long","rationale":"乾淨生技二元事件多單。Phase 3 Emerge 試驗 DT120 口溶錠治重度憂鬱症 (MDD) 主要終點達標，de-risking 利多蓋過盤後上調至 $7 億公開發行的稀釋，盤前 +5%。"},
+    {"symbol":"GALT","rank":6,"intent":"long","rationale":"FDA 同意 belapectin 用於 MASH 肝硬化合併門脈高壓的 Phase 3 主要終點與試驗路徑，監管不確定性移除，盤後 +10.6%。16.33% 短期空頭 + 20.24 days-to-cover 提供軋空燃料。"},
+    {"symbol":"HTZ","rank":7,"intent":"short","rationale":"乾淨稀釋型做空 — 宣布 $1 億普通股「借券」發行 (JP Morgan 借券) + $3 億可交換 PIK 票據私募，稀釋與槓桿疑慮明確，盤前 -16.8%。注意 18.89% 空頭已偏高，下檔空間需評估。"},
+    {"symbol":"TOST","rank":8,"intent":"long","rationale":"結構性被動買盤多單 — S&P DJI 宣布 Toast 7/1 開盤前納入 S&P MidCap 400 (取代 TopBuild)。基本面健康 (EPS +40% YoY、營收 +21.6% YoY)，被動指數買盤推升，盤後 +4%。"},
+    {"symbol":"CDW","rank":9,"intent":"long","rationale":"乾淨分析師多單 — Morgan Stanley 上調至 Overweight、目標價 $142→$170，盤後 +4.6%。IT 硬體龍頭，催化劑單純。"}
   ]
 }
