@@ -1,13 +1,24 @@
 {
   "picks": [
-    {"symbol":"FDX","rank":1,"intent":"short","rationale":"今日最乾淨的做空 — 也是當日的 macro 印鈔。FY26 Q4 adj EPS $6.31 / 營收 $25B 雙超預期，但 CY2026 EPS 指引 $16.90-18.10 遠低於分析師 $19.86 共識，疊加 Freight 分拆滯留成本與新飛行員合約成本壓力。大型權值股、流動性佳、催化劑明確 (指引下修)，盤後 -6.5%。"},
-    {"symbol":"ICLR","rank":2,"intent":"long","rationale":"今日最乾淨的機構級財報多單。Q1 2026 non-GAAP EPS $2.50 (估 $2.43) / 營收 $2.03B (估 $2.00B) 雙 beat、book-to-bill 1.42 顯示需求回溫、重申 FY26 指引。大型 CRO、低風險。唯一瑕疵是 YoY 仍負 (-21.6% EPS) 因高基期，屬 beat-but-declining，但乾淨度高，盤後 +5.8%。"},
-    {"symbol":"BLZE","rank":3,"intent":"long","rationale":"AI 儲存合約多單 — 拿下 CoreWeave 五年 $3.35 億雲端儲存合約，對一家市值僅 $700M 的公司而言規模巨大，疊加分析師上調評等/目標價。AI 基建題材純度高。風險：前一日已 +43.6%、動能延伸，需慎防獲利了結，盤後再 +7%。"},
-    {"symbol":"CBRS","rank":4,"intent":"short","rationale":"Cerebras 首份上市後財報做空 — 營收年增 +110% 但 adj 虧損超預期、Q2 毛利指引疲弱，連 $20B OpenAI 大單也壓不住賣壓，雙時段 -11%。高飛 post-IPO 名字。注意 17.78% 高空頭比例，反向軋空風險需嚴設停損。"},
-    {"symbol":"DFTX","rank":5,"intent":"long","rationale":"乾淨生技二元事件多單。Phase 3 Emerge 試驗 DT120 口溶錠治重度憂鬱症 (MDD) 主要終點達標，de-risking 利多蓋過盤後上調至 $7 億公開發行的稀釋，盤前 +5%。"},
-    {"symbol":"GALT","rank":6,"intent":"long","rationale":"FDA 同意 belapectin 用於 MASH 肝硬化合併門脈高壓的 Phase 3 主要終點與試驗路徑，監管不確定性移除，盤後 +10.6%。16.33% 短期空頭 + 20.24 days-to-cover 提供軋空燃料。"},
-    {"symbol":"HTZ","rank":7,"intent":"short","rationale":"乾淨稀釋型做空 — 宣布 $1 億普通股「借券」發行 (JP Morgan 借券) + $3 億可交換 PIK 票據私募，稀釋與槓桿疑慮明確，盤前 -16.8%。注意 18.89% 空頭已偏高，下檔空間需評估。"},
-    {"symbol":"TOST","rank":8,"intent":"long","rationale":"結構性被動買盤多單 — S&P DJI 宣布 Toast 7/1 開盤前納入 S&P MidCap 400 (取代 TopBuild)。基本面健康 (EPS +40% YoY、營收 +21.6% YoY)，被動指數買盤推升，盤後 +4%。"},
-    {"symbol":"CDW","rank":9,"intent":"long","rationale":"乾淨分析師多單 — Morgan Stanley 上調至 Overweight、目標價 $142→$170，盤後 +4.6%。IT 硬體龍頭，催化劑單純。"}
+    { "symbol": "MU", "rank": 1, "intent": "long", "neglected": false,
+      "rationale": "今日絕對主角，也是整個族群的根因。Q3 FY26 營收 $41.46B 創紀錄 (+345.81% YoY)、非 GAAP EPS $25.11 (超預期 +20.4%)、毛利率破紀錄 84.9%，HBM 售罄至 2026 底。BofA 目標價拉至 $1,500，盤後 +13.7%、盤前再 +17%。財報乾淨、規模巨大、流動性佳，是最高信心的多單——須留意盤前已大漲，標準進場宜等開盤確認。" },
+    { "symbol": "GLW", "rank": 2, "intent": "long", "neglected": false,
+      "rationale": "Corning 與 Amazon 簽多年期數十億美元光纖供應協議 (供應 AI 資料中心)，UBS 升評 Buy 目標 $228。這是少數帶自身重大合約催化、而非單純跟隨 MU 的乾淨多單，提供 AI capex 的另一條 (光纖) 受惠管道，分散單一族群風險。盤前 +8.2%。" },
+    { "symbol": "BB", "rank": 3, "intent": "long", "neglected": false,
+      "rationale": "BlackBerry FY27 Q1 雙超預期 (EPS surprise +100%、營收 +9.4% YoY) 並上修財測，QNX 在 physical AI/車用動能強勁。今日非半導體族群中最乾淨的財報多單，價格基期低、波動可控，財報 beat + 指引上修是教科書級 EP setup。" },
+    { "symbol": "SNDK", "rank": 4, "intent": "long", "neglected": false,
+      "rationale": "最乾淨的純記憶體 beta——MU 確認 NAND 供給同樣吃緊，BofA($2,100)/Mizuho($2,200) 上調目標。無自身利空、完全跟隨 NAND 合約價上行。盤後 +12.4%、盤前 +14.5%。若看好記憶體超級循環延續，SNDK 是純度最高的 NAND 載具。" },
+    { "symbol": "MEI", "rank": 5, "intent": "long", "neglected": false,
+      "rationale": "Methode FY26 Q4 營收 $298.1M 大超 (vs $238M 估、+15.9% YoY) 轉虧為盈並給 FY27 營收指引，盤後 +14.8%。營收 beat 幅度大、指引清晰；唯一瑕疵是 adj EPS 略遜，故列為中段。EV/資料中心電源連接器需求回溫是核心，屬乾淨的事件型多單。" },
+    { "symbol": "WDC", "rank": 6, "intent": "long", "neglected": false,
+      "rationale": "HDD 在 AI 資料中心冷儲存的第二波受惠者，自身季度 EPS YoY +100%、營收 +45.85% 本就強勁，MU 進一步確認 AI 儲存需求。MS/JPM 目標 $650。盤後 +12.5%。與 STX 同為 HDD 雙雄，趨勢與基本面雙重支撐。" },
+    { "symbol": "AAOI", "rank": 7, "intent": "long", "neglected": false,
+      "rationale": "鎖定逾 $324M 的 800G/1.6T 光收發模組訂單 (含單筆逾 $200M)，AI 資料中心交換機升級的關鍵零組件。相對市值具實質意義的自身合約催化，搭族群走強。AI 光網絡高 beta，但波動大、須控部位。" },
+    { "symbol": "SPRY", "rank": 8, "intent": "short", "neglected": false,
+      "rationale": "今日最乾淨的做空之一。ARS Pharma 旗艦藥 neffy 在 7/1 給付週期未取得任何新主要商業保險納保，核心產品商業化卡關，盤後 -24%。實質基本面利空、邏輯清晰；唯 short float 高達 39.5%，須警惕軋空反彈，停損從嚴。" },
+    { "symbol": "TCOM", "rank": 9, "intent": "short", "neglected": false,
+      "rationale": "攜程 FY26 Q1 三重利空：non-GAAP EPS $0.83 不如預期 (-7.8%)、淨利年減 41.6%、Q2 營收指引僅年增 3-8% (遠低於 Q1)，加上 SAMR 反壟斷調查。大型、流動性佳的做空標的，盤前 -14.3%；中概股留意隔夜跳空。" },
+    { "symbol": "PASG", "rank": 10, "intent": "short", "neglected": false,
+      "rationale": "Passage Bio 與 Remix 全股票反向併購，現有股東僅持合併後 ~7%，權益縮水逾 90%，同步 ~$1 億私募。純稀釋型利空，盤後 -18.9%。做空邏輯清晰，但反向併購股常有低浮籌投機波動，須嚴控部位。" }
   ]
 }
