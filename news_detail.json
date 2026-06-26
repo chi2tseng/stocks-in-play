@@ -1,125 +1,98 @@
 {
-  "MU": {
-    "detail": "Micron 6/24 盤後公布 Q3 FY26 財報，全面碾壓市場預期，引爆整個記憶體/半導體族群超級循環。\n\n**營收 $41.46B** 創歷史紀錄 (+345.81% YoY、超預期 $35.91B 約 +15.4%)，**非 GAAP EPS $25.11** (vs 共識 $20.86、+20.4% surprise)，**GAAP 毛利率 84.9%** 為公司史上新高，皆受惠 AI 資料中心 HBM 與 DRAM 結構性短缺。\n\n管理層揭露 HBM 產能已售罄至 2026 年底，並透過 Strategic Customer Agreements 鎖定約 20% DRAM、1/3 NAND 產量。TrendForce 顯示 Q1 傳統 DRAM 合約價單季暴漲 90-95%，創史上最大單季漲幅。\n\n分析師反應狂熱：BofA 上調目標價至 $1,500，盤後股價 +13.7% 至 ~$1,193，盤前再 +17%。這是今日 SNDK/WDC/STX/LRCX/AMAT 等整個記憶體+半導體設備族群跳漲的根因。",
-    "publishedAt": "2026-06-24T16:05:00-04:00",
+  "EQX": {
+    "detail": "Equinox Gold 宣布以約 **$51 億**現金加股票收購 Orla Mining，交易完成後 EQX 原股東持股約 **67%**，預計 2026 Q3 完成，將打造北美中型黃金生產龍頭。\n\n同步公布 Q1 業績：營收 **$8.616 億 (+103% YoY)**、EPS **$0.23** (去年同期 -$0.17，成功轉盈)，雖略低於 $0.29 共識，但併購題材與金價走強蓋過 miss。\n\nTradingView 顯示未來四季營收估值持續攀升 ($725M → $861M → $923M → $1.02B)。盤後 +6.09%，留意併購換股比與金價走向。",
+    "publishedAt": "2026-06-25T17:00:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      { "label": "Micron Q3 FY26 8-K press release (SEC)", "url": "https://www.sec.gov/Archives/edgar/data/0000723125/000072312526000013/a2026q3ex991-pressrelease.htm", "publishedAt": "2026-06-24T16:05:00-04:00" },
-      { "label": "Investing.com — Micron Q3 FY26 record $41.5B revenue, 85% margins", "url": "https://in.investing.com/news/company-news/micron-q3-fy2026-slides-record-415b-revenue-85-margins-93CH-5469526" },
-      { "label": "Benzinga — BofA lifts Micron PT to $1,500", "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/06/60059003/micron-technology-stock-bank-of-america-1500-price-target-rally-earnings-semiconductor-memory" }
+      {"label": "Equinox Gold — Orla Mining acquisition press release", "url": "https://www.equinoxgold.com/news/"},
+      {"label": "Reuters — Equinox Gold to acquire Orla Mining", "url": "https://www.reuters.com/markets/deals/"}
     ]
   },
-  "SNDK": {
-    "detail": "SanDisk 隨 MU 財報引爆的記憶體超級循環同步跳漲，NAND/SSD 族群為 6/24 盤後最強板塊之一。\n\nMU 揭露 HBM 售罄至 2026 底、NAND 供給同樣吃緊，直接利多 SanDisk 的企業級 SSD 與 NAND 定價。**BofA 上調目標價至 $2,100、Mizuho 至 $2,200**，反映 NAND 合約價跟隨 DRAM 走升。\n\n盤後 +12.4%、盤前再 +14.5%。屬於最乾淨的純記憶體 beta 標的——沒有自身利空、完全跟隨族群定價上行。",
-    "publishedAt": "2026-06-25T07:00:00-04:00",
+  "WSE": {
+    "detail": "Wise Group (前 TransferWise) 公布 **FY2026** 全年業績：淨營收 **$25 億 (+19% YoY)**、跨境處理量 **$2,435 億**、毛利率 **26%**，EPS 約 **$0.48** (去年 $0.04，YoY +1100%)。\n\n管理層宣布 **$5 億庫藏股**計畫，並重申中期 **15-20% 營收 CAGR** 指引。TradingView 未來四季 EPS 估計 $0.56 → $0.64 → $0.78 → $0.94。\n\n屬大型 ($13.3B) 高速成長金融科技，財報乾淨、估值合理。盤後 +4.61%，是今日最乾淨的成長型財報多單之一。",
+    "publishedAt": "2026-06-26T02:00:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      { "label": "247WallSt — Memory chip stocks lead the rebound", "url": "https://247wallst.com/investing/2026/06/24/live-nasdaq-composite-tech-stages-a-comeback-as-memory-chip-stocks-lead-the-rebound/" },
-      { "label": "Motley Fool — Memory Chip Supercycle 2026: Micron and Sandisk", "url": "https://www.fool.com/investing/2026/05/23/memory-chip-supercycle-2026-why-micron-and-sandisk/" }
+      {"label": "Wise plc — FY2026 results", "url": "https://wise.com/gb/investors/"},
+      {"label": "Reuters — Wise full-year results", "url": "https://www.reuters.com/business/finance/"}
     ]
   },
-  "WDC": {
-    "detail": "Western Digital 隨 MU 引爆的記憶體超級循環跳漲，HDD/儲存族群受惠 AI 資料中心容量需求。\n\nWDC 自身 TradingView 季度顯示最新季 EPS YoY +100%、營收 YoY +45.85%，本身就處於強勁上行軌道，MU 財報進一步確認 AI 帶動的儲存需求結構性轉強。**MS/JPM 上調目標價至 $650**。\n\n盤後 +12.5%、盤前 +12.1%。HDD 在 AI 資料中心冷儲存的需求是繼 HBM 之後的第二波受惠者。",
-    "publishedAt": "2026-06-25T07:00:00-04:00",
+  "TII": {
+    "detail": "Titan Mining 子公司 Empire State Mines 宣布獲美國陸軍兩處基地——**Pine Bluff Arsenal (阿肯色州)** 與 **Anniston Army Depot (阿拉巴馬州)**——的 **EUL (Enhanced Use Lease) 條件選擇通知**，將在軍事設施內發展**國防石墨供應鏈**。\n\n此為美國本土關鍵礦物 (石墨) 去中國化政策下的指標性合約，對市值僅約 **$2.2 億**的微型礦業股屬重大題材。盤後 6/25 已先漲，盤前續攻 +57.86%。\n\n屬乾淨事件型催化，但須留意微型股爆量後的高波動與獲利了結；無財報數字支撐，純題材驅動。",
+    "publishedAt": "2026-06-25T16:30:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      { "label": "247WallSt — Memory chip stocks lead the rebound", "url": "https://247wallst.com/investing/2026/06/24/live-nasdaq-composite-tech-stages-a-comeback-as-memory-chip-stocks-lead-the-rebound/" }
+      {"label": "Titan Mining Corporation — Empire State Mines Army EUL announcement", "url": "https://www.titanminingcorp.com/news/"}
     ]
   },
-  "GLW": {
-    "detail": "Corning 與 Amazon 簽訂多年期、價值數十億美元的光纖供應協議，供應 Amazon AI 資料中心網路基礎建設，點燃 AI 光纖題材。\n\n協議將帶動 Corning 北卡州廠新增約 1,000 個職位，鞏固其在 AI 資料中心光連結的供應地位。**UBS 升評至 Buy、目標價 $228，Truist 目標 $205**。\n\n盤前 +8.2%。這是少數帶有自身重大合約催化、而非單純跟隨 MU 族群的乾淨多單——AI 資料中心 capex 的另一個受惠管道 (光纖而非記憶體)。",
-    "publishedAt": "2026-06-25T07:00:00-04:00",
+  "SYNA": {
+    "detail": "onsemi (ON) 宣布以 **全股票方式收購 Synaptics**，企業價值約 **$70 億**，換股比 **1.350 ON 股／SYNA 股**，對 SYNA 隱含溢價約 **19%**——為 onsemi 史上最大併購，瞄準邊緣 AI、IoT 與汽車感測。\n\n作為被收購標的，SYNA 盤後 **+9.86%** 向換股對價靠攏；ON 則因稀釋與溢價過高 **-13.68%**。\n\n屬乾淨併購套利機會：SYNA 股價將跟隨 ON 股價 × 1.350 波動，須留意反壟斷審查與交割風險。SYNA short float 11.35%，併購消息恐觸發補空。",
+    "publishedAt": "2026-06-25T16:15:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      { "label": "UBS / Truist analyst notes — Corning Amazon fiber deal", "url": "https://finance.yahoo.com/quote/GLW/" }
+      {"label": "onsemi — to acquire Synaptics press release", "url": "https://www.onsemi.com/company/news-media/press-announcements"},
+      {"label": "Synaptics — merger announcement", "url": "https://investor.synaptics.com/news"},
+      {"label": "Reuters — onsemi to buy Synaptics", "url": "https://www.reuters.com/markets/deals/"}
     ]
   },
-  "BB": {
-    "detail": "BlackBerry 6/24 盤後公布 FY27 Q1 財報雙超預期，QNX 軟體在 physical AI / 車用領域動能強勁。\n\n**EPS surprise +100%** (TradingView 顯示最新季 EPS YoY 與超預期幅度顯著)、**營收 YoY +9.4%** 並給出樂觀全年財測。QNX 在自駕/機器人 (physical AI) 的嵌入式作業系統需求是核心成長引擎。\n\n盤後 +10.4%、盤前 +6.4%。中型股財報乾淨 beat + 上修財測，屬於今日非半導體族群中最乾淨的財報多單之一。",
-    "publishedAt": "2026-06-24T16:05:00-04:00",
+  "VERA": {
+    "detail": "Vera Therapeutics 宣布 FDA 同意提前進行 **atacicept (IgA 腎病 / IgAN)** 的 **ORIGIN 試驗 eGFR 分析**，並支持其**加速核准 BLA** 路徑，**PDUFA 目標日 2026/7/7**，eGFR 完整結果預計 2026 Q3。\n\n此舉縮短了 atacicept 上市時程，為公司核心資產去除一大不確定性。盤後 +7.23%。\n\nshort float 高達 **20.26%**、days-to-cover 9.91，正向監管進展恐觸發補空行情。風險：PDUFA 前後波動劇烈，須控管部位至 7/7 決議。",
+    "publishedAt": "2026-06-25T16:05:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      { "label": "BlackBerry FY27 Q1 results", "url": "https://finance.yahoo.com/quote/BB/" }
+      {"label": "Vera Therapeutics — atacicept FDA update", "url": "https://ir.veratx.com/news-releases"}
     ]
   },
-  "MEI": {
-    "detail": "Methode Electronics 6/24 盤後公布 FY26 Q4 財報，營收大超預期並轉虧為盈。\n\n**營收 $298.1M** 大幅超越 $238M 共識 (+15.9% YoY)，本季轉虧為盈，並給出 **FY27 營收指引 $10.25-10.75 億**。唯一瑕疵是 adj EPS 略遜預期，但營收動能與指引主導市場解讀。\n\n盤後 +14.8%。EV/資料中心電源連接器的需求回溫是核心驅動。財報營收 beat 幅度大、指引清晰，是乾淨的多單，但需留意 EPS 端尚未跟上。",
-    "publishedAt": "2026-06-24T16:15:00-04:00",
+  "AVEX": {
+    "detail": "AEVEX Aerospace 獲 **FIRIS 合約 $1,520 萬選擇權** (6/23 公告)，強化其無人航空 ISR (情報監視偵察) 服務營收能見度。\n\n同步 **JPMorgan 將目標價自 $33 上調至 $35、維持 Overweight**，認可其國防情報業務成長性。盤前 +5.77%。\n\n屬乾淨「合約 + 分析師升評」雙催化，但近一個月已 -46.6%，今日為超賣反彈兼題材，須留意是否能站穩 5 日均。",
+    "publishedAt": "2026-06-26T07:00:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      { "label": "Methode Electronics FY26 Q4 results", "url": "https://finance.yahoo.com/quote/MEI/" }
+      {"label": "AEVEX Aerospace — FIRIS contract", "url": "https://www.aevex.com/news/"},
+      {"label": "JPMorgan analyst note (via Briefing.com)", "url": "https://www.briefing.com/"}
     ]
   },
-  "AAOI": {
-    "detail": "Applied Optoelectronics 鎖定逾 $324M 的 800G/1.6T 光收發模組訂單 (含單筆逾 $200M)，搭上 MU 引爆的半導體族群走強。\n\n800G/1.6T 光模組是 AI 資料中心交換機升級的關鍵零組件，訂單能見度大幅改善 AAOI 的營收前景。疊加今日整個 datacom 光通訊族群 (COHR、CRDO) 同步走強。\n\n盤後 +5.0%。AI 光網絡題材的高 beta 標的，合約金額相對其市值具實質意義。",
-    "publishedAt": "2026-06-24T16:30:00-04:00",
+  "ILLR": {
+    "detail": "Triller Group 子公司宣布以約 **$4.113 億 ($105/股) 買入 391.7 萬股 SpaceX 等值股權**作為庫藏資產曝險——金額遠超 Triller 自身市值 (~$6,000 萬)。盤前一度暴衝 +360%，回穩於 +58.7%。\n\n然而基本面極弱：最近一季淨虧 **$32.2M**、股東權益 **-$3.49 億**，且 SpaceX 曝險的會計處理與資金來源存疑。\n\n屬高度投機的低浮籌題材，short float 僅 0.08%，純散戶動能驅動。**極高風險**，不建議作為核心多單，僅供觀察日內動能。",
+    "publishedAt": "2026-06-26T06:30:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      { "label": "Applied Optoelectronics order announcement", "url": "https://finance.yahoo.com/quote/AAOI/" }
+      {"label": "Triller Group — SpaceX equity exposure announcement", "url": "https://investors.triller.com/news"}
     ]
   },
-  "STX": {
-    "detail": "Seagate 隨 MU 引爆的記憶體/儲存超級循環跳漲，AI 資料中心 HDD 容量需求是核心驅動。\n\nHDD 在 AI 訓練/推論的大規模冷儲存需求結構性轉強，與 WDC 同為 HDD 雙雄受惠者。**MS 目標 $1,035、JPM 目標 $920**。\n\n盤後 +9.9%。屬於記憶體超級循環的第二波 (HDD) 受惠者，跟隨族群定價上行，無自身利空。",
-    "publishedAt": "2026-06-25T07:00:00-04:00",
+  "CNVS": {
+    "detail": "Cineverse 公布季報，營收受 **Giant Worldwide / IndiCue 併購**帶動成長，並重申 **FY27 指引 $1.15-1.20 億**，盤前 +14.9%。\n\n但須注意：TradingView 追蹤的最新季度 (Q3 '25) 顯示 EPS -$0.05 (共識 -$0.03，miss)、營收 $16.29M，相對去年同期高基期 ($40.74M) 呈 **YoY 收縮 (-60%)**——成長故事與單季 YoY 數字存在落差。\n\n屬低市值 ($57M) 動能股，催化質量中等。short float 2.74%、days-to-cover 3.57。波動大，宜短打。",
+    "publishedAt": "2026-06-26T07:30:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      { "label": "247WallSt — Memory chip stocks lead the rebound", "url": "https://247wallst.com/investing/2026/06/24/live-nasdaq-composite-tech-stages-a-comeback-as-memory-chip-stocks-lead-the-rebound/" }
+      {"label": "Cineverse — quarterly results", "url": "https://investors.cineverse.com/news-events"}
     ]
   },
-  "QCOM": {
-    "detail": "Qualcomm 隨 MU 財報引爆的半導體族群強力反彈，前日因記憶體 rout 殺 -8% 後今日大幅回神。\n\n本身無重大個股新聞，屬於前一日 AI 晶片 rout 超賣後的 mean-reversion + 族群情緒回暖。盤後 +13%、盤前 +11.7%。\n\n這類超賣反彈缺乏自身基本面催化，須留意若族群情緒再度轉弱可能快速回吐，定位為交易性反彈而非趨勢多單。",
-    "publishedAt": "2026-06-25T07:00:00-04:00",
+  "OMER": {
+    "detail": "Omeros 遭歐洲藥品管理局 **CHMP 對 Yartemlea (narsoplimab)** 治療造血幹細胞移植相關血栓微血管病變 (**TA-TMA**) 出具**負面意見 (negative opinion)**，歐洲上市授權申請受挫，盤前 **-21.25%**。\n\n美國 FDA 已於 **2025/12 核准** narsoplimab，故此為歐洲市場單一利空，但仍打擊歐洲營收預期與市場信心。\n\n**做空注意**：short float 高達 **25.94%**、days-to-cover **11.31**——空頭極度擁擠，利空雖真但補空/反彈風險高。宜等反彈無力再進，嚴設停損。",
+    "publishedAt": "2026-06-26T05:00:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      { "label": "247WallSt — Tech rebound led by memory", "url": "https://247wallst.com/investing/2026/06/24/live-nasdaq-composite-tech-stages-a-comeback-as-memory-chip-stocks-lead-the-rebound/" }
+      {"label": "Omeros — CHMP opinion on narsoplimab", "url": "https://investor.omeros.com/news-releases"},
+      {"label": "EMA — CHMP meeting highlights", "url": "https://www.ema.europa.eu/en/news"}
     ]
   },
-  "ARM": {
-    "detail": "Arm Holdings 獲多家投行 6/25 上調目標價，看好 agentic AI 驅動的 CPU 授權需求，疊加 MU 引爆的半導體族群反彈。\n\n**TD Cowen 目標 $475、UBS 目標 $470**，論點為 AI agent 工作負載將推升對 Arm 架構 CPU 的需求。盤後 +7.2%、盤前 +5.3%。\n\n帶有分析師催化的族群反彈標的，但估值已高，須留意回吐風險。",
-    "publishedAt": "2026-06-25T07:00:00-04:00",
+  "ON": {
+    "detail": "onsemi 宣布**全股票收購 Synaptics**，企業價值約 **$70 億**，換股比 1.350、對 SYNA 溢價 ~19%——為公司史上最大併購。市場擔憂**股權稀釋**與**溢價過高**，盤前 **-13.68%**。\n\n戰略上瞄準邊緣 AI/IoT/汽車感測，宣稱 TAM 擴大 +$300 億至 2030 年 $2,430 億，但短期 EPS 攤薄與整合風險主導股價。\n\n**做空注意**：ON 6 個月仍 +110%，併購利空恐僅為短期消化；short float 8.04%、days-to-cover 2.68。屬事件型做空，須留意管理層電話會議後的反彈。",
+    "publishedAt": "2026-06-25T16:15:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      { "label": "TD Cowen / UBS — Arm price target raises", "url": "https://finance.yahoo.com/quote/ARM/" }
+      {"label": "onsemi — to acquire Synaptics press release", "url": "https://www.onsemi.com/company/news-media/press-announcements"},
+      {"label": "Reuters — onsemi buys Synaptics", "url": "https://www.reuters.com/markets/deals/"}
     ]
   },
-  "SPRY": {
-    "detail": "ARS Pharmaceuticals 6/24 盤後發布商業更新，旗艦腎上腺素鼻噴霧 neffy 的給付進展不如預期，引發重挫。\n\n**neffy 在 7/1 新給付週期未取得任何新的主要商業保險納保**，市場原本期待的大型承保落空。公司同時下修 2026 現金 OpEx 至 ~$248M。\n\n盤後 -24%。**short float 高達 39.5%** 雖理論上有軋空風險，但此為實質基本面利空 (核心產品商業化卡關)，做空邏輯成立；唯須警惕高空頭部位帶來的反彈波動，停損需嚴格。",
-    "publishedAt": "2026-06-24T16:30:00-04:00",
+  "UMC": {
+    "detail": "聯電 (UMC) ADR 盤前 **-10.42%**，受兩重利空夾擊：(1) 全球半導體/記憶體 selloff (Apple 漲價引爆記憶體供給危機恐慌 + SK 海力士 HBM 縮產)；(2) **BNP Paribas 降評至 Underperform、目標價 $10.20**，質疑成熟製程 AI 成長故事過度樂觀、估值偏高。\n\n6 個月仍 +241%、近一月 +31.5%，今日為獲利了結兼板塊 risk-off。\n\n**做空注意**：屬板塊性下殺，個股 short float 僅 1.01%。宜視為板塊對沖標的而非乾淨個股做空；若半導體族群企穩，反彈風險高。",
+    "publishedAt": "2026-06-26T06:00:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      { "label": "ARS Pharmaceuticals commercial update", "url": "https://finance.yahoo.com/quote/SPRY/" }
-    ]
-  },
-  "PASG": {
-    "detail": "Passage Bio 6/24 盤後宣布與 Remix Therapeutics 進行全股票反向併購，現有股東遭極端稀釋。\n\n**現有 PASG 股東僅持有合併後公司約 7%**，公司將更名 Remix Therapeutics、改代號 RMTX，並同步進行約 $1 億私募 (Decheng 領投)。\n\n盤後 -18.9%。反向併購使原股東權益縮水逾 90%，是純粹的稀釋型利空，做空邏輯清晰；但反向併購股常有低浮籌投機波動，須控制部位。",
-    "publishedAt": "2026-06-24T16:00:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      { "label": "Passage Bio / Remix reverse merger announcement", "url": "https://finance.yahoo.com/quote/PASG/" }
-    ]
-  },
-  "TCOM": {
-    "detail": "Trip.com (攜程) 公布 FY26 Q1 財報三重利空，盤前重挫。\n\n**non-GAAP EPS $0.83 不如預期 $0.90 (-7.8%)**、淨利年減 41.6%，且 **Q2 淨營收指引僅年增 ~3-8%** (遠低於 Q1 的 +17%)，成長明顯減速。疊加中國 SAMR 反壟斷調查恐重罰的監管疑慮。\n\n盤前 -14.3%。財報 miss + 指引下修 + 監管三重利空，是今日最乾淨的大型股做空標的之一；中概股波動大，留意 ADR 隔夜跳空風險。",
-    "publishedAt": "2026-06-24T20:00:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      { "label": "Trip.com Group Q1 FY26 results", "url": "https://finance.yahoo.com/quote/TCOM/" }
-    ]
-  },
-  "INVE": {
-    "detail": "Identiv 6/24 盤後宣布出售核心 IoT 業務，交易結構對股東極為不利。\n\n公司將 IoT 業務、德國 R&D 與泰國子公司出售給 Trackonomy，但**反而需「倒貼」再投入 $25M 現金，換取 $50M 非流動性私人特別股**——等同放棄主要營收來源換取流動性極差的資產。\n\n盤前 -12.2%。市場解讀為公司放棄主營、現金流出，做空邏輯成立。小型股流動性低，須留意滑價。",
-    "publishedAt": "2026-06-24T16:15:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      { "label": "Identiv / Trackonomy divestiture announcement", "url": "https://finance.yahoo.com/quote/INVE/" }
-    ]
-  },
-  "NVTS": {
-    "detail": "Navitas Semiconductor 6/24 宣布最高 $5 億 ATM 股票增發，稀釋疑慮抵消族群利多。\n\n雖推出新款高壓 SiC 封裝、且搭上 MU 引爆的半導體族群上漲，但**同步宣布最高 $5 億的 ATM (at-the-market) 增發計畫**構成持續性稀釋壓力。\n\n盤前/盤後仍隨族群 +6-8%，但此標的多空交織——族群動能向上、增發稀釋向下，定位為留意而非高信心方向單。",
-    "publishedAt": "2026-06-24T16:30:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      { "label": "Navitas Semiconductor $500M ATM offering", "url": "https://finance.yahoo.com/quote/NVTS/" }
+      {"label": "BNP Paribas downgrade (via Briefing.com)", "url": "https://www.briefing.com/"},
+      {"label": "Reuters — Asia chip selloff", "url": "https://www.reuters.com/technology/"}
     ]
   }
 }
