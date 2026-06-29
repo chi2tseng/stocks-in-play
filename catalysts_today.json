@@ -1,54 +1,286 @@
 {
-  "CMCSA": {"Type": "M&A", "Catalyst": "Comcast 宣布以免稅 spinoff 分拆 NBCUniversal+Sky 媒體事業（環球影城、Peacock、NBC/Telemundo、Sky）為獨立上市公司，留下純寬頻/無線/商用現金牛，盤前一度 +26%；Cavanagh 任 NBCU CEO、Angelakis 任 Comcast CEO，約一年完成。"},
-  "CHTR": {"Type": "M&A", "Catalyst": "受 Comcast 分拆消息帶動的有線寬頻整併聯動，市場解讀為 cable 板塊重估及潛在 Comcast-Charter 合併前奏，盤前 +20%（CHTR YTD 已跌 36%、Short Float 25.89%，深度回補/軋空）。"},
-  "FPS": {"Type": "earnings", "Catalyst": "Forgent Power Solutions（資料中心配電設備）Q3 營收 $378.7M、YoY +103%，EPS $0.18 vs 估 $0.16（surprise +13.6%）、營收 surprise +14.9%，訂單 $867M 創新高、backlog $1.98B（book-to-bill 2.3×）。"},
-  "FCEL": {"Type": "contract", "Catalyst": "FuelCell 與 Fit Energy 簽最高 380MW 資料中心 clean baseload 供電協議（首期 30MW 已付訂金、分四階段、15-20 年服務約），Jefferies 升評 Buy、目標價 $16→$24，盤前 +13%。"},
-  "BE": {"Type": "news", "Catalyst": "Bloom Energy 隨燃料電池板塊聯動回補（FCEL 大漲帶動），AI 資料中心『自帶電力』需求敘事 + Brookfield/Oracle 合作背景；BE YTD +190% 動能名稱，+5.35%。"},
-  "ASTS": {"Type": "macro", "Catalyst": "AST SpaceMobile 隨 SpaceX 史上最大 IPO（$135/股、估值約 $1.77 兆）激勵太空板塊資金回流，盤前 +8.2%（1M 已跌 45%，深度反彈）。"},
-  "RKLB": {"Type": "macro", "Catalyst": "Rocket Lab 受 SpaceX IPO 漣漪 + Neutron 中型火箭 2026 催化敘事（唯一西方 SpaceX 替代）帶動，盤前 +12.76%（1M 跌 44% 後反彈）。"},
-  "LUNR": {"Type": "macro", "Catalyst": "Intuitive Machines 隨 SpaceX IPO 太空板塊行情 + IM-3 任務 2026 下半年登月催化，+6.11%（1M 跌 51%、Short Float 29.5% 軋空）。"},
-  "RDW": {"Type": "macro", "Catalyst": "Redwire 隨 SpaceX IPO 帶動太空板塊資金回流，+7.59%（1M 跌 54% 後反彈）。"},
-  "SATL": {"Type": "macro", "Catalyst": "Satellogic 隨 SpaceX IPO 太空板塊聯動上漲，+8.23%。"},
-  "SPCE": {"Type": "macro", "Catalyst": "Virgin Galactic 隨 SpaceX IPO 板塊行情上漲，+4.41%（Short Float 34.7% 軋空燃料）。"},
-  "PL": {"Type": "macro", "Catalyst": "Planet Labs 隨太空板塊聯動（FY26 營收 $308M、+25.9% YoY 背景），+5.73%。"},
-  "SIDU": {"Type": "momentum", "Catalyst": "Sidus Space 太空板塊聯動 + 納入 Russell 指數重組（剛完成 $58.5M 增發），低浮籌動能 +7.22%。"},
-  "NNBR": {"Type": "contract", "Catalyst": "NN Inc. 拿下 AI 基礎設施/資料中心液冷設備多份新合約（與一家全球 AI 運算設備龍頭）；同期 Q 財報 EPS surprise +137.5%、營收 +11%，盤前 +62.68%（成交量 27M）。"},
-  "TII": {"Type": "contract", "Catalyst": "Titan Mining——美陸軍 EUL 條件選定（Pine Bluff+Anniston 設首座軍事基地商業石墨純化廠 Kilbourne），週五盤後 +57% 大漲後的回吐/盤整（盤前 -4.29、盤後 +4.76 雙向波動）。"},
-  "RCAT": {"Type": "contract", "Catalyst": "Red Cat——$79M+ 陸軍 SRR 量產合約臨近、Palantir 軟體整合、Pentagon 無人機決賽入圍（$150M），Q1 營收 $15.47M、+849% YoY，+6.57%。"},
-  "OUST": {"Type": "contract", "Catalyst": "Ouster——Rev8 數位光達訂單加速（Benchmark 擴大製造夥伴鎖定 10 年逾 10 萬台/年產能、AIM 自駕機械、世足 DOT 合約），+5.4%。"},
-  "ABCL": {"Type": "analyst", "Catalyst": "AbCellera——與 Jazz Pharma 臨床前研究/選擇權/授權合作持續發酵 + 分析師升評動能（ABCL635 Q3 數據在望、Q1 營收 +98% YoY），+7.18%。"},
-  "VRDN": {"Type": "FDA", "Catalyst": "Viridian——FDA 於 6/25 核准首個商品 Lumvoa（veligrotug-vvze）治療甲狀腺眼病（PDUFA 6/30 前提早核准），盤後延續 +10.67%（現金 $762M、Short Float 14.65%）。"},
-  "UNCY": {"Type": "FDA", "Catalyst": "Unicycive——oxylanthanum carbonate（OLC）腎病高磷血症 NDA 的 PDUFA 到期日 6/27-29，FDA 決定催化，+8.7%。"},
-  "SLS": {"Type": "news", "Catalyst": "SELLAS——市場押注 pivotal Phase 3 REGAL 試驗（GPS/WT1）數據讀出在望（已達第 80 事件），股價數週由 $9 升至 $12+，+8.39%（Short Float 34.47% 軋空）。"},
-  "BLFS": {"Type": "M&A", "Catalyst": "BioLife Solutions 吸引多方收購興趣（含 Repligen），盤後 +6.56%（Q1 營收 $27.5M、+25% YoY、EPS surprise +20%、已轉盈）。"},
-  "AOUT": {"Type": "earnings", "Catalyst": "American Outdoor Brands FY26 Q4（6/25 發布）：FY 營收 $190.5M、-14.3%、non-GAAP EPS $0.28，但 FY27 指引上修至營收 $200-210M、EBITDA margin 6.5-7.5%，+4.14%。"},
-  "LCUT": {"Type": "earnings", "Catalyst": "Lifetime Brands 財報後重估——Q1 營收 $143.5M、+2.4% 超預期 4.3%、EPS $0.04 vs 估 -$0.16（surprise +125%），FY26 指引 EPS $0.73-0.80，+5.84%。"},
-  "FBYD": {"Type": "earnings", "Catalyst": "Falcon's Beyond Q1 轉盈（淨利 $6.1M vs 去年虧損，營收 $5.4M），盤後小幅回吐 -4.49%。"},
-  "RBLX": {"Type": "analyst", "Catalyst": "Roblox——BTIG 維持 Buy（強勁 bookings/engagement），分析師均價 $78（隱含近 90% 上行），盤前 +4.31%。"},
-  "LWLG": {"Type": "news", "Catalyst": "Lightwave Logic——AI 資料中心電光聚合物光學商業化敘事（四家 Fortune 500 原型階段、2027 量產），YTD +167% 動能；無單日明確催化，+7.63%。"},
-  "RZLV": {"Type": "news", "Catalyst": "Rezolve AI——SQD 數據量四個月增 5 倍至 1.4PB/日、Reward 平台驅動 Mashreq 的 Visa 返現計畫，AI 動能 +7.05%。"},
-  "PETS": {"Type": "news", "Catalyst": "PetMed Express——重燃收購/維權興趣（SilverCape、Cardone Ventures 先前非約束性提案，6/9 投資人加碼），低浮籌反彈 +21.02%。"},
-  "UPC": {"Type": "M&A", "Catalyst": "Universe Pharmaceuticals 以約 $10.75M 收購 Best Praise（持有 5 項中國醫藥專利，涵蓋老年/神經退化/心血管），超低浮籌盤前 +169.59%。"},
-  "DCOY": {"Type": "news", "Catalyst": "Decoy Therapeutics——約 $3.5M PIPE（$5.91/股）預計 6/29 完成交割，超低浮籌暴拉 +110.58%。"},
-  "AISP": {"Type": "news", "Catalyst": "Airship AI（影像分析 AI），盤後溫和上揚 +4.35%；無單一重大催化，承接 Q1 營收 $6.3M、+15% YoY 動能。"},
-  "CNTN": {"Type": "momentum", "Catalyst": "Canton Strategic——低浮籌動能，無明確催化，盤後 +5.39%。"},
-  "WNW": {"Type": "momentum", "Catalyst": "Meiwu Technology——低浮籌動能，無明確催化，盤前 +17.56%/盤後 +12.8% 雙向波動。"},
-  "SKYQ": {"Type": "momentum", "Catalyst": "Sky Quarry——低浮籌動能，無明確催化，+5.9%。"},
-  "ZDAI": {"Type": "momentum", "Catalyst": "Directbooking Technology——低浮籌動能，無明確催化，盤後 +5.78%。"},
-  "QH": {"Type": "momentum", "Catalyst": "Quhuo——低浮籌動能，無明確催化，盤後 +18.51%/盤前 +4.17%。"},
-  "LRMR": {"Type": "FDA", "Catalyst": "Larimar——6/29 7:45am ET 投資人說明會公布 nomlabofusp（Friedreich 共濟失調）監管更新與長期開放標籤數據，市場對加速核准路徑/數據失望，週五盤後曾 +9% 後急殺，盤前 -22.68% 反轉。"},
-  "ILLR": {"Type": "news", "Catalyst": "Triller——上週 SpaceX-treasury（SPCX 曝險）+ 反分割暴拉後反轉，市場擔憂 $300M PIPE 稀釋 + 6/30 Nasdaq 合規大限（淨值 -$349M），盤前 -16.8%。"},
-  "PAYS": {"Type": "guidance", "Catalyst": "Paysign——保守前瞻指引壓制（血漿/患者可負擔業務雖強，管理層指引偏保守觸發獲利了結），盤後 -4.65%。"},
-  "ABOS": {"Type": "news", "Catalyst": "Acumen——無新催化，sabirnetug ALTITUDE-AD 三期阿茲海默數據要到 2026 年底，盤後續跌 -8.9%（YTD 已跌約 30%）。"},
-  "CANF": {"Type": "news", "Catalyst": "Can-Fite——1-for-3,000 反向分割 + ADS 比率變更後續壓力，盤後 -9.09%。"},
-  "METC": {"Type": "earnings", "Catalyst": "Ramaco Resources——二次發行相關集體訴訟調查 + 焦煤板塊弱勢，6 月累跌約 16%，盤後 -4.42%（EPS -$0.30 vs 估 -$0.21 miss）。"},
-  "LPG": {"Type": "earnings", "Catalyst": "Dorian LPG——盤後 -4.22%；延續上週財報後弱勢（VLGC 運價/獲利了結），財報實為雙超預期（EPS $1.89 vs $1.41 +33.6%、Rev $153M vs $129M +18.9%）但 sell-the-news。"},
-  "CAST": {"Type": "news", "Catalyst": "Freecast——盤前 -16.08%；無明確催化，低浮籌動能（Short Float 21.35%）。"},
-  "CD": {"Type": "news", "Catalyst": "Chaince Digital——盤後 -4.59%；無單日明確催化，承接月內弱勢。"},
-  "IVF": {"Type": "news", "Catalyst": "INVO Fertility——取得阿拉巴馬診所完全控制權 + 生育治療擴張題材，但盤前回吐（前一日暴漲 75% 後獲利了結），-9.8%。"},
-  "SDOT": {"Type": "momentum", "Catalyst": "Sadot Group——反向分割後極端波動（多次熔斷），低浮籌動能，盤後 -9.98%（Nasdaq 合規 7/16 大限）。"},
-  "SHPH": {"Type": "momentum", "Catalyst": "Shuttle Pharmaceuticals——上週 $6 上方衝高後重挫，低浮籌動能/獲利了結，盤後 -12.19%。"},
-  "EHGO": {"Type": "momentum", "Catalyst": "Eshallgo——無基本面催化的純投機暴拉暴跌，低浮籌動能，盤前 -11.37%。"},
-  "RYOJ": {"Type": "momentum", "Catalyst": "Ryojbaba——低浮籌動能，無明確催化，盤後 -7.06%。"},
-  "VOR": {"Type": "news", "Catalyst": "Vor Biopharma——盤後小幅回吐 -4.04%（telitacicept 三期推進中），無單日明確催化。"}
+  "CMCSA": {
+    "Type": "M&A",
+    "Catalyst": "Comcast 宣布以免稅 spinoff 分拆 NBCUniversal+Sky 媒體事業（環球影城、Peacock、NBC/Telemundo、Sky）為獨立上市公司，留下純寬頻/無線/商用現金牛，盤前一度 +26%；Cavanagh 任 NBCU CEO、Angelakis 任 Comcast CEO，約一年完成。"
+  },
+  "CHTR": {
+    "Type": "M&A",
+    "Catalyst": "受 Comcast 分拆消息帶動的有線寬頻整併聯動，市場解讀為 cable 板塊重估及潛在 Comcast-Charter 合併前奏，盤前 +20%（CHTR YTD 已跌 36%、Short Float 25.89%，深度回補/軋空）。"
+  },
+  "FPS": {
+    "Type": "earnings",
+    "Catalyst": "Forgent Power Solutions（資料中心配電設備）Q3 營收 $378.7M、YoY +103%，EPS $0.18 vs 估 $0.16（surprise +13.6%）、營收 surprise +14.9%，訂單 $867M 創新高、backlog $1.98B（book-to-bill 2.3×）。"
+  },
+  "FCEL": {
+    "Type": "contract",
+    "Catalyst": "FuelCell 與 Fit Energy 簽最高 380MW 資料中心 clean baseload 供電協議（首期 30MW 已付訂金、分四階段、15-20 年服務約），Jefferies 升評 Buy、目標價 $16→$24，盤前 +13%。"
+  },
+  "BE": {
+    "Type": "news",
+    "Catalyst": "Bloom Energy 隨燃料電池板塊聯動回補（FCEL 大漲帶動），AI 資料中心『自帶電力』需求敘事 + Brookfield/Oracle 合作背景；BE YTD +190% 動能名稱，+5.35%。"
+  },
+  "ASTS": {
+    "Type": "macro",
+    "Catalyst": "AST SpaceMobile 隨 SpaceX 史上最大 IPO（$135/股、估值約 $1.77 兆）激勵太空板塊資金回流，盤前 +8.2%（1M 已跌 45%，深度反彈）。"
+  },
+  "RKLB": {
+    "Type": "macro",
+    "Catalyst": "Rocket Lab 受 SpaceX IPO 漣漪 + Neutron 中型火箭 2026 催化敘事（唯一西方 SpaceX 替代）帶動，盤前 +12.76%（1M 跌 44% 後反彈）。"
+  },
+  "LUNR": {
+    "Type": "macro",
+    "Catalyst": "Intuitive Machines 隨 SpaceX IPO 太空板塊行情 + IM-3 任務 2026 下半年登月催化，+6.11%（1M 跌 51%、Short Float 29.5% 軋空）。"
+  },
+  "RDW": {
+    "Type": "macro",
+    "Catalyst": "Redwire 隨 SpaceX IPO 帶動太空板塊資金回流，+7.59%（1M 跌 54% 後反彈）。"
+  },
+  "SATL": {
+    "Type": "macro",
+    "Catalyst": "Satellogic 隨 SpaceX IPO 太空板塊聯動上漲，+8.23%。"
+  },
+  "SPCE": {
+    "Type": "macro",
+    "Catalyst": "Virgin Galactic 隨 SpaceX IPO 板塊行情上漲，+4.41%（Short Float 34.7% 軋空燃料）。"
+  },
+  "PL": {
+    "Type": "macro",
+    "Catalyst": "Planet Labs 隨太空板塊聯動（FY26 營收 $308M、+25.9% YoY 背景），+5.73%。"
+  },
+  "SIDU": {
+    "Type": "momentum",
+    "Catalyst": "Sidus Space 太空板塊聯動 + 納入 Russell 指數重組（剛完成 $58.5M 增發），低浮籌動能 +7.22%。"
+  },
+  "NNBR": {
+    "Type": "contract",
+    "Catalyst": "NN Inc. 拿下 AI 基礎設施/資料中心液冷設備多份新合約（與一家全球 AI 運算設備龍頭）；同期 Q 財報 EPS surprise +137.5%、營收 +11%，盤前 +62.68%（成交量 27M）。"
+  },
+  "TII": {
+    "Type": "contract",
+    "Catalyst": "Titan Mining——美陸軍 EUL 條件選定（Pine Bluff+Anniston 設首座軍事基地商業石墨純化廠 Kilbourne），週五盤後 +57% 大漲後的回吐/盤整（盤前 -4.29、盤後 +4.76 雙向波動）。"
+  },
+  "RCAT": {
+    "Type": "contract",
+    "Catalyst": "Red Cat——$79M+ 陸軍 SRR 量產合約臨近、Palantir 軟體整合、Pentagon 無人機決賽入圍（$150M），Q1 營收 $15.47M、+849% YoY，+6.57%。"
+  },
+  "OUST": {
+    "Type": "contract",
+    "Catalyst": "Ouster——Rev8 數位光達訂單加速（Benchmark 擴大製造夥伴鎖定 10 年逾 10 萬台/年產能、AIM 自駕機械、世足 DOT 合約），+5.4%。"
+  },
+  "ABCL": {
+    "Type": "analyst",
+    "Catalyst": "AbCellera——與 Jazz Pharma 臨床前研究/選擇權/授權合作持續發酵 + 分析師升評動能（ABCL635 Q3 數據在望、Q1 營收 +98% YoY），+7.18%。"
+  },
+  "VRDN": {
+    "Type": "FDA",
+    "Catalyst": "Viridian——FDA 於 6/25 核准首個商品 Lumvoa（veligrotug-vvze）治療甲狀腺眼病（PDUFA 6/30 前提早核准），盤後延續 +10.67%（現金 $762M、Short Float 14.65%）。"
+  },
+  "UNCY": {
+    "Type": "FDA",
+    "Catalyst": "Unicycive——oxylanthanum carbonate（OLC）腎病高磷血症 NDA 的 PDUFA 到期日 6/27-29，FDA 決定催化，+8.7%。"
+  },
+  "SLS": {
+    "Type": "news",
+    "Catalyst": "SELLAS——市場押注 pivotal Phase 3 REGAL 試驗（GPS/WT1）數據讀出在望（已達第 80 事件），股價數週由 $9 升至 $12+，+8.39%（Short Float 34.47% 軋空）。"
+  },
+  "BLFS": {
+    "Type": "M&A",
+    "Catalyst": "BioLife Solutions 吸引多方收購興趣（含 Repligen），盤後 +6.56%（Q1 營收 $27.5M、+25% YoY、EPS surprise +20%、已轉盈）。"
+  },
+  "AOUT": {
+    "Type": "earnings",
+    "Catalyst": "American Outdoor Brands FY26 Q4（6/25 發布）：FY 營收 $190.5M、-14.3%、non-GAAP EPS $0.28，但 FY27 指引上修至營收 $200-210M、EBITDA margin 6.5-7.5%，+4.14%。"
+  },
+  "LCUT": {
+    "Type": "earnings",
+    "Catalyst": "Lifetime Brands 財報後重估——Q1 營收 $143.5M、+2.4% 超預期 4.3%、EPS $0.04 vs 估 -$0.16（surprise +125%），FY26 指引 EPS $0.73-0.80，+5.84%。"
+  },
+  "FBYD": {
+    "Type": "earnings",
+    "Catalyst": "Falcon's Beyond Q1 轉盈（淨利 $6.1M vs 去年虧損，營收 $5.4M），盤後小幅回吐 -4.49%。"
+  },
+  "RBLX": {
+    "Type": "analyst",
+    "Catalyst": "Roblox——BTIG 維持 Buy（強勁 bookings/engagement），分析師均價 $78（隱含近 90% 上行），盤前 +4.31%。"
+  },
+  "LWLG": {
+    "Type": "news",
+    "Catalyst": "Lightwave Logic——AI 資料中心電光聚合物光學商業化敘事（四家 Fortune 500 原型階段、2027 量產），YTD +167% 動能；無單日明確催化，+7.63%。"
+  },
+  "RZLV": {
+    "Type": "news",
+    "Catalyst": "Rezolve AI——SQD 數據量四個月增 5 倍至 1.4PB/日、Reward 平台驅動 Mashreq 的 Visa 返現計畫，AI 動能 +7.05%。"
+  },
+  "PETS": {
+    "Type": "news",
+    "Catalyst": "PetMed Express——重燃收購/維權興趣（SilverCape、Cardone Ventures 先前非約束性提案，6/9 投資人加碼），低浮籌反彈 +21.02%。"
+  },
+  "UPC": {
+    "Type": "M&A",
+    "Catalyst": "Universe Pharmaceuticals 以約 $10.75M 收購 Best Praise（持有 5 項中國醫藥專利，涵蓋老年/神經退化/心血管），超低浮籌盤前 +169.59%。"
+  },
+  "DCOY": {
+    "Type": "news",
+    "Catalyst": "Decoy Therapeutics——約 $3.5M PIPE（$5.91/股）預計 6/29 完成交割，超低浮籌暴拉 +110.58%。"
+  },
+  "AISP": {
+    "Type": "news",
+    "Catalyst": "Airship AI（影像分析 AI），盤後溫和上揚 +4.35%；無單一重大催化，承接 Q1 營收 $6.3M、+15% YoY 動能。"
+  },
+  "CNTN": {
+    "Type": "momentum",
+    "Catalyst": "Canton Strategic——低浮籌動能，無明確催化，盤後 +5.39%。"
+  },
+  "WNW": {
+    "Type": "momentum",
+    "Catalyst": "Meiwu Technology——低浮籌動能，無明確催化，盤前 +17.56%/盤後 +12.8% 雙向波動。"
+  },
+  "SKYQ": {
+    "Type": "momentum",
+    "Catalyst": "Sky Quarry——低浮籌動能，無明確催化，+5.9%。"
+  },
+  "ZDAI": {
+    "Type": "momentum",
+    "Catalyst": "Directbooking Technology——低浮籌動能，無明確催化，盤後 +5.78%。"
+  },
+  "QH": {
+    "Type": "momentum",
+    "Catalyst": "Quhuo——低浮籌動能，無明確催化，盤後 +18.51%/盤前 +4.17%。"
+  },
+  "LRMR": {
+    "Type": "FDA",
+    "Catalyst": "Larimar——6/29 7:45am ET 投資人說明會公布 nomlabofusp（Friedreich 共濟失調）監管更新與長期開放標籤數據，市場對加速核准路徑/數據失望，週五盤後曾 +9% 後急殺，盤前 -22.68% 反轉。"
+  },
+  "ILLR": {
+    "Type": "news",
+    "Catalyst": "Triller——上週 SpaceX-treasury（SPCX 曝險）+ 反分割暴拉後反轉，市場擔憂 $300M PIPE 稀釋 + 6/30 Nasdaq 合規大限（淨值 -$349M），盤前 -16.8%。"
+  },
+  "PAYS": {
+    "Type": "guidance",
+    "Catalyst": "Paysign——保守前瞻指引壓制（血漿/患者可負擔業務雖強，管理層指引偏保守觸發獲利了結），盤後 -4.65%。"
+  },
+  "ABOS": {
+    "Type": "news",
+    "Catalyst": "Acumen——無新催化，sabirnetug ALTITUDE-AD 三期阿茲海默數據要到 2026 年底，盤後續跌 -8.9%（YTD 已跌約 30%）。"
+  },
+  "CANF": {
+    "Type": "news",
+    "Catalyst": "Can-Fite——1-for-3,000 反向分割 + ADS 比率變更後續壓力，盤後 -9.09%。"
+  },
+  "METC": {
+    "Type": "earnings",
+    "Catalyst": "Ramaco Resources——二次發行相關集體訴訟調查 + 焦煤板塊弱勢，6 月累跌約 16%，盤後 -4.42%（EPS -$0.30 vs 估 -$0.21 miss）。"
+  },
+  "LPG": {
+    "Type": "earnings",
+    "Catalyst": "Dorian LPG——盤後 -4.22%；延續上週財報後弱勢（VLGC 運價/獲利了結），財報實為雙超預期（EPS $1.89 vs $1.41 +33.6%、Rev $153M vs $129M +18.9%）但 sell-the-news。"
+  },
+  "CAST": {
+    "Type": "news",
+    "Catalyst": "Freecast——盤前 -16.08%；無明確催化，低浮籌動能（Short Float 21.35%）。"
+  },
+  "CD": {
+    "Type": "news",
+    "Catalyst": "Chaince Digital——盤後 -4.59%；無單日明確催化，承接月內弱勢。"
+  },
+  "IVF": {
+    "Type": "news",
+    "Catalyst": "INVO Fertility——取得阿拉巴馬診所完全控制權 + 生育治療擴張題材，但盤前回吐（前一日暴漲 75% 後獲利了結），-9.8%。"
+  },
+  "SDOT": {
+    "Type": "momentum",
+    "Catalyst": "Sadot Group——反向分割後極端波動（多次熔斷），低浮籌動能，盤後 -9.98%（Nasdaq 合規 7/16 大限）。"
+  },
+  "SHPH": {
+    "Type": "momentum",
+    "Catalyst": "Shuttle Pharmaceuticals——上週 $6 上方衝高後重挫，低浮籌動能/獲利了結，盤後 -12.19%。"
+  },
+  "EHGO": {
+    "Type": "momentum",
+    "Catalyst": "Eshallgo——無基本面催化的純投機暴拉暴跌，低浮籌動能，盤前 -11.37%。"
+  },
+  "RYOJ": {
+    "Type": "momentum",
+    "Catalyst": "Ryojbaba——低浮籌動能，無明確催化，盤後 -7.06%。"
+  },
+  "VOR": {
+    "Type": "news",
+    "Catalyst": "Vor Biopharma——盤後小幅回吐 -4.04%（telitacicept 三期推進中），無單日明確催化。"
+  },
+  "IRDM": {
+    "Type": "M&A",
+    "Catalyst": "Rocket Lab (RKLB) 宣布以約 $80 億企業價值、每股 $54（$27 現金 + RKLB 股票，含 collar 換股比）收購 Iridium，盤前飆 +21% 創太空業最大整併之一。"
+  },
+  "RPAY": {
+    "Type": "M&A",
+    "Catalyst": "6/29 提交含兩份新聞稿附件的 8-K（接續 Forager Capital 每股 $4.80 現金提案遭否決 + 股東 Veradace 8.2% 施壓），市場解讀為公司同意出售/私有化交易，盤前 +19%。"
+  },
+  "EVMN": {
+    "Type": "FDA",
+    "Catalyst": "EVO756 慢性自發性蕁麻疹 Phase 2b（160 人）未達主要終點 UAS7，公司終止該適應症開發，sell-the-news 下殺 -29%。"
+  },
+  "BTOG": {
+    "Type": "contract",
+    "Catalyst": "6/29 宣布以 $1100 萬（$100 萬現金 + $1000 萬權證）收購 16 台 NVIDIA Blackwell B300 AI 伺服器（Q3 交付馬來西亞資料中心），預估月經常性營收 ~$36 萬，首筆 AI 基建轉型交易 +47.85%。"
+  },
+  "FLY": {
+    "Type": "momentum",
+    "Catalyst": "SpaceX $1.77 兆 IPO 帶動太空族群資金回流，疊加 6/26 宣布收購 Space-ng（AI 視覺自主導航）、Jefferies Buy $52/KeyBanc Overweight $50 +5.64%。"
+  },
+  "MNTS": {
+    "Type": "momentum",
+    "Catalyst": "SpaceX IPO 帶動太空板塊回流，疊加 Vigoride 7 成功發射 + 2026 營收上看 $1000 萬（9 倍成長）+9.11%。"
+  },
+  "NNE": {
+    "Type": "news",
+    "Catalyst": "核能供電 AI 資料中心題材延燒，NRC 正式啟動 KRONOS MMR 研究反應爐建廠許可審查 + 與 Supermicro (SMCI) MOU 供電 AI 資料中心 +6.59%。"
+  },
+  "MSTR": {
+    "Type": "momentum",
+    "Catalyst": "比特幣反彈（自 ~$67K 回升）帶動比特幣代理股，公司持 847,363 枚 BTC（成本 $75,651）連跌 8 日後技術性反彈 +5.55%。"
+  },
+  "BTDR": {
+    "Type": "momentum",
+    "Catalyst": "比特幣反彈帶動挖礦股，疊加 5 月產量年增 370% 至 921 BTC + AI Cloud 年化營收破 $69M（GB300 NVL72 部署）+4.55%。"
+  },
+  "ASST": {
+    "Type": "momentum",
+    "Catalyst": "比特幣反彈帶動比特幣財庫股，公司持 19,864 枚 BTC + SATA 特別股 6/16 起每營業日配息（年化 13%）+4.41%。"
+  },
+  "ONDS": {
+    "Type": "contract",
+    "Catalyst": "國防無人機題材延燒，5 月新增逾 $3000 萬訂單（Q2 累計逾 $1.1 億）+ World View 獲美海軍 SOUTHCOM ~$480 萬高空氣球反毒合約 + $11 億『無人機霸權』政策 +4.6%。"
+  },
+  "VELO": {
+    "Type": "contract",
+    "Catalyst": "國防/太空增材製造需求加速，獲國防後勤局 (DLA) $980 萬五年 IDIQ 合約 + 7/1 預期轉正 EBITDA +4.63%。"
+  },
+  "KOPN": {
+    "Type": "contract",
+    "Catalyst": "國防 + AI 資料中心雙敘事，$2150 萬國防 OLED 後續量產合約 + 與 Fabric.AI 合作 Neural I/O 光互連（$1500 萬訂單 + 19.9% 股權）+6.81%。"
+  },
+  "GCTS": {
+    "Type": "contract",
+    "Catalyst": "與 MaxLinear 結盟開發 5G FWA 閘道器（Computex 展示）+ 衛星通訊參考平台授權擴大 + Q1 5G 晶片組營收年增 287% +4.26%。"
+  },
+  "AIIO": {
+    "Type": "M&A",
+    "Catalyst": "AI 題材接力，子公司 Neurovia AI 推 NeuroStream 資料壓縮平台 + 6/18 宣布以 $6000 萬（B 類股）收購 QC Capital 擴大全球 AI 機器人網絡 +4.81%。"
+  },
+  "MBRX": {
+    "Type": "FDA",
+    "Catalyst": "樞紐性 Phase 2B/3 MIRACLE 試驗（Annamycin+cytarabine 治 R/R AML）首次期中解盲預計 6 月（CRc >40% vs 歷史 ~17%），事件臨近投機買盤 +5.81%。"
+  },
+  "NXTS": {
+    "Type": "momentum",
+    "Catalyst": "低浮籌高波動投機動能（接續 6/22 $290 萬註冊直接增發 + 認股權證後的擠空式劇烈震盪），無新明確基本面催化 -11%。"
+  },
+  "PKX": {
+    "Type": "analyst",
+    "Catalyst": "電池材料/鋰業務題材 + 股東回報政策（調整後淨利 35-40%）支撐，惟 7000 名外包工直雇引發勞資疑慮 +5.54%。"
+  },
+  "YMM": {
+    "Type": "analyst",
+    "Catalyst": "Nomura 首評 Buy + 看好 2026 下半年 EPS 反彈、目標價上調至 $16.49，估值倍數擴張題材 +5.69%。"
+  }
 }
