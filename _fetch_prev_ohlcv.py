@@ -3,9 +3,9 @@ import json, os, io, csv, urllib.request
 from datetime import datetime, timedelta, timezone
 
 DIR = os.path.dirname(os.path.abspath(__file__))
-# Target trading day = June 1 (Mon) — the session the candidates gapped in.
-yesterday_iso = '2026-06-01'
-today_iso = '2026-06-02'
+# Target trading day = July 1 (Wed) — the gap session is 7/1 pre + 7/1 post.
+yesterday_iso = '2026-07-01'
+today_iso = '2026-07-02'
 
 todays = []
 with io.open(os.path.join(DIR, 'candidates.csv'), encoding='utf-8-sig') as f:

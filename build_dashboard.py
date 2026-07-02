@@ -479,11 +479,31 @@ def _build_data_for(td):
             'chgPct':           primary['chgPct'],
             'volume':           primary['volume'],
         }
+    sess_syms = set(filtered_stocks.keys())   # stocks whose sessions route to this date (drives SCANX)
+    if is_scan:
+        # Picks made on the scan date may reference stocks whose session rows
+        # routed to an older target date (e.g. a morning-after run: 7/1 pre rows
+        # land in 7/1.json while the scan/picks date is 7/2). Carry those stocks
+        # into the scan-date file so the picks tabs keep their full data.
+        pick_syms = {p['symbol'] for p in (claude_picks_clean + codex_picks_clean + gemini_picks_clean)}
+        for psym in pick_syms:
+            if psym in filtered_stocks or psym not in stocks:
+                continue
+            s = stocks[psym]
+            p_primary = max(s['sessions'], key=lambda c: abs(c['chgPct']))
+            filtered_stocks[psym] = {
+                **s,
+                'primarySession':   p_primary['session'],
+                'primaryDirection': p_primary['direction'],
+                'last':             p_primary['last'],
+                'chgPct':           p_primary['chgPct'],
+                'volume':           p_primary['volume'],
+            }
     syms_set = set(filtered_stocks.keys())
-    f_gap_up_e = [e for e in gap_up_e if e['symbol'] in syms_set]
-    f_gap_up_o = [e for e in gap_up_o if e['symbol'] in syms_set]
-    f_gap_dn_e = [e for e in gap_dn_e if e['symbol'] in syms_set]
-    f_gap_dn_o = [e for e in gap_dn_o if e['symbol'] in syms_set]
+    f_gap_up_e = [e for e in gap_up_e if e['symbol'] in sess_syms]
+    f_gap_up_o = [e for e in gap_up_o if e['symbol'] in sess_syms]
+    f_gap_dn_e = [e for e in gap_dn_e if e['symbol'] in sess_syms]
+    f_gap_dn_o = [e for e in gap_dn_o if e['symbol'] in sess_syms]
     cp  = [p for p in claude_picks_clean if p['symbol'] in syms_set] if is_scan else []
     cdx = [p for p in codex_picks_clean  if p['symbol'] in syms_set] if is_scan else []
     gp  = [p for p in gemini_picks_clean if p['symbol'] in syms_set] if is_scan else []
