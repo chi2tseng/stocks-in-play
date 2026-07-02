@@ -89,6 +89,31 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 
 ---
 
+## § 0.6 Wall-clock parallelization (SPEED rule — launch order ≠ phase order)
+
+The § numbering below is the LOGICAL order, not the execution order. Phases 2 / 5 / 5b / 9b have **no data dependencies between each other** — only Phase 1's `candidates.csv` gates them. Run the pipeline as a fan-out, not a chain:
+
+**T+0 — Phase 1**: `node barchart-scrape.js` (~7s, foreground — everything needs candidates.csv).
+
+**T+7s — fan out EVERYTHING at once** (background bash + background agents, all launched in a single message):
+1. 3× haiku catalyst agents (§ 2.1) — do **NOT** wait for the cluster map
+2. 1× haiku pre-scan agent (§ 2.0) — its cluster map gets applied later at the § 2.2 cross-check
+3. `node finviz-shorts.js` (background bash, ~90s)
+4. `node tv-scrape.js` in **2-3 background shards** over the earnings-likely tickers (apply the § 6.1 freshness cache first — skip files <3 days old)
+5. `py fetch_candles.py` (background bash — candidates + studies are already known; picks ⊆ candidates by the direction-match rule, so no need to wait for picks)
+
+**While the fan-out runs (~2 min)**, the main model does zero-dependency work: day_resets context review, Phase 10b OHLCV prep, studies placeholder checks.
+
+**Join #1** (catalyst tables + shorts.json back) → MAGNA53 ranking → top-10 known → **immediately launch the 1-2 sonnet fact-sheet agents (§ 8.0) in the background**.
+
+**While fact-sheets run (~1-2 min)**, main model writes: `day_resets.json`, `catalysts_today.json`, the full-list 簡述 table, and runs `py build_report.py` / `py gen_tables.py` / `py parse_tv.py | tail -3` / `py fetch_earnings_dates.py | tail -3`.
+
+**Join #2** (fact sheets back) → main model writes § 7.0 teardowns + `news_detail.json` + `claude_picks.json` → `py build_dashboard.py` → git push → chat brief.
+
+Net effect: ~8-12 min serial → **~5-6 min**. The irreducible core is main-model writing time — everything else overlaps with it. NEVER run finviz / tv-scrape / fetch_candles as blocking foreground steps.
+
+---
+
 ## § 1. MAGNA53 + NTRT/MTRT cheatsheet (memorize before classifying)
 
 A stock qualifies as an NTRT/MTRT candidate if **ANY** setup matches.
@@ -250,7 +275,7 @@ Combine gainers + losers into one list. Mark each row as `direction = up | down`
 
 **Always start Phase 2 with this pre-scan** BEFORE touching individual tickers. The goal is a 5-10 row "policy / sector cluster map" of today's biggest catalysts.
 
-**Delegate it (§ 0.5 routing): spawn ONE Agent with `model: "haiku"`** whose prompt contains today's ISO date + the source table below + the candidate ticker list, and instructs it to run the searches in parallel and return ONLY the cluster map (≤600 tokens, format as in the example below). Do NOT run these 5 WebSearches in the main context — that's ~10k tokens of raw search results the main model doesn't need to see.
+**Delegate it (§ 0.5 routing): spawn ONE Agent with `model: "haiku"`** whose prompt contains today's ISO date + the source table below + the candidate ticker list, and instructs it to run the searches in parallel and return ONLY the cluster map (≤600 tokens, format as in the example below). Do NOT run these 5 WebSearches in the main context — that's ~10k tokens of raw search results the main model doesn't need to see. **Launch it in the SAME message as the § 2.1 catalyst agents (§ 0.6) — don't serialize.** The map lands ~30-60s later and gets applied at the § 2.2 cross-check.
 
 Resolve today's date once at the top of the phase (e.g. `2026-05-21`) and inject it into EVERY query — the LLM will otherwise serve cached results from weeks ago.
 
@@ -277,7 +302,7 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 
 ### 2.1 — Per-ticker catalyst hunt
 
-**Efficient delegation pattern (§ 0.5 routing — MANDATORY, not optional):** delegate the per-ticker hunt to **at most 3 Agents with `model: "haiku"`**, ~25 tickers each (don't spawn 6+ agents — each carries prompt overhead). **Always pass the Phase 2.0 cluster map in each agent's prompt** so it can short-circuit by-cluster instead of researching each ticker from scratch. Ask each agent to return a structured markdown table with columns `Ticker | Type | Cluster | 繁體中文 catalyst` (Type ∈ {earnings, analyst, guidance, contract, M&A, FDA, news, momentum, macro, **policy**}). **Output caps in the prompt: table ONLY, ≤40 字 per catalyst, NO sources list, NO preamble, NO per-ticker EPS/Rev columns** (those come from tv-summary.json later — don't make a haiku search for numbers the pipeline already scrapes). Main model reads back 3 compact tables (~2k tokens total) instead of doing 60+ searches itself.
+**Efficient delegation pattern (§ 0.5 routing — MANDATORY, not optional):** delegate the per-ticker hunt to **at most 3 Agents with `model: "haiku"`**, ~25 tickers each (don't spawn 6+ agents — each carries prompt overhead). **Launch these in the SAME message as the § 2.0 pre-scan agent (§ 0.6) — do NOT block waiting for the cluster map**; the § 2.2 cross-check applies clusters afterward. (If a same-day cluster map already exists from an earlier run, include it in the prompt so agents can short-circuit.) Ask each agent to return a structured markdown table with columns `Ticker | Type | Cluster | 繁體中文 catalyst` (Type ∈ {earnings, analyst, guidance, contract, M&A, FDA, news, momentum, macro, **policy**}). **Output caps in the prompt: table ONLY, ≤40 字 per catalyst, NO sources list, NO preamble, NO per-ticker EPS/Rev columns** (those come from tv-summary.json later — don't make a haiku search for numbers the pipeline already scrapes). Main model reads back 3 compact tables (~2k tokens total) instead of doing 60+ searches itself.
 
 For each candidate (parallelize in batches of ~5 in your own context, or delegate to the agent above), run these in parallel:
 
@@ -359,6 +384,8 @@ For every candidate whose Phase 2 `Type` is `earnings` (or who reported within l
 ### 6.1 Fetch the TradingView quarterly grid
 
 Use the **FQ URL trick** — `?earnings-period=FQ&revenues-period=FQ` returns SSR'd quarterly tables without JS interaction.
+
+**Freshness cache (skip re-scrapes):** before scraping, list existing `*-earnings-fq.md` files — **skip any ticker whose file is <3 days old**, UNLESS today's catalyst Type for that ticker is `earnings` (it just reported — the grid changed). Most days this cuts the scrape list from ~30-40 tickers down to the 5-15 fresh reporters. Shard the remainder across **2-3 parallel background `node tv-scrape.js <shard>` processes** (§ 0.6) instead of one serial run.
 
 #### Primary tool: **Playwright** (default since 2026-05-13)
 
@@ -548,6 +575,8 @@ template renders — both skills produce correct historical views.
 ## § 7. Phase 6 — Final 繁體中文 deliverable
 
 Compose the full report. Order: 🟢 SIPs first (ranked best→worst), then 🔴 short candidates. Skip NULL-setup candidates entirely.
+
+**Chat-brief compaction (speed — the depth lives on the dashboard, not in chat):** the full 5-section teardowns go into `news_detail.json` (dashboard detail pages). Do NOT duplicate all of them in the chat brief. Write the news_detail.json teardowns FIRST, then compress for chat: **only the #1 long and #1 short get their full § 7.1/7.2 template inline in chat**; every other pick gets the compact form — 一句話催化劑 + MAGNA53/setup 行 + 誠實判定段 (Section 5 verdict + Tier) + 進場建議. This roughly halves main-model generation time with zero information loss (everything is one click away on the dashboard).
 
 ### 7.0 — 深度催化劑拆解架構 (MiLan_Trades 風格) — apply to top 3-5 SIPs + top 2-3 shorts
 
