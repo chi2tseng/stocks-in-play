@@ -1,255 +1,56 @@
 {
-  "META": {
-    "detail": "Bloomberg/CNBC 7/1 獨家：Meta 籌建雲端事業「Meta Compute」，將過剩 AI 算力外賣給企業客戶並託管自家模型，直接對決 AWS/Azure/Google Cloud — 把數千億美元資料中心資本支出從成本中心轉為營收引擎。\n\n收盤 +8.81%（$612.91）收在當日高檔，同步帶動 Microsoft +3%、Apple +2%；但同一消息重創 neocloud 族群 — CoreWeave -13.9%、Nebius -17.0%（Meta 是 Nebius 最大客戶，合約上限 $27B）。\n\n觀察：7/2 為 NFP 日（8:30 AM ET），大型股方向受宏觀牽引；Meta Compute 尚無正式產品時程，後續等公司官宣定價與客戶。",
-    "publishedAt": "2026-07-01T07:00:00-04:00",
+  "MSTR": {
+    "detail": "**BTC 自 652 天低點 $57,950 反彈至 ~$61k,MSTR 盤前 +5.9%** — 這是 crypto 宏觀 driver 的 day-2 反向擺動,不是公司新聞。拆解這個 headline:BTC 6 月 ETF 淨流出 **$4.5B 創單月紀錄**、昨天才跌破 $60k 讓 MSTR 收 -6.9%($98.9 對應 mNAV 已壓到歷史低區);今晨反彈 ~5% 是超賣技術反彈 + NFP 前的空頭減倉,**沒有任何新的機構買入或公司公告**(無新 BTC 購買 8-K — Strategy 通常週一公告買入)。\n\n業務品質:MSTR 本體是「BTC 槓桿持倉 + 軟體殘值」— **持倉 ~64 萬顆 BTC**,軟體業務 Rev $124M/季(TV 最新季)僅占估值零頭。真正的結構問題是:**mNAV(市值/持倉淨值)溢價已從 2024 的 2-3x 壓縮到 ~1.0-1.1x** — 當溢價消失,MSTR 就只是一個帶著 $7B+ 可轉債的 BTC ETF 替代品,漲跌純看幣價。\n\n前瞻訊號 vs 結構:**正面** — 若 BTC 在 $58-60k 完成 double-bottom,MSTR 的 beta(通常 1.5-2x BTC 日變動)會放大反彈;**負面** — 可轉債串的轉換價多在 $130-180 區間、深度價外,2027-2028 到期前若 BTC 不回 $80k+,再融資壓力會變成賣壓。**short float 12.39% / DTC 僅 1.96** — 空頭擁擠但回補很快,單日軋空燃料有限。\n\n風險:**NFP 今早 8:30 ET(開盤前 1 小時)公布** — 強於預期 → 降息預期後移 → risk asset 承壓,BTC 反彈可能直接夭折;perf1M **-37.65%** 是深跌反彈的位置,下方 $90(昨低附近)破位就是趨勢繼續;BTC ETF 若今天繼續淨流出(連 30 天),反彈的資金面基礎不存在。\n\n**這是超賣技術反彈,不是趨勢反轉。** BTC 的 652 天低 + ETF 破紀錄流出的宏觀結構沒有任何改變,今晨 +5.9% 是空頭在 NFP 前減倉 + 搶反彈盤,並不是新資金進場的證明。**Tier 3/5 等級的事件** — 日內多單可以(開盤 15 分鐘站穩 $100 進、$96 停損),但這是租來的反彈、不是買來的趨勢,收盤前了結、不留倉過 NFP 後的第二波定價。",
+    "publishedAt": "2026-07-02T07:30:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {
-        "label": "CNBC — Stock market July 1, 2026 (Meta cloud business)",
-        "url": "https://www.cnbc.com/2026/07/01/stock-market-today-live-updates.html"
-      },
-      {
-        "label": "Benzinga — CoreWeave Drops on Meta AI Cloud Report",
-        "url": "https://www.benzinga.com/trading-ideas/movers/26/07/60217060/coreweave-stock-drops-sharply-on-report-of-meta-ai-cloud-business"
-      }
-    ]
-  },
-  "SOC": {
-    "detail": "6/30 完成再融資定價：3,247 萬股 @ $3.08 + $300M 6.5% 2031 可轉債，取代 Exxon 貸款、消除 going-concern 疑慮，7/2 交割。\n\n7/1 約 19.7% 空頭部位（DTC 4.9 天）續回補 — 盤前 +25.7% 一路軋到收盤 +42.86%（$4.40），收在日高 $4.45 附近，量 8,760 萬股。\n\n注意：並無新管線重啟核准或法院解禁 — 漲勢純粹是資本結構修復 + 軋空。7/2 交割完成公告為下一觀察點；一個月股價仍 -66%，空頭彈藥仍多。",
-    "publishedAt": "2026-06-30T16:30:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      {
-        "label": "stockanalysis.com — SOC",
-        "url": "https://stockanalysis.com/stocks/soc/"
-      }
-    ]
-  },
-  "NOW": {
-    "detail": "Guggenheim 分析師 John DiFucci 7/1 將 ServiceNow 自 Neutral 升至 Buy、目標價 $125，稱當前價位對「可穩定獲利、雙位數成長」的個股具吸引力。\n\n收盤 +6.57%（$105.80）全日走強收在高檔，量 2,610 萬股放大。YTD 仍 -30.9%，是大型軟體股中的落後補漲題材；TV 最新季 EPS +19.75% / 營收 +22.01% YoY，未來四季營收成長穩定 20%+。\n\n觀察：升評隔日的持續買盤 + NFP 日宏觀方向。$106.69 為 7/1 高點，站穩即有動能延續空間。",
-    "publishedAt": "2026-07-01T06:30:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      {
-        "label": "TheStreet — Stock Market Today July 1",
-        "url": "https://www.thestreet.com/stock-market-today/stock-market-today-july-1-2026-nasdaq-futures-slip-after-strongest-quarter-since-2020"
-      }
-    ]
-  },
-  "DLO": {
-    "detail": "無 7/1 公司事件 — 真催化為 6/26 宣布、6/29 生效納入 Russell 2000/3000 指數，被動基金買盤延續。分析師共識目標價 ~$17-18（Strong Buy 共識）。\n\n盤前 +4.7% 一路走強收 +12.93%（$14.67），全日幾乎收最高。Short float 21.3%、DTC 6.2 天 — 指數被動買盤遇上高空單 = 軋空結構。\n\nLatAm 跨境支付基本面：TV 最新季營收 +54.96% YoY，未來四季 +33-43%。下次財報 8/13。",
-    "sources": [
-      {
-        "label": "GlobeNewswire — dLocal added to Russell 2000",
-        "url": "https://www.globenewswire.com/news-release/2026/06/26/3318486/0/en/dLocal-added-to-membership-of-US-small-cap-Russell-2000-Index.html"
-      }
-    ]
-  },
-  "GIS": {
-    "detail": "7/1 盤前公布 Q4 FY26：調整後 EPS $0.95 大勝共識 $0.80（去年 $0.74，+28.4% YoY），淨銷售 $46 億 +1.1%。\n\n同步宣布至 FY2030 累計節省 $30 億成本的重組計畫，FY27 EPS 指引 $3.00-3.20。收盤 +8.53%（$37.77），日高 $38.15。\n\n注意：營收僅 +1.1% — 這是成本削減驅動的 EPS beat，不是成長股財報；TV 顯示未來四季 EPS YoY 轉負（-8.1%/-7.3%），day-2 續漲空間有限，偏防禦性資金停泊。",
-    "publishedAt": "2026-07-01T07:00:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      {
-        "label": "General Mills IR — Q4 FY26 results",
-        "url": "https://investors.generalmills.com/"
-      }
-    ]
-  },
-  "CANF": {
-    "detail": "7/1 公布 namodenoson 治療晚期胰腺癌 Phase 2a 達主要安全終點：20 名重度前治病人耐受良好、存活持久（一名二線治療者存活超過 18 個月），公司擬推進 Phase 2b。\n\n盤前 +71% → 收盤收斂至 +55.89%（$4.63），量 5,700 萬股。微型 ADR（市值 ~$10M）低浮籌把 2a 安全性數據放大成翻倍行情 — 數據本身份量有限（安全終點、20 人、無對照組療效硬數據）。\n\nDay-2 提醒：此類 2a 安全數據 pump 隔日 fade 機率高，追多需嚴設停損。",
-    "publishedAt": "2026-07-01T08:00:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      {
-        "label": "stockanalysis.com — CANF",
-        "url": "https://stockanalysis.com/stocks/canf/"
-      }
-    ]
-  },
-  "KLAR": {
-    "detail": "斯德哥爾摩專利與市場法院判決 Google 須賠 Klarna 旗下比價網 PriceRunner 約 $19.7 億（SEK 143 億 + 利息）— Google 購物比價服務反壟斷勝訴。\n\n盤前 +8.7% 但利多盤中大幅褪色，收盤僅 +0.99%（$20.44）。原因：(1) Google 已表態上訴，現金入帳遙遙無期；(2) 賠款須與前 PriceRunner 股東及訴訟金主分潤並課稅，Klarna 實得遠低於帳面數字。\n\nShort float 22.6%、DTC 5.7 天 — 若上訴進展有利仍有軋空彈性，但 7/1 的價格行為（衝高全吐）顯示市場已看破帳面數字。",
-    "publishedAt": "2026-07-01T10:00:00+02:00",
-    "publishedTimezone": "CEST",
-    "sources": [
-      {
-        "label": "stockanalysis.com — KLAR",
-        "url": "https://stockanalysis.com/stocks/klar/"
-      }
-    ]
-  },
-  "APLD": {
-    "detail": "7/1 發布 Polaris Forge 1 園區二號樓 Phase 1 達 Ready-for-Service — 新增 75MW、全園區 175MW 上線，合約滿載 400MW（CoreWeave 為主要租戶）。\n\n利多被 AI 資料中心族群全面回檔壓過，收盤仍 -4.77%（$35.52）— 但為族群最小跌幅之一（同日 NBIS -17%、CRWV -13.9%、VRT -7%），相對強勢明顯。\n\nShort float 28.8%、DTC 3.2 天：族群反彈日的軋空首選之一。風險：Meta Compute 入場的 neocloud 定價壓力敘事同樣掃到資料中心房東。",
-    "publishedAt": "2026-07-01T07:00:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      {
-        "label": "Applied Digital IR — Polaris Forge 1 second building RFS",
-        "url": "https://ir.applieddigital.com/news-events/press-releases/detail/157/applied-digital-delivers-second-building-at-polaris-forge-1"
-      }
+      { "label": "Yahoo Finance — BTC-USD 652-day low + bounce", "url": "https://finance.yahoo.com/quote/BTC-USD/" },
+      { "label": "Fortune — Bitcoin price June 30 crash context", "url": "https://fortune.com/article/price-of-bitcoin-06-30-2026/" },
+      { "label": "Trading Economics — NFP July 2 release", "url": "https://tradingeconomics.com/united-states/non-farm-payrolls" }
     ]
   },
   "CAST": {
-    "detail": "7/1 盤前 6:00 AM 定價 $2,370 萬私募：466.7 萬股 + 324.4 萬預付權證（行使價 $0.0001），隱含每單位僅 ~$3.00 — 對前收 $6.72 折價逾五成。A.G.P. 獨家配售，7/2 前後交割。\n\n正常時段暴跌 -27.68% 收 $4.86（全場走低）；盤後在零新消息下反彈 +19.3% 至 $5.80 — 上季現金僅 $119,302、營運資金缺口 $729 萬，$2,370 萬等於解除斷炊風險，空頭回補 + 抄底盤湧入。\n\n背景：6/29 晚 WIRE3 佛州全光纖白牌串流協議 + 6/18 Starlink Business 轉售 + 6/11 DIRECTV 擴大合作的六月新聞流。7/2 交割完成 PR 可能是下一個題材點。",
+    "detail": "**FreeCast +11.6% 盤前($5.42)— 7/1 那筆 $23.7M 私募的「交割日買盤」**。拆解:7/1 盤前 6:00 定價 466.7 萬股 + 324.4 萬預付權證(行使價 $0.0001),**隱含每單位僅 ~$3.00、對前收 $6.72 折價逾五成** → 當日暴跌 -27.7% 收 $4.86;但盤後買盤 +19.3%、今晨續 +11.6% — 市場邏輯從「折價稀釋」翻成「**上季現金只剩 $119,302、營運資金缺口 $729 萬,這 $23.7M 是續命錢**」。7/2 預計交割,交割完成 PR 是今天的觀察點。\n\n業務品質:FreeCast 是白牌串流聚合(「App 疲勞」解方),6 月新聞流密集 — **6/29 WIRE3 佛州全光纖白牌協議、6/18 Starlink Business 轉售、6/11 DIRECTV 擴大合作**;但 Q1 營收僅 **$88.7 萬**、EPS -$0.08,商業模式仍在「簽約公告」階段、收入認列遙遠。**Q3 目標正 Adjusted EBITDA** 是管理層畫的線,以現在的營收規模看激進。\n\n前瞻 vs 結構:**short float 21.35% + float 僅 16.52M + p1M +527%** — 這是高空單 + 低流通 + 動能三合一的軋空結構,融資解除斷炊風險後空頭的「破產 thesis」被拆掉一半,回補壓力真實存在。但反面:私募單位成本 ~$3.00,**新股東在 $5.42 已有 +80% 帳面利潤** — 交割完成後的獲利了結賣壓同樣真實。\n\n風險:預付權證 324.4 萬股行使價 $0.0001 = **等同即時稀釋**,交割後流通股實質 +48%;A.G.P. 獨家配售的私募買家多為短線基金,鎖倉條款未公開;Q1 現金消耗速度下,$23.7M 大約只夠 3-4 季;若 7/2 交割 PR 未出或條款有變,直接跌回 $4 下方。\n\n**這是「續命錢到帳」的解套反彈,不是業務拐點。** 收入 $88.7 萬/季的公司拿到 $23.7M 融資只是活下來,白牌串流的簽約新聞流還沒變成收入。今晨 +11.6% 是空頭回補 + 交割預期,**Tier 3/5 等級的事件** — 日內順勢可以,$5 停損、交割 PR 出來急拉就是了結點,別戀棧。",
     "publishedAt": "2026-07-01T06:00:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {
-        "label": "Business Wire — FreeCast $23.7M private placement pricing",
-        "url": "https://www.businesswire.com/news/home/20260701146689/en/"
-      }
-    ]
-  },
-  "TONX": {
-    "detail": "7/1 宣布啟動 Rule 10b5-1 庫藏股回購計畫：動用既有 $2.5 億回購授權、Virtu Financial 執行、7/1 起約兩個月窗口。\n\nTON Strategy 為累積 Toncoin 的加密財庫公司 — 在 BTC 崩至 $57,950（652 天低點）、加密財庫股全面折價的環境下，公司選擇護盤回購自家股票而非加倉代幣。收盤 +14.12%（$2.91）。\n\nDTC 6.6 天、short float 6.5%：回購 + 空單回補的擠壓組合。風險：加密宏觀持續惡化會蓋過回購買盤。",
-    "publishedAt": "2026-07-01T08:00:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      {
-        "label": "GlobeNewswire — TON Strategy Advances Share Repurchase Program",
-        "url": "https://www.globenewswire.com/news-release/2026/07/01/3320558/0/en/TON-Strategy-Company-Advances-Share-Repurchase-Program.html"
-      }
-    ]
-  },
-  "LHAI": {
-    "detail": "7/1 盤前 8:00 GlobeNewswire：完成以 100% 股權收購 Constant Investments（dba Mortgage One Group — $2,800 萬倉儲信貸額度、39 名員工、18 州房貸牌照），並同步宣布進軍 AI Infrastructure Financing（GPU 伺服器融資）業務、規劃去中心化 GPU 算力市集。\n\n正常時段收盤 +315.15%（$0.66 → $2.74），成交 3.29 億股 = 流通股 8.1M 的 40 倍，多次波動性熔斷；盤後 -17.5% 至 $2.26 開始瓦解（無新消息）。\n\n做空視角：2025/7 IPO（$4.00）低流通股，主要股東 807 萬股鎖倉 7/24 到期 — 供給懸頂。day-2 開盤反彈即為 fade 進場點，但借券可能極難。",
-    "publishedAt": "2026-07-01T08:00:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      {
-        "label": "GlobeNewswire/StockTitan — Linkhome completes Mortgage One acquisition + GPU financing",
-        "url": "https://www.stocktitan.net/news/LHAI/linkhome-holdings-completes-acquisition-of-mortgage-one-group-and-sf0av9f3tbgq.html"
-      },
-      {
-        "label": "GlobeNewswire — 5/12 definitive agreement (deal terms)",
-        "url": "https://www.globenewswire.com/news-release/2026/05/12/3293228/0/en/Linkhome-Holdings-Inc-Enters-Definitive-Agreement-to-Acquire-Mortgage-One-Group.html"
-      }
-    ]
-  },
-  "TC": {
-    "detail": "Token Cat（前團車網 TuanChe，2025/2 改名）— 7/1 零新聞、零申報（EDGAR 一手確認 5/8 20-F 後無任何文件）。\n\n1.38M 流通股極端 pump：6/30 +223% → 7/1 收盤再 +159.46%（$4.80）、盤中高點 $6.33、量 6,470 萬股 = 流通股 47 倍、12:50 PM 觸發 LULD 熔斷；盤後 -20.2% 至 $3.83 開始瓦解。\n\n炒作底料全是舊聞（2025/12 $10 億加密投資政策、AZI $1 億認購、30MW AI 資料中心 MSA）。⚠️ F-3 shelf 已於 1/7 生效 — 公司隨時可趁高增發；day-2 崩塌 + 增發雙重下行風險。",
-    "sources": [
-      {
-        "label": "SEC EDGAR — Token Cat filings (CIK 1743340)",
-        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001743340"
-      }
+      { "label": "Business Wire — FreeCast $23.7M private placement pricing", "url": "https://www.businesswire.com/news/home/20260701146689/en/" },
+      { "label": "StockTitan — FreeCast news stream", "url": "https://www.stocktitan.net/news/CAST/" }
     ]
   },
   "SDOT": {
-    "detail": "7/1 全日零新聞、零申報（EDGAR submissions 一手確認，最後文件為 6/30 上午的 8-K）— +105.19% 收 $72.00（盤中 $89.46）純屬 1 併 20 反向分割後僅 ~67 萬股流通的極端軋空，當日換手 ~10 倍流通股。\n\n實質故事：6/26 以 $1,000 現金 + 27.5% 應收回收分潤，把訴訟纏身的 Sadot Latam「as is」賣給哥斯大黎加買家（甩掉法律包袱）；6/2 $12M 收購 UAE 商品交易商 Anira/Tradewell 的轉型敘事。\n\n一個月從 ~$3（分割調整）擠到 $89.46 高點 ~30 倍 — delinquent-filer 型投機擠壓，盤後 -12.3% 開始獲利了結。TV 數據：最新季營收 -99.85% YoY（Latam 出售後幾乎歸零）。",
-    "sources": [
-      {
-        "label": "SEC 8-K — Sadot Latam divestiture",
-        "url": "https://www.sec.gov/Archives/edgar/data/1701756/000173112226000897/e7749_8-k.htm"
-      }
-    ]
-  },
-  "NBIS": {
-    "detail": "7/1 neocloud 最重災戶：Meta 是 Nebius 最大客戶（合約上限 $27B）— Bloomberg「Meta Compute」報導等於「最大客戶變最大對手」，收盤 -17.01%（$229.18）。\n\n疊加兩重壓力：(1) Bernstein 報告揭 Nebius 每 MW 營收僅 $8.4M vs CoreWeave $20.8M，經濟性墊底；(2) 3x 槓桿 ETP 收盤再平衡機械性放大賣壓。\n\nShort float 25.2%：超跌反彈的軋空候選，但基本面敘事（客戶集中度）真實受損 — 反彈賣點比抄底買點更清晰。TV：最新季營收 +621% YoY 的高成長未變，估值重定價中。",
-    "publishedAt": "2026-07-01T07:00:00-04:00",
+    "detail": "**Sadot +13.9% 盤前($82)— 全市場最極端的軋空結構繼續擺動**。拆解籌碼:1併20 反向分割後**流通股僅 ~74 萬股**(float 0.74M)、short float 13.18%、**perf1M +2,222%**(一個月 ~23 倍)— 6/30 +105%、7/1 -12%、今晨又 +14%,這不是價格發現,是俄羅斯輪盤。零新聞、零申報(delinquent filer,10-Q 逾期未交)。\n\n業務品質:實質故事是 **6/26 以 $1,000 + 27.5% 應收分潤「甩賣」訴訟纏身的 Sadot Latam 農業貿易業務** — 即公司把主要營收來源送走了。TV 顯示最新季 EPS **-$347.6**(分割調整後)、Rev $0.3M — 剩下的是一個空殼加食品貿易殘部。市值 $53.6M 對應這個基本面是純籌碼溢價。\n\n前瞻 vs 結構:**DTC 僅 0.03 天** — 空單一天內就能全部回補,squeeze 燃料其實已快燒完;每次 +100% 之後的 -12%/-50% 回撤顯示派發在進行。10-Q 逾期 → **Nasdaq 摘牌時鐘在走**,合規期限是下一個 binary。\n\n風險(雙向):做多 = 接飛刀接在 23 倍月漲幅上;做空 = 74 萬股 float 借券近乎不可能、借到了利率三位數,且單日 +100% 的歷史說明爆倉風險真實。**這種結構的正確操作是不操作。**\n\n**這是 pump 末段的高波動派發,不是任何基本面事件。** 公司剛把主業以 $1,000 賣掉、財報逾期、流通股 74 萬 — 今晨 +14% 只是極低流通下的籌碼擺動。**Tier 1/5 等級 — 不碰**,做多做空都是賭桌不是交易。若手癢:只用不過夜的極小 lotto 部位,任何方向 15% 硬停損。",
+    "publishedAt": "2026-07-02T07:30:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {
-        "label": "Invezz — Nebius crashing, biggest customer to blame",
-        "url": "https://invezz.com/news/2026/07/01/nebius-stock-is-crashing-and-it-has-its-biggest-customer-to-blame/"
-      },
-      {
-        "label": "TipRanks — Why Neocloud Stocks Are Plunging (7/1)",
-        "url": "https://www.tipranks.com/news/crwv-nbis-iren-why-neocloud-stocks-are-plunging-today-july-1-2026"
-      }
+      { "label": "Yahoo Finance — SDOT quote + history", "url": "https://ca.finance.yahoo.com/quote/SDOT/" },
+      { "label": "StockTitan — Sadot Latam divestiture", "url": "https://www.stocktitan.net/news/SDOT/" }
     ]
   },
-  "SSTK": {
-    "detail": "6/30 Getty Images 董事會拒絕英國 CMA 要求出售 editorial 部門的補救條件 — $37 億 Getty/Shutterstock 合併案將於 7/6 到期自動終止，SSTK 失去全部併購溢價。\n\n7/1 收盤 -29.03%（$9.90）。TV 數據顯示獨立基本面惡化：最新季 EPS -352.8% YoY、營收 -17.9%，未來兩季營收預估 -26.6%/-25.0% — 圖庫業務被生成式 AI 結構性侵蝕。\n\nDay-2：-29% 後常見技術性反彈，但反彈即是做空點 — 破局 + 基本面雙殺，7/6 正式終止日前無利多。",
-    "publishedAt": "2026-06-30T16:30:00-04:00",
+  "TC": {
+    "detail": "**Token Cat -24% 盤前($3.65)— 教科書級 pump 崩塌的 day-2**。拆解這輪 pump:6/30 +223% → 7/1 盤中高 $6.33、收 $4.80(+159%)、量 6,470 萬股 = **流通股(1.38M)的 47 倍**、觸發 LULD 熔斷 → 7/1 盤後 -20.2% → 今晨再 -24%。**7/1 已由 EDGAR 一手驗證:5/8 20-F 之後零申報、零 PR** — 炒作底料全是舊聞(2025/12 $10 億加密投資政策、AZI $1 億認購、30MW AI 資料中心 MSA)。市值僅 **$8.26M**。\n\n業務品質:前團車網(TuanChe)2025/2 改名 Token Cat,pivot 到「加密投資 + AI 資料中心」敘事;TV 最新季 EPS -$8.06 / Rev $13.31M(舊汽車業務殘部)— **敘事與財務完全脫鉤**,收入來源與 crypto/AI 題材無關。\n\n前瞻 vs 結構:**F-3 shelf 1/7 已生效 — 公司隨時可趁高增發**,這是懸在每次反彈上的達摩克利斯之劍;BTC 今晨反彈 +5% 若帶動 crypto 題材股回暖,TC 可能有 dead-cat,但 1.38M float 的反彈同樣是熔斷式的。\n\n風險(對空頭):**float 1.38M 借券近乎不可能**(SF 僅 0.41% 不是空頭不想、是借不到);pump 團若二次拉抬(6/12 DSY 模式:同一批 nano-cap 輪炒),-24% 之後單日 +100% 完全可能;唯一safe的做空進場是盤中反彈至 $4.50-5.00 且量能萎縮時的小部位。\n\n**這是 pump-and-dump 的崩塌段,不是任何基本面修正**(本來就沒有基本面定價)。Day-2 -24% 後往 pump 前起點($1.5-2.0 區)回歸是 base case,但路徑會夾雜熔斷式反彈。**Tier 5/5 等級的做空機會(結構) / Tier 1/5 的可執行性(借不到券)** — 有券源就空反彈、3% 硬停損;沒券源就旁觀,別用選擇權接(spread 會吃光 edge)。",
+    "publishedAt": "2026-07-02T07:30:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {
-        "label": "stockanalysis.com — SSTK",
-        "url": "https://stockanalysis.com/stocks/sstk/"
-      }
+      { "label": "SEC EDGAR — Token Cat filings (CIK 1743340, zero since 5/8)", "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001743340" }
     ]
   },
-  "MU": {
-    "detail": "6/24 記錄級 FQ3（營收 $414.6 億 +345% YoY、adj EPS $25.11、HBM 售罄至 2027 之後、SCA floor $1,000 億）之後 sell-the-news 第五日 — 7/1 無新利空，收盤 -10.57%（$1,032.28）收在日低，YTD 仍 +261%。\n\n壓力敘事：Apple 6/25 因記憶體成本漲價（MacBook Air +18%、iPad Air +25%）引發的下游毛利擠壓恐慌 + IDC 手機出貨 -13.9% 預測 + 6/25 加州 DRAM 反壟斷集體訴訟（Samsung/SK Hynix/Micron 被指寡占）發酵。\n\n7/2 NFP 日：半導體超跌後的反彈與否看宏觀；MU 基本面（HBM 售罄）未變，這是估值/籌碼行情。",
-    "sources": [
-      {
-        "label": "CNBC — Market recap July 1 (Micron -10%)",
-        "url": "https://www.cnbc.com/2026/07/01/stock-market-today-live-updates.html"
-      },
-      {
-        "label": "PC Gamer — DRAM antitrust class action (6/25)",
-        "url": "https://www.pcgamer.com/hardware/memory/memory-crisis-heads-to-court-class-action-lawsuit-calls-samsung-sk-hynix-and-micron-dram-market-oligopolists-alleging-anticompetitive-behavior/"
-      }
-    ]
-  },
-  "BE": {
-    "detail": "7/1 上午 10:16 UBS（Manav Gupta）因 Brookfield 合作框架 $5B→$25B 擴大，升目標價 $322→$350（維持 Buy）— 股價衝日高 $320 後遭遇利多出盡式倒貨，收 $289.50（-4.36%）貼近日低，日高至收盤 -9.5% 大反轉。\n\n無任何負面一手新聞或降評 — 這是一年 +~1,000% 動能股在 AI 基建全面獲利了結日（CAT -6.9%、VRT -7.0%、GLW -13.6%）的籌碼行情。\n\nBrookfield $25B 框架與 UBS $350 PT 的基本面利多未被推翻；TV 最新季 EPS +1366.7% / 營收 +130.4% YoY。回檔至 $270-280 支撐區是比追高更好的觀察點。",
-    "publishedAt": "2026-07-01T10:16:00-04:00",
+  "LHAI": {
+    "detail": "**Linkhome -17.5% 盤後($2.26)— 昨天 +315% pump 的 day-2 崩塌,如期而至**。拆解:7/1 盤前 8:00 公告完成收購 Mortgage One Group(**$2,800 萬倉儲信貸額度、39 名員工、18 州房貸牌照**)+ 宣布進軍「AI Infrastructure Financing」(GPU 伺服器融資 + 去中心化算力市集)→ 正常時段 +315% 收 $2.74、成交 3.29 億股 = **流通股 8.1M 的 40 倍**、多次熔斷 → 盤後零新消息下 -17.5%,派發開始。\n\n業務品質:2025/7 IPO($4.00)的房產科技微型股,本業是加州房屋買賣仲介 + 現金 offer;Mortgage One 是真收購(倉儲信貸是房貸中介的基礎設施),但「GPU 融資 + 去中心化算力」是**蹭 AI 敘事的規劃**,無合約、無收入、無資本承諾 — 正是昨天 +315% 的燃料。\n\n前瞻 vs 結構:**7/24 大股東 807 萬股鎖倉到期** = 流通股即將翻倍,這是 3 週內確定發生的供給洪水;每一次反彈都在幫鎖倉股東畫逃生門。今晨若隨 BTC 反彈出現 dead-cat,結構不變。\n\n風險(對空頭):float 8.1M + SF 僅 0.62% — **借券極難**;pump 團二次拉抬風險(房貸+AI 雙題材都還有想像空間);正確進場是反彈至 $2.50-2.80 區量縮時,不是追殺 -17.5% 的盤後低點。\n\n**這是 pump 派發段的開始,不是收購價值的重估**(收購本身值不了 +315%)。7/24 鎖倉到期前,反彈皆是逃生門、不是趨勢。**Tier 4/5 等級的做空機會** — 反彈 fade 進場、$3.20 上方停損、目標 pump 起點 $0.70-1.00 區的上半段($1.50),部位小、防熔斷。",
+    "publishedAt": "2026-07-01T16:30:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {
-        "label": "Investing.com — UBS raises Bloom Energy PT to $350",
-        "url": "https://www.investing.com/news/analyst-ratings/ubs-raises-bloom-energy-stock-price-target-on-expanded-brookfield-deal-93CH-4770799"
-      }
+      { "label": "StockTitan — Linkhome completes Mortgage One acquisition + GPU financing", "url": "https://www.stocktitan.net/news/LHAI/linkhome-holdings-completes-acquisition-of-mortgage-one-group-and-sf0av9f3tbgq.html" },
+      { "label": "GlobeNewswire — 5/12 definitive agreement (deal terms)", "url": "https://www.globenewswire.com/news-release/2026/05/12/3293228/0/en/Linkhome-Holdings-Inc-Enters-Definitive-Agreement-to-Acquire-Mortgage-One-Group.html" }
     ]
   },
-  "NNBR": {
-    "detail": "7/1 盤前 7:00 宣布 $7,500 萬 PIPE（2,451 萬股 @ $3.06 = 增發 ~46%、無認股權證、Craig-Hallum 配售、45 天內須提交轉售註冊）— 開低後被當「補強資產負債表」利多買回，收盤 +11.14%（$3.99）。\n\n但盤後兩份申報翻轉多頭邏輯：16:12 ET 8-K 正式細節（資金用途僅寫 working capital / 資產負債表優化，並非收購案）；17:21 ET Corre Partners 13D/A 揭露這家長年錨定股東 6/29-30 於 $3.82-3.90 倒貨 200 萬股、持股跌破 5% 至 4.0% — 正好賣在 6/29 NVIDIA 液冷得標反彈的高點。\n\n盤後 -5.5% 至 $3.77，股價向 $3.06 PIPE 定價重力回歸中 — 錨定股東出場 + 46% 稀釋，多頭題材（液冷擴產）暫時失效。",
-    "publishedAt": "2026-07-01T17:21:00-04:00",
+  "SOC": {
+    "detail": "**Sable Offshore -4.6% 盤前($4.20)— 6/30 再融資軋空(+42.9%)後的 day-3 回吐**。回顧結構:6/30 定價 **3,247 萬股 @$3.08 + $300M 6.5% 2031 可轉債**,取代 Exxon 貸款、消除 going-concern 疑慮 → 7/1 空頭回補從盤前 +25.7% 一路軋到收盤 +42.86%($4.40)收最高、量 8,760 萬股 → 今晨 -4.6% 正常消化。**7/2 是交割日** — 交割完成公告可能再給一腳,但增發股 +32.5M 股今天起可流通。\n\n業務品質:Santa Ynez 油田營運商,3/29 管道重啟、Q2 是首個完整收入認列季(**指引 ~50,000 bbl/day、Rev $25-35M、仍虧損**);**breakeven 估算在 WTI $65 vs 現價 WTI <$70 但中東緩和油價偏軟** — 正 FCF 要等 2027。再融資只是把「明天死」改成「2027 前不死」,沒有改變每季燒錢的事實。\n\n前瞻 vs 結構:**short float 19.7% / DTC 3.91** — 空頭彈藥仍在(一個月 -66% 的空頭大勝後部分回補),若交割 PR + 油價反彈同日出現,second squeeze 有燃料;反面是 **$3.08 增發股東 +36% 帳面利潤的獲利了結** + 可轉債 delta 對沖賣壓,雙向拉扯。\n\n風險:油價是唯一真正的 driver — 美伊會談若出突破,WTI 再跌 $5 直接壓垮 cash flow 模型;加州監管 / 環保訴訟隨時能再停管道;7/2 交割若有條款意外(罕見但 nano-cap 常態),$3.08 就是重力線。\n\n**這是資本結構修復後的震盪整理,不是營運拐點。** +42.9% 軋空消化掉大部分「不會死了」的重估,接下來股價回歸「油價 × 產量爬坡」的慢邏輯。**Tier 2/5 等級的事件** — 多空都不急:多單等回踩 $3.50-3.80(增發價上緣)承接、空單等反彈 $5+ 量縮 fade,今天 $4.20 的位置兩邊都沒有 edge。",
+    "publishedAt": "2026-07-02T07:30:00-04:00",
     "publishedTimezone": "ET",
     "sources": [
-      {
-        "label": "SEC 8-K — NN Inc $75M PIPE",
-        "url": "https://www.sec.gov/Archives/edgar/data/918541/000110465926079868/tm2615004d6_8k.htm"
-      },
-      {
-        "label": "SEC 13D/A — Corre Partners drops below 5%",
-        "url": "https://www.sec.gov/Archives/edgar/data/918541/000091957426004214/"
-      },
-      {
-        "label": "NN IR — PIPE press release",
-        "url": "https://investors.nninc.com/news-releases/news-release-details/nn-inc-announces-750-million-private-placement"
-      }
-    ]
-  },
-  "JEM": {
-    "detail": "7/1 早 7:00 GlobeNewswire：董事會批准「探索」AI + 區塊鏈溯源 + 加密支付試點的服裝供應鏈平台 — 3 年指示性投資僅 $10-12M、明文「零資本承諾、須另行董事會批准」。\n\n開盤衝 $11.27 後 sell-the-news 崩跌 -71%，收 $3.21（-19.14%），全日觸發 14 次 LULD 波動性熔斷（Nasdaq 官方紀錄）、成交 7,760 萬股 = 平日 82 倍；盤後 +27% 死貓反彈至 $4.09。\n\n公司真身：為中型服裝品牌做供應鏈管理的港資奈米股（TTM 營收 $13.7M、市值 ~$3.4M）— 非教育股。6/30 的 +268% 由任命 Web3 背景執行董事引爆。純賭場行情，流通股空單比 ~36%（次級來源）。",
-    "publishedAt": "2026-07-01T07:00:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      {
-        "label": "GlobeNewswire — 707 Cayman AI+blockchain platform exploration",
-        "url": "https://www.globenewswire.com/news-release/2026/07/01/3320507/0/en/707-Cayman-Holdings-Limited-to-advance-AI-powered-blockchain-enabled-supply-chain-platform-Board-approves-strategic-exploration.html"
-      },
-      {
-        "label": "SEC 6-K (7/1 07:05 ET)",
-        "url": "https://www.sec.gov/Archives/edgar/data/2018222/000149315226031430/"
-      }
-    ]
-  },
-  "FC": {
-    "detail": "7/1 盤後公布 Q3 FY26（截至 5/31）財報：合併營收 $67.8M 小幅不如市場預期 $68.59M，EPS $0.27（去年同期虧損 $0.11）、adjusted EBITDA 年增 14% 至 $8.3M、遞延營收 +7% 至 $96M — 獲利與現金流其實改善。\n\n真正的殺盤來自「下修全年指引」：FY26 營收指引降至 $260–267M（固定匯率基礎），管理層歸因三項各約 $2M 的逆風 — 企業服務開票時點遞延、一筆州政府教育合約延遲、以及中國與中東國際業務疲弱；惟 adj EBITDA 指引 $28–31M 維持不變。\n\n正常時段收平盤 $24.99，盤後財報+指引雙殺暴跌約 -21.7% 至 $19.56。\n\nDay-2 觀察:跳空缺口若開盤無買盤填補，反彈至 $20.5–21 為做空點;風險是盤後成交量偏低(9.3 萬股)、且 EBITDA 面其實不差，可能吸引逢低買盤。",
-    "publishedAt": "2026-07-01T16:15:00-04:00",
-    "publishedTimezone": "ET",
-    "sources": [
-      {
-        "label": "Franklin Covey Q3 FY26 財報 (Morningstar/Business Wire)",
-        "url": "https://www.morningstar.com/news/business-wire/20260701754650/franklin-covey-reports-third-quarter-fiscal-2026-financial-results"
-      },
-      {
-        "label": "Investing.com — FranklinCovey Q3 FY26 EBITDA rises despite revenue miss",
-        "url": "https://www.investing.com/news/company-news/franklincovey-q3-fy26-slides-ebitda-rises-despite-revenue-miss-93CH-2583424"
-      }
-    ]
-  },
-  "GLW": {
-    "detail": "無 7/1 個股新聞、也不是記憶體故事 — Corning 的 -13.62%（$220.63）是 AI 光纖題材拋物線後的估值/籌碼清算：P/E 破 105x、FTSE Russell 成長指數改列的被動買盤結束、近三個月內部人累計賣出 $54.1M。\n\n為 7/1 大型股中僅次於 NBIS 的最重跌幅 — Nvidia $32 億與 Amazon 光纖大單皆為 5-6 月舊聞，本輪並無新訂單支撐追價。\n\nTV 基本面仍健康（最新季 EPS +29.6%、營收 +17.9% YoY，未來四季 +20-27%）— 屬「好公司、貴股價」的動能退潮，非基本面破壞。",
-    "sources": [
-      {
-        "label": "TradingKey — GLW 7/1 movers attribution",
-        "url": "https://www.tradingkey.com/news/market-movers/262004903-market-movers-glw-20260701"
-      }
+      { "label": "stockanalysis.com — SOC refinancing + squeeze", "url": "https://stockanalysis.com/stocks/soc/" },
+      { "label": "Investing.com — SOC equity + convert offerings", "url": "https://www.investing.com/news/stock-market-news/sable-offshore-stock-tumbles-23-on-equity-and-debt-offerings-93CH-4767824" }
     ]
   }
 }
