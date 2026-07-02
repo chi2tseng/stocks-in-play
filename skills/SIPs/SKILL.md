@@ -332,6 +332,8 @@ Once all per-ticker catalysts are written, **walk the list once more** and look 
 
 The cluster cross-check is cheap (just rewrites text from already-fetched data) but high-yield — it's the difference between "RGTI: 暫無明確催化劑" and "RGTI: 量子族群集體跳漲 (政府 $2B 補助)".
 
+**Big-mover distrust guard (quality backstop for § 0.5's haiku routing):** the MAIN model must NOT blindly trust a cheap agent's "momentum / 無明確催化 / micro-float 拉抬" label on any candidate with **|chgPct| ≥ 15% OR volume ≥ 5M**. For those (typically 2-4 per day), run ONE quick main-context WebSearch yourself to confirm there's genuinely no news before locking the label — a mislabeled big mover is exactly the ticker that would wrongly miss the top-10 deep-dive cut. This spends 2-3 of the ≤5 main-context search budget; small movers keep the haiku label as-is.
+
 ---
 
 ## § 4. Phase 3 — MAGNA53 classification
