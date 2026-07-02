@@ -1,11 +1,39 @@
 {
   "picks": [
-    { "symbol": "MSTR", "rank": 1, "intent": "long",  "rationale": "**Tier 3/5 — 超賣技術反彈,不是趨勢反轉**。BTC 自 652 天低 $57,950 反彈至 ~$61k,MSTR 盤前 +5.9% — 但 6 月 ETF 流出 $4.5B 紀錄的宏觀結構沒變,mNAV 溢價已壓到 ~1.0-1.1x、perf1M -37.65%。今天唯一機構級流動性的名字 (cap $32.7B)。**8:30 ET NFP 是開盤前最大變數** — 強數據 = 降息後移 = 反彈夭折。開盤 15 分鐘站穩 $100 進、$96 停損、收盤前了結不留倉。" },
-    { "symbol": "CAST", "rank": 2, "intent": "long",  "rationale": "**Tier 3/5 — 續命錢到帳的解套反彈**。上季現金剩 $11.9 萬 + 缺口 $729 萬 → $23.7M 私募(單位成本 ~$3.00)解除斷炊,7/2 交割日。short float 21.35% + float 16.5M + p1M +527% 的軋空結構,但預付權證 = 即時稀釋 +48%、新股東帳面 +80%。日內順勢、$5 停損、**交割 PR 急拉就是了結點**。" },
-    { "symbol": "TC",   "rank": 3, "intent": "short", "rationale": "**Tier 5/5 結構 / Tier 1/5 可執行性 — pump 崩塌 day-2**。6/30 +223% → 7/1 +159%(量 = float 47 倍、熔斷)→ 盤後 -20% → 今晨 -24%。EDGAR 零申報(7/1 一手驗證)、市值 $8.26M、F-3 shelf 隨時可增發。Base case 回歸 pump 前 $1.5-2 區。**問題:float 1.38M 借券近乎不可能** — 有券源空反彈 $4.5-5 區、3% 硬停損;沒券源旁觀。" },
-    { "symbol": "LHAI", "rank": 4, "intent": "short", "rationale": "**Tier 4/5 — pump 派發段開始 + 7/24 鎖倉洪水**。7/1 Mortgage One 收購 + GPU 融資題材 +315%(量 = float 40 倍)後盤後 -17.5% 零新聞崩塌。**7/24 大股東 807 萬股鎖倉到期 = 流通股翻倍**,3 週內確定的供給。反彈 $2.50-2.80 量縮 fade、$3.20 停損、目標 $1.50,部位小防熔斷,借券難是主要限制。" },
-    { "symbol": "SOC",  "rank": 5, "intent": "short", "rationale": "**Tier 2/5 — 軋空後整理,兩邊都沒 edge**。6/30 再融資消除 going-concern → 7/1 +42.9% 軋空收最高 → 今晨 -4.6% 消化。7/2 交割日:+32.5M 股開始流通、$3.08 股東 +36% 帳面利潤了結 vs short float 19.7% 殘餘回補雙向拉扯。**建議等位置**:多單 $3.50-3.80 承接、空單 $5+ 量縮 fade,$4.20 現價不動手。" },
-    { "symbol": "SKYQ", "rank": 6, "intent": "short", "rationale": "**Tier 2/5 — day-2 fade**。7/1 內華達 Foreland 煉油廠投產公告 +12.7% 後今晨 -7.1% 回吐 — SAF 升級仍在 MOU 意向書階段、無收入承諾,float 3.85M 微型股的新聞脈衝消退。順 fade 小部位、前日高 $3.20 停損;量太小 (~20 萬股) 不值得大注。" },
-    { "symbol": "SDOT", "rank": 7, "intent": "long",  "rationale": "**Tier 1/5 — 不碰(列出只為完整性)**。float 74 萬股、p1M +2,222%、10-Q 逾期、主業以 $1,000 甩賣 — 6/30 +105%、7/1 -12%、今晨 +14% 是籌碼輪盤不是交易。做多接飛刀、做空借不到券。真要賭:不過夜 lotto 部位、任何方向 15% 硬停損。" }
+    {
+      "symbol": "ARCT",
+      "rank": 1,
+      "intent": "long",
+      "rationale": "Thermo Fisher $8,000 萬 mRNA 合作 + SF 25.75% / DTC 16.3 天極端軋空條件。ARCT-032 管線推進為實質催化，非投機動能。Tier 3/5。",
+      "neglected": true
+    },
+    {
+      "symbol": "TENX",
+      "rank": 2,
+      "intent": "long",
+      "rationale": "Phase 3 LEVEL 試驗獲選 ESC 大會 Late-Breaking 報告 — 心臟科頂級學會 LB 選定代表數據正面。Pre-revenue 但催化乾淨。Tier 3/5。",
+      "neglected": true
+    },
+    {
+      "symbol": "MSTR",
+      "rank": 3,
+      "intent": "long",
+      "rationale": "BTC 從 652 天低 $57,950 反彈至 ~$61k，MSTR 同步反彈。但屬同一 crypto driver 的 day-2 擺動，非新催化。Tier 2/5。",
+      "neglected": false
+    },
+    {
+      "symbol": "ELTX",
+      "rank": 4,
+      "intent": "short",
+      "rationale": "宣布 $1,500 萬 RDO 每股 $3.43（折價 ~21%），pre-revenue 生技燒錢融資，SF 14.84%。稀釋確認而非一次性 miss。Tier 3/5 做空。",
+      "neglected": false
+    },
+    {
+      "symbol": "OUST",
+      "rank": 5,
+      "intent": "short",
+      "rationale": "以 $55.22/股公開增發 362 萬股募 $2 億（折價 8%）。基本面 Rev YoY +49% 健康但短期供給壓力確定。Tier 2/5 做空。",
+      "neglected": false
+    }
   ]
 }

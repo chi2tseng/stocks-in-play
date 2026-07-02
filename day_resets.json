@@ -1,19 +1,27 @@
 {
-  "_comment": "Symbols whose day-count should reset to day1 for the current scan because they have a NEW MAJOR catalyst today that is the PRIMARY cause of the move. Curated by Claude per scan — JUDGMENT-BASED, no hard thresholds.\n\nProcess (per ticker):\n  1. Identify today's catalyst (from catalysts_today.json + news_detail.json).\n  2. Look at prior-scan presence + |chgPct| in 5/13, 5/14.\n  3. Look at 1M / 3M perf for cumulative trend.\n  4. ASK: Are the prior moves RELATED to today's catalyst (= continuation/leak/anticipation) or UNRELATED (= different driver, today's catalyst is genuinely fresh)?\n     • Related & priced-in → day3 (continuation, even with a 'fresh' catalyst headline)\n     • Unrelated theme/momentum → day1 (catalyst is new to market regardless of prior price action)\n\nSoft signals (worth examining, NOT auto-disqualifying):\n  • Prior-scan day |chgPct| ≥ 4% — investigate whether it's leak/preview of today's catalyst\n  • 1M cumulative > +100% — likely already running, but not always disqualifying\n  • Catalyst published ≥ 2 trading days ago — usually means continuation\n\nValid catalysts per Stockbee SIP PDF (page 1-7):\n  • Earnings reports (Scheduled — biggest after biotech)\n  • FDA approvals / drug trial news / industry conference (biotech triad)\n  • Analyst upgrades/downgrades + multiple PT changes\n  • Unscheduled: CEO change, new product, contract, M&A, shortage, influencer mention\n  • Corporate actions (reverse split, special dividend, large buyback, share offering announcement)",
-  "resets": {},
+  "_comment": "Symbols whose day-count should reset to day1 for the current scan because they have a NEW MAJOR catalyst today that is the PRIMARY cause of the move. Curated by Claude per scan — JUDGMENT-BASED, no hard thresholds.\n\nProcess (per ticker):\n  1. Identify today's catalyst (from catalysts_today.json + news_detail.json).\n  2. Look at prior-scan presence + |chgPct| in past 1-3 scans.\n  3. Look at 1M / 3M perf for cumulative trend.\n  4. ASK: Are the prior moves RELATED to today's catalyst (= continuation/leak/anticipation) or UNRELATED (= different driver, today's catalyst is genuinely fresh)?\n     • Related & priced-in → day3 (continuation, even with a 'fresh' catalyst headline)\n     • Unrelated theme/momentum → day1 (catalyst is new to market regardless of prior price action)\n\nSoft signals (worth examining, NOT auto-disqualifying):\n  • Prior-scan day |chgPct| ≥ 4% — investigate whether it's leak/preview of today's catalyst\n  • 1M cumulative > +100% — likely already running, but not always disqualifying\n  • Catalyst published ≥ 2 trading days ago — usually means continuation\n\nValid catalysts per Stockbee SIP PDF (page 1-7):\n  • Earnings reports (Scheduled — biggest after biotech)\n  • FDA approvals / drug trial news / industry conference (biotech triad)\n  • Analyst upgrades/downgrades + multiple PT changes\n  • Unscheduled: CEO change, new product, contract, M&A, shortage, influencer mention\n  • Corporate actions (reverse split, special dividend, large buyback, share offering announcement)",
+  "resets": {
+    "ARCT": "7/2 AM Thermo Fisher $80M mRNA 合作 — fresh contract catalyst; ARCT not in recent scans",
+    "TENX": "7/2 AM ESC Late-Breaking Trial 選定 — fresh biotech catalyst; TENX not in recent scans",
+    "ELTX": "7/2 AM $15M RDO @$3.43 — fresh dilution event; ELTX not in recent scans",
+    "OUST": "7/2 AM $200M public offering @$55.22 — fresh dilution event; OUST not in recent scans",
+    "JFB": "7/2 AM XTEND $1.5B 全股合併 + $3M 無人機合約 — fresh M&A catalyst"
+  },
   "_no_reset_reasons": {
-    "MSTR": "BTC 反彈 +5.9% — 同一個 crypto 宏觀 driver 的 day-2 反向擺動,非新催化",
-    "CAST": "7/1 私募定價才是催化;今日 +11.6% 是 day-2 交割預期,同一 driver",
-    "SDOT": "1併20 極端軋空第 N 天,昨 -12% 今 +14% 純籌碼擺動",
-    "DSY": "連 2 日無消息暴漲 (7/2 再次驗證零公告),同一個 micro-float pump",
-    "TC": "7/1 pump 的 day-2 崩塌,零新申報",
+    "MSTR": "BTC 反彈 +5.6% — 同一個 crypto 宏觀 driver 的 day-2 反向擺動, 非新催化",
+    "CAST": "7/1 私募定價才是催化; 今日 +9.9% 是 day-2 交割預期, 同一 driver",
+    "SDOT": "1併20 極端軋空第 N 天, 昨 -12% 今 +14% 純籌碼擺動",
+    "DSY": "連 2 日無消息暴漲 (7/2 再次驗證零公告), 同一個 micro-float pump",
+    "TC": "7/1 pump 的 day-2 崩塌, 零新申報",
     "LHAI": "7/1 Mortgage One 併購 pump 的 day-2 崩塌",
-    "SOC": "6/30 再融資軋空的 day-3 回吐",
     "JEM": "7/1 AI 服裝供應鏈公告崩盤後的死貓反彈尾聲",
     "NNBR": "7/1 PIPE + 13D/A 倒貨的延續",
     "ORKA": "內部人賣股同一 driver 延續",
-    "VCIG": "6/2 印尼碳權舊聞,今日 -9.3% 無新聞回吐",
-    "SKYQ": "7/1 煉油廠投產公告的 day-2 fade",
-    "NUWE": "6/30 新 CEO 題材低流動性漂移延續"
+    "VCIG": "6/2 印尼碳權舊聞, 今日 -8% 無新聞回吐",
+    "NUWE": "6/30 新 CEO 題材低流動性漂移延續",
+    "CANF": "Phase 2a 胰腺癌數據 6/30 公布後飆升 50%, 今日 -8% 是 day-3 回吐",
+    "EHGO": "$75萬直接發行規模極小, 且 EHGO 流動性極薄無法交易",
+    "ASST": "BTC 同步連動, 同 MSTR 的 crypto driver 延續",
+    "BIDU": "1260H 軍事企業名單是 6 月舊聞, 今日 -4% 是延續性回吐"
   }
 }

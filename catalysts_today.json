@@ -1,15 +1,185 @@
 {
-  "MSTR": {"Type":"macro","Catalyst":"BTC 自 652 天低點 $57,950 反彈至 ~$61k,MSTR 作為 BTC 國庫代理盤前 +5.9% 跟漲;昨日才因 ETF 流出 $4.5B/月紀錄收 -6.9%,今日是同一 crypto driver 的反向擺動。"},
-  "CAST": {"Type":"news","Catalyst":"7/1 盤前 $23.7M 折價私募 (每單位 ~$3.00, 對前收折價逾五成) 暴跌 -27.7% 後,盤後+今晨買盤回補 — 上季現金僅 $11.9 萬,融資解除斷炊風險,7/2 交割 PR 為觀察點。"},
-  "SDOT": {"Type":"momentum","Catalyst":"1併20 後僅 ~67 萬股流通的極端軋空延續:6/30 +105%、7/1 -12%、今晨 +14% — 純籌碼擺動,無新聞零申報 (delinquent filer),實質故事仍是 6/26 甩賣 Latam 業務。"},
-  "DSY": {"Type":"momentum","Catalyst":"連 2 日無消息暴漲 (7/1 盤後 +89.9% → 7/2 盤前再 +63.5%),7/2 再次驗證零公告零申報 — 2月 1併20 後超低流通籌碼純投機,6/12 曾單日無消息 +952% 後崩回。"},
-  "JEM": {"Type":"news","Catalyst":"7/1 早公告「探索」AI+區塊鏈+加密支付服裝供應鏈 (3 年僅 $10-12M 指示性投資、零資本承諾) 開盤衝 $11.27 後崩 -71%,盤後死貓反彈 +27%,今晨 +5.3% 反彈尾聲。"},
-  "LHAI": {"Type":"news","Catalyst":"7/1 完成收購 Mortgage One + 宣布 GPU 伺服器融資業務 +315% (流通股 40 倍成交) 後,盤後 -17.5% day-2 崩塌開始;7/24 大股東 807 萬股鎖倉到期為懸頂之劍。"},
-  "NNBR": {"Type":"guidance","Catalyst":"7/1 盤前 $75M PIPE (2,451 萬股 @$3.06、增發 ~46%) 盤中被當補強資產負債表利多買回 +11%,但盤後 8-K + Corre Partners 13D/A 揭錨定股東 $3.82-3.90 倒貨 200 萬股 → 盤後 -5.5% 向 PIPE 價回歸。"},
-  "NUWE": {"Type":"news","Catalyst":"6/30 新 CEO McCormick 上任 + 兒科裝機題材的低流動性漂移 (量僅 11 萬股),6/5 $600 萬 $0.30 增發的稀釋陰影仍在。"},
-  "ORKA": {"Type":"news","Catalyst":"4/28 $72.50 增發鎖倉到期後內部人持續賣股 — 7/1 盤中 UBS 升 PT $100→$130 利多被 COO Form 4 行使+賣出蓋過,盤後 -7.7% 陰跌;現金 $4.96 億無再融資壓力。"},
-  "SKYQ": {"Type":"news","Catalyst":"7/1 內華達 Foreland 煉油廠投產公告 (day-1 +12.7%) 後的 day-2 fade,今晨 -7.1% — SAF MOU 仍在意向書階段無收入承諾。"},
-  "SOC": {"Type":"news","Catalyst":"6/30 再融資 ($3.08 增發 + $300M 可轉債取代 Exxon 貸款) 消除 going-concern → 7/1 空頭回補 +42.9% 收最高後,今晨 -4.6% 獲利回吐;7/2 交割完成公告為下一觀察點。"},
-  "TC": {"Type":"momentum","Catalyst":"1.38M 流通股 pump (6/30 +223%、7/1 +159%) 的 day-2 崩塌:盤後 -20.2% → 今晨再 -24%;零新聞零申報 (EDGAR 7/1 一手確認),F-3 shelf 1/7 已生效隨時可趁高增發。"},
-  "VCIG": {"Type":"news","Catalyst":"6/2 宣布取得印尼碳權平台 FCCI 控制權的舊題材持續回吐,今晨 -9.3% 無新聞 — 馬來西亞 AI/科技控股微型股,量僅 12 萬股。"}
+  "date": "2026-07-02",
+  "catalysts": {
+    "ARCT": {
+      "type": "contract",
+      "cluster": "biotech",
+      "catalyst_zh": "與 Thermo Fisher 達成 $8,000 萬合作推進 ARCT-032 mRNA 療法"
+    },
+    "ASST": {
+      "type": "macro",
+      "cluster": "crypto",
+      "catalyst_zh": "比特幣回升至 $6 萬上方，BTC 庫存股連動上漲，持有 19,864 枚 BTC"
+    },
+    "BIDU": {
+      "type": "policy",
+      "cluster": "CN_ADR",
+      "catalyst_zh": "6 月被列入美國防部 1260H 軍事企業名單，近月回報約 -11%"
+    },
+    "CANF": {
+      "type": "FDA",
+      "cluster": "biotech",
+      "catalyst_zh": "Phase 2a 胰腺癌數據正面後飆升 50%，今日獲利了結回落約 -8%"
+    },
+    "CAST": {
+      "type": "news",
+      "cluster": "",
+      "catalyst_zh": "宣布 $2,370 萬私募融資，並與 Starlink 及 DIRECTV 達成合作"
+    },
+    "DSY": {
+      "type": "momentum",
+      "cluster": "CN_ADR",
+      "catalyst_zh": "低流通量投機動能延續，反向分股後散戶追漲 +89.93%（連 2 日無消息暴漲）"
+    },
+    "EHGO": {
+      "type": "news",
+      "cluster": "CN_ADR",
+      "catalyst_zh": "7/1 完成 $75 萬直接發行，每股 $1.00，稀釋壓力致盤前跌 5.52%"
+    },
+    "ELTX": {
+      "type": "news",
+      "cluster": "biotech",
+      "catalyst_zh": "宣布 $1,500 萬直接增發，每股 $3.43 稀釋壓力跌 21.6%"
+    },
+    "JEM": {
+      "type": "news",
+      "cluster": "CN_ADR",
+      "catalyst_zh": "宣布 AI+區塊鏈供應鏈平台計畫，低流通量飆漲 27%"
+    },
+    "JFB": {
+      "type": "M&A",
+      "cluster": "CN_ADR",
+      "catalyst_zh": "與 XTEND 進行 $15 億全股合併，XTEND 獲 $300 萬亞太無人機合約推動漲 8.41%"
+    },
+    "LHAI": {
+      "type": "M&A",
+      "cluster": "CN_ADR",
+      "catalyst_zh": "完成收購 Mortgage One 後暴漲逾 100%，盤後獲利回吐 -17.5%"
+    },
+    "MSTR": {
+      "type": "macro",
+      "cluster": "crypto",
+      "catalyst_zh": "BTC 從 652 天低 $57,950 反彈至 ~$61k，MSTR 同步反彈 +5.6%"
+    },
+    "NNBR": {
+      "type": "news",
+      "cluster": "",
+      "catalyst_zh": "7/1 宣布 $7,500 萬 PIPE 融資，發行 2,450 萬股，稀釋疑慮致盤後跌 5.45%"
+    },
+    "NUWE": {
+      "type": "news",
+      "cluster": "",
+      "catalyst_zh": "新 CEO 上任、兒科醫院擴展合作及 1:35 反向分割後低量反彈漲 5.65%"
+    },
+    "ORKA": {
+      "type": "news",
+      "cluster": "biotech",
+      "catalyst_zh": "Fairmount 基金拋售 355 萬股約 $3 億大宗交易致跌 7.7%"
+    },
+    "OUST": {
+      "type": "news",
+      "cluster": "",
+      "catalyst_zh": "以 $55.22/股公開增發 362 萬股募 $2 億，較前收折價 8%"
+    },
+    "SDOT": {
+      "type": "momentum",
+      "cluster": "",
+      "catalyst_zh": "1 併 20 極端軋空後續：6/30 +105%、7/1 -12%、今 +14%，無新催化"
+    },
+    "TC": {
+      "type": "momentum",
+      "cluster": "CN_ADR",
+      "catalyst_zh": "1.38M 流通量 pump (6/30 +223%、7/1 +159%) 的 day-2 崩塌"
+    },
+    "TENX": {
+      "type": "FDA",
+      "cluster": "biotech",
+      "catalyst_zh": "Phase 3 LEVEL 試驗獲選 ESC 大會 Late-Breaking 報告"
+    },
+    "VCIG": {
+      "type": "news",
+      "cluster": "",
+      "catalyst_zh": "Nasdaq 合規危機：20-F 年報延遲未提交，1:60 反向拆股承壓"
+    }
+  },
+  "ARCT": {
+    "Type": "news",
+    "Catalyst": "Arcturus Therapeutics, Thermo Fisher Scientific to Collaborate on Advancing ARCT-032 in Cystic Fibrosis"
+  },
+  "ASST": {
+    "Type": "news",
+    "Catalyst": "How Much Will One Bitcoin Be Worth in 2030?"
+  },
+  "BIDU": {
+    "Type": "news",
+    "Catalyst": "Baidu Announces Record Date for Extraordinary General Meeting of Shareholders"
+  },
+  "CANF": {
+    "Type": "news",
+    "Catalyst": "Sector Update: Healthcare Stocks Higher Late Afternoon"
+  },
+  "CAST": {
+    "Type": "news",
+    "Catalyst": "FreeCast Prices $23.7 Million Private Placement"
+  },
+  "DSY": {
+    "Type": "news",
+    "Catalyst": "Top Premarket Gainers"
+  },
+  "EHGO": {
+    "Type": "news",
+    "Catalyst": "Univest Securities, LLC Announces Closing of $750,000 Registered Direct Offering for its Client EShallGo Inc. (NASDAQ: EHGO)"
+  },
+  "ELTX": {
+    "Type": "news",
+    "Catalyst": "Top Premarket Decliners"
+  },
+  "JEM": {
+    "Type": "news",
+    "Catalyst": "Top Midday Gainers"
+  },
+  "JFB": {
+    "Type": "news",
+    "Catalyst": "XTEND Secures U.S. Patent Protecting Autonomous Navigation Technology for Unmanned Systems"
+  },
+  "LHAI": {
+    "Type": "news",
+    "Catalyst": "Top Premarket Decliners"
+  },
+  "MSTR": {
+    "Type": "news",
+    "Catalyst": "Stocks to Watch: Alphabet, Micron, Strategy"
+  },
+  "NNBR": {
+    "Type": "news",
+    "Catalyst": "NN (NNBR) Stock Trades Up, Here Is Why"
+  },
+  "NUWE": {
+    "Type": "news",
+    "Catalyst": "Nuwellis Celebrates Five Years of Support of the Pediatric Cardiac Critical Care Consortium (PC⁴)"
+  },
+  "ORKA": {
+    "Type": "news",
+    "Catalyst": "Oruka Therapeutics Insider Sold Shares Worth $472,079, According to a Recent SEC Filing"
+  },
+  "OUST": {
+    "Type": "news",
+    "Catalyst": "Ouster's $200M Discounted Share Sale Sparks Selloff – Retail Bulls Call It A Healthy Reset"
+  },
+  "SDOT": {
+    "Type": "news",
+    "Catalyst": "Top Midday Gainers"
+  },
+  "TC": {
+    "Type": "news",
+    "Catalyst": "Asian Equities Traded in the US as American Depositary Receipts Edge Lower in Wednesday Trading"
+  },
+  "TENX": {
+    "Type": "news",
+    "Catalyst": "Tenax Therapeutics Announces Late-Breaking Presentation of LEVEL Clinical Trial Data at ESC Congress 2026"
+  },
+  "VCIG": {
+    "Type": "news",
+    "Catalyst": "E.F. Hutton & Co. Advises VCI Global on $6.87 Million Warrant Exercise at Premium to Market"
+  }
 }

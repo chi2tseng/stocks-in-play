@@ -8,7 +8,7 @@ const fs = require('fs');
 const readline = require('readline');
 
 const PROFILE_DIR    = 'D:/Tabelog/chrome-profile';
-const LISTINGS_JSON  = 'D:/Tabelog/japan_listings.json';
+const LISTINGS_JSON  = 'D:/Tabelog/japan_filtered.json';
 const PROGRESS_JSON  = 'D:/Tabelog/japan-gmaps-progress.json';
 
 const args = process.argv.slice(2);
