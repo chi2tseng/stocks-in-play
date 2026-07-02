@@ -25,7 +25,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 | Step | Tool | Time | Cost | Output |
 |---|---|---|---|---|
 | 1. Gap scan | `node ./barchart-scrape.js` (Playwright + XHR intercept) | ~7s | $0 | `candidates.csv` (84-ish rows) |
-| 2. Catalyst hunt | Claude `general-purpose` agent doing parallel WebSearches on **all** candidates | ~5 min | $0 | inline markdown table → updates `catalysts` dict in `build_report.py` |
+| 2. Catalyst hunt | ≤3 `general-purpose` Agents on **`model: "haiku"`** (§ 0.5) doing parallel WebSearches on **all** candidates | ~5 min | $0 | inline markdown table → updates `catalysts` dict in `build_report.py` |
 | 3. TradingView FQ | `node ./tv-scrape.js TICKER1 TICKER2 ...` | ~3-5s per ticker | $0 | `<TICKER>-earnings-fq.md` |
 | 4. Parse TV | `py ./parse_tv.py` | <1s | $0 | `tv-summary.json` + `tv-summary.csv` |
 | 4b. Backfill earnings dates | `py ./fetch_earnings_dates.py` | ~5-15s | $0 | Updates `tv-summary.json` in place. For tickers TV showed "Next report date" (no past date), queries NASDAQ's earnings-surprise endpoint for the most recent `dateReported`. Pushes coverage from ~70% → ~94%. |
@@ -53,6 +53,39 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 - **`NEWS_TIME_SPEC.md`** — contract for how to source + format real news timestamps. Read it BEFORE writing `news_detail.json` (see § 8 below for the integration).
 
 **Dashboard URL:** http://127.0.0.1:5510/ (served by the `sips-dashboard` preview server, started by `mcp__Claude_Preview__preview_start` with name `sips-dashboard` and `port: 5510`). The server is always running once started; the dashboard auto-refreshes when `data/<DATE>.json` is rewritten.
+
+---
+
+## § 0.5 Model routing & token budget (READ FIRST — this is a COST rule, not a quality rule)
+
+**Principle: cheap models GATHER, the smartest model JUDGES.** All final analysis — MiLan 深度拆解, Tier ratings, claude_picks rankings, the 繁中 brief — is composed by the MAIN model (Fable / Opus max). Everything mechanical (web searches, scraping, fact collection, table assembly) is delegated to cheap subagents. A previous run burned ~400k subagent tokens at main-model pricing because Agent calls inherited the parent model — never again.
+
+**Hard routing table (when running under Claude Code — Agent tool `model` param):**
+
+| Work | Who | Why |
+|---|---|---|
+| Phase 2.0 macro/policy pre-scan | 1 Agent, `model: "haiku"` | 5 WebSearches + cluster-map assembly is mechanical. Returns ≤600-token cluster map. |
+| Phase 2.1 per-ticker catalyst hunt | ≤3 Agents, `model: "haiku"`, ~25 tickers each | One-line catalyst per ticker = summarization, not judgment. |
+| Phase 8 fact-sheet gathering (top-10 deep-dive research) | 1-2 Agents, `model: "sonnet"` | 8-K parsing + segment/guidance numbers need care but not genius. Facts only, no verdicts. |
+| MAGNA53 classification, day_resets judgment | MAIN model | Judgment calls on the already-compact table. |
+| § 7.0 MiLan 深度拆解 + Tier ratings | **MAIN model — NEVER delegate** | This is the product. |
+| claude_picks.json rankings + rationales | **MAIN model — NEVER delegate** | This is the product. |
+| 繁中 brief composition | **MAIN model** | Final deliverable. |
+
+**Subagent output caps (enforce in every Agent prompt):**
+- Catalyst-hunt agents: return ONLY the markdown table, one line per ticker, ≤40 字 per catalyst, NO sources section, NO preamble. Sources are only needed for the top-10 (gathered later by the fact-sheet agents).
+- Fact-sheet agents: return per-ticker structured fact sheets (see § 8.0), ≤500 tokens per ticker, raw numbers + URLs only — explicitly instruct "NO analysis, NO conclusions, NO tier opinions; those belong to the caller."
+- Pre-scan agent: cluster map only, ≤600 tokens total.
+
+**Main-context hygiene (applies to the MAIN model itself):**
+- Run `py parse_tv.py`, `py fetch_earnings_dates.py`, `py fetch_candles.py`, `node finviz-shorts.js` with output suppressed or tail-ed (`| tail -3`). The full 170-row parse table is ~4k tokens of noise — query `tv-summary.json` selectively for candidate tickers via a small `py -c` filter instead.
+- Never `cat`/Read whole JSON artifacts (`tv-summary.json`, `shorts.json`, `candles.json`, day files) into context. Use `py -c` one-liners that print only the tickers/fields needed.
+- Don't re-read files you just wrote. Don't echo full file contents to "verify" — spot-check 1-2 fields.
+- WebSearch/WebFetch in the main context is allowed ONLY during final analysis when a specific fact is missing from the fact sheets (target: ≤5 such calls per run).
+
+**Cost math (why this matters):** gathering ≈ 400-500k tokens/run. At main-model pricing that dwarfs everything else; on haiku it's ~1/10th the cost, on sonnet ~1/3. Final analysis is ~30-60k tokens and stays premium. Net effect: same-quality picks at roughly 70-85% lower spend.
+
+**When running under Gemini/Codex CLI** (`/SIPs-gemini-full`, `/SIPs-codex-full`): the Agent-model params don't exist there — keep the same structure (delegate gathering to whatever cheap sub-mechanism is available, or just do it inline) and keep the output caps + main-context hygiene rules, which save tokens on any runtime.
 
 ---
 
@@ -215,7 +248,9 @@ Combine gainers + losers into one list. Mark each row as `direction = up | down`
 
 **Why this exists:** RGTI on 2026-05-21 gapped +12.7% pre-market on a $2B Trump quantum-subsidy announcement (WSJ overnight). A naive per-ticker `RGTI news today` search returns generic Rigetti coverage and misses the sector driver. The catalyst is "ALL quantum stocks are up because of a White House policy" — so you have to look for the ROOT NEWS first, then map it back to the tickers that moved on it.
 
-**Always start Phase 2 by running these in parallel** (single message, multiple WebSearch tool uses) BEFORE touching individual tickers. The goal is a 5-10 row "policy / sector cluster map" of today's biggest catalysts.
+**Always start Phase 2 with this pre-scan** BEFORE touching individual tickers. The goal is a 5-10 row "policy / sector cluster map" of today's biggest catalysts.
+
+**Delegate it (§ 0.5 routing): spawn ONE Agent with `model: "haiku"`** whose prompt contains today's ISO date + the source table below + the candidate ticker list, and instructs it to run the searches in parallel and return ONLY the cluster map (≤600 tokens, format as in the example below). Do NOT run these 5 WebSearches in the main context — that's ~10k tokens of raw search results the main model doesn't need to see.
 
 Resolve today's date once at the top of the phase (e.g. `2026-05-21`) and inject it into EVERY query — the LLM will otherwise serve cached results from weeks ago.
 
@@ -242,7 +277,7 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 
 ### 2.1 — Per-ticker catalyst hunt
 
-**Efficient delegation pattern:** if there are >25 candidates, delegate the catalyst hunt to a `general-purpose` Agent. **Always pass the Phase 2.0 cluster map in the agent's prompt** so it can short-circuit by-cluster instead of researching each ticker from scratch. Ask the agent to return a structured markdown table with columns `Ticker | Type | Cluster | 繁體中文 catalyst | EPS surprise | Rev surprise | EPS YoY | Rev YoY` (Type ∈ {earnings, analyst, guidance, contract, M&A, FDA, news, momentum, macro, **policy**}).
+**Efficient delegation pattern (§ 0.5 routing — MANDATORY, not optional):** delegate the per-ticker hunt to **at most 3 Agents with `model: "haiku"`**, ~25 tickers each (don't spawn 6+ agents — each carries prompt overhead). **Always pass the Phase 2.0 cluster map in each agent's prompt** so it can short-circuit by-cluster instead of researching each ticker from scratch. Ask each agent to return a structured markdown table with columns `Ticker | Type | Cluster | 繁體中文 catalyst` (Type ∈ {earnings, analyst, guidance, contract, M&A, FDA, news, momentum, macro, **policy**}). **Output caps in the prompt: table ONLY, ≤40 字 per catalyst, NO sources list, NO preamble, NO per-ticker EPS/Rev columns** (those come from tv-summary.json later — don't make a haiku search for numbers the pipeline already scrapes). Main model reads back 3 compact tables (~2k tokens total) instead of doing 60+ searches itself.
 
 For each candidate (parallelize in batches of ~5 in your own context, or delegate to the agent above), run these in parallel:
 
@@ -753,6 +788,31 @@ Write the file as:
 ## § 8. Phase 7 — Publish to the "Stocks In Play" dashboard
 
 After the 繁體中文 brief is written to chat, publish today's scan to the static dashboard at **http://127.0.0.1:5510/**. The dashboard is a single-page app under `./dashboard/` with the **revolut** design system, branded "Stocks In Play".
+
+### 8.0 Fact-sheet gathering for the deep-dive tickers (§ 0.5 routing — run BEFORE composing)
+
+The § 7.0 MiLan 拆解 needs segment numbers, organic-vs-M&A splits, guidance-vs-consensus deltas, lawsuit status, dilution overhang — 4-6 web lookups per ticker. Doing that in the main context for 10+ tickers is the second-biggest token sink after Phase 2. **Split gathering from judging:**
+
+1. After the top 3-5 SIPs + top 2-3 shorts are chosen (post-MAGNA53 ranking), spawn **1-2 Agents with `model: "sonnet"`** covering the deep-dive list (~5 tickers each).
+2. Each agent returns a **per-ticker FACT SHEET** — raw material only, capped ~500 tokens per ticker:
+
+```
+## <TICKER> fact sheet
+- headline: <event, exact date/time ET, source URL>
+- revenue: total $X (+Y% YoY); M&A/one-off portion $Z from <acquisition name + close date>; organic ≈ V%
+- eps: adj $A vs consensus $B vs prior-yr $C; share count Δ ±D% and why
+- gaap_vs_adj: <impairment / restatement / write-down item + $ amount, or "clean">
+- segments: <name> $X rev / Y% margin; <name> $X rev / Y% margin
+- forward: orders/backlog/book-to-bill numbers; FY guide vs consensus (rev + EPS deltas)
+- risks: <lawsuit w/ case name or "none found">; <dilution: ATM/converts/warrants $ amounts>; <customer concentration / regulatory / competition — specific>
+- chart_context: perf1M/perf6M, distance from 52wk high/low, short float + DTC (from shorts.json — do NOT re-search these)
+- sources: 2-4 stable URLs, most authoritative first
+```
+
+3. **Agent prompt MUST say**: "Facts and numbers ONLY. NO analysis, NO opinions, NO tier ratings, NO trade recommendations — those belong to the caller. If a number can't be found, write 'not found' rather than estimating."
+4. **The MAIN model then writes every § 7.0 five-section teardown + Tier rating itself** from these fact sheets — this is the judgment work that stays on Fable/Opus. Fill gaps with at most ~5 targeted main-context searches per run.
+
+This keeps the expensive model's tokens on synthesis (~3-5k per ticker write-up) instead of burning them on search-result wading (~15-20k per ticker when done inline).
 
 ### 8.1 Write `news_detail.json` (per-symbol detail with REAL news time)
 
