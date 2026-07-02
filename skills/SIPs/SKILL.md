@@ -884,7 +884,9 @@ This keeps the expensive model's tokens on synthesis (~3-5k per ticker write-up)
 
 **`detail` content rules — apply the § 7.0 深度催化劑拆解 framework here:**
 - Multi-paragraph 繁體中文 markdown, paragraphs separated by `\n\n` (single `\n` becomes `<br>` in the UI)
-- **Required structure (5 paragraphs, mirrors § 7.0 sections 1-5):**
+- **REQUIRED LEAD — 催化劑摘要 blockquote (the FIRST paragraph, before everything else):** a `> **催化劑摘要:** ...` blockquote of 2-4 sentences (≤120 字) that a reader can stop at and still know the trade: 事件是什麼 + 一句話真相 (organic/灌水/pump/擠壓/稀釋) + 方向判定 + **Tier X/5**. The dashboard renders `>` blockquotes as a violet-bordered box visually distinct from the body — the summary reads first, the deep dive follows. Example:
+  `> **催化劑摘要:** BTC 自 652 天低點反彈至 ~$61k,MSTR 機械跟漲 — 無公司新聞、無新買入,同一 crypto driver 的 day-2 擺動。超賣技術反彈而非趨勢反轉。**Tier 2/5** — 日內短打、不留倉。`
+- **Then the detailed analysis — required structure (5 paragraphs, mirrors § 7.0 sections 1-5):**
   1. **Headline 拆解** — organic vs M&A revenue split with specific $ figures, share count dilution %, GAAP vs adjusted gap with the specific cause
   2. **業務品質** — segment-by-segment quality check with specific margins, naming which segment carried the beat
   3. **前瞻訊號 vs 公司指引** — orders / backlog / book-to-bill vs FY guidance vs consensus, point out matrix or contradiction
