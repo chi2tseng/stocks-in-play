@@ -76,10 +76,8 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 - Catalyst-hunt agents: return ONLY the markdown table, one line per ticker, ≤40 字 per catalyst, NO sources section, NO preamble. Sources are only needed for the top-10 (gathered later by the fact-sheet agents).
 - Fact-sheet agents: return per-ticker structured fact sheets (see § 8.0), ≤500 tokens per ticker, raw numbers + URLs only — explicitly instruct "NO analysis, NO conclusions, NO tier opinions; those belong to the caller."
 - Pre-scan agent: cluster map only, ≤600 tokens total.
-- **回報文風 = caveman**(每個 agent prompt 附帶):無前言、無客套、無 hedging、fragments OK;技術名詞/數字/錯誤訊息原文保留。
 
 **Main-context hygiene (applies to the MAIN model itself):**
-- **聊天敘事 caveman 化**:phase 之間的狀態更新去填充詞、不敘述工具呼叫、結論先行、頻繁而短。**交付物豁免** — news_detail 拆解、繁中 brief、picks rationale 保持完整深度(600-1200 字規格不變),那是產品不是敘事。
 - Run `py parse_tv.py`, `py fetch_earnings_dates.py`, `py fetch_candles.py`, `node finviz-shorts.js` with output suppressed or tail-ed (`| tail -3`). The full 170-row parse table is ~4k tokens of noise — query `tv-summary.json` selectively for candidate tickers via a small `py -c` filter instead.
 - Never `cat`/Read whole JSON artifacts (`tv-summary.json`, `shorts.json`, `candles.json`, day files) into context. Use `py -c` one-liners that print only the tickers/fields needed.
 - Don't re-read files you just wrote. Don't echo full file contents to "verify" — spot-check 1-2 fields.
