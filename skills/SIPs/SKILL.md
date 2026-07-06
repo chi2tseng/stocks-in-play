@@ -576,77 +576,32 @@ template renders — both skills produce correct historical views.
 
 Compose the full report. Order: 🟢 SIPs first (ranked best→worst), then 🔴 short candidates. Skip NULL-setup candidates entirely.
 
-**Chat-brief compaction (speed — the depth lives on the dashboard, not in chat):** the full 5-section teardowns go into `news_detail.json` (dashboard detail pages). Do NOT duplicate all of them in the chat brief. Write the news_detail.json teardowns FIRST, then compress for chat: **only the #1 long and #1 short get their full § 7.1/7.2 template inline in chat**; every other pick gets the compact form — 一句話催化劑 + MAGNA53/setup 行 + 誠實判定段 (Section 5 verdict + Tier) + 進場建議. This roughly halves main-model generation time with zero information loss (everything is one click away on the dashboard).
+**Chat-brief compaction (speed — the news lives on the dashboard, not in chat):** the per-stock 今日上漲新聞 goes into `news_detail.json` (dashboard detail pages). Do NOT duplicate all of them in the chat brief. Write news_detail.json FIRST, then compress for chat: **only the #1 pick gets its full § 7.1 template inline in chat**; every other pick gets the compact form — 一句話漲因 + MAGNA53/setup 行 + 1-2 條新聞重點. Everything else is one click away on the dashboard.
 
-### 7.0 — 深度催化劑拆解架構 (MiLan_Trades 風格) — apply to top 3-5 SIPs + top 2-3 shorts
+### 7.0 — 當日上漲新聞整理 (簡單直接，不做反向分析) — apply to top 3-5 SIPs
 
-**Why this exists**: most catalyst write-ups stop at "Q1 beat by X%, stock +12%" — that's not analysis, that's restating the headline. The reference standard is MiLan_Trades's AVAV teardown (Tier 3/5, "沒有想像中那麼糟"): the $641M / +133% YoY headline is peeled apart into **44% from M&A roll-up vs. only ~31% organic**, the doubled adj-EBITDA against **+79% share count dilution** that kept adj-EPS flat, the **$240M goodwill impairment** that turned GAAP into a $(265)M loss, the segment split (legacy autonomous-systems carried the entire beat at 28% margin while the $4.1B BlueHalo acquisition delivered <1% margin), the FY27 guidance that **directly contradicts** the bullish backlog story (revenue +10%, adj-EPS 20% below consensus, FCF negative), AND the open **SCAR-disclosure securities class action**. End verdict: "stabilization, not triumph. The pop from 52-week lows is a backlog-supported relief rally, not proof of underlying earnings improvement."
+> **使用者 2026-07-06 明確指示(記憶檔 feedback_sips_news_not_analysis):**
+> 「詳細催化劑不要用 milan 的 framework，你要去找當天的新聞給我就好，不要再用奇怪的分析，直接把上漲原因整理給我。todays sips 中只要給我當天上漲的新聞就好，不要再給我一些奇怪的理由。」
+>
+> **這是硬性方針,不是建議。** 舊的 MiLan 五段深度拆解 + Tier 評級 + 「這是 X 不是 Y」反向判定**已廢除**。不要重新引入。
 
-That's the depth bar. Restate the headline = lazy. Peel it apart layer by layer = the user's signal.
+**核心任務:找出今天(或最近盤/盤後)讓這檔股票上漲的真實新聞,直接整理給使用者看。**
 
-**Apply this depth to**: every top 3-5 SIPs + every top 2-3 shorts (i.e., everything that goes into `news_detail.json`). The remaining ~70 candidates get the standard 2-3 sentence catalyst summary in the full-list table — that's fine, depth doesn't scale to 80 names.
+**做什麼:**
+- 去找**當天的實際新聞**(用 § 2.0/§ 2.1 已抓到的 catalyst,不夠再補一級源搜尋:issuer IR / 8-K / Reuters / CNBC / Bloomberg / Briefing.com)。
+- 直接說:**今天漲多少 + 因為什麼具體事件 + 關鍵數字**。
+- 事實整理,附來源。就這樣。
 
-**Required: 5-section structure. Each section must have specific $ figures, names, or %. No vague descriptors ("strong demand", "healthy guidance") — replace with the number.**
+**不要做(使用者明令禁止):**
+- ❌ 不做「這是 X 不是 Y」的反向判定句
+- ❌ 不做 Tier 1-5 評級
+- ❌ 不做「業務品質 / 前瞻 vs 指引 / 風險清單 / 誠實判定」五段拆解
+- ❌ 不硬找「其實沒那麼好」的理由 — 使用者要的是「為什麼漲」,不是「為什麼別追」
+- ❌ 不要把上漲說成「解套反彈 / pump / 灌水」除非那**就是當天新聞本身**(例如新聞明講是反向分割 / 稀釋增發)
 
-#### Section 1 — Headline 拆解 (哪些是真的、哪些被灌水)
+**方向範圍:** Today's SIPs 頁面主打**上漲的股票**。news_detail 以 gainers(intent=long / gap-up)為主。下跌股若有明確當日利空新聞可保留一句話 catalyst,但**不套用**任何深度反向框架。
 
-For **earnings** movers:
-- **Revenue organic vs. M&A**: `公布 Q[N] revenue $X.XB (+Y% YoY) — 其中 $Z (約 W%) 來自 [併入的 ACQ_NAME 業務 / 新通路上線 / 一次性訂單]，剝掉之後 organic 成長實際 ~V%`
-- **EPS 與股數稀釋鴻溝**: `Adjusted EPS $X vs 去年 $Y — 但 share count 因 [併購對價 / SPO / SBC overhang] +Z%，每股經濟效益實際停滯/下降`
-- **GAAP vs Adjusted**: `GAAP 全年 [虧損 / 微利] $(X)M / $(Y)/股，主因是 $Z 的 [商譽減損 / restatement / 庫存沖銷 / 訴訟和解]`
-
-For **non-earnings** catalysts (policy / contract / FDA / M&A / analyst):
-- **Headline 與 TAM 拆解**: `[$X 政府補助 / $Y 合約 / 加速核准] — 其中對 <TICKER> 直接可分配 ~$Z (W% of TAM)，剩下將分給 [競爭者 X/Y / 同族群 / 未來輪次 / 不確定]`
-- **時間軸 (anticipation vs. fulfillment)**: `公告日 → 簽約日 → 收入認列日 → 完工日。今日 +X% 是 [尚未簽約的 anticipation / 已簽 deal 的 fulfillment / 收入仍在 N 季外]`
-- **稀釋條款**: 政府補助常伴 warrant / minority stake / preferred shares / SBA-style dilution — 必須點出
-
-#### Section 2 — 業務品質 (segment by segment)
-
-`整個超預期幾乎集中在 [優質部門 A]（營收 $X、利潤率 Y%、YoY +Z%）；而 [併購進來的部門 B / 衰退中的部門 C] 在 $W 營收上只擠出 $V EBITDA、利潤率 U%（或實際虧損 $T）。`
-
-然後一句點題（pick one）:
-- **如果優質部門撐起亮點**: 「**那正是當初要拿來合理化 [收購價/估值/政策] 的部門，而它根本還沒開始賺錢養活自己。**」(AVAV pattern)
-- **如果新部門加速**: 「**多頭故事的核心引擎正在加速、毛利率持續擴張，符合 thesis。**」
-- **如果舊部門衰退**: 「**舊業務正在被取代，未來幾季的 organic 成長將完全靠 [新業務] 撐住。**」
-
-#### Section 3 — 前瞻訊號 vs 公司指引 (兩者矛盾要點出)
-
-- **前瞻需求 (Real demand 訊號)**:
-  - 訂單 / orders intake $X (+Y% YoY)
-  - book-to-bill ratio (>1 = 訂單跑贏出貨)
-  - funded backlog $W (+Z% YoY)
-  - 大客戶續約 / 新地理市場 / 新產品線 specifics
-- **公司指引 (Management's own view)**:
-  - FY[N+1] revenue guide +X% (vs consensus +Y%)
-  - adjusted EPS $A (vs consensus $B, [+/-]C%)
-  - EBITDA, FCF 預期、上下半年分配
-- **點出矛盾或共振**:
-  - 強訂單 + 弱指引 = 「**管理層自己沒那麼樂觀**，通常代表毛利率/cost mix 壓力、或 CFO 在 sandbag」
-  - 強訂單 + 強指引 = 「**管理層加碼下注**，多頭續勢 thesis 成立」
-  - 弱訂單 + 強指引 = 「**指引明顯偏激進**，FY 末 likely 需要下修」
-
-#### Section 4 — 風險清單 (必列、即使表面利多)
-
-至少 3 項，every 項要具體：
-- **訴訟**: open securities fraud class action / SEC investigation / FTC review / IP infringement / 客戶仲裁
-- **重編 / 減損**: restatement of [period N-X] / goodwill impairment $X / inventory write-down / DTA reversal
-- **稀釋**: 已宣告但未發行的 ATM $X / convertible notes due [DATE] / unvested SBC $Y / warrant overhang
-- **客戶集中**: top 3 客戶占 X% revenue / 大政府合約 [DATE] 到期 / 單一產品線占 Y%
-- **規範改變**: 出口管制 / FDA black-box / DOJ antitrust review / 稅務裁定
-- **競爭**: 新進入者 [NAME] / 大廠 [NAME] 降價 X% / 替代技術 ETA [DATE]
-
-#### Section 5 — 誠實判定 (point of the whole exercise)
-
-一句話 verdict + Tier 評等。模板:
-
-> **這是 [止穩 / 解套反彈 / 趨勢轉折確認 / 多頭續勢 / pump-and-dump]，不是 [凱旋 / 拐點 / fundamental shift / 真實趨勢確認]。** 核心業務 [健康/受傷]，但 reported 成長靠 [併購/政策/一次性] 撐起，而 [稀釋/減損/訴訟/競爭] 把每股經濟效益 [吃掉/中和/補強]。今日這波 [+X%] 從 [近 52 週低 / 整理區間 / earnings gap] 是靠 [強勁訂單簿 / 政府訂單 / 沒有想像中那麼糟 / short squeeze] 撐起的 [解套反彈 / 趨勢確認 / 突破 / 多日延續]，並不是 [底層獲利能力真的改善 / underlying demand thesis 確認] 的證明。**Tier X/5 等級的財報/事件。**
-
-**Tier scale (內部命名)**:
-- **Tier 5/5** = fundamental shift confirmed by all 4 lenses — organic rev + segment quality + bullish guide + clean balance sheet. 多日延續期望值高。
-- **Tier 4/5** = 強催化但有一個顯著瑕疵 (e.g., 強 organic + 強 segment 但 guide 保守, or 強 EPS 但 share count 稀釋大)
-- **Tier 3/5** = 「沒有想像中那麼糟」型 — 部分業務健康但結構性問題未解。**AVAV 範例的等級。** 進場可以、但別 oversize、別預期多日延續。
-- **Tier 2/5** = relief rally / dead-cat / 純空頭回補 — fade 機會 > 跟單機會
-- **Tier 1/5** = pump-and-dump / 純技術面 / micro-float 拉抬 — 不碰，或反向找做空
+**允許保留的客觀風險提醒(≤1 句,只在有硬事實時):** 若當天新聞本身就帶利空(例如「同時宣布 $X 增發稀釋」「CEO 拿 $700M 限制股」),可在最後補一句客觀陳述 — 但那是**新聞的一部分**,不是你外加的判定。沒有硬事實就不要補。
 
 ### 7.1 — Per-stock template (use this verbatim, top 3-5 SIPs)
 
@@ -677,67 +632,29 @@ For **non-earnings** catalysts (policy / contract / FDA / M&A / analyst):
 
 ---
 
-### 深度催化劑拆解
+### 今日上漲新聞
 
-**1. Headline 拆解 — 哪些是真的、哪些被灌水：**
-- <organic vs M&A revenue split with specific $ figures>
-- <share count dilution % + impact on per-share economics>
-- <GAAP vs adjusted gap with the specific item causing it>
+**今日漲因(一句話):** <今天漲多少 + 因為什麼具體事件>
 
-**2. 業務品質 — segment by segment：**
-- [優質部門名] $X 營收 / Y% margin — <carried the beat>
-- [問題部門名] $X 營收 / Y% margin — <still doesn't earn its keep>
-- 點題: <one sentence naming the structural quality pattern>
+**新聞重點(2-4 條,每條真實事件 + 具體數字 + 時間):**
+- <當日事件 1,含 $ / % / 日期,例:7/6 盤前公布 Q3 FY26 營收 $3.34B (+45% YoY)、非 GAAP EPS $2.72 超預期 $2.36>
+- <當日事件 2,例:CEO 電話會議稱 CY2026 產能幾乎售罄、LTA 已簽到 2027-2029>
+- <族群/宏觀連動(若適用),例:AI 儲存超級週期帶動 SNDK/WDC 同步走強>
 
-**3. 前瞻訊號 vs 公司指引：**
-- Real demand: 訂單 $X / book-to-bill Y / backlog +Z% to $W
-- Management guide: FY[N+1] rev +X%, adj-EPS $A (vs consensus $B)
-- 矛盾/共振: <one sentence naming which it is>
+<若當天新聞本身帶硬性利空,補一句客觀陳述(選填,≤1 句):例「同一份公告含 850 萬股增發稀釋」>
 
-**4. 風險清單：**
-- <Lawsuit / SEC inquiry with specifics>
-- <Dilution overhang $ amount>
-- <Customer concentration / regulatory / competition with specifics>
-
-**5. 誠實判定:**
-這是 [pattern]，不是 [pattern]。<one paragraph follow-through>. **Tier X/5 等級的[財報/事件]**。
-
----
-
-**進場建議：**
-- 標準進場：開盤市價單，2.5% 停損
-- 若為 Tier 4-5 強催化：升級 5% 停損
-- 後追蹤停利：$1 → $0.40 → $0.20 三階段
+**來源:** 見 news_detail.json sources(一級源優先)。
 ```
 
-### 7.2 — Per-short template
+### 7.2 — Per-short / 下跌股(簡短,不做深度反向框架)
+
+> Today's SIPs 主打上漲股。下跌股只給**一句話當日利空新聞**,不套用任何五段/Tier 框架。
 
 ```markdown
-## 🔴 SHORT #N — <TICKER>  (-X.XX% / Vol Y.YM)
+## 🔴 <TICKER>  (-X.XX% / Vol Y.YM)
 
-**一句話催化劑：** <one-sentence 繁體中文 explanation of the miss>
-
-**EPS YoY：** -XX.X%　　**Revenue YoY：** -XX.X%  (latest reported quarter)
-**MAGNA53 反向：** M(衰退)✓ G(下殺)✓ ...
-
-**Forward YoY (TradingView FQ):** *(if available, same strict format)*
-
----
-
-### 深度催化劑拆解 (same 5-section structure as SIP)
-
-**1. Headline 拆解 — 為什麼這個 miss 是 real，不是 noise：**
-**2. 業務品質 — 哪個 segment 流血：**
-**3. 前瞻訊號 vs 公司指引 — 是否兩者都在惡化：**
-**4. 風險清單 (反向 — short 的 risk = 多頭翻身要件)：**
-**5. 誠實判定:**
-這是 [真實 demand destruction / 一次性失誤 / 結構性衰退 / cyclical bottom]。<one paragraph>. **Tier X/5 等級的做空機會**。
-
----
-
-**做空進場建議：**
-- 標準進場：開盤市價單，3% 停損（空頭單較寬以避開 short-cover 噴）
-- key risk levels: [pre-market 高點] / [50-day MA] / [analyst PT]
+**今日跌因(一句話):** <今天跌多少 + 因為什麼具體當日利空,含 $ / % / 日期>
+**來源:** <一級源 URL>
 ```
 
 ### End the report with:
@@ -882,31 +799,28 @@ This keeps the expensive model's tokens on synthesis (~3-5k per ticker write-up)
 
 **Scope:** write entries for the **top 10 SIPs** + **top 4 short candidates** identified in the Phase 6 brief. The remaining ~70 candidates auto-fall back to their `catalyst` 1-sentence summary (already in `final-candidates.csv`); they don't need a `news_detail.json` entry unless they have notable depth.
 
-**`detail` content rules — apply the § 7.0 深度催化劑拆解 framework here:**
+**`detail` content rules — 整理當日上漲新聞,不做反向分析(見 § 7.0 硬性方針):**
 - Multi-paragraph 繁體中文 markdown, paragraphs separated by `\n\n` (single `\n` becomes `<br>` in the UI)
-- **REQUIRED LEAD — 催化劑摘要 blockquote (the FIRST paragraph, before everything else):** a `> **催化劑摘要:** ...` blockquote of 2-4 sentences (≤120 字) that a reader can stop at and still know the trade: 事件是什麼 + 一句話真相 (organic/灌水/pump/擠壓/稀釋) + 方向判定 + **Tier X/5**. The dashboard renders `>` blockquotes as a violet-bordered box visually distinct from the body — the summary reads first, the deep dive follows. Example:
-  `> **催化劑摘要:** BTC 自 652 天低點反彈至 ~$61k,MSTR 機械跟漲 — 無公司新聞、無新買入,同一 crypto driver 的 day-2 擺動。超賣技術反彈而非趨勢反轉。**Tier 2/5** — 日內短打、不留倉。`
-- **Then the detailed analysis — required structure (5 paragraphs, mirrors § 7.0 sections 1-5):**
-  1. **Headline 拆解** — organic vs M&A revenue split with specific $ figures, share count dilution %, GAAP vs adjusted gap with the specific cause
-  2. **業務品質** — segment-by-segment quality check with specific margins, naming which segment carried the beat
-  3. **前瞻訊號 vs 公司指引** — orders / backlog / book-to-bill vs FY guidance vs consensus, point out matrix or contradiction
-  4. **風險清單** — at least 3 specific items (open lawsuits / dilution overhang / customer concentration / regulatory / restatement risk)
-  5. **誠實判定** — "這是 X 不是 Y" one-paragraph verdict + **Tier X/5 等級的[財報/事件]**
-- **Length: ~600-1200 字 (5 paragraphs, each 80-200 字)** — this is the user's "MiLan_Trades depth" bar. The old 150-400 char limit was too thin for proper analysis. The stock detail card scrolls; readability is fine.
-- **Key numbers in `**bold**`** so they pop on the card (e.g., `**Q3 revenue $641M +133% YoY**`, `**44%(約 $282M)來自併購**`)
-- Each claim must carry a specific $ / % / name. Vague phrases like "強勁需求", "管理層樂觀" must be replaced with the underlying number ("訂單 $2.7B / book-to-bill 1.4")
+- **REQUIRED LEAD — 今日漲因 blockquote (第一段,擺最前面):** 一個 `> **今日漲因:** ...` blockquote,1-2 句 (≤80 字):**今天漲多少 + 因為什麼具體事件**。讀者掃一眼就懂為什麼漲。Dashboard 把 `>` 渲染成紫框摘要卡,視覺上與內文分開。範例:
+  `> **今日漲因:** 盤前 +5% — 7/6 公布 Q3 FY26 營收 $3.34B (+45% YoY)、EPS $2.72 超預期,CEO 稱 2026 年 HDD 產能幾乎售罄。`
+- **接著是當日新聞細節(2-4 段或條列):**
+  - 每一條是**當天(或最近盤/盤後)的真實新聞事件** + 具體 $ / % / 日期 + 誰說的。
+  - 純事實整理:發生什麼、關鍵數字、族群/宏觀連動(若適用)、分析師動作(若當天有)。
+  - **禁止**:「這是 X 不是 Y」判定句、Tier 評級、「業務品質/前瞻vs指引/風險/誠實判定」五段標題、硬找「其實別追」的理由。
+- **長度: ~150-450 字**(摘要 + 2-4 條新聞)。比舊的 Milan 600-1200 字短很多 — 使用者要的是「當天新聞」不是深度拆解。
+- **關鍵數字用 `**bold**`** 讓它在卡片上跳出來(例:`**Q3 營收 $3.34B (+45% YoY)**`)。
+- 每個主張要有具體 $ / % / 名稱或日期;空詞「強勁需求」「前景看好」換成底層數字。
+- **客觀利空(選填,≤1 句):** 只有當天新聞本身帶硬事實利空(增發稀釋、內部人賣股、CEO 大額限制股)才補一句客觀陳述,放最後。沒有硬事實就不補 — 不要自己發明「風險」。
 
-**Reference — AVAV teardown (the user's gold standard)**:
+**Reference — 新格式範例 (WDC 2026-07-06):**
 ```
-公布 Q4 revenue **$641.6M (+133% YoY)** — 但其中約 **$282M (約 44%)** 直接來自併進來的 BlueHalo 與 Empirical Systems 業務，不是本業真實需求。剝掉這兩塊，當季 organic 成長僅 ~31%、全年僅 ~26%。Adjusted EPS **$3.31 vs 去年 $3.28** 幾乎沒動 — 因股票對價併購 + 一次現金增資讓 share count **+79%**，每股經濟效益實際停滯。GAAP 全年虧損 **$(265)M / $(5.40)/股**，主因是 SCAR 太空計畫崩盤帶來的 **$240.7M 商譽減損**，其中含 $89.4M 前期數字 restatement。
+> **今日漲因:** 盤前 +4~6% — AI 資料中心近線 HDD 需求旺、庫存售罄題材延續,族群(SNDK/STX)同步走強。
 
-業務品質參差不齊：整個超預期幾乎全在舊有 **Autonomous Systems** 招牌業務 ($492M 營收 / 28% margin)；而花 **$4.1B 併進的 BlueHalo Space/Cyber/Directed Energy 部門**在 $149M 營收上只擠出 $1.4M EBITDA、利潤率不到 1%。**那正是當初要拿來合理化收購價的部門，而在 SCAR 之後它根本還沒開始賺錢養活自己。**
+WDC 為 SanDisk 分拆後的純 HDD 業者。最近一季 Q3 FY26(4/30 公布)營收 **$3.34B (+45% YoY)**、非 GAAP EPS **$2.72** 超預期 $2.36;CEO Irving Tan 在電話會議稱 **CY2026 HDD 產能『幾乎售罄』**、前七大客戶已下實單、部分長約(LTA)簽到 **2027-2029**。
 
-前瞻需求真實且 organic：**訂單 $2.7B、book-to-bill 1.4、funded backlog +65% 到 $1.2B**，加上 Switchblade 400/LASSO 得標、Titan 反無人機訂單翻倍。但管理層 **FY27 指引直接打臉**：revenue 只 guide +10%、adj-EPS **$3.02-3.34 (比 consensus 低 ~20%)**、EBITDA 低 ~12%、FCF 全年負且重壓在下半年。
+漲價題材具體:消費級硬碟 5 個月漲約 **50%**、平均 HDD 售價自 2025/9 起 **+46%**;公司指引 Q4 FY26 非 GAAP 毛利率 51-52%。
 
-風險：**SCAR 揭露問題的 securities fraud 集體訴訟仍在進行**；股票對價併購讓未來幾年 SBC + dilution overhang 持續；新買的太空部門在 $240M 減損後仍不賺錢；客戶高度集中於美國國防部單一通路。
-
-**這是一次自己搞砸後的「止穩」，不是凱旋。** 核心無人機業務健康，但公布出來的成長是靠併購撐起的、每股經濟效益因稀釋而停滯、被併進來的太空部門在 $240M 減損後幾乎不賺錢，且有 securities class action 懸在頭上。這波從接近 52 週低的彈升，是靠強勁訂單簿撐起的**解套式反彈**，並不是底層獲利能力真的改善的證明。**Tier 3/5 等級的財報。**
+今日無單一新聞事件,屬 AI 儲存超級週期的族群動能延續(SNDK 6 個月 +626%、WDC +206%)。下一個關鍵是 **7/29 財報**。
 ```
 
 **`publishedAt` rules:** see NEWS_TIME_SPEC.md §3-§4. Always include the TZ offset.
