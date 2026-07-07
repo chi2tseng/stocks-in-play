@@ -1,15 +1,42 @@
 {
-  "_date": "2026-07-06",
-  "_note": "US 2026-07-06 (Mon) 盤前。主軸:6 月非農 +57K 大幅 miss(預期 115K)→ 降息機率 >60% → risk-on。WULF 為唯一有公司自身重大合約消息的標的(Anthropic 20 年租約)。其餘為 AI 半導體/記憶體族群反彈 + BTC 礦工。中國微型股大 pump(GMEX/ZCMD/LHSW/SPHL)無實質催化,不入選。",
+  "_date": "2026-07-07",
+  "_note": "今日主軸:半導體 Meta 過剩算力拋售第 2 日(整組 MU/WDC/SNDK/MRVL/AMD/設備股跌 4-8%)。最大單一事件是 Vertex $85 現金收購 CRNX(+99% 但上檔封頂,屬併購套利)。真正乾淨的基本面利多偏少 — ALGS 授權交易與 FISV 出售 STAR 探路為當日質地最好的做多題材;RIVN 大額增發是最乾淨的做空催化。",
   "picks": [
-    { "symbol": "WULF", "rank": 1, "intent": "long", "rationale": "今日唯一有公司自身重大合約消息:7/6 官方公告與 Anthropic 簽 20 年 AI 資料中心租約(~$19B 合約收入)+ 出售 Abernathy JV 股權予 Fluidstack。非跟 BTC(BTC 今日僅小幅整理)。SF 31.7% + DTC 3.56 為擠壓燃料。盤前 +17.5%。" },
-    { "symbol": "WDC", "rank": 2, "intent": "long", "rationale": "AI 資料中心 HDD 需求推升、產能售罄,Seagate 稱漲價為新常態;疊加記憶體/晶片族群反彈(SMH +2.4%)。Q3 FY26 營收 $3.34B (+45% YoY)、CEO 稱 2026 產能幾乎售罄、LTA 簽到 2027-2029。盤前 +5.2%。" },
-    { "symbol": "LRCX", "rank": 3, "intent": "long", "rationale": "AI 晶圓設備(WFE)題材 + 弱非農推升降息預期,晶片族群反彈。FQ3 營收 $5.84B (+24%)、指引創紀錄、2026 WFE 上修至 $140B。市值 $439B、流動性佳。盤前 +5.1%。" },
-    { "symbol": "AMAT", "rank": 4, "intent": "long", "rationale": "AI 半導體資本支出續強,晶片族群反彈。應材為半導體設備龍頭,1M 已 +23% 動能最強。盤前 +4.6%。" },
-    { "symbol": "KLAC", "rank": 5, "intent": "long", "rationale": "AI 半導體檢測設備隨晶片族群反彈,1M +15%。市值 $308B、機構級品質。盤前 +5.4%。" },
-    { "symbol": "ASML", "rank": 6, "intent": "long", "rationale": "Bernstein 上調目標價至 $2,623(AI 需求),EUV 微影獨門龍頭隨晶片族群走強。盤前 +4.1%。" },
-    { "symbol": "SNDK", "rank": 7, "intent": "long", "rationale": "NAND 記憶體超級週期:Needham 上調美光目標價、DRAM/HBM 缺貨漲價,市場等三星 Q3 財報 + SK 海力士上市。SanDisk(WDC 分拆)6 個月 +626%。盤前 +5.1%。" },
-    { "symbol": "IREN", "rank": 8, "intent": "long", "rationale": "BTC 反彈($62-64K,弱非農)+ AI/HPC 轉型,礦工族群齊漲。SF 22.4% 具擠壓潛能。但 CEO 獲 $700M 限制股引稀釋爭議、與 WULF 同 BTC driver。盤前 +7.9%。" },
-    { "symbol": "SEER", "rank": 9, "intent": "long", "rationale": "併購套利:CEO Omid Farokhzad $2.45/股現金 + 2 CVR 私有化提案(7/2)+ 7/6 投資人簡報強調 62% 客戶成長。現價往 bid 靠攏,上檔被 $2.45 封頂。盤前 +35.8%。" }
+    {
+      "symbol": "ALGS",
+      "rank": 1,
+      "intent": "long",
+      "rationale": "當日質地最乾淨的基本面利多。與廈門特寶簽大中華區 B 肝新藥授權,實收 $2,500 萬美元上游款、里程碑上看 $4.2 億 + 分層權利金,對小型生技是實質現金與管線驗證。+12.5% 有真金白銀支撐,非純題材拉抬。"
+    },
+    {
+      "symbol": "FISV",
+      "rank": 2,
+      "intent": "long",
+      "rationale": "大型金融科技股,盤後 +7.5% 因 Reuters 獨家報導洽談出售 STAR 簽帳卡網路(買方含 JPM/BofA/Wells Fargo)。屬 M&A 探路題材 — 上檔想像空間大,但 Reuters 明言可能破局,追高需控管『談判破裂即回吐』風險。"
+    },
+    {
+      "symbol": "CRNX",
+      "rank": 3,
+      "intent": "long",
+      "rationale": "最大單一事件:Vertex $85/股全現金收購,+99% 直達收購價附近。但這是固定現金價 — 股價貼近 $85 後續漲空間封頂,只適合併購套利(賺剩餘價差),不是動能續攻標的。列此僅為記錄當日最大 mover,非追高建議。"
+    },
+    {
+      "symbol": "SKYQ",
+      "rank": 4,
+      "intent": "long",
+      "rationale": "內華達唯一運轉煉油廠進入生產階段,+17%。營運里程碑實在,但尚無 offtake 金額/營收指引,屬高波動小型股 — 只適合小部位、嚴設停損的投機。"
+    },
+    {
+      "symbol": "RIVN",
+      "rank": 5,
+      "intent": "short",
+      "rationale": "當日最乾淨的做空催化:盤前申報 7,500 萬股(~$15 億)增發,立即稀釋壓過 7/2 的交車利多。-10%。留意其 Q2 交車 12,194 台大勝、全年指引上調,基本面偏多可能在低點找到支撐 — 屬事件型(稀釋)做空,非趨勢做空。"
+    },
+    {
+      "symbol": "WDC",
+      "rank": 6,
+      "intent": "short",
+      "rationale": "半導體/記憶體族群拋售第 2 日中跌最深者(-7.6%),Meta 傳售過剩 AI 算力引發供給過剩疑慮。但這是族群 sympathy/動能做空,非基本面惡化(WDC 營收仍成長)— 這類優質股常急跌後強彈,僅適合順勢當沖、不宜隔夜賭方向。"
+    }
   ]
 }
