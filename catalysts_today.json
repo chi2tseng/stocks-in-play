@@ -1,38 +1,21 @@
 {
-  "_date": "2026-07-08",
-  "_note": "US 2026-07-08 (Wed)。macro/sentiment day,無乾淨當日財報 SIP。三主軸:(1) 油氣族群 — 伊朗-美衝突升溫、荷莫茲海峽運油船遇襲,油價 +5.7%(WTI/BATL 跟漲);(2) 中概股集體反彈 — BABA +9.3% 近 10 月最大漲幅,BIDU/KC 連動;(3) 半導體賣壓延續 — 三星財報引晶片輪動,MU/SNDK/NVTS/AAOI/MBLY 續跌。其餘多為反向分割/供股/低流通投機拉抬(PFSA/WFF/VEEE/TC)。MU 顯示價 $900、SNDK $1544 為 Barchart 資料錯誤(實際 ~$100+/拆股),%chg 與方向仍有效。",
-  "AAOI": { "Type": "news", "Catalyst": "半導體板塊賣壓(三星財報引晶片輪動)拖累盤前 -4.4%;惟 Q1 營收 $151M +51% YoY" },
-  "ABCL": { "Type": "news", "Catalyst": "盤前 -4.8%,生技板塊回落,無個股重大消息" },
-  "AMPG": { "Type": "news", "Catalyst": "微型股回吐 -6.2%,盤前無重大消息" },
-  "ANNA": { "Type": "momentum", "Catalyst": "盤前 +7%,無重大消息,疑低流通/技術面帶動" },
-  "ANVS": { "Type": "news", "Catalyst": "Annovis 盤後 +4.7%,無重大消息(生技微型股)" },
-  "BABA": { "Type": "momentum", "Catalyst": "阿里 +9.3%,近 10 個月最大單日漲幅,中概股集體反彈、財報預期樂觀" },
-  "BATL": { "Type": "macro", "Catalyst": "油價飆漲(伊朗-美衝突升溫),Battalion Oil +18.7% 跟漲油氣族群" },
-  "BB": { "Type": "news", "Catalyst": "BlackBerry -4.2%,科技股走弱,盤前無個股重大消息" },
-  "BIDU": { "Type": "news", "Catalyst": "百度 +4.4%,中概股反彈族群連動" },
-  "BLRX": { "Type": "news", "Catalyst": "BioLineRx -11.9%,生技回落,GLIX1 臨床試驗進行中" },
-  "CLRO": { "Type": "M&A", "Catalyst": "ClearOne 併購 Cortigent(神經刺激)擬改名 CRGT;月漲 314% 後 +5%" },
-  "CMMB": { "Type": "news", "Catalyst": "Chemomab +11.2%,盤前無明確消息,生技低量拉升" },
-  "FCEL": { "Type": "news", "Catalyst": "FuelCell -19.8%,燃料電池族群獲利回吐(PLUG/BE 同跌)" },
-  "FRGT": { "Type": "news", "Catalyst": "Freight Technologies -12.9%,6/23 融資 $250 萬稀釋、AI 物流布局" },
-  "HMY": { "Type": "macro", "Catalyst": "Harmony Gold -4.2%,金價/避險波動,南非金礦股回落" },
-  "IOTR": { "Type": "earnings", "Catalyst": "Iota Comm FY26 營收 $14.7M +40%、毛利 +68%,盤後 +50%(微型股)" },
-  "IRWD": { "Type": "news", "Catalyst": "Ironwood +8.2%,今日無新財報(Q1 已於 5/7 公布),疑軋空(DTC 6.7)" },
-  "KC": { "Type": "news", "Catalyst": "金山雲 +9.2%,中概股反彈族群連動(DTC 5.3 添軋空燃料)" },
-  "LHSW": { "Type": "news", "Catalyst": "前一日 +281% 後回吐 -12.8%;CEO 7/6 增持 240 萬股" },
-  "MBLY": { "Type": "news", "Catalyst": "Mobileye -4.2%,半導體賣壓拖累;Q1 EPS 0.12 超預期 43%、營收 $558M +27%" },
-  "MU": { "Type": "news", "Catalyst": "Micron -4.1%,三星財報引晶片賣壓(顯示價 $900 為 Barchart 資料錯誤)" },
-  "NVTS": { "Type": "news", "Catalyst": "Navitas -6%,晶片賣壓;營收 $8.6M -39% YoY 弱勢;7/27 公布 Q2、$500M 供股" },
-  "PDYN": { "Type": "analyst", "Catalyst": "Palladyne AI +5.2%,分析師覆蓋(50% 賣出、目標 $11.25)" },
-  "PFSA": { "Type": "news", "Catalyst": "7/7 完成 1:25 反向分割,盤前 -9.3%/盤後 +8.2%" },
-  "SKYQ": { "Type": "news", "Catalyst": "Sky Quarry +15.4%,Nevada 煉油廠 7 月投產、庫存 10 萬桶" },
-  "SNDK": { "Type": "news", "Catalyst": "SanDisk -4.5%,晶片賣壓;Kioxia $1.2B 供應合約延至 2034(顯示價 $1544 為資料錯誤)" },
-  "TC": { "Type": "momentum", "Catalyst": "Token Cat 盤後 +19.5%,跌深反彈(微型股)" },
-  "TDIC": { "Type": "news", "Catalyst": "-10.4%,盤前無重大消息(微型股)" },
-  "TDTH": { "Type": "corporate", "Catalyst": "7/8 特會表決 240:1 併股、轉 NASDAQ 直接掛牌,-19.1%" },
-  "TVRD": { "Type": "news", "Catalyst": "+4.5%,盤前無重大消息(微型股)" },
-  "USDE": { "Type": "macro", "Catalyst": "-11.9%,6 月非農疲弱、Fed 觀望;微型股回吐" },
-  "VEEE": { "Type": "news", "Catalyst": "Twin Vee 盤後 +45.7%,無明確催化劑,低流通拉抬(mcap $3M)" },
-  "WFF": { "Type": "corporate", "Catalyst": "7/10 特會擬授權股數增至 1 兆股(重組/大幅稀釋),盤後 +40.9%" },
-  "WTI": { "Type": "macro", "Catalyst": "W&T Offshore +6.7%,油價 +5.7%(荷莫茲海峽運油船遇襲)" }
+  "date": "2026-07-08",
+  "clusters": {
+    "china_adr_rebound": {
+      "root": "中概科技股集體反彈 — 資金由高估值半導體轉進較便宜的中國 AI 平台;疊加阿里即時零售虧損收窄的盤前簡報",
+      "affected": ["BABA", "BIDU", "KC"]
+    },
+    "oil_geopolitics": {
+      "root": "伊朗-美停火破局、中東緊張升溫推油價 Brent/WTI +5%,能源族群走強",
+      "affected": ["WTI", "BATL"]
+    },
+    "equity_offerings_dilution": {
+      "root": "多檔於 7/6-7/7 盤後宣布/定價大額股票增發,稀釋壓力導致重挫",
+      "affected": ["FCEL", "RIVN"]
+    },
+    "micro_float_pumps": {
+      "root": "反向分割/低流通量拉抬,非基本面驅動的爆量急拉",
+      "affected": ["VEEE", "WFF", "TC", "PFSA", "USDE", "TDIC"]
+    }
+  }
 }

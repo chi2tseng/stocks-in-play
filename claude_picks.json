@@ -1,15 +1,16 @@
 {
   "_date": "2026-07-08",
-  "_note": "Macro/sentiment day,無乾淨當日財報 SIP。最佳做多為流動性佳的題材股:中概股集體反彈(BABA 為首,近 10 月最大漲幅)、油氣族群(伊朗-美衝突推油價 +5.7%)。IOTR 為唯一真財報(FY26 營收 +40%)但屬 $6.5M 微型股,列速度倉。做空選基本面弱+明確利空:NVTS(營收 -39% YoY+晶片賣壓)、FCEL(暴漲後獲利回吐)、TDTH(240:1 併股)。多檔盤後大漲(VEEE/WFF/TC/PFSA)為反向分割/供股/低流通拉抬,不列入。",
+  "_note": "宏觀/情緒日,無乾淨當日財報 SIP。最佳做多為流動性佳的題材股:中概科技股集體反彈(BABA 領頭,資金由半導體轉進中國 AI)、油氣族群(伊朗-美停火破局推油價 +5%)。IOTR 為唯一真財報(iOThree FY26 營收 +40%)但屬 ~$850萬微型股,列速度倉。做空選明確當日利空:FCEL($225M 增發稀釋)、RIVN($1.2B 增發折價 23%)、NVTS(Wolfspeed 專利提告)。多檔盤後大漲(VEEE/WFF/TC/PFSA)為反向分割/低流通拉抬,不列入。",
   "picks": [
-    { "symbol": "BABA", "rank": 1, "intent": "long", "rationale": "阿里 +9.3%,近 10 個月最大單日漲幅,中概股集體反彈的領頭羊。流動性極佳(盤前成交 380 萬股),題材乾淨、可交易性最高。屬情緒/資金流做多,非財報,順勢操作、開盤觀察是否延續。" },
-    { "symbol": "KC", "rank": 2, "intent": "long", "rationale": "金山雲 +9.2%,中概股反彈族群連動,且 DTC 5.3 天有軋空燃料。市值 $2.8B 流動性尚可,為 BABA 之外中概反彈的次選 beta 標的。" },
-    { "symbol": "BATL", "rank": 3, "intent": "long", "rationale": "Battalion Oil +18.7%,油價因伊朗-美衝突+荷莫茲海峽運油船遇襲飆漲 +5.7%,直接受惠的油氣生產商。族群性題材,若地緣風險續升有延續性;但油價回落即失動能,day trade 為主。" },
-    { "symbol": "IOTR", "rank": 4, "intent": "long", "rationale": "Iota Communications FY26 營收 $14.7M +40%、毛利 +68%,盤後 +50%,唯一真財報題材。但市值僅 $6.5M、極低流通,屬高風險投機速度倉 — 進場需嚴設停損,不宜重倉。" },
-    { "symbol": "WTI", "rank": 5, "intent": "long", "rationale": "W&T Offshore +6.7%,同油氣族群、受油價飆漲帶動。市值 $492M 較 BATL 有規模,但漲幅較溫和。與 BATL 二選一避免同族群重複曝險。" },
-    { "symbol": "BIDU", "rank": 6, "intent": "long", "rationale": "百度 +4.4%,中概股反彈族群第三選。漲幅較 BABA/KC 溫和,流動性佳但彈性較低,列為族群補充標的。" },
-    { "symbol": "NVTS", "rank": 7, "intent": "short", "rationale": "Navitas -6%,半導體賣壓延續+基本面弱(營收 $8.6M、-39% YoY),Short Float 18%。7/27 才公布 Q2、另有 $500M 供股稀釋壓頂。惟月線已 -54%(墜落刀),追空需留意反彈風險、控管部位。" },
-    { "symbol": "FCEL", "rank": 8, "intent": "short", "rationale": "FuelCell -19.8%,燃料電池族群集體獲利回吐(PLUG/BE 同跌)。前一月 +21% 漲多回檔,無新基本面支撐,屬動能反轉做空;跌深後反彈快,以日內為主。" },
-    { "symbol": "TDTH", "rank": 9, "intent": "short", "rationale": "-19.1%,7/8 特會表決 240:1 反向併股+轉 NASDAQ 直接掛牌,典型合規/稀釋利空。微型股波動大,做空滑價與借券成本高,列為觀察級空方。" }
+    { "symbol": "BABA", "rank": 1, "intent": "long", "rationale": "今日最強做多。中概科技股集體反彈(資金由高估值半導體轉進較便宜的中國 AI),阿里盤前分析師簡報顯示即時零售虧損收窄,盤前 +9.1% 為 2025/9 以來最強單日。全場流動性最佳(量 3.8M),大型 ADR、消息+族群雙驅動、非微型股拉抬 — 首選。近期並有 $6億和解、參投 Kling AI $2.8B 輪等利多鋪墊。" },
+    { "symbol": "IOTR", "rank": 2, "intent": "long", "rationale": "唯一乾淨的盈餘題材:iOThree FY2026 營收 $14.7M(+40% YoY)、毛利率升至 21.4%,CEO 股東信揭日本擴張。盤後 +50%。但流通股僅約 260萬股、市值 ~$850萬,屬極微流通量爆拉,波動巨大、追高務必嚴設硬停損。" },
+    { "symbol": "CLRO", "rank": 3, "intent": "long", "rationale": "反向併購 Cortigent(Vivani 腦機介面)實質題材,7/2 起累漲 155~175%,盤後續 +5.1%。催化明確非純動能,但 Vivani 將取得合併後 59-68% 股權 → CLRO 原股東大幅稀釋,且需完成 $10-15M 增資才成案,續抱風險高。" },
+    { "symbol": "BIDU", "rank": 4, "intent": "long", "rationale": "隨中概科技/AI 族群反彈 +4.4%;7/2 公告 7/17 EGM 記錄日,AI 占 Q4 一般業務營收 43%、TV Rev YoY +4%。大型 ADR、族群+消息雙驅動,風險低於微型股;惟已有券商在 45% 反彈後降評至 Hold。" },
+    { "symbol": "PDYN", "rank": 5, "intent": "long", "rationale": "Palladyne AI 7/7 獲 AFRL $4.2M SwarmOS 蜂群自主合約(新鮮催化),Q2 備貨增至約 $24M,另有 6/8 與 IAI 的 HAROP/HARPY 美製授權。國防無人機自主題材有實質合約支撐;惟仍為小型股、需自建產線。" },
+    { "symbol": "KC", "rank": 6, "intent": "long", "rationale": "金山雲隨中概雲端/AI 族群反彈 +9.2%,TV Rev YoY +44%,DTC 亦有軋空燃料。純族群驅動、無個股新聞,順勢短打為主。" },
+    { "symbol": "WTI", "rank": 7, "intent": "long", "rationale": "W&T Offshore 隨油價因中東(伊朗停火破局)地緣升溫、Brent/WTI +5% 走強,盤前 +6.3%。宏觀能源順風,非個股題材,跟隨油價方向操作;市值 ~$492M 較同族群 BATL 有規模。" },
+    { "symbol": "FCEL", "rank": 8, "intent": "short", "rationale": "今日最強做空。FuelCell 7/7 22:52 ET 定價上調後的 $225M 增發(1,071萬股 @ $21,自原 $200M 上調),直接稀釋、7/9 交割,盤前 -19.7%(盤後已 -16.8%)。利空明確、非情緒性拋售,且屬近期第二/三次股權募資。" },
+    { "symbol": "RIVN", "rank": 9, "intent": "short", "rationale": "Rivian 7/6 啟動 7,500萬股增發、7/7 定價 $15.50(較 $20.14 前收折價 23%)籌約 $1.2B 支援 R2 量產與 DOE 貸款出資。折價深顯示需求疲弱,7/7 為兩年最大單日跌幅,今日 -4.3% 續跌。" },
+    { "symbol": "NVTS", "rank": 10, "intent": "short", "rationale": "Navitas 7/7 遭 Wolfspeed 提告專利侵權(GaN/SiC 共 5 項,德拉瓦州),疊加 6/27 Russell 剔除的指數型賣壓 + $125M ATM 稀釋。盤前 -6.9%,Q2 財報 7/27 前無正向催化;月線已重挫,追空留意反彈。" }
   ]
 }
