@@ -311,6 +311,16 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 2. **具體且重大的當日催化劑**(不是「股價小動」而已);
 3. 消息**確實在當日頭條**、一級源可查。
 
+**頭條來源(pre-scan agent 實際要去掃的頁面 — firecrawl scrape 或 WebSearch,注入今日 ISO 日期):**
+- **CNBC:** `https://www.cnbc.com/markets/`、`https://www.cnbc.com/pre-markets/`、CNBC 首頁 top stories
+- **Wall Street Journal:** `https://www.wsj.com/news/markets`、WSJ Markets 首頁(headline + lede 免費可見)
+- **Reuters:** `https://www.reuters.com/markets/`、`https://www.reuters.com/business/`
+- **Bloomberg:** `https://www.bloomberg.com/markets`(headline 可見)
+- **Briefing.com InPlay**(§2.0 已列)、**MarketWatch** `https://www.marketwatch.com/`、**Yahoo Finance trending tickers**
+- 補搜:WebSearch `most talked about stocks today <今日ISO>` / `site:cnbc.com OR site:wsj.com <今日ISO> stock OR shares`
+
+從這些頭條頁抓出反覆出現的**知名公司**,再套上面三條門檻。優先讀 CNBC / WSJ 的 markets 頭條(使用者指定)。
+
 **每天上限約 3-8 檔**,只收真正重要的 — 不要把 /SIPs 變成一般新聞流。已在 gap 掃描裡的名字不用重複列。
 
 **注入管線:** 對每檔 headline 名單:
