@@ -300,6 +300,29 @@ fda_thursday    = { root: "FDA PDUFA decisions 5/21 — KRTX accelerated approva
 
 Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker lookups: if a candidate appears in an `affected` list, write the cluster's `root` as its catalyst and **only** chase ticker-specific details (sales numbers, magnitude of beat, etc.) — don't re-hunt the root story from scratch.
 
+### 2.0b — 頭條大公司補列 (Headline big-name inclusion — 不受 ±4% gap 限制)
+
+> **使用者 2026-07-09 明確指示:** 「如果有看到什麼公司出現在頭條新聞上、有名的公司,也要補上,不管有沒有 4% gap。」**這是硬性方針。**
+
+**Why:** 有名的大公司(AAPL / NVDA / AVGO / TSLA / AMZN / MSFT / GOOGL / META / JPM …)常有**重大當日新聞**(財報、併購、大型分析師動作、產品發表、指引、法律/監管、重大合作),卻**未必** gap 到 ±4%,因此不會出現在 `candidates.csv`。只要知名公司登上當日頭條,**就算沒有 4% gap 也要補進來**。
+
+**做什麼(在 §2.0 pre-scan 時一併產出):** 在 §2.0 的 haiku pre-scan agent prompt 內**加一項輸出** — 除了 cluster map,另回傳一份 **`headline_bignames` 清單**:當日**真正登上一級財經頭條**(WSJ / Reuters / Bloomberg / CNBC / Briefing.com)的知名/大型公司,每檔附一句 繁中 catalyst + Type + 消息面漲跌方向。收錄門檻(需**同時**成立):
+1. **知名度/規模** — 家喻戶曉或大型股(市值 ≳ $10B);
+2. **具體且重大的當日催化劑**(不是「股價小動」而已);
+3. 消息**確實在當日頭條**、一級源可查。
+
+**每天上限約 3-8 檔**,只收真正重要的 — 不要把 /SIPs 變成一般新聞流。已在 gap 掃描裡的名字不用重複列。
+
+**注入管線:** 對每檔 headline 名單:
+- 抓**即時報價**(Yahoo `v8/finance/chart` 或 Finviz)取 Last / %Chg / Volume。
+- **附加一列到 `candidates.csv`**:`Session=headline`、`Direction=up|down`(依當日漲跌)、`SessionDate=<今日 ISO>`、Name 補公司全名。
+- 之後照常走 §2.1 catalyst 補強、Phase 5 TV(若 Type=earnings)、§8.1 `news_detail.json`、`claude_picks.json`、dashboard。
+- 這些**不需**通過 ±4% 濾網;仍照 §4 做 MAGNA53 分類。故事夠強可入 claude_picks(遵守 direction-match:只有 chgPct>0 才 `intent=long`,chgPct<0 才 `intent=short`)。
+
+**視覺標記:** `Session=headline` 讓 dashboard 以「頭條」標籤與 4% gapper 區分。`build_dashboard.py` 已讀 `candidates.csv`,附加列自動納入;若某檔 MAGNA53 分數未達 SIP 卡門檻,仍會出現在完整候選清單 / SCANX / 個股詳細頁(即「有補上」)。
+
+**AVGO 範例(2026-07-08):** AVGO 當日約 −3%(未達 4%)但登上頭條(Erste 降評至 Hold(估值);本週 Apple $30B 自研晶片合作延長至 2031)。舊流程漏掉 → 新流程以 `Session=headline`、`Direction=down`、catalyst「Erste 降評 Hold −3%;Apple $30B 合作延長至 2031」補入候選並寫 `news_detail`。
+
 ### 2.1 — Per-ticker catalyst hunt
 
 **Efficient delegation pattern (§ 0.5 routing — MANDATORY, not optional):** delegate the per-ticker hunt to **at most 3 Agents with `model: "haiku"`**, ~25 tickers each (don't spawn 6+ agents — each carries prompt overhead). **Launch these in the SAME message as the § 2.0 pre-scan agent (§ 0.6) — do NOT block waiting for the cluster map**; the § 2.2 cross-check applies clusters afterward. (If a same-day cluster map already exists from an earlier run, include it in the prompt so agents can short-circuit.) Ask each agent to return a structured markdown table with columns `Ticker | Type | Cluster | 繁體中文 catalyst` (Type ∈ {earnings, analyst, guidance, contract, M&A, FDA, news, momentum, macro, **policy**}). **Output caps in the prompt: table ONLY, ≤40 字 per catalyst, NO sources list, NO preamble, NO per-ticker EPS/Rev columns** (those come from tv-summary.json later — don't make a haiku search for numbers the pipeline already scrapes). Main model reads back 3 compact tables (~2k tokens total) instead of doing 60+ searches itself.

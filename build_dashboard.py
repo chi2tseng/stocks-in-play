@@ -36,7 +36,10 @@ def _next_trading_day(iso):
         if d.weekday() < 5:    # Mon..Fri
             return d.isoformat()
 def _session_target_date(session, session_date):
-    return session_date if session == 'pre' else _next_trading_day(session_date)
+    # Only after-hours ('post') rows route to the NEXT trading day. 'pre' and
+    # 'headline' (big-name news inclusions, §2.0b — no ±4% gap requirement) stay
+    # in the same-day file so they surface on today's dashboard.
+    return _next_trading_day(session_date) if session == 'post' else session_date
 
 # --- Load candidates ---
 cands_by_sym = {}
