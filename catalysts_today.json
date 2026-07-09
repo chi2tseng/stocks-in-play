@@ -1,21 +1,60 @@
 {
-  "date": "2026-07-08",
+  "date": "2026-07-09",
   "clusters": {
-    "china_adr_rebound": {
-      "root": "中概科技股集體反彈 — 資金由高估值半導體轉進較便宜的中國 AI 平台;疊加阿里即時零售虧損收窄的盤前簡報",
-      "affected": ["BABA", "BIDU", "KC"]
+    "semi_ai_memory": {
+      "root": "AI 記憶體超級週期 — SK Hynix 美國 IPO 明日(7/10)登場、中國長鑫記憶體(CXMT)巨型 IPO 啟動、Micron 破紀錄季報 + Applied Materials 破紀錄 Q2 指引,帶動 HBM/DRAM 漲價預期,晶片族群集體跳漲 (2026-07-09 Reuters/CNBC/Invezz)",
+      "affected": ["AMAT", "AMKR", "KLAC", "LRCX", "MRVL", "MU", "WDC", "GLW", "CBRS", "ASX", "AAOI", "AXTI", "PENG", "NVTS", "AEHR"]
     },
-    "oil_geopolitics": {
-      "root": "伊朗-美停火破局、中東緊張升溫推油價 Brent/WTI +5%,能源族群走強",
-      "affected": ["WTI", "BATL"]
-    },
-    "equity_offerings_dilution": {
-      "root": "多檔於 7/6-7/7 盤後宣布/定價大額股票增發,稀釋壓力導致重挫",
-      "affected": ["FCEL", "RIVN"]
-    },
-    "micro_float_pumps": {
-      "root": "反向分割/低流通量拉抬,非基本面驅動的爆量急拉",
-      "affected": ["VEEE", "WFF", "TC", "PFSA", "USDE", "TDIC"]
+    "attr_trial_failure": {
+      "root": "AstraZeneca 與 Ionis 共同開發的 ATTR 心臟澱粉樣變性藥 Wainua (eplontersen) 第三期心臟結果試驗未達主要終點失敗 (2026-07-09) — AZN/IONS 重挫;競品贏家 Alnylam (Amvuttra)、BridgeBio (Attruby) 大漲 (Bloomberg/STAT/CNBC)",
+      "affected": ["AZN", "IONS", "ALNY", "BBIO"]
     }
-  }
+  },
+  "ALNY": {"Type": "news", "Catalyst": "競品 Wainua 心臟試驗失敗,Alnylam 的 Amvuttra (vutrisiran) 在 ATTR-CM 市場少一強敵,+18%"},
+  "BBIO": {"Type": "news", "Catalyst": "ATTR 競品 Wainua 失敗利多其 acoramidis (Attruby),商業放量加速,+14.9%"},
+  "IONS": {"Type": "FDA", "Catalyst": "與 AZN 共研的 Wainua 心臟試驗失敗,ATTR 心臟適應症 peak sales 預期由 ~$6.5B 降至 ~$4B,-23.7%"},
+  "AZN": {"Type": "FDA", "Catalyst": "Wainua (eplontersen) ATTR 心臟三期試驗未達主要終點失敗,削弱重磅藥銷售預期,-8%"},
+  "MU": {"Type": "earnings", "Catalyst": "破紀錄季報 + HBM 售罄 + AI 記憶體超級週期(SK Hynix IPO/CXMT),記憶體漲價帶動,+4.86%"},
+  "AMAT": {"Type": "earnings", "Catalyst": "破紀錄 Q2 指引 + AI 記憶體/晶片設備族群連動,+5%"},
+  "AMKR": {"Type": "macro", "Catalyst": "半導體族群連動(SK Hynix IPO)反彈;7/2、7/7 因估值/內部人賣股重挫後回補。Q1 財報(4/27)EPS $0.33 勝估 $0.23、營收 $1.68B(+27.5% YoY),+4.5%"},
+  "KLAC": {"Type": "macro", "Catalyst": "AI 記憶體超級週期帶動晶片設備族群,+5%"},
+  "LRCX": {"Type": "macro", "Catalyst": "AI 記憶體超級週期帶動晶片設備族群,+4.45%"},
+  "MRVL": {"Type": "macro", "Catalyst": "AI 客製化晶片 + 記憶體族群連動,+5.28%"},
+  "WDC": {"Type": "macro", "Catalyst": "AI 儲存/記憶體超級週期;三星財報與 CXMT 談判造成短期波動但長期 AI 庫存滿載,+5.31%"},
+  "GLW": {"Type": "macro", "Catalyst": "光通訊/AI 基建族群連動 (Corning),+5.66%"},
+  "CBRS": {"Type": "macro", "Catalyst": "AI 晶片族群連動 (Cerebras),+6.7%"},
+  "ASX": {"Type": "macro", "Catalyst": "封測 (ASE) 隨半導體族群走強,+7.31%"},
+  "AAOI": {"Type": "macro", "Catalyst": "光模組/AI 資料中心族群連動,+4.65%"},
+  "AXTI": {"Type": "macro", "Catalyst": "半導體族群連動 + 多日漲勢延續(非今日新催化);近期 InP 晶圓合約 Casela RMB 173M(6/11)、Coherent 3年約(7/2);Northland 目標價 $125 Outperform,+6.45%"},
+  "PENG": {"Type": "earnings", "Catalyst": "7/7 公布 Q3 財報大超預期:EPS $0.84 vs 估 $0.55,記憶體/AI 業務翻倍成長,+4.5%"},
+  "NVTS": {"Type": "macro", "Catalyst": "半導體族群連動;7/7 Wolfspeed 專利勝訴利多延續 (day2),+4.27%"},
+  "AEHR": {"Type": "earnings", "Catalyst": "AI 半導體測試設備需求題材 + 族群連動;近期財報(上季仍虧損 EPS -$0.05/營收 -44% YoY),+14.2%"},
+  "IREN": {"Type": "news", "Catalyst": "AI 雲端轉型進行中 + 高管任命補強產品團隊,+4.52%"},
+  "RXT": {"Type": "contract", "Catalyst": "與 AMD 簽署 30MW AI GPU 部署協議,+4.71%"},
+  "WULF": {"Type": "contract", "Catalyst": "傳與 Anthropic 簽資料中心 AI HPC 代管長約,+4.69%"},
+  "SHAZ": {"Type": "contract", "Catalyst": "傳與 Anthropic 簽肯塔基資料中心長約(金額/細節待核),+6.34%"},
+  "ENVX": {"Type": "news", "Catalyst": "任命前 Apple 營運高管為 COO,加速矽負極電池商業化,+9.02%"},
+  "FCEL": {"Type": "news", "Catalyst": "7/7 宣布股票發行後投資者情緒轉正,超賣反彈 (day2),+12.51%"},
+  "SMPL": {"Type": "earnings", "Catalyst": "Q3 FY26 財報今日公布(估 EPS ~$0.35,分析師先前下修),超賣後 relief 反彈,+13.8%"},
+  "SUNE": {"Type": "M&A", "Catalyst": "與 Suniva 簽定反向合併協議,預期下半年完成,+18~25%"},
+  "VRAX": {"Type": "news", "Catalyst": "6/26 生效 1:25 反向分割重獲 Nasdaq $1 合規,低浮動動能暴衝,無基本面支撐,+131%"},
+  "RPGL": {"Type": "momentum", "Catalyst": "查不到明確催化,低價微型股動能拉抬,+27.5%"},
+  "SDOT": {"Type": "news", "Catalyst": "Fugazi 空頭報告後超賣反彈,無基本面支撐,+27.4%"},
+  "IOTR": {"Type": "momentum", "Catalyst": "查不到明確當日催化,低價微型股動能 (7/7 換 CEO/FY26+40% 舊聞 day2),+15.8%"},
+  "JLHL": {"Type": "momentum", "Catalyst": "查不到明確催化,低價微型股動能拉抬,+19.3%"},
+  "ISPC": {"Type": "news", "Catalyst": "生技微型股超賣反彈(營收年衰),無明確當日催化,+6.55%"},
+  "IBM": {"Type": "news", "Catalyst": "無當日個股利空,科技股獲利回吐;近期 JPMorgan 升評 overweight,-4.33%"},
+  "CRM": {"Type": "analyst", "Catalyst": "KeyBanc 降評至 Sector Weight,質疑 Agentforce 採用無加速跡象,-4.31%"},
+  "LEVI": {"Type": "earnings", "Catalyst": "Q2 EPS $0.28 勝預期、上調全年營收指引至 +7~7.5%,但盤後 -5.9%(關稅/利潤率顧慮)"},
+  "MDA": {"Type": "M&A", "Catalyst": "宣布發行 712M 股籌資收購法國衛星商 CLS 70% 股權,稀釋壓力,-6.18%"},
+  "TVRD": {"Type": "FDA", "Catalyst": "STAT3 抑制劑 TTI-109 一期數據 7/7 公布,盤後獲利了結/sell the news,-9.8%"},
+  "APVO": {"Type": "news", "Catalyst": "微型生技,無明確當日利多;疑稀釋/回吐,-12.2%"},
+  "NVVE": {"Type": "news", "Catalyst": "1:18 反向分割 7/6 生效,低浮動股數造成劇烈波動後回落,-5.18%"},
+  "PCLA": {"Type": "momentum", "Catalyst": "查不到明確催化,低價微型股波動,-6.77%"},
+  "TC": {"Type": "momentum", "Catalyst": "查不到明確催化,低價微型 ADR 波動,-9.27%"},
+  "ZCMD": {"Type": "momentum", "Catalyst": "低浮動低價股衝動後回落,-6.38%"},
+  "PEP": {"Type": "earnings", "Catalyst": "Q2 EPS ~$2.20 略低於預期,北美食飲疲軟抵銷國際強勁,全年指引維持,-1.7% (頭條)"},
+  "COST": {"Type": "news", "Catalyst": "6 月淨銷售 $29.2B (+10.6% YoY),美國同店 +10.6% 強勁,+0.59% (頭條)"},
+  "MNST": {"Type": "corporate", "Catalyst": "宣布 2:1 股票分割,消息面利多但賣壓出現,-1.83% (頭條)"},
+  "FIVE": {"Type": "analyst", "Catalyst": "Mizuho 升評至 Outperform,目標價 $220,+2.55% (頭條)"}
 }

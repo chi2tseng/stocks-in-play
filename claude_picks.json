@@ -1,16 +1,47 @@
 {
-  "_date": "2026-07-08",
-  "_note": "宏觀/情緒日 + 一檔乾淨大型財報(PENG)。做多主軸:①PENG AI 記憶體財報大超預期並上修全年(唯一乾淨大型 SIP,且反證記憶體超供恐慌);②中概科技集體反彈(BABA 領頭)。做空選明確當日利空:FCEL($225M 增發)、RIVN($1.2B 增發折價 23%)、NVTS(Wolfspeed 專利提告)。CLRO 反向併購熱潮退燒、盤前反轉 -9.6%,自做多名單移除。多檔微型股暴漲(VEEE/WFF/TC/NCRA)為分割/低流通拉抬,不列入。",
+  "date": "2026-07-09",
   "picks": [
-    { "symbol": "BABA", "rank": 1, "intent": "long", "rationale": "今日最強做多。中概科技股集體反彈(資金由高估值半導體轉進較便宜的中國 AI),阿里盤前分析師簡報顯示即時零售虧損收窄,盤前 +8.6% 為 2025/9 以來最強單日。全場流動性最佳(量 4.3M),大型 ADR、消息+族群雙驅動、非微型股拉抬 — 首選。近期並有 $6億和解、參投 Kling AI $2.8B 輪等利多鋪墊。" },
-    { "symbol": "PENG", "rank": 2, "intent": "long", "rationale": "今日唯一乾淨的大型財報 SIP。Penguin Solutions Q3(7/7 盤後)營收破紀錄 $479M(+48% YoY)、Non-GAAP EPS $0.84(+79%,超預期 $0.29/+53%)、GAAP 營益 $51M(+417%),並將全年營收成長指引由 12% 大幅上調至 22%±2%。AI 驅動業務占 74%(+104% YoY)、整合記憶體 +111% YoY — 反證了打壓 SNDK/NVTS 的『記憶體超供』恐慌。盤後 +11%。基本面最扎實、可重點關注。" },
-    { "symbol": "IOTR", "rank": 3, "intent": "long", "rationale": "另一檔真財報:iOThree FY2026 營收 $14.7M(+40% YoY)、毛利率升至 21.4%,CEO 股東信揭日本擴張。盤後 +50%。但流通股僅約 260萬股、市值 ~$850萬,屬極微流通量爆拉,波動巨大、追高務必嚴設硬停損。" },
-    { "symbol": "BIDU", "rank": 4, "intent": "long", "rationale": "隨中概科技/AI 族群反彈 +5.1%;7/2 公告 7/17 EGM 記錄日,AI 占 Q4 一般業務營收 43%、TV Rev YoY +4%。大型 ADR、族群+消息雙驅動,風險低於微型股;惟已有券商在 45% 反彈後降評至 Hold。" },
-    { "symbol": "PDYN", "rank": 5, "intent": "long", "rationale": "Palladyne AI 7/7 獲 AFRL $4.2M SwarmOS 蜂群自主合約(新鮮催化),Q2 備貨增至約 $24M,另有 6/8 與 IAI 的 HAROP/HARPY 美製授權。國防無人機自主題材有實質合約支撐;惟仍為小型股、需自建產線。" },
-    { "symbol": "RUN", "rank": 6, "intent": "long", "rationale": "Sunrun 啟動分散式 AI 運算試點,利用既有太陽能+電池系統開闢新收入來源(把 AI 電力荒題材接上住宅儲能)。TV 顯示最新季 Rev YoY +43%、EPS YoY +210%。盤前 +6.6%,題材新穎、規模夠;惟試點仍屬早期。" },
-    { "symbol": "KC", "rank": 7, "intent": "long", "rationale": "金山雲隨中概雲端/AI 族群反彈 +10.2%,TV Rev YoY +44%,DTC 亦有軋空燃料。純族群驅動、無個股新聞,順勢短打為主。" },
-    { "symbol": "FCEL", "rank": 8, "intent": "short", "rationale": "今日最強做空。FuelCell 7/7 22:52 ET 定價上調後的 $225M 增發(1,071萬股 @ $21,自原 $200M 上調),直接稀釋、7/9 交割,盤前 -19.6%(盤後已 -16.8%)。利空明確、非情緒性拋售,且屬近期第二/三次股權募資。" },
-    { "symbol": "RIVN", "rank": 9, "intent": "short", "rationale": "Rivian 7/6 啟動 7,500萬股增發、7/7 定價 $15.50(較 $20.14 前收折價 23%)籌約 $1.2B 支援 R2 量產與 DOE 貸款出資。折價深顯示需求疲弱,7/7 為兩年最大單日跌幅,今日 -5.0% 續跌、量放大至 10M。" },
-    { "symbol": "NVTS", "rank": 10, "intent": "short", "rationale": "Navitas 7/7 遭 Wolfspeed 提告專利侵權(GaN/SiC 共 5 項,德拉瓦州),疊加 6/27 Russell 剔除的指數型賣壓 + $125M ATM 稀釋。盤前 -5.3%,Q2 財報 7/27 前無正向催化;月線已重挫,追空留意反彈。" }
+    {
+      "symbol": "ALNY",
+      "rank": 1,
+      "intent": "long",
+      "rationale": "今日最乾淨的基本面贏家。競品 AstraZeneca/Ionis 的 Wainua 心臟三期今晨失敗,Alnylam 的 Amvuttra 在 ATTR-CM 市場少一強敵。本身 Q1 2026 營收 +96%、調整後 EPS $1.99 遠勝共識,ATTR 系列 +153% YoY。$43B 大型藥廠 +17% 屬重估而非題材泡沫,故事最硬。"
+    },
+    {
+      "symbol": "IONS",
+      "rank": 2,
+      "intent": "short",
+      "rationale": "今日最乾淨的基本面輸家,做空首選。Wainua CARDIO-TTRansform 三期未達主要終點,peak sales 預期由 $6.5B 砍到 ~$4B。-23.7% 有真實利空撐腰。short float 11%、DTC 9.5 天,反彈時借券緊,但主要終點失敗已定調方向。"
+    },
+    {
+      "symbol": "PENG",
+      "rank": 3,
+      "intent": "long",
+      "rationale": "最強財報驅動 SIP。7/7 Q3 非 GAAP EPS $0.84 爆勝 $0.54(+79% YoY)、營收 +48%,記憶體業務 +111%、AI 佔比 74%,並上調全年指引(EPS $2.15→$2.60)。7/8 四家券商調高目標價 + 獲 Nvidia AI Factory 夥伴。short float 21% 有軋空燃料。"
+    },
+    {
+      "symbol": "BBIO",
+      "rank": 4,
+      "intent": "long",
+      "rationale": "與 ALNY 同一 ATTR 主題的贏家 — Wainua 失敗利多其 acoramidis (Attruby),商業放量加速(2025 美銷 $362M、Q1 ~$181M),且 7/1 剛完成 $10 億優先股融資有銀彈。唯一顧慮:已連漲 9 日 +14%,追高留意乖離。"
+    },
+    {
+      "symbol": "MU",
+      "rank": 5,
+      "intent": "long",
+      "rationale": "AI 記憶體超級週期的震央。SK Hynix ADR IPO 明日登場、CXMT 今揭招股書,HBM/DRAM 漲價題材全面點火。自身 Q3 破紀錄(營收 $41.5B、毛利率 84.6%、HBM4 放量),Q4 指引 $50B。前週回檔約 14% 後今日反彈,大型權值最穩健的族群多方標的。"
+    },
+    {
+      "symbol": "AZN",
+      "rank": 6,
+      "intent": "short",
+      "rationale": "Wainua 失敗的另一輸家,市值一夕蒸發約 $270 億(2020 年來最差單日)。但 $2,900 億市值巨獸跌幅有限(-8%),分析師多維持 Buy、2030 年 $80B 營收目標不變,放空空間與爆發力不如純題材股,列為次級做空。"
+    },
+    {
+      "symbol": "AMKR",
+      "rank": 7,
+      "intent": "long",
+      "rationale": "半導體族群連動 + 超跌反彈。7/2、7/7 因估值/內部人賣股急挫,今日隨 SK Hynix IPO 族群回補。Q1 財報 EPS $0.33 勝估、營收 +27.5%,並有 TSMC 10 年封裝長約撐腰。非今日個股新聞,純族群動能,以當沖思維操作。"
+    }
   ]
 }
