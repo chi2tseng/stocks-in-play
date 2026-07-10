@@ -37,7 +37,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 | **9b. Fetch 6-month candles** | `py fetch_candles.py` (Yahoo Finance daily bars, parallel) | ~5-10s | $0 | `dashboard/candles.json` (~150-200KB; powers the 股價走勢 chart on stock-detail pages) |
 | **10. Publish dashboard** | `py build_dashboard.py` (no args = today's ISO date) | <1s | $0 | `dashboard/data/<DATE>.json`, `dates.json`, `data.json`, `index.html` |
 
-| **12. 發射其他評審** | 背景啟動 Codex(judge-only)+ Grok/Gemini(自獵新聞)picks(§ 8.8) | ~5-10 min(背景) | $0(各家免費額度) | `codex/gemini/grok_picks.json` + 各自 build/push;Claude 最後收尾補一次 build+push |
+| **12. 新聞池+全員判斷** | Wave1: Grok/Gemini hunt 入池;Wave2: Codex/Gemini/Grok 讀全池各自 picks(§ 8.8) | ~15-20 min(背景) | $0(各家免費額度) | `news_pool_*.json` + `codex/gemini/grok_picks.json`;Claude 收尾 build+push |
 
 **Total runtime:** ~5-10 min including news-detail curation. **Total cost:** $0.
 
@@ -52,7 +52,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 - **`build_dashboard.py`** — assembles `dashboard/data/<DATE>.json` + writes the static SPA at `dashboard/index.html` (revolut design system, "Stocks In Play" branding). Merges `shorts.json` + `claude_picks.json` if present.
 - **`news_detail.json`** — per-symbol detail + `publishedAt` (real news publication time). Optional input; spec at `NEWS_TIME_SPEC.md`.
 - **`claude_picks.json`** — `{ "picks": [ {"symbol", "rank", "intent": "long"|"short", "rationale", "neglected"?: bool} ] }`. Drives the **default "Claude 精選"** subtab on Today's SIPs. **Direction-match rule:** longs must be gap-up, shorts must be gap-down — mismatches are silently filtered out by the dashboard. Symbols not in today's candidates also drop.
-- **`codex_picks.json` / `gemini_picks.json` / `grok_picks.json`** — 同 schema 的其他 agent picks 檔,各驅動自己的 subtab(ChatGPT / Gemini / Grok)。**多 agent 分工契約(2026-07-10 起):研究只做一次、判斷各自獨立** — 共享研究包 = 當日 `dashboard/data/<DATE>.json`(由 Claude `/SIPs`、Grok `/SIPs-grok-gather` 或 Gemini `/SIPs-gemini-gather` 產出,內含每檔 catalyst/newsDetail/tv/shorts);Codex 走 judge-only(`/SIPs-codex-picks` 讀包直接判斷,0 次 WebSearch);**Grok/Gemini 自己獵新聞再判斷**(`/SIPs-grok-picks`、`/SIPs-gemini-picks` — rationale 必須基於自家查到的當日新聞)。共享檔只有當日研究員可寫;每個 agent 只准寫自己的 picks 檔。
+- **`codex_picks.json` / `gemini_picks.json` / `grok_picks.json`** — 同 schema 的其他 agent picks 檔,各驅動自己的 subtab(ChatGPT / Gemini / Grok)。**多 agent 分工契約(2026-07-10 起):研究只做一次、判斷各自獨立** — 共享研究包 = 當日 `dashboard/data/<DATE>.json`(由 Claude `/SIPs`、Grok `/SIPs-grok-gather` 或 Gemini `/SIPs-gemini-gather` 產出,內含每檔 catalyst/newsDetail/tv/shorts);**新聞共享池**:三獵人各寫自己的池檔(`news_pool_claude/grok/gemini.json`,Claude 由 `build_news_pool.py` 衍生、Grok/Gemini 由 `/SIPs-grok-hunt`、`/SIPs-gemini-hunt` 直寫);四評審(claude + `/SIPs-codex-picks`、`/SIPs-gemini-picks`、`/SIPs-grok-picks`)讀全池聯集、交叉印證、各自判斷。每個 agent 只准寫自己的 picks 檔;池檔只有對應獵人可寫。
 - **`NEWS_TIME_SPEC.md`** — contract for how to source + format real news timestamps. Read it BEFORE writing `news_detail.json` (see § 8 below for the integration).
 
 **Dashboard URL:** http://127.0.0.1:5510/ (served by the `sips-dashboard` preview server, started by `mcp__Claude_Preview__preview_start` with name `sips-dashboard` and `port: 5510`). The server is always running once started; the dashboard auto-refreshes when `data/<DATE>.json` is rewritten.
@@ -1397,11 +1397,36 @@ gh run list --workflow=pages.yml --limit 3
 
 ---
 
-## § 8.8 Phase 12 — 自動發射其他評審(one-command 多 agent,REQUIRED)
+## § 8.8 Phase 12 — 新聞共享池 + 全員判斷(one-command 多 agent,REQUIRED)
 
-Claude 自己的 build + push 完成後,**自動**在背景啟動另外三個評審。分工:**Grok 與 Gemini 各自做自己的新聞獵取**(即時 X 搜尋 / Google grounding 是它們的強項)再下判斷;**Codex 走 judge-only** 讀共享包直接判斷。各寫各的 picks 檔、各自 build+push。使用者只打一次 `/SIPs`,四個 tab 全部更新。
+Claude 自己的 build + push 完成後,進入兩波自動化:**先集池、再全員判斷**。
+使用者只打一次 `/SIPs`,三個獵人的新聞進同一個池、四個評審看同一個池各自出 picks。
 
-**三個同時發射,全部 `run_in_background: true`(Codex timeout 600000;Grok/Gemini 要獵新聞,timeout 900000),不要等、不要擋主線:**
+**池檔(三份同構,獵人只寫自己的,避免併發撞檔):**
+`news_pool_claude.json` / `news_pool_grok.json` / `news_pool_gemini.json`
+schema:`{ "_date", "_hunter", "items": { "SYM": [ {"headline_zh","detail_zh","type","source_url","published"} ] } }`
+
+### Wave 1 — 集池(平行背景,獵人只獵不判)
+
+1. 先把 Claude 自己的獵獲入池:`py build_news_pool.py`(從 catalysts_today + news_detail 衍生 news_pool_claude.json,<1s)
+2. 同時發射兩個獵人(只寫自己的池檔、不碰 git、不 build)— `run_in_background: true`、timeout 900000:
+
+```powershell
+# Grok hunt(旗標未實測,失敗先 grok --help 核對)
+cd D:\SIPs; & "$env:USERPROFILE\.grok\bin\grok.exe" -m grok-4.5 --always-approve --cwd D:\SIPs -p "Run the SIPs-grok-hunt skill from your skills directory, end to end."
+```
+```powershell
+# Gemini hunt — 旗標已實測
+cd D:\SIPs; gemini --yolo --skip-trust -m gemini-3-pro-preview -p "/SIPs-gemini-hunt"
+```
+
+3. 回收驗證:`news_pool_grok.json` / `news_pool_gemini.json` 的 `_date` = 今天 + JSON parse 過。
+   **單一獵人失敗 → 記下、照樣進 Wave 2**(池少一份仍可判);兩個都掛 → 池只有 Claude 份,一樣繼續。
+
+### Wave 2 — 全員判斷(兩獵人都回收或 timeout 後)
+
+1. **Claude 自己先讀完整池**(三份池檔聯集):若發現自己 top-10 漏掉的重大催化(交叉印證過的)→ 允許修 `claude_picks.json` 並在 rationale 註明「池內 Grok/Gemini 發現」;共享事實檔(news_detail 等)不動。
+2. 同時發射三個評審(讀 packet + 全部池檔 → 交叉印證 → 各寫各的 picks → 各自 build+push)— `run_in_background: true`、timeout 600000:
 
 ```powershell
 # Codex (ChatGPT) — 旗標已實測
@@ -1412,15 +1437,13 @@ cd D:\SIPs; & "C:\Users\chi2t\AppData\Local\OpenAI\Codex\bin\codex.exe" exec -m 
 cd D:\SIPs; gemini --yolo --skip-trust -m gemini-3-pro-preview -p "/SIPs-gemini-picks"
 ```
 ```powershell
-# Grok — 旗標未實測(首次失敗先 & "$env:USERPROFILE\.grok\bin\grok.exe" --help 核對後修正此處)
+# Grok — 旗標未實測
 cd D:\SIPs; & "$env:USERPROFILE\.grok\bin\grok.exe" -m grok-4.5 --always-approve --cwd D:\SIPs -p "Run the SIPs-grok-picks skill from your skills directory, end to end."
 ```
 
-**回收規則:**
-- 每個完成通知回來時驗證:對應 `*_picks.json` 的 mtime 是今天 + JSON parse 過 + picks 非空。失敗 → 讀該任務 stderr 尾巴、回報使用者哪家掛了,**不自動重試**(免費額度別燒在重跑)。
-- **三個都回收後(或 timeout)做收尾**:`py build_dashboard.py` → `git pull --rebase` → `git add codex_picks.json gemini_picks.json grok_picks.json dashboard/data/*.json dashboard/data.json dashboard/dates.json` → commit `"judges: <DATE> — codex/gemini/grok"` → push。這步把任何「寫了 picks 但漏 build/漏 push」的評審結果補進 dashboard。
-- 併發 push 衝突是預期內的:評審 skill 內建 pull-rebase 重試,Claude 收尾的 `git pull --rebase` 是最後保險。
-- 給使用者的完成訊息:四個 tab 各自的 #1 pick 一行(讀各 picks 檔的 rank 1)。
+3. 回收驗證:對應 `*_picks.json` mtime = 今天 + JSON parse + picks 非空;失敗讀 stderr 尾巴回報,**不自動重試**。
+4. **收尾**(全部回收或 timeout 後):`git pull --rebase` → `py build_dashboard.py` → `git add news_pool_*.json codex_picks.json gemini_picks.json grok_picks.json dashboard/data/*.json dashboard/data.json dashboard/dates.json` → commit `"pool+judges: <DATE>"` → push。併發 push 衝突是預期內的,評審 skill 內建 pull-rebase 重試,這裡是最後保險。
+5. 給使用者的完成訊息:池統計(各獵人幾檔、交叉印證幾檔、獨家幾檔)+ 四個 tab 各自的 #1 pick 一行。
 
 ---
 
