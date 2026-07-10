@@ -52,7 +52,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 - **`build_dashboard.py`** — assembles `dashboard/data/<DATE>.json` + writes the static SPA at `dashboard/index.html` (revolut design system, "Stocks In Play" branding). Merges `shorts.json` + `claude_picks.json` if present.
 - **`news_detail.json`** — per-symbol detail + `publishedAt` (real news publication time). Optional input; spec at `NEWS_TIME_SPEC.md`.
 - **`claude_picks.json`** — `{ "picks": [ {"symbol", "rank", "intent": "long"|"short", "rationale", "neglected"?: bool} ] }`. Drives the **default "Claude 精選"** subtab on Today's SIPs. **Direction-match rule:** longs must be gap-up, shorts must be gap-down — mismatches are silently filtered out by the dashboard. Symbols not in today's candidates also drop.
-- **`codex_picks.json` / `gemini_picks.json` / `grok_picks.json`** — 同 schema 的其他 agent picks 檔,各驅動自己的 subtab(ChatGPT / Gemini / Grok)。**多 agent 分工契約(2026-07-10 起):研究只做一次、判斷各自獨立** — 共享研究包 = 當日 `dashboard/data/<DATE>.json`(由 Claude `/SIPs`、Grok `/SIPs-grok-gather` 或 Gemini `/SIPs-gemini-gather` 產出,內含每檔 catalyst/newsDetail/tv/shorts);其他 agent 走 judge-only 模式(`/SIPs-codex-picks`、`/SIPs-gemini-picks`、`/SIPs-grok-picks`)讀包下判斷,**預設 0 次 WebSearch**,免費額度全花在判斷。每個 agent 只准寫自己的 picks 檔。
+- **`codex_picks.json` / `gemini_picks.json` / `grok_picks.json`** — 同 schema 的其他 agent picks 檔,各驅動自己的 subtab(ChatGPT / Gemini / Grok)。**多 agent 分工契約(2026-07-10 起):研究只做一次、判斷各自獨立** — 共享研究包 = 當日 `dashboard/data/<DATE>.json`(由 Claude `/SIPs`、Grok `/SIPs-grok-gather` 或 Gemini `/SIPs-gemini-gather` 產出,內含每檔 catalyst/newsDetail/tv/shorts);Codex 走 judge-only(`/SIPs-codex-picks` 讀包直接判斷,0 次 WebSearch);**Grok/Gemini 自己獵新聞再判斷**(`/SIPs-grok-picks`、`/SIPs-gemini-picks` — rationale 必須基於自家查到的當日新聞)。共享檔只有當日研究員可寫;每個 agent 只准寫自己的 picks 檔。
 - **`NEWS_TIME_SPEC.md`** — contract for how to source + format real news timestamps. Read it BEFORE writing `news_detail.json` (see § 8 below for the integration).
 
 **Dashboard URL:** http://127.0.0.1:5510/ (served by the `sips-dashboard` preview server, started by `mcp__Claude_Preview__preview_start` with name `sips-dashboard` and `port: 5510`). The server is always running once started; the dashboard auto-refreshes when `data/<DATE>.json` is rewritten.
@@ -1399,9 +1399,9 @@ gh run list --workflow=pages.yml --limit 3
 
 ## § 8.8 Phase 12 — 自動發射其他評審(one-command 多 agent,REQUIRED)
 
-Claude 自己的 build + push 完成後,**自動**在背景啟動另外三個評審 — 它們各自讀今天的共享包、寫自己的 picks 檔、自己 build+push。使用者只打一次 `/SIPs`,四個 tab 全部更新。
+Claude 自己的 build + push 完成後,**自動**在背景啟動另外三個評審。分工:**Grok 與 Gemini 各自做自己的新聞獵取**(即時 X 搜尋 / Google grounding 是它們的強項)再下判斷;**Codex 走 judge-only** 讀共享包直接判斷。各寫各的 picks 檔、各自 build+push。使用者只打一次 `/SIPs`,四個 tab 全部更新。
 
-**三個同時發射,全部 `run_in_background: true`、timeout 600000,不要等、不要擋主線:**
+**三個同時發射,全部 `run_in_background: true`(Codex timeout 600000;Grok/Gemini 要獵新聞,timeout 900000),不要等、不要擋主線:**
 
 ```powershell
 # Codex (ChatGPT) — 旗標已實測
