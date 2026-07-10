@@ -37,6 +37,8 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 | **9b. Fetch 6-month candles** | `py fetch_candles.py` (Yahoo Finance daily bars, parallel) | ~5-10s | $0 | `dashboard/candles.json` (~150-200KB; powers the 股價走勢 chart on stock-detail pages) |
 | **10. Publish dashboard** | `py build_dashboard.py` (no args = today's ISO date) | <1s | $0 | `dashboard/data/<DATE>.json`, `dates.json`, `data.json`, `index.html` |
 
+| **12. 發射其他評審** | 背景啟動 Codex/Gemini/Grok 的 judge-only picks(§ 8.8) | ~5-10 min(背景) | $0(各家免費額度) | `codex/gemini/grok_picks.json` + 各自 build/push;Claude 最後收尾補一次 build+push |
+
 **Total runtime:** ~5-10 min including news-detail curation. **Total cost:** $0.
 
 **Key files in repo root (working directory):**
@@ -1392,6 +1394,33 @@ gh run watch
 # Or list recent deploys
 gh run list --workflow=pages.yml --limit 3
 ```
+
+---
+
+## § 8.8 Phase 12 — 自動發射其他評審(one-command 多 agent,REQUIRED)
+
+Claude 自己的 build + push 完成後,**自動**在背景啟動另外三個評審 — 它們各自讀今天的共享包、寫自己的 picks 檔、自己 build+push。使用者只打一次 `/SIPs`,四個 tab 全部更新。
+
+**三個同時發射,全部 `run_in_background: true`、timeout 600000,不要等、不要擋主線:**
+
+```powershell
+# Codex (ChatGPT) — 旗標已實測
+cd D:\SIPs; & "C:\Users\chi2t\AppData\Local\OpenAI\Codex\bin\codex.exe" exec -m gpt-5.5 -c model_reasoning_effort=xhigh --skip-git-repo-check --dangerously-bypass-approvals-and-sandbox "/SIPs-codex-picks"
+```
+```powershell
+# Gemini — 旗標已實測
+cd D:\SIPs; gemini --yolo --skip-trust -m gemini-3-pro-preview -p "/SIPs-gemini-picks"
+```
+```powershell
+# Grok — 旗標未實測(首次失敗先 & "$env:USERPROFILE\.grok\bin\grok.exe" --help 核對後修正此處)
+cd D:\SIPs; & "$env:USERPROFILE\.grok\bin\grok.exe" -m grok-4.5 --always-approve --cwd D:\SIPs -p "Run the SIPs-grok-picks skill from your skills directory, end to end."
+```
+
+**回收規則:**
+- 每個完成通知回來時驗證:對應 `*_picks.json` 的 mtime 是今天 + JSON parse 過 + picks 非空。失敗 → 讀該任務 stderr 尾巴、回報使用者哪家掛了,**不自動重試**(免費額度別燒在重跑)。
+- **三個都回收後(或 timeout)做收尾**:`py build_dashboard.py` → `git pull --rebase` → `git add codex_picks.json gemini_picks.json grok_picks.json dashboard/data/*.json dashboard/data.json dashboard/dates.json` → commit `"judges: <DATE> — codex/gemini/grok"` → push。這步把任何「寫了 picks 但漏 build/漏 push」的評審結果補進 dashboard。
+- 併發 push 衝突是預期內的:評審 skill 內建 pull-rebase 重試,Claude 收尾的 `git pull --rebase` 是最後保險。
+- 給使用者的完成訊息:四個 tab 各自的 #1 pick 一行(讀各 picks 檔的 rank 1)。
 
 ---
 
