@@ -37,7 +37,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 | **9b. Fetch 6-month candles** | `py fetch_candles.py` (Yahoo Finance daily bars, parallel) | ~5-10s | $0 | `dashboard/candles.json` (~150-200KB; powers the 股價走勢 chart on stock-detail pages) |
 | **10. Publish dashboard** | `py build_dashboard.py` (no args = today's ISO date) | <1s | $0 | `dashboard/data/<DATE>.json`, `dates.json`, `data.json`, `index.html` |
 
-| **12. 發射其他評審** | 背景啟動 Codex/Gemini/Grok 的 judge-only picks(§ 8.8) | ~5-10 min(背景) | $0(各家免費額度) | `codex/gemini/grok_picks.json` + 各自 build/push;Claude 最後收尾補一次 build+push |
+| **12. 發射其他評審** | 背景啟動 Codex(judge-only)+ Grok/Gemini(自獵新聞)picks(§ 8.8) | ~5-10 min(背景) | $0(各家免費額度) | `codex/gemini/grok_picks.json` + 各自 build/push;Claude 最後收尾補一次 build+push |
 
 **Total runtime:** ~5-10 min including news-detail curation. **Total cost:** $0.
 
