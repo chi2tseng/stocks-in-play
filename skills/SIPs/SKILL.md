@@ -46,10 +46,11 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 - `parse_tv.py` — extracts Reported + Estimate raw figures + YoY block from TradingView markdown
 - `build_report.py` — merges candidates.csv + tv-summary.json + catalysts dict → final-candidates.csv
 - `gen_tables.py` — produces 3 sorted markdown views (|%Chg| / Session / Price)
-- **`fetch_candles.py`** — Yahoo Finance daily-bar scraper. Pulls last ~130 trading days (~6 months) for every ticker in today's candidates + claude/codex/gemini picks + saved studies. Parallel (8 workers), ~5-10s for 50-100 tickers. Output: `dashboard/candles.json` (~150-200KB) consumed by the stock-detail page's 股價走勢 TradingView-style chart. **⚠ 排序陷阱(2026-07-06 踩過):它從 `dashboard/data/<DATE>.json` 讀今日候選清單,而那檔是 `build_dashboard.py` 寫的 → 所以必須 `build_dashboard.py` 先跑寫出今日 data 檔,`fetch_candles.py` 再跑(candles.json 是 runtime fetch,build 後補跑不用再 build)。首跑順序若相反,fetch 讀到舊 data 檔 → 新候選缺 candle → 詳細頁「股價走勢」整段消失。完成前務必 `py` 比對 candidates vs candles keys 確認覆蓋率。**
+- **`fetch_candles.py`** — Yahoo Finance daily-bar scraper. Pulls last ~130 trading days (~6 months) for every ticker in today's candidates + claude/codex/gemini/grok picks + saved studies. Parallel (8 workers), ~5-10s for 50-100 tickers. Output: `dashboard/candles.json` (~150-200KB) consumed by the stock-detail page's 股價走勢 TradingView-style chart. **⚠ 排序陷阱(2026-07-06 踩過):它從 `dashboard/data/<DATE>.json` 讀今日候選清單,而那檔是 `build_dashboard.py` 寫的 → 所以必須 `build_dashboard.py` 先跑寫出今日 data 檔,`fetch_candles.py` 再跑(candles.json 是 runtime fetch,build 後補跑不用再 build)。首跑順序若相反,fetch 讀到舊 data 檔 → 新候選缺 candle → 詳細頁「股價走勢」整段消失。完成前務必 `py` 比對 candidates vs candles keys 確認覆蓋率。**
 - **`build_dashboard.py`** — assembles `dashboard/data/<DATE>.json` + writes the static SPA at `dashboard/index.html` (revolut design system, "Stocks In Play" branding). Merges `shorts.json` + `claude_picks.json` if present.
 - **`news_detail.json`** — per-symbol detail + `publishedAt` (real news publication time). Optional input; spec at `NEWS_TIME_SPEC.md`.
 - **`claude_picks.json`** — `{ "picks": [ {"symbol", "rank", "intent": "long"|"short", "rationale", "neglected"?: bool} ] }`. Drives the **default "Claude 精選"** subtab on Today's SIPs. **Direction-match rule:** longs must be gap-up, shorts must be gap-down — mismatches are silently filtered out by the dashboard. Symbols not in today's candidates also drop.
+- **`codex_picks.json` / `gemini_picks.json` / `grok_picks.json`** — 同 schema 的其他 agent picks 檔,各驅動自己的 subtab(ChatGPT / Gemini / Grok)。**多 agent 分工契約(2026-07-10 起):研究只做一次、判斷各自獨立** — 共享研究包 = 當日 `dashboard/data/<DATE>.json`(由 Claude `/SIPs` 或 Grok `/SIPs-grok-gather` 產出,內含每檔 catalyst/newsDetail/tv/shorts);其他 agent 走 judge-only 模式(`/SIPs-codex-picks`、`/SIPs-gemini-picks`、`/SIPs-grok-picks`)讀包下判斷,**預設 0 次 WebSearch**,免費額度全花在判斷。每個 agent 只准寫自己的 picks 檔。
 - **`NEWS_TIME_SPEC.md`** — contract for how to source + format real news timestamps. Read it BEFORE writing `news_detail.json` (see § 8 below for the integration).
 
 **Dashboard URL:** http://127.0.0.1:5510/ (served by the `sips-dashboard` preview server, started by `mcp__Claude_Preview__preview_start` with name `sips-dashboard` and `port: 5510`). The server is always running once started; the dashboard auto-refreshes when `data/<DATE>.json` is rewritten.
@@ -1335,7 +1336,7 @@ Per-ticker failures NEVER abort the run. Finish the other tickers first.
 
 ### 8.7b Phase 10d — Fetch 6-month daily candles (Yahoo)
 
-Powers the **股價走勢** TradingView-style chart on the stock-detail page. Pulls last ~130 trading days (~6 months) of OHLCV bars from Yahoo Finance for the **union of** today's candidates + claude/codex/gemini picks + every saved study.
+Powers the **股價走勢** TradingView-style chart on the stock-detail page. Pulls last ~130 trading days (~6 months) of OHLCV bars from Yahoo Finance for the **union of** today's candidates + claude/codex/gemini/grok picks + every saved study.
 
 **Run AFTER Phase 9 (claude_picks.json written) and AFTER studies refresh (Phase 10a-c), but BEFORE Phase 10 (build_dashboard.py)** so:
 1. `fetch_candles.py` reads the latest `dashboard/data/<DATE>.json`, picks files, and `studies.json` to know which symbols to fetch.

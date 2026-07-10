@@ -65,8 +65,8 @@ def collect_anchors_per_symbol():
                 anchors[sym.upper()].add(scan_date)
         except Exception:
             pass
-    # 2. Picks files (claude / codex / gemini) → anchored on scan_date.
-    for f in ['claude_picks.json', 'codex_picks.json', 'gemini_picks.json']:
+    # 2. Picks files (claude / codex / gemini / grok) → anchored on scan_date.
+    for f in ['claude_picks.json', 'codex_picks.json', 'gemini_picks.json', 'grok_picks.json']:
         p = DIR / f
         if p.exists():
             try:
