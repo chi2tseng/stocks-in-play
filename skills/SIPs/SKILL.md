@@ -815,6 +815,7 @@ The § 7.0 MiLan 拆解 needs segment numbers, organic-vs-M&A splits, guidance-v
 ```
 
 3. **Agent prompt MUST say**: "Facts and numbers ONLY. NO analysis, NO opinions, NO tier ratings, NO trade recommendations — those belong to the caller. If a number can't be found, write 'not found' rather than estimating."
+3b. **速度上限(2026-07-11,使用者嫌慢):** prompt 內明訂 — 每檔 **≤4 次搜尋**、整個 agent 目標 **≤8 分鐘**;時間到就把查到的交出來,缺欄寫 not found。遲交的完美 fact sheet 不如準時的八成品(今日 B 組跑了 23 分鐘 = 全 run 最慢環節)。
 4. **The MAIN model then writes every § 7.0 five-section teardown + Tier rating itself** from these fact sheets — this is the judgment work that stays on Fable/Opus. Fill gaps with at most ~5 targeted main-context searches per run.
 
 This keeps the expensive model's tokens on synthesis (~3-5k per ticker write-up) instead of burning them on search-result wading (~15-20k per ticker when done inline).
@@ -1427,6 +1428,8 @@ Grok 用 X 即時搜尋、Gemini 用 Google 搜尋、Codex 用自家 WebSearch,*
 
 **三個同時發射,全部 `run_in_background: true`(timeout 600000;Gemini 席 900000),不要等、不要擋主線。**
 
+**先完成先上線(2026-07-11 使用者指令):** 每家 skill / 發射鏈都自己 build+push — **誰先寫完誰先上 Pages(~30s 生效),絕不互等**。Claude 收到每個回收通知時**當下就回報該家一行結果**(caveman 短訊),不等三家到齊;收尾 build+push 只是最後補漏,不是發布閘門。
+
 **發射工具鐵則(2026-07-10 實測):一律用 Bash tool** — git-bash 背景掛在隱藏 console,桌面零視窗。
 **禁用 PowerShell tool 發射 console CLI**:Windows 會把它丟進「可見的 Windows Terminal 灰視窗」常駐桌面(grok 的 leader 程序尤其會住著不走,使用者親眼抓到)。
 
@@ -1446,7 +1449,7 @@ cd /d/SIPs && "$HOME/.grok/bin/grok.exe" -m grok-4.5 --always-approve --cwd 'D:\
 
 **回收規則:**
 - 每個完成通知回來時驗證:對應 `*_picks.json` 的 mtime 是今天 + JSON parse 過 + picks 非空。失敗 → 讀該任務 stderr 尾巴、回報使用者哪家掛了,**不自動重試**(免費額度別燒在重跑)。
-- **三個都回收後(或 timeout)做收尾**:`git pull --rebase` → `py build_dashboard.py` → `git add codex_picks.json gemini_picks.json grok_picks.json dashboard/data/*.json dashboard/data.json dashboard/dates.json` → commit `"judges: <DATE> — codex/gemini/grok"` → push。收尾最後**清殭屍 CLI**(工作完成但程序常駐會吃記憶體/掛視窗):`taskkill //IM grok.exe //F 2>/dev/null; taskkill //IM codex.exe //F 2>/dev/null`(bash 語法;殺 leader 無害,下次發射自動重生)。三家都**自己發布**(Codex/Grok 由 skill、Gemini 由發射鏈),此步只是**保險**:補漏任何發布失敗的評審,無漏則只是空轉一次 build。
+- **三個都回收後(或 timeout)做收尾(此步不擋任何一家上線 — 各家早已自行發布)**:`git pull --rebase` → `py build_dashboard.py` → `git add codex_picks.json gemini_picks.json grok_picks.json dashboard/data/*.json dashboard/data.json dashboard/dates.json` → commit `"judges: <DATE> — codex/gemini/grok"` → push。收尾最後**清殭屍 CLI**(工作完成但程序常駐會吃記憶體/掛視窗):`taskkill //IM grok.exe //F 2>/dev/null; taskkill //IM codex.exe //F 2>/dev/null`(bash 語法;殺 leader 無害,下次發射自動重生)。三家都**自己發布**(Codex/Grok 由 skill、Gemini 由發射鏈),此步只是**保險**:補漏任何發布失敗的評審,無漏則只是空轉一次 build。
 - 併發 push 衝突是預期內的:Codex/Grok skill 內建 pull-rebase 重試,Claude 收尾的 `git pull --rebase` 是最後保險。
 - 給使用者的完成訊息:四個 tab 各自的 #1 pick 一行(讀各 picks 檔的 rank 1)。
 
