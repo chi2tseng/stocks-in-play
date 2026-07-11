@@ -1,141 +1,139 @@
 {
-  "date": "2026-07-10",
-  "clusters": {
-    "crypto": {
-      "root": "加密族群走強 — Coinbase 獲英國股票交易核准、Circle 獲 OCC 加密銀行執照 + ARK 增持、比特幣反彈帶動 (2026-07-10 Yahoo/Reuters)",
-      "affected": [
-        "COIN",
-        "CRCL",
-        "MSTR"
-      ]
-    },
-    "china_microcap": {
-      "root": "低價中概股/低浮動股資金輪動拉抬(多檔無具體公司新聞,純資金動能)(2026-07-10)",
-      "affected": [
-        "GMM",
-        "JLHL",
-        "WOK",
-        "WNW",
-        "ZCMD",
-        "CDTG",
-        "WYHG"
-      ]
-    }
-  },
-  "COIN": {
-    "Type": "analyst",
-    "Catalyst": "英國核准 Coinbase 提供股票交易;美穩定幣生態擴張,crypto 族群走強 +4%"
-  },
-  "CRCL": {
-    "Type": "news",
-    "Catalyst": "OCC 核准加密銀行執照 + ARK 增持 ~218K 股,+12%"
-  },
-  "MSTR": {
-    "Type": "news",
-    "Catalyst": "比特幣反彈帶動,新資本框架提振投資情緒 +5%"
-  },
-  "VOD": {
-    "Type": "M&A",
-    "Catalyst": "e& 出售 16.2% 股權給 Niel 家族 Vega,最大股東易手 +13%"
-  },
-  "TRP": {
-    "Type": "news",
-    "Catalyst": "無明確當日催化劑,隨能源/管線族群回落 -4%"
-  },
-  "SGML": {
-    "Type": "guidance",
-    "Catalyst": "Q2 生產 35K 噸超預期(指引 33K),下半年擴充提速 +4%"
-  },
-  "CCC": {
-    "Type": "M&A",
-    "Catalyst": "Morgan Stanley 協助探索出售,並購重組預期 +13%"
-  },
-  "EQPT": {
-    "Type": "guidance",
-    "Catalyst": "調升 2026 財測 + 授權 $500M 回購 +11%"
-  },
-  "BKD": {
-    "Type": "news",
-    "Catalyst": "無明確當日催化劑,-6.5%"
-  },
-  "FRMI": {
-    "Type": "news",
-    "Catalyst": "$350M 可轉債融資,稀釋預期引發拋售 -12~-16%"
-  },
-  "SDOT": {
-    "Type": "news",
-    "Catalyst": "交易暫停解除、債轉股償債;Fugazi Research 空頭報告 -9.7%"
-  },
-  "TVRD": {
-    "Type": "news",
-    "Catalyst": "TTI-109 第一期臨床數據公布,STAT3 療效印證 +8%"
-  },
-  "WRAP": {
-    "Type": "news",
-    "Catalyst": "CEO 股東信宣布平台轉向,推出 WrapShield 防禦系統 +5.5%"
-  },
-  "JZ": {
-    "Type": "news",
-    "Catalyst": "ADS 1:30 反向分割公告,流動性優化 -7%"
-  },
-  "GMM": {
-    "Type": "momentum",
-    "Catalyst": "低浮動中概股資金拉抬 +126%,無明確公司催化"
-  },
-  "JLHL": {
-    "Type": "momentum",
-    "Catalyst": "中概股風潮資金拉抬,無明確催化劑 +49~64%"
-  },
-  "WOK": {
-    "Type": "momentum",
-    "Catalyst": "中概股低浮動風潮,7/9 盤後 +30%,無明確催化"
-  },
-  "WNW": {
-    "Type": "momentum",
-    "Catalyst": "低價反彈,無明確催化劑 +15%"
-  },
-  "NAMI": {
-    "Type": "news",
-    "Catalyst": "ADS 反向分割(6/25)生效後技術修復 +14%"
-  },
-  "ZCMD": {
-    "Type": "momentum",
-    "Catalyst": "延續前期動量,無明確催化劑 +4.5%"
-  },
-  "CGTL": {
-    "Type": "news",
-    "Catalyst": "1-for-15 反向分割 7/6 生效 +5%"
-  },
-  "VRAX": {
-    "Type": "contract",
-    "Catalyst": "與復星診斷簽多國商業供應協議(7/9)但利多出盡 -18.7%"
-  },
-  "SUNE": {
-    "Type": "momentum",
-    "Catalyst": "無明確當日催化劑 -8%"
-  },
-  "SKYQ": {
-    "Type": "news",
-    "Catalyst": "Foreland 煉油廠重啟故事獲利了結 -4.5%"
-  },
-  "RPGL": {
-    "Type": "news",
-    "Catalyst": "Nasdaq 最低股價合規達成(7/8)後獲利了結 -9.7%"
-  },
-  "LHSW": {
-    "Type": "news",
-    "Catalyst": "CEO 實體買入 240 萬股 B 級股(7/2 公佈)-6%"
-  },
-  "CDTG": {
-    "Type": "momentum",
-    "Catalyst": "無明確催化劑 -4.7%"
-  },
-  "WYHG": {
-    "Type": "momentum",
-    "Catalyst": "無明確催化劑 -4%"
-  },
-  "META": {
-    "Type": "news",
-    "Catalyst": "啟動 AI 晶片內製計畫(2027 年 14GW);另遭四州司法部反壟斷求償 1.4 兆美元 +2.6%"
-  }
+ "_date": "2026-07-10",
+ "GMM": {
+  "Catalyst": "1:50 反向分割低流通拉抬 day2:pre +208% → post -17% 來回;X 滿版拉群喊單,無真實新聞",
+  "Type": "momentum"
+ },
+ "QTTB": {
+  "Catalyst": "7/10 16:05 ET 8-K:7/13(一)公布 SIGNAL-AA 二期 36 週數據;正常盤 -11%、盤後 +29.8% 卡位",
+  "Type": "FDA"
+ },
+ "VRAX": {
+  "Catalyst": "7/9 復星診斷協議利多出盡後 day2 續跌 -22%",
+  "Type": "news"
+ },
+ "JLHL": {
+  "Catalyst": "中概低流通 P&D dump 段:post -22%;Shkreli 7/10 公開放空點名",
+  "Type": "momentum"
+ },
+ "WOK": {
+  "Catalyst": "中概 pump 集群 day2:pre +18% → post -4%;X WhatsApp 拉群喊單,查無真實新聞",
+  "Type": "momentum"
+ },
+ "WNW": {
+  "Catalyst": "查無新聞;X 拉群喊單,pump day2 +17%",
+  "Type": "momentum"
+ },
+ "MIMI": {
+  "Catalyst": "7/10 宣布 YAS Robotics 合資 + 新加坡半導體 MOU,post +16%(中概公告型)",
+  "Type": "news"
+ },
+ "FRMI": {
+  "Catalyst": "7/9 定價 $375M 5.00% 可轉債(轉換價 $9.52、稀釋 ~6.2%),day2 收盤 -10%",
+  "Type": "offering"
+ },
+ "CRE": {
+  "Catalyst": "查無新聞;X 拉群喊單,pump day2 +15%",
+  "Type": "momentum"
+ },
+ "SUNE": {
+  "Catalyst": "Suniva 反向合併稀釋疑慮(原股東僅剩 ~1.8%):盤中 +50% → 盤後 -14% 反轉",
+  "Type": "M&A"
+ },
+ "EQPT": {
+  "Catalyst": "7/9 上修 FY26 營收/EBITDA 指引 + $500M 回購;day2 續漲 +12.4%,SF ~13-19%/DTC ~8 擠壓中",
+  "Type": "guidance"
+ },
+ "VOD": {
+  "Catalyst": "Xavier Niel $5.9B 收購 e& 全部 16.2% 持股成最大股東(每股 112.5p 溢價 ~13%)+ FY27 指引",
+  "Type": "M&A"
+ },
+ "CRCL": {
+  "Catalyst": "OCC 最終核准 Circle 全國信託銀行(First National Digital Currency Bank),收盤 +5.0%",
+  "Type": "policy"
+ },
+ "RPGL": {
+  "Catalyst": "7/8 Nasdaq 最低價合規宣告後回落 -11%",
+  "Type": "news"
+ },
+ "CDZI": {
+  "Catalyst": "BLM 核准 220 哩 Northern Pipeline 輸水路權(50 年期,年 25,000 acre-feet),+10.3%",
+  "Type": "policy"
+ },
+ "TKLF": {
+  "Catalyst": "7/10 晨發 FY2026 財報:營收 $373.2M(+77.6%)但淨利崩至 $0.7M(EPS $0.02 vs $0.16),盤中回吐",
+  "Type": "earnings"
+ },
+ "PURR": {
+  "Catalyst": "Russell 3000/2000 納入(6/29)動能延續;crypto 族群連動",
+  "Type": "momentum"
+ },
+ "SNAL": {
+  "Catalyst": "Genesis Part 1 上線 + Q3 遞延收入 ~$11M 預期,post -6% 回吐",
+  "Type": "guidance"
+ },
+ "BNC": {
+  "Catalyst": "查無明確消息",
+  "Type": "momentum"
+ },
+ "ANY": {
+  "Catalyst": "查無明確當日消息(BTC 礦企,族群波動)",
+  "Type": "momentum"
+ },
+ "GLOO": {
+  "Catalyst": "7/10 公開募股定價 $3.25/股(募 $22.75M)",
+  "Type": "offering"
+ },
+ "MSTR": {
+  "Catalyst": "無當日新料(資本框架為 6/29 舊聞);7/10 實際收盤僅 +0.8%,BTC 族群 beta",
+  "Type": "crypto"
+ },
+ "COIN": {
+  "Catalyst": "英國 FCA 投資服務授權為 7/7 消息;7/10 收盤僅 +1.1%,BTC 族群 beta",
+  "Type": "crypto"
+ },
+ "META": {
+  "Catalyst": "Iris 自研晶片(Reuters 7/9)day2 + Meta Compute 雲敘事,收盤 +6.0% 至 $669.21",
+  "Type": "news"
+ },
+ "U": {
+  "Catalyst": "查無明確消息;量 2 倍技術性走強 +4.7%",
+  "Type": "momentum"
+ },
+ "CNMD": {
+  "Catalyst": "出售 GI 產線 + 新 CFO John Gallagher 7/15 上任,post +4.6%",
+  "Type": "news"
+ },
+ "BMNR": {
+  "Catalyst": "BTC 族群連動;7/10 發 Series A 優先股股利 $0.1056/股",
+  "Type": "crypto"
+ },
+ "MT": {
+  "Catalyst": "JPMorgan 升評 Neutral + EU 進口保障措施(7/1 生效)鋼價敘事,+4.2%",
+  "Type": "analyst"
+ },
+ "SKYQ": {
+  "Catalyst": "任命 35 年煉油老將 Ray Hansen 執掌 Foreland(內華達唯一煉廠投產),-4.2% 未止跌",
+  "Type": "news"
+ },
+ "PALI": {
+  "Catalyst": "查無明確當日消息(小型生技,post +4% 低量)",
+  "Type": "momentum"
+ },
+ "NVTS": {
+  "Catalyst": "Wolfspeed 7/7 五項 GaN/SiC 專利侵權訴訟(求禁令+賠償)壓制,day3 -4%",
+  "Type": "news"
+ },
+ "WDFC": {
+  "Catalyst": "7/9 盤後 Q3 財報:EPS $2.33 超共識 47.5%、營收 +24%、上調 FY26 EPS 指引,+10.7%",
+  "Type": "earnings"
+ },
+ "DAL": {
+  "Catalyst": "Q2 雙超預期(EPS $1.56 vs $1.49)但收 -1.8%,獲利了結",
+  "Type": "earnings"
+ },
+ "NVDA": {
+  "Catalyst": "晶片族群領漲 +4.0%(SK Hynix 首掛熱度外溢 + AI 資本支出敘事)",
+  "Type": "macro"
+ }
 }

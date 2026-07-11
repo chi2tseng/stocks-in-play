@@ -21,14 +21,15 @@ Run after /SIPs Phase 9 (claude_picks.json written) and BEFORE Phase 10
 (build_dashboard.py). Schema unchanged: { "SYM": [bar, bar, ...], ... }.
 """
 
-import json, time, urllib.request, urllib.error
+import json, re, time, urllib.request, urllib.error
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from collections import defaultdict
 
 DIR = Path(__file__).resolve().parent
-TODAY = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+import sys
+TODAY = (sys.argv[1] if len(sys.argv) > 1 and re.match(r'^\d{4}-\d{2}-\d{2}$', sys.argv[1]) else datetime.now(timezone.utc).strftime('%Y-%m-%d'))
 NOW_TS = int(datetime.now(timezone.utc).timestamp())
 
 
