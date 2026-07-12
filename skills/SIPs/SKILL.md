@@ -20,6 +20,8 @@ allowed-tools: Bash, Read, Write, WebSearch, WebFetch, Grep, Glob
 > Grok → `C:\Users\chi2t\.grok\skills\SIPs-grok-picks\SKILL.md`。
 > 只有使用者明講「full / 全套掃描」時,非 Claude agent 才執行本檔全流程(另見 D:\SIPs\AGENTS.md)。
 
+> **本檔為正本;`/SIPs` 實際注入 `~/.claude/commands/SIPs.md`(語意需同步,見硬規則四副本)。**
+
 You are running the user's daily **NTRT (News-Triggered) / MTRT (Momentum-Triggered)** trading routine to find **SIPs (Stocks In Play) / EPs (Earnings Plays)**. The final deliverable is a 繁體中文 morning brief ranking the day's best longs and shorts, with strict-format YoY estimate blocks for every earnings mover.
 
 If `$ARGUMENTS` is non-empty (e.g. `NVDA,AAPL`), **skip Phase 1** and treat that list as the candidate set. Otherwise run Phase 1.
@@ -33,7 +35,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 | Step | Tool | Time | Cost | Output |
 |---|---|---|---|---|
 | 1. Gap scan | `node ./barchart-scrape.js` (Playwright + XHR intercept) | ~7s | $0 | `candidates.csv` (84-ish rows) |
-| 2. Catalyst hunt | ≤3 `general-purpose` Agents on **`model: "haiku"`** (§ 0.5) doing parallel WebSearches on **all** candidates | ~5 min | $0 | inline markdown table → updates `catalysts` dict in `build_report.py` |
+| 2. Catalyst hunt | **4-6 個 `general-purpose` Agents** on **`model: "haiku"`** (§ 0.5), **6-8 檔 each**(依當日候選數動態分片,同一訊息一次全發)doing parallel WebSearches on **all** candidates | ~90s | $0 | inline markdown table → updates `catalysts` dict in `build_report.py` |
 | 3. TradingView FQ | `node ./tv-scrape.js TICKER1 TICKER2 ...` | ~3-5s per ticker | $0 | `<TICKER>-earnings-fq.md` |
 | 4. Parse TV | `py ./parse_tv.py` | <1s | $0 | `tv-summary.json` + `tv-summary.csv` |
 | 4b. Backfill earnings dates | `py ./fetch_earnings_dates.py` | ~5-15s | $0 | Updates `tv-summary.json` in place. For tickers TV showed "Next report date" (no past date), queries NASDAQ's earnings-surprise endpoint for the most recent `dateReported`. Pushes coverage from ~70% → ~94%. |
@@ -44,10 +46,10 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 | **9. Write claude_picks.json** | **Claude writes hand-picked rankings + 繁中 rationale + `intent: long\|short` for 5-10 highest-conviction picks** | ~2 min | $0 | `claude_picks.json` ([{symbol, rank, intent, rationale}]) — drives the **default "Claude 精選"** subtab on Today's SIPs. **Direction-match rule:** `intent: long` only for gap-up tickers (chgPct > 0); `intent: short` only for gap-down (chgPct < 0). Dashboard silently drops mismatches. |
 | **9b. Fetch 6-month candles** | `py fetch_candles.py` (Yahoo Finance daily bars, parallel) | ~5-10s | $0 | `dashboard/candles.json` (~150-200KB; powers the 股價走勢 chart on stock-detail pages) |
 | **10. Publish dashboard** | `py build_dashboard.py` (no args = today's ISO date) | <1s | $0 | `dashboard/data/<DATE>.json`, `dates.json`, `data.json`, `index.html` |
-
+| **11. Push to GitHub Pages** | `git add dashboard/ + JSON state files; git commit; git push` | ~5s + 30s deploy | $0 | hosted dashboard at <https://chi2tseng.github.io/stocks-in-play/> auto-updates |
 | **12. 發射其他評審** | Codex/Gemini/Grok 各自查新聞、各自 picks(§ 8.8) | ~10-15 min(背景) | $0(各家免費額度) | `codex/gemini/grok_picks.json`;Claude 收尾 build+push |
 
-**Total runtime:** ~5-10 min including news-detail curation. **Total cost:** $0.
+**Total runtime:** 主線發布 ~8-10 min(順利日 ~8 分,補搜多/earnings 密集日 ~10-12 分;收尾補漏另計)including news-detail curation. 瓶頸 = fact-sheet 蒐集 + 主模型寫作。 **Total cost:** $0.
 
 **Key files in repo root (working directory):**
 - `barchart-scrape.js` — Playwright Barchart scraper (XHR intercept on `/proxies/core-api/v1/quotes/get`)
@@ -56,7 +58,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 - `parse_tv.py` — extracts Reported + Estimate raw figures + YoY block from TradingView markdown
 - `build_report.py` — merges candidates.csv + tv-summary.json + catalysts dict → final-candidates.csv
 - `gen_tables.py` — produces 3 sorted markdown views (|%Chg| / Session / Price)
-- **`fetch_candles.py`** — Yahoo Finance daily-bar scraper. Pulls last ~130 trading days (~6 months) for every ticker in today's candidates + claude/codex/gemini/grok picks + saved studies. Parallel (8 workers), ~5-10s for 50-100 tickers. Output: `dashboard/candles.json` (~150-200KB) consumed by the stock-detail page's 股價走勢 TradingView-style chart. **⚠ 排序陷阱(2026-07-06 踩過):它從 `dashboard/data/<DATE>.json` 讀今日候選清單,而那檔是 `build_dashboard.py` 寫的 → 所以必須 `build_dashboard.py` 先跑寫出今日 data 檔,`fetch_candles.py` 再跑(candles.json 是 runtime fetch,build 後補跑不用再 build)。首跑順序若相反,fetch 讀到舊 data 檔 → 新候選缺 candle → 詳細頁「股價走勢」整段消失。完成前務必 `py` 比對 candidates vs candles keys 確認覆蓋率。**
+- **`fetch_candles.py`** — Yahoo Finance daily-bar scraper. Pulls last ~130 trading days (~6 months) for every ticker in today's candidates + claude/codex/gemini/grok picks + saved studies. Parallel (8 workers), ~5-10s for 50-100 tickers. Output: `dashboard/candles.json` (~150-200KB) consumed by the stock-detail page's 股價走勢 TradingView-style chart. **⚠ 排序陷阱(2026-07-06 踩過):它從 `dashboard/data/<DATE>.json` 讀今日候選清單,而那檔是 `build_dashboard.py` 寫的 → 所以必須 `build_dashboard.py` 先跑寫出今日 data 檔,`fetch_candles.py` 再跑(candles.json 是 runtime fetch,build 後補跑不用再 build)。首跑順序若相反,fetch 讀到舊 data 檔 → 新候選缺 candle → 詳細頁「股價走勢」整段消失。完成前務必 `py` 比對 candidates vs candles keys 確認覆蓋率。支援選用日期參數 `py fetch_candles.py YYYY-MM-DD`(週末/隔日補跑必傳掃描日,否則讀錯日檔)。**
 - **`build_dashboard.py`** — assembles `dashboard/data/<DATE>.json` + writes the static SPA at `dashboard/index.html` (revolut design system, "Stocks In Play" branding). Merges `shorts.json` + `claude_picks.json` if present.
 - **`news_detail.json`** — per-symbol detail + `publishedAt` (real news publication time). Optional input; spec at `NEWS_TIME_SPEC.md`.
 - **`claude_picks.json`** — `{ "picks": [ {"symbol", "rank", "intent": "long"|"short", "rationale", "neglected"?: bool} ] }`. Drives the **default "Claude 精選"** subtab on Today's SIPs. **Direction-match rule:** longs must be gap-up, shorts must be gap-down — mismatches are silently filtered out by the dashboard. Symbols not in today's candidates also drop.
@@ -71,13 +73,15 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 
 **Principle: cheap models GATHER, the smartest model JUDGES.** All final analysis — MiLan 深度拆解, Tier ratings, claude_picks rankings, the 繁中 brief — is composed by the MAIN model (Fable / Opus max). Everything mechanical (web searches, scraping, fact collection, table assembly) is delegated to cheap subagents. A previous run burned ~400k subagent tokens at main-model pricing because Agent calls inherited the parent model — never again.
 
+**主跑模型 = Opus 4.8(或當前 session 模型)** — 路由表不變:haiku 蒐集(催化劑/pre-scan)、sonnet 事實包、主模型判斷與寫作。
+
 **Hard routing table (when running under Claude Code — Agent tool `model` param):**
 
 | Work | Who | Why |
 |---|---|---|
 | Phase 2.0 macro/policy pre-scan | 1 Agent, `model: "haiku"` | 5 WebSearches + cluster-map assembly is mechanical. Returns ≤600-token cluster map. |
-| Phase 2.1 per-ticker catalyst hunt | ≤3 Agents, `model: "haiku"`, ~25 tickers each | One-line catalyst per ticker = summarization, not judgment. |
-| Phase 8 fact-sheet gathering (top-10 deep-dive research) | 1-2 Agents, `model: "sonnet"` | 8-K parsing + segment/guidance numbers need care but not genius. Facts only, no verdicts. |
+| Phase 2.1 per-ticker catalyst hunt | **4-6 個 haiku agents**, `model: "haiku"`, **6-8 檔 each**(依當日候選數動態分片) | One-line catalyst per ticker = summarization, not judgment. 更多更小的分片 → 同一訊息一次全發、目標 ~90 秒回齊。 |
+| Phase 8 fact-sheet gathering (top-10 deep-dive research) | **每 2 檔一個 sonnet agent(約 5-7 個)**, `model: "sonnet"` | 8-K parsing + segment/guidance numbers need care but not genius. Facts only, no verdicts. 小分片 + 6 分鐘硬上限避免單一 agent 拖垮全 run。 |
 | MAGNA53 classification, day_resets judgment | MAIN model | Judgment calls on the already-compact table. |
 | § 7.0 MiLan 深度拆解 + Tier ratings | **MAIN model — NEVER delegate** | This is the product. |
 | claude_picks.json rankings + rationales | **MAIN model — NEVER delegate** | This is the product. |
@@ -85,7 +89,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 
 **Subagent output caps (enforce in every Agent prompt):**
 - Catalyst-hunt agents: return ONLY the markdown table, one line per ticker, ≤40 字 per catalyst, NO sources section, NO preamble. Sources are only needed for the top-10 (gathered later by the fact-sheet agents).
-- Fact-sheet agents: return per-ticker structured fact sheets (see § 8.0), ≤500 tokens per ticker, raw numbers + URLs only — explicitly instruct "NO analysis, NO conclusions, NO tier opinions; those belong to the caller."
+- Fact-sheet agents: return per-ticker structured fact sheets (see § 8.0), ≤500 tokens per ticker, raw numbers + URLs only — explicitly instruct "NO analysis, NO conclusions, NO tier opinions; those belong to the caller." **每檔 ≤4 次搜尋、單 agent 硬上限 6 分鐘,到時交件、缺欄寫 not found。**
 - Pre-scan agent: cluster map only, ≤600 tokens total.
 
 **Main-context hygiene (applies to the MAIN model itself):**
@@ -102,26 +106,31 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 
 ## § 0.6 Wall-clock parallelization (SPEED rule — launch order ≠ phase order)
 
+> **主跑模型 = Opus 4.8(或當前 session 模型)。** 路由表不變:haiku 蒐集、sonnet 事實包、主模型判斷與寫作。以下的 fan-out/join 骨架就是要讓主模型的寫作時間蓋住其餘所有 I/O。
+
 The § numbering below is the LOGICAL order, not the execution order. Phases 2 / 5 / 5b / 9b have **no data dependencies between each other** — only Phase 1's `candidates.csv` gates them. Run the pipeline as a fan-out, not a chain:
 
 **T+0 — Phase 1**: `node barchart-scrape.js` (~7s, foreground — everything needs candidates.csv).
 
 **T+7s — fan out EVERYTHING at once** (background bash + background agents, all launched in a single message):
-1. 3× haiku catalyst agents (§ 2.1) — do **NOT** wait for the cluster map
+1. **4-6 個 haiku catalyst agents (§ 2.1),每個 6-8 檔**(依當日候選數動態分片,同一訊息一次全發,目標 ~90 秒回齊)— do **NOT** wait for the cluster map
 2. 1× haiku pre-scan agent (§ 2.0) — its cluster map gets applied later at the § 2.2 cross-check
 3. `node finviz-shorts.js` (background bash, ~90s)
-4. `node tv-scrape.js` in **2-3 background shards** over the earnings-likely tickers (apply the § 6.1 freshness cache first — skip files <3 days old)
-5. `py fetch_candles.py` (background bash — candidates + studies are already known; picks ⊆ candidates by the direction-match rule, so no need to wait for picks)
+4. **投機 X 查證(§ 2.3):同一批 fan-out 就發 `node x-scrape.js`** 給「`|chgPct|` 最大的 5 檔低價/低市值候選」— **不等 haiku 標「查無」**,資料先到手;§ 2.3 的正式查證與一級源對照照舊。
+5. **TV scrape(§ 6.1):先跑凍結快取檢查**;stale 且**疑似 earnings** 的 → **T+7s 就發 1 個分片**;其餘 tickers 等 Join #1 的 Type 標籤確定後,再開 **2 個分片**補跑(freshness cache 先套 — skip files <3 days old)。
+6. `py fetch_candles.py` (background bash — candidates + studies are already known; picks ⊆ candidates by the direction-match rule, so no need to wait for picks)
 
-**While the fan-out runs (~2 min)**, the main model does zero-dependency work: day_resets context review, Phase 10b OHLCV prep, studies placeholder checks.
+**While the fan-out runs (~90s–2 min)**, the main model does zero-dependency work: day_resets context review, Phase 10b OHLCV prep, studies placeholder checks.
 
-**Join #1** (catalyst tables + shorts.json back) → MAGNA53 ranking → top-10 known → **immediately launch the 1-2 sonnet fact-sheet agents (§ 8.0) in the background**.
+**Join #1** (catalyst tables + shorts.json back) → MAGNA53 ranking → top-10 known → **立即在背景發射 fact-sheet agents:每 2 檔一個 sonnet agent(約 5-7 個),每檔 ≤4 次搜尋、單 agent 硬上限 6 分鐘,到時交件、缺欄寫 not found**(§ 8.0;§ 8.0 3b 的每檔 ≤4 搜尋規範仍適用)。同時把 Join #1 才確定 `Type=earnings` 的 tickers 補進 TV scrape 的 2 分片。
 
 **While fact-sheets run (~1-2 min)**, main model writes: `day_resets.json`, `catalysts_today.json`, the full-list 簡述 table, and runs `py build_report.py` / `py gen_tables.py` / `py parse_tv.py | tail -3` / `py fetch_earnings_dates.py | tail -3`.
 
-**Join #2** (fact sheets back) → main model writes § 7.0 teardowns + `news_detail.json` + `claude_picks.json` → `py build_dashboard.py` → git push → chat brief.
+**增量寫作 + 增量發布:** fact sheet 不必等全員 —**top 3 的 fact sheet 一到,就先寫它們的 `news_detail` / `claude_picks` 草稿**,其餘陸續補齊。發布照既有「先完成先上線」(feedback_incremental_publish):先寫好的先 `build_dashboard.py` + push,收尾只是補漏保險。
 
-Net effect: ~8-12 min serial → **~5-6 min**. The irreducible core is main-model writing time — everything else overlaps with it. NEVER run finviz / tv-scrape / fetch_candles as blocking foreground steps.
+**Join #2** (剩餘 fact sheets back) → main model 補完 § 7.0 teardowns + `news_detail.json` + `claude_picks.json` → `py build_dashboard.py` → git push → chat brief.
+
+**Net effect:** 目標 **主線 ~8-10 分鐘發布**(誠實區間:順利日 ~8 分、補搜多或 earnings 密集日 ~10-12 分)。**瓶頸 = fact-sheet 蒐集 + 主模型寫作**這兩段;其餘 I/O 全蓋在寫作時間下。(舊敘述宣稱 ~5-6 分已過時 — 昨天實測 25-40 分,主因單一 fact-sheet agent 跑到 23 分 + 序列化寫作;本次升級把 fact sheet 切成每 2 檔一個並加 6 分鐘硬上限、催化劑 fan-out 加寬到 4-6 agents、寫作改增量。)NEVER run finviz / tv-scrape / fetch_candles as blocking foreground steps.
 
 ---
 
@@ -1370,6 +1379,8 @@ Powers the **股價走勢** TradingView-style chart on the stock-detail page. Pu
 ```powershell
 py fetch_candles.py
 ```
+
+**支援選用日期參數:** `py fetch_candles.py YYYY-MM-DD` — 週末/隔日補跑時必須傳當次掃描日,否則腳本預設讀「今天」的 `dashboard/data/<DATE>.json` 會讀錯日期的候選清單(讀到隔日或空檔)。
 
 The script (at `./fetch_candles.py`):
 1. Walks the 3 sources to collect a unique symbol set

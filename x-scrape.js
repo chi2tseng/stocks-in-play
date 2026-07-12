@@ -107,4 +107,6 @@ async function scrapeSym(page, sym) {
   await ctx.close();
   fs.writeFileSync(OUT, JSON.stringify({ _fetched: new Date().toISOString(), _authOk: authOk, items }, null, 2), 'utf-8');
   console.log(`[OK] x-posts.json: ${Object.keys(items).length} tickers, authOk=${authOk}`);
+  // Signal failure to callers: un-authed / challenge runs must not look successful.
+  if (authOk === false) process.exit(1);
 })();

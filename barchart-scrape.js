@@ -68,13 +68,22 @@ function nowInET() {
     totalMinutes: hour * 60 + parseInt(get('minute'), 10),
   };
 }
+// Roll an ISO date back to the previous trading day (Fri) if it lands on a weekend.
+// Markets are closed Sat/Sun, so a session date can never be a weekend calendar day.
+function rollbackToTradingDay(iso) {
+  const d = new Date(iso + 'T00:00:00Z');
+  while (d.getUTCDay() === 0 || d.getUTCDay() === 6) {  // 0=Sun, 6=Sat
+    d.setUTCDate(d.getUTCDate() - 1);
+  }
+  return d.toISOString().slice(0, 10);
+}
 // Given an ET clock reading, return the ISO date that each session represents.
 function computeSessionDates(et) {
-  const isoToday = et.date;
+  const isoToday = rollbackToTradingDay(et.date);
   const isoYest = (() => {
     const d = new Date(et.date + 'T00:00:00Z');
     d.setUTCDate(d.getUTCDate() - 1);
-    return d.toISOString().slice(0, 10);
+    return rollbackToTradingDay(d.toISOString().slice(0, 10));
   })();
   return {
     pre:  (et.totalMinutes >= 4  * 60) ? isoToday : isoYest,
@@ -228,7 +237,37 @@ async function fetchPage(page, baseUrl, pageNum) {
   const csvName = sessionArg === 'both' ? 'candidates.csv' : `candidates-${sessionArg}.csv`;
   const csvPath = path.join(OUT_DIR, csvName);
   const header = 'Symbol,Last,ChgPct,Volume,Session,SessionDate,Direction,Name\n';
-  const lines  = final.map(r =>
+
+  // Preserve manually-appended Session=headline rows (§2.0b big-name news inclusions)
+  // that this scrape can't reproduce. Read the OLD candidates.csv, keep its headline
+  // rows whose SessionDate matches one of this run's session dates, and merge them in
+  // (dedupe on Symbol+Session so a fresh scraped row for the same symbol wins).
+  const outRows = final.slice();
+  const seenKeys = new Set(outRows.map(r => `${r.Symbol}|${r.Session}`));
+  if (fs.existsSync(csvPath)) {
+    try {
+      const curDates = new Set(Object.values(SESSION_DATES));
+      const old = fs.readFileSync(csvPath, 'utf-8').replace(/^﻿/, '');
+      const oldLines = old.split(/\r?\n/).slice(1).filter(Boolean);   // drop header + blanks
+      for (const line of oldLines) {
+        // First 7 fields are comma-safe; Name (8th) is quoted and may contain commas.
+        const m = line.match(/^([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),(.*)$/);
+        if (!m) continue;
+        const [, Symbol, Last, ChgPct, Volume, Session, SessionDate, Direction, NameRaw] = m;
+        if (Session !== 'headline') continue;
+        if (!curDates.has(SessionDate)) continue;
+        const key = `${Symbol}|${Session}`;
+        if (seenKeys.has(key)) continue;
+        seenKeys.add(key);
+        const Name = NameRaw.replace(/^"|"$/g, '').replace(/""/g, '"');
+        outRows.push({ Symbol, Last, ChgPct, Volume, Session, SessionDate, Direction, Name });
+      }
+    } catch (e) {
+      process.stderr.write(`[barchart-scrape] headline-merge skipped: ${e.message}\n`);
+    }
+  }
+
+  const lines  = outRows.map(r =>
     `${r.Symbol},${r.Last},${r.ChgPct},${r.Volume},${r.Session},${r.SessionDate},${r.Direction},"${(r.Name||'').replace(/"/g,'""')}"`
   ).join('\n');
   fs.writeFileSync(csvPath, '﻿' + header + lines, 'utf-8');

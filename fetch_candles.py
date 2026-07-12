@@ -29,7 +29,19 @@ from collections import defaultdict
 
 DIR = Path(__file__).resolve().parent
 import sys
-TODAY = (sys.argv[1] if len(sys.argv) > 1 and re.match(r'^\d{4}-\d{2}-\d{2}$', sys.argv[1]) else datetime.now(timezone.utc).strftime('%Y-%m-%d'))
+def _valid_date(s):
+    # Shape check AND real-calendar check — '2026-13-45' matches the regex but
+    # isn't a real date, so verify it actually parses before trusting the arg.
+    if not re.match(r'^\d{4}-\d{2}-\d{2}$', s):
+        return False
+    try:
+        datetime.strptime(s, '%Y-%m-%d')
+        return True
+    except ValueError:
+        return False
+# Default TODAY = LOCAL date (matches build_dashboard.py's datetime.date.today()),
+# not UTC — a UTC default rolls over a day early/late relative to the rest of the pipeline.
+TODAY = (sys.argv[1] if len(sys.argv) > 1 and _valid_date(sys.argv[1]) else datetime.now().strftime('%Y-%m-%d'))
 NOW_TS = int(datetime.now(timezone.utc).timestamp())
 
 

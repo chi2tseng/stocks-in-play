@@ -5,18 +5,22 @@ DIR = os.environ.get('SIPS_DIR') or os.path.dirname(os.path.abspath(__file__))
 rows = []
 with open(os.path.join(DIR, 'final-candidates.csv'), 'r', encoding='utf-8-sig') as f:
     for r in csv.DictReader(f):
-        rows.append({
-            'Symbol': r['Symbol'],
-            'Last': float(r['Last']),
-            'ChgPct': float(r['ChgPct']),
-            'Volume': int(r['Volume']),
-            'Session': r['Session'],
-            'Direction': r['Direction'],
-            'Type': r['Type'],
-            'Catalyst': r['Catalyst'],
-            'TV_EPS': r['TV_LatestEPS'],
-            'TV_Rev': r['TV_LatestRev_M'],
-        })
+        try:
+            rows.append({
+                'Symbol': r['Symbol'],
+                'Last': float(r['Last']),
+                'ChgPct': float(r['ChgPct']),
+                'Volume': int(r['Volume']),
+                'Session': r['Session'],
+                'Direction': r['Direction'],
+                'Type': r['Type'],
+                'Catalyst': r['Catalyst'],
+                'TV_EPS': r['TV_LatestEPS'],
+                'TV_Rev': r['TV_LatestRev_M'],
+            })
+        except (ValueError, TypeError) as e:
+            print('[WARN] skipping bad final-candidates.csv row', r.get('Symbol'), e)
+            continue
 
 def fmt_vol(v):
     if v >= 1_000_000: return f'{v/1_000_000:.1f}M'

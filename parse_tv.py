@@ -10,7 +10,7 @@ def parse_num(v):
     if v == '—' or v == '-' or v == '–' or not v: return None
     c = v.replace(',', '').replace('−', '-')
     try: return float(c)
-    except: return None
+    except (ValueError, TypeError): return None
 
 def parse_rev(v):
     """Revenue in millions (M)"""
@@ -178,7 +178,7 @@ def parse_file(path):
     def parse_pct(s):
         if not s or s == '—': return None
         try: return float(s.replace('%','').replace('+',''))
-        except: return None
+        except (ValueError, TypeError): return None
 
     # Latest quarter's surprise = value at same index as latest reported
     latest_eps_surprise = parse_pct(eps_surp[latest]) if latest < len(eps_surp) else None

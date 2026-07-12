@@ -35,10 +35,19 @@ def _next_trading_day(iso):
         d += datetime.timedelta(days=1)
         if d.weekday() < 5:    # Mon..Fri
             return d.isoformat()
+def _normalize_to_trading_day(iso):
+    # Second line of defence: upstream SessionDate should already be a weekday,
+    # but if a Sat/Sun leaks through, roll it back to the prior Friday so rows
+    # never land in a non-existent weekend data file.
+    d = datetime.date.fromisoformat(iso)
+    while d.weekday() >= 5:     # 5=Sat, 6=Sun
+        d -= datetime.timedelta(days=1)
+    return d.isoformat()
 def _session_target_date(session, session_date):
     # Only after-hours ('post') rows route to the NEXT trading day. 'pre' and
     # 'headline' (big-name news inclusions, §2.0b — no ±4% gap requirement) stay
     # in the same-day file so they surface on today's dashboard.
+    session_date = _normalize_to_trading_day(session_date)
     return _next_trading_day(session_date) if session == 'post' else session_date
 
 # --- Load candidates ---
@@ -51,13 +60,18 @@ with open(os.path.join(DIR, 'candidates.csv'), 'r', encoding='utf-8-sig') as f:
         # CSVs without it fall back to the scan date (DATE).
         sd = r.get('SessionDate') or DATE
         target = _session_target_date(session, sd)
-        cands_by_sym.setdefault(sym, []).append({
-            'last': float(r['Last']), 'chgPct': float(r['ChgPct']),
-            'volume': int(r['Volume']), 'session': session,
-            'direction': r['Direction'], 'name': r['Name'],
-            'sessionDate': sd,
-            'targetDate': target,
-        })
+        try:
+            row = {
+                'last': float(r['Last']), 'chgPct': float(r['ChgPct']),
+                'volume': int(r['Volume']), 'session': session,
+                'direction': r['Direction'], 'name': r['Name'],
+                'sessionDate': sd,
+                'targetDate': target,
+            }
+        except (ValueError, TypeError) as e:
+            print(f'[WARN] skipping bad candidates.csv row {sym!r}: {e}')
+            continue
+        cands_by_sym.setdefault(sym, []).append(row)
 
 # --- Load RAW barchart pages (every stock Barchart returned, before the ±4% / 100k filter) ---
 # These are the per-page JSON dumps the Playwright scraper saves: barchart-{session}-{direction}-pN.json
@@ -69,6 +83,16 @@ def _load_raw_barchart():
     seen_syms = set()  # dedupe across pages (same symbol can appear in multiple pages of the same source)
     for fp in glob.glob(os.path.join(DIR, 'barchart-*-p*.json')):
         fn = os.path.basename(fp)
+        # Freshness guard: a raw dump written on a different calendar day than the
+        # build target is stale (leftover from a prior run) — skip it so yesterday's
+        # gappers don't masquerade as today's universe.
+        try:
+            mtime_date = datetime.date.fromtimestamp(os.path.getmtime(fp)).isoformat()
+        except OSError:
+            mtime_date = None
+        if mtime_date and mtime_date != DATE:
+            print(f'[WARN] skipping stale raw barchart file {fn} (mtime {mtime_date} != build {DATE})')
+            continue
         # Filename shape: barchart-{session}-{direction}-pN.json
         parts = fn.replace('.json', '').split('-')
         if len(parts) < 4: continue
@@ -461,7 +485,7 @@ target_dates_set = set()
 for sym, s in stocks.items():
     for sess in s['sessions']:
         target_dates_set.add(sess.get('targetDate') or DATE)
-target_dates_set.add(DATE)   # always write the scan-date file even if empty
+target_dates_set.add(_normalize_to_trading_day(DATE))   # always write the scan-date file even if empty
 
 def _build_data_for(td):
     """Build the data dict for a single target date. Filters stocks/sessions

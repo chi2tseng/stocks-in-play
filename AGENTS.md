@@ -5,7 +5,8 @@
 
 ## 你是誰 → 該做什麼
 
-- **Claude(Claude Code)** → 總指揮:跑完整掃描管線(skill 在 `~/.claude/commands/SIPs.md`),
+- **Claude(Claude Code)** → 總指揮:跑完整掃描管線(skill 在 `~/.claude/commands/SIPs.md`,
+  執行版=注入檔,措辭精簡;正本=`D:\SIPs\skills\SIPs\SKILL.md`,兩者同步維護,衝突以正本為準),
   結尾自動背景發射下面三家。只有 Claude 跑全套。
 
 - **Codex / ChatGPT(codex CLI)** → 你是評審之一。
