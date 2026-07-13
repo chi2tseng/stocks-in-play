@@ -47,7 +47,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 | **9b. Fetch 6-month candles** | `py fetch_candles.py` (Yahoo Finance daily bars, parallel) | ~5-10s | $0 | `dashboard/candles.json` (~150-200KB; powers the 股價走勢 chart on stock-detail pages) |
 | **10. Publish dashboard** | `py build_dashboard.py` (no args = today's ISO date) | <1s | $0 | `dashboard/data/<DATE>.json`, `dates.json`, `data.json`, `index.html` |
 | **11. Push to GitHub Pages** | `git add dashboard/ + JSON state files; git commit; git push` | ~5s + 30s deploy | $0 | hosted dashboard at <https://chi2tseng.github.io/stocks-in-play/> auto-updates |
-| **12. 發射其他評審** | Codex/Gemini/Grok 各自查新聞、各自 picks(§ 8.8) | ~10-15 min(背景) | $0(各家免費額度) | `codex/gemini/grok_picks.json`;Claude 收尾 build+push |
+| ~~12. 發射其他評審~~ | **已取消(2026-07-13)** — Claude 不再自動發射;各 AI 各自在自己 CLI 打 /SIPs 獨立跑(§ 8.8) | — | — | 各家自己 scan/pick/publish |
 
 **Total runtime:** 主線發布 ~8-10 min(順利日 ~8 分,補搜多/earnings 密集日 ~10-12 分;收尾補漏另計)including news-detail curation. 瓶頸 = fact-sheet 蒐集 + 主模型寫作。 **Total cost:** $0.
 
@@ -1430,19 +1430,23 @@ gh run list --workflow=pages.yml --limit 3
 
 ---
 
-## § 8.8 Phase 12 — 自動發射其他評審(one-command 多 agent,REQUIRED)
+## § 8.8 Phase 12 已取消 — 各 AI 各自獨立工作(2026-07-13 使用者指令)
 
-Claude 自己的 build + push 完成後,**自動**在背景啟動另外三個評審。
-**分工原則(2026-07-10 定版):機械掃描只做一次(共享包),新聞研究與判斷各自獨立** —
-Grok 用 X 即時搜尋、Gemini 用 Google 搜尋、Codex 用自家 WebSearch,**各查各的、各判各的,
-不共享新聞、不互看 picks**。各寫各的 picks 檔、使用者只打一次 `/SIPs`,四個 tab 全部更新。
+**Claude 的 /SIPs 到 Phase 11(build + push)就結束,不再自動發射 Codex/Gemini/Grok。**
+使用者要的是「各個 AI 各自工作」:每家各自在自己的 CLI 打 `/SIPs`(讀 `D:\SIPs\AGENTS.md` → 跑自己的 picks skill),
+**自己 scan(掃描包舊了/沒有就重掃 barchart)/ 自己 judge / 自己 build+push**。四個 tab 由四次獨立執行各自更新。
+**Claude 只管 `claude_picks.json` 這一席 —— 不發射、不等其他三席、不做收尾。**
 
-**三個同時發射,全部 `run_in_background: true`(timeout 600000;Gemini 席 900000),不要等、不要擋主線。**
+**分工原則不變:機械掃描各自做(掃描包共享但可各自重掃),新聞研究與判斷各自獨立** —
+Grok 用 X 即時搜尋、Gemini 用 Google、Codex 用自家 WebSearch,各查各的、各判各的、各寫各的 picks 檔。
 
-**先完成先上線(2026-07-11 使用者指令):** 每家 skill / 發射鏈都自己 build+push — **誰先寫完誰先上 Pages(~30s 生效),絕不互等**。Claude 收到每個回收通知時**當下就回報該家一行結果**(caveman 短訊),不等三家到齊;收尾 build+push 只是最後補漏,不是發布閘門。
+---
 
-**發射工具鐵則(2026-07-10 實測):一律用 Bash tool** — git-bash 背景掛在隱藏 console,桌面零視窗。
-**禁用 PowerShell tool 發射 console CLI**:Windows 會把它丟進「可見的 Windows Terminal 灰視窗」常駐桌面(grok 的 leader 程序尤其會住著不走,使用者親眼抓到)。
+### 手動發射(選用 — 只有使用者**明確**說「順便也幫我跑其他 AI / 一次全部跑」才用)
+
+平時**不要**跑這段。要手動發射時,三個同時 `run_in_background: true`(timeout 600000;Gemini 席 900000)、
+一律用 **Bash tool**(git-bash 背景掛隱藏 console,桌面零視窗;**禁用 PowerShell tool 發 console CLI** —
+會留可見灰視窗常駐,grok leader 尤其賴著不走)。各家 skill / 發射鏈自己 build+push,先完成先上線、絕不互等:
 
 ```bash
 # Codex (ChatGPT) — 旗標已實測(Bash tool 發射)。註:免費額度已耗盡至 2026-07-31,期間此席會 fail-fast — 屬預期,收尾照樣出其他家
@@ -1458,7 +1462,7 @@ cd /d/SIPs && "/c/Users/chi2t/AppData/Local/agy/bin/agy.exe" -p 'Run the SIPs-ge
 cd /d/SIPs && "$HOME/.grok/bin/grok.exe" -m grok-4.5 --always-approve --cwd 'D:\SIPs' -p "Run the SIPs-grok-picks skill from your skills directory, end to end."
 ```
 
-**回收規則:**
+**回收規則(只有上面手動發射時才適用 —— 平時 Claude 不發射,就沒有收尾這回事):**
 - 每個完成通知回來時驗證:對應 `*_picks.json` 的 mtime 是今天 + JSON parse 過 + picks 非空。失敗 → 讀該任務 stderr 尾巴、回報使用者哪家掛了,**不自動重試**(免費額度別燒在重跑)。
 - **三個都回收後(或 timeout)做收尾(此步不擋任何一家上線 — 各家早已自行發布)**:`git pull --rebase` → `py build_dashboard.py` → `git add codex_picks.json gemini_picks.json grok_picks.json dashboard/data/*.json dashboard/data.json dashboard/dates.json` → commit `"judges: <DATE> — codex/gemini/grok"` → push。收尾最後**清殭屍 CLI**(工作完成但程序常駐會吃記憶體/掛視窗):`taskkill //IM grok.exe //F 2>/dev/null; taskkill //IM codex.exe //F 2>/dev/null`(bash 語法;殺 leader 無害,下次發射自動重生)。三家都**自己發布**(Codex/Grok 由 skill、Gemini 由發射鏈),此步只是**保險**:補漏任何發布失敗的評審,無漏則只是空轉一次 build。
 - 併發 push 衝突是預期內的:Codex/Grok skill 內建 pull-rebase 重試,Claude 收尾的 `git pull --rebase` 是最後保險。

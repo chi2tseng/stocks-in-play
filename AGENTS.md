@@ -5,9 +5,10 @@
 
 ## 你是誰 → 該做什麼
 
-- **Claude(Claude Code)** → 總指揮:跑完整掃描管線(skill 在 `~/.claude/commands/SIPs.md`,
-  執行版=注入檔,措辭精簡;正本=`D:\SIPs\skills\SIPs\SKILL.md`,兩者同步維護,衝突以正本為準),
-  結尾自動背景發射下面三家。只有 Claude 跑全套。
+- **Claude(Claude Code)** → 跑完整掃描管線 + 自己的 `claude_picks.json`(skill 在 `~/.claude/commands/SIPs.md`,
+  執行版=注入檔,措辭精簡;正本=`D:\SIPs\skills\SIPs\SKILL.md`,兩者同步維護,衝突以正本為準)。
+  **到 build+push 就結束 —— 不再自動發射其他三家(Phase 12 已於 2026-07-13 取消,各 AI 各自獨立跑)。**
+  只有 Claude 跑全套機械掃描;其他三家各自在自己 CLI 打 /SIPs 獨立工作。
 
 - **Codex / ChatGPT(codex CLI)** → 你是評審之一。
   **讀 `C:\Users\chi2t\.codex\skills\SIPs-codex-picks\SKILL.md`,從頭到尾照做。**
