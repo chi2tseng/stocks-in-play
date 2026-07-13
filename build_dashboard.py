@@ -563,14 +563,26 @@ written = {}
 for td in sorted(target_dates_set):
     new_data = _build_data_for(td)
     out_path = os.path.join(DATA_DIR, f'{td}.json')
-    if td != DATE and os.path.exists(out_path):
+    if os.path.exists(out_path):
         try:
             with open(out_path, encoding='utf-8') as f:
                 old = json.load(f)
-            for key in ('claudePicks', 'codexPicks', 'geminiPicks', 'grokPicks',
-                        'dayResets', 'rawGappers', 'rawGappersFilter', 'scanx'):
-                if not new_data.get(key) and old.get(key):
-                    new_data[key] = old[key]
+            if td != DATE:
+                # Older dates: preserve picks/rawGappers/scanx committed by a previous
+                # scan — a later scan only refreshes stocks/sessions for those days.
+                for key in ('claudePicks', 'codexPicks', 'geminiPicks', 'grokPicks',
+                            'dayResets', 'rawGappers', 'rawGappersFilter', 'scanx'):
+                    if not new_data.get(key) and old.get(key):
+                        new_data[key] = old[key]
+            else:
+                # Scan date: a RE-SCAN is ADDITIVE. Union any previously-recorded stock
+                # that the fresh scrape no longer returns (e.g. it faded below the ±4%
+                # filter, or another agent added it earlier today) back into today's
+                # universe so no already-analyzed / already-picked name is ever dropped.
+                # Fresh scrape wins on overlap (setdefault only fills missing symbols).
+                # To force a clean rebuild, delete data/<DATE>.json before building.
+                for sym, sdata in (old.get('stocks') or {}).items():
+                    new_data['stocks'].setdefault(sym, sdata)
         except Exception:
             pass
     # Skip writing empty stock files unless they're the scan date.
