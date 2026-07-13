@@ -1,7 +1,7 @@
 {
   "date": "2026-07-13",
-  "scanTime": "21:19",
-  "scanTimestamp": "2026-07-13T21:19",
+  "scanTime": "21:22",
+  "scanTimestamp": "2026-07-13T21:22",
   "stocks": {
     "SNDK": {
       "symbol": "SNDK",
@@ -159,80 +159,62 @@
       "perf12M": 3831.44,
       "prevOhlcv": null
     },
-    "GMM": {
-      "symbol": "GMM",
-      "name": "Global Mofy AI Limited",
-      "type": "momentum",
-      "catalyst": "查無明確催化劑,中概小型股崩跌,盤前 -30%、6M -95.6%",
-      "newsDetail": "> **今日跌因:** 盤前 -30%(週五盤後 -17%)— Global Mofy AI(中概小型股)無明確公司催化,延續崩跌走勢,近半年已 -95.6%。\n\n**客觀提醒:** 極低市值(約 $6M)中概股,無基本面消息支撐,屬技術性/流動性驅動的劇烈波動,借券做空成本高、風險大。",
+    "AIIO": {
+      "symbol": "AIIO",
+      "name": "Robo.Ai Inc",
+      "type": "news",
+      "catalyst": "前 INTERPOL 主席出任 Neurovia AI 主席,推動中東主權 AI 佈局,盤前 +7.3%",
+      "newsDetail": "> **今日漲因:** 盤前 +7.3% — Robo.Ai 宣布**前 INTERPOL(國際刑警組織)主席出任 Neurovia AI 主席**,推動中東主權 AI(sovereign AI)基建佈局。\n\n**重點:** 屬治理/題材型消息,市值僅約 $70M 的低價股,消息帶動情緒。無具體營收/合約金額揭露。\n\n**客觀提醒:** 低價低流通量、題材驅動,缺乏財務數字支撐,波動風險高。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=GMM"
+          "url": "https://finviz.com/quote.ashx?t=AIIO"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/GMM"
+          "url": "https://finance.yahoo.com/quote/AIIO"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-GMM/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AIIO/news/"
         }
       ],
       "publishedAt": "2026-07-13T07:00:00-04:00",
       "publishedTimezone": "ET",
       "sources": [
         {
-          "label": "Global Mofy AI (GMM) — Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/GMM/"
+          "label": "Robo.Ai (AIIO) — press releases (Yahoo Finance)",
+          "url": "https://finance.yahoo.com/quote/AIIO/press-releases/"
         }
       ],
       "sessions": [
         {
-          "last": 3.2,
-          "chgPct": -29.98,
-          "volume": 696481,
+          "last": 3.58,
+          "chgPct": 7.33,
+          "volume": 139237,
           "session": "pre",
-          "direction": "down",
-          "name": "Global Mofy AI Limited",
+          "direction": "up",
+          "name": "Robo.Ai Inc",
           "sessionDate": "2026-07-13",
-          "targetDate": "2026-07-13"
-        },
-        {
-          "last": 3.8,
-          "chgPct": -16.76,
-          "volume": 2975430,
-          "session": "post",
-          "direction": "down",
-          "name": "Global Mofy AI Limited",
-          "sessionDate": "2026-07-10",
           "targetDate": "2026-07-13"
         }
       ],
       "primarySession": "pre",
-      "primaryDirection": "down",
-      "last": 3.2,
-      "chgPct": -29.98,
-      "volume": 696481,
+      "primaryDirection": "up",
+      "last": 3.58,
+      "chgPct": 7.33,
+      "volume": 139237,
       "tv": null,
-      "shortFloat": 3.21,
-      "shortRatio": 0.01,
-      "marketCap_M": 6.16,
-      "floatShares_M": 1.68,
-      "perf1M": 7.65,
-      "perf3M": -95.7,
-      "perf6M": -95.58,
-      "perfYTD": -94.65,
-      "perf12M": -97.69,
-      "prevOhlcv": {
-        "date": "2026-07-09",
-        "open": 1.87,
-        "high": 1.93,
-        "low": 1.84,
-        "close": 1.85,
-        "volume": 50800,
-        "prev_close": 1.85
-      }
+      "shortFloat": 11.39,
+      "shortRatio": 0.11,
+      "marketCap_M": 69.85,
+      "floatShares_M": 12.49,
+      "perf1M": 26.8,
+      "perf3M": 356,
+      "perf6M": -42.16,
+      "perfYTD": -41.61,
+      "perf12M": -89.93,
+      "prevOhlcv": null
     },
     "QTTB": {
       "symbol": "QTTB",
@@ -409,166 +391,135 @@
       "perf12M": 600.38,
       "prevOhlcv": null
     },
-    "WDC": {
-      "symbol": "WDC",
-      "name": "Western Digital Corp",
-      "type": "macro",
-      "catalyst": "記憶體/儲存族群連續獲利回吐,SK Hynix 崩跌拖累,盤前 -4.9%(6M 仍 +195%)",
-      "newsDetail": "> **今日跌因:** 盤前 -4.9% — 記憶體/儲存族群連續獲利回吐。**SK Hynix 首爾崩跌 15%** 拖累,晶片股本週續遭拋售。\n\n**族群連動:** Western Digital 與 Micron(MU)、SanDisk(SNDK)同步走弱,即使分析師目標價升至 $900 仍難擋大科技拋售。\n\n**背景:** WDC 近半年仍 **+195%**,今日回檔屬強勢股的板塊性修正,而非基本面反轉。宏觀面另有美伊衝突與明日(7/14)銀行財報前的觀望情緒。",
+    "WOK": {
+      "symbol": "WOK",
+      "name": "Work Medical Technology Group Ltd",
+      "type": "momentum",
+      "catalyst": "1:100 反向分割 6/18 生效技術面調整,盤前 -6%",
+      "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=WDC"
+          "url": "https://finviz.com/quote.ashx?t=WOK"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/WDC"
+          "url": "https://finance.yahoo.com/quote/WOK"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-WDC/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-WOK/news/"
         }
       ],
-      "publishedAt": "2026-07-13T06:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Yahoo Finance — SanDisk Sinks 11%, Seagate Falls 7% (storage complex)",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/sandisk-sinks-11-seagate-falls-160250009.html",
-          "publishedAt": "2026-07-13T06:00:00-04:00"
-        },
-        {
-          "label": "CNBC Daily Open — Chips ahoy",
-          "url": "https://www.cnbc.com/2026/07/13/cnbc-daily-open-chips-ahoy-no-strait-answer-and-earnings-on-deck.html"
-        }
-      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
       "sessions": [
         {
-          "last": 554.14,
-          "chgPct": -4.88,
-          "volume": 129852,
+          "last": 2.16,
+          "chgPct": -6.09,
+          "volume": 104438,
           "session": "pre",
           "direction": "down",
-          "name": "Western Digital Corp",
+          "name": "Work Medical Technology Group Ltd",
           "sessionDate": "2026-07-13",
+          "targetDate": "2026-07-13"
+        },
+        {
+          "last": 2.2,
+          "chgPct": -4.35,
+          "volume": 284782,
+          "session": "post",
+          "direction": "down",
+          "name": "Work Medical Technology Group Ltd",
+          "sessionDate": "2026-07-10",
           "targetDate": "2026-07-13"
         }
       ],
       "primarySession": "pre",
       "primaryDirection": "down",
-      "last": 554.14,
-      "chgPct": -4.88,
-      "volume": 129852,
-      "tv": {
-        "latestEPS": 2.72,
-        "consensusEPS": 2.39,
-        "priorYrEPS": 1.36,
-        "surpriseEPS_pct": 13.58,
-        "surpriseEPS_dollar": 0.33000000000000007,
-        "latestRev_M": 3340.0,
-        "consensusRev_M": 3250.0,
-        "priorYrRev_M": 2290.0,
-        "surpriseRev_pct": 2.79,
-        "yrYrRev_pct": 45.851528384279476,
-        "epsYoY_pct": 100.0,
-        "epsEst_next4": [
-          3.29,
-          3.75,
-          4.29,
-          4.84
-        ],
-        "revEst_next4": [
-          3690.0,
-          4010.0,
-          4330.0,
-          4660.0
-        ],
-        "yoyBlock": "+100.00% / +45.85%\n--------------------\n+98.19% / +41.92%\n+110.67% / +42.20%\n+101.41% / +43.38%\n+77.94% / +39.52%",
-        "chart": {
-          "quarters": [
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q3 '27"
-          ],
-          "eps_reported": [
-            1.09,
-            1.35,
-            1.34,
-            1.36,
-            1.66,
-            1.78,
-            2.13,
-            2.72,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.89,
-            1.29,
-            1.35,
-            1.12,
-            1.48,
-            1.59,
-            1.93,
-            2.39,
-            3.29,
-            3.75,
-            4.29,
-            4.84
-          ],
-          "rev_reported_M": [
-            3760.0,
-            4090.0,
-            4290.0,
-            2290.0,
-            2600.0,
-            2820.0,
-            3020.0,
-            3340.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            3750.0,
-            4120.0,
-            4260.0,
-            2310.0,
-            2470.0,
-            2730.0,
-            2930.0,
-            3250.0,
-            3690.0,
-            4010.0,
-            4330.0,
-            4660.0
-          ],
-          "latest_idx": 7
+      "last": 2.16,
+      "chgPct": -6.09,
+      "volume": 104438,
+      "tv": null,
+      "shortFloat": 2.17,
+      "shortRatio": 0.05,
+      "marketCap_M": 5.12,
+      "floatShares_M": 2.42,
+      "perf1M": -78.8,
+      "perf3M": -98.37,
+      "perf6M": -99.1,
+      "perfYTD": -99.03,
+      "perf12M": -100,
+      "prevOhlcv": {
+        "date": "2026-07-09",
+        "open": 1.96,
+        "high": 2.1,
+        "low": 1.91,
+        "close": 2.02,
+        "volume": 171100,
+        "prev_close": 1.96
+      }
+    },
+    "SKYQ": {
+      "symbol": "SKYQ",
+      "name": "Sky Quarry Inc",
+      "type": "momentum",
+      "catalyst": "油頁岩回收商,受美伊衝突油價走高帶動 + 社群拉抬,盤前 +21%、1M +91%",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=SKYQ"
         },
-        "latestReportDate": null
-      },
-      "shortFloat": 6.55,
-      "shortRatio": 2.68,
-      "marketCap_M": 190610,
-      "floatShares_M": 341.46,
-      "perf1M": 12.84,
-      "perf3M": 61.02,
-      "perf6M": 194.65,
-      "perfYTD": 221.01,
-      "perf12M": 736.11,
-      "prevOhlcv": null
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/SKYQ"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SKYQ/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "sessions": [
+        {
+          "last": 3.85,
+          "chgPct": 21.07,
+          "volume": 2195969,
+          "session": "pre",
+          "direction": "up",
+          "name": "Sky Quarry Inc",
+          "sessionDate": "2026-07-13",
+          "targetDate": "2026-07-13"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "up",
+      "last": 3.85,
+      "chgPct": 21.07,
+      "volume": 2195969,
+      "tv": null,
+      "shortFloat": 17.45,
+      "shortRatio": 0.07,
+      "marketCap_M": 17.49,
+      "floatShares_M": 3.85,
+      "perf1M": 90.93,
+      "perf3M": -71.03,
+      "perf6M": -4.67,
+      "perfYTD": 103.96,
+      "perf12M": -26.46,
+      "prevOhlcv": {
+        "date": "2026-07-09",
+        "open": 3.33,
+        "high": 3.54,
+        "low": 3.08,
+        "close": 3.32,
+        "volume": 6560600,
+        "prev_close": 3.82
+      }
     },
     "CNMD": {
       "symbol": "CNMD",
@@ -734,72 +685,6 @@
       "perf12M": -22.74,
       "prevOhlcv": null
     },
-    "AGEN": {
-      "symbol": "AGEN",
-      "name": "Agenus Inc",
-      "type": "news",
-      "catalyst": "7/13 宣布 $85M 私募(含權證可達 $340M),Commodore Capital、RA Capital 領投,用於 Phase 3 ROBBIN 試驗、現金跑道延至 2031;頂級生技基金背書,盤前 +45%",
-      "newsDetail": "> **今日漲因:** 盤前 +45% — Agenus 於 7/13 宣布 **$85M 私募**(upfront gross),若權證全數行使可達 **$340M**,由頂級生技基金 **Commodore Capital 領投**,RA Capital、TCGX、Invus、Ligand Pharmaceuticals 參與。\n\n**交易重點:**\n- 資金用於推進 **Phase 3 ROBBIN 試驗**(BOT+BAL 免疫療法組合),並將**現金跑道延長至 2031 年底**。\n- 領投方 Commodore / RA Capital 為專業腫瘤生技資本 —— 市場將此解讀為**內行資金背書**,即使增發稀釋仍大漲。\n\n**背景:** Agenus 1 月已完成與 Zydus Lifesciences 的 $141M 策略合作(BOT+BAL 開發 + 美國生產產能)。\n\n**客觀提醒:** 本次為增發私募,存在**股權稀釋**;Short Float 約 15.9%、回補天數 6.8 天,若持續走強有軋空燃料。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AGEN"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AGEN"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AGEN/news/"
-        }
-      ],
-      "publishedAt": "2026-07-13T07:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Yahoo Finance — Agenus rises premarket; Micron, Western Digital slide",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/agenus-rises-premarket-western-105926202.html",
-          "publishedAt": "2026-07-13T07:00:00-04:00"
-        },
-        {
-          "label": "Agenus IR — press releases",
-          "url": "https://investor.agenusbio.com/news/default.aspx"
-        },
-        {
-          "label": "SEC EDGAR — Agenus 8-K (FY2026)",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001098972&type=8-K"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 4.86,
-          "chgPct": 45.01,
-          "volume": 24423842,
-          "session": "pre",
-          "direction": "up",
-          "name": "Agenus Inc",
-          "sessionDate": "2026-07-13",
-          "targetDate": "2026-07-13"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "up",
-      "last": 4.86,
-      "chgPct": 45.01,
-      "volume": 24423842,
-      "tv": null,
-      "shortFloat": 15.87,
-      "shortRatio": 6.83,
-      "marketCap_M": 196.97,
-      "floatShares_M": 37.78,
-      "perf1M": 54.07,
-      "perf3M": 19.44,
-      "perf6M": 26.13,
-      "perfYTD": 50.64,
-      "perf12M": -33,
-      "prevOhlcv": null
-    },
     "MIMI": {
       "symbol": "MIMI",
       "name": "Mint Incorporation Limited Cl A",
@@ -860,6 +745,299 @@
       "perf6M": -23.39,
       "perfYTD": -5.33,
       "perf12M": -96.02,
+      "prevOhlcv": null
+    },
+    "GMM": {
+      "symbol": "GMM",
+      "name": "Global Mofy AI Limited",
+      "type": "momentum",
+      "catalyst": "查無明確催化劑,中概小型股崩跌,盤前 -30%、6M -95.6%",
+      "newsDetail": "> **今日跌因:** 盤前 -30%(週五盤後 -17%)— Global Mofy AI(中概小型股)無明確公司催化,延續崩跌走勢,近半年已 -95.6%。\n\n**客觀提醒:** 極低市值(約 $6M)中概股,無基本面消息支撐,屬技術性/流動性驅動的劇烈波動,借券做空成本高、風險大。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=GMM"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/GMM"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-GMM/news/"
+        }
+      ],
+      "publishedAt": "2026-07-13T07:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Global Mofy AI (GMM) — Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/GMM/"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 3.2,
+          "chgPct": -29.98,
+          "volume": 696481,
+          "session": "pre",
+          "direction": "down",
+          "name": "Global Mofy AI Limited",
+          "sessionDate": "2026-07-13",
+          "targetDate": "2026-07-13"
+        },
+        {
+          "last": 3.8,
+          "chgPct": -16.76,
+          "volume": 2975430,
+          "session": "post",
+          "direction": "down",
+          "name": "Global Mofy AI Limited",
+          "sessionDate": "2026-07-10",
+          "targetDate": "2026-07-13"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "down",
+      "last": 3.2,
+      "chgPct": -29.98,
+      "volume": 696481,
+      "tv": null,
+      "shortFloat": 3.21,
+      "shortRatio": 0.01,
+      "marketCap_M": 6.16,
+      "floatShares_M": 1.68,
+      "perf1M": 7.65,
+      "perf3M": -95.7,
+      "perf6M": -95.58,
+      "perfYTD": -94.65,
+      "perf12M": -97.69,
+      "prevOhlcv": {
+        "date": "2026-07-09",
+        "open": 1.87,
+        "high": 1.93,
+        "low": 1.84,
+        "close": 1.85,
+        "volume": 50800,
+        "prev_close": 1.85
+      }
+    },
+    "TDIC": {
+      "symbol": "TDIC",
+      "name": "Dreamland Limited Cl A",
+      "type": "news",
+      "catalyst": "Imperial Vision Fund 揭露 13% 持股,CEO 先前 6/30 注資 $2.45M,盤前 +12%",
+      "newsDetail": "> **今日漲因:** 盤前 +12% — Dreamland Limited 因 **Imperial Vision Fund 揭露 13% 持股**,加上 CEO 先前 6/30 注資 $2.45M,帶動買盤。\n\n**重點:** 市值僅約 $6M 的微型股,持股揭露 + 內部人注資帶動情緒。\n\n**客觀提醒:** 極微型股、流通量低,波動與流動性風險高。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=TDIC"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/TDIC"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-TDIC/news/"
+        }
+      ],
+      "publishedAt": "2026-07-13T07:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Dreamland (TDIC) — Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/TDIC/"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 4.12,
+          "chgPct": 11.96,
+          "volume": 2845042,
+          "session": "pre",
+          "direction": "up",
+          "name": "Dreamland Limited Cl A",
+          "sessionDate": "2026-07-13",
+          "targetDate": "2026-07-13"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "up",
+      "last": 4.12,
+      "chgPct": 11.96,
+      "volume": 2845042,
+      "tv": null,
+      "shortFloat": 1.49,
+      "shortRatio": 0.01,
+      "marketCap_M": 6.01,
+      "floatShares_M": 0.62,
+      "perf1M": -55.78,
+      "perf3M": -75.92,
+      "perf6M": -83.78,
+      "perfYTD": -82.84,
+      "perf12M": null,
+      "prevOhlcv": null
+    },
+    "WDC": {
+      "symbol": "WDC",
+      "name": "Western Digital Corp",
+      "type": "macro",
+      "catalyst": "記憶體/儲存族群連續獲利回吐,SK Hynix 崩跌拖累,盤前 -4.9%(6M 仍 +195%)",
+      "newsDetail": "> **今日跌因:** 盤前 -4.9% — 記憶體/儲存族群連續獲利回吐。**SK Hynix 首爾崩跌 15%** 拖累,晶片股本週續遭拋售。\n\n**族群連動:** Western Digital 與 Micron(MU)、SanDisk(SNDK)同步走弱,即使分析師目標價升至 $900 仍難擋大科技拋售。\n\n**背景:** WDC 近半年仍 **+195%**,今日回檔屬強勢股的板塊性修正,而非基本面反轉。宏觀面另有美伊衝突與明日(7/14)銀行財報前的觀望情緒。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=WDC"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/WDC"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-WDC/news/"
+        }
+      ],
+      "publishedAt": "2026-07-13T06:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Yahoo Finance — SanDisk Sinks 11%, Seagate Falls 7% (storage complex)",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/sandisk-sinks-11-seagate-falls-160250009.html",
+          "publishedAt": "2026-07-13T06:00:00-04:00"
+        },
+        {
+          "label": "CNBC Daily Open — Chips ahoy",
+          "url": "https://www.cnbc.com/2026/07/13/cnbc-daily-open-chips-ahoy-no-strait-answer-and-earnings-on-deck.html"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 554.14,
+          "chgPct": -4.88,
+          "volume": 129852,
+          "session": "pre",
+          "direction": "down",
+          "name": "Western Digital Corp",
+          "sessionDate": "2026-07-13",
+          "targetDate": "2026-07-13"
+        }
+      ],
+      "primarySession": "pre",
+      "primaryDirection": "down",
+      "last": 554.14,
+      "chgPct": -4.88,
+      "volume": 129852,
+      "tv": {
+        "latestEPS": 2.72,
+        "consensusEPS": 2.39,
+        "priorYrEPS": 1.36,
+        "surpriseEPS_pct": 13.58,
+        "surpriseEPS_dollar": 0.33000000000000007,
+        "latestRev_M": 3340.0,
+        "consensusRev_M": 3250.0,
+        "priorYrRev_M": 2290.0,
+        "surpriseRev_pct": 2.79,
+        "yrYrRev_pct": 45.851528384279476,
+        "epsYoY_pct": 100.0,
+        "epsEst_next4": [
+          3.29,
+          3.75,
+          4.29,
+          4.84
+        ],
+        "revEst_next4": [
+          3690.0,
+          4010.0,
+          4330.0,
+          4660.0
+        ],
+        "yoyBlock": "+100.00% / +45.85%\n--------------------\n+98.19% / +41.92%\n+110.67% / +42.20%\n+101.41% / +43.38%\n+77.94% / +39.52%",
+        "chart": {
+          "quarters": [
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q3 '27"
+          ],
+          "eps_reported": [
+            1.09,
+            1.35,
+            1.34,
+            1.36,
+            1.66,
+            1.78,
+            2.13,
+            2.72,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.89,
+            1.29,
+            1.35,
+            1.12,
+            1.48,
+            1.59,
+            1.93,
+            2.39,
+            3.29,
+            3.75,
+            4.29,
+            4.84
+          ],
+          "rev_reported_M": [
+            3760.0,
+            4090.0,
+            4290.0,
+            2290.0,
+            2600.0,
+            2820.0,
+            3020.0,
+            3340.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            3750.0,
+            4120.0,
+            4260.0,
+            2310.0,
+            2470.0,
+            2730.0,
+            2930.0,
+            3250.0,
+            3690.0,
+            4010.0,
+            4330.0,
+            4660.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null
+      },
+      "shortFloat": 6.55,
+      "shortRatio": 2.68,
+      "marketCap_M": 190610,
+      "floatShares_M": 341.46,
+      "perf1M": 12.84,
+      "perf3M": 61.02,
+      "perf6M": 194.65,
+      "perfYTD": 221.01,
+      "perf12M": 736.11,
       "prevOhlcv": null
     },
     "MU": {
@@ -1021,6 +1199,151 @@
       "perf6M": 185.29,
       "perfYTD": 226.89,
       "perf12M": 649.19,
+      "prevOhlcv": null
+    },
+    "GLOO": {
+      "symbol": "GLOO",
+      "name": "Gloo Holdings Inc",
+      "type": "earnings",
+      "catalyst": "Q1 營收 $41.5M(+238% YoY),FY2026 營收指引 $195M;週五盤後 +5.4%",
+      "newsDetail": "> **今日漲因:** 週五盤後 +5.4% — 屬**低流通量小幅反彈**,非新催化。Gloo 的強勁 Q1 財報早在 **6/8** 公布,期間股價已 1M -33%/6M -51%。\n\n**Q1 FY2026 財報(6/8 公布)重點:**\n- **營收 $41.5M,年增 238%**,超越指引/共識。\n- 淨損 $17.1M(去年同期損 $27.0M 收窄);調整後 EBITDA -$11.5M(優於指引 -$12.0M)。\n- 現金 $32.97M(4/30);**FY2026 營收指引上調至 $195.0M**,Q2 指引 $44.0M(+172% YoY);預期 Q3 接近 EBITDA 損益兩平、Q4 轉正。\n\n**業務:** Gloo 為 AI 驅動的信仰/教會科技(faith-tech)企業軟體平台,近期併購 Westfall、Masterworks、EMD 等。\n\n**客觀提醒:** 財報為一個月前舊事件;現金相對淨損偏薄,後續有籌資稀釋可能。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=GLOO"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/GLOO"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-GLOO/news/"
+        }
+      ],
+      "publishedAt": "2026-06-08T16:05:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Gloo IR — Q1 FY2026 results",
+          "url": "https://investors.gloo.com/news-releases/news-release-details/gloo-holdings-inc-reports-first-quarter-2026-financial-results",
+          "publishedAt": "2026-06-08T16:05:00-04:00"
+        },
+        {
+          "label": "TradingView — Gloo Q1 FY2026 revenue +238%",
+          "url": "https://www.tradingview.com/news/tradingview:5878273e652a5:0-gloo-reports-q1-fy2026-revenue-238-to-41-5m-raises-fy2026-revenue-guidance-to-195m/"
+        },
+        {
+          "label": "SEC 8-K exhibit",
+          "url": "https://www.sec.gov/Archives/edgar/data/2069785/000119312526154910/gloo-ex99_1.htm"
+        }
+      ],
+      "sessions": [
+        {
+          "last": 3.11,
+          "chgPct": 5.42,
+          "volume": 106818,
+          "session": "post",
+          "direction": "up",
+          "name": "Gloo Holdings Inc",
+          "sessionDate": "2026-07-10",
+          "targetDate": "2026-07-13"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 3.11,
+      "chgPct": 5.42,
+      "volume": 106818,
+      "tv": {
+        "latestEPS": -0.22,
+        "consensusEPS": -0.21,
+        "priorYrEPS": null,
+        "surpriseEPS_pct": -6.02,
+        "surpriseEPS_dollar": -0.010000000000000009,
+        "latestRev_M": 41.53,
+        "consensusRev_M": 36.02,
+        "priorYrRev_M": null,
+        "surpriseRev_pct": 15.29,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": null,
+        "epsEst_next4": [
+          -0.16,
+          -0.1,
+          -0.05,
+          -0.05
+        ],
+        "revEst_next4": [
+          43.67,
+          51.82,
+          58.18,
+          63.35
+        ],
+        "yoyBlock": "N/M / N/M\n--------------------\n+96.97% / +170.07%\n+97.88% / +59.20%\n+93.59% / +73.00%\n+77.27% / +52.54%",
+        "chart": {
+          "quarters": [
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            -5.28,
+            -4.71,
+            -0.78,
+            -0.22,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            null,
+            -5.49,
+            -0.45,
+            -0.21,
+            -0.16,
+            -0.1,
+            -0.05,
+            -0.05
+          ],
+          "rev_reported_M": [
+            16.17,
+            32.55,
+            33.63,
+            41.53,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            null,
+            23.95,
+            31.57,
+            36.02,
+            43.67,
+            51.82,
+            58.18,
+            63.35
+          ],
+          "latest_idx": 3
+        },
+        "latestReportDate": null
+      },
+      "shortFloat": 1.99,
+      "shortRatio": 1.45,
+      "marketCap_M": 282.89,
+      "floatShares_M": 14.81,
+      "perf1M": -33.05,
+      "perf3M": -39.15,
+      "perf6M": -51.17,
+      "perfYTD": -44.82,
+      "perf12M": null,
       "prevOhlcv": null
     },
     "SNAL": {
@@ -1197,65 +1520,71 @@
         "prev_close": 3.06
       }
     },
-    "SKYQ": {
-      "symbol": "SKYQ",
-      "name": "Sky Quarry Inc",
-      "type": "momentum",
-      "catalyst": "油頁岩回收商,受美伊衝突油價走高帶動 + 社群拉抬,盤前 +21%、1M +91%",
-      "newsDetail": null,
+    "AGEN": {
+      "symbol": "AGEN",
+      "name": "Agenus Inc",
+      "type": "news",
+      "catalyst": "7/13 宣布 $85M 私募(含權證可達 $340M),Commodore Capital、RA Capital 領投,用於 Phase 3 ROBBIN 試驗、現金跑道延至 2031;頂級生技基金背書,盤前 +45%",
+      "newsDetail": "> **今日漲因:** 盤前 +45% — Agenus 於 7/13 宣布 **$85M 私募**(upfront gross),若權證全數行使可達 **$340M**,由頂級生技基金 **Commodore Capital 領投**,RA Capital、TCGX、Invus、Ligand Pharmaceuticals 參與。\n\n**交易重點:**\n- 資金用於推進 **Phase 3 ROBBIN 試驗**(BOT+BAL 免疫療法組合),並將**現金跑道延長至 2031 年底**。\n- 領投方 Commodore / RA Capital 為專業腫瘤生技資本 —— 市場將此解讀為**內行資金背書**,即使增發稀釋仍大漲。\n\n**背景:** Agenus 1 月已完成與 Zydus Lifesciences 的 $141M 策略合作(BOT+BAL 開發 + 美國生產產能)。\n\n**客觀提醒:** 本次為增發私募,存在**股權稀釋**;Short Float 約 15.9%、回補天數 6.8 天,若持續走強有軋空燃料。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=SKYQ"
+          "url": "https://finviz.com/quote.ashx?t=AGEN"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/SKYQ"
+          "url": "https://finance.yahoo.com/quote/AGEN"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-SKYQ/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AGEN/news/"
         }
       ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
+      "publishedAt": "2026-07-13T07:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Yahoo Finance — Agenus rises premarket; Micron, Western Digital slide",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/agenus-rises-premarket-western-105926202.html",
+          "publishedAt": "2026-07-13T07:00:00-04:00"
+        },
+        {
+          "label": "Agenus IR — press releases",
+          "url": "https://investor.agenusbio.com/news/default.aspx"
+        },
+        {
+          "label": "SEC EDGAR — Agenus 8-K (FY2026)",
+          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001098972&type=8-K"
+        }
+      ],
       "sessions": [
         {
-          "last": 3.85,
-          "chgPct": 21.07,
-          "volume": 2195969,
+          "last": 4.86,
+          "chgPct": 45.01,
+          "volume": 24423842,
           "session": "pre",
           "direction": "up",
-          "name": "Sky Quarry Inc",
+          "name": "Agenus Inc",
           "sessionDate": "2026-07-13",
           "targetDate": "2026-07-13"
         }
       ],
       "primarySession": "pre",
       "primaryDirection": "up",
-      "last": 3.85,
-      "chgPct": 21.07,
-      "volume": 2195969,
+      "last": 4.86,
+      "chgPct": 45.01,
+      "volume": 24423842,
       "tv": null,
-      "shortFloat": 17.45,
-      "shortRatio": 0.07,
-      "marketCap_M": 17.49,
-      "floatShares_M": 3.85,
-      "perf1M": 90.93,
-      "perf3M": -71.03,
-      "perf6M": -4.67,
-      "perfYTD": 103.96,
-      "perf12M": -26.46,
-      "prevOhlcv": {
-        "date": "2026-07-09",
-        "open": 3.33,
-        "high": 3.54,
-        "low": 3.08,
-        "close": 3.32,
-        "volume": 6560600,
-        "prev_close": 3.82
-      }
+      "shortFloat": 15.87,
+      "shortRatio": 6.83,
+      "marketCap_M": 196.97,
+      "floatShares_M": 37.78,
+      "perf1M": 54.07,
+      "perf3M": 19.44,
+      "perf6M": 26.13,
+      "perfYTD": 50.64,
+      "perf12M": -33,
+      "prevOhlcv": null
     },
     "AMIX": {
       "symbol": "AMIX",
@@ -1313,242 +1642,6 @@
       "perfYTD": -46.11,
       "perf12M": -79.27,
       "prevOhlcv": null
-    },
-    "AIIO": {
-      "symbol": "AIIO",
-      "name": "Robo.Ai Inc",
-      "type": "news",
-      "catalyst": "前 INTERPOL 主席出任 Neurovia AI 主席,推動中東主權 AI 佈局,盤前 +7.3%",
-      "newsDetail": "> **今日漲因:** 盤前 +7.3% — Robo.Ai 宣布**前 INTERPOL(國際刑警組織)主席出任 Neurovia AI 主席**,推動中東主權 AI(sovereign AI)基建佈局。\n\n**重點:** 屬治理/題材型消息,市值僅約 $70M 的低價股,消息帶動情緒。無具體營收/合約金額揭露。\n\n**客觀提醒:** 低價低流通量、題材驅動,缺乏財務數字支撐,波動風險高。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AIIO"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AIIO"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AIIO/news/"
-        }
-      ],
-      "publishedAt": "2026-07-13T07:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Robo.Ai (AIIO) — press releases (Yahoo Finance)",
-          "url": "https://finance.yahoo.com/quote/AIIO/press-releases/"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 3.58,
-          "chgPct": 7.33,
-          "volume": 139237,
-          "session": "pre",
-          "direction": "up",
-          "name": "Robo.Ai Inc",
-          "sessionDate": "2026-07-13",
-          "targetDate": "2026-07-13"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "up",
-      "last": 3.58,
-      "chgPct": 7.33,
-      "volume": 139237,
-      "tv": null,
-      "shortFloat": 11.39,
-      "shortRatio": 0.11,
-      "marketCap_M": 69.85,
-      "floatShares_M": 12.49,
-      "perf1M": 26.8,
-      "perf3M": 356,
-      "perf6M": -42.16,
-      "perfYTD": -41.61,
-      "perf12M": -89.93,
-      "prevOhlcv": null
-    },
-    "TDIC": {
-      "symbol": "TDIC",
-      "name": "Dreamland Limited Cl A",
-      "type": "news",
-      "catalyst": "Imperial Vision Fund 揭露 13% 持股,CEO 先前 6/30 注資 $2.45M,盤前 +12%",
-      "newsDetail": "> **今日漲因:** 盤前 +12% — Dreamland Limited 因 **Imperial Vision Fund 揭露 13% 持股**,加上 CEO 先前 6/30 注資 $2.45M,帶動買盤。\n\n**重點:** 市值僅約 $6M 的微型股,持股揭露 + 內部人注資帶動情緒。\n\n**客觀提醒:** 極微型股、流通量低,波動與流動性風險高。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=TDIC"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/TDIC"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-TDIC/news/"
-        }
-      ],
-      "publishedAt": "2026-07-13T07:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Dreamland (TDIC) — Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/TDIC/"
-        }
-      ],
-      "sessions": [
-        {
-          "last": 4.12,
-          "chgPct": 11.96,
-          "volume": 2845042,
-          "session": "pre",
-          "direction": "up",
-          "name": "Dreamland Limited Cl A",
-          "sessionDate": "2026-07-13",
-          "targetDate": "2026-07-13"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "up",
-      "last": 4.12,
-      "chgPct": 11.96,
-      "volume": 2845042,
-      "tv": null,
-      "shortFloat": 1.49,
-      "shortRatio": 0.01,
-      "marketCap_M": 6.01,
-      "floatShares_M": 0.62,
-      "perf1M": -55.78,
-      "perf3M": -75.92,
-      "perf6M": -83.78,
-      "perfYTD": -82.84,
-      "perf12M": null,
-      "prevOhlcv": null
-    },
-    "EHGO": {
-      "symbol": "EHGO",
-      "name": "Eshallgo Inc Cl A",
-      "type": "momentum",
-      "catalyst": "查無明確催化劑,低價低流通量技術拉抬(社群拉抬跡象),盤前 +34%",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=EHGO"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/EHGO"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-EHGO/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 2.2,
-          "chgPct": 34.15,
-          "volume": 16780448,
-          "session": "pre",
-          "direction": "up",
-          "name": "Eshallgo Inc Cl A",
-          "sessionDate": "2026-07-13",
-          "targetDate": "2026-07-13"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "up",
-      "last": 2.2,
-      "chgPct": 34.15,
-      "volume": 16780448,
-      "tv": null,
-      "shortFloat": 6.7,
-      "shortRatio": 0.03,
-      "marketCap_M": 6.84,
-      "floatShares_M": 2.17,
-      "perf1M": 58.21,
-      "perf3M": -37.71,
-      "perf6M": -43.01,
-      "perfYTD": -38.57,
-      "perf12M": -83.46,
-      "prevOhlcv": null
-    },
-    "WOK": {
-      "symbol": "WOK",
-      "name": "Work Medical Technology Group Ltd",
-      "type": "momentum",
-      "catalyst": "1:100 反向分割 6/18 生效技術面調整,盤前 -6%",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=WOK"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/WOK"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-WOK/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "sessions": [
-        {
-          "last": 2.16,
-          "chgPct": -6.09,
-          "volume": 104438,
-          "session": "pre",
-          "direction": "down",
-          "name": "Work Medical Technology Group Ltd",
-          "sessionDate": "2026-07-13",
-          "targetDate": "2026-07-13"
-        },
-        {
-          "last": 2.2,
-          "chgPct": -4.35,
-          "volume": 284782,
-          "session": "post",
-          "direction": "down",
-          "name": "Work Medical Technology Group Ltd",
-          "sessionDate": "2026-07-10",
-          "targetDate": "2026-07-13"
-        }
-      ],
-      "primarySession": "pre",
-      "primaryDirection": "down",
-      "last": 2.16,
-      "chgPct": -6.09,
-      "volume": 104438,
-      "tv": null,
-      "shortFloat": 2.17,
-      "shortRatio": 0.05,
-      "marketCap_M": 5.12,
-      "floatShares_M": 2.42,
-      "perf1M": -78.8,
-      "perf3M": -98.37,
-      "perf6M": -99.1,
-      "perfYTD": -99.03,
-      "perf12M": -100,
-      "prevOhlcv": {
-        "date": "2026-07-09",
-        "open": 1.96,
-        "high": 2.1,
-        "low": 1.91,
-        "close": 2.02,
-        "volume": 171100,
-        "prev_close": 1.96
-      }
     },
     "SUNE": {
       "symbol": "SUNE",
@@ -1634,149 +1727,56 @@
         "prev_close": 2.11
       }
     },
-    "GLOO": {
-      "symbol": "GLOO",
-      "name": "Gloo Holdings Inc",
-      "type": "earnings",
-      "catalyst": "Q1 營收 $41.5M(+238% YoY),FY2026 營收指引 $195M;週五盤後 +5.4%",
-      "newsDetail": "> **今日漲因:** 週五盤後 +5.4% — 屬**低流通量小幅反彈**,非新催化。Gloo 的強勁 Q1 財報早在 **6/8** 公布,期間股價已 1M -33%/6M -51%。\n\n**Q1 FY2026 財報(6/8 公布)重點:**\n- **營收 $41.5M,年增 238%**,超越指引/共識。\n- 淨損 $17.1M(去年同期損 $27.0M 收窄);調整後 EBITDA -$11.5M(優於指引 -$12.0M)。\n- 現金 $32.97M(4/30);**FY2026 營收指引上調至 $195.0M**,Q2 指引 $44.0M(+172% YoY);預期 Q3 接近 EBITDA 損益兩平、Q4 轉正。\n\n**業務:** Gloo 為 AI 驅動的信仰/教會科技(faith-tech)企業軟體平台,近期併購 Westfall、Masterworks、EMD 等。\n\n**客觀提醒:** 財報為一個月前舊事件;現金相對淨損偏薄,後續有籌資稀釋可能。",
+    "EHGO": {
+      "symbol": "EHGO",
+      "name": "Eshallgo Inc Cl A",
+      "type": "momentum",
+      "catalyst": "查無明確催化劑,低價低流通量技術拉抬(社群拉抬跡象),盤前 +34%",
+      "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=GLOO"
+          "url": "https://finviz.com/quote.ashx?t=EHGO"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/GLOO"
+          "url": "https://finance.yahoo.com/quote/EHGO"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-GLOO/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-EHGO/news/"
         }
       ],
-      "publishedAt": "2026-06-08T16:05:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Gloo IR — Q1 FY2026 results",
-          "url": "https://investors.gloo.com/news-releases/news-release-details/gloo-holdings-inc-reports-first-quarter-2026-financial-results",
-          "publishedAt": "2026-06-08T16:05:00-04:00"
-        },
-        {
-          "label": "TradingView — Gloo Q1 FY2026 revenue +238%",
-          "url": "https://www.tradingview.com/news/tradingview:5878273e652a5:0-gloo-reports-q1-fy2026-revenue-238-to-41-5m-raises-fy2026-revenue-guidance-to-195m/"
-        },
-        {
-          "label": "SEC 8-K exhibit",
-          "url": "https://www.sec.gov/Archives/edgar/data/2069785/000119312526154910/gloo-ex99_1.htm"
-        }
-      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
       "sessions": [
         {
-          "last": 3.11,
-          "chgPct": 5.42,
-          "volume": 106818,
-          "session": "post",
+          "last": 2.2,
+          "chgPct": 34.15,
+          "volume": 16780448,
+          "session": "pre",
           "direction": "up",
-          "name": "Gloo Holdings Inc",
-          "sessionDate": "2026-07-10",
+          "name": "Eshallgo Inc Cl A",
+          "sessionDate": "2026-07-13",
           "targetDate": "2026-07-13"
         }
       ],
-      "primarySession": "post",
+      "primarySession": "pre",
       "primaryDirection": "up",
-      "last": 3.11,
-      "chgPct": 5.42,
-      "volume": 106818,
-      "tv": {
-        "latestEPS": -0.22,
-        "consensusEPS": -0.21,
-        "priorYrEPS": null,
-        "surpriseEPS_pct": -6.02,
-        "surpriseEPS_dollar": -0.010000000000000009,
-        "latestRev_M": 41.53,
-        "consensusRev_M": 36.02,
-        "priorYrRev_M": null,
-        "surpriseRev_pct": 15.29,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": null,
-        "epsEst_next4": [
-          -0.16,
-          -0.1,
-          -0.05,
-          -0.05
-        ],
-        "revEst_next4": [
-          43.67,
-          51.82,
-          58.18,
-          63.35
-        ],
-        "yoyBlock": "N/M / N/M\n--------------------\n+96.97% / +170.07%\n+97.88% / +59.20%\n+93.59% / +73.00%\n+77.27% / +52.54%",
-        "chart": {
-          "quarters": [
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27"
-          ],
-          "eps_reported": [
-            -5.28,
-            -4.71,
-            -0.78,
-            -0.22,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            null,
-            -5.49,
-            -0.45,
-            -0.21,
-            -0.16,
-            -0.1,
-            -0.05,
-            -0.05
-          ],
-          "rev_reported_M": [
-            16.17,
-            32.55,
-            33.63,
-            41.53,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            null,
-            23.95,
-            31.57,
-            36.02,
-            43.67,
-            51.82,
-            58.18,
-            63.35
-          ],
-          "latest_idx": 3
-        },
-        "latestReportDate": null
-      },
-      "shortFloat": 1.99,
-      "shortRatio": 1.45,
-      "marketCap_M": 282.89,
-      "floatShares_M": 14.81,
-      "perf1M": -33.05,
-      "perf3M": -39.15,
-      "perf6M": -51.17,
-      "perfYTD": -44.82,
-      "perf12M": null,
+      "last": 2.2,
+      "chgPct": 34.15,
+      "volume": 16780448,
+      "tv": null,
+      "shortFloat": 6.7,
+      "shortRatio": 0.03,
+      "marketCap_M": 6.84,
+      "floatShares_M": 2.17,
+      "perf1M": 58.21,
+      "perf3M": -37.71,
+      "perf6M": -43.01,
+      "perfYTD": -38.57,
+      "perf12M": -83.46,
       "prevOhlcv": null
     }
   },
@@ -14746,7 +14746,64 @@
       "neglected": null
     }
   ],
-  "grokPicks": [],
+  "grokPicks": [
+    {
+      "symbol": "QTTB",
+      "rank": 1,
+      "intent": "long",
+      "rationale": "7/13 公司 IR/PRNewswire 公布 SIGNAL-AA Part B 36 週正面頂線：mITT SALT 平均降 35.3%、40%(10/25) 達 SALT-20，含 36% JAK 經驗患者，無新安全訊號，規劃 2027 上半年進入註冊性試驗。X 上 OpenOutcrier/Briefing 同步播報盤前 +67~76%；注意 Part B 為開放標籤單臂、已大漲後開盤易獲利了結。",
+      "neglected": null
+    },
+    {
+      "symbol": "AGEN",
+      "rank": 2,
+      "intent": "long",
+      "rationale": "7/13 宣布超額認購私募：upfront 約 $85M、權證全行使可達 $340M，Commodore Capital 領投、RA Capital/TCGX/Invus/Ligand 參與，資金推 Phase 3 ROBBIN（BOT+BAL MSS 結腸癌）、現金跑道稱延至 2031。shortFloat ~16%/DTC ~6.8 有擠壓燃料；稀釋真實但頂級生技基金背書是今日少數「內行錢」催化。X 盤前/盤中熱度高。",
+      "neglected": null
+    },
+    {
+      "symbol": "SUNE",
+      "rank": 3,
+      "intent": "short",
+      "rationale": "基本面空：6 月與 Suniva 反向合併後原 SUNation 股東預期僅剩約 1.8% 股權；Q1 營收 $7.2M 年減 43%、現金約 $1.7M、10-Q 有 going concern。今日延續盤前約 -12~14% 屬稀釋+經營惡化兌現，非無消息崩跌。",
+      "neglected": null
+    },
+    {
+      "symbol": "MU",
+      "rank": 4,
+      "intent": "short",
+      "rationale": "戰術空非基本面反轉：X 宏觀盤前一致指向記憶體族群領跌——SK Hynix 那斯達克掛牌後首爾約 -15%、Kospi 重挫，疊加美伊/荷姆茲油價衝擊壓縮 AI/semi 估值；MU 盤前約 -4% 且自 6/25 ATH 已明顯回撤。公司本身財報/HBM 合約仍強，適合波段回吐、非長空論文。",
+      "neglected": null
+    },
+    {
+      "symbol": "SNDK",
+      "rank": 5,
+      "intent": "short",
+      "rationale": "同記憶體獲利回吐籃：6M 仍約 +442% 全候選最極端延伸，盤前約 -5% 與 MU/WDC 連動；NAND 自高點回落+2027 新產能隱憂敘事在 X/盤前主流。比 MU 更「貴且延伸」，回檔彈性更大，但同樣是情緒/估值壓縮而非公司獨有利空。",
+      "neglected": null
+    },
+    {
+      "symbol": "PALI",
+      "rank": 6,
+      "intent": "long",
+      "rationale": "催化偏舊（6/29 FDA 核准 PALI-2108 潰瘍性結腸炎 Phase 2 IND 延續），但 shortFloat ~19%/DTC ~8.2 為候選中最高擠壓燃料之一，週五盤後續強。適合當日 short-squeeze 波段，非新鮮數據驅動的核心持倉。",
+      "neglected": null
+    },
+    {
+      "symbol": "SKYQ",
+      "rank": 7,
+      "intent": "long",
+      "rationale": "油頁岩/回收題材受美伊衝突、Brent 走高帶動，1M 約 +91%、盤前 +21%；shortFloat ~17% 有燃料。但市值僅約 $17M，X 多為社群喊單無公司 IR 新訊——標為題材+油價 beta，流動性與 fade 風險高。",
+      "neglected": null
+    },
+    {
+      "symbol": "GLOO",
+      "rank": 8,
+      "intent": "long",
+      "rationale": "Q1 營收 $41.5M(+238% YoY)、FY2026 指引 $195M 已於 6/8 公布，今日僅低量反彈約 +5%。數字面仍強（rev surprise 約 +15%），但非當日新催化；僅作超跌信仰/教會 AI 軟體反彈觀察，排名墊後。",
+      "neglected": null
+    }
+  ],
   "dayResets": {
     "QTTB": "7/13 公布 SIGNAL-AA Part B 36 週正面頂線數據 — 二元臨床催化,今日 +76%(週五 +30% 為數據前搶跑,今日為實際數據)",
     "AGEN": "7/13 $85M 私募由 Commodore/RA Capital 領投 — 頂級生技基金背書為新事件,盤前 +45%"
