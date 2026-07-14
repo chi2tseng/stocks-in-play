@@ -346,7 +346,8 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 **注入管線:** 對每檔 headline 名單:
 - 抓**即時報價**(Yahoo `v8/finance/chart` 或 Finviz)取 Last / %Chg / Volume。
 - **附加一列到 `candidates.csv`**:`Session=headline`、`Direction=up|down`(依當日漲跌)、`SessionDate=<今日 ISO>`、Name 補公司全名。
-- 之後照常走 §2.1 catalyst 補強、Phase 5 TV(若 Type=earnings)、§8.1 `news_detail.json`、`claude_picks.json`、dashboard。
+- 之後照常走 §2.1 catalyst 補強、Phase 5 TV、§8.1 `news_detail.json`、`claude_picks.json`、dashboard。
+- **⚠ 大公司一律補 TV(2026-07-14 使用者硬性指示):** 只要是知名/大型股且當日報財報(earnings 類,如 GS/JPM/BAC/WFC/IBM),**務必 `node tv-scrape.js <SYM>` + `py parse_tv.py`**,讓個股詳細頁有季度 EPS/營收圖 + MarketSurge 表 + Forward YoY。headline 大公司只要是 earnings,就不能只有一句 catalyst 而缺 TV 資料。(這批 earnings 名字要一起在 §6.1 的 TV scrape 分片內。)
 - 這些**不需**通過 ±4% 濾網;仍照 §4 做 MAGNA53 分類。故事夠強可入 claude_picks(遵守 direction-match:只有 chgPct>0 才 `intent=long`,chgPct<0 才 `intent=short`)。
 
 **視覺標記:** `Session=headline` 讓 dashboard 以「頭條」標籤與 4% gapper 區分。`build_dashboard.py` 已讀 `candidates.csv`,附加列自動納入;若某檔 MAGNA53 分數未達 SIP 卡門檻,仍會出現在完整候選清單 / SCANX / 個股詳細頁(即「有補上」)。
@@ -877,6 +878,7 @@ This keeps the expensive model's tokens on synthesis (~3-5k per ticker write-up)
 - **長度: ~150-450 字**(摘要 + 2-4 條新聞)。比舊的 Milan 600-1200 字短很多 — 使用者要的是「當天新聞」不是深度拆解。
 - **關鍵數字用 `**bold**`** 讓它在卡片上跳出來(例:`**Q3 營收 $3.34B (+45% YoY)**`)。
 - 每個主張要有具體 $ / % / 名稱或日期;空詞「強勁需求」「前景看好」換成底層數字。
+- **⚠ 合約型催化劑要換算年營收(2026-07-14 使用者硬性指示):** 只要 catalyst 是合約 / 訂單 / 租約 / backlog 型(Type=contract 或新聞給的是「總合約值 $X、為期 N 年」),**務必在 catalyst 一句話與 news_detail 內把總值換算成年化營收**:`合約總值 $X ÷ N 年 ≈ ~$Y/年`,並點出何時開始認列(交付/生效日)、以及相對公司現有年營收的量級。範例(CLSK):`$6.6B ÷ 20 年 ≈ 年化租金營收 ~$330M/年(2027 Q4 起認列,NNN 近 100% 落地)`。目的是讓讀者能把一次性大數字跟經常性營收做對比,而不是被 $6.6B 這種總額嚇到卻不知道每年進帳多少。之後每一檔合約型催化劑都照做。
 - **客觀利空(選填,≤1 句):** 只有當天新聞本身帶硬事實利空(增發稀釋、內部人賣股、CEO 大額限制股)才補一句客觀陳述,放最後。沒有硬事實就不補 — 不要自己發明「風險」。
 
 **Reference — 新格式範例 (WDC 2026-07-06):**
