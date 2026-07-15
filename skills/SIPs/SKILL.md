@@ -361,6 +361,7 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 > **2026-07-15 使用者:「要真的有至少 2% 的 gap 的大公司都補上來。」** Barchart 只掃 pre/post ≥4%,盤中大動或卡在 2–4% 的大型股會整批漏掉(BABA、NVDA、JNJ、C… 都曾漏)。
 
 1. **跑 `py bignames-scan.py`**(在 §2.0 pre-scan 同批發射,~30–45s)—— 掃 ~158 檔大型股宇宙(市值 >$10B),印出當日 `|chg| ≥ 2%` 且**不在 candidates.csv** 的名字。門檻可調:`py bignames-scan.py 3`。
+1b. **`<2% 但有重大新聞` 的大名字**(JNJ −1.9%、MS +1.5%、BK −1% 型)bignames-scan(≥2%)和 gap 掃(≥4%)都會漏 → 用 §2.0 已列的 CNBC 掃法抓當日「stocks making the biggest moves premarket/midday」整篇,把裡面**每個** ticker 對照 candidates.csv,有新聞的補入(§2.0b 政策:大公司不看 %)。
 2. 把漏掉的名字併進 §2.1 的 **haiku catalyst fan-out**(每 6–8 檔一個 haiku agent,每檔回一句 繁中 catalyst + Type + 標「有無個股新聞 Y/N」;逆勢大跌卻標「查無」的大股,主線自己補查一次,§2.2 distrust guard)。
 3. **全部以 `Session=headline` 補進 `candidates.csv`**(direction 依當日漲跌):
    - **有個股新聞**(財報 / M&A / 指引 / 升降評 / FDA / 合約)→ 給真 catalyst;**earnings 類補 TV**(`node tv-scrape.js`,§6.1 完整性硬閘門會擋漏)+ 寫 `news_detail`。
