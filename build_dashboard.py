@@ -560,6 +560,7 @@ def _build_data_for(td):
 # already exist, preserve any picks/rawGappers/scanx that were committed by a
 # previous scan — today's scan only refreshes the stocks/sessions data.
 written = {}
+_scan_stocks = {}
 for td in sorted(target_dates_set):
     new_data = _build_data_for(td)
     out_path = os.path.join(DATA_DIR, f'{td}.json')
@@ -591,11 +592,24 @@ for td in sorted(target_dates_set):
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(new_data, f, ensure_ascii=False, indent=2)
     written[td] = len(new_data['stocks'])
+    if td == DATE:
+        _scan_stocks = new_data['stocks']
 
 # Backward-compat: dashboard/data.json mirrors the SCAN-date file.
 day_path = os.path.join(DATA_DIR, f'{DATE}.json')
 if os.path.exists(day_path):
     shutil.copyfile(day_path, os.path.join(DASH_DIR, 'data.json'))
+
+# TV completeness (SIPs §6.1 gate, code-enforced): every big-name (Session=headline) +
+# earnings stock must carry TV quarterly data. Warn loudly so the run scrapes the missing
+# ones before push — this is the check that was silently skipped for BLK/MS on 2026-07-15.
+_miss_tv = sorted(k for k, v in _scan_stocks.items()
+                  if (v.get('type') == 'earnings'
+                      or any((x or {}).get('session') == 'headline' for x in (v.get('sessions') or [])))
+                  and not v.get('tv'))
+if _miss_tv:
+    print(f'[!! TV-MISSING !!] {len(_miss_tv)} big-name/earnings stocks lack TV — '
+          f'run `node tv-scrape.js {" ".join(_miss_tv)}` + parse_tv + rebuild before push')
 
 # Regenerate dates.json by scanning data/*.json
 def _label(d):
