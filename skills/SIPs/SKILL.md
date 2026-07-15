@@ -476,6 +476,8 @@ py -c "import json; d=json.load(open('dashboard/data/<今日ISO>.json',encoding=
 ```
 清單非空 → `node tv-scrape.js <那些SYM>` → `py parse_tv.py` → `py build_report.py` → `py build_dashboard.py` → 再驗。**涵蓋範圍 = 今日全部 `Type=earnings` + 全部 `Session=headline` 大名字**(SCANX 出線的大股一律算,不只財報股、不只 top-10;連純隨大盤的大公司也要補 —— 它們的季度營收本來就有)。SCANX 的小型 gapper 也 best-effort 補;TV 三交易所都 404(確實無頁)才放行,並在 catalyst 註明「無 TradingView 季度資料」。
 **TV EPS 失真:** 少數 ADR/雙重口徑股(如 BABA,GAAP vs ADS)TV 的 EPS surprise 會離譜(例 −89.9%);**仍保留 TV(季度營收有效)**,但在 `news_detail` 標一句「EPS 口徑失真、以營收為準」,不把離譜 EPS 當真數字引用。
+**股價 candles 也一樣要(2026-07-16 使用者:「除了 TV 股價也要」):** `py fetch_candles.py <今日ISO>` 對今日包**全部候選**抓 6 個月日K(整個 SCANX 都涵蓋),寫 `dashboard/candles.json` 給個股詳細頁的 股價走勢 圖。`build_dashboard.py` 會印 `[!! CANDLES-MISSING !!]` 列出缺 candle 的大名字 —— 缺就補跑 `fetch_candles` 再 build,直到大名字全有。
+**省 token / 平行(2026-07-16 使用者:「多個 agent、依類型分配、省 token」):** TV scrape(§6.1 分片並行 `node tv-scrape.js`)與 `fetch_candles.py` 是**獨立機械活 → 同批平行跑**(§0.6 fan-out),交給 **bash 背景程序或 haiku agent 依類型分片**(大名字 shard / 小型 gapper shard / candles),**絕不佔主模型**;主模型只做判斷與寫作(§0.5)。
 
 #### Primary tool: **Playwright** (default since 2026-05-13)
 

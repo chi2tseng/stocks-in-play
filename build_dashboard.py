@@ -611,6 +611,21 @@ if _miss_tv:
     print(f'[!! TV-MISSING !!] {len(_miss_tv)} big-name/earnings stocks lack TV — '
           f'run `node tv-scrape.js {" ".join(_miss_tv)}` + parse_tv + rebuild before push')
 
+# Candle completeness: big-names need a 股價走勢 chart (candles.json, from fetch_candles.py).
+_cand_path = os.path.join(DASH_DIR, 'candles.json')
+if os.path.exists(_cand_path):
+    try:
+        with open(_cand_path, encoding='utf-8') as f:
+            _have_cand = set(json.load(f).keys())
+    except Exception:
+        _have_cand = set()
+    _miss_cand = sorted(k for k, v in _scan_stocks.items()
+                        if any((x or {}).get('session') == 'headline' for x in (v.get('sessions') or []))
+                        and k not in _have_cand)
+    if _miss_cand:
+        print(f'[!! CANDLES-MISSING !!] {len(_miss_cand)} big-names lack price candles — '
+              f'run `py fetch_candles.py {DATE}` then rebuild')
+
 # Regenerate dates.json by scanning data/*.json
 def _label(d):
     dt = datetime.date.fromisoformat(d)
