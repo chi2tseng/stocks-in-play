@@ -119,6 +119,7 @@ The § numbering below is the LOGICAL order, not the execution order. Phases 2 /
 4. **投機 X 查證(§ 2.3):同一批 fan-out 就發 `node x-scrape.js`** 給「`|chgPct|` 最大的 5 檔低價/低市值候選」— **不等 haiku 標「查無」**,資料先到手;§ 2.3 的正式查證與一級源對照照舊。
 5. **TV scrape(§ 6.1):先跑凍結快取檢查**;stale 且**疑似 earnings** 的 → **T+7s 就發 1 個分片**;其餘 tickers 等 Join #1 的 Type 標籤確定後,再開 **2 個分片**補跑(freshness cache 先套 — skip files <3 days old)。
 6. `py fetch_candles.py` (background bash — candidates + studies are already known; picks ⊆ candidates by the direction-match rule, so no need to wait for picks)
+7. `py bignames-scan.py` (background bash, ~30–45s — §2.0c 大型股 ≥2% 全掃;回來的漏網大股併進 §2.1 catalyst fan-out,以 `Session=headline` 補入)
 
 **While the fan-out runs (~90s–2 min)**, the main model does zero-dependency work: day_resets context review, Phase 10b OHLCV prep, studies placeholder checks.
 
@@ -354,6 +355,17 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 **視覺標記:** `Session=headline` 讓 dashboard 以「頭條」標籤與 4% gapper 區分。`build_dashboard.py` 已讀 `candidates.csv`,附加列自動納入;若某檔 MAGNA53 分數未達 SIP 卡門檻,仍會出現在完整候選清單 / SCANX / 個股詳細頁(即「有補上」)。
 
 **AVGO 範例(2026-07-08):** AVGO 當日約 −3%(未達 4%)但登上頭條(Erste 降評至 Hold(估值);本週 Apple $30B 自研晶片合作延長至 2031)。舊流程漏掉 → 新流程以 `Session=headline`、`Direction=down`、catalyst「Erste 降評 Hold −3%;Apple $30B 合作延長至 2031」補入候選並寫 `news_detail`。
+
+### 2.0c — 大型股 ≥2% 全掃(每日必跑;§2.0b「大公司不看 %」的機械執行版)
+
+> **2026-07-15 使用者:「要真的有至少 2% 的 gap 的大公司都補上來。」** Barchart 只掃 pre/post ≥4%,盤中大動或卡在 2–4% 的大型股會整批漏掉(BABA、NVDA、JNJ、C… 都曾漏)。
+
+1. **跑 `py bignames-scan.py`**(在 §2.0 pre-scan 同批發射,~30–45s)—— 掃 ~158 檔大型股宇宙(市值 >$10B),印出當日 `|chg| ≥ 2%` 且**不在 candidates.csv** 的名字。門檻可調:`py bignames-scan.py 3`。
+2. 把漏掉的名字併進 §2.1 的 **haiku catalyst fan-out**(每 6–8 檔一個 haiku agent,每檔回一句 繁中 catalyst + Type + 標「有無個股新聞 Y/N」;逆勢大跌卻標「查無」的大股,主線自己補查一次,§2.2 distrust guard)。
+3. **全部以 `Session=headline` 補進 `candidates.csv`**(direction 依當日漲跌):
+   - **有個股新聞**(財報 / M&A / 指引 / 升降評 / FDA / 合約)→ 給真 catalyst;**earnings 類補 TV**(`node tv-scrape.js`,§6.1 完整性硬閘門會擋漏)+ 寫 `news_detail`。
+   - **純隨大盤/族群**(當日科技 / 中概 rally,無個股消息)→ catalyst 誠實標「隨科技股/中概/醫材族群上漲,無個股重大新聞」,**不硬掰、不補 earnings TV**。
+4. 宇宙可擴充:`bignames-scan.py` 的 `UNIVERSE` 是精選大型股清單;發現漏了某知名大股就把它加進清單,下次自動涵蓋。
 
 ### 2.1 — Per-ticker catalyst hunt
 
