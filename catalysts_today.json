@@ -1,37 +1,146 @@
 {
-  "PYPL": { "Type": "M&A", "Catalyst": "7/15 Stripe + Advent International 聯合出價 $53B($60.50/股,較 7/14 收盤 $47.37 溢價 28%)收購;PayPal 尚未回應,+18.6% 但仍折價反映成交疑慮" },
-  "AEHR": { "Type": "earnings", "Catalyst": "7/14 盤後 Q4 FY26 營收 $18.8M(+33% YoY)、非 GAAP EPS $0.11(預期 -$0.01)、預訂 $60.7M/有效積壓 $100.6M 創紀錄、FY27 指引 $130-150M(+160-200%),+30%" },
-  "EOSE": { "Type": "earnings", "Catalyst": "7/14 盤後 Q2 初步營收創紀錄 $68-69M(出貨量增逾 3 倍)、積壓 $807M 創新高、現金 $364M,+6%" },
-  "ERNA": { "Type": "FDA", "Catalyst": "7/15 ERNA-101 獨立 CRO 驗證卵巢癌動物腫瘤完全清除(10/15 存活)、Q3 遞交 IND、Q4 進臨床,+55.6%(市值 ~$11M,ATM 稀釋壓力大)" },
-  "ELVA": { "Type": "contract", "Catalyst": "7/15 Axios Pro 報導 Amazon 與 Electrovaya 達成商業供貨 + 認股權證協議(材料搬運 EV 電池),+23.6%;此前 Roth 6/5 已升目標價至 $20" },
-  "SHMD": { "Type": "guidance", "Catalyst": "7/14 盤後上調 2026 全年訂單指導至 €1.25-1.5億,+12.8%" },
-  "LION": { "Type": "M&A", "Catalyst": "7/14 傳 Lionsgate 探索出售,Bolloré/Banijay 表達興趣,+8.5%" },
-  "TRT": { "Type": "news", "Catalyst": "7/14 三修公司章程,受惠 AI/EV 晶片測試需求,盤後 +16.5%" },
-  "AMPG": { "Type": "news", "Catalyst": "7/7 宣布 $10M 股票回購 + Q1 營收 +48.6%,動能延續 +7%" },
-  "BCRX": { "Type": "analyst", "Catalyst": "JPMorgan 恢復覆蓋,分析師目標價升至 $14-29,+4.6%" },
-  "UMC": { "Type": "news", "Catalyst": "6 月營收年增 22.85%(月營收;Q2 財報 7/29),+6.5%" },
-  "UMAC": { "Type": "news", "Catalyst": "納入 Russell 2000 指數(2026 年首次重組),+4%" },
-  "JLHL": { "Type": "momentum", "Catalyst": "查無明確催化劑,低浮動股波動 +9%" },
-  "ISPC": { "Type": "momentum", "Catalyst": "查無明確催化劑,盤後 +8%/盤前 -7.5% 劇烈波動" },
-  "SHPH": { "Type": "momentum", "Catalyst": "查無明確催化劑,低浮動股拉抬/回落,-11%" },
-  "BMGL": { "Type": "momentum", "Catalyst": "查無明確催化劑,低價股波動 -17.9%" },
-  "QTRX": { "Type": "momentum", "Catalyst": "查無明確催化劑,+4.9%" },
-  "VSA": { "Type": "momentum", "Catalyst": "查無明確催化劑,-9.8%" },
-  "XCUR": { "Type": "momentum", "Catalyst": "查無明確催化劑,低浮動股拉抬,盤後 +26%(11M 量)" },
-  "LESL": { "Type": "momentum", "Catalyst": "查無明確催化劑,-10.9%" },
-  "JTAI": { "Type": "momentum", "Catalyst": "查無明確催化劑,18M 量,-6%" },
-  "PNR": { "Type": "guidance", "Catalyst": "7/15 下修 2026 調整後 EPS 至 $4.60-4.80(原 $5.30-5.40)、Q2 初步營收 ~$930M(-17% YoY)、泳池通路去化衝擊、CFO 請辭,-21.4%" },
-  "CAG": { "Type": "earnings", "Catalyst": "7/15 FY26 Q4 淨銷售 +3.6% 但 GAAP 每股虧損 $3.37(商譽/品牌減損)、調整後 EPS $0.47、FY27 指引 EPS $1.40-1.50(低於 FY26 $1.72),-5.7%" },
-  "NXTC": { "Type": "M&A", "Catalyst": "7/14 與 Avere 全股票逆向合併轉為 AVRX(口服 IL-23),原股東大幅稀釋,-23%" },
-  "LCID": { "Type": "news", "Catalyst": "7/14 聘 AlixPartners 重組,傳考量破產或私有化選項,-4.3%" },
-  "RUBI": { "Type": "news", "Catalyst": "7/15 宣布退出豪華遊艇業,資本轉向油輪核心業務,-12.4%" },
-  "ASTI": { "Type": "momentum", "Catalyst": "7/14 H1 正面回顧後獲利了結賣壓,-11%" },
-  "VEEE": { "Type": "M&A", "Catalyst": "USFM 併購 + Twin Vee 船業私有化計畫,盤前 +22%/盤後 -25.8% 劇烈波動" },
-  "SKHY": { "Type": "macro", "Catalyst": "SK Hynix ADR 隨 AI 交易獲利回吐 + Nasdaq 上市後拋售(韓股 7/13 暴跌 15.4%)下跌,-4.1%" },
-  "SKHU": { "Type": "macro", "Catalyst": "SK Hynix 2X 做多槓桿 ETF,隨 SK Hynix 下跌 -12.8%" },
-  "SKHX": { "Type": "macro", "Catalyst": "SK Hynix 2X 做多槓桿 ETF,隨 SK Hynix 下跌 -12.9%" },
-  "SKHZ": { "Type": "macro", "Catalyst": "SK Hynix 1X 做空 ETF,隨 SK Hynix 下跌而反向 +5.35%" },
-  "MS": { "Type": "earnings", "Catalyst": "7/15 Q2 淨營收 $21.35B(+27% YoY)、EPS $3.46(預期 $2.94)、股票交易收入創紀錄 $6.3B(超預期 $1.9B)、財富管理客戶資產達 $10 兆,+2.98%" },
-  "BLK": { "Type": "earnings", "Catalyst": "7/15 Q2 財報 AUM 創紀錄 $15.3 兆美元、Q2 淨流入 $192 億、營收 +31% YoY(HPS 併購+績效費),+5.61%" },
-  "GS": { "Type": "earnings", "Catalyst": "7/15 Q2 獲利暴增 78%、收入年增 39%,交易與投銀費推升,+0.2%" }
+  "PYPL": {
+    "Type": "M&A",
+    "Catalyst": "7/15 Stripe + Advent International 聯合出價 $53B($60.50/股,較 7/14 收盤 $47.37 溢價 28%)收購;PayPal 尚未回應,+18.6% 但仍折價反映成交疑慮"
+  },
+  "AEHR": {
+    "Type": "earnings",
+    "Catalyst": "7/14 盤後 Q4 FY26 營收 $18.8M(+33% YoY)、非 GAAP EPS $0.11(預期 -$0.01)、預訂 $60.7M/有效積壓 $100.6M 創紀錄、FY27 指引 $130-150M(+160-200%),+30%"
+  },
+  "EOSE": {
+    "Type": "earnings",
+    "Catalyst": "7/14 盤後 Q2 初步營收創紀錄 $68-69M(出貨量增逾 3 倍)、積壓 $807M 創新高、現金 $364M,+6%"
+  },
+  "ERNA": {
+    "Type": "FDA",
+    "Catalyst": "7/15 ERNA-101 獨立 CRO 驗證卵巢癌動物腫瘤完全清除(10/15 存活)、Q3 遞交 IND、Q4 進臨床,+55.6%(市值 ~$11M,ATM 稀釋壓力大)"
+  },
+  "ELVA": {
+    "Type": "contract",
+    "Catalyst": "7/15 Axios Pro 報導 Amazon 與 Electrovaya 達成商業供貨 + 認股權證協議(材料搬運 EV 電池),+23.6%;此前 Roth 6/5 已升目標價至 $20"
+  },
+  "SHMD": {
+    "Type": "guidance",
+    "Catalyst": "7/14 盤後上調 2026 全年訂單指導至 €1.25-1.5億,+12.8%"
+  },
+  "LION": {
+    "Type": "M&A",
+    "Catalyst": "7/14 傳 Lionsgate 探索出售,Bolloré/Banijay 表達興趣,+8.5%"
+  },
+  "TRT": {
+    "Type": "news",
+    "Catalyst": "7/14 三修公司章程,受惠 AI/EV 晶片測試需求,盤後 +16.5%"
+  },
+  "AMPG": {
+    "Type": "news",
+    "Catalyst": "7/7 宣布 $10M 股票回購 + Q1 營收 +48.6%,動能延續 +7%"
+  },
+  "BCRX": {
+    "Type": "analyst",
+    "Catalyst": "JPMorgan 恢復覆蓋,分析師目標價升至 $14-29,+4.6%"
+  },
+  "UMC": {
+    "Type": "news",
+    "Catalyst": "6 月營收年增 22.85%(月營收;Q2 財報 7/29),+6.5%"
+  },
+  "UMAC": {
+    "Type": "news",
+    "Catalyst": "納入 Russell 2000 指數(2026 年首次重組),+4%"
+  },
+  "JLHL": {
+    "Type": "momentum",
+    "Catalyst": "查無明確催化劑,低浮動股波動 +9%"
+  },
+  "ISPC": {
+    "Type": "momentum",
+    "Catalyst": "查無明確催化劑,盤後 +8%/盤前 -7.5% 劇烈波動"
+  },
+  "SHPH": {
+    "Type": "momentum",
+    "Catalyst": "查無明確催化劑,低浮動股拉抬/回落,-11%"
+  },
+  "BMGL": {
+    "Type": "momentum",
+    "Catalyst": "查無明確催化劑,低價股波動 -17.9%"
+  },
+  "QTRX": {
+    "Type": "momentum",
+    "Catalyst": "查無明確催化劑,+4.9%"
+  },
+  "VSA": {
+    "Type": "momentum",
+    "Catalyst": "查無明確催化劑,-9.8%"
+  },
+  "XCUR": {
+    "Type": "momentum",
+    "Catalyst": "查無明確催化劑,低浮動股拉抬,盤後 +26%(11M 量)"
+  },
+  "LESL": {
+    "Type": "momentum",
+    "Catalyst": "查無明確催化劑,-10.9%"
+  },
+  "JTAI": {
+    "Type": "momentum",
+    "Catalyst": "查無明確催化劑,18M 量,-6%"
+  },
+  "PNR": {
+    "Type": "guidance",
+    "Catalyst": "7/15 下修 2026 調整後 EPS 至 $4.60-4.80(原 $5.30-5.40)、Q2 初步營收 ~$930M(-17% YoY)、泳池通路去化衝擊、CFO 請辭,-21.4%"
+  },
+  "CAG": {
+    "Type": "earnings",
+    "Catalyst": "7/15 FY26 Q4 淨銷售 +3.6% 但 GAAP 每股虧損 $3.37(商譽/品牌減損)、調整後 EPS $0.47、FY27 指引 EPS $1.40-1.50(低於 FY26 $1.72),-5.7%"
+  },
+  "NXTC": {
+    "Type": "M&A",
+    "Catalyst": "7/14 與 Avere 全股票逆向合併轉為 AVRX(口服 IL-23),原股東大幅稀釋,-23%"
+  },
+  "LCID": {
+    "Type": "news",
+    "Catalyst": "7/14 聘 AlixPartners 重組,傳考量破產或私有化選項,-4.3%"
+  },
+  "RUBI": {
+    "Type": "news",
+    "Catalyst": "7/15 宣布退出豪華遊艇業,資本轉向油輪核心業務,-12.4%"
+  },
+  "ASTI": {
+    "Type": "momentum",
+    "Catalyst": "7/14 H1 正面回顧後獲利了結賣壓,-11%"
+  },
+  "VEEE": {
+    "Type": "M&A",
+    "Catalyst": "USFM 併購 + Twin Vee 船業私有化計畫,盤前 +22%/盤後 -25.8% 劇烈波動"
+  },
+  "SKHY": {
+    "Type": "macro",
+    "Catalyst": "SK Hynix ADR 隨 AI 交易獲利回吐 + Nasdaq 上市後拋售(韓股 7/13 暴跌 15.4%)下跌,-4.1%"
+  },
+  "SKHU": {
+    "Type": "macro",
+    "Catalyst": "SK Hynix 2X 做多槓桿 ETF,隨 SK Hynix 下跌 -12.8%"
+  },
+  "SKHX": {
+    "Type": "macro",
+    "Catalyst": "SK Hynix 2X 做多槓桿 ETF,隨 SK Hynix 下跌 -12.9%"
+  },
+  "SKHZ": {
+    "Type": "macro",
+    "Catalyst": "SK Hynix 1X 做空 ETF,隨 SK Hynix 下跌而反向 +5.35%"
+  },
+  "MS": {
+    "Type": "earnings",
+    "Catalyst": "7/15 Q2 淨營收 $21.35B(+27% YoY)、EPS $3.46(預期 $2.94)、股票交易收入創紀錄 $6.3B(超預期 $1.9B)、財富管理客戶資產達 $10 兆,+2.98%"
+  },
+  "BLK": {
+    "Type": "earnings",
+    "Catalyst": "7/15 Q2 財報 AUM 創紀錄 $15.3 兆美元、Q2 淨流入 $192 億、營收 +31% YoY(HPS 併購+績效費),+5.61%"
+  },
+  "GS": {
+    "Type": "earnings",
+    "Catalyst": "7/15 Q2 獲利暴增 78%、收入年增 39%,交易與投銀費推升,+0.2%"
+  },
+  "BABA": {
+    "Type": "momentum",
+    "Catalyst": "7/15 +5.9% — 中國科技/AI 族群續漲(納斯達克金龍中國指數走高);雲端 AI 動能 + Nvidia H200 取得放寬 + 資金回補遭錯殺的中概大型股,8/28 財報前卡位"
+  }
 }
