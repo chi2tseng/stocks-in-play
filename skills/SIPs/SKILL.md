@@ -456,9 +456,11 @@ For every `direction = down` candidate: confirm latest reported quarter shows **
 
 ---
 
-## § 6. Phase 5 — TradingView quarterly forecast → raw figures + YoY (**every candidate tagged `Type=earnings`**)
+## § 6. Phase 5 — TradingView quarterly forecast → raw figures + YoY (**掃全部 SCANX;earnings/大名字硬性要、其餘 best-effort**)
 
-For every candidate whose Phase 2 `Type` is `earnings` (or who reported within last 5 trading days), scrape TradingView's FQ quarterly grid and extract BOTH:
+**掃描範圍 = 整個 SCANX(2026-07-16 使用者:「scanx 也要補 TV」)。** 不只 earnings —— **對 `candidates.csv` 每一檔都跑 `node tv-scrape.js`**(§6.1 freshness cache 先套、404 的 micro-cap 跳過)。硬性必有 TV(閘門會擋)= `Type=earnings` + 所有 `Session=headline` 大名字;其餘 SCANX 小型 gapper best-effort,有 TV 頁就補、確實 404 就跳。
+
+每檔抓 TradingView 的 FQ 季度網格,取兩塊:
 1. **Raw figures section** (separate from YoY block) — Latest Reported EPS + Rev with units (e.g. `$534.6M`, `$0.57`), Prior-year same-quarter Reported EPS + Rev, and the next 4 quarterly estimates' EPS + Rev with units. This is critical context the user can sanity-check against headlines.
 2. **Forward YoY block** — strict-format YoY percentages per §6.2 spec.
 
@@ -466,7 +468,7 @@ For every candidate whose Phase 2 `Type` is `earnings` (or who reported within l
 
 Use the **FQ URL trick** — `?earnings-period=FQ&revenues-period=FQ` returns SSR'd quarterly tables without JS interaction.
 
-**Freshness cache (skip re-scrapes):** before scraping, list existing `*-earnings-fq.md` files — **skip any ticker whose file is <3 days old**, UNLESS today's catalyst Type for that ticker is `earnings` (it just reported — the grid changed). Most days this cuts the scrape list from ~30-40 tickers down to the 5-15 fresh reporters. Shard the remainder across **2-3 parallel background `node tv-scrape.js <shard>` processes** (§ 0.6) instead of one serial run.
+**Freshness cache (skip re-scrapes):** 掃描清單 = `candidates.csv` 全部 ticker(§6 範圍:整個 SCANX)。before scraping, list existing `*-earnings-fq.md` files — **skip any ticker whose file is <3 days old**, UNLESS today's catalyst Type for that ticker is `earnings` (it just reported — the grid changed). 其餘沒有新鮮檔的 ticker(大名字 + 小型 gapper 都算)全部進掃描清單。Shard across **2-3 parallel background `node tv-scrape.js <shard>` processes** (§ 0.6) instead of one serial run;404 的無頁 micro-cap 自動跳過。
 
 **⚠ 完整性硬閘門(2026-07-16 升級 — 大股票一律要 TV):push 前必驗。** 大名字(§2.0b/§2.0c 掃進來的 `Session=headline`)**不論是否當日財報,一律要有 TV 季度資料**(使用者:「找完大型股全部都要加上 TV,scanx 當中的都要」)。所以 **`build_dashboard.py` 之後、`git push` 之前**,對今日包跑這個檢查,有缺就補掃再 rebuild,**迴圈到清零**:
 ```bash
