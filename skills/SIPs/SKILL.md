@@ -365,9 +365,10 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 1. **跑 `py bignames-scan.py`**(在 §2.0 pre-scan 同批發射,~30–45s)—— 掃 ~158 檔大型股宇宙(市值 >$10B),印出當日 `|chg| ≥ 2%` 且**不在 candidates.csv** 的名字。門檻可調:`py bignames-scan.py 3`。
 1b. **`<2% 但有重大新聞` 的大名字**(JNJ −1.9%、MS +1.5%、BK −1% 型)bignames-scan(≥2%)和 gap 掃(≥4%)都會漏 → 用 §2.0 已列的 CNBC 掃法抓當日「stocks making the biggest moves premarket/midday」整篇,把裡面**每個** ticker 對照 candidates.csv,有新聞的補入(§2.0b 政策:大公司不看 %)。
 2. 把漏掉的名字併進 §2.1 的 **sonnet catalyst fan-out**(每 6–8 檔一個 sonnet agent,每檔回一句 繁中 catalyst + Type + 標「有無個股新聞 Y/N」;逆勢大跌卻標「查無」的大股,主線自己補查一次,§2.2 distrust guard)。
-3. **全部以 `Session=headline` 補進 `candidates.csv`**(direction 依當日漲跌),**且每一檔大名字都補 TV**(`node tv-scrape.js`,不論是否當日財報 —— 使用者:大型股全部都要 TV;§6.1 完整性硬閘門會擋漏):
-   - **有個股新聞**(財報 / M&A / 指引 / 升降評 / FDA / 合約)→ 給真 catalyst + TV + 寫 `news_detail`。
-   - **純隨大盤/族群**(當日科技 / 中概 rally,無個股消息)→ catalyst 誠實標「隨科技股/中概/族群上漲,無個股重大新聞」,不硬掰;**但 TV 照補**(大公司季度營收本來就有,要顯示)。
+3. **判斷每檔有沒有真新聞 —— 只有有新聞的才進(2026-07-16 使用者:「大公司要有新聞的才放上去,你需要去判斷」)。** `≥2%` 只是**發現門檻**,進不進 dashboard 是**新聞判斷**,不是「有動就放」:
+   - **有真新聞就收** —— 自身事件(財報 / M&A / 指引 / 升降評 / FDA / 合約 / 具體監管),**或特定的族群/cluster 事件根源**(如 BSX 砍指引拖累整個 MedTech、ASML 上修帶動半導體設備)→ `Session=headline` 補入,真 catalyst + **補 TV**(大型股一律補,§6.1 閘門會擋)+ 寫 `news_detail`。
+   - **查不到具體新聞、純隨大盤/宏觀漂**(megacap 隨科技股 rally、中概隨金龍指數、消費股無事上下、技術性回調 / 獲利了結)→ **不要放**。「有幅度但講不出原因」的**不進板**,別把 dashboard 稀釋成一般行情流。
+   - 分不清時,用 sonnet catalyst agent(§2.1)再查一次;逆勢大跌的大股尤其要判斷是**真利空**還是**純族群連動**。
 4. 宇宙可擴充:`bignames-scan.py` 的 `UNIVERSE` 是精選大型股清單;發現漏了某知名大股就把它加進清單,下次自動涵蓋。
 
 ### 2.1 — Per-ticker catalyst hunt
