@@ -1,198 +1,37 @@
 {
-  "TSEM": {
-    "Type": "guidance",
-    "Catalyst": "7/14 宣布 $3B 日本 300mm 擴產(METI $1B 補助),2028 目標上調至營收 $3.6B/淨利 $1.2B"
-  },
-  "CLSK": {
-    "Type": "contract",
-    "Catalyst": "7/14 簽 20 年資料中心租約 $6.6B(可達 $11.6B)、175MW → 換算年化租金營收 ~$330M/年(2027 Q4 起,NNN 近 100% 落地)"
-  },
-  "NXTC": {
-    "Type": "M&A",
-    "Catalyst": "7/14 與 Avere 全股票逆向合併轉為 AVRX+$320M 私募;原股東稀釋至僅 ~1.89%,高投機"
-  },
-  "SHPH": {
-    "Type": "M&A",
-    "Catalyst": "7/14 轉型:併 United Dogecoin 建加密貨幣庫存+AI 藥物探索,微市值($2.8M)投機拉抬"
-  },
-  "LVLU": {
-    "Type": "M&A",
-    "Catalyst": "7/13 董事會特別委員會啟動戰略評估(含 M&A),微型零售股大漲"
-  },
-  "SKHY": {
-    "Type": "news",
-    "Catalyst": "SK 海力士 $26.5B ADR 於 7/10 掛牌(史上最大外企美股);7/14 post-debut 回檔後反彈 +6%"
-  },
-  "FCEL": {
-    "Type": "analyst",
-    "Catalyst": "7/14 UBS 升評至 Buy、目標價上調至 $27,資料中心供電題材"
-  },
-  "SUNE": {
-    "Type": "M&A",
-    "Catalyst": "與 Suniva 合併整合美國最大太陽能電池廠;油價/能源族群走強"
-  },
-  "AXTI": {
-    "Type": "macro",
-    "Catalyst": "化合物半導體 AI 基建需求;TSMC 6 月營收 +68% 帶動族群"
-  },
-  "AAOI": {
-    "Type": "macro",
-    "Catalyst": "AI 光學晶片需求;半導體族群反彈(TSMC 6 月營收 +68%)"
-  },
-  "AMAT": {
-    "Type": "macro",
-    "Catalyst": "半導體設備族群反彈:TSMC 6 月營收 +68%,CEO 稱需求能見度延至 2030(非個股新催化)"
-  },
-  "SNDK": {
-    "Type": "analyst",
-    "Catalyst": "Evercore 上調目標價至 $3,100(NBM 供貨協議 >$62B),NAND 記憶體超級週期"
-  },
-  "CRDO": {
-    "Type": "analyst",
-    "Catalyst": "BofA 升目標價至 $340,AI 連接方案需求;Stifel/Evercore 同步看多"
-  },
-  "LITE": {
-    "Type": "macro",
-    "Catalyst": "光通訊/半導體族群反彈,AI 基建需求樂觀"
-  },
-  "LRCX": {
-    "Type": "macro",
-    "Catalyst": "AI 晶片設備需求;半導體族群反彈"
-  },
-  "GLW": {
-    "Type": "macro",
-    "Catalyst": "半導體/光纖族群反彈,AI 基建光學題材"
-  },
-  "EHGO": {
-    "Type": "momentum",
-    "Catalyst": "微型股動能;7 月配股後散戶炒作,無重大基本面消息"
-  },
-  "SKYQ": {
-    "Type": "news",
-    "Catalyst": "內華達煉油廠重啟投產,轉入實際生產模式"
-  },
-  "BAC": {
-    "Type": "earnings",
-    "Catalyst": "Q2 財報獲利超預期,淨利穩健成長;銀行財報季開局(+0.4%)"
-  },
-  "WFC": {
-    "Type": "earnings",
-    "Catalyst": "Q2 EPS 超預期,銀行獲利回升;財報季開局偏多(+0.9%)"
-  },
-  "JPM": {
-    "Type": "earnings",
-    "Catalyst": "Q2 EPS $7.70 超預期 $5.59(+37.8%)、營收 $57.35B;但盤前小幅走弱 -0.3%(利多出盡)"
-  },
-  "GS": {
-    "Type": "earnings",
-    "Catalyst": "Q2 破紀錄:EPS $20.98 遠超 $14.5、營收 $20.34B 超 $16.3B、GB&M +53% YoY;股價仍 -0.95%(利多出盡)"
-  },
-  "IBM": {
-    "Type": "earnings",
-    "Catalyst": "7/14 提前預告 Q2 不如預期:營運 EPS $2.93 vs $3.01、營收 $17.2B vs $17.86B,基建(大型主機)-7%"
-  },
-  "ERIC": {
-    "Type": "earnings",
-    "Catalyst": "Q2 EPS SEK1.22 微超但營收 -6% YoY(SEK52.7B)不如預期,Networks 疲弱、東北亞 -16%"
-  },
-  "ACN": {
-    "Type": "momentum",
-    "Catalyst": "隨 IBM 財報引發的軟體/IT 服務族群下殺(自身指引砍在 6/18,今日為同族群連動)"
-  },
-  "NOW": {
-    "Type": "momentum",
-    "Catalyst": "隨 IBM 財報引發企業軟體族群下殺(自身未於今日發財報)"
-  },
-  "CRM": {
-    "Type": "analyst",
-    "Catalyst": "分析師降評+軟體族群連動下跌,Agentforce 滲透率疑慮"
-  },
-  "ADBE": {
-    "Type": "momentum",
-    "Catalyst": "分析師目標價下調+軟體族群連動下跌(上季實為超預期)"
-  },
-  "SAP": {
-    "Type": "momentum",
-    "Catalyst": "軟體族群連動下跌+中東地緣風險;維持全年雲端指引"
-  },
-  "INFY": {
-    "Type": "momentum",
-    "Catalyst": "Accenture 指引警訊+IBM 財報引發 IT 服務族群走弱"
-  },
-  "PATH": {
-    "Type": "analyst",
-    "Catalyst": "分析師目標價下調至 $13;軟體族群連動下跌"
-  },
-  "PLTR": {
-    "Type": "momentum",
-    "Catalyst": "隨軟體族群下跌+中東地緣政治風險調整"
-  },
-  "ZETA": {
-    "Type": "earnings",
-    "Catalyst": "上季 Q1 營收 $396M 超預期(+50% surp)、EPS 超預期;月初反彈後獲利回吐"
-  },
-  "FIG": {
-    "Type": "momentum",
-    "Catalyst": "短佣 42% 前日軋空 +11.9% 後盤前回檔,獲利了結"
-  },
-  "GENI": {
-    "Type": "momentum",
-    "Catalyst": "機構持股增加但盤後回檔;無重大新利空"
-  },
-  "PENG": {
-    "Type": "guidance",
-    "Catalyst": "發行 $650M 可轉債引發股本稀釋擔憂,盤後 -6.85%"
-  },
-  "EVO": {
-    "Type": "guidance",
-    "Catalyst": "下調全年營收指引至 €570-610M、EBITDA 轉負,盤前 -14.82%"
-  },
-  "QTTB": {
-    "Type": "FDA",
-    "Catalyst": "bempikibart 試驗達標(脫髮改善);盤後回檔(利多出盡/獲利了結)"
-  },
-  "GMM": {
-    "Type": "momentum",
-    "Catalyst": "微型 AI 股高波動;6 月空頭大減後回吐,無明確催化劑"
-  },
-  "UONEK": {
-    "Type": "momentum",
-    "Catalyst": "營收年減 16% 持續走弱,盤前 -17.12%,無新催化劑"
-  },
-  "VEEE": {
-    "Type": "M&A",
-    "Catalyst": "USFM 併購並私有化遊艇業務;前日狂漲後獲利回吐 -15.89%"
-  },
-  "YHC": {
-    "Type": "news",
-    "Catalyst": "100:1 反向分割生效+$7.1M 融資稀釋,股價重挫 -10.89%"
-  },
-  "MIMI": {
-    "Type": "momentum",
-    "Catalyst": "微型股高波動,查無明確催化劑"
-  },
-  "JLHL": {
-    "Type": "momentum",
-    "Catalyst": "微型股高波動,查無明確催化劑"
-  },
-  "C": {
-    "Type": "earnings",
-    "Catalyst": "7/14 Q2 大超預期:EPS $3.15 vs $2.74、營收 $24.77B(+14% YoY)、股票交易 +45% 創紀錄,+1.5%"
-  },
-  "MS": {
-    "Type": "news",
-    "Catalyst": "銀行財報季走強帶動,+3.47%;自身 7/15 才報財報(GS/Citi/JPM 皆超預期,市場提前卡位)"
-  },
-  "NVDA": {
-    "Type": "news",
-    "Catalyst": "Google 擴大 TPU 對外銷售(The Information)威脅 AI 硬體霸主 + Kyber 機櫃延至 2028,-2.97%"
-  },
-  "CRWD": {
-    "Type": "analyst",
-    "Catalyst": "AI 資安需求超級週期:UBS 估安全市場 2026 $974B→2029 $1.19T;Benchmark/UBS 調升目標價至 $230/$235,+10.86%"
-  },
-  "PANW": {
-    "Type": "analyst",
-    "Catalyst": "AI 資安需求超級週期(Mythos 攻擊型 AI 逼出剛需);CEO 稱 Mythos 後 1,200+ 客戶接洽,+7.92%"
-  }
+  "PYPL": { "Type": "M&A", "Catalyst": "7/15 Stripe + Advent International 聯合出價 $53B($60.50/股,較 7/14 收盤 $47.37 溢價 28%)收購;PayPal 尚未回應,+18.6% 但仍折價反映成交疑慮" },
+  "AEHR": { "Type": "earnings", "Catalyst": "7/14 盤後 Q4 FY26 營收 $18.8M(+33% YoY)、非 GAAP EPS $0.11(預期 -$0.01)、預訂 $60.7M/有效積壓 $100.6M 創紀錄、FY27 指引 $130-150M(+160-200%),+30%" },
+  "EOSE": { "Type": "earnings", "Catalyst": "7/14 盤後 Q2 初步營收創紀錄 $68-69M(出貨量增逾 3 倍)、積壓 $807M 創新高、現金 $364M,+6%" },
+  "ERNA": { "Type": "FDA", "Catalyst": "7/15 ERNA-101 獨立 CRO 驗證卵巢癌動物腫瘤完全清除(10/15 存活)、Q3 遞交 IND、Q4 進臨床,+55.6%(市值 ~$11M,ATM 稀釋壓力大)" },
+  "ELVA": { "Type": "contract", "Catalyst": "7/15 Axios Pro 報導 Amazon 與 Electrovaya 達成商業供貨 + 認股權證協議(材料搬運 EV 電池),+23.6%;此前 Roth 6/5 已升目標價至 $20" },
+  "SHMD": { "Type": "guidance", "Catalyst": "7/14 盤後上調 2026 全年訂單指導至 €1.25-1.5億,+12.8%" },
+  "LION": { "Type": "M&A", "Catalyst": "7/14 傳 Lionsgate 探索出售,Bolloré/Banijay 表達興趣,+8.5%" },
+  "TRT": { "Type": "news", "Catalyst": "7/14 三修公司章程,受惠 AI/EV 晶片測試需求,盤後 +16.5%" },
+  "AMPG": { "Type": "news", "Catalyst": "7/7 宣布 $10M 股票回購 + Q1 營收 +48.6%,動能延續 +7%" },
+  "BCRX": { "Type": "analyst", "Catalyst": "JPMorgan 恢復覆蓋,分析師目標價升至 $14-29,+4.6%" },
+  "UMC": { "Type": "news", "Catalyst": "6 月營收年增 22.85%(月營收;Q2 財報 7/29),+6.5%" },
+  "UMAC": { "Type": "news", "Catalyst": "納入 Russell 2000 指數(2026 年首次重組),+4%" },
+  "JLHL": { "Type": "momentum", "Catalyst": "查無明確催化劑,低浮動股波動 +9%" },
+  "ISPC": { "Type": "momentum", "Catalyst": "查無明確催化劑,盤後 +8%/盤前 -7.5% 劇烈波動" },
+  "SHPH": { "Type": "momentum", "Catalyst": "查無明確催化劑,低浮動股拉抬/回落,-11%" },
+  "BMGL": { "Type": "momentum", "Catalyst": "查無明確催化劑,低價股波動 -17.9%" },
+  "QTRX": { "Type": "momentum", "Catalyst": "查無明確催化劑,+4.9%" },
+  "VSA": { "Type": "momentum", "Catalyst": "查無明確催化劑,-9.8%" },
+  "XCUR": { "Type": "momentum", "Catalyst": "查無明確催化劑,低浮動股拉抬,盤後 +26%(11M 量)" },
+  "LESL": { "Type": "momentum", "Catalyst": "查無明確催化劑,-10.9%" },
+  "JTAI": { "Type": "momentum", "Catalyst": "查無明確催化劑,18M 量,-6%" },
+  "PNR": { "Type": "guidance", "Catalyst": "7/15 下修 2026 調整後 EPS 至 $4.60-4.80(原 $5.30-5.40)、Q2 初步營收 ~$930M(-17% YoY)、泳池通路去化衝擊、CFO 請辭,-21.4%" },
+  "CAG": { "Type": "earnings", "Catalyst": "7/15 FY26 Q4 淨銷售 +3.6% 但 GAAP 每股虧損 $3.37(商譽/品牌減損)、調整後 EPS $0.47、FY27 指引 EPS $1.40-1.50(低於 FY26 $1.72),-5.7%" },
+  "NXTC": { "Type": "M&A", "Catalyst": "7/14 與 Avere 全股票逆向合併轉為 AVRX(口服 IL-23),原股東大幅稀釋,-23%" },
+  "LCID": { "Type": "news", "Catalyst": "7/14 聘 AlixPartners 重組,傳考量破產或私有化選項,-4.3%" },
+  "RUBI": { "Type": "news", "Catalyst": "7/15 宣布退出豪華遊艇業,資本轉向油輪核心業務,-12.4%" },
+  "ASTI": { "Type": "momentum", "Catalyst": "7/14 H1 正面回顧後獲利了結賣壓,-11%" },
+  "VEEE": { "Type": "M&A", "Catalyst": "USFM 併購 + Twin Vee 船業私有化計畫,盤前 +22%/盤後 -25.8% 劇烈波動" },
+  "SKHY": { "Type": "macro", "Catalyst": "SK Hynix ADR 隨 AI 交易獲利回吐 + Nasdaq 上市後拋售(韓股 7/13 暴跌 15.4%)下跌,-4.1%" },
+  "SKHU": { "Type": "macro", "Catalyst": "SK Hynix 2X 做多槓桿 ETF,隨 SK Hynix 下跌 -12.8%" },
+  "SKHX": { "Type": "macro", "Catalyst": "SK Hynix 2X 做多槓桿 ETF,隨 SK Hynix 下跌 -12.9%" },
+  "SKHZ": { "Type": "macro", "Catalyst": "SK Hynix 1X 做空 ETF,隨 SK Hynix 下跌而反向 +5.35%" },
+  "MS": { "Type": "earnings", "Catalyst": "7/15 Q2 淨營收 $21.35B(+27% YoY)、EPS $3.46(預期 $2.94)、股票交易收入創紀錄 $6.3B(超預期 $1.9B)、財富管理客戶資產達 $10 兆,+2.98%" },
+  "BLK": { "Type": "earnings", "Catalyst": "7/15 Q2 財報 AUM 創 $1.534 兆美元、淨流入 $192 億,+5.61%" },
+  "GS": { "Type": "earnings", "Catalyst": "7/15 Q2 獲利暴增 78%、收入年增 39%,交易與投銀費推升,+0.2%" }
 }
