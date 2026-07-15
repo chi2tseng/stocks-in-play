@@ -35,7 +35,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 | Step | Tool | Time | Cost | Output |
 |---|---|---|---|---|
 | 1. Gap scan | `node ./barchart-scrape.js` (Playwright + XHR intercept) | ~7s | $0 | `candidates.csv` (84-ish rows) |
-| 2. Catalyst hunt | **4-6 個 `general-purpose` Agents** on **`model: "haiku"`** (§ 0.5), **6-8 檔 each**(依當日候選數動態分片,同一訊息一次全發)doing parallel WebSearches on **all** candidates | ~90s | $0 | inline markdown table → updates `catalysts` dict in `build_report.py` |
+| 2. Catalyst hunt | **4-6 個 `general-purpose` Agents** on **`model: "sonnet"`** (§ 0.5), **6-8 檔 each**(依當日候選數動態分片,同一訊息一次全發)doing parallel WebSearches on **all** candidates | ~90s | $0 | inline markdown table → updates `catalysts` dict in `build_report.py` |
 | 3. TradingView FQ | `node ./tv-scrape.js TICKER1 TICKER2 ...` | ~3-5s per ticker | $0 | `<TICKER>-earnings-fq.md` |
 | 4. Parse TV | `py ./parse_tv.py` | <1s | $0 | `tv-summary.json` + `tv-summary.csv` |
 | 4b. Backfill earnings dates | `py ./fetch_earnings_dates.py` | ~5-15s | $0 | Updates `tv-summary.json` in place. For tickers TV showed "Next report date" (no past date), queries NASDAQ's earnings-surprise endpoint for the most recent `dateReported`. Pushes coverage from ~70% → ~94%. |
@@ -73,14 +73,14 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 
 **Principle: cheap models GATHER, the smartest model JUDGES.** All final analysis — MiLan 深度拆解, Tier ratings, claude_picks rankings, the 繁中 brief — is composed by the MAIN model (Fable / Opus max). Everything mechanical (web searches, scraping, fact collection, table assembly) is delegated to cheap subagents. A previous run burned ~400k subagent tokens at main-model pricing because Agent calls inherited the parent model — never again.
 
-**主跑模型 = Opus 4.8(或當前 session 模型)** — 路由表不變:haiku 蒐集(催化劑/pre-scan)、sonnet 事實包、主模型判斷與寫作。
+**主跑模型 = Opus 4.8(或當前 session 模型)** — 路由表不變:sonnet 蒐集(催化劑/pre-scan)、sonnet 事實包、主模型判斷與寫作。
 
 **Hard routing table (when running under Claude Code — Agent tool `model` param):**
 
 | Work | Who | Why |
 |---|---|---|
-| Phase 2.0 macro/policy pre-scan | 1 Agent, `model: "haiku"` | 5 WebSearches + cluster-map assembly is mechanical. Returns ≤600-token cluster map. |
-| Phase 2.1 per-ticker catalyst hunt | **4-6 個 haiku agents**, `model: "haiku"`, **6-8 檔 each**(依當日候選數動態分片) | One-line catalyst per ticker = summarization, not judgment. 更多更小的分片 → 同一訊息一次全發、目標 ~90 秒回齊。 |
+| Phase 2.0 macro/policy pre-scan | 1 Agent, `model: "sonnet"` | 5 WebSearches + cluster-map assembly is mechanical. Returns ≤600-token cluster map. |
+| Phase 2.1 per-ticker catalyst hunt | **4-6 個 sonnet agents**, `model: "sonnet"`, **6-8 檔 each**(依當日候選數動態分片) | 催化劑含方向 + 新聞真偽判斷,不只是摘要 → 用 sonnet 降低誤標(sonnet 曾標錯方向 / 假查無)。分片仍要小、同一訊息一次全發,目標 ~90 秒回齊。 |
 | Phase 8 fact-sheet gathering (top-10 deep-dive research) | **每 2 檔一個 sonnet agent(約 5-7 個)**, `model: "sonnet"` | 8-K parsing + segment/guidance numbers need care but not genius. Facts only, no verdicts. 小分片 + 6 分鐘硬上限避免單一 agent 拖垮全 run。 |
 | MAGNA53 classification, day_resets judgment | MAIN model | Judgment calls on the already-compact table. |
 | § 7.0 MiLan 深度拆解 + Tier ratings | **MAIN model — NEVER delegate** | This is the product. |
@@ -98,7 +98,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 - Don't re-read files you just wrote. Don't echo full file contents to "verify" — spot-check 1-2 fields.
 - WebSearch/WebFetch in the main context is allowed ONLY during final analysis when a specific fact is missing from the fact sheets (target: ≤5 such calls per run).
 
-**Cost math (why this matters):** gathering ≈ 400-500k tokens/run. At main-model pricing that dwarfs everything else; on haiku it's ~1/10th the cost, on sonnet ~1/3. Final analysis is ~30-60k tokens and stays premium. Net effect: same-quality picks at roughly 70-85% lower spend.
+**Cost math (why this matters):** gathering ≈ 400-500k tokens/run. At main-model pricing that dwarfs everything else; on sonnet it's ~1/3 the cost of the main model (haiku would be ~1/10th, but catalyst research needs sonnet's judgment — direction + real-news calls — so we pay for accuracy here). Final analysis is ~30-60k tokens and stays premium. Net effect: same-quality picks at roughly 70-85% lower spend.
 
 **When running under Gemini/Codex CLI** (`/SIPs-gemini-full`, `/SIPs-codex-full`): the Agent-model params don't exist there — keep the same structure (delegate gathering to whatever cheap sub-mechanism is available, or just do it inline) and keep the output caps + main-context hygiene rules, which save tokens on any runtime.
 
@@ -106,7 +106,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 
 ## § 0.6 Wall-clock parallelization (SPEED rule — launch order ≠ phase order)
 
-> **主跑模型 = Opus 4.8(或當前 session 模型)。** 路由表不變:haiku 蒐集、sonnet 事實包、主模型判斷與寫作。以下的 fan-out/join 骨架就是要讓主模型的寫作時間蓋住其餘所有 I/O。
+> **主跑模型 = Opus 4.8(或當前 session 模型)。** 路由表不變:sonnet 蒐集、sonnet 事實包、主模型判斷與寫作。以下的 fan-out/join 骨架就是要讓主模型的寫作時間蓋住其餘所有 I/O。
 
 The § numbering below is the LOGICAL order, not the execution order. Phases 2 / 5 / 5b / 9b have **no data dependencies between each other** — only Phase 1's `candidates.csv` gates them. Run the pipeline as a fan-out, not a chain:
 
@@ -115,10 +115,10 @@ The § numbering below is the LOGICAL order, not the execution order. Phases 2 /
 **T+0 — Phase 1**: `node barchart-scrape.js` (~7s, foreground — everything needs candidates.csv).
 
 **T+7s — fan out EVERYTHING at once** (background bash + background agents, all launched in a single message):
-1. **4-6 個 haiku catalyst agents (§ 2.1),每個 6-8 檔**(依當日候選數動態分片,同一訊息一次全發,目標 ~90 秒回齊)— do **NOT** wait for the cluster map
-2. 1× haiku pre-scan agent (§ 2.0) — its cluster map gets applied later at the § 2.2 cross-check
+1. **4-6 個 sonnet catalyst agents (§ 2.1),每個 6-8 檔**(依當日候選數動態分片,同一訊息一次全發,目標 ~90 秒回齊)— do **NOT** wait for the cluster map
+2. 1× sonnet pre-scan agent (§ 2.0) — its cluster map gets applied later at the § 2.2 cross-check
 3. `node finviz-shorts.js` (background bash, ~90s)
-4. **投機 X 查證(§ 2.3):同一批 fan-out 就發 `node x-scrape.js`** 給「`|chgPct|` 最大的 5 檔低價/低市值候選」— **不等 haiku 標「查無」**,資料先到手;§ 2.3 的正式查證與一級源對照照舊。
+4. **投機 X 查證(§ 2.3):同一批 fan-out 就發 `node x-scrape.js`** 給「`|chgPct|` 最大的 5 檔低價/低市值候選」— **不等 sonnet 標「查無」**,資料先到手;§ 2.3 的正式查證與一級源對照照舊。
 5. **TV scrape(§ 6.1):先跑凍結快取檢查**;stale 且**疑似 earnings** 的 → **T+7s 就發 1 個分片**;其餘 tickers 等 Join #1 的 Type 標籤確定後,再開 **2 個分片**補跑(freshness cache 先套 — skip files <3 days old)。
 6. `py fetch_candles.py` (background bash — candidates + studies are already known; picks ⊆ candidates by the direction-match rule, so no need to wait for picks)
 7. `py bignames-scan.py` (background bash, ~30–45s — §2.0c 大型股 ≥2% 全掃;回來的漏網大股併進 §2.1 catalyst fan-out,以 `Session=headline` 補入)
@@ -298,7 +298,7 @@ Combine gainers + losers into one list. Mark each row as `direction = up | down`
 
 **Always start Phase 2 with this pre-scan** BEFORE touching individual tickers. The goal is a 5-10 row "policy / sector cluster map" of today's biggest catalysts.
 
-**Delegate it (§ 0.5 routing): spawn ONE Agent with `model: "haiku"`** whose prompt contains today's ISO date + the source table below + the candidate ticker list, and instructs it to run the searches in parallel and return ONLY the cluster map (≤600 tokens, format as in the example below). Do NOT run these 5 WebSearches in the main context — that's ~10k tokens of raw search results the main model doesn't need to see. **Launch it in the SAME message as the § 2.1 catalyst agents (§ 0.6) — don't serialize.** The map lands ~30-60s later and gets applied at the § 2.2 cross-check.
+**Delegate it (§ 0.5 routing): spawn ONE Agent with `model: "sonnet"`** whose prompt contains today's ISO date + the source table below + the candidate ticker list, and instructs it to run the searches in parallel and return ONLY the cluster map (≤600 tokens, format as in the example below). Do NOT run these 5 WebSearches in the main context — that's ~10k tokens of raw search results the main model doesn't need to see. **Launch it in the SAME message as the § 2.1 catalyst agents (§ 0.6) — don't serialize.** The map lands ~30-60s later and gets applied at the § 2.2 cross-check.
 
 Resolve today's date once at the top of the phase (e.g. `2026-05-21`) and inject it into EVERY query — the LLM will otherwise serve cached results from weeks ago.
 
@@ -329,7 +329,7 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 
 **Why:** 有名的大公司(AAPL / NVDA / AVGO / TSLA / AMZN / MSFT / GOOGL / META / JPM …)常有**重大當日新聞**(財報、併購、大型分析師動作、產品發表、指引、法律/監管、重大合作),卻**未必** gap 到 ±4%,因此不會出現在 `candidates.csv`。只要知名公司登上當日頭條,**就算沒有 4% gap 也要補進來**。
 
-**做什麼(在 §2.0 pre-scan 時一併產出):** 在 §2.0 的 haiku pre-scan agent prompt 內**加一項輸出** — 除了 cluster map,另回傳一份 **`headline_bignames` 清單**:當日**真正登上一級財經頭條**(WSJ / Reuters / Bloomberg / CNBC / Briefing.com)的知名/大型公司,每檔附一句 繁中 catalyst + Type + 消息面漲跌方向。**收錄門檻見下方兩條(2026-07-15 起:大公司不看漲跌幅 %,只看新聞夠不夠重大)。**
+**做什麼(在 §2.0 pre-scan 時一併產出):** 在 §2.0 的 sonnet pre-scan agent prompt 內**加一項輸出** — 除了 cluster map,另回傳一份 **`headline_bignames` 清單**:當日**真正登上一級財經頭條**(WSJ / Reuters / Bloomberg / CNBC / Briefing.com)的知名/大型公司,每檔附一句 繁中 catalyst + Type + 消息面漲跌方向。**收錄門檻見下方兩條(2026-07-15 起:大公司不看漲跌幅 %,只看新聞夠不夠重大)。**
 
 **頭條來源(pre-scan agent 實際要去掃的頁面 — firecrawl scrape 或 WebSearch,注入今日 ISO 日期):**
 - **CNBC:** `https://www.cnbc.com/markets/`、`https://www.cnbc.com/pre-markets/`、CNBC 首頁 top stories
@@ -364,7 +364,7 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 
 1. **跑 `py bignames-scan.py`**(在 §2.0 pre-scan 同批發射,~30–45s)—— 掃 ~158 檔大型股宇宙(市值 >$10B),印出當日 `|chg| ≥ 2%` 且**不在 candidates.csv** 的名字。門檻可調:`py bignames-scan.py 3`。
 1b. **`<2% 但有重大新聞` 的大名字**(JNJ −1.9%、MS +1.5%、BK −1% 型)bignames-scan(≥2%)和 gap 掃(≥4%)都會漏 → 用 §2.0 已列的 CNBC 掃法抓當日「stocks making the biggest moves premarket/midday」整篇,把裡面**每個** ticker 對照 candidates.csv,有新聞的補入(§2.0b 政策:大公司不看 %)。
-2. 把漏掉的名字併進 §2.1 的 **haiku catalyst fan-out**(每 6–8 檔一個 haiku agent,每檔回一句 繁中 catalyst + Type + 標「有無個股新聞 Y/N」;逆勢大跌卻標「查無」的大股,主線自己補查一次,§2.2 distrust guard)。
+2. 把漏掉的名字併進 §2.1 的 **sonnet catalyst fan-out**(每 6–8 檔一個 sonnet agent,每檔回一句 繁中 catalyst + Type + 標「有無個股新聞 Y/N」;逆勢大跌卻標「查無」的大股,主線自己補查一次,§2.2 distrust guard)。
 3. **全部以 `Session=headline` 補進 `candidates.csv`**(direction 依當日漲跌),**且每一檔大名字都補 TV**(`node tv-scrape.js`,不論是否當日財報 —— 使用者:大型股全部都要 TV;§6.1 完整性硬閘門會擋漏):
    - **有個股新聞**(財報 / M&A / 指引 / 升降評 / FDA / 合約)→ 給真 catalyst + TV + 寫 `news_detail`。
    - **純隨大盤/族群**(當日科技 / 中概 rally,無個股消息)→ catalyst 誠實標「隨科技股/中概/族群上漲,無個股重大新聞」,不硬掰;**但 TV 照補**(大公司季度營收本來就有,要顯示)。
@@ -372,7 +372,7 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 
 ### 2.1 — Per-ticker catalyst hunt
 
-**Efficient delegation pattern (§ 0.5 routing — MANDATORY, not optional):** delegate the per-ticker hunt to **at most 3 Agents with `model: "haiku"`**, ~25 tickers each (don't spawn 6+ agents — each carries prompt overhead). **Launch these in the SAME message as the § 2.0 pre-scan agent (§ 0.6) — do NOT block waiting for the cluster map**; the § 2.2 cross-check applies clusters afterward. (If a same-day cluster map already exists from an earlier run, include it in the prompt so agents can short-circuit.) Ask each agent to return a structured markdown table with columns `Ticker | Type | Cluster | 繁體中文 catalyst` (Type ∈ {earnings, analyst, guidance, contract, M&A, FDA, news, momentum, macro, **policy**}). **Output caps in the prompt: table ONLY, ≤40 字 per catalyst, NO sources list, NO preamble, NO per-ticker EPS/Rev columns** (those come from tv-summary.json later — don't make a haiku search for numbers the pipeline already scrapes). Main model reads back 3 compact tables (~2k tokens total) instead of doing 60+ searches itself.
+**Efficient delegation pattern (§ 0.5 routing — MANDATORY, not optional):** delegate the per-ticker hunt to **at most 3 Agents with `model: "sonnet"`**, ~25 tickers each (don't spawn 6+ agents — each carries prompt overhead). **Launch these in the SAME message as the § 2.0 pre-scan agent (§ 0.6) — do NOT block waiting for the cluster map**; the § 2.2 cross-check applies clusters afterward. (If a same-day cluster map already exists from an earlier run, include it in the prompt so agents can short-circuit.) Ask each agent to return a structured markdown table with columns `Ticker | Type | Cluster | 繁體中文 catalyst` (Type ∈ {earnings, analyst, guidance, contract, M&A, FDA, news, momentum, macro, **policy**}). **Output caps in the prompt: table ONLY, ≤40 字 per catalyst, NO sources list, NO preamble, NO per-ticker EPS/Rev columns** (those come from tv-summary.json later — don't make a sonnet search for numbers the pipeline already scrapes). Main model reads back 3 compact tables (~2k tokens total) instead of doing 60+ searches itself.
 
 For each candidate (parallelize in batches of ~5 in your own context, or delegate to the agent above), run these in parallel:
 
@@ -427,14 +427,14 @@ Once all per-ticker catalysts are written, **walk the list once more** and look 
 
 The cluster cross-check is cheap (just rewrites text from already-fetched data) but high-yield — it's the difference between "RGTI: 暫無明確催化劑" and "RGTI: 量子族群集體跳漲 (政府 $2B 補助)".
 
-**Big-mover distrust guard (quality backstop for § 0.5's haiku routing):** the MAIN model must NOT blindly trust a cheap agent's "momentum / 無明確催化 / micro-float 拉抬" label on any candidate with **|chgPct| ≥ 15% OR volume ≥ 5M**. For those (typically 2-4 per day), run ONE quick main-context WebSearch yourself to confirm there's genuinely no news before locking the label — a mislabeled big mover is exactly the ticker that would wrongly miss the top-10 deep-dive cut. This spends 2-3 of the ≤5 main-context search budget; small movers keep the haiku label as-is.
+**Big-mover distrust guard (quality backstop for § 0.5's sonnet routing):** the MAIN model must NOT blindly trust a cheap agent's "momentum / 無明確催化 / micro-float 拉抬" label on any candidate with **|chgPct| ≥ 15% OR volume ≥ 5M**. For those (typically 2-4 per day), run ONE quick main-context WebSearch yourself to confirm there's genuinely no news before locking the label — a mislabeled big mover is exactly the ticker that would wrongly miss the top-10 deep-dive cut. This spends 2-3 of the ≤5 main-context search budget; small movers keep the sonnet label as-is.
 
 ### 2.3 — X / 難觸及來源(Playwright 工具箱,WebSearch 到不了的地方)
 
 **X(Twitter)cashtag 搜尋:`node D:\SIPs\x-scrape.js SYM1 SYM2 ...`**(≤8 檔/次,輸出 `x-posts.json`,每檔 live 搜尋前 ~15 則:作者/時間/內文/互動數)。
 
 - **一次性設定:`node x-scrape.js --login`**(開視窗登入 X,cookie 存 `.x-profile/`,已 gitignore;未登入時腳本會自動 STOP 並指路,不會出假資料)
-- **何時跑(2026-07-16 使用者:找 catalyst 時一律一併參考 X):** **標準做法** —— 對 catalyst 研究名單的 top 候選**一律跑 `x-scrape`**,把 X 上的即時新聞、盤前情緒、突發消息當**補充參考**,與 WebSearch 一級源並列查證(用 haiku fan-out 分片跑、不佔主模型)。**必跑**:(a) distrust-guard 名單 |chg|≥15% 且 haiku 標「查無/momentum」;(b) 疑似傳聞驅動、主流源查不到根源的大 mover。
+- **何時跑(2026-07-16 使用者:找 catalyst 時一律一併參考 X):** **標準做法** —— 對 catalyst 研究名單的 top 候選**一律跑 `x-scrape`**,把 X 上的即時新聞、盤前情緒、突發消息當**補充參考**,與 WebSearch 一級源並列查證(用 sonnet fan-out 分片跑、不佔主模型)。**必跑**:(a) distrust-guard 名單 |chg|≥15% 且 sonnet 標「查無/momentum」;(b) 疑似傳聞驅動、主流源查不到根源的大 mover。
 - 讀結果用 `py -c` 選讀 `x-posts.json`(禁整包 Read);X 找到的線索要回頭用 WebSearch 對一級源確認
 - **紀律:X 內容=傳聞層** — 寫進 catalyst/news_detail/rationale 必標「X 傳聞未證實」,不得當一級源;腳本遇 captcha/驗證挑戰會自動 STOP,**禁止繞過**
 - X 未登入或被擋 → 跳過此步照常出報告(X 是補充來源,不是依賴)
@@ -479,7 +479,7 @@ py -c "import json; d=json.load(open('dashboard/data/<今日ISO>.json',encoding=
 清單非空 → `node tv-scrape.js <那些SYM>` → `py parse_tv.py` → `py build_report.py` → `py build_dashboard.py` → 再驗。**涵蓋範圍 = 今日全部 `Type=earnings` + 全部 `Session=headline` 大名字**(SCANX 出線的大股一律算,不只財報股、不只 top-10;連純隨大盤的大公司也要補 —— 它們的季度營收本來就有)。SCANX 的小型 gapper 也 best-effort 補;TV 三交易所都 404(確實無頁)才放行,並在 catalyst 註明「無 TradingView 季度資料」。
 **TV EPS 失真:** 少數 ADR/雙重口徑股(如 BABA,GAAP vs ADS)TV 的 EPS surprise 會離譜(例 −89.9%);**仍保留 TV(季度營收有效)**,但在 `news_detail` 標一句「EPS 口徑失真、以營收為準」,不把離譜 EPS 當真數字引用。
 **股價 candles 也一樣要(2026-07-16 使用者:「除了 TV 股價也要」):** `py fetch_candles.py <今日ISO>` 對今日包**全部候選**抓 6 個月日K(整個 SCANX 都涵蓋),寫 `dashboard/candles.json` 給個股詳細頁的 股價走勢 圖。`build_dashboard.py` 會印 `[!! CANDLES-MISSING !!]` 列出缺 candle 的大名字 —— 缺就補跑 `fetch_candles` 再 build,直到大名字全有。
-**省 token / 平行(2026-07-16 使用者:「多個 agent、依類型分配、省 token」):** TV scrape(§6.1 分片並行 `node tv-scrape.js`)與 `fetch_candles.py` 是**獨立機械活 → 同批平行跑**(§0.6 fan-out),交給 **bash 背景程序或 haiku agent 依類型分片**(大名字 shard / 小型 gapper shard / candles),**絕不佔主模型**;主模型只做判斷與寫作(§0.5)。
+**省 token / 平行(2026-07-16 使用者:「多個 agent、依類型分配、省 token」):** TV scrape(§6.1 分片並行 `node tv-scrape.js`)與 `fetch_candles.py` 是**獨立機械活 → 同批平行跑**(§0.6 fan-out),交給 **bash 背景程序依類型分片(大名字 / 小型 gapper / candles;機械活,不需 LLM agent)**,**絕不佔主模型**;主模型只做判斷與寫作(§0.5)。
 
 #### Primary tool: **Playwright** (default since 2026-05-13)
 
