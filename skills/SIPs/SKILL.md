@@ -110,6 +110,8 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 
 The § numbering below is the LOGICAL order, not the execution order. Phases 2 / 5 / 5b / 9b have **no data dependencies between each other** — only Phase 1's `candidates.csv` gates them. Run the pipeline as a fan-out, not a chain:
 
+**T+0a — 啟動本地 dashboard(2026-07-16 使用者:每次跑 /SIPs 都要起本地站):** 用 `preview_start` 起 `sips-dashboard`(`.claude/launch.json` 已設 → `py sidecar.py`,port 5510;idempotent,已在跑就重用)。這樣整趟跑資料時 http://127.0.0.1:5510/ 都開著、寫入 data 檔就自動刷新。(auto_start_dashboard.vbs 開機也會起,但 /SIPs 一律主動確認一次。)
+
 **T+0 — Phase 1**: `node barchart-scrape.js` (~7s, foreground — everything needs candidates.csv).
 
 **T+7s — fan out EVERYTHING at once** (background bash + background agents, all launched in a single message):
@@ -432,7 +434,7 @@ The cluster cross-check is cheap (just rewrites text from already-fetched data) 
 **X(Twitter)cashtag 搜尋:`node D:\SIPs\x-scrape.js SYM1 SYM2 ...`**(≤8 檔/次,輸出 `x-posts.json`,每檔 live 搜尋前 ~15 則:作者/時間/內文/互動數)。
 
 - **一次性設定:`node x-scrape.js --login`**(開視窗登入 X,cookie 存 `.x-profile/`,已 gitignore;未登入時腳本會自動 STOP 並指路,不會出假資料)
-- **何時跑(選用,但這兩種情況必跑):**(a) distrust-guard 名單 — |chg|≥15% 且 haiku 標「查無/momentum」;(b) 疑似傳聞驅動、主流源查不到根源的大 mover
+- **何時跑(2026-07-16 使用者:找 catalyst 時一律一併參考 X):** **標準做法** —— 對 catalyst 研究名單的 top 候選**一律跑 `x-scrape`**,把 X 上的即時新聞、盤前情緒、突發消息當**補充參考**,與 WebSearch 一級源並列查證(用 haiku fan-out 分片跑、不佔主模型)。**必跑**:(a) distrust-guard 名單 |chg|≥15% 且 haiku 標「查無/momentum」;(b) 疑似傳聞驅動、主流源查不到根源的大 mover。
 - 讀結果用 `py -c` 選讀 `x-posts.json`(禁整包 Read);X 找到的線索要回頭用 WebSearch 對一級源確認
 - **紀律:X 內容=傳聞層** — 寫進 catalyst/news_detail/rationale 必標「X 傳聞未證實」,不得當一級源;腳本遇 captcha/驗證挑戰會自動 STOP,**禁止繞過**
 - X 未登入或被擋 → 跳過此步照常出報告(X 是補充來源,不是依賴)
