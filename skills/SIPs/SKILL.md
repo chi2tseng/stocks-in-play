@@ -326,10 +326,7 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 
 **Why:** 有名的大公司(AAPL / NVDA / AVGO / TSLA / AMZN / MSFT / GOOGL / META / JPM …)常有**重大當日新聞**(財報、併購、大型分析師動作、產品發表、指引、法律/監管、重大合作),卻**未必** gap 到 ±4%,因此不會出現在 `candidates.csv`。只要知名公司登上當日頭條,**就算沒有 4% gap 也要補進來**。
 
-**做什麼(在 §2.0 pre-scan 時一併產出):** 在 §2.0 的 haiku pre-scan agent prompt 內**加一項輸出** — 除了 cluster map,另回傳一份 **`headline_bignames` 清單**:當日**真正登上一級財經頭條**(WSJ / Reuters / Bloomberg / CNBC / Briefing.com)的知名/大型公司,每檔附一句 繁中 catalyst + Type + 消息面漲跌方向。收錄門檻(需**同時**成立):
-1. **知名度/規模** — 家喻戶曉或大型股(市值 ≳ $10B);
-2. **具體且重大的當日催化劑**(不是「股價小動」而已);
-3. 消息**確實在當日頭條**、一級源可查。
+**做什麼(在 §2.0 pre-scan 時一併產出):** 在 §2.0 的 haiku pre-scan agent prompt 內**加一項輸出** — 除了 cluster map,另回傳一份 **`headline_bignames` 清單**:當日**真正登上一級財經頭條**(WSJ / Reuters / Bloomberg / CNBC / Briefing.com)的知名/大型公司,每檔附一句 繁中 catalyst + Type + 消息面漲跌方向。**收錄門檻見下方兩條(2026-07-15 起:大公司不看漲跌幅 %,只看新聞夠不夠重大)。**
 
 **頭條來源(pre-scan agent 實際要去掃的頁面 — firecrawl scrape 或 WebSearch,注入今日 ISO 日期):**
 - **CNBC:** `https://www.cnbc.com/markets/`、`https://www.cnbc.com/pre-markets/`、CNBC 首頁 top stories
@@ -339,9 +336,12 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 - **Briefing.com InPlay**(§2.0 已列)、**MarketWatch** `https://www.marketwatch.com/`、**Yahoo Finance trending tickers**
 - 補搜:WebSearch `most talked about stocks today <今日ISO>` / `site:cnbc.com OR site:wsj.com <今日ISO> stock OR shares`
 
-從這些頭條頁抓出反覆出現的**知名公司**,再套上面三條門檻。優先讀 CNBC / WSJ 的 markets 頭條(使用者指定)。
+從這些頭條頁抓出反覆出現的**知名公司**,套下面**兩條**門檻(2026-07-15 使用者砍掉「%」那條):
+1. **知名度/規模** — 家喻戶曉或大型股(市值 ≳ $10B)。
+2. **有重大/實質的當日新聞** — 財報、併購、FDA、大型合約、重大分析師動作(升降評/大幅調 PT)、監管/法律、產品發表、指引 等。**漲跌幅 % 完全不列入判斷**:漲、跌、還是幾乎沒動都收,唯一要件是「新聞夠重大 + 一級源當日可查」(WSJ/Reuters/Bloomberg/CNBC/Briefing/公司 IR/SEC,不是傳聞)。
+優先讀 CNBC / WSJ 的 markets 頭條(使用者指定)。
 
-**每天上限約 3-8 檔**,只收真正重要的 — 不要把 /SIPs 變成一般新聞流。已在 gap 掃描裡的名字不用重複列。
+**寧可多收、別漏(2026-07-15 使用者:「大公司不用管 %,就都要抓新聞;重大新聞一樣放上 SCANX」)。** 不設硬性檔數上限 —— 只要是知名/大型公司 + 當日有**重大新聞**,一律收,**完全不看漲跌幅**。唯一過濾條件是「新聞不夠重大」(純股價小動、沒有實質新聞的才不收)。已在 gap 掃描裡的名字不用重複列。
 
 **注入管線:** 對每檔 headline 名單:
 - 抓**即時報價**(Yahoo `v8/finance/chart` 或 Finviz)取 Last / %Chg / Volume。
