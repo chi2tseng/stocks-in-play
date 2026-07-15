@@ -348,7 +348,7 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 - **附加一列到 `candidates.csv`**:`Session=headline`、`Direction=up|down`(依當日漲跌)、`SessionDate=<今日 ISO>`、Name 補公司全名。
 - 之後照常走 §2.1 catalyst 補強、Phase 5 TV、§8.1 `news_detail.json`、`claude_picks.json`、dashboard。
 - **⚠ 大公司一律補 TV(2026-07-14 使用者硬性指示):** 只要是知名/大型股且當日報財報(earnings 類,如 GS/JPM/BAC/WFC/IBM),**務必 `node tv-scrape.js <SYM>` + `py parse_tv.py`**,讓個股詳細頁有季度 EPS/營收圖 + MarketSurge 表 + Forward YoY。headline 大公司只要是 earnings,就不能只有一句 catalyst 而缺 TV 資料。(這批 earnings 名字要一起在 §6.1 的 TV scrape 分片內;**publish 前用 §6.1 的完整性硬閘門驗證無漏**。)
-- **⚠ Barchart 只掃 pre/post-market,盤中 regular-hours 大動的知名股會整個漏掉(2026-07-15:BABA 盤中 +5.9% 沒進 candidates.csv)。** §2.0 pre-scan 抓頭條時,**額外快掃當日 regular-session 漲跌榜的知名/大型股**(Finviz `ta_topgainers`/`ta_toplosers`、Yahoo trending、CNBC market movers),把 |chg| ≥ ~4% 的 megacap 也以 `Session=headline` 補入。非財報日的大動(如 China-AI 族群續漲)Type 標 `momentum`/`news`,不要硬套 earnings TV。
+- **⚠ 剛好卡在 ±4% 門檻下的知名大股會被硬濾掉(2026-07-15 實例:BABA 盤前 +3.97% 跳空,差 0.03% 被 4.0% 濾網刷掉,盤中才衝 +5.9%)。** BABA **確實在** barchart 盤前 feed(`barchart-pre-advances-*.json`,preMarketPercentChange +3.97%),只是被 `qualifies()` 的 `>=4.0` 切掉。§2.0 pre-scan 抓頭條時,**要順掃 barchart 原始 pre/post feed 裡卡在 ~3–4% 的知名/大型股**(直接讀 `barchart-*-advances-*.json` 找 megacap,或 Finviz movers / Yahoo trending),接近門檻 + 有新聞的 megacap 一律以 `Session=headline` 補入 —— 別讓 4.0% 硬切點漏掉正在 play 的大公司。非財報日的大動(如 China-AI 族群續漲)Type 標 `momentum`/`news`,不硬套 earnings TV。
 - 這些**不需**通過 ±4% 濾網;仍照 §4 做 MAGNA53 分類。故事夠強可入 claude_picks(遵守 direction-match:只有 chgPct>0 才 `intent=long`,chgPct<0 才 `intent=short`)。
 
 **視覺標記:** `Session=headline` 讓 dashboard 以「頭條」標籤與 4% gapper 區分。`build_dashboard.py` 已讀 `candidates.csv`,附加列自動納入;若某檔 MAGNA53 分數未達 SIP 卡門檻,仍會出現在完整候選清單 / SCANX / 個股詳細頁(即「有補上」)。
