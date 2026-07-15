@@ -347,7 +347,8 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 - 抓**即時報價**(Yahoo `v8/finance/chart` 或 Finviz)取 Last / %Chg / Volume。
 - **附加一列到 `candidates.csv`**:`Session=headline`、`Direction=up|down`(依當日漲跌)、`SessionDate=<今日 ISO>`、Name 補公司全名。
 - 之後照常走 §2.1 catalyst 補強、Phase 5 TV、§8.1 `news_detail.json`、`claude_picks.json`、dashboard。
-- **⚠ 大公司一律補 TV(2026-07-14 使用者硬性指示):** 只要是知名/大型股且當日報財報(earnings 類,如 GS/JPM/BAC/WFC/IBM),**務必 `node tv-scrape.js <SYM>` + `py parse_tv.py`**,讓個股詳細頁有季度 EPS/營收圖 + MarketSurge 表 + Forward YoY。headline 大公司只要是 earnings,就不能只有一句 catalyst 而缺 TV 資料。(這批 earnings 名字要一起在 §6.1 的 TV scrape 分片內。)
+- **⚠ 大公司一律補 TV(2026-07-14 使用者硬性指示):** 只要是知名/大型股且當日報財報(earnings 類,如 GS/JPM/BAC/WFC/IBM),**務必 `node tv-scrape.js <SYM>` + `py parse_tv.py`**,讓個股詳細頁有季度 EPS/營收圖 + MarketSurge 表 + Forward YoY。headline 大公司只要是 earnings,就不能只有一句 catalyst 而缺 TV 資料。(這批 earnings 名字要一起在 §6.1 的 TV scrape 分片內;**publish 前用 §6.1 的完整性硬閘門驗證無漏**。)
+- **⚠ Barchart 只掃 pre/post-market,盤中 regular-hours 大動的知名股會整個漏掉(2026-07-15:BABA 盤中 +5.9% 沒進 candidates.csv)。** §2.0 pre-scan 抓頭條時,**額外快掃當日 regular-session 漲跌榜的知名/大型股**(Finviz `ta_topgainers`/`ta_toplosers`、Yahoo trending、CNBC market movers),把 |chg| ≥ ~4% 的 megacap 也以 `Session=headline` 補入。非財報日的大動(如 China-AI 族群續漲)Type 標 `momentum`/`news`,不要硬套 earnings TV。
 - 這些**不需**通過 ±4% 濾網;仍照 §4 做 MAGNA53 分類。故事夠強可入 claude_picks(遵守 direction-match:只有 chgPct>0 才 `intent=long`,chgPct<0 才 `intent=short`)。
 
 **視覺標記:** `Session=headline` 讓 dashboard 以「頭條」標籤與 4% gapper 區分。`build_dashboard.py` 已讀 `candidates.csv`,附加列自動納入;若某檔 MAGNA53 分數未達 SIP 卡門檻,仍會出現在完整候選清單 / SCANX / 個股詳細頁(即「有補上」)。
@@ -453,6 +454,13 @@ For every candidate whose Phase 2 `Type` is `earnings` (or who reported within l
 Use the **FQ URL trick** — `?earnings-period=FQ&revenues-period=FQ` returns SSR'd quarterly tables without JS interaction.
 
 **Freshness cache (skip re-scrapes):** before scraping, list existing `*-earnings-fq.md` files — **skip any ticker whose file is <3 days old**, UNLESS today's catalyst Type for that ticker is `earnings` (it just reported — the grid changed). Most days this cuts the scrape list from ~30-40 tickers down to the 5-15 fresh reporters. Shard the remainder across **2-3 parallel background `node tv-scrape.js <shard>` processes** (§ 0.6) instead of one serial run.
+
+**⚠ 完整性硬閘門(2026-07-15 使用者再次要求 — 大股票不能缺 TV):push 前必驗。** §2.0b 的頭條大公司常在 Phase 2 後段才加進候選,容易漏掉 TV scrape(BLK/MS 2026-07-15 就中招:headline earnings 卻無 EPS/Rev)。所以 **`build_dashboard.py` 之後、`git push` 之前**,對今日包跑這個檢查,有缺就補掃再 rebuild,**迴圈到清零**:
+```bash
+py -c "import json; d=json.load(open('dashboard/data/<今日ISO>.json',encoding='utf-8')); m=[k for k,v in d['stocks'].items() if v.get('type')=='earnings' and not v.get('tv')]; print('缺 TV 的 earnings:', m or '無')"
+```
+清單非空 → `node tv-scrape.js <那些SYM>` → `py parse_tv.py` → `py build_report.py` → `py build_dashboard.py` → 再驗。**涵蓋範圍 = 今日全部 `Type=earnings`(headline 大公司 + SCANX 出線的都算,不是只有 top-10)。** 唯一放行例外:TV 三交易所都 404(確實無頁),此時在該檔 catalyst 註明「無 TradingView 季度資料」。
+**TV EPS 失真擋一下:** 少數 ADR/雙重口徑股(如 BABA,GAAP vs ADS)TV 會給出離譜的 EPS surprise(例 −89.9%);若 `|surpriseEPS_pct|` 大得不合理且與新聞不符,**寧可拿掉該檔 TV 區塊、把營收寫進 news_detail 散文**,也不要 publish 假的財報 miss。
 
 #### Primary tool: **Playwright** (default since 2026-05-13)
 
