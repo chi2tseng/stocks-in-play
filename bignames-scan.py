@@ -31,15 +31,28 @@ HCA CI MCK COR
 """.split()
 
 def chg_today(sym):
+    # Pre/post-aware (2026-07-16 ABT lesson): daily closes are blind to pre-market —
+    # at 9am ET the "today" bar doesn't exist yet, so an earnings-morning pop like
+    # ABT +3% pre (→ +12% by close) showed as +0.35% (yesterday vs day-before).
+    # Use intraday bars WITH includePrePost, last trade vs previous close.
+    try:
+        u = f'https://query1.finance.yahoo.com/v8/finance/chart/{sym}?range=1d&interval=5m&includePrePost=true'
+        r = json.load(urllib.request.urlopen(urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0'}), timeout=12))['chart']['result'][0]
+        cl = [c for c in r['indicators']['quote'][0]['close'] if c is not None]
+        m = r.get('meta', {})
+        pc = m.get('chartPreviousClose') or m.get('previousClose')
+        last = cl[-1] if cl else m.get('regularMarketPrice')
+        if last and pc:
+            return round((last - pc) / pc * 100, 2), round(last, 2)
+    except Exception:
+        pass
+    # fallback: daily closes (old behavior)
     try:
         u = f'https://query1.finance.yahoo.com/v8/finance/chart/{sym}?range=5d&interval=1d'
         r = json.load(urllib.request.urlopen(urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0'}), timeout=12))['chart']['result'][0]
-        q = r['indicators']['quote'][0]
-        cl = [c for c in q['close'] if c is not None]
+        cl = [c for c in r['indicators']['quote'][0]['close'] if c is not None]
         if len(cl) >= 2:
             return round((cl[-1] - cl[-2]) / cl[-2] * 100, 2), round(cl[-1], 2)
-        m = r.get('meta', {}); p = m.get('regularMarketPrice'); pc = m.get('chartPreviousClose')
-        if p and pc: return round((p - pc) / pc * 100, 2), round(p, 2)
     except Exception:
         pass
     return None

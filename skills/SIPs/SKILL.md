@@ -130,7 +130,7 @@ py -c "import urllib.request; print('ALIVE', urllib.request.urlopen('http://127.
 4. **投機 X 查證(§ 2.3):同一批 fan-out 就發 `node x-scrape.js`** 給「`|chgPct|` 最大的 5 檔低價/低市值候選」— **不等 sonnet 標「查無」**,資料先到手;§ 2.3 的正式查證與一級源對照照舊。
 5. **TV scrape(§ 6.1):先跑凍結快取檢查**;stale 且**疑似 earnings** 的 → **T+7s 就發 1 個分片**;其餘 tickers 等 Join #1 的 Type 標籤確定後,再開 **2 個分片**補跑(freshness cache 先套 — skip files <3 days old)。
 6. `py fetch_candles.py` (background bash — candidates + studies are already known; picks ⊆ candidates by the direction-match rule, so no need to wait for picks)
-7. `py bignames-scan.py` (background bash, ~30–45s — §2.0c 大型股 ≥2% 全掃;回來的漏網大股併進 §2.1 catalyst fan-out,以 `Session=headline` 補入)
+7. `py bignames-scan.py` + `py earnings-today-scan.py` (background bash, ~30–45s — §2.0c 大型股 ≥2% 全掃(盤前/盤後感知)+ §2.0d 財報日曆硬閘門;回來的漏網大股併進 §2.1 catalyst fan-out,以 `Session=headline` 補入。**push 前兩個腳本都要重跑一次(§2.0d late sweep)**)
 
 **While the fan-out runs (~90s–2 min)**, the main model does zero-dependency work: day_resets context review, Phase 10b OHLCV prep, studies placeholder checks.
 
@@ -379,6 +379,16 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
    - **查不到具體新聞、純隨大盤/宏觀漂**(megacap 隨科技股 rally、中概隨金龍指數、消費股無事上下、技術性回調 / 獲利了結)→ **不要放**。「有幅度但講不出原因」的**不進板**,別把 dashboard 稀釋成一般行情流。
    - 分不清時,用 sonnet catalyst agent(§2.1)再查一次;逆勢大跌的大股尤其要判斷是**真利空**還是**純族群連動**。
 4. 宇宙可擴充:`bignames-scan.py` 的 `UNIVERSE` 是精選大型股清單;發現漏了某知名大股就把它加進清單,下次自動涵蓋。
+
+### 2.0d — 財報日曆硬閘門 + 發布前 late sweep(2026-07-16 ABT 教訓;確定性,不看報價)
+
+> **2026-07-16 漏掉 ABT(盤前報 Q2 +12%)的教訓:所有防線(barchart ≥4%、bignames-scan ≥2% 快照、pre-scan agent 判斷)全都依賴「當下報價快照」,而快照在財報日早晨是移動標靶** — ABT 掃描時盤前只 +3.15% 被 4% 濾網刷掉、bignames-scan 的日 K 收盤比較看不見盤前價(+0.35%)、agent 也沒點名。但「今天誰報財報」是**日曆上事先可知**的事,不該靠報價去發現。
+
+1. **跑 `py earnings-today-scan.py`**(T+7s fan-out 同批發,~20-30s)— 拉 NASDAQ 財報日曆(今日 BMO+AMC + 昨日 AMC),過濾市值 ≥$10B 或 bignames UNIVERSE 名單,印出**不在 candidates.csv 的今日申報者**(附盤前/盤後即時報價)。**MISSING>0 → 每一檔一律以 `Session=headline`、`Type=earnings` 補入**,不看漲跌幅(§2.0b:大公司報財報 = 自動有新聞),照常補 TV + catalyst。
+2. **bignames-scan 已改為盤前/盤後感知**(includePrePost 5 分 K 最後成交 vs 前收),盤前跳空不再隱形 — 但日曆閘門仍是主網,報價網是輔助。
+3. **發布前 late sweep(硬性步驟):`git push` 之前重跑 `py earnings-today-scan.py` + `py bignames-scan.py` 一次** — 盤中才發酵的財報行情(ABT 盤前 +3% → 盤中 +12%)、盤中公布的大新聞,第一輪掃描抓不到。兩個腳本輸出 MISSING 皆為 0(或已判斷排除並記錄原因)才准 push。
+4. 當日盤後將公布財報的大名字(如 NFLX/ISRG 型)若已明顯提前佈局(|chg| ≥ 2%)也補入;平盤者在 brief 尾註「今晚報財報」即可,不硬塞。
+
 
 ### 2.1 — Per-ticker catalyst hunt
 
