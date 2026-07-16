@@ -160,6 +160,16 @@ if os.path.exists(news_detail_path):
     with open(news_detail_path, 'r', encoding='utf-8') as f:
         news_detail_raw = json.load(f)
 
+# --- Load optional Sean-perspective analysis file — fully independent of news_detail.json.
+# Schema: { "<TICKER>": { "analysis": "<markdown string>", "sourceDate": "YYYY-MM-DD" }, ... }
+# Surfaces as stocks[sym]['seanAnalysis'] (dict or None) and renders as its own card on the
+# stock-detail page, separate from the News Detail card. Missing file → empty dict, no crash.
+sean_analysis_path = os.path.join(DIR, 'sean_analysis.json')
+sean_analysis_raw = {}
+if os.path.exists(sean_analysis_path):
+    with open(sean_analysis_path, 'r', encoding='utf-8') as f:
+        sean_analysis_raw = json.load(f)
+
 # --- Load optional Finviz shorts file (built by finviz-shorts.js) ---
 # Schema: { "<TICKER>": { status, shortFloat, shortRatio, marketCap_M, floatShares_M,
 #                         perf1M, perf3M, perf6M, perfYTD, perf12M, ... }, ... }
@@ -347,6 +357,8 @@ for sym in all_syms:
         'publishedAt': news_publishedAt,
         'publishedTimezone': news_publishedTz,
         'sources': news_sources,
+        # Sean 視角 — independent of newsDetail above; sourced from sean_analysis.json.
+        'seanAnalysis': sean_analysis_raw.get(sym) if isinstance(sean_analysis_raw.get(sym), dict) else None,
         'sessions': cands,
         'primarySession': primary['session'],
         'primaryDirection': primary['direction'],
@@ -673,6 +685,9 @@ INDEX_HTML = r'''<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@500;600;700&display=swap">
+<!-- Material Symbols — used by the "Sean 視角" stock-detail card header icon (feature/UI icons
+     use this set per design convention; short-form emoji stays confined to captions/chat). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,400,0,0&display=swap">
 <style>
 :root {
   --primary: #494fdf;
@@ -2150,6 +2165,16 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
   font-family: var(--font-mono);
 }
 .news-detail-meta svg { width: 12px; height: 12px; }
+
+/* Sean 視角 card — independent of .news-detail's data source but reuses its markdown body
+   styling (p/strong/blockquote) via the shared class. Only the header icon is card-specific. */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal;
+  line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block;
+  white-space: nowrap; word-wrap: normal; direction: ltr;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.sean-analysis h3 .material-symbols-outlined { font-size: 17px; vertical-align: -3px; margin-right: 6px; color: var(--primary); }
 
 /* Company News history (thefly-style) */
 .news-history-card { background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-lg); margin-bottom: 16px; }
@@ -5113,6 +5138,17 @@ async function renderStock(sym) {
   } else if (fallbackCatalyst) {
     newsDetailHtml = `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3>${metaPill}<p>${escapeHtml(fallbackCatalyst)}</p>${sourcesHtml}</div>`;
   }
+  // Sean 視角 · Stocks in Play — wholly independent card, own data source (s.seanAnalysis /
+  // sean_analysis.json, keyed by symbol, unrelated to newsDetail above). Only renders when
+  // present; markdown body reuses mdNewsToHtml, same as the News Detail card.
+  let seanAnalysisHtml = '';
+  if (s.seanAnalysis && s.seanAnalysis.analysis) {
+    const seanBody = mdNewsToHtml(s.seanAnalysis.analysis);
+    const seanMeta = s.seanAnalysis.sourceDate
+      ? `<div class="news-detail-meta">${clockSvg()}<span>分析基準日 ${escapeHtml(s.seanAnalysis.sourceDate)}</span></div>`
+      : '';
+    seanAnalysisHtml = `<div class="stock-card news-detail sean-analysis"><h3><span class="material-symbols-outlined">insights</span>Sean 視角 <span class="label-en">Stocks in Play</span></h3>${seanMeta}${seanBody}</div>`;
+  }
   // Stock-detail header pills — split into TWO rows:
   //   • headerShortPills:  Short Float + DTC (Finviz-sourced shorts metrics)
   //   • headerSurpPills:   EPS Surp + Rev Surp (TradingView FQ earnings surprise, pos/neg tinted)
@@ -5150,6 +5186,7 @@ async function renderStock(sym) {
       </div>
     </div>
     ${newsDetailHtml}
+    ${seanAnalysisHtml}
     <div class="chart-wrap">
       <div class="stock-card"><h3>EPS Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.eps || ''}</div>
       <div class="stock-card"><h3>Revenue Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.rev || ''}</div>
