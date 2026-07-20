@@ -1,274 +1,154 @@
 {
- "AMAT": {
-  "Type": "macro",
-  "Catalyst": "半導體設備股全面重挫，SOX跌逾4%，Broadcom AI晶片指引$16B遜於$17.4B預期引發賣壓"
- },
- "ASX": {
-  "Type": "macro",
-  "Catalyst": "全球晶片股獲利了結賣壓，SanDisk/Micron領跌、台股半導體重挫拖累封測ADR"
- },
- "CRDO": {
-  "Type": "momentum",
-  "Catalyst": "隨晶片股全面拋售同步下挫，6月底遭降評至Sell、50倍本益比估值過高承壓"
- },
- "UMC": {
-  "Type": "macro",
-  "Catalyst": "台灣晶圓代工ADR隨台股半導體重挫（當日跌逾6%）同步下跌"
- },
- "STM": {
-  "Type": "macro",
-  "Catalyst": "STMicroelectronics隨全球半導體賣壓下挫，晶片類股回調"
- },
- "TSM": {
-  "Type": "earnings",
-  "Catalyst": "Q2獲利年增77%創高，但股價仍跌逾2-4%，AI晶片賣壓拖累半導體類股"
- },
- "MU": {
-  "Type": "news",
-  "Catalyst": "中國CXMT擬7/27辦$86億記憶體IPO競爭疑慮，記憶體股重挫約5%"
- },
- "SNDK": {
-  "Type": "news",
-  "Catalyst": "同CXMT中國記憶體競爭疑慮，SanDisk重挫逾12%"
- },
- "WDC": {
-  "Type": "news",
-  "Catalyst": "同CXMT中國記憶體競爭疑慮，Western Digital重挫約9%"
- },
- "GOOGL": {
-  "Type": "news",
-  "Catalyst": "Bloomberg傳Gemini 3.5 Pro延遲，疊加AI資本支出（2026約$1800-1900億）與自由現金流壓縮疑慮，跌約4%"
- },
- "HIVE": {
-  "Type": "macro",
-  "Catalyst": "比特幣跌破$64k、ETF資金流出＋聯準會維持高利率，礦股連動重挫"
- },
- "BILI": {
-  "Type": "macro",
-  "Catalyst": "全球AI晶片股拋售連動，中國ADR普遍走弱、人氣科技股遭獲利了結"
- },
- "KC": {
-  "Type": "macro",
-  "Catalyst": "AI雲端類股遭獲利了結，全球晶片股崩跌拖累軟體股，放空盤同步增加"
- },
- "NIO": {
-  "Type": "news",
-  "Catalyst": "中國6月NEV零售銷量年減9%、連6個月下滑，拖累電動車類股"
- },
- "PONY": {
-  "Type": "macro",
-  "Catalyst": "全球AI晶片拋售波及自駕/機器人計程車類股，延續近月弱勢"
- },
- "XPEV": {
-  "Type": "news",
-  "Catalyst": "同NIO，中國6月NEV零售銷量年減9%、消費需求疲弱拖累股價"
- },
- "NFLX": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS $0.80優於預期$0.79，但營收$125.6億不及$125.8億、財測保守股重挫9%，市值蒸發約$257億"
- },
- "ISRG": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS $2.80超預期、營收$28.9億年增18.4%、手術量增16%，惟2026指引保守挫約11%"
- },
- "PSNL": {
-  "Type": "M&A",
-  "Catalyst": "傳公司探索出售可能性，併購題材帶動股價由盤中低點反彈漲逾5%"
- },
- "RGNX": {
-  "Type": "news",
-  "Catalyst": "宣布$1億公開增發稀釋＋Zacks降至強力賣出，盤後重挫約14%（盤前一度跌逾18%）"
- },
- "KLRS": {
-  "Type": "FDA",
-  "Catalyst": "ASRS年會公布TH103一期擴大佇列20例6個月數據未超預期，引發賣壓挫約6-10%"
- },
- "GSK": {
-  "Type": "FDA",
-  "Catalyst": "慢性咳嗽藥camlipixant三期CALM-2未達主要終點、終止開發，重擊$20億Bellus收購案"
- },
- "TFC": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS $1.23（GAAP）超預期$1.08、營收$5.27B優於預期，盤前上漲"
- },
- "FITB": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS $0.83（調整後$1.02）稍低於預期$0.84，Comerica併購後首季"
- },
- "RF": {
-  "Type": "earnings",
-  "Catalyst": "Q2調整後EPS $0.68優於預期$0.63、淨利$5.49億，但營收略遜預期"
- },
- "HDB": {
-  "Type": "earnings",
-  "Catalyst": "印度HDFC銀行；實際財報日為7/18，今日盤前小幅走高"
- },
- "IBN": {
-  "Type": "earnings",
-  "Catalyst": "印度ICICI銀行；實際財報日為7/18，今日盤前小幅走高"
- },
- "TRV": {
-  "Type": "earnings",
-  "Catalyst": "Q2財報優於預期（開盤前公布），股價上漲逾2%"
- },
- "AA": {
-  "Type": "earnings",
-  "Catalyst": "Q2調整EPS $2.12不如預期$2.32，同時宣布$47億收購South32旗下資產，股價下跌"
- },
- "BIYA": {
-  "Type": "news",
-  "Catalyst": "上週1比10反向分割生效、流通股驟減觸發軋空，無新業務消息"
- },
- "SDOT": {
-  "Type": "news",
-  "Catalyst": "7/8股價崩跌後停牌，7/16復牌並以增發新股清償債務"
- },
- "VEEE": {
-  "Type": "M&A",
-  "Catalyst": "7/13宣布與USFM子公司合併、船艇業務私有化，今日為消息後續震盪"
- },
- "PMAX": {
-  "Type": "momentum",
-  "Catalyst": "低浮動軋空、無明確消息（3月曾提波士頓太陽能收購意向、4月已反分割）"
- },
- "JLHL": {
-  "Type": "momentum",
-  "Catalyst": "低浮動軋空、無明確消息，近期監管疑慮下大幅震盪"
- },
- "LBGJ": {
-  "Type": "momentum",
-  "Catalyst": "低浮動軋空、無明確消息（近期擴大$6000萬ATM增發為潛在壓力）"
- },
- "ATPC": {
-  "Type": "news",
-  "Catalyst": "Jane Street 7/16申報持股5%帶動大漲42%後，今日獲利了結拉回"
- },
- "JTAI": {
-  "Type": "M&A",
-  "Catalyst": "$320M新併購意向書（非約束力）引發執行與稀釋風險質疑，續跌"
- },
- "DRCT": {
-  "Type": "momentum",
-  "Catalyst": "無明確新消息，今年已兩次反向分割後低浮動籌碼遭空方追殺"
- },
- "DXST": {
-  "Type": "momentum",
-  "Catalyst": "7/16爆量飆漲逾25%後獲利了結拉回，無新增利空"
- },
- "GNPX": {
-  "Type": "news",
-  "Catalyst": "1-for-22反向分割7/16生效，股價技術性重挫"
- },
- "PURR": {
-  "Type": "news",
-  "Catalyst": "加密貨幣HYPE遭a16z關聯錢包拋售逾$3000萬，代幣重挫拖累母股"
- },
- "RUBI": {
-  "Type": "news",
-  "Catalyst": "股東7/9核准未來可執行1-for-250反向分割，油輪股持續稀釋疑慮"
- },
- "WYHG": {
-  "Type": "momentum",
-  "Catalyst": "中概微型股，低浮動震盪、無明確消息"
- },
- "INTC": {
-  "Type": "macro",
-  "Catalyst": "晶片股全面殺盤，Intel隨半導體族群回檔（AI支出疑慮＋CXMT記憶體競爭）"
- },
- "DELL": {
-  "Type": "macro",
-  "Catalyst": "AI伺服器股隨半導體/AI資本支出疑慮殺盤下挫"
- },
- "ARM": {
-  "Type": "macro",
-  "Catalyst": "AI晶片設計股隨半導體殺盤下挫，AI支出疑慮壓抑估值"
- },
- "KLAC": {
-  "Type": "macro",
-  "Catalyst": "半導體設備股殺盤，SOX重挫連動（同AMAT/LRCX）"
- },
- "LRCX": {
-  "Type": "macro",
-  "Catalyst": "半導體設備股殺盤，與AMAT/KLAC同步回檔"
- },
- "COHR": {
-  "Type": "macro",
-  "Catalyst": "光通訊/雷射股隨AI硬體殺盤回檔"
- },
- "GLW": {
-  "Type": "macro",
-  "Catalyst": "康寧光纖/玻璃基板隨AI硬體族群回檔"
- },
- "AAOI": {
-  "Type": "macro",
-  "Catalyst": "AI光通訊模組股隨半導體全面殺盤連動"
- },
- "AXTI": {
-  "Type": "macro",
-  "Catalyst": "化合物半導體隨晶片族群賣壓下挫"
- },
- "NVVE": {
-  "Type": "momentum",
-  "Catalyst": "EV充電微型股，低浮動震盪、無明確消息"
- },
- "SPCX": {
-  "Type": "momentum",
-  "Catalyst": "低流動性標的、無明確個股消息"
- },
- "STAK": {
-  "Type": "momentum",
-  "Catalyst": "微型股低浮動急拉、無明確消息"
- },
- "AMD": {
-  "Type": "macro",
-  "Catalyst": "半導體族群拋售 — SK Hynix HBM 需求放緩疑慮 + TSMC 資本支出,AI晶片股同步走弱"
- },
- "MXL": {
-  "Type": "macro",
-  "Catalyst": "類比/連接晶片隨半導體族群拋售,SOX -4%"
- },
- "NVTS": {
-  "Type": "macro",
-  "Catalyst": "功率半導體隨族群拋售,SOX -4%"
- },
- "ON": {
-  "Type": "macro",
-  "Catalyst": "onsemi 隨半導體族群拋售,SOX -4%"
- },
- "VRT": {
-  "Type": "macro",
-  "Catalyst": "資料中心電源/散熱股隨 AI/半導體族群回調"
- },
- "ABT": {
-  "Type": "earnings",
-  "Catalyst": "Q2 調整後 EPS $1.31 超預期 $1.28、營收 +13%，上調全年 EPS 指引至 $5.45-5.60；MedTech 遭錯殺後大反彈 +12%"
- },
- "BLK": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS $13.91、營收 $70.8 億超預期，AUM 創 $15 兆新高，+6.6%"
- },
- "ELV": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS $7.45 超預期上調指引至 ≥$27，惟 MLR 上升疑慮壓過利多，跌 8.5%"
- },
- "CIFR": {
-  "Type": "macro",
-  "Catalyst": "比特幣續跌+AI資料中心資本支出疑慮(Meta自建雲端),礦商股承壓"
- },
- "DGXX": {
-  "Type": "momentum",
-  "Catalyst": "查無明確催化劑,疑隨族群/技術面"
- },
- "JHX": {
-  "Type": "macro",
-  "Catalyst": "公債殖利率走高、房貸利率升至6.55%+地緣風險,建材股承壓"
- },
- "KEEL": {
-  "Type": "news",
-  "Catalyst": "魁北克資料中心專案延宕+監管調查疑慮延燒,現金燒錢隱憂"
- },
- "REPL": {
-  "Type": "FDA",
-  "Catalyst": "RP1諮委會7月底登場、8/2 PDUFA前獲利了結,大漲後拉回"
- }
+  "HUT": {
+    "Type": "contract",
+    "Catalyst": "7/20 宣布 Beacon Point 二期 352MW 15年租約,園區合約總值 $19.6B、全portfolio $26.6B,盤前 +14.8%"
+  },
+  "IREN": {
+    "Type": "contract",
+    "Catalyst": "7/20 宣布新增 $2.8B AI 雲端合約,年底 ARR 目標由 $3.7B 上修至 $4B+,85% 已簽約"
+  },
+  "AMC": {
+    "Type": "earnings",
+    "Catalyst": "7/20 盤前 Q2 營收 $1.597B 創 106 年單季新高,調整後 EPS $0.14 遠超預期 $0.02"
+  },
+  "CIFR": {
+    "Type": "contract",
+    "Catalyst": "AWS 15年 $5.5B 租約首階段 300MW 7月起交付,BTIG 上修目標價至 $35"
+  },
+  "CLSK": {
+    "Type": "contract",
+    "Catalyst": "7/14 簽 20 年機房租約總值 $6.6B(喬治亞州),礦工轉 AI 機房族群連動"
+  },
+  "MU": {
+    "Type": "macro",
+    "Catalyst": "記憶體族群反彈:SK Hynix 7/18 獲 HSBC 重申首選反彈 8%,三星傳 Q3 DRAM 合約價再漲 20%"
+  },
+  "SNDK": {
+    "Type": "analyst",
+    "Catalyst": "Bernstein 目標價上看 $3000、Wedbush $2000,NAND 供給吃緊,7/17 崩 -12.6% 後反彈"
+  },
+  "WDC": {
+    "Type": "analyst",
+    "Catalyst": "Cantor 目標價 $900、Melius $1050,AI 儲存需求 + HDD 缺貨挺價,7/17 崩 -9.2% 後反彈"
+  },
+  "NNBR": {
+    "Type": "contract",
+    "Catalyst": "7/20 宣布切入槍械零組件 Tier-1 代工,與主要美國槍械商簽約,年化訂單規模擴大"
+  },
+  "APLD": {
+    "Type": "analyst",
+    "Catalyst": "多家分析師上修目標價(共識約 $73),AI 機房族群回補,呼應 7/17 AI 里程碑"
+  },
+  "FCEL": {
+    "Type": "analyst",
+    "Catalyst": "Jefferies/B.Riley/UBS 上調評等目標價至 $20 中段,西門子合作 + 380MW 資料中心供電合約"
+  },
+  "NBIS": {
+    "Type": "news",
+    "Catalyst": "延續 7/17 宣布 $775M 無稀釋擔保貸款(GPU 抵押 + 投資級客戶合約),週一 AI 股回補"
+  },
+  "ADVB": {
+    "Type": "news",
+    "Catalyst": "7/17 申報 8-K 終止與 Helena 的 $25M 股權融資協議(7/21 生效),解除稀釋隱憂帶動反彈"
+  },
+  "BIYA": {
+    "Type": "momentum",
+    "Catalyst": "查無個股新聞;7/10 完成 1:10 反向分割,流通股僅約 270 萬股,疑極低流通資金拉抬"
+  },
+  "SDOT": {
+    "Type": "M&A",
+    "Catalyst": "TradeIQ 收購 + $100M 可轉債 + Helena 和解降稀釋,反向分割後低流通續飆(7/17 起)"
+  },
+  "DGXX": {
+    "Type": "momentum",
+    "Catalyst": "查無個股新聞,礦工/AI 機房族群連動;5/5 曾與 Cerebras 簽 10年 $1.1B 合約"
+  },
+  "NUAI": {
+    "Type": "momentum",
+    "Catalyst": "查無 7/20 個股新聞;7/7 B.Riley 給 Buy $10 目標價、7/9 新墨西哥州訴訟和解獲法院核准"
+  },
+  "IONQ": {
+    "Type": "momentum",
+    "Catalyst": "查無 7/20 個股新聞;Pentagon 合約流失傳言 + 做空報告拖累七週連跌後今日技術性反彈"
+  },
+  "AAOI": {
+    "Type": "momentum",
+    "Catalyst": "查無 7/20 新個股新聞;延續 7/14 Rosenblatt 列 2H26 首選 + Pearland 擴廠矽光子主題"
+  },
+  "ACHR": {
+    "Type": "momentum",
+    "Catalyst": "查無 7/20 個股新聞;Cantor 維持 Overweight/$11 目標價(非今日發布),eVTOL 族群連動"
+  },
+  "LUNR": {
+    "Type": "momentum",
+    "Catalyst": "查無 7/20 新增催化;延續 7/1 第六份 NASA CLPS 登月合約 $148.3M 後續動能"
+  },
+  "LEDS": {
+    "Type": "momentum",
+    "Catalyst": "查無 7/20 個股新聞;7/17 單日暴衝 +22.9% 至 $3.01,今日獲利了結拉回"
+  },
+  "RUBI": {
+    "Type": "news",
+    "Catalyst": "持續稀釋疑慮:7/9 股東通過最高 1:250 反分割授權,承接 6/26 已執行 1:25 反分割後賣壓"
+  },
+  "GVH": {
+    "Type": "news",
+    "Catalyst": "查無 7/20 明確個股利空一級源;市值僅約 $1090 萬的極小型股劇烈波動,原因待確認"
+  },
+  "VEEE": {
+    "Type": "M&A",
+    "Catalyst": "7/13 宣布與 USFM 合併私有化船艇業務後,7/17 盤後 -4.26% 回吐前波漲幅"
+  },
+  "DPZ": {
+    "Type": "earnings",
+    "Catalyst": "7/20 盤前 Q2:EPS $4.07 遜於預期 $4.19,但營收 $11.9 億超預期 $11.8 億,盤前 +7.3%"
+  },
+  "RYAAY": {
+    "Type": "earnings",
+    "Catalyst": "7/20 盤前公布 Q1 FY27 財報後盤前 -2.7%"
+  },
+  "AMD": {
+    "Type": "macro",
+    "Catalyst": "晶片族群反彈:記憶體/AI 半導體週一集體回補,那斯達克期貨 +1%"
+  },
+  "MRVL": {
+    "Type": "macro",
+    "Catalyst": "晶片族群反彈,AI ASIC/光通訊題材回補,盤前 +3.0%"
+  },
+  "TSM": {
+    "Type": "macro",
+    "Catalyst": "晶片族群反彈,7/17 因 capex 疑慮回檔後週一回補,盤前 +2.5%"
+  },
+  "AMAT": {
+    "Type": "macro",
+    "Catalyst": "半導體設備族群反彈,7/17 -5.6% 後週一回補,盤前 +2.5%"
+  },
+  "ARM": {
+    "Type": "macro",
+    "Catalyst": "晶片族群反彈,盤前 +2.1%"
+  },
+  "STLD": {
+    "Type": "earnings",
+    "Catalyst": "7/20 盤後公布 Q2,市場預期 EPS $3.64 / 營收 $55.7 億"
+  },
+  "WRB": {
+    "Type": "earnings",
+    "Catalyst": "7/20 盤後公布 Q2,市場預期 EPS $1.08 / 營收 $37.6 億"
+  },
+  "CCK": {
+    "Type": "earnings",
+    "Catalyst": "7/20 盤後公布 Q2,市場預期 EPS $2.16 / 營收 $33.6 億"
+  },
+  "ZION": {
+    "Type": "earnings",
+    "Catalyst": "7/20 盤後公布 Q2 財報"
+  },
+  "WTFC": {
+    "Type": "earnings",
+    "Catalyst": "7/20 盤後公布 Q2 財報"
+  },
+  "AGNC": {
+    "Type": "earnings",
+    "Catalyst": "7/20 盤後公布 Q2 財報"
+  }
 }
