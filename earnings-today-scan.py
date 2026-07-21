@@ -24,13 +24,29 @@ Exit: prints '[earnings-today] MISSING=N'; N>0 means the run MUST add them.
 """
 import sys, os, json, urllib.request, datetime
 
+try: sys.stdout.reconfigure(encoding='utf-8', errors='replace')  # cp950 console vs headlines
+except Exception: pass
+
 DIR = os.environ.get('SIPS_DIR') or os.path.dirname(os.path.abspath(__file__))
-TODAY = sys.argv[1] if len(sys.argv) > 1 else datetime.date.today().isoformat()
+
+def _et_today():
+    # 2026-07-20 23:xx Taipei is still 2026-07-20 in New York. date.today() is the
+    # MACHINE's date (UTC+8 here), so after ~12:00 ET it rolls over and the run
+    # would pull TOMORROW's earnings calendar mid-session. Trading day = ET day.
+    try:
+        from zoneinfo import ZoneInfo
+        return datetime.datetime.now(ZoneInfo('America/New_York')).date().isoformat()
+    except Exception:
+        return datetime.date.today().isoformat()
+
+TODAY = sys.argv[1] if len(sys.argv) > 1 else _et_today()
 MIN_CAP = 10e9  # $10B
 
 # same famous-name universe as bignames-scan.py (kept in sync manually; a name
 # in EITHER net is enough)
 sys.path.insert(0, DIR)
+from prepost_quote import prepost_quote
+from headline import top_headline
 try:
     import importlib.util
     spec = importlib.util.spec_from_file_location('bn', os.path.join(DIR, 'bignames-scan.py'))
@@ -64,19 +80,13 @@ def parse_cap(s):
         return 0.0
 
 def quote_prepost(sym):
-    """Last trade INCLUDING pre/post-market vs previous close."""
-    try:
-        u = f'https://query1.finance.yahoo.com/v8/finance/chart/{sym}?range=1d&interval=5m&includePrePost=true'
-        r = get(u)['chart']['result'][0]
-        closes = [c for c in r['indicators']['quote'][0]['close'] if c is not None]
-        pc = r['meta'].get('chartPreviousClose') or r['meta'].get('previousClose')
-        last = closes[-1] if closes else r['meta'].get('regularMarketPrice')
-        vol = r['meta'].get('regularMarketVolume')
-        if last and pc:
-            return round(last, 2), round((last - pc) / pc * 100, 2), vol
-    except Exception:
-        pass
-    return None, None, None
+    """Last trade INCLUDING pre/post-market vs previous close.
+
+    2026-07-20: the % here used to be the PREVIOUS day's move (range=1d returns
+    the last trading day's bars pre-market, and chartPreviousClose is the day
+    before that). Shared helper now does the session-date math."""
+    q = prepost_quote(sym)
+    return (q[1], q[0], q[2]) if q else (None, None, None)
 
 # --- gather reporters: today BMO+AMC, yesterday AMC ---
 yday = (datetime.date.fromisoformat(TODAY) - datetime.timedelta(days=1)).isoformat()
@@ -107,7 +117,14 @@ for s in missing:
     when, name, cap = big[s]
     last, chg, vol = quote_prepost(s)
     capb = f'${cap/1e9:.0f}B' if cap else '?'
-    chgs = f'{chg:+.2f}%' if chg is not None else 'n/a'
+    chgs = f'{chg:+.2f}%' if chg is not None else 'no-pre'
     print(f'  {s:6} {chgs:>8}  ${last or "?":<9} {capb:>7}  {when:22} {name[:34]}')
+    # headline column, default ON (2026-07-20) — the earnings story travels with the row
+    h = top_headline(s)
+    if h:
+        print(f'         ↳ [{h["published"]} {h["publisher"]}] {h["title"]}')
+        print(f'           {h["url"]}')
+    else:
+        print('         ↳ NO HEADLINE FOUND (<36h) — pull the press release from IR/SEC')
 if not missing:
     print('  (none — every big-cap reporter is already in the scan)')
