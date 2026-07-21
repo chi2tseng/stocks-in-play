@@ -397,6 +397,7 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
    - **earnings-today-scan 的每一列同樣預設掛頭條 + 連結**(同 §2.0c 1a 的 `headline.py`);查無頭條的申報者 → 直接去 IR / SEC 8-K 抓新聞稿,不得留白。
 3. **發布前 late sweep(硬性步驟):`git push` 之前重跑 `py earnings-today-scan.py` + `py bignames-scan.py` 一次** — 盤中才發酵的財報行情(ABT 盤前 +3% → 盤中 +12%)、盤中公布的大新聞,第一輪掃描抓不到。兩個腳本輸出 MISSING 皆為 0(或已判斷排除並記錄原因)才准 push。
 4. **當日盤後將公布財報的大名字(≥$10B,NFLX/ISRG 型)一律進 scan,不看漲跌幅(2026-07-21 使用者:「每次都要掃財報的公司,尤其大公司一定都要」— 平盤也要,取代舊的「尾註即可」)**:`Session=headline`、`Type=earnings`,catalyst 寫前瞻一句「今晚盤後公布 QX 財報(市場預期 EPS $X/Rev $Y)」+ 當前股價動態;TV 照補(上季數據=報前 context),news_detail 可寫報前 setup(分析師預期、上季表現、市場關注點)。隔天早上的 run 再用實際數字覆蓋。
+5. **SCANX 分桶鐵則(2026-07-21 使用者:「真的有 in reaction to earnings/guidance 才放進去,其他一律放到底下」):** SCANX 的「IN REACTION TO EARNINGS/GUIDANCE」區**只收「今天的動 = 對剛公布(昨晚盤後→今日)財報/指引的即時反應」**;報前卡位(今晚才報)、數天前財報的餘波飄移、其他一律掉到下方 other 區。機制:`build_dashboard.py` 依 `catalysts_today.json` 每檔的 **`"EarningsReaction": true/false`** 分桶(無旗標時後備:Type=earnings/guidance 且 catalyst 無「今晚/將公布」等報前措辭 → 視為反應)。**寫 catalysts_today.json 時就要誠實標旗標**:上面第 4 條的報前條目一律 `false`;超過 1-2 個交易日的舊財報餘波改標 momentum/other 或 `false`。
 
 
 ### 2.1 — Per-ticker catalyst hunt

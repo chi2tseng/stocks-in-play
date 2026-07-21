@@ -4,7 +4,7 @@
   - dates.json             : array of available dates, newest first
   - index.html             : SPA with #/<date>/<route> hash routing
 """
-import json, csv, os, argparse, datetime, shutil
+import json, csv, os, re, argparse, datetime, shutil
 
 ap = argparse.ArgumentParser()
 ap.add_argument('--date', default=datetime.date.today().isoformat(),
@@ -152,6 +152,26 @@ if os.path.exists(fc_path):
         for r in csv.DictReader(f):
             if r['Symbol'] not in catalyst:
                 catalyst[r['Symbol']] = {'type': r['Type'], 'catalyst': r['Catalyst'], 'name': r['Name']}
+
+# SCANX earnings buckets take only genuine reactions to just-released results/guidance
+# (user 2026-07-21). catalysts_today.json may carry an explicit "EarningsReaction" bool;
+# otherwise fall back to wording: pre-report entries (今晚盤後公布…) are NOT reactions.
+_ct_flags = {}
+_ct_path = os.path.join(DIR, 'catalysts_today.json')
+if os.path.exists(_ct_path):
+    try:
+        with open(_ct_path, encoding='utf-8') as f:
+            _ct_flags = {k: v.get('EarningsReaction') for k, v in json.load(f).items()
+                         if isinstance(v, dict)}
+    except Exception:
+        _ct_flags = {}
+_PRE_REPORT_RE = re.compile(r'今晚|盤後公布|盤後將|將公布|即將公布|明晨|明日盤前|報前|尚未公布')
+
+def _earnings_reaction(sym, typ, cat_text):
+    flag = _ct_flags.get(sym)
+    if isinstance(flag, bool):
+        return flag
+    return typ in ('earnings', 'guidance') and not _PRE_REPORT_RE.search(cat_text or '')
 
 # --- Load optional news detail file ---
 news_detail_path = os.path.join(DIR, 'news_detail.json')
@@ -361,6 +381,7 @@ for sym in all_syms:
         'symbol': sym,
         'name': primary['name'] or cat.get('name', sym),
         'type': cat.get('type', '?'),
+        'earningsReaction': _earnings_reaction(sym, cat.get('type'), cat.get('catalyst')),
         'catalyst': cat.get('catalyst', ''),
         'newsDetail': news_detail_val,
         'newsLinks': news_links_val,
@@ -402,7 +423,9 @@ for sym, s in stocks.items():
         if key in seen: continue
         seen.add(key)
         entry = {'symbol': sym, 'chg': sess['chgPct'], 'catalyst': s['catalyst'], 'type': s['type']}
-        is_earnings = s['type'] in ('earnings', 'guidance')
+        # Earnings buckets = genuine in-reaction-to-earnings/guidance moves only;
+        # pre-report placeholders and stale post-earnings drift belong in "other".
+        is_earnings = bool(s.get('earningsReaction'))
         if sess['direction'] == 'up':
             (gap_up_e if is_earnings else gap_up_o).append(entry)
         else:
