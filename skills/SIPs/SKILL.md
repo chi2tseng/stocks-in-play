@@ -396,7 +396,7 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
    - **交易日 = ET 日,不是本機日(2026-07-20 發現)**:台北時間過午夜後 `date.today()` 就跳到隔天,earnings-today-scan 會在盤中去拉**明天**的財報日曆。已改用 `zoneinfo America/New_York` 取日期;要指定日期仍可 `py earnings-today-scan.py 2026-07-20`。
    - **earnings-today-scan 的每一列同樣預設掛頭條 + 連結**(同 §2.0c 1a 的 `headline.py`);查無頭條的申報者 → 直接去 IR / SEC 8-K 抓新聞稿,不得留白。
 3. **發布前 late sweep(硬性步驟):`git push` 之前重跑 `py earnings-today-scan.py` + `py bignames-scan.py` 一次** — 盤中才發酵的財報行情(ABT 盤前 +3% → 盤中 +12%)、盤中公布的大新聞,第一輪掃描抓不到。兩個腳本輸出 MISSING 皆為 0(或已判斷排除並記錄原因)才准 push。
-4. 當日盤後將公布財報的大名字(如 NFLX/ISRG 型)若已明顯提前佈局(|chg| ≥ 2%)也補入;平盤者在 brief 尾註「今晚報財報」即可,不硬塞。
+4. **當日盤後將公布財報的大名字(≥$10B,NFLX/ISRG 型)一律進 scan,不看漲跌幅(2026-07-21 使用者:「每次都要掃財報的公司,尤其大公司一定都要」— 平盤也要,取代舊的「尾註即可」)**:`Session=headline`、`Type=earnings`,catalyst 寫前瞻一句「今晚盤後公布 QX 財報(市場預期 EPS $X/Rev $Y)」+ 當前股價動態;TV 照補(上季數據=報前 context),news_detail 可寫報前 setup(分析師預期、上季表現、市場關注點)。隔天早上的 run 再用實際數字覆蓋。
 
 
 ### 2.1 — Per-ticker catalyst hunt
