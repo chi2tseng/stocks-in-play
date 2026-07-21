@@ -2618,13 +2618,15 @@ function buildStockNavList(source) {
       label: 'MAGNA53',
     };
   }
-  // 3. SCANX — concat all 4 sections in display order
+  // 3. SCANX — concat all sections in display order
   if (source === 'scanx') {
     const sx = DATA.scanx || {};
     const all = [
       ...(sx.gapUpEarnings   || []),
+      ...(sx.gapUpGuidance   || []),
       ...(sx.gapUpOther      || []),
       ...(sx.gapDownEarnings || []),
+      ...(sx.gapDownGuidance || []),
       ...(sx.gapDownOther    || []),
     ];
     return {
@@ -3829,15 +3831,19 @@ function renderScanx() {
     <h2 class="page-title">SCANX</h2>
     <div class="scanx-section">
       <h2><span class="dot dot-up"></span> Gapping up</h2>
-      <h3>In reaction to earnings/guidance</h3>
+      <h3>In reaction to earnings</h3>
       <div class="scanx-inline">${earningsInlineFmt(sx.gapUpEarnings)}</div>
+      ${(sx.gapUpGuidance || []).length ? `<h3>In reaction to guidance</h3>
+      <div class="scanx-inline">${earningsInlineFmt(sx.gapUpGuidance)}</div>` : ''}
       <h3>Other news</h3>
       <ul class="scanx-list">${listFmt(sx.gapUpOther)}</ul>
     </div>
     <div class="scanx-section">
       <h2><span class="dot dot-down"></span> Gapping down</h2>
-      <h3>In reaction to earnings/guidance</h3>
+      <h3>In reaction to earnings</h3>
       <div class="scanx-inline">${earningsInlineFmt(sx.gapDownEarnings)}</div>
+      ${(sx.gapDownGuidance || []).length ? `<h3>In reaction to guidance</h3>
+      <div class="scanx-inline">${earningsInlineFmt(sx.gapDownGuidance)}</div>` : ''}
       <h3>Other news</h3>
       <ul class="scanx-list">${listFmt(sx.gapDownOther)}</ul>
     </div>

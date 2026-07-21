@@ -415,7 +415,7 @@ for sym in all_syms:
     }
 
 # --- Build SCANX lists ---
-gap_up_e, gap_up_o, gap_dn_e, gap_dn_o = [], [], [], []
+gap_up_e, gap_up_g, gap_up_o, gap_dn_e, gap_dn_g, gap_dn_o = [], [], [], [], [], []
 seen = set()
 for sym, s in stocks.items():
     for sess in s['sessions']:
@@ -423,15 +423,18 @@ for sym, s in stocks.items():
         if key in seen: continue
         seen.add(key)
         entry = {'symbol': sym, 'chg': sess['chgPct'], 'catalyst': s['catalyst'], 'type': s['type']}
-        # Earnings buckets = genuine in-reaction-to-earnings/guidance moves only;
-        # pre-report placeholders and stale post-earnings drift belong in "other".
-        is_earnings = bool(s.get('earningsReaction'))
+        # Reaction buckets = genuine in-reaction moves only; split earnings vs
+        # guidance by Type (2026-07-21 user: separate sections). Pre-report
+        # placeholders and stale post-earnings drift belong in "other".
+        is_reaction = bool(s.get('earningsReaction'))
+        is_guidance = is_reaction and s['type'] == 'guidance'
+        is_earnings = is_reaction and not is_guidance
         if sess['direction'] == 'up':
-            (gap_up_e if is_earnings else gap_up_o).append(entry)
+            (gap_up_e if is_earnings else gap_up_g if is_guidance else gap_up_o).append(entry)
         else:
-            (gap_dn_e if is_earnings else gap_dn_o).append(entry)
+            (gap_dn_e if is_earnings else gap_dn_g if is_guidance else gap_dn_o).append(entry)
 
-for lst in [gap_up_e, gap_up_o, gap_dn_e, gap_dn_o]:
+for lst in [gap_up_e, gap_up_g, gap_up_o, gap_dn_e, gap_dn_g, gap_dn_o]:
     lst.sort(key=lambda e: -abs(e['chg']))
 
 # Filter per-agent picks to symbols that are actually in today's candidate set
@@ -577,8 +580,10 @@ def _build_data_for(td):
             }
     syms_set = set(filtered_stocks.keys())
     f_gap_up_e = [e for e in gap_up_e if e['symbol'] in sess_syms]
+    f_gap_up_g = [e for e in gap_up_g if e['symbol'] in sess_syms]
     f_gap_up_o = [e for e in gap_up_o if e['symbol'] in sess_syms]
     f_gap_dn_e = [e for e in gap_dn_e if e['symbol'] in sess_syms]
+    f_gap_dn_g = [e for e in gap_dn_g if e['symbol'] in sess_syms]
     f_gap_dn_o = [e for e in gap_dn_o if e['symbol'] in sess_syms]
     cp  = [p for p in claude_picks_clean if p['symbol'] in syms_set] if is_scan else []
     cdx = [p for p in codex_picks_clean  if p['symbol'] in syms_set] if is_scan else []
@@ -598,7 +603,8 @@ def _build_data_for(td):
         'grokPicks':   gkp,
         'dayResets':   drs,
         'scanx': {
-            'gapUpEarnings':   f_gap_up_e, 'gapUpOther':   f_gap_up_o,
+            'gapUpEarnings':   f_gap_up_e, 'gapUpGuidance': f_gap_up_g, 'gapUpOther':   f_gap_up_o,
+            'gapDownGuidance': f_gap_dn_g,
             'gapDownEarnings': f_gap_dn_e, 'gapDownOther': f_gap_dn_o,
         },
     }
@@ -3315,13 +3321,15 @@ function buildStockNavList(source) {
       label: 'MAGNA53',
     };
   }
-  // 3. SCANX — concat all 4 sections in display order
+  // 3. SCANX — concat all sections in display order
   if (source === 'scanx') {
     const sx = DATA.scanx || {};
     const all = [
       ...(sx.gapUpEarnings   || []),
+      ...(sx.gapUpGuidance   || []),
       ...(sx.gapUpOther      || []),
       ...(sx.gapDownEarnings || []),
+      ...(sx.gapDownGuidance || []),
       ...(sx.gapDownOther    || []),
     ];
     return {
@@ -4526,15 +4534,19 @@ function renderScanx() {
     <h2 class="page-title">SCANX</h2>
     <div class="scanx-section">
       <h2><span class="dot dot-up"></span> Gapping up</h2>
-      <h3>In reaction to earnings/guidance</h3>
+      <h3>In reaction to earnings</h3>
       <div class="scanx-inline">${earningsInlineFmt(sx.gapUpEarnings)}</div>
+      ${(sx.gapUpGuidance || []).length ? `<h3>In reaction to guidance</h3>
+      <div class="scanx-inline">${earningsInlineFmt(sx.gapUpGuidance)}</div>` : ''}
       <h3>Other news</h3>
       <ul class="scanx-list">${listFmt(sx.gapUpOther)}</ul>
     </div>
     <div class="scanx-section">
       <h2><span class="dot dot-down"></span> Gapping down</h2>
-      <h3>In reaction to earnings/guidance</h3>
+      <h3>In reaction to earnings</h3>
       <div class="scanx-inline">${earningsInlineFmt(sx.gapDownEarnings)}</div>
+      ${(sx.gapDownGuidance || []).length ? `<h3>In reaction to guidance</h3>
+      <div class="scanx-inline">${earningsInlineFmt(sx.gapDownGuidance)}</div>` : ''}
       <h3>Other news</h3>
       <ul class="scanx-list">${listFmt(sx.gapDownOther)}</ul>
     </div>
