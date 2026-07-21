@@ -170,6 +170,16 @@ if os.path.exists(sean_analysis_path):
     with open(sean_analysis_path, 'r', encoding='utf-8') as f:
         sean_analysis_raw = json.load(f)
 
+# --- Load optional Milan-perspective analysis file — fully independent of news_detail.json.
+# Schema: { "<TICKER>": { "analysis": "<markdown string>", "sourceDate": "YYYY-MM-DD" }, ... }
+# Surfaces as stocks[sym]['milanAnalysis'] (dict or None) and renders as its own card on the
+# stock-detail page, separate from the News Detail and Sean 視角 cards. Missing file → empty dict, no crash.
+milan_analysis_path = os.path.join(DIR, 'milan_analysis.json')
+milan_analysis_raw = {}
+if os.path.exists(milan_analysis_path):
+    with open(milan_analysis_path, 'r', encoding='utf-8') as f:
+        milan_analysis_raw = json.load(f)
+
 # --- Load optional Finviz shorts file (built by finviz-shorts.js) ---
 # Schema: { "<TICKER>": { status, shortFloat, shortRatio, marketCap_M, floatShares_M,
 #                         perf1M, perf3M, perf6M, perfYTD, perf12M, ... }, ... }
@@ -359,6 +369,8 @@ for sym in all_syms:
         'sources': news_sources,
         # Sean 視角 — independent of newsDetail above; sourced from sean_analysis.json.
         'seanAnalysis': sean_analysis_raw.get(sym) if isinstance(sean_analysis_raw.get(sym), dict) else None,
+        # Milan 視角 — independent of newsDetail above; sourced from milan_analysis.json.
+        'milanAnalysis': milan_analysis_raw.get(sym) if isinstance(milan_analysis_raw.get(sym), dict) else None,
         'sessions': cands,
         'primarySession': primary['session'],
         'primaryDirection': primary['direction'],
@@ -685,8 +697,8 @@ INDEX_HTML = r'''<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@500;600;700&display=swap">
-<!-- Material Symbols — used by the "Sean 視角" stock-detail card header icon (feature/UI icons
-     use this set per design convention; short-form emoji stays confined to captions/chat). -->
+<!-- Material Symbols — used by the "Sean 視角" / "Milan 視角" stock-detail card header icons
+     (feature/UI icons use this set per design convention; short-form emoji stays confined to captions/chat). -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,400,0,0&display=swap">
 <style>
 :root {
@@ -2175,6 +2187,7 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 .sean-analysis h3 .material-symbols-outlined { font-size: 17px; vertical-align: -3px; margin-right: 6px; color: var(--primary); }
+.milan-analysis h3 .material-symbols-outlined { font-size: 17px; vertical-align: -3px; margin-right: 6px; color: var(--primary); }
 
 /* Company News history (thefly-style) */
 .news-history-card { background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-lg); margin-bottom: 16px; }
@@ -5149,6 +5162,17 @@ async function renderStock(sym) {
       : '';
     seanAnalysisHtml = `<div class="stock-card news-detail sean-analysis"><h3><span class="material-symbols-outlined">insights</span>Sean 視角 <span class="label-en">Stocks in Play</span></h3>${seanMeta}${seanBody}</div>`;
   }
+  // Milan 視角 · Catalyst Rating — wholly independent card, own data source (s.milanAnalysis /
+  // milan_analysis.json, keyed by symbol, unrelated to newsDetail above). Only renders when
+  // present; markdown body reuses mdNewsToHtml, same as the News Detail card.
+  let milanAnalysisHtml = '';
+  if (s.milanAnalysis && s.milanAnalysis.analysis) {
+    const milanBody = mdNewsToHtml(s.milanAnalysis.analysis);
+    const milanMeta = s.milanAnalysis.sourceDate
+      ? `<div class="news-detail-meta">${clockSvg()}<span>分析基準日 ${escapeHtml(s.milanAnalysis.sourceDate)}</span></div>`
+      : '';
+    milanAnalysisHtml = `<div class="stock-card news-detail milan-analysis"><h3><span class="material-symbols-outlined">grading</span>Milan 視角 · Catalyst Rating</h3>${milanMeta}${milanBody}</div>`;
+  }
   // Stock-detail header pills — split into TWO rows:
   //   • headerShortPills:  Short Float + DTC (Finviz-sourced shorts metrics)
   //   • headerSurpPills:   EPS Surp + Rev Surp (TradingView FQ earnings surprise, pos/neg tinted)
@@ -5186,7 +5210,6 @@ async function renderStock(sym) {
       </div>
     </div>
     ${newsDetailHtml}
-    ${seanAnalysisHtml}
     <div class="chart-wrap">
       <div class="stock-card"><h3>EPS Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.eps || ''}</div>
       <div class="stock-card"><h3>Revenue Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.rev || ''}</div>
@@ -5203,6 +5226,8 @@ async function renderStock(sym) {
       <h3>股價走勢 <span class="label-en">Price · 6M Daily</span></h3>
       <div id="candle-chart-container-${s.symbol}" class="candle-chart-host"></div>
     </div>` : ''}
+    ${seanAnalysisHtml}
+    ${milanAnalysisHtml}
     <div class="news-history-card" id="news-history-${s.symbol}"></div>
   `;
   // Render interactive TradingView-style candle chart in the 股價走勢 section.

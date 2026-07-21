@@ -4536,8 +4536,6 @@ async function renderStock(sym) {
       </div>
     </div>
     ${newsDetailHtml}
-    ${seanAnalysisHtml}
-    ${milanAnalysisHtml}
     <div class="chart-wrap">
       <div class="stock-card"><h3>EPS Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.eps || ''}</div>
       <div class="stock-card"><h3>Revenue Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.rev || ''}</div>
@@ -4554,6 +4552,8 @@ async function renderStock(sym) {
       <h3>股價走勢 <span class="label-en">Price · 6M Daily</span></h3>
       <div id="candle-chart-container-${s.symbol}" class="candle-chart-host"></div>
     </div>` : ''}
+    ${seanAnalysisHtml}
+    ${milanAnalysisHtml}
     <div class="news-history-card" id="news-history-${s.symbol}"></div>
   `;
   // Render interactive TradingView-style candle chart in the 股價走勢 section.
