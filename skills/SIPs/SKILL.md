@@ -396,7 +396,11 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
    - **交易日 = ET 日,不是本機日(2026-07-20 發現)**:台北時間過午夜後 `date.today()` 就跳到隔天,earnings-today-scan 會在盤中去拉**明天**的財報日曆。已改用 `zoneinfo America/New_York` 取日期;要指定日期仍可 `py earnings-today-scan.py 2026-07-20`。
    - **earnings-today-scan 的每一列同樣預設掛頭條 + 連結**(同 §2.0c 1a 的 `headline.py`);查無頭條的申報者 → 直接去 IR / SEC 8-K 抓新聞稿,不得留白。
 3. **發布前 late sweep(硬性步驟):`git push` 之前重跑 `py earnings-today-scan.py` + `py bignames-scan.py` 一次** — 盤中才發酵的財報行情(ABT 盤前 +3% → 盤中 +12%)、盤中公布的大新聞,第一輪掃描抓不到。兩個腳本輸出 MISSING 皆為 0(或已判斷排除並記錄原因)才准 push。
-4. **當日盤後將公布財報的大名字(≥$10B,NFLX/ISRG 型)一律進 scan,不看漲跌幅(2026-07-21 使用者:「每次都要掃財報的公司,尤其大公司一定都要」— 平盤也要,取代舊的「尾註即可」)**:`Session=headline`、`Type=earnings`,catalyst 寫前瞻一句「今晚盤後公布 QX 財報(市場預期 EPS $X/Rev $Y)」+ 當前股價動態;TV 照補(上季數據=報前 context),news_detail 可寫報前 setup(分析師預期、上季表現、市場關注點)。隔天早上的 run 再用實際數字覆蓋。
+4. **⚠ 還沒公布的一律不進 scan(2026-07-22 使用者推翻上一版:「還沒要公布的就都不要加上 scanx,只要有公布了的就好了,把他們移除」)。** 舊規則(v1,2026-07-21)是「今晚盤後要報的大名字不看漲跌幅一律先加進去、寫前瞻 catalyst」——**已作廢**。現在:
+   - **今日尚未公布結果的財報/指引事件(今晚盤後才報、明晨才報)一律不加入 candidates.csv / scanx**,不寫前瞻性 catalyst 佔位。earnings-today-scan.py 印出的「今日申報者」清單只用來**確認明天早上要追**,不是今天就塞進候選。
+   - **已公布的才進**:昨晚盤後已公布 或 今晨盤前已公布 的財報/指引,照 §2.0d 1-3 硬性補(不看 %);今晚才要公布的,等到**隔天**早上結果出來、有實際數字/真實股價反應時才進。
+   - **判斷依據 = 有沒有真動 + 是否已公布**,不是「有沒有排進日曆」:2026-07-22 實測案例 —— GOOGL/TSLA/IBM/TXN/NOW/CSX/KMI 等 32 檔「今晚盤後公布 QX 財報」佔位當天 chgPct 幾乎全是 0%(唯一存在理由是日曆上排了今晚要報),已全數移除;FTAI(+11.5%,股息調升,今天真動)、WDC(−4.5%,獲利了結,今天真動)雖然 catalyst 提及未來財報日,但屬於今天已發生的真實催化劑,**保留**。
+   - 若不確定某檔是「已公布結果」還是「純報前佔位」:查 chgPct 是否顯著(≥~1-2%)+ catalyst 是否只剩「今晚/明晨公布」一句話沒有其他實質內容;兩者皆是 → 移除。
 5. **SCANX 分桶鐵則(2026-07-21 使用者;同日補充「earnings 和 guidance 要分開兩區」):** SCANX 每個方向分**三桶**:
    - **In reaction to earnings** = 今天的動是對剛公布(昨晚盤後→今日)**財報**的即時反應(`EarningsReaction=true` + Type=earnings)。
    - **In reaction to guidance** = 對剛發布的**獨立指引事件**(上調/下修目標、preliminary 警訊、ARR/訂單目標,非隨財報一起出)的即時反應(`EarningsReaction=true` + Type=guidance)。財報內含的指引調整算 earnings 桶。
