@@ -2979,7 +2979,7 @@ td.sym a { transition: background 140ms ease, color 140ms ease; }
       <a data-route="sips">Today's SIPs</a>
       <a data-route="squeeze">Short Squeeze</a>
       <a data-route="earnings">Earnings Results</a>
-      <a data-route="earncal">財報日曆</a>
+      <a data-route="earncal">Earnings Calendar</a>
       <a data-route="catalyst">Catalyst Deep Dive</a>
       <a data-route="scanx">SCANX</a>
       <a data-route="gappers">Gappers</a>
@@ -4622,7 +4622,7 @@ function earncalChipHtml(c) {
   const name = c.name || '';
   const nameTrunc = name.length > 20 ? name.slice(0, 20) + '…' : name;
   const mcap = (c.mcap_B != null) ? `$${Math.round(c.mcap_B)}B` : '';
-  const eps = c.epsForecast ? `<span class="earncal-eps">預期 EPS ${escapeHtml(String(c.epsForecast))}</span>` : '';
+  const eps = c.epsForecast ? `<span class="earncal-eps">Est. EPS ${escapeHtml(String(c.epsForecast))}</span>` : '';
   const inner = `${logoImg(sym, 22)}<span class="earncal-sym">${escapeHtml(sym)}</span>` +
     (nameTrunc ? ` <span class="earncal-name">${escapeHtml(nameTrunc)}</span>` : '') +
     (mcap ? ` <span class="earncal-mcap">${mcap}</span>` : '') +
@@ -4640,9 +4640,9 @@ function renderEarningsCalendar() {
   const app = document.getElementById('app');
   const cal = STATE.earningsCalendar;
   const days = (cal && Array.isArray(cal.days)) ? cal.days : [];
-  const titleHtml = `<h2 class="page-title"><span class="material-symbols-outlined">calendar_month</span>財報日曆</h2>`;
+  const titleHtml = `<h2 class="page-title"><span class="material-symbols-outlined">calendar_month</span>Earnings Calendar</h2>`;
   if (days.length === 0) {
-    app.innerHTML = `${titleHtml}<div class="sip-empty">暫無財報日曆資料 — 跑 /SIPs 會自動更新</div>`;
+    app.innerHTML = `${titleHtml}<div class="sip-empty">No earnings calendar data yet — run /SIPs to refresh</div>`;
     return;
   }
   const today = todayET();
@@ -4652,11 +4652,11 @@ function renderEarningsCalendar() {
     <div class="earncal-day${isToday ? ' today' : ''}">
       <div class="earncal-day-head">
         <span class="earncal-date">${escapeHtml(day.label || day.date || '')}</span>
-        ${isToday ? '<span class="tag earncal-today-pill">今天</span>' : ''}
+        ${isToday ? '<span class="tag earncal-today-pill">Today</span>' : ''}
       </div>
-      ${earncalSectionHtml('盤前 BMO', day.bmo)}
-      ${earncalSectionHtml('盤後 AMC', day.amc)}
-      ${earncalSectionHtml('時段未定', day.unspecified)}
+      ${earncalSectionHtml('Pre-Market (BMO)', day.bmo)}
+      ${earncalSectionHtml('After-Hours (AMC)', day.amc)}
+      ${earncalSectionHtml('Time TBD', day.unspecified)}
     </div>`;
   };
   app.innerHTML = `${titleHtml}<div class="earncal-list">${days.map(dayHtml).join('')}</div>`;
