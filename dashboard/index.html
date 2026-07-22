@@ -1421,6 +1421,29 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .scanx-metric.pos .scanx-metric-val { color: var(--pos); }
 .scanx-metric.neg .scanx-metric-val { color: var(--neg); }
 .scanx-earnings-empty { color: var(--stone); font-size: 12px; font-style: italic; }
+/* 財報日曆 — Earnings Calendar page. One card per day, mirrors .scanx-section. */
+.page-title .material-symbols-outlined { font-size: 24px; vertical-align: -4px; margin-right: 8px; color: var(--primary); }
+.earncal-list { display: flex; flex-direction: column; }
+.earncal-day { background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-lg); padding: 20px 24px; margin-bottom: 14px; }
+.earncal-day.today { border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary) inset; }
+.earncal-day-head { display: flex; align-items: center; gap: 10px; margin: 0 0 4px; padding-bottom: 10px; border-bottom: 1px solid var(--hairline); }
+.earncal-date { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--ink); letter-spacing: -0.2px; }
+.earncal-today-pill { background: var(--primary); color: #fff; }
+.earncal-day h3 { font-family: var(--font-body); font-size: 11px; margin: 16px 0 8px; font-weight: 700; color: var(--stone); text-transform: uppercase; letter-spacing: 0.8px; }
+.earncal-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.earncal-chip {
+  display: inline-flex; align-items: baseline; gap: 6px;
+  padding: 6px 12px; border-radius: var(--r-md);
+  background: var(--surface-soft); border: 1px solid var(--hairline-soft);
+  text-decoration: none; color: inherit; font-size: 13px;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+.earncal-chip.clickable { cursor: pointer; }
+.earncal-chip.clickable:hover { background: var(--canvas); border-color: var(--primary); }
+.earncal-sym { font-family: var(--font-mono); font-weight: 700; color: var(--ink); }
+.earncal-name { color: var(--mute); }
+.earncal-mcap { font-family: var(--font-mono); color: var(--stone); font-size: 12px; }
+.earncal-eps { color: var(--stone); font-size: 11px; }
 .breadcrumb { font-size: 13px; margin-bottom: 14px; color: var(--mute); }
 .breadcrumb a { color: var(--ink); text-decoration: none; font-weight: 500; }
 .breadcrumb a:hover { color: var(--primary); }
@@ -2245,6 +2268,7 @@ td.sym a { transition: background 140ms ease, color 140ms ease; }
       <a data-route="sips">Today's SIPs</a>
       <a data-route="squeeze">Short Squeeze</a>
       <a data-route="earnings">Earnings Results</a>
+      <a data-route="earncal">財報日曆</a>
       <a data-route="catalyst">Catalyst Deep Dive</a>
       <a data-route="scanx">SCANX</a>
       <a data-route="gappers">Gappers</a>
@@ -2284,6 +2308,10 @@ const STATE = { date: null, dates: [], data: null,
   // Image-path index built by sidecar: { imgKey: 'imgKey.png' }. Used in read-only
   // mode to render <img src="studies/images/<filename>"> without probing extensions.
   imgIndex: null,
+  // Earnings calendar (dashboard/earnings_calendar.json, built by a separate fetch
+  // script — this file only reads it). null when missing/unfetched/404; the render
+  // function treats that identically to an empty days[] (empty-state message).
+  earningsCalendar: null,
 };
 let DATA = null;
 
@@ -2435,6 +2463,12 @@ async function boot() {
     const r = await fetch('candles.json', {cache: 'no-store'});
     if (r.ok) STATE.candles = await r.json();
   } catch (_) { STATE.candles = {}; }
+  // Earnings calendar (built by a separate fetch script, not this dashboard). Missing
+  // file / 404 / network error all resolve to null — no console error, empty-state page.
+  try {
+    const r = await fetch('earnings_calendar.json', {cache: 'no-store'});
+    STATE.earningsCalendar = r.ok ? await r.json() : null;
+  } catch (_) { STATE.earningsCalendar = null; }
   // Sidecar probe + studies hydration happen in parallel with route render.
   await detectSidecar();
   await hydrateStudiesFromDisk();
@@ -2728,6 +2762,7 @@ async function route() {
   if (r === 'sips')     return renderSips(arg);
   if (r === 'squeeze')  return renderSqueeze();
   if (r === 'earnings') return renderEarnings();
+  if (r === 'earncal')  return renderEarningsCalendar();
   if (r === 'catalyst') return renderCatalyst();
   if (r === 'scanx')    return renderScanx();
   if (r === 'gappers')  return renderGappers();
@@ -3848,6 +3883,62 @@ function renderScanx() {
       <ul class="scanx-list">${listFmt(sx.gapDownOther)}</ul>
     </div>
   `;
+}
+
+/* ============================================================
+   Page: 財報日曆 — Earnings Calendar. Reads dashboard/earnings_calendar.json
+   (fetched at boot into STATE.earningsCalendar by a separate script; this file
+   never fetches/writes it). One card per day; today's card (ET) is highlighted.
+   Symbols present in today's scan package (DATA.stocks) are clickable through
+   to the stock detail page — others render as plain text chips.
+   ============================================================ */
+function todayET() {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York' }).format(new Date());
+}
+function earncalChipHtml(c) {
+  const sym = c.symbol || '';
+  const inPackage = !!(DATA && DATA.stocks && DATA.stocks[sym]);
+  const name = c.name || '';
+  const nameTrunc = name.length > 20 ? name.slice(0, 20) + '…' : name;
+  const mcap = (c.mcap_B != null) ? `$${Math.round(c.mcap_B)}B` : '';
+  const eps = c.epsForecast ? `<span class="earncal-eps">預期 EPS ${escapeHtml(String(c.epsForecast))}</span>` : '';
+  const inner = `<span class="earncal-sym">${escapeHtml(sym)}</span>` +
+    (nameTrunc ? ` <span class="earncal-name">${escapeHtml(nameTrunc)}</span>` : '') +
+    (mcap ? ` <span class="earncal-mcap">${mcap}</span>` : '') +
+    (eps ? ` ${eps}` : '');
+  if (inPackage) {
+    return `<a class="earncal-chip clickable" data-nav-source="earncal" href="${buildRouteHash('stock/' + sym)}">${inner}</a>`;
+  }
+  return `<span class="earncal-chip">${inner}</span>`;
+}
+function earncalSectionHtml(title, list) {
+  if (!Array.isArray(list) || list.length === 0) return '';
+  return `<h3>${escapeHtml(title)}</h3><div class="earncal-chips">${list.map(earncalChipHtml).join('')}</div>`;
+}
+function renderEarningsCalendar() {
+  const app = document.getElementById('app');
+  const cal = STATE.earningsCalendar;
+  const days = (cal && Array.isArray(cal.days)) ? cal.days : [];
+  const titleHtml = `<h2 class="page-title"><span class="material-symbols-outlined">calendar_month</span>財報日曆</h2>`;
+  if (days.length === 0) {
+    app.innerHTML = `${titleHtml}<div class="sip-empty">暫無財報日曆資料 — 跑 /SIPs 會自動更新</div>`;
+    return;
+  }
+  const today = todayET();
+  const dayHtml = day => {
+    const isToday = day.date === today;
+    return `
+    <div class="earncal-day${isToday ? ' today' : ''}">
+      <div class="earncal-day-head">
+        <span class="earncal-date">${escapeHtml(day.label || day.date || '')}</span>
+        ${isToday ? '<span class="tag earncal-today-pill">今天</span>' : ''}
+      </div>
+      ${earncalSectionHtml('盤前 BMO', day.bmo)}
+      ${earncalSectionHtml('盤後 AMC', day.amc)}
+      ${earncalSectionHtml('時段未定', day.unspecified)}
+    </div>`;
+  };
+  app.innerHTML = `${titleHtml}<div class="earncal-list">${days.map(dayHtml).join('')}</div>`;
 }
 
 function yoyPct(curr, prior, isEps) {

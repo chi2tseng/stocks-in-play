@@ -131,6 +131,7 @@ py -c "import urllib.request; print('ALIVE', urllib.request.urlopen('http://127.
 5. **TV scrape(§ 6.1):先跑凍結快取檢查**;stale 且**疑似 earnings** 的 → **T+7s 就發 1 個分片**;其餘 tickers 等 Join #1 的 Type 標籤確定後,再開 **2 個分片**補跑(freshness cache 先套 — skip files <3 days old)。
 6. `py fetch_candles.py` (background bash — candidates + studies are already known; picks ⊆ candidates by the direction-match rule, so no need to wait for picks)
 7. `py bignames-scan.py` + `py earnings-today-scan.py` (background bash, ~40–60s — §2.0c 大型股 ≥2% 全掃(盤前/盤後感知,**每列自帶當日頭條 + 連結,預設開啟**)+ §2.0d 財報日曆硬閘門;回來的漏網大股併進 §2.1 catalyst fan-out,以 `Session=headline` 補入。**push 前兩個腳本都要重跑一次(§2.0d late sweep)**)
+8. `py fetch_earnings_calendar.py` (background bash, ~15s — 抓未來 14 天主要公司財報時間表 → `dashboard/earnings_calendar.json`,供「財報日曆」頁;報前公司住這頁,不進 scanx)
 
 **While the fan-out runs (~90s–2 min)**, the main model does zero-dependency work: day_resets context review, Phase 10b OHLCV prep, studies placeholder checks.
 
@@ -398,6 +399,7 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 3. **發布前 late sweep(硬性步驟):`git push` 之前重跑 `py earnings-today-scan.py` + `py bignames-scan.py` 一次** — 盤中才發酵的財報行情(ABT 盤前 +3% → 盤中 +12%)、盤中公布的大新聞,第一輪掃描抓不到。兩個腳本輸出 MISSING 皆為 0(或已判斷排除並記錄原因)才准 push。
 4. **⚠ 還沒公布的一律不進 scan(2026-07-22 使用者推翻上一版:「還沒要公布的就都不要加上 scanx,只要有公布了的就好了,把他們移除」)。** 舊規則(v1,2026-07-21)是「今晚盤後要報的大名字不看漲跌幅一律先加進去、寫前瞻 catalyst」——**已作廢**。現在:
    - **今日尚未公布結果的財報/指引事件(今晚盤後才報、明晨才報)一律不加入 candidates.csv / scanx**,不寫前瞻性 catalyst 佔位。earnings-today-scan.py 印出的「今日申報者」清單只用來**確認明天早上要追**,不是今天就塞進候選。
+   - **報前的公司住「財報日曆」頁(2026-07-22 新增):** `py fetch_earnings_calendar.py` 抓未來 14 天主要公司(市值 ≥$10B 或 UNIVERSE 名單)財報時間表 → `dashboard/earnings_calendar.json` → dashboard 的「財報日曆」tab 逐日顯示盤前/盤後申報者。使用者要看「誰快報了」去那頁看;scanx 只留已公布的。
    - **已公布的才進**:昨晚盤後已公布 或 今晨盤前已公布 的財報/指引,照 §2.0d 1-3 硬性補(不看 %);今晚才要公布的,等到**隔天**早上結果出來、有實際數字/真實股價反應時才進。
    - **判斷依據 = 有沒有真動 + 是否已公布**,不是「有沒有排進日曆」:2026-07-22 實測案例 —— GOOGL/TSLA/IBM/TXN/NOW/CSX/KMI 等 32 檔「今晚盤後公布 QX 財報」佔位當天 chgPct 幾乎全是 0%(唯一存在理由是日曆上排了今晚要報),已全數移除;FTAI(+11.5%,股息調升,今天真動)、WDC(−4.5%,獲利了結,今天真動)雖然 catalyst 提及未來財報日,但屬於今天已發生的真實催化劑,**保留**。
    - 若不確定某檔是「已公布結果」還是「純報前佔位」:查 chgPct 是否顯著(≥~1-2%)+ catalyst 是否只剩「今晚/明晨公布」一句話沒有其他實質內容;兩者皆是 → 移除。
@@ -1490,7 +1492,7 @@ This repo is wired with `.github/workflows/pages.yml`. Every push that touches `
 
 ```bash
 git add dashboard/data/<DATE>.json dashboard/data.json dashboard/dates.json dashboard/index.html \
-        dashboard/candles.json \
+        dashboard/candles.json dashboard/earnings_calendar.json \
         dashboard/studies/studies.json dashboard/studies/images \
         claude_picks.json news_detail.json day_resets.json catalysts_today.json
 git commit -m "scan: <DATE> — top SIP <TICKER>, <N> candidates"
