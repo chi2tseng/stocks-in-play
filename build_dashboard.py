@@ -2147,6 +2147,14 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .earncal-name { color: var(--mute); }
 .earncal-mcap { font-family: var(--font-mono); color: var(--stone); font-size: 12px; }
 .earncal-eps { color: var(--stone); font-size: 11px; }
+/* Company logo <img> — used by earncal-chip, stock-header, sip-header (see logoImg() in JS).
+   White backing + hairline so dark-background logos don't smear into the card; align-self
+   covers the flex containers (baseline-aligned rows) it drops into so it doesn't sit low. */
+.co-logo {
+  display: inline-block; vertical-align: middle; align-self: center; flex-shrink: 0;
+  border-radius: 5px; border: 1px solid var(--hairline-soft);
+  background: #fff; padding: 2px; object-fit: contain;
+}
 .breadcrumb { font-size: 13px; margin-bottom: 14px; color: var(--mute); }
 .breadcrumb a { color: var(--ink); text-decoration: none; font-weight: 500; }
 .breadcrumb a:hover { color: var(--primary); }
@@ -3767,6 +3775,16 @@ function dayBadgeHtml(s) {
   return d ? `<span class="day-badge ${d}">${d}</span>` : '';
 }
 
+// Company logo <img> — shared by the earnings-calendar chips, the stock-detail header,
+// and the Today's SIPs / picks cards. Logo files are optional (dashboard/logos/<SYM>.png,
+// populated by a separate fetch job) — missing files are the common case for micro-caps,
+// so onerror hides the element instead of showing a broken-image icon. Decorative only
+// (alt=""), lazy-loaded since a page can render dozens of these at once.
+function logoImg(sym, size) {
+  if (!sym) return '';
+  return `<img class="co-logo" src="logos/${encodeURIComponent(sym)}.png" style="width:${size}px;height:${size}px" onerror="this.style.display='none'" loading="lazy" alt="">`;
+}
+
 function sipCardHtml(s, idx) {
   const isFeatured = idx < 3;
   const m = s._m53;
@@ -3777,7 +3795,7 @@ function sipCardHtml(s, idx) {
   return `<a class="sip-card ${isFeatured ? 'featured' : ''}" data-nav-source="magna" href="${buildRouteHash('stock/' + s.symbol)}" style="text-decoration:none;color:inherit;display:block;position:relative">
     ${saveStudyBtnHtml(s.symbol)}
     <span class="sip-rank-row"><span class="sip-rank">#${idx + 1}</span>${dayBadgeHtml(s)}</span>
-    <div class="sip-header"><div class="sip-sym">${s.symbol}</div><div class="sip-chg ${chgCls}">${fmtPct(s.chgPct)}</div></div>
+    <div class="sip-header">${logoImg(s.symbol, 20)}<div class="sip-sym">${s.symbol}</div><div class="sip-chg ${chgCls}">${fmtPct(s.chgPct)}</div></div>
     <div class="sip-name">${escapeHtml(s.name)}</div>
     <div class="sip-meta">${sessTags} <span class="tag ${typeTagClass(s.type)}">${s.type}</span></div>
     <div class="magna-bits">${magnaHtml}</div>
@@ -3825,7 +3843,7 @@ function pickCardHtml(s, idx, sourceKey = 'claude') {
     ${saveStudyBtnHtml(s.symbol, rationale, intent)}
     <span class="sip-rank-row"><span class="sip-rank ${src.rankClass}">#${idx + 1}</span>${dayBadgeHtml(s)}</span>
     ${mismatchBanner}
-    <div class="sip-header"><div class="sip-sym">${s.symbol}</div><div class="sip-chg ${chgCls}">${fmtPct(s.chgPct)}</div></div>
+    <div class="sip-header">${logoImg(s.symbol, 20)}<div class="sip-sym">${s.symbol}</div><div class="sip-chg ${chgCls}">${fmtPct(s.chgPct)}</div></div>
     <div class="sip-name">${escapeHtml(s.name)}</div>
     <div class="sip-meta">${sessTags} <span class="tag ${typeTagClass(s.type)}">${s.type}</span></div>
     ${shortPerfLine(s)}
@@ -4605,7 +4623,7 @@ function earncalChipHtml(c) {
   const nameTrunc = name.length > 20 ? name.slice(0, 20) + '…' : name;
   const mcap = (c.mcap_B != null) ? `$${Math.round(c.mcap_B)}B` : '';
   const eps = c.epsForecast ? `<span class="earncal-eps">預期 EPS ${escapeHtml(String(c.epsForecast))}</span>` : '';
-  const inner = `<span class="earncal-sym">${escapeHtml(sym)}</span>` +
+  const inner = `${logoImg(sym, 22)}<span class="earncal-sym">${escapeHtml(sym)}</span>` +
     (nameTrunc ? ` <span class="earncal-name">${escapeHtml(nameTrunc)}</span>` : '') +
     (mcap ? ` <span class="earncal-mcap">${mcap}</span>` : '') +
     (eps ? ` ${eps}` : '');
@@ -5323,6 +5341,7 @@ async function renderStock(sym) {
       </div>
     </div>
     <div class="stock-header">
+      ${logoImg(s.symbol, 36)}
       <div class="sym-big">${s.symbol}${dayChip}</div>
       <div>
         <div class="name">${escapeHtml(s.name)}</div>

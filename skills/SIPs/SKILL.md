@@ -132,6 +132,7 @@ py -c "import urllib.request; print('ALIVE', urllib.request.urlopen('http://127.
 6. `py fetch_candles.py` (background bash — candidates + studies are already known; picks ⊆ candidates by the direction-match rule, so no need to wait for picks)
 7. `py bignames-scan.py` + `py earnings-today-scan.py` (background bash, ~40–60s — §2.0c 大型股 ≥2% 全掃(盤前/盤後感知,**每列自帶當日頭條 + 連結,預設開啟**)+ §2.0d 財報日曆硬閘門;回來的漏網大股併進 §2.1 catalyst fan-out,以 `Session=headline` 補入。**push 前兩個腳本都要重跑一次(§2.0d late sweep)**)
 8. `py fetch_earnings_calendar.py` (background bash, ~15s — 抓未來 14 天主要公司財報時間表 → `dashboard/earnings_calendar.json`,供「財報日曆」頁;報前公司住這頁,不進 scanx)
+9. `py fetch_logos.py` (background bash, ~10s — 補抓新面孔的公司 logo → `dashboard/logos/<SYM>.png`,idempotent 已有的跳過;財報日曆 chip / 個股 header / SIP 卡的 logo 來源,缺檔前端自動隱藏不出破圖)
 
 **While the fan-out runs (~90s–2 min)**, the main model does zero-dependency work: day_resets context review, Phase 10b OHLCV prep, studies placeholder checks.
 
@@ -1492,7 +1493,7 @@ This repo is wired with `.github/workflows/pages.yml`. Every push that touches `
 
 ```bash
 git add dashboard/data/<DATE>.json dashboard/data.json dashboard/dates.json dashboard/index.html \
-        dashboard/candles.json dashboard/earnings_calendar.json \
+        dashboard/candles.json dashboard/earnings_calendar.json dashboard/logos \
         dashboard/studies/studies.json dashboard/studies/images \
         claude_picks.json news_detail.json day_resets.json catalysts_today.json
 git commit -m "scan: <DATE> — top SIP <TICKER>, <N> candidates"
