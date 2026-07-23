@@ -664,6 +664,17 @@ if _miss_tv:
     print(f'[!! TV-MISSING !!] {len(_miss_tv)} big-name/earnings stocks lack TV — '
           f'run `node tv-scrape.js {" ".join(_miss_tv)}` + parse_tv + rebuild before push')
 
+# News-detail depth (SIPs §8.1 gate, code-enforced 2026-07-23): every >=$10B /
+# headline name needs a REAL multi-paragraph news detail, not just the catalyst
+# one-liner fallback (GOOG shipped with an empty detail on 7/23 — never again).
+_thin_news = sorted(k for k, v in _scan_stocks.items()
+                    if ((v.get('marketCap_M') or 0) >= 10000
+                        or any((x or {}).get('session') == 'headline' for x in (v.get('sessions') or [])))
+                    and len(v.get('newsDetail') or '') < 150)
+if _thin_news:
+    print(f'[!! NEWS-THIN !!] {len(_thin_news)} big-name stocks lack a full news detail '
+          f'(<150 chars) — dispatch sonnet shard agents per SKILL §8.1 before push: {" ".join(_thin_news)}')
+
 # Candle completeness: big-names need a 股價走勢 chart (candles.json, from fetch_candles.py).
 _cand_path = os.path.join(DASH_DIR, 'candles.json')
 if os.path.exists(_cand_path):

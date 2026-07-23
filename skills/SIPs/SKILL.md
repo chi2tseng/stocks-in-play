@@ -933,7 +933,11 @@ This keeps the expensive model's tokens on synthesis (~3-5k per ticker write-up)
 - Edge cases (foreign issuers, unknown times, multi-event days)
 - A worked MU example
 
-**Scope:** write entries for the **top 10 SIPs** + **top 4 short candidates** identified in the Phase 6 brief. The remaining ~70 candidates auto-fall back to their `catalyst` 1-sentence summary (already in `final-candidates.csv`); they don't need a `news_detail.json` entry unless they have notable depth.
+**Scope(2026-07-23 使用者擴大 —「調查 ≥$10B 公司時新聞詳情要弄清楚,GOOG 只有一段話沒細節」不准再發生):**
+1. **top 10 SIPs + top 4 shorts** — 主模型親寫(照舊,品質最高)。
+2. **全部 ≥$10B 市值 或 `Session=headline` 的大名字** — **一律要有完整多段 news_detail**(今日漲跌因 blockquote + 事件細節含關鍵數字 + 市場/分析師反應 + sources),不准只剩 catalyst 一句話 fallback。做法:**依 sector 分片派 sonnet agents**(每 6-7 檔一個,平行發),每檔 ≤2 次 WebSearch(ISO 日期寫死、一級源)、150-450 字、數字禁編造、各寫各的 `news_shard_X.json` 再由主線合併進 `news_detail.json`(避免並發寫檔互撞)。
+3. 其餘小型 gapper 照舊 fallback 到 catalyst 一句話,有故事才寫。
+**程式閘門:`build_dashboard.py` 會印 `[!! NEWS-THIN !!]`** 列出 newsDetail <150 字的大名字 — push 前必須清零(比照 TV-MISSING/CANDLES-MISSING)。
 
 **`detail` content rules — 整理當日上漲新聞,不做反向分析(見 § 7.0 硬性方針):**
 - Multi-paragraph 繁體中文 markdown, paragraphs separated by `\n\n` (single `\n` becomes `<br>` in the UI)
