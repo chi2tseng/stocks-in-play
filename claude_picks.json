@@ -1,14 +1,64 @@
 {
-  "picks": [
-    {"symbol": "RTX", "rank": 1, "intent": "long", "rationale": "全場最乾淨的品質型財報做多。Q2 調整後 EPS $1.89 遠優於共識 $1.66,營收 $24.7B(有機 +16%),三大部門全增(Raytheon +18%),並上調全年財測(EPS $7.10-7.25、營收 $95-96B),積壓訂單衝上 $289B(+22% YoY)。國防需求結構性強勁,+5% 有基本面撐,適合做多、回檔進場。"},
-    {"symbol": "TSLA", "rank": 2, "intent": "short", "rationale": "全場最乾淨的做空。Q2 調整 EPS $0.33 大幅低於預期 $0.53,雖交車 480K 超預期但汽車毛利(除碳權)壓縮至 16.3%、營業利益率僅 1.4%,自由現金流 -$10.9 億(2年多首見負值),H2 資本支出上看 $16.7B。獲利品質惡化 + FCF 轉負,-5% 是基本面利空,反彈做空。"},
-    {"symbol": "TMO", "rank": 3, "intent": "long", "rationale": "品質做多。Q2 營收 $11.99B(+10.5% YoY)勝共識 $11.72B,調整 EPS $6.03 勝 $5.71 且年增 12.5%,並上調全年 EPS 財測至 $26.01。生命科學儀器龍頭在健護財報季展現定價力,+5% 有料。"},
-    {"symbol": "STM", "rank": 4, "intent": "short", "rationale": "半導體做空首選。Q2 核心獲利(EBITDA $679M)遜於共識 $797.7M,Q3 營收指引 ~$3.70B 略低於預期且毛利僅 ~37%,汽車/工業終端持續低迷。雖營收年增 26%,但獲利品質與展望雙弱,拖累整體晶片股,-14% 有基本面。"},
-    {"symbol": "CLF", "rank": 5, "intent": "long", "rationale": "轉機做多。Q2 營收 $5.23B(+5.9%)、調整 EPS -$0.20 小勝共識 -$0.21,關鍵是 Q3 調整 EBITDA 指引 ~$575M(約 Q2 的兩倍),且 Q4 續看更高、下半年上看紀錄獲利。鋼價回穩 + 產能利用改善的明確拐點,+9.6%。"},
-    {"symbol": "NOW", "rank": 6, "intent": "long", "rationale": "抗跌型成長做多。Q2 營收 $3.99B(+24% YoY)、非 GAAP EPS $0.90 勝 $0.86,並上調全年訂閱財測至 $15.77B。在 GOOGL/TSLA 引爆的 AI 資本支出疑慮拋售中逆勢 +5%,顯示財報質地夠硬(GAAP EPS 因併購攤銷偏低屬一次性)。"},
-    {"symbol": "NOK", "rank": 7, "intent": "long", "rationale": "做多。Q2 可比營業利益 €434M 勝估 €382M,AI/雲端訂單 €2.8B、營收年增逾一倍,並上調全年營業利潤指引至 €2.1-2.6B。AI 資料中心網通需求帶動的實質上修,ADR +6.5%。"},
-    {"symbol": "ROL", "rank": 8, "intent": "short", "rationale": "做空。Q2 營收 $1.08B 與調整 EPS $0.32 雙雙不及共識,調整 EBITDA $236M 更大幅 miss($255M),住宅除蟲需求放緩、利潤率收縮。防禦股跌破成長敘事,-14% 屬乾淨利空。"},
-    {"symbol": "RELL", "rank": 9, "intent": "long", "rationale": "小型股爆量做多(MAGNA53 M)。Q4 EPS $0.21 遠勝 $0.07(約 223% surprise)、營收 $66.2M(+27.6%)、淨利 +244%,積壓訂單 $164M 創三年新高。電子零件需求回升的財報大驚奇,+17.6%,低基期高成長。"},
-    {"symbol": "ALLE", "rank": 10, "intent": "long", "rationale": "做多。Allegion Q2 調整後獲利與營收增長並上調 2026 全年展望,門禁/安防需求穩健。盤前 +10%,乾淨的財報超預期 + guidance raise。"}
-  ]
+ "picks": [
+  {
+   "symbol": "DGX",
+   "rank": 1,
+   "intent": "long",
+   "rationale": "Quest Diagnostics Q2 EPS $3.12 超預期10.5%、營收$30.4億超標並上調全年財測,大型醫療診斷龍頭乾淨財報跳空 +7.7%,6個月 +21.8%,基本面與動能兼具。"
+  },
+  {
+   "symbol": "RTX",
+   "rank": 2,
+   "intent": "long",
+   "rationale": "Q2 EPS $1.89 大勝預期$1.66,上調全年獲利指引至$7.10-7.25,國防+航太雙引擎、積壓訂單創高,+5.2% 屬品質型財報 SIP。"
+  },
+  {
+   "symbol": "NOW",
+   "rank": 3,
+   "intent": "long",
+   "rationale": "ServiceNow 訂閱營收年增24.5%、AI 年度合約額突破$10億並上調全年指引,緩解市場對 AI 變現的疑慮,+5%,結構性 AI 軟體成長股。"
+  },
+  {
+   "symbol": "ALLE",
+   "rank": 4,
+   "intent": "long",
+   "rationale": "Allegion Q2 EPS $2.40 超預期8.3%、營收+12.7% 並上調全年指引至$8.93,門禁安控龍頭盤前 +10%,是今日最強的乾淨大型股財報跳空。"
+  },
+  {
+   "symbol": "ACI",
+   "rank": 5,
+   "intent": "short",
+   "rationale": "Albertsons Q1 EPS $0.42 遜於預期$0.54 且砍全年 EBITDA/EPS 財測,盤前重挫近18.5%;Short Float 15.3%、DTC 7.35 要防軋空,但基本面明確轉弱,方向做空。"
+  },
+  {
+   "symbol": "WST",
+   "rank": 6,
+   "intent": "long",
+   "rationale": "West Pharma Q2 營收+13.8%至$8.72億、EPS 大幅超預期並上調全年財測至$8.85-9.05,醫材耗材需求回溫,盤前飆約 +6%。"
+  },
+  {
+   "symbol": "STM",
+   "rank": 7,
+   "intent": "short",
+   "rationale": "STMicro Q2 營收雖年增26%,但獲利展望不如預期加上可轉債稀釋疑慮,盤前重挫逾15%;半導體週期與利潤率轉弱,方向做空。"
+  },
+  {
+   "symbol": "TSLA",
+   "rank": 8,
+   "intent": "short",
+   "rationale": "Tesla Q2 營收$282.4億雖優於預期,但 EPS $0.33 遠低於預期、營業利益年減57%,利潤與自由現金流惡化,盤後跌約7%,方向偏空。"
+  },
+  {
+   "symbol": "DOMO",
+   "rank": 9,
+   "intent": "long",
+   "rationale": "Domo 出售 AI/數據平台資產予 Progress Software 約$4億並保留稅務資產,盤前暴漲逾34%;催化劑真實,惟一個月已漲約87%,追高風險高、宜快進快出。"
+  },
+  {
+   "symbol": "RELL",
+   "rank": 10,
+   "intent": "long",
+   "rationale": "Richardson Electronics Q4 營收年增27.6%、EPS $0.21 超預期,小型股飆逾17%、6個月 +93%,動能延續但流通小、波動大。"
+  }
+ ]
 }
