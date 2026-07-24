@@ -628,6 +628,24 @@ for td in sorted(target_dates_set):
                             'dayResets', 'rawGappers', 'rawGappersFilter', 'scanx'):
                     if not new_data.get(key) and old.get(key):
                         new_data[key] = old[key]
+                # Preserve per-stock curated content too (2026-07-24 bug): news_detail.json
+                # rotates each run, so rebuilding an old day from the CURRENT file degrades
+                # its archived newsDetail to the catalyst fallback (7/23's 40 backfilled
+                # details collapsed to one-liners). Old richer content always wins here;
+                # same for Sean/Milan analyses and missing stocks.
+                for sym, old_stock in (old.get('stocks') or {}).items():
+                    new_stock = new_data['stocks'].get(sym)
+                    if new_stock is None:
+                        new_data['stocks'][sym] = old_stock
+                        continue
+                    if len(old_stock.get('newsDetail') or '') > len(new_stock.get('newsDetail') or ''):
+                        for k in ('newsDetail', 'newsLinks', 'publishedAt',
+                                  'publishedTimezone', 'sources'):
+                            if old_stock.get(k) is not None:
+                                new_stock[k] = old_stock[k]
+                    for k in ('seanAnalysis', 'milanAnalysis'):
+                        if old_stock.get(k) and not new_stock.get(k):
+                            new_stock[k] = old_stock[k]
             else:
                 # Scan date: a RE-SCAN is ADDITIVE. Union any previously-recorded stock
                 # that the fresh scrape no longer returns (e.g. it faded below the ±4%
@@ -637,6 +655,19 @@ for td in sorted(target_dates_set):
                 # To force a clean rebuild, delete data/<DATE>.json before building.
                 for sym, sdata in (old.get('stocks') or {}).items():
                     new_data['stocks'].setdefault(sym, sdata)
+                # Union-restored stocks carry their OLD snapshot — refresh news fields
+                # from the current news_detail.json when it has richer content (the
+                # HBAN case: entry existed in the file but the archived stock kept '').
+                for sym, st in new_data['stocks'].items():
+                    entry = news_detail_raw.get(sym)
+                    if isinstance(entry, dict) and \
+                       len(entry.get('detail') or '') > len(st.get('newsDetail') or ''):
+                        st['newsDetail'] = entry.get('detail')
+                        for src_k, dst_k in (('publishedAt', 'publishedAt'),
+                                             ('publishedTimezone', 'publishedTimezone'),
+                                             ('sources', 'sources')):
+                            if entry.get(src_k) is not None:
+                                st[dst_k] = entry[src_k]
         except Exception:
             pass
     # Skip writing empty stock files unless they're the scan date.
@@ -674,6 +705,17 @@ _thin_news = sorted(k for k, v in _scan_stocks.items()
 if _thin_news:
     print(f'[!! NEWS-THIN !!] {len(_thin_news)} big-name stocks lack a full news detail '
           f'(<150 chars) — dispatch sonnet shard agents per SKILL §8.1 before push: {" ".join(_thin_news)}')
+
+# Picks-tier depth (2026-07-24 user: Today's SIPs detail pages must be MUCH more
+# detailed): every claude_picks symbol needs the deep treatment (>=500 chars —
+# 財報詳解/分部/管理層/指引/分析師反應 sections per SKILL §8.1).
+_pick_syms = [p.get('symbol') for p in claude_picks_list if p.get('symbol')]
+_thin_picks = sorted(s for s in _pick_syms
+                     if s in _scan_stocks
+                     and len(_scan_stocks[s].get('newsDetail') or '') < 500)
+if _thin_picks:
+    print(f'[!! NEWS-THIN-PICKS !!] {len(_thin_picks)} Today\'s-SIPs picks lack the deep '
+          f'news detail (<500 chars) — expand per SKILL §8.1 picks tier before push: {" ".join(_thin_picks)}')
 
 # Candle completeness: big-names need a 股價走勢 chart (candles.json, from fetch_candles.py).
 _cand_path = os.path.join(DASH_DIR, 'candles.json')

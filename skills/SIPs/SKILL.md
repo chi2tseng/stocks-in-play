@@ -933,11 +933,12 @@ This keeps the expensive model's tokens on synthesis (~3-5k per ticker write-up)
 - Edge cases (foreign issuers, unknown times, multi-event days)
 - A worked MU example
 
-**Scope(2026-07-23 使用者擴大 —「調查 ≥$10B 公司時新聞詳情要弄清楚,GOOG 只有一段話沒細節」不准再發生):**
-1. **top 10 SIPs + top 4 shorts** — 主模型親寫(照舊,品質最高)。
-2. **全部 ≥$10B 市值 或 `Session=headline` 的大名字** — **一律要有完整多段 news_detail**(今日漲跌因 blockquote + 事件細節含關鍵數字 + 市場/分析師反應 + sources),不准只剩 catalyst 一句話 fallback。做法:**依 sector 分片派 sonnet agents**(每 6-7 檔一個,平行發),每檔 ≤2 次 WebSearch(ISO 日期寫死、一級源)、150-450 字、數字禁編造、各寫各的 `news_shard_X.json` 再由主線合併進 `news_detail.json`(避免並發寫檔互撞)。
+**Scope 與深度分級(2026-07-23 擴大到全部大名字;2026-07-24 使用者再加碼:「Today's SIPs 的詳細股票頁面要寫得更詳細」):**
+1. **Picks 級 — claude_picks 全部(Today's SIPs 精選),每檔 600-1000 字深度事實,`[!! NEWS-THIN-PICKS !!]` 閘門擋 <500 字。** 結構用**粗體小標**分段:`> **今日漲因/跌因:**` blockquote → **財報/事件詳解**(EPS/營收 vs 預期精確數字與 % surprise)→ **分部與營運細節**(業務線數字/利潤率/訂單 backlog)→ **管理層說法**(電話會議/新聞稿具名引言)→ **指引**(上調/下修前後對比)→ **分析師與市場反應**(具名機構 + PT 前後、盤前盤後價格行為)→(硬事實才寫)**風險備註** ≤2 句。**仍是純事實整理** — 不做 Tier 評級、不做反向判定(那是 Sean/Milan 卡的事);查不到的小節直接省略,禁止硬湊字數。做法:**1-2 個 sonnet agent**(每檔 ≤4 次 WebSearch:IR/8-K → 電話會議 → Reuters/CNBC → 分析師動作),各寫 `news_deep_*.json` shard,主線合併 + 抽查。
+2. **大名字級 — 其餘 ≥$10B 市值 或 `Session=headline`**,150-450 字多段(blockquote + 事件細節 + 反應 + sources),`[!! NEWS-THIN !!]` 閘門擋 <150 字。**依 sector 分片 sonnet agents**(每 6-7 檔一個,每檔 ≤2 搜尋),各寫 `news_shard_X.json` 由主線合併(避免並發寫檔互撞)。
 3. 其餘小型 gapper 照舊 fallback 到 catalyst 一句話,有故事才寫。
-**程式閘門:`build_dashboard.py` 會印 `[!! NEWS-THIN !!]`** 列出 newsDetail <150 字的大名字 — push 前必須清零(比照 TV-MISSING/CANDLES-MISSING)。
+**程式閘門(push 前全部清零,比照 TV-MISSING/CANDLES-MISSING):** `[!! NEWS-THIN-PICKS !!]`(picks <500 字)+ `[!! NEWS-THIN !!]`(大名字 <150 字)。
+**封存保護(2026-07-24 加固):** news_detail.json 每日輪替,build_dashboard 已改為 — 舊日期重建時較長的 newsDetail/sean/milan 永遠保留;掃描日 union 補回的舊 stock 快照會用現行 news 檔刷新較長內容。**別再手動改回「重建=覆寫」。**
 
 **`detail` content rules — 整理當日上漲新聞,不做反向分析(見 § 7.0 硬性方針):**
 - Multi-paragraph 繁體中文 markdown, paragraphs separated by `\n\n` (single `\n` becomes `<br>` in the UI)
