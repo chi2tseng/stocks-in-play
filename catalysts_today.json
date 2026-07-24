@@ -1,36 +1,177 @@
 {
-  "INTC": { "Type": "earnings", "Catalyst": "Q2 營收 $161 億大超 $144.2 億估、EPS $0.42,上調 2026 資本支出至 $200 億,盤後 +4.4%", "EarningsReaction": true },
-  "AMKR": { "Type": "contract", "Catalyst": "與 NVIDIA 簽 $15 億先進封裝多年策略合作(含預付款)、擴大 Arizona 廠,+12%", "EarningsReaction": false },
-  "EW": { "Type": "earnings", "Catalyst": "Q2 EPS $0.78 小勝、銷售 +12.5%,上調全年成長至 10-11%,盤後 +4.3%", "EarningsReaction": true },
-  "ALLE": { "Type": "earnings", "Catalyst": "Q2 EPS $2.40 勝估 $2.21、營收 +12.7%,上調全年 EPS 至 $8.85-9.00,+4.7%", "EarningsReaction": true },
-  "SAP": { "Type": "earnings", "Catalyst": "Q2 雲營收 +22-24% 至約 €63 億、積壓訂單 +27%,獲利優於預期,+6%", "EarningsReaction": true },
-  "CHTR": { "Type": "earnings", "Catalyst": "Q2 EPS $10.66 勝估 $10.06,但寬頻用戶流失 11.7 萬遠超預期 7.3 萬、營收遜,-5%", "EarningsReaction": true },
-  "MXL": { "Type": "earnings", "Catalyst": "Q2 EPS $0.35 勝 $0.33、Q3 展望強,但逆勢重挫約 12% 獲利了結(sell-the-news)", "EarningsReaction": true },
-  "MX": { "Type": "momentum", "Catalyst": "南韓晶片股齊漲(SK 海力士飆、三星 +5.6%),MX 同步走高,無個股利多", "EarningsReaction": false },
-  "AXP": { "Type": "earnings", "Catalyst": "Q2 EPS $4.53 勝 $4.40、營收 +10% 至 $196 億,上調全年營收展望,股仍跌 -3.6%", "EarningsReaction": true },
-  "VZ": { "Type": "earnings", "Catalyst": "Q2 EPS $1.30 勝 $1.27,裁 3000 人 + 賣 274 店省成本,股小跌 -1.8%", "EarningsReaction": true },
-  "HCA": { "Type": "earnings", "Catalyst": "Q2 營收超預期 4%、EPS 約符合,7/14 已預告下修全年財測(Medicaid 給付組合約 -$4 億),股持平", "EarningsReaction": true },
-  "CNI": { "Type": "earnings", "Catalyst": "Q2 調整 EPS C$2.08 +11%、營收 C$47.53 億 +11%,上調 2026 財測", "EarningsReaction": true },
-  "SLB": { "Type": "earnings", "Catalyst": "Q2 調整 EPS $0.55 勝 $0.52、營收 $89.7 億超預期 3.4%,毛利率升至 15.6%,+3.8%", "EarningsReaction": true },
-  "NEE": { "Type": "earnings", "Catalyst": "Q2 GAAP EPS $1.50 遠贏估約 $1.10、再生能源訂單 +3.6GW,股獲利了結微跌", "EarningsReaction": true },
-  "SMMT": { "Type": "earnings", "Catalyst": "Q2 淨損 $2.157 億、現金恐撐不到一年,啟動 $3.8 億 ATM 募資,-4.6%", "EarningsReaction": true },
-  "ZVRA": { "Type": "FDA", "Catalyst": "歐盟 CHMP 對 Arimoclomol(NPC 適應症)MAA 給負面意見,核准受挫,-30%", "EarningsReaction": false },
-  "RADX": { "Type": "news", "Catalyst": "宣布 $410 萬定向增發 + 最高 A$1270 萬澳洲配股,稀釋疑慮蓋過 RAD101/RAD204 正向數據,-45%", "EarningsReaction": false },
-  "RBNE": { "Type": "news", "Catalyst": "盤後遞交公開發行初步說明書,ATM 及優先股轉換稀釋壓垮股價,-28%", "EarningsReaction": false },
-  "ANY": { "Type": "M&A", "Catalyst": "更名 DarkHorse Technologies(擬改代碼 DRK)+ 與 Bitdeer 30MW 共採礦協議,8/24 股東會表決,+37%", "EarningsReaction": false },
-  "VIVK": { "Type": "contract", "Catalyst": "原油行銷平台擴至年化 $7.09 億(含四筆年化 $2.89 億新約);7/17 剛完成 1:20 反分割,+40%", "EarningsReaction": false },
-  "MNKD": { "Type": "news", "Catalyst": "Frazier Life Sciences 領投 $5000 萬私募今日完成交割,+5.5%", "EarningsReaction": false },
-  "BKD": { "Type": "momentum", "Catalyst": "安養類股齊漲、Q2 入住率 82.4% 創高,跟漲,無個股新聞,+7.5%", "EarningsReaction": false },
-  "NVVE": { "Type": "momentum", "Catalyst": "18:1 反分割後流通僅 52 萬股、做空 85.7%,認股權解除籌碼炒作,+8%", "EarningsReaction": false },
-  "ADVB": { "Type": "news", "Catalyst": "結束 $2500 萬股權信用額度解除稀釋疑慮,續腫瘤診斷臨床突破,盤前 +26%", "EarningsReaction": false },
-  "AKAN": { "Type": "policy", "Catalyst": "川普政府推大麻降列 Schedule III,大麻族群連日暴漲,+19%", "EarningsReaction": false },
-  "MOBX": { "Type": "contract", "Catalyst": "董事會通過國安事務計畫轉型國防供應鏈,含收購 Vision Aerial 無人機及稀土公司意向,+9%", "EarningsReaction": false },
-  "SKYQ": { "Type": "news", "Catalyst": "Nevada Foreland 煉油廠進入生產階段、7/21 高管現金獎勵,延續債務重組動能,+18%", "EarningsReaction": false },
-  "JEM": { "Type": "news", "Catalyst": "8/5 股東會將表決授權股本 $50 萬→$1200 萬,巨量成交(平日 32 倍),+21%", "EarningsReaction": false },
-  "PAVS": { "Type": "M&A", "Catalyst": "非約束性意向書擬 $1500-2000 萬收購 Jabanero 運動服飾,消息後獲利了結拉回", "EarningsReaction": false },
-  "PN": { "Type": "momentum", "Catalyst": "太陽能 + HPC 伺服器雙題材延續,近週暴漲逾 130%,無單一新聞可歸因", "EarningsReaction": false },
-  "WLDS": { "Type": "momentum", "Catalyst": "查無單一 7/24 催化,Meta-Bounds AR 合作/Mudra Pro 預購為背景,低浮動拉抬", "EarningsReaction": false },
-  "CJMB": { "Type": "momentum", "Catalyst": "Alabama State University 製藥合作案延燒,基本面仍虧損,純消息面拉抬,+14%", "EarningsReaction": false },
-  "EHGO": { "Type": "momentum", "Catalyst": "前日 750K 股定向增發引爆暴衝後回落,籌碼失控高波動洗盤", "EarningsReaction": false },
-  "BIYA": { "Type": "momentum", "Catalyst": "百萬美元 BNB 加密題材前波飆漲後獲利了結,籌碼稀薄劇烈回落,-13%", "EarningsReaction": false }
+  "INTC": {
+    "Type": "earnings",
+    "Catalyst": "Q2 營收 $161 億大超 $144.2 億估、EPS $0.42,上調 2026 資本支出至 $200 億,盤後 +4.4%",
+    "EarningsReaction": true
+  },
+  "AMKR": {
+    "Type": "contract",
+    "Catalyst": "與 NVIDIA 簽 $15 億先進封裝多年策略合作(含預付款)、擴大 Arizona 廠,+12%",
+    "EarningsReaction": false
+  },
+  "EW": {
+    "Type": "earnings",
+    "Catalyst": "Q2 EPS $0.78 小勝、銷售 +12.5%,上調全年成長至 10-11%,盤後 +4.3%",
+    "EarningsReaction": true
+  },
+  "ALLE": {
+    "Type": "earnings",
+    "Catalyst": "Q2 EPS $2.40 勝估 $2.21、營收 +12.7%,上調全年 EPS 至 $8.85-9.00,+4.7%",
+    "EarningsReaction": true
+  },
+  "SAP": {
+    "Type": "earnings",
+    "Catalyst": "Q2 雲營收 +22-24% 至約 €63 億、積壓訂單 +27%,獲利優於預期,+6%",
+    "EarningsReaction": true
+  },
+  "CHTR": {
+    "Type": "earnings",
+    "Catalyst": "Q2 EPS $10.66 勝估 $10.06,但寬頻用戶流失 11.7 萬遠超預期 7.3 萬、營收遜,-5%",
+    "EarningsReaction": true
+  },
+  "MXL": {
+    "Type": "earnings",
+    "Catalyst": "Q2 EPS $0.35 勝 $0.33、Q3 展望強,但逆勢重挫約 12% 獲利了結(sell-the-news)",
+    "EarningsReaction": true
+  },
+  "MX": {
+    "Type": "momentum",
+    "Catalyst": "南韓晶片股齊漲(SK 海力士飆、三星 +5.6%),MX 同步走高,無個股利多",
+    "EarningsReaction": false
+  },
+  "AXP": {
+    "Type": "earnings",
+    "Catalyst": "Q2 EPS $4.53 勝 $4.40、營收 +10% 至 $196 億,上調全年營收展望,股仍跌 -3.6%",
+    "EarningsReaction": true
+  },
+  "VZ": {
+    "Type": "earnings",
+    "Catalyst": "Q2 EPS $1.30 勝 $1.27,裁 3000 人 + 賣 274 店省成本,股小跌 -1.8%",
+    "EarningsReaction": true
+  },
+  "HCA": {
+    "Type": "earnings",
+    "Catalyst": "Q2 營收超預期 4%、EPS 約符合,7/14 已預告下修全年財測(Medicaid 給付組合約 -$4 億),股持平",
+    "EarningsReaction": true
+  },
+  "CNI": {
+    "Type": "earnings",
+    "Catalyst": "Q2 調整 EPS C$2.08 +11%、營收 C$47.53 億 +11%,上調 2026 財測",
+    "EarningsReaction": true
+  },
+  "SLB": {
+    "Type": "earnings",
+    "Catalyst": "Q2 調整 EPS $0.55 勝 $0.52、營收 $89.7 億超預期 3.4%,毛利率升至 15.6%,+3.8%",
+    "EarningsReaction": true
+  },
+  "NEE": {
+    "Type": "earnings",
+    "Catalyst": "Q2 GAAP EPS $1.50 遠贏估約 $1.10、再生能源訂單 +3.6GW,股獲利了結微跌",
+    "EarningsReaction": true
+  },
+  "SMMT": {
+    "Type": "earnings",
+    "Catalyst": "Q2 淨損 $2.157 億、現金恐撐不到一年,啟動 $3.8 億 ATM 募資,-4.6%",
+    "EarningsReaction": true
+  },
+  "ZVRA": {
+    "Type": "FDA",
+    "Catalyst": "歐盟 CHMP 對 Arimoclomol(NPC 適應症)MAA 給負面意見,核准受挫,-30%",
+    "EarningsReaction": false
+  },
+  "RADX": {
+    "Type": "news",
+    "Catalyst": "宣布 $410 萬定向增發 + 最高 A$1270 萬澳洲配股,稀釋疑慮蓋過 RAD101/RAD204 正向數據,-45%",
+    "EarningsReaction": false
+  },
+  "RBNE": {
+    "Type": "news",
+    "Catalyst": "盤後遞交公開發行初步說明書,ATM 及優先股轉換稀釋壓垮股價,-28%",
+    "EarningsReaction": false
+  },
+  "ANY": {
+    "Type": "M&A",
+    "Catalyst": "更名 DarkHorse Technologies(擬改代碼 DRK)+ 與 Bitdeer 30MW 共採礦協議,8/24 股東會表決,+37%",
+    "EarningsReaction": false
+  },
+  "VIVK": {
+    "Type": "contract",
+    "Catalyst": "原油行銷平台擴至年化 $7.09 億(含四筆年化 $2.89 億新約);7/17 剛完成 1:20 反分割,+40%",
+    "EarningsReaction": false
+  },
+  "MNKD": {
+    "Type": "news",
+    "Catalyst": "Frazier Life Sciences 領投 $5000 萬私募今日完成交割,+5.5%",
+    "EarningsReaction": false
+  },
+  "BKD": {
+    "Type": "momentum",
+    "Catalyst": "安養類股齊漲、Q2 入住率 82.4% 創高,跟漲,無個股新聞,+7.5%",
+    "EarningsReaction": false
+  },
+  "NVVE": {
+    "Type": "momentum",
+    "Catalyst": "18:1 反分割後流通僅 52 萬股、做空 85.7%,認股權解除籌碼炒作,+8%",
+    "EarningsReaction": false
+  },
+  "ADVB": {
+    "Type": "news",
+    "Catalyst": "結束 $2500 萬股權信用額度解除稀釋疑慮,續腫瘤診斷臨床突破,盤前 +26%",
+    "EarningsReaction": false
+  },
+  "AKAN": {
+    "Type": "policy",
+    "Catalyst": "川普政府推大麻降列 Schedule III,大麻族群連日暴漲,+19%",
+    "EarningsReaction": false
+  },
+  "MOBX": {
+    "Type": "contract",
+    "Catalyst": "董事會通過國安事務計畫轉型國防供應鏈,含收購 Vision Aerial 無人機及稀土公司意向,+9%",
+    "EarningsReaction": false
+  },
+  "SKYQ": {
+    "Type": "news",
+    "Catalyst": "Nevada Foreland 煉油廠進入生產階段、7/21 高管現金獎勵,延續債務重組動能,+18%",
+    "EarningsReaction": false
+  },
+  "JEM": {
+    "Type": "news",
+    "Catalyst": "8/5 股東會將表決授權股本 $50 萬→$1200 萬,巨量成交(平日 32 倍),+21%",
+    "EarningsReaction": false
+  },
+  "PAVS": {
+    "Type": "M&A",
+    "Catalyst": "非約束性意向書擬 $1500-2000 萬收購 Jabanero 運動服飾,消息後獲利了結拉回",
+    "EarningsReaction": false
+  },
+  "PN": {
+    "Type": "momentum",
+    "Catalyst": "太陽能 + HPC 伺服器雙題材延續,近週暴漲逾 130%,無單一新聞可歸因",
+    "EarningsReaction": false
+  },
+  "WLDS": {
+    "Type": "momentum",
+    "Catalyst": "查無單一 7/24 催化,Meta-Bounds AR 合作/Mudra Pro 預購為背景,低浮動拉抬",
+    "EarningsReaction": false
+  },
+  "CJMB": {
+    "Type": "momentum",
+    "Catalyst": "Alabama State University 製藥合作案延燒,基本面仍虧損,純消息面拉抬,+14%",
+    "EarningsReaction": false
+  },
+  "EHGO": {
+    "Type": "momentum",
+    "Catalyst": "前日 750K 股定向增發引爆暴衝後回落,籌碼失控高波動洗盤",
+    "EarningsReaction": false
+  },
+  "BIYA": {
+    "Type": "momentum",
+    "Catalyst": "百萬美元 BNB 加密題材前波飆漲後獲利了結,籌碼稀薄劇烈回落,-13%",
+    "EarningsReaction": false
+  },
+  "RUBI": {
+    "Type": "momentum",
+    "Catalyst": "Rubico(RUBI)6月NAV $183.1M +94%後7月中衝高至$8.42形成blow-off,現為爆量後餘波反彈 +6.4%,無當日新增新聞",
+    "EarningsReaction": false
+  }
 }
