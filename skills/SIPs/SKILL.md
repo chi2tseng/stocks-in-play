@@ -75,7 +75,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 
 **Principle: cheap models GATHER, the smartest model JUDGES.** All final analysis — MiLan 深度拆解, Tier ratings, claude_picks rankings, the 繁中 brief — is composed by the MAIN model (Fable / Opus max). Everything mechanical (web searches, scraping, fact collection, table assembly) is delegated to cheap subagents. A previous run burned ~400k subagent tokens at main-model pricing because Agent calls inherited the parent model — never again.
 
-**主跑模型 = Opus 4.8(或當前 session 模型)** — 路由表不變:sonnet 蒐集(催化劑/pre-scan)、sonnet 事實包、主模型判斷與寫作。
+**主跑模型 = Opus 5 max(model `claude-opus-5`,effort max)** — 跑 /SIPs 前先確認 session 模型是 Opus 5 max(`/model` 切換)。路由表不變:sonnet 蒐集(催化劑/pre-scan)、sonnet 事實包、主模型判斷與寫作。
 
 **Hard routing table (when running under Claude Code — Agent tool `model` param):**
 
@@ -108,7 +108,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 
 ## § 0.6 Wall-clock parallelization (SPEED rule — launch order ≠ phase order)
 
-> **主跑模型 = Opus 4.8(或當前 session 模型)。** 路由表不變:sonnet 蒐集、sonnet 事實包、主模型判斷與寫作。以下的 fan-out/join 骨架就是要讓主模型的寫作時間蓋住其餘所有 I/O。
+> **主跑模型 = Opus 5 max。** 路由表不變:sonnet 蒐集、sonnet 事實包、主模型判斷與寫作。以下的 fan-out/join 骨架就是要讓主模型的寫作時間蓋住其餘所有 I/O。
 
 The § numbering below is the LOGICAL order, not the execution order. Phases 2 / 5 / 5b / 9b have **no data dependencies between each other** — only Phase 1's `candidates.csv` gates them. Run the pipeline as a fan-out, not a chain:
 
