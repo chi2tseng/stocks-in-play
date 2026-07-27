@@ -3,9 +3,18 @@ import json, os, io, csv, urllib.request
 from datetime import datetime, timedelta, timezone
 
 DIR = os.path.dirname(os.path.abspath(__file__))
-# Target trading day = July 1 (Wed) — the gap session is 7/1 pre + 7/1 post.
-yesterday_iso = '2026-07-01'
-today_iso = '2026-07-02'
+# Target trading day = the most recent completed session (defaults to the weekday
+# before today; Yahoo's chart endpoint snaps to the nearest prior trading day anyway).
+# Override with: py _fetch_prev_ohlcv.py YYYY-MM-DD [TODAY_ISO]
+import sys
+if len(sys.argv) > 1:
+    yesterday_iso = sys.argv[1]
+    today_iso = sys.argv[2] if len(sys.argv) > 2 else (
+        datetime.strptime(yesterday_iso, '%Y-%m-%d') + timedelta(days=1)).strftime('%Y-%m-%d')
+else:
+    _now = datetime.now()
+    today_iso = _now.strftime('%Y-%m-%d')
+    yesterday_iso = (_now - timedelta(days=1)).strftime('%Y-%m-%d')
 
 todays = []
 with io.open(os.path.join(DIR, 'candidates.csv'), encoding='utf-8-sig') as f:
