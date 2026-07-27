@@ -1,327 +1,50 @@
 {
- "INTC": {
-  "Type": "earnings",
-  "Catalyst": "Q2 營收 $161 億大超 $144.2 億估、EPS $0.42,上調 2026 資本支出至 $200 億,盤後 +4.4%",
-  "EarningsReaction": true
- },
- "AMKR": {
-  "Type": "contract",
-  "Catalyst": "與 NVIDIA 簽 $15 億先進封裝多年策略合作(含預付款)、擴大 Arizona 廠,+12%",
-  "EarningsReaction": false
- },
- "EW": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS $0.78 小勝、銷售 +12.5%,上調全年成長至 10-11%,盤後 +4.3%",
-  "EarningsReaction": true
- },
- "ALLE": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS $2.40 勝估 $2.21、營收 +12.7%,上調全年 EPS 至 $8.85-9.00,+4.7%",
-  "EarningsReaction": true
- },
- "SAP": {
-  "Type": "earnings",
-  "Catalyst": "Q2 雲營收 +22-24% 至約 €63 億、積壓訂單 +27%,獲利優於預期,+6%",
-  "EarningsReaction": true
- },
- "CHTR": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS $10.66 勝估 $10.06,但寬頻用戶流失 11.7 萬遠超預期 7.3 萬、營收遜,-5%",
-  "EarningsReaction": true
- },
- "MXL": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS $0.35 勝 $0.33、Q3 展望強,但逆勢重挫約 12% 獲利了結(sell-the-news)",
-  "EarningsReaction": true
- },
- "MX": {
-  "Type": "momentum",
-  "Catalyst": "南韓晶片股齊漲(SK 海力士飆、三星 +5.6%),MX 同步走高,無個股利多",
-  "EarningsReaction": false
- },
- "AXP": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS $4.53 勝 $4.40、營收 +10% 至 $196 億,上調全年營收展望,股仍跌 -3.6%",
-  "EarningsReaction": true
- },
- "VZ": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS $1.30 勝預期 $1.27,宣布裁員 3000 人 + 減債 274 億美元,成本紀律獲市場肯定,收盤 +5.8%",
-  "EarningsReaction": true
- },
- "HCA": {
-  "Type": "earnings",
-  "Catalyst": "Q2 營收超預期 4%、EPS 約符合,7/14 已預告下修全年財測(Medicaid 給付組合約 -$4 億),股持平",
-  "EarningsReaction": true
- },
- "CNI": {
-  "Type": "earnings",
-  "Catalyst": "Q2 調整 EPS C$2.08 +11%、營收 C$47.53 億 +11%,上調 2026 財測",
-  "EarningsReaction": true
- },
- "SLB": {
-  "Type": "earnings",
-  "Catalyst": "Q2 調整 EPS $0.55 勝 $0.52、營收 $89.7 億超預期 3.4%,毛利率升至 15.6%,+3.8%",
-  "EarningsReaction": true
- },
- "NEE": {
-  "Type": "earnings",
-  "Catalyst": "Q2 GAAP EPS $1.50 遠贏估約 $1.10、再生能源訂單 +3.6GW,股獲利了結微跌",
-  "EarningsReaction": true
- },
- "SMMT": {
-  "Type": "earnings",
-  "Catalyst": "Q2 淨損 $2.157 億、現金恐撐不到一年,啟動 $3.8 億 ATM 募資,-4.6%",
-  "EarningsReaction": true
- },
- "ZVRA": {
-  "Type": "FDA",
-  "Catalyst": "歐盟 CHMP 對 Arimoclomol(NPC 適應症)MAA 給負面意見,核准受挫,-30%",
-  "EarningsReaction": false
- },
- "RADX": {
-  "Type": "news",
-  "Catalyst": "宣布 $410 萬定向增發 + 最高 A$1270 萬澳洲配股,稀釋疑慮蓋過 RAD101/RAD204 正向數據,-45%",
-  "EarningsReaction": false
- },
- "RBNE": {
-  "Type": "news",
-  "Catalyst": "盤後遞交公開發行初步說明書,ATM 及優先股轉換稀釋壓垮股價,-28%",
-  "EarningsReaction": false
- },
- "ANY": {
-  "Type": "M&A",
-  "Catalyst": "更名 DarkHorse Technologies(擬改代碼 DRK)+ 與 Bitdeer 30MW 共採礦協議,8/24 股東會表決,+37%",
-  "EarningsReaction": false
- },
- "VIVK": {
-  "Type": "contract",
-  "Catalyst": "原油行銷平台擴至年化 $7.09 億(含四筆年化 $2.89 億新約);7/17 剛完成 1:20 反分割,+40%",
-  "EarningsReaction": false
- },
- "MNKD": {
-  "Type": "news",
-  "Catalyst": "Frazier Life Sciences 領投 $5000 萬私募今日完成交割,+5.5%",
-  "EarningsReaction": false
- },
- "BKD": {
-  "Type": "momentum",
-  "Catalyst": "安養類股齊漲、Q2 入住率 82.4% 創高,跟漲,無個股新聞,+7.5%",
-  "EarningsReaction": false
- },
- "NVVE": {
-  "Type": "momentum",
-  "Catalyst": "18:1 反分割後流通僅 52 萬股、做空 85.7%,認股權解除籌碼炒作,+8%",
-  "EarningsReaction": false
- },
- "ADVB": {
-  "Type": "news",
-  "Catalyst": "結束 $2500 萬股權信用額度解除稀釋疑慮,續腫瘤診斷臨床突破,盤前 +26%",
-  "EarningsReaction": false
- },
- "AKAN": {
-  "Type": "policy",
-  "Catalyst": "川普政府推大麻降列 Schedule III,大麻族群連日暴漲,+19%",
-  "EarningsReaction": false
- },
- "MOBX": {
-  "Type": "contract",
-  "Catalyst": "董事會通過國安事務計畫轉型國防供應鏈,含收購 Vision Aerial 無人機及稀土公司意向,+9%",
-  "EarningsReaction": false
- },
- "SKYQ": {
-  "Type": "news",
-  "Catalyst": "Nevada Foreland 煉油廠進入生產階段、7/21 高管現金獎勵,延續債務重組動能,+18%",
-  "EarningsReaction": false
- },
- "JEM": {
-  "Type": "news",
-  "Catalyst": "8/5 股東會將表決授權股本 $50 萬→$1200 萬,巨量成交(平日 32 倍),+21%",
-  "EarningsReaction": false
- },
- "PAVS": {
-  "Type": "M&A",
-  "Catalyst": "非約束性意向書擬 $1500-2000 萬收購 Jabanero 運動服飾,消息後獲利了結拉回",
-  "EarningsReaction": false
- },
- "PN": {
-  "Type": "momentum",
-  "Catalyst": "太陽能 + HPC 伺服器雙題材延續,近週暴漲逾 130%,無單一新聞可歸因",
-  "EarningsReaction": false
- },
- "WLDS": {
-  "Type": "momentum",
-  "Catalyst": "查無單一 7/24 催化,Meta-Bounds AR 合作/Mudra Pro 預購為背景,低浮動拉抬",
-  "EarningsReaction": false
- },
- "CJMB": {
-  "Type": "momentum",
-  "Catalyst": "Alabama State University 製藥合作案延燒,基本面仍虧損,純消息面拉抬,+14%",
-  "EarningsReaction": false
- },
- "EHGO": {
-  "Type": "momentum",
-  "Catalyst": "前日 750K 股定向增發引爆暴衝後回落,籌碼失控高波動洗盤",
-  "EarningsReaction": false
- },
- "BIYA": {
-  "Type": "momentum",
-  "Catalyst": "盤中 BNB 加密題材獲利了結 -13% 收 $1.93,盤後籌碼稀薄反手急拉 +33.7% 至 $2.58(267 萬股),無新營運消息",
-  "EarningsReaction": false
- },
- "RUBI": {
-  "Type": "momentum",
-  "Catalyst": "Rubico(RUBI)6月NAV $183.1M +94%後7月中衝高至$8.42形成blow-off,現為爆量後餘波反彈 +6.4%,無當日新增新聞",
-  "EarningsReaction": false
- },
- "DLR": {
-  "Type": "earnings",
-  "Catalyst": "Q2 核心FFO $2.13 (+14% YoY) 創高、續約租金漲25.4%,上調全年FFO至 $8.15-8.20,收盤 +11%",
-  "EarningsReaction": true
- },
- "SKM": {
-  "Type": "contract",
-  "Catalyst": "SK集團擴大與NVIDIA合作,SK電訊將建2GW Vera Rubin AI工廠,搭配SK海力士HBM4",
-  "EarningsReaction": false
- },
- "UMC": {
-  "Type": "macro",
-  "Catalyst": "AI晶片估值疑慮引爆半導體全面拋售,費半7月重挫17%,UMC ADR 隨族群 -6.7%",
-  "EarningsReaction": false
- },
- "WSE": {
-  "Type": "policy",
-  "Catalyst": "美OCC 7/23 以AML/CFT缺失駁回Wise國家信託銀行執照申請,7/24 股價重挫",
-  "EarningsReaction": false
- },
- "MSS": {
-  "Type": "news",
-  "Catalyst": "公告設立Maison AI Limited持股90.09%,盤前 +17% 後全數回吐,收盤 -28%",
-  "EarningsReaction": false
- },
- "DFNS": {
-  "Type": "momentum",
-  "Catalyst": "1比125反向分割後低流通盤,7/24 遞交13D,盤後投機動能 +49%,無實質營運新聞",
-  "EarningsReaction": false
- },
- "STAK": {
-  "Type": "momentum",
-  "Catalyst": "低流通軋空+AI電力題材,盤中暴衝至 $9.27(+602%)遭停牌,盤後回吐 -48.6%",
-  "EarningsReaction": false
- },
- "CIIT": {
-  "Type": "news",
-  "Catalyst": "宣布辛巴威子公司RIDGCORE鉻礦月供應擴至逾1萬公噸,股價未受激勵反跌 -6.3%",
-  "EarningsReaction": false
- },
- "JZ": {
-  "Type": "momentum",
-  "Catalyst": "查無7/24具體消息;7/6 生效1比30反向ADS分割後動能持續走弱",
-  "EarningsReaction": false
- },
- "TC": {
-  "Type": "momentum",
-  "Catalyst": "查無7/24具體消息;低流通籌碼混亂、空單占比29.1%,獲利了結賣壓",
-  "EarningsReaction": false
- },
- "TGB": {
-  "Type": "momentum",
-  "Catalyst": "查無7/24具體消息;承接7/14公布Q2銅產3,600萬磅後的類股動能延續",
-  "EarningsReaction": false
- },
- "NOW": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS $0.90 勝預期 $0.76、營收 $3.98B +23.6% 並上調全年訂閱指引,但財報後兩日重挫 -10%(7/22 -6.5%、7/23 -3.7%),週五 +7.4% 為超賣反彈",
-  "EarningsReaction": true
- },
- "TMUS": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS $2.99 勝預期 $2.58、服務營收 $18.98B,惟 7/23 財報日暴跌 -10.7%,週五 +5.7% 為反彈非續強",
-  "EarningsReaction": true
- },
- "ADBE": {
-  "Type": "momentum",
-  "Catalyst": "連四日累跌 -10.6% 後週五 +6.1% 超賣反彈,查無個股新聞;軟體族群同步走強(NOW/CRM/IBM)",
-  "EarningsReaction": false
- },
- "T": {
-  "Type": "analyst",
-  "Catalyst": "Wolfe Research 升評至 Outperform、目標價上調至 $29,稱基本面優於 Starlink 競爭疑慮,+4.8%",
-  "EarningsReaction": false
- },
- "CRM": {
-  "Type": "contract",
-  "Catalyst": "美國退伍軍人事務部授予 $16 億三年期 Agentic AI 合約(Missionforce 平台),+4.3%",
-  "EarningsReaction": false
- },
- "BX": {
-  "Type": "earnings",
-  "Catalyst": "Q2 核心可分配盈餘 EPS $1.52 勝預期 $1.34、AUM 創 $1.35 兆新高,+4.4%",
-  "EarningsReaction": true
- },
- "AAPL": {
-  "Type": "news",
-  "Catalyst": "福特新電動車平台內建 Apple Maps + 大摩上調目標價至 $364,+3.5%",
-  "EarningsReaction": false
- },
- "PGR": {
-  "Type": "analyst",
-  "Catalyst": "大摩升評至 Equal-weight、目標價 $190→$210,肯定保費成長優於同業,+3.3%",
-  "EarningsReaction": false
- },
- "DIS": {
-  "Type": "news",
-  "Catalyst": "傳 Pixar/ESPN/國家地理再裁員數百人,市場解讀為成本紀律利多,+2.3%",
-  "EarningsReaction": false
- },
- "ARM": {
-  "Type": "momentum",
-  "Catalyst": "AI 資本支出/評價重置族群賣壓,無個股新聞;7/29 將公布自身財報,-8.1%",
-  "EarningsReaction": false
- },
- "MU": {
-  "Type": "momentum",
-  "Catalyst": "半導體族群賣壓 + 中國記憶體(CXMT/YMTC)競爭疑慮,前波 Musk 供應合約行情獲利了結,-7.0%",
-  "EarningsReaction": false
- },
- "MRVL": {
-  "Type": "momentum",
-  "Catalyst": "雲端基建/資料中心需求降溫疑慮拖累,無個股新聞,-7.9%",
-  "EarningsReaction": false
- },
- "AMAT": {
-  "Type": "momentum",
-  "Catalyst": "半導體設備族群連動下跌,同日 HSBC 反調升目標價至 $683,-4.5%",
-  "EarningsReaction": false
- },
- "LRCX": {
-  "Type": "momentum",
-  "Catalyst": "半導體設備族群連動下跌,HSBC 目標價調至 $333 維持 Hold,-4.5%",
-  "EarningsReaction": false
- },
- "AMD": {
-  "Type": "momentum",
-  "Catalyst": "AI 晶片族群賣壓,雖有 AI 電腦新聞帶動分析師調升目標價仍收黑,-3.3%",
-  "EarningsReaction": false
- },
- "ORCL": {
-  "Type": "contract",
-  "Catalyst": "五角大廈頒發近 $70 億十年期軟體合約開高,但 AI 資本支出/融資疑慮蓋過利多,終場 -4.3%",
-  "EarningsReaction": false
- },
- "UBER": {
-  "Type": "news",
-  "Catalyst": "FT/Bloomberg 報導 Waymo 評估提前終止 robotaxi 合作(原訂 2028 到期),消息未經證實,-3.6%",
-  "EarningsReaction": false
- },
- "SMCI": {
-  "Type": "analyst",
-  "Catalyst": "Mizuho 維持中立但目標價自 $44 砍至 $34,爆量下跌,-3.5%",
-  "EarningsReaction": false
- },
- "TSLA": {
-  "Type": "earnings",
-  "Catalyst": "7/23 Q2 財報調整後 EPS $0.33 遠低於預期 $0.51、自由現金流轉負 $10.9 億,重挫 -14.5% 後週五續跌 -2.1%,單週 -18%",
-  "EarningsReaction": false
- }
+  "FBRX": { "Type": "M&A", "Catalyst": "argenx 以每股 $77 現金全面收購、總值 $22 億(較 7/9 vitiligo Ph1b 後 VWAP 溢價 86%),盤前 +39.6% 貼近成交價", "EarningsReaction": false },
+  "MPLT": { "Type": "FDA", "Catalyst": "思覺失調症 Ph2 ZEPHYR:每日一次劑量組未達主要終點(每日兩次組達標),盤前 -53.6%", "EarningsReaction": false },
+  "CAPR": { "Type": "FDA", "Catalyst": "7/29 FDA 諮詢委員會將審 deramiocel(DMD)BLA,會前避險賣壓,盤前 -9.9%", "EarningsReaction": false },
+  "QBTS": { "Type": "news", "Catalyst": "NYSE→Nasdaq 轉板今日首日交易(7/24 收盤生效),CEO Alan Baratz 敲 Nasdaq 開盤鐘,+8.3%", "EarningsReaction": false },
+  "MBLY": { "Type": "earnings", "Catalyst": "7/23 Q2 beat-and-raise 續漲:營收 $508M 超預期 $490M、調整後 EPS $0.19 遠勝 $0.06,全年指引 $20 億中值上調", "EarningsReaction": false },
+  "SAP": { "Type": "earnings", "Catalyst": "7/23 Q2 財報後續補漲:雲端在手訂單 €22.9B +27%、雲營收 +22% 至 €6.3B,BMO 上調目標價", "EarningsReaction": false },
+  "SKHY": { "Type": "momentum", "Catalyst": "週五 -8.8% 後反彈;中國 DRAM 廠 CXMT 上海掛牌首日 +466% 帶動記憶體估值重評,7/28 將公布 Q2 財報", "EarningsReaction": false },
+  "VOD": { "Type": "earnings", "Catalyst": "今晨盤前公布 FY Q1:營業利益與營收雙雙成長,股價 +4.7%", "EarningsReaction": true },
+  "TGB": { "Type": "earnings", "Catalyst": "Q2 銅產量 3,600 萬磅(Gibraltar+Florence)符合指引,重申全年 1.10-1.15 億磅目標", "EarningsReaction": true },
+  "CJMB": { "Type": "contract", "Catalyst": "與 Alabama State University 簽署整合式製藥製造生態系合作案,週五盤後 +4.3%", "EarningsReaction": false },
+  "INFQ": { "Type": "contract", "Catalyst": "近日獲能源部 Genesis Mission 三項計畫 + 商務部最高 $1 億意向書,量子族群同步反彈", "EarningsReaction": false },
+  "TRAX": { "Type": "M&A", "Catalyst": "無個股新聞;argenx $22 億收購 Forte 點燃自體免疫抗體族群併購想像,同類標的比價上衝 +33%", "EarningsReaction": false },
+  "DFNS": { "Type": "momentum", "Catalyst": "7/24 SEC 13D 揭露 16.67% 持股點火,低流通量續噴 +66%,無新增基本面消息", "EarningsReaction": false },
+  "VEEE": { "Type": "M&A", "Catalyst": "延續 7/13 與 USFM 合併、分拆船艇業務案,今日爆量續漲 +24.5%", "EarningsReaction": false },
+  "BE": { "Type": "momentum", "Catalyst": "週五重挫 14.9% 後技術性反彈;7/28 盤後將公布 Q2 財報,JPMorgan 目標價上調至 $346", "EarningsReaction": false },
+  "NBIS": { "Type": "momentum", "Catalyst": "週五 AI 基建股系統性獲利了結重挫 15%(查無個股利空)後反彈;今日風險偏好回升帶動回補 +5.5%", "EarningsReaction": false },
+  "RKLB": { "Type": "momentum", "Catalyst": "週五 -8.7% 後反彈;美伊停火使油價重挫、大盤風險偏好回升,高 beta 成長股回補(非公司面消息)", "EarningsReaction": false },
+  "IONQ": { "Type": "momentum", "Catalyst": "查無當日個股一級源新聞;隨量子族群(QBTS 轉板題材)反彈 +4.7%", "EarningsReaction": false },
+  "BMNR": { "Type": "macro", "Catalyst": "ETH 本日反彈約 4%,帶動以太幣儲備概念股走高 +5.4%", "EarningsReaction": false },
+  "KEEL": { "Type": "momentum", "Catalyst": "查無當日一級源消息;延續 AI 資料中心轉型題材,Q2 財報電話會議訂 8/10", "EarningsReaction": false },
+  "TE": { "Type": "momentum", "Catalyst": "近三週自 $10 腰斬至 $5 後技術性反彈;查無 7/27 當日一級源催化劑", "EarningsReaction": false },
+  "KOS": { "Type": "macro", "Catalyst": "美伊停火使布蘭特重挫 6.1% 至約 $90.87、WTI -5.5% 至 $84.37,地緣溢價消退,油氣類股全面走弱 -8.0%", "EarningsReaction": false },
+  "VG": { "Type": "news", "Catalyst": "股東調查(7/16 公告)+ CFO 與法務長內部人賣股 + LNG 合約遇監管障礙,獲利了結賣壓 -6.2%", "EarningsReaction": false },
+  "STAK": { "Type": "momentum", "Catalyst": "低流通量續 6/8 AI 電力 MOU 敘事急拉 278% 後暴力回吐,兩日累跌 78%,查無新一級源消息", "EarningsReaction": false },
+  "TC": { "Type": "news", "Catalyst": "查無 7/24-7/27 新聞;延續加密資產配置 + 核融合募資轉型敘事,20-F 揭露持續經營疑慮", "EarningsReaction": false },
+  "CIIT": { "Type": "news", "Catalyst": "7/20 生效 1 比 10 反向分割以維持 Nasdaq 最低 $1 掛牌合規,盤後回吐 -6.3%", "EarningsReaction": false },
+  "BIYA": { "Type": "momentum", "Catalyst": "查無 7/26-27 新一級源;延續 7/8-10 反向分割與 5 月 Binance 計畫舊聞,低流通投機拉抬", "EarningsReaction": false },
+  "EHGO": { "Type": "momentum", "Catalyst": "無新一級源催化劑;近期反覆 registered direct offering 增資 + 低流通量致連日暴漲暴跌", "EarningsReaction": false },
+  "JEM": { "Type": "momentum", "Catalyst": "1:12 反向分割後連日爆量拉抬(+34%/盤後 +27%/+22%),無新催化劑,盤前獲利了結 -11.8%", "EarningsReaction": false },
+  "JZ": { "Type": "momentum", "Catalyst": "查無 7/27 一級源新聞;7/6 反向 ADS 分割後低流通盤前回吐,無明確催化劑", "EarningsReaction": false },
+  "SKYQ": { "Type": "momentum", "Catalyst": "查無當日一級源新聞;週五盤後 +4.9% 後盤前反向回吐 -6.6%,低流通量雙向震盪", "EarningsReaction": false },
+  "VIVK": { "Type": "momentum", "Catalyst": "7/24 子公司 $3.84 億原油商業計畫消息暴衝 +22%,盤前獲利了結 -13.1%,查無新利空", "EarningsReaction": false },
+  "WLDS": { "Type": "momentum", "Catalyst": "7/23 Mudra 神經介面白皮書帶量飆漲(成交量達流通股 11.5 倍),盤前回吐 -13.3%,無新利空", "EarningsReaction": false },
+  "MU": { "Type": "news", "Catalyst": "中國 DRAM 廠 CXMT 上海科創板掛牌首日暴漲 466%,記憶體資產估值重評帶動 MU 盤前 +2.3%", "EarningsReaction": false },
+  "ORCL": { "Type": "news", "Catalyst": "外電報導 Nvidia 為 OpenAI 資料中心擴建端出最高 $2,500 億支持,雲端／AI 基建股夜盤走高 +2.6%", "EarningsReaction": false },
+  "AMD": { "Type": "analyst", "Catalyst": "Mizuho 今晨上調目標價、維持 Outperform;週五 -3.3% 後隨半導體族群反彈 +2.4%(背景:7/22 與 Anthropic 簽 2GW MI450 合作、投資至多 $50 億)", "EarningsReaction": false },
+  "SMCI": { "Type": "news", "Catalyst": "發表 H15 伺服器系列、搭載 72 顆 GPU 的 AI 訓練平台,盤前 +2.8%", "EarningsReaction": false },
+  "MRVL": { "Type": "news", "Catalyst": "週五 -7.2% 後反彈;CXMT 掛牌帶動記憶體／客製化 ASIC 族群估值回補 +3.3%", "EarningsReaction": false },
+  "AMAT": { "Type": "news", "Catalyst": "週五 -4.7% 後反彈;半導體設備族群隨記憶體資本支出預期回升 +3.7%", "EarningsReaction": false },
+  "LRCX": { "Type": "news", "Catalyst": "週五 -4.6% 後反彈;CXMT 掛牌強化中國 DRAM 擴產設備需求敘事 +3.4%", "EarningsReaction": false },
+  "ARM": { "Type": "news", "Catalyst": "週五 -8.1% 重挫後反彈 +2.8%;風險偏好回升帶動高評價半導體 IP 股回補", "EarningsReaction": false },
+  "XOM": { "Type": "macro", "Catalyst": "川普延後對伊朗行動、地緣溢價消退,原油重挫拖累綜合油氣股 -2.9%", "EarningsReaction": false },
+  "CVX": { "Type": "macro", "Catalyst": "同油價重挫(美伊緊張緩和),Barron's 點名 Exxon／Chevron 隨油價下跌 -2.8%", "EarningsReaction": false },
+  "COP": { "Type": "macro", "Catalyst": "美伊停火使布蘭特單日重挫逾 5%,上游 E&P 獲利預期下修 -3.5%", "EarningsReaction": false },
+  "EOG": { "Type": "macro", "Catalyst": "油價回落壓抑頁岩 E&P 現金流預期 -3.1%", "EarningsReaction": false },
+  "SHEL": { "Type": "macro", "Catalyst": "BP、Shell、Harbour Energy 領跌歐洲能源股,油價回落所致 -2.3%", "EarningsReaction": false },
+  "BP": { "Type": "macro", "Catalyst": "油價回落領跌歐洲能源股 -3.8%", "EarningsReaction": false },
+  "TTE": { "Type": "news", "Catalyst": "決定就法國法院氣候盡職調查(Vigilance)判決提起上訴,加上油價重挫 -3.9%", "EarningsReaction": false }
 }
