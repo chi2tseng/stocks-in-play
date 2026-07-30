@@ -281,17 +281,15 @@ If Playwright Barchart fails (Node not installed, Chromium missing, bot detectio
 1. 修環境後重試一次:`npx.cmd playwright install chromium` → 重跑 `node barchart-scrape.js`。
 2. 仍失敗 → 直接走 Step 2 的 Finviz fallback。**This fallback is needed less than 1% of the time** — Playwright + XHR intercept is robust.
 
-### Step 2: fallback to Yahoo screener if Barchart entirely fails
+### Step 2: fallback if Barchart entirely fails
 Trigger fallback when the Playwright Barchart path (incl. the Step 1b retry) failed, OR fewer than 5 rows parsed combined.
 
-**Yahoo 預設 screener API — 純 JSON、免瀏覽器(2026-07-30 實測 3 端點全通):**
-```
-https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?scrIds=day_gainers&count=250
-https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?scrIds=day_losers&count=250
-https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?scrIds=small_cap_gainers&count=250
-```
-用 `py -c` + urllib(帶 Chrome UA)讀 `finance.result[0].quotes`,欄位 `symbol / regularMarketChangePercent / regularMarketVolume / regularMarketPrice / marketCap`,套同樣 ±4% + vol≥100k 濾網。**注意** day_gainers/losers 有 ~$5 價格下限,`small_cap_gainers` 補低價股;此為緊急備援,涵蓋略遜於 Barchart 可接受。
-(Finviz screener 2026-07 起改 React 渲染 + 資料端點不可攔,plain fetch/WebFetch 只拿得到空殼,**不再當 fallback**;個股 `quote.ashx?t=SYM` 仍是 static HTML,§2.1 news block 照用。)
+**2a. Finviz screener — plain fetch 即可(2026-07-30 實測 3 頁 60 rows 全解析):**
+- `https://finviz.com/screener.ashx?v=111&s=ta_topgainers&o=-change&r=<1|21|41|…>`(losers 換 `s=ta_toplosers&o=change`;每頁 20 行,`r` 翻頁直到抓完)
+- ⚠ **2026-07 Finviz 改版陷阱:** 個股連結變 `stock?t=SYM`(不再是 `quote.ashx?t=`)、canonical 路徑變 `/screener`。表格**仍是 server-rendered** — 用 `py -c` + urllib(Chrome UA)抓,regex `stock\?t=([A-Z.\-]+)&` 取 ticker,同列 td 取 Change% 與 Volume,套 ±4% + vol≥100k 濾網。
+- `#screener-react` 是**空的 filter-UI 容器**,別拿它判定「頁面沒渲染」(2026-07-30 曾因此誤判 Finviz 不可用)。
+
+**2b. Yahoo 預設 screener API(2a 也掛才用;純 JSON):** `https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?scrIds=<day_gainers|day_losers|small_cap_gainers>&count=250`,讀 `finance.result[0].quotes` 的 `symbol / regularMarketChangePercent / regularMarketVolume`。注意 day_* 有 ~$5 價格下限,`small_cap_gainers` 補低價股。
 
 ### Step 3: build candidate list
 Combine gainers + losers into one list. Mark each row as `direction = up | down`. If list is empty → output **「今日無符合條件的股票」** and stop.
