@@ -281,14 +281,17 @@ If Playwright Barchart fails (Node not installed, Chromium missing, bot detectio
 1. 修環境後重試一次:`npx.cmd playwright install chromium` → 重跑 `node barchart-scrape.js`。
 2. 仍失敗 → 直接走 Step 2 的 Finviz fallback。**This fallback is needed less than 1% of the time** — Playwright + XHR intercept is robust.
 
-### Step 2: fallback to Finviz if Barchart entirely fails
+### Step 2: fallback to Yahoo screener if Barchart entirely fails
 Trigger fallback when the Playwright Barchart path (incl. the Step 1b retry) failed, OR fewer than 5 rows parsed combined.
 
-Finviz screener 是 server-rendered HTML,**WebFetch 直接抓**即可(被擋就用 Playwright 抓同 URL 的 `innerText`):
-- `https://finviz.com/screener.ashx?v=111&s=ta_topgainers&o=-change`
-- `https://finviz.com/screener.ashx?v=111&s=ta_toplosers&o=change`
-
-Parse the Finviz table (Ticker, Change, Volume) and apply the same filter.
+**Yahoo 預設 screener API — 純 JSON、免瀏覽器(2026-07-30 實測 3 端點全通):**
+```
+https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?scrIds=day_gainers&count=250
+https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?scrIds=day_losers&count=250
+https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?scrIds=small_cap_gainers&count=250
+```
+用 `py -c` + urllib(帶 Chrome UA)讀 `finance.result[0].quotes`,欄位 `symbol / regularMarketChangePercent / regularMarketVolume / regularMarketPrice / marketCap`,套同樣 ±4% + vol≥100k 濾網。**注意** day_gainers/losers 有 ~$5 價格下限,`small_cap_gainers` 補低價股;此為緊急備援,涵蓋略遜於 Barchart 可接受。
+(Finviz screener 2026-07 起改 React 渲染 + 資料端點不可攔,plain fetch/WebFetch 只拿得到空殼,**不再當 fallback**;個股 `quote.ashx?t=SYM` 仍是 static HTML,§2.1 news block 照用。)
 
 ### Step 3: build candidate list
 Combine gainers + losers into one list. Mark each row as `direction = up | down`. If list is empty → output **「今日無符合條件的股票」** and stop.
