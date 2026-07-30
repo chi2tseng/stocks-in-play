@@ -266,7 +266,7 @@ This script (at `./barchart-scrape.js`):
    - `barchart-{session}-{direction}.json` — raw API responses (1 per source)
    - `candidates.csv` — final filtered + deduped list with `SessionDate` column, BOM for Excel
 
-**Speed/cost:** ~5-7 seconds for the default (both endpoints). 0 Firecrawl credits.
+**Speed/cost:** ~5-7 seconds for the default (both endpoints). 全程本機 Playwright,無外部 API credits。
 
 **Pagination note:** API returns `total: 200` per source but `count: 100` per call. The 100 rows we get are sorted by `|%chg|` descending (for advances) or ascending (for declines), so rows 101-200 are below the 4% threshold and don't qualify. **No pagination needed** — page 1 captures all ±4% candidates.
 
@@ -275,22 +275,18 @@ This script (at `./barchart-scrape.js`):
 - Same `Symbol` in both pre AND post with same direction → kept as separate rows tagged by session (allows the user to see if a stock moved in both sessions); the report's dedupe can collapse these if desired.
 - Opposite directions across sessions (rare) → both rows kept separately.
 
-### Step 1b: Firecrawl fallback for Barchart
+### Step 1b: Barchart retry(2026-07-30 起不用 Firecrawl)
 
-If Playwright Barchart fails (Node not installed, Chromium missing, bot detection), fall back to Firecrawl:
-```powershell
-firecrawl.cmd --% scrape "<URL>&page=1" --only-main-content --wait-for 6000 -o barchart-pre-advances-p1.md
-```
-Then run the legacy regex parser on the markdown. **This fallback is needed less than 1% of the time** — Playwright + XHR intercept is robust.
+If Playwright Barchart fails (Node not installed, Chromium missing, bot detection):
+1. 修環境後重試一次:`npx.cmd playwright install chromium` → 重跑 `node barchart-scrape.js`。
+2. 仍失敗 → 直接走 Step 2 的 Finviz fallback。**This fallback is needed less than 1% of the time** — Playwright + XHR intercept is robust.
 
 ### Step 2: fallback to Finviz if Barchart entirely fails
-Trigger fallback when both Playwright AND Firecrawl Barchart paths failed, OR fewer than 5 rows parsed combined.
+Trigger fallback when the Playwright Barchart path (incl. the Step 1b retry) failed, OR fewer than 5 rows parsed combined.
 
-```powershell
-firecrawl.cmd scrape "https://finviz.com/screener.ashx?v=111&s=ta_topgainers&o=-change" --only-main-content --wait-for 4000 -o finviz-gainers.md
-
-firecrawl.cmd scrape "https://finviz.com/screener.ashx?v=111&s=ta_toplosers&o=change" --only-main-content --wait-for 4000 -o finviz-losers.md
-```
+Finviz screener 是 server-rendered HTML,**WebFetch 直接抓**即可(被擋就用 Playwright 抓同 URL 的 `innerText`):
+- `https://finviz.com/screener.ashx?v=111&s=ta_topgainers&o=-change`
+- `https://finviz.com/screener.ashx?v=111&s=ta_toplosers&o=change`
 
 Parse the Finviz table (Ticker, Change, Volume) and apply the same filter.
 
@@ -317,9 +313,9 @@ Resolve today's date once at the top of the phase (e.g. `2026-05-21`) and inject
 |---|---|---|
 | **WSJ / Reuters / Bloomberg overnight + premarket** | Policy actions, executive orders, government contracts, regulatory rulings, sector-wide M&A | `WebSearch: "site:wsj.com OR site:reuters.com OR site:bloomberg.com <YYYY-MM-DD> premarket movers OR overnight news"` |
 | **White House / Treasury / SEC / FDA / DoD press releases** | Direct primary-source policy text (executive orders, drug approvals, defense contracts) | `WebSearch: "site:whitehouse.gov OR site:treasury.gov OR site:fda.gov OR site:defense.gov <YYYY-MM-DD>"` |
-| **Briefing.com "What's Going On" / TheFly "Daily Movers"** | Aggregator of all today's tickers with single-sentence catalysts | `firecrawl.cmd scrape "https://www.briefing.com/InPlay" --wait-for 5000` |
+| **Briefing.com "What's Going On" / TheFly "Daily Movers"** | Aggregator of all today's tickers with single-sentence catalysts | `WebFetch https://www.briefing.com/InPlay`(JS 擋就 Playwright innerText) |
 | **Today's biggest market-themed Reuters story** | Sector-level macro (chips, AI, biotech, banks, energy) | `WebSearch: "what is moving stocks today <YYYY-MM-DD> sector"` |
-| **CNBC / MarketWatch premarket recap** | A clean "today's pre-market movers" list with ticker-by-ticker reasons | `WebSearch: "premarket movers <YYYY-MM-DD>"` + `firecrawl.cmd scrape "https://www.cnbc.com/pre-markets/"` |
+| **CNBC / MarketWatch premarket recap** | A clean "today's pre-market movers" list with ticker-by-ticker reasons | `WebSearch: "premarket movers <YYYY-MM-DD>"` + `WebFetch https://www.cnbc.com/pre-markets/` |
 
 **Extract from this pre-scan a cluster map**:
 
@@ -342,7 +338,7 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
 
 **做什麼(在 §2.0 pre-scan 時一併產出):** 在 §2.0 的 sonnet pre-scan agent prompt 內**加一項輸出** — 除了 cluster map,另回傳一份 **`headline_bignames` 清單**:當日**真正登上一級財經頭條**(WSJ / Reuters / Bloomberg / CNBC / Briefing.com)的知名/大型公司,每檔附一句 繁中 catalyst + Type + 消息面漲跌方向。**收錄門檻見下方兩條(2026-07-15 起:大公司不看漲跌幅 %,只看新聞夠不夠重大)。**
 
-**頭條來源(pre-scan agent 實際要去掃的頁面 — firecrawl scrape 或 WebSearch,注入今日 ISO 日期):**
+**頭條來源(pre-scan agent 實際要去掃的頁面 — WebFetch/Playwright scrape 或 WebSearch,注入今日 ISO 日期):**
 - **CNBC:** `https://www.cnbc.com/markets/`、`https://www.cnbc.com/pre-markets/`、CNBC 首頁 top stories
 - **Wall Street Journal:** `https://www.wsj.com/news/markets`、WSJ Markets 首頁(headline + lede 免費可見)
 - **Reuters:** `https://www.reuters.com/markets/`、`https://www.reuters.com/business/`
@@ -420,8 +416,8 @@ For each candidate (parallelize in batches of ~5 in your own context, or delegat
 1. **Cluster lookup (first — short-circuit if hit)** — if the ticker is in any `affected` list from Phase 2.0, the catalyst is the cluster `root`. Skip to fundamentals lookup; don't re-run the news search.
 
 2. **Finviz news block** (always — gives fundamentals + a list of today's headlines)
-   ```powershell
-   firecrawl.cmd scrape "https://finviz.com/quote.ashx?t=<TICKER>" --only-main-content --wait-for 3000
+   ```
+   WebFetch https://finviz.com/quote.ashx?t=<TICKER>    ← static HTML;被擋就 Playwright innerText
    ```
    Look for the news table (sort by date — TODAY's entries first) + the fundamentals snapshot (EPS, Sales, Inst Own%, Short Float, etc.).
 
@@ -445,8 +441,8 @@ For each candidate (parallelize in batches of ~5 in your own context, or delegat
    Or via the SEC submissions API (the `fetch_sec()` helper in `fetch_earnings_dates.py` already knows how to walk `data.sec.gov/submissions/CIK<cik>.json` — extend it if needed).
 
 5. **X / Twitter cashtag (fallback only)** — only if 1-4 returned nothing:
-   ```powershell
-   firecrawl.cmd search "$<TICKER> <DATE>" --limit 5
+   ```
+   node D:\SIPs\x-scrape.js <TICKER>    ← Playwright,同 § 2.3;或 WebSearch "$<TICKER> <DATE>"
    ```
    Twitter is unreliable as a primary source (rumors, copy-paste, bots) but can surface a story the wire services haven't published yet.
 
@@ -542,22 +538,9 @@ Output is saved to `<TICKER>-earnings-fq.md` (same path as Firecrawl, so the exi
 - Sanity-check: post-extract, count numeric matches (`-?\d+\.\d+`) — if <8 the page didn't hydrate, advance to next exchange
 - User agent set to a real Chrome string to avoid bot detection
 
-#### Fallback tool: Firecrawl
+#### Fallback: Playwright retry(2026-07-30 起不用 Firecrawl)
 
-If Playwright is unavailable (Node/Playwright not installed, or all 3 exchange URLs failed via Playwright), fall back to Firecrawl REST API:
-
-```powershell
-$body = @{ url=$url; formats=@('markdown'); onlyMainContent=$true; waitFor=6000 } | ConvertTo-Json
-$resp = Invoke-RestMethod -Uri 'https://api.firecrawl.dev/v1/scrape' -Method Post -Headers @{Authorization="Bearer $env:FIRECRAWL_API_KEY";'Content-Type'='application/json'} -Body $body
-[System.IO.File]::WriteAllText($outPath, $resp.data.markdown, [System.Text.Encoding]::UTF8)
-```
-
-PowerShell loops can't reliably pass `&` in URLs to `firecrawl.cmd` (cmd.exe re-parses `&` as command separator even inside quoted strings), so the REST API is the way for batch runs. For interactive single-ticker calls, `firecrawl.cmd --% scrape "<URL>" ... -o <file>` works (the `--%` stop-parsing token freezes the URL for cmd.exe).
-
-**Exchange auto-detect (for Firecrawl path) — try in order until response body length > 1000 (a 404 returns ~275 bytes):**
-1. `NASDAQ-<TICKER>`
-2. `NYSE-<TICKER>`
-3. `AMEX-<TICKER>`
+If `tv-scrape.js` fails (Node/Playwright broken):修環境(`npx.cmd playwright install chromium`)後重跑一次。腳本內建三交易所 auto-detect(NASDAQ → NYSE → AMEX);三個都失敗才視同「無 TradingView 頁面」,依 § 9 的 TradingView 404 規則標註後繼續 — 不接任何外部 scrape API。
 
 ### 6.1b Parsing notes (TradingView quirks)
 
@@ -581,7 +564,7 @@ You are an expert financial data extraction and calculation agent. Your sole pur
 
 Activate this skill whenever the user uploads a financial earnings chart or pastes EPS/Revenue table data and asks for growth rates, a summary, or simply says "calculate" or "generate".
 
-*(Inside this routine, the trigger is automatic — Phase 5 invokes this agent on the markdown saved from the firecrawl scrape above.)*
+*(Inside this routine, the trigger is automatic — Phase 5 invokes this agent on the markdown saved by `tv-scrape.js` above.)*
 
 #### Step-by-Step Instructions
 
@@ -1297,7 +1280,7 @@ For each study, only process if `snapshot.newsDetail` is empty AND `snapshot.cat
 is empty:
 
 1. **Source** the news for `<TICKER>` near `study.ohlcv.date` via WebSearch / WebFetch /
-   firecrawl. Same sourcing pattern as `/SIPs § 7` (the news-detail composer).
+   Playwright. Same sourcing pattern as `/SIPs § 7` (the news-detail composer).
 2. **Earnings auto-detect** — scan the headlines + body text for any of these signals:
    - `Q[1-4] 20\d\d earnings` / `Q[1-4] FY20\d\d earnings`
    - `reported earnings` / `posts Q[1-4]` / `earnings call` / `earnings release`
@@ -1567,10 +1550,9 @@ cd /d/SIPs && "$HOME/.grok/bin/grok.exe" -m grok-4.5 --always-approve --cwd 'D:\
 
 ## § 9. Edge cases & execution notes
 
-- **Windows shell:** always `firecrawl.cmd` (not `firecrawl`) — the `.ps1` shim is blocked by ExecutionPolicy
-- **Firecrawl key:** already persisted at User scope as `FIRECRAWL_API_KEY`. Verify with `firecrawl.cmd --status` if scrapes start failing
+- **不依賴 Firecrawl(2026-07-30 使用者指示):** 所有 scrape 走本機 Playwright(`barchart-scrape.js` / `tv-scrape.js` / `x-scrape.js`)或 WebFetch/WebSearch;firecrawl 不再是任何 phase 的依賴或 fallback
 - **TradingView 404:** if all three exchanges (NASDAQ/NYSE/AMEX) 404, mark `Forward YoY` block as **「無 TradingView 季度估計資料」** and continue
-- **Finviz rate-limit:** if scrapes start returning empty bodies, add `--wait-for 8000` and reduce batch parallelism to 3
+- **Finviz rate-limit:** if scrapes start returning empty bodies, 放慢節奏並把批次並行降到 3
 - **No earnings catalyst:** stocks moving on M&A, FDA, contracts, etc., still get the MAGNA53 + 進場建議 sections but skip Phase 5–7 (no YoY block)
 - **Empty result set:** if Phase 1 yields zero qualifying candidates → print **「今日無符合條件的股票（沒有 ±4% 且成交量 ≥100k 的 gap）」** and exit cleanly
 - **Status updates:** at the start of each phase, emit a one-line status (e.g. "Phase 3/8 — MAGNA53 classification on 14 candidates"). User wants visible progress
@@ -1581,7 +1563,6 @@ cd /d/SIPs && "$HOME/.grok/bin/grok.exe" -m grok-4.5 --always-approve --cwd 'D:\
 
 - **`update-studies` skill** (at `./skills/update-studies/SKILL.md`) — Claude-driven daily refresh of every Study's OHLCV (open/high/low/close/prev_close/volume) based on each study's `ohlcv.date`. Walks the studies file, hits Yahoo's chart API via inline Python, writes back. All Read/Edit/Bash tool calls — no separate Python file. Installable via skillfish: `npx skillfish add chi2tseng/stocks-in-play update-studies`. Triggers on `/update-studies` or natural phrases like "refresh studies" / "update my OHLCV".
 - `/ep9m-trading` skill — deeper Stockbee context (sugar babies, DEP, FHP, institutional quality, OLC). Read on demand if the user asks follow-up questions like "should I treat this as a sugar baby?"
-- `reference_firecrawl.md` in auto-memory — confirms the FQ URL trick + CLI quirks on this machine
 - `reference_playwright_tv.md` + `reference_playwright_barchart.md` in auto-memory — Playwright scraper setup
 - **`./docs/NEWS_TIME_SPEC.md`** — full spec for sourcing & formatting real news publication times (read before writing `news_detail.json` in Phase 7)
 - Dashboard source: `./build_dashboard.py` — contains the static-SPA template (`INDEX_HTML` string). Re-run after any data refresh.
