@@ -935,6 +935,7 @@ This keeps the expensive model's tokens on synthesis (~3-5k per ticker write-up)
 - **長度: ~150-450 字**(摘要 + 2-4 條新聞)。比舊的 Milan 600-1200 字短很多 — 使用者要的是「當天新聞」不是深度拆解。
 - **關鍵數字用 `**bold**`** 讓它在卡片上跳出來(例:`**Q3 營收 $3.34B (+45% YoY)**`)。
 - 每個主張要有具體 $ / % / 名稱或日期;空詞「強勁需求」「前景看好」換成底層數字。
+- **⚠ 中文可讀性硬規則(2026-07-31 使用者:「確保寫出來的都是能夠易讀的中文,不要再出這種錯」— AAPL 事故):** 所有繁中輸出(catalyst 一句話、news_detail、Sean/Milan、chat brief)以**台灣財經媒體的白話**為準,**禁止英文術語直譯腔**。已踩過的雷 → 正確寫法:「大中華」裸用 → **中國市場(大中華區)營收**;「街上」(the Street)→ **華爾街預估**;「六月季」(June quarter)→ **6 月底止季度**;「倉位面」(positioning)→ **籌碼面**;「未經調和」(unreconciled)→ 白話寫「數字有出入」;「季對季壓縮」→ **比上季下滑**。判準:一個詞若不確定台灣讀者能否**秒懂**,就不要照英文造詞,用一句白話把意思講出來;公司官方分部名可括號附註。**寫完自查一遍**:通篇唸起來像台灣財經記者寫的,才算過。
 - **⚠ 合約型催化劑要換算年營收(2026-07-14 使用者硬性指示):** 只要 catalyst 是合約 / 訂單 / 租約 / backlog 型(Type=contract 或新聞給的是「總合約值 $X、為期 N 年」),**務必在 catalyst 一句話與 news_detail 內把總值換算成年化營收**:`合約總值 $X ÷ N 年 ≈ ~$Y/年`,並點出何時開始認列(交付/生效日)、以及相對公司現有年營收的量級。範例(CLSK):`$6.6B ÷ 20 年 ≈ 年化租金營收 ~$330M/年(2027 Q4 起認列,NNN 近 100% 落地)`。目的是讓讀者能把一次性大數字跟經常性營收做對比,而不是被 $6.6B 這種總額嚇到卻不知道每年進帳多少。之後每一檔合約型催化劑都照做。
 - **客觀利空(選填,≤1 句):** 只有當天新聞本身帶硬事實利空(增發稀釋、內部人賣股、CEO 大額限制股)才補一句客觀陳述,放最後。沒有硬事實就不補 — 不要自己發明「風險」。
 
@@ -974,7 +975,7 @@ research, especially for big-number claims like "+682% EPS YoY" or "HBM sold out
 模仿 **Sean Sharpe(Stocks in Play substack)** 的分析方法,幫**每檔 claude_picks** 寫一份獨立分析;詳細頁渲染成獨立卡片「Sean 視角 · Stocks in Play」,**與 news_detail 完全分開、不混寫**。
 
 - **正本:`D:\SIPs\docs\SEAN_STYLE.md`** — **重點是他的分析邏輯,不是信件格式(2026-07-16 使用者明確更正)**。寫之前先讀,照決策樹 **A0–A6 逐關推理**:A0 大盤閘門(盤況不對整批 pass)→ A1 催化劑五級分類(episodic pivot / genuine / turnaround / story / pump)→ A2 分軸評分(forward>當季、轉折>絕對值、加速>水平、合約 signed>LOI>MOU)→ **A3 驚奇度/priced-in 檢查**(核心:催化劑價值 = 內容 × 對市場的驚奇度;已大漲的要折價)→ A4 圖表+結構面 override(float/SI/DTC/precedent)→ A5 可交易性一票否決 → A6 盤前量價+關鍵價位(「Above $X is good, below it is bad」,X = packet 真實數字)→ verdict 四級 **MAIN / SECONDARY / DELAYED / PASS + 推理鏈**。輸出要能看見「為什麼」,不是填格式。
-- **輸出全白話(2026-07-16 使用者硬性指示):** 決策樹只在腦內跑,寫出來的是交易員大白話(2-4 段短文)。**禁用**「大盤閘門」「A0-A6」「分軸」「Killer」「推理鏈」與 `Class:/Axes:/Priced-in:` 標籤行;英文術語(episodic pivot / main watch)第一次出現要白話解釋。細則見 SEAN_STYLE.md §C 輸出格式。
+- **輸出全白話(2026-07-16 使用者硬性指示):** 決策樹只在腦內跑,寫出來的是交易員大白話(2-4 段短文)。**禁用**「大盤閘門」「A0-A6」「分軸」「Killer」「推理鏈」與 `Class:/Axes:/Priced-in:` 標籤行;英文術語(episodic pivot / main watch)第一次出現要白話解釋。細則見 SEAN_STYLE.md §C 輸出格式。**§8.1 的中文可讀性硬規則(禁直譯腔:街上/大中華裸用/六月季…)同樣適用。**
 - Schema:`{ "SYM": { "analysis": "<markdown>", "sourceDate": "YYYY-MM-DD" } }`;繁中敘事、英文交易術語與節標籤;每檔 ≤250 字;**只准用 packet 既有數據,缺欄寫 N/A,禁止編造數字**。
 - 交給 **1 個 sonnet agent** 寫(給它 SEAN_STYLE.md + picks 清單 + 每檔 packet 數據的選讀指令);主模型抽查 2 檔再 build。
 - 若 Sean 當日真信有點名同一檔(sean_emails.txt 更新時),以他的實際分析為本改寫並標「Sean 當日實際點名」。
@@ -986,7 +987,7 @@ research, especially for big-number claims like "+682% EPS YoY" or "HBM sold out
 - **正本:`D:\SIPs\docs\MILAN_STYLE.md`**(源自使用者提供的 Catalyst Rating & Analysis Framework;原文存 `docs/milan_framework_original.txt`)。核心程序:措辭實質拆解(approved ≠ expected-to-be-approved、signed ≠ MOU、binding ≠ non-binding)→ 60-90 天新聞流比對 **expected vs surprise** → 分析師定位(評級/目標價會不會因此動)→ **0-10 評分 + 一句理由**。
 - Schema 同 Sean:`{ "SYM": { "analysis": "<markdown>", "sourceDate": "YYYY-MM-DD" } }` → `milan_analysis.json`。
 - 交給 **1 個 sonnet agent**(與 Sean 的 agent 平行發);允許 WebSearch 查分析師定位與近 60-90 天新聞流(一級源、查詢帶 ISO 日期),數字禁編造、查不到寫查不到。
-- **輸出全白話**(同 § 8.1b 規則):2-3 段短文 + 「**催化劑評分:X/10** — 一句理由」;禁用內部框架術語;不給進出場建議(那是 Sean 卡的事)。
+- **輸出全白話**(同 § 8.1b 規則):2-3 段短文 + 「**催化劑評分:X/10** — 一句理由」;禁用內部框架術語;不給進出場建議(那是 Sean 卡的事)。**§8.1 的中文可讀性硬規則同樣適用。**
 - **分工鐵則:** news_detail 仍照 2026-07-06 指示只放純新聞 —— Milan 邏輯只准出現在自己的卡,不得滲回 news_detail。
 
 ### 8.2 Run the build
