@@ -1,15 +1,204 @@
 {
   "date": "2026-08-03",
-  "scanTime": "22:54",
-  "scanTimestamp": "2026-08-01T22:54",
+  "scanTime": "23:25",
+  "scanTimestamp": "2026-08-01T23:25",
   "stocks": {
+    "JDZG": {
+      "symbol": "JDZG",
+      "name": "Jiade Limited",
+      "type": "news",
+      "earningsReaction": false,
+      "catalyst": "6/4 遭 Nasdaq 停牌,7/31 中午復牌後重挫;今年已兩度反向股票合併",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=JDZG"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/JDZG"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-JDZG/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 5.1,
+          "chgPct": -15.14,
+          "volume": 247672,
+          "session": "post",
+          "direction": "down",
+          "name": "Jiade Limited",
+          "sessionDate": "2026-07-31",
+          "targetDate": "2026-08-03"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 5.1,
+      "chgPct": -15.14,
+      "volume": 247672,
+      "tv": null,
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": 32.64,
+      "floatShares_M": 5.01,
+      "perf1M": -87.98,
+      "perf3M": -49.5,
+      "perf6M": -98.22,
+      "perfYTD": -97.03,
+      "perf12M": -99.06,
+      "prevOhlcv": {
+        "date": "2026-07-31",
+        "open": 5.0,
+        "high": 14.53,
+        "low": 3.65,
+        "close": 6.01,
+        "volume": 1162900,
+        "prev_close": 50.0
+      }
+    },
+    "FCUV": {
+      "symbol": "FCUV",
+      "name": "Focus Universal Inc",
+      "type": "news",
+      "earningsReaction": false,
+      "catalyst": "7/31 凌晨發表 AI 表單自動填寫引擎新產品;極小型股、流通股數少,盤前暴衝逾 300%",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=FCUV"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/FCUV"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-FCUV/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 17.1,
+          "chgPct": 47.41,
+          "volume": 8158283,
+          "session": "post",
+          "direction": "up",
+          "name": "Focus Universal Inc",
+          "sessionDate": "2026-07-31",
+          "targetDate": "2026-08-03"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 17.1,
+      "chgPct": 47.41,
+      "volume": 8158283,
+      "tv": null,
+      "shortFloat": 4.48,
+      "shortRatio": 0.01,
+      "marketCap_M": 8.15,
+      "floatShares_M": 0.6,
+      "perf1M": 183.62,
+      "perf3M": 135.77,
+      "perf6M": -61.33,
+      "perfYTD": -64.2,
+      "perf12M": -88.63,
+      "prevOhlcv": {
+        "date": "2026-07-31",
+        "open": 10.22,
+        "high": 17.59,
+        "low": 8.42,
+        "close": 11.6,
+        "volume": 100091000,
+        "prev_close": 1.88
+      }
+    },
+    "SHPH": {
+      "symbol": "SHPH",
+      "name": "Shuttle Pharmaceuticals Holdings Inc",
+      "type": "momentum",
+      "earningsReaction": false,
+      "catalyst": "查無 7/31 當日具體消息;公司近期轉型加密貨幣挖礦、現金部位吃緊",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=SHPH"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/SHPH"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SHPH/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 3.5,
+          "chgPct": -7.89,
+          "volume": 108438,
+          "session": "post",
+          "direction": "down",
+          "name": "Shuttle Pharmaceuticals Holdings Inc",
+          "sessionDate": "2026-07-31",
+          "targetDate": "2026-08-03"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 3.5,
+      "chgPct": -7.89,
+      "volume": 108438,
+      "tv": null,
+      "shortFloat": 71.61,
+      "shortRatio": 0.2,
+      "marketCap_M": 2.42,
+      "floatShares_M": 0.6,
+      "perf1M": 11.76,
+      "perf3M": -63.11,
+      "perf6M": -82.65,
+      "perfYTD": -78.89,
+      "perf12M": -89.59,
+      "prevOhlcv": {
+        "date": "2026-07-31",
+        "open": 3.03,
+        "high": 4.4,
+        "low": 2.92,
+        "close": 3.8,
+        "volume": 3047700,
+        "prev_close": 3.09
+      }
+    },
     "UPC": {
       "symbol": "UPC",
       "name": "Universe Pharmaceuticals Inc",
-      "type": "momentum",
+      "type": "M&A",
       "earningsReaction": false,
-      "catalyst": "週五盤後 +91%,查無當日新聞;6 月底收購 Best Praise 專利組合($10.75M)後的低流通盤動能餘波",
-      "newsDetail": null,
+      "catalyst": "7/31 晚間 6-K 公告完成 Best Praise 五項專利收購、作價 1,075 萬美元;公司市值僅約 200 萬美元,盤後暴漲逾一倍",
+      "newsDetail": "> **今日漲因:** 盤後暴漲 **101%**(成交量 969 萬股) — Universe Pharmaceuticals 於 7/31 晚間提交 6-K,公告完成向 Best Praise 收購五項專利,作價 **1,075 萬美元**。\n\n**這則公告的規模要對照公司本身來看**\n\n依 Finviz 資料,Universe Pharmaceuticals 的**市值僅約 200 萬美元**。也就是說,這筆 1,075 萬美元的專利收購案,金額約為公司整體市值的 **5 倍**。對價如何支付(現金、發行新股、或應付票據)是判斷這則消息實質意義的關鍵,需要直接讀 6-K 原文確認 —— 若以發行新股支付,稀釋幅度會非常可觀。\n\n**交易特性提醒(客觀陳述)**\n\n這是一檔市值兩百萬美元等級的微型股,盤後單日成交 969 萬股、股價翻倍。空單回補天數僅 **0.01 天**,近一個月股價 **−43.2%**、近半年 **−24.0%**。這類極小市值標的的盤後劇烈波動,流動性與價格連續性風險都遠高於一般個股,開盤後的價格未必能延續盤後報價。",
       "newsLinks": [
         {
           "label": "Finviz",
@@ -24,9 +213,14 @@
           "url": "https://www.tradingview.com/symbols/NASDAQ-UPC/news/"
         }
       ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
+      "publishedAt": "2026-07-31T18:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "SEC EDGAR — Universe Pharmaceuticals 6-K filings",
+          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=UPC&type=6-K&dateb=&owner=include&count=40"
+        }
+      ],
       "seanAnalysis": null,
       "milanAnalysis": null,
       "sessions": [
@@ -71,7 +265,7 @@
       "name": "Lyft Inc Cl A",
       "type": "momentum",
       "earningsReaction": false,
-      "catalyst": "無自身消息;6 月核心 PCE 降溫帶動大盤走強,摩根士丹利 7/30 調高目標價至 $18,財報要等 8/6",
+      "catalyst": "盤後 +4% 無當日重大消息,週五收 $15.86(+2.0%);Q2 財報 8/6 才公布,屬報前部位調整",
       "newsDetail": null,
       "newsLinks": [
         {
@@ -228,310 +422,12 @@
         "prev_close": 15.55
       }
     },
-    "DFNS": {
-      "symbol": "DFNS",
-      "name": "T3 Defense Inc",
-      "type": "momentum",
-      "earningsReaction": false,
-      "catalyst": "縮股逼空後獲利了結,自 7/30 盤中高點 $91 回落逾兩成",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=DFNS"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/DFNS"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-DFNS/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 25.5,
-          "chgPct": -7.88,
-          "volume": 159074,
-          "session": "post",
-          "direction": "down",
-          "name": "T3 Defense Inc",
-          "sessionDate": "2026-07-31",
-          "targetDate": "2026-08-03"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 25.5,
-      "chgPct": -7.88,
-      "volume": 159074,
-      "tv": {
-        "latestEPS": -110.0,
-        "consensusEPS": null,
-        "priorYrEPS": null,
-        "surpriseEPS_pct": null,
-        "surpriseEPS_dollar": null,
-        "latestRev_M": 3.63,
-        "consensusRev_M": null,
-        "priorYrRev_M": null,
-        "surpriseRev_pct": null,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": null,
-        "epsEst_next4": [
-          -4.68,
-          -3.85,
-          -3.02,
-          null
-        ],
-        "revEst_next4": [
-          5.0,
-          7.35,
-          8.85,
-          null
-        ],
-        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M\nN/M / N/M",
-        "chart": {
-          "quarters": [
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26"
-          ],
-          "eps_reported": [
-            -110.0,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            null,
-            -4.68,
-            -3.85,
-            -3.02
-          ],
-          "rev_reported_M": [
-            3.63,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            null,
-            5.0,
-            7.35,
-            8.85
-          ],
-          "latest_idx": 0
-        },
-        "latestReportDate": null
-      },
-      "shortFloat": 15.36,
-      "shortRatio": 0.04,
-      "marketCap_M": 27.97,
-      "floatShares_M": 0.7,
-      "perf1M": 39.8,
-      "perf3M": -51.86,
-      "perf6M": -90.81,
-      "perfYTD": -94.51,
-      "perf12M": -96.3,
-      "prevOhlcv": {
-        "date": "2026-07-31",
-        "open": 37.0,
-        "high": 41.0,
-        "low": 22.72,
-        "close": 27.68,
-        "volume": 4274800,
-        "prev_close": 84.98
-      }
-    },
-    "FERG": {
-      "symbol": "FERG",
-      "name": "Ferguson Enterprises Inc",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "S&P 道瓊 7/31 盤後宣布 8/5 開盤前納入 S&P 500,取代被私有化下市的 EA,盤後 +8%",
-      "newsDetail": "> **今日漲因:** 週五盤後 +8% — S&P 道瓊指數公司 7/31 收盤後宣布,**Ferguson 將於 8/5 開盤前納入 S&P 500**,取代即將被私有化下市的 Electronic Arts(EA)。\n\n**指數納入的具體安排**\n\nS&P 道瓊指數公司在 7/31 美股收盤後發布新聞稿,**FERG 將在 8 月 5 日(週三)開盤前正式進入 S&P 500 成分股**。被取代的 EA 正被一個投資人聯盟收購 — 成員包括沙烏地公共投資基金(PIF)、Silver Lake 與 Affinity Partners,交易已進入完成前的最後條件確認階段。同一份公告中,ADI Global Distribution(ADIG)將於 8 月 4 日納入 S&P SmallCap 600,取代 Hertz。\n\n**為什麼指數納入會推動股價**\n\n追蹤 S&P 500 的被動型基金規模龐大,一旦成分股確定,這些基金必須在生效日前後買進足額部位,形成**時間確定、規模可估的強制買盤**。這類事件的特性是:消息公布當下跳空,接著到生效日之間常有指數型資金持續進場。FERG 在 7/31 正常交易時段本來就收漲 **3.52% 到 $234.33**(成交量 199 萬股),盤後消息一出再往上跳到 **$253 附近、盤後漲幅約 8%**。\n\n**公司背景**\n\nFerguson Enterprises 是北美最大的水電暖通(HVAC)與管路配件經銷商之一,主要客戶是承包商與工業用戶,市值約 500 億美元等級。公司近年把上市主體從英國移到美國,這次納入 S&P 500 可以視為該轉換的最後一塊拼圖。\n\n**時間點提醒(客觀事實):** 消息在週五收盤後才發布,盤中沒有交易機會;下一個可交易時點是 8 月 3 日(週一)開盤,生效日 8 月 5 日。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=FERG"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/FERG"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-FERG/news/"
-        }
-      ],
-      "publishedAt": "2026-07-31T17:51:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "S&P Dow Jones Indices 新聞稿(PR Newswire)",
-          "url": "http://www.prnewswire.com/news-releases/ferguson-enterprises-set-to-join-sp-500-and-adi-global-distribution-to-join-sp-smallcap-600-302840407.html",
-          "publishedAt": "2026-07-31T17:51:00-04:00"
-        },
-        {
-          "label": "RTTNews — Ferguson to replace Electronic Arts in S&P 500",
-          "url": "https://www.rttnews.com/3674115/ferguson-enterprises-to-replace-electronic-arts-in-s-p-500.aspx"
-        },
-        {
-          "label": "Investing.com — Ferguson stock surges on S&P 500 inclusion",
-          "url": "https://www.investing.com/news/stock-market-news/ferguson-stock-surges-on-sp-500-inclusion-announcement-93CH-4829313"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 253.0,
-          "chgPct": 7.97,
-          "volume": 119730,
-          "session": "post",
-          "direction": "up",
-          "name": "Ferguson Enterprises Inc",
-          "sessionDate": "2026-07-31",
-          "targetDate": "2026-08-03"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 253.0,
-      "chgPct": 7.97,
-      "volume": 119730,
-      "tv": {
-        "latestEPS": 2.28,
-        "consensusEPS": 2.16,
-        "priorYrEPS": 2.45,
-        "surpriseEPS_pct": 5.36,
-        "surpriseEPS_dollar": 0.11999999999999966,
-        "latestRev_M": 7470.0,
-        "consensusRev_M": 7410.0,
-        "priorYrRev_M": 7770.0,
-        "surpriseRev_pct": 0.8,
-        "yrYrRev_pct": -3.861003861003861,
-        "epsYoY_pct": -6.938775510204096,
-        "epsEst_next4": [
-          3.3,
-          3.3,
-          2.45,
-          2.53
-        ],
-        "revEst_next4": [
-          8680.0,
-          8640.0,
-          7930.0,
-          7910.0
-        ],
-        "yoyBlock": "-6.94% / -3.86%\n--------------------\n+117.11% / +26.35%\n+32.00% / +13.39%\n-29.60% / -6.71%\n+10.96% / +5.89%",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27"
-          ],
-          "eps_reported": [
-            1.74,
-            2.32,
-            2.98,
-            2.45,
-            1.52,
-            2.5,
-            3.48,
-            2.28,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            1.82,
-            2.32,
-            2.85,
-            2.62,
-            1.58,
-            2.01,
-            3.48,
-            2.16,
-            3.3,
-            3.3,
-            2.45,
-            2.53
-          ],
-          "rev_reported_M": [
-            6670.0,
-            7310.0,
-            7950.0,
-            7770.0,
-            6870.0,
-            7620.0,
-            8500.0,
-            7470.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            6720.0,
-            7310.0,
-            8010.0,
-            7810.0,
-            6770.0,
-            7420.0,
-            8500.0,
-            7410.0,
-            8680.0,
-            8640.0,
-            7930.0,
-            7910.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null
-      },
-      "shortFloat": 1.56,
-      "shortRatio": 2.21,
-      "marketCap_M": 45450,
-      "floatShares_M": 193.55,
-      "perf1M": 2.24,
-      "perf3M": -12.47,
-      "perf6M": -8.62,
-      "perfYTD": 5.26,
-      "perf12M": 4.93,
-      "prevOhlcv": {
-        "date": "2026-07-31",
-        "open": 228.35,
-        "high": 236.54,
-        "low": 226.8,
-        "close": 234.33,
-        "volume": 1992300,
-        "prev_close": 226.36
-      }
-    },
     "FFAI": {
       "symbol": "FFAI",
       "name": "Faraday Future Intelligent Electric Inc",
-      "type": "news",
+      "type": "momentum",
       "earningsReaction": false,
-      "catalyst": "延續 7/29 公告:FCC 機器人新規限制中國新機型,公司稱有利自身招募全球供應鏈夥伴",
+      "catalyst": "7/24 完成 1 比 150 反向分割後流通股數極少、波動放大,無明確個股消息",
       "newsDetail": null,
       "newsLinks": [
         {
@@ -688,138 +584,12 @@
         "prev_close": 5.35
       }
     },
-    "JDZG": {
-      "symbol": "JDZG",
-      "name": "Jiade Limited",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "因增發與兩度股票合併遭 Nasdaq T12 審查停牌(6/4 起),7/31 中午復牌後賣壓湧現",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=JDZG"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/JDZG"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-JDZG/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 5.1,
-          "chgPct": -15.14,
-          "volume": 247672,
-          "session": "post",
-          "direction": "down",
-          "name": "Jiade Limited",
-          "sessionDate": "2026-07-31",
-          "targetDate": "2026-08-03"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 5.1,
-      "chgPct": -15.14,
-      "volume": 247672,
-      "tv": null,
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": 32.64,
-      "floatShares_M": 5.01,
-      "perf1M": -87.98,
-      "perf3M": -49.5,
-      "perf6M": -98.22,
-      "perfYTD": -97.03,
-      "perf12M": -99.06,
-      "prevOhlcv": {
-        "date": "2026-07-31",
-        "open": 5.0,
-        "high": 14.53,
-        "low": 3.65,
-        "close": 6.01,
-        "volume": 1162900,
-        "prev_close": 50.0
-      }
-    },
-    "ATXG": {
-      "symbol": "ATXG",
-      "name": "Addentax Group Corp",
-      "type": "momentum",
-      "earningsReaction": false,
-      "catalyst": "查無 7/31 當日新聞;近期金融科技/加密收購題材炒作後的獲利了結",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=ATXG"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/ATXG"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-ATXG/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 2.81,
-          "chgPct": -20.29,
-          "volume": 447247,
-          "session": "post",
-          "direction": "down",
-          "name": "Addentax Group Corp",
-          "sessionDate": "2026-07-31",
-          "targetDate": "2026-08-03"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 2.81,
-      "chgPct": -20.29,
-      "volume": 447247,
-      "tv": null,
-      "shortFloat": 1.48,
-      "shortRatio": 0.71,
-      "marketCap_M": 3.64,
-      "floatShares_M": 0.66,
-      "perf1M": 5.4,
-      "perf3M": -28.97,
-      "perf6M": -30.15,
-      "perfYTD": -40,
-      "perf12M": -52.69,
-      "prevOhlcv": {
-        "date": "2026-07-31",
-        "open": 3.41,
-        "high": 3.53,
-        "low": 3.22,
-        "close": 3.53,
-        "volume": 434000,
-        "prev_close": 3.53
-      }
-    },
     "SGLY": {
       "symbol": "SGLY",
       "name": "Singularity Future Technology Ltd",
       "type": "momentum",
       "earningsReaction": false,
-      "catalyst": "7/27 生效的 1 併 14 反向股票分割讓流通張數大減,連六日上漲的軋空式動能延續",
+      "catalyst": "7/27 完成 1 比 14 反向分割後流通籌碼集中,連 6 個交易日走高",
       "newsDetail": null,
       "newsLinks": [
         {
@@ -877,75 +647,12 @@
         "prev_close": 4.61
       }
     },
-    "SHPH": {
-      "symbol": "SHPH",
-      "name": "Shuttle Pharmaceuticals Holdings Inc",
-      "type": "momentum",
-      "earningsReaction": false,
-      "catalyst": "查無 7/31 當日新聞;併購 United Dogecoin 轉挖礦/AI 機房題材後的高波動獲利了結",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=SHPH"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/SHPH"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-SHPH/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 3.5,
-          "chgPct": -7.89,
-          "volume": 108438,
-          "session": "post",
-          "direction": "down",
-          "name": "Shuttle Pharmaceuticals Holdings Inc",
-          "sessionDate": "2026-07-31",
-          "targetDate": "2026-08-03"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 3.5,
-      "chgPct": -7.89,
-      "volume": 108438,
-      "tv": null,
-      "shortFloat": 71.61,
-      "shortRatio": 0.2,
-      "marketCap_M": 2.42,
-      "floatShares_M": 0.6,
-      "perf1M": 11.76,
-      "perf3M": -63.11,
-      "perf6M": -82.65,
-      "perfYTD": -78.89,
-      "perf12M": -89.59,
-      "prevOhlcv": {
-        "date": "2026-07-31",
-        "open": 3.03,
-        "high": 4.4,
-        "low": 2.92,
-        "close": 3.8,
-        "volume": 3047700,
-        "prev_close": 3.09
-      }
-    },
     "INHD": {
       "symbol": "INHD",
       "name": "Inno Holdings Inc",
       "type": "news",
       "earningsReaction": false,
-      "catalyst": "遭 Nasdaq T12 停牌(6/8 起),7/31 中午復牌;公司稱無重大未揭露事項,復牌後仍遭倒貨",
+      "catalyst": "6/8 遭 Nasdaq 停牌,7/31 中午復牌回落;近期簽下 300 萬美元 AI 代理開發合約",
       "newsDetail": null,
       "newsLinks": [
         {
@@ -1001,6 +708,251 @@
         "close": 18.0,
         "volume": 3161500,
         "prev_close": 39.49
+      }
+    },
+    "FERG": {
+      "symbol": "FERG",
+      "name": "Ferguson Enterprises Inc",
+      "type": "news",
+      "earningsReaction": false,
+      "catalyst": "7/31 盤後標普道瓊宣布 FERG 將於 8/5 開盤前納入 S&P 500,取代被 PIF/Silver Lake/Affinity 收購下市的美商藝電(EA);指數型基金被動買盤預期湧入",
+      "newsDetail": "> **今日漲因:** 週五盤後 +8% — 標普道瓊指數公司 7/31 收盤後宣布,Ferguson 將於 **8/5 開盤前正式納入 S&P 500**,取代因併購案完成而下市的美商藝電(EA)。\n\n**指數異動的具體內容**\n\n標普道瓊指數公司在 7/31 美股收盤後發布聲明:**Ferguson Enterprises(NYSE: FERG)將於 8 月 5 日星期三開盤前納入 S&P 500 成分股**,遞補美商藝電(EA)的位置。EA 被公共投資基金(PIF)、Silver Lake 與 Affinity Partners 組成的財團收購,交易即將完成、股票將自公開市場下市。同一份公告中,ADI Global Distribution(NYSE: ADIG)則將於 **8 月 4 日**納入 S&P SmallCap 600,遞補 Hertz。\n\n**為什麼這件事會推動股價**\n\n納入 S&P 500 屬於**機械式的被動買盤事件**:所有追蹤 S&P 500 的指數型基金與 ETF 必須在生效日前買進足額的 FERG 股票。以 FERG 約 **454 億美元**的市值計算,被動基金需要建立的部位規模相當可觀,且買進時點被壓縮在 8/1 到 8/5 開盤前這幾個交易日內。這是本週能見度最高、時間點最明確的事件。籌碼面也有利:FERG 的空單佔流通股僅 **1.56%**、回補天數 2.21 天,幾乎沒有空方阻力。\n\n**但要看清楚:基本面並不是這次上漲的理由**\n\n依 TradingView 季度資料,FERG 最近一季 **每股盈餘 $2.28** 優於市場預期的 $2.16(超出 5.4%)、**營收 74.7 億美元**小勝預期的 74.1 億美元。但和去年同期相比,每股盈餘 **年減 6.94%**、營收 **年減 3.86%**,這一季其實是衰退的。近一個月股價僅 +2.2%、近半年還是 **−8.6%**。\n\n換句話說,這是一檔**基本面走弱、但因為指數規則而在特定日期前必須被買進**的股票。指數納入的買盤是一次性的,生效日(8/5)過後就消失,而衰退的營收年增率不會因為進了指數就轉正。TradingView 給出的下一季市場預估為每股盈餘 $3.30(年增 117%)、營收 86.8 億美元(年增 26%),但那是分析師對未來的估計,不是已經發生的事實。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=FERG"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/FERG"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-FERG/news/"
+        }
+      ],
+      "publishedAt": "2026-07-31T17:15:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "S&P Dow Jones Indices — Ferguson Enterprises Set to Join S&P 500",
+          "url": "https://www.prnewswire.com/news-releases/ferguson-enterprises-set-to-join-sp-500-and-adi-global-distribution-to-join-sp-smallcap-600-302840407.html",
+          "publishedAt": "2026-07-31T17:15:00-04:00"
+        },
+        {
+          "label": "RTTNews — Ferguson Enterprises To Replace Electronic Arts In S&P 500",
+          "url": "https://www.rttnews.com/3674115/ferguson-enterprises-to-replace-electronic-arts-in-s-p-500.aspx"
+        },
+        {
+          "label": "Investing.com — Ferguson stock surges on S&P 500 inclusion announcement",
+          "url": "https://www.investing.com/news/stock-market-news/ferguson-stock-surges-on-sp-500-inclusion-announcement-93CH-4829313"
+        }
+      ],
+      "seanAnalysis": {
+        "analysis": "市值$454.5億，空單占流通股1.56%，近半年-8.62%。重點不是財報（EPS贏預期5.36%，但年增其實是負的：年減6.94%），而是標普宣布FERG週三(8/5)開盤前納入S&P 500，取代下市的EA——指數基金被迫買進，日期明確不是傳聞。\n\n週五盤後已先噴7.97%，部分驚喜已反映在價位，接下來看被動資金能否延續買盤。空單低，沒有軋空題材，純粹資金流行情。\n\n**結論：主要觀察對象（MAIN WATCH）。** 站上$253才有戲，跌破就是買盤沒接上，先別碰。",
+        "sourceDate": "2026-07-31"
+      },
+      "milanAnalysis": {
+        "analysis": "標普道瓊指數公布 Ferguson Enterprises 於 8/5 開盤前納入標普 500,遞補因 PIF、Silver Lake、Affinity Partners 財團收購下市而剔除的藝電。這是被動資金依規則機械調整成分股,不是分析師重新判讀公司營運的結果。\n\n公司上季獲利與營收雖優於預期,但年增率均為負,獲利年減近 7%,半年線跌逾 8%。納入指數不改變這些數字,只帶來指數基金複製成分股必須買進的一次性籌碼,不是任何人會因此上修目標價或評等的理由。\n\n**催化劑評分:1/10** — 指數納入是被動資金機械式調整成分股,不觸及公司營運或財測,分析師不會因此重新評估這家公司",
+        "sourceDate": "2026-07-31"
+      },
+      "sessions": [
+        {
+          "last": 253.0,
+          "chgPct": 7.97,
+          "volume": 119730,
+          "session": "post",
+          "direction": "up",
+          "name": "Ferguson Enterprises Inc",
+          "sessionDate": "2026-07-31",
+          "targetDate": "2026-08-03"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 253.0,
+      "chgPct": 7.97,
+      "volume": 119730,
+      "tv": {
+        "latestEPS": 2.28,
+        "consensusEPS": 2.16,
+        "priorYrEPS": 2.45,
+        "surpriseEPS_pct": 5.36,
+        "surpriseEPS_dollar": 0.11999999999999966,
+        "latestRev_M": 7470.0,
+        "consensusRev_M": 7410.0,
+        "priorYrRev_M": 7770.0,
+        "surpriseRev_pct": 0.8,
+        "yrYrRev_pct": -3.861003861003861,
+        "epsYoY_pct": -6.938775510204096,
+        "epsEst_next4": [
+          3.3,
+          3.3,
+          2.45,
+          2.53
+        ],
+        "revEst_next4": [
+          8680.0,
+          8640.0,
+          7930.0,
+          7910.0
+        ],
+        "yoyBlock": "-6.94% / -3.86%\n--------------------\n+117.11% / +26.35%\n+32.00% / +13.39%\n-29.60% / -6.71%\n+10.96% / +5.89%",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            1.74,
+            2.32,
+            2.98,
+            2.45,
+            1.52,
+            2.5,
+            3.48,
+            2.28,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            1.82,
+            2.32,
+            2.85,
+            2.62,
+            1.58,
+            2.01,
+            3.48,
+            2.16,
+            3.3,
+            3.3,
+            2.45,
+            2.53
+          ],
+          "rev_reported_M": [
+            6670.0,
+            7310.0,
+            7950.0,
+            7770.0,
+            6870.0,
+            7620.0,
+            8500.0,
+            7470.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            6720.0,
+            7310.0,
+            8010.0,
+            7810.0,
+            6770.0,
+            7420.0,
+            8500.0,
+            7410.0,
+            8680.0,
+            8640.0,
+            7930.0,
+            7910.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null
+      },
+      "shortFloat": 1.56,
+      "shortRatio": 2.21,
+      "marketCap_M": 45450,
+      "floatShares_M": 193.55,
+      "perf1M": 2.24,
+      "perf3M": -12.47,
+      "perf6M": -8.62,
+      "perfYTD": 5.26,
+      "perf12M": 4.93,
+      "prevOhlcv": {
+        "date": "2026-07-31",
+        "open": 228.35,
+        "high": 236.54,
+        "low": 226.8,
+        "close": 234.33,
+        "volume": 1992300,
+        "prev_close": 226.36
+      }
+    },
+    "RUBI": {
+      "symbol": "RUBI",
+      "name": "Rubico Inc",
+      "type": "contract",
+      "earningsReaction": false,
+      "catalyst": "7/28 宣布訂造第 3 艘 MR 型新造油輪,潛在營收上看 3.79 億美元,合約動能延續",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=RUBI"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/RUBI"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-RUBI/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 2.32,
+          "chgPct": 4.04,
+          "volume": 2201433,
+          "session": "post",
+          "direction": "up",
+          "name": "Rubico Inc",
+          "sessionDate": "2026-07-31",
+          "targetDate": "2026-08-03"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 2.32,
+      "chgPct": 4.04,
+      "volume": 2201433,
+      "tv": null,
+      "shortFloat": null,
+      "shortRatio": 0.01,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": -60.39,
+      "perf3M": -97.5,
+      "perf6M": -99.85,
+      "perfYTD": -99.89,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-07-31",
+        "open": 2.24,
+        "high": 2.31,
+        "low": 2.08,
+        "close": 2.23,
+        "volume": 2341300,
+        "prev_close": 2.27
       }
     },
     "VIVK": {
@@ -1164,25 +1116,25 @@
         "prev_close": 2.03
       }
     },
-    "FCUV": {
-      "symbol": "FCUV",
-      "name": "Focus Universal Inc",
-      "type": "news",
+    "DFNS": {
+      "symbol": "DFNS",
+      "name": "T3 Defense Inc",
+      "type": "momentum",
       "earningsReaction": false,
-      "catalyst": "7/31 凌晨發表 AI 表單自動填寫引擎新產品;極小型股、流通股數少,盤前暴衝逾 300%",
+      "catalyst": "縮股逼空後獲利了結,自 7/30 盤中高點 $91 回落逾兩成",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=FCUV"
+          "url": "https://finviz.com/quote.ashx?t=DFNS"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/FCUV"
+          "url": "https://finance.yahoo.com/quote/DFNS"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-FCUV/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-DFNS/news/"
         }
       ],
       "publishedAt": null,
@@ -1192,60 +1144,119 @@
       "milanAnalysis": null,
       "sessions": [
         {
-          "last": 17.1,
-          "chgPct": 47.41,
-          "volume": 8158283,
+          "last": 25.5,
+          "chgPct": -7.88,
+          "volume": 159074,
           "session": "post",
-          "direction": "up",
-          "name": "Focus Universal Inc",
+          "direction": "down",
+          "name": "T3 Defense Inc",
           "sessionDate": "2026-07-31",
           "targetDate": "2026-08-03"
         }
       ],
       "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 17.1,
-      "chgPct": 47.41,
-      "volume": 8158283,
-      "tv": null,
-      "shortFloat": 4.48,
-      "shortRatio": 0.01,
-      "marketCap_M": 8.15,
-      "floatShares_M": 0.6,
-      "perf1M": 183.62,
-      "perf3M": 135.77,
-      "perf6M": -61.33,
-      "perfYTD": -64.2,
-      "perf12M": -88.63,
+      "primaryDirection": "down",
+      "last": 25.5,
+      "chgPct": -7.88,
+      "volume": 159074,
+      "tv": {
+        "latestEPS": -110.0,
+        "consensusEPS": null,
+        "priorYrEPS": null,
+        "surpriseEPS_pct": null,
+        "surpriseEPS_dollar": null,
+        "latestRev_M": 3.63,
+        "consensusRev_M": null,
+        "priorYrRev_M": null,
+        "surpriseRev_pct": null,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": null,
+        "epsEst_next4": [
+          -4.68,
+          -3.85,
+          -3.02,
+          null
+        ],
+        "revEst_next4": [
+          5.0,
+          7.35,
+          8.85,
+          null
+        ],
+        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M\nN/M / N/M",
+        "chart": {
+          "quarters": [
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26"
+          ],
+          "eps_reported": [
+            -110.0,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            null,
+            -4.68,
+            -3.85,
+            -3.02
+          ],
+          "rev_reported_M": [
+            3.63,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            null,
+            5.0,
+            7.35,
+            8.85
+          ],
+          "latest_idx": 0
+        },
+        "latestReportDate": null
+      },
+      "shortFloat": 15.36,
+      "shortRatio": 0.04,
+      "marketCap_M": 27.97,
+      "floatShares_M": 0.7,
+      "perf1M": 39.8,
+      "perf3M": -51.86,
+      "perf6M": -90.81,
+      "perfYTD": -94.51,
+      "perf12M": -96.3,
       "prevOhlcv": {
         "date": "2026-07-31",
-        "open": 10.22,
-        "high": 17.59,
-        "low": 8.42,
-        "close": 11.6,
-        "volume": 100091000,
-        "prev_close": 1.88
+        "open": 37.0,
+        "high": 41.0,
+        "low": 22.72,
+        "close": 27.68,
+        "volume": 4274800,
+        "prev_close": 84.98
       }
     },
-    "RUBI": {
-      "symbol": "RUBI",
-      "name": "Rubico Inc",
-      "type": "M&A",
+    "ATXG": {
+      "symbol": "ATXG",
+      "name": "Addentax Group Corp",
+      "type": "offering",
       "earningsReaction": false,
-      "catalyst": "7/28 宣布收購第三艘 MR 油輪新造船,潛在營收積壓增至約 $3.79 億;7/31 為盡職調查排他期到期日",
+      "catalyst": "8-K 揭露私募 25 萬股、每股 $4.8 籌資 120 萬美元,稀釋賣壓拖累盤後重挫 20%",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=RUBI"
+          "url": "https://finviz.com/quote.ashx?t=ATXG"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/RUBI"
+          "url": "https://finance.yahoo.com/quote/ATXG"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-RUBI/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-ATXG/news/"
         }
       ],
       "publishedAt": null,
@@ -1255,39 +1266,39 @@
       "milanAnalysis": null,
       "sessions": [
         {
-          "last": 2.32,
-          "chgPct": 4.04,
-          "volume": 2201433,
+          "last": 2.81,
+          "chgPct": -20.29,
+          "volume": 447247,
           "session": "post",
-          "direction": "up",
-          "name": "Rubico Inc",
+          "direction": "down",
+          "name": "Addentax Group Corp",
           "sessionDate": "2026-07-31",
           "targetDate": "2026-08-03"
         }
       ],
       "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 2.32,
-      "chgPct": 4.04,
-      "volume": 2201433,
+      "primaryDirection": "down",
+      "last": 2.81,
+      "chgPct": -20.29,
+      "volume": 447247,
       "tv": null,
-      "shortFloat": null,
-      "shortRatio": 0.01,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": -60.39,
-      "perf3M": -97.5,
-      "perf6M": -99.85,
-      "perfYTD": -99.89,
-      "perf12M": null,
+      "shortFloat": 1.48,
+      "shortRatio": 0.71,
+      "marketCap_M": 3.64,
+      "floatShares_M": 0.66,
+      "perf1M": 5.4,
+      "perf3M": -28.97,
+      "perf6M": -30.15,
+      "perfYTD": -40,
+      "perf12M": -52.69,
       "prevOhlcv": {
         "date": "2026-07-31",
-        "open": 2.24,
-        "high": 2.31,
-        "low": 2.08,
-        "close": 2.23,
-        "volume": 2341300,
-        "prev_close": 2.27
+        "open": 3.41,
+        "high": 3.53,
+        "low": 3.22,
+        "close": 3.53,
+        "volume": 434000,
+        "prev_close": 3.53
       }
     }
   },
@@ -1314,13 +1325,13 @@
       {
         "symbol": "UPC",
         "chg": 101.17,
-        "catalyst": "週五盤後 +91%,查無當日新聞;6 月底收購 Best Praise 專利組合($10.75M)後的低流通盤動能餘波",
-        "type": "momentum"
+        "catalyst": "7/31 晚間 6-K 公告完成 Best Praise 五項專利收購、作價 1,075 萬美元;公司市值僅約 200 萬美元,盤後暴漲逾一倍",
+        "type": "M&A"
       },
       {
         "symbol": "SGLY",
         "chg": 17.97,
-        "catalyst": "7/27 生效的 1 併 14 反向股票分割讓流通張數大減,連六日上漲的軋空式動能延續",
+        "catalyst": "7/27 完成 1 比 14 反向分割後流通籌碼集中,連 6 個交易日走高",
         "type": "momentum"
       },
       {
@@ -1332,26 +1343,26 @@
       {
         "symbol": "FERG",
         "chg": 7.97,
-        "catalyst": "S&P 道瓊 7/31 盤後宣布 8/5 開盤前納入 S&P 500,取代被私有化下市的 EA,盤後 +8%",
+        "catalyst": "7/31 盤後標普道瓊宣布 FERG 將於 8/5 開盤前納入 S&P 500,取代被 PIF/Silver Lake/Affinity 收購下市的美商藝電(EA);指數型基金被動買盤預期湧入",
         "type": "news"
       },
       {
         "symbol": "FFAI",
         "chg": 4.55,
-        "catalyst": "延續 7/29 公告:FCC 機器人新規限制中國新機型,公司稱有利自身招募全球供應鏈夥伴",
-        "type": "news"
+        "catalyst": "7/24 完成 1 比 150 反向分割後流通股數極少、波動放大,無明確個股消息",
+        "type": "momentum"
       },
       {
         "symbol": "LYFT",
         "chg": 4.09,
-        "catalyst": "無自身消息;6 月核心 PCE 降溫帶動大盤走強,摩根士丹利 7/30 調高目標價至 $18,財報要等 8/6",
+        "catalyst": "盤後 +4% 無當日重大消息,週五收 $15.86(+2.0%);Q2 財報 8/6 才公布,屬報前部位調整",
         "type": "momentum"
       },
       {
         "symbol": "RUBI",
         "chg": 4.04,
-        "catalyst": "7/28 宣布收購第三艘 MR 油輪新造船,潛在營收積壓增至約 $3.79 億;7/31 為盡職調查排他期到期日",
-        "type": "M&A"
+        "catalyst": "7/28 宣布訂造第 3 艘 MR 型新造油輪,潛在營收上看 3.79 億美元,合約動能延續",
+        "type": "contract"
       }
     ],
     "gapDownGuidance": [],
@@ -1366,25 +1377,25 @@
       {
         "symbol": "ATXG",
         "chg": -20.29,
-        "catalyst": "查無 7/31 當日新聞;近期金融科技/加密收購題材炒作後的獲利了結",
-        "type": "momentum"
+        "catalyst": "8-K 揭露私募 25 萬股、每股 $4.8 籌資 120 萬美元,稀釋賣壓拖累盤後重挫 20%",
+        "type": "offering"
       },
       {
         "symbol": "JDZG",
         "chg": -15.14,
-        "catalyst": "因增發與兩度股票合併遭 Nasdaq T12 審查停牌(6/4 起),7/31 中午復牌後賣壓湧現",
+        "catalyst": "6/4 遭 Nasdaq 停牌,7/31 中午復牌後重挫;今年已兩度反向股票合併",
         "type": "news"
       },
       {
         "symbol": "INHD",
         "chg": -9.72,
-        "catalyst": "遭 Nasdaq T12 停牌(6/8 起),7/31 中午復牌;公司稱無重大未揭露事項,復牌後仍遭倒貨",
+        "catalyst": "6/8 遭 Nasdaq 停牌,7/31 中午復牌回落;近期簽下 300 萬美元 AI 代理開發合約",
         "type": "news"
       },
       {
         "symbol": "SHPH",
         "chg": -7.89,
-        "catalyst": "查無 7/31 當日新聞;併購 United Dogecoin 轉挖礦/AI 機房題材後的高波動獲利了結",
+        "catalyst": "查無 7/31 當日具體消息;公司近期轉型加密貨幣挖礦、現金部位吃緊",
         "type": "momentum"
       }
     ]
