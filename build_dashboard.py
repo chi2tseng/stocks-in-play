@@ -668,6 +668,28 @@ for td in sorted(target_dates_set):
                                              ('sources', 'sources')):
                             if entry.get(src_k) is not None:
                                 st[dst_k] = entry[src_k]
+                # Picks were cleaned against the PRE-union stock set, so a pick whose
+                # ticker faded out of the fresh scrape (CDNA/COHU on the 8/1 rebuild of
+                # 7/31) got silently dropped even though the union restored the stock.
+                # Re-clean against the post-union universe.
+                _union_syms = new_data['stocks']
+                for _key, _raw in (('claudePicks', claude_picks_list),
+                                   ('codexPicks',  codex_picks_list),
+                                   ('geminiPicks', gemini_picks_list),
+                                   ('grokPicks',   grok_picks_list)):
+                    _re = [{'symbol': p['symbol'], 'rank': p.get('rank'),
+                            'intent': p.get('intent', 'long'),
+                            'rationale': p.get('rationale', ''),
+                            'neglected': p.get('neglected')}
+                           for p in _raw if p.get('symbol') in _union_syms]
+                    if len(_re) > len(new_data.get(_key) or []):
+                        new_data[_key] = _re
+                # A rebuild run on a LATER calendar day skips the stale raw barchart
+                # files (they hold the new day's rows), which would otherwise wipe the
+                # scan day's recorded gapper universe. Keep the archived one.
+                for _key in ('rawGappers', 'rawGappersFilter'):
+                    if not new_data.get(_key) and old.get(_key):
+                        new_data[_key] = old[_key]
         except Exception:
             pass
     # Skip writing empty stock files unless they're the scan date.
