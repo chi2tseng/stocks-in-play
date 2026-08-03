@@ -1,247 +1,252 @@
 {
- "ATKR": {
-  "Type": "M&A",
-  "EarningsReaction": false,
-  "Catalyst": "Prysmian 簽最終協議以每股 $95 全現金收購,企業價值約 $38 億,較 7/31 收盤 $72.96 溢價 30%"
- },
- "AMC": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "Q2 營收 $15.97 億創單季新高(+14.2% YoY)、調整後 EBITDA $3.214 億(+69.6%),入場人次逾 7,100 萬"
- },
- "BMY": {
-  "Type": "M&A",
-  "EarningsReaction": false,
-  "Catalyst": "FT 8/2 報導與 AstraZeneca 進行初步併購洽談,合併市值約 $4,000 億,尚未簽署任何協議"
- },
- "AZN": {
-  "Type": "M&A",
-  "EarningsReaction": false,
-  "Catalyst": "傳洽談收購 BMY(合計市值約 $4,000 億),收購方出價與稀釋疑慮使倫敦股價一度重挫 7.8%"
- },
- "FERG": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "S&P 道瓊 7/31 公告 8/5 開盤前納入 S&P 500,取代遭收購的 EA,盤後一度漲 8%"
- },
- "CNH": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "Q2 營收 $48.03 億(+2% YoY)、調整後 EPS $0.13,建築部門銷售 +12%,全年 EPS 指引 $0.41-0.46"
- },
- "GME": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "以普通股交換 $14 億零息可轉債(2030 年 $4 億 + 2032 年 $10 億),稀釋疑慮使盤前重挫逾 10%"
- },
- "CRCL": {
-  "Type": "analyst",
-  "EarningsReaction": false,
-  "Catalyst": "摩根士丹利降評至 Underweight、目標價自 $106 砍至 $38,穩定幣總市值單月縮水約 $4,000 億"
- },
- "MU": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "中國記憶體威脅升溫:長鑫存儲上海掛牌首日暴漲 466%、傳蘋果測試其晶片,商用 DRAM 定價權受質疑"
- },
- "SNDK": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "記憶體族群系統性賣壓(長鑫掛牌、SK 海力士資本支出上修至約 $310 億),8/5 財報前獲利了結"
- },
- "UMC": {
-  "Type": "guidance",
-  "EarningsReaction": false,
-  "Catalyst": "Q2 EPS 3.39 元創新高但 ADR 遭集中拋售,7/29 法說估 Q3 出貨僅高個位數成長,盤前重挫 8.3%"
- },
- "AXTI": {
-  "Type": "analyst",
-  "EarningsReaction": false,
-  "Catalyst": "Needham 7/28 降評至 Hold,股價一個月內自高點 $143 回落逾 50%,獲利了結延續"
- },
- "KOS": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "Q2 營收 $6.07 億、調整後 EPS $0.11 優於預期,但儲備基礎貸款額度砍至約 $12 億;同日 WTI 跌 5.6%"
- },
- "TLRY": {
-  "Type": "earnings",
-  "EarningsReaction": false,
-  "Catalyst": "Q4 營收 $2.82 億優於預期、FY26 展望 +11%,Jefferies 偏多,大麻類股同步走揚"
- },
- "LYFT": {
-  "Type": "analyst",
-  "EarningsReaction": false,
-  "Catalyst": "摩根士丹利 7/30 上調目標價至 $18(原 $17),8/6 Q2 財報前提前反應,7/31 盤後 +4.1%"
- },
- "TE": {
-  "Type": "contract",
-  "EarningsReaction": false,
-  "Catalyst": "與 Clearway 簽 641MW 太陽能模組供貨合約,採自產電池,盤前漲逾 5%"
- },
- "BIOA": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "7/31 遭 Novo ZEUS 試驗結果拖累重挫後反彈,Citi 認為賣壓過度"
- },
- "FFAI": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "FCC 新規限制中國產人形機器人被解讀為利多,7 月機器人出貨 152 台創新高"
- },
- "FCUV": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "發表 AI 表單自動填寫引擎新品,反向分割後流通股僅約 70 萬股,爆量逾 1 億股軋空"
- },
- "UPC": {
-  "Type": "M&A",
-  "EarningsReaction": false,
-  "Catalyst": "7/31 完成收購 Best Praise 專利組合,流通量極低,盤前暴漲 134%(量 1,030 萬股)"
- },
- "MNDR": {
-  "Type": "contract",
-  "EarningsReaction": false,
-  "Catalyst": "7/27 與迦納 Jospong 集團簽獨家 AI 數位醫療合資案,流通股極少,動能延續再漲 13.3%"
- },
- "VIVK": {
-  "Type": "guidance",
-  "EarningsReaction": false,
-  "Catalyst": "上調原油行銷平台年化營收目標至 $15 億、新增 $4 億合約,7/31 盤後彈 14.4%"
- },
- "RUBI": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "查無 8/3 新消息;延續 7/28 第三艘 MR 油輪收購、營收積壓增 24% 至 $3.79 億的動能"
- },
- "SGLY": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "7/27 一拆十四後低流通量軋空,7/31 盤後飆 18%,今日獲利了結回吐 4.4%"
- },
- "DFNS": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "7/20 生效 1 併 125 反向分割,流通股由 1.398 億砍至約 112 萬,極低流通量軋空;另有 $110 萬 Rimon 交付與 Project35 六成股權收購"
- },
- "SHPH": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "查無 7/31 具體消息;6 月轉型狗狗幣挖礦(收購 United Dogecoin)炒作降溫回吐"
- },
- "SKYQ": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "查無 8/3 具體消息;近月透過 Cantor 最高 $470 萬 ATM 持續增發,稀釋疑慮未解"
- },
- "GNPX": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "ATM 增發稀釋加上持續經營疑慮(2 月來累跌 75%),8/3 公布羅氏 TROP2 合作仍重挫 19.7%"
- },
- "INHD": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "6/8 遭那斯達克 T12 停牌,7/31 復牌後公司自曝並無重大 AI 進展,盤前續崩 27%"
- },
- "JDZG": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "3 月 1 併 25、6 月再 1 併 10 反向分割,停牌後 7/31 復牌,公司稱無內幕消息,獲利了結重挫 15%"
- },
- "ATXG": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "查無個股具體消息,疑為先前比特幣/穩定幣題材炒作後獲利回吐"
- },
- "LFS": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "查無明確催化劑,日本體育教育微型 ADR,近期僅例行合約消息,屬流動性波動"
- },
- "MAR": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "Q2 調整後 EPS $3.19 優於預估 $3.05,但營收 $70.7 億短收 $1 億;中東 RevPAR 重挫 43%"
- },
- "TSN": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "會計年度 Q3(6 月底止)財報公布,牛肉部門全年營運虧損估 $3.5-5 億,盤前跌 3.2%"
- },
- "KRYS": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "Q2 產品營收 $1.192 億(+24% YoY)、淨利 $5,480 萬,VYJUVEK 毛利率 95%,股價仍重挫 9.1%"
- },
- "L": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "Q2 淨利 $4.44 億(+13.6% YoY)、EPS $2.16,營收增至 $47.3 億,CNA 貢獻淨利增至 $2.94 億"
- },
- "CNA": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "Q2 核心 EPS $1.19 優於預估 $1.08,營收 $38.3 億遠超預估 $29.7 億,但核心獲利年減"
- },
- "MUFG": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "會計年度 Q1 淨利 $50.8 億、EPS $0.45,營收 $245.2 億,EPS 較預估高 41%"
- },
- "ECHO": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "子公司 Hughes Satellite Systems 聲請第 11 章重整,$15 億票據 8/1 到期、帳上現金僅 $1.02 億"
- },
- "BA": {
-  "Type": "analyst",
-  "EarningsReaction": false,
-  "Catalyst": "BNP Paribas 由 Underperform 連跳兩級升評至 Outperform(8/3 07:36 ET),新目標價未公開"
- },
- "BP": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "川普喊停伊朗打擊、WTI 跌 5.6% 至 $79.94 拖累油股;BP 同時啟動北海資產出售(估值 $17.5-30 億)"
- },
- "LI": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "7 月交車 30,468 輛,低於市場期待,盤前跌 3.0%"
- },
- "BABA": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "8/2 發布 Qwen3.8-Max(2.4 兆參數)大模型,港股收漲 7%,ADR 盤前 +4.1%"
- },
- "EOG": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "川普 8/2 喊停對伊朗打擊並重啟核談判,WTI 跌 5.6% 至 $79.94,能源類股同步走弱"
- },
- "SKHY": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "中國長鑫(CXMT)掛牌加深記憶體殺價疑慮,SK 海力士 ADR 隨族群回檔,MU 同步 -3.9%"
- },
- "HYFM": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "8/3 僅公告出售子公司 Aurora Peat 換得 $1,600 萬還債,不足以解釋 +544%;成交 4,591 萬股遠超 461 萬流通股,屬極端軋空"
- },
- "PUSA": {
-  "Type": "contract",
-  "EarningsReaction": false,
-  "Catalyst": "子公司 Powerus 旗下 Tandem Defense 取得美國空軍 IDIQ 無人機合約,上限 $9,000 萬、執行至 2028 年中"
- },
- "REPL": {
-  "Type": "FDA",
-  "EarningsReaction": false,
-  "Catalyst": "RP1 諮委會 7/30 以 10:3 認定療效具臨床意義,8/2 為 PDUFA 期限但決定結果尚未公布,盤前 -4.0%"
- },
- "SRAD": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "Q2 營收 €3.78 億(+19%)但由淨利 €4,900 萬轉為淨損 €400 萬,含 €900 萬匯兌損失,重挫 19.4%"
- }
+  "ATKR": {
+    "Type": "M&A",
+    "EarningsReaction": false,
+    "Catalyst": "Prysmian 簽最終協議以每股 $95 全現金收購,企業價值約 $38 億,較 7/31 收盤 $72.96 溢價 30%"
+  },
+  "AMC": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 營收 $15.97 億創單季新高(+14.2% YoY)、調整後 EBITDA $3.214 億(+69.6%),入場人次逾 7,100 萬"
+  },
+  "BMY": {
+    "Type": "M&A",
+    "EarningsReaction": false,
+    "Catalyst": "FT 8/2 報導與 AstraZeneca 進行初步併購洽談,合併市值約 $4,000 億,尚未簽署任何協議"
+  },
+  "AZN": {
+    "Type": "M&A",
+    "EarningsReaction": false,
+    "Catalyst": "傳洽談收購 BMY(合計市值約 $4,000 億),收購方出價與稀釋疑慮使倫敦股價一度重挫 7.8%"
+  },
+  "FERG": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "S&P 道瓊 7/31 公告 8/5 開盤前納入 S&P 500,取代遭收購的 EA,盤後一度漲 8%"
+  },
+  "CNH": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 營收 $48.03 億(+2% YoY)、調整後 EPS $0.13,建築部門銷售 +12%,全年 EPS 指引 $0.41-0.46"
+  },
+  "GME": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "以普通股交換 $14 億零息可轉債(2030 年 $4 億 + 2032 年 $10 億),稀釋疑慮使盤前重挫逾 10%"
+  },
+  "CRCL": {
+    "Type": "analyst",
+    "EarningsReaction": false,
+    "Catalyst": "摩根士丹利降評至 Underweight、目標價自 $106 砍至 $38,穩定幣總市值單月縮水約 $4,000 億"
+  },
+  "MU": {
+    "Type": "macro",
+    "EarningsReaction": false,
+    "Catalyst": "中國記憶體威脅升溫:長鑫存儲上海掛牌首日暴漲 466%、傳蘋果測試其晶片,商用 DRAM 定價權受質疑"
+  },
+  "SNDK": {
+    "Type": "macro",
+    "EarningsReaction": false,
+    "Catalyst": "記憶體族群系統性賣壓(長鑫掛牌、SK 海力士資本支出上修至約 $310 億),8/5 財報前獲利了結"
+  },
+  "UMC": {
+    "Type": "guidance",
+    "EarningsReaction": false,
+    "Catalyst": "Q2 EPS 3.39 元創新高但 ADR 遭集中拋售,7/29 法說估 Q3 出貨僅高個位數成長,盤前重挫 8.3%"
+  },
+  "AXTI": {
+    "Type": "analyst",
+    "EarningsReaction": false,
+    "Catalyst": "Needham 7/28 降評至 Hold,股價一個月內自高點 $143 回落逾 50%,獲利了結延續"
+  },
+  "KOS": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 營收 $6.07 億、調整後 EPS $0.11 優於預期,但儲備基礎貸款額度砍至約 $12 億;同日 WTI 跌 5.6%"
+  },
+  "TLRY": {
+    "Type": "earnings",
+    "EarningsReaction": false,
+    "Catalyst": "Q4 營收 $2.82 億優於預期、FY26 展望 +11%,Jefferies 偏多,大麻類股同步走揚"
+  },
+  "LYFT": {
+    "Type": "analyst",
+    "EarningsReaction": false,
+    "Catalyst": "摩根士丹利 7/30 上調目標價至 $18(原 $17),8/6 Q2 財報前提前反應,7/31 盤後 +4.1%"
+  },
+  "TE": {
+    "Type": "contract",
+    "EarningsReaction": false,
+    "Catalyst": "與 Clearway 簽 641MW 太陽能模組供貨合約,採自產電池,盤前漲逾 5%"
+  },
+  "BIOA": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "7/31 遭 Novo ZEUS 試驗結果拖累重挫後反彈,Citi 認為賣壓過度"
+  },
+  "FFAI": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "FCC 新規限制中國產人形機器人被解讀為利多,7 月機器人出貨 152 台創新高"
+  },
+  "FCUV": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "發表 AI 表單自動填寫引擎新品,反向分割後流通股僅約 70 萬股,爆量逾 1 億股軋空"
+  },
+  "UPC": {
+    "Type": "M&A",
+    "EarningsReaction": false,
+    "Catalyst": "7/31 完成收購 Best Praise 專利組合,流通量極低,盤前暴漲 134%(量 1,030 萬股)"
+  },
+  "MNDR": {
+    "Type": "contract",
+    "EarningsReaction": false,
+    "Catalyst": "7/27 與迦納 Jospong 集團簽獨家 AI 數位醫療合資案,流通股極少,動能延續再漲 13.3%"
+  },
+  "VIVK": {
+    "Type": "guidance",
+    "EarningsReaction": false,
+    "Catalyst": "上調原油行銷平台年化營收目標至 $15 億、新增 $4 億合約,7/31 盤後彈 14.4%"
+  },
+  "RUBI": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "查無 8/3 新消息;延續 7/28 第三艘 MR 油輪收購、營收積壓增 24% 至 $3.79 億的動能"
+  },
+  "SGLY": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "7/27 一拆十四後低流通量軋空,7/31 盤後飆 18%,今日獲利了結回吐 4.4%"
+  },
+  "DFNS": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "7/20 生效 1 併 125 反向分割,流通股由 1.398 億砍至約 112 萬,極低流通量軋空;另有 $110 萬 Rimon 交付與 Project35 六成股權收購"
+  },
+  "SHPH": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "查無 7/31 具體消息;6 月轉型狗狗幣挖礦(收購 United Dogecoin)炒作降溫回吐"
+  },
+  "SKYQ": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "查無 8/3 具體消息;近月透過 Cantor 最高 $470 萬 ATM 持續增發,稀釋疑慮未解"
+  },
+  "GNPX": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "ATM 增發稀釋加上持續經營疑慮(2 月來累跌 75%),8/3 公布羅氏 TROP2 合作仍重挫 19.7%"
+  },
+  "INHD": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "6/8 遭那斯達克 T12 停牌,7/31 復牌後公司自曝並無重大 AI 進展,盤前續崩 27%"
+  },
+  "JDZG": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "3 月 1 併 25、6 月再 1 併 10 反向分割,停牌後 7/31 復牌,公司稱無內幕消息,獲利了結重挫 15%"
+  },
+  "ATXG": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "查無個股具體消息,疑為先前比特幣/穩定幣題材炒作後獲利回吐"
+  },
+  "LFS": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "查無明確催化劑,日本體育教育微型 ADR,近期僅例行合約消息,屬流動性波動"
+  },
+  "MAR": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 調整後 EPS $3.19 優於預估 $3.05,但營收 $70.7 億短收 $1 億;中東 RevPAR 重挫 43%"
+  },
+  "TSN": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "會計年度 Q3(6 月底止)財報公布,牛肉部門全年營運虧損估 $3.5-5 億,盤前跌 3.2%"
+  },
+  "KRYS": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 產品營收 $1.192 億(+24% YoY)、淨利 $5,480 萬,VYJUVEK 毛利率 95%,股價仍重挫 9.1%"
+  },
+  "L": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 淨利 $4.44 億(+13.6% YoY)、EPS $2.16,營收增至 $47.3 億,CNA 貢獻淨利增至 $2.94 億"
+  },
+  "CNA": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 核心 EPS $1.19 優於預估 $1.08,營收 $38.3 億遠超預估 $29.7 億,但核心獲利年減"
+  },
+  "MUFG": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "會計年度 Q1 淨利 $50.8 億、EPS $0.45,營收 $245.2 億,EPS 較預估高 41%"
+  },
+  "ECHO": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "子公司 Hughes Satellite Systems 聲請第 11 章重整,$15 億票據 8/1 到期、帳上現金僅 $1.02 億"
+  },
+  "BA": {
+    "Type": "analyst",
+    "EarningsReaction": false,
+    "Catalyst": "BNP Paribas 由 Underperform 連跳兩級升評至 Outperform(8/3 07:36 ET),新目標價未公開"
+  },
+  "BP": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "川普喊停伊朗打擊、WTI 跌 5.6% 至 $79.94 拖累油股;BP 同時啟動北海資產出售(估值 $17.5-30 億)"
+  },
+  "LI": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "7 月交車 30,468 輛,低於市場期待,盤前跌 3.0%"
+  },
+  "BABA": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "8/2 發布 Qwen3.8-Max(2.4 兆參數)大模型,港股收漲 7%,ADR 盤前 +4.1%"
+  },
+  "EOG": {
+    "Type": "macro",
+    "EarningsReaction": false,
+    "Catalyst": "川普 8/2 喊停對伊朗打擊並重啟核談判,WTI 跌 5.6% 至 $79.94,能源類股同步走弱"
+  },
+  "SKHY": {
+    "Type": "macro",
+    "EarningsReaction": false,
+    "Catalyst": "中國長鑫(CXMT)掛牌加深記憶體殺價疑慮,SK 海力士 ADR 隨族群回檔,MU 同步 -3.9%"
+  },
+  "HYFM": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "8/3 僅公告出售子公司 Aurora Peat 換得 $1,600 萬還債,不足以解釋 +544%;成交 4,591 萬股遠超 461 萬流通股,屬極端軋空"
+  },
+  "PUSA": {
+    "Type": "contract",
+    "EarningsReaction": false,
+    "Catalyst": "子公司 Powerus 旗下 Tandem Defense 取得美國空軍 IDIQ 無人機合約,上限 $9,000 萬、執行至 2028 年中"
+  },
+  "REPL": {
+    "Type": "FDA",
+    "EarningsReaction": false,
+    "Catalyst": "RP1 諮委會 7/30 以 10:3 認定療效具臨床意義,8/2 為 PDUFA 期限但決定結果尚未公布,盤前 -4.0%"
+  },
+  "SRAD": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 營收 €3.78 億(+19%)但由淨利 €4,900 萬轉為淨損 €400 萬,含 €900 萬匯兌損失,重挫 19.4%"
+  },
+  "XPEV": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "7月交付 38,027 輛,較 6 月 40,126 輛月減 5.2%、年增僅 3.6%;前七月累計 204,004 輛年減 12.8%,Mona L03 產能爬坡未到位"
+  }
 }
