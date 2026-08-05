@@ -2313,6 +2313,24 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 }
 .news-detail-meta svg { width: 12px; height: 12px; }
 
+/* 模型預測 card — s.modelPred injected post-build by model_predict.py */
+.model-pred-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px; margin: 6px 0 10px;
+}
+.model-pred-grid > div {
+  background: var(--surface-soft); border-radius: var(--r-card, 10px); padding: 10px 14px;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.mp-label { font-size: 11px; color: var(--mute); }
+.mp-val { font-size: 18px; font-weight: 600; font-family: var(--font-mono); }
+.model-pred-flag {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12.5px; color: var(--down, #e5484d); margin: 4px 0 6px; font-weight: 500;
+}
+.model-pred-flag .material-symbols-outlined { font-size: 16px; }
+.model-pred-note { font-size: 11px; color: var(--mute); }
+
 /* Sean 視角 card — independent of .news-detail's data source but reuses its markdown body
    styling (p/strong/blockquote) via the shared class. Only the header icon is card-specific. */
 .material-symbols-outlined {
@@ -5381,6 +5399,25 @@ async function renderStock(sym) {
       : '';
     seanAnalysisHtml = `<div class="stock-card news-detail sean-analysis"><h3><span class="material-symbols-outlined">insights</span>Sean 視角 <span class="label-en">Stocks in Play</span></h3>${seanMeta}${seanBody}</div>`;
   }
+  // 模型預測 · Model Forecast — rendered from s.modelPred (injected by model_predict.py after
+  // each build; params in model_params.json, fitted on the full SIPs event history).
+  let modelPredHtml = '';
+  if (s.modelPred && s.modelPred.predDay !== undefined && s.modelPred.predDay !== null) {
+    const mp = s.modelPred;
+    const f = v => (v >= 0 ? '+' : '') + Number(v).toFixed(1) + '%';
+    const bandTxt = (mp.band && mp.band.length === 2) ? `${f(mp.predDay + mp.band[0])} ~ ${f(mp.predDay + mp.band[1])}` : '';
+    const flagTxt = mp.flag === 'contract_fade'
+      ? `<div class="model-pred-flag"><span class="material-symbols-outlined">warning</span>大合約 fade 形態:歷史上此類跳空開盤後系統性回吐(勝率 7 成的放空樣態),開盤追多請三思</div>` : '';
+    modelPredHtml = `<div class="stock-card news-detail model-pred"><h3><span class="material-symbols-outlined">query_stats</span>模型預測 <span class="label-en">Model Forecast ${escapeHtml(mp.version || '')}</span></h3>
+      <div class="model-pred-grid">
+        <div><span class="mp-label">盤前跳空(掃描時)</span><span class="mp-val ${cls(mp.gap)}">${f(mp.gap)}</span></div>
+        <div><span class="mp-label">預測今日收盤</span><span class="mp-val ${cls(mp.predDay)}">${f(mp.predDay)}</span></div>
+        <div><span class="mp-label">50% 區間</span><span class="mp-val">${bandTxt}</span></div>
+        <div><span class="mp-label">預測盤中最高</span><span class="mp-val ${cls(mp.predHi)}">${f(mp.predHi)}</span></div>
+      </div>${flagTxt}
+      <div class="model-pred-note">相對昨收 · 模型基於全歷史事件盲測(大型股命中 ~56%、小型股 ~30%,區間為 50% 信賴帶)· 預測非建議</div>
+    </div>`;
+  }
   // Milan 視角 · Catalyst Rating — wholly independent card, own data source (s.milanAnalysis /
   // milan_analysis.json, keyed by symbol, unrelated to newsDetail above). Only renders when
   // present; markdown body reuses mdNewsToHtml, same as the News Detail card.
@@ -5429,6 +5466,7 @@ async function renderStock(sym) {
         <div class="chg ${cls(s.chgPct)}">${fmtPct(s.chgPct)} · Vol ${fmtVol(s.volume)}</div>
       </div>
     </div>
+    ${modelPredHtml}
     ${newsDetailHtml}
     <div class="chart-wrap">
       <div class="stock-card"><h3>EPS Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.eps || ''}</div>
@@ -9445,3 +9483,12 @@ boot();
 with open(os.path.join(DASH_DIR, 'index.html'), 'w', encoding='utf-8') as f:
     f.write(INDEX_HTML)
 print(f'[OK] index.html ({len(INDEX_HTML)} bytes) written to {DASH_DIR}')
+
+# 模型預測注入(model_predict.py + model_params.json;缺檔就跳過,不影響 build)
+try:
+    import subprocess, sys as _sys
+    _mp = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model_predict.py')
+    if os.path.exists(_mp):
+        subprocess.run([_sys.executable, _mp, '--date', DATE], check=False, timeout=60)
+except Exception as _e:
+    print(f'[warn] model_predict skipped: {_e}')
