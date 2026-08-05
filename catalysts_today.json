@@ -15,9 +15,9 @@
     "EarningsReaction": false
   },
   "AZN": {
-    "Type": "M&A",
-    "EarningsReaction": false,
-    "Catalyst": "傳洽談收購 BMY(合計市值約 $4,000 億),收購方出價與稀釋疑慮使倫敦股價一度重挫 7.8%"
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 調整後每股盈餘 $2.63 優於預估 $2.49、營收 $153.8 億略低於預估 $154.7 億,固定匯率年增 6%,腫瘤與罕見疾病線強勁"
   },
   "FERG": {
     "Type": "news",
@@ -227,7 +227,7 @@
   "HYFM": {
     "Type": "momentum",
     "EarningsReaction": false,
-    "Catalyst": "8/3 僅公告出售子公司 Aurora Peat 換得 $1,600 萬還債,不足以解釋 +544%;成交 4,591 萬股遠超 461 萬流通股,屬極端軋空"
+    "Catalyst": "無明確自身消息;8/3 剛完成出售 Aurora Peat 資產,低價股高波動反彈"
   },
   "PUSA": {
     "Type": "momentum",
@@ -590,9 +590,9 @@
     "EarningsReaction": false
   },
   "AAOI": {
-    "Catalyst": "隨光通訊/AI 族群齊漲;川普政府擬禁中國光模組進美資料中心,公司全年營收展望上看 10 億美元,8/6 財報前買盤湧入",
-    "Type": "policy",
-    "EarningsReaction": false
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "無自身利空,光通訊/AI 連結族群同步回檔;財報 8/6 才公布"
   },
   "ALAB": {
     "Type": "earnings",
@@ -830,9 +830,9 @@
     "EarningsReaction": false
   },
   "SBSW": {
-    "Catalyst": "現貨鉑金今日大漲逾5.7%、鈀金漲逾5.4%,貴金屬礦業股同步走高",
-    "Type": "macro",
-    "EarningsReaction": false
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "無公司自身消息,隨貴金屬族群齊漲;鉑族金屬價格維持高檔"
   },
   "GCTS": {
     "Catalyst": "查無當日個股新聞,隨AI伺服器/半導體族群走(MRAM、光收發器禁令消息激勵)",
@@ -925,9 +925,9 @@
     "EarningsReaction": true
   },
   "HSBC": {
-    "Catalyst": "HSBC第二季稅前利潤101億美元年增60%優於預期,恢復最高10億美元庫藏股買回。",
-    "Type": "earnings",
-    "EarningsReaction": true
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "彭博 8/5 報導中國研議保險稅制,滙豐與保誠同步下挫"
   },
   "AMIX": {
     "Type": "news",
@@ -950,9 +950,9 @@
     "Catalyst": "光通訊族群外溢 — 川普政府擬禁中國光模組進美資料中心(COHR 題材),AI 骨幹網訂單背景支撐"
   },
   "GENI": {
-    "Type": "momentum",
+    "Type": "news",
     "EarningsReaction": false,
-    "Catalyst": "查無明確個股新聞;8/6 財報前布局,8/3 遭 Wall Street Zen 由強力賣出調至賣出"
+    "Catalyst": "與 Polymarket/LIGA MX 預測市場合作案帶動的漲勢延續,8/6 公布 Q2 財報前買盤增溫"
   },
   "HIMX": {
     "Type": "momentum",
@@ -996,8 +996,8 @@
   },
   "ZJYL": {
     "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "H1 FY26 營收年減 9.7% 至 $890 萬,但毛利率升至 26.9%、淨損收窄至 $20 萬,盤後爆量急拉"
+    "Catalyst": "H1 FY26營收年減9.7%至890萬美元,但毛利率升至26.9%",
+    "EarningsReaction": true
   },
   "JLHL": {
     "Type": "momentum",
@@ -1161,8 +1161,8 @@
   },
   "GFI": {
     "Type": "macro",
-    "EarningsReaction": false,
-    "Catalyst": "金價受中東局勢緊張推升、突破每盎司 $4,100,避險買盤帶動金礦股走高"
+    "Catalyst": "金價站穩4,100美元上方,金礦股同步走高",
+    "EarningsReaction": false
   },
   "INOD": {
     "Type": "news",
@@ -1220,9 +1220,9 @@
     "Catalyst": "UBS 8/4 發布報告,預期 Cisco FY Q4 營收與 EPS 將優於預期"
   },
   "TM": {
-    "Type": "guidance",
-    "EarningsReaction": true,
-    "Catalyst": "Q1 淨利年增 75.6% 至 1.47 兆日圓,全年獲利預測上調至 3.25 兆日圓,並宣布約 $6.37 億庫藏股"
+    "Type": "earnings",
+    "Catalyst": "Q1淨利年增75.6%、上調全年財測並宣布逾1兆日圓庫藏股,但股價逆向下跌",
+    "EarningsReaction": true
   },
   "NVO": {
     "Type": "earnings",
@@ -1256,8 +1256,8 @@
   },
   "RRX": {
     "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "8/5 盤前公布 Q2,法說會提及在手訂單激增但風險猶存;精確 EPS/營收數字尚未取得"
+    "Catalyst": "Q2營收不如預期拖累股價,惟調整後EPS大勝15.7%",
+    "EarningsReaction": true
   },
   "SHOP": {
     "Type": "earnings",
@@ -1266,8 +1266,8 @@
   },
   "RPRX": {
     "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "8/5 盤前公布 Q2(市場預估 EPS $1.27、portfolio receipts $7.4-7.6 億);實際數字尚未取得"
+    "Catalyst": "版稅收入年增14%,上修全年指引",
+    "EarningsReaction": true
   },
   "TOST": {
     "Type": "earnings",
@@ -1301,8 +1301,8 @@
   },
   "SN": {
     "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "8/5 盤前公布 Q2 財報;實際 EPS/營收數字尚未取得"
+    "Catalyst": "8/5 盤前公布 Q2 財報並召開法說會;實際數字尚未能取得,股價 +1.0%",
+    "EarningsReaction": true
   },
   "NI": {
     "Type": "earnings",
@@ -1346,8 +1346,8 @@
   },
   "CRL": {
     "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "8/5 盤前公布 Q2 財報;實際 EPS/營收數字尚未取得"
+    "Catalyst": "Q2營收、EPS雙雙超標,上修全年指引",
+    "EarningsReaction": true
   },
   "DT": {
     "Type": "earnings",
@@ -1413,5 +1413,170 @@
     "Type": "earnings",
     "EarningsReaction": true,
     "Catalyst": "FY Q3 調整後 EPS $1.71、營收 $48.7 億 +7% 均超預期並上調指引,但股價獲利了結"
+  },
+  "PANW": {
+    "Type": "analyst",
+    "Catalyst": "Oppenheimer稱PANW可達成FQ4經常性營收目標,維持樂觀評等",
+    "EarningsReaction": false
+  },
+  "UBER": {
+    "Type": "earnings",
+    "Catalyst": "Q2每股盈餘符合預期但Q3指引低於市場預估,股價下跌",
+    "EarningsReaction": true
+  },
+  "PODD": {
+    "Type": "earnings",
+    "Catalyst": "Q2 EPS優於預期但下季營收展望不足1.6%,重挫12.5%",
+    "EarningsReaction": true
+  },
+  "CDW": {
+    "Type": "earnings",
+    "Catalyst": "Q2營收年增10%、EPS雙雙超標,股價仍重挫8%",
+    "EarningsReaction": true
+  },
+  "FLUT": {
+    "Type": "earnings",
+    "Catalyst": "Q2營收超預期但調整後EPS遜於預期,股價下跌4.4%",
+    "EarningsReaction": true
+  },
+  "NYT": {
+    "Type": "earnings",
+    "Catalyst": "Q2財報全面超標、數位訂閱營收年增16%,股價仍跌3.1%",
+    "EarningsReaction": true
+  },
+  "PSX": {
+    "Type": "earnings",
+    "Catalyst": "煉油利潤率大增至每桶24美元,Q2調整後EPS勝預期",
+    "EarningsReaction": true
+  },
+  "MDLN": {
+    "Type": "earnings",
+    "Catalyst": "Q2營收年增11.6%但淨利年減58%,受關稅費用影響",
+    "EarningsReaction": true
+  },
+  "KHC": {
+    "Type": "earnings",
+    "Catalyst": "Q2 EPS優於預期但年減19%,7.4億美元減損費用拖累",
+    "EarningsReaction": true
+  },
+  "ARWR": {
+    "Type": "earnings",
+    "Catalyst": "FY26 Q3營收年增171%但每股虧損擴大遜於預期",
+    "EarningsReaction": true
+  },
+  "NEM": {
+    "Type": "macro",
+    "EarningsReaction": false,
+    "Catalyst": "金價升至每盎司約 $4,080-4,166(+2.3%)、Fed 降息預期升溫,金礦股全面走高"
+  },
+  "HL": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "8/4 公布 Q2 自由現金流 $1.36 億、多處礦區鑽探結果強勁,搭配銀價續揚"
+  },
+  "CDE": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "今晚盤後才公布 Q2 財報;盤前隨銀價衝高帶動銀礦股同步走強"
+  },
+  "EXK": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "7/29 已公布 Q2 營收年增 150% 至 $2.12 億;今日銀價漲破 $61 續推股價"
+  },
+  "EQX": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 黃金產量 17.68 萬盎司、營收 $8.62 億優於華爾街預估"
+  },
+  "BTG": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "Q2 財報 8/6 才公布,今日純隨貴金屬族群走高"
+  },
+  "USAS": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "銀價漲破每盎司 $61 帶動銀礦股;公司財報要等 8/10"
+  },
+  "ALM": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "8/5 無自身消息;鎢價走高與 Sangdong 礦增產題材延續(7/14 擴大 GTP 供應合約)"
+  },
+  "SEDG": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 營收 $3.46 億優於預估,但下一季指引 $3.25 億低於華爾街預估 12.6%,拖累股價"
+  },
+  "RUN": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "SolarEdge 指引不佳拖累整個太陽能族群,自身財報前觀望氣氛濃"
+  },
+  "EOSE": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 每股虧損 $1.20 遠差於預估的 -$0.19;營收雖年增 351% 至 $6,880 萬仍重挫"
+  },
+  "GLXY": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 淨損 $8,500 萬、調整後每股虧損 $0.09,數位資產價格回落拖累"
+  },
+  "RIOT": {
+    "Type": "analyst",
+    "EarningsReaction": false,
+    "Catalyst": "花旗目標價 $21→$28、BTIG $28→$40 同步調升;AMD 資料中心擴容 50MW 題材加持"
+  },
+  "OSS": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "8/5 盤前公布 Q2 財報,獲利展望保守導致股價重挫"
+  },
+  "VPG": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 調整後每股盈餘 $0.21 優於預估 $0.19、在手訂單 $9,600 萬創新高,但下季指引僅 $8,500-9,000 萬;股價先前衝上歷史高點 $151 後遭獲利了結"
+  },
+  "BLMN": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 每股盈餘 $0.39 大勝預估 $0.29、營收 $10.2 億優於預估,同店銷售 +2.3%,全年指引上修至 $0.95"
+  },
+  "YXT": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "查無 8/5 具體消息;7 月 ADS 併股 1:10 恢復那斯達克合規後,低流通量推升的軋空行情延續"
+  },
+  "RXRX": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 淨損收窄至 $1.31 億(去年同期 $1.72 億),但全年現金營運支出指引下修至 $3.75 億,市場仍偏空看待"
+  },
+  "BCRX": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 營收 $2.183 億大勝預估 $1.833 億、ORLADEYO 貢獻 $1.582 億,全年營收指引上修至 $6.9-7.15 億"
+  },
+  "GRCE": {
+    "Type": "contract",
+    "EarningsReaction": false,
+    "Catalyst": "8/4 宣布 $1,000 萬私募(476 萬股、每股 $2.10),現金可撐到 2028 年底,支應 GTx-104 雙產線轉移"
+  },
+  "PUK": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "彭博 8/5 報導中國研議保險稅制,英系保險與銀行股同步遭賣壓"
+  },
+  "GPN": {
+    "Type": "earnings",
+    "Catalyst": "Q2 調整後 EPS $3.46、營收 $31.6 億 +34% 均超預期,股價仍跌 2.6%",
+    "EarningsReaction": true
+  },
+  "ONC": {
+    "Type": "earnings",
+    "Catalyst": "Q2 產品營收 $17 億 +29%、Brukinsa $12 億 +31%,GAAP 淨利 $2.37 億轉強",
+    "EarningsReaction": true
   }
 }
