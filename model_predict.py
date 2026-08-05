@@ -63,8 +63,20 @@ def predict(s, P):
     ph = hw[0] + hw[1]*gap
     out = dict(version=P.get('version', 'v12'), gap=round(gap, 2), predDay=round(p, 1),
                predHi=round(ph, 1), band=P['bands'].get(tier, P['bands']['na']), tier=tier)
+    # Setup 旗標(可複數;各自獨立分類,回測見 SKILL §8.2 模型預測段)
+    flags = []
     if typ == 'contract' and gap >= 15:
-        out['flag'] = 'contract_fade'
+        flags.append('contract_fade')
+    try:
+        dtc = float(s.get('shortRatio') or 0)
+    except (TypeError, ValueError):
+        dtc = 0
+    if dtc > 5 and gap >= 2:
+        flags.append('dtc_squeeze')
+    # growth_29(雙成長)2026-08-05 使用者指示自卡面移除;回測結論留在迭代日誌,不出旗標
+    if flags:
+        out['flags'] = flags
+        out['flag'] = flags[0]   # 舊欄位相容
     return out
 
 def main():

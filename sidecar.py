@@ -42,6 +42,7 @@ import json
 import os
 import re
 import sys
+import threading
 from http import HTTPStatus
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import unquote
@@ -229,10 +230,72 @@ class SidecarHandler(SimpleHTTPRequestHandler):
             self._send_json(HTTPStatus.INTERNAL_SERVER_ERROR, {'ok': False, 'error': str(e)})
 
 
+def _premarket_watch():
+    """每 5 分鐘刷新最新日包的盤前報價 + 重算模型預測(美股盤前時段才動作)。
+
+    時窗 UTC 08:00–13:30(EDT 盤前 4:00–9:30 ET;冬令 EST 少蓋前半小時,可接受 —
+    刷到開盤後也只是繼續追 live 價,無害)。來源 = Yahoo(prepost_quote.py,延遲 ≤15 分)。
+    """
+    import time as _time
+    import datetime as _dt
+    from concurrent.futures import ThreadPoolExecutor as _TPE
+    base = os.path.dirname(os.path.abspath(__file__))
+    if base not in sys.path:
+        sys.path.insert(0, base)
+    while True:
+        try:
+            now = _dt.datetime.now(_dt.timezone.utc)
+            hm = now.strftime('%H:%M')
+            if '08:00' <= hm <= '13:30':
+                from prepost_quote import prepost_quote
+                import model_predict as mp
+                P = mp.load(os.path.join(base, 'model_params.json'))
+                dates = mp.load(os.path.join(base, 'dashboard', 'dates.json'))
+                date = dates[0]['date'] if isinstance(dates, list) else dates['dates'][0]['date']
+                pk = os.path.join(base, 'dashboard', 'data', f'{date}.json')
+                d = mp.load(pk)
+                stocks = d.get('stocks') or {}
+                et_hm = (now - _dt.timedelta(hours=4)).strftime('%H:%M')
+                def refresh(item):
+                    sym, s = item
+                    q = prepost_quote(sym)
+                    if not q or q[0] is None:
+                        return 0
+                    chg, last, vol = q
+                    s['chgPct'] = round(chg, 2); s['last'] = last
+                    if vol: s['volume'] = vol
+                    pred = mp.predict(s, P)
+                    if pred:
+                        pred['asOf'] = et_hm
+                        s['modelPred'] = pred
+                    return 1
+                with _TPE(max_workers=8) as ex:
+                    n = sum(ex.map(refresh, list(stocks.items())))
+                d['premarketRefreshedAt'] = now.isoformat(timespec='seconds')
+                with open(pk, 'w', encoding='utf-8') as f:
+                    json.dump(d, f, ensure_ascii=False)
+                try:
+                    dj_path = os.path.join(base, 'dashboard', 'data.json')
+                    dj = mp.load(dj_path)
+                    if (dj.get('date') or '')[:10] == date:
+                        dj['stocks'] = d['stocks']
+                        dj['premarketRefreshedAt'] = d['premarketRefreshedAt']
+                        with open(dj_path, 'w', encoding='utf-8') as f:
+                            json.dump(dj, f, ensure_ascii=False)
+                except Exception:
+                    pass
+                print(f'[premarket-watch] {date}: refreshed {n}/{len(stocks)} quotes @ ET {et_hm}')
+        except Exception as e:
+            print(f'[premarket-watch] error: {e}')
+        _time.sleep(300)
+
+
 def main():
     print(f'[sidecar] serving {ROOT} on http://{HOST}:{PORT}')
     print(f'[sidecar] studies file: {STUDIES_JSON}')
     print(f'[sidecar] images dir:   {IMAGES_DIR}')
+    threading.Thread(target=_premarket_watch, daemon=True).start()
+    print('[sidecar] premarket watcher armed (every 5 min, ET 04:00-09:30)')
     server = ThreadingHTTPServer((HOST, PORT), SidecarHandler)
     try:
         server.serve_forever()

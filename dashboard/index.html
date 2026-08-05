@@ -1551,6 +1551,7 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
   font-size: 12.5px; color: var(--down, #e5484d); margin: 4px 0 6px; font-weight: 500;
 }
 .model-pred-flag .material-symbols-outlined { font-size: 16px; }
+.model-pred-flag.flag-good { color: var(--up, #30a46c); }
 .model-pred-note { font-size: 11px; color: var(--mute); }
 
 /* Sean 視角 card — independent of .news-detail's data source but reuses its markdown body
@@ -4628,8 +4629,15 @@ async function renderStock(sym) {
     const mp = s.modelPred;
     const f = v => (v >= 0 ? '+' : '') + Number(v).toFixed(1) + '%';
     const bandTxt = (mp.band && mp.band.length === 2) ? `${f(mp.predDay + mp.band[0])} ~ ${f(mp.predDay + mp.band[1])}` : '';
-    const flagTxt = mp.flag === 'contract_fade'
-      ? `<div class="model-pred-flag"><span class="material-symbols-outlined">warning</span>大合約 fade 形態:歷史上此類跳空開盤後系統性回吐(勝率 7 成的放空樣態),開盤追多請三思</div>` : '';
+    const FLAG_DEFS = {
+      contract_fade: ['', 'warning', '大合約 fade 形態:歷史上此類跳空開盤後系統性回吐(勝率 7 成的放空樣態),開盤追多請三思'],
+      dtc_squeeze: ['flag-good', 'local_fire_department', '高 DTC 軋空形態(days to cover &gt;5):回測 OPG 2.5% 停損,2R 勝率 43%、3R 期望 +0.26R/筆 — 獨立 setup,與催化劑類型無關'],
+    };
+    const flagList = mp.flags || (mp.flag ? [mp.flag] : []);
+    const flagTxt = flagList.map(fl => {
+      const d = FLAG_DEFS[fl];
+      return d ? `<div class="model-pred-flag ${d[0]}"><span class="material-symbols-outlined">${d[1]}</span>${d[2]}</div>` : '';
+    }).join('');
     modelPredHtml = `<div class="stock-card news-detail model-pred"><h3><span class="material-symbols-outlined">query_stats</span>模型預測 <span class="label-en">Model Forecast ${escapeHtml(mp.version || '')}</span></h3>
       <div class="model-pred-grid">
         <div><span class="mp-label">盤前跳空(掃描時)</span><span class="mp-val ${cls(mp.gap)}">${f(mp.gap)}</span></div>
@@ -4637,7 +4645,6 @@ async function renderStock(sym) {
         <div><span class="mp-label">50% 區間</span><span class="mp-val">${bandTxt}</span></div>
         <div><span class="mp-label">預測盤中最高</span><span class="mp-val ${cls(mp.predHi)}">${f(mp.predHi)}</span></div>
       </div>${flagTxt}
-      <div class="model-pred-note">相對昨收 · 模型基於全歷史事件盲測(大型股命中 ~56%、小型股 ~30%,區間為 50% 信賴帶)· 預測非建議</div>
     </div>`;
   }
   // Milan 視角 · Catalyst Rating — wholly independent card, own data source (s.milanAnalysis /
