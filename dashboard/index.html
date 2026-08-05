@@ -4688,7 +4688,6 @@ async function renderStock(sym) {
         <div class="chg ${cls(s.chgPct)}">${fmtPct(s.chgPct)} · Vol ${fmtVol(s.volume)}</div>
       </div>
     </div>
-    ${modelPredHtml}
     ${newsDetailHtml}
     <div class="chart-wrap">
       <div class="stock-card"><h3>EPS Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.eps || ''}</div>
@@ -4702,6 +4701,7 @@ async function renderStock(sym) {
       <h3>Forward YoY <span class="label-en">TradingView FQ — EPS YoY / Rev YoY</span></h3>
       ${yoyHtml}
     </div>
+    ${modelPredHtml}
     ${(STATE.candles?.[s.symbol]) ? `<div class="stock-card">
       <h3>股價走勢 <span class="label-en">Price · 6M Daily</span></h3>
       <div id="candle-chart-container-${s.symbol}" class="candle-chart-host"></div>
