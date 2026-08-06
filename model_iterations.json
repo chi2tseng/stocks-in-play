@@ -1,1 +1,221 @@
-[{"iteration": 1, "n": 972, "v1": {"mae": 5.26, "bias": 0.06}, "blind": {"v1 現行": {"mae": 5.58, "rho": 0.73}, "v2 市值分層斜率": {"mae": 5.77, "rho": 0.71}, "v3 rev_surp修正": {"mae": 5.59, "rho": 0.72}}, "hi_table": {"earnings|+2~4": {"n": 64, "ext_med": 2.0, "ext_p75": 5.2}, "earnings|+4~7": {"n": 108, "ext_med": 2.6, "ext_p75": 5.3}, "earnings|+7~12": {"n": 69, "ext_med": 2.1, "ext_p75": 5.9}, "earnings|+12~25": {"n": 64, "ext_med": 4.8, "ext_p75": 7.9}, "earnings|>+25": {"n": 22, "ext_med": 5.6, "ext_p75": 9.9}, "contract|+2~4": {"n": 26, "ext_med": 4.4, "ext_p75": 7.3}, "contract|+4~7": {"n": 46, "ext_med": 3.6, "ext_p75": 6.5}, "contract|+7~12": {"n": 27, "ext_med": 4.7, "ext_p75": 7.2}, "contract|+12~25": {"n": 24, "ext_med": 11.1, "ext_p75": 17.4}, "contract|>+25": {"n": 15, "ext_med": 4.3, "ext_p75": 9.7}}}, {"iteration": 2, "high_model": {"earnings": {"a": 4.31, "b": 1.05}, "contract": {"a": 10.82, "b": 0.57}}, "bands": {"mega ≥$100B": {"n": 95, "p10": -5.0, "p25": -1.8, "p75": 1.5, "p90": 3.8}, "large $10-100B": {"n": 314, "p10": -5.3, "p25": -2.6, "p75": 2.0, "p90": 5.9}, "mid $2-10B": {"n": 146, "p10": -9.4, "p25": -5.5, "p75": 3.3, "p90": 8.3}, "small $0.5-2B": {"n": 90, "p10": -7.9, "p25": -3.6, "p75": 6.7, "p90": 12.2}, "micro <$0.5B": {"n": 134, "p10": -15.7, "p25": -7.8, "p75": 6.5, "p90": 15.7}}, "micro_wild": 21, "high_blind_rho": 0.83}, {"iteration": 3, "kpi": "hit50", "results": {"v1": 37, "v2": 38, "v3": 38, "v4": 38, "v5": 38}}, {"iteration": 4, "cat_score_ic": "全體+0.04 small+0.07(弱)", "hit": {"v2 基準": 38, "v6 +cat_score": 38, "v7 +dow": 38}}, {"iteration": 5, "finding": "rot(盤前換手率) small gap-up IC+0.39 五分位6.3→54.6", "v8_note": "見輸出"}, {"iteration": 6, "v9": {"overall": 39, "big": 57, "mid": 40, "small": 23, "rho": 0.71, "small_mae": 16.82}}, {"iteration": 7, "note": "8/4 finals refresh", "fixed": 167, "v9": {"overall": 38, "big": 55, "mid": 37, "small": 23, "rho": 0.71}}, {"iteration": 8, "note": "full-history merge (5/13 recovered + studies)", "added": 69, "total": 3429, "v9": {"overall": 37, "rho": 0.7}}, {"iteration": 9, "note": "fundamentals into all_events + strict WF + v10 gated"}, {"iteration": 10, "note": "cold-audit fixes: hinge+robust, rot small-up only, dedup, 4-tier disclosure"}, {"iteration": 11, "note": "tv.chart trajectory factors: surp_trend/eps_accel alive (day IC), absorbed by gap; v12 tested"}, {"iteration": 12, "cmd": "refit", "date": "2026-08-06", "n": 3586, "blind": {"hit": 41.9, "rho": 0.736, "tiers": {"big": 55.7, "mid": 40.6, "small": 30.0, "na": 37.1}}}]
+[
+ {
+  "iteration": 1,
+  "n": 972,
+  "v1": {
+   "mae": 5.26,
+   "bias": 0.06
+  },
+  "blind": {
+   "v1 現行": {
+    "mae": 5.58,
+    "rho": 0.73
+   },
+   "v2 市值分層斜率": {
+    "mae": 5.77,
+    "rho": 0.71
+   },
+   "v3 rev_surp修正": {
+    "mae": 5.59,
+    "rho": 0.72
+   }
+  },
+  "hi_table": {
+   "earnings|+2~4": {
+    "n": 64,
+    "ext_med": 2.0,
+    "ext_p75": 5.2
+   },
+   "earnings|+4~7": {
+    "n": 108,
+    "ext_med": 2.6,
+    "ext_p75": 5.3
+   },
+   "earnings|+7~12": {
+    "n": 69,
+    "ext_med": 2.1,
+    "ext_p75": 5.9
+   },
+   "earnings|+12~25": {
+    "n": 64,
+    "ext_med": 4.8,
+    "ext_p75": 7.9
+   },
+   "earnings|>+25": {
+    "n": 22,
+    "ext_med": 5.6,
+    "ext_p75": 9.9
+   },
+   "contract|+2~4": {
+    "n": 26,
+    "ext_med": 4.4,
+    "ext_p75": 7.3
+   },
+   "contract|+4~7": {
+    "n": 46,
+    "ext_med": 3.6,
+    "ext_p75": 6.5
+   },
+   "contract|+7~12": {
+    "n": 27,
+    "ext_med": 4.7,
+    "ext_p75": 7.2
+   },
+   "contract|+12~25": {
+    "n": 24,
+    "ext_med": 11.1,
+    "ext_p75": 17.4
+   },
+   "contract|>+25": {
+    "n": 15,
+    "ext_med": 4.3,
+    "ext_p75": 9.7
+   }
+  }
+ },
+ {
+  "iteration": 2,
+  "high_model": {
+   "earnings": {
+    "a": 4.31,
+    "b": 1.05
+   },
+   "contract": {
+    "a": 10.82,
+    "b": 0.57
+   }
+  },
+  "bands": {
+   "mega ≥$100B": {
+    "n": 95,
+    "p10": -5.0,
+    "p25": -1.8,
+    "p75": 1.5,
+    "p90": 3.8
+   },
+   "large $10-100B": {
+    "n": 314,
+    "p10": -5.3,
+    "p25": -2.6,
+    "p75": 2.0,
+    "p90": 5.9
+   },
+   "mid $2-10B": {
+    "n": 146,
+    "p10": -9.4,
+    "p25": -5.5,
+    "p75": 3.3,
+    "p90": 8.3
+   },
+   "small $0.5-2B": {
+    "n": 90,
+    "p10": -7.9,
+    "p25": -3.6,
+    "p75": 6.7,
+    "p90": 12.2
+   },
+   "micro <$0.5B": {
+    "n": 134,
+    "p10": -15.7,
+    "p25": -7.8,
+    "p75": 6.5,
+    "p90": 15.7
+   }
+  },
+  "micro_wild": 21,
+  "high_blind_rho": 0.83
+ },
+ {
+  "iteration": 3,
+  "kpi": "hit50",
+  "results": {
+   "v1": 37,
+   "v2": 38,
+   "v3": 38,
+   "v4": 38,
+   "v5": 38
+  }
+ },
+ {
+  "iteration": 4,
+  "cat_score_ic": "全體+0.04 small+0.07(弱)",
+  "hit": {
+   "v2 基準": 38,
+   "v6 +cat_score": 38,
+   "v7 +dow": 38
+  }
+ },
+ {
+  "iteration": 5,
+  "finding": "rot(盤前換手率) small gap-up IC+0.39 五分位6.3→54.6",
+  "v8_note": "見輸出"
+ },
+ {
+  "iteration": 6,
+  "v9": {
+   "overall": 39,
+   "big": 57,
+   "mid": 40,
+   "small": 23,
+   "rho": 0.71,
+   "small_mae": 16.82
+  }
+ },
+ {
+  "iteration": 7,
+  "note": "8/4 finals refresh",
+  "fixed": 167,
+  "v9": {
+   "overall": 38,
+   "big": 55,
+   "mid": 37,
+   "small": 23,
+   "rho": 0.71
+  }
+ },
+ {
+  "iteration": 8,
+  "note": "full-history merge (5/13 recovered + studies)",
+  "added": 69,
+  "total": 3429,
+  "v9": {
+   "overall": 37,
+   "rho": 0.7
+  }
+ },
+ {
+  "iteration": 9,
+  "note": "fundamentals into all_events + strict WF + v10 gated"
+ },
+ {
+  "iteration": 10,
+  "note": "cold-audit fixes: hinge+robust, rot small-up only, dedup, 4-tier disclosure"
+ },
+ {
+  "iteration": 11,
+  "note": "tv.chart trajectory factors: surp_trend/eps_accel alive (day IC), absorbed by gap; v12 tested"
+ },
+ {
+  "iteration": 12,
+  "cmd": "refit",
+  "date": "2026-08-06",
+  "n": 3586,
+  "blind": {
+   "hit": 41.9,
+   "rho": 0.736,
+   "tiers": {
+    "big": 55.7,
+    "mid": 40.6,
+    "small": 30.0,
+    "na": 37.1
+   }
+  }
+ },
+ {
+  "date": "2026-08-07",
+  "name": "trade-ideas ex-ante 月回測",
+  "what": "7/7-8/5 用盤前事實(surprise/DTC)+實際開盤 gap 機械選 ideas,5m bars 模擬。BeatDip 開盤進場 47 筆 avgR -0.22(停損 2.5-6% 全負);10:30 進場翻正 avgR +0.13(>=10B +0.23/勝率 59%,六格全同向)。DTC5:6 月 38 筆 +0.84R、7 月 17 筆 -0.19R,合計 +0.52R。6 月非財報季 BeatDip 僅 2 筆無法 OOS。",
+  "decision": "SKILL 定調:錯殺反彈 10:30 前不進場、>=10B 優先、標樣本累積中;ideas 必須盤前寫入(mtime 為準);8/6 盤中寫的首批不計戰績。",
+  "scripts": "scratchpad/ideas_backtest.py, ideas_bt_grid.py, ideas_bt_oos.py"
+ }
+]
