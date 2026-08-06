@@ -1,637 +1,717 @@
 {
-  "CLRO": {
-    "Type": "M&A",
-    "EarningsReaction": false,
-    "Catalyst": "延續 7/2 與 Vivani 子公司 Cortigent 合併轉型神經科技題材,今日無新消息續噴,注意後續稀釋"
-  },
-  "WYHG": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "微型中資食品股拉抬,查無今日明確消息,6 月曾做 1 拆 4 分割"
-  },
-  "PAVS": {
-    "Type": "M&A",
-    "EarningsReaction": false,
-    "Catalyst": "SEC 文件確認完成收購運動品牌 Heyviva,盤後暴漲 34%、盤前續衝 96%"
-  },
-  "YXT": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "前日 Nasdaq 最低股價合規訊息加 AI 題材投機爆量後,今日獲利了結大幅拉回"
-  },
-  "WPP": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "上半年營收年減 4.7%、優於市場預期的減 6.5%,營業利益 3.98 億英鎊超乎預期,創掛牌以來最大單日漲幅 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "AEVA": {
-    "Type": "contract",
-    "EarningsReaction": false,
-    "Catalyst": "發表 AI 資料中心光學連接新業務並與大型雲端業者簽合作開發協議,Q2 營收 610 萬美元優於去年 550 萬"
-  },
-  "BLLN": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS $0.15 遠優於預期 $0.03、營收 1.09 億美元(去年 6660 萬),仍重挫 28% 因成長延續性受質疑"
-  },
-  "TDUP": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 9077 萬美元達標但每股虧損 $0.05 不如預期,下季展望 8800 萬遜於預期 5.4%、全年展望下修"
-  },
-  "ASPN": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 4980 萬美元優於自家財測 4000-4800 萬區間,但淨損擴大至 2330 萬美元(去年 910 萬)"
-  },
-  "SOUN": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 6190 萬美元年增 45%、毛利率升至 45.1%,全年營收展望上調至 2.3-2.6 億美元 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "FLNC": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q3 每股虧損 $0.24 遜於預期,4 億美元交付遞延至 2027 年(海外代工廠產能問題),全年財測下修"
-  },
-  "HUBS": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 9.117 億美元年增 20%、EPS $3.26 超乎預期 $3.02,但下修全年展望、Q3 指引 9.245 億遜於預期 1.8%"
-  },
-  "DDOG": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 11.2 億美元年增 35.6%、EPS $0.65 超乎預期 11.4%,仍因估值偏高遭獲利了結重挫"
-  },
-  "APP": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 19.2 億美元年增 52.8% 但不如預期,EPS $3.76 符合預期,下季指引 20.7 億略低於預期"
-  },
-  "LZ": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 2.053 億美元達標,但全年展望下修至 7.95-8.05 億(原 8.1-8.3 億)並宣布裁員 13%"
-  },
-  "EBS": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 2.34 億美元超乎預期,但全年展望下修至 6.45-6.75 億(原 7.2-7.6 億)並認列 1.91 億 NARCAN 減損"
-  },
-  "INLF": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "小型投機股回檔,8/17 股東會將表決授權股本由 35 萬股暴增至 27.2 億股,稀釋疑慮引發獲利了結"
-  },
-  "MIRM": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收年增 38% 至 1.76 億美元、全年指引上修至 6.8-7 億,但每股虧損 $0.80 遜於預期 $0.68,並同步發行 6.9 億美元可轉債稀釋"
-  },
-  "CELH": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 8.179 億美元遜於預期 8.72 億、EPS $0.36 低於預期 13.9%,毛利率降至 48.1%"
-  },
-  "VRRM": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收與 EPS 均優於預期,但全年營收指引下修至 9.45-9.65 億美元(低於預期 3.4%),Avis/Hertz 續約利潤率轉差"
-  },
-  "FIG": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 3.7 億美元年增 48% 超乎預期、全年展望上調 4000 萬,但 AI 投入推升成本使 GAAP 轉虧、Q3 指引保守,盤後重挫並拖垮整個軟體類股"
-  },
-  "HNST": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS 超乎預期 100%,全年營收展望上修至 3.19-3.25 億美元,盤前大漲 15%"
-  },
-  "WDC": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q4 EPS $3.56 超乎預期 8.9%、下季指引亦優於預估,但 Summit Insights 以 HAMR 轉換將壓縮 2027 毛利率為由降評至持有,盤前重挫 15%"
-  },
-  "CLOV": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "8/5 盤後 Q2 營收 7.432 億美元年增 55.6% 超乎預期,GAAP 淨利 2800 萬美元(年增 3900 萬轉正),全年營收指引 29.6 億高於華爾街預估 1.7%"
-  },
-  "IOVA": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "8/6 盤前公布 Q2 財報,Amtagvi 全年營收指引 $86-88M 優於預期,帶動股價走高 15% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "CLS": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "8/5 盤後宣布 30 億美元增發(每股 $310-330、較收盤折價達 15%)融資 AI 基建投資,稀釋疑慮致重挫 15%"
-  },
-  "HONA": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 45.2 億美元年增 5%,但全年展望下修、本業成長目標由 7-9% 降至 4-5%,供應鏈瓶頸拖累"
-  },
-  "FRGT": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "查無明確催化劑,微型股波動,8/4-8/6 無重大新聞或財報"
-  },
-  "PTON": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q4 EPS $0.13 優於預期 $0.11、營收 6.08 億美元超乎預期,但 FY27 展望轉弱、訂閱數預估年減 9.8%(減 26.7 萬),盤前重挫"
-  },
-  "U": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 調整後 EPS $0.28 優於預期 $0.22、營收年增 23.9%,全年展望上修,盤前大漲 14%"
-  },
-  "CAI": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 2.637 億美元年增 45% 超乎預期(預估 2.38 億),全年營收指引上修至 10.3-10.4 億美元"
-  },
-  "JLHL": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "低流通中資小型股,近日暴漲暴跌,查無對應本次跌幅的單一新聞"
-  },
-  "RUN": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS $0.42、營收 8.7 億美元均超乎預期,但下修全年現金生成與訂閱價值指引,新增用戶季減 31%"
-  },
-  "VISN": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "盤前公布出售 RUCKUS 後首份季報,市場預估營收年減逾六成,規模驟縮疑慮壓低股價"
-  },
-  "QBTS": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 每股虧損 $0.13 高於預期的 $0.10、營收 301 萬美元不及預期 402 萬,量子類股近一個月已重挫三成"
-  },
-  "KVYO": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 3.71 億美元年增 26% 達標,但全年 EPS 展望僅 $0.05,市場對成長放緩失望"
-  },
-  "LFMD": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 4730 萬美元年減 6%,調整後 EBITDA 轉為虧損 350 萬美元,全年營收指引下修"
-  },
-  "RDW": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收年增 89.6% 至 1.171 億美元,調整後虧損收窄至每股 $0.09,新增軍規無人機合約並維持全年展望"
-  },
-  "DUOL": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 2.985 億美元年增 18.3% 略低於預期 3.015 億,日活躍用戶年增 23% 仍未能挽回股價"
-  },
-  "FISV": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 調整後 EPS $1.84、營收 49.6 億美元雙雙不及預期,2026 全年本業營收展望下修至 -1%~0%"
-  },
-  "BROS": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS $0.33、營收 5.51 億美元均超乎預期並上修全年指引,但同店銷售放緩疑慮致盤後重挫"
-  },
-  "AMIX": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "取得膀胱過動症神經調節療法美國專利(第 12,611,134 號),帶動投機買盤湧入"
-  },
-  "RXO": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 17.7 億美元年增 25%、超乎預期 7.9%,調整後 EPS $0.06 勝過預期 $0.04,Q3 展望優於預期"
-  },
-  "ARQT": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 每股獲利 $0.11 遠勝預期 $0.05,全年營收展望上修至 5.25-5.4 億美元"
-  },
-  "RELY": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 4.952 億美元年增 20% 創紀錄,淨利 2.059 億美元遠優於去年同期 650 萬,活躍用戶首度突破千萬"
-  },
-  "SNDK": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q4 非 GAAP EPS $39.25、營收 89.7 億美元均超乎預期,但執行長示警 PC/手機今年出貨將出現中段兩位數下滑"
-  },
-  "ZG": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 7.72 億美元年增 18%、EPS $0.53 超乎預期,但宣布裁員且 Q3 營收展望 7.45-7.6 億偏軟"
-  },
-  "Z": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收年增 18% 優於預期,惟 GAAP 轉虧、每股虧損 $0.02,引發獲利品質疑慮"
-  },
-  "CHYM": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收年增 27% 至 6.7 億美元、由虧轉盈,全年營收展望調升"
-  },
-  "DFNS": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "1 併 125 反分割後籌碼收縮,國防合約消息帶動軋空行情延續"
-  },
-  "NNBR": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收年增 19.3%、調整後 EPS 轉為獲利 $0.11,全年展望調升"
-  },
-  "MGNI": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收年增 11.2% 但不如預期,連網電視貢獻利潤年增 36%,全年展望調升 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "SATL": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收年增 259% 創新高至 1590 萬美元,營業利益首度轉正"
-  },
-  "FSLY": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS $0.15 優於預期 $0.07 並調升展望,股價仍逆勢重挫,疑為獲利了結加上軟體類股連動 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "DEO": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "FY26 財報顯示全年銷售衰退,但同步宣布 10 億美元重組計畫,新任執行長帶動股價大漲 7% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "OSCR": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS $1.10 遠優於預期 $0.40(超乎預期 175%)、營收年增 70.4%、全年展望調升,但盤前一度大漲後翻黑,市場對健保業者的醫療成本走向仍有疑慮"
-  },
-  "HIMX": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收季增 14.2% 優於自家財測上緣,毛利率 33.1% 亦優於財測,車用驅動 IC 需求強勁 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "EOLS": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收年增 21% 優於預期,惟每股虧損 $0.12 大於預期,全年營收展望調升 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "CF": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS $4.73 遜於預期 $5.79,銷量年減 15% 抵銷售價漲幅"
-  },
-  "SKHY": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "Q2 營收季增 51% 創新高、HBM4 開始量產,但隨美股 AI 與記憶體類股回檔跟跌"
-  },
-  "VECO": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 1.935 億美元優於預期,調整後 EPS $0.33 優於預期 $0.28"
-  },
-  "TEAM": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "本身財報訂 8/6 盤後才公布,今日隨 Figma 引爆的軟體類股賣壓提前反映風險趨避"
-  },
-  "PZZA": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 4.82 億美元年減 8.8%,北美同店銷售重挫 8.3%,全年財測下修並暫停配息"
-  },
-  "GDRX": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS $0.08 符合預期,全年營收與 EBITDA 財測同步調升,盤後大漲 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "SNOW": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "本身財報 8/26 才公布,受 Figma 示警 AI 成本、HubSpot 財測疲弱引爆的軟體類股賣壓拖累"
-  },
-  "AXON": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS $1.88 優於預期、營收年增 35% 至 9.04 億美元,惟毛利率下滑且現金流財測遭撤回"
-  },
-  "TROX": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 8.68 億美元年增 19% 優於預期,雖每股虧損 $0.51 遜於預期,盤後仍上漲"
-  },
-  "CRM": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "本身財報 8/26 才公布,隨 Figma 示警 AI 投入侵蝕獲利、市場擔憂 AI 取代 SaaS 而遭拋售"
-  },
-  "SRAD": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 每股獲利 0 歐元遜於預期、全年財測下修,UBS 降評至中立、目標價砍至 $16"
-  },
-  "GTM": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 調整後 EPS $0.28 優於預期並上調財測,惟遭軟體類股拋售連累"
-  },
-  "GTLB": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "本身財報 9/8 才公布,隨 AI 取代 SaaS 的敘事拖累重挫"
-  },
-  "MNDY": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "本身財報 8/10 才公布,隨 AI 取代 SaaS 的敘事拖累重挫"
-  },
-  "EXEL": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS $0.91 優於預期,惟營收 6.29 億美元遜於預期,全年營收財測中值下修 5000 萬美元"
-  },
-  "BMBL": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 每股虧損 $0.84 遠遜於預期的 $0.25,付費用戶年減 16.4%,Q3 財測疲弱"
-  },
-  "SYM": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q3 EPS $0.09 遜於預期 $0.13,惟營收 7.21 億美元優於預期"
-  },
-  "SMR": {
-    "Type": "analyst",
-    "EarningsReaction": false,
-    "Catalyst": "Citi 重申賣出評等,商轉時程與現金消耗疑慮發酵,Q2 法說會後股價持續承壓"
-  },
-  "MU": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "受 SanDisk 財報後 WDC 重挫拖累,記憶體類股全面回落、獲利了結賣壓湧現"
-  },
-  "SPCX": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "今日 8/6 首波鎖定期解禁,9.115 億股(約 1160 億美元)取得流通資格,供給壓力使股價 8/5 先重挫 13.6%、今日盤前反彈"
-  },
-  "BSY": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "8/6 盤前公布 Q2 財報,適逢 Figma 引爆的軟體類股賣壓,股價承壓下跌"
-  },
-  "EVH": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 4.44 億美元年減 31% 遜於預期,但 EBITDA 超標並上調全年獲利展望,盤前急漲 21%"
-  },
-  "IONQ": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 8010 萬美元年增 287% 創新高並超乎預期,全年營收展望上調至 2.8-2.9 億美元"
-  },
-  "CDE": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 調整後 EPS $0.12 遜於預期 $0.26,並下修 New Afton、Rainy River 全年產量展望"
-  },
-  "WRBY": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 2.355 億美元遜於預期 2.378 億,全年營收展望 9.675 億亦低於華爾街預估 1.3%"
-  },
-  "ZJYL": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "前日財報後盤後暴漲 63%,今日獲利了結拉回;營收年減 9.7% 惟毛利率回升"
-  },
-  "INSM": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 4.26 億美元年增 296%,新藥 BRINSUPRI 單季銷售 3.09 億美元,全年營收指引上調至 12.5-14 億美元"
-  },
-  "TIGO": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 21.8 億美元年增 59%,自由現金流創單季新高,全年自由現金流指引上調至約 11 億美元 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "PH": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q4 調整後 EPS $9.27 年增 21% 創新高,FY27 EPS 指引上看 $34.25-35.25"
-  },
-  "CEG": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 調整後 EPS $2.55 優於去年 $1.91,全年指引上調至 $11.5-12.5"
-  },
-  "SGI": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 18.2 億美元年減 3%,Mattress Firm 通路衰退 2.8%、北美衰退 5.7%,獲利雖增股價仍重挫"
-  },
-  "ITT": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 調整後 EPS $2.08 年增 18%,全年 EPS 指引上調至 $8.12-8.32"
-  },
-  "ATI": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 調整後 EPS $1.23,全年 EBITDA 指引大幅上調至 11.35-11.85 億美元"
-  },
-  "LNG": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 57.3 億美元年增 24%,全年 EBITDA 指引上調至 79-84 億美元"
-  },
-  "USFD": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 調整後 EPS $1.44 年增 21%,EBITDA 創單季新高 6.04 億美元,重申全年指引"
-  },
-  "HWM": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS $1.33 年增 46%,全年指引上調至營收 100.5 億美元、EPS $5.27"
-  },
-  "ROIV": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS 超乎預期 4 美分,但淨損擴大至 2.9 億美元,Moderna 和解金獎金推高管銷費用拖累股價 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "CNQ": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 143.7 億加元優於預期 133.6 億,上調 2026 年產量指引,油價走高帶動獲利 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "MTSI": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q3 營收 3.42 億美元年增 36%,Q4 指引 4.15-4.25 億美元遠高於本季,成長動能加速"
-  },
-  "BDX": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q3 營收 49.8 億美元,EPS 超乎預期 $0.10,獲利優於華爾街預估帶動股價上漲"
-  },
-  "IX": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q1 稅後淨利年增 162% 創新高,並宣布出售銀行子公司精簡業務,新股利政策激勵股價"
-  },
-  "VTRS": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 37.6 億美元優於預期 36.8 億,EPS 超乎預期 $0.08,學名藥業務表現優於預期"
-  },
-  "RL": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q1 營收 20 億美元年增 14%、EPS $4.59 年增 22% 大幅超乎預期,但全年指引僅 5-6% 成長,引發獲利了結 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "FWONA": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "查無明確催化劑,僅查到財報排程公告,未取得 8/6 實際財報數據"
-  },
-  "CQP": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 25.8 億美元略低於預期 26.4 億,但液化天然氣出貨量增加推升 EBITDA,全年財測上調"
-  },
-  "FOXA": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q4 營收 42.1 億美元、淨利 6.96 億美元超乎預期,世界盃廣告收入挹注帶動股價走高 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "CMRC": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS 優於預期,但 Q3 與全年營收展望大幅下修,盤前重挫近 35%"
-  },
-  "CRON": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 轉虧為盈、EPS $0.09,營收年增 51% 至 5300 萬美元,盤前大漲近 14% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "LXRX": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Novo 授權金到期致 Q2 營收暴跌至 70 萬美元,淨損 3180 萬美元,盤前重挫 21% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "NUVB": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 淨損擴大至 6280 萬美元,又宣布增發 2.79 億美元可轉債,盤前跌逾 9% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "PEPG": {
-    "Type": "FDA",
-    "EarningsReaction": false,
-    "Catalyst": "PGN-EDODM1 第二期試驗通過獨立資料監測委員會審查、晉升最高劑量組,盤前漲逾 6%"
-  },
-  "RIG": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 非 GAAP EPS $0.03 優於預期,營收 9.66 億美元,盤前上漲逾 4%"
-  },
-  "SABR": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 調整後每股虧損 $0.17 不如預期,但上修全年 EBITDA 與自由現金流展望,盤前漲逾 7% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "UMAC": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收年增 687% 至 1670 萬美元優於預期,但同步宣布 6000 萬美元增發計畫,盤前跌近 5% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "ASND": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "COACH第78週數據穩健、YUVIWEL用藥破170例,盤前微漲0.3%"
-  },
-  "BCE": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2調整後EPS $0.65遜於預期$0.70,營收持平,高股息撐盤微漲"
-  },
-  "COP": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2調整後EPS $3.24遠勝預期$2.89,產量2,248千桶/日,盤前漲1.7%"
-  },
-  "EVRG": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2調整後EPS $0.88優於預期$0.80,重申全年展望,盤前漲1.1%"
-  },
-  "GSAT": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2營收$64.8M遜於Q1、服務營收年減5%,虧損擴大,股價跌0.3% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "KDP": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS $0.57、營收$7.31B雙雙優於預期,拆分進度推進,盤前漲1.6%"
-  },
-  "KVUE": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2調整後EPS $0.31、營收$3.96B雙雙小幅遜於預期,盤前跌0.3%"
-  },
-  "LAMR": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2營收$616.7M、上調全年AFFO展望至$8.75-8.90,股價小跌0.5%"
-  },
-  "NVMI": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS $2.51、營收$255M雙雙優於預期創新高,仍遭獲利了結重挫2.7%"
-  },
-  "QSR": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2調整後EPS $1.07年增12.9%,漢堡王美國同店銷售大增8.5%,股價漲0.8%"
-  },
-  "SRE": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2調整後EPS $1.16優於預期,但營收遜預期且下修全年展望,股價跌2.3% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
-  },
-  "TRGP": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2營收$4.44B遜於預期,但EBITDA年增38%創紀錄、上調全年展望上緣,股價跌1.1%"
-  },
-  "WBD": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS $0.06、營收$8.72B雙雙遜於預期,串流轉強撐盤微漲0.7%"
-  },
-  "WMS": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q1淨銷售年增20.6%、EPS年增22.8%至$2.26,展現強勁成長,盤前漲1%"
-  },
-  "ZTS": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 EPS $1.87優於預期,惟營收落後且大砍全年展望,股價重挫2.2%"
-  }
+ "CLRO": {
+  "Type": "M&A",
+  "EarningsReaction": false,
+  "Catalyst": "延續 7/2 與 Vivani 子公司 Cortigent 合併轉型神經科技題材,今日無新消息續噴,注意後續稀釋"
+ },
+ "WYHG": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "微型中資食品股拉抬,查無今日明確消息,6 月曾做 1 拆 4 分割"
+ },
+ "PAVS": {
+  "Type": "M&A",
+  "EarningsReaction": false,
+  "Catalyst": "SEC 文件確認完成收購運動品牌 Heyviva,盤後暴漲 34%、盤前續衝 96%"
+ },
+ "YXT": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "前日 Nasdaq 最低股價合規訊息加 AI 題材投機爆量後,今日獲利了結大幅拉回"
+ },
+ "WPP": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "上半年營收年減 4.7%、優於市場預期的減 6.5%,營業利益 3.98 億英鎊超乎預期,創掛牌以來最大單日漲幅 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "AEVA": {
+  "Type": "contract",
+  "EarningsReaction": false,
+  "Catalyst": "發表 AI 資料中心光學連接新業務並與大型雲端業者簽合作開發協議,Q2 營收 610 萬美元優於去年 550 萬"
+ },
+ "BLLN": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS $0.15 遠優於預期 $0.03、營收 1.09 億美元(去年 6660 萬),仍重挫 28% 因成長延續性受質疑"
+ },
+ "TDUP": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 9077 萬美元達標但每股虧損 $0.05 不如預期,下季展望 8800 萬遜於預期 5.4%、全年展望下修"
+ },
+ "ASPN": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 4980 萬美元優於自家財測 4000-4800 萬區間,但淨損擴大至 2330 萬美元(去年 910 萬)"
+ },
+ "SOUN": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 6190 萬美元年增 45%、毛利率升至 45.1%,全年營收展望上調至 2.3-2.6 億美元 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "FLNC": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q3 每股虧損 $0.24 遜於預期,4 億美元交付遞延至 2027 年(海外代工廠產能問題),全年財測下修"
+ },
+ "HUBS": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 9.117 億美元年增 20%、EPS $3.26 超乎預期 $3.02,但下修全年展望、Q3 指引 9.245 億遜於預期 1.8%"
+ },
+ "DDOG": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 11.2 億美元年增 35.6%、EPS $0.65 超乎預期 11.4%,仍因估值偏高遭獲利了結重挫"
+ },
+ "APP": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 19.2 億美元年增 52.8% 但不如預期,EPS $3.76 符合預期,下季指引 20.7 億略低於預期"
+ },
+ "LZ": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 2.053 億美元達標,但全年展望下修至 7.95-8.05 億(原 8.1-8.3 億)並宣布裁員 13%"
+ },
+ "EBS": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 2.34 億美元超乎預期,但全年展望下修至 6.45-6.75 億(原 7.2-7.6 億)並認列 1.91 億 NARCAN 減損"
+ },
+ "INLF": {
+  "Type": "news",
+  "EarningsReaction": false,
+  "Catalyst": "小型投機股回檔,8/17 股東會將表決授權股本由 35 萬股暴增至 27.2 億股,稀釋疑慮引發獲利了結"
+ },
+ "MIRM": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收年增 38% 至 1.76 億美元、全年指引上修至 6.8-7 億,但每股虧損 $0.80 遜於預期 $0.68,並同步發行 6.9 億美元可轉債稀釋"
+ },
+ "CELH": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 8.179 億美元遜於預期 8.72 億、EPS $0.36 低於預期 13.9%,毛利率降至 48.1%"
+ },
+ "VRRM": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收與 EPS 均優於預期,但全年營收指引下修至 9.45-9.65 億美元(低於預期 3.4%),Avis/Hertz 續約利潤率轉差"
+ },
+ "FIG": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 3.7 億美元年增 48% 超乎預期、全年展望上調 4000 萬,但 AI 投入推升成本使 GAAP 轉虧、Q3 指引保守,盤後重挫並拖垮整個軟體類股"
+ },
+ "HNST": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS 超乎預期 100%,全年營收展望上修至 3.19-3.25 億美元,盤前大漲 15%"
+ },
+ "WDC": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q4 EPS $3.56 超乎預期 8.9%、下季指引亦優於預估,但 Summit Insights 以 HAMR 轉換將壓縮 2027 毛利率為由降評至持有,盤前重挫 15%"
+ },
+ "CLOV": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "8/5 盤後 Q2 營收 7.432 億美元年增 55.6% 超乎預期,GAAP 淨利 2800 萬美元(年增 3900 萬轉正),全年營收指引 29.6 億高於華爾街預估 1.7%"
+ },
+ "IOVA": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "8/6 盤前公布 Q2 財報,Amtagvi 全年營收指引 $86-88M 優於預期,帶動股價走高 15% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "CLS": {
+  "Type": "news",
+  "EarningsReaction": false,
+  "Catalyst": "8/5 盤後宣布 30 億美元增發(每股 $310-330、較收盤折價達 15%)融資 AI 基建投資,稀釋疑慮致重挫 15%"
+ },
+ "HONA": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 45.2 億美元年增 5%,但全年展望下修、本業成長目標由 7-9% 降至 4-5%,供應鏈瓶頸拖累"
+ },
+ "FRGT": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "查無明確催化劑,微型股波動,8/4-8/6 無重大新聞或財報"
+ },
+ "PTON": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q4 EPS $0.13 優於預期 $0.11、營收 6.08 億美元超乎預期,但 FY27 展望轉弱、訂閱數預估年減 9.8%(減 26.7 萬),盤前重挫"
+ },
+ "U": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 調整後 EPS $0.28 優於預期 $0.22、營收年增 23.9%,全年展望上修,盤前大漲 14%"
+ },
+ "CAI": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 2.637 億美元年增 45% 超乎預期(預估 2.38 億),全年營收指引上修至 10.3-10.4 億美元"
+ },
+ "JLHL": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "低流通中資小型股,近日暴漲暴跌,查無對應本次跌幅的單一新聞"
+ },
+ "RUN": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS $0.42、營收 8.7 億美元均超乎預期,但下修全年現金生成與訂閱價值指引,新增用戶季減 31%"
+ },
+ "VISN": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "盤前公布出售 RUCKUS 後首份季報,市場預估營收年減逾六成,規模驟縮疑慮壓低股價"
+ },
+ "QBTS": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 每股虧損 $0.13 高於預期的 $0.10、營收 301 萬美元不及預期 402 萬,量子類股近一個月已重挫三成"
+ },
+ "KVYO": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 3.71 億美元年增 26% 達標,但全年 EPS 展望僅 $0.05,市場對成長放緩失望"
+ },
+ "LFMD": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 4730 萬美元年減 6%,調整後 EBITDA 轉為虧損 350 萬美元,全年營收指引下修"
+ },
+ "RDW": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收年增 89.6% 至 1.171 億美元,調整後虧損收窄至每股 $0.09,新增軍規無人機合約並維持全年展望"
+ },
+ "DUOL": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 2.985 億美元年增 18.3% 略低於預期 3.015 億,日活躍用戶年增 23% 仍未能挽回股價"
+ },
+ "FISV": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 調整後 EPS $1.84、營收 49.6 億美元雙雙不及預期,2026 全年本業營收展望下修至 -1%~0%"
+ },
+ "BROS": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS $0.33、營收 5.51 億美元均超乎預期並上修全年指引,但同店銷售放緩疑慮致盤後重挫"
+ },
+ "AMIX": {
+  "Type": "news",
+  "EarningsReaction": false,
+  "Catalyst": "取得膀胱過動症神經調節療法美國專利(第 12,611,134 號),帶動投機買盤湧入"
+ },
+ "RXO": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 17.7 億美元年增 25%、超乎預期 7.9%,調整後 EPS $0.06 勝過預期 $0.04,Q3 展望優於預期"
+ },
+ "ARQT": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 每股獲利 $0.11 遠勝預期 $0.05,全年營收展望上修至 5.25-5.4 億美元"
+ },
+ "RELY": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 4.952 億美元年增 20% 創紀錄,淨利 2.059 億美元遠優於去年同期 650 萬,活躍用戶首度突破千萬"
+ },
+ "SNDK": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q4 非 GAAP EPS $39.25、營收 89.7 億美元均超乎預期,但執行長示警 PC/手機今年出貨將出現中段兩位數下滑"
+ },
+ "ZG": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 7.72 億美元年增 18%、EPS $0.53 超乎預期,但宣布裁員且 Q3 營收展望 7.45-7.6 億偏軟"
+ },
+ "Z": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收年增 18% 優於預期,惟 GAAP 轉虧、每股虧損 $0.02,引發獲利品質疑慮"
+ },
+ "CHYM": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收年增 27% 至 6.7 億美元、由虧轉盈,全年營收展望調升"
+ },
+ "DFNS": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "1 併 125 反分割後籌碼收縮,國防合約消息帶動軋空行情延續"
+ },
+ "NNBR": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收年增 19.3%、調整後 EPS 轉為獲利 $0.11,全年展望調升"
+ },
+ "MGNI": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收年增 11.2% 但不如預期,連網電視貢獻利潤年增 36%,全年展望調升 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "SATL": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收年增 259% 創新高至 1590 萬美元,營業利益首度轉正"
+ },
+ "FSLY": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS $0.15 優於預期 $0.07 並調升展望,股價仍逆勢重挫,疑為獲利了結加上軟體類股連動 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "DEO": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "FY26 財報顯示全年銷售衰退,但同步宣布 10 億美元重組計畫,新任執行長帶動股價大漲 7% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "OSCR": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS $1.10 遠優於預期 $0.40(超乎預期 175%)、營收年增 70.4%、全年展望調升,但盤前一度大漲後翻黑,市場對健保業者的醫療成本走向仍有疑慮"
+ },
+ "HIMX": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收季增 14.2% 優於自家財測上緣,毛利率 33.1% 亦優於財測,車用驅動 IC 需求強勁 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "EOLS": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收年增 21% 優於預期,惟每股虧損 $0.12 大於預期,全年營收展望調升 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "CF": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS $4.73 遜於預期 $5.79,銷量年減 15% 抵銷售價漲幅"
+ },
+ "SKHY": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "Q2 營收季增 51% 創新高、HBM4 開始量產,但隨美股 AI 與記憶體類股回檔跟跌"
+ },
+ "VECO": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 1.935 億美元優於預期,調整後 EPS $0.33 優於預期 $0.28"
+ },
+ "TEAM": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "本身財報訂 8/6 盤後才公布,今日隨 Figma 引爆的軟體類股賣壓提前反映風險趨避"
+ },
+ "PZZA": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 4.82 億美元年減 8.8%,北美同店銷售重挫 8.3%,全年財測下修並暫停配息"
+ },
+ "GDRX": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS $0.08 符合預期,全年營收與 EBITDA 財測同步調升,盤後大漲 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "SNOW": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "本身財報 8/26 才公布,受 Figma 示警 AI 成本、HubSpot 財測疲弱引爆的軟體類股賣壓拖累"
+ },
+ "AXON": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS $1.88 優於預期、營收年增 35% 至 9.04 億美元,惟毛利率下滑且現金流財測遭撤回"
+ },
+ "TROX": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 8.68 億美元年增 19% 優於預期,雖每股虧損 $0.51 遜於預期,盤後仍上漲"
+ },
+ "CRM": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "本身財報 8/26 才公布,隨 Figma 示警 AI 投入侵蝕獲利、市場擔憂 AI 取代 SaaS 而遭拋售"
+ },
+ "SRAD": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 每股獲利 0 歐元遜於預期、全年財測下修,UBS 降評至中立、目標價砍至 $16"
+ },
+ "GTM": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 調整後 EPS $0.28 優於預期並上調財測,惟遭軟體類股拋售連累"
+ },
+ "GTLB": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "本身財報 9/8 才公布,隨 AI 取代 SaaS 的敘事拖累重挫"
+ },
+ "MNDY": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "本身財報 8/10 才公布,隨 AI 取代 SaaS 的敘事拖累重挫"
+ },
+ "EXEL": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS $0.91 優於預期,惟營收 6.29 億美元遜於預期,全年營收財測中值下修 5000 萬美元"
+ },
+ "BMBL": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 每股虧損 $0.84 遠遜於預期的 $0.25,付費用戶年減 16.4%,Q3 財測疲弱"
+ },
+ "SYM": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q3 EPS $0.09 遜於預期 $0.13,惟營收 7.21 億美元優於預期"
+ },
+ "SMR": {
+  "Type": "analyst",
+  "EarningsReaction": false,
+  "Catalyst": "Citi 重申賣出評等,商轉時程與現金消耗疑慮發酵,Q2 法說會後股價持續承壓"
+ },
+ "MU": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "受 SanDisk 財報後 WDC 重挫拖累,記憶體類股全面回落、獲利了結賣壓湧現"
+ },
+ "SPCX": {
+  "Type": "news",
+  "EarningsReaction": false,
+  "Catalyst": "今日 8/6 首波鎖定期解禁,9.115 億股(約 1160 億美元)取得流通資格,供給壓力使股價 8/5 先重挫 13.6%、今日盤前反彈"
+ },
+ "BSY": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "8/6 盤前公布 Q2 財報,適逢 Figma 引爆的軟體類股賣壓,股價承壓下跌"
+ },
+ "EVH": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 4.44 億美元年減 31% 遜於預期,但 EBITDA 超標並上調全年獲利展望,盤前急漲 21%"
+ },
+ "IONQ": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 8010 萬美元年增 287% 創新高並超乎預期,全年營收展望上調至 2.8-2.9 億美元"
+ },
+ "CDE": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 調整後 EPS $0.12 遜於預期 $0.26,並下修 New Afton、Rainy River 全年產量展望"
+ },
+ "WRBY": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 2.355 億美元遜於預期 2.378 億,全年營收展望 9.675 億亦低於華爾街預估 1.3%"
+ },
+ "ZJYL": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "前日財報後盤後暴漲 63%,今日獲利了結拉回;營收年減 9.7% 惟毛利率回升"
+ },
+ "INSM": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 4.26 億美元年增 296%,新藥 BRINSUPRI 單季銷售 3.09 億美元,全年營收指引上調至 12.5-14 億美元"
+ },
+ "TIGO": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 21.8 億美元年增 59%,自由現金流創單季新高,全年自由現金流指引上調至約 11 億美元 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "PH": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q4 調整後 EPS $9.27 年增 21% 創新高,FY27 EPS 指引上看 $34.25-35.25"
+ },
+ "CEG": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 調整後 EPS $2.55 優於去年 $1.91,全年指引上調至 $11.5-12.5"
+ },
+ "SGI": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 18.2 億美元年減 3%,Mattress Firm 通路衰退 2.8%、北美衰退 5.7%,獲利雖增股價仍重挫"
+ },
+ "ITT": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 調整後 EPS $2.08 年增 18%,全年 EPS 指引上調至 $8.12-8.32"
+ },
+ "ATI": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 調整後 EPS $1.23,全年 EBITDA 指引大幅上調至 11.35-11.85 億美元"
+ },
+ "LNG": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 57.3 億美元年增 24%,全年 EBITDA 指引上調至 79-84 億美元"
+ },
+ "USFD": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 調整後 EPS $1.44 年增 21%,EBITDA 創單季新高 6.04 億美元,重申全年指引"
+ },
+ "HWM": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS $1.33 年增 46%,全年指引上調至營收 100.5 億美元、EPS $5.27"
+ },
+ "ROIV": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS 超乎預期 4 美分,但淨損擴大至 2.9 億美元,Moderna 和解金獎金推高管銷費用拖累股價 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "CNQ": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 143.7 億加元優於預期 133.6 億,上調 2026 年產量指引,油價走高帶動獲利 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "MTSI": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q3 營收 3.42 億美元年增 36%,Q4 指引 4.15-4.25 億美元遠高於本季,成長動能加速"
+ },
+ "BDX": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q3 營收 49.8 億美元,EPS 超乎預期 $0.10,獲利優於華爾街預估帶動股價上漲"
+ },
+ "IX": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q1 稅後淨利年增 162% 創新高,並宣布出售銀行子公司精簡業務,新股利政策激勵股價"
+ },
+ "VTRS": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 37.6 億美元優於預期 36.8 億,EPS 超乎預期 $0.08,學名藥業務表現優於預期"
+ },
+ "RL": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q1 營收 20 億美元年增 14%、EPS $4.59 年增 22% 大幅超乎預期,但全年指引僅 5-6% 成長,引發獲利了結 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "FWONA": {
+  "Type": "news",
+  "EarningsReaction": false,
+  "Catalyst": "查無明確催化劑,僅查到財報排程公告,未取得 8/6 實際財報數據"
+ },
+ "CQP": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收 25.8 億美元略低於預期 26.4 億,但液化天然氣出貨量增加推升 EBITDA,全年財測上調"
+ },
+ "FOXA": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q4 營收 42.1 億美元、淨利 6.96 億美元超乎預期,世界盃廣告收入挹注帶動股價走高 (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "CMRC": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS 優於預期,但 Q3 與全年營收展望大幅下修,盤前重挫近 35%"
+ },
+ "CRON": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 轉虧為盈、EPS $0.09,營收年增 51% 至 5300 萬美元,盤前大漲近 14% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "LXRX": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Novo 授權金到期致 Q2 營收暴跌至 70 萬美元,淨損 3180 萬美元,盤前重挫 21% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "NUVB": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 淨損擴大至 6280 萬美元,又宣布增發 2.79 億美元可轉債,盤前跌逾 9% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "PEPG": {
+  "Type": "FDA",
+  "EarningsReaction": false,
+  "Catalyst": "PGN-EDODM1 第二期試驗通過獨立資料監測委員會審查、晉升最高劑量組,盤前漲逾 6%"
+ },
+ "RIG": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 非 GAAP EPS $0.03 優於預期,營收 9.66 億美元,盤前上漲逾 4%"
+ },
+ "SABR": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 調整後每股虧損 $0.17 不如預期,但上修全年 EBITDA 與自由現金流展望,盤前漲逾 7% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "UMAC": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 營收年增 687% 至 1670 萬美元優於預期,但同步宣布 6000 萬美元增發計畫,盤前跌近 5% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "ASND": {
+  "Type": "news",
+  "EarningsReaction": false,
+  "Catalyst": "COACH第78週數據穩健、YUVIWEL用藥破170例,盤前微漲0.3%"
+ },
+ "BCE": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2調整後EPS $0.65遜於預期$0.70,營收持平,高股息撐盤微漲"
+ },
+ "COP": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2調整後EPS $3.24遠勝預期$2.89,產量2,248千桶/日,盤前漲1.7%"
+ },
+ "EVRG": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2調整後EPS $0.88優於預期$0.80,重申全年展望,盤前漲1.1%"
+ },
+ "GSAT": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2營收$64.8M遜於Q1、服務營收年減5%,虧損擴大,股價跌0.3% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "KDP": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS $0.57、營收$7.31B雙雙優於預期,拆分進度推進,盤前漲1.6%"
+ },
+ "KVUE": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2調整後EPS $0.31、營收$3.96B雙雙小幅遜於預期,盤前跌0.3%"
+ },
+ "LAMR": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2營收$616.7M、上調全年AFFO展望至$8.75-8.90,股價小跌0.5%"
+ },
+ "NVMI": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS $2.51、營收$255M雙雙優於預期創新高,仍遭獲利了結重挫2.7%"
+ },
+ "QSR": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2調整後EPS $1.07年增12.9%,漢堡王美國同店銷售大增8.5%,股價漲0.8%"
+ },
+ "SRE": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2調整後EPS $1.16優於預期,但營收遜預期且下修全年展望,股價跌2.3% (註:TradingView 季度網格尚未更新至本次財報,下方 Forward YoY 仍以上一季為基準)"
+ },
+ "TRGP": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2營收$4.44B遜於預期,但EBITDA年增38%創紀錄、上調全年展望上緣,股價跌1.1%"
+ },
+ "WBD": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS $0.06、營收$8.72B雙雙遜於預期,串流轉強撐盤微漲0.7%"
+ },
+ "WMS": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q1淨銷售年增20.6%、EPS年增22.8%至$2.26,展現強勁成長,盤前漲1%"
+ },
+ "ZTS": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q2 EPS $1.87優於預期,惟營收落後且大砍全年展望,股價重挫2.2%"
+ },
+ "STX": {
+  "Type": "macro",
+  "EarningsReaction": false,
+  "Catalyst": "記憶體/儲存族群殺盤 — WDC、SanDisk 財測不如市場對 AI 記憶體的高預期,加上三星、SK 海力士擴產的供給過剩疑慮,南韓 KOSPI 盤中一度重挫觸發熔斷;Seagate 盤前 -5.7%,無個股新聞"
+ },
+ "NOW": {
+  "Type": "macro",
+  "EarningsReaction": false,
+  "Catalyst": "企業軟體殺盤 — 市場擔憂 AI 代理人侵蝕 SaaS 訂閱模式,資金撤出高本益比軟體與 AI 基建股;ServiceNow 盤前 -3.8%,無個股新聞"
+ },
+ "ADBE": {
+  "Type": "macro",
+  "EarningsReaction": false,
+  "Catalyst": "企業軟體殺盤 — 市場擔憂 AI 代理人侵蝕 SaaS 訂閱模式,資金撤出高本益比軟體與 AI 基建股;Adobe 盤前 -3.5%,無個股新聞"
+ },
+ "ORCL": {
+  "Type": "news",
+  "EarningsReaction": false,
+  "Catalyst": "AI 擴張舉債引發信用評等疑慮(標普 7 月已降至 BBB-),隨軟體族群回落,盤前 -3.4%"
+ },
+ "CRWV": {
+  "Type": "analyst",
+  "EarningsReaction": false,
+  "Catalyst": "花旗分析師 Tyler Radke 將目標價由 $158 下修至 $142,8/11 財報前轉趨保守;盤前 -4.5%"
+ },
+ "COHR": {
+  "Type": "macro",
+  "EarningsReaction": false,
+  "Catalyst": "AI 資料中心光通訊族群回落,前波執行長訪中題材大漲後獲利了結;盤前 -2.9%,無個股新聞"
+ },
+ "PLTR": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "8/3 財報後大漲近 29%,今日隨 AI 高估值股獲利了結;盤前 -2.4%,無個股新聞"
+ },
+ "MRVL": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "AI 半導體族群回落 — 前波 AI 儲存新品與 KeyBanc 目標價上調至 $400 後獲利了結;盤前 -2.8%"
+ },
+ "CRWD": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "企業軟體殺盤 — 市場擔憂 AI 代理人侵蝕 SaaS 訂閱模式,資金撤出高本益比軟體與 AI 基建股;CrowdStrike 盤前 -2.5%,無個股新聞"
+ },
+ "VRT": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "AI 資料中心設備族群修正,延續 7/29 財報後的高波動;盤前 -1.9%,無個股新聞"
+ },
+ "ALAB": {
+  "Type": "analyst",
+  "EarningsReaction": false,
+  "Catalyst": "延續 8/5 財報後獲利了結,TD Cowen 目標價下修至 $375;盤前 -2.1%"
+ },
+ "AMD": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "延續 8/5 SpaceX 傳改採輝達晶片的消息與財測疑慮,隨 AI 半導體族群回落;盤前 -1.7%"
+ },
+ "FOX": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "8/6 盤前公布 FY26 Q4:營收 $42.1 億(年增 28%,華爾街預估 $36.4 億),世界盃廣告收入年增 78%、Tubi 串流成長帶動;淨利 $6.96 億、調整後 EBITDA $12.0 億;盤前 +2.9%"
+ },
+ "MCK": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "8/5 盤後公布 FY27 Q1:調整後 EPS $9.93(年增 20%)、營收 $1,054 億(年增 8%),並上調全年財測至 $44.20-45.00;盤前 +2.6%"
+ },
+ "SONY": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "8/6 盤前公布 Q1 財報:營收年增 8%、營業利益年增 40%,遊戲與影像感測器強勁帶動,並上調全年財測;盤前 +2.2%"
+ },
+ "FWONK": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Liberty Media 合併營收 $9.34 億略低於預估 $9.57 億;F1 分部營收 $7.64 億(年減 38%,本季只有 5 場賽事、去年同期 9 場),調整後 OIBDA $2.06 億;盤前 +1.0%"
+ }
 }
