@@ -63,14 +63,26 @@ if os.path.exists(cpath):
         if line.strip():
             have.add(line.split(',')[0])
 
+# 主題族群領頭羊(§2.0e,2026-08-06 SNDK/WDC 漏抓事故):theme_watch.json 的名單
+# 不受市值 universe 限制,且門檻放寬到 1.5%(主題股小動也要收,配 NEWS-THIN-HOT 詳析閘門)。
+THEME_THRESHOLD = 1.5
+theme_syms = []
+_twp = os.path.join(DIR, 'theme_watch.json')
+if os.path.exists(_twp):
+    try:
+        theme_syms = json.load(open(_twp, encoding='utf-8')).get('symbols') or []
+    except Exception:
+        pass
+
 seen = set(); hits = []; nodata = []
-for sym in UNIVERSE:
+for sym in list(UNIVERSE) + [s for s in theme_syms if s not in UNIVERSE]:
     if sym in seen: continue
     seen.add(sym)
     r = chg_today(sym)
+    th = THEME_THRESHOLD if sym in theme_syms else THRESHOLD
     if r is None:
         nodata.append(sym)          # no-premarket-data: hasn't traded today yet
-    elif abs(r[0]) >= THRESHOLD:
+    elif abs(r[0]) >= th:
         hits.append((sym, r[0], r[1], sym in have))
 
 hits.sort(key=lambda x: -abs(x[1]))

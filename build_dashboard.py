@@ -369,6 +369,7 @@ for sym in all_syms:
             'yoyBlock': t.get('YoYBlock'),
             'chart': t.get('Chart'),
             'latestReportDate': t.get('LatestReportDate'),   # ISO YYYY-MM-DD parsed from TV markdown
+            'nextReportDate': t.get('NextReportDate'),       # <= 包日期 ⇒ TV 是財報前刮的(§6.1 TV-STALE 閘門)
         }
     # If a ticker appears in both pre and post, store both, but pick primary by larger |%chg|
     primary = max(cands, key=lambda c: abs(c['chgPct']))
@@ -717,6 +718,17 @@ if _miss_tv:
     print(f'[!! TV-MISSING !!] {len(_miss_tv)} big-name/earnings stocks lack TV — '
           f'run `node tv-scrape.js {" ".join(_miss_tv)}` + parse_tv + rebuild before push')
 
+# TV freshness (SIPs §6.1 gate, 2026-08-06 user: TV 數據必須是最新季度符合財報):
+# earnings-reaction 股的 TV 若 nextReportDate <= 包日期,代表那份 TV 是財報「前」刮的
+# (AMD 8/5 事故:沿用 8/4 早上的財報前快照)。重刮同日資料後此閘門才會靜音。
+_stale_tv = sorted(k for k, v in _scan_stocks.items()
+                   if (v.get('earningsReaction') or v.get('type') == 'earnings')
+                   and v.get('tv')
+                   and (v['tv'].get('nextReportDate') or '9999') <= DATE)
+if _stale_tv:
+    print(f'[!! TV-STALE !!] {len(_stale_tv)} earnings stocks carry PRE-report TV data — '
+          f'run `node tv-scrape.js {" ".join(_stale_tv)}` + parse_tv + rebuild before push')
+
 # News-detail depth (SIPs §8.1 gate, code-enforced 2026-07-23): every >=$10B /
 # headline name needs a REAL multi-paragraph news detail, not just the catalyst
 # one-liner fallback (GOOG shipped with an empty detail on 7/23 — never again).
@@ -738,6 +750,31 @@ _thin_picks = sorted(s for s in _pick_syms
 if _thin_picks:
     print(f'[!! NEWS-THIN-PICKS !!] {len(_thin_picks)} Today\'s-SIPs picks lack the deep '
           f'news detail (<500 chars) — expand per SKILL §8.1 picks tier before push: {" ".join(_thin_picks)}')
+
+# Hot-set depth (SIPs §8.1 gate, 2026-08-06 user: 大股票熱門股票都要有詳細分析,SNDK/WDC
+# 事故):熱門集合 = mcap>=$100B ∪ 當日成交金額 top10 ∪ headline ∪ theme_watch.json,
+# 詳析門檻 300 字(高於一般大名字的 150)。theme_watch 由 §2.0e 維護(主題族群領頭羊)。
+_theme_watch = []
+_tw_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'theme_watch.json')
+if os.path.exists(_tw_path):
+    try:
+        _theme_watch = json.load(open(_tw_path, encoding='utf-8')).get('symbols') or []
+    except Exception:
+        pass
+_dollar_top = sorted(_scan_stocks.values(),
+                     key=lambda s: -((s.get('last') or 0) * (s.get('volume') or 0)))[:10]
+_hot_syms = ({s.get('symbol') for s in _dollar_top}
+             | {k for k, v in _scan_stocks.items() if (v.get('marketCap_M') or 0) >= 100000}
+             | {k for k, v in _scan_stocks.items()
+                if any((x or {}).get('session') == 'headline' for x in (v.get('sessions') or []))}
+             | (set(_theme_watch) & set(_scan_stocks)))
+_thin_hot = sorted(s for s in _hot_syms if s and len((_scan_stocks.get(s) or {}).get('newsDetail') or '') < 300)
+if _thin_hot:
+    print(f'[!! NEWS-THIN-HOT !!] {len(_thin_hot)} hot/mega stocks lack detailed analysis '
+          f'(<300 chars) — expand per SKILL §8.1 hot tier before push: {" ".join(_thin_hot)}')
+_missing_theme = sorted(set(_theme_watch) - set(_scan_stocks))
+if _missing_theme:
+    print(f'[theme-watch] not in packet today (check §2.0e whether they moved >=1.5%): {" ".join(_missing_theme)}')
 
 # Candle completeness: big-names need a 股價走勢 chart (candles.json, from fetch_candles.py).
 _cand_path = os.path.join(DASH_DIR, 'candles.json')

@@ -59,6 +59,29 @@ def parse_latest_report_date(content):
             pass
     return None
 
+def parse_next_report_date(content, path):
+    """Extract 'Next report date'(絕對日期或 Today/Tomorrow/In N days,相對日以檔案
+    mtime=刮取時間換算)。回 ISO YYYY-MM-DD 或 None。新鮮度規則(§6.1):
+    earnings-reaction 股的 nextReportDate <= 包日期 ⇒ 這份 TV 是財報前刮的 ⇒ 過期需重刮。"""
+    import datetime, os
+    m = re.search(r'Next report date\s*\n\s*([^\n]+)', content)
+    if not m: return None
+    raw = m.group(1).strip()
+    scrape_day = datetime.date.fromtimestamp(os.path.getmtime(path))
+    if raw.lower().startswith('today'):
+        return scrape_day.strftime('%Y-%m-%d')
+    if raw.lower().startswith('tomorrow'):
+        return (scrape_day + datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+    md = re.match(r'[Ii]n\s+(\d+)\s+day', raw)
+    if md:
+        return (scrape_day + datetime.timedelta(days=int(md.group(1)))).strftime('%Y-%m-%d')
+    for fmt in ('%b %d, %Y', '%B %d, %Y'):
+        try:
+            return datetime.datetime.strptime(raw, fmt).strftime('%Y-%m-%d')
+        except Exception:
+            pass
+    return None
+
 def parse_file(path):
     with open(path, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -223,6 +246,7 @@ def parse_file(path):
         'YoYBlock': '\n'.join(block),
         'Raw': raw,
         'LatestReportDate': latest_report_date,   # ISO YYYY-MM-DD, parsed from TV's "Latest report date" line
+        'NextReportDate': parse_next_report_date(content, path),  # <= 包日期 ⇒ 財報前刮的(過期)
         # Full arrays for the detail-page chart
         'Chart': {
             'quarters': quarters,
