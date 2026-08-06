@@ -2963,6 +2963,16 @@ body.dark .candle-news-popup {
   color: var(--charcoal);
 }
 
+/* ── Ideas subtab (trade ideas) — entry/target/stop rows inside sip-card ── */
+.idea-levels {
+  display: flex; flex-direction: column; gap: 6px;
+  margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--hairline-soft);
+}
+.idea-levels > div { display: flex; gap: 10px; align-items: baseline; }
+.idea-levels .mp-label { flex: 0 0 30px; text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; }
+.idea-levels > div > span:last-child { font-size: 13px; color: var(--ink); line-height: 1.5; }
+.idea-note { font-size: 11.5px; color: var(--mute); line-height: 1.6; margin-top: 10px; }
+
 /* ── Short Squeeze toolbar (period-pill switcher above the table) ── */
 .squeeze-toolbar { display: flex; align-items: center; gap: 12px; margin: 0 0 12px; flex-wrap: wrap; }
 .squeeze-toolbar .toolbar-label { font-size: 12px; color: var(--mute); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
@@ -3117,7 +3127,6 @@ td.sym a { transition: background 140ms ease, color 140ms ease; }
     <a class="brand" href="#/sips"><img class="brand-logo" src="logo.png" alt="" onerror="this.style.display='none'">SIPs</a>
     <div class="nav-links">
       <a data-route="sips">Today's SIPs</a>
-      <a data-route="ideas">交易機會</a>
       <a data-route="squeeze">Short Squeeze</a>
       <a data-route="earnings">Earnings Results</a>
       <a data-route="earncal">Earnings Calendar</a>
@@ -3612,7 +3621,7 @@ async function route() {
     _appEl.classList.add('page-anim');
   }
   if (r === 'sips')     return renderSips(arg);
-  if (r === 'ideas')    return renderIdeas();
+  if (r === 'ideas')    return renderSips('ideas');  // legacy URL — Ideas is now a Today's SIPs subtab
   if (r === 'squeeze')  return renderSqueeze();
   if (r === 'earnings') return renderEarnings();
   if (r === 'earncal')  return renderEarningsCalendar();
@@ -4230,7 +4239,7 @@ async function renderSips(subtab) {
   //   'magna'            — MAGNA53 algorithmic ranking
   // The three picks tabs share pickCardHtml() — colors / labels from PICK_SOURCES.
   // URL routing: '/sips' (default Claude), '/sips/codex', '/sips/gemini', '/sips/grok', '/sips/magna'.
-  const validTabs = ['claude', 'codex', 'gemini', 'grok', 'magna'];
+  const validTabs = ['claude', 'codex', 'gemini', 'grok', 'magna', 'ideas'];
   const tab = validTabs.includes(subtab) ? subtab : 'claude';
   const isPicksTab = (tab === 'claude' || tab === 'codex' || tab === 'gemini' || tab === 'grok');
   const app = document.getElementById('app');
@@ -4242,14 +4251,15 @@ async function renderSips(subtab) {
       <div class="subtab ${tab === 'gemini' ? 'active' : ''}" data-sub="gemini">Gemini</div>
       <div class="subtab ${tab === 'grok'   ? 'active' : ''}" data-sub="grok">Grok</div>
       <div class="subtab ${tab === 'magna'  ? 'active' : ''}" data-sub="magna">MAGNA53</div>
+      <div class="subtab ${tab === 'ideas'  ? 'active' : ''}" data-sub="ideas">Ideas</div>
       <span class="subtab-hint" id="sips-hint"></span>
-      <button class="studies-filter-btn ${SIPS_FILTER.size > 0 ? 'active' : ''}" id="sips-filter-btn" type="button" title="Filter by direction / day / catalyst tag" style="margin-left:auto">
+      ${tab === 'ideas' ? '' : `<button class="studies-filter-btn ${SIPS_FILTER.size > 0 ? 'active' : ''}" id="sips-filter-btn" type="button" title="Filter by direction / day / catalyst tag" style="margin-left:auto">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
         </svg>
         <span>Filter</span>
         ${SIPS_FILTER.size > 0 ? `<span class="studies-filter-count">${SIPS_FILTER.size}</span>` : ''}
-      </button>
+      </button>`}
     </div>
     <div id="sips-stack"></div>`;
   // Wire subtab clicks → re-route via hash. Claude is the default (no suffix), others get
@@ -4285,7 +4295,15 @@ async function renderSips(subtab) {
   const stack = document.getElementById('sips-stack');
   const hint = document.getElementById('sips-hint');
   hint.textContent = '';
-  if (tab === 'magna') {
+  if (tab === 'ideas') {
+    const ideas = (DATA.tradeIdeas || []).slice().sort((a, b) => (a.rank ?? 99) - (b.rank ?? 99));
+    if (ideas.length === 0) {
+      stack.innerHTML = `<div class="sip-empty">本日尚未產出交易機會 — /SIPs 盤前寫入 <code>trade_ideas.json</code> 後顯示。</div>`;
+      return;
+    }
+    hint.textContent = `${ideas.length} ideas · 盤前撰寫 · 非投資建議`;
+    stack.innerHTML = '<div class="sip-grid">' + ideas.map((i, idx) => ideaCardHtml(i, idx)).join('') + '</div>';
+  } else if (tab === 'magna') {
     rows.sort((a, b) => b._m53.score - a._m53.score);
     const topAll = rows.filter(r => r._m53.score >= 4).slice(0, 12);
     const top = topAll.filter(s => sipsMatchesFilter(s, false));
@@ -4534,34 +4552,30 @@ function fmtMcap(m) {
 
 // 交易機會 Trade Ideas(2026-08-06 使用者需求):主模型每日從當日包挑「最可執行」的
 // 交易寫進 trade_ideas.json(rank/setup/thesis/entry/target/stop),build 注入 DATA.tradeIdeas。
-function renderIdeas() {
-  const ideas = DATA.tradeIdeas || [];
-  const app = document.getElementById('app');
-  if (!ideas.length) {
-    app.innerHTML = `<h2 class="page-title">交易機會 <span class="label-en">Trade Ideas</span></h2>
-      <p style="color:var(--mute)">本日尚未產出交易機會(/SIPs 產出 trade_ideas.json 後顯示)。</p>`;
-    return;
-  }
-  const dirTag = d => d === 'long'
+// Ideas card — same shell as pickCardHtml (sip-card in the sip-grid) so the Ideas
+// subtab is visually indistinguishable from the picks tabs. Idea-specific parts:
+// setup tag + direction tag, thesis in the rationale slot, entry/target/stop rows.
+function ideaCardHtml(i, idx) {
+  const isFeatured = idx < 3;
+  const s = DATA.stocks[i.symbol];
+  const chg = s ? s.chgPct : null;
+  const dirTag = i.direction === 'long'
     ? '<span class="tag tag-earnings">做多</span>'
     : '<span class="tag" style="background:var(--down-soft,#fee);color:var(--down,#e5484d)">放空</span>';
-  app.innerHTML = `
-    <h2 class="page-title">交易機會 <span class="label-en">Trade Ideas · ${DATA.date}</span></h2>
-    <p style="color:var(--mute);font-size:12.5px;margin:-6px 0 14px">主模型每日精選 · 質化推理 + 回測依據 · 非投資建議,執行前以券商即時報價確認</p>
-    ${ideas.map(i => `
-    <div class="stock-card news-detail trade-idea">
-      <h3><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--surface-soft);font-size:14px;margin-right:8px">${i.rank}</span>
-        <a href="#/stock/${i.symbol}" style="text-decoration:none">${i.symbol}</a>
-        <span class="label-en" style="margin-left:8px">${escapeHtml(i.setup || '')}</span> ${dirTag(i.direction)}</h3>
-      <p style="margin:6px 0 10px;line-height:1.65">${escapeHtml(i.thesis || '')}</p>
-      <div class="model-pred-grid">
-        <div><span class="mp-label">進場</span><span class="mp-val" style="font-size:14px">${escapeHtml(i.entry || '—')}</span></div>
-        <div><span class="mp-label">目標(fade up 出場)</span><span class="mp-val" style="font-size:14px">${escapeHtml(i.target || '—')}</span></div>
-        <div><span class="mp-label">停損</span><span class="mp-val" style="font-size:14px">${escapeHtml(i.stop || '—')}</span></div>
-      </div>
-      ${i.backtest_note ? `<div class="model-pred-note" style="margin-top:8px">依據:${escapeHtml(i.backtest_note)}</div>` : ''}
-    </div>`).join('')}`;
-  staggerChildren('#app .trade-idea');
+  return `<a class="sip-card ${isFeatured ? 'featured' : ''}" data-nav-source="ideas" href="${buildRouteHash('stock/' + i.symbol)}" style="text-decoration:none;color:inherit;display:block;position:relative">
+    <span class="sip-rank-row"><span class="sip-rank">#${i.rank ?? idx + 1}</span>${s ? dayBadgeHtml(s) : ''}</span>
+    <div class="sip-header">${logoImg(i.symbol, 20)}<div class="sip-sym">${i.symbol}</div>${chg != null ? `<div class="sip-chg ${chg >= 0 ? 'pos' : 'neg'}">${fmtPct(chg)}</div>` : ''}</div>
+    ${s ? `<div class="sip-name">${escapeHtml(s.name)}</div>` : ''}
+    <div class="sip-meta"><span class="tag" style="text-transform:none">${escapeHtml(i.setup || '')}</span> ${dirTag}</div>
+    <div class="claude-rationale-label">交易論點</div>
+    <div class="claude-rationale">${escapeHtml(i.thesis || '')}</div>
+    <div class="idea-levels">
+      <div><span class="mp-label">進場</span><span>${escapeHtml(i.entry || '—')}</span></div>
+      <div><span class="mp-label">目標</span><span>${escapeHtml(i.target || '—')}</span></div>
+      <div><span class="mp-label">停損</span><span>${escapeHtml(i.stop || '—')}</span></div>
+    </div>
+    ${i.backtest_note ? `<div class="idea-note">依據:${escapeHtml(i.backtest_note)}</div>` : ''}
+  </a>`;
 }
 
 function renderSqueeze() {
