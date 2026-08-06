@@ -1,0 +1,46 @@
+{
+  "_doc": "交易機會(主模型每日 /SIPs 撰寫;setup 名稱對應回測檔案)。渲染於 dashboard 交易機會分頁。",
+  "date": "2026-08-06",
+  "ideas": [
+    {
+      "rank": 1, "symbol": "MU", "setup": "好財報錯殺反彈", "direction": "long",
+      "thesis": "自家零壞消息的純族群拖累 — MU 沒有發財報、沒有降評,只因 SanDisk/WDC 財報後記憶體族群獲利了結而跌 4.6%。它自己上季 EPS surprise +20%、營收 surprise +15%、DRAM 市佔升到 25%,是族群裡基本面最硬、跌因最空洞的一檔。錯殺純度全場最高,反彈時通常也是族群裡最先回的。",
+      "entry": "早盤弱勢區(−4% ~ −6% 帶)分批",
+      "target": "平盤附近(−1% ~ 0%)fade up 出場,強勢可留倉看族群翻正",
+      "stop": "進場價 −2.5%(觸價出)",
+      "backtest_note": "淺利空(macro/analyst 型)盤中會均值回歸(intra 中位 +0.8%),事件利空才不會 — MU 今天是前者;theme_watch 領頭羊。"
+    },
+    {
+      "rank": 2, "symbol": "DDOG", "setup": "好財報錯殺反彈", "direction": "long",
+      "thesis": "全面 beat(營收 +35.6%、EPS 超預期 11.4%)卻因估值獲利了結殺 15% — 跌因裡沒有任何基本面惡化成分。大型 SaaS 在 beat 後純估值殺的隔日修復率高,但今天盤中要求的是承接訊號:等第一小時打出低點不破再進,不接第一刀。",
+      "entry": "10:30 ET 後、日內低點確認不破時進場",
+      "target": "反彈 +4% ~ +6%(向模型預測高點靠攏)fade up 出場",
+      "stop": "日內低點下 −2%",
+      "backtest_note": "gap-down earnings 盤中反彈中位溫和(+0.5%),此 setup 靠質化篩選(beat 品質)增強,樣本累積中 — 倉位減半。"
+    },
+    {
+      "rank": 3, "symbol": "SNDK", "setup": "好財報錯殺反彈(帶雜訊)", "direction": "long",
+      "thesis": "數字爆表(營收 +372%、毛利率 84.6%、指引續創高)但跌 10% — 錯殺成分高,不過 CEO 對 PC/手機出貨的示警是真實新資訊,不是純情緒殺,反彈天花板比 MU 低。用小倉位做技術面反彈,不戀戰。",
+      "entry": "早盤 −9% ~ −12% 帶,見量縮止跌再進",
+      "target": "反彈 +3% ~ +5% 即 fade up 出場(不求回到平盤)",
+      "stop": "進場價 −3%",
+      "backtest_note": "beat+示警 屬混合訊號,歷史上反彈幅度約為純錯殺的六成;theme_watch 股。"
+    },
+    {
+      "rank": 4, "symbol": "WDC", "setup": "好財報錯殺反彈(觀察)", "direction": "long",
+      "thesis": "beat + 指引 beat,跌 15% 的主因是單一券商(Summit Insights)以 2027 年 HAMR 轉換毛利率為由降評 — 論點是明年的事,今天的殺幅是年內 +200% 的擁擠籌碼出逃。反彈論點成立但賣壓真實,列觀察級:只在午後出現明確承接時小倉參與。",
+      "entry": "午後(13:00 ET 後)若守住早盤低點才進",
+      "target": "反彈 +4% ~ +7% fade up 出場",
+      "stop": "早盤低點下 −2%",
+      "backtest_note": "高基期(YTD +200%)+ 降評觸發的跌,反彈統計弱於淺利空 — 倉位最小。"
+    },
+    {
+      "rank": 5, "symbol": "SOUN", "setup": "DTC>5 軋空", "direction": "long",
+      "thesis": "財報 beat + 全年展望上調 + DTC 5.7 的空頭回補燃料 — 這是驗證過的軋空 setup(不是反彈 setup):gap-up 續漲靠空頭被迫回補。已漲 23% 追高風險存在,回檔至跳空區上緣是較好的進場點。",
+      "entry": "回檔至 +15% ~ +18% 帶(跳空區上緣)",
+      "target": "3R(進場價 +7.5%)",
+      "stop": "進場價 −2.5%",
+      "backtest_note": "DTC>5 OPG setup 回測:3R 期望 +0.26R/筆、勝率 40%;對照組(DTC≤5)−0.02R。"
+    }
+  ]
+}

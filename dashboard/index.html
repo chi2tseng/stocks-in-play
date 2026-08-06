@@ -1552,6 +1552,12 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 }
 .model-pred-flag .material-symbols-outlined { font-size: 16px; }
 .model-pred-flag.flag-good { color: var(--up, #30a46c); }
+.model-pred-qual {
+  display: flex; align-items: flex-start; gap: 6px;
+  font-size: 12.5px; color: var(--mute); margin-top: 6px; line-height: 1.5;
+}
+.model-pred-qual .material-symbols-outlined { font-size: 16px; margin-top: 1px; }
+.model-pred-qual b { color: var(--text, inherit); font-weight: 600; }
 .model-pred-note { font-size: 11px; color: var(--mute); }
 
 /* Sean 視角 card — independent of .news-detail's data source but reuses its markdown body
@@ -2293,6 +2299,7 @@ td.sym a { transition: background 140ms ease, color 140ms ease; }
     <a class="brand" href="#/sips"><img class="brand-logo" src="logo.png" alt="" onerror="this.style.display='none'">SIPs</a>
     <div class="nav-links">
       <a data-route="sips">Today's SIPs</a>
+      <a data-route="ideas">交易機會</a>
       <a data-route="squeeze">Short Squeeze</a>
       <a data-route="earnings">Earnings Results</a>
       <a data-route="earncal">Earnings Calendar</a>
@@ -2787,6 +2794,7 @@ async function route() {
     _appEl.classList.add('page-anim');
   }
   if (r === 'sips')     return renderSips(arg);
+  if (r === 'ideas')    return renderIdeas();
   if (r === 'squeeze')  return renderSqueeze();
   if (r === 'earnings') return renderEarnings();
   if (r === 'earncal')  return renderEarningsCalendar();
@@ -3704,6 +3712,38 @@ function fmtMcap(m) {
   if (m == null) return '—';
   if (m >= 1000) return (m/1000).toFixed(1) + 'B';
   return m.toFixed(0) + 'M';
+}
+
+// 交易機會 Trade Ideas(2026-08-06 使用者需求):主模型每日從當日包挑「最可執行」的
+// 交易寫進 trade_ideas.json(rank/setup/thesis/entry/target/stop),build 注入 DATA.tradeIdeas。
+function renderIdeas() {
+  const ideas = DATA.tradeIdeas || [];
+  const app = document.getElementById('app');
+  if (!ideas.length) {
+    app.innerHTML = `<h2 class="page-title">交易機會 <span class="label-en">Trade Ideas</span></h2>
+      <p style="color:var(--mute)">本日尚未產出交易機會(/SIPs 產出 trade_ideas.json 後顯示)。</p>`;
+    return;
+  }
+  const dirTag = d => d === 'long'
+    ? '<span class="tag tag-earnings">做多</span>'
+    : '<span class="tag" style="background:var(--down-soft,#fee);color:var(--down,#e5484d)">放空</span>';
+  app.innerHTML = `
+    <h2 class="page-title">交易機會 <span class="label-en">Trade Ideas · ${DATA.date}</span></h2>
+    <p style="color:var(--mute);font-size:12.5px;margin:-6px 0 14px">主模型每日精選 · 質化推理 + 回測依據 · 非投資建議,執行前以券商即時報價確認</p>
+    ${ideas.map(i => `
+    <div class="stock-card news-detail trade-idea">
+      <h3><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--surface-soft);font-size:14px;margin-right:8px">${i.rank}</span>
+        <a href="#/stock/${i.symbol}" style="text-decoration:none">${i.symbol}</a>
+        <span class="label-en" style="margin-left:8px">${escapeHtml(i.setup || '')}</span> ${dirTag(i.direction)}</h3>
+      <p style="margin:6px 0 10px;line-height:1.65">${escapeHtml(i.thesis || '')}</p>
+      <div class="model-pred-grid">
+        <div><span class="mp-label">進場</span><span class="mp-val" style="font-size:14px">${escapeHtml(i.entry || '—')}</span></div>
+        <div><span class="mp-label">目標(fade up 出場)</span><span class="mp-val" style="font-size:14px">${escapeHtml(i.target || '—')}</span></div>
+        <div><span class="mp-label">停損</span><span class="mp-val" style="font-size:14px">${escapeHtml(i.stop || '—')}</span></div>
+      </div>
+      ${i.backtest_note ? `<div class="model-pred-note" style="margin-top:8px">依據:${escapeHtml(i.backtest_note)}</div>` : ''}
+    </div>`).join('')}`;
+  staggerChildren('#app .trade-idea');
 }
 
 function renderSqueeze() {
@@ -4644,7 +4684,7 @@ async function renderStock(sym) {
         <div><span class="mp-label">預測今日收盤</span><span class="mp-val ${cls(mp.predDay)}">${f(mp.predDay)}</span></div>
         <div><span class="mp-label">50% 區間</span><span class="mp-val">${bandTxt}</span></div>
         <div><span class="mp-label">預測盤中最高</span><span class="mp-val ${cls(mp.predHi)}">${f(mp.predHi)}</span></div>
-      </div>${flagTxt}
+      </div>${flagTxt}${mp.qual && mp.qual.reasoning ? `<div class="model-pred-qual"><span class="material-symbols-outlined">psychology</span><span><b>質化判讀</b>(${mp.qual.adj >= 0 ? '+' : ''}${mp.qual.adj} 調整):${escapeHtml(mp.qual.reasoning)}</span></div>` : ''}
     </div>`;
   }
   // Milan 視角 · Catalyst Rating — wholly independent card, own data source (s.milanAnalysis /

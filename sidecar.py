@@ -246,9 +246,10 @@ def _premarket_watch():
         try:
             now = _dt.datetime.now(_dt.timezone.utc)
             hm = now.strftime('%H:%M')
-            if '08:00' <= hm <= '13:30':
+            if '08:00' <= hm <= '13:40':
                 from prepost_quote import prepost_quote
                 import model_predict as mp
+                import urllib.request as _ur
                 P = mp.load(os.path.join(base, 'model_params.json'))
                 dates = mp.load(os.path.join(base, 'dashboard', 'dates.json'))
                 date = dates[0]['date'] if isinstance(dates, list) else dates['dates'][0]['date']
@@ -256,17 +257,38 @@ def _premarket_watch():
                 d = mp.load(pk)
                 stocks = d.get('stocks') or {}
                 et_hm = (now - _dt.timedelta(hours=4)).strftime('%H:%M')
+                # 開盤定格(2026-08-06 verify 8/5 發現:盤前快照 vs 實際開盤 gap 中位差 6.1pt,
+                # 是預測誤差的最大來源):13:31-13:40 UTC 的最後一輪改用「真實開盤價」算 gap。
+                open_lock = hm >= '13:31'
+                _UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0'}
+                def open_gap(sym):
+                    try:
+                        u = f'https://query1.finance.yahoo.com/v8/finance/chart/{sym}?range=2d&interval=1d'
+                        r = json.load(_ur.urlopen(_ur.Request(u, headers=_UA), timeout=12))['chart']['result'][0]
+                        q = r['indicators']['quote'][0]
+                        if len(q['open']) >= 2 and q['open'][-1] and q['close'][-2]:
+                            return (q['open'][-1]/q['close'][-2]-1)*100, q['open'][-1]
+                    except Exception:
+                        pass
+                    return None
                 def refresh(item):
                     sym, s = item
-                    q = prepost_quote(sym)
-                    if not q or q[0] is None:
-                        return 0
-                    chg, last, vol = q
+                    if open_lock:
+                        og = open_gap(sym)
+                        if og is None:
+                            return 0
+                        chg, last = round(og[0], 2), og[1]
+                        vol = None
+                    else:
+                        q = prepost_quote(sym)
+                        if not q or q[0] is None:
+                            return 0
+                        chg, last, vol = q
                     s['chgPct'] = round(chg, 2); s['last'] = last
                     if vol: s['volume'] = vol
                     pred = mp.predict(s, P)
                     if pred:
-                        pred['asOf'] = et_hm
+                        pred['asOf'] = et_hm + (' 開盤定格' if open_lock else '')
                         s['modelPred'] = pred
                     return 1
                 with _TPE(max_workers=8) as ex:

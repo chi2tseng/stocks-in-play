@@ -79,6 +79,21 @@ def predict(s, P):
         out['flag'] = flags[0]   # 舊欄位相容
     return out
 
+def apply_qual(out, sym, qual):
+    """質化調整層(2026-08-06 使用者:「更多質化分析,不要非黑即白」)。
+    model_qual.json 由主模型於每日 /SIPs 撰寫:{SYM:{adj, confidence, reasoning, date}}。
+    adj = 對 predDay 的連續調整(clamp ±8);reasoning = 為什麼這檔會偏離量化基準。
+    predDay 保留量化值(predQuant),最終值 = 量化 + 質化 — verify 會分開追蹤兩者。"""
+    q = (qual or {}).get(sym)
+    if not q or q.get('adj') is None:
+        return out
+    adj = max(-8.0, min(8.0, float(q['adj'])))
+    out['predQuant'] = out['predDay']
+    out['predDay'] = round(out['predDay'] + adj, 1)
+    out['qual'] = dict(adj=round(adj, 1), confidence=q.get('confidence'),
+                       reasoning=(q.get('reasoning') or '')[:220])
+    return out
+
 def main():
     P = load(os.path.join(ROOT, 'model_params.json'))
     date = None
@@ -89,10 +104,14 @@ def main():
         date = dates[0]['date'] if isinstance(dates, list) else dates['dates'][0]['date']
     pk_path = os.path.join(ROOT, 'dashboard', 'data', f'{date}.json')
     d = load(pk_path)
-    n = 0
+    qual_all = load(os.path.join(ROOT, 'model_qual.json')) or {}
+    qual = {k: v for k, v in qual_all.items() if isinstance(v, dict) and v.get('date') == date}
+    n, nq = 0, 0
     for sym, s in (d.get('stocks') or {}).items():
         mp = predict(s, P)
         if mp:
+            mp = apply_qual(mp, sym, qual)
+            if mp.get('qual'): nq += 1
             s['modelPred'] = mp; n += 1
     with open(pk_path, 'w', encoding='utf-8') as f:
         json.dump(d, f, ensure_ascii=False)
@@ -103,12 +122,14 @@ def main():
         if dj.get('date', '')[:10] == date:
             for sym, s in (dj.get('stocks') or {}).items():
                 mp = predict(s, P)
-                if mp: s['modelPred'] = mp
+                if mp:
+                    mp = apply_qual(mp, sym, qual)
+                    s['modelPred'] = mp
             with open(dj_path, 'w', encoding='utf-8') as f:
                 json.dump(dj, f, ensure_ascii=False)
     except Exception as e:
         print(f'[model_predict] mirror skip: {e}')
-    print(f'[model_predict] {date}: modelPred injected into {n} stocks')
+    print(f'[model_predict] {date}: modelPred injected into {n} stocks ({nq} with qual overlay)')
 
 if __name__ == '__main__':
     main()
