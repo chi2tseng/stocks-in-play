@@ -34,6 +34,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 
 | Step | Tool | Time | Cost | Output |
 |---|---|---|---|---|
+| **0. 模型對帳(每日必跑,開跑第一步)** | `py model_lab.py verify` + `py model_lab.py ingest`(驗最近已收盤日 + 收樣本進事件庫;印 `[!! MODEL-DRIFT !!]` 就接著跑 `py model_lab.py refit`) | ~1-2 min | $0 | verify 一行結論進 brief;`model_events.json` / `model_track_record.json` 更新;refit 後同步 `trade_setups.json` 的 model 欄 |
 | 1. Gap scan | `node ./barchart-scrape.js` (Playwright + XHR intercept) | ~7s | $0 | `candidates.csv` (84-ish rows) |
 | 2. Catalyst hunt | **4-6 個 `general-purpose` Agents** on **`model: "sonnet"`** (§ 0.5), **6-8 檔 each**(依當日候選數動態分片,同一訊息一次全發)doing parallel WebSearches on **all** candidates | ~90s | $0 | inline markdown table → updates `catalysts` dict in `build_report.py` |
 | 3. TradingView FQ | `node ./tv-scrape.js TICKER1 TICKER2 ...` | ~3-5s per ticker | $0 | `<TICKER>-earnings-fq.md` |
@@ -47,6 +48,8 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 | **8c. Write milan_analysis.json** | **1 sonnet agent** 照 `docs/MILAN_STYLE.md` 幫每檔 claude_picks 做「Milan 視角」催化劑 0-10 評級(§ 8.1c;與 8b 平行發,獨立卡片) | ~2 min(背景) | $0 | `milan_analysis.json` |
 | **9. Write claude_picks.json** | **Claude writes hand-picked rankings + 繁中 rationale + `intent: long\|short` for 5-10 highest-conviction picks** | ~2 min | $0 | `claude_picks.json` ([{symbol, rank, intent, rationale}]) — drives the **default "Claude 精選"** subtab on Today's SIPs. **Direction-match rule:** `intent: long` only for gap-up tickers (chgPct > 0); `intent: short` only for gap-down (chgPct < 0). Dashboard silently drops mismatches. |
 | **9b. Fetch 6-month candles** | `py fetch_candles.py` (Yahoo Finance daily bars, parallel) | ~5-10s | $0 | `dashboard/candles.json` (~150-200KB; powers the 股價走勢 chart on stock-detail pages) |
+| **9c. 質化調整層** | **主模型(不得委派)**寫 `model_qual.json`:picks + 熱門集合 + \|gap\|≥10 的股票,每檔 adj(±8)/confidence/reasoning;**樂透帶(前日 >100% 或無消息連噴)一律 adj=0** | ~2 min | $0 | `model_qual.json` — model_predict 合併進卡片,verify 分開對帳 |
+| **9d. 交易機會(Ideas,硬性盤前完成)** | **主模型**按順位 v3 選**至多 2 檔**寫 `trade_ideas.json`:gap 一律用 `prepost_quote.py` 拉真實盤前價(**禁用 packet chgPct** — range=1d 陷阱),TV 數據缺就先 `tv-scrape.js` 補;無合格標的照樣寫檔(空 ideas + `no_trade_notes` 說明各 setup 為何不合格)。**必須在 21:30 台灣(9:30 ET 開盤)前寫完** — 開盤後補寫=不算預測(mtime 為準)。若 /SIPs 在 20:00 前跑,此步驟延到 20:00-21:00 盤前 gap 定型後補做再 rebuild+push | ~5 min | $0 | `trade_ideas.json`(rank/symbol/setup/direction/thesis/entry/target/stop/backtest_note/written_at)|
 | **10. Publish dashboard** | `py build_dashboard.py` (no args = today's ISO date) | <1s | $0 | `dashboard/data/<DATE>.json`, `dates.json`, `data.json`, `index.html` |
 | **11. Push to GitHub Pages** | `git add dashboard/ + JSON state files; git commit; git push` | ~5s + 30s deploy | $0 | hosted dashboard at <https://chi2tseng.github.io/stocks-in-play/> auto-updates |
 | ~~12. 發射其他評審~~ | **已取消(2026-07-13)** — Claude 不再自動發射;各 AI 各自在自己 CLI 打 /SIPs 獨立跑(§ 8.8) | — | — | 各家自己 scan/pick/publish |
