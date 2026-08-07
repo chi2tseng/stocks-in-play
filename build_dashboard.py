@@ -650,6 +650,10 @@ for td in sorted(target_dates_set):
                     for k in ('seanAnalysis', 'milanAnalysis'):
                         if old_stock.get(k) and not new_stock.get(k):
                             new_stock[k] = old_stock[k]
+                    # modelPred (2026-08-07 bug): model_predict 只注入最新日,重建舊日會把
+                    # 當天鎖定的預測洗掉 → verify 斷炊。舊檔已有的 modelPred 一律保留。
+                    if old_stock.get('modelPred') and not new_stock.get('modelPred'):
+                        new_stock['modelPred'] = old_stock['modelPred']
             else:
                 # Scan date: a RE-SCAN is ADDITIVE. Union any previously-recorded stock
                 # that the fresh scrape no longer returns (e.g. it faded below the ±4%
@@ -659,6 +663,13 @@ for td in sorted(target_dates_set):
                 # To force a clean rebuild, delete data/<DATE>.json before building.
                 for sym, sdata in (old.get('stocks') or {}).items():
                     new_data['stocks'].setdefault(sym, sdata)
+                # 同日重掃:重疊股票以新 scrape 為準,但 modelPred 先沿用舊值 —
+                # build 尾端的 model_predict 會對最新日重算覆蓋;非最新日或注入失敗時
+                # 至少不會出現預測空窗(2026-08-07 洗掉事故的同型防護)。
+                for sym, st in new_data['stocks'].items():
+                    old_st = (old.get('stocks') or {}).get(sym)
+                    if old_st and old_st.get('modelPred') and not st.get('modelPred'):
+                        st['modelPred'] = old_st['modelPred']
                 # Union-restored stocks carry their OLD snapshot — refresh news fields
                 # from the current news_detail.json when it has richer content (the
                 # HBAN case: entry existed in the file but the archived stock kept '').
