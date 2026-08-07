@@ -1,0 +1,137 @@
+# -*- coding: utf-8 -*-
+"""Write catalysts_today.json + append today's headline rows (2026-08-07)."""
+import csv, io, json, urllib.request
+
+DATE = '2026-08-07'
+
+CAT = {
+ # --- shard A ---
+ 'AAOI': ('earnings', 'Q2 營收 1.919 億美元年增 86%、非 GAAP 轉盈,Q3 財測 2.55-2.9 億美元(中值年增約 130%)'),
+ 'ABNB': ('earnings', 'Q2 營收 36 億美元年增 17% 超預期,調整後 EBITDA 年增 21% 至 13 億美元'),
+ 'AG':   ('macro',    '銀價衝上每盎司 62.5 美元創七週新高,就業數據疲弱推升降息預期帶動貴金屬族群'),
+ 'AGIO': ('earnings', 'Q2 每股虧損 1.69 美元遜於華爾街預估的 1.65 美元,Mitapivat 營收雖超預期仍拖累股價'),
+ 'AKAM': ('earnings', '雲端基礎設施營收年增 39% 至 9,900 萬美元、簽 6 億美元四年新約,年度多年期簽約累計 28 億美元'),
+ 'ARDX': ('earnings', 'IBSRELA 營收因保險商加強事前審核不如預期,總營收雖年增 31% 仍盤後重挫'),
+ 'AU':   ('earnings', '金價站上每盎司 4,200 美元,加上 Q2 獲利年增 58%、20 億美元庫藏股加持'),
+ 'AXTI': ('earnings', 'Q2 轉虧為盈每股純益 0.19 美元遠超預估 0.07,磷化銦 AI 晶圓需求推升營收年增 164%'),
+ 'BE':   ('contract', 'Brookfield 對 Bloom 部署的融資額度由 50 億擴大至 250 億美元,AI 用電需求延續動能'),
+ 'CARG': ('earnings', 'Q2 營收 2.51 億美元年增 13% 超財測上緣,每股純益 0.66 美元優於預估 7.6%'),
+ 'CART': ('earnings', 'Q2 營收 10.4 億美元、訂單量年增 9% 超預期,每股純益 0.45 美元雖略遜仍上漲'),
+ 'CDE':  ('earnings', 'Q2 創紀錄營收 11 億美元,全年 EBITDA 目標上看 23 億美元,銀價衝高帶動族群'),
+ # --- shard B ---
+ 'CLRO': ('M&A',      'Cortigent(Vivani 子公司)併購案排除法律不確定性、大股東 61.3% 表決權書面同意,兩日累計漲逾 200%'),
+ 'COHR': ('analyst',  'JPMorgan 目標價由 380 上調至 435 美元、BNP Paribas 上調至 415 美元,均維持買進'),
+ 'CRML': ('momentum', '查無 8/6-8/7 明確個股新聞,歐洲鋰礦併購案持續推進,疑為鋰礦/稀土族群連動'),
+ 'CRSR': ('earnings', 'Q2 營收 3.143 億美元優於財測中值,上調全年展望至 14-14.7 億並看好 GTA VI 帶動買氣'),
+ 'CVRX': ('guidance', '下修全年營收至 5,800-6,000 萬美元(原 6,300-6,700 萬),某大型保險方核准率由 8 成掉到 2 成 5'),
+ 'DBX':  ('earnings', 'Q2 營收 6.315 億美元優於預期但年增僅 0.9%、ARR 停滯,成長動能不足引發獲利了結'),
+ 'DOCS': ('earnings', 'Q1 FY27 營收 1.566 億美元超預期、上修全年展望,AI 搜尋查詢季增逾 25%,盤前近乎翻倍'),
+ 'DSY':  ('momentum', '查無 8/6-8/7 明確個股新聞,1 比 20 反向分割後流通股極少,屬籌碼面拉抬'),
+ 'DV':   ('M&A',      'Nielsen 宣布以合併協議收購 DoubleVerify,公司同步撤回財測並取消法說會'),
+ 'EQX':  ('earnings', 'Q2 創紀錄獲利與現金流,董事會將季度股息調高 50% 並核准 Valentine 二期擴產'),
+ 'FIGS': ('earnings', 'Q2 營收 1.966 億美元年增 28.8%、每股純益 0.15 遠優於預估 0.07,惟含 790 萬美元關稅退款一次性挹注'),
+ 'FNKO': ('earnings', 'Q2 每股純益超出預估 0.23 美元,營收年增 3% 且毛利率大幅改善 13 個百分點'),
+ # --- shard C ---
+ 'FROG': ('earnings', 'Q2 每股純益 0.27 美元優於預估 0.24,營收 1.638 億年增 29%,上調全年至 6.48-6.52 億'),
+ 'FSLR': ('policy',   '川普 8/6 簽署多晶矽 232 條款公告:15% 關稅 + 模組每瓦 0.38 美元進口價格下限,12/4 生效'),
+ 'G':    ('earnings', 'Q2 每股純益 0.88 美元不如預估的 0.97(-8.9%),營收 13.4 億雖小幅超標仍失望'),
+ 'GFI':  ('macro',    '查無個股新聞(Q2 財報 8/25 才公布),金價四連漲逼近 4,300 美元、週漲近 6% 帶動族群'),
+ 'GLW':  ('policy',   '傳美方擬禁中國資料中心光通訊元件進口,康寧光收發器受惠,Truist 上調目標價至 175 美元'),
+ 'GRPN': ('earnings', 'Q2 每股虧損 4 美分優於預估的虧 9 美分,AI 轉型敘事提振,惟營收 1.247 億低於預期'),
+ 'HALO': ('earnings', 'Q2 營收 4.81 億美元年增 48%、權利金營收年增 50% 至 3.077 億,上調全年財測'),
+ 'HL':   ('earnings', 'Q2 每股純益 0.17、營收 3.34 億美元均不如預期,但自由現金流 1.36 億創次高,銀價強勢撐盤'),
+ 'HMY':  ('macro',    '查無個股新聞(FY26 財報 8/27 才公布),金價逼近 4,300 美元帶動南非金礦族群同步走高'),
+ 'HTZ':  ('earnings', 'Q2 營收 24 億美元年增 9.7% 超預估 4.9%、虧損大幅收斂,惟高盛與 Jefferies 同日砍目標價至 2 美元'),
+ 'INDI': ('earnings', 'Q2 營收 6,400 萬美元年增 24% 高於財測中值,Q3 財測 6,700-7,300 萬(中值年增約 30%)'),
+ 'INOD': ('earnings', 'Q2 營收 9,210 萬美元年增 58%、每股純益 0.41 遠超預估 0.21,重申全年 40% 成長財測'),
+ # --- shard D ---
+ 'JHX':  ('earnings', 'FQ1 每股純益 0.36 美元優於預估 0.32,淨利年增 54%,上調全年財測'),
+ 'KRMN': ('earnings', 'Q2 營收 1.82 億美元年增 58%,上調 2026 財測至 7.3-7.45 億美元'),
+ 'LASR': ('earnings', 'Q2 營收優於預期但 EBITDA 財測疲弱,盤後重挫逾 13%'),
+ 'LBGJ': ('news',     '8/3 完成 1 比 200 反向分割,盤面極度稀薄致震盪,查無新催化劑'),
+ 'LUMN': ('M&A',      'Q2 每股虧損 0.07 美元優於預估的虧 0.13,並完成收購 Alkira 擴大雲端網路布局'),
+ 'MB':   ('momentum', '查無明確個股新聞,流通股僅約 90 萬股的極小型股,X 上盤前一度由 3.95 拉到 19.75 美元'),
+ 'MCHP': ('earnings', 'FQ1 營收優於財測,受惠資料中心、航太與工業需求回升'),
+ 'MP':   ('contract', '與國防客戶簽下九位數金額的長期供釓合約,Needham 給予買進、目標價 81 美元'),
+ 'MRVI': ('earnings', 'Q2 財報後盤後跌 7.2%,雖 Q1 才上調全年營收展望仍遭獲利了結'),
+ 'NAMI': ('news',     'X 傳聞未證實:13G 申報揭露一名股東取得 10.79% 持股,盤前一度暴漲逾 140%'),
+ 'NET':  ('earnings', 'Q2 營收 6.961 億美元年增 36%、大客戶淨增 986 家創新高,上調全年財測至 28.6-28.7 億'),
+ 'NTRA': ('earnings', 'Q2 營收 7.528 億美元年增 37.7% 超預估 13.6%,腫瘤檢測量年增 57%,上調全年至 28.5-29.1 億'),
+ # --- shard E ---
+ 'OGG':  ('news',     '8/5 公布 Cariboo 金礦鑽探 95.93 克/噸高品位結果,買盤延續至今'),
+ 'OMDA': ('earnings', 'Q2 營收 8,780 萬美元年增 43% 大幅超預期,並轉虧為盈、淨利 500 萬美元'),
+ 'ORGO': ('guidance', 'CMS 給付政策衝擊,砍 2026 營收展望至 1.79-2.15 億美元,年減 62-68%'),
+ 'OUST': ('earnings', 'Q2 每股虧損 0.27 美元遠遜於預估的虧 0.12,營收 5,500 萬雖超標仍重挫'),
+ 'PAVS': ('momentum', '前日 Heyviva 收購案帶動大漲後獲利了結回吐,增資稀釋疑慮壓抑股價'),
+ 'POET': ('news',     '同業 Applied Optoelectronics 財報亮眼,帶動矽光子/光通訊族群同步走高'),
+ 'PSIX': ('earnings', 'Q2 營收 1.525 億美元遠超預估的 1.34 億,資料中心動力系統需求強勁'),
+ 'PUBM': ('earnings', 'Q2 營收 7,860 萬美元超預期,Q3 展望 7,600 萬優於華爾街預估,CTV 業務強勁'),
+ 'QDEL': ('guidance', '每股純益 0.13 美元超預期,但砍 2026 營收展望至 25.2-26 億美元,保守財測嚇跑買盤'),
+ 'RCAT': ('earnings', 'Q2 營收年增 527% 至 2,020 萬美元,但每股虧損 0.26 美元遜於預期仍重挫'),
+ 'RCEL': ('earnings', 'Q2 營收年增 18% 創紀錄並上調 2026 財測,BTIG 升評買進、目標價 7 美元'),
+ 'REAL': ('earnings', 'Q2 商品交易總額年增 22% 至 6.17 億美元,營收 1.926 億超預期並上調全年財測'),
+ # --- shard F ---
+ 'SBSW': ('macro',    '鉑金與金價同步走高,帶動白金族群礦業股全面走揚'),
+ 'SERV': ('guidance', 'Q2 財報後大砍全年營收指引至 900-1,000 萬美元(原 2,600 萬),Uber Eats 訂單量下滑'),
+ 'SEZL': ('earnings', 'Q2 每股純益 1.13 美元超預估 11.3%、營收年增 51.7%,但全年每股純益指引只上調 2.9% 至 5.25 美元,股價重挫'),
+ 'SG':   ('guidance', 'Q2 每股虧損擴大至 0.22 美元(預估虧 0.15),下修全年同店銷售至 -7~-8%,受食安事件衝擊'),
+ 'SUGP': ('news',     '1 股換 5 股反向分割於 8/6 生效,調整股本結構'),
+ 'TE':   ('momentum', '延續近期鑽井合約與 KORE Power 收購案動能,財報 8/7 才公布'),
+ 'TEAM': ('earnings', 'FQ4 每股純益 1.87 美元遠超預估 1.50,營收 18 億年增 28%,雲端營收年增 31% 創紀錄'),
+ 'THRY': ('guidance', '每股虧損擴大但軟體訂閱佔營收 76%,上調行銷服務指引並裁員年省 6,000 萬美元'),
+ 'TTD':  ('earnings', 'Q2 營收 7.15 億美元年增僅 3%、低於預估的 7.51 億,Q3 指引降至 6.5 億(隱含年減 12%),財務長換人'),
+ 'TWLO': ('earnings', 'Q2 每股純益 1.47 美元超預估 11%、營收 15 億年增 22%,全年申報營收成長指引由 14-15% 上調至 18-18.5%'),
+ 'TXG':  ('earnings', 'Q2 營收 1.51 億美元超預期並上調全年至 6.1-6.3 億,惟營收仍年減、盤後反跌'),
+ # --- shard G ---
+ 'U':    ('earnings', 'Q2 營收 5.465 億美元年增 24%、每股純益 0.28 超預估 0.25,8/6 已大漲 28.7%,今日續強'),
+ 'UMC':  ('macro',    '未見個股利空,記憶體與晶圓代工族群獲利了結賣壓拖累,盤前重挫逾 4%'),
+ 'USAR': ('policy',   '中國升級稀土出口管制引爆美國稀土供應鏈股齊漲,盤前跳空 6.7%'),
+ 'UUUU': ('policy',   '同受中國稀土出口限制發酵,加上鈾價站上每磅 101 美元帶動'),
+ 'VATE': ('earnings', 'Q2 營收年增 78%、EBITDA 4,600 萬美元、淨利 1,040 萬美元,而市值僅約 1.36 億美元'),
+ 'VSTM': ('earnings', 'Q2 營收 4,010 萬美元較去年同期的 210 萬暴增近 18 倍,現金部位增至 2.014 億美元'),
+ 'WYHG': ('momentum', '董事會通過擴大發股授權並研議 2,300 萬股私募,前日暴衝 582% 後崩跌逾 34%'),
+ 'XPOF': ('earnings', 'Q2 北美同店銷售衰退 6.8%、每股虧損 0.10 美元遜於預估的獲利 0.09,盤後重挫'),
+ 'YXT':  ('news',     '以每股美國存託憑證 7 美元定價 105 萬美元定向增發,稀釋疑慮壓低股價'),
+ 'ZYBT': ('momentum', '公司先前已澄清無重大未公開消息,7 月中曾單日暴衝 195%,今查無新催化劑'),
+ # --- headline additions ---
+ 'VST':  ('earnings', 'Q2 持續營運調整後 EBITDA 17.67 億美元年增逾 30%,重申 2026 全年 68-76 億美元財測'),
+ 'EMA':  ('earnings', 'Q2 調整後每股純益 0.69 美元,上半年營運現金流年增 8%,重申 2026 年 40 億美元資本計畫'),
+ 'PANW': ('news',     '中國網信辦 8/6 對其產品啟動網路安全審查(比照美光模式),惟中國市場僅佔營收 1-2%'),
+ 'NVO':  ('guidance', '執行長 Doustdar 為 Wegovy 口服藥定價辯護並上修 2026 財測,但美國降價壓縮銷售'),
+ 'ALAB': ('earnings', 'Q2 營收年增 104% 至 3.92 億美元、每股純益 0.80 均超預期,8/6 獲利了結收黑後今日反彈'),
+}
+
+HEADLINE = [
+    ('VST',  140.88,  0.21, 'up',   'Vistra Corp.'),
+    ('EMA',   51.13, -0.87, 'down', 'Emera Incorporated'),
+    ('PANW', 367.27,  1.27, 'up',   'Palo Alto Networks, Inc.'),
+    ('NVO',   46.92,  5.37, 'up',   'Novo Nordisk A/S'),
+    ('ALAB', 341.90,  7.37, 'up',   'Astera Labs, Inc.'),
+]
+
+rows = list(csv.DictReader(io.open('candidates.csv', encoding='utf-8-sig')))
+cols = list(rows[0].keys())
+have = {r['Symbol'] for r in rows}
+for sym, last, chg, direction, name in HEADLINE:
+    if sym in have:
+        continue
+    rows.append({'Symbol': sym, 'Last': last, 'ChgPct': chg, 'Volume': 0,
+                 'Session': 'headline', 'SessionDate': DATE, 'Direction': direction, 'Name': name})
+
+with io.open('candidates.csv', 'w', encoding='utf-8-sig', newline='') as f:
+    w = csv.DictWriter(f, fieldnames=cols)
+    w.writeheader()
+    w.writerows(rows)
+
+# earnings-reaction flag: true only for reactions to results published since 8/6 close
+ER_FALSE = {'BE', 'TE', 'COHR', 'CRML', 'DSY', 'MB', 'NAMI', 'WYHG', 'ZYBT', 'PAVS',
+            'GFI', 'HMY', 'AG', 'SBSW', 'UMC', 'POET', 'OGG', 'LBGJ', 'SUGP', 'YXT',
+            'FSLR', 'GLW', 'USAR', 'UUUU', 'MP', 'DV', 'CLRO', 'LUMN', 'PANW', 'NVO', 'ALAB', 'U'}
+out = {}
+for sym, (typ, cat) in CAT.items():
+    out[sym] = {'Type': typ, 'Catalyst': cat,
+                'EarningsReaction': (typ == 'earnings' and sym not in ER_FALSE)}
+json.dump(out, io.open('catalysts_today.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+print('catalysts', len(out), 'candidates rows', len(rows))
+missing = sorted({r['Symbol'] for r in rows} - set(out))
+print('missing catalysts:', missing or 'none')
