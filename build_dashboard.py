@@ -318,6 +318,58 @@ def resolve_news(sym):
     sources = entry.get('sources')                             # [{ label, url, publishedAt? }, ...] or None
     return detail, links, publishedAt, publishedTz, sources
 
+def build_tv_out(t):
+    """tv-summary.json row -> the per-stock `tv` block. Factored out of the main loop so
+    union-restored stocks (not in today's Barchart filter, e.g. a day-2 earnings carryover)
+    can also be refreshed from the CURRENT tv-summary — otherwise they keep whatever TV
+    snapshot the archived packet held, which on 2026-08-07 left IOVA carrying its
+    pre-report quarter and kept the §6.1 TV-STALE gate firing after a correct re-scrape."""
+    if not t:
+        return None
+    eps_lat = t.get('LatestEPS')
+    eps_cons = t.get('LatestEPSConsensus')
+    rev_lat = t.get('LatestRev_M')
+    rev_cons = t.get('LatestRevConsensus_M')
+    prior_rev = t.get('PriorYrRev_M')
+    prior_eps = t.get('PriorYrEPS')
+    # Universal YoY formula: (curr - prior) / abs(prior) * 100 — handles all sign combinations.
+    # Both pos: growth %. Both neg: loss widening → negative %, narrowing → positive %.
+    # Neg → pos: massive improvement (positive %, often >100%). Pos → neg: massive deterioration.
+    # (Same formula parse_tv.py uses for the YoY block on the stock-detail page; the old
+    #  `prior > 0 and curr > 0` guard hid the YoY % for every loss-related case.)
+    yr_yr_rev = ((rev_lat - prior_rev) / abs(prior_rev) * 100) if (rev_lat is not None and prior_rev is not None and prior_rev != 0) else None
+    eps_yoy   = ((eps_lat - prior_eps) / abs(prior_eps) * 100) if (eps_lat is not None and prior_eps is not None and prior_eps != 0) else None
+    # Surprise % — use TV's parsed value when present, otherwise compute via universal formula.
+    # parse_tv.py sometimes leaves Surprise_pct null when consensus is negative (e.g. ONDS:
+    # actual EPS -$0.34, consensus -$0.71 → TV's % blanks out). We fill it in using
+    # (actual - consensus) / |consensus| * 100 which handles negative-consensus correctly.
+    eps_surp_pct = t.get('LatestEPSSurprise_pct')
+    if eps_surp_pct is None and eps_lat is not None and eps_cons is not None and eps_cons != 0:
+        eps_surp_pct = (eps_lat - eps_cons) / abs(eps_cons) * 100
+    rev_surp_pct = t.get('LatestRevSurprise_pct')
+    if rev_surp_pct is None and rev_lat is not None and rev_cons is not None and rev_cons != 0:
+        rev_surp_pct = (rev_lat - rev_cons) / abs(rev_cons) * 100
+    return {
+        'latestEPS': eps_lat,
+        'consensusEPS': eps_cons,
+        'priorYrEPS': prior_eps,
+        'surpriseEPS_pct': eps_surp_pct,
+        'surpriseEPS_dollar': (eps_lat - eps_cons) if (eps_lat is not None and eps_cons is not None) else None,
+        'latestRev_M': rev_lat,
+        'consensusRev_M': rev_cons,
+        'priorYrRev_M': prior_rev,
+        'surpriseRev_pct': rev_surp_pct,
+        'yrYrRev_pct': yr_yr_rev,
+        'epsYoY_pct': eps_yoy,
+        'epsEst_next4': t.get('EpsEst_Next4'),
+        'revEst_next4': t.get('RevEst_Next4'),
+        'yoyBlock': t.get('YoYBlock'),
+        'chart': t.get('Chart'),
+        'latestReportDate': t.get('LatestReportDate'),   # ISO YYYY-MM-DD parsed from TV markdown
+        'nextReportDate': t.get('NextReportDate'),       # <= 包日期 ⇒ TV 是財報前刮的(§6.1 TV-STALE 閘門)
+    }
+
+
 # --- Build per-stock combined data ---
 stocks = {}
 all_syms = set(list(cands_by_sym.keys()) + list(tv.keys()) + list(catalyst.keys()))
@@ -326,51 +378,7 @@ for sym in all_syms:
     if not cands:
         continue  # skip if not in today's Barchart filter
     cat = catalyst.get(sym, {})
-    t = tv.get(sym)
-    tv_out = None
-    if t:
-        eps_lat = t.get('LatestEPS')
-        eps_cons = t.get('LatestEPSConsensus')
-        rev_lat = t.get('LatestRev_M')
-        rev_cons = t.get('LatestRevConsensus_M')
-        prior_rev = t.get('PriorYrRev_M')
-        prior_eps = t.get('PriorYrEPS')
-        # Universal YoY formula: (curr - prior) / abs(prior) * 100 — handles all sign combinations.
-        # Both pos: growth %. Both neg: loss widening → negative %, narrowing → positive %.
-        # Neg → pos: massive improvement (positive %, often >100%). Pos → neg: massive deterioration.
-        # (Same formula parse_tv.py uses for the YoY block on the stock-detail page; the old
-        #  `prior > 0 and curr > 0` guard hid the YoY % for every loss-related case.)
-        yr_yr_rev = ((rev_lat - prior_rev) / abs(prior_rev) * 100) if (rev_lat is not None and prior_rev is not None and prior_rev != 0) else None
-        eps_yoy   = ((eps_lat - prior_eps) / abs(prior_eps) * 100) if (eps_lat is not None and prior_eps is not None and prior_eps != 0) else None
-        # Surprise % — use TV's parsed value when present, otherwise compute via universal formula.
-        # parse_tv.py sometimes leaves Surprise_pct null when consensus is negative (e.g. ONDS:
-        # actual EPS -$0.34, consensus -$0.71 → TV's % blanks out). We fill it in using
-        # (actual - consensus) / |consensus| * 100 which handles negative-consensus correctly.
-        eps_surp_pct = t.get('LatestEPSSurprise_pct')
-        if eps_surp_pct is None and eps_lat is not None and eps_cons is not None and eps_cons != 0:
-            eps_surp_pct = (eps_lat - eps_cons) / abs(eps_cons) * 100
-        rev_surp_pct = t.get('LatestRevSurprise_pct')
-        if rev_surp_pct is None and rev_lat is not None and rev_cons is not None and rev_cons != 0:
-            rev_surp_pct = (rev_lat - rev_cons) / abs(rev_cons) * 100
-        tv_out = {
-            'latestEPS': eps_lat,
-            'consensusEPS': eps_cons,
-            'priorYrEPS': prior_eps,
-            'surpriseEPS_pct': eps_surp_pct,
-            'surpriseEPS_dollar': (eps_lat - eps_cons) if (eps_lat is not None and eps_cons is not None) else None,
-            'latestRev_M': rev_lat,
-            'consensusRev_M': rev_cons,
-            'priorYrRev_M': prior_rev,
-            'surpriseRev_pct': rev_surp_pct,
-            'yrYrRev_pct': yr_yr_rev,
-            'epsYoY_pct': eps_yoy,
-            'epsEst_next4': t.get('EpsEst_Next4'),
-            'revEst_next4': t.get('RevEst_Next4'),
-            'yoyBlock': t.get('YoYBlock'),
-            'chart': t.get('Chart'),
-            'latestReportDate': t.get('LatestReportDate'),   # ISO YYYY-MM-DD parsed from TV markdown
-            'nextReportDate': t.get('NextReportDate'),       # <= 包日期 ⇒ TV 是財報前刮的(§6.1 TV-STALE 閘門)
-        }
+    tv_out = build_tv_out(tv.get(sym))
     # If a ticker appears in both pre and post, store both, but pick primary by larger |%chg|
     primary = max(cands, key=lambda c: abs(c['chgPct']))
     news_detail_val, news_links_val, news_publishedAt, news_publishedTz, news_sources = resolve_news(sym)
@@ -670,6 +678,16 @@ for td in sorted(target_dates_set):
                     old_st = (old.get('stocks') or {}).get(sym)
                     if old_st and old_st.get('modelPred') and not st.get('modelPred'):
                         st['modelPred'] = old_st['modelPred']
+                # Union-restored stocks also carry their OLD `tv` block. A day-2 earnings
+                # carryover (IOVA on 2026-08-07) is no longer in today's Barchart filter,
+                # so the main loop never rebuilds its TV — re-scraping the post-report
+                # quarter changed tv-summary.json but the packet kept the pre-report
+                # snapshot and the §6.1 TV-STALE gate kept firing. Refresh from the
+                # current tv-summary whenever it has a row for the symbol.
+                for sym, st in new_data['stocks'].items():
+                    fresh_tv = build_tv_out(tv.get(sym))
+                    if fresh_tv:
+                        st['tv'] = fresh_tv
                 # Union-restored stocks carry their OLD snapshot — refresh news fields
                 # from the current news_detail.json when it has richer content (the
                 # HBAN case: entry existed in the file but the archived stock kept '').
