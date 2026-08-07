@@ -35,6 +35,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 | Step | Tool | Time | Cost | Output |
 |---|---|---|---|---|
 | **0. 模型對帳(每日必跑,開跑第一步)** | `py model_lab.py verify` + `py model_lab.py ingest`(驗最近已收盤日 + 收樣本進事件庫;印 `[!! MODEL-DRIFT !!]` 就接著跑 `py model_lab.py refit`) | ~1-2 min | $0 | verify 一行結論進 brief;`model_events.json` / `model_track_record.json` 更新;refit 後同步 `trade_setups.json` 的 model 欄 |
+| **0b. Setup 重新審視(每日,主模型)** | 讀 `trade_setups.json`(內部 playbook,**不渲染上站** — 2026-08-07 使用者指示)對照昨日 ideas 對帳結果與最新統計:各 setup 的規則/狀態/倉位建議是否仍成立?live 累積樣本是否與回測背離(方向、幅度)?有結論就更新 `trade_setups.json` 的 stats/my_take/status 並記一筆 `model_iterations.json`;沒變動就一句「setup 審視:無調整」進 brief | ~1-2 min | $0 | `trade_setups.json` 維持為現行有效規則的唯一正本;9d 選股直接照它執行 |
 | 1. Gap scan | `node ./barchart-scrape.js` (Playwright + XHR intercept) | ~7s | $0 | `candidates.csv` (84-ish rows) |
 | 2. Catalyst hunt | **4-6 個 `general-purpose` Agents** on **`model: "sonnet"`** (§ 0.5), **6-8 檔 each**(依當日候選數動態分片,同一訊息一次全發)doing parallel WebSearches on **all** candidates | ~90s | $0 | inline markdown table → updates `catalysts` dict in `build_report.py` |
 | 3. TradingView FQ | `node ./tv-scrape.js TICKER1 TICKER2 ...` | ~3-5s per ticker | $0 | `<TICKER>-earnings-fq.md` |
@@ -1027,7 +1028,7 @@ What gets written:
 - **DTC>5 = thin edge**:全做 149 筆 avgR −0.01 ≈ 零;必開滾動開關 + 減半倉才可用(開 +0.05 vs 擋 −0.09);60m 模擬對它有保守偏誤,粒度敏感。
 - **雙29% OPG = 移出 idea 來源**:7 月 −0.27(n=42)、全庫 −0.24(n=60)兩窗皆負;只留作評分加分因子。
 **每日只出 2 筆(2026-08-07 使用者指示,常設;順位 v3):** trade_ideas.json 每天**最多 2 檔**,寧缺勿濫。選擇順位:①錯殺反彈 ≥10B(同 setup 內**按市值排序**,不按 surprise — surprise 在 gap 之後無殘餘訊號,拿它排序已實測會選到較差的)②大合約 fade(按 gap 大小)③cap10×10(市值 ≥10B + 任一成長/驚奇 ≥100% + gap ≥+4;開盤進、停 2.5%、4R 到就走否則 13:30 ET 出,**不抱收盤**)④錯殺反彈 <10B ⑤開關通過的 DTC5(按 DTC)。全庫回測(59 天):v3 陣容 n=93、勝率 52%、+0.46R/筆、**+42.6R、四個月皆正**(v2 無 cap10×10 為 +42.7R 但 8 月為負 — v3 用 gap-up 腿換月度平滑)。**全部為 in-sample 調出 — live ex-ante 對帳(8/7 起)才算真驗證。**
-**Setup 手冊(2026-08-07 使用者:「把 setup 弄得更清楚清晰並且要有你自己的看法」):** 正本 `D:\SIPs\trade_setups.json` — 每個 setup 的規則(條件/進場/停損/出場)、全庫統計、狀態(主力/次主力/輪替/受限)與 **my_take(主模型第一人稱看法,不得委派)**;build 會複製到 `dashboard/trade_setups.json`,渲染於 Ideas 分頁下半部。**每次回測迭代後必須同步更新 stats 與 my_take**,連同 dashboard 副本一起 push;模型欄(blind_hit/rho/n_events)在每次 refit 後更新。
+**Setup 手冊(內部制,2026-08-07 使用者兩段指示定版):** 正本 `D:\SIPs\trade_setups.json` — 每個 setup 的規則(條件/進場/停損/出場)、全庫統計、狀態與 **my_take(主模型第一人稱看法,不得委派)**。**網站不渲染手冊,Ideas 分頁只留推薦股票**(使用者:「這些全部都不用留 全部刪掉剩下推薦的股票就好了」)— 手冊改為每日 /SIPs **Step 0b 重新審視**的內部依據。每次回測迭代後必須同步更新 stats 與 my_take;模型欄(blind_hit/rho/n_events)在每次 refit 後更新。
 
 
 To publish a different date (e.g. backfill yesterday's scan from a stale Barchart cache), pass `--date 2026-05-12`.
