@@ -260,5 +260,12 @@
   "what": "全庫 59 天:每日只選 2 筆(順位 BeatDip>=10B > Contract > BeatDip小 > DTC5開關)。surprise 排序版 +35.6R(BeatDip 被排序拖到 +0.13/筆);改市值排序(單點修正,依據=因子驗證早證實 surprise 在 gap 後無殘餘訊號)→ +42.7R、+0.51R/筆、勝率 53%、1.7 筆/日,勝過每日 5 筆版 +31.6R。DTC5 在此組合裡只補位非財報日,n=26 +0.78R。",
   "decision": "trade_ideas 每日上限 2 檔(常設);BeatDip 同 setup 內按市值排序。",
   "scripts": "scratchpad/ideas_top2.py, top2_curve.json"
+ },
+ {
+  "date": "2026-08-07",
+  "name": "cap10x10 edge 測試(使用者提問)— Iter8",
+  "what": "全庫 59 天、市值>=10B。定義A(gap>=+10):n=62 抱到收盤停2.5 avgR+0.39(勝率34%,肥尾);定義B(任一成長/驚奇>=100 + gap>=4):n=140 avgR+0.25 較穩(四月3正1平)。關鍵:gap-up 趨勢 edge 在開盤,10:30 進場歸零(-0.02)— 與 BeatDip 鏡像相反;2R 固定目標砍尾巴(+0.14~0.18)不如抱收盤。",
+  "decision": "列為已驗證候補(B定義):暫不進每日 Top2 陣容;無 BeatDip/Contract 候選日可補位取代 DTC5 — 待使用者裁決。",
+  "scripts": "scratchpad/ideas_cap1010.py"
  }
 ]
