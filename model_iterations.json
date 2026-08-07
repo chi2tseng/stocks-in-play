@@ -384,5 +384,12 @@
   "what": "v4(⑤=DTC fade 空單 + avoid_rules 禁區):n=95、勝率 55%、+0.45R/筆、+42.7R、四月全正;DTCfade 槽 12 筆 75% 勝 +0.84R,四個 setup 全正貢獻(v3:52%/+42.6R,DTC5 多單槽靠 3R 樂透)。",
   "decision": "v4 定版生效;lineup 與 SKILL 數字同步。",
   "scripts": "scratchpad/me_r25_top2v4.py"
+ },
+ {
+  "date": "2026-08-08",
+  "name": "R26 現役 setup 微調測試(兩項皆不採用)",
+  "what": "R26a 大合約 fade 進場時機:開盤空 +0.24R > 10:30 空 +0.14R(n=25,勝率同 64%)— 合約 pump 頂點在開盤,現行規則不變。R26b cap10x10 加盲測 spike p50 閘門(3/4/5 網格):avgR +0.23→+0.40 但 n 140→24、六月全格負 — 閘門集中風險未修弱月,不採用。",
+  "decision": "兩項維持現狀;負結果照記。10:30 時機規則只適用 gap-down 承接與 DTC 假軋空,不得外推到合約 fade。",
+  "scripts": "scratchpad/me_r26.py"
  }
 ]
