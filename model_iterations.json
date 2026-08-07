@@ -274,5 +274,12 @@
   "what": "出場網格(2/3/4R x 11:30/13:30 ET,停2.5):A定義純13:30出 +0.41R(n=62,4/4月正,比抱收盤+0.39還高);A 4R否則11:30出 +0.36(4/4月正);B 4R否則13:30 +0.24(3/4)。edge 全在開盤→中午趨勢段,尾盤零貢獻 — 與 8/6 五檔午後吐回觀察一致。",
   "decision": "cap10x10 正式配置:開盤進、停2.5%、4R到就走、最晚11:30(保守)或13:30出;不抱收盤。仍為候補 setup,進不進 Top2 待使用者裁決。",
   "scripts": "scratchpad/ideas_cap1010_intraday.py"
+ },
+ {
+  "date": "2026-08-07",
+  "name": "Top2 v3 陣容 + Setup 手冊上站 — Iter10",
+  "what": "v3(加 cap10x10 第三順位):n=93、52%勝、+0.46R/筆、+42.6R、四個月皆正(v2 +42.7R 但 8 月負)— 以 gap-up 腿換月度平滑,採用。網站 Ideas 分頁新增 Setup 手冊(trade_setups.json:規則/全庫統計/狀態/my_take),模型欄顯示 blind 42.5%/rho0.742/n=3734。",
+  "decision": "順位 v3 生效;trade_setups.json 為手冊正本,迭代後必須同步更新 stats+my_take;renderSetupsBook() 於 Ideas 分頁渲染。",
+  "scripts": "scratchpad/ideas_top2_v3.py, D:/SIPs/trade_setups.json"
  }
 ]

@@ -2155,6 +2155,23 @@ body.dark .candle-news-popup {
 .idea-levels > div > span:last-child { font-size: 13px; color: var(--ink); line-height: 1.5; }
 .idea-note { font-size: 11.5px; color: var(--mute); line-height: 1.6; margin-top: 10px; }
 
+/* ── Setup 手冊(Ideas 分頁下半部)── */
+.setups-head { margin: 26px 0 10px; font-size: 17px; }
+.setups-meta {
+  display: flex; flex-direction: column; gap: 6px; margin: 0 0 14px;
+  font-size: 12.5px; color: var(--ink); line-height: 1.6;
+}
+.setups-meta > div { display: flex; gap: 10px; align-items: baseline; }
+.setups-meta .mp-label { flex: 0 0 30px; text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; }
+.setup-card { cursor: default; }
+.setup-status {
+  margin-left: auto; font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: var(--r-pill); background: var(--surface-soft); color: var(--mute);
+}
+.setup-status-main { background: rgba(0, 168, 126, 0.12); color: var(--accent-teal, #00a87e); }
+.setup-status-second { background: rgba(73, 79, 223, 0.10); color: var(--primary-deep, #494fdf); }
+.setup-stats { font-size: 12px; color: var(--mute); margin-top: 10px; font-weight: 600; }
+
 /* ── Short Squeeze toolbar (period-pill switcher above the table) ── */
 .squeeze-toolbar { display: flex; align-items: center; gap: 12px; margin: 0 0 12px; flex-wrap: wrap; }
 .squeeze-toolbar .toolbar-label { font-size: 12px; color: var(--mute); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
@@ -3479,13 +3496,16 @@ async function renderSips(subtab) {
   hint.textContent = '';
   if (tab === 'ideas') {
     const ideas = (DATA.tradeIdeas || []).slice().sort((a, b) => (a.rank ?? 99) - (b.rank ?? 99));
-    if (ideas.length === 0) {
-      stack.innerHTML = `<div class="sip-empty">本日尚未產出交易機會 — /SIPs 盤前寫入 <code>trade_ideas.json</code> 後顯示。</div>`;
-      return;
-    }
-    hint.textContent = `${ideas.length} ideas · 盤前撰寫 · 非投資建議`;
-    stack.innerHTML = '<div class="sip-grid">' + ideas.map((i, idx) => ideaCardHtml(i, idx)).join('') + '</div>';
-  } else if (tab === 'magna') {
+    let html = ideas.length
+      ? '<div class="sip-grid">' + ideas.map((i, idx) => ideaCardHtml(i, idx)).join('') + '</div>'
+      : `<div class="sip-empty">本日尚未產出交易機會 — /SIPs 盤前寫入 <code>trade_ideas.json</code> 後顯示。</div>`;
+    if (ideas.length) hint.textContent = `${ideas.length} ideas · 盤前撰寫 · 非投資建議`;
+    stack.innerHTML = html + '<div id="setups-book"></div>';
+    renderSetupsBook();
+    staggerChildren('.sip-grid > .sip-card', 12);
+    return;
+  }
+  if (tab === 'magna') {
     rows.sort((a, b) => b._m53.score - a._m53.score);
     const topAll = rows.filter(r => r._m53.score >= 4).slice(0, 12);
     const top = topAll.filter(s => sipsMatchesFilter(s, false));
@@ -3758,6 +3778,44 @@ function ideaCardHtml(i, idx) {
     </div>
     ${i.backtest_note ? `<div class="idea-note">依據:${escapeHtml(i.backtest_note)}</div>` : ''}
   </a>`;
+}
+
+// Setup 手冊 — 全域 playbook(dashboard/trade_setups.json,build 時從正本複製)。
+// 顯示每個 setup 的規則/全庫統計/狀態 + Claude 的看法,渲染於 Ideas 分頁下半部。
+let __setupsBook = null;
+async function renderSetupsBook() {
+  const el = document.getElementById('setups-book');
+  if (!el) return;
+  if (!__setupsBook) {
+    try { __setupsBook = await (await fetch('trade_setups.json')).json(); }
+    catch (e) { return; }
+  }
+  const B = __setupsBook;
+  const statusCls = st => st.startsWith('主力') ? 'setup-status-main'
+    : st.startsWith('次') ? 'setup-status-second' : 'setup-status-other';
+  const dirTag = d => d === 'long'
+    ? '<span class="tag tag-earnings">做多</span>'
+    : '<span class="tag" style="background:var(--down-soft,#fee);color:var(--down,#e5484d)">放空</span>';
+  el.innerHTML = `
+    <h3 class="setups-head">Setup 手冊 <span class="label-en">Playbook · 更新 ${escapeHtml(B.updated || '')}</span></h3>
+    <div class="setups-meta">
+      <div><span class="mp-label">模型</span><span>${escapeHtml(B.model?.name || '')} — 盲測命中 ${B.model?.blind_hit}%、相關 ρ${B.model?.rho}、事件庫 ${(B.model?.n_events || 0).toLocaleString()} 筆</span></div>
+      <div><span class="mp-label">陣容</span><span>${escapeHtml(B.lineup || '')}</span></div>
+      <div><span class="mp-label">窗口</span><span>${escapeHtml(B.window || '')}</span></div>
+    </div>
+    <div class="sip-grid">${(B.setups || []).map(s => `
+      <div class="sip-card setup-card">
+        <div class="sip-header"><div class="sip-sym">${escapeHtml(s.name)}</div>
+          <span class="setup-status ${statusCls(s.status || '')}">${escapeHtml(s.status || '')}</span></div>
+        <div class="sip-meta">${dirTag(s.direction)}</div>
+        <div class="idea-levels">
+          ${['條件', '進場', '停損', '出場'].map(k => s.rules?.[k]
+            ? `<div><span class="mp-label">${k}</span><span>${escapeHtml(s.rules[k])}</span></div>` : '').join('')}
+        </div>
+        <div class="setup-stats">n=${s.stats?.n} · 勝率 ${s.stats?.win}% · 平均 ${s.stats?.avgR >= 0 ? '+' : ''}${s.stats?.avgR}R/筆 · ${escapeHtml(s.stats?.months || '')}${s.stats?.scope ? ' · ' + escapeHtml(s.stats.scope) : ''}</div>
+        <div class="claude-rationale-label">Claude 的看法</div>
+        <div class="claude-rationale">${escapeHtml(s.my_take || '')}</div>
+      </div>`).join('')}</div>`;
 }
 
 function renderSqueeze() {
