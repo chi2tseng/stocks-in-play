@@ -9,7 +9,7 @@
     "n_events": 3734,
     "note": "嚴格 walk-forward 盲測:命中率 42.5%(容差 max(3pt, 25%|pred|))、預測與實際相關 0.742。每日 verify、每週或漂移時 refit,盲測變差不更新。"
   },
-  "lineup": "每日最多 2 筆,順位:錯殺反彈 ≥10B(按市值)→ 大合約 fade(按 gap)→ cap10×10(按市值)→ 錯殺反彈 <10B → DTC>5(開關開才做)。組合全庫 +42.6R、勝率 52%、四個月皆正。",
+  "lineup": "每日最多 2 筆,順位 v4(2026-08-08):錯殺反彈 ≥10B(按市值,fresh 為 tie-breaker)→ 大合約 fade(按 gap)→ cap10×10(按市值)→ 錯殺反彈 <10B → DTC 假軋空 fade 空單;多單候選先過 avoid_rules 禁區。全庫驗證:n=95、勝率 55%、+0.45R/筆、+42.7R、四個月皆正(DTCfade 槽 12 筆 75% 勝 +0.84R)。",
   "setups": [
     {
       "id": "beatdip",
