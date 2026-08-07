@@ -9635,6 +9635,9 @@ try:
     import subprocess, sys as _sys
     _mp = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model_predict.py')
     if os.path.exists(_mp):
-        subprocess.run([_sys.executable, _mp, '--date', DATE], check=False, timeout=60)
+        _r = subprocess.run([_sys.executable, _mp, '--date', DATE], check=False, timeout=120)
+        if _r.returncode != 0:
+            # 2026-08-07 事故:注入失敗時 preserve 會靜默帶回舊格式 modelPred(卡片缺列)
+            print(f'[!! MODEL-PREDICT-FAIL !!] exit={_r.returncode} — 卡片會殘留舊格式,push 前必須修復重注入')
 except Exception as _e:
-    print(f'[warn] model_predict skipped: {_e}')
+    print(f'[!! MODEL-PREDICT-FAIL !!] {_e} — 卡片會殘留舊格式,push 前必須修復重注入')
