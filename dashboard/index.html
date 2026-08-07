@@ -4695,7 +4695,7 @@ async function renderStock(sym) {
     const bandTxt = (mp.band && mp.band.length === 2) ? `${f(mp.predDay + mp.band[0])} ~ ${f(mp.predDay + mp.band[1])}` : '';
     const FLAG_DEFS = {
       contract_fade: ['', 'warning', '大合約 fade 形態:歷史上此類跳空開盤後系統性回吐(勝率 7 成的放空樣態),開盤追多請三思'],
-      dtc_squeeze: ['flag-good', 'local_fire_department', '高 DTC 軋空形態(days to cover &gt;5):回測 OPG 2.5% 停損,2R 勝率 43%、3R 期望 +0.26R/筆 — 獨立 setup,與催化劑類型無關'],
+      dtc_squeeze: ['', 'warning', '高 DTC gap-up(days to cover &gt;5):全庫回測顯示多數為「假軋空」— 盤中報酬 0/4 個月為正,10:30 後 fade 傾向明顯(空方 +0.17R/筆、4/4 月正)。追多請三思'],
     };
     const flagList = mp.flags || (mp.flag ? [mp.flag] : []);
     const flagTxt = flagList.map(fl => {

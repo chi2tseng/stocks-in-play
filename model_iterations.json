@@ -370,5 +370,12 @@
   "what": "R19 GBM全因子做收盤:39.9% < 裸gap 45.0% — 第三次確認收盤位置不可預測(50% KPI 在收盤維度打不到;spike 維度命中 52% 已過標)。R20 下行模型(開盤後最大回落):IC 0.837、P75停損位覆蓋72%(理想75)— 波動高度可預測。R21 拿它放寬停損:勝率43→55但avgR +0.24→+0.02(1R變大毀掉4R賠率)— 失敗。R21b 當跳過濾網:cap10x10 全體預測回落>4%,組內無區分力 — 失敗。",
   "decision": "下行模型定位=倉位資訊工具(這檔正常晃動範圍多大→倉位縮放、心理預期),不做停損不做濾網;緊停損是 cap10x10 肥尾結構的必要成分,不許放寬。收盤預測維持 gap 慣性標示。",
   "scripts": "scratchpad/me_r19_day.py, me_r20_dn.py, me_r21b_filter.py"
+ },
+ {
+  "date": "2026-08-08",
+  "name": "R22-R24 全因子綜合質化分析(使用者指令:多 fable 逐檔歸因+組合矩陣+迭代)",
+  "what": "R22a 組合矩陣(147 個 n>=40 組合):gapDN surp+fresh +0.88/59%勝/4正月、gapDN N+fresh +1.64/62%、gapUP DTC>5 -1.36/0正月、gapUP N -1.11。R22b 6 fable 逐檔歸因 48 事件+1 fable 綜合出 9 假設(496K tokens)。R23 框架驗證:fresh 在 10:30 框架內無增益(承接濾網已代勞)降 tie-breaker;DTC>5 gap-up 10:30 fade short n=149/53%/+0.17R/4正月成立。R24 全庫殺假設:H3 低DTC血洗強確認(n=86 intra -15.1/隔日 -12.7/74%負)、H4 殘股鐵律確認(n=75 雙向 -9)、H1 弱化(隔日 -4.1/63%負)、H2 否決、H5/H7/H8/H9 樣本不足列觀察。",
+  "decision": "陣容 v4:⑤ DTC fade 空單取代 DTC5 多單;trade_setups.json 新增 avoid_rules 三條禁區(blowoff 禁多/殘股雙向禁區/heated 禁隔夜多),ideas 選股前必過;dtc_squeeze 卡片旗標改為 fade 警告;fresh 為 BeatDip tie-breaker。",
+  "scripts": "scratchpad/me_r22_combo.py, me_r22_result.json(48 檔歸因全文), me_r23_refine.py, me_r24_validate.py"
  }
 ]
