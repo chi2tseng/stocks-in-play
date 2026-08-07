@@ -246,6 +246,7 @@ def cmd_verify(date):
                          pred=mp['predDay'], pred_quant=pq, qual=1 if mp.get('qual') else 0,
                          act=o['day'], err=round(o['day']-mp['predDay'], 1),
                          err_quant=round(o['day']-pq, 1),
+                         ext=o.get('ext'), spike=mp.get('spike'),
                          hit=1 if abs(o['day']-mp['predDay']) <= max(3.0, 0.25*abs(mp['predDay'])) else 0))
     if not rows: print('[verify] no verifiable rows'); return
     errs = np.array([r['err'] for r in rows]); hits = np.mean([r['hit'] for r in rows])*100
@@ -266,6 +267,13 @@ def cmd_verify(date):
         mq = np.mean([abs(r['err_quant']) for r in qr]); mf = np.mean([abs(r['err']) for r in qr])
         verdict = '加值' if mf < mq else ('持平' if mf == mq else '減值')
         print(f'  質化層(n={len(qr)}):純量化 MAE {mq:.2f} → 加質化 {mf:.2f}({verdict} {mq-mf:+.2f})')
+    # 盤中最高(spike 分桶,2026-08-07 R11-R12):帶內率理想 ≈50%,連兩日 <35% 或 >65% = 桶失準
+    sr = [r for r in rows if r.get('spike') and r.get('ext') is not None]
+    if sr:
+        ext = np.array([min(max(r['ext'], 0), 80) for r in sr])
+        p50 = np.array([r['spike'][1] for r in sr])
+        inb = np.mean([(r['spike'][0] <= min(max(r['ext'], 0), 80) <= r['spike'][2]) for r in sr]) * 100
+        print(f'  盤中最高 spike(n={len(sr)}):P25-P75 帶內率 {inb:.0f}%(理想 50%)、P50 MAE {np.mean(np.abs(ext-p50)):.2f}')
     rec = jload('model_track_record.json', [])
     rec = [x for x in rec if x.get('date') != date]
     rec.append(dict(date=date, n=len(rows), hit=round(float(hits)), bias=round(float(np.mean(errs)), 2),

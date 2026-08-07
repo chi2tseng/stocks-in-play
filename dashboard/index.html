@@ -4699,12 +4699,19 @@ async function renderStock(sym) {
       const d = FLAG_DEFS[fl];
       return d ? `<div class="model-pred-flag ${d[0]}"><span class="material-symbols-outlined">${d[1]}</span>${d[2]}</div>` : '';
     }).join('');
+    // 盤中最高(2026-08-07 R11-R12 重建):spike 分桶經驗分位數 — 顯示中位 + P25~P75 區間
+    // 與「開盤後預估再衝」。收盤欄誠實標示為 gap 慣性基準(盲測顯示模型對收盤位無額外資訊)。
+    const hiMain = mp.predHi != null
+      ? `<div><span class="mp-label">預測盤中最高</span><span class="mp-val ${cls(mp.predHi)}">${f(mp.predHi)}</span></div>
+         <div><span class="mp-label">最高 50% 區間</span><span class="mp-val">${mp.predHiBand ? `${f(mp.predHiBand[0])} ~ ${f(mp.predHiBand[1])}` : '—'}</span></div>
+         <div><span class="mp-label">開盤後預估再衝</span><span class="mp-val">${mp.spike ? `中位 +${mp.spike[1]}%(${mp.spike[0]}~${mp.spike[2]}%)` : '—'}</span></div>`
+      : '';
     modelPredHtml = `<div class="stock-card news-detail model-pred"><h3><span class="material-symbols-outlined">query_stats</span>模型預測 <span class="label-en">Model Forecast ${escapeHtml(mp.version || '')}</span></h3>
       <div class="model-pred-grid">
         <div><span class="mp-label">盤前跳空(掃描時)</span><span class="mp-val ${cls(mp.gap)}">${f(mp.gap)}</span></div>
-        <div><span class="mp-label">預測今日收盤</span><span class="mp-val ${cls(mp.predDay)}">${f(mp.predDay)}</span></div>
-        <div><span class="mp-label">50% 區間</span><span class="mp-val">${bandTxt}</span></div>
-        <div><span class="mp-label">預測盤中最高</span><span class="mp-val ${cls(mp.predHi)}">${f(mp.predHi)}</span></div>
+        ${hiMain}
+        <div><span class="mp-label">收盤慣性基準(≈gap)</span><span class="mp-val ${cls(mp.predDay)}">${f(mp.predDay)}</span></div>
+        <div><span class="mp-label">收盤 50% 區間</span><span class="mp-val">${bandTxt}</span></div>
       </div>${flagTxt}${mp.qual && mp.qual.reasoning ? `<div class="model-pred-qual"><span class="material-symbols-outlined">psychology</span><span><b>質化判讀</b>(${mp.qual.adj >= 0 ? '+' : ''}${mp.qual.adj} 調整):${escapeHtml(mp.qual.reasoning)}</span></div>` : ''}
     </div>`;
   }

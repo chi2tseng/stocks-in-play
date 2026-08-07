@@ -1013,6 +1013,7 @@ What gets written:
 **模型預測(2026-08-05 起):** build 結尾自動執行 `model_predict.py`,把 v12 模型預測寫進每檔股票的 `modelPred` 欄位(盤前跳空 → 預測收盤 % + 50% 區間 + 預測盤中最高)。詳細頁渲染成「模型預測 Model Forecast」卡(位置:**Forward YoY 卡正下方**)。**Setup 旗標兩種**(獨立分類,自動亮起):`contract_fade`(type=contract 且 gap≥15%,紅色警示)、`dtc_squeeze`(DTC>5 且 gap-up,綠色;回測 OPG 2.5% 停損 3R +0.26R/筆)。卡面不放免責說明文字(2026-08-05 使用者指示,雙成長旗標同日移除)。**係數在 `model_params.json`,由模型迭代管線導出 — 勿手改;新資料累積後由迭代 loop 重新導出。**
 **盤前自動刷新(2026-08-05 起):** `sidecar.py` 內建 watcher 執行緒,美股盤前(ET 4:00–9:30)**每 5 分鐘**用 Yahoo(`prepost_quote.py`,延遲 ≤15 分)刷新最新日包全部股票的盤前價 + 重算 modelPred(卡上 `asOf` 為 ET 時間)。sidecar 由開機自動啟動帶起,改 sidecar 程式後要重啟進程才生效。
 
+**模型預測卡重建(2026-08-07 使用者抓包「預測=gap+5%」— 12 輪盲測審計後定版):** 審計證實 predDay 各 segment gap 斜率 0.9-1.1 ≈ gap 回聲,且裸基線「預測=gap」盲測命中 44.5% > v12 42.9% — **模型對收盤位置無附加資訊,卡片上誠實標示「收盤慣性基準(≈gap)」,不得再宣稱預測收盤**。主打改為**預測盤中最高**:spike(高點 vs 開盤)= type×tier 分桶經驗分位數(P25/P50/P75),`model_predict.spike_table()` 從 model_events.json 即時計算 — 盲測 IC 0.341、P25-P75 帶內率 50%(校準完美)、加細桶與回歸皆試過不贏(R12)。卡片顯示:預測盤中最高(中位+區間)+ 開盤後預估再衝;verify 每日追蹤 spike 帶內率(理想 ≈50%,連兩日 <35% 或 >65% = 桶失準要重算)。12 輪完整紀錄在 model_iterations.json(含:溫和低估做多、spike-capture 掛單、泛化 over-gap fade 全部陣亡的誠實負結果)。
 **模型日常維護(2026-08-06 使用者:「每次都去驗證並且改進模型」— 三件套,均為硬性步驟):**
 1. **每日開跑先驗昨天:** `py model_lab.py verify`(自動選最近已收盤日)— 印命中率/分層 bias/最大誤差/盤前快照 vs 開盤 gap 落差/質化層加值;結果一行進 chat brief。連兩日同層同向 bias ≥2pt 會印 `[!! MODEL-DRIFT !!]` → 當場跑 refit。
 2. **每日收錄樣本:** `py model_lab.py ingest`(收盤後;把當日包收進 model_events.json 事件庫)。

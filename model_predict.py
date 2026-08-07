@@ -36,7 +36,33 @@ def derive_traj(ch):
     ac = (y_now - y_prev) if (y_now is not None and y_prev is not None) else None
     return st, ac
 
-def predict(s, P):
+def spike_table():
+    """盤中最高預測(2026-08-07 R11-R12 重建):spike = 高點 vs 開盤價。
+    12 輪盲測結論:type×tier 分桶經驗分位數(P25/P50/P75)IC 0.341、
+    P25-P75 帶內率 50%(校準完美),勝過所有回歸與 gap 線性 hi 模型(那是 gap 回聲)。
+    從 model_events.json 即時計算 — 事件庫每天 ingest 長大,表自動更新。"""
+    try:
+        ev = load(os.path.join(ROOT, 'model_events.json'))
+    except Exception:
+        return {}
+    buckets = {}
+    for e in ev:
+        g, hi = e.get('gap'), e.get('hi')
+        if g is None or hi is None or abs(g) > 100: continue
+        sp = ((1 + hi/100) / (1 + g/100) - 1) * 100
+        if not (-5 <= sp <= 300): continue
+        sp = min(max(sp, 0), 80)
+        lm = e.get('log_mcap')
+        t = tier_of(10**lm if lm else None)
+        buckets.setdefault((e['type'], t), []).append(sp)
+        buckets.setdefault((e['type'],), []).append(sp)
+        buckets.setdefault('_g', []).append(sp)
+    def q(vs):
+        vs = sorted(vs)
+        return [round(vs[int(len(vs)*p)], 1) for p in (0.25, 0.5, 0.75)]
+    return {k: q(v) for k, v in buckets.items() if k == '_g' or len(v) >= 25}
+
+def predict(s, P, SP=None):
     gap = s.get('chgPct')
     if gap is None: return None
     typ = (s.get('type') or 'unknown').lower()
@@ -59,10 +85,18 @@ def predict(s, P):
             st, ac = derive_traj(ch)
             if st is not None: p += P['fund']['st_hi'] if st > 5 else P['fund']['st_lo']
             if ac is not None: p += P['fund']['ac_hi'] if ac > 10 else P['fund']['ac_lo']
-    hw = P['hi'].get(typ) or P['hi_global']
-    ph = hw[0] + hw[1]*gap
+    # 盤中最高:spike 分桶(誠實版,取代舊 gap 線性 hi 模型 — 那個只是 gap 回聲)
+    sq = None
+    if SP:
+        sq = SP.get((typ, tier)) or SP.get((typ,)) or SP.get('_g')
     out = dict(version=P.get('version', 'v12'), gap=round(gap, 2), predDay=round(p, 1),
-               predHi=round(ph, 1), band=P['bands'].get(tier, P['bands']['na']), tier=tier)
+               band=P['bands'].get(tier, P['bands']['na']), tier=tier)
+    if sq:
+        # 換算為 vs 昨收:(1+gap)(1+spike)−1;同時保留 spike(開盤後再衝)供對帳
+        def to_pc(sp): return round(((1 + gap/100) * (1 + sp/100) - 1) * 100, 1)
+        out['spike'] = sq                       # [P25, P50, P75] vs 開盤
+        out['predHi'] = to_pc(sq[1])            # 中位 vs 昨收
+        out['predHiBand'] = [to_pc(sq[0]), to_pc(sq[2])]
     # Setup 旗標(可複數;各自獨立分類,回測見 SKILL §8.2 模型預測段)
     flags = []
     if typ == 'contract' and gap >= 15:
@@ -96,6 +130,7 @@ def apply_qual(out, sym, qual):
 
 def main():
     P = load(os.path.join(ROOT, 'model_params.json'))
+    SP = spike_table()
     date = None
     if '--date' in sys.argv:
         date = sys.argv[sys.argv.index('--date')+1]
@@ -108,7 +143,7 @@ def main():
     qual = {k: v for k, v in qual_all.items() if isinstance(v, dict) and v.get('date') == date}
     n, nq = 0, 0
     for sym, s in (d.get('stocks') or {}).items():
-        mp = predict(s, P)
+        mp = predict(s, P, SP)
         if mp:
             mp = apply_qual(mp, sym, qual)
             if mp.get('qual'): nq += 1
@@ -121,7 +156,7 @@ def main():
         dj = load(dj_path)
         if dj.get('date', '')[:10] == date:
             for sym, s in (dj.get('stocks') or {}).items():
-                mp = predict(s, P)
+                mp = predict(s, P, SP)
                 if mp:
                     mp = apply_qual(mp, sym, qual)
                     s['modelPred'] = mp
