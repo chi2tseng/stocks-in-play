@@ -335,7 +335,10 @@ def cmd_verify(date):
         ext = np.array([min(max(r['ext'], 0), 80) for r in sr])
         p50 = np.array([r['spike'][1] for r in sr])
         inb = np.mean([(r['spike'][0] <= min(max(r['ext'], 0), 80) <= r['spike'][2]) for r in sr]) * 100
-        print(f'  盤中最高 spike(n={len(sr)}):P25-P75 帶內率 {inb:.0f}%(理想 50%)、P50 MAE {np.mean(np.abs(ext-p50)):.2f}')
+        f25 = np.mean([min(max(r['ext'], 0), 80) >= r['spike'][0] for r in sr]) * 100
+        f50 = np.mean(ext >= p50) * 100
+        f75 = np.mean([min(max(r['ext'], 0), 80) >= r['spike'][2] for r in sr]) * 100
+        print(f'  盤中最高 spike(n={len(sr)}):帶內率 {inb:.0f}%(理想50)、到價率 P25 {f25:.0f}%/P50 {f50:.0f}%/P75 {f75:.0f}%(盲測基準 67/46/27)、P50 MAE {np.mean(np.abs(ext-p50)):.2f}')
     rec = jload('model_track_record.json', [])
     rec = [x for x in rec if x.get('date') != date]
     rec.append(dict(date=date, n=len(rows), hit=round(float(hits)), bias=round(float(np.mean(errs)), 2),

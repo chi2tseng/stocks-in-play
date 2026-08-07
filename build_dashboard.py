@@ -3003,6 +3003,9 @@ body.dark .candle-news-popup {
 .idea-note { font-size: 11.5px; color: var(--mute); line-height: 1.6; margin-top: 10px; }
 
 /* (Setup 手冊 CSS 已移除 — 2026-08-07 手冊下架) */
+/* IDEA 卡數字紅綠(逐數字按正負) */
+.model-pred .pos { color: var(--pos); }
+.model-pred .neg { color: var(--neg); }
 
 /* ── Short Squeeze toolbar (period-pill switcher above the table) ── */
 .squeeze-toolbar { display: flex; align-items: center; gap: 12px; margin: 0 0 12px; flex-wrap: wrap; }
@@ -5546,19 +5549,16 @@ async function renderStock(sym) {
       const d = FLAG_DEFS[fl];
       return d ? `<div class="model-pred-flag ${d[0]}"><span class="material-symbols-outlined">${d[1]}</span>${d[2]}</div>` : '';
     }).join('');
-    // 盤中最高(2026-08-07 R11-R12 重建):spike 分桶經驗分位數 — 顯示中位 + P25~P75 區間
-    // 與「開盤後預估再衝」。收盤欄誠實標示為 gap 慣性基準(盲測顯示模型對收盤位無額外資訊)。
-    const hiMain = mp.predHi != null
-      ? `<div><span class="mp-label">預測盤中最高</span><span class="mp-val ${cls(mp.predHi)}">${f(mp.predHi)}</span></div>
-         <div><span class="mp-label">最高 50% 區間</span><span class="mp-val">${mp.predHiBand ? `${f(mp.predHiBand[0])} ~ ${f(mp.predHiBand[1])}` : '—'}</span></div>
-         <div><span class="mp-label">開盤後預估再衝</span><span class="mp-val">${mp.spike ? `中位 +${mp.spike[1]}%(${mp.spike[0]}~${mp.spike[2]}%)` : '—'}</span></div>`
-      : '';
-    modelPredHtml = `<div class="stock-card news-detail model-pred"><h3><span class="material-symbols-outlined">query_stats</span>模型預測 <span class="label-en">Model Forecast ${escapeHtml(mp.version || '')}</span></h3>
+    // IDEA 卡(2026-08-07 使用者定版):三行極簡 — Gap at scan / Intraday high range /
+    // Close range,全英文、逐數字紅綠。中位/再衝/慣性基準等欄位依指示移除;
+    // 到價率與帶內率仍由 model_lab verify 每日追蹤(不上卡)。
+    const fs_ = v => `<span class="${v >= 0 ? 'pos' : 'neg'}">${f(v)}</span>`;
+    const rng = (lo, hi) => `${fs_(lo)} ~ ${fs_(hi)}`;
+    modelPredHtml = `<div class="stock-card news-detail model-pred"><h3><span class="material-symbols-outlined">query_stats</span>IDEA</h3>
       <div class="model-pred-grid">
-        <div><span class="mp-label">盤前跳空(掃描時)</span><span class="mp-val ${cls(mp.gap)}">${f(mp.gap)}</span></div>
-        ${hiMain}
-        <div><span class="mp-label">收盤慣性基準(≈gap)</span><span class="mp-val ${cls(mp.predDay)}">${f(mp.predDay)}</span></div>
-        <div><span class="mp-label">收盤 50% 區間</span><span class="mp-val">${bandTxt}</span></div>
+        <div><span class="mp-label">Gap at scan</span><span class="mp-val">${fs_(mp.gap)}</span></div>
+        ${mp.predHiBand ? `<div><span class="mp-label">Intraday high range</span><span class="mp-val">${rng(mp.predHiBand[0], mp.predHiBand[1])}</span></div>` : ''}
+        ${(mp.band && mp.band.length === 2) ? `<div><span class="mp-label">Close range</span><span class="mp-val">${rng(mp.predDay + mp.band[0], mp.predDay + mp.band[1])}</span></div>` : ''}
       </div>${flagTxt}${mp.qual && mp.qual.reasoning ? `<div class="model-pred-qual"><span class="material-symbols-outlined">psychology</span><span><b>質化判讀</b>(${mp.qual.adj >= 0 ? '+' : ''}${mp.qual.adj} 調整):${escapeHtml(mp.qual.reasoning)}</span></div>` : ''}
     </div>`;
   }
