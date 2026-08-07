@@ -391,5 +391,12 @@
   "what": "R26a 大合約 fade 進場時機:開盤空 +0.24R > 10:30 空 +0.14R(n=25,勝率同 64%)— 合約 pump 頂點在開盤,現行規則不變。R26b cap10x10 加盲測 spike p50 閘門(3/4/5 網格):avgR +0.23→+0.40 但 n 140→24、六月全格負 — 閘門集中風險未修弱月,不採用。",
   "decision": "兩項維持現狀;負結果照記。10:30 時機規則只適用 gap-down 承接與 DTC 假軋空,不得外推到合約 fade。",
   "scripts": "scratchpad/me_r26.py"
+ },
+ {
+  "date": "2026-08-08",
+  "name": "R27 新假設家族:隔日結構+午後結構+星期效應",
+  "what": "N1 PEAD(強收盤隔日續漲):52% 正率 ≈ 擲硬幣,死。N2 錯殺修復=一日行情:BeatDip 隔日 −0.48,當天彈過的隔日 −1.32(反彈回吐)— 絕不留倉。N3 gap>=10 隔日普遍偏空(守住與否皆負,正率 ~40%)— heated 規則泛化。N4 午後微負(−0.3)— 不留尾盤維持但理由溫和。N5 週五效應:gap-up>=4 盤中均 −3.18(n=203),7/11 週五為負、剔非農日仍 −2.13,集中 6-7 月 = regime 級。",
+  "decision": "avoid_rules 增兩條:friday_gapup_caution(軟:週五 gap-up 多單降半倉/提前出,DTC fade 順風)、no_overnight_any(硬:一律當日了結,禁「強勢可留倉」措辭)。",
+  "scripts": "scratchpad/me_r27_nextday.py"
  }
 ]
