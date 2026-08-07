@@ -202,6 +202,68 @@ def predict_with(P, e):
             p += f.get('ac_hi', 0) if e['eps_accel'] > 10 else f.get('ac_lo', 0)
     return p
 
+# ---------- 盤中最高 spike 模型(2026-08-07 R15-R17:逐檔 GBM,取代分桶常數)----------
+SPIKE_VERSION = 'spike-gbm-v1'
+
+def spike_prep(ev):
+    out = []
+    for e in ev:
+        g, hi = e.get('gap'), e.get('hi')
+        if g is None or hi is None or abs(g) > 100: continue
+        sp = ((1 + hi/100) / (1 + g/100) - 1) * 100
+        if not (-5 <= sp <= 300): continue
+        e = dict(e)
+        e['spike'] = min(max(sp, 0), 80)
+        e['tier'] = tier_of(10**e['log_mcap'] if e.get('log_mcap') else None)
+        v, fl = e.get('volume'), e.get('float_M')
+        e['rot'] = math.log10(max(v/(fl*1e6), 1e-6)) if (v and fl and fl > 0) else None
+        out.append(e)
+    return out
+
+def spike_feats(e, types):
+    nan = float('nan')
+    c = lambda v, lo, hi: max(lo, min(hi, v)) if v is not None else nan
+    return [
+        e['gap'], abs(e['gap']), max(e['gap']-15, 0), max(-15-e['gap'], 0),
+        e['rot'] if e.get('rot') is not None else nan,
+        e['log_mcap'] if e.get('log_mcap') else nan,
+        c(e.get('short_ratio'), 0, 30), c(e.get('short_float'), 0, 60),
+        math.log10(e['float_M']) if e.get('float_M') and e['float_M'] > 0 else nan,
+        math.log10(e['volume']) if e.get('volume') and e['volume'] > 0 else nan,
+        c(e.get('eps_surp'), -100, 300), c(e.get('rev_surp'), -50, 100),
+        c(e.get('eps_yoy'), -200, 500), c(e.get('rev_yoy'), -100, 400),
+        c(e.get('fwd_eps'), -100, 300), c(e.get('fwd_rev'), -50, 200),
+        c(e.get('perf1M'), -80, 300), c(e.get('perf3M'), -80, 500),
+        1.0 if e.get('er') else 0.0,
+    ] + [1.0 if e['type'] == t else 0.0 for t in types]
+
+def cmd_spikefit():
+    """訓練盤中最高 GBM(分位 0.5)+ split-conformal 帶(訓練段後 20% 日期做校準集)。
+    盲測依據(R15/R16b):桶內 IC +0.206、逐月 IC 0.35-0.40、conformal 帶內率 45%。
+    產出 model_spike.pkl,model_predict 每次注入時載入逐檔推論。"""
+    import numpy as np, pickle
+    from sklearn.ensemble import HistGradientBoostingRegressor
+    ev = spike_prep(jload('model_events.json', []))
+    types = sorted(set(e['type'] for e in ev))
+    dates = sorted(set(e['date'] for e in ev))
+    cut = int(len(dates) * 0.8)
+    fit = [e for e in ev if e['date'] in set(dates[:cut])]
+    cal = [e for e in ev if e['date'] in set(dates[cut:])]
+    m = HistGradientBoostingRegressor(loss='quantile', quantile=0.5, max_iter=250, max_depth=4,
+                                      learning_rate=0.06, min_samples_leaf=30,
+                                      l2_regularization=1.0, random_state=7)
+    m.fit(np.array([spike_feats(e, types) for e in fit]), np.array([e['spike'] for e in fit]))
+    p_cal = np.maximum(m.predict(np.array([spike_feats(e, types) for e in cal])), 0)
+    res = {}
+    for e, p in zip(cal, p_cal): res.setdefault(e['tier'], []).append(e['spike'] - p)
+    allr = [e['spike'] - p for e, p in zip(cal, p_cal)]
+    rq = {t: [float(np.percentile(v, 25)), float(np.percentile(v, 75))] for t, v in res.items() if len(v) >= 40}
+    rg = [float(np.percentile(allr, 25)), float(np.percentile(allr, 75))]
+    with open('model_spike.pkl', 'wb') as f:
+        pickle.dump(dict(version=SPIKE_VERSION, model=m, types=types, rq=rq, rg=rg,
+                         n=len(ev), fit_n=len(fit), cal_n=len(cal), cut_date=dates[cut]), f)
+    print(f'[spikefit] model_spike.pkl 已更新:n={len(ev)}(fit {len(fit)} / cal {len(cal)},cut {dates[cut]})types={len(types)}')
+
 def blind_eval(ev):
     """嚴格 walk-forward 5 段盲測,回 (hit%, rho, tier_hits)。"""
     import numpy as np
@@ -319,5 +381,6 @@ if __name__ == '__main__':
     arg = sys.argv[2] if len(sys.argv) > 2 else None
     if cmd == 'ingest': cmd_ingest(arg or latest_completed_date())
     elif cmd == 'verify': cmd_verify(arg or latest_completed_date())
-    elif cmd == 'refit': cmd_refit()
-    else: print('usage: py model_lab.py ingest|verify|refit [DATE]')
+    elif cmd == 'refit': cmd_refit(); cmd_spikefit()
+    elif cmd == 'spikefit': cmd_spikefit()
+    else: print('usage: py model_lab.py ingest|verify|refit|spikefit [DATE]')

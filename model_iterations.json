@@ -333,5 +333,12 @@
   ],
   "decision": "卡片重建上線;所有負結果照實記錄;predDay 降級為慣性基準不再稱預測。",
   "scripts": "scratchpad/me_r1.py, me_r3.py, me_r7.py, me_r8.py, me_r10_audit.py, me_r11_hi.py, me_r12_hi.py"
+ },
+ {
+  "date": "2026-08-07",
+  "name": "R15-R17 逐檔 spike GBM(使用者二次抓包:分桶=同類全同常數)",
+  "what": "R15 HistGBR 分位模型全因子(gap/rot/mcap/DTC/shortfloat/float/量/surprise/YoY/perf/type):桶內 IC +0.206(桶常數版=0)、整體 IC 0.396(桶版 0.315)、逐月 0.35-0.40 全穩;momentum|small 桶內 +0.361、m&a|small +0.333、earnings|big +0.158。R16 訓練殘差校準帶內率僅 35%(過擬合)→ R16b split-conformal(訓練段後 20% 日期當校準集)45%。R17 上線:model_lab spikefit → model_spike.pkl,model_predict 逐檔推論(122 檔 106 個不同向量),分桶降 fallback。事故:sidecar 舊模組把新注入蓋掉 → 重啟後正常,規則入 SKILL。",
+  "decision": "逐檔 GBM 定版;verify 追帶內率(<35%/>65% 連兩日=重訓);refit 連動 spikefit。",
+  "scripts": "scratchpad/me_r15_gbm.py, me_r16_calib.py; D:/SIPs/model_lab.py cmd_spikefit, model_predict.py spike_from_gbm"
  }
 ]

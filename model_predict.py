@@ -62,7 +62,43 @@ def spike_table():
         return [round(vs[int(len(vs)*p)], 1) for p in (0.25, 0.5, 0.75)]
     return {k: q(v) for k, v in buckets.items() if k == '_g' or len(v) >= 25}
 
-def predict(s, P, SP=None):
+def load_spike_gbm():
+    """逐檔盤中最高模型(model_spike.pkl,由 model_lab spikefit 訓練;R15-R17)。
+    載入失敗回 None → fallback 到 spike_table 分桶。"""
+    try:
+        import pickle
+        with open(os.path.join(ROOT, 'model_spike.pkl'), 'rb') as f:
+            return pickle.load(f)
+    except Exception:
+        return None
+
+def spike_from_gbm(SM, s, gap, typ, tier):
+    """packet stock → 事件同構特徵 → GBM p50 + conformal 帶。訓練/推論欄位對映:
+    chgPct→gap、marketCap_M→log_mcap、shortRatio/shortFloat/floatShares_M/volume 同名、
+    tv.surprise*→*_surp、tv.*YoY→*_yoy;fwd/perf 缺就 NaN(HistGBR 原生吃 NaN)。"""
+    try:
+        import math as _m
+        tv = s.get('tv') or {}
+        vol, fl = s.get('volume'), s.get('floatShares_M')
+        e = dict(gap=gap, type=typ,
+                 rot=_m.log10(max(vol/(fl*1e6), 1e-6)) if (vol and fl and fl > 0) else None,
+                 log_mcap=_m.log10(s['marketCap_M']) if s.get('marketCap_M') else None,
+                 short_ratio=s.get('shortRatio'), short_float=s.get('shortFloat'),
+                 float_M=fl, volume=vol,
+                 eps_surp=tv.get('surpriseEPS_pct'), rev_surp=tv.get('surpriseRev_pct'),
+                 eps_yoy=tv.get('epsYoY_pct'), rev_yoy=tv.get('yrYrRev_pct'),
+                 fwd_eps=None, fwd_rev=None,
+                 perf1M=s.get('perf1M'), perf3M=s.get('perf3M'),
+                 er=1 if typ == 'earnings' else 0)
+        import model_lab as _ML
+        x = _ML.spike_feats(e, SM['types'])
+        p50 = max(float(SM['model'].predict([x])[0]), 0.0)
+        lo, hi = SM['rq'].get(tier, SM['rg'])
+        return [round(max(p50 + lo, 0), 1), round(p50, 1), round(p50 + hi, 1)]
+    except Exception:
+        return None
+
+def predict(s, P, SP=None, SM=None):
     gap = s.get('chgPct')
     if gap is None: return None
     typ = (s.get('type') or 'unknown').lower()
@@ -85,9 +121,11 @@ def predict(s, P, SP=None):
             st, ac = derive_traj(ch)
             if st is not None: p += P['fund']['st_hi'] if st > 5 else P['fund']['st_lo']
             if ac is not None: p += P['fund']['ac_hi'] if ac > 10 else P['fund']['ac_lo']
-    # 盤中最高:spike 分桶(誠實版,取代舊 gap 線性 hi 模型 — 那個只是 gap 回聲)
+    # 盤中最高:優先逐檔 GBM(R15-R17,桶內 IC +0.206);失敗才退分桶常數
     sq = None
-    if SP:
+    if SM:
+        sq = spike_from_gbm(SM, s, gap, typ, tier)
+    if sq is None and SP:
         sq = SP.get((typ, tier)) or SP.get((typ,)) or SP.get('_g')
     out = dict(version=P.get('version', 'v12'), gap=round(gap, 2), predDay=round(p, 1),
                band=P['bands'].get(tier, P['bands']['na']), tier=tier)
@@ -131,6 +169,9 @@ def apply_qual(out, sym, qual):
 def main():
     P = load(os.path.join(ROOT, 'model_params.json'))
     SP = spike_table()
+    SM = load_spike_gbm()
+    if SM: print(f"[model_predict] spike GBM loaded ({SM.get('version')}, n={SM.get('n')})")
+    else: print('[model_predict] spike GBM 缺,退分桶 fallback')
     date = None
     if '--date' in sys.argv:
         date = sys.argv[sys.argv.index('--date')+1]
@@ -143,7 +184,7 @@ def main():
     qual = {k: v for k, v in qual_all.items() if isinstance(v, dict) and v.get('date') == date}
     n, nq = 0, 0
     for sym, s in (d.get('stocks') or {}).items():
-        mp = predict(s, P, SP)
+        mp = predict(s, P, SP, SM)
         if mp:
             mp = apply_qual(mp, sym, qual)
             if mp.get('qual'): nq += 1
@@ -156,7 +197,7 @@ def main():
         dj = load(dj_path)
         if dj.get('date', '')[:10] == date:
             for sym, s in (dj.get('stocks') or {}).items():
-                mp = predict(s, P, SP)
+                mp = predict(s, P, SP, SM)
                 if mp:
                     mp = apply_qual(mp, sym, qual)
                     s['modelPred'] = mp
