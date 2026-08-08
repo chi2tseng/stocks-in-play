@@ -1,175 +1,176 @@
 {
- "_doc": "Setup 手冊 v2(2026-08-08 全面重建 — 使用者指示砍掉重來)。重建方法:447 檔分層抽樣 × 24 opus 逐檔歸因 + 3 主題綜合 + fable 仲裁 → 8 假設全庫處刑(R30)→ 執行層 60m 回測(R31)。舊版 trade_setups_legacy.json 僅供對照。內部 playbook,不上站;/SIPs Step 0b 每日審視、9d 選股依據。",
- "updated": "2026-08-08",
- "window": "全庫 2026-05-13 ~ 2026-08-07(60 交易日、事件庫 3,882 筆、60m 執行模擬)",
- "rebuild_method": "質化歸因(每檔:因為什麼→漲多少→為什麼這個幅度,全因子:fwd/當季成長/surprise/MAGNA53/市值/DTC/short float/neglect/run-up)→ 機械假設 → 全庫盲測 → 對照組判別力檢查 → 執行層回測。核心洞察:方向由 perf1M(beaten/heated)與前瞻品質(fwd_rev)的交乘決定,不由 gap 大小或單一籌碼指標決定;DTC 的意義是「回補需要幾天」— dtc<0.5 = 無回補買盤(禁區家族),dtc>5 = 回補跨日(假軋空 fade),高 short_float 配 dtc<5 = 快燃料(beaten 側才是真 squeeze)。",
- "model": {
-  "name": "spike GBM(盤中最高逐檔)+ gap 慣性基準(收盤)",
-  "blind_hit": 42.5,
-  "rho": 0.742,
-  "n_events": 3882,
-  "note": "盤中最高:HistGBR 分位模型,桶內 IC +0.206、整體 0.396、conformal 帶內率 45%;到價率基準 67/46/27(P25/P50/P75)。收盤=gap 慣性(三度證偽無 alpha)。verify 每日對帳。"
- },
- "lineup": "每日最多 2 筆,順位 v5(2026-08-08 重建):①錯殺反彈 ≥10B(按市值)②大合約 fade(按 gap)③BeatenSqueezeGo(按 fwd_rev)④cap10×10(按市值)⑤錯殺反彈 <10B ⑥DTC 假軋空 fade。多單先過 avoid_rules;全部當日了結。",
- "setups": [
-  {
-   "id": "beatdip",
-   "name": "錯殺反彈",
-   "status": "主力",
-   "direction": "long",
-   "rules": {
-    "條件": "財報股、EPS 與營收 surprise 皆 ≥0(真 beat)、開盤 gap −4% ~ −18%(≤−15 帶注意:大驚奇深跳空=殺指引,R30#7 顯示無反彈,靠近下緣要格外挑);市值 ≥100 億優先,同分選 fresh(perf1M ±10%)",
-    "進場": "10:30 ET 前不進場;10:30 價格需高於早盤低點 0.5% 以上(承接濾網)",
-    "停損": "早盤低點下 0.5%(結構停損)",
-    "出場": "回到平盤或 +6% 先到先出;絕不留倉(隔日 −0.48,彈過的隔日 −1.32 — 修復是一日行情)"
-   },
-   "stats": {
-    "n": 48,
-    "win": 58,
-    "avgR": 0.6,
-    "months": "4/4 月正",
-    "scope": "≥10B;<10B 弱層(+0.05~0.13)倉位減半"
-   },
-   "live_kill_criteria": "live 前 20 筆 avgR < +0.15 → 停用檢討",
-   "live_ledger": {
-    "n": 2,
-    "sumR": 2.06,
-    "detail": "2026-08-07 DBX TARGET +0.53R / TXG TARGET +1.53R(首個全 ex-ante 日,2/2)"
-   },
-   "my_take": "重建後仍是全系統我最信的一個:它的 edge 三次從不同方法路徑獨立浮現(OPG 回測、組合矩陣 gapDN surp+fresh 4/4 月正、447 檔歸因的錯殺敘事)。本體是「等」— 開盤進場是 −0.22R,10:30 是 +0.60R。財報季限定,淡季斷糧別硬找。"
+  "_doc": "Setup 手冊 v2(2026-08-08 全面重建 — 使用者指示砍掉重來)。重建方法:447 檔分層抽樣 × 24 opus 逐檔歸因 + 3 主題綜合 + fable 仲裁 → 8 假設全庫處刑(R30)→ 執行層 60m 回測(R31)。舊版 trade_setups_legacy.json 僅供對照。內部 playbook,不上站;/SIPs Step 0b 每日審視、9d 選股依據。",
+  "updated": "2026-08-08",
+  "window": "全庫 2026-05-13 ~ 2026-08-07(60 交易日、事件庫 3,882 筆、60m 執行模擬)",
+  "rebuild_method": "質化歸因(每檔:因為什麼→漲多少→為什麼這個幅度,全因子:fwd/當季成長/surprise/MAGNA53/市值/DTC/short float/neglect/run-up)→ 機械假設 → 全庫盲測 → 對照組判別力檢查 → 執行層回測。核心洞察:方向由 perf1M(beaten/heated)與前瞻品質(fwd_rev)的交乘決定,不由 gap 大小或單一籌碼指標決定;DTC 的意義是「回補需要幾天」— dtc<0.5 = 無回補買盤(禁區家族),dtc>5 = 回補跨日(假軋空 fade),高 short_float 配 dtc<5 = 快燃料(beaten 側才是真 squeeze)。",
+  "model": {
+    "name": "spike GBM(盤中最高逐檔)+ gap 慣性基準(收盤)",
+    "blind_hit": 42.7,
+    "rho": 0.738,
+    "n_events": 3883,
+    "note": "盤中最高:HistGBR 分位模型,桶內 IC +0.206、整體 0.396、conformal 帶內率 45%;到價率基準 67/46/27(P25/P50/P75)。收盤=gap 慣性(三度證偽無 alpha)。verify 每日對帳。",
+    "refit": "2026-08-08 週末 refit(含 8/7 outcomes):blind 42.5→42.7%、n 3882→3883;spike 重訓 n=3827(fit 2349/cal 1478,cut 07-22)"
   },
-  {
-   "id": "contract_fade",
-   "name": "大合約 fade",
-   "status": "次主力",
-   "direction": "short",
-   "rules": {
-    "條件": "contract 型催化劑、開盤 gap ≥+15%(多為小型股);合約金額達年營收級的真重估要跳過",
-    "進場": "開盤放空(R26 驗證:開盤 +0.24R > 10:30 +0.14 — 合約 pump 頂點在開盤,勿套用 10:30 家族)",
-    "停損": "進場價 +20%(倉位相應縮小)",
-    "出場": "收盤回補"
-   },
-   "stats": {
-    "n": 28,
-    "win": 71,
-    "avgR": 0.47,
-    "months": "兩獨立窗口重現",
-    "scope": "全市值"
-   },
-   "live_kill_criteria": "live 前 15 筆勝率 < 55% 或 avgR < +0.15 → 停用檢討",
-   "live_ledger": {
-    "n": 0,
-    "sumR": 0.0
-   },
-   "my_take": "勝率全場最高但 1R=20% 單筆最肥,倉位必小。447 檔歸因再次確認機制:小公司大合約的當日過熱由散戶追價構成,無機構第二棒。M&A 現金對價日(釘死日)不算此類,已從訊號池剔除。"
-  },
-  {
-   "id": "beaten_squeeze_go",
-   "name": "BeatenSqueezeGo 冷落軋空續攻",
-   "status": "候補(2026-08-08 新收錄;7月樣本集群風險註記)",
-   "direction": "long",
-   "rules": {
-    "條件": "gap ≥+5%、perf1M ≤−20%(beaten,空單建在低位)、short float ≥10%、DTC <5(快燃料)、fwd_rev ≥30%(前瞻營收加速)— 五條件缺一即退化(對照組 −2.50)",
-    "進場": "開盤買(這型不能等 — gap 是起點不是終點)",
-    "停損": "−5%",
-    "出場": "13:30 ET 前了結;不留倉"
-   },
-   "stats": {
-    "n": 45,
-    "win": 58,
-    "avgR": 0.59,
-    "months": "6月平、7月+0.85 — 樣本集中於7月(含 7/30 AI 基建同日叢集)",
-    "scope": "全市值"
-   },
-   "live_kill_criteria": "live 前 15 筆 avgR < 0 → 除役(集群風險高,標準從嚴)",
-   "live_ledger": {
-    "n": 0,
-    "sumR": 0.0
-   },
-   "my_take": "447 檔歸因最大的新收穫:同一組籌碼條件(高空單+快回補)在 beaten 名字上是 gap-and-go、在 heated 名字上才是 fade — 方向由事前擁擠度決定,這解釋了之前所有「泛化 fade」失敗的原因。判別力實測 5.7pt(+3.18 vs 對照 −2.50)。但我要誠實標注:樣本大半來自 7 月 AI 基建行情,這可能是「一個 regime 的故事」而不是永恆結構 — kill criteria 因此從嚴。"
-  },
-  {
-   "id": "cap1010",
-   "name": "cap10×10 大票暴動",
-   "status": "輪替(gap-up 腿)",
-   "direction": "long",
-   "rules": {
-    "條件": "市值 ≥100 億、任一成長/驚奇指標 ≥100%(M bit)、開盤 gap ≥+4%",
-    "進場": "開盤直接進(等到 10:30 edge 歸零)",
-    "停損": "−2.5%",
-    "出場": "4R(+10%)到就走;否則 13:30 ET 出,不碰尾盤"
-   },
-   "stats": {
-    "n": 140,
-    "win": 43,
-    "avgR": 0.24,
-    "months": "3/4 月正",
-    "scope": "獨立統計"
-   },
-   "live_kill_criteria": "live 前 20 筆 avgR < 0 → 直接除役(倖存者偏差最重,不給第二次機會)",
-   "live_ledger": {
-    "n": 0,
-    "sumR": 0.0
-   },
-   "my_take": "低勝率肥尾,價值一半在分散(不全押接刀邏輯)。447 檔歸因給了它機制注腳:大市值中等跳空=法人一日反應不完,小市值大 beat=盤前定價完開盤出貨 — cap1010 有效與泛化 fade 無效是同一個硬幣的兩面。週五降半倉(avoid_rules)。"
-  },
-  {
-   "id": "dtc_fade",
-   "name": "DTC 假軋空 fade",
-   "status": "候補",
-   "direction": "short",
-   "rules": {
-    "條件": "DTC >5、開盤 gap ≥+2%",
-    "進場": "10:30 ET 放空",
-    "停損": "進場價 +5%",
-    "出場": "收盤回補"
-   },
-   "stats": {
-    "n": 149,
-    "win": 53,
-    "avgR": 0.17,
-    "months": "4/4 月正",
-    "scope": "全庫 60m"
-   },
-   "live_kill_criteria": "live 前 20 筆 avgR < 0 → 停用檢討;連 8 筆虧 → 立停",
-   "live_ledger": {
-    "n": 0,
-    "sumR": 0.0
-   },
-   "my_take": "447 檔歸因把它的機制講透了:有效的不是 DTC 本身,是「回補需要多日」— 需求被攤平,單日買不動,盤中自然回落。與 BeatenSqueezeGo 互斥(那邊鎖 dtc<5),兩者合起來是同一條籌碼軸的完整地圖。空單有借券風險,+5% 停損不可省。"
-  }
- ],
- "avoid_rules": [
-  {
-   "id": "no_cover_bid_family",
-   "rule": "無回補買盤家族(機制統一,2026-08-08 R28-R30):a) gap>+50% 且 DTC<0.5(血洗帶)b) 市值<500M 且 gap +10~50%(微型中段,DTC 無關 — 對照組同樣 fade)c) 市值<150M 且 DTC<0.5 且 perf1M>+50 且 gap≤−10(拋物線崩解)d) perf12M<−90 且 |gap|>30(殘股)",
-   "evidence": "a) n=86 intra −15.1/隔日 −12.7;b) n=221 intra 中位 −5.2/隔日 −5.5;c) n=53 intra −5.9/隔日 −4.9;d) n=75 雙向 −9",
-   "action": "全家族禁做多(任何價位、任何時點);質化層 adj=0 標不可預測;ideas 自動跳過。機制:價格由浮額與情緒決定、無空頭回補也無機構承接 = 沒有天然買方"
-  },
-  {
-   "id": "mna_pin_exclusion",
-   "rule": "m&a 型且 gap ≥+15%(現金對價釘死日)",
-   "evidence": "R30 n=36:intra 中位 −0.07、隔日 −0.24 — 波動歸零",
-   "action": "從所有日內訊號池剔除(不建方向部位);維護統計時此類樣本另計,防稀釋"
-  },
-  {
-   "id": "crowded_winner_nextday",
-   "rule": "gap ≤−3% 且 perf3M ≥+80% 且 short float <6 且 DTC <3(擁擠贏家去槓桿)",
-   "evidence": "R30 n=115:當日 intra ≈0(仲裁宣稱的當日續跌不成立)但隔日 −4.3 中位 — 唯一系統性隔日空型態",
-   "action": "註記級:此類股禁隔日搶反彈;制度不留倉故不做隔夜空單,列研究觀察"
-  },
-  {
-   "id": "no_overnight_any",
-   "rule": "所有 ideas 一律當日了結",
-   "evidence": "BeatDip 隔日 −0.48(彈過的 −1.32);gap≥10 隔日中位 −1.8~−2.4 正率 40%;heated(perf1M>100 & gap>30)隔日 63% 負",
-   "action": "硬規則:不留倉,永遠;「強勢可留倉」措辭禁用"
-  },
-  {
-   "id": "friday_gapup_caution",
-   "rule": "週五 gap-up 多單",
-   "evidence": "週五 gap-up≥4 盤中均 −3.18(n=203)、7/11 週五為負、剔非農日仍 −2.13;集中 6-7 月",
-   "action": "軟規則(regime 級):降半倉或 11:30 提前出;fade 空單順風;regime 消失即撤"
-  }
- ],
- "_overfit_audit": "2026-08-08 重建版:全部數字仍為 in-sample(同一 60 日窗、數百假設格的倖存者)。保護:對照組判別力檢查(BSG 5.7pt)、負結果照記(R30 殺 3/8)、預註冊 kill criteria(觸發即執行不得放寬)、live ledger 從 0 起算。預期 live 表現打 5-7 折;cap1010 與 BSG 為最高風險兩檔。"
+  "lineup": "每日最多 2 筆,順位 v5(2026-08-08 重建):①錯殺反彈 ≥10B(按市值)②大合約 fade(按 gap)③BeatenSqueezeGo(按 fwd_rev)④cap10×10(按市值)⑤錯殺反彈 <10B ⑥DTC 假軋空 fade。多單先過 avoid_rules;全部當日了結。",
+  "setups": [
+    {
+      "id": "beatdip",
+      "name": "錯殺反彈",
+      "status": "主力",
+      "direction": "long",
+      "rules": {
+        "條件": "財報股、EPS 與營收 surprise 皆 ≥0(真 beat)、開盤 gap −4% ~ −18%(≤−15 帶注意:大驚奇深跳空=殺指引,R30#7 顯示無反彈,靠近下緣要格外挑);市值 ≥100 億優先,同分選 fresh(perf1M ±10%)",
+        "進場": "10:30 ET 前不進場;10:30 價格需高於早盤低點 0.5% 以上(承接濾網)",
+        "停損": "早盤低點下 0.5%(結構停損)",
+        "出場": "回到平盤或 +6% 先到先出;絕不留倉(隔日 −0.48,彈過的隔日 −1.32 — 修復是一日行情)"
+      },
+      "stats": {
+        "n": 48,
+        "win": 58,
+        "avgR": 0.6,
+        "months": "4/4 月正",
+        "scope": "≥10B;<10B 弱層(+0.05~0.13)倉位減半"
+      },
+      "live_kill_criteria": "live 前 20 筆 avgR < +0.15 → 停用檢討",
+      "live_ledger": {
+        "n": 2,
+        "sumR": 2.06,
+        "detail": "2026-08-07 DBX TARGET +0.53R / TXG TARGET +1.53R(首個全 ex-ante 日,2/2)"
+      },
+      "my_take": "重建後仍是全系統我最信的一個:它的 edge 三次從不同方法路徑獨立浮現(OPG 回測、組合矩陣 gapDN surp+fresh 4/4 月正、447 檔歸因的錯殺敘事)。本體是「等」— 開盤進場是 −0.22R,10:30 是 +0.60R。財報季限定,淡季斷糧別硬找。"
+    },
+    {
+      "id": "contract_fade",
+      "name": "大合約 fade",
+      "status": "次主力",
+      "direction": "short",
+      "rules": {
+        "條件": "contract 型催化劑、開盤 gap ≥+15%(多為小型股);合約金額達年營收級的真重估要跳過",
+        "進場": "開盤放空(R26 驗證:開盤 +0.24R > 10:30 +0.14 — 合約 pump 頂點在開盤,勿套用 10:30 家族)",
+        "停損": "進場價 +20%(倉位相應縮小)",
+        "出場": "收盤回補"
+      },
+      "stats": {
+        "n": 28,
+        "win": 71,
+        "avgR": 0.47,
+        "months": "兩獨立窗口重現",
+        "scope": "全市值"
+      },
+      "live_kill_criteria": "live 前 15 筆勝率 < 55% 或 avgR < +0.15 → 停用檢討",
+      "live_ledger": {
+        "n": 0,
+        "sumR": 0.0
+      },
+      "my_take": "勝率全場最高但 1R=20% 單筆最肥,倉位必小。447 檔歸因再次確認機制:小公司大合約的當日過熱由散戶追價構成,無機構第二棒。M&A 現金對價日(釘死日)不算此類,已從訊號池剔除。"
+    },
+    {
+      "id": "beaten_squeeze_go",
+      "name": "BeatenSqueezeGo 冷落軋空續攻",
+      "status": "候補(2026-08-08 新收錄;7月樣本集群風險註記)",
+      "direction": "long",
+      "rules": {
+        "條件": "gap ≥+5%、perf1M ≤−20%(beaten,空單建在低位)、short float ≥10%、DTC <5(快燃料)、fwd_rev ≥30%(前瞻營收加速)— 五條件缺一即退化(對照組 −2.50)",
+        "進場": "開盤買(這型不能等 — gap 是起點不是終點)",
+        "停損": "−5%",
+        "出場": "13:30 ET 前了結;不留倉"
+      },
+      "stats": {
+        "n": 45,
+        "win": 58,
+        "avgR": 0.59,
+        "months": "6月平、7月+0.85 — 樣本集中於7月(含 7/30 AI 基建同日叢集)",
+        "scope": "全市值"
+      },
+      "live_kill_criteria": "live 前 15 筆 avgR < 0 → 除役(集群風險高,標準從嚴)",
+      "live_ledger": {
+        "n": 0,
+        "sumR": 0.0
+      },
+      "my_take": "447 檔歸因最大的新收穫:同一組籌碼條件(高空單+快回補)在 beaten 名字上是 gap-and-go、在 heated 名字上才是 fade — 方向由事前擁擠度決定,這解釋了之前所有「泛化 fade」失敗的原因。判別力實測 5.7pt(+3.18 vs 對照 −2.50)。但我要誠實標注:樣本大半來自 7 月 AI 基建行情,這可能是「一個 regime 的故事」而不是永恆結構 — kill criteria 因此從嚴。"
+    },
+    {
+      "id": "cap1010",
+      "name": "cap10×10 大票暴動",
+      "status": "輪替(gap-up 腿)",
+      "direction": "long",
+      "rules": {
+        "條件": "市值 ≥100 億、任一成長/驚奇指標 ≥100%(M bit)、開盤 gap ≥+4%",
+        "進場": "開盤直接進(等到 10:30 edge 歸零)",
+        "停損": "−2.5%",
+        "出場": "4R(+10%)到就走;否則 13:30 ET 出,不碰尾盤"
+      },
+      "stats": {
+        "n": 140,
+        "win": 43,
+        "avgR": 0.24,
+        "months": "3/4 月正",
+        "scope": "獨立統計"
+      },
+      "live_kill_criteria": "live 前 20 筆 avgR < 0 → 直接除役(倖存者偏差最重,不給第二次機會)",
+      "live_ledger": {
+        "n": 0,
+        "sumR": 0.0
+      },
+      "my_take": "低勝率肥尾,價值一半在分散(不全押接刀邏輯)。447 檔歸因給了它機制注腳:大市值中等跳空=法人一日反應不完,小市值大 beat=盤前定價完開盤出貨 — cap1010 有效與泛化 fade 無效是同一個硬幣的兩面。週五降半倉(avoid_rules)。"
+    },
+    {
+      "id": "dtc_fade",
+      "name": "DTC 假軋空 fade",
+      "status": "候補",
+      "direction": "short",
+      "rules": {
+        "條件": "DTC >5、開盤 gap ≥+2%",
+        "進場": "10:30 ET 放空",
+        "停損": "進場價 +5%",
+        "出場": "收盤回補"
+      },
+      "stats": {
+        "n": 149,
+        "win": 53,
+        "avgR": 0.17,
+        "months": "4/4 月正",
+        "scope": "全庫 60m"
+      },
+      "live_kill_criteria": "live 前 20 筆 avgR < 0 → 停用檢討;連 8 筆虧 → 立停",
+      "live_ledger": {
+        "n": 0,
+        "sumR": 0.0
+      },
+      "my_take": "447 檔歸因把它的機制講透了:有效的不是 DTC 本身,是「回補需要多日」— 需求被攤平,單日買不動,盤中自然回落。與 BeatenSqueezeGo 互斥(那邊鎖 dtc<5),兩者合起來是同一條籌碼軸的完整地圖。空單有借券風險,+5% 停損不可省。"
+    }
+  ],
+  "avoid_rules": [
+    {
+      "id": "no_cover_bid_family",
+      "rule": "無回補買盤家族(機制統一,2026-08-08 R28-R30):a) gap>+50% 且 DTC<0.5(血洗帶)b) 市值<500M 且 gap +10~50%(微型中段,DTC 無關 — 對照組同樣 fade)c) 市值<150M 且 DTC<0.5 且 perf1M>+50 且 gap≤−10(拋物線崩解)d) perf12M<−90 且 |gap|>30(殘股)",
+      "evidence": "a) n=86 intra −15.1/隔日 −12.7;b) n=221 intra 中位 −5.2/隔日 −5.5;c) n=53 intra −5.9/隔日 −4.9;d) n=75 雙向 −9",
+      "action": "全家族禁做多(任何價位、任何時點);質化層 adj=0 標不可預測;ideas 自動跳過。機制:價格由浮額與情緒決定、無空頭回補也無機構承接 = 沒有天然買方"
+    },
+    {
+      "id": "mna_pin_exclusion",
+      "rule": "m&a 型且 gap ≥+15%(現金對價釘死日)",
+      "evidence": "R30 n=36:intra 中位 −0.07、隔日 −0.24 — 波動歸零",
+      "action": "從所有日內訊號池剔除(不建方向部位);維護統計時此類樣本另計,防稀釋"
+    },
+    {
+      "id": "crowded_winner_nextday",
+      "rule": "gap ≤−3% 且 perf3M ≥+80% 且 short float <6 且 DTC <3(擁擠贏家去槓桿)",
+      "evidence": "R30 n=115:當日 intra ≈0(仲裁宣稱的當日續跌不成立)但隔日 −4.3 中位 — 唯一系統性隔日空型態",
+      "action": "註記級:此類股禁隔日搶反彈;制度不留倉故不做隔夜空單,列研究觀察"
+    },
+    {
+      "id": "no_overnight_any",
+      "rule": "所有 ideas 一律當日了結",
+      "evidence": "BeatDip 隔日 −0.48(彈過的 −1.32);gap≥10 隔日中位 −1.8~−2.4 正率 40%;heated(perf1M>100 & gap>30)隔日 63% 負",
+      "action": "硬規則:不留倉,永遠;「強勢可留倉」措辭禁用"
+    },
+    {
+      "id": "friday_gapup_caution",
+      "rule": "週五 gap-up 多單",
+      "evidence": "週五 gap-up≥4 盤中均 −3.18(n=203)、7/11 週五為負、剔非農日仍 −2.13;集中 6-7 月",
+      "action": "軟規則(regime 級):降半倉或 11:30 提前出;fade 空單順風;regime 消失即撤"
+    }
+  ],
+  "_overfit_audit": "2026-08-08 重建版:全部數字仍為 in-sample(同一 60 日窗、數百假設格的倖存者)。保護:對照組判別力檢查(BSG 5.7pt)、負結果照記(R30 殺 3/8)、預註冊 kill criteria(觸發即執行不得放寬)、live ledger 從 0 起算。預期 live 表現打 5-7 折;cap1010 與 BSG 為最高風險兩檔。"
 }

@@ -377,7 +377,9 @@ def cmd_refit():
     logs = jload('model_iterations.json', [])
     logs.append(dict(iteration=len(logs)+1, cmd='refit', date=datetime.now(timezone.utc).strftime('%Y-%m-%d'),
                      n=len(ev), blind=dict(hit=hit, rho=rho, tiers=tiers)))
-    jsave('model_iterations.json', logs)
+    # 迭代日誌是人要讀 + git diff 要審的,保持縮排(jsave 是單行,會把整檔壓成一行)
+    with open('model_iterations.json', 'w', encoding='utf-8') as f:
+        json.dump(logs, f, ensure_ascii=False, indent=1)
 
 if __name__ == '__main__':
     cmd = sys.argv[1] if len(sys.argv) > 1 else 'verify'
