@@ -398,5 +398,12 @@
   "what": "N1 PEAD(強收盤隔日續漲):52% 正率 ≈ 擲硬幣,死。N2 錯殺修復=一日行情:BeatDip 隔日 −0.48,當天彈過的隔日 −1.32(反彈回吐)— 絕不留倉。N3 gap>=10 隔日普遍偏空(守住與否皆負,正率 ~40%)— heated 規則泛化。N4 午後微負(−0.3)— 不留尾盤維持但理由溫和。N5 週五效應:gap-up>=4 盤中均 −3.18(n=203),7/11 週五為負、剔非農日仍 −2.13,集中 6-7 月 = regime 級。",
   "decision": "avoid_rules 增兩條:friday_gapup_caution(軟:週五 gap-up 多單降半倉/提前出,DTC fade 順風)、no_overnight_any(硬:一律當日了結,禁「強勢可留倉」措辭)。",
   "scripts": "scratchpad/me_r27_nextday.py"
+ },
+ {
+  "date": "2026-08-08",
+  "name": "R28-R31 全面重建完成 + 首個 live 對帳日",
+  "what": "R28:447 檔分層 x 24 opus 歸因 + 3 主題綜合 + fable 仲裁(quota 中斷後 resume 快取續跑)。R30 處刑 8 假設:MnA-Pin/拋物線崩解/微型中段(dtc 條件無判別力改全帶)/擁擠贏家隔日空(當日宣稱死)存活;HeatedNoEarnFade/恐慌接刀/大beat深跳空 陣亡。R31:BeatenSqueezeGo 執行層 58%/+0.59R(對照組判別 5.7pt;7月集群風險)。重建 trade_setups.json v2:5 setup(新增 BSG)+ 5 avoid_rules(無回補買盤機制家族統一)+ 全員 kill criteria。8/7 verify:day 34%(誤差全在禁區樂透股);spike live 首日:帶內率 48%、到價率 70/42/22 vs 基準 67/46/27 = 校準貼線;質化層 +0.04 首次轉正。首筆正式 ideas:DBX +0.53R / TXG +1.53R 雙雙觸標,live ledger +2.06R 開張。",
+  "decision": "順位 v5 生效(BSG 進第三);核心世界觀更新:方向=perf1M(beaten/heated)x 前瞻品質的交乘,DTC=回補天數而非情緒指標,無回補買盤家族=統一禁區。",
+  "scripts": "scratchpad/me_r28_final.json(447檔歸因+仲裁全文), me_r30_validate.py, me_r31_bsg.py, score_0807.py"
  }
 ]
