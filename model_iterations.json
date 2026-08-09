@@ -1,425 +1,435 @@
 [
- {
-  "iteration": 1,
-  "n": 972,
-  "v1": {
-   "mae": 5.26,
-   "bias": 0.06
+  {
+    "iteration": 1,
+    "n": 972,
+    "v1": {
+      "mae": 5.26,
+      "bias": 0.06
+    },
+    "blind": {
+      "v1 現行": {
+        "mae": 5.58,
+        "rho": 0.73
+      },
+      "v2 市值分層斜率": {
+        "mae": 5.77,
+        "rho": 0.71
+      },
+      "v3 rev_surp修正": {
+        "mae": 5.59,
+        "rho": 0.72
+      }
+    },
+    "hi_table": {
+      "earnings|+2~4": {
+        "n": 64,
+        "ext_med": 2.0,
+        "ext_p75": 5.2
+      },
+      "earnings|+4~7": {
+        "n": 108,
+        "ext_med": 2.6,
+        "ext_p75": 5.3
+      },
+      "earnings|+7~12": {
+        "n": 69,
+        "ext_med": 2.1,
+        "ext_p75": 5.9
+      },
+      "earnings|+12~25": {
+        "n": 64,
+        "ext_med": 4.8,
+        "ext_p75": 7.9
+      },
+      "earnings|>+25": {
+        "n": 22,
+        "ext_med": 5.6,
+        "ext_p75": 9.9
+      },
+      "contract|+2~4": {
+        "n": 26,
+        "ext_med": 4.4,
+        "ext_p75": 7.3
+      },
+      "contract|+4~7": {
+        "n": 46,
+        "ext_med": 3.6,
+        "ext_p75": 6.5
+      },
+      "contract|+7~12": {
+        "n": 27,
+        "ext_med": 4.7,
+        "ext_p75": 7.2
+      },
+      "contract|+12~25": {
+        "n": 24,
+        "ext_med": 11.1,
+        "ext_p75": 17.4
+      },
+      "contract|>+25": {
+        "n": 15,
+        "ext_med": 4.3,
+        "ext_p75": 9.7
+      }
+    }
   },
-  "blind": {
-   "v1 現行": {
-    "mae": 5.58,
-    "rho": 0.73
-   },
-   "v2 市值分層斜率": {
-    "mae": 5.77,
-    "rho": 0.71
-   },
-   "v3 rev_surp修正": {
-    "mae": 5.59,
-    "rho": 0.72
-   }
+  {
+    "iteration": 2,
+    "high_model": {
+      "earnings": {
+        "a": 4.31,
+        "b": 1.05
+      },
+      "contract": {
+        "a": 10.82,
+        "b": 0.57
+      }
+    },
+    "bands": {
+      "mega ≥$100B": {
+        "n": 95,
+        "p10": -5.0,
+        "p25": -1.8,
+        "p75": 1.5,
+        "p90": 3.8
+      },
+      "large $10-100B": {
+        "n": 314,
+        "p10": -5.3,
+        "p25": -2.6,
+        "p75": 2.0,
+        "p90": 5.9
+      },
+      "mid $2-10B": {
+        "n": 146,
+        "p10": -9.4,
+        "p25": -5.5,
+        "p75": 3.3,
+        "p90": 8.3
+      },
+      "small $0.5-2B": {
+        "n": 90,
+        "p10": -7.9,
+        "p25": -3.6,
+        "p75": 6.7,
+        "p90": 12.2
+      },
+      "micro <$0.5B": {
+        "n": 134,
+        "p10": -15.7,
+        "p25": -7.8,
+        "p75": 6.5,
+        "p90": 15.7
+      }
+    },
+    "micro_wild": 21,
+    "high_blind_rho": 0.83
   },
-  "hi_table": {
-   "earnings|+2~4": {
-    "n": 64,
-    "ext_med": 2.0,
-    "ext_p75": 5.2
-   },
-   "earnings|+4~7": {
-    "n": 108,
-    "ext_med": 2.6,
-    "ext_p75": 5.3
-   },
-   "earnings|+7~12": {
-    "n": 69,
-    "ext_med": 2.1,
-    "ext_p75": 5.9
-   },
-   "earnings|+12~25": {
-    "n": 64,
-    "ext_med": 4.8,
-    "ext_p75": 7.9
-   },
-   "earnings|>+25": {
-    "n": 22,
-    "ext_med": 5.6,
-    "ext_p75": 9.9
-   },
-   "contract|+2~4": {
-    "n": 26,
-    "ext_med": 4.4,
-    "ext_p75": 7.3
-   },
-   "contract|+4~7": {
-    "n": 46,
-    "ext_med": 3.6,
-    "ext_p75": 6.5
-   },
-   "contract|+7~12": {
-    "n": 27,
-    "ext_med": 4.7,
-    "ext_p75": 7.2
-   },
-   "contract|+12~25": {
-    "n": 24,
-    "ext_med": 11.1,
-    "ext_p75": 17.4
-   },
-   "contract|>+25": {
-    "n": 15,
-    "ext_med": 4.3,
-    "ext_p75": 9.7
-   }
-  }
- },
- {
-  "iteration": 2,
-  "high_model": {
-   "earnings": {
-    "a": 4.31,
-    "b": 1.05
-   },
-   "contract": {
-    "a": 10.82,
-    "b": 0.57
-   }
+  {
+    "iteration": 3,
+    "kpi": "hit50",
+    "results": {
+      "v1": 37,
+      "v2": 38,
+      "v3": 38,
+      "v4": 38,
+      "v5": 38
+    }
   },
-  "bands": {
-   "mega ≥$100B": {
-    "n": 95,
-    "p10": -5.0,
-    "p25": -1.8,
-    "p75": 1.5,
-    "p90": 3.8
-   },
-   "large $10-100B": {
-    "n": 314,
-    "p10": -5.3,
-    "p25": -2.6,
-    "p75": 2.0,
-    "p90": 5.9
-   },
-   "mid $2-10B": {
-    "n": 146,
-    "p10": -9.4,
-    "p25": -5.5,
-    "p75": 3.3,
-    "p90": 8.3
-   },
-   "small $0.5-2B": {
-    "n": 90,
-    "p10": -7.9,
-    "p25": -3.6,
-    "p75": 6.7,
-    "p90": 12.2
-   },
-   "micro <$0.5B": {
-    "n": 134,
-    "p10": -15.7,
-    "p25": -7.8,
-    "p75": 6.5,
-    "p90": 15.7
-   }
+  {
+    "iteration": 4,
+    "cat_score_ic": "全體+0.04 small+0.07(弱)",
+    "hit": {
+      "v2 基準": 38,
+      "v6 +cat_score": 38,
+      "v7 +dow": 38
+    }
   },
-  "micro_wild": 21,
-  "high_blind_rho": 0.83
- },
- {
-  "iteration": 3,
-  "kpi": "hit50",
-  "results": {
-   "v1": 37,
-   "v2": 38,
-   "v3": 38,
-   "v4": 38,
-   "v5": 38
+  {
+    "iteration": 5,
+    "finding": "rot(盤前換手率) small gap-up IC+0.39 五分位6.3→54.6",
+    "v8_note": "見輸出"
+  },
+  {
+    "iteration": 6,
+    "v9": {
+      "overall": 39,
+      "big": 57,
+      "mid": 40,
+      "small": 23,
+      "rho": 0.71,
+      "small_mae": 16.82
+    }
+  },
+  {
+    "iteration": 7,
+    "note": "8/4 finals refresh",
+    "fixed": 167,
+    "v9": {
+      "overall": 38,
+      "big": 55,
+      "mid": 37,
+      "small": 23,
+      "rho": 0.71
+    }
+  },
+  {
+    "iteration": 8,
+    "note": "full-history merge (5/13 recovered + studies)",
+    "added": 69,
+    "total": 3429,
+    "v9": {
+      "overall": 37,
+      "rho": 0.7
+    }
+  },
+  {
+    "iteration": 9,
+    "note": "fundamentals into all_events + strict WF + v10 gated"
+  },
+  {
+    "iteration": 10,
+    "note": "cold-audit fixes: hinge+robust, rot small-up only, dedup, 4-tier disclosure"
+  },
+  {
+    "iteration": 11,
+    "note": "tv.chart trajectory factors: surp_trend/eps_accel alive (day IC), absorbed by gap; v12 tested"
+  },
+  {
+    "iteration": 12,
+    "cmd": "refit",
+    "date": "2026-08-06",
+    "n": 3586,
+    "blind": {
+      "hit": 41.9,
+      "rho": 0.736,
+      "tiers": {
+        "big": 55.7,
+        "mid": 40.6,
+        "small": 30.0,
+        "na": 37.1
+      }
+    }
+  },
+  {
+    "date": "2026-08-07",
+    "name": "trade-ideas ex-ante 月回測",
+    "what": "7/7-8/5 用盤前事實(surprise/DTC)+實際開盤 gap 機械選 ideas,5m bars 模擬。BeatDip 開盤進場 47 筆 avgR -0.22(停損 2.5-6% 全負);10:30 進場翻正 avgR +0.13(>=10B +0.23/勝率 59%,六格全同向)。DTC5:6 月 38 筆 +0.84R、7 月 17 筆 -0.19R,合計 +0.52R。6 月非財報季 BeatDip 僅 2 筆無法 OOS。",
+    "decision": "SKILL 定調:錯殺反彈 10:30 前不進場、>=10B 優先、標樣本累積中;ideas 必須盤前寫入(mtime 為準);8/6 盤中寫的首批不計戰績。",
+    "scripts": "scratchpad/ideas_backtest.py, ideas_bt_grid.py, ideas_bt_oos.py"
+  },
+  {
+    "iteration": 14,
+    "cmd": "refit",
+    "date": "2026-08-07",
+    "n": 3734,
+    "blind": {
+      "hit": 42.5,
+      "rho": 0.742,
+      "tiers": {
+        "big": 55.9,
+        "mid": 41.0,
+        "small": 30.2,
+        "na": 44.0
+      }
+    }
+  },
+  {
+    "date": "2026-08-07",
+    "name": "trade-ideas 迭代循環 Iter1-5(7/7-8/5 主窗+6月DTC5延伸)",
+    "iters": [
+      "Iter1 BeatDip變體:10:30進場基線(n=69未封頂)+0.19R → +承接濾網(>早盤低0.5%)+0.23 → +結構停損(早盤低-0.5%)v2c +0.27;>=10B v2c: 64%勝/+0.48R(n=33)",
+      "Iter2 他setup同月:大合約fade short(gap>=15,R=20%)77%勝/+0.82R(n=13,重現歷史驗證);雙29% OPG -0.27R(n=42)本月失效 — 先前+0.30R來自更長窗,7月gap-up fade regime",
+      "Iter3 組合v1(<=5筆/日):+10.6R/月,DTC5拖累-11.6R",
+      "Iter4 DTC5滾動開關(前10筆累積R>0才做,ex-ante可執行,首組參數未掃格):全期+0.13→+0.29R,7月虧損-11.4→-4.5R,被擋的平均-0.20R",
+      "Iter5 組合v2(DTC5加開關):n=63,51%勝,+0.30R/筆,+18.8R/月"
+    ],
+    "decision": "採用:BeatDip=10:30+承接濾網+結構停損+>=10B優先;DTC5加滾動開關(關=跳過或減半);雙29%單獨降權標樣本重驗;全部標注「7月樣本調出,8月起live ex-ante驗證」",
+    "scripts": "scratchpad/ideas_iter.py, ideas_iter4.py, ideas_iter5.py, iter_curves.json"
+  },
+  {
+    "date": "2026-08-07",
+    "name": "全檔案庫回測(5/13-8/5,60m bars)— Iter6",
+    "what": "60m粒度驗證:7月60m vs 5m結果幾乎一致(+0.28/+0.48 vs +0.27/+0.48)→5-6月延伸可信。全期:BeatDip v2c >=10B +0.60R(n=48)四個月全正、開盤進對照+0.07;DTC5全做-0.01R(n=149)近零edge,開關仍有分辨力(+0.05 vs -0.09);Contract fade 71%/+0.47R(n=28)穩;G29 -0.24R(n=60)兩窗皆負。組合v2全期+31.6R,其中BeatDip+26.8、Contract+9.9扛全場。",
+    "decision": "BeatDip 10:30版升級為全庫驗證主setup;DTC5降級thin-edge=必開滾動開關+減半倉;G29移出idea來源(只留評分因子);組合以BeatDip+Contract為主體。注意DTC5的60m模擬有保守偏誤(同根K先算停損),粒度敏感性已註記。",
+    "scripts": "scratchpad/ideas_full.py, full_curve.json, bt_60m_cache.json"
+  },
+  {
+    "date": "2026-08-07",
+    "name": "每日 Top2 版(使用者指示)— Iter7",
+    "what": "全庫 59 天:每日只選 2 筆(順位 BeatDip>=10B > Contract > BeatDip小 > DTC5開關)。surprise 排序版 +35.6R(BeatDip 被排序拖到 +0.13/筆);改市值排序(單點修正,依據=因子驗證早證實 surprise 在 gap 後無殘餘訊號)→ +42.7R、+0.51R/筆、勝率 53%、1.7 筆/日,勝過每日 5 筆版 +31.6R。DTC5 在此組合裡只補位非財報日,n=26 +0.78R。",
+    "decision": "trade_ideas 每日上限 2 檔(常設);BeatDip 同 setup 內按市值排序。",
+    "scripts": "scratchpad/ideas_top2.py, top2_curve.json"
+  },
+  {
+    "date": "2026-08-07",
+    "name": "cap10x10 edge 測試(使用者提問)— Iter8",
+    "what": "全庫 59 天、市值>=10B。定義A(gap>=+10):n=62 抱到收盤停2.5 avgR+0.39(勝率34%,肥尾);定義B(任一成長/驚奇>=100 + gap>=4):n=140 avgR+0.25 較穩(四月3正1平)。關鍵:gap-up 趨勢 edge 在開盤,10:30 進場歸零(-0.02)— 與 BeatDip 鏡像相反;2R 固定目標砍尾巴(+0.14~0.18)不如抱收盤。",
+    "decision": "列為已驗證候補(B定義):暫不進每日 Top2 陣容;無 BeatDip/Contract 候選日可補位取代 DTC5 — 待使用者裁決。",
+    "scripts": "scratchpad/ideas_cap1010.py"
+  },
+  {
+    "date": "2026-08-07",
+    "name": "cap10x10 盤中出場版(使用者:不要抱到收盤)— Iter9",
+    "what": "出場網格(2/3/4R x 11:30/13:30 ET,停2.5):A定義純13:30出 +0.41R(n=62,4/4月正,比抱收盤+0.39還高);A 4R否則11:30出 +0.36(4/4月正);B 4R否則13:30 +0.24(3/4)。edge 全在開盤→中午趨勢段,尾盤零貢獻 — 與 8/6 五檔午後吐回觀察一致。",
+    "decision": "cap10x10 正式配置:開盤進、停2.5%、4R到就走、最晚11:30(保守)或13:30出;不抱收盤。仍為候補 setup,進不進 Top2 待使用者裁決。",
+    "scripts": "scratchpad/ideas_cap1010_intraday.py"
+  },
+  {
+    "date": "2026-08-07",
+    "name": "Top2 v3 陣容 + Setup 手冊上站 — Iter10",
+    "what": "v3(加 cap10x10 第三順位):n=93、52%勝、+0.46R/筆、+42.6R、四個月皆正(v2 +42.7R 但 8 月負)— 以 gap-up 腿換月度平滑,採用。網站 Ideas 分頁新增 Setup 手冊(trade_setups.json:規則/全庫統計/狀態/my_take),模型欄顯示 blind 42.5%/rho0.742/n=3734。",
+    "decision": "順位 v3 生效;trade_setups.json 為手冊正本,迭代後必須同步更新 stats+my_take;renderSetupsBook() 於 Ideas 分頁渲染。",
+    "scripts": "scratchpad/ideas_top2_v3.py, D:/SIPs/trade_setups.json"
+  },
+  {
+    "iteration": 21,
+    "cmd": "refit",
+    "date": "2026-08-07",
+    "n": 3734,
+    "blind": {
+      "hit": 42.5,
+      "rho": 0.742,
+      "tiers": {
+        "big": 55.9,
+        "mid": 41.0,
+        "small": 30.2,
+        "na": 44.0
+      }
+    }
+  },
+  {
+    "iteration": 22,
+    "cmd": "refit",
+    "date": "2026-08-07",
+    "n": 3734,
+    "blind": {
+      "hit": 42.5,
+      "rho": 0.742,
+      "tiers": {
+        "big": 55.9,
+        "mid": 41.0,
+        "small": 30.2,
+        "na": 44.0
+      }
+    }
+  },
+  {
+    "date": "2026-08-07",
+    "name": "統整分析 12 輪(使用者:全部因子+現有條件一起分析、預測盤中最高、抓包 gap 回聲)",
+    "rounds": [
+      "R1 edge=盲測predDay-gap vs intra:IC 0.074 弱;非單調(中段最好)",
+      "R2 全因子×edge:訊號集中在負端;contract 段 bottom 五分位 intra -10.6",
+      "R3 over-gap fade 裸空:edge<=-10 67%勝 +6.8%(無停損)",
+      "R4 使用者情境(品質好+gap小+模型預期高 開盤買):全部變體 +0.1~0.6% 不可交易 — 陣亡",
+      "R5/R6 月拆+門檻:fade 3/4 月正、long 全弱",
+      "R7 執行現實(60m+停損):泛化 fade 剩 +0.09R;拆解=contract 段 +0.85R(既有 setup)+ 非contract ~0 — 泛化陣亡",
+      "R8 spike-capture 掛單(TP4/stop2.5):全 cell 大負(保守雙觸規則)— 陣亡",
+      "R9 TP/停損網格:無解",
+      "R10 審計:v12 各段 gap 斜率 0.9-1.1;裸 gap 基線盲測 44.5% > v12 42.9% — 使用者抓包成立,predDay=gap 回聲",
+      "R11 目標重建=盤中最高 spike(vs 開盤):segmed 分桶 IC 0.341/命中 51.3%,完勝回歸與 naive;big 段 spike 小(中位2.6%)無預測空間,small/momentum/news IC 0.2-0.35",
+      "R12 加細桶+bumps:沒有贏(49.7% vs 51.3%)→ 簡單 type×tier 桶定版;P25-P75 帶內率 50% 校準完美",
+      "R13/R14 上線:model_predict.spike_table() 即時算桶;卡片主打預測盤中最高+區間+開盤後再衝,收盤欄改標「慣性基準(≈gap)」;verify 加 spike 帶內率追蹤"
+    ],
+    "decision": "卡片重建上線;所有負結果照實記錄;predDay 降級為慣性基準不再稱預測。",
+    "scripts": "scratchpad/me_r1.py, me_r3.py, me_r7.py, me_r8.py, me_r10_audit.py, me_r11_hi.py, me_r12_hi.py"
+  },
+  {
+    "date": "2026-08-07",
+    "name": "R15-R17 逐檔 spike GBM(使用者二次抓包:分桶=同類全同常數)",
+    "what": "R15 HistGBR 分位模型全因子(gap/rot/mcap/DTC/shortfloat/float/量/surprise/YoY/perf/type):桶內 IC +0.206(桶常數版=0)、整體 IC 0.396(桶版 0.315)、逐月 0.35-0.40 全穩;momentum|small 桶內 +0.361、m&a|small +0.333、earnings|big +0.158。R16 訓練殘差校準帶內率僅 35%(過擬合)→ R16b split-conformal(訓練段後 20% 日期當校準集)45%。R17 上線:model_lab spikefit → model_spike.pkl,model_predict 逐檔推論(122 檔 106 個不同向量),分桶降 fallback。事故:sidecar 舊模組把新注入蓋掉 → 重啟後正常,規則入 SKILL。",
+    "decision": "逐檔 GBM 定版;verify 追帶內率(<35%/>65% 連兩日=重訓);refit 連動 spikefit。",
+    "scripts": "scratchpad/me_r15_gbm.py, me_r16_calib.py; D:/SIPs/model_lab.py cmd_spikefit, model_predict.py spike_from_gbm"
+  },
+  {
+    "iteration": 25,
+    "cmd": "refit",
+    "date": "2026-08-07",
+    "n": 3734,
+    "blind": {
+      "hit": 42.5,
+      "rho": 0.742,
+      "tiers": {
+        "big": 55.9,
+        "mid": 41.0,
+        "small": 30.2,
+        "na": 44.0
+      }
+    }
+  },
+  {
+    "date": "2026-08-08",
+    "name": "R18/R18b OPG+2.5%停損 交易 spike 預測(使用者指令)",
+    "what": "R18 日線保守雙觸規則證明不可用(gap>=2 全滅 0% — 粒度偏誤);R18b 60m 真實時序:TP=P25 全做 -0.21R、TP=P50 -0.02R、EV閘門 P50>=7.5 恰好 0.00R(19%勝);big/mid 層 +0.75/+0.56R 但 n=10/27 太小僅列觀察。機制:spike 預測大 = 波動大 = 2.5% 停損先死,預測愈激進矛盾愈重。",
+    "decision": "spike 模型定位=出場工具(掛單位+到價率),不做進場訊號;進場仍由已驗證 setup 負責。big/mid EV 閘門子集列觀察名單,live 樣本累積後再議。",
+    "scripts": "scratchpad/me_r18_opg.py, me_r18b_opg.py"
+  },
+  {
+    "date": "2026-08-08",
+    "name": "R19-R21b 因子迭代圈(收盤GBM/下行模型/自適應停損)",
+    "what": "R19 GBM全因子做收盤:39.9% < 裸gap 45.0% — 第三次確認收盤位置不可預測(50% KPI 在收盤維度打不到;spike 維度命中 52% 已過標)。R20 下行模型(開盤後最大回落):IC 0.837、P75停損位覆蓋72%(理想75)— 波動高度可預測。R21 拿它放寬停損:勝率43→55但avgR +0.24→+0.02(1R變大毀掉4R賠率)— 失敗。R21b 當跳過濾網:cap10x10 全體預測回落>4%,組內無區分力 — 失敗。",
+    "decision": "下行模型定位=倉位資訊工具(這檔正常晃動範圍多大→倉位縮放、心理預期),不做停損不做濾網;緊停損是 cap10x10 肥尾結構的必要成分,不許放寬。收盤預測維持 gap 慣性標示。",
+    "scripts": "scratchpad/me_r19_day.py, me_r20_dn.py, me_r21b_filter.py"
+  },
+  {
+    "date": "2026-08-08",
+    "name": "R22-R24 全因子綜合質化分析(使用者指令:多 fable 逐檔歸因+組合矩陣+迭代)",
+    "what": "R22a 組合矩陣(147 個 n>=40 組合):gapDN surp+fresh +0.88/59%勝/4正月、gapDN N+fresh +1.64/62%、gapUP DTC>5 -1.36/0正月、gapUP N -1.11。R22b 6 fable 逐檔歸因 48 事件+1 fable 綜合出 9 假設(496K tokens)。R23 框架驗證:fresh 在 10:30 框架內無增益(承接濾網已代勞)降 tie-breaker;DTC>5 gap-up 10:30 fade short n=149/53%/+0.17R/4正月成立。R24 全庫殺假設:H3 低DTC血洗強確認(n=86 intra -15.1/隔日 -12.7/74%負)、H4 殘股鐵律確認(n=75 雙向 -9)、H1 弱化(隔日 -4.1/63%負)、H2 否決、H5/H7/H8/H9 樣本不足列觀察。",
+    "decision": "陣容 v4:⑤ DTC fade 空單取代 DTC5 多單;trade_setups.json 新增 avoid_rules 三條禁區(blowoff 禁多/殘股雙向禁區/heated 禁隔夜多),ideas 選股前必過;dtc_squeeze 卡片旗標改為 fade 警告;fresh 為 BeatDip tie-breaker。",
+    "scripts": "scratchpad/me_r22_combo.py, me_r22_result.json(48 檔歸因全文), me_r23_refine.py, me_r24_validate.py"
+  },
+  {
+    "date": "2026-08-08",
+    "name": "R25 Top2 v4 全庫組合驗證",
+    "what": "v4(⑤=DTC fade 空單 + avoid_rules 禁區):n=95、勝率 55%、+0.45R/筆、+42.7R、四月全正;DTCfade 槽 12 筆 75% 勝 +0.84R,四個 setup 全正貢獻(v3:52%/+42.6R,DTC5 多單槽靠 3R 樂透)。",
+    "decision": "v4 定版生效;lineup 與 SKILL 數字同步。",
+    "scripts": "scratchpad/me_r25_top2v4.py"
+  },
+  {
+    "date": "2026-08-08",
+    "name": "R26 現役 setup 微調測試(兩項皆不採用)",
+    "what": "R26a 大合約 fade 進場時機:開盤空 +0.24R > 10:30 空 +0.14R(n=25,勝率同 64%)— 合約 pump 頂點在開盤,現行規則不變。R26b cap10x10 加盲測 spike p50 閘門(3/4/5 網格):avgR +0.23→+0.40 但 n 140→24、六月全格負 — 閘門集中風險未修弱月,不採用。",
+    "decision": "兩項維持現狀;負結果照記。10:30 時機規則只適用 gap-down 承接與 DTC 假軋空,不得外推到合約 fade。",
+    "scripts": "scratchpad/me_r26.py"
+  },
+  {
+    "date": "2026-08-08",
+    "name": "R27 新假設家族:隔日結構+午後結構+星期效應",
+    "what": "N1 PEAD(強收盤隔日續漲):52% 正率 ≈ 擲硬幣,死。N2 錯殺修復=一日行情:BeatDip 隔日 −0.48,當天彈過的隔日 −1.32(反彈回吐)— 絕不留倉。N3 gap>=10 隔日普遍偏空(守住與否皆負,正率 ~40%)— heated 規則泛化。N4 午後微負(−0.3)— 不留尾盤維持但理由溫和。N5 週五效應:gap-up>=4 盤中均 −3.18(n=203),7/11 週五為負、剔非農日仍 −2.13,集中 6-7 月 = regime 級。",
+    "decision": "avoid_rules 增兩條:friday_gapup_caution(軟:週五 gap-up 多單降半倉/提前出,DTC fade 順風)、no_overnight_any(硬:一律當日了結,禁「強勢可留倉」措辭)。",
+    "scripts": "scratchpad/me_r27_nextday.py"
+  },
+  {
+    "date": "2026-08-08",
+    "name": "R28-R31 全面重建完成 + 首個 live 對帳日",
+    "what": "R28:447 檔分層 x 24 opus 歸因 + 3 主題綜合 + fable 仲裁(quota 中斷後 resume 快取續跑)。R30 處刑 8 假設:MnA-Pin/拋物線崩解/微型中段(dtc 條件無判別力改全帶)/擁擠贏家隔日空(當日宣稱死)存活;HeatedNoEarnFade/恐慌接刀/大beat深跳空 陣亡。R31:BeatenSqueezeGo 執行層 58%/+0.59R(對照組判別 5.7pt;7月集群風險)。重建 trade_setups.json v2:5 setup(新增 BSG)+ 5 avoid_rules(無回補買盤機制家族統一)+ 全員 kill criteria。8/7 verify:day 34%(誤差全在禁區樂透股);spike live 首日:帶內率 48%、到價率 70/42/22 vs 基準 67/46/27 = 校準貼線;質化層 +0.04 首次轉正。首筆正式 ideas:DBX +0.53R / TXG +1.53R 雙雙觸標,live ledger +2.06R 開張。",
+    "decision": "順位 v5 生效(BSG 進第三);核心世界觀更新:方向=perf1M(beaten/heated)x 前瞻品質的交乘,DTC=回補天數而非情緒指標,無回補買盤家族=統一禁區。",
+    "scripts": "scratchpad/me_r28_final.json(447檔歸因+仲裁全文), me_r30_validate.py, me_r31_bsg.py, score_0807.py"
+  },
+  {
+    "iteration": 33,
+    "cmd": "refit",
+    "date": "2026-08-08",
+    "n": 3883,
+    "blind": {
+      "hit": 42.7,
+      "rho": 0.738,
+      "tiers": {
+        "big": 56.3,
+        "mid": 41.8,
+        "small": 29.8,
+        "na": 44.9
+      }
+    }
+  },
+  {
+    "iteration": 34,
+    "cmd": "setup-audit",
+    "date": "2026-08-09",
+    "setup": "beatdip",
+    "finding": "首個 live 日(2026-08-07)記為 2/2 +2.06R 不成立。DBX/TXG 兩筆 idea 以盤後報價(−6.49% / −5.08%)判定合格,但 09:30 實際開盤 gap 分別為 +3.01% 與 +0.18%,皆不在 setup 條件的 −4%~−18% 帶。跳空在開盤前完全反轉。",
+    "secondary_finding": "DBX 計分瑕疵:10:30 進場價 35.15 已高於平盤 34.54,「回到平盤」目標於進場當下即滿足,不應記 TARGET +0.53R(硬跑到收盤為 −0.24R)。",
+    "action": "live_ledger 歸零(n=0);進場規則加入 09:30 開盤 gap 硬複核閘門;盤前/盤後報價降級為選名單用途,不得作為合格判定。",
+    "note": "與 model verify 長期觀察一致 — 盤前快照 vs 開盤 gap 的落差是本系統反覆出現的輸入時點誤差(8/5 中位差 6.1pt,8/7 中位差 1.9pt 但個股尾巴極大)。"
   }
- },
- {
-  "iteration": 4,
-  "cat_score_ic": "全體+0.04 small+0.07(弱)",
-  "hit": {
-   "v2 基準": 38,
-   "v6 +cat_score": 38,
-   "v7 +dow": 38
-  }
- },
- {
-  "iteration": 5,
-  "finding": "rot(盤前換手率) small gap-up IC+0.39 五分位6.3→54.6",
-  "v8_note": "見輸出"
- },
- {
-  "iteration": 6,
-  "v9": {
-   "overall": 39,
-   "big": 57,
-   "mid": 40,
-   "small": 23,
-   "rho": 0.71,
-   "small_mae": 16.82
-  }
- },
- {
-  "iteration": 7,
-  "note": "8/4 finals refresh",
-  "fixed": 167,
-  "v9": {
-   "overall": 38,
-   "big": 55,
-   "mid": 37,
-   "small": 23,
-   "rho": 0.71
-  }
- },
- {
-  "iteration": 8,
-  "note": "full-history merge (5/13 recovered + studies)",
-  "added": 69,
-  "total": 3429,
-  "v9": {
-   "overall": 37,
-   "rho": 0.7
-  }
- },
- {
-  "iteration": 9,
-  "note": "fundamentals into all_events + strict WF + v10 gated"
- },
- {
-  "iteration": 10,
-  "note": "cold-audit fixes: hinge+robust, rot small-up only, dedup, 4-tier disclosure"
- },
- {
-  "iteration": 11,
-  "note": "tv.chart trajectory factors: surp_trend/eps_accel alive (day IC), absorbed by gap; v12 tested"
- },
- {
-  "iteration": 12,
-  "cmd": "refit",
-  "date": "2026-08-06",
-  "n": 3586,
-  "blind": {
-   "hit": 41.9,
-   "rho": 0.736,
-   "tiers": {
-    "big": 55.7,
-    "mid": 40.6,
-    "small": 30.0,
-    "na": 37.1
-   }
-  }
- },
- {
-  "date": "2026-08-07",
-  "name": "trade-ideas ex-ante 月回測",
-  "what": "7/7-8/5 用盤前事實(surprise/DTC)+實際開盤 gap 機械選 ideas,5m bars 模擬。BeatDip 開盤進場 47 筆 avgR -0.22(停損 2.5-6% 全負);10:30 進場翻正 avgR +0.13(>=10B +0.23/勝率 59%,六格全同向)。DTC5:6 月 38 筆 +0.84R、7 月 17 筆 -0.19R,合計 +0.52R。6 月非財報季 BeatDip 僅 2 筆無法 OOS。",
-  "decision": "SKILL 定調:錯殺反彈 10:30 前不進場、>=10B 優先、標樣本累積中;ideas 必須盤前寫入(mtime 為準);8/6 盤中寫的首批不計戰績。",
-  "scripts": "scratchpad/ideas_backtest.py, ideas_bt_grid.py, ideas_bt_oos.py"
- },
- {
-  "iteration": 14,
-  "cmd": "refit",
-  "date": "2026-08-07",
-  "n": 3734,
-  "blind": {
-   "hit": 42.5,
-   "rho": 0.742,
-   "tiers": {
-    "big": 55.9,
-    "mid": 41.0,
-    "small": 30.2,
-    "na": 44.0
-   }
-  }
- },
- {
-  "date": "2026-08-07",
-  "name": "trade-ideas 迭代循環 Iter1-5(7/7-8/5 主窗+6月DTC5延伸)",
-  "iters": [
-   "Iter1 BeatDip變體:10:30進場基線(n=69未封頂)+0.19R → +承接濾網(>早盤低0.5%)+0.23 → +結構停損(早盤低-0.5%)v2c +0.27;>=10B v2c: 64%勝/+0.48R(n=33)",
-   "Iter2 他setup同月:大合約fade short(gap>=15,R=20%)77%勝/+0.82R(n=13,重現歷史驗證);雙29% OPG -0.27R(n=42)本月失效 — 先前+0.30R來自更長窗,7月gap-up fade regime",
-   "Iter3 組合v1(<=5筆/日):+10.6R/月,DTC5拖累-11.6R",
-   "Iter4 DTC5滾動開關(前10筆累積R>0才做,ex-ante可執行,首組參數未掃格):全期+0.13→+0.29R,7月虧損-11.4→-4.5R,被擋的平均-0.20R",
-   "Iter5 組合v2(DTC5加開關):n=63,51%勝,+0.30R/筆,+18.8R/月"
-  ],
-  "decision": "採用:BeatDip=10:30+承接濾網+結構停損+>=10B優先;DTC5加滾動開關(關=跳過或減半);雙29%單獨降權標樣本重驗;全部標注「7月樣本調出,8月起live ex-ante驗證」",
-  "scripts": "scratchpad/ideas_iter.py, ideas_iter4.py, ideas_iter5.py, iter_curves.json"
- },
- {
-  "date": "2026-08-07",
-  "name": "全檔案庫回測(5/13-8/5,60m bars)— Iter6",
-  "what": "60m粒度驗證:7月60m vs 5m結果幾乎一致(+0.28/+0.48 vs +0.27/+0.48)→5-6月延伸可信。全期:BeatDip v2c >=10B +0.60R(n=48)四個月全正、開盤進對照+0.07;DTC5全做-0.01R(n=149)近零edge,開關仍有分辨力(+0.05 vs -0.09);Contract fade 71%/+0.47R(n=28)穩;G29 -0.24R(n=60)兩窗皆負。組合v2全期+31.6R,其中BeatDip+26.8、Contract+9.9扛全場。",
-  "decision": "BeatDip 10:30版升級為全庫驗證主setup;DTC5降級thin-edge=必開滾動開關+減半倉;G29移出idea來源(只留評分因子);組合以BeatDip+Contract為主體。注意DTC5的60m模擬有保守偏誤(同根K先算停損),粒度敏感性已註記。",
-  "scripts": "scratchpad/ideas_full.py, full_curve.json, bt_60m_cache.json"
- },
- {
-  "date": "2026-08-07",
-  "name": "每日 Top2 版(使用者指示)— Iter7",
-  "what": "全庫 59 天:每日只選 2 筆(順位 BeatDip>=10B > Contract > BeatDip小 > DTC5開關)。surprise 排序版 +35.6R(BeatDip 被排序拖到 +0.13/筆);改市值排序(單點修正,依據=因子驗證早證實 surprise 在 gap 後無殘餘訊號)→ +42.7R、+0.51R/筆、勝率 53%、1.7 筆/日,勝過每日 5 筆版 +31.6R。DTC5 在此組合裡只補位非財報日,n=26 +0.78R。",
-  "decision": "trade_ideas 每日上限 2 檔(常設);BeatDip 同 setup 內按市值排序。",
-  "scripts": "scratchpad/ideas_top2.py, top2_curve.json"
- },
- {
-  "date": "2026-08-07",
-  "name": "cap10x10 edge 測試(使用者提問)— Iter8",
-  "what": "全庫 59 天、市值>=10B。定義A(gap>=+10):n=62 抱到收盤停2.5 avgR+0.39(勝率34%,肥尾);定義B(任一成長/驚奇>=100 + gap>=4):n=140 avgR+0.25 較穩(四月3正1平)。關鍵:gap-up 趨勢 edge 在開盤,10:30 進場歸零(-0.02)— 與 BeatDip 鏡像相反;2R 固定目標砍尾巴(+0.14~0.18)不如抱收盤。",
-  "decision": "列為已驗證候補(B定義):暫不進每日 Top2 陣容;無 BeatDip/Contract 候選日可補位取代 DTC5 — 待使用者裁決。",
-  "scripts": "scratchpad/ideas_cap1010.py"
- },
- {
-  "date": "2026-08-07",
-  "name": "cap10x10 盤中出場版(使用者:不要抱到收盤)— Iter9",
-  "what": "出場網格(2/3/4R x 11:30/13:30 ET,停2.5):A定義純13:30出 +0.41R(n=62,4/4月正,比抱收盤+0.39還高);A 4R否則11:30出 +0.36(4/4月正);B 4R否則13:30 +0.24(3/4)。edge 全在開盤→中午趨勢段,尾盤零貢獻 — 與 8/6 五檔午後吐回觀察一致。",
-  "decision": "cap10x10 正式配置:開盤進、停2.5%、4R到就走、最晚11:30(保守)或13:30出;不抱收盤。仍為候補 setup,進不進 Top2 待使用者裁決。",
-  "scripts": "scratchpad/ideas_cap1010_intraday.py"
- },
- {
-  "date": "2026-08-07",
-  "name": "Top2 v3 陣容 + Setup 手冊上站 — Iter10",
-  "what": "v3(加 cap10x10 第三順位):n=93、52%勝、+0.46R/筆、+42.6R、四個月皆正(v2 +42.7R 但 8 月負)— 以 gap-up 腿換月度平滑,採用。網站 Ideas 分頁新增 Setup 手冊(trade_setups.json:規則/全庫統計/狀態/my_take),模型欄顯示 blind 42.5%/rho0.742/n=3734。",
-  "decision": "順位 v3 生效;trade_setups.json 為手冊正本,迭代後必須同步更新 stats+my_take;renderSetupsBook() 於 Ideas 分頁渲染。",
-  "scripts": "scratchpad/ideas_top2_v3.py, D:/SIPs/trade_setups.json"
- },
- {
-  "iteration": 21,
-  "cmd": "refit",
-  "date": "2026-08-07",
-  "n": 3734,
-  "blind": {
-   "hit": 42.5,
-   "rho": 0.742,
-   "tiers": {
-    "big": 55.9,
-    "mid": 41.0,
-    "small": 30.2,
-    "na": 44.0
-   }
-  }
- },
- {
-  "iteration": 22,
-  "cmd": "refit",
-  "date": "2026-08-07",
-  "n": 3734,
-  "blind": {
-   "hit": 42.5,
-   "rho": 0.742,
-   "tiers": {
-    "big": 55.9,
-    "mid": 41.0,
-    "small": 30.2,
-    "na": 44.0
-   }
-  }
- },
- {
-  "date": "2026-08-07",
-  "name": "統整分析 12 輪(使用者:全部因子+現有條件一起分析、預測盤中最高、抓包 gap 回聲)",
-  "rounds": [
-   "R1 edge=盲測predDay-gap vs intra:IC 0.074 弱;非單調(中段最好)",
-   "R2 全因子×edge:訊號集中在負端;contract 段 bottom 五分位 intra -10.6",
-   "R3 over-gap fade 裸空:edge<=-10 67%勝 +6.8%(無停損)",
-   "R4 使用者情境(品質好+gap小+模型預期高 開盤買):全部變體 +0.1~0.6% 不可交易 — 陣亡",
-   "R5/R6 月拆+門檻:fade 3/4 月正、long 全弱",
-   "R7 執行現實(60m+停損):泛化 fade 剩 +0.09R;拆解=contract 段 +0.85R(既有 setup)+ 非contract ~0 — 泛化陣亡",
-   "R8 spike-capture 掛單(TP4/stop2.5):全 cell 大負(保守雙觸規則)— 陣亡",
-   "R9 TP/停損網格:無解",
-   "R10 審計:v12 各段 gap 斜率 0.9-1.1;裸 gap 基線盲測 44.5% > v12 42.9% — 使用者抓包成立,predDay=gap 回聲",
-   "R11 目標重建=盤中最高 spike(vs 開盤):segmed 分桶 IC 0.341/命中 51.3%,完勝回歸與 naive;big 段 spike 小(中位2.6%)無預測空間,small/momentum/news IC 0.2-0.35",
-   "R12 加細桶+bumps:沒有贏(49.7% vs 51.3%)→ 簡單 type×tier 桶定版;P25-P75 帶內率 50% 校準完美",
-   "R13/R14 上線:model_predict.spike_table() 即時算桶;卡片主打預測盤中最高+區間+開盤後再衝,收盤欄改標「慣性基準(≈gap)」;verify 加 spike 帶內率追蹤"
-  ],
-  "decision": "卡片重建上線;所有負結果照實記錄;predDay 降級為慣性基準不再稱預測。",
-  "scripts": "scratchpad/me_r1.py, me_r3.py, me_r7.py, me_r8.py, me_r10_audit.py, me_r11_hi.py, me_r12_hi.py"
- },
- {
-  "date": "2026-08-07",
-  "name": "R15-R17 逐檔 spike GBM(使用者二次抓包:分桶=同類全同常數)",
-  "what": "R15 HistGBR 分位模型全因子(gap/rot/mcap/DTC/shortfloat/float/量/surprise/YoY/perf/type):桶內 IC +0.206(桶常數版=0)、整體 IC 0.396(桶版 0.315)、逐月 0.35-0.40 全穩;momentum|small 桶內 +0.361、m&a|small +0.333、earnings|big +0.158。R16 訓練殘差校準帶內率僅 35%(過擬合)→ R16b split-conformal(訓練段後 20% 日期當校準集)45%。R17 上線:model_lab spikefit → model_spike.pkl,model_predict 逐檔推論(122 檔 106 個不同向量),分桶降 fallback。事故:sidecar 舊模組把新注入蓋掉 → 重啟後正常,規則入 SKILL。",
-  "decision": "逐檔 GBM 定版;verify 追帶內率(<35%/>65% 連兩日=重訓);refit 連動 spikefit。",
-  "scripts": "scratchpad/me_r15_gbm.py, me_r16_calib.py; D:/SIPs/model_lab.py cmd_spikefit, model_predict.py spike_from_gbm"
- },
- {
-  "iteration": 25,
-  "cmd": "refit",
-  "date": "2026-08-07",
-  "n": 3734,
-  "blind": {
-   "hit": 42.5,
-   "rho": 0.742,
-   "tiers": {
-    "big": 55.9,
-    "mid": 41.0,
-    "small": 30.2,
-    "na": 44.0
-   }
-  }
- },
- {
-  "date": "2026-08-08",
-  "name": "R18/R18b OPG+2.5%停損 交易 spike 預測(使用者指令)",
-  "what": "R18 日線保守雙觸規則證明不可用(gap>=2 全滅 0% — 粒度偏誤);R18b 60m 真實時序:TP=P25 全做 -0.21R、TP=P50 -0.02R、EV閘門 P50>=7.5 恰好 0.00R(19%勝);big/mid 層 +0.75/+0.56R 但 n=10/27 太小僅列觀察。機制:spike 預測大 = 波動大 = 2.5% 停損先死,預測愈激進矛盾愈重。",
-  "decision": "spike 模型定位=出場工具(掛單位+到價率),不做進場訊號;進場仍由已驗證 setup 負責。big/mid EV 閘門子集列觀察名單,live 樣本累積後再議。",
-  "scripts": "scratchpad/me_r18_opg.py, me_r18b_opg.py"
- },
- {
-  "date": "2026-08-08",
-  "name": "R19-R21b 因子迭代圈(收盤GBM/下行模型/自適應停損)",
-  "what": "R19 GBM全因子做收盤:39.9% < 裸gap 45.0% — 第三次確認收盤位置不可預測(50% KPI 在收盤維度打不到;spike 維度命中 52% 已過標)。R20 下行模型(開盤後最大回落):IC 0.837、P75停損位覆蓋72%(理想75)— 波動高度可預測。R21 拿它放寬停損:勝率43→55但avgR +0.24→+0.02(1R變大毀掉4R賠率)— 失敗。R21b 當跳過濾網:cap10x10 全體預測回落>4%,組內無區分力 — 失敗。",
-  "decision": "下行模型定位=倉位資訊工具(這檔正常晃動範圍多大→倉位縮放、心理預期),不做停損不做濾網;緊停損是 cap10x10 肥尾結構的必要成分,不許放寬。收盤預測維持 gap 慣性標示。",
-  "scripts": "scratchpad/me_r19_day.py, me_r20_dn.py, me_r21b_filter.py"
- },
- {
-  "date": "2026-08-08",
-  "name": "R22-R24 全因子綜合質化分析(使用者指令:多 fable 逐檔歸因+組合矩陣+迭代)",
-  "what": "R22a 組合矩陣(147 個 n>=40 組合):gapDN surp+fresh +0.88/59%勝/4正月、gapDN N+fresh +1.64/62%、gapUP DTC>5 -1.36/0正月、gapUP N -1.11。R22b 6 fable 逐檔歸因 48 事件+1 fable 綜合出 9 假設(496K tokens)。R23 框架驗證:fresh 在 10:30 框架內無增益(承接濾網已代勞)降 tie-breaker;DTC>5 gap-up 10:30 fade short n=149/53%/+0.17R/4正月成立。R24 全庫殺假設:H3 低DTC血洗強確認(n=86 intra -15.1/隔日 -12.7/74%負)、H4 殘股鐵律確認(n=75 雙向 -9)、H1 弱化(隔日 -4.1/63%負)、H2 否決、H5/H7/H8/H9 樣本不足列觀察。",
-  "decision": "陣容 v4:⑤ DTC fade 空單取代 DTC5 多單;trade_setups.json 新增 avoid_rules 三條禁區(blowoff 禁多/殘股雙向禁區/heated 禁隔夜多),ideas 選股前必過;dtc_squeeze 卡片旗標改為 fade 警告;fresh 為 BeatDip tie-breaker。",
-  "scripts": "scratchpad/me_r22_combo.py, me_r22_result.json(48 檔歸因全文), me_r23_refine.py, me_r24_validate.py"
- },
- {
-  "date": "2026-08-08",
-  "name": "R25 Top2 v4 全庫組合驗證",
-  "what": "v4(⑤=DTC fade 空單 + avoid_rules 禁區):n=95、勝率 55%、+0.45R/筆、+42.7R、四月全正;DTCfade 槽 12 筆 75% 勝 +0.84R,四個 setup 全正貢獻(v3:52%/+42.6R,DTC5 多單槽靠 3R 樂透)。",
-  "decision": "v4 定版生效;lineup 與 SKILL 數字同步。",
-  "scripts": "scratchpad/me_r25_top2v4.py"
- },
- {
-  "date": "2026-08-08",
-  "name": "R26 現役 setup 微調測試(兩項皆不採用)",
-  "what": "R26a 大合約 fade 進場時機:開盤空 +0.24R > 10:30 空 +0.14R(n=25,勝率同 64%)— 合約 pump 頂點在開盤,現行規則不變。R26b cap10x10 加盲測 spike p50 閘門(3/4/5 網格):avgR +0.23→+0.40 但 n 140→24、六月全格負 — 閘門集中風險未修弱月,不採用。",
-  "decision": "兩項維持現狀;負結果照記。10:30 時機規則只適用 gap-down 承接與 DTC 假軋空,不得外推到合約 fade。",
-  "scripts": "scratchpad/me_r26.py"
- },
- {
-  "date": "2026-08-08",
-  "name": "R27 新假設家族:隔日結構+午後結構+星期效應",
-  "what": "N1 PEAD(強收盤隔日續漲):52% 正率 ≈ 擲硬幣,死。N2 錯殺修復=一日行情:BeatDip 隔日 −0.48,當天彈過的隔日 −1.32(反彈回吐)— 絕不留倉。N3 gap>=10 隔日普遍偏空(守住與否皆負,正率 ~40%)— heated 規則泛化。N4 午後微負(−0.3)— 不留尾盤維持但理由溫和。N5 週五效應:gap-up>=4 盤中均 −3.18(n=203),7/11 週五為負、剔非農日仍 −2.13,集中 6-7 月 = regime 級。",
-  "decision": "avoid_rules 增兩條:friday_gapup_caution(軟:週五 gap-up 多單降半倉/提前出,DTC fade 順風)、no_overnight_any(硬:一律當日了結,禁「強勢可留倉」措辭)。",
-  "scripts": "scratchpad/me_r27_nextday.py"
- },
- {
-  "date": "2026-08-08",
-  "name": "R28-R31 全面重建完成 + 首個 live 對帳日",
-  "what": "R28:447 檔分層 x 24 opus 歸因 + 3 主題綜合 + fable 仲裁(quota 中斷後 resume 快取續跑)。R30 處刑 8 假設:MnA-Pin/拋物線崩解/微型中段(dtc 條件無判別力改全帶)/擁擠贏家隔日空(當日宣稱死)存活;HeatedNoEarnFade/恐慌接刀/大beat深跳空 陣亡。R31:BeatenSqueezeGo 執行層 58%/+0.59R(對照組判別 5.7pt;7月集群風險)。重建 trade_setups.json v2:5 setup(新增 BSG)+ 5 avoid_rules(無回補買盤機制家族統一)+ 全員 kill criteria。8/7 verify:day 34%(誤差全在禁區樂透股);spike live 首日:帶內率 48%、到價率 70/42/22 vs 基準 67/46/27 = 校準貼線;質化層 +0.04 首次轉正。首筆正式 ideas:DBX +0.53R / TXG +1.53R 雙雙觸標,live ledger +2.06R 開張。",
-  "decision": "順位 v5 生效(BSG 進第三);核心世界觀更新:方向=perf1M(beaten/heated)x 前瞻品質的交乘,DTC=回補天數而非情緒指標,無回補買盤家族=統一禁區。",
-  "scripts": "scratchpad/me_r28_final.json(447檔歸因+仲裁全文), me_r30_validate.py, me_r31_bsg.py, score_0807.py"
- },
- {
-  "iteration": 33,
-  "cmd": "refit",
-  "date": "2026-08-08",
-  "n": 3883,
-  "blind": {
-   "hit": 42.7,
-   "rho": 0.738,
-   "tiers": {
-    "big": 56.3,
-    "mid": 41.8,
-    "small": 29.8,
-    "na": 44.9
-   }
-  }
- }
 ]
