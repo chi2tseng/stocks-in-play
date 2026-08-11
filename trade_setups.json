@@ -1,15 +1,15 @@
 {
   "_doc": "Setup 手冊 v2(2026-08-08 全面重建 — 使用者指示砍掉重來)。重建方法:447 檔分層抽樣 × 24 opus 逐檔歸因 + 3 主題綜合 + fable 仲裁 → 8 假設全庫處刑(R30)→ 執行層 60m 回測(R31)。舊版 trade_setups_legacy.json 僅供對照。內部 playbook,不上站;/SIPs Step 0b 每日審視、9d 選股依據。",
-  "updated": "2026-08-08",
+  "updated": "2026-08-11",
   "window": "全庫 2026-05-13 ~ 2026-08-07(60 交易日、事件庫 3,882 筆、60m 執行模擬)",
   "rebuild_method": "質化歸因(每檔:因為什麼→漲多少→為什麼這個幅度,全因子:fwd/當季成長/surprise/MAGNA53/市值/DTC/short float/neglect/run-up)→ 機械假設 → 全庫盲測 → 對照組判別力檢查 → 執行層回測。核心洞察:方向由 perf1M(beaten/heated)與前瞻品質(fwd_rev)的交乘決定,不由 gap 大小或單一籌碼指標決定;DTC 的意義是「回補需要幾天」— dtc<0.5 = 無回補買盤(禁區家族),dtc>5 = 回補跨日(假軋空 fade),高 short_float 配 dtc<5 = 快燃料(beaten 側才是真 squeeze)。",
   "model": {
     "name": "spike GBM(盤中最高逐檔)+ gap 慣性基準(收盤)",
     "blind_hit": 42.7,
-    "rho": 0.738,
-    "n_events": 3883,
+    "rho": 0.739,
+    "n_events": 3976,
     "note": "盤中最高:HistGBR 分位模型,桶內 IC +0.206、整體 0.396、conformal 帶內率 45%;到價率基準 67/46/27(P25/P50/P75)。收盤=gap 慣性(三度證偽無 alpha)。verify 每日對帳。",
-    "refit": "2026-08-08 週末 refit(含 8/7 outcomes):blind 42.5→42.7%、n 3882→3883;spike 重訓 n=3827(fit 2349/cal 1478,cut 07-22)"
+    "refit": "2026-08-11 refit(MODEL-DRIFT 觸發:mid 層連兩日同向 bias [3.86, 2.16]):blind 維持 42.7%、rho 0.739、n 3976;spike GBM 重訓 n=3918(fit 2420 / cal 1498,cut 2026-07-23)"
   },
   "lineup": "每日最多 2 筆,順位 v5(2026-08-08 重建):①錯殺反彈 ≥10B(按市值)②大合約 fade(按 gap)③BeatenSqueezeGo(按 fwd_rev)④cap10×10(按市值)⑤錯殺反彈 <10B ⑥DTC 假軋空 fade。多單先過 avoid_rules;全部當日了結。",
   "setups": [
