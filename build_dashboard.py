@@ -273,7 +273,16 @@ def _load_picks(path):
     if not os.path.exists(path): return []
     with open(path, 'r', encoding='utf-8') as f:
         _cp = json.load(f)
-    if isinstance(_cp, dict): return _cp.get('picks', []) or []
+    if isinstance(_cp, dict):
+        # Staleness guard (2026-08-16): a picks file carries the date it was written
+        # for. Seed/backfill builds target a date the judges never picked for, and
+        # without this check yesterday's picks silently reappear as that date's
+        # picks. Files with no `date` key keep the old permissive behaviour.
+        _pd = _cp.get('date')
+        if _pd and _pd != DATE:
+            print(f'[picks] skipping {os.path.basename(path)} — written for {_pd}, building {DATE}')
+            return []
+        return _cp.get('picks', []) or []
     if isinstance(_cp, list): return _cp
     return []
 
