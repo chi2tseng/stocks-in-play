@@ -1,467 +1,222 @@
 {
+  "OABI": {
+    "Type": "contract",
+    "EarningsReaction": false,
+    "Catalyst": "8/17 晨間宣布與禮來簽離子通道藥物探索全球授權案,潛在里程碑上看 3.7 億美元,同步將 2026 年底現金指引由 3,700-4,100 萬上調至 4,900-5,300 萬美元"
+  },
+  "EYPT": {
+    "Type": "FDA",
+    "EarningsReaction": false,
+    "Catalyst": "DURAVYU(vorolanib 眼內植入劑)LUGANO 三期主要終點未達非劣性(排除 9 名無關視力驟降者的事後分析才勉強達標,名目 p=0.0096),盤前暴跌逾 6 成"
+  },
+  "OCUL": {
+    "Type": "FDA",
+    "EarningsReaction": false,
+    "Catalyst": "同業 EyePoint 的 LUGANO 三期主要終點未達標,市場解讀為濕性年齡相關性黃斑部病變競爭者減少而跳漲;但兩家用的是同一條眼內緩釋植入劑技術路線"
+  },
+  "HIVE": {
+    "Type": "contract",
+    "EarningsReaction": false,
+    "Catalyst": "旗下 BUZZ HPC 簽下 5 年 3.5 億美元 GPU 雲端運算合約(年化約 7,000 萬美元),疊加上季財報優於預期"
+  },
+  "FULC": {
+    "Type": "M&A",
+    "EarningsReaction": false,
+    "Catalyst": "8/17 晨間宣布與 Slate Medicines 全股票合併,股東可先分得約 2.7 億美元併購前現金股利"
+  },
+  "HTHT": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "8/17 盤前公布第二季財報,華住集團旗下飯店營運數據優於市場預期,盤前上漲約 6%"
+  },
+  "SNAP": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "8/17 法院裁定逾 3,000 件青少年社群成癮訴訟可續行,法律責任疑慮升溫,盤前重挫"
+  },
+  "SMCI": {
+    "Type": "earnings",
+    "EarningsReaction": false,
+    "Catalyst": "8/11 盤後財報調整後每股盈餘 1.70 美元遠超預期 0.92 美元、單季新增訂單逾 600 億美元;8/12 大漲 19% 後今日拉回獲利了結"
+  },
+  "COHR": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "8/12 財報雖超預期,但營運現金流季減 87.5%、庫存年增 79.5% 引發疑慮;資金由光通訊轉進記憶體族群,近日弱勢後今日盤前小幅回穩"
+  },
   "SNDK": {
     "Type": "guidance",
     "EarningsReaction": false,
-    "Catalyst": "8/13 投資人日公布 2028-2030 財年長期模型(非公認會計毛利率約 80%),並與 8 家客戶簽多年期協議鎖定 2027 財年約 5 成位元出貨"
-  },
-  "RDDT": {
-    "Type": "news",
-    "Catalyst": "8/13 盤後宣布 8/18 起納入標普 500 指數、取代 AvalonBay,被動指數買盤預期推升逾 12%",
-    "EarningsReaction": false
-  },
-  "CAPR": {
-    "Type": "FDA",
-    "Catalyst": "第三期心臟細胞治療數據登上《刺胳針》,deramiocel 生物製劑許可補件路徑明朗、FDA 未提審查疑慮,PDUFA 訂 8/22",
-    "EarningsReaction": false
-  },
-  "NU": {
-    "Type": "earnings",
-    "Catalyst": "Q2 淨利首度突破 10 億美元、季增 17%、年增 49%,獲利創 13 年新高",
-    "EarningsReaction": true
-  },
-  "IMXI": {
-    "Type": "M&A",
-    "EarningsReaction": false,
-    "Catalyst": "紐約州金融服務局核准 Western Union 每股 16 美元全現金併購(總額約 5 億);加州 DFPI 8/13 凍結先前核准,交易時程未定"
-  },
-  "VERA": {
-    "Type": "FDA",
-    "EarningsReaction": false,
-    "Catalyst": "8/14 07:31 ET FDA 文件揭露 ORIGIN 第三期 eGFR 期中數據正向,支持第四季遞交完全核准補充申請"
-  },
-  "VALN": {
-    "Type": "FDA",
-    "EarningsReaction": false,
-    "Catalyst": "與輝瑞合作的六價萊姆病疫苗 VLA15 上市許可申請獲歐洲藥品管理局受理,第三期 VALOR 第二季保護力 73.2%"
-  },
-  "HTFL": {
-    "Type": "earnings",
-    "Catalyst": "Q2 營收 6,410 萬美元、年增 48% 優於預期,全年營收展望上修至 2.46-2.50 億美元",
-    "EarningsReaction": true
-  },
-  "ETON": {
-    "Type": "earnings",
-    "Catalyst": "Q2 每股盈餘 0.43 美元遠勝預估 0.15 美元,營收年增 99%,全年財測上修至 1.45 億美元",
-    "EarningsReaction": true
-  },
-  "UMAC": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Q2 營收 1,670 萬美元、年增 687% 遠優於預估 960 萬,現金 2.296 億美元;疊加無人機關稅利多"
-  },
-  "RCAT": {
-    "Type": "policy",
-    "EarningsReaction": false,
-    "Catalyst": "白宮 8/13 公告對進口無人機課最高 100% 關稅(21 天生效),美國本土廠受惠;Q2 營收 2,020 萬美元年增 527%"
-  },
-  "BOXL": {
-    "Type": "earnings",
-    "Catalyst": "Q2 轉虧為盈、每股盈餘 0.34 美元,280 萬美元關稅退款推升毛利率至 49.8%",
-    "EarningsReaction": true
-  },
-  "AKAN": {
-    "Type": "contract",
-    "Catalyst": "8/13 宣布 200 公里光纖網完工,首 100 公里開始計費,9 月起認列租賃收入",
-    "EarningsReaction": false
-  },
-  "TPCS": {
-    "Type": "earnings",
-    "Catalyst": "FQ1 營收 910 萬美元、年增 23%,毛利增 36%,稅前息前折舊攤銷前獲利近三倍增至 65.1 萬美元(無 TradingView 季度資料)",
-    "EarningsReaction": true
-  },
-  "CURI": {
-    "Type": "earnings",
-    "Catalyst": "Q2 營收年增 22%,人工智慧資料授權暴增 48% 至 1,410 萬美元,毛利率衝上 73% 創紀錄",
-    "EarningsReaction": true
-  },
-  "DFSC": {
-    "Type": "earnings",
-    "Catalyst": "FQ3 營收年增 92% 至 270 萬美元,並獲美國陸軍 8 月感測器複試邀請",
-    "EarningsReaction": true
-  },
-  "AMPX": {
-    "Type": "guidance",
-    "Catalyst": "Q2 營收 3,403 萬美元,全年營收展望上調至至少 1.4 億美元",
-    "EarningsReaction": false
-  },
-  "LPTH": {
-    "Type": "M&A",
-    "Catalyst": "8/12 簽約出售中國業務,加上紅外線國防訂單與納入羅素指數,動能延續",
-    "EarningsReaction": false
-  },
-  "LUNR": {
-    "Type": "earnings",
-    "Catalyst": "8/13 公布 Q2 財報,季底在手訂單創紀錄達 18 億美元",
-    "EarningsReaction": true
-  },
-  "GRSD": {
-    "Type": "earnings",
-    "Catalyst": "Q2 營收 3,780 萬美元略遜預估 3,830 萬且轉為虧損,惟重申全年營收 1.65-1.70 億美元指引",
-    "EarningsReaction": true
-  },
-  "LFS": {
-    "Type": "momentum",
-    "Catalyst": "查無 8/13-14 具體新聞;低流通量的日本企業美國存託憑證,歷史上多次無消息噴出",
-    "EarningsReaction": false
-  },
-  "SFHG": {
-    "Type": "momentum",
-    "Catalyst": "查無 8/13-14 具體新聞,印刷股籌碼稀薄,盤後疑似投機性拉抬",
-    "EarningsReaction": false
-  },
-  "CGTL": {
-    "Type": "momentum",
-    "Catalyst": "查無公司實質利多,7 月完成 1 比 15 反向分割後籌碼極薄,游資狂拉",
-    "EarningsReaction": false
-  },
-  "SXTC": {
-    "Type": "momentum",
-    "Catalyst": "查無 8/13-14 具體新聞,8/10 剛完成 1 比 80 反向合股,籌碼稀薄疑似投機炒作",
-    "EarningsReaction": false
-  },
-  "LBGJ": {
-    "Type": "momentum",
-    "Catalyst": "查無基本面消息,1 比 200 反向分割後低流通籌碼引發散戶炒作",
-    "EarningsReaction": false
-  },
-  "ONFO": {
-    "Type": "momentum",
-    "Catalyst": "1 比 50 反向分割後流通股僅剩約 85 萬股,超低流通量引爆軋空式暴衝",
-    "EarningsReaction": false
-  },
-  "WETO": {
-    "Type": "news",
-    "Catalyst": "8/24 股東會將表決 100 比 1 反向分割與大規模增資,微型股投機性暴衝逾 165%",
-    "EarningsReaction": false
-  },
-  "WDC": {
-    "Type": "news",
-    "Catalyst": "記憶體與儲存族群連四日走強:SanDisk FQ4 營收年增 371% 領軍,高頻寬快閃新標準加持",
-    "EarningsReaction": false
+    "Catalyst": "8/13 投資人日公布 BiCS9/10 新製程(位元密度 +60%)與 2028-2030 財年營收年增 15-20%、毛利率近 80% 的長期目標,效應延燒"
   },
   "MU": {
-    "Type": "news",
-    "Catalyst": "人工智慧記憶體缺貨潮延燒,高頻寬記憶體需求強勁,族群連日走強",
-    "EarningsReaction": false
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "族群連動:記憶體超級週期敘事延續,第三季 DRAM 合約價估漲 13-18%、NAND 漲 10-15%,股價站上 1,000 美元關卡"
+  },
+  "WDC": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "族群連動:SanDisk 投資人日與 NAND 漲價敘事帶動儲存股齊揚,查無 8/17 當日個股新事件"
   },
   "STX": {
-    "Type": "news",
-    "Catalyst": "硬碟與儲存族群同步走強,人工智慧資料中心儲存需求外溢帶動",
-    "EarningsReaction": false
-  },
-  "PAAS": {
-    "Type": "earnings",
-    "Catalyst": "Q2 財報電話會議公布,貴金屬價格走高帶動白銀礦商同步走強",
-    "EarningsReaction": true
-  },
-  "BAP": {
-    "Type": "earnings",
-    "Catalyst": "8/13 盤後公布 Q2 財報,秘魯最大金融集團獲利穩健,市值約 350 億美元",
-    "EarningsReaction": true
-  },
-  "AMAT": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "FQ3 營收 92.1 億美元創紀錄、調整後每股盈餘 3.50 美元優於預估 3.39,下季財測 102.5 億美元;股價因今年已漲 103%、估值偏高遭賣壓,Craig Hallum 反調升目標價至 585 美元"
-  },
-  "BIRK": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "2026 財年第三季營收 7.2 億歐元、固定匯率年增 15%,調整後每股盈餘 0.74 歐元年增 19%,並上調全年展望"
-  },
-  "JD": {
-    "Type": "earnings",
-    "Catalyst": "上市以來首次營收年減,英國《金融時報》報導股價一度重挫 10%",
-    "EarningsReaction": true
-  },
-  "TSSI": {
-    "Type": "earnings",
-    "Catalyst": "Q2 營收 3,510 萬美元、年減 20%,採購業務暴跌 45% 至 1,820 萬美元",
-    "EarningsReaction": true
-  },
-  "GLOB": {
-    "Type": "earnings",
-    "Catalyst": "Q2 營收 6.14 億美元、每股盈餘 1.40 美元皆不如預期,全年營收展望下修至 24.28-24.62 億美元",
-    "EarningsReaction": true
-  },
-  "KLC": {
-    "Type": "guidance",
-    "Catalyst": "Q2 每股盈餘 0.08 美元遜於預估 0.10,在學率年減 3.6%,全年營收展望下修至 26.6-27.0 億美元",
-    "EarningsReaction": true
-  },
-  "YSS": {
-    "Type": "guidance",
-    "Catalyst": "Q2 每股虧損 0.21 美元遜於預期,全年營收展望大砍至 3.75-4.05 億美元",
-    "EarningsReaction": true
-  },
-  "SPRY": {
-    "Type": "earnings",
-    "Catalyst": "Q2 營收 3,370 萬美元、淨虧損 6,230 萬美元,neffy 處方給付未新增、市占僅 5%",
-    "EarningsReaction": true
-  },
-  "XOS": {
-    "Type": "earnings",
-    "Catalyst": "Q2 營收僅 470 萬美元、年減 74% 遠遜預估,非公認會計每股虧損 0.55 美元",
-    "EarningsReaction": true
-  },
-  "MVIS": {
-    "Type": "financing",
-    "Catalyst": "8/13 盤後啟動普通股加認股權證公開增發,稀釋疑慮重挫近 20%",
-    "EarningsReaction": false
-  },
-  "ZNTL": {
-    "Type": "financing",
-    "Catalyst": "增發 2,300 萬股、每股 3.5 美元募資 8,050 萬美元,稀釋壓力壓低股價",
-    "EarningsReaction": false
-  },
-  "AMPG": {
-    "Type": "earnings",
-    "Catalyst": "Q2 營收 807 萬美元、季增 51%,但淨損擴大至 309 萬美元",
-    "EarningsReaction": true
-  },
-  "KULR": {
-    "Type": "earnings",
-    "Catalyst": "Q2 營收 208 萬美元、年減 43%,淨虧損 2,197 萬美元(含 1,059 萬非現金比特幣減損)",
-    "EarningsReaction": true
-  },
-  "DGXX": {
-    "Type": "earnings",
-    "Catalyst": "Q2 每股盈餘與營收雙雙不如預期(-40%/-39%),雖簽 11 億美元人工智慧機房合約仍遭拋售(TradingView 尚未更新本季,季度圖為財報前快照)",
-    "EarningsReaction": true
-  },
-  "ENHA": {
-    "Type": "earnings",
-    "Catalyst": "Q2 非公認會計每股虧損擴大至 0.53 美元,營收 1,770 萬美元不如預期",
-    "EarningsReaction": true
-  },
-  "GEMI": {
-    "Type": "earnings",
-    "Catalyst": "Q2 每股虧損 0.89 美元、營收 4,548 萬美元皆不如預期",
-    "EarningsReaction": true
-  },
-  "FFAI": {
-    "Type": "earnings",
-    "Catalyst": "Q2 淨損年減 69%,但營收僅 83.6 萬美元遠低於預期,財報後獲利了結",
-    "EarningsReaction": true
-  },
-  "VUZI": {
-    "Type": "earnings",
-    "Catalyst": "Q2 每股虧損縮至 0.09 美元優於預期,但營收僅 111 萬美元遜於預估 150 萬",
-    "EarningsReaction": true
-  },
-  "YXT": {
-    "Type": "earnings",
-    "Catalyst": "上半年營收年增 6% 至 2,390 萬美元、虧損收窄,惟現金部位大減至 460 萬美元",
-    "EarningsReaction": true
-  },
-  "SLE": {
-    "Type": "earnings",
-    "Catalyst": "Q2 營收持平約 300 萬美元,虧損雖收窄但獲利目標延後至 Q4",
-    "EarningsReaction": true
-  },
-  "MRLN": {
-    "Type": "earnings",
-    "Catalyst": "8/13 公布 Q2 每股虧損 1.40 美元、營收僅 220 萬美元遜於預期",
-    "EarningsReaction": true
-  },
-  "IDN": {
-    "Type": "guidance",
-    "Catalyst": "Q2 營收 590 萬美元優於預估 570 萬,但占上半年營收 29% 的單一大客戶轉為多供應商採購",
-    "EarningsReaction": true
-  },
-  "FGI": {
-    "Type": "earnings",
-    "Catalyst": "週三財報後單日暴漲 89%(Q2 每股盈餘 0.60 美元超預期),今日拉回獲利了結",
-    "EarningsReaction": false
-  },
-  "XHG": {
-    "Type": "news",
-    "Catalyst": "8/13 宣布收購香港人工智慧保險科技 First Cycle 的意向書帶動暴漲 348%,今日獲利了結回吐",
-    "EarningsReaction": false
-  },
-  "INHD": {
     "Type": "momentum",
-    "Catalyst": "查無具體新消息,近期人工智慧合約炒作暴漲後高位獲利了結",
-    "EarningsReaction": false
-  },
-  "AEHL": {
-    "Type": "momentum",
-    "Catalyst": "查無新消息,8/7 完成 1 比 16 反向分割後賣壓延續",
-    "EarningsReaction": false
-  },
-  "BNRG": {
-    "Type": "news",
-    "Catalyst": "1 比 6 反向分割 8/12 完成並更名 BrenX,代號 8/14 起改為 BRNX,過渡期流動性稀薄",
-    "EarningsReaction": false
-  },
-  "COHR": {
-    "Type": "earnings",
     "EarningsReaction": false,
-    "Catalyst": "8/12 FQ4 財報營運指標優於華爾街預估,但前五個交易日已因中國光收發模組禁令題材急漲 44%,連日獲利了結"
-  },
-  "SMCI": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "人工智慧伺服器與記憶體族群同步走強:SanDisk 投資人日長期模型 + 應用材料下季財測 102.5 億美元帶動"
-  },
-  "ARM": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "人工智慧半導體族群走強,記憶體與設備商財報動能外溢"
+    "Catalyst": "族群連動:AI 雲端儲存需求熱絡、毛利率連 13 季擴張,隨儲存族群走強"
   },
   "MRVL": {
     "Type": "news",
     "EarningsReaction": false,
-    "Catalyst": "資料中心客製晶片與高頻寬記憶體需求題材延燒,族群同步走強"
+    "Catalyst": "8/12 發表 Structera X CXL 記憶體擴充平台與 Photonic Fabric 光纖共享記憶體方案,鎖定 AI 頻寬瓶頸,買盤延續"
   },
-  "STKH": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "植物肉品牌 Perfecta 首批貨透過 KeHE 鋪進美東北數十家門市,盤前一度暴漲 82%;隨後申請出售 756 萬股 ADS 稀釋,盤後回吐 5.3%"
-  },
-  "HHS": {
-    "Type": "M&A",
-    "EarningsReaction": false,
-    "Catalyst": "Star Equity 以每股 5 美元、總價約 3,840 萬美元併購 Harte-Hanks,較前收溢價近 100%"
-  },
-  "INV": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "Innventure 第二季財報後撤回子公司 Accelsius 今年營收與現金流展望,盤前重挫 43.9%"
-  },
-  "MF": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "低流通籌碼股延續前一日爆量行情,8/13 收 10 美元後續漲 32.8%,查無新催化劑"
-  },
-  "AEHR": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "第四季營收 1,880 萬美元年增 34%,在手訂單 6,070 萬美元創高;2027 財年展望營收成長 160-200%"
-  },
-  "AVAV": {
-    "Type": "policy",
-    "EarningsReaction": false,
-    "Catalyst": "白宮 8/13 簽署無人機關稅令,課 100% 關稅於進口大型與敏感功能無人機,美國本土軍規無人機龍頭受惠"
-  },
-  "KTOS": {
-    "Type": "policy",
-    "EarningsReaction": false,
-    "Catalyst": "白宮 8/13 簽署無人機關稅令,對 25 公斤以上或含熱影像等敏感功能的進口無人機課 100% 關稅,本土國防承包商受惠"
-  },
-  "ONDS": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "第二季營收 8,380 萬美元創高、較上季增 67%、年增逾 13 倍;全年展望上修至 5.25-5.5 億美元,在手訂單 6.13 億"
-  },
-  "HAO": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "1 股併 20 股反向分割 8/14 生效(A/B 股同步調整),股數驟減導致股價劇烈波動"
-  },
-  "PUSA": {
-    "Type": "M&A",
-    "EarningsReaction": false,
-    "Catalyst": "母公司 Aureus 與 Powerus 合併案獲美國證管會生效;Powerus 剛取得最高 9,000 萬美元美國空軍合約"
-  },
-  "LPL": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "研究機構集邦公布第二季 OLED 螢幕出貨較上季增 26.1%、年增 98%,面板族群同步走強"
-  },
-  "BORR": {
-    "Type": "macro",
-    "EarningsReaction": false,
-    "Catalyst": "中東局勢升溫與伊朗封鎖疑慮推升油價,西德州原油站上 81 美元、布蘭特近 90 美元,鑽井族群連動"
-  },
-  "HTZ": {
+  "ARM": {
     "Type": "analyst",
     "EarningsReaction": false,
-    "Catalyst": "Susquehanna 目標價由 5.5 美元砍至 2.5 美元;另遭標普 600 指數剔除、Pershing Square 出清持股"
-  },
-  "IPW": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "查無明確催化劑;8/7 才完成 1 併 9 反向分割,盤前波動疑為分割後籌碼整理"
-  },
-  "XPON": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "盤後 8-K 揭露認股權證誘導換約以簡化資本結構,同期財務長辭任,盤後 +24.7%"
-  },
-  "IPST": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "查無明確 8/14 催化劑;公司持有 IP 代幣作為儲備資產,盤後 +22.3% 疑隨該代幣連動"
-  },
-  "WOK": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "查無明確 8/14 催化劑;近期環繞 AI 血球分析儀與實體資產代幣化題材投機"
-  },
-  "KEEL": {
-    "Type": "contract",
-    "EarningsReaction": false,
-    "Catalyst": "第二季財報揭露 8.19 億美元流動性與 4.58 億美元可轉債用於興建資料中心,市場續等首份大型雲端客戶租約"
-  },
-  "SIDU": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "第二季財報:上半年營收 94.2 萬美元年減 37%,淨損收窄 15% 至 480 萬美元,盤後 −8.9%"
-  },
-  "HIVE": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "2026 會計年度第一季淨損 1.429 億美元(每股虧損 0.54 美元),營收 7,910 萬美元不如預期"
-  },
-  "TRNR": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "第二季營收較上季增 445% 創新高仍重挫,市場憂心可轉債稀釋加上已連兩次反向分割"
-  },
-  "AIRJ": {
-    "Type": "guidance",
-    "EarningsReaction": false,
-    "Catalyst": "第二季淨損 840 萬美元,並將 2026 年現金支出上修至 2,700-2,800 萬美元,燒錢速度加快"
-  },
-  "MYSZ": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "8/12 執行 1 併 8 反向分割以避開 1 美元下市門檻,分割後賣壓延續"
-  },
-  "CIIT": {
-    "Type": "momentum",
-    "EarningsReaction": false,
-    "Catalyst": "查無明確催化劑;僅 6 月完成折價增發、7 月反向分割,8/14 無新事件"
-  },
-  "SPAI": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "第二季營收年增 1,336%、人工智慧業務毛利率 75% 創新高,但獲利了結導致盤前拉回"
-  },
-  "SION": {
-    "Type": "FDA",
-    "EarningsReaction": false,
-    "Catalyst": "囊狀纖維化新藥 SION-719 期中試驗 8/10 未達標,賣壓延續;同業 Vertex 數據進一步壓縮估值"
-  },
-  "STNE": {
-    "Type": "earnings",
-    "EarningsReaction": true,
-    "Catalyst": "第二季每股盈餘 2.44 美元遜於預估 2.46 美元,營收 368 億巴西幣短少約 5,660 萬"
+    "Catalyst": "美銀證券 8/13 上修 CPU 市場 2030 年產值預測至 2,100 億美元,AI 推論需求支撐股價"
   },
   "GOOGL": {
     "Type": "news",
     "EarningsReaction": false,
-    "Catalyst": "波克夏 8/14 盤後 13F:第二季加碼 Alphabet 83%、投入 170 億美元,持股約 366 億美元升為第三大部位"
-  },
-  "NVDA": {
-    "Type": "news",
-    "EarningsReaction": false,
-    "Catalyst": "輝達 8/14 盤後 13F 首度揭露持有 SpaceX 約 210 億美元(1.228 億股),英特爾部位約 300 億美元,兩者占投資組合八成"
+    "Catalyst": "波克夏 8/15 申報第二季 13F,加碼 Alphabet 約 170 億美元躍居第三大重倉股,今日為市場首個交易反應日"
   },
   "BAC": {
     "Type": "news",
     "EarningsReaction": false,
-    "Catalyst": "波克夏第二季連續第 8 季減碼美國銀行,權重降至前五大持股末位約 9.2%"
+    "Catalyst": "波克夏 8/15 申報 13F 揭露連八季減碼美國銀行,單季賣出 3,023 萬股,籌碼面偏弱"
+  },
+  "BE": {
+    "Type": "contract",
+    "EarningsReaction": false,
+    "Catalyst": "與 Nebius AI 資料中心的燃料電池供電合作擴大,AI 用電需求題材延續發酵"
+  },
+  "AXTI": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "AI 光通訊供應鏈題材延續(磷化銦基板需求),Needham 於 7/31 上調目標價至 90 美元"
+  },
+  "ALM": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "Almonty 董事會核准最高 1,440 萬股、金額達 3 億美元的庫藏股回購計畫"
+  },
+  "ENVX": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "執行長 Raj Talluri 請辭、財務長暫代,財報後管理層生變引發賣壓"
+  },
+  "APUS": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "盤前重挫逾 27%;市場流傳第二季鉅額虧損與繼續經營能力存疑的說法,但公司官網顯示財報預定 8/28 才公布,一級源尚未查得對應公告"
+  },
+  "SIDU": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "8/14 公布第二季營收年減 54% 至 58.3 萬美元,雖每股虧損年減 81% 但增資稀釋疑慮持續"
+  },
+  "SLE": {
+    "Type": "earnings",
+    "EarningsReaction": false,
+    "Catalyst": "8/14 公布第二季營收改善、毛利率提升並重申第四季轉正目標,動能延燒至本週"
+  },
+  "MYSZ": {
+    "Type": "earnings",
+    "EarningsReaction": false,
+    "Catalyst": "8/14 公布第二季營收年增 53%,加上 8/10 剛完成反向分割壓低流通股數,買盤延續"
+  },
+  "DFSC": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "公告 554 萬加幣私募增資,每股 2.84 加幣定價偏低,引發股權稀釋疑慮"
+  },
+  "MNSO": {
+    "Type": "analyst",
+    "EarningsReaction": false,
+    "Catalyst": "查無 8/17 當日個股新聞;近期遭分析師調降評等至持有,中國消費疲弱使年初至今累跌 34%,下季財報 8/28 才公布"
+  },
+  "BRNX": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "原 Brenmiller Energy 於 8/11 更名 BrenX、8/14 換代號生效,轉型整合式工業能源方案題材延續"
+  },
+  "KEEL": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "8/10 第二季營收年減 50% 但手握 8.19 億美元流動性,魁北克 Sherbrooke 96MW 條件式交易帶動空單回補"
+  },
+  "IVF": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "Finviz 顯示第二季轉盈但官方新聞稿查無對應公告;3 月已辦 1 併 5 反向分割,流通股數極低,不排除純資金拉抬"
+  },
+  "IPST": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "4 月 1 併 20 反向分割屬舊聞,查無今日新消息,流通股僅 68 萬股的超低籌碼追價"
+  },
+  "XPON": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "查無 8/17 新聞,8/7 財報與 8/4 那斯達克合規過關均非新料,低價股籌碼推動"
+  },
+  "GRNQ": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "查無明確催化劑,前波急拉後純技術性回檔"
+  },
+  "AKAN": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "8/13 網路擴建利多後獲利了結,今日續殺無新事件"
+  },
+  "WETO": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "反向分割後流通股僅 86 萬股,8/14 噴出後動能延續"
+  },
+  "JLHL": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "查無明確個股新聞,低流通中國小型股慣性震盪"
+  },
+  "ONFO": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "1 併 50 反向分割後流通股僅約 85 萬股,8/14 噴出後劇烈震盪未歇"
+  },
+  "WOK": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "6 月 1 併 100 反向分割後流通籌碼極低,查無今日個股新聞,疑投機性動能"
+  },
+  "PURR": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "母幣 HYPE 挑戰 77 美元創新高,PURR 為持有 HYPE 的資產庫存股跟漲,無個股專屬新聞"
+  },
+  "SXTC": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "8/10 完成 1 併 80 反向分割後爆量投機,15-16 日連兩天漲逾 27%,今日獲利了結"
+  },
+  "LBGJ": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "8/3 完成 1 併 200 反向分割後暴衝,今日續呈高波動動能盤,查無新消息"
+  },
+  "NTCL": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "查無個股新聞,近期已崩跌逾九成,今日續破底無具體事件"
+  },
+  "STKH": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "8/14 軋空暴衝 81% 後獲利了結拉回,無新負面消息"
+  },
+  "CGTL": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "查無明確個股消息,薄籌碼股延續本週暴衝暴跌行情"
   }
 }
