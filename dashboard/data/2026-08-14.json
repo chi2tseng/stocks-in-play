@@ -1,8 +1,1359 @@
 {
   "date": "2026-08-14",
-  "scanTime": "21:28",
-  "scanTimestamp": "2026-08-16T21:28",
+  "scanTime": "21:19",
+  "scanTimestamp": "2026-08-17T21:19",
   "stocks": {
+    "MRVL": {
+      "symbol": "MRVL",
+      "name": "Marvell Technology",
+      "type": "news",
+      "earningsReaction": false,
+      "catalyst": "8/12 發表 Structera X CXL 記憶體擴充平台與 Photonic Fabric 光纖共享記憶體方案,鎖定 AI 頻寬瓶頸,買盤延續",
+      "newsDetail": "> **今日漲因:** +2.4%(222.18 美元)—— 資料中心客製晶片與高頻寬記憶體需求題材延燒,記憶體與晶圓設備商財報帶動族群同步走強。\n\n**族群驅動來源**\n\nMarvell 今日走強來自人工智慧基礎建設供應鏈的兩則上游訊號:\n\n- **應用材料 FQ3 財報**(8/13 盤後):營收 **92.1 億美元創紀錄、年增 24.8%**,下季財測 **102.5 億美元 ±5 億**;管理層點名訂單動能來自**動態隨機存取記憶體、先進製程邏輯與先進封裝** —— 先進封裝正是客製化資料中心晶片(ASIC)與高頻寬記憶體整合的關鍵製程。\n- **SanDisk 8/13 投資人日**:多年期客戶協議鎖定 2027 財年約半數、2028 財年約三分之二的位元出貨量,反映資料中心儲存與記憶體的長期需求能見度。\n\nMarvell 的主力業務是資料中心客製化晶片與光通訊,與上述兩項需求訊號直接相關。\n\n**同族群表現**\n\nSNDK +6.3%、SMCI +4.1%、WDC +3.9%、MU +2.9%、STX +2.6%、ARM +2.5%。同族群內的光通訊端(COHR −8.0%)則因財報前已急漲 44% 而回檔,呈現子族群輪動。\n\n**客觀備註**\n\n查無 Marvell 自身於 8/13-14 的財報、合約或分析師重大動作;今日屬族群連動。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=MRVL"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/MRVL"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-MRVL/news/"
+        }
+      ],
+      "publishedAt": "2026-08-14T09:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "應用材料 FQ3 2026 財報整理",
+          "url": "https://247wallst.com/cards/applied-materials-q3-2026-earnings-amat-01kzybvthd5qqamwrtqk59k25x"
+        },
+        {
+          "label": "SanDisk 投資人日新聞稿",
+          "url": "https://www.stocktitan.net/news/SNDK/sandisk-details-growth-strategy-and-long-term-financial-model-at-tfgp9oq5d8ja.html"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 225.35,
+          "chgPct": 1.5,
+          "volume": 14487843,
+          "session": "headline",
+          "direction": "up",
+          "name": "Marvell Technology",
+          "sessionDate": "2026-08-14",
+          "targetDate": "2026-08-14"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 225.35,
+      "chgPct": 1.5,
+      "volume": 14487843,
+      "tv": {
+        "latestEPS": 0.8,
+        "consensusEPS": 0.8,
+        "priorYrEPS": 0.62,
+        "surpriseEPS_pct": 0.21,
+        "surpriseEPS_dollar": 0.0,
+        "latestRev_M": 2420.0,
+        "consensusRev_M": 2410.0,
+        "priorYrRev_M": 1900.0,
+        "surpriseRev_pct": 0.49,
+        "yrYrRev_pct": 27.368421052631582,
+        "epsYoY_pct": 29.032258064516135,
+        "epsEst_next4": [
+          0.93,
+          1.07,
+          1.24,
+          1.32
+        ],
+        "revEst_next4": [
+          2710.0,
+          3020.0,
+          3370.0,
+          3610.0
+        ],
+        "yoyBlock": "+29.03% / +27.37%\n--------------------\n+38.81% / +34.83%\n+40.79% / +45.89%\n+55.00% / +51.80%\n+65.00% / +49.17%",
+        "chart": {
+          "quarters": [
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q4 '20"
+          ],
+          "eps_reported": [
+            0.3,
+            0.43,
+            0.6,
+            0.62,
+            0.67,
+            0.76,
+            0.8,
+            0.8,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.29,
+            0.41,
+            0.59,
+            0.61,
+            0.67,
+            0.74,
+            0.79,
+            0.8,
+            0.93,
+            1.07,
+            1.24,
+            1.32
+          ],
+          "rev_reported_M": [
+            1270.0,
+            1520.0,
+            1820.0,
+            1900.0,
+            2009.9999999999998,
+            2070.0,
+            2220.0,
+            2420.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            1250.0,
+            1460.0,
+            1800.0,
+            1880.0,
+            2009.9999999999998,
+            2070.0,
+            2210.0,
+            2410.0,
+            2710.0,
+            3020.0,
+            3370.0,
+            3610.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-05-27",
+        "nextReportDate": null
+      },
+      "shortFloat": 4.12,
+      "shortRatio": 0.88,
+      "marketCap_M": 197600,
+      "floatShares_M": 869.04,
+      "perf1M": 19.58,
+      "perf3M": 27.55,
+      "perf6M": 187.02,
+      "perfYTD": 165.51,
+      "perf12M": 196.14,
+      "prevOhlcv": {
+        "date": "2026-08-11",
+        "open": 212.0,
+        "high": 212.66,
+        "low": 206.43,
+        "close": 212.31,
+        "volume": 15313200,
+        "prev_close": 208.56
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": 2.35,
+        "predDay": 3.4,
+        "band": [
+          -2.5,
+          2.2
+        ],
+        "tier": "big",
+        "spike": [
+          2.3,
+          4.4,
+          5.8
+        ],
+        "predHi": 6.9,
+        "predHiBand": [
+          4.7,
+          8.3
+        ]
+      }
+    },
+    "MU": {
+      "symbol": "MU",
+      "name": "Micron Technology",
+      "type": "momentum",
+      "earningsReaction": false,
+      "catalyst": "族群連動:記憶體超級週期敘事延續,第三季 DRAM 合約價估漲 13-18%、NAND 漲 10-15%,股價站上 1,000 美元關卡",
+      "newsDetail": "> **今日漲因:** 美光受惠AI記憶體超級週期,DRAM/NAND合約價齊揚且HBM產能全數售罄,加上分析師接力調升目標價,股價盤前再漲2.50%至996美元,直逼千元大關。\n\n**財報數字詳解**\n\n美光6月24日公布的2026財年第3季(截至5月底)財報創下歷史新高:總營收達**414.6億美元**,超出市場預期56.4億美元;其中DRAM營收313億美元、占營收76%,年增343%、季增67%;NAND營收99億美元、占營收24%,年增361%、季增99%。GAAP毛利率84.6%,Non-GAAP毛利率**84.9%**創公司紀錄;Non-GAAP每股盈餘25.11美元,優於市場預期的20.71美元,超出幅度達4.40美元。\n\n**產能與訂價**\n\n受AI伺服器需求帶動,DRAM平均售價季增約六成,NAND平均售價季增近八成。公司表示**2026年HBM產能已在多年期固定價格合約下全數售罄**,涵蓋主要雲端服務業者,HBM4出貨已於2026年第2季(日曆年)展開;HBM4 12層堆疊產品的放量速度是HBM3E 12層堆疊的兩倍,累計HBM4營收已超過10億美元。\n\n**展望與指引**\n\n美光預估2026財年第4季營收約**500億美元**(正負10億美元),超出市場預期65.5億美元,季增約20.5%;毛利率預估約86%(GAAP與Non-GAAP口徑相近);Non-GAAP每股盈餘預估31美元(正負1美元),優於市場預期5.57美元;調整後自由現金流預期將超過300億美元。\n\n**分析師與市場反應**\n\nD.A. Davidson先前以街上最高的1,000美元目標價開始評等,理由是AI驅動的記憶體超級週期;分析師Pierre Ferragu於8月15日將評等由中立上調至買進,目標價大幅拉高至**1,250美元**。多家追蹤平台顯示,目前華爾街對美光的共識評等偏向樂觀,多數目標價落在四位數美元區間,股價本週持續逼近千元整數關卡。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=MU"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/MU"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-MU/news/"
+        }
+      ],
+      "publishedAt": "2026-08-17T08:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "TradeThePool - Micron Q3 FY2026 Earnings Summary",
+          "url": "https://tradethepool.com/fundamental/micron-q3-fy2026-earnings-revenue-ai-boom-guidance/"
+        },
+        {
+          "label": "TradingKey - Micron HBM Sold Out Through 2026",
+          "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/261930650-micron-mu-hbm-ai-datacenter-sold-out-margin-expansion-fibonacci-breakout-memory-scarcity-guidance-raise-tradingkey"
+        },
+        {
+          "label": "Yahoo Finance - Micron Analyst Price Target",
+          "url": "https://sg.finance.yahoo.com/news/5-star-analyst-sets-jaw-153300236.html"
+        }
+      ],
+      "seanAnalysis": {
+        "analysis": "DRAM報價估漲13-18%、NAND漲10-15%,是整個記憶體族群一起動的消息,不是MU單獨的意外驚喜。問題是這檔3個月已經飆了37.4%、1個月也漲17.3%,該反應的早就反應了,市場不會因為報價預期再上修就嚇一跳。空單只有2.66%、回補天數0.6天,幾乎沒有軋空題材,1.1兆美元市值的巨型股也很難靠消息面快速變盤。這跟它自己過去財報亮眼但漲多之後「不夠意外」的老毛病一樣。**結論:次要觀察**,題材是真的,但股價已經把好消息大半吃進去了,適合快進快出、不適合重壓。關鍵價位:站穩$1000整數大關才算延續強勢,跌破$970(消息前價位)這波記憶體行情就先降溫看待。",
+        "sourceDate": "2026-08-17"
+      },
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 996.0,
+          "chgPct": 2.5,
+          "volume": 27881135,
+          "session": "headline",
+          "direction": "up",
+          "name": "Micron Technology",
+          "sessionDate": "2026-08-14",
+          "targetDate": "2026-08-14"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 996.0,
+      "chgPct": 2.5,
+      "volume": 27881135,
+      "tv": {
+        "latestEPS": 25.11,
+        "consensusEPS": 20.86,
+        "priorYrEPS": 1.91,
+        "surpriseEPS_pct": 20.36,
+        "surpriseEPS_dollar": 4.25,
+        "latestRev_M": 41460.0,
+        "consensusRev_M": 35910.0,
+        "priorYrRev_M": 9300.0,
+        "surpriseRev_pct": 15.44,
+        "yrYrRev_pct": 345.80645161290323,
+        "epsYoY_pct": 1214.6596858638743,
+        "epsEst_next4": [
+          31.15,
+          34.72,
+          37.56,
+          40.17
+        ],
+        "revEst_next4": [
+          50430.0,
+          56280.0,
+          60320.0,
+          64000.0
+        ],
+        "yoyBlock": "+1214.66% / +345.81%\n--------------------\n+928.05% / +345.89%\n+626.36% / +312.61%\n+207.87% / +152.81%\n+59.98% / +54.37%",
+        "chart": {
+          "quarters": [
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q3 '27",
+            "Q2 '21"
+          ],
+          "eps_reported": [
+            1.18,
+            1.79,
+            1.56,
+            1.91,
+            3.03,
+            4.78,
+            12.2,
+            25.11,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            1.12,
+            1.76,
+            1.43,
+            1.6,
+            2.86,
+            3.96,
+            9.19,
+            20.86,
+            31.15,
+            34.72,
+            37.56,
+            40.17
+          ],
+          "rev_reported_M": [
+            7750.0,
+            8710.0,
+            8050.000000000001,
+            9300.0,
+            11310.0,
+            13640.0,
+            23860.0,
+            41460.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            7650.0,
+            8710.0,
+            7900.0,
+            8860.0,
+            11220.0,
+            12910.0,
+            19970.0,
+            35910.0,
+            50430.0,
+            56280.0,
+            60320.0,
+            64000.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-06-24",
+        "nextReportDate": null
+      },
+      "shortFloat": 2.66,
+      "shortRatio": 0.6,
+      "marketCap_M": 1124880,
+      "floatShares_M": 1130,
+      "perf1M": 17.32,
+      "perf3M": 37.44,
+      "perf6M": 141.95,
+      "perfYTD": 248.97,
+      "perf12M": 724.03,
+      "prevOhlcv": {
+        "date": "2026-08-11",
+        "open": 871.8,
+        "high": 879.0,
+        "low": 844.62,
+        "close": 868.52,
+        "volume": 29340500,
+        "prev_close": 861.0
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": 2.89,
+        "predDay": 4.0,
+        "band": [
+          -2.5,
+          2.2
+        ],
+        "tier": "big",
+        "spike": [
+          1.1,
+          3.2,
+          4.6
+        ],
+        "predHi": 6.2,
+        "predHiBand": [
+          4.0,
+          7.6
+        ]
+      }
+    },
+    "COHR": {
+      "symbol": "COHR",
+      "name": "Coherent Corp",
+      "type": "news",
+      "earningsReaction": false,
+      "catalyst": "8/12 財報雖超預期,但營運現金流季減 87.5%、庫存年增 79.5% 引發疑慮;資金由光通訊轉進記憶體族群,近日弱勢後今日盤前小幅回穩",
+      "newsDetail": "> **今日跌因:** −8.0%(327.23 美元)—— 8/12 FQ4 財報營運指標優於華爾街預估,但股價在財報前五個交易日已因中國光收發模組禁令題材急漲約 44%,連日利多出盡式獲利了結。\n\n**事件時序**\n\nCoherent 於 **2026-08-12** 公布 2026 會計年度第四季與全年財報,公司揭露的營運指標**優於華爾街共識預估**。但股價自財報當日起連續走弱,8/13 跌 5.69%,今日再跌約 8%。\n\n**為什麼好財報卻連跌**\n\n關鍵在財報前的漲幅。市場對中國光收發模組禁令的預期,在財報前的**五個交易日內把股價推高約 44%**。也就是說,財報的好消息在公布前就已經被大幅反映在價格裡。財報公布後出現的是典型的獲利了結與部位調節,而不是對數字本身的失望。\n\n**族群定位**\n\nCoherent 是人工智慧資料中心光通訊(光收發模組)的主要供應商之一,近期與記憶體族群並列為人工智慧基礎建設題材的兩大主軸。今日記憶體端(SNDK、WDC、MU、STX)全面走強,而光通訊端回檔 —— 兩個子族群在同一天走出相反方向,是資金在人工智慧題材內部輪動的訊號。\n\n**客觀備註**\n\n本次回檔的起點是財報前的急漲幅度,而非營運面轉弱。目前公開資訊未顯示中國禁令題材有實質變化。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=COHR"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/COHR"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-COHR/news/"
+        }
+      ],
+      "publishedAt": "2026-08-12T16:05:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Seeking Alpha — Coherent 在多日急漲後重挫",
+          "url": "https://seekingalpha.com/news/4629977-coherent-slumps-12-after-sharp-multi-session-rally"
+        },
+        {
+          "label": "TipRanks — Coherent 在人工智慧行情後回檔",
+          "url": "https://www.tipranks.com/news/catalyst/coherent-stock-stumbles-after-explosive-ai-fueled-rally"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 331.97,
+          "chgPct": 1.88,
+          "volume": 8718490,
+          "session": "headline",
+          "direction": "up",
+          "name": "Coherent Corp",
+          "sessionDate": "2026-08-14",
+          "targetDate": "2026-08-14"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 331.97,
+      "chgPct": 1.88,
+      "volume": 8718490,
+      "tv": {
+        "latestEPS": 1.74,
+        "consensusEPS": 1.62,
+        "priorYrEPS": 1.0,
+        "surpriseEPS_pct": 7.61,
+        "surpriseEPS_dollar": 0.11999999999999988,
+        "latestRev_M": 2050.0,
+        "consensusRev_M": 1980.0,
+        "priorYrRev_M": 1530.0,
+        "surpriseRev_pct": 3.07,
+        "yrYrRev_pct": 33.98692810457516,
+        "epsYoY_pct": 74.0,
+        "epsEst_next4": [
+          1.96,
+          2.19,
+          2.46,
+          2.72
+        ],
+        "revEst_next4": [
+          2290.0,
+          2510.0,
+          2740.0,
+          2980.0
+        ],
+        "yoyBlock": "+74.00% / +33.99%\n--------------------\n+68.97% / +44.94%\n+69.77% / +48.52%\n+74.47% / +51.38%\n+56.32% / +45.37%",
+        "chart": {
+          "quarters": [
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q3 '27",
+            "Q4 '27",
+            "Q3 '21"
+          ],
+          "eps_reported": [
+            0.74,
+            0.95,
+            0.91,
+            1.0,
+            1.16,
+            1.29,
+            1.41,
+            1.74,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.61,
+            0.69,
+            0.86,
+            0.92,
+            1.04,
+            1.21,
+            1.4,
+            1.62,
+            1.96,
+            2.19,
+            2.46,
+            2.72
+          ],
+          "rev_reported_M": [
+            1350.0,
+            1430.0,
+            1500.0,
+            1530.0,
+            1580.0,
+            1690.0,
+            1810.0,
+            2050.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            1320.0,
+            1370.0,
+            1440.0,
+            1510.0,
+            1540.0,
+            1640.0,
+            1780.0,
+            1980.0,
+            2290.0,
+            2510.0,
+            2740.0,
+            2980.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-08-13",
+        "nextReportDate": null
+      },
+      "shortFloat": 4.84,
+      "shortRatio": 1.5,
+      "marketCap_M": 64879.99999999999,
+      "floatShares_M": 186.88,
+      "perf1M": 19.46,
+      "perf3M": -13.29,
+      "perf6M": 52.66,
+      "perfYTD": 79.68,
+      "perf12M": 255.06,
+      "prevOhlcv": {
+        "date": "2026-08-11",
+        "open": 323.86,
+        "high": 332.0,
+        "low": 315.4,
+        "close": 328.57,
+        "volume": 6442300,
+        "prev_close": 325.15
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": -7.99,
+        "predDay": -7.7,
+        "band": [
+          -2.5,
+          2.2
+        ],
+        "tier": "big",
+        "spike": [
+          3.0,
+          5.1,
+          6.5
+        ],
+        "predHi": -3.3,
+        "predHiBand": [
+          -5.2,
+          -2.0
+        ]
+      }
+    },
+    "STX": {
+      "symbol": "STX",
+      "name": "Seagate Technology",
+      "type": "momentum",
+      "earningsReaction": false,
+      "catalyst": "族群連動:AI 雲端儲存需求熱絡、毛利率連 13 季擴張,隨儲存族群走強",
+      "newsDetail": "> **今日漲因:** AI雲端與資料中心對大容量硬碟需求持續強勁,帶動Seagate毛利率連續多季創新高,儲存族群買盤延續。\n\nSeagate最新公布財季財報顯示,調整後毛利率達**52.7%**,較前一季擴大約570個基點寫下歷史新高,主要受惠於資料中心客戶占出貨比重約九成、產品組合優化及定價策略奏效。營收年增達**48%**,調整後每股盈餘年增達**121%**。\n\n公司主力技術HAMR(熱輔助磁紀錄)已占近線儲存出貨量約四成,新一代Mozaic平台正接受主要雲端服務商認證;目前近線儲存產能已透過長約排定至**2028年**,部分客戶更要求延伸承諾至2029年後,反映AI基礎建設對大容量儲存的長期剛性需求。今日股價走高延續近期AI雲端儲存族群強勢格局,與WDC、SNDK等同族群個股同步反映NAND及硬碟供給吃緊題材。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=STX"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/STX"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-STX/news/"
+        }
+      ],
+      "publishedAt": "2026-08-17T09:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Benzinga - Seagate Hits Record Margins Amid AI Storage Boom",
+          "url": "https://www.benzinga.com/trading-ideas/movers/26/07/60757398/seagate-hits-record-margins-amid-ai-storage-boom"
+        },
+        {
+          "label": "Seagate Investor Relations - Fiscal Third/Fourth Quarter 2026 Financial Results",
+          "url": "https://investors.seagate.com/news/news-details/2026/Seagate-Technology-Reports-Fiscal-Third-Quarter-2026-Financial-Results/default.aspx"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 993.0,
+          "chgPct": 2.01,
+          "volume": 5246863,
+          "session": "headline",
+          "direction": "up",
+          "name": "Seagate Technology",
+          "sessionDate": "2026-08-14",
+          "targetDate": "2026-08-14"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 993.0,
+      "chgPct": 2.01,
+      "volume": 5246863,
+      "tv": {
+        "latestEPS": 5.71,
+        "consensusEPS": 5.1,
+        "priorYrEPS": 2.59,
+        "surpriseEPS_pct": 11.96,
+        "surpriseEPS_dollar": 0.6100000000000003,
+        "latestRev_M": 3630.0,
+        "consensusRev_M": 3500.0,
+        "priorYrRev_M": 2440.0,
+        "surpriseRev_pct": 3.73,
+        "yrYrRev_pct": 48.77049180327869,
+        "epsYoY_pct": 120.46332046332047,
+        "epsEst_next4": [
+          7.36,
+          8.4,
+          9.51,
+          11.02
+        ],
+        "revEst_next4": [
+          4120.0,
+          4470.0,
+          4800.0,
+          5290.0
+        ],
+        "yoyBlock": "+120.46% / +48.77%\n--------------------\n+181.99% / +56.65%\n+170.10% / +57.95%\n+131.95% / +54.34%\n+92.99% / +45.73%",
+        "chart": {
+          "quarters": [
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q3 '27",
+            "Q4 '27",
+            "Q3 '21"
+          ],
+          "eps_reported": [
+            1.58,
+            2.03,
+            1.9,
+            2.59,
+            2.61,
+            3.11,
+            4.1,
+            5.71,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            1.48,
+            1.88,
+            1.74,
+            2.45,
+            2.4,
+            2.84,
+            3.51,
+            5.1,
+            7.36,
+            8.4,
+            9.51,
+            11.02
+          ],
+          "rev_reported_M": [
+            2170.0,
+            2330.0,
+            2160.0,
+            2440.0,
+            2630.0,
+            2830.0,
+            3110.0,
+            3630.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            2130.0,
+            2320.0,
+            2120.0,
+            2420.0,
+            2550.0,
+            2740.0,
+            2960.0,
+            3500.0,
+            4120.0,
+            4470.0,
+            4800.0,
+            5290.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-07-28",
+        "nextReportDate": null
+      },
+      "shortFloat": 3.56,
+      "shortRatio": 1.71,
+      "marketCap_M": 225050,
+      "floatShares_M": 226.01,
+      "perf1M": 26.06,
+      "perf3M": 24.83,
+      "perf6M": 133.09,
+      "perfYTD": 260.56,
+      "perf12M": 542.98,
+      "prevOhlcv": {
+        "date": "2026-08-11",
+        "open": 805.0,
+        "high": 826.9,
+        "low": 794.01,
+        "close": 820.52,
+        "volume": 3179400,
+        "prev_close": 800.99
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": 2.56,
+        "predDay": 3.6,
+        "band": [
+          -2.5,
+          2.2
+        ],
+        "tier": "big",
+        "spike": [
+          1.9,
+          4.0,
+          5.4
+        ],
+        "predHi": 6.7,
+        "predHiBand": [
+          4.5,
+          8.1
+        ]
+      }
+    },
+    "SMCI": {
+      "symbol": "SMCI",
+      "name": "Super Micro Computer",
+      "type": "earnings",
+      "earningsReaction": false,
+      "catalyst": "8/11 盤後財報調整後每股盈餘 1.70 美元遠超預期 0.92 美元、單季新增訂單逾 600 億美元;8/12 大漲 19% 後今日拉回獲利了結",
+      "newsDetail": "> **今日漲因:** +4.1%(39.16 美元)—— 人工智慧伺服器與記憶體族群同步走強,SanDisk 投資人日長期模型與應用材料強勢財測帶動整條供應鏈。\n\n**族群驅動來源**\n\n今日推升 Super Micro 的不是公司自身消息,而是上游兩則具體事件:\n\n1. **SanDisk 8/13 投資人日**:公布 2028-2030 財年目標(非公認會計毛利率約 80%),並揭露已與 8 家客戶簽定多年期協議,鎖定 **2027 財年約 50%、2028 財年約三分之二的位元出貨量** —— 記憶體需求被長約鎖定,直接指向資料中心建置量能。\n2. **應用材料 FQ3 財報**:營收 92.1 億美元創紀錄、年增 24.8%,**下一季財測 102.5 億美元 ±5 億**,並上修 2026 日曆年半導體系統營收展望,訂單動能來自動態隨機存取記憶體、先進製程與先進封裝。\n\nSuper Micro 是人工智慧伺服器整機的主要組裝商,記憶體與晶圓設備端的需求訊號會直接反映到它的訂單能見度。\n\n**同族群表現**\n\nARM +2.5%、MRVL +2.4%、WDC +3.9%、MU +2.9%、STX +2.6%、SNDK +6.3% —— 記憶體與人工智慧半導體今日全面同向。\n\n**客觀備註**\n\n查無 Super Micro 自身於 8/13-14 的公司公告、財報或分析師重大動作。今日漲勢屬族群連動,不是個股事件。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=SMCI"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/SMCI"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SMCI/news/"
+        }
+      ],
+      "publishedAt": "2026-08-14T09:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "SanDisk 投資人日新聞稿",
+          "url": "https://www.stocktitan.net/news/SNDK/sandisk-details-growth-strategy-and-long-term-financial-model-at-tfgp9oq5d8ja.html"
+        },
+        {
+          "label": "應用材料 FQ3 2026 財報整理",
+          "url": "https://247wallst.com/cards/applied-materials-q3-2026-earnings-amat-01kzybvthd5qqamwrtqk59k25x"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 39.07,
+          "chgPct": -1.92,
+          "volume": 61990870,
+          "session": "headline",
+          "direction": "down",
+          "name": "Super Micro Computer",
+          "sessionDate": "2026-08-14",
+          "targetDate": "2026-08-14"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "down",
+      "last": 39.07,
+      "chgPct": -1.92,
+      "volume": 61990870,
+      "tv": {
+        "latestEPS": 1.7,
+        "consensusEPS": 0.92,
+        "priorYrEPS": 0.41,
+        "surpriseEPS_pct": 84.18,
+        "surpriseEPS_dollar": 0.7799999999999999,
+        "latestRev_M": 11120.0,
+        "consensusRev_M": 11600.0,
+        "priorYrRev_M": 5760.0,
+        "surpriseRev_pct": -4.14,
+        "yrYrRev_pct": 93.05555555555556,
+        "epsYoY_pct": 314.6341463414634,
+        "epsEst_next4": [
+          1.03,
+          1.04,
+          1.07,
+          1.2
+        ],
+        "revEst_next4": [
+          14970.0,
+          16460.0,
+          17040.0,
+          18770.0
+        ],
+        "yoyBlock": "+314.63% / +93.06%\n--------------------\n+194.29% / +198.21%\n+50.72% / +29.81%\n+27.38% / +66.41%\n-29.41% / +68.79%",
+        "chart": {
+          "quarters": [
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q3 '27",
+            "Q4 '27",
+            "Q3 '21"
+          ],
+          "eps_reported": [
+            0.75,
+            0.51,
+            0.31,
+            0.41,
+            0.35,
+            0.69,
+            0.84,
+            1.7,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.73,
+            0.58,
+            0.41,
+            0.45,
+            0.37,
+            0.49,
+            0.62,
+            0.92,
+            1.03,
+            1.04,
+            1.07,
+            1.2
+          ],
+          "rev_reported_M": [
+            5950.0,
+            5680.0,
+            4600.0,
+            5760.0,
+            5020.0,
+            12680.0,
+            10240.0,
+            11120.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            6340.0,
+            5650.0,
+            5010.0,
+            5980.0,
+            5830.0,
+            10420.0,
+            12390.0,
+            11600.0,
+            14970.0,
+            16460.0,
+            17040.0,
+            18770.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-08-12",
+        "nextReportDate": null
+      },
+      "shortFloat": 16.23,
+      "shortRatio": 1.58,
+      "marketCap_M": 25270,
+      "floatShares_M": 563.38,
+      "perf1M": 61.58,
+      "perf3M": 25.87,
+      "perf6M": 27.93,
+      "perfYTD": 33.48,
+      "perf12M": -13.89,
+      "prevOhlcv": {
+        "date": "2026-08-11",
+        "open": 32.02,
+        "high": 32.36,
+        "low": 30.92,
+        "close": 31.6,
+        "volume": 92621700,
+        "prev_close": 31.46
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": 4.12,
+        "predDay": 5.5,
+        "band": [
+          -2.5,
+          2.2
+        ],
+        "tier": "big",
+        "spike": [
+          3.6,
+          5.7,
+          7.1
+        ],
+        "predHi": 10.1,
+        "predHiBand": [
+          7.9,
+          11.5
+        ]
+      }
+    },
+    "WDC": {
+      "symbol": "WDC",
+      "name": "Western Digital Corp",
+      "type": "momentum",
+      "earningsReaction": false,
+      "catalyst": "族群連動:SanDisk 投資人日與 NAND 漲價敘事帶動儲存股齊揚,查無 8/17 當日個股新事件",
+      "newsDetail": "> **今日漲因:** 儲存類股同步走強,SanDisk投資人日釋出強勁NAND產業展望是主要驅動,WDC作為分拆後儲存族群一員同步受惠。\n\nSanDisk(2025年2月自WDC分拆而出)於8/13召開投資人日,管理層預估**NAND市場規模2026年將超過3,000億美元、2027年上看5,000億美元**,產能吃緊態勢將延續至2028年;會中並提出2028至2030年營收年增15%至20%、毛利率維持近80%、自由現金流利潤率約50%的中期財測,消息激勵SanDisk股價當日一度飆升逾一成。\n\nWestern Digital完成SanDisk分拆後轉型為專注硬碟(HDD)業務的公司,市場近期討論聚焦分拆後資本結構調整。儲存產業因AI資料中心需求持續強勁,NAND與硬碟供給皆呈現吃緊格局,帶動WDC今日股價同步走高,屬儲存類股整體族群連動。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=WDC"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/WDC"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-WDC/news/"
+        }
+      ],
+      "publishedAt": "2026-08-17T09:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Counterpoint Research - SanDisk Investor Day: Caching Out the NAND Cycle with Contracts",
+          "url": "https://counterpointresearch.com/en/insights/sandisk-investor-day-caching-out-the-nand-cycle-with-contracts"
+        },
+        {
+          "label": "ChartMill - SanDisk's Investor Day Puts NAND Center Stage",
+          "url": "https://www.chartmill.com/news/ALC/Chartmill-53578-SanDisks-Investor-Day-Puts-NAND-Center-Stage-as-the-30-Year-Quietly-Prices-In-Fiscal-Reality"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 521.8,
+          "chgPct": 2.56,
+          "volume": 9945790,
+          "session": "headline",
+          "direction": "up",
+          "name": "Western Digital Corp",
+          "sessionDate": "2026-08-14",
+          "targetDate": "2026-08-14"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 521.8,
+      "chgPct": 2.56,
+      "volume": 9945790,
+      "tv": {
+        "latestEPS": 3.56,
+        "consensusEPS": 3.31,
+        "priorYrEPS": 1.66,
+        "surpriseEPS_pct": 7.54,
+        "surpriseEPS_dollar": 0.25,
+        "latestRev_M": 3750.0,
+        "consensusRev_M": 3700.0,
+        "priorYrRev_M": 2600.0,
+        "surpriseRev_pct": 1.27,
+        "yrYrRev_pct": 44.230769230769226,
+        "epsYoY_pct": 114.45783132530123,
+        "epsEst_next4": [
+          4.06,
+          4.72,
+          5.48,
+          6.28
+        ],
+        "revEst_next4": [
+          4130.0,
+          4540.0,
+          4980.0,
+          5450.0
+        ],
+        "yoyBlock": "+114.46% / +44.23%\n--------------------\n+128.09% / +46.45%\n+121.60% / +50.33%\n+101.47% / +49.10%\n+76.40% / +45.33%",
+        "chart": {
+          "quarters": [
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q3 '27",
+            "Q4 '27",
+            "Q3 '21"
+          ],
+          "eps_reported": [
+            1.35,
+            1.34,
+            1.36,
+            1.66,
+            1.78,
+            2.13,
+            2.72,
+            3.56,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            1.29,
+            1.35,
+            1.12,
+            1.48,
+            1.59,
+            1.93,
+            2.39,
+            3.31,
+            4.06,
+            4.72,
+            5.48,
+            6.28
+          ],
+          "rev_reported_M": [
+            4090.0,
+            4290.0,
+            2290.0,
+            2600.0,
+            2820.0,
+            3020.0,
+            3340.0,
+            3750.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            4120.0,
+            4260.0,
+            2310.0,
+            2470.0,
+            2730.0,
+            2930.0,
+            3250.0,
+            3700.0,
+            4130.0,
+            4540.0,
+            4980.0,
+            5450.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-08-06",
+        "nextReportDate": null
+      },
+      "shortFloat": 7.2,
+      "shortRatio": 2.89,
+      "marketCap_M": 180180,
+      "floatShares_M": 341.86,
+      "perf1M": 9.54,
+      "perf3M": 8.45,
+      "perf6M": 85.65,
+      "perfYTD": 203.45,
+      "perf12M": 596.44,
+      "prevOhlcv": {
+        "date": "2026-08-11",
+        "open": 442.22,
+        "high": 448.88,
+        "low": 431.48,
+        "close": 437.93,
+        "volume": 6087000,
+        "prev_close": 438.34
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": 3.94,
+        "predDay": 5.3,
+        "band": [
+          -2.5,
+          2.2
+        ],
+        "tier": "big",
+        "spike": [
+          0.3,
+          2.4,
+          3.9
+        ],
+        "predHi": 6.4,
+        "predHiBand": [
+          4.3,
+          8.0
+        ]
+      }
+    },
+    "ARM": {
+      "symbol": "ARM",
+      "name": "Arm Holdings ADR",
+      "type": "analyst",
+      "earningsReaction": false,
+      "catalyst": "美銀證券 8/13 上修 CPU 市場 2030 年產值預測至 2,100 億美元,AI 推論需求支撐股價",
+      "newsDetail": "> **今日漲因:** +2.5%(278.65 美元)—— 人工智慧半導體族群走強,記憶體與晶圓設備商的財報動能外溢至整條供應鏈。\n\n**族群驅動來源**\n\nArm Holdings 今日的漲勢來自上游兩則具體事件,不是自身公告:\n\n- **應用材料 FQ3 財報**(8/13 盤後):營收 **92.1 億美元、年增 24.8%** 創紀錄,調整後每股盈餘 3.50 美元優於預估 3.39;下一季財測 **102.5 億美元 ±5 億**,半導體系統部門營益率由去年同期 33.2% 升至 **38.0%**。公司同步上修 2026 日曆年半導體系統營收展望,訂單來自動態隨機存取記憶體、先進製程與先進封裝。\n- **SanDisk 8/13 投資人日**:揭露已鎖定 2027 財年約半數位元出貨量的多年期客戶協議,顯示資料中心記憶體需求的能見度延伸到 2028 年。\n\n設備商的訂單能見度與記憶體的長約,是整條人工智慧半導體供應鏈估值的共同基礎;Arm 作為架構授權方,受惠於晶片出貨量的整體擴張。\n\n**同族群表現**\n\nSNDK +6.3%、WDC +3.9%、SMCI +4.1%、MRVL +2.4%、MU +2.9%、STX +2.6%。\n\n**客觀備註**\n\n查無 Arm 自身於 8/13-14 的財報、合約或分析師重大動作;今日屬族群連動。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=ARM"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/ARM"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-ARM/news/"
+        }
+      ],
+      "publishedAt": "2026-08-14T09:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "應用材料 FQ3 2026 財報整理",
+          "url": "https://247wallst.com/cards/applied-materials-q3-2026-earnings-amat-01kzybvthd5qqamwrtqk59k25x"
+        },
+        {
+          "label": "SanDisk 投資人日新聞稿",
+          "url": "https://www.stocktitan.net/news/SNDK/sandisk-details-growth-strategy-and-long-term-financial-model-at-tfgp9oq5d8ja.html"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 283.7,
+          "chgPct": 1.52,
+          "volume": 2102020,
+          "session": "headline",
+          "direction": "up",
+          "name": "Arm Holdings ADR",
+          "sessionDate": "2026-08-14",
+          "targetDate": "2026-08-14"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 283.7,
+      "chgPct": 1.52,
+      "volume": 2102020,
+      "tv": {
+        "latestEPS": 0.45,
+        "consensusEPS": 0.4,
+        "priorYrEPS": 0.35,
+        "surpriseEPS_pct": 11.94,
+        "surpriseEPS_dollar": 0.04999999999999999,
+        "latestRev_M": 1290.0,
+        "consensusRev_M": 1260.0,
+        "priorYrRev_M": 1050.0,
+        "surpriseRev_pct": 2.08,
+        "yrYrRev_pct": 22.857142857142858,
+        "epsYoY_pct": 28.57142857142858,
+        "epsEst_next4": [
+          0.47,
+          0.56,
+          0.77,
+          0.59
+        ],
+        "revEst_next4": [
+          1380.0,
+          1530.0,
+          1880.0,
+          1700.0
+        ],
+        "yoyBlock": "+28.57% / +22.86%\n--------------------\n+20.51% / +21.05%\n+30.23% / +23.39%\n+28.33% / +26.17%\n+31.11% / +31.78%",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            0.3,
+            0.39,
+            0.55,
+            0.35,
+            0.39,
+            0.43,
+            0.6,
+            0.45,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.26,
+            0.34,
+            0.52,
+            0.35,
+            0.33,
+            0.41,
+            0.58,
+            0.4,
+            0.47,
+            0.56,
+            0.77,
+            0.59
+          ],
+          "rev_reported_M": [
+            844.0,
+            983.0,
+            1240.0,
+            1050.0,
+            1140.0,
+            1240.0,
+            1490.0,
+            1290.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            810.03,
+            949.27,
+            1230.0,
+            1050.0,
+            1060.0,
+            1230.0,
+            1470.0,
+            1260.0,
+            1380.0,
+            1530.0,
+            1880.0,
+            1700.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-07-29",
+        "nextReportDate": null
+      },
+      "shortFloat": 1.59,
+      "shortRatio": 1.85,
+      "marketCap_M": 302840,
+      "floatShares_M": 1060,
+      "perf1M": 6.13,
+      "perf3M": 35.57,
+      "perf6M": 126.34,
+      "perfYTD": 159.41,
+      "perf12M": 104.13,
+      "prevOhlcv": {
+        "date": "2026-08-11",
+        "open": 273.1,
+        "high": 273.39,
+        "low": 265.37,
+        "close": 268.93,
+        "volume": 3172200,
+        "prev_close": 267.85
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": 2.49,
+        "predDay": 3.6,
+        "band": [
+          -2.5,
+          2.2
+        ],
+        "tier": "big",
+        "spike": [
+          0.6,
+          2.7,
+          4.1
+        ],
+        "predHi": 5.3,
+        "predHiBand": [
+          3.1,
+          6.7
+        ]
+      }
+    },
     "BORR": {
       "symbol": "BORR",
       "name": "Borr Drilling Ltd",
@@ -2965,198 +4316,6 @@
         ]
       }
     },
-    "MRVL": {
-      "symbol": "MRVL",
-      "name": "Marvell Technology",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "資料中心客製晶片與高頻寬記憶體需求題材延燒,族群同步走強",
-      "newsDetail": "> **今日漲因:** +2.4%(222.18 美元)—— 資料中心客製晶片與高頻寬記憶體需求題材延燒,記憶體與晶圓設備商財報帶動族群同步走強。\n\n**族群驅動來源**\n\nMarvell 今日走強來自人工智慧基礎建設供應鏈的兩則上游訊號:\n\n- **應用材料 FQ3 財報**(8/13 盤後):營收 **92.1 億美元創紀錄、年增 24.8%**,下季財測 **102.5 億美元 ±5 億**;管理層點名訂單動能來自**動態隨機存取記憶體、先進製程邏輯與先進封裝** —— 先進封裝正是客製化資料中心晶片(ASIC)與高頻寬記憶體整合的關鍵製程。\n- **SanDisk 8/13 投資人日**:多年期客戶協議鎖定 2027 財年約半數、2028 財年約三分之二的位元出貨量,反映資料中心儲存與記憶體的長期需求能見度。\n\nMarvell 的主力業務是資料中心客製化晶片與光通訊,與上述兩項需求訊號直接相關。\n\n**同族群表現**\n\nSNDK +6.3%、SMCI +4.1%、WDC +3.9%、MU +2.9%、STX +2.6%、ARM +2.5%。同族群內的光通訊端(COHR −8.0%)則因財報前已急漲 44% 而回檔,呈現子族群輪動。\n\n**客觀備註**\n\n查無 Marvell 自身於 8/13-14 的財報、合約或分析師重大動作;今日屬族群連動。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=MRVL"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/MRVL"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-MRVL/news/"
-        }
-      ],
-      "publishedAt": "2026-08-14T09:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "應用材料 FQ3 2026 財報整理",
-          "url": "https://247wallst.com/cards/applied-materials-q3-2026-earnings-amat-01kzybvthd5qqamwrtqk59k25x"
-        },
-        {
-          "label": "SanDisk 投資人日新聞稿",
-          "url": "https://www.stocktitan.net/news/SNDK/sandisk-details-growth-strategy-and-long-term-financial-model-at-tfgp9oq5d8ja.html"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 222.18,
-          "chgPct": 2.35,
-          "volume": 19175600,
-          "session": "headline",
-          "direction": "up",
-          "name": "Marvell Technology",
-          "sessionDate": "2026-08-14",
-          "targetDate": "2026-08-14"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 222.18,
-      "chgPct": 2.35,
-      "volume": 19175600,
-      "tv": {
-        "latestEPS": 0.8,
-        "consensusEPS": 0.8,
-        "priorYrEPS": 0.62,
-        "surpriseEPS_pct": 0.21,
-        "surpriseEPS_dollar": 0.0,
-        "latestRev_M": 2420.0,
-        "consensusRev_M": 2410.0,
-        "priorYrRev_M": 1900.0,
-        "surpriseRev_pct": 0.49,
-        "yrYrRev_pct": 27.368421052631582,
-        "epsYoY_pct": 29.032258064516135,
-        "epsEst_next4": [
-          0.93,
-          1.07,
-          1.24,
-          1.32
-        ],
-        "revEst_next4": [
-          2710.0,
-          3020.0,
-          3370.0,
-          3610.0
-        ],
-        "yoyBlock": "+29.03% / +27.37%\n--------------------\n+38.81% / +34.83%\n+40.79% / +45.89%\n+55.00% / +51.80%\n+65.00% / +49.17%",
-        "chart": {
-          "quarters": [
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q4 '20"
-          ],
-          "eps_reported": [
-            0.3,
-            0.43,
-            0.6,
-            0.62,
-            0.67,
-            0.76,
-            0.8,
-            0.8,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.29,
-            0.41,
-            0.59,
-            0.61,
-            0.67,
-            0.74,
-            0.79,
-            0.8,
-            0.93,
-            1.07,
-            1.24,
-            1.32
-          ],
-          "rev_reported_M": [
-            1270.0,
-            1520.0,
-            1820.0,
-            1900.0,
-            2009.9999999999998,
-            2070.0,
-            2220.0,
-            2420.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            1250.0,
-            1460.0,
-            1800.0,
-            1880.0,
-            2009.9999999999998,
-            2070.0,
-            2210.0,
-            2410.0,
-            2710.0,
-            3020.0,
-            3370.0,
-            3610.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": 4.12,
-      "shortRatio": 0.87,
-      "marketCap_M": 194440,
-      "floatShares_M": 869.04,
-      "perf1M": 17.91,
-      "perf3M": 21.6,
-      "perf6M": 183.8,
-      "perfYTD": 161.26,
-      "perf12M": 180.9,
-      "prevOhlcv": {
-        "date": "2026-08-11",
-        "open": 212.0,
-        "high": 212.66,
-        "low": 206.43,
-        "close": 212.31,
-        "volume": 15313200,
-        "prev_close": 208.56
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": 2.35,
-        "predDay": 3.4,
-        "band": [
-          -2.5,
-          2.2
-        ],
-        "tier": "big",
-        "spike": [
-          2.3,
-          4.4,
-          5.8
-        ],
-        "predHi": 6.9,
-        "predHiBand": [
-          4.7,
-          8.3
-        ]
-      }
-    },
     "MF": {
       "symbol": "MF",
       "name": "Mindforge Inc",
@@ -3229,198 +4388,6 @@
         "predHiBand": [
           43.4,
           58.6
-        ]
-      }
-    },
-    "SMCI": {
-      "symbol": "SMCI",
-      "name": "Super Micro Computer",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "人工智慧伺服器與記憶體族群同步走強:SanDisk 投資人日長期模型 + 應用材料下季財測 102.5 億美元帶動",
-      "newsDetail": "> **今日漲因:** +4.1%(39.16 美元)—— 人工智慧伺服器與記憶體族群同步走強,SanDisk 投資人日長期模型與應用材料強勢財測帶動整條供應鏈。\n\n**族群驅動來源**\n\n今日推升 Super Micro 的不是公司自身消息,而是上游兩則具體事件:\n\n1. **SanDisk 8/13 投資人日**:公布 2028-2030 財年目標(非公認會計毛利率約 80%),並揭露已與 8 家客戶簽定多年期協議,鎖定 **2027 財年約 50%、2028 財年約三分之二的位元出貨量** —— 記憶體需求被長約鎖定,直接指向資料中心建置量能。\n2. **應用材料 FQ3 財報**:營收 92.1 億美元創紀錄、年增 24.8%,**下一季財測 102.5 億美元 ±5 億**,並上修 2026 日曆年半導體系統營收展望,訂單動能來自動態隨機存取記憶體、先進製程與先進封裝。\n\nSuper Micro 是人工智慧伺服器整機的主要組裝商,記憶體與晶圓設備端的需求訊號會直接反映到它的訂單能見度。\n\n**同族群表現**\n\nARM +2.5%、MRVL +2.4%、WDC +3.9%、MU +2.9%、STX +2.6%、SNDK +6.3% —— 記憶體與人工智慧半導體今日全面同向。\n\n**客觀備註**\n\n查無 Super Micro 自身於 8/13-14 的公司公告、財報或分析師重大動作。今日漲勢屬族群連動,不是個股事件。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=SMCI"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/SMCI"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-SMCI/news/"
-        }
-      ],
-      "publishedAt": "2026-08-14T09:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "SanDisk 投資人日新聞稿",
-          "url": "https://www.stocktitan.net/news/SNDK/sandisk-details-growth-strategy-and-long-term-financial-model-at-tfgp9oq5d8ja.html"
-        },
-        {
-          "label": "應用材料 FQ3 2026 財報整理",
-          "url": "https://247wallst.com/cards/applied-materials-q3-2026-earnings-amat-01kzybvthd5qqamwrtqk59k25x"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 39.16,
-          "chgPct": 4.12,
-          "volume": 122419600,
-          "session": "headline",
-          "direction": "up",
-          "name": "Super Micro Computer",
-          "sessionDate": "2026-08-14",
-          "targetDate": "2026-08-14"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 39.16,
-      "chgPct": 4.12,
-      "volume": 122419600,
-      "tv": {
-        "latestEPS": 1.7,
-        "consensusEPS": 0.92,
-        "priorYrEPS": 0.41,
-        "surpriseEPS_pct": 84.18,
-        "surpriseEPS_dollar": 0.7799999999999999,
-        "latestRev_M": 11120.0,
-        "consensusRev_M": 11600.0,
-        "priorYrRev_M": 5760.0,
-        "surpriseRev_pct": -4.14,
-        "yrYrRev_pct": 93.05555555555556,
-        "epsYoY_pct": 314.6341463414634,
-        "epsEst_next4": [
-          1.03,
-          1.04,
-          1.07,
-          1.2
-        ],
-        "revEst_next4": [
-          14970.0,
-          16460.0,
-          17040.0,
-          18770.0
-        ],
-        "yoyBlock": "+314.63% / +93.06%\n--------------------\n+194.29% / +198.21%\n+50.72% / +29.81%\n+27.38% / +66.41%\n-29.41% / +68.79%",
-        "chart": {
-          "quarters": [
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q3 '27",
-            "Q4 '27",
-            "Q3 '21"
-          ],
-          "eps_reported": [
-            0.75,
-            0.51,
-            0.31,
-            0.41,
-            0.35,
-            0.69,
-            0.84,
-            1.7,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.73,
-            0.58,
-            0.41,
-            0.45,
-            0.37,
-            0.49,
-            0.62,
-            0.92,
-            1.03,
-            1.04,
-            1.07,
-            1.2
-          ],
-          "rev_reported_M": [
-            5950.0,
-            5680.0,
-            4600.0,
-            5760.0,
-            5020.0,
-            12680.0,
-            10240.0,
-            11120.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            6340.0,
-            5650.0,
-            5010.0,
-            5980.0,
-            5830.0,
-            10420.0,
-            12390.0,
-            11600.0,
-            14970.0,
-            16460.0,
-            17040.0,
-            18770.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-08-12",
-        "nextReportDate": null
-      },
-      "shortFloat": 16.23,
-      "shortRatio": 1.6,
-      "marketCap_M": 25770,
-      "floatShares_M": 563.38,
-      "perf1M": 61.43,
-      "perf3M": 20.62,
-      "perf6M": 30.92,
-      "perfYTD": 36.11,
-      "perf12M": -12.42,
-      "prevOhlcv": {
-        "date": "2026-08-11",
-        "open": 32.02,
-        "high": 32.36,
-        "low": 30.92,
-        "close": 31.6,
-        "volume": 92621700,
-        "prev_close": 31.46
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": 4.12,
-        "predDay": 5.5,
-        "band": [
-          -2.5,
-          2.2
-        ],
-        "tier": "big",
-        "spike": [
-          3.6,
-          5.7,
-          7.1
-        ],
-        "predHi": 10.1,
-        "predHiBand": [
-          7.9,
-          11.5
         ]
       }
     },
@@ -4272,194 +5239,6 @@
         "predHiBand": [
           -12.3,
           -2.5
-        ]
-      }
-    },
-    "STX": {
-      "symbol": "STX",
-      "name": "Seagate Technology",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "硬碟與儲存族群同步走強,人工智慧資料中心儲存需求外溢帶動",
-      "newsDetail": "> **今日漲因:** 希捷科技股價上漲**2.6%**,受惠記憶體與儲存族群全面走強,人工智慧資料中心對大容量硬碟需求持續增溫。\n\n**族群齊揚**\nSanDisk於8/13投資人日公布長期財務模型,並繳出第四財季營收年增**371.6%**的成績單,激勵整個記憶體與儲存族群,美光上漲2.9%、威騰電子上漲3.9%同步走高。\n\n**產業需求**\n希捷主力產品為高容量近線硬碟,人工智慧資料中心建置持續帶動企業級儲存需求,法人認為在供給吃緊環境下,單位出貨均價具備支撐。\n\n**類股氛圍**\n整體記憶體與儲存族群近期買氣熱絡,市場聚焦人工智慧基礎建設投資對上游供應鏈帶來的外溢效益,法人並留意後續合約定價與供給紀律是否延續,做為評估類股評價修復力道的重要觀察指標。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=STX"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/STX"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-STX/news/"
-        }
-      ],
-      "publishedAt": "2026-08-14T09:35:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "24/7 Wall St. — Memory Stocks Stay Strong",
-          "url": "https://247wallst.com/investing/2026/08/13/memory-stocks-stay-strong-with-sandisk-sk-hynix-and-western-digital-leading-the-storage-stack/"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 945.0,
-          "chgPct": 2.56,
-          "volume": 100000,
-          "session": "headline",
-          "direction": "up",
-          "name": "Seagate Technology",
-          "sessionDate": "2026-08-14",
-          "targetDate": "2026-08-14"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 945.0,
-      "chgPct": 2.56,
-      "volume": 100000,
-      "tv": {
-        "latestEPS": 5.71,
-        "consensusEPS": 5.1,
-        "priorYrEPS": 2.59,
-        "surpriseEPS_pct": 11.96,
-        "surpriseEPS_dollar": 0.6100000000000003,
-        "latestRev_M": 3630.0,
-        "consensusRev_M": 3500.0,
-        "priorYrRev_M": 2440.0,
-        "surpriseRev_pct": 3.73,
-        "yrYrRev_pct": 48.77049180327869,
-        "epsYoY_pct": 120.46332046332047,
-        "epsEst_next4": [
-          7.36,
-          8.4,
-          9.51,
-          11.02
-        ],
-        "revEst_next4": [
-          4120.0,
-          4470.0,
-          4800.0,
-          5290.0
-        ],
-        "yoyBlock": "+120.46% / +48.77%\n--------------------\n+181.99% / +56.65%\n+170.10% / +57.95%\n+131.95% / +54.34%\n+92.99% / +45.73%",
-        "chart": {
-          "quarters": [
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q3 '27",
-            "Q4 '27",
-            "Q3 '21"
-          ],
-          "eps_reported": [
-            1.58,
-            2.03,
-            1.9,
-            2.59,
-            2.61,
-            3.11,
-            4.1,
-            5.71,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            1.48,
-            1.88,
-            1.74,
-            2.45,
-            2.4,
-            2.84,
-            3.51,
-            5.1,
-            7.36,
-            8.4,
-            9.51,
-            11.02
-          ],
-          "rev_reported_M": [
-            2170.0,
-            2330.0,
-            2160.0,
-            2440.0,
-            2630.0,
-            2830.0,
-            3110.0,
-            3630.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            2130.0,
-            2320.0,
-            2120.0,
-            2420.0,
-            2550.0,
-            2740.0,
-            2960.0,
-            3500.0,
-            4120.0,
-            4470.0,
-            4800.0,
-            5290.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": 3.56,
-      "shortRatio": 1.72,
-      "marketCap_M": 220620,
-      "floatShares_M": 226.01,
-      "perf1M": 30.58,
-      "perf3M": 20.96,
-      "perf6M": 125.77,
-      "perfYTD": 253.48,
-      "perf12M": 525.08,
-      "prevOhlcv": {
-        "date": "2026-08-11",
-        "open": 805.0,
-        "high": 826.9,
-        "low": 794.01,
-        "close": 820.52,
-        "volume": 3179400,
-        "prev_close": 800.99
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": 2.56,
-        "predDay": 3.6,
-        "band": [
-          -2.5,
-          2.2
-        ],
-        "tier": "big",
-        "spike": [
-          1.9,
-          4.0,
-          5.4
-        ],
-        "predHi": 6.7,
-        "predHiBand": [
-          4.5,
-          8.1
         ]
       }
     },
@@ -7225,194 +8004,6 @@
         ]
       }
     },
-    "MU": {
-      "symbol": "MU",
-      "name": "Micron Technology",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "人工智慧記憶體缺貨潮延燒,高頻寬記憶體需求強勁,族群連日走強",
-      "newsDetail": "> **今日漲因:** 記憶體族群延續強勢,美光股價上漲**2.9%**,受SanDisk財報與投資人日長期成長模型激勵,人工智慧資料中心對高頻寬記憶體需求持續升溫。\n\n**族群齊揚背景**\nSanDisk公布第四財季營收年增**371.6%**,並於8/13投資人日進一步端出長期財務模型,激勵整個記憶體與儲存族群走高,美光(MU)、威騰電子(WDC)、希捷(STX)同步上揚。\n\n**需求驅動**\n市場聚焦高頻寬記憶體(HBM)與人工智慧資料中心儲存需求,法人認為DRAM與NAND供給吃緊、價格具支撐,帶動記憶體類股評價修復。\n\n**同族群比較**\n同日威騰電子上漲3.9%、希捷上漲2.6%,顯示這波漲勢並非單一個股事件,而是整條儲存與記憶體供應鏈受惠於人工智慧基礎建設投資熱潮。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=MU"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/MU"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-MU/news/"
-        }
-      ],
-      "publishedAt": "2026-08-14T09:35:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "24/7 Wall St. — Memory Stocks Stay Strong",
-          "url": "https://247wallst.com/investing/2026/08/13/memory-stocks-stay-strong-with-sandisk-sk-hynix-and-western-digital-leading-the-storage-stack/"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 977.26,
-          "chgPct": 2.89,
-          "volume": 100000,
-          "session": "headline",
-          "direction": "up",
-          "name": "Micron Technology",
-          "sessionDate": "2026-08-14",
-          "targetDate": "2026-08-14"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 977.26,
-      "chgPct": 2.89,
-      "volume": 100000,
-      "tv": {
-        "latestEPS": 25.11,
-        "consensusEPS": 20.86,
-        "priorYrEPS": 1.91,
-        "surpriseEPS_pct": 20.36,
-        "surpriseEPS_dollar": 4.25,
-        "latestRev_M": 41460.0,
-        "consensusRev_M": 35910.0,
-        "priorYrRev_M": 9300.0,
-        "surpriseRev_pct": 15.44,
-        "yrYrRev_pct": 345.80645161290323,
-        "epsYoY_pct": 1214.6596858638743,
-        "epsEst_next4": [
-          31.15,
-          34.72,
-          37.56,
-          40.17
-        ],
-        "revEst_next4": [
-          50430.0,
-          56280.0,
-          60320.0,
-          64000.0
-        ],
-        "yoyBlock": "+1214.66% / +345.81%\n--------------------\n+928.05% / +345.89%\n+626.36% / +312.61%\n+207.87% / +152.81%\n+59.98% / +54.37%",
-        "chart": {
-          "quarters": [
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q3 '27",
-            "Q2 '21"
-          ],
-          "eps_reported": [
-            1.18,
-            1.79,
-            1.56,
-            1.91,
-            3.03,
-            4.78,
-            12.2,
-            25.11,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            1.12,
-            1.76,
-            1.43,
-            1.6,
-            2.86,
-            3.96,
-            9.19,
-            20.86,
-            31.15,
-            34.72,
-            37.56,
-            40.17
-          ],
-          "rev_reported_M": [
-            7750.0,
-            8710.0,
-            8050.000000000001,
-            9300.0,
-            11310.0,
-            13640.0,
-            23860.0,
-            41460.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            7650.0,
-            8710.0,
-            7900.0,
-            8860.0,
-            11220.0,
-            12910.0,
-            19970.0,
-            35910.0,
-            50430.0,
-            56280.0,
-            60320.0,
-            64000.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": 2.66,
-      "shortRatio": 0.59,
-      "marketCap_M": 1097390,
-      "floatShares_M": 1120,
-      "perf1M": 13.88,
-      "perf3M": 25.21,
-      "perf6M": 134.72,
-      "perfYTD": 240.44,
-      "perf12M": 675.53,
-      "prevOhlcv": {
-        "date": "2026-08-11",
-        "open": 871.8,
-        "high": 879.0,
-        "low": 844.62,
-        "close": 868.52,
-        "volume": 29340500,
-        "prev_close": 861.0
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": 2.89,
-        "predDay": 4.0,
-        "band": [
-          -2.5,
-          2.2
-        ],
-        "tier": "big",
-        "spike": [
-          1.1,
-          3.2,
-          4.6
-        ],
-        "predHi": 6.2,
-        "predHiBand": [
-          4.0,
-          7.6
-        ]
-      }
-    },
     "JD": {
       "symbol": "JD",
       "name": "JD.com Inc ADR",
@@ -7777,194 +8368,6 @@
         }
       }
     },
-    "WDC": {
-      "symbol": "WDC",
-      "name": "Western Digital Corp",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "記憶體與儲存族群連四日走強:SanDisk FQ4 營收年增 371% 領軍,高頻寬快閃新標準加持",
-      "newsDetail": "> **今日漲因:** 威騰電子股價上漲**3.9%**,同步受惠記憶體與儲存族群全面走強,SanDisk投資人日釋出的長期成長模型激勵市場信心。\n\n**族群連動**\nSanDisk為威騰電子2023年分拆出的快閃記憶體事業,8/13投資人日公布長期財務目標,並繳出第四財季營收年增**371.6%**的成績單。市場解讀為整體儲存供應鏈需求強勁的訊號,連帶推升威騰電子同步走高。\n\n**產業需求**\n人工智慧資料中心對高頻寬記憶體與大容量儲存裝置需求持續攀升,法人認為威騰電子作為硬碟與快閃記憶體雙布局廠商可望受惠。\n\n**同族群表現**\n同日美光上漲2.9%、希捷上漲2.6%,記憶體與儲存族群齊揚,反映人工智慧基礎建設投資熱潮延燒至上游儲存供應鏈。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=WDC"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/WDC"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-WDC/news/"
-        }
-      ],
-      "publishedAt": "2026-08-14T09:35:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "24/7 Wall St. — Memory Stocks Stay Strong",
-          "url": "https://247wallst.com/investing/2026/08/13/memory-stocks-stay-strong-with-sandisk-sk-hynix-and-western-digital-leading-the-storage-stack/"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 506.51,
-          "chgPct": 3.94,
-          "volume": 100000,
-          "session": "headline",
-          "direction": "up",
-          "name": "Western Digital Corp",
-          "sessionDate": "2026-08-14",
-          "targetDate": "2026-08-14"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 506.51,
-      "chgPct": 3.94,
-      "volume": 100000,
-      "tv": {
-        "latestEPS": 3.56,
-        "consensusEPS": 3.31,
-        "priorYrEPS": 1.66,
-        "surpriseEPS_pct": 7.54,
-        "surpriseEPS_dollar": 0.25,
-        "latestRev_M": 3750.0,
-        "consensusRev_M": 3700.0,
-        "priorYrRev_M": 2600.0,
-        "surpriseRev_pct": 1.27,
-        "yrYrRev_pct": 44.230769230769226,
-        "epsYoY_pct": 114.45783132530123,
-        "epsEst_next4": [
-          4.06,
-          4.72,
-          5.48,
-          6.28
-        ],
-        "revEst_next4": [
-          4130.0,
-          4540.0,
-          4980.0,
-          5450.0
-        ],
-        "yoyBlock": "+114.46% / +44.23%\n--------------------\n+128.09% / +46.45%\n+121.60% / +50.33%\n+101.47% / +49.10%\n+76.40% / +45.33%",
-        "chart": {
-          "quarters": [
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q3 '27",
-            "Q4 '27",
-            "Q3 '21"
-          ],
-          "eps_reported": [
-            1.35,
-            1.34,
-            1.36,
-            1.66,
-            1.78,
-            2.13,
-            2.72,
-            3.56,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            1.29,
-            1.35,
-            1.12,
-            1.48,
-            1.59,
-            1.93,
-            2.39,
-            3.31,
-            4.06,
-            4.72,
-            5.48,
-            6.28
-          ],
-          "rev_reported_M": [
-            4090.0,
-            4290.0,
-            2290.0,
-            2600.0,
-            2820.0,
-            3020.0,
-            3340.0,
-            3750.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            4120.0,
-            4260.0,
-            2310.0,
-            2470.0,
-            2730.0,
-            2930.0,
-            3250.0,
-            3700.0,
-            4130.0,
-            4540.0,
-            4980.0,
-            5450.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-08-06",
-        "nextReportDate": null
-      },
-      "shortFloat": 7.2,
-      "shortRatio": 2.91,
-      "marketCap_M": 175370,
-      "floatShares_M": 341.43,
-      "perf1M": 9,
-      "perf3M": 4.02,
-      "perf6M": 79.09,
-      "perfYTD": 195.35,
-      "perf12M": 567.37,
-      "prevOhlcv": {
-        "date": "2026-08-11",
-        "open": 442.22,
-        "high": 448.88,
-        "low": 431.48,
-        "close": 437.93,
-        "volume": 6087000,
-        "prev_close": 438.34
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": 3.94,
-        "predDay": 5.3,
-        "band": [
-          -2.5,
-          2.2
-        ],
-        "tier": "big",
-        "spike": [
-          0.3,
-          2.4,
-          3.9
-        ],
-        "predHi": 6.4,
-        "predHiBand": [
-          4.3,
-          8.0
-        ]
-      }
-    },
     "UMAC": {
       "symbol": "UMAC",
       "name": "Unusual Machines Inc",
@@ -8139,198 +8542,6 @@
         "predHiBand": [
           21.9,
           35.6
-        ]
-      }
-    },
-    "ARM": {
-      "symbol": "ARM",
-      "name": "Arm Holdings ADR",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "人工智慧半導體族群走強,記憶體與設備商財報動能外溢",
-      "newsDetail": "> **今日漲因:** +2.5%(278.65 美元)—— 人工智慧半導體族群走強,記憶體與晶圓設備商的財報動能外溢至整條供應鏈。\n\n**族群驅動來源**\n\nArm Holdings 今日的漲勢來自上游兩則具體事件,不是自身公告:\n\n- **應用材料 FQ3 財報**(8/13 盤後):營收 **92.1 億美元、年增 24.8%** 創紀錄,調整後每股盈餘 3.50 美元優於預估 3.39;下一季財測 **102.5 億美元 ±5 億**,半導體系統部門營益率由去年同期 33.2% 升至 **38.0%**。公司同步上修 2026 日曆年半導體系統營收展望,訂單來自動態隨機存取記憶體、先進製程與先進封裝。\n- **SanDisk 8/13 投資人日**:揭露已鎖定 2027 財年約半數位元出貨量的多年期客戶協議,顯示資料中心記憶體需求的能見度延伸到 2028 年。\n\n設備商的訂單能見度與記憶體的長約,是整條人工智慧半導體供應鏈估值的共同基礎;Arm 作為架構授權方,受惠於晶片出貨量的整體擴張。\n\n**同族群表現**\n\nSNDK +6.3%、WDC +3.9%、SMCI +4.1%、MRVL +2.4%、MU +2.9%、STX +2.6%。\n\n**客觀備註**\n\n查無 Arm 自身於 8/13-14 的財報、合約或分析師重大動作;今日屬族群連動。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=ARM"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/ARM"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-ARM/news/"
-        }
-      ],
-      "publishedAt": "2026-08-14T09:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "應用材料 FQ3 2026 財報整理",
-          "url": "https://247wallst.com/cards/applied-materials-q3-2026-earnings-amat-01kzybvthd5qqamwrtqk59k25x"
-        },
-        {
-          "label": "SanDisk 投資人日新聞稿",
-          "url": "https://www.stocktitan.net/news/SNDK/sandisk-details-growth-strategy-and-long-term-financial-model-at-tfgp9oq5d8ja.html"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 278.65,
-          "chgPct": 2.49,
-          "volume": 4791500,
-          "session": "headline",
-          "direction": "up",
-          "name": "Arm Holdings ADR",
-          "sessionDate": "2026-08-14",
-          "targetDate": "2026-08-14"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 278.65,
-      "chgPct": 2.49,
-      "volume": 4791500,
-      "tv": {
-        "latestEPS": 0.45,
-        "consensusEPS": 0.4,
-        "priorYrEPS": 0.35,
-        "surpriseEPS_pct": 11.94,
-        "surpriseEPS_dollar": 0.04999999999999999,
-        "latestRev_M": 1290.0,
-        "consensusRev_M": 1260.0,
-        "priorYrRev_M": 1050.0,
-        "surpriseRev_pct": 2.08,
-        "yrYrRev_pct": 22.857142857142858,
-        "epsYoY_pct": 28.57142857142858,
-        "epsEst_next4": [
-          0.47,
-          0.56,
-          0.77,
-          0.59
-        ],
-        "revEst_next4": [
-          1380.0,
-          1530.0,
-          1880.0,
-          1700.0
-        ],
-        "yoyBlock": "+28.57% / +22.86%\n--------------------\n+20.51% / +21.05%\n+30.23% / +23.39%\n+28.33% / +26.17%\n+31.11% / +31.78%",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27"
-          ],
-          "eps_reported": [
-            0.3,
-            0.39,
-            0.55,
-            0.35,
-            0.39,
-            0.43,
-            0.6,
-            0.45,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.26,
-            0.34,
-            0.52,
-            0.35,
-            0.33,
-            0.41,
-            0.58,
-            0.4,
-            0.47,
-            0.56,
-            0.77,
-            0.59
-          ],
-          "rev_reported_M": [
-            844.0,
-            983.0,
-            1240.0,
-            1050.0,
-            1140.0,
-            1240.0,
-            1490.0,
-            1290.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            810.03,
-            949.27,
-            1230.0,
-            1050.0,
-            1060.0,
-            1230.0,
-            1470.0,
-            1260.0,
-            1380.0,
-            1530.0,
-            1880.0,
-            1700.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": 1.59,
-      "shortRatio": 1.83,
-      "marketCap_M": 298440,
-      "floatShares_M": 1060,
-      "perf1M": 6.65,
-      "perf3M": 22.29,
-      "perf6M": 128.69,
-      "perfYTD": 155.64,
-      "perf12M": 98.82,
-      "prevOhlcv": {
-        "date": "2026-08-11",
-        "open": 273.1,
-        "high": 273.39,
-        "low": 265.37,
-        "close": 268.93,
-        "volume": 3172200,
-        "prev_close": 267.85
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": 2.49,
-        "predDay": 3.6,
-        "band": [
-          -2.5,
-          2.2
-        ],
-        "tier": "big",
-        "spike": [
-          0.6,
-          2.7,
-          4.1
-        ],
-        "predHi": 5.3,
-        "predHiBand": [
-          3.1,
-          6.7
         ]
       }
     },
@@ -9196,198 +9407,6 @@
         "predHiBand": [
           22.3,
           35.4
-        ]
-      }
-    },
-    "COHR": {
-      "symbol": "COHR",
-      "name": "Coherent Corp",
-      "type": "earnings",
-      "earningsReaction": false,
-      "catalyst": "8/12 FQ4 財報營運指標優於華爾街預估,但前五個交易日已因中國光收發模組禁令題材急漲 44%,連日獲利了結",
-      "newsDetail": "> **今日跌因:** −8.0%(327.23 美元)—— 8/12 FQ4 財報營運指標優於華爾街預估,但股價在財報前五個交易日已因中國光收發模組禁令題材急漲約 44%,連日利多出盡式獲利了結。\n\n**事件時序**\n\nCoherent 於 **2026-08-12** 公布 2026 會計年度第四季與全年財報,公司揭露的營運指標**優於華爾街共識預估**。但股價自財報當日起連續走弱,8/13 跌 5.69%,今日再跌約 8%。\n\n**為什麼好財報卻連跌**\n\n關鍵在財報前的漲幅。市場對中國光收發模組禁令的預期,在財報前的**五個交易日內把股價推高約 44%**。也就是說,財報的好消息在公布前就已經被大幅反映在價格裡。財報公布後出現的是典型的獲利了結與部位調節,而不是對數字本身的失望。\n\n**族群定位**\n\nCoherent 是人工智慧資料中心光通訊(光收發模組)的主要供應商之一,近期與記憶體族群並列為人工智慧基礎建設題材的兩大主軸。今日記憶體端(SNDK、WDC、MU、STX)全面走強,而光通訊端回檔 —— 兩個子族群在同一天走出相反方向,是資金在人工智慧題材內部輪動的訊號。\n\n**客觀備註**\n\n本次回檔的起點是財報前的急漲幅度,而非營運面轉弱。目前公開資訊未顯示中國禁令題材有實質變化。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=COHR"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/COHR"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-COHR/news/"
-        }
-      ],
-      "publishedAt": "2026-08-12T16:05:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Seeking Alpha — Coherent 在多日急漲後重挫",
-          "url": "https://seekingalpha.com/news/4629977-coherent-slumps-12-after-sharp-multi-session-rally"
-        },
-        {
-          "label": "TipRanks — Coherent 在人工智慧行情後回檔",
-          "url": "https://www.tipranks.com/news/catalyst/coherent-stock-stumbles-after-explosive-ai-fueled-rally"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 327.23,
-          "chgPct": -7.99,
-          "volume": 13034000,
-          "session": "headline",
-          "direction": "down",
-          "name": "Coherent Corp",
-          "sessionDate": "2026-08-14",
-          "targetDate": "2026-08-14"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 327.23,
-      "chgPct": -7.99,
-      "volume": 13034000,
-      "tv": {
-        "latestEPS": 1.74,
-        "consensusEPS": 1.62,
-        "priorYrEPS": 1.0,
-        "surpriseEPS_pct": 7.61,
-        "surpriseEPS_dollar": 0.11999999999999988,
-        "latestRev_M": 2050.0,
-        "consensusRev_M": 1980.0,
-        "priorYrRev_M": 1530.0,
-        "surpriseRev_pct": 3.07,
-        "yrYrRev_pct": 33.98692810457516,
-        "epsYoY_pct": 74.0,
-        "epsEst_next4": [
-          1.96,
-          2.19,
-          2.46,
-          2.72
-        ],
-        "revEst_next4": [
-          2290.0,
-          2510.0,
-          2740.0,
-          2980.0
-        ],
-        "yoyBlock": "+74.00% / +33.99%\n--------------------\n+68.97% / +44.94%\n+69.77% / +48.52%\n+74.47% / +51.38%\n+56.32% / +45.37%",
-        "chart": {
-          "quarters": [
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q3 '27",
-            "Q4 '27",
-            "Q3 '21"
-          ],
-          "eps_reported": [
-            0.74,
-            0.95,
-            0.91,
-            1.0,
-            1.16,
-            1.29,
-            1.41,
-            1.74,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.61,
-            0.69,
-            0.86,
-            0.92,
-            1.04,
-            1.21,
-            1.4,
-            1.62,
-            1.96,
-            2.19,
-            2.46,
-            2.72
-          ],
-          "rev_reported_M": [
-            1350.0,
-            1430.0,
-            1500.0,
-            1530.0,
-            1580.0,
-            1690.0,
-            1810.0,
-            2050.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            1320.0,
-            1370.0,
-            1440.0,
-            1510.0,
-            1540.0,
-            1640.0,
-            1780.0,
-            1980.0,
-            2290.0,
-            2510.0,
-            2740.0,
-            2980.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-08-13",
-        "nextReportDate": null
-      },
-      "shortFloat": 4.84,
-      "shortRatio": 1.52,
-      "marketCap_M": 63750,
-      "floatShares_M": 186.88,
-      "perf1M": 17.65,
-      "perf3M": -19.54,
-      "perf6M": 50.78,
-      "perfYTD": 76.53,
-      "perf12M": 255.52,
-      "prevOhlcv": {
-        "date": "2026-08-11",
-        "open": 323.86,
-        "high": 332.0,
-        "low": 315.4,
-        "close": 328.57,
-        "volume": 6442300,
-        "prev_close": 325.15
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": -7.99,
-        "predDay": -7.7,
-        "band": [
-          -2.5,
-          2.2
-        ],
-        "tier": "big",
-        "spike": [
-          3.0,
-          5.1,
-          6.5
-        ],
-        "predHi": -3.3,
-        "predHiBand": [
-          -5.2,
-          -2.0
         ]
       }
     },
@@ -26021,38 +26040,7 @@
       "neglected": null
     }
   ],
-  "tradeIdeas": [
-    {
-      "rank": 1,
-      "symbol": "AMAT",
-      "setup": "beatdip",
-      "setup_name": "錯殺反彈(市值 ≥100 億美元)",
-      "direction": "long",
-      "thesis": "應用材料 FQ3 財報數字全面優於預期,股價卻被殺:營收 92.1 億美元創單季新高、年增 24.8%,調整後每股盈餘 3.50 美元優於華爾街預估 3.39 美元、年增約 41%。下一季財測同樣強勢 —— 營收 102.5 億美元 ±5 億、非公認會計每股盈餘 4.02 美元 ±0.20,半導體系統部門營益率由去年同期 33.2% 升至 38.0%,中國營收占比從 35% 降到 28%(出口管制曝險下降)。今日下殺的理由不是數字變差,而是估值:William Blair 維持中立評等,理由明寫「今年以來已漲 103%、約 29 倍 2027 年預估獲利」。這正是本型要接的形態 —— 好財報被估值面錯殺的大型股。盤前 505.27 美元對 8/13 收盤 534.54 美元,跳空 −5.48%,落在 −4%~−18% 的條件帶內;市值 4,040 億美元為今日跌方最大,依順位排第一。",
-      "entry": "10:30 ET 之後才進場(開盤直接接是負期望值),且必須通過承接濾網:10:30 當下價格要高於早盤低點 0.5% 以上;貼著早盤低點就不進,直接放棄這筆",
-      "entry_ref_price": 505.27,
-      "target": "13:30 ET 前了結;過程中若達 +3R 先出一半",
-      "stop": "結構停損 —— 早盤(09:30-10:30)低點下方 0.5%,不是固定 2.5%",
-      "exit": "13:30 ET 一律出清,不留倉、不碰尾盤",
-      "backtest_note": "錯殺反彈(10:30 進場 + 承接濾網 + 結構停損,市值 ≥100 億美元)全檔案庫 5/13-8/5:n=48、勝率 58%、平均 +0.60R,四個月皆為正,是目前唯一升級到「全庫驗證」的主力型。對照組(開盤直接進場)只有 +0.07R。live_ledger 目前 n=0,尚無實盤樣本。",
-      "avoid_check": "已過 avoid_rules:市值 4,040 億美元非微型股、非併購現金對價釘價、非拋物線崩解後的殘股、跳空 −5.48% 在條件帶內。"
-    },
-    {
-      "rank": 2,
-      "symbol": "SNDK",
-      "setup": "cap10x10",
-      "setup_name": "cap10×10 大票暴動",
-      "direction": "long",
-      "thesis": "SanDisk 三個條件同時成立:市值 2,414 億美元(≥100 億)、最近一季營收年增 371.6%(≥100% 的 M 門檻,FQ4 營收 89.6 億美元、每股盈餘 39.25 美元優於預估 35.14 美元)、盤前跳空 +6.30%(1,624.33 對 8/13 收盤 1,528.11)。8/13 投資人日給出 2028-2030 財年長期財務模型:非公認會計毛利率目標約 80%、營益率約 75%、調整後自由現金流利潤率約 50%;更關鍵的是已與 8 家客戶簽定新商業模式多年期協議,鎖定 2027 財年約 50%、2028 財年約三分之二的位元出貨量 —— 這把記憶體最大的痛點(價格週期性)實質轉成長約收入。今日記憶體與儲存族群同向:WDC +3.9%、MU +2.9%、STX +2.6%,族群動能站在同一邊;RBC 今晨把目標價由 1,300 調升至 1,600 美元。",
-      "entry": "09:30 開盤直接進場(本型等到 10:30 優勢歸零)",
-      "entry_ref_price": 1624.33,
-      "target": "+10%(4R)到價就走,約 1,786.8 美元;未到則 13:30 ET 出場",
-      "stop": "−2.5%,約 1,583.7 美元",
-      "exit": "13:30 ET 前一律了結,不留倉",
-      "backtest_note": "cap10×10 全庫 n=140、勝率 43%、平均 +0.24R、四個月中三個月為正。勝率不到五成,靠 4R 賠率取勝,單筆停損必須確實執行。**誠實註記:今日跳空是 8/13 投資人日(當日盤中 +13%)的第二天延續,不是全新事件,本型統計未針對 day-2 延續單獨切分,勝率可能低於全庫平均 —— 倉位建議減半。**依 v5 順位「cap10×10 按市值」選 SNDK(2,414 億)而非 RDDT(337 億),但 RDDT 的標普 500 納入(8/18 生效,摩根大通估被動基金需買進約 1,670 萬股 ≈ 近 3 倍日均量)是更新鮮的催化劑,值得同步觀察。live_ledger 目前 n=0。",
-      "avoid_check": "已過 avoid_rules:非微型股、跳空 +6.30% 未達 gap>50% 的無回補買盤帶、非併購現金對價、非拋物線崩解殘股。註:借券天數 0.5 屬偏低,不具軋空助力,純靠族群動能與長約敘事。"
-    }
-  ],
+  "tradeIdeas": [],
   "dayResets": {
     "RDDT": "8/13 18:12 ET 標普道瓊公告 8/18 納入標普 500 — 全新結構性事件,與此前的社群成長敘事無關;前一個月報酬 −5.5% 無事前異動,判定 day1",
     "CAPR": "8/14 FDA 同意審查 BLA 修正案 — 7 月諮詢委員會反對後股價已跌 56.9%,今日是監管路徑重啟的全新事件,非前段行情的延續,day1",
@@ -26064,459 +26052,54 @@
     "VALN": "8/14 歐洲藥品管理局受理萊姆病疫苗上市許可申請 — 全新法規里程碑,day1"
   },
   "scanx": {
-    "gapUpEarnings": [
-      {
-        "symbol": "BOXL",
-        "chg": 30.29,
-        "catalyst": "Q2 轉虧為盈、每股盈餘 0.34 美元,280 萬美元關稅退款推升毛利率至 49.8%",
-        "type": "earnings"
-      },
-      {
-        "symbol": "HTFL",
-        "chg": 24.54,
-        "catalyst": "Q2 營收 6,410 萬美元、年增 48% 優於預期,全年營收展望上修至 2.46-2.50 億美元",
-        "type": "earnings"
-      },
-      {
-        "symbol": "UMAC",
-        "chg": 19.02,
-        "catalyst": "Q2 營收 1,670 萬美元、年增 687% 遠優於預估 960 萬,現金 2.296 億美元;疊加無人機關稅利多",
-        "type": "earnings"
-      },
-      {
-        "symbol": "NU",
-        "chg": 13.71,
-        "catalyst": "Q2 淨利首度突破 10 億美元、季增 17%、年增 49%,獲利創 13 年新高",
-        "type": "earnings"
-      },
-      {
-        "symbol": "DFSC",
-        "chg": 12.55,
-        "catalyst": "FQ3 營收年增 92% 至 270 萬美元,並獲美國陸軍 8 月感測器複試邀請",
-        "type": "earnings"
-      },
-      {
-        "symbol": "LUNR",
-        "chg": 9.51,
-        "catalyst": "8/13 公布 Q2 財報,季底在手訂單創紀錄達 18 億美元",
-        "type": "earnings"
-      },
-      {
-        "symbol": "AEHR",
-        "chg": 8.35,
-        "catalyst": "第四季營收 1,880 萬美元年增 34%,在手訂單 6,070 萬美元創高;2027 財年展望營收成長 160-200%",
-        "type": "earnings"
-      },
-      {
-        "symbol": "ONDS",
-        "chg": 5.84,
-        "catalyst": "第二季營收 8,380 萬美元創高、較上季增 67%、年增逾 13 倍;全年展望上修至 5.25-5.5 億美元,在手訂單 6.13 億",
-        "type": "earnings"
-      },
-      {
-        "symbol": "CURI",
-        "chg": 5.52,
-        "catalyst": "Q2 營收年增 22%,人工智慧資料授權暴增 48% 至 1,410 萬美元,毛利率衝上 73% 創紀錄",
-        "type": "earnings"
-      },
-      {
-        "symbol": "PAAS",
-        "chg": 2.33,
-        "catalyst": "Q2 財報電話會議公布,貴金屬價格走高帶動白銀礦商同步走強",
-        "type": "earnings"
-      },
-      {
-        "symbol": "BAP",
-        "chg": 0.03,
-        "catalyst": "8/13 盤後公布 Q2 財報,秘魯最大金融集團獲利穩健,市值約 350 億美元",
-        "type": "earnings"
-      }
-    ],
+    "gapUpEarnings": [],
     "gapUpGuidance": [],
     "gapUpOther": [
       {
-        "symbol": "WETO",
-        "chg": 195.01,
-        "catalyst": "8/24 股東會將表決 100 比 1 反向分割與大規模增資,微型股投機性暴衝逾 165%",
-        "type": "news"
-      },
-      {
-        "symbol": "STKH",
-        "chg": 82.64,
-        "catalyst": "植物肉品牌 Perfecta 首批貨透過 KeHE 鋪進美東北數十家門市,盤前一度暴漲 82%;隨後申請出售 756 萬股 ADS 稀釋,盤後回吐 5.3%",
-        "type": "news"
-      },
-      {
-        "symbol": "CAPR",
-        "chg": 81.71,
-        "catalyst": "第三期心臟細胞治療數據登上《刺胳針》,deramiocel 生物製劑許可補件路徑明朗、FDA 未提審查疑慮,PDUFA 訂 8/22",
-        "type": "FDA"
-      },
-      {
-        "symbol": "AKAN",
-        "chg": 56.69,
-        "catalyst": "8/13 宣布 200 公里光纖網完工,首 100 公里開始計費,9 月起認列租賃收入",
-        "type": "contract"
-      },
-      {
-        "symbol": "HHS",
-        "chg": 49.47,
-        "catalyst": "Star Equity 以每股 5 美元、總價約 3,840 萬美元併購 Harte-Hanks,較前收溢價近 100%",
-        "type": "M&A"
-      },
-      {
-        "symbol": "SXTC",
-        "chg": 39.09,
-        "catalyst": "查無 8/13-14 具體新聞,8/10 剛完成 1 比 80 反向合股,籌碼稀薄疑似投機炒作",
-        "type": "momentum"
-      },
-      {
-        "symbol": "CGTL",
-        "chg": 36.96,
-        "catalyst": "查無公司實質利多,7 月完成 1 比 15 反向分割後籌碼極薄,游資狂拉",
-        "type": "momentum"
-      },
-      {
-        "symbol": "MF",
-        "chg": 32.8,
-        "catalyst": "低流通籌碼股延續前一日爆量行情,8/13 收 10 美元後續漲 32.8%,查無新催化劑",
-        "type": "momentum"
-      },
-      {
-        "symbol": "LBGJ",
-        "chg": 24.75,
-        "catalyst": "查無基本面消息,1 比 200 反向分割後低流通籌碼引發散戶炒作",
-        "type": "momentum"
-      },
-      {
-        "symbol": "VALN",
-        "chg": 23.72,
-        "catalyst": "與輝瑞合作的六價萊姆病疫苗 VLA15 上市許可申請獲歐洲藥品管理局受理,第三期 VALOR 第二季保護力 73.2%",
-        "type": "FDA"
-      },
-      {
-        "symbol": "IMXI",
-        "chg": 21.41,
-        "catalyst": "紐約州金融服務局核准 Western Union 每股 16 美元全現金併購(總額約 5 億);加州 DFPI 8/13 凍結先前核准,交易時程未定",
-        "type": "M&A"
-      },
-      {
-        "symbol": "ONFO",
-        "chg": 16.45,
-        "catalyst": "1 比 50 反向分割後流通股僅剩約 85 萬股,超低流通量引爆軋空式暴衝",
-        "type": "momentum"
-      },
-      {
-        "symbol": "LFS",
-        "chg": 13.89,
-        "catalyst": "查無 8/13-14 具體新聞;低流通量的日本企業美國存託憑證,歷史上多次無消息噴出",
-        "type": "momentum"
-      },
-      {
-        "symbol": "RCAT",
-        "chg": 11.24,
-        "catalyst": "白宮 8/13 公告對進口無人機課最高 100% 關稅(21 天生效),美國本土廠受惠;Q2 營收 2,020 萬美元年增 527%",
-        "type": "policy"
-      },
-      {
-        "symbol": "RDDT",
-        "chg": 11.0,
-        "catalyst": "8/13 盤後宣布 8/18 起納入標普 500 指數、取代 AvalonBay,被動指數買盤預期推升逾 12%",
-        "type": "news"
-      },
-      {
-        "symbol": "LPTH",
-        "chg": 10.29,
-        "catalyst": "8/12 簽約出售中國業務,加上紅外線國防訂單與納入羅素指數,動能延續",
-        "type": "M&A"
-      },
-      {
-        "symbol": "HAO",
-        "chg": 9.71,
-        "catalyst": "1 股併 20 股反向分割 8/14 生效(A/B 股同步調整),股數驟減導致股價劇烈波動",
-        "type": "news"
-      },
-      {
-        "symbol": "AMPX",
-        "chg": 8.04,
-        "catalyst": "Q2 營收 3,403 萬美元,全年營收展望上調至至少 1.4 億美元",
-        "type": "guidance"
-      },
-      {
-        "symbol": "SNDK",
-        "chg": 7.78,
-        "catalyst": "8/13 投資人日公布 2028-2030 財年長期模型(非公認會計毛利率約 80%),並與 8 家客戶簽多年期協議鎖定 2027 財年約 5 成位元出貨",
-        "type": "guidance"
-      },
-      {
-        "symbol": "PUSA",
-        "chg": 7.2,
-        "catalyst": "母公司 Aureus 與 Powerus 合併案獲美國證管會生效;Powerus 剛取得最高 9,000 萬美元美國空軍合約",
-        "type": "M&A"
-      },
-      {
-        "symbol": "AVAV",
-        "chg": 6.64,
-        "catalyst": "白宮 8/13 簽署無人機關稅令,課 100% 關稅於進口大型與敏感功能無人機,美國本土軍規無人機龍頭受惠",
-        "type": "policy"
-      },
-      {
-        "symbol": "VERA",
-        "chg": 6.58,
-        "catalyst": "8/14 07:31 ET FDA 文件揭露 ORIGIN 第三期 eGFR 期中數據正向,支持第四季遞交完全核准補充申請",
-        "type": "FDA"
-      },
-      {
-        "symbol": "KTOS",
-        "chg": 5.11,
-        "catalyst": "白宮 8/13 簽署無人機關稅令,對 25 公斤以上或含熱影像等敏感功能的進口無人機課 100% 關稅,本土國防承包商受惠",
-        "type": "policy"
-      },
-      {
-        "symbol": "LPL",
-        "chg": 5.04,
-        "catalyst": "研究機構集邦公布第二季 OLED 螢幕出貨較上季增 26.1%、年增 98%,面板族群同步走強",
-        "type": "news"
-      },
-      {
-        "symbol": "BORR",
-        "chg": 4.95,
-        "catalyst": "中東局勢升溫與伊朗封鎖疑慮推升油價,西德州原油站上 81 美元、布蘭特近 90 美元,鑽井族群連動",
-        "type": "macro"
-      },
-      {
-        "symbol": "SMCI",
-        "chg": 4.12,
-        "catalyst": "人工智慧伺服器與記憶體族群同步走強:SanDisk 投資人日長期模型 + 應用材料下季財測 102.5 億美元帶動",
-        "type": "news"
-      },
-      {
-        "symbol": "HTZ",
-        "chg": 4.05,
-        "catalyst": "Susquehanna 目標價由 5.5 美元砍至 2.5 美元;另遭標普 600 指數剔除、Pershing Square 出清持股",
-        "type": "analyst"
-      },
-      {
         "symbol": "WDC",
-        "chg": 3.94,
-        "catalyst": "記憶體與儲存族群連四日走強:SanDisk FQ4 營收年增 371% 領軍,高頻寬快閃新標準加持",
-        "type": "news"
+        "chg": 2.56,
+        "catalyst": "族群連動:SanDisk 投資人日與 NAND 漲價敘事帶動儲存股齊揚,查無 8/17 當日個股新事件",
+        "type": "momentum"
       },
       {
         "symbol": "MU",
-        "chg": 2.89,
-        "catalyst": "人工智慧記憶體缺貨潮延燒,高頻寬記憶體需求強勁,族群連日走強",
-        "type": "news"
+        "chg": 2.5,
+        "catalyst": "族群連動:記憶體超級週期敘事延續,第三季 DRAM 合約價估漲 13-18%、NAND 漲 10-15%,股價站上 1,000 美元關卡",
+        "type": "momentum"
       },
       {
         "symbol": "STX",
-        "chg": 2.56,
-        "catalyst": "硬碟與儲存族群同步走強,人工智慧資料中心儲存需求外溢帶動",
+        "chg": 2.01,
+        "catalyst": "族群連動:AI 雲端儲存需求熱絡、毛利率連 13 季擴張,隨儲存族群走強",
+        "type": "momentum"
+      },
+      {
+        "symbol": "COHR",
+        "chg": 1.88,
+        "catalyst": "8/12 財報雖超預期,但營運現金流季減 87.5%、庫存年增 79.5% 引發疑慮;資金由光通訊轉進記憶體族群,近日弱勢後今日盤前小幅回穩",
         "type": "news"
       },
       {
         "symbol": "ARM",
-        "chg": 2.49,
-        "catalyst": "人工智慧半導體族群走強,記憶體與設備商財報動能外溢",
-        "type": "news"
+        "chg": 1.52,
+        "catalyst": "美銀證券 8/13 上修 CPU 市場 2030 年產值預測至 2,100 億美元,AI 推論需求支撐股價",
+        "type": "analyst"
       },
       {
         "symbol": "MRVL",
-        "chg": 2.35,
-        "catalyst": "資料中心客製晶片與高頻寬記憶體需求題材延燒,族群同步走強",
+        "chg": 1.5,
+        "catalyst": "8/12 發表 Structera X CXL 記憶體擴充平台與 Photonic Fabric 光纖共享記憶體方案,鎖定 AI 頻寬瓶頸,買盤延續",
         "type": "news"
       }
     ],
-    "gapDownGuidance": [
-      {
-        "symbol": "KLC",
-        "chg": -24.02,
-        "catalyst": "Q2 每股盈餘 0.08 美元遜於預估 0.10,在學率年減 3.6%,全年營收展望下修至 26.6-27.0 億美元",
-        "type": "guidance"
-      },
-      {
-        "symbol": "YSS",
-        "chg": -12.42,
-        "catalyst": "Q2 每股虧損 0.21 美元遜於預期,全年營收展望大砍至 3.75-4.05 億美元",
-        "type": "guidance"
-      }
-    ],
-    "gapDownEarnings": [
-      {
-        "symbol": "INV",
-        "chg": -43.89,
-        "catalyst": "Innventure 第二季財報後撤回子公司 Accelsius 今年營收與現金流展望,盤前重挫 43.9%",
-        "type": "earnings"
-      },
-      {
-        "symbol": "YXT",
-        "chg": -34.51,
-        "catalyst": "上半年營收年增 6% 至 2,390 萬美元、虧損收窄,惟現金部位大減至 460 萬美元",
-        "type": "earnings"
-      },
-      {
-        "symbol": "AMPG",
-        "chg": -26.71,
-        "catalyst": "Q2 營收 807 萬美元、季增 51%,但淨損擴大至 309 萬美元",
-        "type": "earnings"
-      },
-      {
-        "symbol": "TSSI",
-        "chg": -23.66,
-        "catalyst": "Q2 營收 3,510 萬美元、年減 20%,採購業務暴跌 45% 至 1,820 萬美元",
-        "type": "earnings"
-      },
-      {
-        "symbol": "KULR",
-        "chg": -14.81,
-        "catalyst": "Q2 營收 208 萬美元、年減 43%,淨虧損 2,197 萬美元(含 1,059 萬非現金比特幣減損)",
-        "type": "earnings"
-      },
-      {
-        "symbol": "TRNR",
-        "chg": -12.06,
-        "catalyst": "第二季營收較上季增 445% 創新高仍重挫,市場憂心可轉債稀釋加上已連兩次反向分割",
-        "type": "earnings"
-      },
-      {
-        "symbol": "GEMI",
-        "chg": -8.84,
-        "catalyst": "Q2 每股虧損 0.89 美元、營收 4,548 萬美元皆不如預期",
-        "type": "earnings"
-      },
-      {
-        "symbol": "GLOB",
-        "chg": -8.54,
-        "catalyst": "Q2 營收 6.14 億美元、每股盈餘 1.40 美元皆不如預期,全年營收展望下修至 24.28-24.62 億美元",
-        "type": "earnings"
-      },
-      {
-        "symbol": "SLE",
-        "chg": -7.44,
-        "catalyst": "Q2 營收持平約 300 萬美元,虧損雖收窄但獲利目標延後至 Q4",
-        "type": "earnings"
-      },
-      {
-        "symbol": "AMAT",
-        "chg": -6.72,
-        "catalyst": "FQ3 營收 92.1 億美元創紀錄、調整後每股盈餘 3.50 美元優於預估 3.39,下季財測 102.5 億美元;股價因今年已漲 103%、估值偏高遭賣壓,Craig Hallum 反調升目標價至 585 美元",
-        "type": "earnings"
-      },
-      {
-        "symbol": "SPAI",
-        "chg": -5.36,
-        "catalyst": "第二季營收年增 1,336%、人工智慧業務毛利率 75% 創新高,但獲利了結導致盤前拉回",
-        "type": "earnings"
-      },
-      {
-        "symbol": "DFSC",
-        "chg": -4.67,
-        "catalyst": "FQ3 營收年增 92% 至 270 萬美元,並獲美國陸軍 8 月感測器複試邀請",
-        "type": "earnings"
-      },
-      {
-        "symbol": "STNE",
-        "chg": -4.11,
-        "catalyst": "第二季每股盈餘 2.44 美元遜於預估 2.46 美元,營收 368 億巴西幣短少約 5,660 萬",
-        "type": "earnings"
-      },
-      {
-        "symbol": "JD",
-        "chg": -3.55,
-        "catalyst": "上市以來首次營收年減,英國《金融時報》報導股價一度重挫 10%",
-        "type": "earnings"
-      }
-    ],
+    "gapDownGuidance": [],
+    "gapDownEarnings": [],
     "gapDownOther": [
       {
-        "symbol": "MVIS",
-        "chg": -38.46,
-        "catalyst": "8/13 盤後啟動普通股加認股權證公開增發,稀釋疑慮重挫近 20%",
-        "type": "financing"
-      },
-      {
-        "symbol": "XHG",
-        "chg": -20.98,
-        "catalyst": "8/13 宣布收購香港人工智慧保險科技 First Cycle 的意向書帶動暴漲 348%,今日獲利了結回吐",
-        "type": "news"
-      },
-      {
-        "symbol": "AKAN",
-        "chg": -15.5,
-        "catalyst": "8/13 宣布 200 公里光纖網完工,首 100 公里開始計費,9 月起認列租賃收入",
-        "type": "contract"
-      },
-      {
-        "symbol": "ZNTL",
-        "chg": -13.98,
-        "catalyst": "增發 2,300 萬股、每股 3.5 美元募資 8,050 萬美元,稀釋壓力壓低股價",
-        "type": "financing"
-      },
-      {
-        "symbol": "INHD",
-        "chg": -11.9,
-        "catalyst": "查無具體新消息,近期人工智慧合約炒作暴漲後高位獲利了結",
-        "type": "momentum"
-      },
-      {
-        "symbol": "FGI",
-        "chg": -11.69,
-        "catalyst": "週三財報後單日暴漲 89%(Q2 每股盈餘 0.60 美元超預期),今日拉回獲利了結",
+        "symbol": "SMCI",
+        "chg": -1.92,
+        "catalyst": "8/11 盤後財報調整後每股盈餘 1.70 美元遠超預期 0.92 美元、單季新增訂單逾 600 億美元;8/12 大漲 19% 後今日拉回獲利了結",
         "type": "earnings"
-      },
-      {
-        "symbol": "AIRJ",
-        "chg": -10.6,
-        "catalyst": "第二季淨損 840 萬美元,並將 2026 年現金支出上修至 2,700-2,800 萬美元,燒錢速度加快",
-        "type": "guidance"
-      },
-      {
-        "symbol": "ONFO",
-        "chg": -8.49,
-        "catalyst": "1 比 50 反向分割後流通股僅剩約 85 萬股,超低流通量引爆軋空式暴衝",
-        "type": "momentum"
-      },
-      {
-        "symbol": "MYSZ",
-        "chg": -8.28,
-        "catalyst": "8/12 執行 1 併 8 反向分割以避開 1 美元下市門檻,分割後賣壓延續",
-        "type": "news"
-      },
-      {
-        "symbol": "COHR",
-        "chg": -7.99,
-        "catalyst": "8/12 FQ4 財報營運指標優於華爾街預估,但前五個交易日已因中國光收發模組禁令題材急漲 44%,連日獲利了結",
-        "type": "earnings"
-      },
-      {
-        "symbol": "CIIT",
-        "chg": -6.76,
-        "catalyst": "查無明確催化劑;僅 6 月完成折價增發、7 月反向分割,8/14 無新事件",
-        "type": "momentum"
-      },
-      {
-        "symbol": "STKH",
-        "chg": -5.28,
-        "catalyst": "植物肉品牌 Perfecta 首批貨透過 KeHE 鋪進美東北數十家門市,盤前一度暴漲 82%;隨後申請出售 756 萬股 ADS 稀釋,盤後回吐 5.3%",
-        "type": "news"
-      },
-      {
-        "symbol": "AEHL",
-        "chg": -4.86,
-        "catalyst": "查無新消息,8/7 完成 1 比 16 反向分割後賣壓延續",
-        "type": "momentum"
-      },
-      {
-        "symbol": "SION",
-        "chg": -4.59,
-        "catalyst": "囊狀纖維化新藥 SION-719 期中試驗 8/10 未達標,賣壓延續;同業 Vertex 數據進一步壓縮估值",
-        "type": "FDA"
-      },
-      {
-        "symbol": "IPW",
-        "chg": -4.13,
-        "catalyst": "查無明確催化劑;8/7 才完成 1 併 9 反向分割,盤前波動疑為分割後籌碼整理",
-        "type": "momentum"
       }
     ]
   }
