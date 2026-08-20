@@ -2120,11 +2120,13 @@ body.dark .candle-news-popup {
 .sip-card.claude-pick,
 .sip-card.codex-pick,
 .sip-card.gemini-pick,
-.sip-card.grok-pick { border-color: rgba(73,79,223,0.20); }
+.sip-card.grok-pick,
+.sip-card.qwen-pick { border-color: rgba(73,79,223,0.20); }
 .sip-rank.claude-rank,
 .sip-rank.codex-rank,
 .sip-rank.gemini-rank,
-.sip-rank.grok-rank { background: var(--primary); }
+.sip-rank.grok-rank,
+.sip-rank.qwen-rank { background: var(--primary); }
 
 .claude-rationale-label {
   font-size: 10px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.8px;
@@ -2683,12 +2685,12 @@ document.addEventListener('click', (e) => {
 // user came from. Returns { list: [{id, label}], label: 'CLAUDE' | ... }.
 function buildStockNavList(source) {
   // 1. Agent picks tabs (claude/codex/gemini/grok) → that agent's list, rank-sorted
-  if (source === 'claude' || source === 'codex' || source === 'gemini' || source === 'grok') {
-    const picksKey = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks', grok: 'grokPicks' }[source];
+  if (source === 'claude' || source === 'codex' || source === 'gemini' || source === 'grok' || source === 'qwen') {
+    const picksKey = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks', grok: 'grokPicks', qwen: 'qwenPicks' }[source];
     const picks = (DATA[picksKey] || []).slice().sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
     return {
       list:  picks.filter(p => DATA.stocks[p.symbol]).map(p => ({ id: p.symbol, label: p.symbol })),
-      label: { claude: 'Claude', codex: 'ChatGPT', gemini: 'Gemini', grok: 'Grok' }[source],
+      label: { claude: 'Claude', codex: 'ChatGPT', gemini: 'Gemini', grok: 'Grok', qwen: 'Qwen' }[source],
     };
   }
   // 2. MAGNA53 top-12 by score desc
@@ -3150,6 +3152,7 @@ const PICK_SOURCES = {
   codex:  { label: 'ChatGPT', picksFile: 'codex_picks.json',  cssClass: 'codex-pick',  rankClass: 'codex-rank'  },
   gemini: { label: 'Gemini',  picksFile: 'gemini_picks.json', cssClass: 'gemini-pick', rankClass: 'gemini-rank' },
   grok:   { label: 'Grok',    picksFile: 'grok_picks.json',   cssClass: 'grok-pick',   rankClass: 'grok-rank'   },
+  qwen:   { label: 'Qwen',    picksFile: 'qwen_picks.json',   cssClass: 'qwen-pick',   rankClass: 'qwen-rank'   },
 };
 
 // Generic Pick card — renders any of the 3 agents (claude / codex / gemini) with the
@@ -3277,13 +3280,13 @@ function openSipsFilterPopup(btn, subtab) {
   // This matches the counts the user sees in the rendered grid.
   const bySym = DATA.stocks || {};
   let rowsForCount = [];
-  const isPicksTab = (subtab === 'claude' || subtab === 'codex' || subtab === 'gemini' || subtab === 'grok');
+  const isPicksTab = (subtab === 'claude' || subtab === 'codex' || subtab === 'gemini' || subtab === 'grok' || subtab === 'qwen');
   if (subtab === 'magna') {
     const all = Object.values(bySym).map(s => ({ ...s, _m53: magna53(s) }));
     all.sort((a, b) => b._m53.score - a._m53.score);
     rowsForCount = all.filter(r => r._m53.score >= 4).slice(0, 12);
   } else if (isPicksTab) {
-    const pickArrayField = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks', grok: 'grokPicks' }[subtab];
+    const pickArrayField = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks', grok: 'grokPicks', qwen: 'qwenPicks' }[subtab];
     const picks = Array.isArray(DATA[pickArrayField]) ? DATA[pickArrayField] : [];
     rowsForCount = picks
       .map(p => bySym[p.symbol] ? { ...bySym[p.symbol], _pickIntent: p.intent || 'long' } : null)
@@ -3426,9 +3429,9 @@ async function renderSips(subtab) {
   //   'magna'            — MAGNA53 algorithmic ranking
   // The three picks tabs share pickCardHtml() — colors / labels from PICK_SOURCES.
   // URL routing: '/sips' (default Claude), '/sips/codex', '/sips/gemini', '/sips/grok', '/sips/magna'.
-  const validTabs = ['claude', 'codex', 'gemini', 'grok', 'magna', 'ideas'];
+  const validTabs = ['claude', 'codex', 'gemini', 'grok', 'qwen', 'magna', 'ideas'];
   const tab = validTabs.includes(subtab) ? subtab : 'claude';
-  const isPicksTab = (tab === 'claude' || tab === 'codex' || tab === 'gemini' || tab === 'grok');
+  const isPicksTab = (tab === 'claude' || tab === 'codex' || tab === 'gemini' || tab === 'grok' || tab === 'qwen');
   const app = document.getElementById('app');
   app.innerHTML = `
     <h2 class="page-title">Today's SIPs</h2>
@@ -3437,6 +3440,7 @@ async function renderSips(subtab) {
       <div class="subtab ${tab === 'codex'  ? 'active' : ''}" data-sub="codex">ChatGPT</div>
       <div class="subtab ${tab === 'gemini' ? 'active' : ''}" data-sub="gemini">Gemini</div>
       <div class="subtab ${tab === 'grok'   ? 'active' : ''}" data-sub="grok">Grok</div>
+      <div class="subtab ${tab === 'qwen'   ? 'active' : ''}" data-sub="qwen">Qwen</div>
       <div class="subtab ${tab === 'magna'  ? 'active' : ''}" data-sub="magna">MAGNA53</div>
       <div class="subtab ${tab === 'ideas'  ? 'active' : ''}" data-sub="ideas">Ideas</div>
       <span class="subtab-hint" id="sips-hint"></span>
