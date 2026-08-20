@@ -3515,7 +3515,7 @@ async function renderSips(subtab) {
     // must be gap-up (chgPct > 0), short pick must be gap-down. SHOW_MISMATCHED_PICKS
     // toggles dropping mismatches vs. showing them with a warning banner.
     const srcMeta = PICK_SOURCES[tab];
-    const pickArrayField = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks', grok: 'grokPicks' }[tab];
+    const pickArrayField = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks', grok: 'grokPicks', qwen: 'qwenPicks' }[tab];
     const picks = Array.isArray(DATA[pickArrayField]) ? DATA[pickArrayField].slice() : [];
     picks.sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
     const bySym = Object.fromEntries(rows.map(r => [r.symbol, r]));
@@ -3545,6 +3545,8 @@ async function renderSips(subtab) {
       const hiddenNote = droppedCount > 0 ? `（${droppedCount} 筆被 Filter 隱藏，按上方 Filter 調整）` : '';
       const cmdHint = tab === 'claude'
         ? '在 Claude Code 跑 <code>/SIPs</code>。'
+        : tab === 'qwen'
+        ? '本機跑 <code>D:\SIPs\qwen-sips.cmd</code>（或請 Claude 跑 <code>/SIPs-qwen-picks</code>）。'
         : `在 ${({codex:'Codex',gemini:'Gemini',grok:'Grok'})[tab]} CLI 跑 <code>/SIPs-${tab}-full</code> 或 <code>/SIPs-${tab}-picks</code>。`;
       stack.innerHTML = `<div class="sip-empty">尚無 ${srcMeta.label} 的清單${hiddenNote}。<br><br>${cmdHint}<br><br>或在 <code>D:\\SIPs\\${srcMeta.picksFile}</code> 手動加入 <code>{"picks":[{"symbol":"X","rank":1,"rationale":"...","intent":"long"}]}</code> 後 rebuild dashboard 即可看到。</div>`;
       return;
