@@ -1,81 +1,266 @@
 {
   "date": "2026-08-19",
-  "scanTime": "19:26",
-  "scanTimestamp": "2026-08-20T19:26",
+  "scanTime": "19:42",
+  "scanTimestamp": "2026-08-20T19:42",
   "stocks": {
-    "CRWV": {
-      "symbol": "CRWV",
-      "name": "CoreWeave Inc",
-      "type": "news",
+    "MRVL": {
+      "symbol": "MRVL",
+      "name": "Marvell Technology Inc",
+      "type": "contract",
       "earningsReaction": false,
-      "catalyst": "無自身新聞;長天期公債殖利率走高壓縮高評價 AI 基建股評價,族群同步走弱(NBIS -8%)",
-      "newsDetail": "> **今日跌因:** 盤前 -3.4%($90.00) — 公司本身沒有任何新消息,純粹是 AI 基礎建設類股在長天期公債殖利率走高下的評價收縮。\n\n**沒有個股事件**\n\n翻遍 8/19 當日的一級財經媒體,CoreWeave 沒有發布任何新聞稿、沒有 8-K 申報、也沒有分析師調整評等。目前能查到最近一則相關報導是 8/18 傍晚《投資人商業日報》討論**下一個 IPO 標的 Crusoe** 的產業分析文,內容把 CoreWeave 與 Nebius 當成對照組,不是針對 CoreWeave 的新資訊。\n\n**真正在動的是折現率**\n\n今天走弱的不只 CoreWeave:**Nebius(NBIS)盤前 -7.3%**、CoreWeave -3.4%,兩檔的共同點是「高評價 + 高資本支出 + 靠舉債擴建資料中心」。長天期公債殖利率持續處於數十年高檔,對這種現金流集中在未來、且需要不斷向外融資的商業模式,殖利率每往上一步,估值模型的折現分母就變大一分。同時市場對 AI 資本支出循環能撐多久的疑慮升溫,加上昨天(8/18)半導體類股全面重挫、SOX 轉弱,整條 AI 供應鏈的風險偏好都在退潮。\n\n**怎麼看**\n\n這是類股連動不是個股利空,判斷 CoreWeave 今天的方向要看的是殖利率與整體 AI 類股氣氛,而不是去找一則其實不存在的壞消息。要留意的是這種評價收縮不會一天結束 —— 只要殖利率沒回落,壓力就還在。",
+      "catalyst": "8/19 申報 8-K:7/29 與 Google 簽訂客製化晶片商業合約,涵蓋 TPU 生態系的 AI 推論加速器、儲存與網路控制器等;8/18 發行給 Google 最多 5,897 萬股、履約價 $206.58 的認股權證,綁定累計 1,200 億美元客製產品營收分 240 批解鎖",
+      "newsDetail": "> **今日漲因:** 盤前 +11.6%($241.05) — 8/19 申報的 8-K 揭露 Marvell 拿下 Google **TPU 生態系**的客製化晶片合約,並發行一張最多 **5,897 萬股**、綁定累計 **1,200 億美元**營收才能完全解鎖的認股權證給 Google。\n\n**事件詳解(全部來自 8-K 原文)**\n\nMarvell 在 **7 月 29 日**與 Google LLC 簽訂客製化半導體產品的商業合約,8 月 19 日才向美國證管會申報。合約範圍不是單一晶片,而是「一整套**掛在 TPU 生態系上**的客製矽智財方案」,原文明列五類:**AI 推論加速器、儲存控制器、網路介面控制器、記憶體介面控制器、近記憶體運算**。\n\n**認股權證條款(這是關鍵)**\n\n8 月 18 日,Marvell 發行給 Google 一張認股權證,可認購最多 **58,970,907 股**普通股,**履約價 $206.58**(略低於 8/18 收盤價 $216)。解鎖分兩塊:\n\n- **時間型 1,360,867 股** —— 簽約後第一年分四季平均解鎖,無條件。\n- **其餘 5,761 萬股** —— 從 FY2027 第三季到 FY2033 年底,依 Google 及其關係企業的實際採購金額分 **240 批**解鎖,**每產生 5 億美元客製產品營收解鎖一批**。\n\n權證到 **2033 年 8 月 18 日**到期,未經公司同意不得轉讓給非控制關係企業。\n\n**這些數字實際代表什麼**\n\n240 批 × 5 億美元 = **累計 1,200 億美元**才會全部解鎖。攤在約六年半的期間,等於年均約 185 億美元的客製產品營收 —— 而 Marvell 目前**整間公司**的年營收規模約 80-90 億美元。換句話說,**全額解鎖是一個極度激進的天花板情境,不是基準預期**;它的作用是把 Google 綁在同一條船上,不是對營收的承諾。真正該看的是前幾批解鎖的速度,那才是實際出貨的溫度計。\n\n以目前約 9.84 億股計算,5,897 萬股全額解鎖對應約 **6% 的股權稀釋**,這是市場付出的代價。\n\n**為什麼市場買單**\n\nMarvell 過去一年最大的空方論點就是「客製 ASIC 市佔正在流失」—— 亞馬遜 Trainium 的訂單分配疑慮、以及博通在 Google TPU 上的長期獨佔地位。這則公告等於**直接回答了那個問題**:Marvell 不只沒被擠出去,還切進了 Google 生態系裡最貼近 TPU 的幾個環節。\n\n同一時間 **Broadcom(AVGO)跌幅從盤前 -2.1% 擴大到 -4.6%**,這個對照本身就是市場對這則消息的解讀 —— 這是一場市佔轉移,不是產業擴張。\n\n**接下來的時間點**\n\nMarvell 將於 **8 月 27 日盤後**公布 FY2027 第二季財報。今天這則公告把八天後的法說會變成了整季最關鍵的一場 —— 管理層必然被追問客製產品的營收認列時程與毛利率結構。\n\n**風險備註**\n\n一,合約本身**沒有揭露最低採購承諾**,240 批全部繫於「Google 的自主採購」(原文用 discretionary purchases),沒有保證。二,履約價 $206.58 已低於現價,對 Google 是一張立即有內含價值的權證,對現有股東是確定的稀釋、不確定的營收。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=CRWV"
+          "url": "https://finviz.com/quote.ashx?t=MRVL"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/CRWV"
+          "url": "https://finance.yahoo.com/quote/MRVL"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-CRWV/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-MRVL/news/"
         }
       ],
-      "publishedAt": "2026-08-19T08:00:00-04:00",
+      "publishedAt": "2026-08-19T08:30:00-04:00",
       "publishedTimezone": "ET",
       "sources": [
         {
-          "label": "Investor's Business Daily — Is This The Next CoreWeave Or Nebius Group? A Crusoe IPO Looms",
-          "url": "https://finance.yahoo.com/m/0c1f16f3-f194-3c26-b4d5-05eeea6fc988/is-this-the-next-coreweave-or.html"
+          "label": "Marvell 8-K(2026-08-19,Item 1.01 / 3.02,含 Google 認股權證條款)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696d8k.htm",
+          "publishedAt": "2026-08-19T08:30:00-04:00"
+        },
+        {
+          "label": "SEC EDGAR — Marvell Technology 申報清單",
+          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001835632&type=8-K"
         }
       ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
+      "seanAnalysis": {
+        "analysis": "市值 2,120 億、空單只有 4.1%、機構持股 81.5%,是一檔籌碼極乾淨的大型股。\n\n8/19 的 8-K 揭露拿下 Google TPU 生態系的客製晶片合約,外加一張綁定採購金額才解鎖的認股權證。這種消息屬於「公司的故事被改寫」那一類 —— 不是這一季賺多少的問題,而是過去一年壓在股價上的空方論點(客製 ASIC 市佔在流失)被一則官方文件直接推翻。\n\n超乎預期的程度夠不夠?夠。合約 7/29 就簽了、8/19 才申報,市場事前完全沒有訊息,盤前一路從 +7% 拉到 +12%,是消息出來後才發動的,不是早就漲完的行情。而且空單只有 4.1%,代表這波是實買推上去的,不是空單被逼著回補 —— 這種漲法比軋空紮實。\n\n能不能執行?可以,2,120 億市值、成交量 2,500 萬股以上,滑價不是問題,這是今天少數幾檔部位可以放大的名字。\n\n**結論:主要標的。** 站穩 $241 這個盤前高附近的區間才有續攻的意思;真正的關卡是 $216(昨天收盤)—— 跌回那裡代表市場把這則消息當一日行情,就別留戀。要留意 8/27 盤後財報只剩八天,部分資金會選擇等數字,盤中不見得一路順。",
+        "sourceDate": "2026-08-19"
+      },
+      "milanAnalysis": {
+        "analysis": "先看措辭。這是**已簽訂的商業合約**(7/29 簽署)加上**已發行的認股權證**(8/18 發行),不是意向書、不是備忘錄、不是策略合作探討 —— 而且是向美國證管會申報的 8-K,法律效力最高的那一級。這在催化劑分類上直接進最上層。\n\n但要把數字看準。1,200 億美元這個數字是 240 批 × 每批 5 億元的**全額解鎖門檻**,不是營收指引、也不是採購承諾。8-K 原文用的是「Google 及其關係企業的自主採購」,沒有最低量保證。攤在 FY2027 第三季到 FY2033 這六年半,全額解鎖等於年均 185 億美元,而 Marvell 目前全公司年營收約 80-90 億 —— 這是天花板情境,拿它當預估值會嚴重高估。\n\n真正會逼分析師動模型的是**兩件事實**:一是合約範圍涵蓋 TPU 生態系的五個環節,不是單一晶片,代表這是平台級的供應商地位;二是相關分析師先前普遍把「客製 ASIC 市佔流失」寫在風險段落裡,現在那段要重寫。同時 Broadcom 當天跌幅擴大到 -4.6%,說明賣方也把它讀成市佔轉移而非產業擴張。\n\n**催化劑評分:8/10** — 一級源可查、條款具體、直接推翻既有空方論點且有競爭對手股價作為交叉驗證;扣分在於沒有最低採購承諾、營收認列時程未揭露,完整重估要等 8/27 財報給出客製產品的實際數字。",
+        "sourceDate": "2026-08-19"
+      },
       "sessions": [
         {
-          "last": 90.07,
-          "chgPct": -3.33,
+          "last": 231.2,
+          "chgPct": 7.04,
           "volume": 0,
           "session": "headline",
-          "direction": "down",
-          "name": "CoreWeave Inc",
+          "direction": "up",
+          "name": "Marvell Technology Inc",
           "sessionDate": "2026-08-19",
           "targetDate": "2026-08-19"
         }
       ],
       "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 90.07,
-      "chgPct": -3.33,
+      "primaryDirection": "up",
+      "last": 231.2,
+      "chgPct": 7.04,
       "volume": 0,
       "tv": {
-        "latestEPS": -1.03,
-        "consensusEPS": -1.21,
-        "priorYrEPS": -0.27,
-        "surpriseEPS_pct": 14.52,
-        "surpriseEPS_dollar": 0.17999999999999994,
-        "latestRev_M": 2580.0,
-        "consensusRev_M": 2550.0,
-        "priorYrRev_M": 1210.0,
-        "surpriseRev_pct": 0.8,
-        "yrYrRev_pct": 113.22314049586777,
-        "epsYoY_pct": -281.48148148148147,
+        "latestEPS": 0.8,
+        "consensusEPS": 0.8,
+        "priorYrEPS": 0.62,
+        "surpriseEPS_pct": 0.21,
+        "surpriseEPS_dollar": 0.0,
+        "latestRev_M": 2420.0,
+        "consensusRev_M": 2410.0,
+        "priorYrRev_M": 1900.0,
+        "surpriseRev_pct": 0.49,
+        "yrYrRev_pct": 27.368421052631582,
+        "epsYoY_pct": 29.032258064516135,
         "epsEst_next4": [
-          -1.24,
-          -0.65,
-          -0.65,
-          -0.56
+          0.93,
+          1.07,
+          1.24,
+          1.32
         ],
         "revEst_next4": [
-          3540.0,
-          4680.0,
-          5260.0,
-          6040.0
+          2710.0,
+          3020.0,
+          3370.0,
+          3620.0
         ],
-        "yoyBlock": "-281.48% / +113.22%\n--------------------\n-1450.00% / +160.29%\n-16.07% / +198.09%\n+41.44% / +152.88%\n+45.63% / +134.11%",
+        "yoyBlock": "+29.03% / +27.37%\n--------------------\n+38.81% / +34.83%\n+40.79% / +45.89%\n+55.00% / +51.80%\n+65.00% / +49.59%",
+        "chart": {
+          "quarters": [
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q4 '20"
+          ],
+          "eps_reported": [
+            0.3,
+            0.43,
+            0.6,
+            0.62,
+            0.67,
+            0.76,
+            0.8,
+            0.8,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.29,
+            0.41,
+            0.59,
+            0.61,
+            0.67,
+            0.74,
+            0.79,
+            0.8,
+            0.93,
+            1.07,
+            1.24,
+            1.32
+          ],
+          "rev_reported_M": [
+            1270.0,
+            1520.0,
+            1820.0,
+            1900.0,
+            2009.9999999999998,
+            2070.0,
+            2220.0,
+            2420.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            1250.0,
+            1460.0,
+            1800.0,
+            1880.0,
+            2009.9999999999998,
+            2070.0,
+            2210.0,
+            2410.0,
+            2710.0,
+            3020.0,
+            3370.0,
+            3620.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": null,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": null,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-08-18",
+        "open": 220.52,
+        "high": 225.01,
+        "low": 211.1,
+        "close": 216.0,
+        "volume": 25737800,
+        "prev_close": 234.33
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": 11.5,
+        "predDay": 9.5,
+        "band": [
+          -3.2,
+          3.2
+        ],
+        "tier": "na",
+        "asOf": "09:38 開盤定格"
+      }
+    },
+    "AGI": {
+      "symbol": "AGI",
+      "name": "Alamos Gold Inc",
+      "type": "macro",
+      "earningsReaction": false,
+      "catalyst": "無自身新聞;金價走高帶動的貴金屬礦業股族群同步上漲",
+      "newsDetail": "> **今日漲因:** 盤前 +2.0%($33.56) — 公司沒有自身消息,是黃金價格走高帶動整個貴金屬礦業族群同步上漲,避險資金在科技股連續走弱時流入。\n\n**查無個股事件**\n\n8/19 沒有 Alamos Gold 的新聞稿、產量更新或分析師動作。一級財經媒體針對這檔在 36 小時內沒有任何報導。\n\n**這是族群行情,不是個股事件**\n\n今天上漲的不只這一檔:**Newmont +1.9%、Alamos Gold +2.0%、Endeavour Silver +3.0%、B2Gold +1.8%、Pan American Silver +1.4%** —— 整個貴金屬礦業族群同步、幅度接近,這是價格驅動而非公司驅動的典型特徵。在科技類股連兩天走弱、長天期公債殖利率高檔的環境下,資金往黃金這類避險資產移動,礦業股則是對金價變動的槓桿載具(金價每漲 1%,礦商的獲利彈性通常放大數倍,因為開採成本相對固定)。\n\n**怎麼看**\n\n判斷這類標的今天的方向,要看的是金價本身與整體風險偏好,不是去公司財報裡找答案。族群同步時個股 alpha 很低;要選就選開採成本低、產量成長明確的名字。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=AGI"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/AGI"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AGI/news/"
+        }
+      ],
+      "publishedAt": "2026-08-19T08:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 33.56,
+          "chgPct": 2.02,
+          "volume": 0,
+          "session": "headline",
+          "direction": "up",
+          "name": "Alamos Gold Inc",
+          "sessionDate": "2026-08-19",
+          "targetDate": "2026-08-19"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 33.56,
+      "chgPct": 2.02,
+      "volume": 0,
+      "tv": {
+        "latestEPS": 0.59,
+        "consensusEPS": 0.53,
+        "priorYrEPS": 0.34,
+        "surpriseEPS_pct": 11.91,
+        "surpriseEPS_dollar": 0.05999999999999994,
+        "latestRev_M": 594.1,
+        "consensusRev_M": 593.58,
+        "priorYrRev_M": 438.2,
+        "surpriseRev_pct": 0.09,
+        "yrYrRev_pct": 35.57736193518942,
+        "epsYoY_pct": 73.52941176470587,
+        "epsEst_next4": [
+          0.52,
+          0.63,
+          0.69,
+          0.76
+        ],
+        "revEst_next4": [
+          560.27,
+          637.33,
+          657.22,
+          694.73
+        ],
+        "yoyBlock": "+73.53% / +35.58%\n--------------------\n+40.54% / +21.19%\n+16.67% / +10.78%\n+25.45% / +10.14%\n+28.81% / +16.94%",
         "chart": {
           "quarters": [
             "Q4 '24",
@@ -88,92 +273,642 @@
             "Q3 '26",
             "Q4 '26",
             "Q1 '27",
-            "Q2 '27"
+            "Q2 '27",
+            "Q1 '21"
           ],
           "eps_reported": [
-            -0.08,
-            -0.6,
-            -0.27,
-            -0.08,
-            -0.56,
-            -1.11,
-            -1.03,
+            0.19,
+            0.25,
+            0.14,
+            0.34,
+            0.37,
+            0.54,
+            0.55,
+            0.59,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            null,
-            -0.12,
-            -0.23,
-            -0.4,
-            -0.5,
-            -0.92,
-            -1.21,
-            -1.24,
-            -0.65,
-            -0.65,
-            -0.56
+            0.21,
+            0.24,
+            0.19,
+            0.33,
+            0.36,
+            0.51,
+            0.55,
+            0.53,
+            0.52,
+            0.63,
+            0.69,
+            0.76
           ],
           "rev_reported_M": [
-            747.4,
-            981.63,
-            1210.0,
-            1360.0,
-            1570.0,
-            2080.0,
-            2580.0,
+            360.9,
+            375.8,
+            333.0,
+            438.2,
+            462.3,
+            575.3,
+            596.7,
+            594.1,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            null,
-            857.1,
-            1080.0,
-            1290.0,
-            1550.0,
-            1970.0,
-            2550.0,
-            3540.0,
-            4680.0,
-            5260.0,
-            6040.0
+            348.45,
+            328.9,
+            362.88,
+            447.62,
+            487.1,
+            568.0,
+            612.34,
+            593.58,
+            560.27,
+            637.33,
+            657.22,
+            694.73
           ],
-          "latest_idx": 6
+          "latest_idx": 7
         },
-        "latestReportDate": "2026-08-12",
+        "latestReportDate": null,
         "nextReportDate": null
       },
-      "shortFloat": 17.63,
-      "shortRatio": 2.04,
-      "marketCap_M": 49610,
-      "floatShares_M": 347.5,
-      "perf1M": 13.04,
-      "perf3M": -9.87,
-      "perf6M": -5.76,
-      "perfYTD": 25.62,
-      "perf12M": -3.16,
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": null,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": null,
+      "perf12M": null,
       "prevOhlcv": {
         "date": "2026-08-18",
-        "open": 101.4,
-        "high": 102.38,
-        "low": 93.15,
-        "close": 93.17,
-        "volume": 37840500,
-        "prev_close": 106.0
+        "open": 33.39,
+        "high": 33.68,
+        "low": 32.84,
+        "close": 32.9,
+        "volume": 2985800,
+        "prev_close": 33.99
       },
       "modelPred": {
         "version": "v12",
-        "gap": 1.15,
-        "predDay": 2.0,
+        "gap": 1.49,
+        "predDay": 3.2,
+        "band": [
+          -3.2,
+          3.2
+        ],
+        "tier": "na",
+        "asOf": "09:38 開盤定格"
+      }
+    },
+    "VIK": {
+      "symbol": "VIK",
+      "name": "Viking Holdings Ltd",
+      "type": "earnings",
+      "earningsReaction": true,
+      "catalyst": "8/19 盤前第二季營收優於預估,郵輪需求續強",
+      "newsDetail": "> **今日漲因：** 盤前公布優於預期的第二季財報,+3.3%——營收與獲利雙雙超越華爾街預估。\n\n**財報數字**\n\nViking Holdings 8/19 盤前公布第二季財報,營收約 22 億美元,優於市場預估的 21 億美元、超出幅度約 2.4%;調整後每股盈餘 1.31 美元,同樣優於預估的 1.25 美元、超出幅度約 4.8%。公司股價過去一年波動區間落在 56.06 至 110.09 美元之間,反映郵輪旅遊需求持續回溫下,市場對其訂位動能維持樂觀。\n\n**營運亮點**\n\n財報公布前一週,公司才剛宣布開放 2028-2029 年海洋航線的訂位,顯示長線訂位能見度良好;近期也持續有新船交付,包括埃及航線新船與歐洲河輪新船,反映公司仍在積極擴充運能因應需求。\n\n**分析師觀點**\n\n目前市場上多數分析師給予買進評等(15 位分析師中 12 位偏多、僅 1 位看空),平均目標價落在 101 美元附近、最高看到 128 美元,顯示這次優於預期的財報有機會進一步強化市場對其訂位與獲利動能的信心,推升股價續強。\n\n> ⚠ **資料註記:** TradingView 的季度網格尚未更新今日(8/19)公布的這一季,個股頁的 EPS/營收圖與 Forward YoY 目前仍顯示上一季數字,今日盤後會重新抓取。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=VIK"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/VIK"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-VIK/news/"
+        }
+      ],
+      "publishedAt": "2026-08-19T08:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Viking Holdings Q2 2026 earnings (Viking IR)",
+          "url": "https://ir.viking.com/news-events/press-releases/detail/242/viking-reports-second-quarter-2026-financial-results"
+        },
+        {
+          "label": "Viking Holdings Q2 2026 earnings summary (Perplexity Finance)",
+          "url": "https://www.perplexity.ai/finance/VIK/earnings"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 101.5,
+          "chgPct": 3.27,
+          "volume": 0,
+          "session": "headline",
+          "direction": "up",
+          "name": "Viking Holdings Ltd",
+          "sessionDate": "2026-08-19",
+          "targetDate": "2026-08-19"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 101.5,
+      "chgPct": 3.27,
+      "volume": 0,
+      "tv": {
+        "latestEPS": -0.11,
+        "consensusEPS": -0.11,
+        "priorYrEPS": -0.24,
+        "surpriseEPS_pct": 1.86,
+        "surpriseEPS_dollar": 0.0,
+        "latestRev_M": 1050.0,
+        "consensusRev_M": 1010.0,
+        "priorYrRev_M": 897.06,
+        "surpriseRev_pct": 4.04,
+        "yrYrRev_pct": 17.049026820948438,
+        "epsYoY_pct": 54.16666666666667,
+        "epsEst_next4": [
+          1.26,
+          1.4,
+          0.79,
+          -0.02
+        ],
+        "revEst_next4": [
+          2140.0,
+          2270.0,
+          1950.0,
+          1310.0
+        ],
+        "yoyBlock": "+54.17% / +17.05%\n--------------------\n+27.27% / +13.83%\n+16.67% / +13.50%\n+17.91% / +13.37%\n+81.82% / +24.76%",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            0.37,
+            0.89,
+            0.45,
+            -0.24,
+            0.99,
+            1.2,
+            0.67,
+            -0.11,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.67,
+            0.84,
+            0.36,
+            -0.29,
+            0.99,
+            1.2,
+            0.54,
+            -0.11,
+            1.26,
+            1.4,
+            0.79,
+            -0.02
+          ],
+          "rev_reported_M": [
+            1590.0,
+            1680.0,
+            1350.0,
+            897.06,
+            1880.0,
+            2000.0,
+            1720.0,
+            1050.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            1600.0,
+            1670.0,
+            1340.0,
+            841.16,
+            1850.0,
+            1990.0,
+            1620.0,
+            1010.0,
+            2140.0,
+            2270.0,
+            1950.0,
+            1310.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": "2026-08-19"
+      },
+      "shortFloat": 3.54,
+      "shortRatio": 2.73,
+      "marketCap_M": 45060,
+      "floatShares_M": 206.73,
+      "perf1M": 1.74,
+      "perf3M": 22.83,
+      "perf6M": 27.12,
+      "perfYTD": 41.44,
+      "perf12M": 70.55,
+      "prevOhlcv": {
+        "date": "2026-08-18",
+        "open": 98.47,
+        "high": 99.49,
+        "low": 97.46,
+        "close": 98.29,
+        "volume": 4038400,
+        "prev_close": 99.86
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": 0.18,
+        "predDay": -0.2,
         "band": [
           -2.5,
           2.2
         ],
         "tier": "big",
+        "asOf": "09:38 開盤定格"
+      }
+    },
+    "SQM": {
+      "symbol": "SQM",
+      "name": "Sociedad Quimica y Minera",
+      "type": "earnings",
+      "earningsReaction": true,
+      "catalyst": "8/19 凌晨公布上半年(至 6/30)財報,鋰價回穩帶動獲利改善",
+      "newsDetail": "> **今日漲因：** 8/19 凌晨公布上半年財報,+2.5%——鋰業務量價齊揚,獲利大幅優於去年同期。\n\n**財報數字**\n\nSQM 公布截至 6 月 30 日止上半年財報:營收 42.285 億美元,較去年同期年增 103.4%;淨利 10.247 億美元、每股盈餘 3.59 美元,年增幅高達 353.5%。單看第二季,營收 24.684 億美元、淨利 6.6 億美元(每股盈餘 2.31 美元),較去年同期大增 646.4%,毛利率也從去年同期的 26.7% 大幅拉升至 48.2%。\n\n**鋰業務表現**\n\n鋰及其衍生品第二季銷售量創單季新高、突破 8.41 萬公噸碳酸鋰當量(LCE),較去年同期成長 59%;鋰業務營收更暴增 300% 至 17.792 億美元,反映鋰價相較去年同期的低基期明顯回升。碘業務同樣繳出價量雙升的紀錄新高表現,特用植物營養部門銷量與售價也維持穩健。\n\n**展望與其他**\n\n公司將全年鋰銷售成長預估上修,顯示管理層對下半年鋰價與需求維持樂觀。另外上半年 SQM 及子公司合計提列超過 16 億美元支付予智利政府,反映當地礦業權利金與稅負負擔沉重,但整體獲利動能仍讓今天股價維持強勢。\n\n> ⚠ **資料註記:** TradingView 的季度網格尚未更新今日(8/19)公布的這一季,個股頁的 EPS/營收圖與 Forward YoY 目前仍顯示上一季數字,今日盤後會重新抓取。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=SQM"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/SQM"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SQM/news/"
+        }
+      ],
+      "publishedAt": "2026-08-19T07:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "SQM Reports Earnings for the Six Months Ended June 30, 2026 (SQM IR)",
+          "url": "https://ir.sqm.com/system/files-encrypted/nasdaq_kms/news/2026/08/19/2-11-20/2Q2026%20Earnings%20release_eng_VF.pdf"
+        },
+        {
+          "label": "SQM Reports Record Lithium Volumes, Strong Q2 and First-Half 2026 Results (QuiverQuant)",
+          "url": "https://www.quiverquant.com/news/SQM+Reports+Record+Lithium+Volumes%2C+Strong+Q2+and+First-Half+2026+Results"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 76.3,
+          "chgPct": 2.46,
+          "volume": 0,
+          "session": "headline",
+          "direction": "up",
+          "name": "Sociedad Quimica y Minera",
+          "sessionDate": "2026-08-19",
+          "targetDate": "2026-08-19"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 76.3,
+      "chgPct": 2.46,
+      "volume": 0,
+      "tv": {
+        "latestEPS": 1.28,
+        "consensusEPS": 1.55,
+        "priorYrEPS": 0.48,
+        "surpriseEPS_pct": -17.17,
+        "surpriseEPS_dollar": -0.27,
+        "latestRev_M": 1760.0,
+        "consensusRev_M": 1690.0,
+        "priorYrRev_M": 1040.0,
+        "surpriseRev_pct": 3.91,
+        "yrYrRev_pct": 69.23076923076923,
+        "epsYoY_pct": 166.66666666666669,
+        "epsEst_next4": [
+          2.01,
+          2.13,
+          2.06,
+          1.68
+        ],
+        "revEst_next4": [
+          2240.0,
+          2360.0,
+          2220.0,
+          1890.0
+        ],
+        "yoyBlock": "+166.67% / +69.23%\n--------------------\n+548.39% / +115.38%\n+243.55% / +101.71%\n+221.88% / +68.18%\n+31.25% / +7.39%",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27"
+          ],
+          "eps_reported": [
+            0.75,
+            0.46,
+            0.42,
+            0.48,
+            0.31,
+            0.62,
+            0.64,
+            1.28,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.96,
+            0.63,
+            0.49,
+            0.58,
+            0.51,
+            0.65,
+            0.8,
+            1.55,
+            2.01,
+            2.13,
+            2.06,
+            1.68
+          ],
+          "rev_reported_M": [
+            1290.0,
+            1080.0,
+            1070.0,
+            1040.0,
+            1040.0,
+            1170.0,
+            1320.0,
+            1760.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            1230.0,
+            1080.0,
+            991.95,
+            1020.0,
+            1040.0,
+            1170.0,
+            1250.0,
+            1690.0,
+            2240.0,
+            2360.0,
+            2220.0,
+            1890.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": "2026-08-19"
+      },
+      "shortFloat": 1.81,
+      "shortRatio": 2.45,
+      "marketCap_M": 11070,
+      "floatShares_M": 142.67,
+      "perf1M": 12.58,
+      "perf3M": -3.67,
+      "perf6M": 6.49,
+      "perfYTD": 12.65,
+      "perf12M": 72.03,
+      "prevOhlcv": {
+        "date": "2026-08-18",
+        "open": 73.69,
+        "high": 74.61,
+        "low": 73.05,
+        "close": 74.47,
+        "volume": 866700,
+        "prev_close": 75.1
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": -1.05,
+        "predDay": -1.2,
+        "band": [
+          -2.5,
+          2.2
+        ],
+        "tier": "big",
+        "asOf": "09:38 開盤定格"
+      }
+    },
+    "AVGO": {
+      "symbol": "AVGO",
+      "name": "Broadcom Inc",
+      "type": "news",
+      "earningsReaction": false,
+      "catalyst": "無自身公告;Marvell 8/19 揭露拿下 Google TPU 生態系客製晶片合約,直接威脅博通長期獨佔的 Google 客製 ASIC 地位,跌幅由盤前 -2.1% 擴大到 -4.6%",
+      "newsDetail": "> **今日跌因:** 盤前 -4.6%($362.54),跌幅在早盤擴大一倍 — Marvell 今天揭露拿下 Google TPU 生態系的客製晶片合約,直接踩到博通最核心的護城河。\n\n**先看時序**\n\n博通今天**沒有發布任何自己的公告**。盤前一開始只跌約 2.1%,與昨天(8/18)半導體類股整體走弱的幅度相當。但在 Marvell 的 8-K 曝光之後,跌幅擴大到 **-4.6%**,而同一時間 **Marvell 反向拉到 +11.6%**。這個一上一下的對稱,比任何評論都更能說明市場在想什麼。\n\n**為什麼這則新聞對博通特別痛**\n\n博通長期是 Google TPU 的主要客製晶片夥伴,這塊業務是它 AI 營收裡能見度最高、也最被市場拿來支撐評價的一塊。Marvell 揭露的合約範圍涵蓋 **AI 推論加速器、儲存控制器、網路介面控制器、記憶體介面控制器與近記憶體運算** —— 全部都是「掛在 TPU 生態系上」的環節。Google 同時給出一張綁定累計 1,200 億美元營收的認股權證,代表這不是試單,是有意識地培養第二供應商。\n\n**這是市佔轉移,不是需求萎縮**\n\n要區分清楚:今天的下跌不是 AI 需求變差,而是**同一塊餅要多切一份出去**。這種性質的利空和「AI 資本支出見頂」是兩回事,對後續的評價修正路徑也不一樣 —— 前者傷的是市佔與議價力,後者傷的是整個產業的成長率。\n\n**背景**\n\n昨天(8/18)費城半導體指數轉弱,AMD -4.9%、ARM -7.0%、QCOM -4.8% 全面翻黑,長天期公債殖利率處於數十年高檔,本來就在壓縮高評價科技股。今天的 Marvell 消息是在這個已經偏空的底色上,再加了一層博通專屬的壓力。\n\n**風險備註**\n\n博通尚未對此發表任何回應。在公司說明 Google 業務的實際影響範圍之前,-4.6% 反映的是市場的推論而非已確認的訂單流失。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=AVGO"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/AVGO"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AVGO/news/"
+        }
+      ],
+      "publishedAt": "2026-08-19T08:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Marvell 8-K(2026-08-19)— Google 客製晶片合約與認股權證",
+          "url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696d8k.htm"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 369.35,
+          "chgPct": -2.8,
+          "volume": 0,
+          "session": "headline",
+          "direction": "down",
+          "name": "Broadcom Inc",
+          "sessionDate": "2026-08-19",
+          "targetDate": "2026-08-19"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "down",
+      "last": 369.35,
+      "chgPct": -2.8,
+      "volume": 0,
+      "tv": {
+        "latestEPS": 2.44,
+        "consensusEPS": 2.4,
+        "priorYrEPS": 1.58,
+        "surpriseEPS_pct": 1.82,
+        "surpriseEPS_dollar": 0.040000000000000036,
+        "latestRev_M": 22190.0,
+        "consensusRev_M": 22130.0,
+        "priorYrRev_M": 15000.0,
+        "surpriseRev_pct": 0.26,
+        "yrYrRev_pct": 47.93333333333333,
+        "epsYoY_pct": 54.430379746835435,
+        "epsEst_next4": [
+          3.21,
+          3.84,
+          4.11,
+          4.53
+        ],
+        "revEst_next4": [
+          29250.0,
+          34520.0,
+          36780.0,
+          40630.0
+        ],
+        "yoyBlock": "+54.43% / +47.93%\n--------------------\n+89.94% / +83.39%\n+96.92% / +91.56%\n+100.49% / +90.47%\n+85.66% / +83.10%",
+        "chart": {
+          "quarters": [
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q1 '21"
+          ],
+          "eps_reported": [
+            1.24,
+            1.42,
+            1.6,
+            1.58,
+            1.69,
+            1.95,
+            2.05,
+            2.44,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            1.22,
+            1.39,
+            1.51,
+            1.57,
+            1.66,
+            1.87,
+            2.03,
+            2.4,
+            3.21,
+            3.84,
+            4.11,
+            4.53
+          ],
+          "rev_reported_M": [
+            13070.0,
+            14050.0,
+            14920.0,
+            15000.0,
+            15950.0,
+            18020.0,
+            19310.0,
+            22190.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            12980.0,
+            14070.0,
+            14620.0,
+            14960.0,
+            15830.0,
+            17470.0,
+            19260.0,
+            22130.0,
+            29250.0,
+            34520.0,
+            36780.0,
+            40630.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": null,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": null,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-08-18",
+        "open": 384.32,
+        "high": 385.78,
+        "low": 377.01,
+        "close": 380.0,
+        "volume": 22835500,
+        "prev_close": 392.43
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": -2.19,
+        "predDay": -0.9,
+        "band": [
+          -3.2,
+          3.2
+        ],
+        "tier": "na",
         "asOf": "09:38 開盤定格"
       }
     },
@@ -370,1339 +1105,81 @@
         "asOf": "09:38 開盤定格"
       }
     },
-    "AGI": {
-      "symbol": "AGI",
-      "name": "Alamos Gold Inc",
-      "type": "macro",
+    "SNDK": {
+      "symbol": "SNDK",
+      "name": "SanDisk Corp",
+      "type": "analyst",
       "earningsReaction": false,
-      "catalyst": "無自身新聞;金價走高帶動的貴金屬礦業股族群同步上漲",
-      "newsDetail": "> **今日漲因:** 盤前 +2.0%($33.56) — 公司沒有自身消息,是黃金價格走高帶動整個貴金屬礦業族群同步上漲,避險資金在科技股連續走弱時流入。\n\n**查無個股事件**\n\n8/19 沒有 Alamos Gold 的新聞稿、產量更新或分析師動作。一級財經媒體針對這檔在 36 小時內沒有任何報導。\n\n**這是族群行情,不是個股事件**\n\n今天上漲的不只這一檔:**Newmont +1.9%、Alamos Gold +2.0%、Endeavour Silver +3.0%、B2Gold +1.8%、Pan American Silver +1.4%** —— 整個貴金屬礦業族群同步、幅度接近,這是價格驅動而非公司驅動的典型特徵。在科技類股連兩天走弱、長天期公債殖利率高檔的環境下,資金往黃金這類避險資產移動,礦業股則是對金價變動的槓桿載具(金價每漲 1%,礦商的獲利彈性通常放大數倍,因為開採成本相對固定)。\n\n**怎麼看**\n\n判斷這類標的今天的方向,要看的是金價本身與整體風險偏好,不是去公司財報裡找答案。族群同步時個股 alpha 很低;要選就選開採成本低、產量成長明確的名字。",
+      "catalyst": "8/19 華興資本(China Renaissance)將目標價從 2,000 美元調高到 2,250 美元、維持買進評等,是昨日半導體全面重挫後少數逆勢的正面分析師動作",
+      "newsDetail": "> **今日漲因:** 盤前 +2.3%($1,663.40) — 華興資本(China Renaissance)把目標價從 2,000 美元調高到 **2,250 美元**、維持買進評等,是昨天半導體全面重挫後少見的逆勢正面動作。\n\n**分析師動作**\n\n8/19 06:46 ET,華興資本發布報告將 SanDisk 目標價自 **$2,000 上調至 $2,250**(幅度 +12.5%),評等維持**買進**。以今天盤前 $1,663.40 計算,新目標價隱含約 **35% 的上檔空間**。\n\n**為什麼這則在今天特別有份量**\n\n昨天(8/18)整個半導體類股崩跌,SOX 轉弱,AMD、ARM、QCOM、SMCI 全數重挫,今天 Broadcom 仍 -2.8%。在這種氣氛下出現的目標價「調升」而非「維持」,代表分析師在利空環境中主動往上修模型 —— 這比在多頭行情裡調升更有訊息含量。\n\n**背景**\n\nSanDisk 是 NAND 快閃記憶體的主要供應商,受惠於 AI 資料中心對高容量儲存的需求。這也是為什麼在邏輯晶片(AMD/ARM)走弱時,記憶體與儲存這條線的敘事還撐得住。\n\n**風險備註**\n\n單一機構的目標價調升不改變產業循環方向;若記憶體現貨價轉弱,或 AI 資本支出疑慮擴散到儲存需求,這條相對強勢的敘事會很快被修正。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AGI"
+          "url": "https://finviz.com/quote.ashx?t=SNDK"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AGI"
+          "url": "https://finance.yahoo.com/quote/SNDK"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AGI/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SNDK/news/"
         }
       ],
-      "publishedAt": "2026-08-19T08:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 33.56,
-          "chgPct": 2.02,
-          "volume": 0,
-          "session": "headline",
-          "direction": "up",
-          "name": "Alamos Gold Inc",
-          "sessionDate": "2026-08-19",
-          "targetDate": "2026-08-19"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 33.56,
-      "chgPct": 2.02,
-      "volume": 0,
-      "tv": {
-        "latestEPS": 0.59,
-        "consensusEPS": 0.53,
-        "priorYrEPS": 0.34,
-        "surpriseEPS_pct": 11.91,
-        "surpriseEPS_dollar": 0.05999999999999994,
-        "latestRev_M": 594.1,
-        "consensusRev_M": 593.58,
-        "priorYrRev_M": 438.2,
-        "surpriseRev_pct": 0.09,
-        "yrYrRev_pct": 35.57736193518942,
-        "epsYoY_pct": 73.52941176470587,
-        "epsEst_next4": [
-          0.52,
-          0.63,
-          0.69,
-          0.76
-        ],
-        "revEst_next4": [
-          560.27,
-          637.33,
-          657.22,
-          694.73
-        ],
-        "yoyBlock": "+73.53% / +35.58%\n--------------------\n+40.54% / +21.19%\n+16.67% / +10.78%\n+25.45% / +10.14%\n+28.81% / +16.94%",
-        "chart": {
-          "quarters": [
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q1 '21"
-          ],
-          "eps_reported": [
-            0.19,
-            0.25,
-            0.14,
-            0.34,
-            0.37,
-            0.54,
-            0.55,
-            0.59,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.21,
-            0.24,
-            0.19,
-            0.33,
-            0.36,
-            0.51,
-            0.55,
-            0.53,
-            0.52,
-            0.63,
-            0.69,
-            0.76
-          ],
-          "rev_reported_M": [
-            360.9,
-            375.8,
-            333.0,
-            438.2,
-            462.3,
-            575.3,
-            596.7,
-            594.1,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            348.45,
-            328.9,
-            362.88,
-            447.62,
-            487.1,
-            568.0,
-            612.34,
-            593.58,
-            560.27,
-            637.33,
-            657.22,
-            694.73
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
-      "prevOhlcv": {
-        "date": "2026-08-18",
-        "open": 33.39,
-        "high": 33.68,
-        "low": 32.84,
-        "close": 32.9,
-        "volume": 2985800,
-        "prev_close": 33.99
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": 1.49,
-        "predDay": 3.2,
-        "band": [
-          -3.2,
-          3.2
-        ],
-        "tier": "na",
-        "asOf": "09:38 開盤定格"
-      }
-    },
-    "NEM": {
-      "symbol": "NEM",
-      "name": "Newmont Corp",
-      "type": "macro",
-      "earningsReaction": false,
-      "catalyst": "無自身新聞;金價走高帶動貴金屬礦業股同步上漲(NEM/AGI/EXK/BTG/PAAS 全數 +1.4~3.0%),避險資金在科技股走弱時流入黃金",
-      "newsDetail": "> **今日漲因:** 盤前 +1.9%($118.18) — 公司沒有自身消息,是黃金價格走高帶動整個貴金屬礦業族群同步上漲,避險資金在科技股連續走弱時流入。\n\n**查無個股事件**\n\n8/19 沒有 Newmont 的新聞稿、產量更新或分析師動作。一級財經媒體針對這檔在 36 小時內沒有任何報導。\n\n**這是族群行情,不是個股事件**\n\n今天上漲的不只這一檔:**Newmont +1.9%、Alamos Gold +2.0%、Endeavour Silver +3.0%、B2Gold +1.8%、Pan American Silver +1.4%** —— 整個貴金屬礦業族群同步、幅度接近,這是價格驅動而非公司驅動的典型特徵。在科技類股連兩天走弱、長天期公債殖利率高檔的環境下,資金往黃金這類避險資產移動,礦業股則是對金價變動的槓桿載具(金價每漲 1%,礦商的獲利彈性通常放大數倍,因為開採成本相對固定)。\n\n**怎麼看**\n\n判斷這類標的今天的方向,要看的是金價本身與整體風險偏好,不是去公司財報裡找答案。族群同步時個股 alpha 很低;要選就選開採成本低、產量成長明確的名字。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=NEM"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/NEM"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-NEM/news/"
-        }
-      ],
-      "publishedAt": "2026-08-19T08:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 118.18,
-          "chgPct": 1.9,
-          "volume": 0,
-          "session": "headline",
-          "direction": "up",
-          "name": "Newmont Corp",
-          "sessionDate": "2026-08-19",
-          "targetDate": "2026-08-19"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 118.18,
-      "chgPct": 1.9,
-      "volume": 0,
-      "tv": {
-        "latestEPS": 2.1,
-        "consensusEPS": 1.99,
-        "priorYrEPS": 1.43,
-        "surpriseEPS_pct": 5.37,
-        "surpriseEPS_dollar": 0.1100000000000001,
-        "latestRev_M": 6120.0,
-        "consensusRev_M": 6350.0,
-        "priorYrRev_M": 5320.0,
-        "surpriseRev_pct": -3.71,
-        "yrYrRev_pct": 15.037593984962406,
-        "epsYoY_pct": 46.85314685314687,
-        "epsEst_next4": [
-          2.18,
-          2.32,
-          2.62,
-          2.77
-        ],
-        "revEst_next4": [
-          6180.0,
-          6710.0,
-          6940.0,
-          7220.0
-        ],
-        "yoyBlock": "+46.85% / +15.04%\n--------------------\n+27.49% / +11.96%\n-7.94% / -1.61%\n-9.66% / -5.06%\n+31.90% / +17.97%",
-        "chart": {
-          "quarters": [
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q1 '21"
-          ],
-          "eps_reported": [
-            0.81,
-            1.4,
-            1.25,
-            1.43,
-            1.71,
-            2.52,
-            2.9,
-            2.1,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.87,
-            1.08,
-            0.92,
-            1.16,
-            1.44,
-            2.07,
-            2.18,
-            1.99,
-            2.18,
-            2.32,
-            2.62,
-            2.77
-          ],
-          "rev_reported_M": [
-            4610.0,
-            5650.0,
-            5010.0,
-            5320.0,
-            5520.0,
-            6820.0,
-            7310.0,
-            6120.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            4630.0,
-            5150.0,
-            4700.0,
-            4850.0,
-            5190.0,
-            6230.0,
-            6570.0,
-            6350.0,
-            6180.0,
-            6710.0,
-            6940.0,
-            7220.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
-      "prevOhlcv": {
-        "date": "2026-08-18",
-        "open": 118.31,
-        "high": 119.44,
-        "low": 115.83,
-        "close": 115.98,
-        "volume": 6535900,
-        "prev_close": 120.33
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": 2.01,
-        "predDay": 3.8,
-        "band": [
-          -3.2,
-          3.2
-        ],
-        "tier": "na",
-        "asOf": "09:38 開盤定格"
-      }
-    },
-    "BTG": {
-      "symbol": "BTG",
-      "name": "B2Gold Corp",
-      "type": "macro",
-      "earningsReaction": false,
-      "catalyst": "無自身新聞;金價走高帶動的貴金屬礦業股族群同步上漲",
-      "newsDetail": "> **今日漲因:** 盤前 +1.8%($5.07) — 公司沒有自身消息,是黃金價格走高帶動整個貴金屬礦業族群同步上漲,避險資金在科技股連續走弱時流入。\n\n**查無個股事件**\n\n8/19 沒有 B2Gold 的新聞稿、產量更新或分析師動作。一級財經媒體針對這檔在 36 小時內沒有任何報導。\n\n**這是族群行情,不是個股事件**\n\n今天上漲的不只這一檔:**Newmont +1.9%、Alamos Gold +2.0%、Endeavour Silver +3.0%、B2Gold +1.8%、Pan American Silver +1.4%** —— 整個貴金屬礦業族群同步、幅度接近,這是價格驅動而非公司驅動的典型特徵。在科技類股連兩天走弱、長天期公債殖利率高檔的環境下,資金往黃金這類避險資產移動,礦業股則是對金價變動的槓桿載具(金價每漲 1%,礦商的獲利彈性通常放大數倍,因為開採成本相對固定)。\n\n**怎麼看**\n\n判斷這類標的今天的方向,要看的是金價本身與整體風險偏好,不是去公司財報裡找答案。族群同步時個股 alpha 很低;要選就選開採成本低、產量成長明確的名字。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=BTG"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/BTG"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-BTG/news/"
-        }
-      ],
-      "publishedAt": "2026-08-19T08:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 5.07,
-          "chgPct": 1.81,
-          "volume": 0,
-          "session": "headline",
-          "direction": "up",
-          "name": "B2Gold Corp",
-          "sessionDate": "2026-08-19",
-          "targetDate": "2026-08-19"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 5.07,
-      "chgPct": 1.81,
-      "volume": 0,
-      "tv": {
-        "latestEPS": 0.03,
-        "consensusEPS": 0.07,
-        "priorYrEPS": 0.12,
-        "surpriseEPS_pct": -58.64,
-        "surpriseEPS_dollar": -0.04000000000000001,
-        "latestRev_M": 789.35,
-        "consensusRev_M": 836.33,
-        "priorYrRev_M": 692.21,
-        "surpriseRev_pct": -5.62,
-        "yrYrRev_pct": 14.033313589806559,
-        "epsYoY_pct": -75.0,
-        "epsEst_next4": [
-          0.16,
-          0.19,
-          0.26,
-          0.27
-        ],
-        "revEst_next4": [
-          807.13,
-          931.04,
-          1260.0,
-          1310.0
-        ],
-        "yoyBlock": "-75.00% / +14.03%\n--------------------\n+14.29% / +3.09%\n+72.73% / -11.33%\n+36.84% / +8.62%\n+800.00% / +65.96%",
-        "chart": {
-          "quarters": [
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q1 '21"
-          ],
-          "eps_reported": [
-            0.02,
-            0.01,
-            0.09,
-            0.12,
-            0.14,
-            0.11,
-            0.19,
-            0.03,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.05,
-            0.06,
-            0.08,
-            0.13,
-            0.12,
-            0.19,
-            0.12,
-            0.07,
-            0.16,
-            0.19,
-            0.26,
-            0.27
-          ],
-          "rev_reported_M": [
-            448.23,
-            499.79,
-            532.11,
-            692.21,
-            782.95,
-            1050.0,
-            1160.0,
-            789.35,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            449.28,
-            501.82,
-            569.82,
-            711.5,
-            845.86,
-            1140.0,
-            893.41,
-            836.33,
-            807.13,
-            931.04,
-            1260.0,
-            1310.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-08-07",
-        "nextReportDate": null
-      },
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
-      "prevOhlcv": {
-        "date": "2026-08-18",
-        "open": 5.14,
-        "high": 5.14,
-        "low": 4.97,
-        "close": 4.98,
-        "volume": 19557500,
-        "prev_close": 5.2
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": 3.11,
-        "predDay": 5.2,
-        "band": [
-          -3.2,
-          3.2
-        ],
-        "tier": "na",
-        "asOf": "09:38 開盤定格"
-      }
-    },
-    "MRVL": {
-      "symbol": "MRVL",
-      "name": "Marvell Technology Inc",
-      "type": "contract",
-      "earningsReaction": false,
-      "catalyst": "8/19 申報 8-K:7/29 與 Google 簽訂客製化晶片商業合約,涵蓋 TPU 生態系的 AI 推論加速器、儲存與網路控制器等;8/18 發行給 Google 最多 5,897 萬股、履約價 $206.58 的認股權證,綁定累計 1,200 億美元客製產品營收分 240 批解鎖",
-      "newsDetail": "> **今日漲因:** 盤前 +11.6%($241.05) — 8/19 申報的 8-K 揭露 Marvell 拿下 Google **TPU 生態系**的客製化晶片合約,並發行一張最多 **5,897 萬股**、綁定累計 **1,200 億美元**營收才能完全解鎖的認股權證給 Google。\n\n**事件詳解(全部來自 8-K 原文)**\n\nMarvell 在 **7 月 29 日**與 Google LLC 簽訂客製化半導體產品的商業合約,8 月 19 日才向美國證管會申報。合約範圍不是單一晶片,而是「一整套**掛在 TPU 生態系上**的客製矽智財方案」,原文明列五類:**AI 推論加速器、儲存控制器、網路介面控制器、記憶體介面控制器、近記憶體運算**。\n\n**認股權證條款(這是關鍵)**\n\n8 月 18 日,Marvell 發行給 Google 一張認股權證,可認購最多 **58,970,907 股**普通股,**履約價 $206.58**(略低於 8/18 收盤價 $216)。解鎖分兩塊:\n\n- **時間型 1,360,867 股** —— 簽約後第一年分四季平均解鎖,無條件。\n- **其餘 5,761 萬股** —— 從 FY2027 第三季到 FY2033 年底,依 Google 及其關係企業的實際採購金額分 **240 批**解鎖,**每產生 5 億美元客製產品營收解鎖一批**。\n\n權證到 **2033 年 8 月 18 日**到期,未經公司同意不得轉讓給非控制關係企業。\n\n**這些數字實際代表什麼**\n\n240 批 × 5 億美元 = **累計 1,200 億美元**才會全部解鎖。攤在約六年半的期間,等於年均約 185 億美元的客製產品營收 —— 而 Marvell 目前**整間公司**的年營收規模約 80-90 億美元。換句話說,**全額解鎖是一個極度激進的天花板情境,不是基準預期**;它的作用是把 Google 綁在同一條船上,不是對營收的承諾。真正該看的是前幾批解鎖的速度,那才是實際出貨的溫度計。\n\n以目前約 9.84 億股計算,5,897 萬股全額解鎖對應約 **6% 的股權稀釋**,這是市場付出的代價。\n\n**為什麼市場買單**\n\nMarvell 過去一年最大的空方論點就是「客製 ASIC 市佔正在流失」—— 亞馬遜 Trainium 的訂單分配疑慮、以及博通在 Google TPU 上的長期獨佔地位。這則公告等於**直接回答了那個問題**:Marvell 不只沒被擠出去,還切進了 Google 生態系裡最貼近 TPU 的幾個環節。\n\n同一時間 **Broadcom(AVGO)跌幅從盤前 -2.1% 擴大到 -4.6%**,這個對照本身就是市場對這則消息的解讀 —— 這是一場市佔轉移,不是產業擴張。\n\n**接下來的時間點**\n\nMarvell 將於 **8 月 27 日盤後**公布 FY2027 第二季財報。今天這則公告把八天後的法說會變成了整季最關鍵的一場 —— 管理層必然被追問客製產品的營收認列時程與毛利率結構。\n\n**風險備註**\n\n一,合約本身**沒有揭露最低採購承諾**,240 批全部繫於「Google 的自主採購」(原文用 discretionary purchases),沒有保證。二,履約價 $206.58 已低於現價,對 Google 是一張立即有內含價值的權證,對現有股東是確定的稀釋、不確定的營收。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=MRVL"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/MRVL"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-MRVL/news/"
-        }
-      ],
-      "publishedAt": "2026-08-19T08:30:00-04:00",
+      "publishedAt": "2026-08-19T06:46:00-04:00",
       "publishedTimezone": "ET",
       "sources": [
         {
-          "label": "Marvell 8-K(2026-08-19,Item 1.01 / 3.02,含 Google 認股權證條款)",
-          "url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696d8k.htm",
-          "publishedAt": "2026-08-19T08:30:00-04:00"
-        },
-        {
-          "label": "SEC EDGAR — Marvell Technology 申報清單",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001835632&type=8-K"
+          "label": "MT Newswires — China Renaissance Adjusts Price Target on SanDisk to $2,250",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/china-renaissance-adjusts-price-target-104642072.html"
         }
       ],
-      "seanAnalysis": {
-        "analysis": "市值 2,120 億、空單只有 4.1%、機構持股 81.5%,是一檔籌碼極乾淨的大型股。\n\n8/19 的 8-K 揭露拿下 Google TPU 生態系的客製晶片合約,外加一張綁定採購金額才解鎖的認股權證。這種消息屬於「公司的故事被改寫」那一類 —— 不是這一季賺多少的問題,而是過去一年壓在股價上的空方論點(客製 ASIC 市佔在流失)被一則官方文件直接推翻。\n\n超乎預期的程度夠不夠?夠。合約 7/29 就簽了、8/19 才申報,市場事前完全沒有訊息,盤前一路從 +7% 拉到 +12%,是消息出來後才發動的,不是早就漲完的行情。而且空單只有 4.1%,代表這波是實買推上去的,不是空單被逼著回補 —— 這種漲法比軋空紮實。\n\n能不能執行?可以,2,120 億市值、成交量 2,500 萬股以上,滑價不是問題,這是今天少數幾檔部位可以放大的名字。\n\n**結論:主要標的。** 站穩 $241 這個盤前高附近的區間才有續攻的意思;真正的關卡是 $216(昨天收盤)—— 跌回那裡代表市場把這則消息當一日行情,就別留戀。要留意 8/27 盤後財報只剩八天,部分資金會選擇等數字,盤中不見得一路順。",
-        "sourceDate": "2026-08-19"
-      },
-      "milanAnalysis": {
-        "analysis": "先看措辭。這是**已簽訂的商業合約**(7/29 簽署)加上**已發行的認股權證**(8/18 發行),不是意向書、不是備忘錄、不是策略合作探討 —— 而且是向美國證管會申報的 8-K,法律效力最高的那一級。這在催化劑分類上直接進最上層。\n\n但要把數字看準。1,200 億美元這個數字是 240 批 × 每批 5 億元的**全額解鎖門檻**,不是營收指引、也不是採購承諾。8-K 原文用的是「Google 及其關係企業的自主採購」,沒有最低量保證。攤在 FY2027 第三季到 FY2033 這六年半,全額解鎖等於年均 185 億美元,而 Marvell 目前全公司年營收約 80-90 億 —— 這是天花板情境,拿它當預估值會嚴重高估。\n\n真正會逼分析師動模型的是**兩件事實**:一是合約範圍涵蓋 TPU 生態系的五個環節,不是單一晶片,代表這是平台級的供應商地位;二是相關分析師先前普遍把「客製 ASIC 市佔流失」寫在風險段落裡,現在那段要重寫。同時 Broadcom 當天跌幅擴大到 -4.6%,說明賣方也把它讀成市佔轉移而非產業擴張。\n\n**催化劑評分:8/10** — 一級源可查、條款具體、直接推翻既有空方論點且有競爭對手股價作為交叉驗證;扣分在於沒有最低採購承諾、營收認列時程未揭露,完整重估要等 8/27 財報給出客製產品的實際數字。",
-        "sourceDate": "2026-08-19"
-      },
+      "seanAnalysis": null,
+      "milanAnalysis": null,
       "sessions": [
         {
-          "last": 231.2,
-          "chgPct": 7.04,
+          "last": 1663.4,
+          "chgPct": 2.31,
           "volume": 0,
           "session": "headline",
           "direction": "up",
-          "name": "Marvell Technology Inc",
+          "name": "SanDisk Corp",
           "sessionDate": "2026-08-19",
           "targetDate": "2026-08-19"
         }
       ],
       "primarySession": "headline",
       "primaryDirection": "up",
-      "last": 231.2,
-      "chgPct": 7.04,
+      "last": 1663.4,
+      "chgPct": 2.31,
       "volume": 0,
       "tv": {
-        "latestEPS": 0.8,
-        "consensusEPS": 0.8,
-        "priorYrEPS": 0.62,
-        "surpriseEPS_pct": 0.21,
-        "surpriseEPS_dollar": 0.0,
-        "latestRev_M": 2420.0,
-        "consensusRev_M": 2410.0,
+        "latestEPS": 39.25,
+        "consensusEPS": 34.96,
+        "priorYrEPS": 0.29,
+        "surpriseEPS_pct": 12.26,
+        "surpriseEPS_dollar": 4.289999999999999,
+        "latestRev_M": 8960.0,
+        "consensusRev_M": 8480.0,
         "priorYrRev_M": 1900.0,
-        "surpriseRev_pct": 0.49,
-        "yrYrRev_pct": 27.368421052631582,
-        "epsYoY_pct": 29.032258064516135,
+        "surpriseRev_pct": 5.74,
+        "yrYrRev_pct": 371.57894736842104,
+        "epsYoY_pct": 13434.482758620692,
         "epsEst_next4": [
-          0.93,
-          1.07,
-          1.24,
-          1.32
+          46.03,
+          52.19,
+          53.72,
+          58.18
         ],
         "revEst_next4": [
-          2710.0,
-          3020.0,
-          3370.0,
-          3620.0
+          10640.0,
+          12070.0,
+          12400.0,
+          13390.0
         ],
-        "yoyBlock": "+29.03% / +27.37%\n--------------------\n+38.81% / +34.83%\n+40.79% / +45.89%\n+55.00% / +51.80%\n+65.00% / +49.59%",
+        "yoyBlock": "+13434.48% / +371.58%\n--------------------\n+3672.95% / +360.61%\n+741.77% / +299.67%\n+129.47% / +108.40%\n+48.23% / +49.44%",
         "chart": {
           "quarters": [
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q4 '20"
-          ],
-          "eps_reported": [
-            0.3,
-            0.43,
-            0.6,
-            0.62,
-            0.67,
-            0.76,
-            0.8,
-            0.8,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.29,
-            0.41,
-            0.59,
-            0.61,
-            0.67,
-            0.74,
-            0.79,
-            0.8,
-            0.93,
-            1.07,
-            1.24,
-            1.32
-          ],
-          "rev_reported_M": [
-            1270.0,
-            1520.0,
-            1820.0,
-            1900.0,
-            2009.9999999999998,
-            2070.0,
-            2220.0,
-            2420.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            1250.0,
-            1460.0,
-            1800.0,
-            1880.0,
-            2009.9999999999998,
-            2070.0,
-            2210.0,
-            2410.0,
-            2710.0,
-            3020.0,
-            3370.0,
-            3620.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
-      "prevOhlcv": {
-        "date": "2026-08-18",
-        "open": 220.52,
-        "high": 225.01,
-        "low": 211.1,
-        "close": 216.0,
-        "volume": 25737800,
-        "prev_close": 234.33
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": 11.5,
-        "predDay": 9.5,
-        "band": [
-          -3.2,
-          3.2
-        ],
-        "tier": "na",
-        "asOf": "09:38 開盤定格"
-      }
-    },
-    "TJX": {
-      "symbol": "TJX",
-      "name": "TJX Companies Inc",
-      "type": "earnings",
-      "earningsReaction": true,
-      "catalyst": "8/19 盤前第二季每股盈餘 1.36 美元優於預估 1.19、同店銷售 +4%、營收 +5%,並上修 FY27 全年財測",
-      "newsDetail": "> **今日跌因:** 盤前 -3.3% — 財報數字亮眼,但獲利含一次性關稅退款墊高、主力品牌 Marmaxx 成長明顯偏弱,全年財測雖上修卻仍不及華爾街最樂觀預期,市場獲利了結。\n\n**財報數字詳解**\nTJX 公布 FY27 第二季(截至 8/1)每股盈餘 **1.36** 美元,年增 **24%**,優於市場預估的 **1.19** 美元;但這個數字內含約 **0.14** 美元的一次性關稅退款挹注,扣除後調整後每股盈餘僅 **1.22** 美元,對市場預估 1.19 美元其實只是小幅超車。營收達 **152億** 美元,年增 **5%**;集團整體同店銷售成長 **4%**,優於公司自身財測與市場預估的約 3%。\n\n**分部與營運細節**\n四大部門同店銷售分別為:占營收比重最大的核心美式折扣品牌 **Marmaxx 僅成長 1%**,明顯落後集團平均;居家用品品牌 **HomeGoods 大漲 7%**;**TJX Canada 成長 6%**;**TJX International(歐洲、澳洲)成長 7%**。Marmaxx 成長明顯放緩,是市場解讀「財報好卻股價跌」的關鍵線索之一。調整後稅前淨利率 **11.9%**,年增 0.5 個百分點;調整後毛利率 **31.4%**,年增 0.7 個百分點,主要由商品毛利率改善帶動。公司本季共收到 **3.31億** 美元的 IEEPA 關稅退款,扣除額外提列的 **1.12億** 美元獎酬支出後,淨挹注稅前獲利約 **2.19億** 美元。\n\n**管理層說法**\n執行長 Ernie Herrman 表示:「我對本季優於計畫的整體表現感到非常滿意,整體同店銷售成長 4%,超越我們的計畫,獲利能力與每股盈餘也雙雙優於預期。」\n\n**指引**\n公司將 FY27 全年調整後每股盈餘財測由原本的 **5.08-5.15** 美元上修至 **5.15-5.20** 美元,但區間上緣仍低於華爾街預估的 **5.22** 美元,顯示公司對下半年展望偏保守,這正是股價不漲反跌的核心原因。第三季財測方面,公司預估同店銷售成長僅 **2%-3%**,較第二季的 4% 明顯放緩。\n\n**風險備註**\n本次查證未取得分析師當日評等或目標價調整的具體細節,也查無第三季展望轉趨保守是否與關稅成本回升有直接關聯的官方說法。\n\n> ⚠ **資料註記:** TradingView 的季度網格尚未更新今日(8/19)公布的這一季,個股頁的 EPS/營收圖與 Forward YoY 目前仍顯示上一季數字,今日盤後會重新抓取。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=TJX"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/TJX"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-TJX/news/"
-        }
-      ],
-      "publishedAt": "2026-08-19T06:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "StockTitan: TJX Reports Q2 FY27 Results Above Plan, Comp Sales Growth of 4%",
-          "url": "https://www.stocktitan.net/news/TJX/tjx-reports-q2-fy27-results-above-plan-comp-sales-growth-of-4-pretax-un8k85sp6meo.html"
-        },
-        {
-          "label": "Investing.com: TJX stock drops as profit outlook falls short of analyst estimates",
-          "url": "https://www.investing.com/news/earnings/tjx-stock-drops-as-profit-outlook-falls-short-of-analyst-estimates-4867203"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 145.84,
-          "chgPct": -3.32,
-          "volume": 0,
-          "session": "headline",
-          "direction": "down",
-          "name": "TJX Companies Inc",
-          "sessionDate": "2026-08-19",
-          "targetDate": "2026-08-19"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 145.84,
-      "chgPct": -3.32,
-      "volume": 0,
-      "tv": {
-        "latestEPS": 1.19,
-        "consensusEPS": 1.02,
-        "priorYrEPS": 0.92,
-        "surpriseEPS_pct": 16.82,
-        "surpriseEPS_dollar": 0.16999999999999993,
-        "latestRev_M": 14320.0,
-        "consensusRev_M": 14020.0,
-        "priorYrRev_M": 13110.0,
-        "surpriseRev_pct": 2.2,
-        "yrYrRev_pct": 9.229595728451564,
-        "epsYoY_pct": 29.34782608695651,
-        "epsEst_next4": [
-          1.19,
-          1.35,
-          1.5,
-          1.25
-        ],
-        "revEst_next4": [
-          15170.0,
-          15900.0,
-          18680.0,
-          15120.0
-        ],
-        "yoyBlock": "+29.35% / +9.23%\n--------------------\n+8.18% / +5.35%\n+5.47% / +5.16%\n+4.90% / +5.30%\n+5.04% / +5.59%",
-        "chart": {
-          "quarters": [
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q4 '20"
-          ],
-          "eps_reported": [
-            0.96,
-            1.14,
-            1.23,
-            0.92,
-            1.1,
-            1.28,
-            1.43,
-            1.19,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.92,
-            1.09,
-            1.16,
-            0.91,
-            1.01,
-            1.23,
-            1.39,
-            1.02,
-            1.19,
-            1.35,
-            1.5,
-            1.25
-          ],
-          "rev_reported_M": [
-            13470.0,
-            14060.0,
-            16350.000000000002,
-            13110.0,
-            14400.0,
-            15120.0,
-            17740.0,
-            14320.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            13310.0,
-            13950.0,
-            16210.0,
-            13020.0,
-            14140.0,
-            14850.0,
-            17360.0,
-            14020.0,
-            15170.0,
-            15900.0,
-            18680.0,
-            15120.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": "2026-08-19"
-      },
-      "shortFloat": 1.76,
-      "shortRatio": 3.34,
-      "marketCap_M": 159380,
-      "floatShares_M": 1100,
-      "perf1M": -6.95,
-      "perf3M": -4.25,
-      "perf6M": -8.24,
-      "perfYTD": -6.08,
-      "perf12M": 7.17,
-      "prevOhlcv": {
-        "date": "2026-08-18",
-        "open": 153.06,
-        "high": 153.43,
-        "low": 150.85,
-        "close": 150.85,
-        "volume": 6567800,
-        "prev_close": 150.85
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": 1.47,
-        "predDay": 1.1,
-        "band": [
-          -2.5,
-          2.2
-        ],
-        "tier": "big",
-        "asOf": "09:38 開盤定格"
-      }
-    },
-    "VIK": {
-      "symbol": "VIK",
-      "name": "Viking Holdings Ltd",
-      "type": "earnings",
-      "earningsReaction": true,
-      "catalyst": "8/19 盤前第二季營收優於預估,郵輪需求續強",
-      "newsDetail": "> **今日漲因：** 盤前公布優於預期的第二季財報,+3.3%——營收與獲利雙雙超越華爾街預估。\n\n**財報數字**\n\nViking Holdings 8/19 盤前公布第二季財報,營收約 22 億美元,優於市場預估的 21 億美元、超出幅度約 2.4%;調整後每股盈餘 1.31 美元,同樣優於預估的 1.25 美元、超出幅度約 4.8%。公司股價過去一年波動區間落在 56.06 至 110.09 美元之間,反映郵輪旅遊需求持續回溫下,市場對其訂位動能維持樂觀。\n\n**營運亮點**\n\n財報公布前一週,公司才剛宣布開放 2028-2029 年海洋航線的訂位,顯示長線訂位能見度良好;近期也持續有新船交付,包括埃及航線新船與歐洲河輪新船,反映公司仍在積極擴充運能因應需求。\n\n**分析師觀點**\n\n目前市場上多數分析師給予買進評等(15 位分析師中 12 位偏多、僅 1 位看空),平均目標價落在 101 美元附近、最高看到 128 美元,顯示這次優於預期的財報有機會進一步強化市場對其訂位與獲利動能的信心,推升股價續強。\n\n> ⚠ **資料註記:** TradingView 的季度網格尚未更新今日(8/19)公布的這一季,個股頁的 EPS/營收圖與 Forward YoY 目前仍顯示上一季數字,今日盤後會重新抓取。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=VIK"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/VIK"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-VIK/news/"
-        }
-      ],
-      "publishedAt": "2026-08-19T08:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Viking Holdings Q2 2026 earnings (Viking IR)",
-          "url": "https://ir.viking.com/news-events/press-releases/detail/242/viking-reports-second-quarter-2026-financial-results"
-        },
-        {
-          "label": "Viking Holdings Q2 2026 earnings summary (Perplexity Finance)",
-          "url": "https://www.perplexity.ai/finance/VIK/earnings"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 101.5,
-          "chgPct": 3.27,
-          "volume": 0,
-          "session": "headline",
-          "direction": "up",
-          "name": "Viking Holdings Ltd",
-          "sessionDate": "2026-08-19",
-          "targetDate": "2026-08-19"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 101.5,
-      "chgPct": 3.27,
-      "volume": 0,
-      "tv": {
-        "latestEPS": -0.11,
-        "consensusEPS": -0.11,
-        "priorYrEPS": -0.24,
-        "surpriseEPS_pct": 1.86,
-        "surpriseEPS_dollar": 0.0,
-        "latestRev_M": 1050.0,
-        "consensusRev_M": 1010.0,
-        "priorYrRev_M": 897.06,
-        "surpriseRev_pct": 4.04,
-        "yrYrRev_pct": 17.049026820948438,
-        "epsYoY_pct": 54.16666666666667,
-        "epsEst_next4": [
-          1.26,
-          1.4,
-          0.79,
-          -0.02
-        ],
-        "revEst_next4": [
-          2140.0,
-          2270.0,
-          1950.0,
-          1310.0
-        ],
-        "yoyBlock": "+54.17% / +17.05%\n--------------------\n+27.27% / +13.83%\n+16.67% / +13.50%\n+17.91% / +13.37%\n+81.82% / +24.76%",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27"
-          ],
-          "eps_reported": [
-            0.37,
-            0.89,
-            0.45,
-            -0.24,
-            0.99,
-            1.2,
-            0.67,
-            -0.11,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.67,
-            0.84,
-            0.36,
-            -0.29,
-            0.99,
-            1.2,
-            0.54,
-            -0.11,
-            1.26,
-            1.4,
-            0.79,
-            -0.02
-          ],
-          "rev_reported_M": [
-            1590.0,
-            1680.0,
-            1350.0,
-            897.06,
-            1880.0,
-            2000.0,
-            1720.0,
-            1050.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            1600.0,
-            1670.0,
-            1340.0,
-            841.16,
-            1850.0,
-            1990.0,
-            1620.0,
-            1010.0,
-            2140.0,
-            2270.0,
-            1950.0,
-            1310.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": "2026-08-19"
-      },
-      "shortFloat": 3.54,
-      "shortRatio": 2.73,
-      "marketCap_M": 45060,
-      "floatShares_M": 206.73,
-      "perf1M": 1.74,
-      "perf3M": 22.83,
-      "perf6M": 27.12,
-      "perfYTD": 41.44,
-      "perf12M": 70.55,
-      "prevOhlcv": {
-        "date": "2026-08-18",
-        "open": 98.47,
-        "high": 99.49,
-        "low": 97.46,
-        "close": 98.29,
-        "volume": 4038400,
-        "prev_close": 99.86
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": 0.18,
-        "predDay": -0.2,
-        "band": [
-          -2.5,
-          2.2
-        ],
-        "tier": "big",
-        "asOf": "09:38 開盤定格"
-      }
-    },
-    "ORCL": {
-      "symbol": "ORCL",
-      "name": "Oracle Corp",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "8/19 08:02 ET Oracle Health 宣布臨床 AI 代理人新增自動編碼、語音聽寫與病歷審閱功能;但股價仍隨高評價 AI 軟體/基建類股走弱而下跌",
-      "newsDetail": "> **今日跌因:** 盤前 -2.2%($139.65) — 今天早上其實有發布正面產品消息,但股價仍跟著高評價 AI 軟體與基建類股一起走弱,說明壓力來自評價而非公司。\n\n**今天的公司消息(是利多)**\n\n8/19 08:02 ET,Oracle 透過美通社發布公告:**Oracle Health 的臨床 AI 代理人新增自動醫療編碼、語音聽寫與病歷審閱三項功能**。這是把生成式 AI 塞進電子病歷工作流的延伸,目標是減少醫師的文書時間 —— 對甲骨文在 2022 年以 283 億美元併購 Cerner 之後一直難以變現的醫療事業來說,是往正確方向走的一步。\n\n**但股價還是跌**\n\n正面消息配上 -2.2% 的股價,答案不在公司本身。今天同步走弱的還有 **Nebius -7.3%、CoreWeave -3.4%、Broadcom -2.8%**,共同點是「高評價 + 大量資本支出 + 靠舉債擴建資料中心」。長天期公債殖利率處於數十年高檔,對這種現金流集中在未來的模式,折現分母每擴大一點,估值就往下修一點。甲骨文近年把大量資本投入雲端資料中心以承接 AI 需求,在這個框架下被歸為同一類。\n\n**怎麼看**\n\n當一家公司發正面消息卻下跌,通常代表市場當天關心的不是那件事。今天決定甲骨文方向的是殖利率與 AI 資本支出的市場情緒,產品公告的影響要等這陣風過去才看得出來。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=ORCL"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/ORCL"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-ORCL/news/"
-        }
-      ],
-      "publishedAt": "2026-08-19T08:02:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "PR Newswire — Oracle Health Expands Clinical AI Agent",
-          "url": "https://finance.yahoo.com/healthcare/articles/oracle-health-expands-clinical-ai-120200760.html"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 139.65,
-          "chgPct": -2.2,
-          "volume": 0,
-          "session": "headline",
-          "direction": "down",
-          "name": "Oracle Corp",
-          "sessionDate": "2026-08-19",
-          "targetDate": "2026-08-19"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 139.65,
-      "chgPct": -2.2,
-      "volume": 0,
-      "tv": {
-        "latestEPS": 2.11,
-        "consensusEPS": 1.96,
-        "priorYrEPS": 1.7,
-        "surpriseEPS_pct": 7.45,
-        "surpriseEPS_dollar": 0.1499999999999999,
-        "latestRev_M": 19180.0,
-        "consensusRev_M": 19100.0,
-        "priorYrRev_M": 15900.0,
-        "surpriseRev_pct": 0.44,
-        "yrYrRev_pct": 20.628930817610065,
-        "epsYoY_pct": 24.117647058823525,
-        "epsEst_next4": [
-          1.73,
-          1.89,
-          2.06,
-          2.37
-        ],
-        "revEst_next4": [
-          19130.0,
-          21180.0,
-          23230.0,
-          26280.0
-        ],
-        "yoyBlock": "+24.12% / +20.63%\n--------------------\n+17.69% / +28.13%\n-16.37% / +31.88%\n+15.08% / +35.14%\n+12.32% / +37.02%",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q3 '20"
-          ],
-          "eps_reported": [
-            1.39,
-            1.47,
-            1.47,
-            1.7,
-            1.47,
-            2.26,
-            1.79,
-            2.11,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            1.33,
-            1.48,
-            1.49,
-            1.64,
-            1.48,
-            1.64,
-            1.7,
-            1.96,
-            1.73,
-            1.89,
-            2.06,
-            2.37
-          ],
-          "rev_reported_M": [
-            13310.0,
-            14060.0,
-            14130.0,
-            15900.0,
-            14930.0,
-            16059.999999999998,
-            17190.0,
-            19180.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            13230.0,
-            14120.0,
-            14380.0,
-            15580.0,
-            15040.0,
-            16190.000000000002,
-            16930.0,
-            19100.0,
-            19130.0,
-            21180.0,
-            23230.0,
-            26280.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
-      "prevOhlcv": {
-        "date": "2026-08-18",
-        "open": 143.25,
-        "high": 146.0,
-        "low": 142.35,
-        "close": 142.79,
-        "volume": 19058200,
-        "prev_close": 146.65
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": 0.32,
-        "predDay": 1.6,
-        "band": [
-          -3.2,
-          3.2
-        ],
-        "tier": "na",
-        "asOf": "09:38 開盤定格"
-      }
-    },
-    "AVGO": {
-      "symbol": "AVGO",
-      "name": "Broadcom Inc",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "無自身公告;Marvell 8/19 揭露拿下 Google TPU 生態系客製晶片合約,直接威脅博通長期獨佔的 Google 客製 ASIC 地位,跌幅由盤前 -2.1% 擴大到 -4.6%",
-      "newsDetail": "> **今日跌因:** 盤前 -4.6%($362.54),跌幅在早盤擴大一倍 — Marvell 今天揭露拿下 Google TPU 生態系的客製晶片合約,直接踩到博通最核心的護城河。\n\n**先看時序**\n\n博通今天**沒有發布任何自己的公告**。盤前一開始只跌約 2.1%,與昨天(8/18)半導體類股整體走弱的幅度相當。但在 Marvell 的 8-K 曝光之後,跌幅擴大到 **-4.6%**,而同一時間 **Marvell 反向拉到 +11.6%**。這個一上一下的對稱,比任何評論都更能說明市場在想什麼。\n\n**為什麼這則新聞對博通特別痛**\n\n博通長期是 Google TPU 的主要客製晶片夥伴,這塊業務是它 AI 營收裡能見度最高、也最被市場拿來支撐評價的一塊。Marvell 揭露的合約範圍涵蓋 **AI 推論加速器、儲存控制器、網路介面控制器、記憶體介面控制器與近記憶體運算** —— 全部都是「掛在 TPU 生態系上」的環節。Google 同時給出一張綁定累計 1,200 億美元營收的認股權證,代表這不是試單,是有意識地培養第二供應商。\n\n**這是市佔轉移,不是需求萎縮**\n\n要區分清楚:今天的下跌不是 AI 需求變差,而是**同一塊餅要多切一份出去**。這種性質的利空和「AI 資本支出見頂」是兩回事,對後續的評價修正路徑也不一樣 —— 前者傷的是市佔與議價力,後者傷的是整個產業的成長率。\n\n**背景**\n\n昨天(8/18)費城半導體指數轉弱,AMD -4.9%、ARM -7.0%、QCOM -4.8% 全面翻黑,長天期公債殖利率處於數十年高檔,本來就在壓縮高評價科技股。今天的 Marvell 消息是在這個已經偏空的底色上,再加了一層博通專屬的壓力。\n\n**風險備註**\n\n博通尚未對此發表任何回應。在公司說明 Google 業務的實際影響範圍之前,-4.6% 反映的是市場的推論而非已確認的訂單流失。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AVGO"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AVGO"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AVGO/news/"
-        }
-      ],
-      "publishedAt": "2026-08-19T08:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Marvell 8-K(2026-08-19)— Google 客製晶片合約與認股權證",
-          "url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526356217/d412696d8k.htm"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 369.35,
-          "chgPct": -2.8,
-          "volume": 0,
-          "session": "headline",
-          "direction": "down",
-          "name": "Broadcom Inc",
-          "sessionDate": "2026-08-19",
-          "targetDate": "2026-08-19"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 369.35,
-      "chgPct": -2.8,
-      "volume": 0,
-      "tv": {
-        "latestEPS": 2.44,
-        "consensusEPS": 2.4,
-        "priorYrEPS": 1.58,
-        "surpriseEPS_pct": 1.82,
-        "surpriseEPS_dollar": 0.040000000000000036,
-        "latestRev_M": 22190.0,
-        "consensusRev_M": 22130.0,
-        "priorYrRev_M": 15000.0,
-        "surpriseRev_pct": 0.26,
-        "yrYrRev_pct": 47.93333333333333,
-        "epsYoY_pct": 54.430379746835435,
-        "epsEst_next4": [
-          3.21,
-          3.84,
-          4.11,
-          4.53
-        ],
-        "revEst_next4": [
-          29250.0,
-          34520.0,
-          36780.0,
-          40630.0
-        ],
-        "yoyBlock": "+54.43% / +47.93%\n--------------------\n+89.94% / +83.39%\n+96.92% / +91.56%\n+100.49% / +90.47%\n+85.66% / +83.10%",
-        "chart": {
-          "quarters": [
-            "Q4 '24",
             "Q1 '25",
             "Q2 '25",
             "Q3 '25",
@@ -1713,67 +1190,68 @@
             "Q4 '26",
             "Q1 '27",
             "Q2 '27",
-            "Q1 '21"
+            "Q3 '27",
+            "Q4 '27"
           ],
           "eps_reported": [
-            1.24,
-            1.42,
-            1.6,
-            1.58,
-            1.69,
-            1.95,
-            2.05,
-            2.44,
+            1.8,
+            1.23,
+            -0.3,
+            0.29,
+            1.22,
+            6.2,
+            23.41,
+            39.25,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
+            null,
             1.22,
-            1.39,
-            1.51,
-            1.57,
-            1.66,
-            1.87,
-            2.03,
-            2.4,
-            3.21,
-            3.84,
-            4.11,
-            4.53
+            -0.38,
+            0.05,
+            0.88,
+            3.62,
+            14.62,
+            34.96,
+            46.03,
+            52.19,
+            53.72,
+            58.18
           ],
           "rev_reported_M": [
-            13070.0,
-            14050.0,
-            14920.0,
-            15000.0,
-            15950.0,
-            18020.0,
-            19310.0,
-            22190.0,
+            1880.0,
+            1880.0,
+            1700.0,
+            1900.0,
+            2310.0,
+            3020.0,
+            5950.0,
+            8960.0,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            12980.0,
-            14070.0,
-            14620.0,
-            14960.0,
-            15830.0,
-            17470.0,
-            19260.0,
-            22130.0,
-            29250.0,
-            34520.0,
-            36780.0,
-            40630.0
+            null,
+            1880.0,
+            1620.0,
+            1820.0,
+            2150.0,
+            2690.0,
+            4720.0,
+            8480.0,
+            10640.0,
+            12070.0,
+            12400.0,
+            13390.0
           ],
           "latest_idx": 7
         },
-        "latestReportDate": null,
+        "latestReportDate": "2026-08-06",
         "nextReportDate": null
       },
       "shortFloat": null,
@@ -1787,205 +1265,22 @@
       "perf12M": null,
       "prevOhlcv": {
         "date": "2026-08-18",
-        "open": 384.32,
-        "high": 385.78,
-        "low": 377.01,
-        "close": 380.0,
-        "volume": 22835500,
-        "prev_close": 392.43
+        "open": 1677.54,
+        "high": 1724.99,
+        "low": 1600.2,
+        "close": 1625.78,
+        "volume": 18385900,
+        "prev_close": 1786.85
       },
       "modelPred": {
         "version": "v12",
-        "gap": -2.19,
-        "predDay": -0.9,
+        "gap": 3.48,
+        "predDay": 4.0,
         "band": [
           -3.2,
           3.2
         ],
         "tier": "na",
-        "asOf": "09:38 開盤定格"
-      }
-    },
-    "SQM": {
-      "symbol": "SQM",
-      "name": "Sociedad Quimica y Minera",
-      "type": "earnings",
-      "earningsReaction": true,
-      "catalyst": "8/19 凌晨公布上半年(至 6/30)財報,鋰價回穩帶動獲利改善",
-      "newsDetail": "> **今日漲因：** 8/19 凌晨公布上半年財報,+2.5%——鋰業務量價齊揚,獲利大幅優於去年同期。\n\n**財報數字**\n\nSQM 公布截至 6 月 30 日止上半年財報:營收 42.285 億美元,較去年同期年增 103.4%;淨利 10.247 億美元、每股盈餘 3.59 美元,年增幅高達 353.5%。單看第二季,營收 24.684 億美元、淨利 6.6 億美元(每股盈餘 2.31 美元),較去年同期大增 646.4%,毛利率也從去年同期的 26.7% 大幅拉升至 48.2%。\n\n**鋰業務表現**\n\n鋰及其衍生品第二季銷售量創單季新高、突破 8.41 萬公噸碳酸鋰當量(LCE),較去年同期成長 59%;鋰業務營收更暴增 300% 至 17.792 億美元,反映鋰價相較去年同期的低基期明顯回升。碘業務同樣繳出價量雙升的紀錄新高表現,特用植物營養部門銷量與售價也維持穩健。\n\n**展望與其他**\n\n公司將全年鋰銷售成長預估上修,顯示管理層對下半年鋰價與需求維持樂觀。另外上半年 SQM 及子公司合計提列超過 16 億美元支付予智利政府,反映當地礦業權利金與稅負負擔沉重,但整體獲利動能仍讓今天股價維持強勢。\n\n> ⚠ **資料註記:** TradingView 的季度網格尚未更新今日(8/19)公布的這一季,個股頁的 EPS/營收圖與 Forward YoY 目前仍顯示上一季數字,今日盤後會重新抓取。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=SQM"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/SQM"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-SQM/news/"
-        }
-      ],
-      "publishedAt": "2026-08-19T07:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "SQM Reports Earnings for the Six Months Ended June 30, 2026 (SQM IR)",
-          "url": "https://ir.sqm.com/system/files-encrypted/nasdaq_kms/news/2026/08/19/2-11-20/2Q2026%20Earnings%20release_eng_VF.pdf"
-        },
-        {
-          "label": "SQM Reports Record Lithium Volumes, Strong Q2 and First-Half 2026 Results (QuiverQuant)",
-          "url": "https://www.quiverquant.com/news/SQM+Reports+Record+Lithium+Volumes%2C+Strong+Q2+and+First-Half+2026+Results"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 76.3,
-          "chgPct": 2.46,
-          "volume": 0,
-          "session": "headline",
-          "direction": "up",
-          "name": "Sociedad Quimica y Minera",
-          "sessionDate": "2026-08-19",
-          "targetDate": "2026-08-19"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 76.3,
-      "chgPct": 2.46,
-      "volume": 0,
-      "tv": {
-        "latestEPS": 1.28,
-        "consensusEPS": 1.55,
-        "priorYrEPS": 0.48,
-        "surpriseEPS_pct": -17.17,
-        "surpriseEPS_dollar": -0.27,
-        "latestRev_M": 1760.0,
-        "consensusRev_M": 1690.0,
-        "priorYrRev_M": 1040.0,
-        "surpriseRev_pct": 3.91,
-        "yrYrRev_pct": 69.23076923076923,
-        "epsYoY_pct": 166.66666666666669,
-        "epsEst_next4": [
-          2.01,
-          2.13,
-          2.06,
-          1.68
-        ],
-        "revEst_next4": [
-          2240.0,
-          2360.0,
-          2220.0,
-          1890.0
-        ],
-        "yoyBlock": "+166.67% / +69.23%\n--------------------\n+548.39% / +115.38%\n+243.55% / +101.71%\n+221.88% / +68.18%\n+31.25% / +7.39%",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27"
-          ],
-          "eps_reported": [
-            0.75,
-            0.46,
-            0.42,
-            0.48,
-            0.31,
-            0.62,
-            0.64,
-            1.28,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.96,
-            0.63,
-            0.49,
-            0.58,
-            0.51,
-            0.65,
-            0.8,
-            1.55,
-            2.01,
-            2.13,
-            2.06,
-            1.68
-          ],
-          "rev_reported_M": [
-            1290.0,
-            1080.0,
-            1070.0,
-            1040.0,
-            1040.0,
-            1170.0,
-            1320.0,
-            1760.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            1230.0,
-            1080.0,
-            991.95,
-            1020.0,
-            1040.0,
-            1170.0,
-            1250.0,
-            1690.0,
-            2240.0,
-            2360.0,
-            2220.0,
-            1890.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": "2026-08-19"
-      },
-      "shortFloat": 1.81,
-      "shortRatio": 2.45,
-      "marketCap_M": 11070,
-      "floatShares_M": 142.67,
-      "perf1M": 12.58,
-      "perf3M": -3.67,
-      "perf6M": 6.49,
-      "perfYTD": 12.65,
-      "perf12M": 72.03,
-      "prevOhlcv": {
-        "date": "2026-08-18",
-        "open": 73.69,
-        "high": 74.61,
-        "low": 73.05,
-        "close": 74.47,
-        "volume": 866700,
-        "prev_close": 75.1
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": -1.05,
-        "predDay": -1.2,
-        "band": [
-          -2.5,
-          2.2
-        ],
-        "tier": "big",
         "asOf": "09:38 開盤定格"
       }
     },
@@ -2176,25 +1471,25 @@
         "asOf": "09:38 開盤定格"
       }
     },
-    "EXK": {
-      "symbol": "EXK",
-      "name": "Endeavour Silver Corp",
+    "BTG": {
+      "symbol": "BTG",
+      "name": "B2Gold Corp",
       "type": "macro",
       "earningsReaction": false,
-      "catalyst": "無自身新聞;貴金屬價格走高帶動白銀礦業股上漲,族群同步",
-      "newsDetail": "> **今日漲因:** 盤前 +3.0%($9.95) — 公司沒有自身消息,是白銀價格走高帶動整個貴金屬礦業族群同步上漲,避險資金在科技股連續走弱時流入。\n\n**查無個股事件**\n\n8/19 沒有 Endeavour Silver 的新聞稿、產量更新或分析師動作。一級財經媒體針對這檔在 36 小時內沒有任何報導。\n\n**這是族群行情,不是個股事件**\n\n今天上漲的不只這一檔:**Newmont +1.9%、Alamos Gold +2.0%、Endeavour Silver +3.0%、B2Gold +1.8%、Pan American Silver +1.4%** —— 整個貴金屬礦業族群同步、幅度接近,這是價格驅動而非公司驅動的典型特徵。在科技類股連兩天走弱、長天期公債殖利率高檔的環境下,資金往黃金這類避險資產移動,礦業股則是對金價變動的槓桿載具(金價每漲 1%,礦商的獲利彈性通常放大數倍,因為開採成本相對固定)。\n\n**怎麼看**\n\n判斷這類標的今天的方向,要看的是金價本身與整體風險偏好,不是去公司財報裡找答案。族群同步時個股 alpha 很低;要選就選開採成本低、產量成長明確的名字。",
+      "catalyst": "無自身新聞;金價走高帶動的貴金屬礦業股族群同步上漲",
+      "newsDetail": "> **今日漲因:** 盤前 +1.8%($5.07) — 公司沒有自身消息,是黃金價格走高帶動整個貴金屬礦業族群同步上漲,避險資金在科技股連續走弱時流入。\n\n**查無個股事件**\n\n8/19 沒有 B2Gold 的新聞稿、產量更新或分析師動作。一級財經媒體針對這檔在 36 小時內沒有任何報導。\n\n**這是族群行情,不是個股事件**\n\n今天上漲的不只這一檔:**Newmont +1.9%、Alamos Gold +2.0%、Endeavour Silver +3.0%、B2Gold +1.8%、Pan American Silver +1.4%** —— 整個貴金屬礦業族群同步、幅度接近,這是價格驅動而非公司驅動的典型特徵。在科技類股連兩天走弱、長天期公債殖利率高檔的環境下,資金往黃金這類避險資產移動,礦業股則是對金價變動的槓桿載具(金價每漲 1%,礦商的獲利彈性通常放大數倍,因為開採成本相對固定)。\n\n**怎麼看**\n\n判斷這類標的今天的方向,要看的是金價本身與整體風險偏好,不是去公司財報裡找答案。族群同步時個股 alpha 很低;要選就選開採成本低、產量成長明確的名字。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=EXK"
+          "url": "https://finviz.com/quote.ashx?t=BTG"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/EXK"
+          "url": "https://finance.yahoo.com/quote/BTG"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-EXK/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-BTG/news/"
         }
       ],
       "publishedAt": "2026-08-19T08:00:00-04:00",
@@ -2204,46 +1499,46 @@
       "milanAnalysis": null,
       "sessions": [
         {
-          "last": 9.95,
-          "chgPct": 3.0,
+          "last": 5.07,
+          "chgPct": 1.81,
           "volume": 0,
           "session": "headline",
           "direction": "up",
-          "name": "Endeavour Silver Corp",
+          "name": "B2Gold Corp",
           "sessionDate": "2026-08-19",
           "targetDate": "2026-08-19"
         }
       ],
       "primarySession": "headline",
       "primaryDirection": "up",
-      "last": 9.95,
-      "chgPct": 3.0,
+      "last": 5.07,
+      "chgPct": 1.81,
       "volume": 0,
       "tv": {
-        "latestEPS": 0.15,
-        "consensusEPS": 0.15,
-        "priorYrEPS": -0.03,
-        "surpriseEPS_pct": -0.56,
-        "surpriseEPS_dollar": 0.0,
-        "latestRev_M": 212.1,
-        "consensusRev_M": 210.79,
-        "priorYrRev_M": 85.3,
-        "surpriseRev_pct": 0.62,
-        "yrYrRev_pct": 148.65181711606098,
-        "epsYoY_pct": 600.0,
+        "latestEPS": 0.03,
+        "consensusEPS": 0.07,
+        "priorYrEPS": 0.12,
+        "surpriseEPS_pct": -58.64,
+        "surpriseEPS_dollar": -0.04000000000000001,
+        "latestRev_M": 789.35,
+        "consensusRev_M": 836.33,
+        "priorYrRev_M": 692.21,
+        "surpriseRev_pct": -5.62,
+        "yrYrRev_pct": 14.033313589806559,
+        "epsYoY_pct": -75.0,
         "epsEst_next4": [
+          0.16,
           0.19,
-          0.22,
-          0.2,
-          0.22
+          0.26,
+          0.27
         ],
         "revEst_next4": [
-          202.43,
-          213.5,
-          318.54,
-          324.1
+          807.13,
+          931.04,
+          1260.0,
+          1310.0
         ],
-        "yoyBlock": "+600.00% / +148.65%\n--------------------\n+2000.00% / +41.76%\n+1000.00% / +23.70%\n-4.76% / +51.90%\n+46.67% / +52.81%",
+        "yoyBlock": "-75.00% / +14.03%\n--------------------\n+14.29% / +3.09%\n+72.73% / -11.33%\n+36.84% / +8.62%\n+800.00% / +65.96%",
         "chart": {
           "quarters": [
             "Q4 '24",
@@ -2260,243 +1555,64 @@
             "Q1 '21"
           ],
           "eps_reported": [
-            0.01,
             0.02,
-            0.0,
-            -0.03,
-            -0.01,
-            0.02,
-            0.21,
-            0.15,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.0,
-            -0.01,
             0.01,
-            0.01,
-            0.03,
-            0.06,
-            0.13,
-            0.15,
+            0.09,
+            0.12,
+            0.14,
+            0.11,
             0.19,
-            0.22,
-            0.2,
-            0.22
-          ],
-          "rev_reported_M": [
-            53.4,
-            42.2,
-            63.5,
-            85.3,
-            142.8,
-            172.6,
-            209.7,
-            212.1,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            51.51,
-            47.48,
-            61.13,
-            81.8,
-            131.25,
-            171.14,
-            200.41,
-            210.79,
-            202.43,
-            213.5,
-            318.54,
-            324.1
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
-      "prevOhlcv": {
-        "date": "2026-08-18",
-        "open": 9.92,
-        "high": 10.1,
-        "low": 9.65,
-        "close": 9.66,
-        "volume": 8657000,
-        "prev_close": 10.14
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": 2.69,
-        "predDay": 4.7,
-        "band": [
-          -3.2,
-          3.2
-        ],
-        "tier": "na",
-        "asOf": "09:38 開盤定格"
-      }
-    },
-    "SNDK": {
-      "symbol": "SNDK",
-      "name": "SanDisk Corp",
-      "type": "analyst",
-      "earningsReaction": false,
-      "catalyst": "8/19 華興資本(China Renaissance)將目標價從 2,000 美元調高到 2,250 美元、維持買進評等,是昨日半導體全面重挫後少數逆勢的正面分析師動作",
-      "newsDetail": "> **今日漲因:** 盤前 +2.3%($1,663.40) — 華興資本(China Renaissance)把目標價從 2,000 美元調高到 **2,250 美元**、維持買進評等,是昨天半導體全面重挫後少見的逆勢正面動作。\n\n**分析師動作**\n\n8/19 06:46 ET,華興資本發布報告將 SanDisk 目標價自 **$2,000 上調至 $2,250**(幅度 +12.5%),評等維持**買進**。以今天盤前 $1,663.40 計算,新目標價隱含約 **35% 的上檔空間**。\n\n**為什麼這則在今天特別有份量**\n\n昨天(8/18)整個半導體類股崩跌,SOX 轉弱,AMD、ARM、QCOM、SMCI 全數重挫,今天 Broadcom 仍 -2.8%。在這種氣氛下出現的目標價「調升」而非「維持」,代表分析師在利空環境中主動往上修模型 —— 這比在多頭行情裡調升更有訊息含量。\n\n**背景**\n\nSanDisk 是 NAND 快閃記憶體的主要供應商,受惠於 AI 資料中心對高容量儲存的需求。這也是為什麼在邏輯晶片(AMD/ARM)走弱時,記憶體與儲存這條線的敘事還撐得住。\n\n**風險備註**\n\n單一機構的目標價調升不改變產業循環方向;若記憶體現貨價轉弱,或 AI 資本支出疑慮擴散到儲存需求,這條相對強勢的敘事會很快被修正。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=SNDK"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/SNDK"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-SNDK/news/"
-        }
-      ],
-      "publishedAt": "2026-08-19T06:46:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "MT Newswires — China Renaissance Adjusts Price Target on SanDisk to $2,250",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/china-renaissance-adjusts-price-target-104642072.html"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 1663.4,
-          "chgPct": 2.31,
-          "volume": 0,
-          "session": "headline",
-          "direction": "up",
-          "name": "SanDisk Corp",
-          "sessionDate": "2026-08-19",
-          "targetDate": "2026-08-19"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 1663.4,
-      "chgPct": 2.31,
-      "volume": 0,
-      "tv": {
-        "latestEPS": 39.25,
-        "consensusEPS": 34.96,
-        "priorYrEPS": 0.29,
-        "surpriseEPS_pct": 12.26,
-        "surpriseEPS_dollar": 4.289999999999999,
-        "latestRev_M": 8960.0,
-        "consensusRev_M": 8480.0,
-        "priorYrRev_M": 1900.0,
-        "surpriseRev_pct": 5.74,
-        "yrYrRev_pct": 371.57894736842104,
-        "epsYoY_pct": 13434.482758620692,
-        "epsEst_next4": [
-          46.03,
-          52.19,
-          53.72,
-          58.18
-        ],
-        "revEst_next4": [
-          10640.0,
-          12070.0,
-          12400.0,
-          13390.0
-        ],
-        "yoyBlock": "+13434.48% / +371.58%\n--------------------\n+3672.95% / +360.61%\n+741.77% / +299.67%\n+129.47% / +108.40%\n+48.23% / +49.44%",
-        "chart": {
-          "quarters": [
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q3 '27",
-            "Q4 '27"
-          ],
-          "eps_reported": [
-            1.8,
-            1.23,
-            -0.3,
-            0.29,
-            1.22,
-            6.2,
-            23.41,
-            39.25,
+            0.03,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            null,
-            1.22,
-            -0.38,
             0.05,
-            0.88,
-            3.62,
-            14.62,
-            34.96,
-            46.03,
-            52.19,
-            53.72,
-            58.18
+            0.06,
+            0.08,
+            0.13,
+            0.12,
+            0.19,
+            0.12,
+            0.07,
+            0.16,
+            0.19,
+            0.26,
+            0.27
           ],
           "rev_reported_M": [
-            1880.0,
-            1880.0,
-            1700.0,
-            1900.0,
-            2310.0,
-            3020.0,
-            5950.0,
-            8960.0,
+            448.23,
+            499.79,
+            532.11,
+            692.21,
+            782.95,
+            1050.0,
+            1160.0,
+            789.35,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            null,
-            1880.0,
-            1620.0,
-            1820.0,
-            2150.0,
-            2690.0,
-            4720.0,
-            8480.0,
-            10640.0,
-            12070.0,
-            12400.0,
-            13390.0
+            449.28,
+            501.82,
+            569.82,
+            711.5,
+            845.86,
+            1140.0,
+            893.41,
+            836.33,
+            807.13,
+            931.04,
+            1260.0,
+            1310.0
           ],
           "latest_idx": 7
         },
-        "latestReportDate": "2026-08-06",
+        "latestReportDate": "2026-08-07",
         "nextReportDate": null
       },
       "shortFloat": null,
@@ -2510,17 +1626,17 @@
       "perf12M": null,
       "prevOhlcv": {
         "date": "2026-08-18",
-        "open": 1677.54,
-        "high": 1724.99,
-        "low": 1600.2,
-        "close": 1625.78,
-        "volume": 18385900,
-        "prev_close": 1786.85
+        "open": 5.14,
+        "high": 5.14,
+        "low": 4.97,
+        "close": 4.98,
+        "volume": 19557500,
+        "prev_close": 5.2
       },
       "modelPred": {
         "version": "v12",
-        "gap": 3.48,
-        "predDay": 4.0,
+        "gap": 3.11,
+        "predDay": 5.2,
         "band": [
           -3.2,
           3.2
@@ -2713,6 +1829,890 @@
           2.2
         ],
         "tier": "big",
+        "asOf": "09:38 開盤定格"
+      }
+    },
+    "NEM": {
+      "symbol": "NEM",
+      "name": "Newmont Corp",
+      "type": "macro",
+      "earningsReaction": false,
+      "catalyst": "無自身新聞;金價走高帶動貴金屬礦業股同步上漲(NEM/AGI/EXK/BTG/PAAS 全數 +1.4~3.0%),避險資金在科技股走弱時流入黃金",
+      "newsDetail": "> **今日漲因:** 盤前 +1.9%($118.18) — 公司沒有自身消息,是黃金價格走高帶動整個貴金屬礦業族群同步上漲,避險資金在科技股連續走弱時流入。\n\n**查無個股事件**\n\n8/19 沒有 Newmont 的新聞稿、產量更新或分析師動作。一級財經媒體針對這檔在 36 小時內沒有任何報導。\n\n**這是族群行情,不是個股事件**\n\n今天上漲的不只這一檔:**Newmont +1.9%、Alamos Gold +2.0%、Endeavour Silver +3.0%、B2Gold +1.8%、Pan American Silver +1.4%** —— 整個貴金屬礦業族群同步、幅度接近,這是價格驅動而非公司驅動的典型特徵。在科技類股連兩天走弱、長天期公債殖利率高檔的環境下,資金往黃金這類避險資產移動,礦業股則是對金價變動的槓桿載具(金價每漲 1%,礦商的獲利彈性通常放大數倍,因為開採成本相對固定)。\n\n**怎麼看**\n\n判斷這類標的今天的方向,要看的是金價本身與整體風險偏好,不是去公司財報裡找答案。族群同步時個股 alpha 很低;要選就選開採成本低、產量成長明確的名字。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=NEM"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/NEM"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-NEM/news/"
+        }
+      ],
+      "publishedAt": "2026-08-19T08:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 118.18,
+          "chgPct": 1.9,
+          "volume": 0,
+          "session": "headline",
+          "direction": "up",
+          "name": "Newmont Corp",
+          "sessionDate": "2026-08-19",
+          "targetDate": "2026-08-19"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 118.18,
+      "chgPct": 1.9,
+      "volume": 0,
+      "tv": {
+        "latestEPS": 2.1,
+        "consensusEPS": 1.99,
+        "priorYrEPS": 1.43,
+        "surpriseEPS_pct": 5.37,
+        "surpriseEPS_dollar": 0.1100000000000001,
+        "latestRev_M": 6120.0,
+        "consensusRev_M": 6350.0,
+        "priorYrRev_M": 5320.0,
+        "surpriseRev_pct": -3.71,
+        "yrYrRev_pct": 15.037593984962406,
+        "epsYoY_pct": 46.85314685314687,
+        "epsEst_next4": [
+          2.18,
+          2.32,
+          2.62,
+          2.77
+        ],
+        "revEst_next4": [
+          6180.0,
+          6710.0,
+          6940.0,
+          7220.0
+        ],
+        "yoyBlock": "+46.85% / +15.04%\n--------------------\n+27.49% / +11.96%\n-7.94% / -1.61%\n-9.66% / -5.06%\n+31.90% / +17.97%",
+        "chart": {
+          "quarters": [
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q1 '21"
+          ],
+          "eps_reported": [
+            0.81,
+            1.4,
+            1.25,
+            1.43,
+            1.71,
+            2.52,
+            2.9,
+            2.1,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.87,
+            1.08,
+            0.92,
+            1.16,
+            1.44,
+            2.07,
+            2.18,
+            1.99,
+            2.18,
+            2.32,
+            2.62,
+            2.77
+          ],
+          "rev_reported_M": [
+            4610.0,
+            5650.0,
+            5010.0,
+            5320.0,
+            5520.0,
+            6820.0,
+            7310.0,
+            6120.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            4630.0,
+            5150.0,
+            4700.0,
+            4850.0,
+            5190.0,
+            6230.0,
+            6570.0,
+            6350.0,
+            6180.0,
+            6710.0,
+            6940.0,
+            7220.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": null,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": null,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-08-18",
+        "open": 118.31,
+        "high": 119.44,
+        "low": 115.83,
+        "close": 115.98,
+        "volume": 6535900,
+        "prev_close": 120.33
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": 2.01,
+        "predDay": 3.8,
+        "band": [
+          -3.2,
+          3.2
+        ],
+        "tier": "na",
+        "asOf": "09:38 開盤定格"
+      }
+    },
+    "ORCL": {
+      "symbol": "ORCL",
+      "name": "Oracle Corp",
+      "type": "news",
+      "earningsReaction": false,
+      "catalyst": "8/19 08:02 ET Oracle Health 宣布臨床 AI 代理人新增自動編碼、語音聽寫與病歷審閱功能;但股價仍隨高評價 AI 軟體/基建類股走弱而下跌",
+      "newsDetail": "> **今日跌因:** 盤前 -2.2%($139.65) — 今天早上其實有發布正面產品消息,但股價仍跟著高評價 AI 軟體與基建類股一起走弱,說明壓力來自評價而非公司。\n\n**今天的公司消息(是利多)**\n\n8/19 08:02 ET,Oracle 透過美通社發布公告:**Oracle Health 的臨床 AI 代理人新增自動醫療編碼、語音聽寫與病歷審閱三項功能**。這是把生成式 AI 塞進電子病歷工作流的延伸,目標是減少醫師的文書時間 —— 對甲骨文在 2022 年以 283 億美元併購 Cerner 之後一直難以變現的醫療事業來說,是往正確方向走的一步。\n\n**但股價還是跌**\n\n正面消息配上 -2.2% 的股價,答案不在公司本身。今天同步走弱的還有 **Nebius -7.3%、CoreWeave -3.4%、Broadcom -2.8%**,共同點是「高評價 + 大量資本支出 + 靠舉債擴建資料中心」。長天期公債殖利率處於數十年高檔,對這種現金流集中在未來的模式,折現分母每擴大一點,估值就往下修一點。甲骨文近年把大量資本投入雲端資料中心以承接 AI 需求,在這個框架下被歸為同一類。\n\n**怎麼看**\n\n當一家公司發正面消息卻下跌,通常代表市場當天關心的不是那件事。今天決定甲骨文方向的是殖利率與 AI 資本支出的市場情緒,產品公告的影響要等這陣風過去才看得出來。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=ORCL"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/ORCL"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-ORCL/news/"
+        }
+      ],
+      "publishedAt": "2026-08-19T08:02:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "PR Newswire — Oracle Health Expands Clinical AI Agent",
+          "url": "https://finance.yahoo.com/healthcare/articles/oracle-health-expands-clinical-ai-120200760.html"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 139.65,
+          "chgPct": -2.2,
+          "volume": 0,
+          "session": "headline",
+          "direction": "down",
+          "name": "Oracle Corp",
+          "sessionDate": "2026-08-19",
+          "targetDate": "2026-08-19"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "down",
+      "last": 139.65,
+      "chgPct": -2.2,
+      "volume": 0,
+      "tv": {
+        "latestEPS": 2.11,
+        "consensusEPS": 1.96,
+        "priorYrEPS": 1.7,
+        "surpriseEPS_pct": 7.45,
+        "surpriseEPS_dollar": 0.1499999999999999,
+        "latestRev_M": 19180.0,
+        "consensusRev_M": 19100.0,
+        "priorYrRev_M": 15900.0,
+        "surpriseRev_pct": 0.44,
+        "yrYrRev_pct": 20.628930817610065,
+        "epsYoY_pct": 24.117647058823525,
+        "epsEst_next4": [
+          1.73,
+          1.89,
+          2.06,
+          2.37
+        ],
+        "revEst_next4": [
+          19130.0,
+          21180.0,
+          23230.0,
+          26280.0
+        ],
+        "yoyBlock": "+24.12% / +20.63%\n--------------------\n+17.69% / +28.13%\n-16.37% / +31.88%\n+15.08% / +35.14%\n+12.32% / +37.02%",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q3 '20"
+          ],
+          "eps_reported": [
+            1.39,
+            1.47,
+            1.47,
+            1.7,
+            1.47,
+            2.26,
+            1.79,
+            2.11,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            1.33,
+            1.48,
+            1.49,
+            1.64,
+            1.48,
+            1.64,
+            1.7,
+            1.96,
+            1.73,
+            1.89,
+            2.06,
+            2.37
+          ],
+          "rev_reported_M": [
+            13310.0,
+            14060.0,
+            14130.0,
+            15900.0,
+            14930.0,
+            16059.999999999998,
+            17190.0,
+            19180.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            13230.0,
+            14120.0,
+            14380.0,
+            15580.0,
+            15040.0,
+            16190.000000000002,
+            16930.0,
+            19100.0,
+            19130.0,
+            21180.0,
+            23230.0,
+            26280.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": null,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": null,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-08-18",
+        "open": 143.25,
+        "high": 146.0,
+        "low": 142.35,
+        "close": 142.79,
+        "volume": 19058200,
+        "prev_close": 146.65
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": 0.32,
+        "predDay": 1.6,
+        "band": [
+          -3.2,
+          3.2
+        ],
+        "tier": "na",
+        "asOf": "09:38 開盤定格"
+      }
+    },
+    "TJX": {
+      "symbol": "TJX",
+      "name": "TJX Companies Inc",
+      "type": "earnings",
+      "earningsReaction": true,
+      "catalyst": "8/19 盤前第二季每股盈餘 1.36 美元優於預估 1.19、同店銷售 +4%、營收 +5%,並上修 FY27 全年財測",
+      "newsDetail": "> **今日跌因:** 盤前 -3.3% — 財報數字亮眼,但獲利含一次性關稅退款墊高、主力品牌 Marmaxx 成長明顯偏弱,全年財測雖上修卻仍不及華爾街最樂觀預期,市場獲利了結。\n\n**財報數字詳解**\nTJX 公布 FY27 第二季(截至 8/1)每股盈餘 **1.36** 美元,年增 **24%**,優於市場預估的 **1.19** 美元;但這個數字內含約 **0.14** 美元的一次性關稅退款挹注,扣除後調整後每股盈餘僅 **1.22** 美元,對市場預估 1.19 美元其實只是小幅超車。營收達 **152億** 美元,年增 **5%**;集團整體同店銷售成長 **4%**,優於公司自身財測與市場預估的約 3%。\n\n**分部與營運細節**\n四大部門同店銷售分別為:占營收比重最大的核心美式折扣品牌 **Marmaxx 僅成長 1%**,明顯落後集團平均;居家用品品牌 **HomeGoods 大漲 7%**;**TJX Canada 成長 6%**;**TJX International(歐洲、澳洲)成長 7%**。Marmaxx 成長明顯放緩,是市場解讀「財報好卻股價跌」的關鍵線索之一。調整後稅前淨利率 **11.9%**,年增 0.5 個百分點;調整後毛利率 **31.4%**,年增 0.7 個百分點,主要由商品毛利率改善帶動。公司本季共收到 **3.31億** 美元的 IEEPA 關稅退款,扣除額外提列的 **1.12億** 美元獎酬支出後,淨挹注稅前獲利約 **2.19億** 美元。\n\n**管理層說法**\n執行長 Ernie Herrman 表示:「我對本季優於計畫的整體表現感到非常滿意,整體同店銷售成長 4%,超越我們的計畫,獲利能力與每股盈餘也雙雙優於預期。」\n\n**指引**\n公司將 FY27 全年調整後每股盈餘財測由原本的 **5.08-5.15** 美元上修至 **5.15-5.20** 美元,但區間上緣仍低於華爾街預估的 **5.22** 美元,顯示公司對下半年展望偏保守,這正是股價不漲反跌的核心原因。第三季財測方面,公司預估同店銷售成長僅 **2%-3%**,較第二季的 4% 明顯放緩。\n\n**風險備註**\n本次查證未取得分析師當日評等或目標價調整的具體細節,也查無第三季展望轉趨保守是否與關稅成本回升有直接關聯的官方說法。\n\n> ⚠ **資料註記:** TradingView 的季度網格尚未更新今日(8/19)公布的這一季,個股頁的 EPS/營收圖與 Forward YoY 目前仍顯示上一季數字,今日盤後會重新抓取。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=TJX"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/TJX"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-TJX/news/"
+        }
+      ],
+      "publishedAt": "2026-08-19T06:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "StockTitan: TJX Reports Q2 FY27 Results Above Plan, Comp Sales Growth of 4%",
+          "url": "https://www.stocktitan.net/news/TJX/tjx-reports-q2-fy27-results-above-plan-comp-sales-growth-of-4-pretax-un8k85sp6meo.html"
+        },
+        {
+          "label": "Investing.com: TJX stock drops as profit outlook falls short of analyst estimates",
+          "url": "https://www.investing.com/news/earnings/tjx-stock-drops-as-profit-outlook-falls-short-of-analyst-estimates-4867203"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 145.84,
+          "chgPct": -3.32,
+          "volume": 0,
+          "session": "headline",
+          "direction": "down",
+          "name": "TJX Companies Inc",
+          "sessionDate": "2026-08-19",
+          "targetDate": "2026-08-19"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "down",
+      "last": 145.84,
+      "chgPct": -3.32,
+      "volume": 0,
+      "tv": {
+        "latestEPS": 1.19,
+        "consensusEPS": 1.02,
+        "priorYrEPS": 0.92,
+        "surpriseEPS_pct": 16.82,
+        "surpriseEPS_dollar": 0.16999999999999993,
+        "latestRev_M": 14320.0,
+        "consensusRev_M": 14020.0,
+        "priorYrRev_M": 13110.0,
+        "surpriseRev_pct": 2.2,
+        "yrYrRev_pct": 9.229595728451564,
+        "epsYoY_pct": 29.34782608695651,
+        "epsEst_next4": [
+          1.19,
+          1.35,
+          1.5,
+          1.25
+        ],
+        "revEst_next4": [
+          15170.0,
+          15900.0,
+          18680.0,
+          15120.0
+        ],
+        "yoyBlock": "+29.35% / +9.23%\n--------------------\n+8.18% / +5.35%\n+5.47% / +5.16%\n+4.90% / +5.30%\n+5.04% / +5.59%",
+        "chart": {
+          "quarters": [
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q4 '20"
+          ],
+          "eps_reported": [
+            0.96,
+            1.14,
+            1.23,
+            0.92,
+            1.1,
+            1.28,
+            1.43,
+            1.19,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.92,
+            1.09,
+            1.16,
+            0.91,
+            1.01,
+            1.23,
+            1.39,
+            1.02,
+            1.19,
+            1.35,
+            1.5,
+            1.25
+          ],
+          "rev_reported_M": [
+            13470.0,
+            14060.0,
+            16350.000000000002,
+            13110.0,
+            14400.0,
+            15120.0,
+            17740.0,
+            14320.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            13310.0,
+            13950.0,
+            16210.0,
+            13020.0,
+            14140.0,
+            14850.0,
+            17360.0,
+            14020.0,
+            15170.0,
+            15900.0,
+            18680.0,
+            15120.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": "2026-08-19"
+      },
+      "shortFloat": 1.76,
+      "shortRatio": 3.34,
+      "marketCap_M": 159380,
+      "floatShares_M": 1100,
+      "perf1M": -6.95,
+      "perf3M": -4.25,
+      "perf6M": -8.24,
+      "perfYTD": -6.08,
+      "perf12M": 7.17,
+      "prevOhlcv": {
+        "date": "2026-08-18",
+        "open": 153.06,
+        "high": 153.43,
+        "low": 150.85,
+        "close": 150.85,
+        "volume": 6567800,
+        "prev_close": 150.85
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": 1.47,
+        "predDay": 1.1,
+        "band": [
+          -2.5,
+          2.2
+        ],
+        "tier": "big",
+        "asOf": "09:38 開盤定格"
+      }
+    },
+    "CRWV": {
+      "symbol": "CRWV",
+      "name": "CoreWeave Inc",
+      "type": "news",
+      "earningsReaction": false,
+      "catalyst": "無自身新聞;長天期公債殖利率走高壓縮高評價 AI 基建股評價,族群同步走弱(NBIS -8%)",
+      "newsDetail": "> **今日跌因:** 盤前 -3.4%($90.00) — 公司本身沒有任何新消息,純粹是 AI 基礎建設類股在長天期公債殖利率走高下的評價收縮。\n\n**沒有個股事件**\n\n翻遍 8/19 當日的一級財經媒體,CoreWeave 沒有發布任何新聞稿、沒有 8-K 申報、也沒有分析師調整評等。目前能查到最近一則相關報導是 8/18 傍晚《投資人商業日報》討論**下一個 IPO 標的 Crusoe** 的產業分析文,內容把 CoreWeave 與 Nebius 當成對照組,不是針對 CoreWeave 的新資訊。\n\n**真正在動的是折現率**\n\n今天走弱的不只 CoreWeave:**Nebius(NBIS)盤前 -7.3%**、CoreWeave -3.4%,兩檔的共同點是「高評價 + 高資本支出 + 靠舉債擴建資料中心」。長天期公債殖利率持續處於數十年高檔,對這種現金流集中在未來、且需要不斷向外融資的商業模式,殖利率每往上一步,估值模型的折現分母就變大一分。同時市場對 AI 資本支出循環能撐多久的疑慮升溫,加上昨天(8/18)半導體類股全面重挫、SOX 轉弱,整條 AI 供應鏈的風險偏好都在退潮。\n\n**怎麼看**\n\n這是類股連動不是個股利空,判斷 CoreWeave 今天的方向要看的是殖利率與整體 AI 類股氣氛,而不是去找一則其實不存在的壞消息。要留意的是這種評價收縮不會一天結束 —— 只要殖利率沒回落,壓力就還在。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=CRWV"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/CRWV"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-CRWV/news/"
+        }
+      ],
+      "publishedAt": "2026-08-19T08:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Investor's Business Daily — Is This The Next CoreWeave Or Nebius Group? A Crusoe IPO Looms",
+          "url": "https://finance.yahoo.com/m/0c1f16f3-f194-3c26-b4d5-05eeea6fc988/is-this-the-next-coreweave-or.html"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 90.07,
+          "chgPct": -3.33,
+          "volume": 0,
+          "session": "headline",
+          "direction": "down",
+          "name": "CoreWeave Inc",
+          "sessionDate": "2026-08-19",
+          "targetDate": "2026-08-19"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "down",
+      "last": 90.07,
+      "chgPct": -3.33,
+      "volume": 0,
+      "tv": {
+        "latestEPS": -1.03,
+        "consensusEPS": -1.21,
+        "priorYrEPS": -0.27,
+        "surpriseEPS_pct": 14.52,
+        "surpriseEPS_dollar": 0.17999999999999994,
+        "latestRev_M": 2580.0,
+        "consensusRev_M": 2550.0,
+        "priorYrRev_M": 1210.0,
+        "surpriseRev_pct": 0.8,
+        "yrYrRev_pct": 113.22314049586777,
+        "epsYoY_pct": -281.48148148148147,
+        "epsEst_next4": [
+          -1.24,
+          -0.65,
+          -0.65,
+          -0.56
+        ],
+        "revEst_next4": [
+          3540.0,
+          4680.0,
+          5260.0,
+          6040.0
+        ],
+        "yoyBlock": "-281.48% / +113.22%\n--------------------\n-1450.00% / +160.29%\n-16.07% / +198.09%\n+41.44% / +152.88%\n+45.63% / +134.11%",
+        "chart": {
+          "quarters": [
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27"
+          ],
+          "eps_reported": [
+            -0.08,
+            -0.6,
+            -0.27,
+            -0.08,
+            -0.56,
+            -1.11,
+            -1.03,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            null,
+            -0.12,
+            -0.23,
+            -0.4,
+            -0.5,
+            -0.92,
+            -1.21,
+            -1.24,
+            -0.65,
+            -0.65,
+            -0.56
+          ],
+          "rev_reported_M": [
+            747.4,
+            981.63,
+            1210.0,
+            1360.0,
+            1570.0,
+            2080.0,
+            2580.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            null,
+            857.1,
+            1080.0,
+            1290.0,
+            1550.0,
+            1970.0,
+            2550.0,
+            3540.0,
+            4680.0,
+            5260.0,
+            6040.0
+          ],
+          "latest_idx": 6
+        },
+        "latestReportDate": "2026-08-12",
+        "nextReportDate": null
+      },
+      "shortFloat": 17.63,
+      "shortRatio": 2.04,
+      "marketCap_M": 49610,
+      "floatShares_M": 347.5,
+      "perf1M": 13.04,
+      "perf3M": -9.87,
+      "perf6M": -5.76,
+      "perfYTD": 25.62,
+      "perf12M": -3.16,
+      "prevOhlcv": {
+        "date": "2026-08-18",
+        "open": 101.4,
+        "high": 102.38,
+        "low": 93.15,
+        "close": 93.17,
+        "volume": 37840500,
+        "prev_close": 106.0
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": 1.15,
+        "predDay": 2.0,
+        "band": [
+          -2.5,
+          2.2
+        ],
+        "tier": "big",
+        "asOf": "09:38 開盤定格"
+      }
+    },
+    "EXK": {
+      "symbol": "EXK",
+      "name": "Endeavour Silver Corp",
+      "type": "macro",
+      "earningsReaction": false,
+      "catalyst": "無自身新聞;貴金屬價格走高帶動白銀礦業股上漲,族群同步",
+      "newsDetail": "> **今日漲因:** 盤前 +3.0%($9.95) — 公司沒有自身消息,是白銀價格走高帶動整個貴金屬礦業族群同步上漲,避險資金在科技股連續走弱時流入。\n\n**查無個股事件**\n\n8/19 沒有 Endeavour Silver 的新聞稿、產量更新或分析師動作。一級財經媒體針對這檔在 36 小時內沒有任何報導。\n\n**這是族群行情,不是個股事件**\n\n今天上漲的不只這一檔:**Newmont +1.9%、Alamos Gold +2.0%、Endeavour Silver +3.0%、B2Gold +1.8%、Pan American Silver +1.4%** —— 整個貴金屬礦業族群同步、幅度接近,這是價格驅動而非公司驅動的典型特徵。在科技類股連兩天走弱、長天期公債殖利率高檔的環境下,資金往黃金這類避險資產移動,礦業股則是對金價變動的槓桿載具(金價每漲 1%,礦商的獲利彈性通常放大數倍,因為開採成本相對固定)。\n\n**怎麼看**\n\n判斷這類標的今天的方向,要看的是金價本身與整體風險偏好,不是去公司財報裡找答案。族群同步時個股 alpha 很低;要選就選開採成本低、產量成長明確的名字。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=EXK"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/EXK"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-EXK/news/"
+        }
+      ],
+      "publishedAt": "2026-08-19T08:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 9.95,
+          "chgPct": 3.0,
+          "volume": 0,
+          "session": "headline",
+          "direction": "up",
+          "name": "Endeavour Silver Corp",
+          "sessionDate": "2026-08-19",
+          "targetDate": "2026-08-19"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 9.95,
+      "chgPct": 3.0,
+      "volume": 0,
+      "tv": {
+        "latestEPS": 0.15,
+        "consensusEPS": 0.15,
+        "priorYrEPS": -0.03,
+        "surpriseEPS_pct": -0.56,
+        "surpriseEPS_dollar": 0.0,
+        "latestRev_M": 212.1,
+        "consensusRev_M": 210.79,
+        "priorYrRev_M": 85.3,
+        "surpriseRev_pct": 0.62,
+        "yrYrRev_pct": 148.65181711606098,
+        "epsYoY_pct": 600.0,
+        "epsEst_next4": [
+          0.19,
+          0.22,
+          0.2,
+          0.22
+        ],
+        "revEst_next4": [
+          202.43,
+          213.5,
+          318.54,
+          324.1
+        ],
+        "yoyBlock": "+600.00% / +148.65%\n--------------------\n+2000.00% / +41.76%\n+1000.00% / +23.70%\n-4.76% / +51.90%\n+46.67% / +52.81%",
+        "chart": {
+          "quarters": [
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q1 '21"
+          ],
+          "eps_reported": [
+            0.01,
+            0.02,
+            0.0,
+            -0.03,
+            -0.01,
+            0.02,
+            0.21,
+            0.15,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.0,
+            -0.01,
+            0.01,
+            0.01,
+            0.03,
+            0.06,
+            0.13,
+            0.15,
+            0.19,
+            0.22,
+            0.2,
+            0.22
+          ],
+          "rev_reported_M": [
+            53.4,
+            42.2,
+            63.5,
+            85.3,
+            142.8,
+            172.6,
+            209.7,
+            212.1,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            51.51,
+            47.48,
+            61.13,
+            81.8,
+            131.25,
+            171.14,
+            200.41,
+            210.79,
+            202.43,
+            213.5,
+            318.54,
+            324.1
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": null,
+      "shortRatio": null,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": null,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": null,
+      "perf12M": null,
+      "prevOhlcv": {
+        "date": "2026-08-18",
+        "open": 9.92,
+        "high": 10.1,
+        "low": 9.65,
+        "close": 9.66,
+        "volume": 8657000,
+        "prev_close": 10.14
+      },
+      "modelPred": {
+        "version": "v12",
+        "gap": 2.69,
+        "predDay": 4.7,
+        "band": [
+          -3.2,
+          3.2
+        ],
+        "tier": "na",
         "asOf": "09:38 開盤定格"
       }
     },
@@ -22008,7 +22008,7 @@
       "neglected": null
     }
   ],
-  "qwenPicks": [],
+  "ollamaPicks": [],
   "tradeIdeas": [
     {
       "rank": 1,

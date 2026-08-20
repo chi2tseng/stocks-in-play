@@ -291,7 +291,7 @@ claude_picks_list = _load_picks(claude_picks_path)
 codex_picks_list  = _load_picks(os.path.join(DIR, 'codex_picks.json'))     # ChatGPT via Codex CLI
 gemini_picks_list = _load_picks(os.path.join(DIR, 'gemini_picks.json'))    # Google Gemini
 grok_picks_list   = _load_picks(os.path.join(DIR, 'grok_picks.json'))      # xAI Grok
-qwen_picks_list   = _load_picks(os.path.join(DIR, 'qwen_picks.json'))      # local Qwen (ai-vm)
+ollama_picks_list   = _load_picks(os.path.join(DIR, 'ollama_picks.json'))      # local Ollama (ai-vm)
 
 # --- Load optional day_resets.json — symbols whose day-count should reset to day1 today
 # because a NEW MAJOR catalyst is the primary cause of the move (curated by Claude per scan). ---
@@ -481,7 +481,7 @@ claude_picks_clean = _clean_picks(claude_picks_list, propagate_neglected=True)
 codex_picks_clean  = _clean_picks(codex_picks_list)
 gemini_picks_clean = _clean_picks(gemini_picks_list)
 grok_picks_clean   = _clean_picks(grok_picks_list)
-qwen_picks_clean   = _clean_picks(qwen_picks_list)
+ollama_picks_clean   = _clean_picks(ollama_picks_list)
 
 # Filter day_resets to symbols actually in today's candidate set (drop stale entries silently).
 day_resets_clean = {sym: reason for sym, reason in day_resets_map.items() if sym in stocks}
@@ -584,7 +584,7 @@ def _build_data_for(td):
         # routed to an older target date (e.g. a morning-after run: 7/1 pre rows
         # land in 7/1.json while the scan/picks date is 7/2). Carry those stocks
         # into the scan-date file so the picks tabs keep their full data.
-        pick_syms = {p['symbol'] for p in (claude_picks_clean + codex_picks_clean + gemini_picks_clean + grok_picks_clean + qwen_picks_clean)}
+        pick_syms = {p['symbol'] for p in (claude_picks_clean + codex_picks_clean + gemini_picks_clean + grok_picks_clean + ollama_picks_clean)}
         for psym in pick_syms:
             if psym in filtered_stocks or psym not in stocks:
                 continue
@@ -609,7 +609,7 @@ def _build_data_for(td):
     cdx = [p for p in codex_picks_clean  if p['symbol'] in syms_set] if is_scan else []
     gp  = [p for p in gemini_picks_clean if p['symbol'] in syms_set] if is_scan else []
     gkp = [p for p in grok_picks_clean   if p['symbol'] in syms_set] if is_scan else []
-    qwp = [p for p in qwen_picks_clean   if p['symbol'] in syms_set] if is_scan else []
+    qwp = [p for p in ollama_picks_clean   if p['symbol'] in syms_set] if is_scan else []
     drs = {s: r for s, r in day_resets_clean.items() if s in syms_set} if is_scan else {}
     return {
         'date': td,
@@ -622,7 +622,7 @@ def _build_data_for(td):
         'codexPicks':  cdx,
         'geminiPicks': gp,
         'grokPicks':   gkp,
-        'qwenPicks':   qwp,
+        'ollamaPicks':   qwp,
         'tradeIdeas':  (lambda _ti: (_ti.get('ideas') if isinstance(_ti, dict) and _ti.get('date') == td else []))(
             json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'trade_ideas.json'), encoding='utf-8'))
             if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'trade_ideas.json')) else {}),
@@ -649,7 +649,7 @@ for td in sorted(target_dates_set):
             if td != DATE:
                 # Older dates: preserve picks/rawGappers/scanx committed by a previous
                 # scan — a later scan only refreshes stocks/sessions for those days.
-                for key in ('claudePicks', 'codexPicks', 'geminiPicks', 'grokPicks', 'qwenPicks',
+                for key in ('claudePicks', 'codexPicks', 'geminiPicks', 'grokPicks', 'ollamaPicks',
                             'dayResets', 'rawGappers', 'rawGappersFilter', 'scanx'):
                     if not new_data.get(key) and old.get(key):
                         new_data[key] = old[key]
@@ -723,7 +723,7 @@ for td in sorted(target_dates_set):
                                    ('codexPicks',  codex_picks_list),
                                    ('geminiPicks', gemini_picks_list),
                                    ('grokPicks',   grok_picks_list),
-                                   ('qwenPicks',   qwen_picks_list)):
+                                   ('ollamaPicks',   ollama_picks_list)):
                     _re = [{'symbol': p['symbol'], 'rank': p.get('rank'),
                             'intent': p.get('intent', 'long'),
                             'rationale': p.get('rationale', ''),
@@ -2982,12 +2982,12 @@ body.dark .candle-news-popup {
 .sip-card.codex-pick,
 .sip-card.gemini-pick,
 .sip-card.grok-pick,
-.sip-card.qwen-pick { border-color: rgba(73,79,223,0.20); }
+.sip-card.ollama-pick { border-color: rgba(73,79,223,0.20); }
 .sip-rank.claude-rank,
 .sip-rank.codex-rank,
 .sip-rank.gemini-rank,
 .sip-rank.grok-rank,
-.sip-rank.qwen-rank { background: var(--primary); }
+.sip-rank.ollama-rank { background: var(--primary); }
 
 .claude-rationale-label {
   font-size: 10px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.8px;
@@ -3546,12 +3546,12 @@ document.addEventListener('click', (e) => {
 // user came from. Returns { list: [{id, label}], label: 'CLAUDE' | ... }.
 function buildStockNavList(source) {
   // 1. Agent picks tabs (claude/codex/gemini/grok) → that agent's list, rank-sorted
-  if (source === 'claude' || source === 'codex' || source === 'gemini' || source === 'grok' || source === 'qwen') {
-    const picksKey = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks', grok: 'grokPicks', qwen: 'qwenPicks' }[source];
+  if (source === 'claude' || source === 'codex' || source === 'gemini' || source === 'grok' || source === 'ollama') {
+    const picksKey = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks', grok: 'grokPicks', ollama: 'ollamaPicks' }[source];
     const picks = (DATA[picksKey] || []).slice().sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
     return {
       list:  picks.filter(p => DATA.stocks[p.symbol]).map(p => ({ id: p.symbol, label: p.symbol })),
-      label: { claude: 'Claude', codex: 'ChatGPT', gemini: 'Gemini', grok: 'Grok', qwen: 'Qwen' }[source],
+      label: { claude: 'Claude', codex: 'ChatGPT', gemini: 'Gemini', grok: 'Grok', ollama: 'Ollama' }[source],
     };
   }
   // 2. MAGNA53 top-12 by score desc
@@ -4013,7 +4013,7 @@ const PICK_SOURCES = {
   codex:  { label: 'ChatGPT', picksFile: 'codex_picks.json',  cssClass: 'codex-pick',  rankClass: 'codex-rank'  },
   gemini: { label: 'Gemini',  picksFile: 'gemini_picks.json', cssClass: 'gemini-pick', rankClass: 'gemini-rank' },
   grok:   { label: 'Grok',    picksFile: 'grok_picks.json',   cssClass: 'grok-pick',   rankClass: 'grok-rank'   },
-  qwen:   { label: 'Qwen',    picksFile: 'qwen_picks.json',   cssClass: 'qwen-pick',   rankClass: 'qwen-rank'   },
+  ollama:   { label: 'Ollama',    picksFile: 'ollama_picks.json',   cssClass: 'ollama-pick',   rankClass: 'ollama-rank'   },
 };
 
 // Generic Pick card — renders any of the 3 agents (claude / codex / gemini) with the
@@ -4141,13 +4141,13 @@ function openSipsFilterPopup(btn, subtab) {
   // This matches the counts the user sees in the rendered grid.
   const bySym = DATA.stocks || {};
   let rowsForCount = [];
-  const isPicksTab = (subtab === 'claude' || subtab === 'codex' || subtab === 'gemini' || subtab === 'grok' || subtab === 'qwen');
+  const isPicksTab = (subtab === 'claude' || subtab === 'codex' || subtab === 'gemini' || subtab === 'grok' || subtab === 'ollama');
   if (subtab === 'magna') {
     const all = Object.values(bySym).map(s => ({ ...s, _m53: magna53(s) }));
     all.sort((a, b) => b._m53.score - a._m53.score);
     rowsForCount = all.filter(r => r._m53.score >= 4).slice(0, 12);
   } else if (isPicksTab) {
-    const pickArrayField = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks', grok: 'grokPicks', qwen: 'qwenPicks' }[subtab];
+    const pickArrayField = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks', grok: 'grokPicks', ollama: 'ollamaPicks' }[subtab];
     const picks = Array.isArray(DATA[pickArrayField]) ? DATA[pickArrayField] : [];
     rowsForCount = picks
       .map(p => bySym[p.symbol] ? { ...bySym[p.symbol], _pickIntent: p.intent || 'long' } : null)
@@ -4290,9 +4290,9 @@ async function renderSips(subtab) {
   //   'magna'            — MAGNA53 algorithmic ranking
   // The three picks tabs share pickCardHtml() — colors / labels from PICK_SOURCES.
   // URL routing: '/sips' (default Claude), '/sips/codex', '/sips/gemini', '/sips/grok', '/sips/magna'.
-  const validTabs = ['claude', 'codex', 'gemini', 'grok', 'qwen', 'magna', 'ideas'];
+  const validTabs = ['claude', 'codex', 'gemini', 'grok', 'ollama', 'magna', 'ideas'];
   const tab = validTabs.includes(subtab) ? subtab : 'claude';
-  const isPicksTab = (tab === 'claude' || tab === 'codex' || tab === 'gemini' || tab === 'grok' || tab === 'qwen');
+  const isPicksTab = (tab === 'claude' || tab === 'codex' || tab === 'gemini' || tab === 'grok' || tab === 'ollama');
   const app = document.getElementById('app');
   app.innerHTML = `
     <h2 class="page-title">Today's SIPs</h2>
@@ -4301,7 +4301,7 @@ async function renderSips(subtab) {
       <div class="subtab ${tab === 'codex'  ? 'active' : ''}" data-sub="codex">ChatGPT</div>
       <div class="subtab ${tab === 'gemini' ? 'active' : ''}" data-sub="gemini">Gemini</div>
       <div class="subtab ${tab === 'grok'   ? 'active' : ''}" data-sub="grok">Grok</div>
-      <div class="subtab ${tab === 'qwen'   ? 'active' : ''}" data-sub="qwen">Qwen</div>
+      <div class="subtab ${tab === 'ollama'   ? 'active' : ''}" data-sub="ollama">Ollama</div>
       <div class="subtab ${tab === 'magna'  ? 'active' : ''}" data-sub="magna">MAGNA53</div>
       <div class="subtab ${tab === 'ideas'  ? 'active' : ''}" data-sub="ideas">Ideas</div>
       <span class="subtab-hint" id="sips-hint"></span>
@@ -4376,7 +4376,7 @@ async function renderSips(subtab) {
     // must be gap-up (chgPct > 0), short pick must be gap-down. SHOW_MISMATCHED_PICKS
     // toggles dropping mismatches vs. showing them with a warning banner.
     const srcMeta = PICK_SOURCES[tab];
-    const pickArrayField = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks', grok: 'grokPicks', qwen: 'qwenPicks' }[tab];
+    const pickArrayField = { claude: 'claudePicks', codex: 'codexPicks', gemini: 'geminiPicks', grok: 'grokPicks', ollama: 'ollamaPicks' }[tab];
     const picks = Array.isArray(DATA[pickArrayField]) ? DATA[pickArrayField].slice() : [];
     picks.sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
     const bySym = Object.fromEntries(rows.map(r => [r.symbol, r]));
@@ -4406,8 +4406,8 @@ async function renderSips(subtab) {
       const hiddenNote = droppedCount > 0 ? `（${droppedCount} 筆被 Filter 隱藏，按上方 Filter 調整）` : '';
       const cmdHint = tab === 'claude'
         ? '在 Claude Code 跑 <code>/SIPs</code>。'
-        : tab === 'qwen'
-        ? '本機跑 <code>D:\SIPs\qwen-sips.cmd</code>（或請 Claude 跑 <code>/SIPs-qwen-picks</code>）。'
+        : tab === 'ollama'
+        ? '本機跑 <code>D:\SIPs\ollama-sips.cmd</code>（或請 Claude 跑 <code>/SIPs-ollama-picks</code>）。'
         : `在 ${({codex:'Codex',gemini:'Gemini',grok:'Grok'})[tab]} CLI 跑 <code>/SIPs-${tab}-full</code> 或 <code>/SIPs-${tab}-picks</code>。`;
       stack.innerHTML = `<div class="sip-empty">尚無 ${srcMeta.label} 的清單${hiddenNote}。<br><br>${cmdHint}<br><br>或在 <code>D:\\SIPs\\${srcMeta.picksFile}</code> 手動加入 <code>{"picks":[{"symbol":"X","rank":1,"rationale":"...","intent":"long"}]}</code> 後 rebuild dashboard 即可看到。</div>`;
       return;

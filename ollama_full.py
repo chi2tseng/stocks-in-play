@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""qwen_full.py — FULL SIPs pipeline, Qwen's independent curation (no Claude, no VM).
+"""ollama_full.py — FULL SIPs pipeline, Qwen's independent curation (no Claude, no VM).
 
 Mirrors the SIPs-gemini-full contract: run the whole pipeline, but the ONLY shared
-file Qwen writes is qwen_picks.json. Mechanical phases are deterministic code
+file Qwen writes is ollama_picks.json. Mechanical phases are deterministic code
 (same scripts Claude calls); every judgment call is a small-context chat to the
 local qwen-cc model on host Ollama — no giant harness, no compaction, no nested
 tool schemas.
 
-Usage:  py D:\\SIPs\\qwen_full.py            (add --dry to skip git push)
+Usage:  py D:\\SIPs\\ollama_full.py            (add --dry to skip git push)
 """
 import csv, io, json, os, re, subprocess, sys, time, urllib.request
 from datetime import datetime, timezone, timedelta
@@ -188,13 +188,13 @@ def main():
     for i, p in enumerate(picks):
         p["rank"] = i + 1
 
-    out = os.path.join(DIR, "qwen_picks.json")
+    out = os.path.join(DIR, "ollama_picks.json")
     tmp = out + ".tmp"
     io.open(tmp, "w", encoding="utf-8").write(
         json.dumps({"date": DATE, "picks": picks}, ensure_ascii=False, indent=1))
     json.load(open(tmp, encoding="utf-8"))
     os.replace(tmp, out)
-    log("wrote qwen_picks.json:", [p["symbol"] for p in picks])
+    log("wrote ollama_picks.json:", [p["symbol"] for p in picks])
 
     # ---------- mechanical close-out ----------
     run("py fetch_candles.py", timeout=180)
@@ -204,9 +204,9 @@ def main():
     if DRY:
         log("--dry: skip git push")
     else:
-        run("git add qwen_picks.json dashboard/data/*.json dashboard/data.json dashboard/dates.json dashboard/index.html dashboard/candles.json", timeout=60)
+        run("git add ollama_picks.json dashboard/data/*.json dashboard/data.json dashboard/dates.json dashboard/index.html dashboard/candles.json", timeout=60)
         top = ", ".join(p["symbol"] for p in picks[:2]) or "none"
-        run('git commit -m "qwen picks: %s — top: %s"' % (DATE, top), timeout=60)
+        run('git commit -m "ollama picks: %s — top: %s"' % (DATE, top), timeout=60)
         for i in (1, 2):
             rc, o = run("git push", timeout=120)
             if rc == 0:
