@@ -15,7 +15,10 @@ from datetime import datetime, timezone, timedelta
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 OLLAMA = "http://127.0.0.1:11434/api/chat"
-MODEL = "qwen-cc"
+MODEL = "qwen-cc"                     # default; override with --model <name>
+for _i, _a in enumerate(sys.argv):
+    if _a == "--model" and _i + 1 < len(sys.argv):
+        MODEL = sys.argv[_i + 1]
 MAX_SHORTLIST = 10
 SNIP = 2400
 ET = timezone(timedelta(hours=-4))
@@ -117,6 +120,7 @@ def compact_row(sym, s):
 
 def main():
     t0 = time.time()
+    log("model:", MODEL)
     pk = ensure_packet()
     stocks = pk.get("stocks") or {}
     rows = sorted((compact_row(k, v) for k, v in stocks.items()),
@@ -191,7 +195,7 @@ def main():
     out = os.path.join(DIR, "ollama_picks.json")
     tmp = out + ".tmp"
     io.open(tmp, "w", encoding="utf-8").write(
-        json.dumps({"date": DATE, "picks": picks}, ensure_ascii=False, indent=1))
+        json.dumps({"date": DATE, "model": MODEL, "picks": picks}, ensure_ascii=False, indent=1))
     json.load(open(tmp, encoding="utf-8"))
     os.replace(tmp, out)
     log("wrote ollama_picks.json:", [p["symbol"] for p in picks])
