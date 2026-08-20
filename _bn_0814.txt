@@ -1,0 +1,40 @@
+[bignames-scan] universe=170  threshold=|chg|>=2.0%  movers=12  already-in=2  MISSING=10  no-premarket-data=1  news=on
+--- MISSING large-caps to add (Session=headline) ---
+  WDC     +3.94%  $506.51
+         ↳ [08-13 15:11 ET 24/7 Wall St.] Memory Stocks Stay Strong With Sandisk, SK Hynix, and Western Digital Leading the Storage Stack
+           https://finance.yahoo.com/m/aa76cefe-1bb9-381d-a684-99a219723f24/memory-stocks-stay-strong.html
+  JD      -3.55%  $28.26
+         ↳ [08-14 01:04 ET Financial Times] JD.com shares slide 10% after first revenue decline since listing
+           https://finance.yahoo.com/markets/stocks/articles/jd-com-shares-slide-10-050418494.html
+  SONY    +3.37%  $24.41
+         ↳ NO HEADLINE FOUND (<36h) — hunt a catalyst manually before adding
+  MU      +2.89%  $977.26
+         ↳ [08-14 05:57 ET Yahoo Finance] The next AI winners may look nothing like Nvidia or Micron: One Big Investment Idea
+           https://finance.yahoo.com/markets/article/the-next-ai-winners-may-look-nothing-like-nvidia-or-micron-one-big-investment-idea-095700607.html
+  RIO     -2.59%  $95.66
+         ↳ [08-13 02:52 ET Proactive] Rio Tinto secures long-term future of Tomago smelter with A$1.1 billion investment and renewable power deal
+           https://finance.yahoo.com/m/ff289a10-be8c-3b77-b923-0bf5b8fb00a6/rio-tinto-secures-long-term.html
+  STX     +2.56%  $945.0
+         ↳ [08-14 05:21 ET Zacks] The Zacks Analyst Blog Highlights Seagate Technology and NVIDIA
+           https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-seagate-092100251.html
+  BSX     +2.33%  $52.9
+         ↳ [08-14 06:24 ET Insider Monkey] Boston Scientific (BSX) Faces Growth Slowdown in Key Businesses
+           https://finance.yahoo.com/healthcare/articles/boston-scientific-bsx-faces-growth-102442230.html
+  PAAS    +2.33%  $48.4
+         ↳ [08-14 02:04 ET MarketBeat] Pan American Silver Q2 Earnings Call Highlights
+           https://finance.yahoo.com/m/5bade3d0-e24c-315a-96a9-ee1f9d7487e7/pan-american-silver-q2.html
+  COF     -2.11%  $219.11
+         ↳ [08-13 08:00 ET MT Newswires] Capital One Adjusts EOG Resources PT to $155 From $157, Maintains Overweight Rating
+           https://finance.yahoo.com/markets/stocks/articles/capital-one-adjusts-eog-resources-120039768.html
+  EXK     +1.55%  $10.47
+         ↳ NO HEADLINE FOUND (<36h) — hunt a catalyst manually before adding
+--- already in candidates.csv (headline for cross-check) ---
+  SNDK    +6.82%  $1632.32
+         ↳ [08-14 07:29 ET MT Newswires] RBC Adjusts Price Target on Sandisk to $1,600 From $1,300, Maintains Sector Perform Rating
+           https://finance.yahoo.com/markets/stocks/articles/rbc-adjusts-price-target-sandisk-112933502.html
+  AMAT    -4.87%  $508.49
+         ↳ [08-14 07:49 ET StockStory] Applied Materials Earnings: What To Look For From AMAT
+           https://finance.yahoo.com/markets/stocks/articles/applied-materials-earnings-look-amat-114900359.html
+--- no-premarket-data (untraded today, %chg unknown) ---
+  BK
+[bignames-scan] wrote scan_headlines.json (12 movers)

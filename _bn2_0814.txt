@@ -1,0 +1,40 @@
+[bignames-scan] universe=170  threshold=|chg|>=2.0%  movers=12  already-in=7  MISSING=5  no-premarket-data=1  news=on
+--- MISSING large-caps to add (Session=headline) ---
+  SONY    +3.35%  $24.4
+         ↳ NO HEADLINE FOUND (<36h) — hunt a catalyst manually before adding
+  EXK     +2.42%  $10.56
+         ↳ NO HEADLINE FOUND (<36h) — hunt a catalyst manually before adding
+  RIO     -2.41%  $95.83
+         ↳ [08-13 02:52 ET Proactive] Rio Tinto secures long-term future of Tomago smelter with A$1.1 billion investment and renewable power deal
+           https://finance.yahoo.com/m/ff289a10-be8c-3b77-b923-0bf5b8fb00a6/rio-tinto-secures-long-term.html
+  BSX     +2.34%  $52.9
+         ↳ [08-14 06:24 ET Insider Monkey] Boston Scientific (BSX) Faces Growth Slowdown in Key Businesses
+           https://finance.yahoo.com/healthcare/articles/boston-scientific-bsx-faces-growth-102442230.html
+  COF     -2.11%  $219.11
+         ↳ [08-13 08:00 ET MT Newswires] Capital One Adjusts EOG Resources PT to $155 From $157, Maintains Overweight Rating
+           https://finance.yahoo.com/markets/stocks/articles/capital-one-adjusts-eog-resources-120039768.html
+--- already in candidates.csv (headline for cross-check) ---
+  SNDK    +6.28%  $1624.01
+         ↳ [08-14 07:29 ET MT Newswires] RBC Adjusts Price Target on Sandisk to $1,600 From $1,300, Maintains Sector Perform Rating
+           https://finance.yahoo.com/markets/stocks/articles/rbc-adjusts-price-target-sandisk-112933502.html
+  AMAT    -5.76%  $503.75
+         ↳ [08-14 08:07 ET MT Newswires] Craig Hallum Adjusts Applied Materials PT to $585 From $530, Maintains Buy Rating
+           https://finance.yahoo.com/markets/stocks/articles/craig-hallum-adjusts-applied-materials-120726733.html
+  WDC     +3.63%  $505.0
+         ↳ [08-13 15:11 ET 24/7 Wall St.] Memory Stocks Stay Strong With Sandisk, SK Hynix, and Western Digital Leading the Storage Stack
+           https://finance.yahoo.com/m/aa76cefe-1bb9-381d-a684-99a219723f24/memory-stocks-stay-strong.html
+  JD      -3.49%  $28.28
+         ↳ [08-14 01:04 ET Financial Times] JD.com shares slide 10% after first revenue decline since listing
+           https://finance.yahoo.com/markets/stocks/articles/jd-com-shares-slide-10-050418494.html
+  MU      +2.76%  $976.01
+         ↳ [08-14 08:06 ET 24/7 Wall St.] Micron Is Hot Again: Here’s Why The Rally Has Legs
+           https://finance.yahoo.com/m/5d8f06d6-4195-3c4e-8e15-4a317aaf116e/micron-is-hot-again%3A-here%E2%80%99s.html
+  PAAS    +2.26%  $48.37
+         ↳ [08-14 02:04 ET MarketBeat] Pan American Silver Q2 Earnings Call Highlights
+           https://finance.yahoo.com/m/5bade3d0-e24c-315a-96a9-ee1f9d7487e7/pan-american-silver-q2.html
+  STX     +2.13%  $941.0
+         ↳ [08-14 05:21 ET Zacks] The Zacks Analyst Blog Highlights Seagate Technology and NVIDIA
+           https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-seagate-092100251.html
+--- no-premarket-data (untraded today, %chg unknown) ---
+  BK
+[bignames-scan] wrote scan_headlines.json (12 movers)
