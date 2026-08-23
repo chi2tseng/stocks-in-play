@@ -189,6 +189,10 @@ def main():
             mp = apply_qual(mp, sym, qual)
             if mp.get('qual'): nq += 1
             s['modelPred'] = mp; n += 1
+            # ex-ante 凍結(2026-08-23):掃描當下這份預測只寫一次,之後任何 rebuild 或
+            # sidecar 盤前刷新都不得覆寫。先前 modelPred 被三方輪流改寫,同一天 verify
+            # 會因執行順序給出不同結論(8/21 在 43% 與 34% 之間跳動)。
+            s.setdefault('modelPredScan', json.loads(json.dumps(mp)))
     with open(pk_path, 'w', encoding='utf-8') as f:
         json.dump(d, f, ensure_ascii=False)
     # data.json mirror 同日才同步

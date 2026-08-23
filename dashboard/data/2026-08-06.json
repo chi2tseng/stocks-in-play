@@ -177,6 +177,17 @@
           7.2
         ],
         "tier": "small"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -11.68,
+        "predDay": -8.8,
+        "predHi": -7.9,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
       }
     },
     "MGNI": {
@@ -344,6 +355,17 @@
       "perf12M": 0.07,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 9.78,
+        "predDay": 6.7,
+        "predHi": 14.8,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 9.78,
         "predDay": 6.7,
@@ -544,6 +566,23 @@
           "confidence": "mid",
           "reasoning": "雙 miss + 毛利率下滑,對已破損的成長故事(YTD −45%)是確認級利空 — 我們的資料顯示事件型利空不會盤中均值回歸,收在低點附近機率高於反彈。"
         }
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -14.37,
+        "predDay": -15.1,
+        "predHi": -10.7,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid",
+        "predQuant": -13.6,
+        "qual": {
+          "adj": -1.5,
+          "confidence": "mid",
+          "reasoning": "雙 miss + 毛利率下滑,對已破損的成長故事(YTD −45%)是確認級利空 — 我們的資料顯示事件型利空不會盤中均值回歸,收在低點附近機率高於反彈。"
+        }
       }
     },
     "USFD": {
@@ -715,6 +754,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 3.62,
+        "predDay": 2.6,
+        "predHi": 8.3,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "PAVS": {
@@ -787,6 +837,23 @@
       "perf12M": -99.99,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 86.35,
+        "predDay": 53.7,
+        "predHi": 97.1,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small",
+        "predQuant": 59.7,
+        "qual": {
+          "adj": -6.0,
+          "confidence": "low",
+          "reasoning": "收購案有 SEC 文件背書(非純空氣),但 $8M 市值 + YTD −99.6% 的殼股體質,+91% 跳空的持續性依賴籌碼而非基本面,重度下修。"
+        }
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 86.35,
         "predDay": 53.7,
@@ -987,6 +1054,21 @@
           "dtc_squeeze"
         ],
         "flag": "dtc_squeeze"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 9.74,
+        "predDay": 6.6,
+        "predHi": 14.8,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid",
+        "flags": [
+          "dtc_squeeze"
+        ],
+        "flag": "dtc_squeeze"
       }
     },
     "ZJYL": {
@@ -1044,6 +1126,17 @@
       "perf12M": -83.96,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -6.79,
+        "predDay": -7.4,
+        "predHi": 0.0,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -6.79,
         "predDay": -7.4,
@@ -1219,6 +1312,17 @@
           7.2
         ],
         "tier": "small"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -27.87,
+        "predDay": -25.8,
+        "predHi": -25.0,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
       }
     },
     "CMRC": {
@@ -1376,6 +1480,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -34.6,
+        "predDay": -24.3,
+        "predHi": -32.2,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -34.6,
         "predDay": -24.3,
@@ -1560,6 +1675,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 2.23,
+        "predDay": 1.9,
+        "predHi": 9.4,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "NNBR": {
@@ -1726,6 +1852,17 @@
           7.2
         ],
         "tier": "small"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 7.95,
+        "predDay": 10.6,
+        "predHi": 12.9,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
       }
     },
     "RXO": {
@@ -1883,6 +2020,21 @@
       "perf12M": 45.79,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 9.75,
+        "predDay": 6.6,
+        "predHi": 14.8,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid",
+        "flags": [
+          "dtc_squeeze"
+        ],
+        "flag": "dtc_squeeze"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 9.75,
         "predDay": 6.6,
@@ -2075,6 +2227,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 0.83,
+        "predDay": 0.1,
+        "predHi": 5.3,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "SNOW": {
@@ -2246,6 +2409,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -4.04,
+        "predDay": -5.8,
+        "predHi": 2.9,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "VECO": {
@@ -2403,6 +2577,17 @@
       "perf12M": 184.25,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 6.21,
+        "predDay": 4.0,
+        "predHi": 11.0,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 6.21,
         "predDay": 4.0,
@@ -2595,6 +2780,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 0.7,
+        "predDay": 0.4,
+        "predHi": 5.2,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "OSCR": {
@@ -2767,6 +2963,17 @@
       "perf12M": 111.37,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -4.91,
+        "predDay": -5.6,
+        "predHi": -0.7,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -4.91,
         "predDay": -5.6,
@@ -2969,6 +3176,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -9.96,
+        "predDay": -9.1,
+        "predHi": -6.1,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "ADBE": {
@@ -3148,6 +3366,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -3.59,
+        "predDay": -3.6,
+        "predHi": 3.4,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "MNDY": {
@@ -3305,6 +3534,17 @@
       "perf12M": -66.4,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -4.76,
+        "predDay": -4.8,
+        "predHi": 2.2,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -4.76,
         "predDay": -4.8,
@@ -3489,6 +3729,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -4.68,
+        "predDay": -4.6,
+        "predHi": -0.5,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "WRBY": {
@@ -3646,6 +3897,17 @@
       "perf12M": 9.05,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -9.46,
+        "predDay": -9.0,
+        "predHi": -5.6,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -9.46,
         "predDay": -9.0,
@@ -3817,6 +4079,17 @@
       "perf12M": 12.8,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 4.22,
+        "predDay": 3.9,
+        "predHi": 8.9,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 4.22,
         "predDay": 3.9,
@@ -4005,6 +4278,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -2.17,
+        "predDay": -2.9,
+        "predHi": 2.2,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "CRWV": {
@@ -4165,6 +4449,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -4.55,
+        "predDay": -4.0,
+        "predHi": 2.4,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -4.55,
         "predDay": -4.0,
@@ -4345,6 +4640,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -2.69,
+        "predDay": -3.5,
+        "predHi": 1.6,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "SPCX": {
@@ -4485,6 +4791,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 3.08,
+        "predDay": 4.2,
+        "predHi": 10.3,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 3.08,
         "predDay": 4.2,
@@ -4635,6 +4952,17 @@
       "perf12M": -13.47,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 6.19,
+        "predDay": 5.2,
+        "predHi": 11.0,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 6.19,
         "predDay": 5.2,
@@ -4823,6 +5151,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -2.94,
+        "predDay": -3.8,
+        "predHi": 4.1,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "TEAM": {
@@ -4985,6 +5324,17 @@
       "perf12M": -41.89,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -6.02,
+        "predDay": -8.1,
+        "predHi": 0.8,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -6.02,
         "predDay": -8.1,
@@ -5183,6 +5533,17 @@
           4.1
         ],
         "tier": "mid"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -14.33,
+        "predDay": -13.5,
+        "predHi": -10.7,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
       }
     },
     "ROIV": {
@@ -5354,6 +5715,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -3.06,
+        "predDay": -2.8,
+        "predHi": 1.2,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "BMBL": {
@@ -5511,6 +5883,17 @@
       "perf12M": -62.09,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -4.61,
+        "predDay": -1.9,
+        "predHi": -0.4,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -4.61,
         "predDay": -1.9,
@@ -5701,6 +6084,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -12.05,
+        "predDay": -11.1,
+        "predHi": -8.3,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "VTRS": {
@@ -5872,6 +6266,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 2.66,
+        "predDay": 1.8,
+        "predHi": 7.3,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "RIG": {
@@ -6029,6 +6434,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 4.28,
+        "predDay": 4.2,
+        "predHi": 9.0,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 4.28,
         "predDay": 4.2,
@@ -6217,6 +6633,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -3.46,
+        "predDay": -2.4,
+        "predHi": 3.5,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "EBS": {
@@ -6374,6 +6801,17 @@
       "perf12M": 7.96,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -17.9,
+        "predDay": -15.0,
+        "predHi": -14.5,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -17.9,
         "predDay": -15.0,
@@ -6562,6 +7000,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -6.14,
+        "predDay": -7.2,
+        "predHi": 0.7,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "CHYM": {
@@ -6737,6 +7186,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 7.64,
+        "predDay": 6.6,
+        "predHi": 12.5,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "YXT": {
@@ -6859,6 +7319,23 @@
       "perf12M": 38.35,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -49.42,
+        "predDay": -46.8,
+        "predHi": -44.4,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small",
+        "predQuant": -48.8,
+        "qual": {
+          "adj": 2.0,
+          "confidence": "low",
+          "reasoning": "投機爆量隔日崩 −65% — 跌到這個深度後日內常見技術性死貓反彈,但只是幅度修正不改方向;此類股本質不可預測,區間帶參考即可。"
+        }
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -49.42,
         "predDay": -46.8,
@@ -7044,6 +7521,21 @@
           "dtc_squeeze"
         ],
         "flag": "dtc_squeeze"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 24.88,
+        "predDay": 15.3,
+        "predHi": 30.8,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid",
+        "flags": [
+          "dtc_squeeze"
+        ],
+        "flag": "dtc_squeeze"
       }
     },
     "MIRM": {
@@ -7201,6 +7693,17 @@
       "perf12M": 69.51,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -17.76,
+        "predDay": -15.9,
+        "predHi": -14.3,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -17.76,
         "predDay": -15.9,
@@ -7376,6 +7879,17 @@
           4.1
         ],
         "tier": "mid"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -4.98,
+        "predDay": -5.6,
+        "predHi": -0.8,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
       }
     },
     "VRT": {
@@ -7542,6 +8056,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -2.35,
+        "predDay": -3.1,
+        "predHi": 4.7,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -2.35,
         "predDay": -3.1,
@@ -7752,6 +8277,23 @@
           "confidence": "mid-high",
           "reasoning": "低基期(YTD −28%)撞上改寫營收軌道的新藥放量(BRINSUPRI 單季 $3.09 億、全年指引大幅上調)— 機構持倉不足被迫追進,屬多日重估事件而非一日題材,跳空比小型股基準更易守住並延伸。"
         }
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 26.29,
+        "predDay": 24.9,
+        "predHi": 32.3,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big",
+        "predQuant": 21.9,
+        "qual": {
+          "adj": 3.0,
+          "confidence": "mid-high",
+          "reasoning": "低基期(YTD −28%)撞上改寫營收軌道的新藥放量(BRINSUPRI 單季 $3.09 億、全年指引大幅上調)— 機構持倉不足被迫追進,屬多日重估事件而非一日題材,跳空比小型股基準更易守住並延伸。"
+        }
       }
     },
     "KVUE": {
@@ -7914,6 +8456,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 0.61,
+        "predDay": -0.1,
+        "predHi": 5.1,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 0.61,
         "predDay": -0.1,
@@ -8089,6 +8642,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 0.97,
+        "predDay": 0.6,
+        "predHi": 5.5,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 0.97,
         "predDay": 0.6,
@@ -8277,6 +8841,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -0.29,
+        "predDay": -0.7,
+        "predHi": 4.1,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "BDX": {
@@ -8439,6 +9014,17 @@
       "perf12M": 29.38,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 2.84,
+        "predDay": 2.0,
+        "predHi": 7.5,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 2.84,
         "predDay": 2.0,
@@ -8631,6 +9217,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -2.7,
+        "predDay": -3.5,
+        "predHi": 4.3,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "EPAM": {
@@ -8793,6 +9390,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -18.09,
+        "predDay": -17.3,
+        "predHi": -14.7,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -18.09,
         "predDay": -17.3,
@@ -8978,6 +9586,17 @@
           4.1
         ],
         "tier": "mid"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -11.92,
+        "predDay": -11.9,
+        "predHi": -8.2,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
       }
     },
     "HONA": {
@@ -9124,6 +9743,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -18.43,
+        "predDay": -21.7,
+        "predHi": -15.0,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -18.43,
         "predDay": -21.7,
@@ -9304,6 +9934,17 @@
           4.1
         ],
         "tier": "mid"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 13.92,
+        "predDay": 10.1,
+        "predHi": 19.2,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
       }
     },
     "GENI": {
@@ -9461,6 +10102,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 8.04,
+        "predDay": 7.6,
+        "predHi": 13.0,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 8.04,
         "predDay": 7.6,
@@ -9632,6 +10284,21 @@
       "perf12M": 14.12,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 2.14,
+        "predDay": 2.2,
+        "predHi": 6.7,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big",
+        "flags": [
+          "dtc_squeeze"
+        ],
+        "flag": "dtc_squeeze"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 2.14,
         "predDay": 2.2,
@@ -9820,6 +10487,21 @@
           "dtc_squeeze"
         ],
         "flag": "dtc_squeeze"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 2.97,
+        "predDay": 2.6,
+        "predHi": 7.6,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big",
+        "flags": [
+          "dtc_squeeze"
+        ],
+        "flag": "dtc_squeeze"
       }
     },
     "PH": {
@@ -9991,6 +10673,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 7.37,
+        "predDay": 6.3,
+        "predHi": 12.3,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "FRGT": {
@@ -10116,6 +10809,17 @@
           7.2
         ],
         "tier": "small"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -14.33,
+        "predDay": -13.9,
+        "predHi": -7.8,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
       }
     },
     "WYHG": {
@@ -10173,6 +10877,23 @@
       "perf12M": 82.48,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 118.22,
+        "predDay": 81.5,
+        "predHi": 130.3,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small",
+        "predQuant": 89.5,
+        "qual": {
+          "adj": -8.0,
+          "confidence": "low",
+          "reasoning": "查無任何消息的中資微型股 +137%(還有 1 拆 4 前科)— 拉高出貨模式的教科書樣本,統計模型無法涵蓋人為操縱,頂格下修並視為不可預測。"
+        }
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 118.22,
         "predDay": 81.5,
@@ -10373,6 +11094,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 15.96,
+        "predDay": 13.8,
+        "predHi": 21.3,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "HWM": {
@@ -10535,6 +11267,17 @@
       "perf12M": 65.44,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 3.56,
+        "predDay": 2.6,
+        "predHi": 8.2,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 3.56,
         "predDay": 2.6,
@@ -10715,6 +11458,17 @@
           7.2
         ],
         "tier": "small"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 27.93,
+        "predDay": 24.5,
+        "predHi": 34.0,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
       }
     },
     "VRRM": {
@@ -10872,6 +11626,17 @@
       "perf12M": -80.61,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -16.03,
+        "predDay": -12.5,
+        "predHi": -12.5,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -16.03,
         "predDay": -12.5,
@@ -11056,6 +11821,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -4.56,
+        "predDay": -3.7,
+        "predHi": -0.4,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "TRGP": {
@@ -11222,6 +11998,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -1.09,
+        "predDay": -1.9,
+        "predHi": 3.3,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -1.09,
         "predDay": -1.9,
@@ -11412,6 +12199,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -14.48,
+        "predDay": -16.4,
+        "predHi": -8.0,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "SRE": {
@@ -11574,6 +12372,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -2.3,
+        "predDay": -2.6,
+        "predHi": 2.0,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -2.3,
         "predDay": -2.6,
@@ -11758,6 +12567,21 @@
           "dtc_squeeze"
         ],
         "flag": "dtc_squeeze"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 2.08,
+        "predDay": 1.6,
+        "predHi": 6.7,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big",
+        "flags": [
+          "dtc_squeeze"
+        ],
+        "flag": "dtc_squeeze"
       }
     },
     "SATL": {
@@ -11915,6 +12739,17 @@
         "prev_close": 3.49
       },
       "modelPred": {
+        "version": "v12",
+        "gap": 4.77,
+        "predDay": 7.8,
+        "predHi": 9.5,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 4.77,
         "predDay": 7.8,
@@ -12091,6 +12926,21 @@
       "perf12M": 81.76,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 32.4,
+        "predDay": 20.0,
+        "predHi": 40.6,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small",
+        "flags": [
+          "contract_fade"
+        ],
+        "flag": "contract_fade"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 32.4,
         "predDay": 20.0,
@@ -12288,6 +13138,17 @@
           4.1
         ],
         "tier": "mid"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -23.7,
+        "predDay": -19.3,
+        "predHi": -20.6,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
       }
     },
     "WMS": {
@@ -12463,6 +13324,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -0.11,
+        "predDay": -0.4,
+        "predHi": 4.3,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "UMAC": {
@@ -12622,6 +13494,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -4.31,
+        "predDay": -4.9,
+        "predHi": -0.1,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -4.31,
         "predDay": -4.9,
@@ -12818,6 +13701,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -2.33,
+        "predDay": -1.8,
+        "predHi": 4.7,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "CF": {
@@ -12984,6 +13878,17 @@
       "perf12M": 22.31,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -6.33,
+        "predDay": -6.1,
+        "predHi": -2.2,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -6.33,
         "predDay": -6.1,
@@ -13164,6 +14069,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -1.13,
+        "predDay": -1.4,
+        "predHi": 3.3,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "TROX": {
@@ -13321,6 +14237,21 @@
       "perf12M": 84.83,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 5.13,
+        "predDay": 8.4,
+        "predHi": 9.9,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small",
+        "flags": [
+          "dtc_squeeze"
+        ],
+        "flag": "dtc_squeeze"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 5.13,
         "predDay": 8.4,
@@ -13535,6 +14466,23 @@
           "confidence": "mid",
           "reasoning": "GAAP 轉盈是保險科技股的重估級事件,通常多日發酵;但 YTD +101% 已有相當程度定價,上調幅度給溫和。"
         }
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 13.8,
+        "predDay": 11.6,
+        "predHi": 19.1,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid",
+        "predQuant": 10.1,
+        "qual": {
+          "adj": 1.5,
+          "confidence": "mid",
+          "reasoning": "GAAP 轉盈是保險科技股的重估級事件,通常多日發酵;但 YTD +101% 已有相當程度定價,上調幅度給溫和。"
+        }
       }
     },
     "GTLB": {
@@ -13692,6 +14640,17 @@
       "perf12M": -20.41,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -4.87,
+        "predDay": -4.9,
+        "predHi": 2.0,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -4.87,
         "predDay": -4.9,
@@ -13880,6 +14839,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -15.56,
+        "predDay": -14.4,
+        "predHi": -12.0,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "LZ": {
@@ -14047,6 +15017,17 @@
       "perf12M": -31.66,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -27.28,
+        "predDay": -24.8,
+        "predHi": -24.4,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -27.28,
         "predDay": -24.8,
@@ -14226,6 +15207,21 @@
           "dtc_squeeze"
         ],
         "flag": "dtc_squeeze"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 27.94,
+        "predDay": 24.3,
+        "predHi": 34.0,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small",
+        "flags": [
+          "dtc_squeeze"
+        ],
+        "flag": "dtc_squeeze"
       }
     },
     "INLF": {
@@ -14293,6 +15289,17 @@
       "perf12M": -99.87,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -18.34,
+        "predDay": -19.0,
+        "predHi": -12.0,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -18.34,
         "predDay": -19.0,
@@ -14473,6 +15480,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 4.83,
+        "predDay": 4.5,
+        "predHi": 9.6,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "GDRX": {
@@ -14630,6 +15648,17 @@
       "perf12M": -21.12,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 5.5,
+        "predDay": 9.1,
+        "predHi": 10.3,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 5.5,
         "predDay": 9.1,
@@ -14814,6 +15843,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 2.87,
+        "predDay": 2.5,
+        "predHi": 7.5,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "SKHY": {
@@ -14984,6 +16024,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -6.96,
+        "predDay": -9.2,
+        "predHi": -0.1,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -6.96,
         "predDay": -9.2,
@@ -15174,6 +16225,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -5.09,
+        "predDay": -7.0,
+        "predHi": 1.8,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "IX": {
@@ -15336,6 +16398,17 @@
       "perf12M": 78.27,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 2.66,
+        "predDay": 2.6,
+        "predHi": 7.3,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 2.66,
         "predDay": 2.6,
@@ -15526,6 +16599,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -19.1,
+        "predDay": -23.7,
+        "predHi": -15.8,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "LXRX": {
@@ -15683,6 +16767,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -20.82,
+        "predDay": -18.2,
+        "predHi": -17.6,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -20.82,
         "predDay": -18.2,
@@ -15858,6 +16953,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -9.25,
+        "predDay": -9.9,
+        "predHi": -5.3,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "PEPG": {
@@ -16017,6 +17123,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 8.59,
+        "predDay": 9.5,
+        "predHi": 16.1,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 8.59,
         "predDay": 9.5,
@@ -16217,6 +17334,23 @@
           "confidence": "mid",
           "reasoning": "創紀錄季度+用戶破千萬+獲利暴增,健康的中等跳空(+5%)歷史上守住率最好;YTD +88% 是唯一的折價理由,小幅上調。"
         }
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 9.64,
+        "predDay": 8.1,
+        "predHi": 14.7,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid",
+        "predQuant": 7.1,
+        "qual": {
+          "adj": 1.0,
+          "confidence": "mid",
+          "reasoning": "創紀錄季度+用戶破千萬+獲利暴增,健康的中等跳空(+5%)歷史上守住率最好;YTD +88% 是唯一的折價理由,小幅上調。"
+        }
       }
     },
     "SPHL": {
@@ -16274,6 +17408,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 5.69,
+        "predDay": 5.6,
+        "predHi": 13.0,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 5.69,
         "predDay": 5.6,
@@ -16454,6 +17599,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 2.86,
+        "predDay": 2.5,
+        "predHi": 7.5,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "EOLS": {
@@ -16624,6 +17780,21 @@
           "dtc_squeeze"
         ],
         "flag": "dtc_squeeze"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 6.63,
+        "predDay": 9.6,
+        "predHi": 11.5,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small",
+        "flags": [
+          "dtc_squeeze"
+        ],
+        "flag": "dtc_squeeze"
       }
     },
     "HYLN": {
@@ -16781,6 +17952,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 6.6,
+        "predDay": 6.6,
+        "predHi": 14.0,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 6.6,
         "predDay": 6.6,
@@ -16965,6 +18147,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -2.97,
+        "predDay": -2.8,
+        "predHi": 1.3,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "SABR": {
@@ -17131,6 +18324,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 5.66,
+        "predDay": 5.4,
+        "predHi": 10.4,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "JLHL": {
@@ -17198,6 +18402,17 @@
       "perf12M": 102.11,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -13.26,
+        "predDay": -13.0,
+        "predHi": -6.7,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -13.26,
         "predDay": -13.0,
@@ -17378,6 +18593,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 0.27,
+        "predDay": -0.5,
+        "predHi": 4.7,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "AXON": {
@@ -17540,6 +18766,17 @@
       "perf12M": -31.83,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -5.29,
+        "predDay": -5.2,
+        "predHi": -1.1,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -5.29,
         "predDay": -5.2,
@@ -17750,6 +18987,23 @@
           "confidence": "low-mid",
           "reasoning": "預期已極低(YTD −52%)仍下修指引=故事受損確認,但單日 −24% 對一家仍年增 20% 的 SaaS 過激,類似案例尾盤常獲承接;方向不變、幅度應收斂。"
         }
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -23.61,
+        "predDay": -17.6,
+        "predHi": -20.5,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid",
+        "predQuant": -19.6,
+        "qual": {
+          "adj": 2.0,
+          "confidence": "low-mid",
+          "reasoning": "預期已極低(YTD −52%)仍下修指引=故事受損確認,但單日 −24% 對一家仍年增 20% 的 SaaS 過激,類似案例尾盤常獲承接;方向不變、幅度應收斂。"
+        }
       }
     },
     "WDC": {
@@ -17939,6 +19193,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -15.44,
+        "predDay": -14.3,
+        "predHi": -11.9,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "ZG": {
@@ -18096,6 +19361,17 @@
       "perf12M": -60.05,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -9.16,
+        "predDay": -9.3,
+        "predHi": -5.2,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -9.16,
         "predDay": -9.3,
@@ -18292,6 +19568,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -3.01,
+        "predDay": -3.9,
+        "predHi": 4.0,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "AMD": {
@@ -18470,6 +19757,17 @@
         "prev_close": 485.39
       },
       "modelPred": {
+        "version": "v12",
+        "gap": -1.82,
+        "predDay": -2.6,
+        "predHi": 5.2,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -1.82,
         "predDay": -2.6,
@@ -18659,6 +19957,21 @@
           "dtc_squeeze"
         ],
         "flag": "dtc_squeeze"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 16.36,
+        "predDay": 18.7,
+        "predHi": 21.8,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small",
+        "flags": [
+          "dtc_squeeze"
+        ],
+        "flag": "dtc_squeeze"
       }
     },
     "EVRG": {
@@ -18830,6 +20143,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -0.93,
+        "predDay": -1.5,
+        "predHi": 3.5,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "BLLN": {
@@ -18972,6 +20296,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -28.12,
+        "predDay": -22.0,
+        "predHi": -25.3,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -28.12,
         "predDay": -22.0,
@@ -19157,6 +20492,17 @@
           4.1
         ],
         "tier": "mid"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -12.4,
+        "predDay": -11.8,
+        "predHi": -8.7,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
       }
     },
     "OKLO": {
@@ -19214,6 +20560,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 4.21,
+        "predDay": 5.8,
+        "predHi": 11.5,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 4.21,
         "predDay": 5.8,
@@ -19389,6 +20746,17 @@
           4.1
         ],
         "tier": "mid"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -11.44,
+        "predDay": -11.5,
+        "predHi": -7.6,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
       }
     },
     "Z": {
@@ -19555,6 +20923,17 @@
           4.1
         ],
         "tier": "mid"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -7.31,
+        "predDay": -7.7,
+        "predHi": -3.3,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
       }
     },
     "CRON": {
@@ -19712,6 +21091,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 10.29,
+        "predDay": 10.4,
+        "predHi": 15.3,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 10.29,
         "predDay": 10.4,
@@ -19900,6 +21290,21 @@
           "dtc_squeeze"
         ],
         "flag": "dtc_squeeze"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 2.37,
+        "predDay": 3.4,
+        "predHi": 9.6,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big",
+        "flags": [
+          "dtc_squeeze"
+        ],
+        "flag": "dtc_squeeze"
       }
     },
     "LAMR": {
@@ -20057,6 +21462,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -0.46,
+        "predDay": -0.7,
+        "predHi": 4.0,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -0.46,
         "predDay": -0.7,
@@ -20241,6 +21657,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -4.01,
+        "predDay": -4.2,
+        "predHi": 2.9,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "PZZA": {
@@ -20398,6 +21825,17 @@
       "perf12M": -29.97,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -8.4,
+        "predDay": -5.2,
+        "predHi": -4.4,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -8.4,
         "predDay": -5.2,
@@ -20573,6 +22011,17 @@
           7.2
         ],
         "tier": "small"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 4.92,
+        "predDay": 8.2,
+        "predHi": 9.7,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
       }
     },
     "VISN": {
@@ -20730,6 +22179,17 @@
       "perf12M": 60.65,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -6.96,
+        "predDay": -7.7,
+        "predHi": -2.9,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -6.96,
         "predDay": -7.7,
@@ -20918,6 +22378,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -4.58,
+        "predDay": -6.4,
+        "predHi": 2.3,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "ITT": {
@@ -21080,6 +22551,21 @@
       "perf12M": 28.28,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 5.35,
+        "predDay": 4.0,
+        "predHi": 10.1,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big",
+        "flags": [
+          "dtc_squeeze"
+        ],
+        "flag": "dtc_squeeze"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 5.35,
         "predDay": 4.0,
@@ -21268,6 +22754,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -0.16,
+        "predDay": 1.1,
+        "predHi": 6.9,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "AMIX": {
@@ -21423,6 +22920,17 @@
       "perf12M": -51.25,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 8.83,
+        "predDay": 6.8,
+        "predHi": 16.3,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 8.83,
         "predDay": 6.8,
@@ -21610,6 +23118,17 @@
           4.1
         ],
         "tier": "mid"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -4.48,
+        "predDay": -3.9,
+        "predHi": 2.4,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
       }
     },
     "CLRO": {
@@ -21733,6 +23252,23 @@
       "perf12M": 140.2,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 225.17,
+        "predDay": 140.9,
+        "predHi": 241.7,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small",
+        "predQuant": 148.9,
+        "qual": {
+          "adj": -8.0,
+          "confidence": "low(方向較有把握,幅度不可測)",
+          "reasoning": "無新消息的第二日連噴(+214%)+ 合併案稀釋在途 — 典型拉高退潮形態,量化外插的 +142% 預測在樂透帶內無意義,方向性下修到頂格。"
+        }
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 225.17,
         "predDay": 140.9,
@@ -21919,6 +23455,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -5.05,
+        "predDay": -5.0,
+        "predHi": -0.9,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "DFNS": {
@@ -22054,6 +23601,17 @@
         "prev_close": 84.98
       },
       "modelPred": {
+        "version": "v12",
+        "gap": 8.36,
+        "predDay": 5.8,
+        "predHi": 15.8,
+        "band": [
+          -6.6,
+          7.2
+        ],
+        "tier": "small"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 8.36,
         "predDay": 5.8,
@@ -22229,6 +23787,17 @@
           4.1
         ],
         "tier": "mid"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -12.39,
+        "predDay": -11.9,
+        "predHi": -8.7,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
       }
     },
     "HIMX": {
@@ -22386,6 +23955,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 4.87,
+        "predDay": 5.0,
+        "predHi": 9.6,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 4.87,
         "predDay": 5.0,
@@ -22566,6 +24146,17 @@
           2.1
         ],
         "tier": "big"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -15.25,
+        "predDay": -13.8,
+        "predHi": -11.7,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
       }
     },
     "WPP": {
@@ -22698,6 +24289,17 @@
       "perf12M": -1.87,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 26.59,
+        "predDay": 16.0,
+        "predHi": 32.6,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 26.59,
         "predDay": 16.0,
@@ -22888,6 +24490,17 @@
           4.1
         ],
         "tier": "mid"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -11.96,
+        "predDay": -11.6,
+        "predHi": -8.2,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
       }
     },
     "CEG": {
@@ -23062,6 +24675,17 @@
       "perf12M": -16.92,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 6.74,
+        "predDay": 5.6,
+        "predHi": 11.6,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 6.74,
         "predDay": 5.6,
@@ -23258,6 +24882,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -3.33,
+        "predDay": -3.2,
+        "predHi": 3.6,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "TIGO": {
@@ -23420,6 +25055,17 @@
       "perf12M": 158.29,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 7.96,
+        "predDay": 6.5,
+        "predHi": 12.9,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 7.96,
         "predDay": 6.5,
@@ -23605,6 +25251,17 @@
           4.1
         ],
         "tier": "mid"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 9.99,
+        "predDay": 6.9,
+        "predHi": 15.0,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
       }
     },
     "SGI": {
@@ -23767,6 +25424,17 @@
       "perf12M": -5.51,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -6.73,
+        "predDay": -6.4,
+        "predHi": -2.7,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -6.73,
         "predDay": -6.4,
@@ -23947,6 +25615,17 @@
           3.4
         ],
         "tier": "na"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -2.46,
+        "predDay": -2.4,
+        "predHi": 1.9,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
       }
     },
     "RL": {
@@ -24109,6 +25788,17 @@
       "perf12M": 25.3,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": -2.64,
+        "predDay": -3.0,
+        "predHi": 1.7,
+        "band": [
+          -2.4,
+          2.1
+        ],
+        "tier": "big"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": -2.64,
         "predDay": -3.0,
@@ -24294,6 +25984,17 @@
           4.1
         ],
         "tier": "mid"
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": -12.84,
+        "predDay": -12.8,
+        "predHi": -9.1,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid"
       }
     },
     "MCK": {
@@ -24460,6 +26161,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 3.66,
+        "predDay": 3.0,
+        "predHi": 8.3,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 3.66,
         "predDay": 3.0,
@@ -24678,6 +26390,27 @@
           "confidence": "mid",
           "reasoning": "DTC 5.7 的軋空燃料 + 全年展望上調 + 毛利率轉折,盤中回檔容易被空頭回補接走 — 小型股基準的 fade 係數對這種組合過度悲觀。注意 TV 網格尚未更新本季,量化層吃到的是舊季數據。"
         }
+      },
+      "modelPredScan": {
+        "version": "v12",
+        "gap": 28.28,
+        "predDay": 20.8,
+        "predHi": 34.4,
+        "band": [
+          -3.7,
+          4.1
+        ],
+        "tier": "mid",
+        "flags": [
+          "dtc_squeeze"
+        ],
+        "flag": "dtc_squeeze",
+        "predQuant": 16.8,
+        "qual": {
+          "adj": 4.0,
+          "confidence": "mid",
+          "reasoning": "DTC 5.7 的軋空燃料 + 全年展望上調 + 毛利率轉折,盤中回檔容易被空頭回補接走 — 小型股基準的 fade 係數對這種組合過度悲觀。注意 TV 網格尚未更新本季,量化層吃到的是舊季數據。"
+        }
       }
     },
     "IONQ": {
@@ -24839,6 +26572,17 @@
       "perf12M": null,
       "prevOhlcv": null,
       "modelPred": {
+        "version": "v12",
+        "gap": 4.96,
+        "predDay": 4.5,
+        "predHi": 9.7,
+        "band": [
+          -3.2,
+          3.4
+        ],
+        "tier": "na"
+      },
+      "modelPredScan": {
         "version": "v12",
         "gap": 4.96,
         "predDay": 4.5,

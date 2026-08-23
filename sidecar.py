@@ -251,6 +251,11 @@ def _premarket_watch():
                 import model_predict as mp
                 import urllib.request as _ur
                 P = mp.load(os.path.join(base, 'model_params.json'))
+                # 2026-08-23:原本只傳 (s, P),spike 分位表與 GBM 都沒帶進去,質化層也沒套
+                # → 每個交易日 09:37 ET 開盤定格後,IDEA 卡的主打「盤中最高區間」與質化
+                # 說明就整批消失(9 個交易日有 7 天 predHi 全空)。
+                SP = mp.spike_table()
+                SM = mp.load_spike_gbm()
                 dates = mp.load(os.path.join(base, 'dashboard', 'dates.json'))
                 date = dates[0]['date'] if isinstance(dates, list) else dates['dates'][0]['date']
                 # 只准動「今天」的包(2026-08-08 修:原本無條件刷 dates[0],於是每個交易日
@@ -261,6 +266,9 @@ def _premarket_watch():
                 if et_now.weekday() >= 5 or date != et_now.strftime('%Y-%m-%d'):
                     _time.sleep(300)
                     continue
+                qual_all = mp.load(os.path.join(base, 'model_qual.json')) or {}
+                QUAL = {k: v for k, v in qual_all.items()
+                        if isinstance(v, dict) and v.get('date') == date}
                 pk = os.path.join(base, 'dashboard', 'data', f'{date}.json')
                 d = mp.load(pk)
                 stocks = d.get('stocks') or {}
@@ -294,10 +302,15 @@ def _premarket_watch():
                         chg, last, vol = q
                     s['chgPct'] = round(chg, 2); s['last'] = last
                     if vol: s['volume'] = vol
-                    pred = mp.predict(s, P)
+                    pred = mp.predict(s, P, SP, SM)
                     if pred:
+                        pred = mp.apply_qual(pred, sym, QUAL)
                         pred['asOf'] = et_hm + (' 開盤定格' if open_lock else '')
                         s['modelPred'] = pred
+                        # 開盤定格 = 用真實開盤價算 gap 再預測收盤,仍是 ex-ante。
+                        # 獨立存一份,別讓後續 rebuild 洗掉對帳基準(2026-08-23)。
+                        if open_lock:
+                            s['modelPredOpen'] = json.loads(json.dumps(pred))
                     return 1
                 with _TPE(max_workers=8) as ex:
                     n = sum(ex.map(refresh, list(stocks.items())))

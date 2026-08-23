@@ -295,13 +295,20 @@ def cmd_verify(date):
     import numpy as np
     pk = jload(os.path.join('dashboard', 'data', f'{date}.json'))
     if not pk: print(f'[verify] no packet {date}'); return
-    stocks = {k: v for k, v in (pk.get('stocks') or {}).items() if v.get('modelPred')}
+    # 錨點選擇(2026-08-23):modelPred 是活欄位 — sidecar 盤前刷新、開盤定格、事後
+    # rebuild 三方輪流覆寫,對帳基準因此不可重現(8/21 同一天先後驗出 43% 與 34%)。
+    # 改吃凍結欄位:主序列 = 開盤定格錨(歷史多數日的基準),缺才退回 modelPred。
+    def _pick(v):
+        return v.get('modelPredOpen') or v.get('modelPred')
+    stocks = {k: v for k, v in (pk.get('stocks') or {}).items() if _pick(v)}
+    _nopen = sum(1 for v in stocks.values() if v.get('modelPredOpen'))
+    _anchor = '開盤定格錨' if _nopen >= len(stocks) * 0.5 else 'modelPred(未凍結)'
     cache = refresh_bars(sorted(stocks))
     rows = []
     for sym, s in stocks.items():
         o = outcomes(cache, sym, date)
         if not o: continue
-        mp = s['modelPred']
+        mp = _pick(s)
         pq = mp.get('predQuant', mp['predDay'])   # 純量化值(質化層調整前)
         rows.append(dict(sym=sym, tier=mp.get('tier', 'na'), type=(s.get('type') or '?').lower(),
                          gap_pred_base=mp.get('gap'), gap_real=o['gap'],
@@ -312,7 +319,22 @@ def cmd_verify(date):
                          hit=1 if abs(o['day']-mp['predDay']) <= max(3.0, 0.25*abs(mp['predDay'])) else 0))
     if not rows: print('[verify] no verifiable rows'); return
     errs = np.array([r['err'] for r in rows]); hits = np.mean([r['hit'] for r in rows])*100
-    print(f'=== model verify {date}: n={len(rows)} 命中={hits:.0f}% bias={np.mean(errs):+.2f} MAE={np.mean(np.abs(errs)):.2f} ===')
+    print(f'=== model verify {date} [{_anchor}]: n={len(rows)} 命中={hits:.0f}% '
+          f'bias={np.mean(errs):+.2f} MAE={np.mean(np.abs(errs)):.2f} ===')
+    # 掃描錨並行對照:modelPredScan = 掃描當下用盤前快照 gap 的預測。兩者都是 ex-ante,
+    # 分開追蹤才知道「開盤定格」這一步實際加值多少(不是拿來挑好看的數字報)。
+    srows = []
+    for sym, s2 in (pk.get('stocks') or {}).items():
+        ms = s2.get('modelPredScan')
+        if not ms or ms.get('predDay') is None: continue
+        o2_ = outcomes(cache, sym, date)
+        if not o2_: continue
+        srows.append((o2_['day'] - ms['predDay'], ms['predDay']))
+    if srows:
+        se = np.array([r[0] for r in srows])
+        sh = np.mean([1 if abs(e) <= max(3.0, 0.25 * abs(pv)) else 0 for e, pv in srows]) * 100
+        print(f'  掃描錨(盤前快照)對照:n={len(srows)} 命中={sh:.0f}% '
+              f'bias={np.mean(se):+.2f} MAE={np.mean(np.abs(se)):.2f}')
     for t in ('big', 'mid', 'small', 'na'):
         sub = [r for r in rows if r['tier'] == t]
         if len(sub) >= 5:
@@ -341,7 +363,7 @@ def cmd_verify(date):
         print(f'  盤中最高 spike(n={len(sr)}):帶內率 {inb:.0f}%(理想50)、到價率 P25 {f25:.0f}%/P50 {f50:.0f}%/P75 {f75:.0f}%(盲測基準 67/46/27)、P50 MAE {np.mean(np.abs(ext-p50)):.2f}')
     rec = jload('model_track_record.json', [])
     rec = [x for x in rec if x.get('date') != date]
-    rec.append(dict(date=date, n=len(rows), hit=round(float(hits)), bias=round(float(np.mean(errs)), 2),
+    rec.append(dict(date=date, anchor=_anchor, n=len(rows), hit=round(float(hits)), bias=round(float(np.mean(errs)), 2),
                     mae=round(float(np.mean(np.abs(errs))), 2),
                     tiers={t: dict(n=len([r for r in rows if r['tier'] == t]),
                                    bias=round(float(np.mean([r['err'] for r in rows if r['tier'] == t] or [0])), 2))
