@@ -3547,7 +3547,7 @@ async function renderSips(subtab) {
         ? '在 Claude Code 跑 <code>/SIPs</code>。'
         : tab === 'ollama'
         ? '本機跑 <code>D:\SIPs\ollama-sips.cmd</code>（或請 Claude 跑 <code>/SIPs-ollama-picks</code>）。'
-        : `在 ${({codex:'Codex',gemini:'Gemini',grok:'Grok'})[tab]} CLI 跑 <code>/SIPs-${tab}-full</code> 或 <code>/SIPs-${tab}-picks</code>。`;
+        : `在 ${({codex:'Codex',gemini:'Gemini',grok:'Grok'})[tab]} CLI 跑 <code>/SIPs</code>(統一版,預設從頭跑完整一輪)。`;
       stack.innerHTML = `<div class="sip-empty">尚無 ${srcMeta.label} 的清單${hiddenNote}。<br><br>${cmdHint}<br><br>或在 <code>D:\\SIPs\\${srcMeta.picksFile}</code> 手動加入 <code>{"picks":[{"symbol":"X","rank":1,"rationale":"...","intent":"long"}]}</code> 後 rebuild dashboard 即可看到。</div>`;
       return;
     }

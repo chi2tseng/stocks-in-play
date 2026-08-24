@@ -14,11 +14,11 @@ allowed-tools: Bash, Read, Write, WebSearch, WebFetch, Grep, Glob
 
 > **⚠ 身分路由(先讀我):** 本檔是 **Claude 專用**的總指揮流程。
 > 若你不是 Claude(你是 Codex/ChatGPT、Gemini/agy 或 Grok),而使用者只打了 `/SIPs`:
-> **你的角色 = 自家評審,不是跑本檔。** 立刻改讀你自己的 picks skill 並照做:
-> Codex → `C:\Users\chi2t\.codex\skills\SIPs-codex-picks\SKILL.md`;
-> Gemini → `C:\Users\chi2t\.gemini\skills\SIPs-gemini-picks\SKILL.md`;
-> Grok → `C:\Users\chi2t\.grok\skills\SIPs-grok-picks\SKILL.md`。
-> 只有使用者明講「full / 全套掃描」時,非 Claude agent 才執行本檔全流程(另見 D:\SIPs\AGENTS.md)。
+> **你的角色 = 獨立評審,不是跑本檔。** 立刻改讀你自己 CLI 的統一版 SIPs skill 並照做(2026-08-23 起每家只有一個,預設從頭跑完整一輪):
+> Codex → `C:\Users\chi2t\.codex\skills\SIPs\SKILL.md`;
+> Gemini → `C:\Users\chi2t\.gemini\skills\SIPs\SKILL.md`;
+> Grok → `C:\Users\chi2t\.grok\skills\SIPs\SKILL.md`。
+> 舊的 -full/-picks/-gather 變體已於 2026-08-23 併入上述單一 skill(另見 D:\SIPs\AGENTS.md)。
 
 > **本檔為正本;`/SIPs` 實際注入 `~/.claude/commands/SIPs.md`(語意需同步,見硬規則四副本)。**
 
@@ -68,7 +68,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 - **`build_dashboard.py`** — assembles `dashboard/data/<DATE>.json` + writes the static SPA at `dashboard/index.html` (revolut design system, "Stocks In Play" branding). Merges `shorts.json` + `claude_picks.json` if present.
 - **`news_detail.json`** — per-symbol detail + `publishedAt` (real news publication time). Optional input; spec at `NEWS_TIME_SPEC.md`.
 - **`claude_picks.json`** — `{ "picks": [ {"symbol", "rank", "intent": "long"|"short", "rationale", "neglected"?: bool} ] }`. Drives the **default "Claude 精選"** subtab on Today's SIPs. **Direction-match rule:** longs must be gap-up, shorts must be gap-down — mismatches are silently filtered out by the dashboard. Symbols not in today's candidates also drop.
-- **`codex_picks.json` / `gemini_picks.json` / `grok_picks.json`** — 同 schema 的其他 agent picks 檔,各驅動自己的 subtab(ChatGPT / Gemini / Grok)。**多 agent 分工契約(2026-07-10 定版):機械掃描只做一次、新聞研究與判斷各自獨立** — 共享研究包 = 當日 `dashboard/data/<DATE>.json`(由 Claude `/SIPs`、Grok `/SIPs-grok-gather` 或 Gemini `/SIPs-gemini-gather` 產出,內含每檔 catalyst/newsDetail/tv/shorts);三個評審(`/SIPs-codex-picks`、`/SIPs-gemini-picks`、`/SIPs-grok-picks`)讀包後**各自上網查證、各自判斷,不共享新聞、不互看**。每個 agent 只准寫自己的 picks 檔。
+- **`codex_picks.json` / `gemini_picks.json` / `grok_picks.json`** — 同 schema 的其他 agent picks 檔,各驅動自己的 subtab(ChatGPT / Gemini / Grok)。**多 agent 分工契約(2026-07-10 定版):機械掃描只做一次、新聞研究與判斷各自獨立** — 共享研究包 = 當日 `dashboard/data/<DATE>.json`(由任一家的 /SIPs 產出,內含每檔 catalyst/newsDetail/tv/shorts);三個評審(各自 CLI 的統一版 `/SIPs`,2026-08-23 起取代 -full/-picks/-gather 變體)讀包後**各自上網查證、各自判斷,不共享新聞、不互看**。每個 agent 只准寫自己的 picks 檔。
 - **`NEWS_TIME_SPEC.md`** — contract for how to source + format real news timestamps. Read it BEFORE writing `news_detail.json` (see § 8 below for the integration).
 
 **Dashboard URL:** http://127.0.0.1:5510/ (served by the `sips-dashboard` preview server, started by `mcp__Claude_Preview__preview_start` with name `sips-dashboard` and `port: 5510`). The server is always running once started; the dashboard auto-refreshes when `data/<DATE>.json` is rewritten.
@@ -106,7 +106,7 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 
 **Cost math (why this matters):** gathering ≈ 400-500k tokens/run. At main-model pricing that dwarfs everything else; on sonnet it's ~1/3 the cost of the main model (haiku would be ~1/10th, but catalyst research needs sonnet's judgment — direction + real-news calls — so we pay for accuracy here). Final analysis is ~30-60k tokens and stays premium. Net effect: same-quality picks at roughly 70-85% lower spend.
 
-**When running under Gemini/Codex CLI** (`/SIPs-gemini-full`, `/SIPs-codex-full`): the Agent-model params don't exist there — keep the same structure (delegate gathering to whatever cheap sub-mechanism is available, or just do it inline) and keep the output caps + main-context hygiene rules, which save tokens on any runtime.
+**When running under Gemini/Codex CLI**(該家統一版 `/SIPs`): the Agent-model params don't exist there — keep the same structure (delegate gathering to whatever cheap sub-mechanism is available, or just do it inline) and keep the output caps + main-context hygiene rules, which save tokens on any runtime.
 
 ---
 
@@ -1558,16 +1558,16 @@ Grok 用 X 即時搜尋、Gemini 用 Google、Codex 用自家 WebSearch,各查�
 
 ```bash
 # Codex (ChatGPT) — 旗標已實測(Bash tool 發射)。註:免費額度已耗盡至 2026-07-31,期間此席會 fail-fast — 屬預期,收尾照樣出其他家
-cd /d/SIPs && "/c/Users/chi2t/AppData/Local/OpenAI/Codex/bin/codex.exe" exec -m gpt-5.5 -c model_reasoning_effort=xhigh --skip-git-repo-check --dangerously-bypass-approvals-and-sandbox "/SIPs-codex-picks"
+cd /d/SIPs && "/c/Users/chi2t/AppData/Local/OpenAI/Codex/bin/codex.exe" exec -m gpt-5.5 -c model_reasoning_effort=xhigh --skip-git-repo-check --dangerously-bypass-approvals-and-sandbox "/SIPs"
 ```
 ```bash
 # Gemini — 經 agy(Antigravity CLI)發射,已實測 2026-07-10(gemini CLI 免費層被 Google 下線;agy 共用 IDE 登入)。
 # agy 的 accept-edits 不放行 git → **同一條發射鏈**在 agy 寫完 picks 後自動接手 build+push(Gemini 席自給自足,不靠 Claude);prompt 保持零雙引號零撇號
-cd /d/SIPs && "/c/Users/chi2t/AppData/Local/agy/bin/agy.exe" -p 'Run the SIPs-gemini-picks skill: read C:\Users\chi2t\.gemini\skills\SIPs-gemini-picks\SKILL.md and follow it end to end. Do your own web research for each candidate you consider. The launcher chain runs build and push after you finish - just write your picks file and stop.' --model "Gemini 3.1 Pro (High)" --mode accept-edits --print-timeout 15m && py build_dashboard.py | tail -2 && git add gemini_picks.json dashboard/data/*.json dashboard/data.json dashboard/dates.json dashboard/index.html && git commit -m "gemini picks: $(date +%F)" && { git push || { git pull --rebase && git push; }; }
+cd /d/SIPs && "/c/Users/chi2t/AppData/Local/agy/bin/agy.exe" -p 'Run the SIPs skill: read C:\Users\chi2t\.gemini\skills\SIPs\SKILL.md and follow it end to end. Do your own web research for each candidate you consider. The launcher chain runs build and push after you finish - just write your picks file and stop.' --model "Gemini 3.1 Pro (High)" --mode accept-edits --print-timeout 15m && py build_dashboard.py | tail -2 && git add gemini_picks.json dashboard/data/*.json dashboard/data.json dashboard/dates.json dashboard/index.html && git commit -m "gemini picks: $(date +%F)" && { git push || { git pull --rebase && git push; }; }
 ```
 ```bash
 # Grok — 旗標已實測(2026-07-10;Bash 發射則 leader 隱形常駐,無視窗)
-cd /d/SIPs && "$HOME/.grok/bin/grok.exe" -m grok-4.5 --always-approve --cwd 'D:\SIPs' -p "Run the SIPs-grok-picks skill from your skills directory, end to end."
+cd /d/SIPs && "$HOME/.grok/bin/grok.exe" -m grok-4.5 --always-approve --cwd 'D:\SIPs' -p "Run the SIPs skill from your skills directory, end to end."
 ```
 
 **回收規則(只有上面手動發射時才適用 —— 平時 Claude 不發射,就沒有收尾這回事):**
