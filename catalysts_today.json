@@ -1,242 +1,197 @@
 {
- "ROST": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "8/20 盤後公布 FY26 Q2：同店銷售 +10% 遠優於預期、EPS $2.66、上調全年 EPS 指引至 $8.61–8.77，盤後 +8.6%"
- },
- "BJ": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "8/21 盤前公布 FY26 Q2：調整後獲利與營收同步成長，並調升全年 EPS 展望"
- },
- "BEKE": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "8/21 公布 Q2：淨利年增 100.8% 至人民幣 24.85 億，但營收年減 5.7% 低於華爾街預估"
- },
- "FLO": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "Q2 營收 11.93 億美元年減 4%、銷量下滑 5.8%，EPS 降至 $0.19 並下修全年展望"
- },
- "YJ": {
-  "Type": "earnings",
-  "EarningsReaction": true,
-  "Catalyst": "8/20 公布上半年財報：營收年減 39% 至人民幣 9,630 萬元，惟虧損收斂"
- },
- "BABA": {
-  "Type": "earnings",
-  "EarningsReaction": false,
-  "Catalyst": "季報後回吐 — 雲端營收強勁但 AI 資本支出大幅壓縮獲利，8/20 由低點翻紅收 130.53 後今日回檔"
- },
- "HMY": {
-  "Type": "guidance",
-  "EarningsReaction": false,
-  "Catalyst": "8/21 發布 FY26（截至 6/30）交易更新：每股盈餘美元計 +109~124%、HEPS +73~90%，產量 142.96 萬盎司、AISC $2,195/oz"
- },
- "JUNS": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "8/21 07:00 ET 授權方 PharmAla 公告美國專利 12,679,817 核准（涵蓋 ALA-002 鏡像選擇性製程）；JUNS 本身未發稿"
- },
- "LUNR": {
-  "Type": "contract",
-  "EarningsReaction": false,
-  "Catalyst": "延續 8/17 取得逾 6 億美元多衛星通訊合約（客戶未揭露、30 個月執行期）動能；今日無新公告"
- },
- "CRCL": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "比特幣單日 +7.6% 衝上 $75,527 帶動穩定幣與加密族群全面走強；IBM 區塊鏈專利收購為 7/27 舊聞，非今日新事件"
- },
- "ABUS": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "8/21 公告最高 2.3 億美元修正式荷蘭標公開收購自家股票，每股 $5.00–5.75，8/24 啟動、9/29 到期"
- },
- "AVAH": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "8/20 公告 J.H. Whitney 等既有股東以每股 $11.75 出售 1,500 萬股，盤後 -8.6%"
- },
- "COHU": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "查無個股新聞；半導體測試設備類股（Aehr／Teradyne／FormFactor 同步下跌）在今年以來大漲後出現整體獲利了結"
- },
- "MSTR": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "比特幣 +7.6% 至 $75,527 創新高；公司持有 840,447 顆 BTC、平均成本約 $75,388，股價槓桿放大幣價漲幅"
- },
- "COIN": {
-  "Type": "policy",
-  "EarningsReaction": false,
-  "Catalyst": "川普白宮召集加密業者高層力推 CLARITY 市場結構法案，比特幣站上 $75,000，交易所類股同步走高"
- },
- "MARA": {
-  "Type": "policy",
-  "EarningsReaction": false,
-  "Catalyst": "CLARITY 加密立法樂觀情緒＋比特幣週漲逾 20%，礦企類股全面跟漲"
- },
- "CLSK": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "比特幣礦股隨幣價大漲同步走強，Sandersville 66 億美元 20 年電力租約題材延續發酵"
- },
- "BTDR": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "比特幣單週勁揚近 20% 衝上 $75,527，礦企類股全面跟漲"
- },
- "HIVE": {
-  "Type": "contract",
-  "EarningsReaction": false,
-  "Catalyst": "延續 8/17 簽署 3.5 億美元五年期 AI 雲端算力合約（BUZZ HPC）動能，礦股同步走升"
- },
- "GLXY": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "加密族群普漲，另有與以色列 Leumi 銀行合作及 Helios 資料中心題材加持"
- },
- "HOOD": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "8/20 推出 AI 交易工具、Robinhood Ventures Fund II 送件 IPO、英國加密交易上線，加上加密族群大漲"
- },
- "ABTC": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "比特幣衝破 $75,000（財政部加碼公債回購＋川普力挺 CLARITY 法案），BTC 資產庫存股齊漲"
- },
- "ASST": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "比特幣資產庫存概念股，隨 BTC 衝高至 $75,000 以上同步走高，無獨立個股新聞"
- },
- "SBET": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "以太幣單日 +4.4% 衝上 $2,351，SharpLink 為 ETH 資產庫存公司隨幣價與質押部位聯動走高"
- },
- "DFDV": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "Solana 網路交易量創新高帶動 SOL 資產庫存股走強，加密族群普漲"
- },
- "USDE": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "8/20 比特幣 +8%、以太幣 +18%，CLARITY 法案樂觀情緒推升 ENA 資產庫存股 StablecoinX"
- },
- "NCTY": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "比特幣挖礦＋代幣持倉之小型加密概念股隨族群漲勢聯動，無個股新聞（財報訂 8/24）"
- },
- "KEEL": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "一週內第二次內部人買股帶動樂觀情緒，賓州資料中心許可進度不受州令影響"
- },
- "AU": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "金價漲至 $4,554/oz 近期高點，受 Jackson Hole 前偏鴿預期與財政部長債回購加碼提振"
- },
- "GFI": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "美國財政部擴大公債買回、殖利率回落激勵金價單日大漲逾 4%，金礦類股同步走強"
- },
- "NEM": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "金價創 6/4 以來新高 $4,540–4,557/oz，全球最大金礦商領漲貴金屬類股"
- },
- "SBSW": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "金價創近三個月高點、白銀逼近 $67–70/oz，美債殖利率因財政部擴大長債回購下滑，貴金屬礦股齊漲"
- },
- "AG": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "白銀漲 2.67% 至 $69.94/oz，財政部加碼長債回購（200 億→400 億美元）提振流動性"
- },
- "USAS": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "白銀現貨 8/20 衝高至 $68/oz 創近兩月新高，帶動貴金屬礦股走揚"
- },
- "UUUU": {
-  "Type": "macro",
-  "EarningsReaction": false,
-  "Catalyst": "Kazatomprom 減產 10%、Cameco 下修產量指引，供給緊縮推升鈾礦類股"
- },
- "BIDU": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "Uber 在杜拜正式上線百度全無人駕駛 Robotaxi，自駕商業化題材推升"
- },
- "ADXN": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "查無個股新聞；8/20 重挫 23.6% 後今晨技術性反彈，現金僅 90 萬瑞郎的小型股波動劇烈"
- },
- "BLDP": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "查無個股新聞；氫燃料電池類股受 AI 資料中心用電敘事帶動全面走高"
- },
- "IPST": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "延續 8/17–8/20 低流通量散戶投機動能，無新的基本面消息"
- },
- "JZ": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "8/20 在 4,060 萬股（平日約 5 萬股）的無消息暴衝後解體，今日回吐約 -34%"
- },
- "SGLY": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "8/20 宣布定向增發 150 萬股、每股 $3.20 募資 500 萬美元擴建資料中心，稀釋衝擊股價"
- },
- "SUGP": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "1 比 5 反向分割後 8/21 重獲 Nasdaq 最低股價合規，流通股僅 136 萬股、量能放大 45 倍"
- },
- "SXTC": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "1 比 80 反向分割後低流通量持續飆升，今日延續動能，無新消息"
- },
- "WYHG": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "低流通港資概念股延續劇烈波動甩尾，查無單一新聞觸發"
- },
- "PCLA": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "查無個股新聞；日系低流通量 ADR 微型股，近期屢收 Nasdaq 最低股價合規警示"
- },
- "RYOJ": {
-  "Type": "momentum",
-  "EarningsReaction": false,
-  "Catalyst": "查無個股新聞；2025 年 8 月 IPO 的日系次新低流通股，盤後回落無明確消息面"
- },
- "KKR": {
-  "Type": "M&A",
-  "EarningsReaction": false,
-  "Catalyst": "8/21 05:45 ET KKR 領銜財團宣布以 55.2 億美元收購澳洲保險經紀集團 Steadfast Group"
- },
- "EXK": {
-  "Type": "news",
-  "EarningsReaction": false,
-  "Catalyst": "8/21 05:54 ET 發布墨西哥 Terronera 礦場營運更新；同日白銀衝上 $67–70/oz 創近兩月新高"
- }
+  "PDD": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 2026 財報今日盤前公布,盤前 +4.1%;市場關注毛利率壓力與海外業務投入。"
+  },
+  "XPEV": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 2026 財報今日盤前公布,盤前 −4.4%;同日旗下機器人事業宣布募資 9 億美元(阿里等參與)。"
+  },
+  "BJ": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 營收 62.27 億美元、EPS $1.36 均優於預期,並上調全年財測,盤前 +0.5%。"
+  },
+  "ZKH": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 轉盈、淨利 390 萬美元 / EPS 2 美分;8/21 盤中一度 +23% 後獲利了結,今日續跌逾 13%。"
+  },
+  "GGR": {
+    "Type": "earnings",
+    "EarningsReaction": true,
+    "Catalyst": "Q2 毛利率 22.6% 創五年新高;CFO 於 9/1 退休、由 Jacky Lee 接任,盤前 −3.1%。"
+  },
+  "UMC": {
+    "Type": "guidance",
+    "EarningsReaction": true,
+    "Catalyst": "對新增訂單選擇性調漲晶圓報價反映成本;台股 8/24 大漲帶動 ADR 盤前 +5.6%。"
+  },
+  "AAOI": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "8/21 公告 6 億美元 ATM 增發(年內第 3 次),稀釋疑慮使盤後 −10%、今日盤前再殺 −12.4%。"
+  },
+  "AXTI": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "隨 AAOI 增發利空與光通訊族群同步走弱,InP 基板供應綁定 Lumentum 放大跟跌,盤前 −6.0%。"
+  },
+  "COHR": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "AI 光學高估值股獲利了結延續(本益比逾 140),受 AAOI 增發拖累族群情緒,盤前 −5.9%。"
+  },
+  "LITE": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "8/12 財報後大漲的 AI 光學估值回吐,加上 AAOI 增發利空同族群拖累,盤前 −5.5%。"
+  },
+  "SNDK": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "8/16 JPMorgan 重啟覆蓋、目標價 $2250 帶動大漲後,今日科技股獲利了結拉回 −5.3%。"
+  },
+  "BABA": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "港股增發集資約 102 億美元擴充 AI 投資,創港股次級發行紀錄,ADR 盤前 −2.3%。"
+  },
+  "BIDU": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "無個股新聞;隨阿里增發利空與中概股族群連動,盤前 −1.3%。"
+  },
+  "NEM": {
+    "Type": "macro",
+    "EarningsReaction": false,
+    "Catalyst": "金價漲至每盎司約 4,645 美元創三個月新高,帶動金礦股,盤前 +1.0%。"
+  },
+  "EXK": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "Terronera 銀礦原民封鎖解除、宣布復產;銀價同步走高,盤前 +3.6%。"
+  },
+  "KKR": {
+    "Type": "M&A",
+    "EarningsReaction": false,
+    "Catalyst": "傳出以每股 42.5 美元、總額約 90 億美元收購 UGI 天然氣公司,盤前持平。"
+  },
+  "TAC": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "查無個股新聞;週五盤後 +4.8% 但無具體催化劑,今日盤前持平。"
+  },
+  "FATE": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "查無明確催化劑;近期僅 6 月 FT839 獲 FDA 核准 IND,盤前持平。"
+  },
+  "TMCR": {
+    "Type": "contract",
+    "EarningsReaction": false,
+    "Catalyst": "1.4 億美元可轉債 + 收購 Mesabi 1% 權利金於 8/24 交割,稀釋疑慮使盤前 −7.2%。"
+  },
+  "ZJK": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "查無明確催化劑;薄流通量中小型股正常波動,盤前 −2.2%。"
+  },
+  "USDE": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "穩定幣題材本月暴漲逾 4 倍後爆量獲利了結;盤前反彈 +5.2%,波動極大。"
+  },
+  "SDOT": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "8/19-21 以每股 $8 債轉股清償 108 萬美元債務、TradeOS 平台進帳,Nasdaq 暫恢復合規;極低流通量下盤前 +73%。"
+  },
+  "PMI": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "7/31 反向分割 1 併 50 後流通量極低;8/19 公布 Q2 營收 +39%、Emperor 人工心臟進度,盤前 +33%。"
+  },
+  "DXST": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "8/21 董事長 Sun 揭露以每股 $2 買進 40 萬股 B 股;上半年營收年增 238% 至 930 萬美元,盤前 +15%。"
+  },
+  "OLOX": {
+    "Type": "M&A",
+    "EarningsReaction": false,
+    "Catalyst": "8/19 以 2,000 萬美元併購 Wildboy,另有 CS Digital 5,000 萬、Vivakor 3,600 萬美元意向書,盤前 +8.6%。"
+  },
+  "PUSA": {
+    "Type": "M&A",
+    "EarningsReaction": false,
+    "Catalyst": "Powerus 併購案 S-4 於 8/13 生效接近完成;8/20 取得 2,230 萬美元美國中東能源保安合約,盤前 +16%。"
+  },
+  "BTOG": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "8/21 生效 1 併 5 反向分割以符合 Nasdaq 最低股價要求;漲幅屬技術性調整,非真實利多。"
+  },
+  "JUNS": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "定向增發 307,692 股募資 200 萬美元、8/24 交割,稀釋致盤前重挫 −13.6%。"
+  },
+  "ALAB": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "資料中心互連族群回檔,無個股新利空"
+  },
+  "WDC": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "記憶體儲存族群回檔,無個股專屬消息"
+  },
+  "STX": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "近日急漲後獲利了結,隨儲存族群回檔"
+  },
+  "MRVL": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "8/27財報前部位調整,Google合作稀釋疑慮延續"
+  },
+  "MU": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "Netlist對DDR5提專利訴訟延續發酵"
+  },
+  "CRWV": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "AI雲端族群回檔,無個股專屬利空"
+  },
+  "ARM": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "自售資料中心晶片轉型話題延續,估值偏高承壓"
+  },
+  "VRT": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "資料中心基建族群回檔,無個股專屬利空"
+  },
+  "SMCI": {
+    "Type": "news",
+    "EarningsReaction": false,
+    "Catalyst": "遭Netlist列入DDR5專利訴訟被告"
+  },
+  "AMD": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "半導體族群回檔,個股面暫無新利空"
+  },
+  "SATL": {
+    "Type": "momentum",
+    "EarningsReaction": false,
+    "Catalyst": "8/21 盤前 +4.3% 查無明確催化劑;8/12 公布 Q2 營收年增 259% 後動能延續,今日回吐 −2.3%。"
+  }
 }
