@@ -1284,6 +1284,28 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
   background-repeat: no-repeat; background-position: 11px center;
 }
 .studies-search:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(73,79,223,0.08); }
+/* ─ Global topbar ticker search ─ */
+.gs-wrap { position: relative; display: flex; align-items: center; margin-left: auto; margin-right: 10px; }
+.gs-icon { position: absolute; left: 8px; font-size: 17px; color: var(--mute); pointer-events: none; }
+.gs-input { width: 150px; padding: 6px 10px 6px 30px; font-size: 13px; font-family: var(--font-body);
+  border: 1px solid var(--hairline); border-radius: var(--r-pill); background: var(--canvas); color: var(--ink);
+  transition: width 0.15s, border-color 0.15s; }
+.gs-input:focus { width: 230px; outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(73,79,223,0.08); }
+.gs-results { display: none; position: absolute; top: calc(100% + 6px); right: 0; width: 320px; max-height: 420px;
+  overflow-y: auto; background: var(--surface); border: 1px solid var(--hairline); border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18); z-index: 5001; }
+.gs-results.show { display: block; }
+.gs-item { display: flex; align-items: baseline; gap: 8px; padding: 9px 12px; cursor: pointer;
+  border-bottom: 1px solid var(--hairline); font-size: 13px; }
+.gs-item:last-child { border-bottom: none; }
+.gs-item:hover, .gs-item.active { background: var(--surface-soft); }
+.gs-item .gs-sym { font-weight: 700; min-width: 52px; }
+.gs-item .gs-name { flex: 1; color: var(--mute); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gs-item .gs-date { font-size: 11px; color: var(--stone, var(--mute)); }
+.gs-item .gs-chg { font-weight: 600; }
+.gs-item .gs-chg.pos { color: var(--pos); } .gs-item .gs-chg.neg { color: var(--neg); }
+.gs-empty { padding: 12px; font-size: 13px; color: var(--mute); }
+@media (max-width: 900px) { .gs-wrap { display: none; } }
 .studies-search-results {
   position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 1000;
   background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--r-md);
@@ -3185,6 +3207,11 @@ td.sym a { transition: background 140ms ease, color 140ms ease; }
       <a data-route="gappers">Gappers</a>
       <a data-route="studies">Studies</a>
     </div>
+    <div class="gs-wrap" id="gs-wrap">
+      <span class="material-symbols-outlined gs-icon">search</span>
+      <input id="gs-input" class="gs-input" type="text" placeholder="搜尋股票 (/)" autocomplete="off" spellcheck="false">
+      <div id="gs-results" class="gs-results"></div>
+    </div>
     <div class="topbar-right" id="topbar-right">
       <span class="readonly-badge" title="Sidecar (local Python server) not detected — viewing the committed snapshot. Run `py D:/SIPs/sidecar.py` to edit.">&#128274; View only</span>
       <button class="topbar-iconbtn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
@@ -3358,6 +3385,65 @@ async function hydrateStudiesFromDisk() {
   } catch (_) { /* no index yet */ }
 }
 
+// ─ Global topbar ticker search — symbol or company name, across every scan date ─
+function installGlobalSearch() {
+  const inp = document.getElementById('gs-input');
+  const res = document.getElementById('gs-results');
+  if (!inp || !res) return;
+  let act = -1, rows = [];
+  const close = () => { res.classList.remove('show'); res.innerHTML = ''; act = -1; rows = []; };
+  const go = (r) => {
+    close(); inp.value = ''; inp.blur();
+    const isLatest = r.scanDate === STATE.dates[0]?.date;
+    location.hash = '#/' + (isLatest ? '' : r.scanDate + '/') + 'stock/' + r.sym;
+  };
+  const render = async (q) => {
+    q = q.toUpperCase().trim();
+    if (!q) return close();
+    res.innerHTML = '<div class="gs-empty">索引中…（首次約 2-5 秒）</div>'; res.classList.add('show');
+    const idx = await buildSymbolIndex();
+    if (inp.value.toUpperCase().trim() !== q) return;   // stale keystroke
+    const all = Array.from(idx.entries()).map(([sym, info]) => ({ sym, ...info }));
+    const pre = all.filter(r => r.sym.startsWith(q));
+    const sub = all.filter(r => !r.sym.startsWith(q) && r.sym.includes(q));
+    const name = all.filter(r => !r.sym.includes(q) && ((r.snapshot?.name || '').toUpperCase().includes(q)));
+    rows = [...pre, ...sub, ...name].slice(0, 12);
+    act = rows.length ? 0 : -1;
+    if (!rows.length) { res.innerHTML = '<div class="gs-empty">找不到 ' + escapeHtml(q) + ' — 只搜得到掃描檔案庫出現過的股票</div>'; return; }
+    res.innerHTML = rows.map((r, i) => {
+      const chg = r.snapshot?.chgPct;
+      const cls = chg >= 0 ? 'pos' : 'neg';
+      return '<div class="gs-item' + (i === act ? ' active' : '') + '" data-i="' + i + '">' +
+        '<span class="gs-sym">' + escapeHtml(r.sym) + '</span>' +
+        '<span class="gs-name">' + escapeHtml(r.snapshot?.name || '') + '</span>' +
+        (chg != null ? '<span class="gs-chg ' + cls + '">' + (chg >= 0 ? '+' : '') + chg.toFixed(1) + '%</span>' : '') +
+        '<span class="gs-date">' + escapeHtml(r.scanDate) + '</span></div>';
+    }).join('');
+    res.querySelectorAll('.gs-item').forEach(el => {
+      el.onmousedown = (e) => { e.preventDefault(); go(rows[+el.dataset.i]); };
+    });
+  };
+  let deb = null;
+  inp.addEventListener('input', () => { clearTimeout(deb); deb = setTimeout(() => render(inp.value), 120); });
+  inp.addEventListener('focus', () => { buildSymbolIndex(); if (inp.value) render(inp.value); });
+  inp.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { close(); inp.blur(); }
+    else if (e.key === 'Enter' && act >= 0 && rows[act]) go(rows[act]);
+    else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (!rows.length) return;
+      act = (act + (e.key === 'ArrowDown' ? 1 : rows.length - 1)) % rows.length;
+      res.querySelectorAll('.gs-item').forEach((el, i) => el.classList.toggle('active', i === act));
+      res.querySelectorAll('.gs-item')[act]?.scrollIntoView({ block: 'nearest' });
+    }
+  });
+  document.addEventListener('mousedown', (e) => { if (!document.getElementById('gs-wrap').contains(e.target)) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && document.activeElement !== inp
+        && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)
+        && !document.activeElement.isContentEditable) { e.preventDefault(); inp.focus(); }
+  });
+}
 async function boot() {
   try {
     const r = await fetch('dates.json', {cache: 'no-store'});
@@ -3386,6 +3472,7 @@ async function boot() {
   installOutsideClickHandler();
   installChartTooltip();
   installThemeToggle();
+  installGlobalSearch();
   renderDateStrip();
   route();
 }
