@@ -1,29 +1,14 @@
 {
-  "date": "2026-08-24",
-  "written_at": "2026-08-24T21:11:22+09:00",
+  "date": "2026-08-25",
+  "written_at": "2026-08-25T09:12:00-04:00",
   "ideas": [],
-  "no_trade_notes": [
-    {
-      "setup": "contract_fade (主力,short)",
-      "verdict": "無合格標的",
-      "why": "條件為 type=contract 且開盤 gap ≥+15%。今日 gap ≥15% 的四檔全非合約型:SDOT +73%(債轉股清償 108 萬美元 + Nasdaq 恢復合規,極低流通量拉抬,type=momentum)、PMI +33%(7/31 反向分割 1 併 50 後流通量極低,type=momentum)、PUSA +16%(Powerus 併購 S-4 生效為主因;8/20 那筆 2,230 萬美元合約已隔 2 個交易日,非當日催化劑)、DXST +15%(董事長買股 + 上半年營收年增 238%,type=news)。硬套合約標籤等於自己餵假樣本進 live 帳,不做。"
-    },
-    {
-      "setup": "dtc_fade (次主力,short)",
-      "verdict": "無合格標的",
-      "why": "條件為 DTC >5 且開盤 gap ≥+2%。今日全部上漲候選的 DTC 最高僅 UMC 2.05,其餘 SDOT 0.02 / PMI 0.08 / DXST 0.01 / OLOX 0.03 / PUSA 0.99 / USDE 0.07 / EXK 3.35 / PDD n/a,無一過 5。唯一 DTC >5 的是 GGR(5.42)但今日盤前 −3.1% 是下跌,方向不符。"
-    },
-    {
-      "setup": "beatdip (long,降級複驗中)",
-      "verdict": "唯一結構符合者查證後淘汰",
-      "why": "唯一同時滿足「今日財報 + 盤前 gap 落在 −4%~−18% + 市值 ≥100 億美元」的是 XPEV(盤前 −4.4%,市值約 110 億)。但硬條件是 EPS 與營收 surprise 皆 ≥0 的真 beat,查證結果 XPEV 是**雙 miss**:每 ADS 虧損 $0.21 vs 預期虧損 $0.06、營收人民幣 197.4 億 vs 預期 205 億(−3.8%),Q2 淨虧損由去年同期人民幣 4.8 億擴大到 13.4 億。這不是錯殺,是真的做壞,直接淘汰。其餘財報股全部不合格:BJ 財報好但盤前 +0.5% 是上漲、PDD +4.1% 上漲、ZKH(市值 3.2 億)與 GGR(市值 3,200 萬)市值遠低於 100 億硬門檻。"
-    },
-    {
-      "setup": "BeatenSqueezeGo (候補,long)",
-      "verdict": "無合格標的",
-      "why": "五條件缺一即退化。今日 gap ≥+5% 者中,perf1M ≤−20% 的只有 OLOX(−56.7%),但其 short float 僅 1.52%,遠低於 10% 門檻;其餘 SDOT / PMI / DXST / PUSA / UMC / USDE 的 perf1M 皆為正或接近持平,籌碼與位置條件都不成立。"
-    }
-  ],
-  "market_context": "10 年期公債殖利率逼近 4.74%(20 個月高點)壓抑風險偏好;阿里巴巴港股增發約 102 億美元拖累整個中概股族群,恆生科技一度重挫 4%;AAOI 6 億美元 ATM 增發引爆光通訊族群第四波賣壓(AAOI/AXTI/COHR/LITE 同步下殺)。本週三 NVDA 財報、週五 Warsh 於 Jackson Hole 首場演說為主要事件風險。",
-  "discipline_note": "今日是誠實的 0 筆日。四個 setup 全部走完條件表都沒有標的,寧缺勿濫優於硬湊 —— 硬湊的那一筆會同時汙染當日績效與 live_ledger 的樣本品質。"
+  "no_trade_notes": {
+    "_summary": "今日 0 筆。順位 v5 六個 setup 全數不合格 — 盤前真實 gap 與 barchart 快照嚴重背離,逐一複核後無一過關。寧缺勿濫。",
+    "beatdip": "唯一夠格的市值/gap 標的是 DKS(盤前 -17.02%、市值 133.8 億)。但硬條件要求 EPS 與營收 surprise 皆 ≥0(真 beat 被錯殺):DKS 為雙重不如預期 — 調整後 EPS $3.53 vs 華爾街預估 $3.74、營收 $55.9 億 vs 預估 $56.5 億,且同步下修全年財測至 EPS $10.94-11.94、Foot Locker 同店銷售 -3.6%。這是殺指引不是錯殺,且 -17% 落在 setup 註記的『大驚奇深跳空無反彈』危險帶下緣。GRRR(-8.98%、財報)市值僅 3.97 億,未過 ≥10B 硬條件(<10B 實測 -0.14R)。",
+    "contract_fade": "需 contract 型催化劑且開盤 gap ≥+15%。今日 ≥15% 跳空全為籌碼/稀釋事件,無一為合約:DFNS +57.13%(1:125 反向分割後流通股僅 112 萬股 + Noble Capital 調升目標價)、SWVL +43.62%(無新消息,且盤前量僅 1,961 股形同無法成交)、JEM +34.10%(12:1 反向分割)、AMIX +28.68%(認股權證行使 490 萬美元)。唯一真合約股 FLNC(與兩家雲端巨頭簽 MSA、在手訂單 56 億美元)盤前僅 +9.45%,未達 +15% 門檻。",
+    "dtc_fade": "需 DTC >5 且開盤 gap ≥+2%。兩個候選經真實盤前報價複核後全滅:NOV 帳面 DTC 7.11 但 barchart 顯示的 +5.61% 是昨日盤後殘值,今日真實盤前為 -1.16%(方向相反);REAX 帳面 DTC 5.97、+10.42%,但 RE/MAX 併購完成後今日以新架構掛牌,Yahoo 取不到當日盤前 K 棒,gap 無法驗證,換股比例也會讓帳面 gap 失真。ANNX 雖 DTC 8.53 最高,但真實盤前 +0.99%,未達 +2%。",
+    "beaten_squeeze_go": "五條件(gap ≥+5%、perf1M ≤-20%、short float ≥10%、DTC <5、fwd_rev ≥30%)缺一即退化。全場僅 WLDS 前四項成立(perf1M -24.53%、short float 12.72%、DTC 0.14),但市值僅 525 萬美元,直接觸發 avoid_rules 的『微型股 gap +10~50 全帶』排除條款。TENX 的 short float 7.86% 未達 10%;FLNC 的 perf1M -12.29% 未達 -20%。",
+    "cap1010": "已於 2026-08-16 除役(pending_backtest 結案未過 gate),不列入選股。",
+    "_data_quality_note": "今日 barchart 快照與真實盤前落差極大,已全面改用 prepost_quote 逐檔複核:NOV +5.61%→-1.16%、ANNX -4.15%→+0.99%(方向反轉)、AMIX +116.57%→+28.68%、SWVL +73.37%→+43.62%。若照 packet chgPct 選股會直接選到方向相反的標的。另清掉 18 筆 SessionDate=2026-08-24 的過期 headline 種子列。"
+  }
 }
