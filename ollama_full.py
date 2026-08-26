@@ -68,19 +68,11 @@ def exa_search(query):
 
 # ---------- phase 1-2: mechanical scan (same scripts Claude runs) ----------
 def ensure_packet():
+    # Unified /SIPs contract (2026-08-26): ALWAYS rescan from scratch — no freshness
+    # shortcut. build_dashboard unions, so existing names/analysis never drop.
     pk_path = os.path.join(DIR, "dashboard", "data", DATE + ".json")
-    fresh = False
-    if os.path.exists(pk_path):
-        pk = json.load(open(pk_path, encoding="utf-8"))
-        ts = pk.get("scanTimestamp", "")
-        try:
-            # scanTimestamp is naive local time (build_dashboard uses datetime.now())
-            age = (datetime.now() - datetime.fromisoformat(ts)).total_seconds()
-            fresh = age < 7200
-        except ValueError:
-            pass
-    if not fresh:
-        log("packet stale/missing — rescanning barchart")
+    if True:
+        log("full rescan (unified contract: default from scratch)")
         rc, out = run("node barchart-scrape.js", timeout=180)
         if rc != 0:
             log("barchart FAILED:\n" + out[-500:]); sys.exit(1)
