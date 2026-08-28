@@ -3209,7 +3209,7 @@ td.sym a { transition: background 140ms ease, color 140ms ease; }
     </div>
     <div class="gs-wrap" id="gs-wrap">
       <span class="material-symbols-outlined gs-icon">search</span>
-      <input id="gs-input" class="gs-input" type="text" placeholder="搜尋股票 (/)" autocomplete="off" spellcheck="false">
+      <input id="gs-input" class="gs-input" type="text" placeholder="" autocomplete="off" spellcheck="false">
       <div id="gs-results" class="gs-results"></div>
     </div>
     <div class="topbar-right" id="topbar-right">
