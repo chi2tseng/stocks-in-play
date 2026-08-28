@@ -1292,7 +1292,7 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
   transition: width 0.15s, border-color 0.15s; }
 .gs-input:focus { width: 230px; outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(73,79,223,0.08); }
 .gs-results { display: none; position: absolute; top: calc(100% + 6px); right: 0; width: 320px; max-height: 420px;
-  overflow-y: auto; background: var(--surface); border: 1px solid var(--hairline); border-radius: 12px;
+  overflow-y: auto; background: var(--surface-card); border: 1px solid var(--hairline); border-radius: 12px;
   box-shadow: 0 12px 32px rgba(0,0,0,0.18); z-index: 5001; }
 .gs-results.show { display: block; }
 .gs-item { display: flex; align-items: baseline; gap: 8px; padding: 9px 12px; cursor: pointer;
@@ -3397,9 +3397,16 @@ function installGlobalSearch() {
     const isLatest = r.scanDate === STATE.dates[0]?.date;
     location.hash = '#/' + (isLatest ? '' : r.scanDate + '/') + 'stock/' + r.sym;
   };
+  const todayRows = () => Object.entries(DATA?.stocks || {})
+    .map(([sym, s]) => ({ sym, snapshot: s, scanDate: STATE.date }))
+    .sort((a, b) => Math.abs(b.snapshot?.chgPct || 0) - Math.abs(a.snapshot?.chgPct || 0)).slice(0, 12);
   const render = async (q) => {
     q = q.toUpperCase().trim();
-    if (!q) return close();
+    if (!q) {   // empty box: show today's biggest movers immediately
+      rows = todayRows(); act = rows.length ? 0 : -1;
+      if (!rows.length) return close();
+      paint(); return;
+    }
     res.innerHTML = '<div class="gs-empty">索引中…（首次約 2-5 秒）</div>'; res.classList.add('show');
     const idx = await buildSymbolIndex();
     if (inp.value.toUpperCase().trim() !== q) return;   // stale keystroke
@@ -3409,7 +3416,11 @@ function installGlobalSearch() {
     const name = all.filter(r => !r.sym.includes(q) && ((r.snapshot?.name || '').toUpperCase().includes(q)));
     rows = [...pre, ...sub, ...name].slice(0, 12);
     act = rows.length ? 0 : -1;
+    if (rows.length) { paint(); return; }
     if (!rows.length) { res.innerHTML = '<div class="gs-empty">找不到 ' + escapeHtml(q) + ' — 只搜得到掃描檔案庫出現過的股票</div>'; return; }
+  };
+  const paint = () => {
+    res.classList.add('show');
     res.innerHTML = rows.map((r, i) => {
       const chg = r.snapshot?.chgPct;
       const cls = chg >= 0 ? 'pos' : 'neg';
@@ -3425,7 +3436,7 @@ function installGlobalSearch() {
   };
   let deb = null;
   inp.addEventListener('input', () => { clearTimeout(deb); deb = setTimeout(() => render(inp.value), 120); });
-  inp.addEventListener('focus', () => { buildSymbolIndex(); if (inp.value) render(inp.value); });
+  inp.addEventListener('focus', () => { buildSymbolIndex(); render(inp.value); });
   inp.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') { close(); inp.blur(); }
     else if (e.key === 'Enter' && act >= 0 && rows[act]) go(rows[act]);
