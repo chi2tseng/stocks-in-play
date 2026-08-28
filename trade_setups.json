@@ -1,6 +1,6 @@
 {
  "_doc": "Setup 手冊 v2(2026-08-08 全面重建 — 使用者指示砍掉重來)。重建方法:447 檔分層抽樣 × 24 opus 逐檔歸因 + 3 主題綜合 + fable 仲裁 → 8 假設全庫處刑(R30)→ 執行層 60m 回測(R31)。舊版 trade_setups_legacy.json 僅供對照。內部 playbook,不上站;/SIPs Step 0b 每日審視、9d 選股依據。",
- "updated": "2026-08-27",
+ "updated": "2026-08-28",
  "window": "全庫 2026-05-13 ~ 2026-08-07(60 交易日、事件庫 3,882 筆、60m 執行模擬)",
  "rebuild_method": "質化歸因(每檔:因為什麼→漲多少→為什麼這個幅度,全因子:fwd/當季成長/surprise/MAGNA53/市值/DTC/short float/neglect/run-up)→ 機械假設 → 全庫盲測 → 對照組判別力檢查 → 執行層回測。核心洞察:方向由 perf1M(beaten/heated)與前瞻品質(fwd_rev)的交乘決定,不由 gap 大小或單一籌碼指標決定;DTC 的意義是「回補需要幾天」— dtc<0.5 = 無回補買盤(禁區家族),dtc>5 = 回補跨日(假軋空 fade),高 short_float 配 dtc<5 = 快燃料(beaten 側才是真 squeeze)。",
  "model": {
@@ -286,8 +286,14 @@
  },
  "_daily_review_2026_08_24": "四個在役 setup 全部走完條件表,今日零合格標的 —— 這是條件表正常運作的結果,不是找不到東西。今日候選以微型股籌碼行情(SDOT/PMI/DXST/OLOX/PUSA)與光通訊稀釋利空連動(AAOI 震央 + AXTI/COHR/LITE 跟跌)為主,兩類都不在任何 setup 的機制範圍內。本次新增:為每個 setup 補上預先註冊的 kill criteria(先前為 null),避免事後才畫線。",
  "daily_review": {
-  "date": "2026-08-27",
-  "verdict": "無調整",
-  "note": "8/26 對帳 n=46、命中 39%、bias +4.81(整體高估),small 層 bias +7.47 連兩日同向觸發 MODEL-DRIFT,已執行 refit 且盲測由 42.7% 提升到 44.3%,故採用新係數。五個 setup 規則與狀態均不變:beatdip 仍為降級複驗中(live n=1、−0.26R);contract_fade 主力(live n=2、+2.86R,唯一實盤為正的);dtc_fade live n=4、−1.83R 已是負值,但未達降級門檻(n≥10 且 sumR<0),維持次主力並繼續每日限量,若再累積 6 筆仍為負即降為候補;beaten_squeeze_go 尚無實盤樣本;cap1010 維持除役。今日 ideas 沿用盤前寫好的 HPQ / DLTR 兩檔 beatdip,倉位照降級規定減半。"
+  "date": "2026-08-28",
+  "conclusion": "本日無規則異動。四個 setup 的條件、進場與停損維持 2026-08-16 順位 v6 版本不變。",
+  "notes": [
+   "beatdip(降級複驗中):今日產生兩筆合格 idea(MRVL/RBRK),是 8/16 降級以來第一次有雙標的同日合格。live 仍只有 n=1、-0.26R,樣本不足以判斷降級是否該撤銷,維持半倉執行、繼續累積。",
+   "dtc_fade(次主力):今日有 2 檔機械合格(NA/BEKE)但主動放棄,理由已寫入 trade_ideas.no_trade_notes。要記錄的是一個結構性觀察:本型的回測樣本是低浮額假軋空,但機械條件(回補天數 >5 + 跳空 ≥+2%)會把宏觀政策驅動的大型 ADR 也掃進來,兩者機制不同。若後續再出現同類誤判,應考慮在條件加上市值上限或排除宏觀族群事件 —— 目前僅記錄,樣本不足不改規則。",
+   "contract_fade(主力):今日無合格標的(無 contract 型催化劑)。live n=2、+2.86R 維持。",
+   "beaten_squeeze_go(候補):今日五條件無一檔全滿足。live n=0,仍未開張。",
+   "model 欄:今日 verify(8/27 已收盤日)n=71、命中 42%、bias -0.13、MAE 5.92,未觸發 MODEL-DRIFT,不需 refit。"
+  ]
  }
 }
