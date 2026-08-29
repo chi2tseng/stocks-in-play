@@ -35,10 +35,26 @@ def fetch_bars(sym, p1='2026-02-01'):
             res = d['chart']['result'][0]
             ts = res['timestamp']; q = res['indicators']['quote'][0]
             out = {}
+            # Yahoo 偶發:當日日K close 為 null(open/high/low 有值),整天因此無法對帳
+            # (2026-08-29 週末 verify 全掛)。收盤後 meta.regularMarketPrice 就是官方收盤價,
+            # 補回來;盤中(regularMarketTime < 20:00 UTC = 16:00 ET)不補,避免把即時價當收盤存進 cache。
+            meta = res.get('meta') or {}
+            mt, mp = meta.get('regularMarketTime'), meta.get('regularMarketPrice')
+            mday = None
+            if mt and mp is not None:
+                mdt = datetime.fromtimestamp(mt, tz=timezone.utc)
+                if mdt.hour >= 20: mday = mdt.strftime('%Y-%m-%d')
             for i, t in enumerate(ts):
-                if q['open'][i] is None or q['close'][i] is None: continue
                 day = datetime.fromtimestamp(t, tz=timezone.utc).strftime('%Y-%m-%d')
-                out[day] = [round(q['open'][i],4), round(q['high'][i],4), round(q['low'][i],4), round(q['close'][i],4)]
+                c = q['close'][i]
+                if c is None and day == mday and q['open'][i] is not None:
+                    # metaPrice 對薄量股會短暫回傳前一日價(2026-08-29 VISN/AEHL 實例:
+                    # 同一天先後跑出兩組完全不同的對帳數字)。合法的收盤價必須落在當日 low~high 內,
+                    # 不在區間就當作沒有收盤價、整根跳過,寧可少一筆也不要餵髒資料進 cache。
+                    lo, hi = q['low'][i], q['high'][i]
+                    if lo is not None and hi is not None and lo <= mp <= hi: c = mp
+                if q['open'][i] is None or c is None: continue
+                out[day] = [round(q['open'][i],4), round(q['high'][i],4), round(q['low'][i],4), round(c,4)]
             return sym, out
         except Exception:
             time.sleep(1)
@@ -347,10 +363,14 @@ def cmd_verify(date):
     print('  最大誤差:', ', '.join(f"{r['sym']}({r['err']:+.0f})" for r in worst))
     # 質化層加值追蹤(2026-08-06:主模型的質化調整也要被驗證,加不加值數據說話)
     qr = [r for r in rows if r['qual']]
+    qual_stat = None
     if qr:
         mq = np.mean([abs(r['err_quant']) for r in qr]); mf = np.mean([abs(r['err']) for r in qr])
         verdict = '加值' if mf < mq else ('持平' if mf == mq else '減值')
         print(f'  質化層(n={len(qr)}):純量化 MAE {mq:.2f} → 加質化 {mf:.2f}({verdict} {mq-mf:+.2f})')
+        # 逐日存檔:沒有紀錄就無法判斷質化層是穩定加值還是單日雜訊(2026-08-29 補)
+        qual_stat = dict(n=len(qr), mae_quant=round(float(mq), 2), mae_full=round(float(mf), 2),
+                         delta=round(float(mq - mf), 2))
     # 盤中最高(spike 分桶,2026-08-07 R11-R12):帶內率理想 ≈50%,連兩日 <35% 或 >65% = 桶失準
     sr = [r for r in rows if r.get('spike') and r.get('ext') is not None]
     if sr:
@@ -364,7 +384,7 @@ def cmd_verify(date):
     rec = jload('model_track_record.json', [])
     rec = [x for x in rec if x.get('date') != date]
     rec.append(dict(date=date, anchor=_anchor, n=len(rows), hit=round(float(hits)), bias=round(float(np.mean(errs)), 2),
-                    mae=round(float(np.mean(np.abs(errs))), 2),
+                    mae=round(float(np.mean(np.abs(errs))), 2), qual=qual_stat,
                     tiers={t: dict(n=len([r for r in rows if r['tier'] == t]),
                                    bias=round(float(np.mean([r['err'] for r in rows if r['tier'] == t] or [0])), 2))
                            for t in ('big', 'mid', 'small', 'na')},
