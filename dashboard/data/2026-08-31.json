@@ -1,8 +1,118 @@
 {
   "date": "2026-08-31",
-  "scanTime": "22:05",
-  "scanTimestamp": "2026-08-29T22:05",
+  "scanTime": "21:08",
+  "scanTimestamp": "2026-08-30T21:08",
   "stocks": {
+    "AEHL": {
+      "symbol": "AEHL",
+      "name": "Antelope Enterprise Hldg Ltd",
+      "type": "?",
+      "earningsReaction": false,
+      "catalyst": "",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=AEHL"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/AEHL"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AEHL/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 6.62,
+          "chgPct": 87.01,
+          "volume": 4554614,
+          "session": "post",
+          "direction": "up",
+          "name": "Antelope Enterprise Hldg Ltd",
+          "sessionDate": "2026-08-28",
+          "targetDate": "2026-08-31"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 6.62,
+      "chgPct": 87.01,
+      "volume": 4554614,
+      "tv": null,
+      "shortFloat": null,
+      "shortRatio": 0.03,
+      "marketCap_M": 13.68,
+      "floatShares_M": null,
+      "perf1M": -56.19,
+      "perf3M": -81.86,
+      "perf6M": -93.83,
+      "perfYTD": -97.92,
+      "perf12M": -98.89,
+      "prevOhlcv": null
+    },
+    "YDDL": {
+      "symbol": "YDDL",
+      "name": "One and One Green Technologies. Inc Cl A",
+      "type": "?",
+      "earningsReaction": false,
+      "catalyst": "",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=YDDL"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/YDDL"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-YDDL/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 2.34,
+          "chgPct": 41.82,
+          "volume": 2713457,
+          "session": "post",
+          "direction": "up",
+          "name": "One and One Green Technologies. Inc Cl A",
+          "sessionDate": "2026-08-28",
+          "targetDate": "2026-08-31"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 2.34,
+      "chgPct": 41.82,
+      "volume": 2713457,
+      "tv": null,
+      "shortFloat": 0.47,
+      "shortRatio": 1.81,
+      "marketCap_M": 89.59,
+      "floatShares_M": 8.53,
+      "perf1M": -4.9,
+      "perf3M": -50.75,
+      "perf6M": -76.71,
+      "perfYTD": -68.21,
+      "perf12M": null,
+      "prevOhlcv": null
+    },
     "QNRX": {
       "symbol": "QNRX",
       "name": "Quoin Pharmaceuticals Ltd ADR",
@@ -164,25 +274,25 @@
       "perf12M": -18.4,
       "prevOhlcv": null
     },
-    "WETO": {
-      "symbol": "WETO",
-      "name": "Wetour Robotics Limited",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "8/27 完成 180 萬美元 Reg S 私募並通過反向分割案,搭配機器人題材炒作;前一個月已漲 285%,屬高風險樂透帶。",
+    "NA": {
+      "symbol": "NA",
+      "name": "Nano Labs Ltd ADR",
+      "type": "earnings",
+      "earningsReaction": true,
+      "catalyst": "8/27 公布上半年營收僅 280 萬人民幣、虧損擴大(基本面實為利空),但比特幣/BNB 數位資產財庫題材帶動投機性買盤,盤前 +16.5%。空手回補天數 14.2 天為全場最高。 無 TradingView 季度預估資料(微型股無分析師覆蓋)。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=WETO"
+          "url": "https://finviz.com/quote.ashx?t=NA"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/WETO"
+          "url": "https://finance.yahoo.com/quote/NA"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-WETO/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-NA/news/"
         }
       ],
       "publishedAt": null,
@@ -192,31 +302,31 @@
       "milanAnalysis": null,
       "sessions": [
         {
-          "last": 7.0,
-          "chgPct": 22.38,
-          "volume": 824532,
+          "last": 2.06,
+          "chgPct": -7.16,
+          "volume": 113446,
           "session": "post",
-          "direction": "up",
-          "name": "Wetour Robotics Limited",
+          "direction": "down",
+          "name": "Nano Labs Ltd ADR",
           "sessionDate": "2026-08-28",
           "targetDate": "2026-08-31"
         }
       ],
       "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 7.0,
-      "chgPct": 22.38,
-      "volume": 824532,
+      "primaryDirection": "down",
+      "last": 2.06,
+      "chgPct": -7.16,
+      "volume": 113446,
       "tv": null,
-      "shortFloat": 0.71,
-      "shortRatio": 0,
-      "marketCap_M": 6.17,
-      "floatShares_M": 0.86,
-      "perf1M": 90.67,
-      "perf3M": -94.34,
-      "perf6M": -86.73,
-      "perfYTD": -93.34,
-      "perf12M": -97.44,
+      "shortFloat": 11.86,
+      "shortRatio": 14.18,
+      "marketCap_M": 51.53,
+      "floatShares_M": 9.06,
+      "perf1M": 21.31,
+      "perf3M": -16.85,
+      "perf6M": -24.75,
+      "perfYTD": -29.52,
+      "perf12M": -60.88,
       "prevOhlcv": null
     },
     "IOTR": {
@@ -274,80 +384,25 @@
       "perf12M": -44.51,
       "prevOhlcv": null
     },
-    "NA": {
-      "symbol": "NA",
-      "name": "Nano Labs Ltd ADR",
-      "type": "earnings",
-      "earningsReaction": true,
-      "catalyst": "8/27 公布上半年營收僅 280 萬人民幣、虧損擴大(基本面實為利空),但比特幣/BNB 數位資產財庫題材帶動投機性買盤,盤前 +16.5%。空手回補天數 14.2 天為全場最高。 無 TradingView 季度預估資料(微型股無分析師覆蓋)。",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=NA"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/NA"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-NA/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 2.06,
-          "chgPct": -7.16,
-          "volume": 113446,
-          "session": "post",
-          "direction": "down",
-          "name": "Nano Labs Ltd ADR",
-          "sessionDate": "2026-08-28",
-          "targetDate": "2026-08-31"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 2.06,
-      "chgPct": -7.16,
-      "volume": 113446,
-      "tv": null,
-      "shortFloat": 11.86,
-      "shortRatio": 14.18,
-      "marketCap_M": 51.53,
-      "floatShares_M": 9.06,
-      "perf1M": 21.31,
-      "perf3M": -16.85,
-      "perf6M": -24.75,
-      "perfYTD": -29.52,
-      "perf12M": -60.88,
-      "prevOhlcv": null
-    },
-    "YDDL": {
-      "symbol": "YDDL",
-      "name": "One and One Green Technologies. Inc Cl A",
-      "type": "?",
+    "WETO": {
+      "symbol": "WETO",
+      "name": "Wetour Robotics Limited",
+      "type": "news",
       "earningsReaction": false,
-      "catalyst": "",
+      "catalyst": "8/27 完成 180 萬美元 Reg S 私募並通過反向分割案,搭配機器人題材炒作;前一個月已漲 285%,屬高風險樂透帶。",
       "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=YDDL"
+          "url": "https://finviz.com/quote.ashx?t=WETO"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/YDDL"
+          "url": "https://finance.yahoo.com/quote/WETO"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-YDDL/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-WETO/news/"
         }
       ],
       "publishedAt": null,
@@ -357,86 +412,31 @@
       "milanAnalysis": null,
       "sessions": [
         {
-          "last": 2.34,
-          "chgPct": 41.82,
-          "volume": 2713457,
+          "last": 7.0,
+          "chgPct": 22.38,
+          "volume": 824532,
           "session": "post",
           "direction": "up",
-          "name": "One and One Green Technologies. Inc Cl A",
+          "name": "Wetour Robotics Limited",
           "sessionDate": "2026-08-28",
           "targetDate": "2026-08-31"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "up",
-      "last": 2.34,
-      "chgPct": 41.82,
-      "volume": 2713457,
+      "last": 7.0,
+      "chgPct": 22.38,
+      "volume": 824532,
       "tv": null,
-      "shortFloat": 0.47,
-      "shortRatio": 1.81,
-      "marketCap_M": 89.59,
-      "floatShares_M": 8.53,
-      "perf1M": -4.9,
-      "perf3M": -50.75,
-      "perf6M": -76.71,
-      "perfYTD": -68.21,
-      "perf12M": null,
-      "prevOhlcv": null
-    },
-    "AEHL": {
-      "symbol": "AEHL",
-      "name": "Antelope Enterprise Hldg Ltd",
-      "type": "?",
-      "earningsReaction": false,
-      "catalyst": "",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AEHL"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AEHL"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AEHL/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 6.62,
-          "chgPct": 87.01,
-          "volume": 4554614,
-          "session": "post",
-          "direction": "up",
-          "name": "Antelope Enterprise Hldg Ltd",
-          "sessionDate": "2026-08-28",
-          "targetDate": "2026-08-31"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 6.62,
-      "chgPct": 87.01,
-      "volume": 4554614,
-      "tv": null,
-      "shortFloat": null,
-      "shortRatio": 0.03,
-      "marketCap_M": 13.68,
-      "floatShares_M": null,
-      "perf1M": -56.19,
-      "perf3M": -81.86,
-      "perf6M": -93.83,
-      "perfYTD": -97.92,
-      "perf12M": -98.89,
+      "shortFloat": 0.71,
+      "shortRatio": 0,
+      "marketCap_M": 6.17,
+      "floatShares_M": 0.86,
+      "perf1M": 90.67,
+      "perf3M": -94.34,
+      "perf6M": -86.73,
+      "perfYTD": -93.34,
+      "perf12M": -97.44,
       "prevOhlcv": null
     },
     "NCRA": {
@@ -638,10 +638,10 @@
         "latestReportDate": "2026-08-14",
         "nextReportDate": null
       },
-      "shortFloat": 6.06,
+      "shortFloat": 3.85,
       "shortRatio": 0.03,
       "marketCap_M": 5.1,
-      "floatShares_M": 0.49,
+      "floatShares_M": 0.77,
       "perf1M": -42.84,
       "perf3M": -78.23,
       "perf6M": -89.48,
