@@ -602,5 +602,21 @@
   "why": "2026-08-29 週末跑 verify 時 8/28 全 37 檔都拿不到收盤價,verify/ingest 直接空轉。Yahoo 的 chart 日K 對最新一根偶發 open/high/low 有值但 close=null。",
   "guard": "盤中不補(regularMarketTime < 20:00 UTC 跳過);補進來的 metaPrice 還必須落在當日 low~high 區間內 —— 薄量股的 meta 價會短暫停留在前一日(VISN 8/28 low 6.00/high 6.85,stale meta 為前收 11.63,已被區間檢查擋下)",
   "verified": "清空 model_bars_cache.json 重跑,verify 2026-08-28 完全重現:n=37、命中 35%、bias −4.98、MAE 6.12;AAPL 補值後 [317.088, 322.37, 315.4504, 319.7],與當日 RTH 收盤一致"
+ },
+ {
+  "iteration": 50,
+  "cmd": "refit",
+  "date": "2026-08-30",
+  "n": 4796,
+  "blind": {
+   "hit": 44.0,
+   "rho": 0.75,
+   "tiers": {
+    "big": 58.4,
+    "mid": 43.9,
+    "small": 30.5,
+    "na": 48.3
+   }
+  }
  }
 ]
