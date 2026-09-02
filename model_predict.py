@@ -2,7 +2,13 @@
 # 用法: py model_predict.py [--date YYYY-MM-DD]   (預設 dates.json 最新)
 # 每次 build_dashboard.py 之後執行(build 會自動呼叫);冪等,可重跑。
 # 模型係數在 model_params.json(由模型迭代管線導出;勿手改)。
-import json, math, os, sys
+import json, math, os, sys, datetime
+from concurrent.futures import ThreadPoolExecutor
+try:
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from prepost_quote import prepost_quote as _ppq
+except Exception:
+    _ppq = None
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -98,8 +104,31 @@ def spike_from_gbm(SM, s, gap, typ, tier):
     except Exception:
         return None
 
+ET = datetime.timezone(datetime.timedelta(hours=-4))
+
+def in_premarket_window():
+    now = datetime.datetime.now(ET)
+    return now.weekday() < 5 and datetime.time(4, 0) <= now.time() < datetime.time(9, 30)
+
+def fresh_gaps(syms, force=False):
+    """Live premarket chgPct per symbol (Yahoo pre/post bars). Walk-forward 8/11-8/27: replacing the
+    8am scan gap with the pre-open gap cuts predHi MAE 7.8→6.8 (median 4.0→3.4). Only meaningful
+    inside the ET premarket window; --fresh forces it (testing)."""
+    if _ppq is None or not syms or not (force or in_premarket_window()):
+        return {}
+    out = {}
+    def one(sym):
+        try:
+            q = _ppq(sym)
+            if q and q[0] is not None: out[sym] = round(float(q[0]), 2)
+        except Exception:
+            pass
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        list(ex.map(one, syms))
+    return out
+
 def predict(s, P, SP=None, SM=None):
-    gap = s.get('chgPct')
+    gap = s.get('freshGap') if s.get('freshGap') is not None else s.get('chgPct')
     if gap is None: return None
     typ = (s.get('type') or 'unknown').lower()
     tier = tier_of(s.get('marketCap_M'))
@@ -129,6 +158,12 @@ def predict(s, P, SP=None, SM=None):
         sq = SP.get((typ, tier)) or SP.get((typ,)) or SP.get('_g')
     out = dict(version=P.get('version', 'v12'), gap=round(gap, 2), predDay=round(p, 1),
                band=P['bands'].get(tier, P['bands']['na']), tier=tier)
+    if s.get('freshGap') is not None and s.get('chgPct') is not None:
+        out['gapScan'] = round(float(s['chgPct']), 2)      # 8am scan gap kept for drift audit
+    # nano-cap lottery gate (diag 8/7-8/27): small tier with float<20M or unknown catalyst = 26% of
+    # names but the bulk of |error| (premarket quote unreliable). Flag it; the card shows 'unpredictable'.
+    _fl = s.get('floatShares_M')
+    out['lottery'] = bool(tier == 'small' and ((_fl is not None and _fl < 20) or typ in ('?', 'unknown', '')))
     if sq:
         # 換算為 vs 昨收:(1+gap)(1+spike)−1;同時保留 spike(開盤後再衝)供對帳
         def to_pc(sp): return round(((1 + gap/100) * (1 + sp/100) - 1) * 100, 1)
@@ -183,7 +218,10 @@ def main():
     qual_all = load(os.path.join(ROOT, 'model_qual.json')) or {}
     qual = {k: v for k, v in qual_all.items() if isinstance(v, dict) and v.get('date') == date}
     n, nq = 0, 0
+    FG = fresh_gaps(list((d.get('stocks') or {}).keys()), force='--fresh' in sys.argv)
+    if FG: print(f'[model_predict] fresh premarket gaps pulled for {len(FG)} symbols')
     for sym, s in (d.get('stocks') or {}).items():
+        if sym in FG: s['freshGap'] = FG[sym]
         mp = predict(s, P, SP, SM)
         if mp:
             mp = apply_qual(mp, sym, qual)
@@ -193,6 +231,8 @@ def main():
             # sidecar 盤前刷新都不得覆寫。先前 modelPred 被三方輪流改寫,同一天 verify
             # 會因執行順序給出不同結論(8/21 在 43% 與 34% 之間跳動)。
             s.setdefault('modelPredScan', json.loads(json.dumps(mp)))
+            # pre-open re-injection with fresh gap: frozen once too, so verify can score both
+            if sym in FG: s.setdefault('modelPredPre', json.loads(json.dumps(mp)))
     with open(pk_path, 'w', encoding='utf-8') as f:
         json.dump(d, f, ensure_ascii=False)
     # data.json mirror 同日才同步

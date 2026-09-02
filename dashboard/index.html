@@ -4814,7 +4814,7 @@ async function renderStock(sym) {
     modelPredHtml = `<div class="stock-card news-detail model-pred"><h3><span class="material-symbols-outlined">query_stats</span>IDEA</h3>
       <div class="model-pred-grid">
         <div><span class="mp-label">Gap at scan</span><span class="mp-val">${fs_(mp.gap)}</span></div>
-        ${mp.predHiBand ? `<div><span class="mp-label">Intraday high range</span><span class="mp-val">${rng(mp.predHiBand[0], mp.predHiBand[1])}</span></div>` : ''}
+        ${mp.lottery ? `<div><span class="mp-label">Intraday high range</span><span class="mp-val" style="color:var(--mute)">unpredictable · nano-cap, premarket quote unreliable</span></div>` : mp.predHiBand ? `<div><span class="mp-label">Intraday high range</span><span class="mp-val">${rng(mp.predHiBand[0], mp.predHiBand[1])}</span></div>` : ''}
         ${(mp.band && mp.band.length === 2) ? `<div><span class="mp-label">Close range</span><span class="mp-val">${rng(mp.predDay + mp.band[0], mp.predDay + mp.band[1])}</span></div>` : ''}
       </div>${flagTxt}${mp.qual && mp.qual.reasoning ? `<div class="model-pred-qual"><span class="material-symbols-outlined">psychology</span><span><b>質化判讀</b>(${mp.qual.adj >= 0 ? '+' : ''}${mp.qual.adj} 調整):${escapeHtml(mp.qual.reasoning)}</span></div>` : ''}
     </div>`;
