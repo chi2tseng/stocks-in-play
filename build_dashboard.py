@@ -29,18 +29,30 @@ tv = {t['Ticker']: t for t in tv_list}
 #   pre row,  SessionDate=X → X.json                       (today's pre-market into today's open)
 #   post row, SessionDate=X → next_trading_day(X).json     (X's after-hours into NEXT open)
 # Example: a Mon post-market row routes to Tue's file, Fri post routes to Mon.
+# NYSE/Nasdaq full-day closures. Weekday-only skipping is not enough: on
+# 2026-09-05 the Fri 9/4 post-market rows routed to Mon 2026-09-07, which is
+# Labor Day (market closed) — the pack has to land on Tue 9/8 instead. Extend
+# this set each year; every date below is verified to be a weekday.
+_MARKET_HOLIDAYS = frozenset({
+    '2026-01-01', '2026-01-19', '2026-02-16', '2026-04-03', '2026-05-25',
+    '2026-06-19', '2026-07-03', '2026-09-07', '2026-11-26', '2026-12-25',
+    '2027-01-01', '2027-01-18', '2027-02-15', '2027-03-26', '2027-05-31',
+    '2027-06-18', '2027-07-05', '2027-09-06', '2027-11-25', '2027-12-24',
+})
+def _is_trading_day(d):
+    return d.weekday() < 5 and d.isoformat() not in _MARKET_HOLIDAYS
 def _next_trading_day(iso):
     d = datetime.date.fromisoformat(iso)
     while True:
         d += datetime.timedelta(days=1)
-        if d.weekday() < 5:    # Mon..Fri
+        if _is_trading_day(d):
             return d.isoformat()
 def _normalize_to_trading_day(iso):
     # Second line of defence: upstream SessionDate should already be a weekday,
-    # but if a Sat/Sun leaks through, roll it back to the prior Friday so rows
-    # never land in a non-existent weekend data file.
+    # but if a Sat/Sun (or a holiday) leaks through, roll it back to the prior
+    # trading day so rows never land in a non-existent data file.
     d = datetime.date.fromisoformat(iso)
-    while d.weekday() >= 5:     # 5=Sat, 6=Sun
+    while not _is_trading_day(d):
         d -= datetime.timedelta(days=1)
     return d.isoformat()
 def _session_target_date(session, session_date):
