@@ -1,6 +1,6 @@
 {
   "_doc": "主題族群領頭羊(SIPs §2.0e)。掃描時不受市值/±4% 門檻限制:|盤前chg|>=1.5% 即以 Session=headline 收錄並要求 TV+詳析(NEWS-THIN-HOT 閘門 300 字)。維護:每日 /SIPs 的 cluster map 出現的族群領頭羊加進來;連續 10 個交易日沒進過 cluster map 的移除。2026-08-06 起用(SNDK/WDC 漏抓事故)。",
-  "updated": "2026-09-06",
+  "updated": "2026-09-07",
   "symbols": [
     "MU",
     "SNDK",
@@ -68,6 +68,29 @@
         "https://www.cnbc.com/2026/09/04/oil-set-for-steepest-weekly-gain-over-renewed-us-iran-tensions.html"
       ],
       "note": "移除規則(連 10 個交易日未進 cluster map)本次未執行 — 日包未保存 cluster 欄位,無歷史可據,不憑印象刪。"
+    },
+    {
+      "date": "2026-09-07",
+      "action": "note",
+      "symbols": [
+        "MU",
+        "SNDK",
+        "WDC",
+        "STX",
+        "NVDA",
+        "AMD",
+        "AVGO",
+        "TSM",
+        "ARM",
+        "MRVL"
+      ],
+      "reason": "勞動節休市,無新增/移除。長週末風向:OpenAI 9/3 發表新旗艦模型後,9/7 首爾盤 SK 海力士大漲逾 6%、三星電子漲約 4-5%,KB 證券當日報告指兩家記憶體庫存降至 10 天以下;日經 +2.12%、Kospi +4.61%(晶片股領漲)。記憶體/半導體族群 9/8 開盤有整批跳空的風險,theme_watch 既有名單已涵蓋,9/8 開跑時對 MU/SNDK/WDC/STX 逐檔查是否 |chg|>=1.5%。能源/國防族群(9/6 補進的 15 檔)仍在事件中:美軍 9/5 擊中 3 艘伊朗油輪、伊朗以彈道飛彈回擊,Brent 9/7 報 $97.39(+1.15%)。",
+      "sources": [
+        "https://en.sedaily.com/finance/2026/09/07/chip-stocks-surge-in-korea-after-openais-astra-launch",
+        "https://www.cnbc.com/2026/09/07/stock-market-today-live-updates.html",
+        "https://tradingeconomics.com/commodity/brent-crude-oil",
+        "https://www.cnbc.com/2026/09/05/us-iran-oil-tankers-navy-missile-attack.html"
+      ]
     }
   ]
 }

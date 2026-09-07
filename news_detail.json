@@ -856,5 +856,85 @@
         "url": "https://finance.yahoo.com/quote/LNG/"
       }
     ]
+  },
+  "IPEX": {
+    "detail": "> **今日漲因:** 週五 9/4 盤後 +25.2% — SPAC 併購案在 9/3 召開股東特別會表決,市場解讀為 GOWell 交易進入交割倒數。\n\n**併購案進度**\nInflection Point Acquisition Corp. V(IPEX)與油田服務商 **GOWell Energy Technology** 的合併案,於 **2026-09-03 召開股東特別會(EGM)** 表決是否通過。公司規劃第三季完成交割,完成後更名 GOWell Energy Technology、股票代號改掛 **GOW**。\n\n**交割前的收尾動作**\n8/31 遞交的 8-K 修訂協議,解除發起人與承銷代表所持 **3,337,500 股**的鎖股限制 —— 這是併購案進入收尾階段的典型動作。更早的 8/12 股東會已先核准把交割期限展延至 8/31,當時有 **7,475,610 股遭贖回**,流通股本因此大幅縮小,是盤後單日能拉出 +25% 的籌碼背景。\n\n**另一種機制:空單回補**\n第二路查證顯示,**8/27 的放空部位單月暴增 227.9%**,而 MarketBeat 記錄 9/4 一般交易時段收 $7.75、盤中幾乎沒動。一檔贖回後流通量極小的 SPAC,盤中不動、盤後單根 +25%,這個型態更像是**空單在薄流動性下被軋**,而不是有人在盤後看到新消息才買。兩種解釋(表決結果 vs 空單回補)並不互斥。\n\n**未能證實的部分(請留意)**\n截至查證時點,**未在一級源或主流財經媒體找到「9/3 表決結果已通過」的正式確認**。盤後這根大漲很可能反映表決結果或贖回數字,但實際結果本身尚未獲證實 —— 9/8 開盤前應先確認公司是否補發 8-K 公告表決結果,再決定是否進場。",
+    "publishedTimezone": "ET",
+    "sources": [
+      {
+        "label": "SEC 8-K — 修訂協議解除鎖股(2026-08-31)",
+        "url": "https://www.sec.gov/Archives/edgar/data/2028355/000121390026095809/ea0303966-8k425_inflection5.htm"
+      },
+      {
+        "label": "GlobeNewswire — 併購案登記書生效",
+        "url": "https://www.globenewswire.com/news-release/2026/08/11/3343249/0/en/inflection-point-acquisition-corp-v-and-gowell-energy-technology-announce-effectiveness-of-registration-statement-for-proposed-business-combination.html"
+      },
+      {
+        "label": "MarketBeat — IPEX 新聞與放空數據",
+        "url": "https://www.marketbeat.com/stocks/NASDAQ/IPEX/news/"
+      }
+    ]
+  },
+  "BIAF": {
+    "detail": "> **今日跌因:** 週五 9/4 盤後 -32.2% — 最可能是盤後公布的**現金增資定價**,把 9/1-9/3 因聯邦通路利多累漲逾 75% 的漲幅一次吐回。\n\n**盤後增資(主要解釋,但條件待證實)**\n查到一則由 Wallach Beth Capital 發出的定價公告:與機構投資人簽署證券購買協議,依 Nasdaq 規則以市價定價的私募,**募資約 400 萬美元**,發行 **8,462,027 股**普通股(或等額預先認股權證),外加最多 **16,924,054 股**認股權證。\n\n**⚠ 這裡有數字對不上的地方,請 9/8 開盤前自行複核:** 該公告的合併有效發行價約 **$0.4727/股**,但 BIAF 已於 **8/24 執行 1 股併 15 股的反向分割**,9/4 盤後價在 $10 以上 —— 兩者兜不攏,這份公告有可能是**分割前的舊案**(公司 7 月才做過一次約 320 萬美元的增資)。另一路查證則顯示 SEC EDGAR 在 9/4~9/5 期間**沒有新增 8-K**。所以:增資是最合理的機制解釋,但**具體條件未經證實**。\n\n**前三天的真實利多(這部分數字確定)**\n9/1 公告 CyPath Lung 肺癌檢測透過 **AvMEDICAL 取得全美經銷合作**,打通含退伍軍人醫療體系(VA)在內的聯邦通路,9/2 單日跳漲 **47.95%**。2026 年 Q2 檢測量**年增 216%**、開單醫師帳戶數**增 122%**、回購訂單**增 71%**,上半年該產品營收**年增 159% 至約 80 萬美元**。\n\n**籌碼背景**\n反向分割後流通股本極低,帳上現金薄(6/30 僅約 **240 萬美元**)。無論增資是否為當日事件,這種股本結構本來就會放大雙向波動。",
+    "publishedTimezone": "ET",
+    "sources": [
+      {
+        "label": "StockTitan — Wallach Beth 宣布 bioAffinity 定價",
+        "url": "https://www.stocktitan.net/news/BIAF/wallach-beth-capital-announces-bio-affinity-technologies-pricing-of-yrwiq28y5twb.html"
+      },
+      {
+        "label": "StockTitan — bioAffinity 新聞列表",
+        "url": "https://www.stocktitan.net/news/BIAF/"
+      },
+      {
+        "label": "Yahoo Finance — CyPath 肺癌檢測報導",
+        "url": "https://ca.finance.yahoo.com/news/bioaffinity-ai-lung-cancer-stock-061350535.html"
+      }
+    ]
+  },
+  "GRI": {
+    "detail": "> **今日跌因:** 週五 9/4 盤後 -8.9% — **公開增資稀釋壓力蓋過正面的 IPF 臨床數據**,好消息被稀釋消息壓下去。\n\n**增資是主因**\nBarchart 的報導標題直接點名:**GRI 股價因公開增資下跌,儘管 IPF 研究數據令人鼓舞**。這是典型的「利多與稀釋同時落地、稀釋贏」的走法 —— 微型生技股在重大數據發表前後籌資,是常見但對股價不友善的時點選擇。\n\n**⚠ 待查:** 增資金額與每股定價未能自原始頁面取得。9/8 開盤前應先確認條件(折價幅度、是否含認股權證),那決定這波賣壓要走多久。\n\n**同時發生的臨床利多(數字明確)**\nGRI-0621 治療**特發性肺纖維化(IPF)**的資料,獲 **2026 年歐洲呼吸學會(ERS)年會**接受:三篇摘要加一篇 late-breaking 口頭報告。年會 **9/5-9/9 於西班牙巴塞隆納**舉行,口頭報告時段訂在 **9/6 15:45-17:00(中歐夏令時間)**。\n\n**其他查證結果**\nSEC EDGAR 的 8-K 清單最近一筆是 **6/18**(item 8.01/9.01)。GRI 是低成交量微型生技股,**9/8 開盤前務必先確認 9/6 ERS 實際發表的數據結果** —— 數據好壞加上增資條件,兩者合起來才是方向。",
+    "publishedTimezone": "ET",
+    "sources": [
+      {
+        "label": "Barchart — GRI 因公開增資下跌,儘管 IPF 數據正面",
+        "url": "https://barchart.com/story/news/31703593/gri-stock-down-on-public-offering-despite-encouraging-ipf-study-data"
+      },
+      {
+        "label": "StockTitan — GRI-0621 Phase 2a late-breaking 數據將於 ERS 發表",
+        "url": "https://www.stocktitan.net/news/GRI/gri-bio-to-present-late-breaking-phase-2a-gri-0621-data-highlighting-em4sa8wrsv2t.html"
+      }
+    ]
+  },
+  "MGNI": {
+    "detail": "> **今日漲因:** 週五 9/4 盤後 +4.2% — 延續 9/3 直播廣告平台新聞稿的動能,當日本身查無新催化劑。\n\n**9/3 的公司公告**\nMagnite 於 **2026-09-03** 發布新聞稿,宣布其 Live Marketplace 成為「經驗證直播廣告庫存」的主要平台,迎接秋季體育賽事旺季。Live Scheduler 已涵蓋 **37 家媒體商、逾 4,000 場直播活動**。\n\n**產業數字**\n公告揭露今年 1-7 月**全球直播體育廣告支出年增 56%**,且有超過 **5,800 個過去未曾投放的新廣告主**,今年開始購買直播體育廣告庫存 —— 這是新增需求,不是既有預算的搬移。\n\n**查無的部分**\n9/4 當日**未查到分析師調升、指數納入或內部人交易**等更直接的催化劑(已排除:CFO David Day 退休案是 4/20 舊聞;RBC / BTIG / Evercore 的目標價調升是 8 月初舊聞)。判斷偏向延續性動能,而非單一新事件。",
+    "publishedAt": "2026-09-03T08:00:00-04:00",
+    "publishedTimezone": "ET",
+    "sources": [
+      {
+        "label": "StockTitan — Magnite 直播廣告平台新聞稿",
+        "url": "https://www.stocktitan.net/news/MGNI/magnite-establishes-premier-destination-for-verified-live-streaming"
+      }
+    ]
+  },
+  "SGML": {
+    "detail": "> **今日跌因:** 週五 9/4 盤後 -6.3% — 澳洲雙重掛牌帶來的套利與稀釋疑慮,疊加 8/14 那份不如預期的季報與評等調降餘波。\n\n**澳洲證交所掛牌(當週的新事件)**\n**9/3 澳東時間 12:00**,澳洲證交所(ASX)核准 Sigma Lithium 以**外國豁免發行人**身分掛牌,採 **CDI(存託憑證)**形式、代號 **SAU**,與 Nasdaq 股票 **1:1 對應**。雙重掛牌本身是擴大機構資金來源的長線正面動作,但短線上市場先反應的是跨市場套利賣壓與潛在籌碼稀釋。\n\n**Q2 2026 財報的實際數字(8/14 公布)**\n每股虧損 **$0.02**,遠遜華爾街預估的 **EPS $0.23**;營收 **$5,470 萬美元**,也低於預估的 **$6,834 萬美元**。公司同時宣傳產量創紀錄、EBITDA 利潤率 47%,但市場買的是獲利與營收的絕對值。\n\n**評等調降累積**\n6-8 月期間 Weiss Ratings、Wall Street Zen、Zacks Research 陸續調降評等,相關分析師平均評等落在 **Hold**,平均目標價 **$18.50**。\n\n**9/4 當日走勢**\n開盤跳空下跌:開盤 **$12.12** vs 前收 **$12.77**(-2.9%),收 **$12.39**(-2.98%),盤後再跌。**9/4 當天並沒有新的、獨立的利空公告**(未查到訴訟、增發或大宗交易)—— 這是新掛牌套利加舊利空延遲發酵,不是新事件。",
+    "publishedAt": "2026-09-03T12:00:00+10:00",
+    "publishedTimezone": "AEST",
+    "sources": [
+      {
+        "label": "StockTitan — Sigma Lithium 於澳洲證交所開始交易",
+        "url": "https://www.stocktitan.net/news/SGML/sigma-lithium-commences-trading-on-australian-securities-exchange-7rypttx3fipg.html"
+      },
+      {
+        "label": "MarketBeat — SGML 跳空下跌快訊(2026-09-04)",
+        "url": "https://www.marketbeat.com/instant-alerts/price-sigma-lithium-nasdaq-sgml-shares-gap-down-heres-why-2026-09-04/"
+      },
+      {
+        "label": "MarketBeat — Wall Street Zen 降評至 Hold",
+        "url": "https://www.marketbeat.com/instant-alerts/wall-street-zen-downgrades-sigma-lithium-nasdaqsgml-to-hold-2026-08-08/"
+      }
+    ]
   }
 }

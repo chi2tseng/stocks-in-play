@@ -289,11 +289,26 @@ def _load_picks(path):
         # Staleness guard (2026-08-16): a picks file carries the date it was written
         # for. Seed/backfill builds target a date the judges never picked for, and
         # without this check yesterday's picks silently reappear as that date's
-        # picks. Files with no `date` key keep the old permissive behaviour.
+        # picks.
         _pd = _cp.get('date')
         if _pd and _pd != DATE:
             print(f'[picks] skipping {os.path.basename(path)} — written for {_pd}, building {DATE}')
             return []
+        # 2026-09-07: files with NO `date` key used to pass through unchecked, so
+        # codex_picks.json (last written 2026-07-10, no date field) was still being
+        # served as that day's ChatGPT picks two months later. Fall back to the
+        # file's mtime and drop anything more than 5 calendar days from the build
+        # date — 5 keeps the legitimate Fri-post -> Tue-open routing (4 days over a
+        # holiday weekend) while killing genuinely abandoned files.
+        if not _pd:
+            _mt = datetime.date.fromtimestamp(os.path.getmtime(path))
+            _age = abs((datetime.date.fromisoformat(DATE) - _mt).days)
+            if _age > 5:
+                print(f'[picks] skipping {os.path.basename(path)} — no `date` field and '
+                      f'mtime {_mt.isoformat()} is {_age} days from build date {DATE}')
+                return []
+            print(f'[picks] WARN {os.path.basename(path)} has no `date` field — '
+                  f'accepted on mtime {_mt.isoformat()}; the writer should stamp `date`')
         return _cp.get('picks', []) or []
     if isinstance(_cp, list): return _cp
     return []

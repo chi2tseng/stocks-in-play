@@ -13952,22 +13952,7 @@
       "neglected": null
     }
   ],
-  "codexPicks": [
-    {
-      "symbol": "GMM",
-      "rank": 9,
-      "intent": "long",
-      "rationale": "純低浮動動量：盤前 +126%、成交 47.8M，float 約 1.68M、short float 24.4%，magnitude 是全場第一。沒有明確公司催化且 3M -97%，只適合日內 SIP/halting tape，不給高 rank。",
-      "neglected": null
-    },
-    {
-      "symbol": "JLHL",
-      "rank": 10,
-      "intent": "long",
-      "rationale": "低浮動中概 momentum：掃描包顯示 +64.2%、成交 8.5M、float 約 1.28M；查證未見同日營運公告，屬資金流與 volatility setup。因缺乏可持續 catalyst，只列為第 10 名的交易型 long。",
-      "neglected": null
-    }
-  ],
+  "codexPicks": [],
   "geminiPicks": [
     {
       "symbol": "NXTC",
@@ -14075,36 +14060,7 @@
       "neglected": null
     }
   ],
-  "grokPicks": [
-    {
-      "symbol": "QTTB",
-      "rank": 1,
-      "intent": "long",
-      "rationale": "7/13 公司 IR/PRNewswire 公布 SIGNAL-AA Part B 36 週正面頂線：mITT SALT 平均降 35.3%、40%(10/25) 達 SALT-20，含 36% JAK 經驗患者，無新安全訊號，規劃 2027 上半年進入註冊性試驗。X 上 OpenOutcrier/Briefing 同步播報盤前 +67~76%；注意 Part B 為開放標籤單臂、已大漲後開盤易獲利了結。",
-      "neglected": null
-    },
-    {
-      "symbol": "SUNE",
-      "rank": 3,
-      "intent": "short",
-      "rationale": "基本面空：6 月與 Suniva 反向合併後原 SUNation 股東預期僅剩約 1.8% 股權；Q1 營收 $7.2M 年減 43%、現金約 $1.7M、10-Q 有 going concern。今日延續盤前約 -12~14% 屬稀釋+經營惡化兌現，非無消息崩跌。",
-      "neglected": null
-    },
-    {
-      "symbol": "SNDK",
-      "rank": 5,
-      "intent": "short",
-      "rationale": "同記憶體獲利回吐籃：6M 仍約 +442% 全候選最極端延伸，盤前約 -5% 與 MU/WDC 連動；NAND 自高點回落+2027 新產能隱憂敘事在 X/盤前主流。比 MU 更「貴且延伸」，回檔彈性更大，但同樣是情緒/估值壓縮而非公司獨有利空。",
-      "neglected": null
-    },
-    {
-      "symbol": "SKYQ",
-      "rank": 7,
-      "intent": "long",
-      "rationale": "油頁岩/回收題材受美伊衝突、Brent 走高帶動，1M 約 +91%、盤前 +21%；shortFloat ~17% 有燃料。但市值僅約 $17M，X 多為社群喊單無公司 IR 新訊——標為題材+油價 beta，流動性與 fade 風險高。",
-      "neglected": null
-    }
-  ],
+  "grokPicks": [],
   "dayResets": {
     "TSEM": "7/14 $3B 日本擴產+上調 2028 目標 — 全新公司級催化劑;1M 僅 +6%,非事前預跑",
     "CLSK": "7/14 簽 $6.6B 20 年資料中心租約 — 全新重大合約;前一週股價還 -23%,無事前預跑",
