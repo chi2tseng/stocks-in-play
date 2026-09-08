@@ -265,16 +265,20 @@ def cmd_spikefit():
     cut = int(len(dates) * 0.8)
     fit = [e for e in ev if e['date'] in set(dates[:cut])]
     cal = [e for e in ev if e['date'] in set(dates[cut:])]
-    m = HistGradientBoostingRegressor(loss='quantile', quantile=0.5, max_iter=250, max_depth=4,
+    # 2026-09-08 walk-forward(8/11-9/4, n=692, 排除樂透): q0.40 + 殘差 P20/P70 + 半衰期 40 天近期加權
+    # → MAE 4.32→4.01、帶內率 45→48%、到價率 64/33/19→73/44/25(目標 ~70/46/25)。q0.5 的中位數偏高。
+    m = HistGradientBoostingRegressor(loss='quantile', quantile=0.40, max_iter=250, max_depth=4,
                                       learning_rate=0.06, min_samples_leaf=30,
                                       l2_regularization=1.0, random_state=7)
-    m.fit(np.array([spike_feats(e, types) for e in fit]), np.array([e['spike'] for e in fit]))
+    _fd = sorted(set(e['date'] for e in fit)); _ix = {d: i for i, d in enumerate(_fd)}
+    _w = 0.5 ** (np.array([len(_fd) - 1 - _ix[e['date']] for e in fit], float) / 40.0)
+    m.fit(np.array([spike_feats(e, types) for e in fit]), np.array([e['spike'] for e in fit]), sample_weight=_w)
     p_cal = np.maximum(m.predict(np.array([spike_feats(e, types) for e in cal])), 0)
     res = {}
     for e, p in zip(cal, p_cal): res.setdefault(e['tier'], []).append(e['spike'] - p)
     allr = [e['spike'] - p for e, p in zip(cal, p_cal)]
-    rq = {t: [float(np.percentile(v, 25)), float(np.percentile(v, 75))] for t, v in res.items() if len(v) >= 40}
-    rg = [float(np.percentile(allr, 25)), float(np.percentile(allr, 75))]
+    rq = {t: [float(np.percentile(v, 20)), float(np.percentile(v, 70))] for t, v in res.items() if len(v) >= 40}
+    rg = [float(np.percentile(allr, 20)), float(np.percentile(allr, 70))]
     with open('model_spike.pkl', 'wb') as f:
         pickle.dump(dict(version=SPIKE_VERSION, model=m, types=types, rq=rq, rg=rg,
                          n=len(ev), fit_n=len(fit), cal_n=len(cal), cut_date=dates[cut]), f)
