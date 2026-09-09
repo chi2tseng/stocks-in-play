@@ -313,6 +313,11 @@ def _load_picks(path):
     if isinstance(_cp, list): return _cp
     return []
 
+_DC_PATH = os.path.join(DIR, 'daily_case.json')
+_DC = (json.load(open(_DC_PATH, encoding='utf-8')) if os.path.exists(_DC_PATH) else {}).get('cases') or []
+def _daily_case_for(td):
+    return next((c for c in _DC if c.get('date') == td), None)
+
 claude_picks_path = os.path.join(DIR, 'claude_picks.json')
 claude_picks_list = _load_picks(claude_picks_path)
 codex_picks_list  = _load_picks(os.path.join(DIR, 'codex_picks.json'))     # ChatGPT via Codex CLI
@@ -650,6 +655,7 @@ def _build_data_for(td):
         'geminiPicks': gp,
         'grokPicks':   gkp,
         'ollamaPicks':   qwp,
+        'dailyCase':   _daily_case_for(td),
         'tradeIdeas':  (lambda _ti: (_ti.get('ideas') if isinstance(_ti, dict) and _ti.get('date') == td else []))(
             json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'trade_ideas.json'), encoding='utf-8'))
             if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'trade_ideas.json')) else {}),
@@ -1332,6 +1338,16 @@ nav.topbar .topbar-right { display: flex; align-items: center; gap: 8px; flex: 0
 .gs-item .gs-chg { font-weight: 600; }
 .gs-item .gs-chg.pos { color: var(--pos); } .gs-item .gs-chg.neg { color: var(--neg); }
 .gs-empty { padding: 12px; font-size: 13px; color: var(--mute); }
+/* ── Daily Case card ── */
+.dc-card { margin-bottom: 16px; display: block; }
+.dc-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.dc-tag { font-size: 10px; letter-spacing: 0.8px; font-weight: 700; color: var(--primary); }
+.dc-dir { display: inline-flex; align-items: center; gap: 2px; font-size: 12px; font-weight: 700; }
+.dc-dir .material-symbols-outlined { font-size: 16px; }
+.dc-res { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: var(--r-pill); border: 1px solid var(--hairline); color: var(--mute); }
+.dc-res.hit { color: var(--pos); border-color: var(--pos); } .dc-res.miss { color: var(--neg); border-color: var(--neg); }
+.dc-row { display: grid; grid-template-columns: 60px 1fr; gap: 8px; font-size: 13px; line-height: 1.55; margin-top: 6px; }
+.dc-label { font-size: 10px; letter-spacing: 0.6px; text-transform: uppercase; color: var(--mute); padding-top: 3px; }
 @media (max-width: 900px) { .gs-wrap { display: none; } }
 .studies-search-results {
   position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 1000;
@@ -4407,6 +4423,22 @@ function openSipsFilterPopup(btn, subtab) {
   }, 0);
 }
 
+// Daily Case — one liquid stock per day: ex-ante call → actual → cause (daily_case.py)
+function dailyCaseHtml(c) {
+  if (!c) return '';
+  const f = v => (v == null ? '–' : (v >= 0 ? '+' : '') + Number(v).toFixed(1) + '%');
+  const fs_ = v => `<span class="${v >= 0 ? 'pos' : 'neg'}">${f(v)}</span>`;
+  const a = c.actual || {};
+  const res = c.result ? `<span class="dc-res ${c.result === 'HIT' ? 'hit' : 'miss'}">${c.result}${c.intraday_result ? ' · intraday ' + c.intraday_result : ''}</span>` : '<span class="dc-res open">open</span>';
+  const dir = `<span class="dc-dir ${c.direction === 'up' ? 'pos' : 'neg'}"><span class="material-symbols-outlined">${c.direction === 'up' ? 'trending_up' : 'trending_down'}</span>${c.direction === 'up' ? 'UP' : 'DOWN'}</span>`;
+  return `<div class="sip-card dc-card">
+    <div class="dc-head"><span class="dc-tag">DAILY CASE</span><a class="sip-sym" href="#/${c.date}/stock/${c.symbol}">${escapeHtml(c.symbol)}</a>${dir}${res}</div>
+    <div class="dc-row"><span class="dc-label">Thesis</span><span>${escapeHtml(c.thesis || '')}</span></div>
+    ${c.actual ? `<div class="dc-row"><span class="dc-label">Actual</span><span>gap ${fs_(a.gap_pct)} · open→close ${fs_(a.intra_pct)} · day ${fs_(a.day_pct)} · high ${fs_(a.hi_pct)} · low ${fs_(a.lo_pct)}</span></div>` : ''}
+    ${c.cause ? `<div class="dc-row"><span class="dc-label">Cause</span><span>${escapeHtml(c.cause)}</span></div>` : ''}
+    ${c.lesson ? `<div class="dc-row"><span class="dc-label">Lesson</span><span>${escapeHtml(c.lesson)}</span></div>` : ''}
+  </div>`;
+}
 async function renderSips(subtab) {
   // Subtabs (4 total):
   //   'claude' (default) — Claude-curated picks  → reads DATA.claudePicks
@@ -4478,6 +4510,7 @@ async function renderSips(subtab) {
       ? '<div class="sip-grid">' + ideas.map((i, idx) => ideaCardHtml(i, idx)).join('') + '</div>'
       : `<div class="sip-empty">本日尚未產出交易機會 — /SIPs 盤前寫入 <code>trade_ideas.json</code> 後顯示。</div>`;
     if (ideas.length) hint.textContent = `${ideas.length} ideas · 盤前撰寫 · 非投資建議`;
+    html = dailyCaseHtml(DATA.dailyCase) + html;
     stack.innerHTML = html;
     staggerChildren('.sip-grid > .sip-card', 12);
     return;

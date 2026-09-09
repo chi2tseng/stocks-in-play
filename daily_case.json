@@ -1,0 +1,39 @@
+{
+ "cases": [
+  {
+   "date": "2026-09-08",
+   "symbol": "DYN",
+   "direction": "down",
+   "thesis": "[回填示範,非盤前寫] 同適應症競品 Novartis del-desiran 三期失敗,市場直接讀成 Dyne z-basivarsen(同為 DM1)機轉風險;盤前 −29%、市值 32 億、日均成交額 2,900 萬,流動性足。這種「讀-through 利空」通常開盤後續殺(無公司自身數據可反駁),預期收盤低於開盤。",
+   "premarket": {
+    "symbol": "DYN",
+    "mcap_M": 3210,
+    "avg_dollar_vol_M": 43.7,
+    "gap": -28.75,
+    "predDay": -33.1,
+    "type": "news",
+    "catalyst": "競品諾華 del-desiran 三期 HARBOR 未達終點,直接波及 Dyne 自家 DM1 藥物 z-basivarsen(三期 HARMONIA 進行中",
+    "score": 33.1
+   },
+   "written_at": "2026-09-09T03:48-04:00",
+   "actual": {
+    "prev_close": 24.28,
+    "open": 17.08,
+    "high": 20.91,
+    "low": 17.0,
+    "close": 20.31,
+    "volume": 17153500,
+    "gap_pct": -29.65,
+    "day_pct": -16.35,
+    "intra_pct": 18.91,
+    "hi_pct": -13.88,
+    "lo_pct": -29.98
+   },
+   "result": "HIT",
+   "intraday_result": "MISS",
+   "cause": "跳空 −29.6% 的原因:Novartis del-desiran 三期 HARBOR 主要終點 vHOT 未達標(9/8 盤前公布),市場把同適應症 DM1 的 Dyne z-basivarsen 一併判死刑。開盤後卻從最低點反彈,收盤比開盤高 +18.9%(仍收 −16.4%):Stifel 等分析師盤中出來區分兩藥 — Dyne 一/二期 vHOT 與 splicing 數據更好、組織穿透與生物分布更佳、走加速核准路徑而非傳統核准;公司同日宣布將公布 ACHIEVE 一年期數據。純「讀-through」利空、無公司自身壞數據 → 開盤即極值,盤中被承接。",
+   "lesson": "方向(日線)對但可交易的部分反向:競品失敗的 read-through 利空,開盤就是全日低點附近(low −30.0 vs open −29.6),追空=送分;正確玩法是 beatdip 邏輯 — 等 10:30 承接確認後做反彈。以後同類型(同適應症競品失敗、自身無數據)一律標『開盤極值型』,不做開盤追空。",
+   "analyzed_at": "2026-09-09T03:49-04:00"
+  }
+ ]
+}
