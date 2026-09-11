@@ -1,72 +1,137 @@
 {
- "ACVA": {
-  "Type": "M&A",
-  "Catalyst": "Copart 宣布以每股 10.50 美元現金收購 ACV Auctions,總額約 19 億美元、較前收 7.22 美元溢價 45%,盤後 +43.8% 貼近收購價",
-  "EarningsReaction": false
- },
- "CPRT": {
-  "Type": "earnings",
-  "Catalyst": "Q4 FY26 EPS 0.35 美元低於預期 0.38 美元但營收優於預期;同日宣布 19 億美元現金收購 ACV Auctions,盤後 +7.6%",
-  "EarningsReaction": true
- },
- "RH": {
-  "Type": "earnings",
-  "Catalyst": "Q2 EPS 2.70 美元遠優於華爾街預估 0.39 美元、營收 9.22 億美元優於預期,上調 FY26 營收成長展望至 5.5-7%;空單佔流通股 31.5%,盤後 +6.5%",
-  "EarningsReaction": true
- },
- "ORCL": {
-  "Type": "earnings",
-  "Catalyst": "Q1 FY27 EPS 1.92 美元優於預期 1.74 美元、營收 193.5 億美元;剩餘履約義務 RPO 達 6,640 億美元、OCI 年增 121%,盤後 +4.1%",
-  "EarningsReaction": true
- },
- "GME": {
-  "Type": "news",
-  "Catalyst": "CEO Ryan Cohen 申報公開市場買進約 100 萬股、耗資約 2,040 萬美元(均價 20.38 美元),盤後 +4.1%",
-  "EarningsReaction": false
- },
- "ADBE": {
-  "Type": "earnings",
-  "Catalyst": "Q3 FY26 財報優於預期並上調全年財測、月活用戶達 10 億;同時宣布 CEO Narayen 將於 12/1 交棒,盤後 −2.4% 利多出盡",
-  "EarningsReaction": true
- },
- "NRGV": {
-  "Type": "momentum",
-  "Catalyst": "查無 9/10 新消息;延續 Q2 營收年增 104%、德州 1.25GW 儲能合約與財測上修的動能",
-  "EarningsReaction": false
- },
- "CVV": {
-  "Type": "news",
-  "Catalyst": "宣布退出 CVD 新系統訂單業務、裁員近半、CEO 離職,轉型為零件與服務公司,盤後 −12.6%",
-  "EarningsReaction": false
- },
- "LBGJ": {
-  "Type": "momentum",
-  "Catalyst": "查無消息;今年兩度反向分割(1:100、1:200)後流通量極低、市值約 100 萬美元,低量急漲屬樂透帶",
-  "EarningsReaction": false
- },
- "XRTX": {
-  "Type": "news",
-  "Catalyst": "啟動 XORLO(oxypurinol)GMP 製錠,供 XRX-026 痛風藥臨床試驗及未來申請上市使用,盤後 +16%",
-  "EarningsReaction": false
- },
- "TPET": {
-  "Type": "macro",
-  "Catalyst": "中東戰事升級、Brent 一度衝上 107 美元創近 4 個月新高,微型油氣股 Trio Petroleum 隨油價族群噴漲(盤前 +16%、盤後 +8.9%)",
-  "EarningsReaction": false
- },
- "NCRA": {
-  "Type": "momentum",
-  "Catalyst": "查無 9/10 明確消息;近期 AI/數位資產轉型題材(QMAX 控股、INERGX 入股)延燒,微型股波動",
-  "EarningsReaction": false
- },
- "SUNE": {
-  "Type": "news",
-  "Catalyst": "Suniva 合併協議 9/4 簽署第一修訂、授權股數擴增至 15 億股,稀釋疑慮引發賣壓,盤前盤後皆 −12%",
-  "EarningsReaction": false
- },
- "CYPH": {
-  "Type": "news",
-  "Catalyst": "Zcash 七日大漲 50% 後 9/10 回檔,Zcash 國庫策略股 CYPH 放大跌幅,盤後 −6.5%",
-  "EarningsReaction": false
- }
+  "ACVA": {
+    "Type": "M&A",
+    "Catalyst": "Copart 宣布以每股 10.50 美元現金收購 ACV Auctions,總額約 19 億美元、較前收 7.22 美元溢價 45%,盤後 +43.8% 貼近收購價",
+    "EarningsReaction": false
+  },
+  "CPRT": {
+    "Type": "earnings",
+    "Catalyst": "Q4 FY26 EPS 0.35 美元低於預期 0.38 美元但營收優於預期;同日宣布 19 億美元現金收購 ACV Auctions,盤後 +7.6%",
+    "EarningsReaction": true
+  },
+  "RH": {
+    "Type": "earnings",
+    "Catalyst": "Q2 EPS 2.70 美元遠優於華爾街預估 0.39 美元、營收 9.22 億美元優於預期,上調 FY26 營收成長展望至 5.5-7%;空單佔流通股 31.5%,盤後 +6.5%",
+    "EarningsReaction": true
+  },
+  "ORCL": {
+    "Type": "earnings",
+    "Catalyst": "Q1 FY27 EPS 1.92 美元優於預期 1.74 美元、營收 193.5 億美元;剩餘履約義務 RPO 達 6,640 億美元、OCI 年增 121%,盤後 +4.1%",
+    "EarningsReaction": true
+  },
+  "GME": {
+    "Type": "news",
+    "Catalyst": "CEO Ryan Cohen 申報公開市場買進約 100 萬股、耗資約 2,040 萬美元(均價 20.38 美元),盤後 +4.1%",
+    "EarningsReaction": false
+  },
+  "ADBE": {
+    "Type": "earnings",
+    "Catalyst": "Q3 FY26 財報優於預期並上調全年財測、月活用戶達 10 億;同時宣布 CEO Narayen 將於 12/1 交棒,盤後 −2.4% 利多出盡",
+    "EarningsReaction": true
+  },
+  "NRGV": {
+    "Type": "momentum",
+    "Catalyst": "查無 9/10 新消息;延續 Q2 營收年增 104%、德州 1.25GW 儲能合約與財測上修的動能",
+    "EarningsReaction": false
+  },
+  "CVV": {
+    "Type": "news",
+    "Catalyst": "宣布退出 CVD 新系統訂單業務、裁員近半、CEO 離職,轉型為零件與服務公司,盤後 −12.6%",
+    "EarningsReaction": false
+  },
+  "LBGJ": {
+    "Type": "momentum",
+    "Catalyst": "查無消息;今年兩度反向分割(1:100、1:200)後流通量極低、市值約 100 萬美元,低量急漲屬樂透帶",
+    "EarningsReaction": false
+  },
+  "XRTX": {
+    "Type": "news",
+    "Catalyst": "啟動 XORLO(oxypurinol)GMP 製錠,供 XRX-026 痛風藥臨床試驗及未來申請上市使用,盤後 +16%",
+    "EarningsReaction": false
+  },
+  "TPET": {
+    "Type": "macro",
+    "Catalyst": "中東戰事升級、Brent 一度衝上 107 美元創近 4 個月新高,微型油氣股 Trio Petroleum 隨油價族群噴漲(盤前 +16%、盤後 +8.9%)",
+    "EarningsReaction": false
+  },
+  "NCRA": {
+    "Type": "momentum",
+    "Catalyst": "查無 9/10 明確消息;近期 AI/數位資產轉型題材(QMAX 控股、INERGX 入股)延燒,微型股波動",
+    "EarningsReaction": false
+  },
+  "SUNE": {
+    "Type": "news",
+    "Catalyst": "Suniva 合併協議 9/4 簽署第一修訂、授權股數擴增至 15 億股,稀釋疑慮引發賣壓,盤前盤後皆 −12%",
+    "EarningsReaction": false
+  },
+  "CYPH": {
+    "Type": "news",
+    "Catalyst": "Zcash 七日大漲 50% 後 9/10 回檔,Zcash 國庫策略股 CYPH 放大跌幅,盤後 −6.5%",
+    "EarningsReaction": false
+  },
+  "AENT": {
+    "Type": "earnings",
+    "Catalyst": "FY26 營收 11.49 億美元(+8%)、調整後 EPS 0.46 美元(+24%)、調整後 EBITDA 4,150 萬美元(+14%),9/10 盤後公布,盤前 +27%",
+    "EarningsReaction": true
+  },
+  "TNON": {
+    "Type": "news",
+    "Catalyst": "9/10 宣布提前以現金全額償還 516 萬美元優先可轉換票據(原 9/11 到期),消除折價轉股稀釋疑慮;9/10 盤中已 +95%,今晨續漲 +49%",
+    "EarningsReaction": false
+  },
+  "PCLA": {
+    "Type": "momentum",
+    "Catalyst": "查無明確消息;9/10 已飆 +31%,小型 ADR 投機動能延續,盤前 +23%",
+    "EarningsReaction": false
+  },
+  "ATTT": {
+    "Type": "momentum",
+    "Catalyst": "Raytech 更名 Atlas Trinity Tech、9/10 換新代號的炒作退燒,今晨獲利回吐 −15%,無公司新消息",
+    "EarningsReaction": false
+  },
+  "BNC": {
+    "Type": "momentum",
+    "Catalyst": "查無公司消息;BNB 國庫概念股,疑隨 BNB 幣價回落 −4%",
+    "EarningsReaction": false
+  },
+  "BRNX": {
+    "Type": "momentum",
+    "Catalyst": "查無明確消息(9/9 公布上半年淨損收窄至 609 萬美元,非本次催化),盤前 −7%",
+    "EarningsReaction": false
+  },
+  "FTFT": {
+    "Type": "momentum",
+    "Catalyst": "8 月底 1:4 反向分割後量能異常放大,投機性上衝 +12%,無新基本面消息",
+    "EarningsReaction": false
+  },
+  "OKLO": {
+    "Type": "analyst",
+    "Catalyst": "Piper Sandler 9/10 對核能族群啟動分歧評等、Oklo 遭下調,核能股 9/10 起回落延續至 9/11 盤前 −4%",
+    "EarningsReaction": false
+  },
+  "SMR": {
+    "Type": "analyst",
+    "Catalyst": "同受 Piper Sandler 9/10 核能族群評等調整拖累,賣壓延續至 9/11 盤前 −4%",
+    "EarningsReaction": false
+  },
+  "SXTC": {
+    "Type": "momentum",
+    "Catalyst": "查無明確消息;8/10 完成 1:80 反向分割後低流通股投機,盤前 +10%",
+    "EarningsReaction": false
+  },
+  "WETO": {
+    "Type": "momentum",
+    "Catalyst": "查無明確消息;8 月機器人合約與併股皆為舊聞,盤前 −5%",
+    "EarningsReaction": false
+  },
+  "KR": {
+    "Type": "earnings",
+    "Catalyst": "9/11 盤前公布 Q2 FY26:調整後 EPS 與同店銷售成長優於預期,但股價盤前 −2.5%,市場關注全年指引與毛利率",
+    "EarningsReaction": true
+  },
+  "SHOP": {
+    "Type": "analyst",
+    "Catalyst": "Bernstein 9/11 初評 Shopify 為 Outperform,盤前 +2.4%",
+    "EarningsReaction": false
+  }
 }
