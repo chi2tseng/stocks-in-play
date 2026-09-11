@@ -1,137 +1,72 @@
 {
-  "COO": {
-    "Type": "earnings",
-    "Catalyst": "FQ3 營收 10.7 億美元不如預期、FQ4 EPS 指引 4.51-4.55 美元低於華爾街 4.63 美元;策略檢討結束決定不出售公司,Piper Sandler 與 Baird 同步降評",
-    "EarningsReaction": true
-  },
-  "SHOE": {
-    "Type": "earnings",
-    "Catalyst": "Q2 營收 2.84 億美元年減 7.2% 不如預期,FY26 EPS 指引 0.75-0.90 美元遠低於華爾街預估的 1.48 美元",
-    "EarningsReaction": true
-  },
-  "NAVN": {
-    "Type": "earnings",
-    "Catalyst": "Q2 營收 2.328 億美元年增 35%、EPS 0.05 美元雙雙超預期,但利潤率擴張幅度不足,IPO 後首份財報遭獲利了結",
-    "EarningsReaction": true
-  },
-  "AEO": {
-    "Type": "earnings",
-    "Catalyst": "Q2 EPS 0.79 美元遠勝華爾街的 0.22 美元,但獲利主要來自 1.61 億美元關稅退款一次性挹注,本業與全年展望保守",
-    "EarningsReaction": true
-  },
-  "AVAV": {
-    "Type": "earnings",
-    "Catalyst": "FQ1 EPS 0.59 美元遠勝華爾街的 0.30 美元,在手訂單創歷史新高約 15 億美元;美伊衝突升溫帶動無人機與國防類股同步走強",
-    "EarningsReaction": true
-  },
-  "CULP": {
-    "Type": "earnings",
-    "Catalyst": "FY2027 Q1 EPS 0.47 美元勝華爾街的 0.44 美元、營收 5,397 萬美元優於 5,320 萬美元;寢具布料營收年增 13.2%,淨負債降 70% 至 310 萬美元",
-    "EarningsReaction": true
-  },
-  "BRNX": {
-    "Type": "earnings",
-    "Catalyst": "9/9 公布上半年營收掛零(去年同期 387 萬美元)、淨損 604 萬美元,財報揭露經營持續性疑慮(市值僅 174 萬美元,TradingView 無季度預估資料)",
-    "EarningsReaction": true
-  },
-  "FCX": {
-    "Type": "policy",
-    "Catalyst": "9/10 07:06 ET MarketWatch 報導白宮銅關稅方案停擺,COMEX 銅期貨急跌、對倫敦金屬交易所的溢價收斂,吐回 9/8 銅價創高 14,694 美元/噸的漲幅",
-    "EarningsReaction": false
-  },
-  "TECK": {
-    "Type": "policy",
-    "Catalyst": "白宮銅關稅方案停擺拖累銅價自歷史高位回落,礦業類股同步賣壓;另有 350 億美元英美資源集團合併案仍待中國監管放行的不確定性壓在頭上",
-    "EarningsReaction": false
-  },
-  "RWT": {
-    "Type": "dilution",
-    "Catalyst": "9/10 公告發行 1.5 億美元 2030 年到期可轉換優先票據(另有 2,250 萬美元超額配售權),部分資金贖回 2027 年舊債,稀釋疑慮觸發賣壓",
-    "EarningsReaction": false
-  },
-  "BHVN": {
-    "Type": "FDA",
-    "Catalyst": "9/4 美國食品藥物管理局對 BHV-7000 癲癇試驗發出部分臨床暫停(停止新病人入組),疊加加拿大皇家銀行以估值過高降評",
-    "EarningsReaction": false
-  },
-  "RXT": {
-    "Type": "contract",
-    "Catalyst": "9/10 宣布加入輝達 Cloud Partner Program、推出 Blackwell 架構 AI 基礎設施並深化與 Palantir 合作;空單佔流通股 27.9%,回補壓力放大漲幅",
-    "EarningsReaction": false
-  },
-  "KNTK": {
-    "Type": "M&A",
-    "Catalyst": "彭博 9/9 報導 Western Midstream 正洽談收購 Kinetik,公司證實正探索包含出售在內的策略選項",
-    "EarningsReaction": false
-  },
-  "IRD": {
-    "Type": "FDA",
-    "Catalyst": "OPGx-BEST1 一/二期試驗第一世代三個月數據正向,並取得 FDA Type C 會議支持 2027 年啟動三期",
-    "EarningsReaction": false
-  },
-  "HCAI": {
-    "Type": "contract",
-    "Catalyst": "9/9 公告與香港 Beyinda Limited 策略合作拓展中國精密金屬結構件市場,未揭露最低採購量或營收保證",
-    "EarningsReaction": false
-  },
-  "TNON": {
-    "Type": "news",
-    "Catalyst": "9/9 提前償還 516 萬美元可轉債(原訂 9/11 到期),稀釋疑慮解除;流通股僅 55 萬股,買盤放大漲幅",
-    "EarningsReaction": false
-  },
-  "SUNE": {
-    "Type": "dilution",
-    "Catalyst": "合併標的 Suniva 完成 8.35 億美元增資擴產,稀釋疑慮引爆獲利了結;股價前兩日已翻倍,今晨暴量回吐",
-    "EarningsReaction": false
-  },
-  "BIAF": {
-    "Type": "news",
-    "Catalyst": "9/9 那斯達克確認公司恢復最低股價與權證上市合規,下市風險解除",
-    "EarningsReaction": false
-  },
-  "BNC": {
-    "Type": "momentum",
-    "Catalyst": "BNB 企業金庫概念股,隨幣價與加密貨幣金庫題材連動,無獨立公司公告",
-    "EarningsReaction": false
-  },
-  "PCLA": {
-    "Type": "momentum",
-    "Catalyst": "查無明確催化劑;為低流通量日本存託憑證,歷史上多次在無新聞下暴力急拉",
-    "EarningsReaction": false
-  },
-  "FTFT": {
-    "Type": "momentum",
-    "Catalyst": "查無明確催化劑;9/9 散戶巨量推升 62.6% 後今晨續強,無公司公告支撐",
-    "EarningsReaction": false
-  },
-  "WETO": {
-    "Type": "momentum",
-    "Catalyst": "無新公告,延續 9/1 Orchestra 肌電感測展示的具身機器人題材動能",
-    "EarningsReaction": false
-  },
-  "YMAT": {
-    "Type": "momentum",
-    "Catalyst": "查無明確催化劑;7 月已完成 1 併 5 反向分割,今日波動無新聞支撐",
-    "EarningsReaction": false
-  },
-  "IFRX": {
-    "Type": "momentum",
-    "Catalyst": "查無明確催化劑;最新公司消息停在 8/20 法說會公告與 8/6 第二季財報,無新利空可解釋今日跌幅",
-    "EarningsReaction": false
-  },
-  "BHP": {
-    "Type": "policy",
-    "Catalyst": "白宮銅關稅方案停擺、COMEX 銅價急殺,全球礦業類股同步走弱;查無 BHP 自身當日新聞,屬族群連動(同族群 FCX −8.0%、TECK −7.8%、RIO −4.0%)",
-    "EarningsReaction": false
-  },
-  "RIO": {
-    "Type": "policy",
-    "Catalyst": "白宮銅關稅方案停擺拖累銅價自歷史高位回落,礦業類股全面回檔;查無力拓自身當日利空,屬族群連動",
-    "EarningsReaction": false
-  },
-  "TSM": {
-    "Type": "news",
-    "Catalyst": "8 月營收 5,148 億台幣(163 億美元)創單月新高、年增 53.3%、月增 10.1%,連四月成長;但股價盤前仍小跌,屬利多出盡",
-    "EarningsReaction": false
-  }
+ "ACVA": {
+  "Type": "M&A",
+  "Catalyst": "Copart 宣布以每股 10.50 美元現金收購 ACV Auctions,總額約 19 億美元、較前收 7.22 美元溢價 45%,盤後 +43.8% 貼近收購價",
+  "EarningsReaction": false
+ },
+ "CPRT": {
+  "Type": "earnings",
+  "Catalyst": "Q4 FY26 EPS 0.35 美元低於預期 0.38 美元但營收優於預期;同日宣布 19 億美元現金收購 ACV Auctions,盤後 +7.6%",
+  "EarningsReaction": true
+ },
+ "RH": {
+  "Type": "earnings",
+  "Catalyst": "Q2 EPS 2.70 美元遠優於華爾街預估 0.39 美元、營收 9.22 億美元優於預期,上調 FY26 營收成長展望至 5.5-7%;空單佔流通股 31.5%,盤後 +6.5%",
+  "EarningsReaction": true
+ },
+ "ORCL": {
+  "Type": "earnings",
+  "Catalyst": "Q1 FY27 EPS 1.92 美元優於預期 1.74 美元、營收 193.5 億美元;剩餘履約義務 RPO 達 6,640 億美元、OCI 年增 121%,盤後 +4.1%",
+  "EarningsReaction": true
+ },
+ "GME": {
+  "Type": "news",
+  "Catalyst": "CEO Ryan Cohen 申報公開市場買進約 100 萬股、耗資約 2,040 萬美元(均價 20.38 美元),盤後 +4.1%",
+  "EarningsReaction": false
+ },
+ "ADBE": {
+  "Type": "earnings",
+  "Catalyst": "Q3 FY26 財報優於預期並上調全年財測、月活用戶達 10 億;同時宣布 CEO Narayen 將於 12/1 交棒,盤後 −2.4% 利多出盡",
+  "EarningsReaction": true
+ },
+ "NRGV": {
+  "Type": "momentum",
+  "Catalyst": "查無 9/10 新消息;延續 Q2 營收年增 104%、德州 1.25GW 儲能合約與財測上修的動能",
+  "EarningsReaction": false
+ },
+ "CVV": {
+  "Type": "news",
+  "Catalyst": "宣布退出 CVD 新系統訂單業務、裁員近半、CEO 離職,轉型為零件與服務公司,盤後 −12.6%",
+  "EarningsReaction": false
+ },
+ "LBGJ": {
+  "Type": "momentum",
+  "Catalyst": "查無消息;今年兩度反向分割(1:100、1:200)後流通量極低、市值約 100 萬美元,低量急漲屬樂透帶",
+  "EarningsReaction": false
+ },
+ "XRTX": {
+  "Type": "news",
+  "Catalyst": "啟動 XORLO(oxypurinol)GMP 製錠,供 XRX-026 痛風藥臨床試驗及未來申請上市使用,盤後 +16%",
+  "EarningsReaction": false
+ },
+ "TPET": {
+  "Type": "macro",
+  "Catalyst": "中東戰事升級、Brent 一度衝上 107 美元創近 4 個月新高,微型油氣股 Trio Petroleum 隨油價族群噴漲(盤前 +16%、盤後 +8.9%)",
+  "EarningsReaction": false
+ },
+ "NCRA": {
+  "Type": "momentum",
+  "Catalyst": "查無 9/10 明確消息;近期 AI/數位資產轉型題材(QMAX 控股、INERGX 入股)延燒,微型股波動",
+  "EarningsReaction": false
+ },
+ "SUNE": {
+  "Type": "news",
+  "Catalyst": "Suniva 合併協議 9/4 簽署第一修訂、授權股數擴增至 15 億股,稀釋疑慮引發賣壓,盤前盤後皆 −12%",
+  "EarningsReaction": false
+ },
+ "CYPH": {
+  "Type": "news",
+  "Catalyst": "Zcash 七日大漲 50% 後 9/10 回檔,Zcash 國庫策略股 CYPH 放大跌幅,盤後 −6.5%",
+  "EarningsReaction": false
+ }
 }
