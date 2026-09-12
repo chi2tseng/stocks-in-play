@@ -6,23 +6,6 @@
 """
 import json, csv, os, re, argparse, datetime, shutil
 
-ap = argparse.ArgumentParser()
-ap.add_argument('--date', default=datetime.date.today().isoformat(),
-                help='YYYY-MM-DD; default = today (local)')
-args = ap.parse_args()
-DATE = args.date
-
-# Location-agnostic: DIR = the directory containing this script. Override with SIPS_DIR env var.
-DIR = os.environ.get('SIPS_DIR') or os.path.dirname(os.path.abspath(__file__))
-DASH_DIR = os.path.join(DIR, 'dashboard')
-DATA_DIR = os.path.join(DASH_DIR, 'data')
-os.makedirs(DATA_DIR, exist_ok=True)
-
-# --- Load TV data ---
-with open(os.path.join(DIR, 'tv-summary.json'), 'r', encoding='utf-8') as f:
-    tv_list = json.load(f)
-tv = {t['Ticker']: t for t in tv_list}
-
 # --- Session → target date routing helpers ---
 # A row's "target date" = the dashboard data file it belongs in. The user wants
 # each <DATE>.json to represent "the gap view heading into <DATE>'s trading day":
@@ -61,6 +44,24 @@ def _session_target_date(session, session_date):
     # in the same-day file so they surface on today's dashboard.
     session_date = _normalize_to_trading_day(session_date)
     return _next_trading_day(session_date) if session == 'post' else session_date
+
+ap = argparse.ArgumentParser()
+ap.add_argument('--date', default=None,
+                help='YYYY-MM-DD; default = today (local, normalized to trading day)')
+args = ap.parse_args()
+_raw_date = args.date or datetime.date.today().isoformat()
+DATE = _normalize_to_trading_day(_raw_date)
+
+# Location-agnostic: DIR = the directory containing this script. Override with SIPS_DIR env var.
+DIR = os.environ.get('SIPS_DIR') or os.path.dirname(os.path.abspath(__file__))
+DASH_DIR = os.path.join(DIR, 'dashboard')
+DATA_DIR = os.path.join(DASH_DIR, 'data')
+os.makedirs(DATA_DIR, exist_ok=True)
+
+# --- Load TV data ---
+with open(os.path.join(DIR, 'tv-summary.json'), 'r', encoding='utf-8') as f:
+    tv_list = json.load(f)
+tv = {t['Ticker']: t for t in tv_list}
 
 # --- Load candidates ---
 cands_by_sym = {}
@@ -102,7 +103,7 @@ def _load_raw_barchart():
             mtime_date = datetime.date.fromtimestamp(os.path.getmtime(fp)).isoformat()
         except OSError:
             mtime_date = None
-        if mtime_date and mtime_date != DATE:
+        if mtime_date and _normalize_to_trading_day(mtime_date) != DATE:
             print(f'[WARN] skipping stale raw barchart file {fn} (mtime {mtime_date} != build {DATE})')
             continue
         # Filename shape: barchart-{session}-{direction}-pN.json
