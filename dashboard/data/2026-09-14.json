@@ -1,282 +1,82 @@
 {
   "date": "2026-09-14",
-  "scanTime": "00:25",
-  "scanTimestamp": "2026-09-13T00:25",
+  "scanTime": "21:14",
+  "scanTimestamp": "2026-09-13T21:14",
   "stocks": {
-    "FGL": {
-      "symbol": "FGL",
-      "name": "Founder Group Limited",
-      "type": "momentum",
+    "CRBP": {
+      "symbol": "CRBP",
+      "name": "Corbus Pharmaceuticals Hldgs Inc",
+      "type": "news",
       "earningsReaction": false,
-      "catalyst": "查無明確消息;9/11 開盤 −12.7% 反轉收 +6.9%,盤後再 +6.6%,新上市小型股投機",
-      "newsDetail": null,
+      "catalyst": "9/11 盤後 16:01 公告 9/14 早上 8 點法說會公布 CRB-913(口服 CB1 反向促效劑)減重 CANYON-1 一期 b 頂線數據,盤後 +28.6% 搶先卡位",
+      "newsDetail": "> **今日漲因:** 9/11 盤後 +28.6% — Corbus 宣布 9/14(週一)美東 8:00 舉行電話會議,公布口服肥胖藥 CRB-913 的 CANYON-1 試驗頂線數據,市場搶在數據公布前卡位。\n\n**事件詳解:** 9/11 盤後 Corbus 透過 GlobeNewswire 發布通知,週一盤前開會討論 **CANYON-1 一期試驗的頂線結果**與 CRB-913 在肥胖症的潛力。CRB-913 是**周邊限制型 CB1 反向促效劑**,設計上避開早期 rimonabant 類藥物的中樞神經副作用,主打與 GLP-1 藥物併用或作為停藥後維持體重的選項。\n\n**注意事項:** 數據本身尚未公布,盤後漲幅是對「公司主動開會」的解讀(通常代表結果不差),但一期試驗樣本小,週一開盤前 8:00 的數字才是真正的催化劑,結果不如預期會直接反轉。\n\n**籌碼背景:** Corbus 為小型生技,另有 ADC 藥物 CRB-701(sigma-2 抗體藥物複合體)在研,現金水位以 2026 年 Q2 財報為準。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=FGL"
+          "url": "https://finviz.com/quote.ashx?t=CRBP"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/FGL"
+          "url": "https://finance.yahoo.com/quote/CRBP"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-FGL/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 5.81,
-          "chgPct": 6.61,
-          "volume": 512276,
-          "session": "post",
-          "direction": "up",
-          "name": "Founder Group Limited",
-          "sessionDate": "2026-09-11",
-          "targetDate": "2026-09-14"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 5.81,
-      "chgPct": 6.61,
-      "volume": 512276,
-      "tv": null,
-      "shortFloat": 6.77,
-      "shortRatio": 0.04,
-      "marketCap_M": 0.41,
-      "floatShares_M": 0.06,
-      "perf1M": -93.04,
-      "perf3M": -97.13,
-      "perf6M": -98.94,
-      "perfYTD": -99.66,
-      "perf12M": -99.95,
-      "prevOhlcv": null
-    },
-    "KDK": {
-      "symbol": "KDK",
-      "name": "Kodiak AI Inc",
-      "type": "momentum",
-      "earningsReaction": false,
-      "catalyst": "查無明確消息;9/11 盤後 +4%(收盤 −1.6%),自駕卡車概念股波動",
-      "newsDetail": "> **今日漲因:** 9/11 盤後 +4.0% — Morgan Stanley 首次評等 Kodiak AI 為 **Equal-weight、目標價 9 美元**,較收盤 3.89 美元有逾一倍空間,自駕卡車題材獲大行覆蓋。\n\n**事件詳解:** Kodiak 是自駕卡車軟體公司(2025 年 SPAC 上市),目前以 Permian 盆地油田運輸的無人卡車商業化為主,並與 Atlas Energy 等客戶簽有部署合約。MS 的評等雖為中性,但目標價遠高於現價,市場解讀為底部確認。\n\n**注意:** 4% 的盤後漲幅、33 萬股量,規模有限;分析師首評不是營運事件,持續性要看週一是否放量。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=KDK"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/KDK"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-KDK/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-CRBP/news/"
         }
       ],
       "publishedAt": "2026-09-11T16:30:00-04:00",
       "publishedTimezone": "ET",
       "sources": [
         {
-          "label": "Finviz — KDK 新聞列表(Morgan Stanley 首評)",
-          "url": "https://finviz.com/quote.ashx?t=KDK"
+          "label": "Corbus 新聞稿 — CANYON-1 頂線數據電話會議通知(GlobeNewswire 9/11)",
+          "url": "https://www.globenewswire.com/news-release/2026/09/11/3360504/0/en/corbus-pharmaceuticals-to-host-conference-call-to-discuss-topline-data-from-canyon-1-clinical-trial-and-the-potential-of-crb-913-in-obesity.html",
+          "publishedAt": "2026-09-11T16:30:00-04:00"
         }
       ],
       "seanAnalysis": null,
       "milanAnalysis": null,
       "sessions": [
         {
-          "last": 3.89,
-          "chgPct": 4.01,
-          "volume": 331811,
+          "last": 10.44,
+          "chgPct": 28.57,
+          "volume": 1664576,
           "session": "post",
           "direction": "up",
-          "name": "Kodiak AI Inc",
+          "name": "Corbus Pharmaceuticals Hldgs Inc",
           "sessionDate": "2026-09-11",
           "targetDate": "2026-09-14"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "up",
-      "last": 3.89,
-      "chgPct": 4.01,
-      "volume": 331811,
+      "last": 10.44,
+      "chgPct": 28.57,
+      "volume": 1664576,
       "tv": {
-        "latestEPS": -0.5,
-        "consensusEPS": -0.17,
-        "priorYrEPS": -1.26,
-        "surpriseEPS_pct": -194.11764705882348,
-        "surpriseEPS_dollar": -0.32999999999999996,
-        "latestRev_M": 3.5,
-        "consensusRev_M": 2.57,
-        "priorYrRev_M": 0.5015000000000001,
-        "surpriseRev_pct": 36.38,
-        "yrYrRev_pct": 597.9062811565303,
-        "epsYoY_pct": 60.317460317460316,
-        "epsEst_next4": [
-          -0.23,
-          -0.23,
-          -0.23,
-          -0.22
-        ],
-        "revEst_next4": [
-          2.52,
-          3.04,
-          4.37,
-          6.18
-        ],
-        "yoyBlock": "+60.32% / +597.91%\n--------------------\n+94.09% / +227.27%\n+45.24% / +189.52%\n-330.00% / +138.80%\n+56.00% / +76.57%",
-        "chart": {
-          "quarters": [
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27"
-          ],
-          "eps_reported": [
-            -1.26,
-            -3.89,
-            -0.42,
-            0.1,
-            -0.5,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            null,
-            -0.28,
-            -0.18,
-            -0.2,
-            -0.17,
-            -0.23,
-            -0.23,
-            -0.23,
-            -0.22
-          ],
-          "rev_reported_M": [
-            0.5015000000000001,
-            0.77,
-            1.05,
-            1.83,
-            3.5,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            null,
-            0.67492,
-            0.99275,
-            1.65,
-            2.57,
-            2.52,
-            3.04,
-            4.37,
-            6.18
-          ],
-          "latest_idx": 4
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": 7.3,
-      "shortRatio": 7.79,
-      "marketCap_M": 750.31,
-      "floatShares_M": 122.41,
-      "perf1M": -9.33,
-      "perf3M": -39.09,
-      "perf6M": -57.4,
-      "perfYTD": -65.75,
-      "perf12M": -67.28,
-      "prevOhlcv": null
-    },
-    "TMQ": {
-      "symbol": "TMQ",
-      "name": "Trilogy Metals Inc",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "9/11 盤後公告完成美國國防部(戰爭部)3,560 萬美元入股(約 10% 股權),資金投入阿拉斯加 Ambler 銅礦開發,盤後 +7.6%",
-      "newsDetail": "> **今日漲因:** 9/11 盤後 **+7.6%** — Trilogy Metals 公告已完成美國國防部(現稱戰爭部)約 **3,560 萬美元**的策略性入股,美國政府成為持股約 **10%** 的股東。\n\n**事件內容**\n\n這筆資金分別投入 Trilogy 與合資夥伴 South32,全數用於推進阿拉斯加西北部 Upper Kobuk 礦區(UKMP)的探勘與開發;該礦區面積約 19 萬公頃,涵蓋高品位的 Arctic 多金屬礦床與 Bornite 銅礦床,由雙方 50/50 持有的 Ambler Metals 負責推進。國防部同時承諾將協同阿拉斯加州與 AIDEA,協助 211 英里工業專用 Ambler 道路的建設融資。\n\n**背景**\n\n入股協議先前已公告,本次為**交割完成**的確認;關鍵金屬供應鏈國產化題材下,美國政府直接入股礦業公司的案例(MP、LAC 等)近一年已成為族群催化劑。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=TMQ"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/TMQ"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-TMQ/news/"
-        }
-      ],
-      "publishedAt": "2026-09-11T17:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "PRNewswire — Trilogy Metals closes US$35.6M DoW investment",
-          "url": "http://www.prnewswire.com/news-releases/trilogy-metals-closes-us35-6-million-strategic-equity-investment-by-the-us-department-of-war-302876686.html",
-          "publishedAt": "2026-09-11T17:00:00-04:00"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 3.52,
-          "chgPct": 7.62,
-          "volume": 570229,
-          "session": "post",
-          "direction": "up",
-          "name": "Trilogy Metals Inc",
-          "sessionDate": "2026-09-11",
-          "targetDate": "2026-09-14"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 3.52,
-      "chgPct": 7.62,
-      "volume": 570229,
-      "tv": {
-        "latestEPS": -0.04,
-        "consensusEPS": -0.01,
-        "priorYrEPS": -0.01,
-        "surpriseEPS_pct": -300.0,
-        "surpriseEPS_dollar": -0.03,
-        "latestRev_M": null,
-        "consensusRev_M": null,
-        "priorYrRev_M": null,
+        "latestEPS": -1.81,
+        "consensusEPS": -1.26,
+        "priorYrEPS": -1.44,
+        "surpriseEPS_pct": -43.79,
+        "surpriseEPS_dollar": -0.55,
+        "latestRev_M": 0.0,
+        "consensusRev_M": 0.0,
+        "priorYrRev_M": 0.0,
         "surpriseRev_pct": null,
         "yrYrRev_pct": null,
-        "epsYoY_pct": -300.0,
+        "epsYoY_pct": -25.694444444444454,
         "epsEst_next4": [
-          -0.02,
-          -0.02,
-          -0.02,
-          -0.02
+          -1.21,
+          -1.32,
+          -1.24,
+          -1.27
         ],
         "revEst_next4": [
-          null,
-          null,
-          null,
-          null
+          1.67,
+          0.0,
+          0.0,
+          0.0
         ],
-        "yoyBlock": "-300.00% / N/M\n--------------------\n-100.00% / N/M\n+90.91% / N/M\n+50.00% / N/M\n+50.00% / N/M",
+        "yoyBlock": "-25.69% / N/M\n--------------------\n+36.32% / N/M\n-5.60% / N/M\n-0.81% / N/M\n+29.83% / N/M",
         "chart": {
           "quarters": [
             "Q4 '24",
@@ -293,130 +93,75 @@
             "Q1 '21"
           ],
           "eps_reported": [
-            -0.01,
-            -0.01,
-            -0.02,
-            -0.01,
-            -0.01,
-            -0.22,
-            -0.04,
-            -0.04,
+            -1.15,
+            -0.78,
+            -1.39,
+            -1.44,
+            -1.9,
+            -1.25,
+            -1.23,
+            -1.81,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            -0.01,
-            -0.01,
-            -0.01,
-            -0.01,
-            -0.01,
-            -0.11,
-            -0.01,
-            -0.01,
-            -0.02,
-            -0.02,
-            -0.02,
-            -0.02
+            -0.95,
+            -1.27,
+            -1.22,
+            -1.5,
+            -1.66,
+            -1.52,
+            -1.22,
+            -1.26,
+            -1.21,
+            -1.32,
+            -1.24,
+            -1.27
           ],
           "rev_reported_M": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.67,
+            0.0,
+            0.0,
+            1.67,
+            0.0,
+            0.0,
+            0.0
           ],
           "latest_idx": 7
         },
         "latestReportDate": null,
         "nextReportDate": null
       },
-      "shortFloat": 5.71,
-      "shortRatio": 4.43,
-      "marketCap_M": 564.89,
-      "floatShares_M": 114.92,
-      "perf1M": -13.03,
-      "perf3M": -15.06,
-      "perf6M": -20.24,
-      "perfYTD": -24.13,
-      "perf12M": 52.8,
-      "prevOhlcv": null
-    },
-    "PCLA": {
-      "symbol": "PCLA",
-      "name": "Picocela Inc ADR",
-      "type": "momentum",
-      "earningsReaction": false,
-      "catalyst": "查無明確消息;9/10 已飆 +31%,小型 ADR 投機動能延續,盤前 +23%",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=PCLA"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/PCLA"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-PCLA/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 8.84,
-          "chgPct": -12.56,
-          "volume": 105097,
-          "session": "post",
-          "direction": "down",
-          "name": "Picocela Inc ADR",
-          "sessionDate": "2026-09-11",
-          "targetDate": "2026-09-14"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 8.84,
-      "chgPct": -12.56,
-      "volume": 105097,
-      "tv": null,
-      "shortFloat": 1.32,
-      "shortRatio": 0.23,
-      "marketCap_M": 97.16,
-      "floatShares_M": 9.48,
-      "perf1M": 53.18,
-      "perf3M": 65.2,
-      "perf6M": 337.66,
-      "perfYTD": 11.59,
-      "perf12M": -31.84,
+      "shortFloat": 12.93,
+      "shortRatio": 4.91,
+      "marketCap_M": 157.05,
+      "floatShares_M": 17.37,
+      "perf1M": -16.8,
+      "perf3M": 4.37,
+      "perf6M": -15.33,
+      "perfYTD": -0.25,
+      "perf12M": -14.53,
       "prevOhlcv": null
     },
     "TJGC": {
@@ -472,6 +217,449 @@
       "perf6M": 358.06,
       "perfYTD": 307.65,
       "perf12M": 59.4,
+      "prevOhlcv": null
+    },
+    "PMI": {
+      "symbol": "PMI",
+      "name": "Picard Medical Inc",
+      "type": "momentum",
+      "earningsReaction": false,
+      "catalyst": "查無明確消息;9/11 收 +20.9% 後盤後再 +8.2%,人工心臟 SynCardia 母公司低流通股投機",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=PMI"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/PMI"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-PMI/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 5.77,
+          "chgPct": 8.24,
+          "volume": 170290,
+          "session": "post",
+          "direction": "up",
+          "name": "Picard Medical Inc",
+          "sessionDate": "2026-09-11",
+          "targetDate": "2026-09-14"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 5.77,
+      "chgPct": 8.24,
+      "volume": 170290,
+      "tv": {
+        "latestEPS": -3.05,
+        "consensusEPS": -1.5,
+        "priorYrEPS": null,
+        "surpriseEPS_pct": -103.33,
+        "surpriseEPS_dollar": -1.5499999999999998,
+        "latestRev_M": 2.95,
+        "consensusRev_M": 1.55,
+        "priorYrRev_M": null,
+        "surpriseRev_pct": 90.58,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": null,
+        "epsEst_next4": [
+          -1.5,
+          -1.5,
+          -1.5,
+          -1.0
+        ],
+        "revEst_next4": [
+          1.55,
+          1.25,
+          1.2,
+          1.8
+        ],
+        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\n+50.00% / +23.76%\n+70.00% / +4.35%\n+67.21% / -38.98%",
+        "chart": {
+          "quarters": [
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27"
+          ],
+          "eps_reported": [
+            -3.0,
+            -5.0,
+            -3.05,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            null,
+            -5.0,
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.0
+          ],
+          "rev_reported_M": [
+            1.01,
+            1.15,
+            2.95,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            null,
+            1.15,
+            1.55,
+            1.55,
+            1.25,
+            1.2,
+            1.8
+          ],
+          "latest_idx": 2
+        },
+        "latestReportDate": "2026-08-20",
+        "nextReportDate": null
+      },
+      "shortFloat": 25.42,
+      "shortRatio": 0.19,
+      "marketCap_M": 12.46,
+      "floatShares_M": 1.41,
+      "perf1M": 56.3,
+      "perf3M": -41.17,
+      "perf6M": -91.74,
+      "perfYTD": -93.91,
+      "perf12M": -98.48,
+      "prevOhlcv": null
+    },
+    "SPCX": {
+      "symbol": "SPCX",
+      "name": "Space Exploration Technologies Corp",
+      "type": "news",
+      "earningsReaction": false,
+      "catalyst": "Nasdaq 9/11 盤後 pro forma:SpaceX 在 Nasdaq-100 權重 1.28%→2.82% 翻倍,9/18 收盤生效,估帶來約 155 億美元被動買盤;週五 +2.0%",
+      "newsDetail": "> **今日漲因:** 週五收 $151.21(+2.0%);Nasdaq 9/11 盤後公布季度再平衡 pro forma,SpaceX 在 Nasdaq-100 的權重將由 1.28% 升至 2.82%(翻倍),被動資金估需淨買入約 **155 億美元**,週一為公布後首個交易日。\n\n**事件詳解:** Bloomberg 9/12 報導(Nasdaq Global Index Watch 週五盤後流出的 pro forma 資料),SpaceX 因 8 月兩波閉鎖期到期(第一波與首次財報同週、第二波一週後),自由流通股從 6/12 IPO 後不到 10% 升至近 30%,Nasdaq-100 依自由流通市值計權,權重因此從約 **1.28% 調升到約 2.82%**。SpaceX 今年 7 月才納入 Nasdaq-100;正式權重「本月稍後」定案,依 Nasdaq 季度再平衡慣例於 **9/18(五)收盤執行、9/21 開盤前生效**。\n\n**資金面:** 截至第二季末追蹤 Nasdaq-100 的資產約 **1.7 兆美元**(其中 Invesco QQQ 一檔 4,810 億美元),權重多出約 1.54 個百分點換算為約 155 億美元的淨買盤,集中在 9/18 收盤競價。以週五成交量 7,890 萬股、單價約 $151 計,當日成交金額約 119 億美元,被動買盤規模超過一個交易日的全部成交額。\n\n**基本面對照(TradingView,8 月首次財報):** Q2 營收 **$7.81B**,高於預期 $6.83B(+14.5%);EPS −$0.09,優於預期 −$0.23。未來四季營收預估 $12.5B → $18.7B → $20.9B → $23.9B(Starlink 與發射業務放量),EPS 預估自下季轉正($0.13)。IPO 後尚無去年同期可比數據,YoY 欄位為 N/M。\n\n**風險備註:** 指數再平衡屬一次性機械買盤,歷史上部分標的在生效日前已提前反映、生效後反向回吐;上市後閉鎖期陸續解禁,內部人賣壓與被動買盤同時存在。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=SPCX"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/SPCX"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SPCX/news/"
+        }
+      ],
+      "publishedAt": "2026-09-12T13:58:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Bloomberg(via Yahoo Finance)— SpaceX weighting in Nasdaq 100 set to more than double",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-weighting-boost-nasdaq-100-175851733.html",
+          "publishedAt": "2026-09-12T13:58:00-04:00"
+        },
+        {
+          "label": "Yahoo Finance(Bloomberg 轉載)— 權重 1.28%→2.82%",
+          "url": "https://ca.finance.yahoo.com/news/spacex-weighting-nasdaq-100-set-004010902.html"
+        },
+        {
+          "label": "Nasdaq Global Index Watch — Nasdaq-100 季度再平衡",
+          "url": "https://indexes.nasdaqomx.com/"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 151.21,
+          "chgPct": 2.04,
+          "volume": 78876800,
+          "session": "headline",
+          "direction": "up",
+          "name": "Space Exploration Technologies Corp",
+          "sessionDate": "2026-09-14",
+          "targetDate": "2026-09-14"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 151.21,
+      "chgPct": 2.04,
+      "volume": 78876800,
+      "tv": {
+        "latestEPS": -0.09,
+        "consensusEPS": -0.23,
+        "priorYrEPS": null,
+        "surpriseEPS_pct": 60.82,
+        "surpriseEPS_dollar": 0.14,
+        "latestRev_M": 7810.0,
+        "consensusRev_M": 6830.0,
+        "priorYrRev_M": null,
+        "surpriseRev_pct": 14.46,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": null,
+        "epsEst_next4": [
+          0.14,
+          0.38,
+          0.46,
+          0.48
+        ],
+        "revEst_next4": [
+          12770.0,
+          19110.0,
+          21460.0,
+          24440.0
+        ],
+        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M\n+138.66% / +357.57%\n+633.33% / +212.93%",
+        "chart": {
+          "quarters": [
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27"
+          ],
+          "eps_reported": [
+            -1.19,
+            -0.09,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            null,
+            -0.23,
+            0.14,
+            0.38,
+            0.46,
+            0.48
+          ],
+          "rev_reported_M": [
+            4690.0,
+            7810.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            null,
+            6830.0,
+            12770.0,
+            19110.0,
+            21460.0,
+            24440.0
+          ],
+          "latest_idx": 1
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": 8.84,
+      "shortRatio": 1.55,
+      "marketCap_M": 2052080,
+      "floatShares_M": 1960,
+      "perf1M": 3.46,
+      "perf3M": null,
+      "perf6M": null,
+      "perfYTD": 0.81,
+      "perf12M": null,
+      "prevOhlcv": null
+    },
+    "FGL": {
+      "symbol": "FGL",
+      "name": "Founder Group Limited",
+      "type": "momentum",
+      "earningsReaction": false,
+      "catalyst": "查無明確消息;9/11 開盤 −12.7% 反轉收 +6.9%,盤後再 +6.6%,新上市小型股投機",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=FGL"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/FGL"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-FGL/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 5.81,
+          "chgPct": 6.61,
+          "volume": 512276,
+          "session": "post",
+          "direction": "up",
+          "name": "Founder Group Limited",
+          "sessionDate": "2026-09-11",
+          "targetDate": "2026-09-14"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 5.81,
+      "chgPct": 6.61,
+      "volume": 512276,
+      "tv": null,
+      "shortFloat": 6.77,
+      "shortRatio": 0.04,
+      "marketCap_M": 0.41,
+      "floatShares_M": 0.06,
+      "perf1M": -93.04,
+      "perf3M": -97.13,
+      "perf6M": -98.94,
+      "perfYTD": -99.66,
+      "perf12M": -99.95,
+      "prevOhlcv": null
+    },
+    "LBGJ": {
+      "symbol": "LBGJ",
+      "name": "Li Bang International Corporation Inc",
+      "type": "momentum",
+      "earningsReaction": false,
+      "catalyst": "查無消息;今年兩度反向分割(1:100、1:200)後流通量極低、市值約 100 萬美元,低量急漲屬樂透帶",
+      "newsDetail": "> **今日漲因:** 盤後 +34%(74.7 萬股)— 查無任何公司公告或新聞;Li Bang International 今年兩度反向分割(3 月 1:100、7 月 1:200)後流通量極低,屬無消息的低量急漲。\n\n**公司背景**\n\nLi Bang International(江蘇江陰)設計生產不鏽鋼商用廚房設備(爐具、餐車、油脂分離器、廚餘處理機),2021 年成立、以 5-6 美元 IPO 上市。2026 年:3 月 1:100 反向分割、4 月重新符合 Nasdaq 最低股價規定、7 月再 1:200 反向分割、8 月完成內部人以未上市 B 類股認購的私募(PIPE)。\n\n**籌碼面**\n\n流通股僅約 54 萬股,市值各來源口徑不一(Finviz 約 $100 萬、8 月底另一來源約 $1,500 萬);過去一個月 −37%、三個月 −99%(反向分割後)。屬樂透帶,無基本面催化劑。\n\n風險備註:連續反向分割 + 極低流通量的股票,單日漲幅可在下一個交易時段完全消失。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=LBGJ"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/LBGJ"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-LBGJ/news/"
+        }
+      ],
+      "publishedAt": "2026-09-10T16:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Nasdaq — LBGJ press releases",
+          "url": "https://www.nasdaq.com/market-activity/stocks/lbgj/press-releases"
+        },
+        {
+          "label": "StockAnalysis — LBGJ",
+          "url": "https://stockanalysis.com/stocks/lbgj/"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 2.35,
+          "chgPct": 4.44,
+          "volume": 119000,
+          "session": "post",
+          "direction": "up",
+          "name": "Li Bang International Corporation Inc",
+          "sessionDate": "2026-09-11",
+          "targetDate": "2026-09-14"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 2.35,
+      "chgPct": 4.44,
+      "volume": 119000,
+      "tv": null,
+      "shortFloat": 10.82,
+      "shortRatio": 0.1,
+      "marketCap_M": 1.22,
+      "floatShares_M": 0.54,
+      "perf1M": -28.12,
+      "perf3M": -98.99,
+      "perf6M": -99.87,
+      "perfYTD": -99.98,
+      "perf12M": -99.99,
+      "prevOhlcv": null
+    },
+    "PCLA": {
+      "symbol": "PCLA",
+      "name": "Picocela Inc ADR",
+      "type": "momentum",
+      "earningsReaction": false,
+      "catalyst": "查無明確消息;9/10 已飆 +31%,小型 ADR 投機動能延續,盤前 +23%",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=PCLA"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/PCLA"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-PCLA/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 8.84,
+          "chgPct": -12.56,
+          "volume": 105097,
+          "session": "post",
+          "direction": "down",
+          "name": "Picocela Inc ADR",
+          "sessionDate": "2026-09-11",
+          "targetDate": "2026-09-14"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 8.84,
+      "chgPct": -12.56,
+      "volume": 105097,
+      "tv": null,
+      "shortFloat": 1.32,
+      "shortRatio": 0.23,
+      "marketCap_M": 97.16,
+      "floatShares_M": 9.48,
+      "perf1M": 53.18,
+      "perf3M": 65.2,
+      "perf6M": 337.66,
+      "perfYTD": 11.59,
+      "perf12M": -31.84,
       "prevOhlcv": null
     },
     "TNON": {
@@ -642,68 +830,385 @@
       "perf12M": -86.11,
       "prevOhlcv": null
     },
-    "LBGJ": {
-      "symbol": "LBGJ",
-      "name": "Li Bang International Corporation Inc",
+    "FTFT": {
+      "symbol": "FTFT",
+      "name": "Future Fintech Group Inc",
       "type": "momentum",
       "earningsReaction": false,
-      "catalyst": "查無消息;今年兩度反向分割(1:100、1:200)後流通量極低、市值約 100 萬美元,低量急漲屬樂透帶",
-      "newsDetail": "> **今日漲因:** 盤後 +34%(74.7 萬股)— 查無任何公司公告或新聞;Li Bang International 今年兩度反向分割(3 月 1:100、7 月 1:200)後流通量極低,屬無消息的低量急漲。\n\n**公司背景**\n\nLi Bang International(江蘇江陰)設計生產不鏽鋼商用廚房設備(爐具、餐車、油脂分離器、廚餘處理機),2021 年成立、以 5-6 美元 IPO 上市。2026 年:3 月 1:100 反向分割、4 月重新符合 Nasdaq 最低股價規定、7 月再 1:200 反向分割、8 月完成內部人以未上市 B 類股認購的私募(PIPE)。\n\n**籌碼面**\n\n流通股僅約 54 萬股,市值各來源口徑不一(Finviz 約 $100 萬、8 月底另一來源約 $1,500 萬);過去一個月 −37%、三個月 −99%(反向分割後)。屬樂透帶,無基本面催化劑。\n\n風險備註:連續反向分割 + 極低流通量的股票,單日漲幅可在下一個交易時段完全消失。",
+      "catalyst": "8 月底 1:4 反向分割後量能異常放大,投機性上衝 +12%,無新基本面消息",
+      "newsDetail": null,
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=LBGJ"
+          "url": "https://finviz.com/quote.ashx?t=FTFT"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/LBGJ"
+          "url": "https://finance.yahoo.com/quote/FTFT"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-LBGJ/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-FTFT/news/"
         }
       ],
-      "publishedAt": "2026-09-10T16:00:00-04:00",
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 2.48,
+          "chgPct": -13.89,
+          "volume": 1255218,
+          "session": "post",
+          "direction": "down",
+          "name": "Future Fintech Group Inc",
+          "sessionDate": "2026-09-11",
+          "targetDate": "2026-09-14"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 2.48,
+      "chgPct": -13.89,
+      "volume": 1255218,
+      "tv": null,
+      "shortFloat": 3.59,
+      "shortRatio": 0.11,
+      "marketCap_M": 23.26,
+      "floatShares_M": 5.38,
+      "perf1M": -11.01,
+      "perf3M": -80.52,
+      "perf6M": -86.57,
+      "perfYTD": -94.17,
+      "perf12M": -98.3,
+      "prevOhlcv": null
+    },
+    "TMQ": {
+      "symbol": "TMQ",
+      "name": "Trilogy Metals Inc",
+      "type": "news",
+      "earningsReaction": false,
+      "catalyst": "9/11 盤後公告完成美國國防部(戰爭部)3,560 萬美元入股(約 10% 股權),資金投入阿拉斯加 Ambler 銅礦開發,盤後 +7.6%",
+      "newsDetail": "> **今日漲因:** 9/11 盤後 **+7.6%** — Trilogy Metals 公告已完成美國國防部(現稱戰爭部)約 **3,560 萬美元**的策略性入股,美國政府成為持股約 **10%** 的股東。\n\n**事件內容**\n\n這筆資金分別投入 Trilogy 與合資夥伴 South32,全數用於推進阿拉斯加西北部 Upper Kobuk 礦區(UKMP)的探勘與開發;該礦區面積約 19 萬公頃,涵蓋高品位的 Arctic 多金屬礦床與 Bornite 銅礦床,由雙方 50/50 持有的 Ambler Metals 負責推進。國防部同時承諾將協同阿拉斯加州與 AIDEA,協助 211 英里工業專用 Ambler 道路的建設融資。\n\n**背景**\n\n入股協議先前已公告,本次為**交割完成**的確認;關鍵金屬供應鏈國產化題材下,美國政府直接入股礦業公司的案例(MP、LAC 等)近一年已成為族群催化劑。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=TMQ"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/TMQ"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-TMQ/news/"
+        }
+      ],
+      "publishedAt": "2026-09-11T17:00:00-04:00",
       "publishedTimezone": "ET",
       "sources": [
         {
-          "label": "Nasdaq — LBGJ press releases",
-          "url": "https://www.nasdaq.com/market-activity/stocks/lbgj/press-releases"
-        },
-        {
-          "label": "StockAnalysis — LBGJ",
-          "url": "https://stockanalysis.com/stocks/lbgj/"
+          "label": "PRNewswire — Trilogy Metals closes US$35.6M DoW investment",
+          "url": "http://www.prnewswire.com/news-releases/trilogy-metals-closes-us35-6-million-strategic-equity-investment-by-the-us-department-of-war-302876686.html",
+          "publishedAt": "2026-09-11T17:00:00-04:00"
         }
       ],
       "seanAnalysis": null,
       "milanAnalysis": null,
       "sessions": [
         {
-          "last": 2.35,
-          "chgPct": 4.44,
-          "volume": 119000,
+          "last": 3.52,
+          "chgPct": 7.62,
+          "volume": 570229,
           "session": "post",
           "direction": "up",
-          "name": "Li Bang International Corporation Inc",
+          "name": "Trilogy Metals Inc",
           "sessionDate": "2026-09-11",
           "targetDate": "2026-09-14"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "up",
-      "last": 2.35,
-      "chgPct": 4.44,
-      "volume": 119000,
-      "tv": null,
-      "shortFloat": 10.82,
-      "shortRatio": 0.1,
-      "marketCap_M": 1.22,
-      "floatShares_M": 0.54,
-      "perf1M": -28.12,
-      "perf3M": -98.99,
-      "perf6M": -99.87,
-      "perfYTD": -99.98,
-      "perf12M": -99.99,
+      "last": 3.52,
+      "chgPct": 7.62,
+      "volume": 570229,
+      "tv": {
+        "latestEPS": -0.04,
+        "consensusEPS": -0.01,
+        "priorYrEPS": -0.01,
+        "surpriseEPS_pct": -300.0,
+        "surpriseEPS_dollar": -0.03,
+        "latestRev_M": null,
+        "consensusRev_M": null,
+        "priorYrRev_M": null,
+        "surpriseRev_pct": null,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": -300.0,
+        "epsEst_next4": [
+          -0.02,
+          -0.02,
+          -0.02,
+          -0.02
+        ],
+        "revEst_next4": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "yoyBlock": "-300.00% / N/M\n--------------------\n-100.00% / N/M\n+90.91% / N/M\n+50.00% / N/M\n+50.00% / N/M",
+        "chart": {
+          "quarters": [
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q1 '21"
+          ],
+          "eps_reported": [
+            -0.01,
+            -0.01,
+            -0.02,
+            -0.01,
+            -0.01,
+            -0.22,
+            -0.04,
+            -0.04,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -0.01,
+            -0.01,
+            -0.01,
+            -0.01,
+            -0.01,
+            -0.11,
+            -0.01,
+            -0.01,
+            -0.02,
+            -0.02,
+            -0.02,
+            -0.02
+          ],
+          "rev_reported_M": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": 5.71,
+      "shortRatio": 4.43,
+      "marketCap_M": 564.89,
+      "floatShares_M": 114.92,
+      "perf1M": -13.03,
+      "perf3M": -15.06,
+      "perf6M": -20.24,
+      "perfYTD": -24.13,
+      "perf12M": 52.8,
+      "prevOhlcv": null
+    },
+    "OLMA": {
+      "symbol": "OLMA",
+      "name": "Olema Pharmaceuticals Inc",
+      "type": "FDA",
+      "earningsReaction": false,
+      "catalyst": "9/11 盤後 AZ 公布 SERENA-4 三期(camizestrant 口服 SERD 一線)未達 PFS 主要終點,同類口服 SERD 疑慮拖累 OLMA 盤後 −13%",
+      "newsDetail": "> **今日跌因:** 9/11 盤後 **−12.9%** — AstraZeneca 盤後公布 SERENA-4 三期試驗**未達主要終點**,口服 SERD 一線治療的整體前景受質疑,同類藥物開發商 Olema 遭連帶拋售。\n\n**事件內容**\n\nSERENA-4 測試 camizestrant(Etcamah)合併 palbociclib 對比 anastrozole 合併 palbociclib,用於未經治療的 ER 陽性 / HER2 陰性晚期乳癌一線治療;結果無惡化存活期(PFS)只有數值上的改善、**未達統計顯著**,安全性則符合預期。這是口服 SERD 類藥物第一個在一線、未經篩選族群失利的大型三期結果。\n\n**對 Olema 的影響**\n\nOlema 的主力藥 palazestrant 同屬口服 SERD,正在進行 ER 陽性 / HER2 陰性乳癌的三期試驗;去年 11 月曾因 Roche giredestrant 的正面數據單日大漲 136%,如今 AZ 的失利把「口服 SERD 是否能全面取代芳香酶抑制劑」的疑慮重新放大。Olema 9/11 正常盤已先跌 4.4%,盤後再跌 13%。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=OLMA"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/OLMA"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-OLMA/news/"
+        }
+      ],
+      "publishedAt": "2026-09-11T16:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Bloomberg — AstraZeneca breast cancer pill fails key study",
+          "url": "https://www.bloomberg.com/news/articles/2026-09-11/astrazeneca-says-breast-cancer-pill-fails-in-key-study",
+          "publishedAt": "2026-09-11T16:30:00-04:00"
+        },
+        {
+          "label": "OncoDaily — SERENA-4 misses primary endpoint",
+          "url": "https://oncodaily.com/oncolibrary/breast-oncology/serena-4-pfs"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 8.9,
+          "chgPct": -12.92,
+          "volume": 253412,
+          "session": "post",
+          "direction": "down",
+          "name": "Olema Pharmaceuticals Inc",
+          "sessionDate": "2026-09-11",
+          "targetDate": "2026-09-14"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 8.9,
+      "chgPct": -12.92,
+      "volume": 253412,
+      "tv": {
+        "latestEPS": -0.61,
+        "consensusEPS": -0.55,
+        "priorYrEPS": -0.51,
+        "surpriseEPS_pct": -10.62,
+        "surpriseEPS_dollar": -0.05999999999999994,
+        "latestRev_M": 0.0,
+        "consensusRev_M": 0.0,
+        "priorYrRev_M": 0.0,
+        "surpriseRev_pct": null,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": -19.607843137254896,
+        "epsEst_next4": [
+          -0.64,
+          -0.66,
+          -0.64,
+          -0.65
+        ],
+        "revEst_next4": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yoyBlock": "-19.61% / N/M\n--------------------\n-30.61% / N/M\n-32.00% / N/M\n-23.08% / N/M\n-6.56% / N/M",
+        "chart": {
+          "quarters": [
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q1 '21"
+          ],
+          "eps_reported": [
+            -0.6,
+            -0.51,
+            -0.36,
+            -0.51,
+            -0.49,
+            -0.5,
+            -0.52,
+            -0.61,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -0.57,
+            -0.64,
+            -0.48,
+            -0.38,
+            -0.47,
+            -0.51,
+            -0.53,
+            -0.55,
+            -0.64,
+            -0.66,
+            -0.64,
+            -0.65
+          ],
+          "rev_reported_M": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": 22.28,
+      "shortRatio": 12.27,
+      "marketCap_M": 894.23,
+      "floatShares_M": 70.29,
+      "perf1M": -2.11,
+      "perf3M": 4.82,
+      "perf6M": -31.46,
+      "perfYTD": -59.12,
+      "perf12M": 27.75,
       "prevOhlcv": null
     },
     "AZN": {
@@ -859,15 +1364,304 @@
         "latestReportDate": null,
         "nextReportDate": null
       },
-      "shortFloat": null,
-      "shortRatio": null,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": null,
-      "perf3M": null,
-      "perf6M": null,
-      "perfYTD": null,
-      "perf12M": null,
+      "shortFloat": 0.19,
+      "shortRatio": 0.9,
+      "marketCap_M": 248410,
+      "floatShares_M": 1500,
+      "perf1M": 1.05,
+      "perf3M": -12.13,
+      "perf6M": -16.79,
+      "perfYTD": -8.74,
+      "perf12M": -1.13,
+      "prevOhlcv": null
+    },
+    "SCNI": {
+      "symbol": "SCNI",
+      "name": "Scinai Immunotherapeutics Ltd ADR",
+      "type": "momentum",
+      "earningsReaction": false,
+      "catalyst": "查無 9/11 盤後消息;9/8 宣布終止 PC111、資源轉向 NanoAb 平台與 CDMO 後,低價股盤後投機 +23%",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=SCNI"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/SCNI"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SCNI/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 2.04,
+          "chgPct": 22.89,
+          "volume": 3034421,
+          "session": "post",
+          "direction": "up",
+          "name": "Scinai Immunotherapeutics Ltd ADR",
+          "sessionDate": "2026-09-11",
+          "targetDate": "2026-09-14"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 2.04,
+      "chgPct": 22.89,
+      "volume": 3034421,
+      "tv": {
+        "latestEPS": 0.02,
+        "consensusEPS": null,
+        "priorYrEPS": -0.3,
+        "surpriseEPS_pct": null,
+        "surpriseEPS_dollar": null,
+        "latestRev_M": null,
+        "consensusRev_M": null,
+        "priorYrRev_M": null,
+        "surpriseRev_pct": null,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": 106.66666666666667,
+        "epsEst_next4": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "revEst_next4": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "yoyBlock": "+106.67% / N/M\n--------------------",
+        "chart": {
+          "quarters": [
+            "Q2 '22",
+            "Q3 '22",
+            "Q1 '23",
+            "Q2 '23",
+            "Q3 '23",
+            "Q4 '23",
+            "Q1 '24",
+            "Q3 '24",
+            "Q4 '24"
+          ],
+          "eps_reported": [
+            -6.12,
+            0.29,
+            -54.5,
+            -0.3,
+            0.2,
+            null,
+            -0.01,
+            0.02,
+            null
+          ],
+          "eps_estimate": [
+            -10.0,
+            -10.0,
+            -220.0,
+            -45.5,
+            -94.0,
+            -62.0,
+            null,
+            null,
+            null
+          ],
+          "rev_reported_M": [
+            0.0,
+            0.0,
+            0.0,
+            null,
+            null,
+            0.168,
+            null
+          ],
+          "rev_estimate_M": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            null,
+            null,
+            null
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": 1.19,
+      "shortRatio": 0.09,
+      "marketCap_M": 1.18,
+      "floatShares_M": 0.69,
+      "perf1M": -32.79,
+      "perf3M": -48.94,
+      "perf6M": -77.26,
+      "perfYTD": -76.69,
+      "perf12M": -89.49,
+      "prevOhlcv": {
+        "date": "2026-09-02",
+        "open": 2.42,
+        "high": 2.45,
+        "low": 2.26,
+        "close": 2.34,
+        "volume": 1567700,
+        "prev_close": 2.46
+      }
+    },
+    "KDK": {
+      "symbol": "KDK",
+      "name": "Kodiak AI Inc",
+      "type": "momentum",
+      "earningsReaction": false,
+      "catalyst": "查無明確消息;9/11 盤後 +4%(收盤 −1.6%),自駕卡車概念股波動",
+      "newsDetail": "> **今日漲因:** 9/11 盤後 +4.0% — Morgan Stanley 首次評等 Kodiak AI 為 **Equal-weight、目標價 9 美元**,較收盤 3.89 美元有逾一倍空間,自駕卡車題材獲大行覆蓋。\n\n**事件詳解:** Kodiak 是自駕卡車軟體公司(2025 年 SPAC 上市),目前以 Permian 盆地油田運輸的無人卡車商業化為主,並與 Atlas Energy 等客戶簽有部署合約。MS 的評等雖為中性,但目標價遠高於現價,市場解讀為底部確認。\n\n**注意:** 4% 的盤後漲幅、33 萬股量,規模有限;分析師首評不是營運事件,持續性要看週一是否放量。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=KDK"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/KDK"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-KDK/news/"
+        }
+      ],
+      "publishedAt": "2026-09-11T16:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Finviz — KDK 新聞列表(Morgan Stanley 首評)",
+          "url": "https://finviz.com/quote.ashx?t=KDK"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 3.89,
+          "chgPct": 4.01,
+          "volume": 331811,
+          "session": "post",
+          "direction": "up",
+          "name": "Kodiak AI Inc",
+          "sessionDate": "2026-09-11",
+          "targetDate": "2026-09-14"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 3.89,
+      "chgPct": 4.01,
+      "volume": 331811,
+      "tv": {
+        "latestEPS": -0.5,
+        "consensusEPS": -0.17,
+        "priorYrEPS": -1.26,
+        "surpriseEPS_pct": -194.11764705882348,
+        "surpriseEPS_dollar": -0.32999999999999996,
+        "latestRev_M": 3.5,
+        "consensusRev_M": 2.57,
+        "priorYrRev_M": 0.5015000000000001,
+        "surpriseRev_pct": 36.38,
+        "yrYrRev_pct": 597.9062811565303,
+        "epsYoY_pct": 60.317460317460316,
+        "epsEst_next4": [
+          -0.23,
+          -0.23,
+          -0.23,
+          -0.22
+        ],
+        "revEst_next4": [
+          2.52,
+          3.04,
+          4.37,
+          6.18
+        ],
+        "yoyBlock": "+60.32% / +597.91%\n--------------------\n+94.09% / +227.27%\n+45.24% / +189.52%\n-330.00% / +138.80%\n+56.00% / +76.57%",
+        "chart": {
+          "quarters": [
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27"
+          ],
+          "eps_reported": [
+            -1.26,
+            -3.89,
+            -0.42,
+            0.1,
+            -0.5,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            null,
+            -0.28,
+            -0.18,
+            -0.2,
+            -0.17,
+            -0.23,
+            -0.23,
+            -0.23,
+            -0.22
+          ],
+          "rev_reported_M": [
+            0.5015000000000001,
+            0.77,
+            1.05,
+            1.83,
+            3.5,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            null,
+            0.67492,
+            0.99275,
+            1.65,
+            2.57,
+            2.52,
+            3.04,
+            4.37,
+            6.18
+          ],
+          "latest_idx": 4
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": 7.3,
+      "shortRatio": 7.79,
+      "marketCap_M": 750.31,
+      "floatShares_M": 122.41,
+      "perf1M": -9.33,
+      "perf3M": -39.09,
+      "perf6M": -57.4,
+      "perfYTD": -65.75,
+      "perf12M": -67.28,
       "prevOhlcv": null
     },
     "AENT": {
@@ -1041,661 +1835,6 @@
       "perfYTD": -20.54,
       "perf12M": 8.54,
       "prevOhlcv": null
-    },
-    "PMI": {
-      "symbol": "PMI",
-      "name": "Picard Medical Inc",
-      "type": "momentum",
-      "earningsReaction": false,
-      "catalyst": "查無明確消息;9/11 收 +20.9% 後盤後再 +8.2%,人工心臟 SynCardia 母公司低流通股投機",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=PMI"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/PMI"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-PMI/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 5.77,
-          "chgPct": 8.24,
-          "volume": 170290,
-          "session": "post",
-          "direction": "up",
-          "name": "Picard Medical Inc",
-          "sessionDate": "2026-09-11",
-          "targetDate": "2026-09-14"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 5.77,
-      "chgPct": 8.24,
-      "volume": 170290,
-      "tv": {
-        "latestEPS": -3.05,
-        "consensusEPS": -1.5,
-        "priorYrEPS": null,
-        "surpriseEPS_pct": -103.33,
-        "surpriseEPS_dollar": -1.5499999999999998,
-        "latestRev_M": 2.95,
-        "consensusRev_M": 1.55,
-        "priorYrRev_M": null,
-        "surpriseRev_pct": 90.58,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": null,
-        "epsEst_next4": [
-          -1.5,
-          -1.5,
-          -1.5,
-          -1.0
-        ],
-        "revEst_next4": [
-          1.55,
-          1.25,
-          1.2,
-          1.8
-        ],
-        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\n+50.00% / +23.76%\n+70.00% / +4.35%\n+67.21% / -38.98%",
-        "chart": {
-          "quarters": [
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27"
-          ],
-          "eps_reported": [
-            -3.0,
-            -5.0,
-            -3.05,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            null,
-            -5.0,
-            -1.5,
-            -1.5,
-            -1.5,
-            -1.5,
-            -1.0
-          ],
-          "rev_reported_M": [
-            1.01,
-            1.15,
-            2.95,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            null,
-            1.15,
-            1.55,
-            1.55,
-            1.25,
-            1.2,
-            1.8
-          ],
-          "latest_idx": 2
-        },
-        "latestReportDate": "2026-08-20",
-        "nextReportDate": null
-      },
-      "shortFloat": 25.42,
-      "shortRatio": 0.19,
-      "marketCap_M": 12.46,
-      "floatShares_M": 1.41,
-      "perf1M": 56.3,
-      "perf3M": -41.17,
-      "perf6M": -91.74,
-      "perfYTD": -93.91,
-      "perf12M": -98.48,
-      "prevOhlcv": null
-    },
-    "FTFT": {
-      "symbol": "FTFT",
-      "name": "Future Fintech Group Inc",
-      "type": "momentum",
-      "earningsReaction": false,
-      "catalyst": "8 月底 1:4 反向分割後量能異常放大,投機性上衝 +12%,無新基本面消息",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=FTFT"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/FTFT"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-FTFT/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 2.48,
-          "chgPct": -13.89,
-          "volume": 1255218,
-          "session": "post",
-          "direction": "down",
-          "name": "Future Fintech Group Inc",
-          "sessionDate": "2026-09-11",
-          "targetDate": "2026-09-14"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 2.48,
-      "chgPct": -13.89,
-      "volume": 1255218,
-      "tv": null,
-      "shortFloat": 3.59,
-      "shortRatio": 0.11,
-      "marketCap_M": 23.26,
-      "floatShares_M": 5.38,
-      "perf1M": -11.01,
-      "perf3M": -80.52,
-      "perf6M": -86.57,
-      "perfYTD": -94.17,
-      "perf12M": -98.3,
-      "prevOhlcv": null
-    },
-    "SCNI": {
-      "symbol": "SCNI",
-      "name": "Scinai Immunotherapeutics Ltd ADR",
-      "type": "momentum",
-      "earningsReaction": false,
-      "catalyst": "查無 9/11 盤後消息;9/8 宣布終止 PC111、資源轉向 NanoAb 平台與 CDMO 後,低價股盤後投機 +23%",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=SCNI"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/SCNI"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-SCNI/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 2.04,
-          "chgPct": 22.89,
-          "volume": 3034421,
-          "session": "post",
-          "direction": "up",
-          "name": "Scinai Immunotherapeutics Ltd ADR",
-          "sessionDate": "2026-09-11",
-          "targetDate": "2026-09-14"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 2.04,
-      "chgPct": 22.89,
-      "volume": 3034421,
-      "tv": {
-        "latestEPS": 0.02,
-        "consensusEPS": null,
-        "priorYrEPS": -0.3,
-        "surpriseEPS_pct": null,
-        "surpriseEPS_dollar": null,
-        "latestRev_M": null,
-        "consensusRev_M": null,
-        "priorYrRev_M": null,
-        "surpriseRev_pct": null,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": 106.66666666666667,
-        "epsEst_next4": [
-          null,
-          null,
-          null,
-          null
-        ],
-        "revEst_next4": [
-          null,
-          null,
-          null,
-          null
-        ],
-        "yoyBlock": "+106.67% / N/M\n--------------------",
-        "chart": {
-          "quarters": [
-            "Q2 '22",
-            "Q3 '22",
-            "Q1 '23",
-            "Q2 '23",
-            "Q3 '23",
-            "Q4 '23",
-            "Q1 '24",
-            "Q3 '24",
-            "Q4 '24"
-          ],
-          "eps_reported": [
-            -6.12,
-            0.29,
-            -54.5,
-            -0.3,
-            0.2,
-            null,
-            -0.01,
-            0.02,
-            null
-          ],
-          "eps_estimate": [
-            -10.0,
-            -10.0,
-            -220.0,
-            -45.5,
-            -94.0,
-            -62.0,
-            null,
-            null,
-            null
-          ],
-          "rev_reported_M": [
-            0.0,
-            0.0,
-            0.0,
-            null,
-            null,
-            0.168,
-            null
-          ],
-          "rev_estimate_M": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            null,
-            null,
-            null
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": 1.19,
-      "shortRatio": 0.09,
-      "marketCap_M": 1.18,
-      "floatShares_M": 0.69,
-      "perf1M": -32.79,
-      "perf3M": -48.94,
-      "perf6M": -77.26,
-      "perfYTD": -76.69,
-      "perf12M": -89.49,
-      "prevOhlcv": {
-        "date": "2026-09-02",
-        "open": 2.42,
-        "high": 2.45,
-        "low": 2.26,
-        "close": 2.34,
-        "volume": 1567700,
-        "prev_close": 2.46
-      }
-    },
-    "CRBP": {
-      "symbol": "CRBP",
-      "name": "Corbus Pharmaceuticals Hldgs Inc",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "9/11 盤後 16:01 公告 9/14 早上 8 點法說會公布 CRB-913(口服 CB1 反向促效劑)減重 CANYON-1 一期 b 頂線數據,盤後 +28.6% 搶先卡位",
-      "newsDetail": "> **今日漲因:** 9/11 盤後 +28.6% — Corbus 宣布 9/14(週一)美東 8:00 舉行電話會議,公布口服肥胖藥 CRB-913 的 CANYON-1 試驗頂線數據,市場搶在數據公布前卡位。\n\n**事件詳解:** 9/11 盤後 Corbus 透過 GlobeNewswire 發布通知,週一盤前開會討論 **CANYON-1 一期試驗的頂線結果**與 CRB-913 在肥胖症的潛力。CRB-913 是**周邊限制型 CB1 反向促效劑**,設計上避開早期 rimonabant 類藥物的中樞神經副作用,主打與 GLP-1 藥物併用或作為停藥後維持體重的選項。\n\n**注意事項:** 數據本身尚未公布,盤後漲幅是對「公司主動開會」的解讀(通常代表結果不差),但一期試驗樣本小,週一開盤前 8:00 的數字才是真正的催化劑,結果不如預期會直接反轉。\n\n**籌碼背景:** Corbus 為小型生技,另有 ADC 藥物 CRB-701(sigma-2 抗體藥物複合體)在研,現金水位以 2026 年 Q2 財報為準。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=CRBP"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/CRBP"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-CRBP/news/"
-        }
-      ],
-      "publishedAt": "2026-09-11T16:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Corbus 新聞稿 — CANYON-1 頂線數據電話會議通知(GlobeNewswire 9/11)",
-          "url": "https://www.globenewswire.com/news-release/2026/09/11/3360504/0/en/corbus-pharmaceuticals-to-host-conference-call-to-discuss-topline-data-from-canyon-1-clinical-trial-and-the-potential-of-crb-913-in-obesity.html",
-          "publishedAt": "2026-09-11T16:30:00-04:00"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 10.44,
-          "chgPct": 28.57,
-          "volume": 1664576,
-          "session": "post",
-          "direction": "up",
-          "name": "Corbus Pharmaceuticals Hldgs Inc",
-          "sessionDate": "2026-09-11",
-          "targetDate": "2026-09-14"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 10.44,
-      "chgPct": 28.57,
-      "volume": 1664576,
-      "tv": {
-        "latestEPS": -1.81,
-        "consensusEPS": -1.26,
-        "priorYrEPS": -1.44,
-        "surpriseEPS_pct": -43.79,
-        "surpriseEPS_dollar": -0.55,
-        "latestRev_M": 0.0,
-        "consensusRev_M": 0.0,
-        "priorYrRev_M": 0.0,
-        "surpriseRev_pct": null,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": -25.694444444444454,
-        "epsEst_next4": [
-          -1.21,
-          -1.32,
-          -1.24,
-          -1.27
-        ],
-        "revEst_next4": [
-          1.67,
-          0.0,
-          0.0,
-          0.0
-        ],
-        "yoyBlock": "-25.69% / N/M\n--------------------\n+36.32% / N/M\n-5.60% / N/M\n-0.81% / N/M\n+29.83% / N/M",
-        "chart": {
-          "quarters": [
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q1 '21"
-          ],
-          "eps_reported": [
-            -1.15,
-            -0.78,
-            -1.39,
-            -1.44,
-            -1.9,
-            -1.25,
-            -1.23,
-            -1.81,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -0.95,
-            -1.27,
-            -1.22,
-            -1.5,
-            -1.66,
-            -1.52,
-            -1.22,
-            -1.26,
-            -1.21,
-            -1.32,
-            -1.24,
-            -1.27
-          ],
-          "rev_reported_M": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            1.67,
-            0.0,
-            0.0,
-            1.67,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": 12.93,
-      "shortRatio": 4.91,
-      "marketCap_M": 157.05,
-      "floatShares_M": 17.37,
-      "perf1M": -16.8,
-      "perf3M": 4.37,
-      "perf6M": -15.33,
-      "perfYTD": -0.25,
-      "perf12M": -14.53,
-      "prevOhlcv": null
-    },
-    "OLMA": {
-      "symbol": "OLMA",
-      "name": "Olema Pharmaceuticals Inc",
-      "type": "FDA",
-      "earningsReaction": false,
-      "catalyst": "9/11 盤後 AZ 公布 SERENA-4 三期(camizestrant 口服 SERD 一線)未達 PFS 主要終點,同類口服 SERD 疑慮拖累 OLMA 盤後 −13%",
-      "newsDetail": "> **今日跌因:** 9/11 盤後 **−12.9%** — AstraZeneca 盤後公布 SERENA-4 三期試驗**未達主要終點**,口服 SERD 一線治療的整體前景受質疑,同類藥物開發商 Olema 遭連帶拋售。\n\n**事件內容**\n\nSERENA-4 測試 camizestrant(Etcamah)合併 palbociclib 對比 anastrozole 合併 palbociclib,用於未經治療的 ER 陽性 / HER2 陰性晚期乳癌一線治療;結果無惡化存活期(PFS)只有數值上的改善、**未達統計顯著**,安全性則符合預期。這是口服 SERD 類藥物第一個在一線、未經篩選族群失利的大型三期結果。\n\n**對 Olema 的影響**\n\nOlema 的主力藥 palazestrant 同屬口服 SERD,正在進行 ER 陽性 / HER2 陰性乳癌的三期試驗;去年 11 月曾因 Roche giredestrant 的正面數據單日大漲 136%,如今 AZ 的失利把「口服 SERD 是否能全面取代芳香酶抑制劑」的疑慮重新放大。Olema 9/11 正常盤已先跌 4.4%,盤後再跌 13%。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=OLMA"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/OLMA"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-OLMA/news/"
-        }
-      ],
-      "publishedAt": "2026-09-11T16:30:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Bloomberg — AstraZeneca breast cancer pill fails key study",
-          "url": "https://www.bloomberg.com/news/articles/2026-09-11/astrazeneca-says-breast-cancer-pill-fails-in-key-study",
-          "publishedAt": "2026-09-11T16:30:00-04:00"
-        },
-        {
-          "label": "OncoDaily — SERENA-4 misses primary endpoint",
-          "url": "https://oncodaily.com/oncolibrary/breast-oncology/serena-4-pfs"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 8.9,
-          "chgPct": -12.92,
-          "volume": 253412,
-          "session": "post",
-          "direction": "down",
-          "name": "Olema Pharmaceuticals Inc",
-          "sessionDate": "2026-09-11",
-          "targetDate": "2026-09-14"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 8.9,
-      "chgPct": -12.92,
-      "volume": 253412,
-      "tv": {
-        "latestEPS": -0.61,
-        "consensusEPS": -0.55,
-        "priorYrEPS": -0.51,
-        "surpriseEPS_pct": -10.62,
-        "surpriseEPS_dollar": -0.05999999999999994,
-        "latestRev_M": 0.0,
-        "consensusRev_M": 0.0,
-        "priorYrRev_M": 0.0,
-        "surpriseRev_pct": null,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": -19.607843137254896,
-        "epsEst_next4": [
-          -0.64,
-          -0.66,
-          -0.64,
-          -0.65
-        ],
-        "revEst_next4": [
-          0.0,
-          0.0,
-          0.0,
-          0.0
-        ],
-        "yoyBlock": "-19.61% / N/M\n--------------------\n-30.61% / N/M\n-32.00% / N/M\n-23.08% / N/M\n-6.56% / N/M",
-        "chart": {
-          "quarters": [
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q1 '21"
-          ],
-          "eps_reported": [
-            -0.6,
-            -0.51,
-            -0.36,
-            -0.51,
-            -0.49,
-            -0.5,
-            -0.52,
-            -0.61,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -0.57,
-            -0.64,
-            -0.48,
-            -0.38,
-            -0.47,
-            -0.51,
-            -0.53,
-            -0.55,
-            -0.64,
-            -0.66,
-            -0.64,
-            -0.65
-          ],
-          "rev_reported_M": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": 22.28,
-      "shortRatio": 12.27,
-      "marketCap_M": 894.23,
-      "floatShares_M": 70.29,
-      "perf1M": -2.11,
-      "perf3M": 4.82,
-      "perf6M": -31.46,
-      "perfYTD": -59.12,
-      "perf12M": 27.75,
-      "prevOhlcv": null
     }
   },
   "rawGappers": [],
@@ -1787,6 +1926,12 @@
         "chg": 4.01,
         "catalyst": "查無明確消息;9/11 盤後 +4%(收盤 −1.6%),自駕卡車概念股波動",
         "type": "momentum"
+      },
+      {
+        "symbol": "SPCX",
+        "chg": 2.04,
+        "catalyst": "Nasdaq 9/11 盤後 pro forma:SpaceX 在 Nasdaq-100 權重 1.28%→2.82% 翻倍,9/18 收盤生效,估帶來約 155 億美元被動買盤;週五 +2.0%",
+        "type": "news"
       }
     ],
     "gapDownGuidance": [],
