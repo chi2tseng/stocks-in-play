@@ -1,317 +1,427 @@
 {
-  "ACVA": {
-    "Type": "M&A",
-    "Catalyst": "Copart 宣布以每股 10.50 美元現金收購 ACV Auctions,總額約 19 億美元、較前收 7.22 美元溢價 45%,盤後 +43.8% 貼近收購價",
-    "EarningsReaction": false
-  },
-  "CPRT": {
-    "Type": "earnings",
-    "Catalyst": "Q4 FY26 EPS 0.35 美元低於預期 0.38 美元但營收優於預期;同日宣布 19 億美元現金收購 ACV Auctions,盤後 +7.6%",
-    "EarningsReaction": true
-  },
-  "RH": {
-    "Type": "earnings",
-    "Catalyst": "Q2 EPS 2.70 美元遠優於華爾街預估 0.39 美元、營收 9.22 億美元優於預期,上調 FY26 營收成長展望至 5.5-7%;空單佔流通股 31.5%,盤後 +6.5%",
-    "EarningsReaction": true
-  },
-  "ORCL": {
-    "Type": "earnings",
-    "Catalyst": "Q1 FY27 EPS 1.92 美元優於預期 1.74 美元、營收 193.5 億美元;剩餘履約義務 RPO 達 6,640 億美元、OCI 年增 121%,盤後 +4.1%",
-    "EarningsReaction": true
-  },
-  "GME": {
-    "Type": "news",
-    "Catalyst": "CEO Ryan Cohen 申報公開市場買進約 100 萬股、耗資約 2,040 萬美元(均價 20.38 美元),盤後 +4.1%",
-    "EarningsReaction": false
-  },
-  "ADBE": {
-    "Type": "earnings",
-    "Catalyst": "Q3 FY26 財報優於預期並上調全年財測、月活用戶達 10 億;同時宣布 CEO Narayen 將於 12/1 交棒,盤後 −2.4% 利多出盡",
-    "EarningsReaction": true
-  },
-  "NRGV": {
-    "Type": "momentum",
-    "Catalyst": "查無 9/10 新消息;延續 Q2 營收年增 104%、德州 1.25GW 儲能合約與財測上修的動能",
-    "EarningsReaction": false
-  },
-  "CVV": {
-    "Type": "news",
-    "Catalyst": "宣布退出 CVD 新系統訂單業務、裁員近半、CEO 離職,轉型為零件與服務公司,盤後 −12.6%",
-    "EarningsReaction": false
-  },
-  "LBGJ": {
-    "Type": "momentum",
-    "Catalyst": "查無消息;今年兩度反向分割(1:100、1:200)後流通量極低、市值約 100 萬美元,低量急漲屬樂透帶",
-    "EarningsReaction": false
-  },
-  "XRTX": {
-    "Type": "news",
-    "Catalyst": "啟動 XORLO(oxypurinol)GMP 製錠,供 XRX-026 痛風藥臨床試驗及未來申請上市使用,盤後 +16%",
-    "EarningsReaction": false
-  },
-  "TPET": {
-    "Type": "macro",
-    "Catalyst": "中東戰事升級、Brent 一度衝上 107 美元創近 4 個月新高,微型油氣股 Trio Petroleum 隨油價族群噴漲(盤前 +16%、盤後 +8.9%)",
-    "EarningsReaction": false
-  },
-  "NCRA": {
-    "Type": "momentum",
-    "Catalyst": "查無 9/10 明確消息;近期 AI/數位資產轉型題材(QMAX 控股、INERGX 入股)延燒,微型股波動",
-    "EarningsReaction": false
-  },
-  "SUNE": {
-    "Type": "news",
-    "Catalyst": "Suniva 合併協議 9/4 簽署第一修訂、授權股數擴增至 15 億股,稀釋疑慮引發賣壓,盤前盤後皆 −12%",
-    "EarningsReaction": false
-  },
-  "CYPH": {
-    "Type": "news",
-    "Catalyst": "Zcash 七日大漲 50% 後 9/10 回檔,Zcash 國庫策略股 CYPH 放大跌幅,盤後 −6.5%",
-    "EarningsReaction": false
-  },
-  "AENT": {
-    "Type": "earnings",
-    "Catalyst": "FY26 營收 11.49 億美元(+8%)、調整後 EPS 0.46 美元(+24%)、調整後 EBITDA 4,150 萬美元(+14%),9/10 盤後公布,盤前 +27%",
-    "EarningsReaction": true
-  },
-  "TNON": {
-    "Type": "news",
-    "Catalyst": "9/10 宣布提前以現金全額償還 516 萬美元優先可轉換票據(原 9/11 到期),消除折價轉股稀釋疑慮;9/10 盤中已 +95%,今晨續漲 +49%",
-    "EarningsReaction": false
-  },
-  "PCLA": {
-    "Type": "momentum",
-    "Catalyst": "查無明確消息;9/10 已飆 +31%,小型 ADR 投機動能延續,盤前 +23%",
-    "EarningsReaction": false
-  },
-  "ATTT": {
-    "Type": "momentum",
-    "Catalyst": "Raytech 更名 Atlas Trinity Tech、9/10 換新代號的炒作退燒,今晨獲利回吐 −15%,無公司新消息",
-    "EarningsReaction": false
-  },
-  "BNC": {
-    "Type": "momentum",
-    "Catalyst": "查無公司消息;BNB 國庫概念股,疑隨 BNB 幣價回落 −4%",
-    "EarningsReaction": false
-  },
-  "BRNX": {
-    "Type": "momentum",
-    "Catalyst": "查無明確消息(9/9 公布上半年淨損收窄至 609 萬美元,非本次催化),盤前 −7%",
-    "EarningsReaction": false
-  },
-  "FTFT": {
-    "Type": "momentum",
-    "Catalyst": "8 月底 1:4 反向分割後量能異常放大,投機性上衝 +12%,無新基本面消息",
-    "EarningsReaction": false
-  },
-  "OKLO": {
-    "Type": "analyst",
-    "Catalyst": "Piper Sandler 9/10 對核能族群啟動分歧評等、Oklo 遭下調,核能股 9/10 起回落延續至 9/11 盤前 −4%",
-    "EarningsReaction": false
-  },
-  "SMR": {
-    "Type": "analyst",
-    "Catalyst": "9/11 UBS 降評至賣出(前日 Piper Sandler 亦下調核能族群),當日重挫 −15.7%、成交 9,230 萬股",
-    "EarningsReaction": false
-  },
-  "SXTC": {
-    "Type": "momentum",
-    "Catalyst": "查無明確消息;8/10 完成 1:80 反向分割後低流通股投機,盤前 +10%",
-    "EarningsReaction": false
-  },
-  "WETO": {
-    "Type": "momentum",
-    "Catalyst": "查無明確消息;8 月機器人合約與併股皆為舊聞,盤前 −5%",
-    "EarningsReaction": false
-  },
-  "KR": {
-    "Type": "earnings",
-    "Catalyst": "9/11 盤前公布 Q2 FY26:調整後 EPS 與同店銷售成長優於預期,但股價盤前 −2.5%,市場關注全年指引與毛利率",
-    "EarningsReaction": true
-  },
-  "SHOP": {
-    "Type": "analyst",
-    "Catalyst": "Bernstein 9/11 初評 Shopify 為 Outperform,盤前 +2.4%",
-    "EarningsReaction": false
-  },
-  "DBGI": {
-    "Type": "news",
-    "Catalyst": "8 月收到大股東每股 77.58 美元現金收購提案(go-shop 期至 10/5)與 1.65 億美元兩年供貨合約的餘波,盤前 +7.5%,今日無新公告",
-    "EarningsReaction": false
-  },
-  "GCTK": {
-    "Type": "offering",
-    "Catalyst": "9/11 宣布 1,150 萬美元可轉換票據融資,22% 原始發行折價、轉換價 3.12 美元,稀釋賣壓 −6%",
-    "EarningsReaction": false
-  },
-  "SWRD": {
-    "Type": "momentum",
-    "Catalyst": "9/10 自 OTC 轉板納斯達克(無新股增發),首日大漲後獲利回吐 −10%",
-    "EarningsReaction": false
-  },
-  "USDE": {
-    "Type": "news",
-    "Catalyst": "9/11 Ethena 旗下 USDe/sUSDe 上線 TRON 生態,公司持有約 30 億枚 ENA 代幣估值受惠,盤前 +6%",
-    "EarningsReaction": false
-  },
-  "BMY": {
-    "Type": "news",
-    "Catalyst": "今日 +4.8% 查無當日專屬公告;近期 arlo-cel 二期數據(9/8)、HSBC 目標價 65 美元、Guggenheim 升評累積",
-    "EarningsReaction": false
-  },
-  "INTC": {
-    "Type": "news",
-    "Catalyst": "傳英特爾10月處理器價格最高再漲一成,外資同步調升評等",
-    "EarningsReaction": false
-  },
-  "KLAC": {
-    "Type": "analyst",
-    "Catalyst": "摩根大通上調晶圓設備支出預測,列KLA為首選股",
-    "EarningsReaction": false
-  },
-  "MRVL": {
-    "Type": "analyst",
-    "Catalyst": "Piper Sandler給予馬威爾優於大盤評等,目標價270美元",
-    "EarningsReaction": false
-  },
-  "CRWV": {
-    "Type": "momentum",
-    "Catalyst": "隨Oracle財報帶動的AI基礎建設族群上漲,同日有內部人依計畫賣股",
-    "EarningsReaction": false
-  },
-  "VRT": {
-    "Type": "momentum",
-    "Catalyst": "無公司自身消息,隨Oracle財報帶動的AI基礎建設族群同步上漲",
-    "EarningsReaction": false
-  },
-  "ALAB": {
-    "Type": "momentum",
-    "Catalyst": "無公司自身消息,隨Oracle財報帶動的AI基礎建設族群上漲",
-    "EarningsReaction": false
-  },
-  "COHR": {
-    "Type": "momentum",
-    "Catalyst": "受Oracle財報帶動AI基礎建設族群上漲,加上光通訊業併購交易題材延燒",
-    "EarningsReaction": false
-  },
-  "SMCI": {
-    "Type": "momentum",
-    "Catalyst": "無公司自身消息,隨Oracle財報帶動的AI基礎建設族群上漲",
-    "EarningsReaction": false
-  },
-  "AGI": {
-    "Type": "momentum",
-    "Catalyst": "金價走高帶動,無公司自身消息,股價隨黃金上揚",
-    "EarningsReaction": false
-  },
-  "EXK": {
-    "Type": "momentum",
-    "Catalyst": "銀價維持高檔,無公司自身消息,股價隨貴金屬類走揚",
-    "EarningsReaction": false
-  },
-  "TNK": {
-    "Type": "momentum",
-    "Catalyst": "運價創新高卻股價回落,推測獲利回吐,查無公司壞消息",
-    "EarningsReaction": false
-  },
-  "CRBP": {
-    "Type": "news",
-    "Catalyst": "9/11 盤後 16:01 公告 9/14 早上 8 點法說會公布 CRB-913(口服 CB1 反向促效劑)減重 CANYON-1 一期 b 頂線數據,盤後 +28.6% 搶先卡位",
-    "EarningsReaction": false
-  },
-  "OLMA": {
-    "Type": "FDA",
-    "Catalyst": "9/11 盤後 AZ 公布 SERENA-4 三期(camizestrant 口服 SERD 一線)未達 PFS 主要終點,同類口服 SERD 疑慮拖累 OLMA 盤後 −13%",
-    "EarningsReaction": false
-  },
-  "TMQ": {
-    "Type": "news",
-    "Catalyst": "9/11 盤後公告完成美國國防部(戰爭部)3,560 萬美元入股(約 10% 股權),資金投入阿拉斯加 Ambler 銅礦開發,盤後 +7.6%",
-    "EarningsReaction": false
-  },
-  "KDK": {
-    "Type": "momentum",
-    "Catalyst": "查無明確消息;9/11 盤後 +4%(收盤 −1.6%),自駕卡車概念股波動",
-    "EarningsReaction": false
-  },
-  "SCNI": {
-    "Type": "momentum",
-    "Catalyst": "查無 9/11 盤後消息;9/8 宣布終止 PC111、資源轉向 NanoAb 平台與 CDMO 後,低價股盤後投機 +23%",
-    "EarningsReaction": false
-  },
-  "TJGC": {
-    "Type": "momentum",
-    "Catalyst": "查無明確消息;9/11 盤後 +10.6%(收盤 +4.9%),新上市小型股投機",
-    "EarningsReaction": false
-  },
-  "PMI": {
-    "Type": "momentum",
-    "Catalyst": "查無明確消息;9/11 收 +20.9% 後盤後再 +8.2%,人工心臟 SynCardia 母公司低流通股投機",
-    "EarningsReaction": false
-  },
-  "FGL": {
-    "Type": "momentum",
-    "Catalyst": "查無明確消息;9/11 開盤 −12.7% 反轉收 +6.9%,盤後再 +6.6%,新上市小型股投機",
-    "EarningsReaction": false
-  },
-  "DELL": {
-    "Type": "analyst",
-    "Catalyst": "9/11 RBC 啟動覆蓋給予優於大盤、目標價 640 美元(AI 伺服器積壓訂單 950 億),股價 +12% 創歷史新高",
-    "EarningsReaction": false
-  },
-  "NVO": {
-    "Type": "analyst",
-    "Catalyst": "9/11 摩根士丹利降評至減碼、目標價 40 美元:semaglutide 占 2026 營收 75%、2031 專利懸崖,ADR −2.1%",
-    "EarningsReaction": false
-  },
-  "HCAI": {
-    "Type": "momentum",
-    "Catalyst": "查無明確消息;9/11 開盤 −17%、收 −13.5%,低價微型股投機退潮",
-    "EarningsReaction": false
-  },
-  "BW": {
-    "Type": "momentum",
-    "Catalyst": "無當日新消息;8/31 Needham 買進評等(PT 20 美元)+ 24 億美元 FastPower 資料中心供電合約行情延續,9/11 收 +10.7%",
-    "EarningsReaction": false
-  },
-  "UPST": {
-    "Type": "news",
-    "Catalyst": "執行長 Paul Gu 9/10 以約 128 萬美元買進 5 萬股,9/11 Form 4 揭露後盤前 +4%,收 +2%",
-    "EarningsReaction": false
-  },
-  "HMY": {
-    "Type": "macro",
-    "Catalyst": "9/11 核心 CPI 高於預期但金價逆勢漲逾 1.5%,南非金礦 ADR 跟漲,收 +2.2%",
-    "EarningsReaction": false
-  },
-  "LPTH": {
-    "Type": "earnings",
-    "Catalyst": "9/10 盤後 Q4 FY26 營收 2,120 萬美元(+73%)優於預期,但每股虧損 0.06 美元遜於預期虧 0.01 美元,9/11 收 −5%",
-    "EarningsReaction": true
-  },
-  "INDP": {
-    "Type": "offering",
-    "Catalyst": "9/8 完成 2,034 萬股私募籌資約 2,400 萬美元後量能放大,9/11 收 +8.2%;無當日新聞",
-    "EarningsReaction": false
-  },
-  "ANET": {
-    "Type": "news",
-    "Catalyst": "9/11 網通設備族群輪動:Ciena 財報後賣壓反轉 +5%、Arista +5.4%、Cisco +4%,AI 資料中心網路需求題材延續",
-    "EarningsReaction": false
-  },
-  "CSCO": {
-    "Type": "news",
-    "Catalyst": "9/11 隨網通族群輪動 +4.3%(Arista +5.4%、Ciena +5%),AI 基礎建設訂單能見度帶動資金回流",
-    "EarningsReaction": false
-  },
-  "AZN": {
-    "Type": "FDA",
-    "Catalyst": "9/11 公布 SERENA-4 三期(camizestrant 一線乳癌)未達 PFS 主要終點,ADR −2.2%;同類口服 SERD 族群(OLMA)盤後連帶重挫",
-    "EarningsReaction": false
-  },
-  "SPCX": {
-    "Type": "news",
-    "Catalyst": "Nasdaq 9/11 盤後 pro forma:SpaceX 在 Nasdaq-100 權重 1.28%→2.82% 翻倍,9/18 收盤生效,估帶來約 155 億美元被動買盤;週五 +2.0%",
-    "EarningsReaction": false
-  }
+ "AAOI": {
+  "Type": "macro",
+  "Catalyst": "盤前 −6.8%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,光通訊族群同步重挫",
+  "EarningsReaction": false
+ },
+ "ADBE": {
+  "Type": "earnings",
+  "Catalyst": "盤前 +2.3%;9/10 盤後 Q3 FY26 營收 $6.76B(+13%)、非 GAAP EPS $6.13 並上調全年指引,週五 −2.3% 後今日反彈;UBS/BMO 9/11 上調目標價至 $255/$270",
+  "EarningsReaction": false
+ },
+ "AEHR": {
+  "Type": "macro",
+  "Catalyst": "盤前 −8.2%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,查無個股新聞",
+  "EarningsReaction": false
+ },
+ "AENT": {
+  "Type": "earnings",
+  "Catalyst": "FY26 營收 11.49 億美元(+8%)、調整後 EPS 0.46 美元(+24%)、調整後 EBITDA 4,150 萬美元(+14%),9/10 盤後公布,盤前 +27%",
+  "EarningsReaction": true
+ },
+ "ALAB": {
+  "Type": "macro",
+  "Catalyst": "盤前 −6.8%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,AI 互連晶片隨族群重挫",
+  "EarningsReaction": false
+ },
+ "AMAT": {
+  "Type": "macro",
+  "Catalyst": "盤前 −7.3%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,半導體設備股領跌",
+  "EarningsReaction": false
+ },
+ "AMD": {
+  "Type": "macro",
+  "Catalyst": "盤前 −5.8%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,查無個股新聞",
+  "EarningsReaction": false
+ },
+ "ANET": {
+  "Type": "macro",
+  "Catalyst": "盤前 −4.9%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,網通族群上週輪動漲幅回吐",
+  "EarningsReaction": false
+ },
+ "APLD": {
+  "Type": "macro",
+  "Catalyst": "盤前 −6.1%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,AI 資料中心股回落",
+  "EarningsReaction": false
+ },
+ "ARM": {
+  "Type": "macro",
+  "Catalyst": "盤前 −7.7%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,查無個股新聞",
+  "EarningsReaction": false
+ },
+ "ASML": {
+  "Type": "macro",
+  "Catalyst": "盤前 −5.6%、歐股 −5%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,設備股受 AI 資本支出降溫疑慮拖累",
+  "EarningsReaction": false
+ },
+ "AVGO": {
+  "Type": "macro",
+  "Catalyst": "盤前 −3.9%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫;另傳 VMware 授權方案改革(9/14 市場傳聞)",
+  "EarningsReaction": false
+ },
+ "AXTI": {
+  "Type": "macro",
+  "Catalyst": "盤前 −7.3%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,查無個股新聞",
+  "EarningsReaction": false
+ },
+ "AZN": {
+  "Type": "FDA",
+  "Catalyst": "盤前 +2.0%;9/14 公布 Enhertu、Tagrisso 顯示總存活期效益(MT Newswires 9/14 03:40 ET)",
+  "EarningsReaction": false
+ },
+ "BE": {
+  "Type": "macro",
+  "Catalyst": "盤前 −7.0%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,AI 電力股回落,年初迄今 +167% 漲幅回吐",
+  "EarningsReaction": false
+ },
+ "BNC": {
+  "Type": "momentum",
+  "Catalyst": "盤前 +15%;BNB 國庫概念,Four.meme「4Stock」代幣化產品 BNC4 帶動投機買盤(crypto.news),無公司公告",
+  "EarningsReaction": false
+ },
+ "BTDR": {
+  "Type": "macro",
+  "Catalyst": "盤前 −5.3%;查無個股跌因,隨礦股族群走弱(9/14 CFO 出席 HC Wainwright 會議)",
+  "EarningsReaction": false
+ },
+ "CBRS": {
+  "Type": "macro",
+  "Catalyst": "盤前 −5.4%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,AI 晶片新股隨族群重挫",
+  "EarningsReaction": false
+ },
+ "CIFR": {
+  "Type": "macro",
+  "Catalyst": "盤前 −5.3%;查無個股新聞,隨礦股/AI 資料中心族群走弱",
+  "EarningsReaction": false
+ },
+ "CLSK": {
+  "Type": "macro",
+  "Catalyst": "盤前 −5.1%;查無個股新聞,隨礦股族群走弱",
+  "EarningsReaction": false
+ },
+ "COHR": {
+  "Type": "macro",
+  "Catalyst": "盤前 −7.0%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,光通訊族群同步重挫",
+  "EarningsReaction": false
+ },
+ "CRBP": {
+  "Type": "FDA",
+  "Catalyst": "盤前 +10.8%(週五盤後 +28.6%);9/14 公布 CRB-913 CANYON-1 Ib 期頂線:60mg 12 週減重 5%、腸胃副作用優於 GLP-1(GlobeNewswire),08:00 ET 法說會",
+  "EarningsReaction": false
+ },
+ "CRDO": {
+  "Type": "macro",
+  "Catalyst": "盤前 −6.1%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,查無今日個股新聞",
+  "EarningsReaction": false
+ },
+ "CRM": {
+  "Type": "news",
+  "Catalyst": "盤前 +3.1%;軟體股逆勢輪動;9/14 宣布 $2,700 萬教育補助",
+  "EarningsReaction": false
+ },
+ "CRWD": {
+  "Type": "news",
+  "Catalyst": "盤前 +5.1%;AI 股重挫日資金輪入資安股,CEO Kurtz 稱 AI 擴散增加攻擊面、資安為 AI 受益者;Barron's 9/14 點名",
+  "EarningsReaction": false
+ },
+ "CRWV": {
+  "Type": "macro",
+  "Catalyst": "盤前 −9.0%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫;MoffettNathanson 9/14 目標價 $106→$107 維持中立;9 月初 CEO/法務長申報賣股",
+  "EarningsReaction": false
+ },
+ "CSCO": {
+  "Type": "macro",
+  "Catalyst": "盤前 −2.2%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,網通族群隨 AI 基建回落",
+  "EarningsReaction": false
+ },
+ "DBGI": {
+  "Type": "M&A",
+  "Catalyst": "盤前 +4.3%;延續 9/10 每股 $77.58 全現金收購提案 + $1.65 億政府合約利多,無 9/14 新公告",
+  "EarningsReaction": false
+ },
+ "DELL": {
+  "Type": "macro",
+  "Catalyst": "盤前 −4.5%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,9/11 RBC 首評優於大盤(目標價 $640)帶動 +12% 創新高後回吐",
+  "EarningsReaction": false
+ },
+ "DFTX": {
+  "Type": "FDA",
+  "Catalyst": "盤前 +15%;9/14 公布 GAD 藥物 DT120 ODT 第三期 Panorama 研究頂線數據",
+  "EarningsReaction": false
+ },
+ "ELMT": {
+  "Type": "contract",
+  "Catalyst": "盤前 +42%;9/14 美國戰爭部承諾投資 $4.5 億於鎢供應鏈,另 DLA 最高 $20 億 IDIQ 合約(GlobeNewswire);含最高 19.9% 認股權證",
+  "EarningsReaction": false
+ },
+ "EOSE": {
+  "Type": "macro",
+  "Catalyst": "盤前 −6.1%;隨 AI 電力/儲能族群走弱;Roth 9/14 反上調目標價至 $4.5",
+  "EarningsReaction": false
+ },
+ "FGL": {
+  "Type": "momentum",
+  "Catalyst": "查無明確消息;9/11 開盤 −12.7% 反轉收 +6.9%,盤後再 +6.6%,新上市小型股投機",
+  "EarningsReaction": false
+ },
+ "FLNC": {
+  "Type": "macro",
+  "Catalyst": "盤前 −4.9%;查無當日個股新聞,隨儲能族群走弱(Barclays 9/3 已降評)",
+  "EarningsReaction": false
+ },
+ "FTFT": {
+  "Type": "momentum",
+  "Catalyst": "8 月底 1:4 反向分割後量能異常放大,投機性上衝 +12%,無新基本面消息",
+  "EarningsReaction": false
+ },
+ "GEV": {
+  "Type": "macro",
+  "Catalyst": "盤前 −6.4%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,AI 電力題材股回落",
+  "EarningsReaction": false
+ },
+ "GLW": {
+  "Type": "news",
+  "Catalyst": "盤前 −9.2%;9/11 與 Goldman Sachs 簽最高 $20 億 at-the-market 增發協議引發稀釋疑慮,疊加 AI 股重挫",
+  "EarningsReaction": false
+ },
+ "HPE": {
+  "Type": "analyst",
+  "Catalyst": "盤前 −7.2%;Evercore ISI 9/14 降評至 In Line,理由為半年漲 184% 估值過高;疊加 AI 股重挫",
+  "EarningsReaction": false
+ },
+ "INTC": {
+  "Type": "macro",
+  "Catalyst": "盤前 −6.5%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,Barron's 9/14 點名 Intel 為今日市場代表股",
+  "EarningsReaction": false
+ },
+ "KDK": {
+  "Type": "momentum",
+  "Catalyst": "查無明確消息;9/11 盤後 +4%(收盤 −1.6%),自駕卡車概念股波動",
+  "EarningsReaction": false
+ },
+ "KEEL": {
+  "Type": "macro",
+  "Catalyst": "盤前 −5.4%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,AI 機房/基建小型股隨族群走弱",
+  "EarningsReaction": false
+ },
+ "KLAC": {
+  "Type": "macro",
+  "Catalyst": "盤前 −7.3%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,半導體設備股領跌",
+  "EarningsReaction": false
+ },
+ "LBGJ": {
+  "Type": "momentum",
+  "Catalyst": "查無消息;今年兩度反向分割(1:100、1:200)後流通量極低、市值約 100 萬美元,低量急漲屬樂透帶",
+  "EarningsReaction": false
+ },
+ "LITE": {
+  "Type": "macro",
+  "Catalyst": "盤前 −7.1%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,光通訊族群同步重挫",
+  "EarningsReaction": false
+ },
+ "LPTH": {
+  "Type": "macro",
+  "Catalyst": "盤前 −4.1%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,AI 光學小型股隨族群走弱(9/10 財報餘波)",
+  "EarningsReaction": false
+ },
+ "LRCX": {
+  "Type": "macro",
+  "Catalyst": "盤前 −8.1%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,半導體設備股領跌",
+  "EarningsReaction": false
+ },
+ "MARA": {
+  "Type": "macro",
+  "Catalyst": "盤前 −7.4%;比特幣週末走弱、ETF 連 4 日淨流出,礦股被視為 AI 資料中心代理股隨 AI 股重挫",
+  "EarningsReaction": false
+ },
+ "MDT": {
+  "Type": "analyst",
+  "Catalyst": "盤前 +3.4%;Bernstein 9/14 上調目標價至 $112",
+  "EarningsReaction": false
+ },
+ "MRVL": {
+  "Type": "macro",
+  "Catalyst": "盤前 −8.0%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,AI 客製晶片/光互連曝險高、跌幅居大型股前段",
+  "EarningsReaction": false
+ },
+ "MU": {
+  "Type": "macro",
+  "Catalyst": "盤前 −6.0%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,記憶體族群同步重挫",
+  "EarningsReaction": false
+ },
+ "NBIS": {
+  "Type": "macro",
+  "Catalyst": "盤前 −8.8%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,AI 雲純度高跌幅最重,查無個股新聞",
+  "EarningsReaction": false
+ },
+ "NOK": {
+  "Type": "macro",
+  "Catalyst": "盤前 −9.6%、歐股 −8%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,AI 光學/IP 網路題材回吐,查無個股新聞",
+  "EarningsReaction": false
+ },
+ "NOW": {
+  "Type": "analyst",
+  "Catalyst": "盤前 +5.0%;分析師上調目標價(Needham 9/11 $115→$155,AI 年化合約價值上看 $15 億),軟體股逆勢輪動",
+  "EarningsReaction": false
+ },
+ "NVDA": {
+  "Type": "macro",
+  "Catalyst": "盤前 −2.4%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫(CNBC 9/14),NVDA 為 AI 資本支出情緒指標",
+  "EarningsReaction": false
+ },
+ "NVS": {
+  "Type": "news",
+  "Catalyst": "盤前 +2.9%;9/14 諾華藥物競賽相關重大消息(詳見新聞細節)",
+  "EarningsReaction": false
+ },
+ "NVTS": {
+  "Type": "macro",
+  "Catalyst": "盤前 −6.3%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,功率半導體隨族群走弱",
+  "EarningsReaction": false
+ },
+ "OLMA": {
+  "Type": "FDA",
+  "Catalyst": "9/11 盤後 AZ 公布 SERENA-4 三期(camizestrant 口服 SERD 一線)未達 PFS 主要終點,同類口服 SERD 疑慮拖累 OLMA 盤後 −13%",
+  "EarningsReaction": false
+ },
+ "ORCL": {
+  "Type": "macro",
+  "Catalyst": "盤前 −4.2%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,9/9 財報後 AI 雲題材漲幅回吐",
+  "EarningsReaction": false
+ },
+ "PANW": {
+  "Type": "news",
+  "Catalyst": "盤前 +5.2%;資安族群逆勢輪動(CRWD/NOW 同步 +5%),Citi 目標價 $432",
+  "EarningsReaction": false
+ },
+ "PCLA": {
+  "Type": "momentum",
+  "Catalyst": "查無明確消息;9/10 已飆 +31%,小型 ADR 投機動能延續,盤前 +23%",
+  "EarningsReaction": false
+ },
+ "PMI": {
+  "Type": "momentum",
+  "Catalyst": "盤前 +9.9%;查無新聞,人工心臟 SynCardia 母公司低流通股連續投機(9/11 +20.9%、盤後 +8.2%)",
+  "EarningsReaction": false
+ },
+ "POET": {
+  "Type": "macro",
+  "Catalyst": "盤前 −6.3%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,光通訊小型股隨族群走弱",
+  "EarningsReaction": false
+ },
+ "QCOM": {
+  "Type": "macro",
+  "Catalyst": "盤前 −5.2%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,查無個股新聞",
+  "EarningsReaction": false
+ },
+ "RIOT": {
+  "Type": "macro",
+  "Catalyst": "盤前 −4.5%;查無個股新聞,隨礦股族群走弱",
+  "EarningsReaction": false
+ },
+ "RUM": {
+  "Type": "news",
+  "Catalyst": "盤前 +11.7%;The Information 9/14 報導 Anthropic 傳為 Rumble 年 $3 億、6 年總額 $137 億運算合約的未具名客戶(傳聞未證實)",
+  "EarningsReaction": false
+ },
+ "SAP": {
+  "Type": "news",
+  "Catalyst": "盤前 +3.9%;軟體股逆勢輪動(CRM/NOW/CRWD 同步走強)",
+  "EarningsReaction": false
+ },
+ "SCNI": {
+  "Type": "momentum",
+  "Catalyst": "盤前 +42%(週五盤後 +23%);查無 9/14 新消息,9/8 轉向 NanoAb 平台+CDMO 後低價股連續投機拉抬,市值僅約 $170 萬",
+  "EarningsReaction": false
+ },
+ "SKHY": {
+  "Type": "macro",
+  "Catalyst": "韓股收盤 −6%、盤前 −7.2%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫;另 9/11 DeepSeek V4.1 Flash 引發 HBM 需求疑慮",
+  "EarningsReaction": false
+ },
+ "SKYQ": {
+  "Type": "news",
+  "Catalyst": "盤前 +7.2%;內華達煉油廠 9 月啟動生產 + $5,000 萬油氣投資案(明訂不稀釋),9/18 股東會表決資本結構案",
+  "EarningsReaction": false
+ },
+ "SLS": {
+  "Type": "news",
+  "Catalyst": "盤前 −14.3%;查無 9/14 具體消息(近期為 AACR 胰臟癌會議摘要獲選 9/25-28),小型生技回吐",
+  "EarningsReaction": false
+ },
+ "SMCI": {
+  "Type": "macro",
+  "Catalyst": "盤前 −5.8%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,AI 伺服器隨族群重挫",
+  "EarningsReaction": false
+ },
+ "SNDK": {
+  "Type": "macro",
+  "Catalyst": "盤前 −5.9%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,記憶體/儲存族群同步重挫",
+  "EarningsReaction": false
+ },
+ "SPCX": {
+  "Type": "news",
+  "Catalyst": "盤前 −2.7%;隨 AI 股回落;上週 Bloomberg 9/12:Nasdaq-100 權重 1.28%→2.82% 於 9/18 收盤生效(約 $155 億被動買盤);Musk 9/13 稱 2027 年送 Nvidia Vera Rubin AI 電腦入軌",
+  "EarningsReaction": false
+ },
+ "STM": {
+  "Type": "macro",
+  "Catalyst": "盤前 −6.5%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,歐洲晶片股同步重挫(Infineon −7%)",
+  "EarningsReaction": false
+ },
+ "STX": {
+  "Type": "macro",
+  "Catalyst": "盤前 −6.5%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,儲存族群同步重挫;9/14 發布 AI 儲存需求調查新聞稿",
+  "EarningsReaction": false
+ },
+ "TE": {
+  "Type": "macro",
+  "Catalyst": "盤前 −5.4%;查無個股新聞,隨 AI 電力/太陽能族群走弱",
+  "EarningsReaction": false
+ },
+ "TJGC": {
+  "Type": "momentum",
+  "Catalyst": "查無明確消息;9/11 盤後 +10.6%(收盤 +4.9%),新上市小型股投機",
+  "EarningsReaction": false
+ },
+ "TMQ": {
+  "Type": "news",
+  "Catalyst": "9/11 盤後公告完成美國國防部(戰爭部)3,560 萬美元入股(約 10% 股權),資金投入阿拉斯加 Ambler 銅礦開發,盤後 +7.6%",
+  "EarningsReaction": false
+ },
+ "TNON": {
+  "Type": "news",
+  "Catalyst": "盤前 −9.9%;9/14 完成 $287 萬認股權證行使交割、新認股權證定價 $5.02(稀釋),9/10-11 +95%/+49% 後回吐",
+  "EarningsReaction": false
+ },
+ "TPET": {
+  "Type": "momentum",
+  "Catalyst": "盤前 +8.0%;1:9 反向分割後空單單月減 79.8%(9/13 報導)引發軋空買盤,油價週末走高助攻,無公司公告",
+  "EarningsReaction": false
+ },
+ "TSM": {
+  "Type": "macro",
+  "Catalyst": "盤前 −3.5%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,台積電隨全球晶片股回落",
+  "EarningsReaction": false
+ },
+ "TXN": {
+  "Type": "macro",
+  "Catalyst": "盤前 −4.4%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,類比晶片隨族群回落",
+  "EarningsReaction": false
+ },
+ "VRT": {
+  "Type": "macro",
+  "Catalyst": "盤前 −8.0%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,AI 資料中心電力/散熱股同步重挫",
+  "EarningsReaction": false
+ },
+ "WDC": {
+  "Type": "macro",
+  "Catalyst": "盤前 −5.7%;9/12 Anthropic 執行長 Amodei 撰文籲放慢 AI 能力開發、Altman/Musk 附和,9/14 全球 AI/晶片股重挫,儲存族群同步重挫",
+  "EarningsReaction": false
+ },
+ "WULF": {
+  "Type": "macro",
+  "Catalyst": "盤前 −5.0%;查無個股新聞,隨礦股/AI 資料中心族群走弱",
+  "EarningsReaction": false
+ }
 }

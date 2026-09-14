@@ -1,170 +1,224 @@
 {
-  "RH": {
-    "date": "2026-09-11",
-    "adj": 2.0,
-    "confidence": "medium",
-    "reasoning": "空單佔流通股 31.5%、回補天數 6 天,財報利多引發的回補通常讓收盤高於單純跳空慣性;但 EPS 大勝來自一次性關稅退款、Q3 指引低於預期,消化後可能回吐,只給小幅上修。"
-  },
-  "ORCL": {
-    "date": "2026-09-11",
-    "adj": 1.0,
-    "confidence": "medium",
-    "reasoning": "盤後高點 +7% 回落到 +4%,顯示賣壓存在;但 RPO 大幅優於預期是市場最在意的指標,大型股財報後首日通常延續方向,小幅上修。"
-  },
-  "CPRT": {
-    "date": "2026-09-11",
-    "adj": -2.0,
-    "confidence": "medium",
-    "reasoning": "併購方通常在宣布首日承壓,CPRT 卻上漲,加上 EPS 低於預期,盤中分析師下修目標價($26)可能壓抑追價,預期收盤弱於跳空慣性。"
-  },
-  "ACVA": {
-    "date": "2026-09-11",
-    "adj": 0.0,
-    "confidence": "high",
-    "reasoning": "現金收購 $10.50 封頂,價格會貼在 $10.3-10.5 之間幾乎不動;不做方向調整,但預期盤中高點與收盤都接近跳空價。"
-  },
-  "GME": {
-    "date": "2026-09-11",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "meme 股,內部人買進消息會吸引散戶但也常被拿來出貨,方向不可預測,不調整。"
-  },
-  "ADBE": {
-    "date": "2026-09-11",
-    "adj": 1.5,
-    "confidence": "medium",
-    "reasoning": "財報優於預期 + 上調財測卻下跌,屬情緒面(AI 衝擊、CEO 交接)賣壓;大型軟體股這種「好財報跌」在開盤後常被承接,預期收盤略高於跳空。"
-  },
-  "CVV": {
-    "date": "2026-09-11",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "微型股重整公告,盤中流動性差,方向難測,不調整。"
-  },
-  "SUNE": {
-    "date": "2026-09-11",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "樂透帶(1M +30%、流通股 580 萬),本質不可預測,依規則 adj=0。"
-  },
-  "TPET": {
-    "date": "2026-09-11",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "油價族群微型股,已連兩個時段噴漲,樂透帶,不調整。"
-  },
-  "LBGJ": {
-    "date": "2026-09-11",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "無消息、市值百萬級樂透帶,不調整。"
-  },
-  "XRTX": {
-    "date": "2026-09-11",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "微型生技製造公告,量能不確定,不調整。"
-  },
-  "AENT": {
-    "date": "2026-09-11",
-    "adj": -3.0,
-    "confidence": "medium",
-    "reasoning": "小型股(市值約 3.5 億美元)財報跳空 +27%,但營收僅 +8%、EPS +24% 屬穩健而非爆發,且 9/10 盤後已先漲一段;此類「數字普通、跳空過大」的小型股財報缺口盤中常回吐,量化基準偏高,小幅下修。"
-  },
-  "TNON": {
-    "date": "2026-09-11",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "樂透帶:9/10 盤中已 +95%(還債消除稀釋),今晨續漲 +49% 為第二日連噴,本質不可預測,不做方向性調整。"
-  },
-  "PCLA": {
-    "date": "2026-09-14",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "兩日連噴後盤後回吐 −12.6%,小型 ADR 無錨點,不調整。"
-  },
-  "FTFT": {
-    "date": "2026-09-14",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "盤前 +38% 後盤後 −14% 的拋物線回吐,反向分割後籌碼混亂,不可預測。"
-  },
-  "NCRA": {
-    "date": "2026-09-11",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "無消息 +12%,微型股樂透帶,adj=0。"
-  },
-  "SXTC": {
-    "date": "2026-09-11",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "1:80 併股後殘股投機、無消息,樂透帶,adj=0。"
-  },
-  "ATTT": {
-    "date": "2026-09-11",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "更名炒作退燒 −15%,無基本面錨點,不調整。"
-  },
-  "OKLO": {
-    "date": "2026-09-11",
-    "adj": -1.0,
-    "confidence": "medium",
-    "reasoning": "分析師評等調整 + 核能族群連續第二日回落,疊加油價暴漲、10 年債殖利率逼近 5% 的宏觀壓力,高估值成長股在此環境偏弱,小幅下修。"
-  },
-  "SMR": {
-    "date": "2026-09-11",
-    "adj": -1.0,
-    "confidence": "medium",
-    "reasoning": "與 OKLO 同一族群事件,無自身新聞,方向跟隨族群與宏觀(油價/利率)壓力,小幅下修。"
-  },
-  "SWRD": {
-    "date": "2026-09-11",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "轉板首日暴漲後回吐,微型股無基本面錨點,樂透帶不調整。"
-  },
-  "CRBP": {
-    "date": "2026-09-14",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "週一 8:00 ET 才公布 CANYON-1 頂線數據,盤後 +28.6% 是數據前搶跑;結果二元(好→續噴、差→整段回吐),點估無意義,不調整。"
-  },
-  "OLMA": {
-    "date": "2026-09-14",
-    "adj": 2.0,
-    "confidence": "medium",
-    "reasoning": "跌因是 AstraZeneca 同類藥失敗的族群連動,非自家數據;此類讀後感賣壓常在隔日被「試驗設計不同」的分析師觀點部分回補,小幅上修。"
-  },
-  "TMQ": {
-    "date": "2026-09-14",
-    "adj": 1.0,
-    "confidence": "medium",
-    "reasoning": "政府入股交割是條款落地而非新資訊,但關鍵礦產政策題材有持續買盤,7.6% 盤後漲幅屬可延續的中等強度。"
-  },
-  "KDK": {
-    "date": "2026-09-14",
-    "adj": 0.0,
-    "confidence": "medium",
-    "reasoning": "MS 首評 Equal-weight,目標價高於現價但評等中性;4% 盤後小漲、量小,無理由偏離基準。"
-  },
-  "SCNI": {
-    "date": "2026-09-14",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "無新消息的低價 ADR 延續炒作,樂透帶不調整。"
-  },
-  "TJGC": {
-    "date": "2026-09-14",
-    "adj": 0.0,
-    "confidence": "low",
-    "reasoning": "查無公告的小型股盤後拉抬,樂透帶不調整。"
-  },
-  "SPCX": {
-    "date": "2026-09-14",
-    "adj": 1.0,
-    "confidence": "medium",
-    "reasoning": "Nasdaq-100 權重翻倍(1.28%→2.82%)是 9/18 收盤才執行的機械買盤,週一只是預期先行;$2 兆市值、週五量 7,890 萬股,155 億美元被動買盤約等於一天成交額,足以支撐但不會一天到位。量化基準以 +2% 小 gap 推,略往上偏 +1;閉鎖期解禁賣壓與提前反映後回吐是反向力量,不給更大調整。"
-  }
+ "ELMT": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "盤前 +42%、流通 1,000 萬股、前 1 月 +34%,政府入股型消息(戰爭部 $4.5 億 + DLA $20 億 IDIQ)屬事件品質高但量能極端的樂透帶;過去 TMQ/MP 型首日振幅 ±20% 都有,不做點估調整。"
+ },
+ "SCNI": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "市值 $170 萬、流通 69 萬股、週五盤後 +23% 今日 +42%、無新聞連噴 — 樂透帶,本質不可預測,adj=0。"
+ },
+ "DFTX": {
+  "date": "2026-09-14",
+  "adj": -2,
+  "confidence": "medium",
+  "reasoning": "三期頂線數據跳空 +15%,市值 $60 億流動性佳;生技 topline 跳空常在盤中被「細節不如標題」磨掉一部分,且今日大盤 AI 重挫風險偏好差,小幅下修。"
+ },
+ "CRBP": {
+  "date": "2026-09-14",
+  "adj": -3,
+  "confidence": "medium",
+  "reasoning": "週五盤後 +28.6% 卡位、今日數據落地再 +11%,「將公布→已公布」兩段式跳空常見利多出盡;減重 5%/12 週對比 GLP-1 不算驚人,08:00 法說會後若無更強數據易回落。"
+ },
+ "RUM": {
+  "date": "2026-09-14",
+  "adj": -4,
+  "confidence": "medium",
+  "reasoning": "傳聞型跳空(The Information 點名客戶、合約本身早已公告且估計已反映 +255% 前瞻營收)、DTC 6.2 的回補推升,10:30 後回補買盤耗盡機率高;下修。"
+ },
+ "BNC": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "幣圈概念、前 1 月 +116%、無公司公告 — 樂透帶 adj=0。"
+ },
+ "SLS": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "查無明確消息的 −14% 小型生技,方向資訊不足。"
+ },
+ "CRWD": {
+  "date": "2026-09-14",
+  "adj": 2,
+  "confidence": "medium",
+  "reasoning": "AI 重挫日的資安輪動是「相對強勢」而非基本面事件,但大型股 +5% 跳空在避險資金持續流入下常能守住;整體大盤若續跌會壓縮,小幅上修。"
+ },
+ "NOW": {
+  "date": "2026-09-14",
+  "adj": 1,
+  "confidence": "medium",
+  "reasoning": "分析師目標價上修 + 軟體輪動,市值 $1,440 億跳空 +5% 在同類中屬有承接的類型,小幅上修。"
+ },
+ "PANW": {
+  "date": "2026-09-14",
+  "adj": 1,
+  "confidence": "medium",
+  "reasoning": "同 CRWD 資安輪動,小幅上修。"
+ },
+ "ADBE": {
+  "date": "2026-09-14",
+  "adj": 1,
+  "confidence": "medium",
+  "reasoning": "財報反應第 2 日 + Goldman 上調目標價,週五已跌過一輪,今日 +2.3% 承接機率略高於慣性。"
+ },
+ "GLW": {
+  "date": "2026-09-14",
+  "adj": -2,
+  "confidence": "medium",
+  "reasoning": "$20 億 ATM 是持續性賣壓來源(不是一次性事件),疊加 AI 光纖題材回吐,盤中續弱機率高於慣性基準;下修。"
+ },
+ "HPE": {
+  "date": "2026-09-14",
+  "adj": -1,
+  "confidence": "medium",
+  "reasoning": "Evercore 降評理由是估值(半年 +184%),在 AI 重挫日降評的跌勢通常延續到午盤;小幅下修。"
+ },
+ "CRWV": {
+  "date": "2026-09-14",
+  "adj": -2,
+  "confidence": "low",
+  "reasoning": "AI 雲純度最高 + 內部人賣股 + 傳 Nvidia 暫停營收拆分安排;高 beta 在避險日易再擴大,但也最容易劇烈反彈,信心低。"
+ },
+ "NBIS": {
+  "date": "2026-09-14",
+  "adj": -2,
+  "confidence": "low",
+  "reasoning": "同 CRWV,高 beta AI 雲;方向偏弱但振幅不可測。"
+ },
+ "NVDA": {
+  "date": "2026-09-14",
+  "adj": 1,
+  "confidence": "medium",
+  "reasoning": "AI 減速言論對 NVDA 是情緒衝擊非需求衝擊(CNBC 分析師:晶片需求不太可能放緩),−2.4% 為族群最小跌幅,有逢低承接,小幅上修。"
+ },
+ "AVGO": {
+  "date": "2026-09-14",
+  "adj": 1,
+  "confidence": "medium",
+  "reasoning": "同 NVDA,−3.9% 屬相對抗跌,小幅上修。"
+ },
+ "TSM": {
+  "date": "2026-09-14",
+  "adj": 1,
+  "confidence": "medium",
+  "reasoning": "台積電為族群中基本面最穩、跌幅較小(−3.5%),小幅上修。"
+ },
+ "AMD": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "純族群連動,無個股資訊,維持慣性基準。"
+ },
+ "MU": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "純族群連動(記憶體),維持慣性基準。"
+ },
+ "ARM": {
+  "date": "2026-09-14",
+  "adj": -1,
+  "confidence": "medium",
+  "reasoning": "高估值 AI 概念,在估值重評日跌幅易擴大,小幅下修。"
+ },
+ "AMAT": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "設備股純族群連動,維持基準。"
+ },
+ "LRCX": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "同 AMAT。"
+ },
+ "KLAC": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "同 AMAT。"
+ },
+ "MRVL": {
+  "date": "2026-09-14",
+  "adj": -1,
+  "confidence": "medium",
+  "reasoning": "AI 客製晶片曝險最高的大型股,跌幅 −8% 已居前段,小幅下修。"
+ },
+ "INTC": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "純族群連動,維持基準。"
+ },
+ "ORCL": {
+  "date": "2026-09-14",
+  "adj": -1,
+  "confidence": "medium",
+  "reasoning": "9/9 財報後 AI 雲/RPO 題材漲幅回吐,在 AI 資本支出疑慮日承壓,小幅下修。"
+ },
+ "DELL": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "上週 RBC 首評漲幅回吐,純族群連動。"
+ },
+ "ANET": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "網通族群連動,維持基準。"
+ },
+ "VRT": {
+  "date": "2026-09-14",
+  "adj": -1,
+  "confidence": "medium",
+  "reasoning": "AI 電力/散熱高 beta,跌幅 −8% 居前,小幅下修。"
+ },
+ "NOK": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "−9.6% 查無個股新聞,歐股已收 −8%,美股盤中方向資訊不足。"
+ },
+ "SPCX": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "SpaceX 新上市股,9/18 Nasdaq-100 權重生效前被動買盤 vs AI 股回落互抵,不調。"
+ },
+ "SNDK": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "儲存族群連動,維持基準。"
+ },
+ "WDC": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "同 SNDK。"
+ },
+ "STX": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "同 SNDK。"
+ },
+ "SKHY": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "韓股已收 −6%,美股 ADR 跟隨,維持基準。"
+ },
+ "ASML": {
+  "date": "2026-09-14",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "歐股已收 −5%,ADR 跟隨,維持基準。"
+ }
 }

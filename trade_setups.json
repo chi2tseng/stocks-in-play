@@ -1,6 +1,6 @@
 {
  "_doc": "Setup 手冊 v2(2026-08-08 全面重建 — 使用者指示砍掉重來)。重建方法:447 檔分層抽樣 × 24 opus 逐檔歸因 + 3 主題綜合 + fable 仲裁 → 8 假設全庫處刑(R30)→ 執行層 60m 回測(R31)。舊版 trade_setups_legacy.json 僅供對照。內部 playbook,不上站;/SIPs Step 0b 每日審視、9d 選股依據。",
- "updated": "2026-09-11",
+ "updated": "2026-09-14",
  "window": "全庫 2026-05-13 ~ 2026-08-07(60 交易日、事件庫 3,882 筆、60m 執行模擬)",
  "rebuild_method": "質化歸因(每檔:因為什麼→漲多少→為什麼這個幅度,全因子:fwd/當季成長/surprise/MAGNA53/市值/DTC/short float/neglect/run-up)→ 機械假設 → 全庫盲測 → 對照組判別力檢查 → 執行層回測。核心洞察:方向由 perf1M(beaten/heated)與前瞻品質(fwd_rev)的交乘決定,不由 gap 大小或單一籌碼指標決定;DTC 的意義是「回補需要幾天」— dtc<0.5 = 無回補買盤(禁區家族),dtc>5 = 回補跨日(假軋空 fade),高 short_float 配 dtc<5 = 快燃料(beaten 側才是真 squeeze)。",
  "model": {
@@ -337,13 +337,14 @@
  },
  "_daily_review_2026_08_24": "四個在役 setup 全部走完條件表,今日零合格標的 —— 這是條件表正常運作的結果,不是找不到東西。今日候選以微型股籌碼行情(SDOT/PMI/DXST/OLOX/PUSA)與光通訊稀釋利空連動(AAOI 震央 + AXTI/COHR/LITE 跟跌)為主,兩類都不在任何 setup 的機制範圍內。本次新增:為每個 setup 補上預先註冊的 kill criteria(先前為 null),避免事後才畫線。",
  "daily_review": {
-  "date": "2026-09-11",
-  "conclusion": "setup 審視:無規則調整。昨日 NAVN beatdip(10:30 進場 ~$21.26、結構停損 $19.54、收盤 $20.26)約 −0.58R(TIME 出場,<10B 半倉),ledger 待 Yahoo 5 分 K 到位後自動計入;beatdip live 累積前 5 筆 +0.88R 仍為正,維持「降級複驗中」。今日 ideas 只出 ADBE beatdip ≥10B 一檔(真 beat + 上調財測、跳空 −2.4%)。dtc_fade live 8 筆 −3.74R,滾動開關維持關閉,RH/GME 形狀合格但不做。",
+  "date": "2026-09-14",
+  "summary": "setup 審視:無規則調整。",
   "notes": [
-   "NAVN 案例教訓:四項全勝仍崩 16% 的「真 beat 錯殺」,10:30 承接濾網通過後全日仍陰跌收 −0.58R —— 小型股(<10B)beatdip 弱層的統計(+0.05~0.13)再次被 live 驗證,維持半倉規則、考慮未來只做 ≥10B。",
-   "COO 昨日案例(daily_case):財報 miss + 指引砍 + 策略審查落空三重利空,盤中無反彈,方向 HIT 但 intraday MISS —— 多重結構性利空的大型股 gap-down 不是 beatdip 標的,分類要看 beat 品質。",
-   "本次 /SIPs 於 ET 凌晨 01:40 執行(Sep 11 盤前未開),候選集 = 9/10 盤後 13 檔 + ADBE headline;ideas 以盤後價寫入(ex-ante),若盤前跳空使 ADBE 錯殺幅度 <1% 則 late sweep 前 09:30 ET 撤單。",
-   "模型對帳(9/10):n=27、命中 33%、bias +3.17、MAE 9.87;質化層 MAE 10.59 vs 純量化 10.62(+0.02,首次微幅加值);spike P50 到價率 37%(基準 46%)偏低。MODEL-DRIFT 觸發已 refit。"
+   "ADBE 9/11 beatdip idea 對帳:9/11 開盤後 ADBE 自 −2.3% 回升收約平盤,未進 live_ledger(verify 待收錄);今日續 +2.3% 反彈,beatdip ≥10B 邏輯再獲一例支持(仍為降級複驗中,主層逐日等權 ≈0)。",
+   "dtc_fade live n=8 / −3.74R / 勝率 25%,距降級門檻(n≥10 且 sumR<0)差 2 筆。今日 RUM(DTC 6.19、+11.7%、傳聞型跳空)合格,依 8/22「降級要有證據」紀律出單但倉位減半;若本筆與下一筆皆虧,下次審視即降為候補。",
+   "contract_fade 主力今日 ELMT(+42%)觸發「合約金額達年營收級的真重估要跳過」例外(戰爭部 $4.5 億入股 + DLA $20 億 IDIQ vs 季營收 $5,600 萬),不做;規則本身不改,但建議未來把「政府入股 + 認股權證」明列為例外類型(MP/TMQ/LAC/ELMT 同模式)。",
+   "模型對帳(9/11):n=53、命中 49%、bias −1.15、MAE 5.50;mid 層連兩日 bias ≈ −4 觸發 MODEL-DRIFT → refit 盲測較差保留現行 model_params,spikefit 重訓(n=5126)。質化層 MAE 8.14 vs 純量化 8.43(+0.29 加值)。",
+   "ORCL 9/11 daily case MISS(gap +7.5 → 收 −1.7%):財報跳空第 3 日追高失敗,教訓已於 Sunday sweep 歸因。今日案例 GLW down(ATM $20 億 + AI 重挫)。"
   ]
  }
 }
