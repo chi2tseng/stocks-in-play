@@ -1,97 +1,137 @@
 {
- "BDRX": {
-  "Type": "news",
-  "Catalyst": "盤前 +82%(量 2,590 萬股):eRapa 第 3 期 FAP 試驗入組過半(168 人收 87 人);9/11 公布中期財報 + $350 萬募資;微型股($1.4M 市值)投機拉抬",
-  "EarningsReaction": false
- },
- "VEEA": {
-  "Type": "M&A",
-  "Catalyst": "盤後 +83%/盤前 +79%:9/14 宣布與荷蘭再生醫療公司 NovaGen 簽署合併意向書(term sheet,非最終協議),GeoNova Capital 承諾注資 $1,000 萬,擬打造邊緣 AI 健康平台;市值僅 $13M 微型股",
-  "EarningsReaction": false
- },
- "MYSZ": {
-  "Type": "M&A",
-  "Catalyst": "盤後 +51%/盤前 +48%:9/14 宣布轉型為收購導向策略,聚焦國防科技平台化併購;市值 $1.8M 微型股",
-  "EarningsReaction": false
- },
- "FTFT": {
-  "Type": "momentum",
-  "Catalyst": "盤後 −33%/盤前 −23%:查無當日新聞;4 合 1 反向分割後暴漲(1M +84%)的獲利了結崩跌",
-  "EarningsReaction": false
- },
- "TNON": {
-  "Type": "news",
-  "Catalyst": "盤前 +9%(量 324 萬股):延續 9/9 提前清償 $516 萬可轉債、9/14 完成 $287 萬認股權證行使,Q2 營收 +127% YoY;今日無新公告",
-  "EarningsReaction": false
- },
- "NAMI": {
-  "Type": "momentum",
-  "Catalyst": "盤前 +7.8%(量 770 萬股):查無當日新聞;最近為 9/9 CES 展出智慧眼鏡,1M −43% 後的低價股反彈",
-  "EarningsReaction": false
- },
- "FPS": {
-  "Type": "earnings",
-  "Catalyst": "盤前 +7.9%:Forgent Power(前 Powell Industries)今晨公布 FY26 Q4 營收 $461.7M(+94% YoY)、調整後 EPS $0.25 vs 預期 $0.23,單季訂單 $15 億創新高,FY27 營收財測 $24-26 億",
-  "EarningsReaction": true
- },
- "VERA": {
-  "Type": "FDA",
-  "Catalyst": "盤前 +15%:9/15 公布 TRUTAKNA(atacicept)ORIGIN 3 試驗兩年期最終療效分析,穩定 eGFR、延緩腎病惡化,達成所有預設終點;空單佔流通 34%、回補天數 9",
-  "EarningsReaction": false
- },
- "RLGT": {
-  "Type": "earnings",
-  "Catalyst": "盤後 +10%/盤前 +14%:9/14 盤後公布 FY26 Q4 EPS $0.15 vs 預期 $0.06,營收 $261.4M +18.5% YoY,大幅超預期",
-  "EarningsReaction": true
- },
- "PLAY": {
-  "Type": "earnings",
-  "Catalyst": "盤後 −11%/盤前 −14%:9/14 盤後公布 Q2 營收 $544.1M −2.4% YoY,由盈轉虧淨損 $1,250 萬(EPS −$0.36),不如預期",
-  "EarningsReaction": true
- },
- "XPON": {
-  "Type": "momentum",
-  "Catalyst": "盤後 +13%:查無 9/14 具體新聞;8 月增資/CFO 更替為舊消息,低流通盤動能延續",
-  "EarningsReaction": false
- },
- "SGML": {
-  "Type": "news",
-  "Catalyst": "盤後 +6.6%:查無 9/14 當日新聞;9/7 巴西法院暫停採礦許可爭議後的反彈延續",
-  "EarningsReaction": false
- },
- "SCNI": {
-  "Type": "news",
-  "Catalyst": "盤後 −17%:9/14 公布終止 PinCell 授權合作、轉攻自有 NanoAb 抗體平台,市值 $1.3M 微型股劇烈震盪",
-  "EarningsReaction": false
- },
- "PFSA": {
-  "Type": "momentum",
-  "Catalyst": "盤前 −8.9%:查無 9/15 當日新聞;8/18 收購案消息後持續走弱(1M −35%)",
-  "EarningsReaction": false
- },
- "BMGL": {
-  "Type": "momentum",
-  "Catalyst": "盤後 −5.7%:9/14 盤前無消息暴漲後回落,細節不明的微型股震盪",
-  "EarningsReaction": false
- },
- "COIN": {
-  "Type": "policy",
-  "Catalyst": "盤前 −4.4%:參院 Clarity Act(加密市場結構法)9/15 程序性表決結果未定,獲利了結回吐 9/11-9/14 漲勢",
-  "EarningsReaction": false
- },
- "CRCL": {
-  "Type": "policy",
-  "Catalyst": "盤前 −4.9%:同 Clarity Act 表決不確定性;9/8 Tazapay 收購後急漲,今日回吐",
-  "EarningsReaction": false
- },
- "TRMD": {
-  "Type": "offering",
-  "Catalyst": "盤前 −8.1%:9/14 公告大股東 OCM Njord 出售 900 萬股次級發行(J.P. Morgan 主辦),折價供給壓力",
-  "EarningsReaction": false
- },
- "MNR": {
-  "Type": "momentum",
-  "Catalyst": "盤後 −4.5%:查無 9/14-9/15 當日公司新聞或公告",
-  "EarningsReaction": false
- }
+  "BDRX": {
+    "Type": "news",
+    "Catalyst": "盤前 +82%(量 2,590 萬股):eRapa 第 3 期 FAP 試驗入組過半(168 人收 87 人);9/11 公布中期財報 + $350 萬募資;微型股($1.4M 市值)投機拉抬",
+    "EarningsReaction": false
+  },
+  "VEEA": {
+    "Type": "M&A",
+    "Catalyst": "盤後 +83%/盤前 +79%:9/14 宣布與荷蘭再生醫療公司 NovaGen 簽署合併意向書(term sheet,非最終協議),GeoNova Capital 承諾注資 $1,000 萬,擬打造邊緣 AI 健康平台;市值僅 $13M 微型股",
+    "EarningsReaction": false
+  },
+  "MYSZ": {
+    "Type": "M&A",
+    "Catalyst": "盤後 +51%/盤前 +48%:9/14 宣布轉型為收購導向策略,聚焦國防科技平台化併購;市值 $1.8M 微型股",
+    "EarningsReaction": false
+  },
+  "FTFT": {
+    "Type": "momentum",
+    "Catalyst": "盤後 −33%/盤前 −23%:查無當日新聞;4 合 1 反向分割後暴漲(1M +84%)的獲利了結崩跌",
+    "EarningsReaction": false
+  },
+  "TNON": {
+    "Type": "news",
+    "Catalyst": "盤前 +9%(量 324 萬股):延續 9/9 提前清償 $516 萬可轉債、9/14 完成 $287 萬認股權證行使,Q2 營收 +127% YoY;今日無新公告",
+    "EarningsReaction": false
+  },
+  "NAMI": {
+    "Type": "momentum",
+    "Catalyst": "盤前 +7.8%(量 770 萬股):查無當日新聞;最近為 9/9 CES 展出智慧眼鏡,1M −43% 後的低價股反彈",
+    "EarningsReaction": false
+  },
+  "FPS": {
+    "Type": "earnings",
+    "Catalyst": "盤前 +7.9%:Forgent Power(前 Powell Industries)今晨公布 FY26 Q4 營收 $461.7M(+94% YoY)、調整後 EPS $0.25 vs 預期 $0.23,單季訂單 $15 億創新高,FY27 營收財測 $24-26 億",
+    "EarningsReaction": true
+  },
+  "VERA": {
+    "Type": "FDA",
+    "Catalyst": "盤前 +15%:9/15 公布 TRUTAKNA(atacicept)ORIGIN 3 試驗兩年期最終療效分析,穩定 eGFR、延緩腎病惡化,達成所有預設終點;空單佔流通 34%、回補天數 9",
+    "EarningsReaction": false
+  },
+  "RLGT": {
+    "Type": "earnings",
+    "Catalyst": "盤後 +10%/盤前 +14%:9/14 盤後公布 FY26 Q4 EPS $0.15 vs 預期 $0.06,營收 $261.4M +18.5% YoY,大幅超預期",
+    "EarningsReaction": true
+  },
+  "PLAY": {
+    "Type": "earnings",
+    "Catalyst": "盤後 −11%/盤前 −14%:9/14 盤後公布 Q2 營收 $544.1M −2.4% YoY,由盈轉虧淨損 $1,250 萬(EPS −$0.36),不如預期",
+    "EarningsReaction": true
+  },
+  "XPON": {
+    "Type": "momentum",
+    "Catalyst": "盤後 +13%:查無 9/14 具體新聞;8 月增資/CFO 更替為舊消息,低流通盤動能延續",
+    "EarningsReaction": false
+  },
+  "SGML": {
+    "Type": "news",
+    "Catalyst": "盤後 +6.6%:查無 9/14 當日新聞;9/7 巴西法院暫停採礦許可爭議後的反彈延續",
+    "EarningsReaction": false
+  },
+  "SCNI": {
+    "Type": "news",
+    "Catalyst": "盤後 −17%:9/14 公布終止 PinCell 授權合作、轉攻自有 NanoAb 抗體平台,市值 $1.3M 微型股劇烈震盪",
+    "EarningsReaction": false
+  },
+  "PFSA": {
+    "Type": "momentum",
+    "Catalyst": "盤前 −8.9%:查無 9/15 當日新聞;8/18 收購案消息後持續走弱(1M −35%)",
+    "EarningsReaction": false
+  },
+  "BMGL": {
+    "Type": "momentum",
+    "Catalyst": "盤後 −5.7%:9/14 盤前無消息暴漲後回落,細節不明的微型股震盪",
+    "EarningsReaction": false
+  },
+  "COIN": {
+    "Type": "policy",
+    "Catalyst": "盤前 −4.4%:參院 Clarity Act(加密市場結構法)9/15 程序性表決結果未定,獲利了結回吐 9/11-9/14 漲勢",
+    "EarningsReaction": false
+  },
+  "CRCL": {
+    "Type": "policy",
+    "Catalyst": "盤前 −4.9%:同 Clarity Act 表決不確定性;9/8 Tazapay 收購後急漲,今日回吐",
+    "EarningsReaction": false
+  },
+  "TRMD": {
+    "Type": "offering",
+    "Catalyst": "盤前 −8.1%:9/14 公告大股東 OCM Njord 出售 900 萬股次級發行(J.P. Morgan 主辦),折價供給壓力",
+    "EarningsReaction": false
+  },
+  "MNR": {
+    "Type": "momentum",
+    "Catalyst": "盤後 −4.5%/盤前 −9.9%:查無 9/14-9/15 當日公司新聞或公告(MT Newswires 盤前跌幅榜亦無具體原因)",
+    "EarningsReaction": false
+  },
+  "VRA": {
+    "Type": "earnings",
+    "Catalyst": "盤前 +19%:9/15 盤前公布 Q2 FY27 非 GAAP EPS $0.11(預期 −$0.08、去年同期 −$0.02),營收 $7,160 萬(+1.1%、預期 $6,600 萬),毛利率 59.8% 大增;重申全年營收 $2.55-2.70 億",
+    "EarningsReaction": true
+  },
+  "RCKT": {
+    "Type": "FDA",
+    "Catalyst": "盤前 +10%:9/15 宣布與 FDA 就 RP-A501(Danon 病基因療法)關鍵二期試驗設計達成共識 — 12 人療效族群、12 個月共同主要終點支持加速核准,2027 年中完成給藥",
+    "EarningsReaction": false
+  },
+  "ENVA": {
+    "Type": "news",
+    "Catalyst": "盤後 −21%:9/14 盤後宣布撤回向 OCC 與 Fed 提出的 Grasshopper Bancorp 收購申請(銀行執照策略夭折);重申 2026 營收 +20-25%、調整後 EPS +30-35%,並加速庫藏股",
+    "EarningsReaction": false
+  },
+  "KMTS": {
+    "Type": "earnings",
+    "Catalyst": "盤後 −10%:9/14 盤後公布 Q1 FY27 營收 $3,100 萬(+60% YoY、優於預期 $2,900 萬),但淨損擴大至 $4,410 萬(去年 $2,580 萬)、EPS −$0.75 遜於預期 −$0.62;FY27 營收指引上調至 $1.41 億",
+    "EarningsReaction": true
+  },
+  "WAY": {
+    "Type": "M&A",
+    "Catalyst": "盤前 +13%:9/15 盤前媒體報導(據 Investing.com / X 轉述 Reuters)Waystar 正評估包括出售在內的策略選項;公司未發聲明,屬傳聞層",
+    "EarningsReaction": false
+  },
+  "ASST": {
+    "Type": "momentum",
+    "Catalyst": "盤前 −4.5%:比特幣庫存股;9/14 公告再買 469 枚 BTC(均價 $77,954)、持倉達 2.5 萬枚,但 BTC 約 $76,900 走弱、數位資產庫存股同步回落",
+    "EarningsReaction": false
+  },
+  "BMNR": {
+    "Type": "momentum",
+    "Catalyst": "盤前 −4%:以太幣庫存股隨加密資產庫存族群回落;查無 9/15 當日公司新聞",
+    "EarningsReaction": false
+  },
+  "CYPH": {
+    "Type": "momentum",
+    "Catalyst": "盤前 −4.3%:Zcash 庫存股隨加密資產庫存族群回落;查無 9/15 當日公司新聞",
+    "EarningsReaction": false
+  }
 }
