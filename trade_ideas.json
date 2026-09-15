@@ -1,25 +1,24 @@
 {
-  "date": "2026-09-14",
-  "written_at": "2026-09-14T08:17:09-04:00",
-  "note": "寫於 ET 09:2x(台灣 21:2x),開盤前;跳空以 Yahoo 盤前價(prepost_quote)為準,非 packet chgPct。",
+  "date": "2026-09-15",
+  "written_at": "2026-09-15T09:26:00-04:00",
+  "note": "寫於 ET 09:26(台灣 21:26),開盤前;跳空以 Yahoo 盤前價(prepost_quote)為準,非 packet chgPct。",
   "ideas": [
     {
       "rank": 1,
-      "symbol": "RUM",
+      "symbol": "VERA",
       "setup": "dtc_fade",
       "direction": "short",
-      "thesis": "Rumble 盤前 +11.7%($8.01,量 441 萬股),回補天數 6.19 > 5、空單佔流通 16.4%,形狀完全符合「假軋空 fade」:高回補天數的跳空常是空頭被迫回補推上去的,10:30 後回補買盤耗盡就回落。今日大盤環境是 AI 股全面重挫(Nasdaq 期貨大跌),小型科技股逆勢跳空更難維持。催化劑是 The Information 報導「Anthropic 傳為其 6 年 $137 億運算合約的未具名客戶」— 合約本身早已公告(TradingView 前瞻營收估計 +255% 已反映),今日只是客戶名字的傳聞、雙方未證實,屬典型可 fade 的傳聞跳空。",
+      "thesis": "Vera Therapeutics 盤前 +15.0%($39.14,量 170 萬股),回補天數 9.06 > 5、空單佔流通 34%,形狀完全符合「假軋空 fade」:高回補天數的跳空常是空頭被迫回補推上去的,10:30 後回補買盤耗盡就回落。今日查無公司具體新聞,唯一日程是 Morgan Stanley 醫療會議簡報,屬無實質催化劑的籌碼型跳空;市值 $28 億、10 年期殖利率 5.02% 創 2007 年來新高的環境對無營收生技不利。",
       "entry": "10:30 ET 放空(不開盤進 — dtc_fade 家族 10:30 版回測較佳);10:30 時價格仍需高於前收 +2% 以上才做,若已跌回 +2% 以內則跳空已自行消化、跳過。",
       "target": "收盤回補(TIME exit);若日內達 +2R 可先回補一半。不留倉。",
       "stop": "進場價 +5%。",
-      "backtest_note": "dtc_fade 次主力(2026-08-16 升格):DTC>5、gap ≥+2%、10:30 放空、收盤回補;回測逐日等權 +0.28R、95% 區間下緣僅 +0.02。**live 帳:前 8 筆 −3.74R、勝率 25%**,距降級門檻(n≥10 且 sumR<0)只差 2 筆 — 依「降級要有證據」紀律未提前降級,但本筆**倉位減半**;借券成本偏高就跳過不硬做。"
+      "backtest_note": "dtc_fade 次主力(2026-08-16 升格):DTC>5、gap ≥+2%、10:30 放空、收盤回補;回測逐日等權 +0.28R、95% 區間下緣僅 +0.02。**live 帳:前 8 筆 −3.74R、勝率 25%、連 6 筆虧**,距降級門檻(n≥10 且 sumR<0)差 2 筆 — 本筆**倉位減半**,若 9/14 RUM + 本筆再虧即觸發降級檢討。借券成本偏高(SF 34%)就跳過不硬做。"
     }
   ],
   "no_trade_notes": [
-    "**contract_fade(主力)— ELMT 不做。** ELMT 盤前 +42%、type=contract、gap ≥+15% 形狀合格,但觸發「合約金額達年營收級的真重估要跳過」例外:戰爭部 $4.5 億投資 + DLA 最高 $20 億 IDIQ,對比 TradingView 最新季營收 $5,600 萬(年化約 $2.2 億),屬政府入股型重新評價(MP/TMQ 模式),不是可 fade 的合約 pump。DFTX +15%(三期數據)、BNC +15%(幣圈概念)皆非 contract 型。",
-    "**beatdip(錯殺反彈)— 無。** 今日跌的大型股(ARM/AMAT/MU/AMD/INTC/MRVL/KLAC/NBIS −5~−9%)全是 AI 減速言論引發的族群重挫,不是財報 beat 被錯殺;GLW −9% 是週五 $2B ATM 增發稀釋,也不是 beatdip。",
-    "**beaten_squeeze_go — 無。** DBGI perf1M −59%/空單 15%/DTC 0.2 但跳空 +4.3% 未達 5% 且無前瞻營收資料;CRWD/PANW/NOW 空單僅 2-3%,不是 beaten。",
-    "**dtc_fade 第二筆 — 無。** 其餘跳空 ≥+2% 的股票 DTC 皆 <5(CRBP 4.6、DFTX 3.5、ELMT 3.2、PANW 3.3)。",
-    "**AI 族群重挫的放空/接刀**沒有對應已回測 setup,不進 Ideas;資安股(CRWD/PANW/NOW)+5% 輪動只放 Claude 精選。"
+    "**contract_fade(主力)— 今日無合格標的。** 跳空 ≥15% 的 BDRX(+82%,三期試驗入組過半)、VEEA(+79%,M&A)、MYSZ(+48%,轉型併購)均非 contract 型;VEEA/MYSZ 為 M&A 型且市值 <$50M,落入無回補買盤家族(市值<500M 且 gap 中段/M&A 排除),不建方向部位。",
+    "**beatdip 錯殺反彈 ≥10B — 無。** 今日無大型股財報跳空下跌;COIN −4.4% / CRCL −4.9% 是 Clarity Act 表決不確定性的族群回吐,不是財報錯殺。",
+    "**BeatenSqueezeGo — 無。** 唯一 perf1M ≤ −20 的跳空上漲名單 NAMI(+7.8%)無空單資料且查無新聞,不合格。",
+    "**FPS(Forgent Power,前 Powell Industries)盤前 +7.9% 財報反應**:市值 $94 億、流動性佳,但無對應已回測 setup(不是錯殺、不是合約 pump),列為 Daily Case 而非 idea。"
   ]
 }

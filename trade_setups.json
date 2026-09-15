@@ -337,14 +337,13 @@
  },
  "_daily_review_2026_08_24": "四個在役 setup 全部走完條件表,今日零合格標的 —— 這是條件表正常運作的結果,不是找不到東西。今日候選以微型股籌碼行情(SDOT/PMI/DXST/OLOX/PUSA)與光通訊稀釋利空連動(AAOI 震央 + AXTI/COHR/LITE 跟跌)為主,兩類都不在任何 setup 的機制範圍內。本次新增:為每個 setup 補上預先註冊的 kill criteria(先前為 null),避免事後才畫線。",
  "daily_review": {
-  "date": "2026-09-14",
-  "summary": "setup 審視:無規則調整。",
+  "date": "2026-09-15",
+  "summary": "setup 審視:無規則調整;記錄一則流程教訓。",
   "notes": [
-   "ADBE 9/11 beatdip idea 對帳:9/11 開盤後 ADBE 自 −2.3% 回升收約平盤,未進 live_ledger(verify 待收錄);今日續 +2.3% 反彈,beatdip ≥10B 邏輯再獲一例支持(仍為降級複驗中,主層逐日等權 ≈0)。",
-   "dtc_fade live n=8 / −3.74R / 勝率 25%,距降級門檻(n≥10 且 sumR<0)差 2 筆。今日 RUM(DTC 6.19、+11.7%、傳聞型跳空)合格,依 8/22「降級要有證據」紀律出單但倉位減半;若本筆與下一筆皆虧,下次審視即降為候補。",
-   "contract_fade 主力今日 ELMT(+42%)觸發「合約金額達年營收級的真重估要跳過」例外(戰爭部 $4.5 億入股 + DLA $20 億 IDIQ vs 季營收 $5,600 萬),不做;規則本身不改,但建議未來把「政府入股 + 認股權證」明列為例外類型(MP/TMQ/LAC/ELMT 同模式)。",
-   "模型對帳(9/11):n=53、命中 49%、bias −1.15、MAE 5.50;mid 層連兩日 bias ≈ −4 觸發 MODEL-DRIFT → refit 盲測較差保留現行 model_params,spikefit 重訓(n=5126)。質化層 MAE 8.14 vs 純量化 8.43(+0.29 加值)。",
-   "ORCL 9/11 daily case MISS(gap +7.5 → 收 −1.7%):財報跳空第 3 日追高失敗,教訓已於 Sunday sweep 歸因。今日案例 GLW down(ATM $20 億 + AI 重挫)。"
+   "9/14 RUM dtc_fade 待 verify 收錄;dtc_fade live 仍 n=8 / −3.74R,今日 VERA(DTC 9.06、+15%)合格出單、倉位減半;若 RUM+VERA 皆虧即觸發 n≥10 且 sumR<0 降級,下次審視執行。",
+   "流程教訓:VERA idea 寫於 09:26 ET,當時 sonnet 催化劑分片標「查無當日新聞」,深查後發現 9/15 盤前有 ORIGIN 3 兩年期最終數據(真臨床利多)。dtc_fade 規則本身不看新聞,但『真利多 + 高 DTC』是軋空延續而非假軋空,與 setup 機制相反。建議:dtc_fade 出單前對標的加一次主模型 WebSearch 確認無實質新聞(納入 §9d 流程,不改規則);是否把「無實質新聞」寫進規則條件待 live 樣本驗證。",
+   "contract_fade / beatdip / BeatenSqueezeGo 今日皆無合格標的(無 contract 型 ≥15% 跳空、無大型股財報錯殺、無 perf1M≤−20 且有空單資料的跳空)。",
+   "9/14 Daily Case GLW down 命中(−13.7%);9/15 Daily Case 選 FPS up(財報雙超 + 訂單 $15 億新高,$94 億工業股)。"
   ]
  }
 }
