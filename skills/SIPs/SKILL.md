@@ -45,8 +45,8 @@ Use TodoWrite to track the phases. Surface progress aggressively — the user ge
 | 6. Build report | `py build_report.py` + `py gen_tables.py` | <1s | $0 | `final-candidates.csv` + `sorted-views.md` |
 | 7. Final brief | Claude composes the 繁體中文 brief | — | — | inline in chat |
 | **8. Write news_detail.json** | **Claude curates per-symbol `detail` + `publishedAt` for the top 10 SIPs** | ~3 min | $0 | `news_detail.json` (top-10 only; rest auto-fallback to catalyst sentence) |
-| **8b. Write sean_analysis.json** | **1 sonnet agent** 照 `docs/SEAN_STYLE.md` 幫每檔 claude_picks 寫「Sean 視角」分析(§ 8.1b;獨立卡片,不與 news_detail 混) | ~2 min(背景) | $0 | `sean_analysis.json` |
-| **8c. Write milan_analysis.json** | **1 sonnet agent** 照 `docs/MILAN_STYLE.md` 幫每檔 claude_picks 做「Milan 視角」催化劑 0-10 評級(§ 8.1c;與 8b 平行發,獨立卡片) | ~2 min(背景) | $0 | `milan_analysis.json` |
+| **8b. Write sean_analysis.json** | **1 sonnet agent** 照 `docs/SEAN_STYLE.md` 幫每檔 claude_picks 寫「Sean 視角」判讀(§ 8.1b;**2026-09-16 起精簡版:verdict + 一句 summary,併入新聞詳情卡底部,不再獨立卡片**) | ~2 min(背景) | $0 | `sean_analysis.json` |
+| **8c. Write milan_analysis.json** | **1 sonnet agent** 照 `docs/MILAN_STYLE.md` 幫每檔 claude_picks 做「Milan 視角」催化劑 0-10 評級(§ 8.1c;**精簡版:score + 一句 summary,併入新聞詳情卡底部**;與 8b 平行發) | ~2 min(背景) | $0 | `milan_analysis.json` |
 | **9. Write claude_picks.json** | **Claude writes hand-picked rankings + 繁中 rationale + `intent: long\|short` for 5-10 highest-conviction picks** | ~2 min | $0 | `claude_picks.json` ([{symbol, rank, intent, rationale}]) — drives the **default "Claude 精選"** subtab on Today's SIPs. **Direction-match rule:** `intent: long` only for gap-up tickers (chgPct > 0); `intent: short` only for gap-down (chgPct < 0). Dashboard silently drops mismatches. |
 | **9b. Fetch 6-month candles** | `py fetch_candles.py` (Yahoo Finance daily bars, parallel) | ~5-10s | $0 | `dashboard/candles.json` (~150-200KB; powers the 股價走勢 chart on stock-detail pages) |
 | **9c. 質化調整層** | **主模型(不得委派)**寫 `model_qual.json`:picks + 熱門集合 + \|gap\|≥10 的股票,每檔 adj(±8)/confidence/reasoning;**樂透帶(前日 >100% 或無消息連噴)一律 adj=0** | ~2 min | $0 | `model_qual.json` — model_predict 合併進卡片,verify 分開對帳 |
@@ -978,11 +978,11 @@ research, especially for big-number claims like "+682% EPS YoY" or "HBM sold out
 
 ### 8.1b Write `sean_analysis.json`(Sean 視角 — 獨立區塊,2026-07-16 使用者新增)
 
-模仿 **Sean Sharpe(Stocks in Play substack)** 的分析方法,幫**每檔 claude_picks** 寫一份獨立分析;詳細頁渲染成獨立卡片「Sean 視角 · Stocks in Play」,**與 news_detail 完全分開、不混寫**。
+模仿 **Sean Sharpe(Stocks in Play substack)** 的分析方法,幫**每檔 claude_picks** 寫一份獨立分析;**2026-09-16 使用者改版:不再是獨立卡片 — 渲染成新聞詳情卡底部的一行「判讀」**(`Sean · <verdict> · <一句>`)。決策樹照跑,但**只輸出結論**,使用者要的是精簡資訊。
 
 - **正本:`D:\SIPs\docs\SEAN_STYLE.md`** — **重點是他的分析邏輯,不是信件格式(2026-07-16 使用者明確更正)**。寫之前先讀,照決策樹 **A0–A6 逐關推理**:A0 大盤閘門(盤況不對整批 pass)→ A1 催化劑五級分類(episodic pivot / genuine / turnaround / story / pump)→ A2 分軸評分(forward>當季、轉折>絕對值、加速>水平、合約 signed>LOI>MOU)→ **A3 驚奇度/priced-in 檢查**(核心:催化劑價值 = 內容 × 對市場的驚奇度;已大漲的要折價)→ A4 圖表+結構面 override(float/SI/DTC/precedent)→ A5 可交易性一票否決 → A6 盤前量價+關鍵價位(「Above $X is good, below it is bad」,X = packet 真實數字)→ verdict 四級 **MAIN / SECONDARY / DELAYED / PASS + 推理鏈**。輸出要能看見「為什麼」,不是填格式。
 - **輸出全白話(2026-07-16 使用者硬性指示):** 決策樹只在腦內跑,寫出來的是交易員大白話(2-4 段短文)。**禁用**「大盤閘門」「A0-A6」「分軸」「Killer」「推理鏈」與 `Class:/Axes:/Priced-in:` 標籤行;英文術語(episodic pivot / main watch)第一次出現要白話解釋。細則見 SEAN_STYLE.md §C 輸出格式。**§8.1 的中文可讀性硬規則(禁直譯腔:街上/大中華裸用/六月季…)同樣適用。**
-- Schema:`{ "SYM": { "analysis": "<markdown>", "sourceDate": "YYYY-MM-DD" } }`;繁中敘事、英文交易術語與節標籤;每檔 ≤250 字;**只准用 packet 既有數據,缺欄寫 N/A,禁止編造數字**。
+- **Schema(2026-09-16 精簡版):`{ "SYM": { "verdict": "MAIN WATCH|WATCH|PASS|AVOID", "summary": "<一句,≤60 字>", "sourceDate": "YYYY-MM-DD" } }`**。summary 是交易員一句話:為什麼是這個等級 + 進場條件或觀望原因。舊欄位 `analysis`(長文)可省;若同時給,渲染只用 verdict/summary。**只准用 packet 既有數據,缺欄寫 N/A,禁止編造數字**。
 - 交給 **1 個 sonnet agent** 寫(給它 SEAN_STYLE.md + picks 清單 + 每檔 packet 數據的選讀指令);主模型抽查 2 檔再 build。
 - 若 Sean 當日真信有點名同一檔(sean_emails.txt 更新時),以他的實際分析為本改寫並標「Sean 當日實際點名」。
 
@@ -991,10 +991,10 @@ research, especially for big-number claims like "+682% EPS YoY" or "HBM sold out
 第二個獨立分析卡「Milan 視角 · Catalyst Rating」,幫**每檔 claude_picks** 評當日催化劑 —— **評的是新聞本身(0-10 分),不是股票**:這則催化劑值不值得 sell-side 重估這檔股票。與 Sean 卡(watch 分級、進出場視角)互補,三卡各自獨立:news_detail=純新聞、Sean=交易劇本、Milan=催化劑評級。
 
 - **正本:`D:\SIPs\docs\MILAN_STYLE.md`**(源自使用者提供的 Catalyst Rating & Analysis Framework;原文存 `docs/milan_framework_original.txt`)。核心程序:措辭實質拆解(approved ≠ expected-to-be-approved、signed ≠ MOU、binding ≠ non-binding)→ 60-90 天新聞流比對 **expected vs surprise** → 分析師定位(評級/目標價會不會因此動)→ **0-10 評分 + 一句理由**。
-- Schema 同 Sean:`{ "SYM": { "analysis": "<markdown>", "sourceDate": "YYYY-MM-DD" } }` → `milan_analysis.json`。
+- **Schema(2026-09-16 精簡版):`{ "SYM": { "score": <0-10>, "summary": "<一句,≤60 字:分數的理由>", "sourceDate": "YYYY-MM-DD" } }`** → `milan_analysis.json`。措辭拆解與意外程度測試在腦內跑,只輸出分數與一句理由;`analysis` 長文可省。
 - 交給 **1 個 sonnet agent**(與 Sean 的 agent 平行發);允許 WebSearch 查分析師定位與近 60-90 天新聞流(一級源、查詢帶 ISO 日期),數字禁編造、查不到寫查不到。
-- **輸出全白話**(同 § 8.1b 規則):2-3 段短文 + 「**催化劑評分:X/10** — 一句理由」;禁用內部框架術語;不給進出場建議(那是 Sean 卡的事)。**§8.1 的中文可讀性硬規則同樣適用。**
-- **分工鐵則:** news_detail 仍照 2026-07-06 指示只放純新聞 —— Milan 邏輯只准出現在自己的卡,不得滲回 news_detail。
+- **輸出全白話**(同 § 8.1b 規則):只有 score + summary 一句;禁用內部框架術語;不給進出場建議(那是 Sean 那行的事)。**§8.1 的中文可讀性硬規則同樣適用。**
+- **分工鐵則:** news_detail 正文仍照 2026-07-06 指示只放純新聞 —— Sean/Milan 判讀只存在自己的 json,由 build 併到卡片底部的判讀列,不得寫進 news_detail.json 正文。
 
 ### 8.2 Run the build
 

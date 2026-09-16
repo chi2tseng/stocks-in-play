@@ -2487,6 +2487,13 @@ td.num { text-align: right; font-family: var(--font-mono); font-variant-numeric:
 .model-pred-qual b { color: var(--text, inherit); font-weight: 600; }
 .model-pred-note { font-size: 11px; color: var(--mute); }
 
+/* 判讀 rows folded into News Detail (Sean verdict + Milan score) */
+.nd-verdicts { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--hairline); display: grid; gap: 8px; }
+.nd-verdict { display: grid; grid-template-columns: 44px auto 1fr; align-items: baseline; gap: 10px; font-size: 13px; line-height: 1.5; }
+.nd-who { font-size: 10px; letter-spacing: 0.8px; text-transform: uppercase; font-weight: 700; color: var(--mute); }
+.nd-tag { font-size: 11px; font-weight: 700; color: var(--primary); border: 1px solid var(--primary); border-radius: var(--r-pill); padding: 1px 8px; white-space: nowrap; }
+.nd-verdict .nd-tag:empty { display: none; }
+.nd-txt { color: var(--ink); }
 /* Sean 視角 card — independent of .news-detail's data source but reuses its markdown body
    styling (p/strong/blockquote) via the shared class. Only the header icon is card-specific. */
 .material-symbols-outlined {
@@ -5701,6 +5708,33 @@ async function renderStock(sym) {
   } else if (fallbackCatalyst) {
     newsDetailHtml = `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3>${metaPill}<p>${escapeHtml(fallbackCatalyst)}</p>${sourcesHtml}</div>`;
   }
+  // 判讀 rows inside News Detail (2026-09-16 user: fold Sean/Milan into 新聞詳情, concise).
+  // Prefers the concise schema (verdict/score + summary); falls back to extracting the bold
+  // 結論 / 催化劑評分 line from the legacy long-form `analysis` markdown.
+  const _clip = (t, n) => { t = String(t || '').replace(/\*\*/g, '').replace(/\s+/g, ' ').trim(); return t.length > n ? t.slice(0, n - 1) + '…' : t; };
+  const _seanRow = (() => {
+    const a = s.seanAnalysis; if (!a) return '';
+    let verdict = a.verdict || '', summary = a.summary || '';
+    if (!summary && a.analysis) {
+      const m = a.analysis.match(/\*\*結論[:：]?\s*([^*]+)\*\*/);
+      const line = m ? m[1] : (a.analysis.split(/\n+/).filter(Boolean).pop() || '');
+      const v = line.match(/(MAIN WATCH|WATCH|PASS|AVOID|SHORT|LONG)/i);   // anywhere in the 結論 line
+      verdict = verdict || (v ? v[1].toUpperCase() : ''); summary = line.replace(/^\(?(MAIN WATCH|WATCH|PASS|AVOID|SHORT|LONG)[,，、)\s]*/i, '');
+    }
+    if (!verdict && !summary) return '';
+    return `<div class="nd-verdict"><span class="nd-who">Sean</span>${verdict ? `<span class="nd-tag">${escapeHtml(verdict)}</span>` : ''}<span class="nd-txt">${escapeHtml(_clip(summary, 110))}</span></div>`;
+  })();
+  const _milanRow = (() => {
+    const a = s.milanAnalysis; if (!a) return '';
+    let score = a.score, summary = a.summary || '';
+    if ((score == null || !summary) && a.analysis) {
+      const m = a.analysis.match(/催化劑評分[:：]?\s*\*{0,2}\s*(\d+(?:\.\d)?)\s*\/\s*10\*{0,2}\s*(?:[—–-]+\s*)?([^\n]*)/);
+      if (m) { if (score == null) score = m[1]; if (!summary) summary = m[2]; }
+    }
+    if (score == null && !summary) return '';
+    return `<div class="nd-verdict"><span class="nd-who">Milan</span>${score != null ? `<span class="nd-tag">${escapeHtml(String(score))}/10</span>` : ''}<span class="nd-txt">${escapeHtml(_clip(summary, 110))}</span></div>`;
+  })();
+  const verdictHtml = (_seanRow || _milanRow) ? `<div class="nd-verdicts">${_seanRow}${_milanRow}</div>` : '';
   // Sean 視角 · Stocks in Play — wholly independent card, own data source (s.seanAnalysis /
   // sean_analysis.json, keyed by symbol, unrelated to newsDetail above). Only renders when
   // present; markdown body reuses mdNewsToHtml, same as the News Detail card.
@@ -5789,7 +5823,7 @@ async function renderStock(sym) {
         <div class="chg ${cls(s.chgPct)}">${fmtPct(s.chgPct)} · Vol ${fmtVol(s.volume)}</div>
       </div>
     </div>
-    ${newsDetailHtml}
+    ${newsDetailHtml ? newsDetailHtml.replace(/<\/div>\s*$/, verdictHtml + '</div>') : (verdictHtml ? `<div class="stock-card news-detail"><h3>新聞詳情 <span class="label-en">News Detail</span></h3>${verdictHtml}</div>` : '')}
     <div class="chart-wrap">
       <div class="stock-card"><h3>EPS Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.eps || ''}</div>
       <div class="stock-card"><h3>Revenue Quarterly <span class="label-en">Reported vs Estimate</span></h3>${chartHtml.rev || ''}</div>
@@ -5807,8 +5841,6 @@ async function renderStock(sym) {
       <h3>股價走勢 <span class="label-en">Price · 6M Daily</span></h3>
       <div id="candle-chart-container-${s.symbol}" class="candle-chart-host"></div>
     </div>` : ''}
-    ${seanAnalysisHtml}
-    ${milanAnalysisHtml}
     <div class="news-history-card" id="news-history-${s.symbol}"></div>
   `;
   // Render interactive TradingView-style candle chart in the 股價走勢 section.
