@@ -1,80 +1,92 @@
 {
- "NOK": {
-  "date": "2026-09-16",
-  "adj": 1.0,
-  "confidence": "medium",
-  "reasoning": "首評買進 + 指數納入 + AI-RAN 提及三重正向,$580 億大型股跳空 5% 後機構承接機率高;但 FOMC 日下午波動大,只小幅正向。"
- },
- "INTC": {
-  "date": "2026-09-16",
-  "adj": 0.5,
-  "confidence": "medium",
-  "reasoning": "分析師 PT 大幅上調是真事件,但 9/14 重挫後的反彈同時受族群輪動與 FOMC 影響,基準略偏上。"
- },
- "VRA": {
-  "date": "2026-09-16",
-  "adj": -1.0,
-  "confidence": "medium",
-  "reasoning": "第 2 日延續,9/15 已 +19%,小型零售股財報行情第 2 日通常震盪走弱,基準向下修。"
- },
- "EPM": {
-  "date": "2026-09-16",
-  "adj": -1.5,
-  "confidence": "medium",
-  "reasoning": "盤後 +4.6% 的跳空在盤前已完全消化(−0.3%),packet 基準以盤後 gap 計算會高估,向下修正。"
- },
- "MEDS": {
-  "date": "2026-09-16",
-  "adj": 0,
-  "confidence": "low",
-  "reasoning": "市值 $1,300 萬、+123%、前 1 月 +175% 的微型股 M&A 跳空,樂透帶不可預測,不做點估調整。"
- },
- "RETO": {
-  "date": "2026-09-16",
-  "adj": 0,
-  "confidence": "low",
-  "reasoning": "無新聞、44 倍均量的中概低價股炒作,不可預測,不做點估調整。"
- },
- "NAMI": {
-  "date": "2026-09-16",
-  "adj": 0,
-  "confidence": "low",
-  "reasoning": "雖有 9/15 換股併購真事件,但市值 $900 萬、發 2.84 億股的極端稀釋型交易,微型股樂透帶不可預測,不做點估調整。"
- },
- "FTFT": {
-  "date": "2026-09-16",
-  "adj": 0,
-  "confidence": "low",
-  "reasoning": "崩跌後投機反彈的妖股,不可預測,不做點估調整。"
- },
- "WNW": {
-  "date": "2026-09-16",
-  "adj": 0,
-  "confidence": "low",
-  "reasoning": "無新聞低價股,樂透帶。"
- },
- "VSA": {
-  "date": "2026-09-16",
-  "adj": 0,
-  "confidence": "low",
-  "reasoning": "無新聞微型股,樂透帶。"
- },
- "IPW": {
-  "date": "2026-09-16",
-  "adj": -0.5,
-  "confidence": "low",
-  "reasoning": "稀釋事件的跳空下跌通常有轉股賣壓延續,微幅負向;但市值 $200 萬振幅隨機。"
- },
- "ZTG": {
-  "date": "2026-09-16",
-  "adj": 0,
-  "confidence": "low",
-  "reasoning": "盤前 +309%、無可查證新聞的低流通股,落入無回補買盤家族(gap>50),不可預測,不做點估調整。"
- },
- "XBIO": {
-  "date": "2026-09-16",
-  "adj": 0,
-  "confidence": "low",
-  "reasoning": "反向合併稀釋型跳空下跌,微型生技振幅隨機,不調整。"
- }
+  "NOK": {
+    "date": "2026-09-16",
+    "adj": 1.0,
+    "confidence": "medium",
+    "reasoning": "首評買進 + 指數納入 + AI-RAN 提及三重正向,$580 億大型股跳空 5% 後機構承接機率高;但 FOMC 日下午波動大,只小幅正向。"
+  },
+  "INTC": {
+    "date": "2026-09-16",
+    "adj": 0.5,
+    "confidence": "medium",
+    "reasoning": "分析師 PT 大幅上調是真事件,但 9/14 重挫後的反彈同時受族群輪動與 FOMC 影響,基準略偏上。"
+  },
+  "VRA": {
+    "date": "2026-09-16",
+    "adj": -1.0,
+    "confidence": "medium",
+    "reasoning": "第 2 日延續,9/15 已 +19%,小型零售股財報行情第 2 日通常震盪走弱,基準向下修。"
+  },
+  "EPM": {
+    "date": "2026-09-16",
+    "adj": -1.5,
+    "confidence": "medium",
+    "reasoning": "盤後 +4.6% 的跳空在盤前已完全消化(−0.3%),packet 基準以盤後 gap 計算會高估,向下修正。"
+  },
+  "MEDS": {
+    "date": "2026-09-16",
+    "adj": 0,
+    "confidence": "low",
+    "reasoning": "市值 $1,300 萬、+123%、前 1 月 +175% 的微型股 M&A 跳空,樂透帶不可預測,不做點估調整。"
+  },
+  "RETO": {
+    "date": "2026-09-16",
+    "adj": 0,
+    "confidence": "low",
+    "reasoning": "無新聞、44 倍均量的中概低價股炒作,不可預測,不做點估調整。"
+  },
+  "NAMI": {
+    "date": "2026-09-16",
+    "adj": 0,
+    "confidence": "low",
+    "reasoning": "雖有 9/15 換股併購真事件,但市值 $900 萬、發 2.84 億股的極端稀釋型交易,微型股樂透帶不可預測,不做點估調整。"
+  },
+  "FTFT": {
+    "date": "2026-09-16",
+    "adj": 0,
+    "confidence": "low",
+    "reasoning": "崩跌後投機反彈的妖股,不可預測,不做點估調整。"
+  },
+  "WNW": {
+    "date": "2026-09-16",
+    "adj": 0,
+    "confidence": "low",
+    "reasoning": "無新聞低價股,樂透帶。"
+  },
+  "VSA": {
+    "date": "2026-09-16",
+    "adj": 0,
+    "confidence": "low",
+    "reasoning": "無新聞微型股,樂透帶。"
+  },
+  "IPW": {
+    "date": "2026-09-16",
+    "adj": -0.5,
+    "confidence": "low",
+    "reasoning": "稀釋事件的跳空下跌通常有轉股賣壓延續,微幅負向;但市值 $200 萬振幅隨機。"
+  },
+  "ZTG": {
+    "date": "2026-09-16",
+    "adj": 0,
+    "confidence": "low",
+    "reasoning": "盤前 +309%、無可查證新聞的低流通股,落入無回補買盤家族(gap>50),不可預測,不做點估調整。"
+  },
+  "XBIO": {
+    "date": "2026-09-16",
+    "adj": 0,
+    "confidence": "low",
+    "reasoning": "反向合併稀釋型跳空下跌,微型生技振幅隨機,不調整。"
+  },
+  "TCOM": {
+    "date": "2026-09-16",
+    "adj": 0.5,
+    "confidence": "medium",
+    "reasoning": "大型股財報跳空 4%,EPS 超預估但營收成長放緩且無指引,機構承接與獲利了結相抵;GAAP 虧損標題數字可能壓抑散戶追價,微幅正向。"
+  },
+  "FANG": {
+    "date": "2026-09-16",
+    "adj": -1.0,
+    "confidence": "low",
+    "reasoning": "無公告的大型股盤前 −5.5%,若盤中證實為次級發行通常在發行價附近築底、收盤略低於盤前;油價同步走弱,略偏負向但資訊不足。"
+  }
 }
