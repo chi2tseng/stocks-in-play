@@ -5718,7 +5718,7 @@ async function renderStock(sym) {
     if (!summary && a.analysis) {
       const m = a.analysis.match(/\*\*結論[:：]?\s*([^*]+)\*\*/);
       const line = m ? m[1] : (a.analysis.split(/\n+/).filter(Boolean).pop() || '');
-      const v = line.match(/(MAIN WATCH|WATCH|PASS|AVOID|SHORT|LONG)/i);   // anywhere in the 結論 line
+      const v = line.match(/(?:^|[^A-Z])(MAIN WATCH|WATCH|PASS|AVOID|SHORT|LONG)(?![A-Z])/i);   // anywhere in the 結論 line (no \b: Python would eat it as backspace)
       verdict = verdict || (v ? v[1].toUpperCase() : ''); summary = line.replace(/^\(?(MAIN WATCH|WATCH|PASS|AVOID|SHORT|LONG)[,，、)\s]*/i, '');
     }
     if (!verdict && !summary) return '';
