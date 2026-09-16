@@ -5,11 +5,18 @@
  "rebuild_method": "質化歸因(每檔:因為什麼→漲多少→為什麼這個幅度,全因子:fwd/當季成長/surprise/MAGNA53/市值/DTC/short float/neglect/run-up)→ 機械假設 → 全庫盲測 → 對照組判別力檢查 → 執行層回測。核心洞察:方向由 perf1M(beaten/heated)與前瞻品質(fwd_rev)的交乘決定,不由 gap 大小或單一籌碼指標決定;DTC 的意義是「回補需要幾天」— dtc<0.5 = 無回補買盤(禁區家族),dtc>5 = 回補跨日(假軋空 fade),高 short_float 配 dtc<5 = 快燃料(beaten 側才是真 squeeze)。",
  "model": {
   "name": "spike GBM(盤中最高逐檔)+ gap 慣性基準(收盤)",
-  "blind_hit": 44.6,
-  "rho": 0.758,
-  "n_events": 5142,
-  "note": "盤中最高:HistGBR 分位模型 + split-conformal 帶。收盤=gap 慣性(三度證偽無 alpha)。verify 每日對帳。",
-  "refit": "2026-09-11 refit(MODEL-DRIFT 觸發:9/10 verify mid 層 bias −2.68/−3.62、small 層 +4.07/+5.32 連兩日同向):盲測 44.6%(前 45.0%)、rho 0.758、n 5,142,分層 big 59.8 / mid 43.2 / small 30.7 / na 46.1;spikefit 重訓 n=5,073。small 層系統性高估漲幅的偏誤仍在(+5.32),refit 未消除 —— 屬輸入層問題(小型股盤前快照 vs 開盤 gap),非係數問題。| 前次:2026-08-31 refit(MODEL-DRIFT 再次觸發:8/28 verify small 層 bias −6.60、連兩日同向):盲測 44.0%、rho 0.75、n 4,796,分層 big 58.4 / mid 43.9 / small 30.5 / na 48.3 —— 與 8/30 refit 完全相同(ingest 對 8/28 為 +0 筆,樣本未增,等於重跑一次)。要記的是:small 層連兩次 refit 都沒有改善(30.6 → 30.5),而今日 verify 顯示盤前快照與實際開盤 gap 的中位差只有 0.2pt,代表這次不是 8/5 那種輸入時點問題。"
+  "blind_hit": 44.2,
+  "rho": 0.76,
+  "n_events": 5326,
+  "note": "2026-09-16 MODEL-DRIFT(small 層連兩日 +6.48/+4.21)觸發 refit;盲測 hit 44.2% vs 前版 44.6%(−0.4pt,雜訊範圍);spikefit 同步重訓 n=5257",
+  "refit": "2026-09-11 refit(MODEL-DRIFT 觸發:9/10 verify mid 層 bias −2.68/−3.62、small 層 +4.07/+5.32 連兩日同向):盲測 44.6%(前 45.0%)、rho 0.758、n 5,142,分層 big 59.8 / mid 43.2 / small 30.7 / na 46.1;spikefit 重訓 n=5,073。small 層系統性高估漲幅的偏誤仍在(+5.32),refit 未消除 —— 屬輸入層問題(小型股盤前快照 vs 開盤 gap),非係數問題。| 前次:2026-08-31 refit(MODEL-DRIFT 再次觸發:8/28 verify small 層 bias −6.60、連兩日同向):盲測 44.0%、rho 0.75、n 4,796,分層 big 58.4 / mid 43.9 / small 30.5 / na 48.3 —— 與 8/30 refit 完全相同(ingest 對 8/28 為 +0 筆,樣本未增,等於重跑一次)。要記的是:small 層連兩次 refit 都沒有改善(30.6 → 30.5),而今日 verify 顯示盤前快照與實際開盤 gap 的中位差只有 0.2pt,代表這次不是 8/5 那種輸入時點問題。",
+  "refit_date": "2026-09-16",
+  "tiers": {
+   "big": 60.6,
+   "mid": 42.4,
+   "small": 30.0,
+   "na": 49.3
+  }
  },
  "lineup": "每日最多 2 筆,順位 v6(2026-08-16 叢集審計後重排,改以「逐日等權 + bootstrap 區間」排序,不再用逐筆 avgR):①大合約 fade(唯一區間穩定為正)②DTC 假軋空 fade(樣本最厚,每日限 2)③錯殺反彈 ≥10B(降級複驗中)④BeatenSqueezeGo(候補,與其他多單同日只取一筆)。cap10×10 已除役移出順位。多單先過 avoid_rules;全部當日了結。",
  "setups": [
@@ -337,13 +344,13 @@
  },
  "_daily_review_2026_08_24": "四個在役 setup 全部走完條件表,今日零合格標的 —— 這是條件表正常運作的結果,不是找不到東西。今日候選以微型股籌碼行情(SDOT/PMI/DXST/OLOX/PUSA)與光通訊稀釋利空連動(AAOI 震央 + AXTI/COHR/LITE 跟跌)為主,兩類都不在任何 setup 的機制範圍內。本次新增:為每個 setup 補上預先註冊的 kill criteria(先前為 null),避免事後才畫線。",
  "daily_review": {
-  "date": "2026-09-15",
-  "summary": "setup 審視:無規則調整;記錄一則流程教訓。",
+  "date": "2026-09-16",
+  "summary": "setup 審視:無規則調整;dtc_fade 新增「出單前主模型自查新聞」流程濾網(昨日教訓正式落地)。",
   "notes": [
-   "9/14 RUM dtc_fade 待 verify 收錄;dtc_fade live 仍 n=8 / −3.74R,今日 VERA(DTC 9.06、+15%)合格出單、倉位減半;若 RUM+VERA 皆虧即觸發 n≥10 且 sumR<0 降級,下次審視執行。",
-   "流程教訓:VERA idea 寫於 09:26 ET,當時 sonnet 催化劑分片標「查無當日新聞」,深查後發現 9/15 盤前有 ORIGIN 3 兩年期最終數據(真臨床利多)。dtc_fade 規則本身不看新聞,但『真利多 + 高 DTC』是軋空延續而非假軋空,與 setup 機制相反。建議:dtc_fade 出單前對標的加一次主模型 WebSearch 確認無實質新聞(納入 §9d 流程,不改規則);是否把「無實質新聞」寫進規則條件待 live 樣本驗證。",
-   "contract_fade / beatdip / BeatenSqueezeGo 今日皆無合格標的(無 contract 型 ≥15% 跳空、無大型股財報錯殺、無 perf1M≤−20 且有空單資料的跳空)。",
-   "9/14 Daily Case GLW down 命中(−13.7%);9/15 Daily Case 選 FPS up(財報雙超 + 訂單 $15 億新高,$94 億工業股)。"
+   "9/15 VERA dtc_fade 對帳待 verify 收錄(VERA 9/15 有真臨床利多,前提錯誤已於昨日記錄);9/14 RUM 同待收錄。dtc_fade live 仍 n=8 / −3.74R。",
+   "今日 EPM 形狀合格(DTC 6.4、盤後 +4.6%)但主動跳過:財報淨利轉正 + 配息為真利多,且盤前 08:35 已回到 −0.3%(gap 消化)。這是流程濾網第一次實際擋單。",
+   "模型:small 層連兩日正向偏差 → refit 完成,盲測 44.2%(前 44.6%),係數與 spike 模型皆更新;9/15 verify 命中僅 22%(n=27,MAE 12.7),主因 VEEA(+93)/BDRX/NAMI 等微型股樂透帶 — 質化層對它們 adj=0 是對的(加值 +0.18)。",
+   "9/15 Daily Case FPS up 命中(+9.5%,盤中最高 +15.5%);9/16 選 NOK up(首評 + 指數納入 + AI-RAN)。今日 FOMC,ideas 空手。"
   ]
  }
 }

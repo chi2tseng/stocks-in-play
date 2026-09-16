@@ -1,24 +1,13 @@
 {
-  "date": "2026-09-15",
-  "written_at": "2026-09-15T09:26:00-04:00",
-  "note": "寫於 ET 09:26(台灣 21:26),開盤前;跳空以 Yahoo 盤前價(prepost_quote)為準,非 packet chgPct。",
-  "ideas": [
-    {
-      "rank": 1,
-      "symbol": "VERA",
-      "setup": "dtc_fade",
-      "direction": "short",
-      "thesis": "Vera Therapeutics 盤前 +15.0%($39.14,量 170 萬股),回補天數 9.06 > 5、空單佔流通 34%,形狀完全符合「假軋空 fade」:高回補天數的跳空常是空頭被迫回補推上去的,10:30 後回補買盤耗盡就回落。今日查無公司具體新聞,唯一日程是 Morgan Stanley 醫療會議簡報,屬無實質催化劑的籌碼型跳空;市值 $28 億、10 年期殖利率 5.02% 創 2007 年來新高的環境對無營收生技不利。",
-      "entry": "10:30 ET 放空(不開盤進 — dtc_fade 家族 10:30 版回測較佳);10:30 時價格仍需高於前收 +2% 以上才做,若已跌回 +2% 以內則跳空已自行消化、跳過。",
-      "target": "收盤回補(TIME exit);若日內達 +2R 可先回補一半。不留倉。",
-      "stop": "進場價 +5%。",
-      "backtest_note": "dtc_fade 次主力(2026-08-16 升格):DTC>5、gap ≥+2%、10:30 放空、收盤回補;回測逐日等權 +0.28R、95% 區間下緣僅 +0.02。**live 帳:前 8 筆 −3.74R、勝率 25%、連 6 筆虧**,距降級門檻(n≥10 且 sumR<0)差 2 筆 — 本筆**倉位減半**,若 9/14 RUM + 本筆再虧即觸發降級檢討。借券成本偏高(SF 34%)就跳過不硬做。"
-    }
-  ],
+  "date": "2026-09-16",
+  "written_at": "2026-09-16T08:38:00-04:00",
+  "note": "寫於 ET 08:38(台灣 20:38),開盤前;跳空以 Yahoo 盤前價(prepost_quote)為準,非 packet chgPct。今日 FOMC(14:00 ET,FedWatch 93% 押升息 25bp),下午波動放大。",
+  "ideas": [],
   "no_trade_notes": [
-    "**contract_fade(主力)— 今日無合格標的。** 跳空 ≥15% 的 BDRX(+82%,三期試驗入組過半)、VEEA(+79%,M&A)、MYSZ(+48%,轉型併購)均非 contract 型;VEEA/MYSZ 為 M&A 型且市值 <$50M,落入無回補買盤家族(市值<500M 且 gap 中段/M&A 排除),不建方向部位。",
-    "**beatdip 錯殺反彈 ≥10B — 無。** 今日無大型股財報跳空下跌;COIN −4.4% / CRCL −4.9% 是 Clarity Act 表決不確定性的族群回吐,不是財報錯殺。",
-    "**BeatenSqueezeGo — 無。** 唯一 perf1M ≤ −20 的跳空上漲名單 NAMI(+7.8%)無空單資料且查無新聞,不合格。",
-    "**FPS(Forgent Power,前 Powell Industries)盤前 +7.9% 財報反應**:市值 $94 億、流動性佳,但無對應已回測 setup(不是錯殺、不是合約 pump),列為 Daily Case 而非 idea。"
+    "**contract_fade(主力)— 無合格標的。** 唯一 contract 型 CYPH(Winklevoss $3,333 萬 Zcash 礦機注資)盤前僅 +6.7%,未達 gap ≥+15% 門檻;MEDS +123% 是 M&A 型($150 萬收購 Helomics)且市值 $1,300 萬,落入無回補買盤家族(微型股)與 M&A 排除,不建部位。",
+    "**dtc_fade(次主力)— EPM 形狀合格但主動跳過。** EPM 回補天數 6.4、盤後 +4.6% 符合機械條件,但 9/15 盤後財報淨利轉正 + 第 17 次配息是真實利多(昨日 VERA 教訓:真利多 + 高回補天數 = 軋空延續而非假軋空,dtc_fade 出單前主模型自查新聞);且盤前 08:35 ET 報價已回到 −0.3%(跳空自行消化,未達 gap ≥+2%)。live 帳 −3.74R/8 筆,不在此勉強加樣本。",
+    "**beatdip 錯殺反彈 ≥10B — 無。** 今日無大型股財報跳空下跌;GGB −4.2% 為隨大盤走弱、非財報。",
+    "**BeatenSqueezeGo — 無。** 無同時滿足 gap≥5 + perf1M≤−20 + 空單≥10% + 回補天數<5 的上漲名單(IPW/AIXI/MYSZ 為下跌或無空單資料)。",
+    "**FOMC 日紀律:** 14:00 ET 前後不新開部位;今日 Daily Case 選 NOK up(Rosenblatt 首評買進 $15 + Nvidia AI-RAN 提及 + 9/21 重返 Euro STOXX 50 的指數買盤)。"
   ]
 }

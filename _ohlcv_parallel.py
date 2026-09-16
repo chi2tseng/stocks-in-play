@@ -4,8 +4,8 @@ from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor
 
 DIR = os.path.dirname(os.path.abspath(__file__))
-TARGET = '2026-08-06'   # last completed trading day (8/7 pre + 8/6 post gaps)
-TODAY  = '2026-08-01'
+TARGET = '2026-09-14'   # last completed trading day
+TODAY  = '2026-09-15'
 
 todays = []
 with io.open(os.path.join(DIR, 'candidates.csv'), encoding='utf-8-sig') as f:
