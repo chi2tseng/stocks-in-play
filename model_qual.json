@@ -1,92 +1,170 @@
 {
-  "NOK": {
-    "date": "2026-09-16",
-    "adj": 1.0,
-    "confidence": "medium",
-    "reasoning": "首評買進 + 指數納入 + AI-RAN 提及三重正向,$580 億大型股跳空 5% 後機構承接機率高;但 FOMC 日下午波動大,只小幅正向。"
-  },
-  "INTC": {
-    "date": "2026-09-16",
-    "adj": 0.5,
-    "confidence": "medium",
-    "reasoning": "分析師 PT 大幅上調是真事件,但 9/14 重挫後的反彈同時受族群輪動與 FOMC 影響,基準略偏上。"
-  },
-  "VRA": {
-    "date": "2026-09-16",
-    "adj": -1.0,
-    "confidence": "medium",
-    "reasoning": "第 2 日延續,9/15 已 +19%,小型零售股財報行情第 2 日通常震盪走弱,基準向下修。"
-  },
-  "EPM": {
-    "date": "2026-09-16",
-    "adj": -1.5,
-    "confidence": "medium",
-    "reasoning": "盤後 +4.6% 的跳空在盤前已完全消化(−0.3%),packet 基準以盤後 gap 計算會高估,向下修正。"
-  },
-  "MEDS": {
-    "date": "2026-09-16",
-    "adj": 0,
-    "confidence": "low",
-    "reasoning": "市值 $1,300 萬、+123%、前 1 月 +175% 的微型股 M&A 跳空,樂透帶不可預測,不做點估調整。"
-  },
-  "RETO": {
-    "date": "2026-09-16",
-    "adj": 0,
-    "confidence": "low",
-    "reasoning": "無新聞、44 倍均量的中概低價股炒作,不可預測,不做點估調整。"
-  },
-  "NAMI": {
-    "date": "2026-09-16",
-    "adj": 0,
-    "confidence": "low",
-    "reasoning": "雖有 9/15 換股併購真事件,但市值 $900 萬、發 2.84 億股的極端稀釋型交易,微型股樂透帶不可預測,不做點估調整。"
-  },
-  "FTFT": {
-    "date": "2026-09-16",
-    "adj": 0,
-    "confidence": "low",
-    "reasoning": "崩跌後投機反彈的妖股,不可預測,不做點估調整。"
-  },
-  "WNW": {
-    "date": "2026-09-16",
-    "adj": 0,
-    "confidence": "low",
-    "reasoning": "無新聞低價股,樂透帶。"
-  },
-  "VSA": {
-    "date": "2026-09-16",
-    "adj": 0,
-    "confidence": "low",
-    "reasoning": "無新聞微型股,樂透帶。"
-  },
-  "IPW": {
-    "date": "2026-09-16",
-    "adj": -0.5,
-    "confidence": "low",
-    "reasoning": "稀釋事件的跳空下跌通常有轉股賣壓延續,微幅負向;但市值 $200 萬振幅隨機。"
-  },
-  "ZTG": {
-    "date": "2026-09-16",
-    "adj": 0,
-    "confidence": "low",
-    "reasoning": "盤前 +309%、無可查證新聞的低流通股,落入無回補買盤家族(gap>50),不可預測,不做點估調整。"
-  },
-  "XBIO": {
-    "date": "2026-09-16",
-    "adj": 0,
-    "confidence": "low",
-    "reasoning": "反向合併稀釋型跳空下跌,微型生技振幅隨機,不調整。"
-  },
-  "TCOM": {
-    "date": "2026-09-16",
-    "adj": 0.5,
-    "confidence": "medium",
-    "reasoning": "大型股財報跳空 4%,EPS 超預估但營收成長放緩且無指引,機構承接與獲利了結相抵;GAAP 虧損標題數字可能壓抑散戶追價,微幅正向。"
-  },
-  "FANG": {
-    "date": "2026-09-16",
-    "adj": -1.0,
-    "confidence": "low",
-    "reasoning": "無公告的大型股盤前 −5.5%,若盤中證實為次級發行通常在發行價附近築底、收盤略低於盤前;油價同步走弱,略偏負向但資訊不足。"
-  }
+ "GNRC": {
+  "date": "2026-09-17",
+  "adj": -4.0,
+  "confidence": "medium",
+  "reasoning": "Amazon $24 億供貨協議 + 認股權證是真結構性事件,日線方向不會反轉;但盤後高點 +40% 已回落到盤前 +30%,合約型跳空頂點在開盤(contract_fade 回測開盤 +0.24R),大型股 30% 跳空盤中回吐 4-8 個百分點是常態,收盤慣性基準偏高。"
+ },
+ "NBIS": {
+  "date": "2026-09-17",
+  "adj": 2.0,
+  "confidence": "medium",
+  "reasoning": "GPU 調價 17-21% 是定價權事件,Barron's 定調族群敘事、CRWV/IREN 共振,市值 $620 億流動性好、short float 20% 提供回補買盤;9/14 才因 FOMC 前回檔 −8.7%,籌碼已洗過,盤中續強機率高於基準。"
+ },
+ "FPS": {
+  "date": "2026-09-17",
+  "adj": 1.5,
+  "confidence": "medium",
+  "reasoning": "財報後第 3 日仍 +6.6%,在手訂單 $30 億、FY27 指引 +76% 是機構要加碼的成長股型態,基準模型對「第 3 日」樣本偏悲觀但這檔基本面夠硬;小幅上修。"
+ },
+ "GFL": {
+  "date": "2026-09-17",
+  "adj": 1.0,
+  "confidence": "medium",
+  "reasoning": "併購套利型:兩財團競逐 + CEO 表態,股價會被報價區間錨定(7 月傳 $50),下檔受支撐、上檔有限;盤後 +8% 已反映大半,小幅正向。"
+ },
+ "NOK": {
+  "date": "2026-09-17",
+  "adj": -1.5,
+  "confidence": "medium",
+  "reasoning": "昨日同型跳空(分析師/指數)開盤即高點、gap +5.7 收 +3.0;今天 Microsoft 合作是敘事型無金額,大型 ADR 連續第二天跳空後獲利了結壓力更大,基準下修。"
+ },
+ "APLD": {
+  "date": "2026-09-17",
+  "adj": 1.0,
+  "confidence": "low",
+  "reasoning": "Wells Fargo 首評 PT $50 對比 $25 空間大,但 AI 資料中心族群今天普漲,個股 alpha 有限;族群 regime 正向,小幅上修。"
+ },
+ "CIFR": {
+  "date": "2026-09-17",
+  "adj": 0.5,
+  "confidence": "low",
+  "reasoning": "ERCOT 基載核准是簽約前置條件而非合約本身,漲幅 5% 合理反映;族群連動,幾乎不偏離基準。"
+ },
+ "FLNC": {
+  "date": "2026-09-17",
+  "adj": -3.0,
+  "confidence": "medium",
+  "reasoning": "今年第二次砍財測、執行問題未解、short float 23%、1M −40%;連續砍指引的小型股 −22% 跳空後盤中通常再探低(分析師集體降評在開盤後陸續出來),基準下修。"
+ },
+ "BE": {
+  "date": "2026-09-17",
+  "adj": 0.5,
+  "confidence": "low",
+  "reasoning": "S&P 500 納入 9/21 生效,指數買盤是確定性需求;但 9/4 公告至今已反映大半,今日 +4.3% 更多是 AI 電力族群共振,略偏正。"
+ },
+ "CRDO": {
+  "date": "2026-09-17",
+  "adj": 0.0,
+  "confidence": "low",
+  "reasoning": "產品發表 + 族群連動,無個股獨立驅動;1M −31% 後的反彈,不偏離基準。"
+ },
+ "IREN": {
+  "date": "2026-09-17",
+  "adj": 0.5,
+  "confidence": "low",
+  "reasoning": "JPM 升評是 9/15 舊聞,今天純 NBIS 調價族群連動;short float 27% 有回補燃料,略偏正。"
+ },
+ "MRNA": {
+  "date": "2026-09-17",
+  "adj": -1.0,
+  "confidence": "low",
+  "reasoning": "無當日新聞、1M +141% 後的動能延續,跳空 4-5% 缺乏新資訊支撐,略偏負。"
+ },
+ "PANW": {
+  "date": "2026-09-17",
+  "adj": 0.0,
+  "confidence": "low",
+  "reasoning": "Bernstein 降評但新 PT $351 仍是上調(原 $253),市場解讀偏中性;−2% 已反映。"
+ },
+ "NKE": {
+  "date": "2026-09-17",
+  "adj": 0.0,
+  "confidence": "low",
+  "reasoning": "董事會人事案無財務影響,+2.4% 為情緒反應;10/1 財報前不會有實質重新評價。"
+ },
+ "AEMD": {
+  "date": "2026-09-17",
+  "adj": 0.0,
+  "confidence": "low",
+  "reasoning": "+419% 反向併購微型股(市值 $1,100 萬、原股東剩 4.75%),樂透帶本質不可預測,不做點估調整。"
+ },
+ "KXIN": {
+  "date": "2026-09-17",
+  "adj": 0.0,
+  "confidence": "low",
+  "reasoning": "+138% 無消息、市值 $330 萬,樂透帶不可預測,adj=0。"
+ },
+ "AEHL": {
+  "date": "2026-09-17",
+  "adj": 0.0,
+  "confidence": "low",
+  "reasoning": "連日爆量 + 可轉債融資卻上漲,1M +109%,樂透帶不可預測,adj=0。"
+ },
+ "RETO": {
+  "date": "2026-09-17",
+  "adj": 0.0,
+  "confidence": "low",
+  "reasoning": "9/16 +64% 後再 +29%、無消息,盤前已熔斷一次;樂透帶,adj=0。"
+ },
+ "VEEA": {
+  "date": "2026-09-17",
+  "adj": 0.0,
+  "confidence": "low",
+  "reasoning": "9/15 +89% 後續飆、流通股 160 萬;樂透帶,adj=0。"
+ },
+ "MKDW": {
+  "date": "2026-09-17",
+  "adj": 0.0,
+  "confidence": "low",
+  "reasoning": "無消息中概小型股 +22%;樂透帶,adj=0。"
+ },
+ "MEDS": {
+  "date": "2026-09-17",
+  "adj": 0.0,
+  "confidence": "low",
+  "reasoning": "9/15 +121%、9/16 +149% 後第 3 日;樂透帶,adj=0。"
+ },
+ "GLOO": {
+  "date": "2026-09-17",
+  "adj": -1.0,
+  "confidence": "low",
+  "reasoning": "無當日新聞,9/9 財報後延續走勢 +16%,連兩個 session 跳空而無新資訊,略偏負。"
+ },
+ "AKAN": {
+  "date": "2026-09-17",
+  "adj": 0.0,
+  "confidence": "low",
+  "reasoning": "無消息 +13%,市值 $240 萬,樂透帶 adj=0。"
+ },
+ "ALMU": {
+  "date": "2026-09-17",
+  "adj": -1.0,
+  "confidence": "low",
+  "reasoning": "財報虧損擴大 −17%,微型股(市值 $2 億)財報跳空後盤中常再探低;略偏負。"
+ },
+ "NAMI": {
+  "date": "2026-09-17",
+  "adj": -1.0,
+  "confidence": "low",
+  "reasoning": "增發稀釋賣壓第 2 日 −20%,中概小型股無承接,略偏負。"
+ },
+ "TGL": {
+  "date": "2026-09-17",
+  "adj": 0.0,
+  "confidence": "low",
+  "reasoning": "利多出貨 −20% 微型股,方向不可預測,adj=0。"
+ },
+ "LGVN": {
+  "date": "2026-09-17",
+  "adj": 0.0,
+  "confidence": "low",
+  "reasoning": "二期試驗失敗 −54%、市值 $1,000 萬,失敗後的殘股反彈/續跌皆常見,不做點估調整。"
+ },
+ "VITL": {
+  "date": "2026-09-17",
+  "adj": -2.0,
+  "confidence": "medium",
+  "reasoning": "盤後 +5.9% 僅 12 萬股薄量、無一級源新聞、DTC 5.6;無真消息的高 DTC 跳空多在 10:30 後回吐,基準下修(對應 trade_ideas 的 dtc_fade 減半倉)。"
+ }
 }
