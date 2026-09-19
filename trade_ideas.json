@@ -1,14 +1,25 @@
 {
-  "date": "2026-09-18",
-  "written_at": "2026-09-18T08:09:54-04:00",
-  "note": "寫於 ET 09:20(台灣 21:20),開盤前;跳空以 Yahoo 盤前價(prepost_quote)為準。今日為季度四巫日、9/16 FOMC 升息後第二天,掃描包極薄:28 列 barchart 跳空中 21 檔獨立,其中 15 檔為市值 <,000 萬的微型股拉抬。",
-  "ideas": [],
-  "no_trade_notes": [
-    "**今日無合格標的 — 空手。** 四巫日 + 微型股噴發日,順位 v5 六個 setup 逐一比對皆不合格,寧缺勿濫。",
-    "**beatdip 錯殺反彈 ≥10B — 無。** 今日 NASDAQ 財報日曆 bigcap=0,沒有任何 ≥$100 億財報股跳空 −4%~−18%。XENE −23%(市值 $43 億)是臨床/監管消息(azetukalner 局部癲癇 NDA 送件 + 精神科 MDD 研究暫停收案),不是財報 beat,不屬此 setup。",
-    "**contract_fade 主力 — 無。** 唯一 contract 型是 BIAF(AvMEDICAL 聯邦通路分銷 + 香港專利)盤後僅 +5.1%,遠低於 gap ≥+15% 門檻;且市值 $530 萬、浮額 59 萬股,屬 avoid_rules 微型股家族。",
-    "**dtc_fade 次主力 — FWRG 形狀曾合格但盤前作廢。** First Watch 9/17 盤後 +4.6%(44 萬股薄量、查無新聞)、DTC 6.0、空單 11.3%,是教科書假軋空形狀;但 09:20 ET Yahoo 盤前報價 $10.11 = +0.05%,盤後跳空已完全蒸發,不符「開盤 gap ≥+2%」進場條件。若 09:30 真實開盤意外 ≥+2% 才重新成立(10:30 ET 放空、+5% 停損、收盤回補;滾動開關 live n=8 −3.74R 為負 → 減半倉)。TAC DTC 6.6 但方向向下、XENE DTC 5.8 亦向下,dtc_fade 只做 gap-up。",
-    "**beaten_squeeze_go — 無。** 五條件(gap≥+5、perf1M≤−20、SF≥10、DTC<5、fwd_rev≥30)無一檔全中:STUB +6% 但 perf1M −9.7、SF 9.4;HELP +6.7% 但 SF 6.1、perf1M +27。",
-    "**避開清單(avoid_rules 無回補買盤家族,任何價位禁做多):** IMCC +109%(浮額僅 9 萬股、市值 $220 萬)、SSM +62%(8/31 Sports One LOI 舊聞延燒)、TCRT +43%(查無新聞、X 傳聞提到 $200 萬增發)、MEDS +25%(9/17 8-K 訴訟和解、1 個月 +304%)、AKAN +15%(X 促銷帖、查無新聞)、CPOP +17%(9/14 縮股後無新料)、USDE +17%(1 個月 +196%)。全部 adj=0 標不可預測。"
-  ]
+ "date": "2026-09-21",
+ "written_at": "2026-09-19T08:15:10-04:00",
+ "note": "寫於 9/19(六)台灣 21:40 / ET 09:40,依 9/18 週五盤後價;週末種子。9/21 盤前 /SIPs 必須用 prepost_quote 重抓真實盤前 gap 再確認,gap 條件不成立即作廢。",
+ "ideas": [
+  {
+   "rank": 1,
+   "symbol": "MASS",
+   "setup": "dtc_fade",
+   "direction": "short",
+   "thesis": "908 Devices 週五盤後 +9.2% 至 $11.50 只成交 12.5 萬股、查無任何新聞,DTC 7.0(空頭比 8.6%)— 典型「回補要多天、單日買不動」的薄量假軋空;週一若盤前 gap 仍 ≥+2%,10:30 ET 放空、收盤回補。條件:開盤 gap ≥+2% 才成立。",
+   "entry": "10:30 ET 市價放空(需盤前 gap ≥+2%)",
+   "target": "收盤回補",
+   "stop": "進場價 +5%",
+   "size": "半倉(live 連 6 虧 + 週末種子不確定性)",
+   "backtest_note": "dtc_fade 全庫 n=149 逐日等權 +0.28R、天勝率 67%;live n=8 −3.74R(連 6 虧),降級門檻 live n≥10 且 sumR<0,再 2 筆定生死 — 半倉。"
+  }
+ ],
+ "no_trade_notes": [
+  "**beatdip 錯殺反彈 ≥10B — 無。** 9/18 盤後無任何 ≥$100 億財報股跳空 −4%~−18%;ACN/WBD/PSKY 都是向上的消息面 gap。",
+  "**contract_fade — 無。** ACN 是 contract 型但 gap +8% <15%;CRML +21% 是政策族群(policy)不是單一合約,且有 Tanbreez 實質資產,不套 fade。",
+  "**BeatenSqueezeGo — 無。** ALOY gap +4.7% <5;GRML gap +58 / 1M −72 / SF 22 但市值 $900 萬,落入微型股拋物線 avoid 帶。",
+  "**PSKY(DTC 6.8、gap +7.6)不做 dtc_fade** — 有真實併購和解消息、週末可能正式宣布,放空吃事件風險,規則上排除消息驅動的 gap。"
+ ]
 }
