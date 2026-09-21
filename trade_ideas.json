@@ -1,25 +1,27 @@
 {
- "date": "2026-09-21",
- "written_at": "2026-09-19T08:15:10-04:00",
- "note": "寫於 9/19(六)台灣 21:40 / ET 09:40,依 9/18 週五盤後價;週末種子。9/21 盤前 /SIPs 必須用 prepost_quote 重抓真實盤前 gap 再確認,gap 條件不成立即作廢。",
- "ideas": [
-  {
-   "rank": 1,
-   "symbol": "MASS",
-   "setup": "dtc_fade",
-   "direction": "short",
-   "thesis": "908 Devices 週五盤後 +9.2% 至 $11.50 只成交 12.5 萬股、查無任何新聞,DTC 7.0(空頭比 8.6%)— 典型「回補要多天、單日買不動」的薄量假軋空;週一若盤前 gap 仍 ≥+2%,10:30 ET 放空、收盤回補。條件:開盤 gap ≥+2% 才成立。",
-   "entry": "10:30 ET 市價放空(需盤前 gap ≥+2%)",
-   "target": "收盤回補",
-   "stop": "進場價 +5%",
-   "size": "半倉(live 連 6 虧 + 週末種子不確定性)",
-   "backtest_note": "dtc_fade 全庫 n=149 逐日等權 +0.28R、天勝率 67%;live n=8 −3.74R(連 6 虧),降級門檻 live n≥10 且 sumR<0,再 2 筆定生死 — 半倉。"
-  }
- ],
- "no_trade_notes": [
-  "**beatdip 錯殺反彈 ≥10B — 無。** 9/18 盤後無任何 ≥$100 億財報股跳空 −4%~−18%;ACN/WBD/PSKY 都是向上的消息面 gap。",
-  "**contract_fade — 無。** ACN 是 contract 型但 gap +8% <15%;CRML +21% 是政策族群(policy)不是單一合約,且有 Tanbreez 實質資產,不套 fade。",
-  "**BeatenSqueezeGo — 無。** ALOY gap +4.7% <5;GRML gap +58 / 1M −72 / SF 22 但市值 $900 萬,落入微型股拋物線 avoid 帶。",
-  "**PSKY(DTC 6.8、gap +7.6)不做 dtc_fade** — 有真實併購和解消息、週末可能正式宣布,放空吃事件風險,規則上排除消息驅動的 gap。"
- ]
+  "date": "2026-09-21",
+  "written_at": "2026-09-21T08:10:31-04:00",
+  "note": "寫於 9/19(六)台灣 21:40 / ET 09:40,依 9/18 週五盤後價;週末種子。9/21 盤前 /SIPs 必須用 prepost_quote 重抓真實盤前 gap 再確認,gap 條件不成立即作廢。",
+  "ideas": [
+    {
+      "rank": 1,
+      "symbol": "MASS",
+      "setup": "dtc_fade",
+      "direction": "short",
+      "thesis": "908 Devices 週五盤後 +9.2% 至 $11.50 只成交 12.5 萬股、查無任何新聞,DTC 7.0(空頭比 8.6%)— 典型「回補要多天、單日買不動」的薄量假軋空;週一若盤前 gap 仍 ≥+2%,10:30 ET 放空、收盤回補。條件:開盤 gap ≥+2% 才成立。 週一 9/21 盤前複查:Yahoo 盤前仍 +9.2%($11.50,盤前無成交),條件未變。",
+      "entry": "10:30 ET 市價放空(需盤前 gap ≥+2%)",
+      "target": "收盤回補",
+      "stop": "進場價 +5%",
+      "size": "半倉(live 連 6 虧 + 週末種子不確定性)",
+      "backtest_note": "dtc_fade 全庫 n=149 逐日等權 +0.28R、天勝率 67%;live n=8 −3.74R(連 6 虧),降級門檻 live n≥10 且 sumR<0,再 2 筆定生死 — 半倉。"
+    }
+  ],
+  "no_trade_notes": [
+    "**contract_fade(順位①)— 無。** 今日 ≥15% 的 gap 全是政策族群(GLND +161%/GRML +107%/CRML +25% 格陵蘭安全協議)或 M&A/投資(MX +15%,Navitas $5M 入股)或加密族群(USDE +25%/NUAI +19%),沒有單一合約型 gap;ENRD 與 NVIDIA 自駕貨運合作是 contract 型但盤前只 +4~12%、市值 $589M,不達 15% 門檻。",
+    "**dtc_fade(順位②,每日限 2)— 1 檔(MASS)。** 其餘 DTC>5 的上漲檔:PSKY(DTC 6.35,+6.8%)是 Bloomberg 和解談判真新聞 + 週五盤後 1,450 萬股大量,不是薄量假軋空;SPRU(DTC 12.6,+14.7%)市值僅 $41M、股價 $2.19、盤前 18 萬股,借券與流動性風險太高,不列。",
+    "**beatdip 錯殺反彈 ≥10B(順位③)— 無。** 唯一 ≥$100 億跳空下跌的是 NVO(−5%,資本市場日 2030/2035 目標令市場失望),屬指引失望不是好財報錯殺,不套用。",
+    "**BeatenSqueezeGo(順位④)— 無。** perf1M ≤ −20 且 gap ≥5 的只有 GRML(市值 $19M,微型股禁做多)與 ENRD(空頭比 0.1%),皆不合格。",
+    "**avoid_rules 提示:** GLND(+161%,市值 $138M,DTC 1.1)屬「gap>50% 無回補買盤」血洗帶、GRML/USDE/NUAI 屬微型中段帶,一律禁做多;VGZ 為 Artemis 現金+股票收購(溢價 29%)屬 M&A 釘死日,不建部位。"
+  ],
+  "_note": "ideas[0] MASS 原於 2026-09-19T08:15 ET 週末種子寫入(ex-ante);9/21 09:22 ET 盤前複查後更新 notes。"
 }

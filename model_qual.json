@@ -1,62 +1,140 @@
 {
+ "CUE": {
+  "date": "2026-09-21",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "真實二期數據但盤前已從 +38% 退到 +12%(法說會後獲利了結),反向分割後流通少、$40+ 高價股波動兩極,方向難判,adj=0。"
+ },
+ "NUAI": {
+  "date": "2026-09-21",
+  "adj": 2,
+  "confidence": "medium",
+  "reasoning": "20 年長約是可驗證的收入事件,空頭比 31% 提供回補燃料;市值 $7.4 億、1M 已 +25%,部分先行反應,取 +2。"
+ },
+ "CRML": {
+  "date": "2026-09-21",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "政策題材第二天(週五盤後 +21% → 週一 +25%),簽署儀式時間未定,盤中方向由 UNGA 頭條決定,不做點估調整。"
+ },
+ "INTC": {
+  "date": "2026-09-21",
+  "adj": -1,
+  "confidence": "medium",
+  "reasoning": "大型股 +5% 盤前跳空、新聞為報導級未證實,9 月已大漲 24%,開盤後常見部分回吐;族群風險偏好支撐下檔,取 −1。"
+ },
+ "MX": {
+  "date": "2026-09-21",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "微型股 $1.2 億、盤前量 45 萬股,入股價 $3.42 提供錨定但流動性主導,不做方向調整。"
+ },
+ "WBD": {
+  "date": "2026-09-21",
+  "adj": -1,
+  "confidence": "medium",
+  "reasoning": "談判細節報導屬進展但非簽署,週五盤後已 +8%,週一常見價差交易者獲利了結,取 −1。"
+ },
+ "PSKY": {
+  "date": "2026-09-21",
+  "adj": -1,
+  "confidence": "medium",
+  "reasoning": "同 WBD,收購方漲幅通常更小,取 −1。"
+ },
+ "NVO": {
+  "date": "2026-09-21",
+  "adj": -1,
+  "confidence": "medium",
+  "reasoning": "資本市場日指引失望型利空,賣方目標價下修會在盤中陸續出爐(參考 9/18 XENE 案例),跌勢可能延續,取 −1(即再跌 1pt)。"
+ },
  "ACN": {
   "date": "2026-09-21",
   "adj": -2,
   "confidence": "medium",
-  "reasoning": "大型股 +8% 盤後跳空、來源一級(公司新聞稿),但 $10 億/5 年是支出承諾非營收,週末給了市場消化時間,週一開盤常見部分回吐;逆轉降評的空頭回補撐住下檔,取 −2。"
+  "reasoning": "週末已消化、盤前從 +8% 退到 +4.6%,合作是支出承諾非營收,續退機率高,取 −2。"
  },
- "PSKY": {
+ "MSTR": {
   "date": "2026-09-21",
   "adj": 0,
   "confidence": "low",
-  "reasoning": "二元事件:週末若正式宣布和解則 gap 放大、談判破局則全部回吐;量化基準看 gap 幅度無法反映事件未定,不做方向性調整,標低信心。"
- },
- "WBD": {
-  "date": "2026-09-21",
-  "adj": -2,
-  "confidence": "medium",
-  "reasoning": "被收購方,股價已貼近收購對價,上檔被鎖住;盤後 +8.3% 已把和解預期打進去,週一上檔空間有限,取 −2。"
- },
- "CRML": {
-  "date": "2026-09-21",
-  "adj": -3,
-  "confidence": "medium",
-  "reasoning": "政策族群題材,週五盤後 +21% 後經過整個週末,週一開盤散戶追價後常開高走低;有 Tanbreez 實質資產撐住不至崩,但 gap 幅度偏高,取 −3。"
+  "reasoning": "BTC 槓桿 beta,盤中完全跟 BTC 走,8-K 買進為常態事件,不做調整。"
  },
  "GLND": {
   "date": "2026-09-21",
   "adj": 0,
   "confidence": "low",
-  "reasoning": "市值 $5,200 萬、6 個月 −88% 的殼股單日 +119%,樂透帶,不可預測,不做點估調整。"
+  "reasoning": "前日 +119% 再 +161%,殼股樂透帶不可預測,adj=0。"
  },
  "GRML": {
   "date": "2026-09-21",
   "adj": 0,
   "confidence": "low",
-  "reasoning": "市值 $900 萬、流通 287 萬股 +58%,樂透帶不可預測,adj=0。"
+  "reasoning": "樂透帶不可預測,adj=0。"
  },
- "VEEE": {
+ "USDE": {
   "date": "2026-09-21",
   "adj": 0,
   "confidence": "low",
-  "reasoning": "市值 $500 萬、流通 48 萬股 +24%,樂透帶,adj=0。"
- },
- "HWH": {
-  "date": "2026-09-21",
-  "adj": 0,
-  "confidence": "low",
-  "reasoning": "流通 38 萬股改名題材 +13%,樂透帶,adj=0。"
+  "reasoning": "1M +217% 無消息連噴,樂透帶,adj=0。"
  },
  "IMCC": {
   "date": "2026-09-21",
   "adj": 0,
   "confidence": "low",
-  "reasoning": "前日 +109% 後盤後 −25%,流通 9 萬股,無消息連噴型,adj=0。"
+  "reasoning": "流通 9 萬股炒作反轉,不可預測,adj=0。"
  },
- "MASS": {
+ "VEEE": {
   "date": "2026-09-21",
-  "adj": -3,
-  "confidence": "medium",
-  "reasoning": "盤後 +9.2% 只成交 12.5 萬股、查無新聞,DTC 7.0 的薄量拉抬在週一開盤常回落;取 −3。"
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "樂透帶,adj=0。"
+ },
+ "COIN": {
+  "date": "2026-09-21",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "BTC beta。"
+ },
+ "HOOD": {
+  "date": "2026-09-21",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "BTC beta + 代幣化題材。"
+ },
+ "ARM": {
+  "date": "2026-09-21",
+  "adj": -1,
+  "confidence": "low",
+  "reasoning": "無個股新聞的族群 beta 跳空,開盤後常回吐,取 −1。"
+ },
+ "VGZ": {
+  "date": "2026-09-21",
+  "adj": 0,
+  "confidence": "high",
+  "reasoning": "M&A 對價釘死,波動歸零。"
+ },
+ "STX": {
+  "date": "2026-09-21",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "族群 beta。"
+ },
+ "WDC": {
+  "date": "2026-09-21",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "族群 beta。"
+ },
+ "MU": {
+  "date": "2026-09-21",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "族群 beta。"
+ },
+ "AMD": {
+  "date": "2026-09-21",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "族群 beta。"
  }
 }
