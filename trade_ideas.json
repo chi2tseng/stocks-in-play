@@ -1,49 +1,42 @@
 {
-  "date": "2026-09-24",
-  "written_at": "2026-09-24T08:19:30-04:00",
+  "date": "2026-09-25",
+  "written_at": "2026-09-25T08:16:47-04:00",
   "ideas": [
     {
       "rank": 1,
-      "symbol": "SNX",
-      "setup": "beatdip",
-      "setup_name": "錯殺反彈 (≥$10B)",
-      "direction": "long",
-      "thesis": "TD SYNNEX 9/24 盤前公布 FY26 Q3:營收 $21.56B、年增 37.7%,非 GAAP EPS $5.68 超華爾街預估 20.8%;Q4 指引營收中位 $22.2B 高於預估 13.5%、EPS 中位 $5.90 遠高於預估 $4.87。EPS 與營收 surprise 皆為正、指引還上調,股價卻盤前 −7.9%($265.23),屬典型好財報錯殺。市值 $230 億過 ≥$10B 硬門檻,gap 落在 −4%~−18% 帶內偏中段,不是「深跳空殺指引」那一類。",
-      "entry": "09:30 先用真實開盤價複核 gap 必須落在 −4%~−18%,不合格直接作廢。通過後 10:30 ET 才進場,且 10:30 價需高於早盤(09:30-10:30)低點 0.5% 以上(承接濾網);貼著低點不進。",
-      "target": "回到前一日收盤約 $287.9(平盤)或進場價 +6%,先到先出。",
-      "stop": "早盤低點下 0.5%(結構停損,非固定 2.5%)。",
-      "exit_time": "當日了結,絕不留倉(setup 統計:留倉隔日 −0.48R,彈過的隔日 −1.32R)。",
-      "gap_at_write": -7.87,
-      "price_at_write": 265.23,
-      "mcap_B": 23,
-      "backtest_note": "beatdip 全庫 n=48、勝率 58%、+0.60R(4/4 月正,≥$10B 主層)。但 2026-08-16 叢集審計把它降為『複驗中』:逐日等權掉到 −0.00、bootstrap [−0.09,+0.66] 含 0;live 對帳 3 筆 −2.26R。因此倉位取常規的一半,且開盤 gap 複核不可省。"
-    },
-    {
-      "rank": 2,
-      "symbol": "GCTK",
+      "symbol": "APUS",
       "setup": "contract_fade",
       "setup_name": "大合約 fade",
       "direction": "short",
-      "thesis": "Glucotrack 9/23 盤後公告旗下 Lōkahi Therapeutics 簽下首筆對外收費合作案(GBM 機構),盤後 +80%、9/24 盤前再衝到 +109%($4.25)。這正是 contract_fade 吃的那一類:市值僅約 340 萬美元的極微型公司拿到一紙合作案,當日過熱全由散戶追價構成,沒有機構第二棒。合作案未揭露金額,不屬於『合約金額達年營收級的真重估』那種該跳過的情形。",
-      "entry": "開盤(09:30)直接放空 —— 合約 pump 的頂點在開盤,不要套用 10:30 家族的等待邏輯。**前置條件:必須真的借到券。** 市值 340 萬美元、DTC 0.02,券源大概率不足;借不到就整檔放棄,嚴禁改用選擇權或裸空硬追。",
+      "thesis": "Apimeds 旗下 MindWave 9/24 公告與 AQUAE Holdings 簽 12 個月技術服務合約,建置 AQUAEChain 平台並分得 ALCI Credits 發行量 20%。市值僅約 960 萬美元,盤後 +16%、盤前再衝 +25%($6.31),成交 8,700 萬股全是散戶追價。合約為短期技術服務、未揭露金額,不屬於『合約金額達年營收級』的真重估。",
+      "entry": "09:30 開盤直接放空(合約 pump 頂點在開盤)。前置條件:必須借得到券 —— 市值不到 1,000 萬美元、DTC 0.01,借不到整檔放棄,不改用其他工具硬追。開盤 gap 若掉到 +15% 以下,setup 條件不成立,作廢。",
       "target": "收盤回補。",
-      "stop": "進場價 +20%(1R 很肥,倉位必須相應縮到最小,單筆風險不得超過常規槽位)。",
+      "stop": "進場價 +20%(1R 很肥,倉位縮到最小)。",
       "exit_time": "當日收盤前回補,不留倉。",
-      "fallback": "GCTK 無券可借時,改放空 SRZN(dtc_fade:DTC 6.65、short float 23.7%、盤前 +45%,10:30 ET 進場、停損 +5%、收盤回補)。二者擇一,不同時持有 —— 今日空方只佔 1 個槽位。",
-      "gap_at_write": 109.36,
-      "price_at_write": 4.25,
-      "mcap_M": 3.37,
-      "dtc": 0.02,
-      "backtest_note": "contract_fade 是全系統唯一通過逐日 bootstrap 檢驗的 setup:n=28 勝率 71%、+0.47R;5 分 K 審計 22 筆勝率 73%、逐日等權 +0.56R、天勝率 71%、bootstrap [+0.14,+0.92]、6/7/8 月全正。已知風險:拿掉最強 4 檔微型股後掉到 +0.15 —— 它吃的就是微型股合約 pump 的錢,樣本集中於此類。"
+      "fallback": "APUS 無券時,改空 AESI(dtc_fade:DTC 7.36、short float 30%、盤前 +7.8%,10:30 ET 進場、停損 +5%、收盤回補)。",
+      "gap_at_write": 24.8,
+      "price_at_write": 6.31,
+      "mcap_M": 9.56,
+      "dtc": 0.01,
+      "backtest_note": "contract_fade 全系統唯一通過逐日 bootstrap 檢驗的 setup:n=28 勝率 71%、+0.47R。微型股借券是最大執行風險。"
+    },
+    {
+      "rank": 2,
+      "symbol": "PRME",
+      "setup": "dtc_fade",
+      "setup_name": "DTC 假軋空 fade",
+      "direction": "short",
+      "thesis": "Prime Medicine 9/24 盤後公告 FDA 同意 PM647(α1-抗胰蛋白酶缺乏症基因編輯療法)的 IND,可進入臨床試驗。IND 通過只是准許開始試驗,距離療效數據還很遠。DTC 9.81、short float 33.7%,盤前 +11%($3.41)符合 dtc_fade 條件(DTC>5、gap≥+2%):軋空燃料多但缺乏真正的新基本面,歷史上多在盤中消退。",
+      "entry": "10:30 ET 才放空(不在開盤追);10:30 時若股價仍比開盤價高 5% 以上、明顯續強,跳過。",
+      "target": "收盤回補。",
+      "stop": "進場價 +5%。",
+      "exit_time": "當日收盤前回補,不留倉。",
+      "gap_at_write": 11.07,
+      "price_at_write": 3.41,
+      "mcap_M": 620,
+      "dtc": 9.81,
+      "backtest_note": "dtc_fade 次主力:逐日等權 +0.28R(每日最多 2 筆);屬 thin edge,倉位取常規。"
     }
   ],
-  "no_trade_notes": {
-    "contract_fade": "已啟用(見 rank 2 GCTK)。其餘 gap ≥+15% 名字不符:PFSA +99% 是 ISO 13485 認證(FDA/法規型)、WETO +50% 查無消息純動能、SRZN +45% 是同機轉藥外溢、SPHL +21% 是 6-K 財報、GRML +14% 是格陵蘭稀土政策 —— 都不是合約型。",
-    "beaten_squeeze_go": "候補 setup,今日無標的過五條件。SRZN 雖 gap +45%、short float 23.7%,但 DTC 6.65 >5 不符『DTC<5 快燃料』,反而落在 dtc_fade 那側;GRML perf1M +31% 不是 beaten;其餘 gap-up 名字市值 <$5,000 萬、無前瞻營收資料。",
-    "beatdip_rejected": "DRI(Darden,$24B,盤前 −4.8%)本來是同型候選,但 FY27 Q1 營收 $3.2B 低於預估 $3.21B(EPS $2.05 僅符合預期)—— 營收 surprise 為負,不符『EPS 與營收 surprise 皆 ≥0』的真 beat 硬條件,剔除。MGM(−9.8%)是收購破局的 M&A 事件非財報,且市值 $86 億未過 ≥$10B 硬門檻。VKTX(−12.1%)是 5 億美元增發稀釋,不是錯殺。",
-    "cap1010": "已除役(2026-08-16 gate 未過),不列入訊號池。",
-    "dtc_fade": "SRZN(DTC 6.65、gap +45%)條件成立,但順位低於 contract_fade,且每日 2 筆上限已被 SNX + GCTK 佔滿,故僅列為 GCTK 無券時的替代標的,不獨立開倉。"
-  },
-  "market_context": "10 年期公債殖利率 9/24 盤前約 5.14%(單日 +13bp),PMI 通膨數據偏熱 + 國債標售疲弱推升,對高評價科技股與大盤是逆風;多單(SNX)倉位因此再保守一階。習近平 9/23-25 訪美、美中貿易休兵延長至 2027/1/10。",
-  "revised_note": "08:18 ET 首版為 SNX(beatdip)+ SRZN(dtc_fade);08:24 ET 仍在盤前,催化劑分片回報 GCTK 為 contract 型 +109% 跳空,contract_fade(唯一通過逐日 bootstrap 的主力 setup)因此取代順位較低的 dtc_fade,SRZN 降為 GCTK 無券時的替代。兩次寫入皆在 09:30 開盤前。"
+  "no_trade_notes": "AKAM(Anthropic 7 年 $116 億合約,約佔年營收 40%)屬真重估,依規則不做 contract fade;beatdip 無 ≥$10B 真 beat 的跳空股(SCHL 市值 5.8 億且 EPS 不及預期)。"
 }

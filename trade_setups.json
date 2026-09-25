@@ -5,17 +5,17 @@
   "rebuild_method": "質化歸因(每檔:因為什麼→漲多少→為什麼這個幅度,全因子:fwd/當季成長/surprise/MAGNA53/市值/DTC/short float/neglect/run-up)→ 機械假設 → 全庫盲測 → 對照組判別力檢查 → 執行層回測。核心洞察:方向由 perf1M(beaten/heated)與前瞻品質(fwd_rev)的交乘決定,不由 gap 大小或單一籌碼指標決定;DTC 的意義是「回補需要幾天」— dtc<0.5 = 無回補買盤(禁區家族),dtc>5 = 回補跨日(假軋空 fade),高 short_float 配 dtc<5 = 快燃料(beaten 側才是真 squeeze)。",
   "model": {
     "name": "spike GBM(盤中最高逐檔)+ gap 慣性基準(收盤)",
-    "blind_hit": 44.2,
-    "rho": 0.76,
-    "n_events": 5326,
-    "note": "2026-09-16 MODEL-DRIFT(small 層連兩日 +6.48/+4.21)觸發 refit;盲測 hit 44.2% vs 前版 44.6%(−0.4pt,雜訊範圍);spikefit 同步重訓 n=5257",
+    "blind_hit": 44.7,
+    "rho": 0.746,
+    "n_events": 5628,
+    "note": "2026-09-25 MODEL-DRIFT(mid 層 −5.26/−4.40、small 層 +17.86/+6.58 連兩日同向)觸發 refit;盲測 hit 44.7% vs 前版 44.3%、rho 0.746、n 5,628;spikefit 同步重訓 n=5,551。small 層仍 30.4%,偏誤未消除(9/24 GLND +75pt 為最大誤差)。",
     "refit": "2026-09-11 refit(MODEL-DRIFT 觸發:9/10 verify mid 層 bias −2.68/−3.62、small 層 +4.07/+5.32 連兩日同向):盲測 44.6%(前 45.0%)、rho 0.758、n 5,142,分層 big 59.8 / mid 43.2 / small 30.7 / na 46.1;spikefit 重訓 n=5,073。small 層系統性高估漲幅的偏誤仍在(+5.32),refit 未消除 —— 屬輸入層問題(小型股盤前快照 vs 開盤 gap),非係數問題。| 前次:2026-08-31 refit(MODEL-DRIFT 再次觸發:8/28 verify small 層 bias −6.60、連兩日同向):盲測 44.0%、rho 0.75、n 4,796,分層 big 58.4 / mid 43.9 / small 30.5 / na 48.3 —— 與 8/30 refit 完全相同(ingest 對 8/28 為 +0 筆,樣本未增,等於重跑一次)。要記的是:small 層連兩次 refit 都沒有改善(30.6 → 30.5),而今日 verify 顯示盤前快照與實際開盤 gap 的中位差只有 0.2pt,代表這次不是 8/5 那種輸入時點問題。",
-    "refit_date": "2026-09-16",
+    "refit_date": "2026-09-25",
     "tiers": {
-      "big": 60.6,
-      "mid": 42.4,
-      "small": 30.0,
-      "na": 49.3
+      "big": 62.3,
+      "mid": 43.9,
+      "small": 30.4,
+      "na": 51.9
     }
   },
   "lineup": "每日最多 2 筆,順位 v6(2026-08-16 叢集審計後重排,改以「逐日等權 + bootstrap 區間」排序,不再用逐筆 avgR):①大合約 fade(唯一區間穩定為正)②DTC 假軋空 fade(樣本最厚,每日限 2)③錯殺反彈 ≥10B(降級複驗中)④BeatenSqueezeGo(候補,與其他多單同日只取一筆)。cap10×10 已除役移出順位。多單先過 avoid_rules;全部當日了結。",
