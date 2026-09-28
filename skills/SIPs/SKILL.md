@@ -381,6 +381,7 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
    - **這一欄是「線索」不是「已查證催化劑」** —— 進 brief 前仍照 §2.1/§2.2 用一級源確認,標題本身不可直接當 news_detail 抄。
    - 起因:2026-07-20 GOOG +2.86% 被掃出來、整份輸出只有價格沒有任何 why,那一輪就這樣出貨,沒人去追(當日實際線索:MT Newswires「Google Working on New Server Chip」)。
 1b. **`<2% 但有重大新聞` 的大名字**(JNJ −1.9%、MS +1.5%、BK −1% 型)bignames-scan(≥2%)和 gap 掃(≥4%)都會漏 → 用 §2.0 已列的 CNBC 掃法抓當日「stocks making the biggest moves premarket/midday」整篇,把裡面**每個** ticker 對照 candidates.csv,有新聞的補入(§2.0b 政策:大公司不看 %)。
+1c. **CORE 核心大股:不看 %、每次必查(2026-09-28 使用者:「我不是叫你連 FAANG、AVGO 之類的都要找嗎」)。** `bignames-scan.py` 的 `CORE` 清單(FAANG/Mag7、AVGO、TSM、AMD、ORCL、PLTR、MU、LLY、JPM、V/MA、WMT、COST 等約 30 檔)門檻 = 0,輸出獨立區塊 **「CORE megacaps」** 逐檔掛頭條 → **主模型逐檔判斷是否當日重大新聞**(回購/人事/法律判決/新事業/併購/指引/大幅升降評 = 收;行銷合作/分析師小調 PT/族群漂 = 不收),收的以 `Session=headline` 補入 + TV + news_detail(≥300 字熱門級)。**每次 /SIPs 與每次 late sweep 都要讀這一區,且必須配 1b 的 CNBC premarket movers 全文逐檔對照**(CNBC 直抓被 Akamai 擋 → 派 sonnet 用搜尋/代理重建清單)。起因:9/28 late sweep 只看 ≥2% 名單,漏 NVDA(+1.8%,$1,500 億回購)、META(成立企業 AI 事業)、AAPL($57 億專利判賠)、MDB(−18%,執行長被 Meta 挖角 — 不在宇宙,靠 META 頭條才順藤摸到)。
 2. 把漏掉的名字併進 §2.1 的 **sonnet catalyst fan-out**(每 6–8 檔一個 sonnet agent,每檔回一句 繁中 catalyst + Type + 標「有無個股新聞 Y/N」;逆勢大跌卻標「查無」的大股,主線自己補查一次,§2.2 distrust guard)。
 3. **判斷每檔有沒有真新聞 —— 只有有新聞的才進(2026-07-16 使用者:「大公司要有新聞的才放上去,你需要去判斷」)。** `≥2%` 只是**發現門檻**,進不進 dashboard 是**新聞判斷**,不是「有動就放」:
    - **有真新聞就收** —— 自身事件(財報 / M&A / 指引 / 升降評 / FDA / 合約 / 具體監管),**或特定的族群/cluster 事件根源**(如 BSX 砍指引拖累整個 MedTech、ASML 上修帶動半導體設備)→ `Session=headline` 補入,真 catalyst + **補 TV**(大型股一律補,§6.1 閘門會擋)+ 寫 `news_detail`。
@@ -398,7 +399,7 @@ Save this map to working memory. Use it in 2.1 below to short-circuit per-ticker
    - **今日尚無任何 5 分 K → 該檔列入 `no-premarket-data` 並跳過**,絕不退回日 K 差值冒充當日變動。bignames-scan 表頭會印 `no-premarket-data=N`,earnings-today-scan 的 % 欄顯示 `no-pre`。
    - **交易日 = ET 日,不是本機日(2026-07-20 發現)**:台北時間過午夜後 `date.today()` 就跳到隔天,earnings-today-scan 會在盤中去拉**明天**的財報日曆。已改用 `zoneinfo America/New_York` 取日期;要指定日期仍可 `py earnings-today-scan.py 2026-07-20`。
    - **earnings-today-scan 的每一列同樣預設掛頭條 + 連結**(同 §2.0c 1a 的 `headline.py`);查無頭條的申報者 → 直接去 IR / SEC 8-K 抓新聞稿,不得留白。
-3. **發布前 late sweep(硬性步驟):`git push` 之前重跑 `py earnings-today-scan.py` + `py bignames-scan.py` 一次** — 盤中才發酵的財報行情(ABT 盤前 +3% → 盤中 +12%)、盤中公布的大新聞,第一輪掃描抓不到。兩個腳本輸出 MISSING 皆為 0(或已判斷排除並記錄原因)才准 push。
+3. **發布前 late sweep(硬性步驟):`git push` 之前重跑 `py earnings-today-scan.py` + `py bignames-scan.py` 一次** — 盤中才發酵的財報行情(ABT 盤前 +3% → 盤中 +12%)、盤中公布的大新聞,第一輪掃描抓不到。兩個腳本輸出 MISSING 皆為 0(或已判斷排除並記錄原因)才准 push。 **late sweep 同樣要讀 CORE megacaps 區塊並對照 CNBC premarket movers 全文(§2.0c 1c)— 不是只看 ≥2% 的 MISSING。**
 4. **⚠ 還沒公布的一律不進 scan(2026-07-22 使用者推翻上一版:「還沒要公布的就都不要加上 scanx,只要有公布了的就好了,把他們移除」)。** 舊規則(v1,2026-07-21)是「今晚盤後要報的大名字不看漲跌幅一律先加進去、寫前瞻 catalyst」——**已作廢**。現在:
    - **今日尚未公布結果的財報/指引事件(今晚盤後才報、明晨才報)一律不加入 candidates.csv / scanx**,不寫前瞻性 catalyst 佔位。earnings-today-scan.py 印出的「今日申報者」清單只用來**確認明天早上要追**,不是今天就塞進候選。
    - **報前的公司住「財報日曆」頁(2026-07-22 新增):** `py fetch_earnings_calendar.py` 抓未來 14 天主要公司(市值 ≥$10B 或 UNIVERSE 名單)財報時間表 → `dashboard/earnings_calendar.json` → dashboard 的「財報日曆」tab 逐日顯示盤前/盤後申報者。使用者要看「誰快報了」去那頁看;scanx 只留已公布的。
