@@ -1,42 +1,6 @@
 {
-  "date": "2026-09-25",
-  "written_at": "2026-09-25T08:16:47-04:00",
-  "ideas": [
-    {
-      "rank": 1,
-      "symbol": "APUS",
-      "setup": "contract_fade",
-      "setup_name": "大合約 fade",
-      "direction": "short",
-      "thesis": "Apimeds 旗下 MindWave 9/24 公告與 AQUAE Holdings 簽 12 個月技術服務合約,建置 AQUAEChain 平台並分得 ALCI Credits 發行量 20%。市值僅約 960 萬美元,盤後 +16%、盤前再衝 +25%($6.31),成交 8,700 萬股全是散戶追價。合約為短期技術服務、未揭露金額,不屬於『合約金額達年營收級』的真重估。",
-      "entry": "09:30 開盤直接放空(合約 pump 頂點在開盤)。前置條件:必須借得到券 —— 市值不到 1,000 萬美元、DTC 0.01,借不到整檔放棄,不改用其他工具硬追。開盤 gap 若掉到 +15% 以下,setup 條件不成立,作廢。",
-      "target": "收盤回補。",
-      "stop": "進場價 +20%(1R 很肥,倉位縮到最小)。",
-      "exit_time": "當日收盤前回補,不留倉。",
-      "fallback": "APUS 無券時,改空 AESI(dtc_fade:DTC 7.36、short float 30%、盤前 +7.8%,10:30 ET 進場、停損 +5%、收盤回補)。",
-      "gap_at_write": 24.8,
-      "price_at_write": 6.31,
-      "mcap_M": 9.56,
-      "dtc": 0.01,
-      "backtest_note": "contract_fade 全系統唯一通過逐日 bootstrap 檢驗的 setup:n=28 勝率 71%、+0.47R。微型股借券是最大執行風險。"
-    },
-    {
-      "rank": 2,
-      "symbol": "PRME",
-      "setup": "dtc_fade",
-      "setup_name": "DTC 假軋空 fade",
-      "direction": "short",
-      "thesis": "Prime Medicine 9/24 盤後公告 FDA 同意 PM647(α1-抗胰蛋白酶缺乏症基因編輯療法)的 IND,可進入臨床試驗。IND 通過只是准許開始試驗,距離療效數據還很遠。DTC 9.81、short float 33.7%,盤前 +11%($3.41)符合 dtc_fade 條件(DTC>5、gap≥+2%):軋空燃料多但缺乏真正的新基本面,歷史上多在盤中消退。",
-      "entry": "10:30 ET 才放空(不在開盤追);10:30 時若股價仍比開盤價高 5% 以上、明顯續強,跳過。",
-      "target": "收盤回補。",
-      "stop": "進場價 +5%。",
-      "exit_time": "當日收盤前回補,不留倉。",
-      "gap_at_write": 11.07,
-      "price_at_write": 3.41,
-      "mcap_M": 620,
-      "dtc": 9.81,
-      "backtest_note": "dtc_fade 次主力:逐日等權 +0.28R(每日最多 2 筆);屬 thin edge,倉位取常規。"
-    }
-  ],
-  "no_trade_notes": "AKAM(Anthropic 7 年 $116 億合約,約佔年營收 40%)屬真重估,依規則不做 contract fade;beatdip 無 ≥$10B 真 beat 的跳空股(SCHL 市值 5.8 億且 EPS 不及預期)。"
+ "date": "2026-09-28",
+ "written_at": "2026-09-28T07:13:35-04:00",
+ "ideas": [],
+ "no_trade_notes": "今日空手。① 錯殺反彈(≥$10B):無財報真 beat 的跳空股;GFI/HMY/EQX 是金價宏觀下跌、非財報錯殺,不符條件。② 大合約 fade:AMPX 國防部撥款但 gap 僅 +7%,未達 +15% 門檻。③ BeatenSqueezeGo:AMPX 一個月 −0.9% 不符 perf1M ≤−20;KOD 一個月 +43% 不符。④ DTC 假軋空 fade:KOD 形狀合格(DTC 14.6、gap +72%),但依 9/15 VERA 教訓的「出單前自查新聞」濾網主動跳過——今天是雙組三期全勝、無增資的真臨床利多,不是假軋空。其餘 DTC>5 的上漲候選:無。"
 }
