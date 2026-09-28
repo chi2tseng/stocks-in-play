@@ -1,297 +1,96 @@
 {
   "date": "2026-09-25",
-  "scanTime": "20:16",
-  "scanTimestamp": "2026-09-28T20:16",
+  "scanTime": "20:17",
+  "scanTimestamp": "2026-09-28T20:17",
   "stocks": {
-    "MGM": {
-      "symbol": "MGM",
-      "name": "MGM Resorts International",
-      "type": "M&A",
+    "ZS": {
+      "symbol": "ZS",
+      "name": "Zscaler, Inc.",
+      "type": "news",
       "earningsReaction": false,
-      "catalyst": "週五 −3.3% — People Inc(Barry Diller)撤回每股 $48.30、估值逾 $180 億的收購提案後,WSJ 報導 MGM 反過來洽談收購 People;MGM 本週累計跌近 15%,People 週五 +11%",
-      "newsDetail": "> **今日跌因:** 週五 **−3.3% 收 $32.58**,本週累計跌近 **15%** — Barry Diller 的 People Inc 撤回收購 MGM 的提案後,WSJ 報導 MGM 反過來洽談收購 People,買賣雙方角色對調。\n\n**撤回的收購案:** People Inc 6 月 1 日提出**非約束性**提案,以**每股現金 $48.30** 收購其尚未持有的 MGM 股權(People 已持有約 27%),含債估值逾 **$180 億**。Diller 本週確認談判終止,稱交易的條件「沒有如預期湊齊」—— 原本支撐 MGM 股價的收購價參考點就此消失。\n\n**角色對調:** 據 WSJ(Bloomberg 9/24 轉述),**MGM 正討論對 People Inc 出價**;兩家都認為自家股價被低估,People 旗下 Food & Wine 等生活風格雜誌可與 MGM 的旅遊娛樂業務互補。消息帶動 **People 週五 +11% 收 $40.05**,MGM 則續跌 —— 收購方通常承壓。\n\n**對照:** MGM 現價 $32.58,較原提案 $48.30 低約 33%。",
+      "catalyst": "盤前 −3.5% 至 $207 — 9/24 盤後 8-K:營收長 Mike Rich 因個人因素 10/1 卸任,由全球業務主管 Ross Tackett 接任;CFO Kevin Rubin 9 月初法說會已把 FY27 ARR 指引保守歸因於「兩次業務主管交接」,此次換將正是其一",
+      "newsDetail": "> **今日跌因:** 盤前 **−3.5%** 至約 **$207** — Zscaler 9/24 盤後公告營收長(CRO)Mike Rich 卸任、由 Ross Tackett 接任;這正是 CFO 在上次法說會點名、導致 FY27 指引保守的「業務主管交接」。\n\n**人事異動(8-K)**\n\nZscaler 9/24 向 SEC 申報 8-K:營收長 **Mike Rich** 因個人因素將於 **10/1** 卸任,轉任策略顧問至 **12/31**,並依公司離職政策領取資遣福利。接任者 **Ross Tackett** 現任全球業務主管,在 Zscaler 約 3 年,之前在 ServiceNow 超過 10 年、Dell 超過 16 年。CEO Jay Chaudhry 稱他兼具「營運紀律、全球規模與以客戶為先的領導力」。8-K 由 CFO **Kevin Rubin** 簽署,**財務長本身沒有異動**,公告也未更新財測。\n\n**與 CFO 說法的關聯**\n\nZscaler 9 月初公布 FY26 Q4 財報時,FY27 年度經常性收入(ARR)指引中位數隱含淨新增 ARR 成長放緩到約 **4%**(Q4 才 **17%**)。CFO Rubin 當時把保守的主因歸於**兩次業務主管交接**的時點,以及新產品採用度仍待驗證。這次營收長換人,等於證實業務團隊確實在換手期,市場把它解讀為指引保守的理由成真。\n\n**其他**\n\nCFO Rubin 9/16 依預先設定的 10b5-1 計畫賣出 **5,957 股**、均價 **$192.76**(約 **$115 萬**),屬例行性交易。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=MGM"
+          "url": "https://finviz.com/quote.ashx?t=ZS"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/MGM"
+          "url": "https://finance.yahoo.com/quote/ZS"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-MGM/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-ZS/news/"
         }
       ],
-      "publishedAt": "2026-09-24T18:00:00-04:00",
+      "publishedAt": "2026-09-24T16:05:00-04:00",
       "publishedTimezone": "ET",
       "sources": [
         {
-          "label": "Bloomberg — MGM Resorts is discussing making a bid for People: WSJ",
-          "url": "https://www.bloomberg.com/news/articles/2026-09-24/mgm-resorts-is-discussing-making-a-bid-for-people-wsj"
-        },
-        {
-          "label": "iGaming Business — MGM could bid for People Inc after Diller rescinds offer",
-          "url": "https://igamingbusiness.com/casino/mgm-people-inc-flipped-september-2026/"
-        },
-        {
-          "label": "Deadline — People Inc shares surge on role-reversal report",
-          "url": "https://deadline.com/2026/09/barry-diller-people-inc-merger-mgm-resorts-1237113781/"
-        }
-      ],
-      "seanAnalysis": {
-        "verdict": "AVOID",
-        "summary": "併購案破局是找不到資金,月線已跌两成,現在是壞消息剛反映完,不是低接時機,先閃。",
-        "sourceDate": "2026-09-24"
-      },
-      "milanAnalysis": {
-        "score": 6,
-        "summary": "收購案正式撤回非僅延後,移除潛在收購溢價,屬確定性負面事件但基本面未變",
-        "sourceDate": "2026-09-24"
-      },
-      "sessions": [
-        {
-          "last": 32.58,
-          "chgPct": -3.29,
-          "volume": 11252700,
-          "session": "headline",
-          "direction": "down",
-          "name": "MGM Resorts International",
-          "sessionDate": "2026-09-25",
-          "targetDate": "2026-09-25"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 32.58,
-      "chgPct": -3.29,
-      "volume": 11252700,
-      "tv": {
-        "latestEPS": 0.59,
-        "consensusEPS": 0.56,
-        "priorYrEPS": 0.79,
-        "surpriseEPS_pct": 5.49,
-        "surpriseEPS_dollar": 0.029999999999999916,
-        "latestRev_M": 4450.0,
-        "consensusRev_M": 4420.0,
-        "priorYrRev_M": 4400.0,
-        "surpriseRev_pct": 0.79,
-        "yrYrRev_pct": 1.1363636363636365,
-        "epsYoY_pct": -25.31645569620254,
-        "epsEst_next4": [
-          0.16,
-          0.45,
-          0.5,
-          0.55
-        ],
-        "revEst_next4": [
-          4280.0,
-          4480.0,
-          4420.0,
-          4450.0
-        ],
-        "yoyBlock": "-25.32% / +1.14%\n--------------------\n-33.33% / +0.71%\n-71.88% / -2.82%\n+2.04% / -0.67%\n-6.78% / +0.00%",
-        "chart": {
-          "quarters": [
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q1 '21"
-          ],
-          "eps_reported": [
-            0.54,
-            0.45,
-            0.69,
-            0.79,
-            0.24,
-            1.6,
-            0.49,
-            0.59,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.59,
-            0.3,
-            0.46,
-            0.58,
-            0.42,
-            0.67,
-            0.5,
-            0.56,
-            0.16,
-            0.45,
-            0.5,
-            0.55
-          ],
-          "rev_reported_M": [
-            4180.0,
-            4350.0,
-            4280.0,
-            4400.0,
-            4250.0,
-            4610.0,
-            4450.0,
-            4450.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            4210.0,
-            4270.0,
-            4280.0,
-            4320.0,
-            4240.0,
-            4500.0,
-            4370.0,
-            4420.0,
-            4280.0,
-            4480.0,
-            4420.0,
-            4450.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": 10.57,
-      "shortRatio": 6.53,
-      "marketCap_M": 8180,
-      "floatShares_M": 181.41,
-      "perf1M": -24.37,
-      "perf3M": -34.59,
-      "perf6M": -10.52,
-      "perfYTD": -10.93,
-      "perf12M": -8.71,
-      "prevOhlcv": {
-        "date": "2026-09-23",
-        "open": 38.54,
-        "high": 38.98,
-        "low": 37.64,
-        "close": 37.85,
-        "volume": 3052100,
-        "prev_close": 38.73
-      },
-      "modelPred": {
-        "version": "v12",
-        "gap": -3.29,
-        "predDay": -3.6,
-        "band": [
-          -2.8,
-          2.9
-        ],
-        "tier": "na",
-        "lottery": false,
-        "spike": [
-          0.3,
-          1.6,
-          3.7
-        ],
-        "predHi": -1.7,
-        "predHiBand": [
-          -3.0,
-          0.3
-        ]
-      }
-    },
-    "COST": {
-      "symbol": "COST",
-      "name": "Costco Wholesale Corporation",
-      "type": "earnings",
-      "earningsReaction": true,
-      "catalyst": "盤前 −0.5% 至 $892 — 9/24 盤後公布 FY26 Q4:EPS $6.75 優於預估 $6.55、營收 $957 億(+11.2%);財報超預期但股價持平",
-      "newsDetail": "> **今日跌因:** 儘管 FY26 Q4 每股盈餘、營收與同店銷售全數超標,但獲利了結賣壓加上會員成長趨緩疑慮,COST 盤前小跌約 **0.5%** 至 **$892** 附近。\n\n**財報數據**\n\nCostco 9月24日 盤後公布 FY2026 第四季財報:每股盈餘 **$6.75**,優於市場預估的 $6.55;營收(含會員費)**$957億**,年增 **11.2%**。同店銷售成長 **9.4%**,排除油價與匯率後為 **6.7%**,優於分析師預估的 6.44%。管理層表示,未來若回落至 6-7% 區間可能是「較正常」的節奏。\n\n**電商與會員**\n\n電商同店銷售年增 **19.5%**(排除匯率後 19.8%),全年電商銷售突破 **$330億**,成長逾 20%。付費高級會員(Executive)成長 **9.4%** 至 **4,230萬人**,總付費會員數成長 3.8% 至 **8,410萬人**,續約率較上季改善,高級會員滲透率創新高。\n\n**展店與市場反應**\n\nFY2026 全年淨增 **25家**新倉儲店(美國18、加拿大5、其他國際2)。分析師普遍維持正面看法,21 位平均目標價約 **$1,092**,共識為「買進」;9月25日 盤前股價仍小幅走弱,顯示創高後漲勢略顯謹慎。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=COST"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/COST"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-COST/news/"
-        }
-      ],
-      "publishedAt": "2026-09-24T00:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Investing.com — Costco FY2026 Q4 slides: 11% sales growth, digital surge continues",
-          "url": "https://www.investing.com/news/company-news/costco-fy2026-q4-slides-11-sales-growth-digital-surge-continues-93CH-4916354",
+          "label": "Zscaler 8-K(2026-09-24)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001713683/000171368326000193/zs-20260924.htm",
           "publishedAt": "2026-09-24"
         },
         {
-          "label": "Tradingpedia — Costco Caps Fiscal 2026 With Strong Q4 Beat and Sales Growth",
-          "url": "https://www.tradingpedia.com/2026/09/25/costco-caps-fiscal-2026-with-strong-q4-beat-and-sales-growth/",
-          "publishedAt": "2026-09-25"
+          "label": "Zscaler 新聞稿 Exhibit 99.1 — Ross Tackett 接任 CRO",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001713683/000171368326000193/zs-09242026_991.htm",
+          "publishedAt": "2026-09-24"
         },
         {
-          "label": "Investing.com (CA) — Costco Wholesale Corp (COST) Q4 2026 Earnings Call Highlights",
-          "url": "https://ca.investing.com/news/company-news/costco-wholesale-corp-cost-q4-2026-earnings-call-highlights-doubledigit-sales-growth--4852870",
-          "publishedAt": "2026-09-24"
+          "label": "Yahoo Finance — Zscaler Went From 100x Earnings to 40x(CFO 指引說法)",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/zscaler-went-100x-earnings-40x-194831797.html"
+        },
+        {
+          "label": "MarketBeat — Zscaler CFO 10b5-1 賣股",
+          "url": "https://www.marketbeat.com/instant-alerts/insider-insider-selling-zscaler-nasdaq-zs-cfo-sells-114827132-in-stock-2026-09-17/",
+          "publishedAt": "2026-09-17"
         }
       ],
       "seanAnalysis": null,
       "milanAnalysis": null,
       "sessions": [
         {
-          "last": 892.0,
-          "chgPct": -0.5,
-          "volume": 2831452,
+          "last": 207.07,
+          "chgPct": -3.53,
+          "volume": 2383555,
           "session": "headline",
           "direction": "down",
-          "name": "Costco Wholesale Corporation",
+          "name": "Zscaler, Inc.",
           "sessionDate": "2026-09-25",
           "targetDate": "2026-09-25"
         }
       ],
       "primarySession": "headline",
       "primaryDirection": "down",
-      "last": 892.0,
-      "chgPct": -0.5,
-      "volume": 2831452,
+      "last": 207.07,
+      "chgPct": -3.53,
+      "volume": 2383555,
       "tv": {
-        "latestEPS": 6.75,
-        "consensusEPS": 6.54,
-        "priorYrEPS": 5.87,
-        "surpriseEPS_pct": 3.21,
-        "surpriseEPS_dollar": 0.20999999999999996,
-        "latestRev_M": 95720.0,
-        "consensusRev_M": 94970.0,
-        "priorYrRev_M": 86160.0,
-        "surpriseRev_pct": 0.8,
-        "yrYrRev_pct": 11.095636025998143,
-        "epsYoY_pct": 14.991482112436113,
+        "latestEPS": 1.19,
+        "consensusEPS": 1.09,
+        "priorYrEPS": 0.89,
+        "surpriseEPS_pct": 9.32,
+        "surpriseEPS_dollar": 0.09999999999999987,
+        "latestRev_M": 898.18,
+        "consensusRev_M": 876.96,
+        "priorYrRev_M": 719.23,
+        "surpriseRev_pct": 2.42,
+        "yrYrRev_pct": 24.88077527355643,
+        "epsYoY_pct": 33.70786516853932,
         "epsEst_next4": [
-          4.9,
-          5.14,
-          5.45,
-          7.27
+          1.16,
+          1.18,
+          1.23,
+          1.32
         ],
         "revEst_next4": [
-          74200.0,
-          76640.0,
-          76110.0,
-          102730.0
+          937.7,
+          956.99,
+          992.1,
+          1040.0
         ],
-        "yoyBlock": "+14.99% / +11.10%\n--------------------\n+8.89% / +10.24%\n+12.23% / +10.11%\n+10.55% / +7.91%\n+7.70% / +7.32%",
+        "yoyBlock": "+33.71% / +24.88%\n--------------------\n+20.83% / +18.98%\n+16.83% / +17.31%\n+13.89% / +16.65%\n+10.92% / +15.79%",
         "chart": {
           "quarters": [
             "Q4 '25",
@@ -308,80 +107,80 @@
             "Q4 '21"
           ],
           "eps_reported": [
-            4.04,
-            4.02,
-            4.28,
-            5.87,
-            4.5,
-            4.58,
-            4.93,
-            6.75,
+            0.77,
+            0.78,
+            0.84,
+            0.89,
+            0.96,
+            1.01,
+            1.08,
+            1.19,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            3.79,
-            4.09,
-            4.24,
-            5.8,
-            4.27,
-            4.55,
-            4.99,
-            6.54,
-            4.9,
-            5.14,
-            5.45,
-            7.27
+            0.63,
+            0.69,
+            0.75,
+            0.8,
+            0.86,
+            0.89,
+            1.01,
+            1.09,
+            1.16,
+            1.18,
+            1.23,
+            1.32
           ],
           "rev_reported_M": [
-            62150.0,
-            63720.0,
-            63200.0,
-            86160.0,
-            67310.0,
-            69600.0,
-            70530.0,
-            95720.0,
+            627.96,
+            647.9,
+            678.03,
+            719.23,
+            788.11,
+            815.75,
+            850.48,
+            898.18,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            62050.0,
-            63110.0,
-            63130.0,
-            86010.0,
-            67140.0,
-            69290.0,
-            69790.0,
-            94970.0,
-            74200.0,
-            76640.0,
-            76110.0,
-            102730.0
+            605.51,
+            634.38,
+            666.46,
+            706.94,
+            773.28,
+            798.33,
+            835.14,
+            876.96,
+            937.7,
+            956.99,
+            992.1,
+            1040.0
           ],
           "latest_idx": 7
         },
-        "latestReportDate": "2026-09-25",
+        "latestReportDate": null,
         "nextReportDate": null
       },
-      "shortFloat": 1.66,
-      "shortRatio": 3.28,
-      "marketCap_M": 410930,
-      "floatShares_M": 442.96,
-      "perf1M": -0.86,
-      "perf3M": -2.12,
-      "perf6M": -5.82,
-      "perfYTD": 7.45,
-      "perf12M": 1.16,
+      "shortFloat": 6.15,
+      "shortRatio": 2.26,
+      "marketCap_M": 31060,
+      "floatShares_M": 105.74,
+      "perf1M": 1.71,
+      "perf3M": 38.44,
+      "perf6M": 43.06,
+      "perfYTD": -15.3,
+      "perf12M": -35.35,
       "prevOhlcv": null,
       "modelPred": {
         "version": "v12",
-        "gap": -0.5,
-        "predDay": -1.1,
+        "gap": -4.03,
+        "predDay": -4.2,
         "band": [
           -2.3,
           2.1
@@ -389,14 +188,14 @@
         "tier": "big",
         "lottery": false,
         "spike": [
-          0.1,
-          1.1,
-          2.2
+          2.6,
+          3.6,
+          4.7
         ],
-        "predHi": 0.6,
+        "predHi": -0.6,
         "predHiBand": [
-          -0.4,
-          1.7
+          -1.5,
+          0.5
         ]
       }
     },
@@ -597,85 +396,86 @@
         ]
       }
     },
-    "SNPS": {
-      "symbol": "SNPS",
-      "name": "Synopsys, Inc.",
+    "OKTA": {
+      "symbol": "OKTA",
+      "name": "Okta, Inc.",
       "type": "analyst",
       "earningsReaction": false,
-      "catalyst": "盤前 +4.4%(收 +0.2%)— HSBC 將 Synopsys 升至「買進」,目標價由 $490 大幅上調至 $700,看好到 2028 年每股盈餘年增約 28%",
-      "newsDetail": "> **今日漲因:** 盤前 **+4.4%**(收盤僅 +0.2%、$425.76)— **HSBC 將 Synopsys 升至「買進」,目標價從 $490 大幅上調至 $700**。\n\n**分析師論點:** HSBC 看好 Synopsys 到 2028 年**每股盈餘年增約 28%**。新目標價 $700 較週五收盤有約 64% 上檔空間,是近期晶片設計軟體(EDA)族群最積極的目標價之一。CNBC 盤前異動股清單將 SNPS 與 AKAM、NKE 並列。\n\n**盤中走勢:** 盤前漲幅在開盤後幾乎全數回吐,收盤僅微漲 0.2%,成交量 **217 萬股** —— 單一分析師升評沒有帶出持續買盤。\n\n**族群背景:** 同日半導體設備與類比晶片(LRCX、AMAT、TXN)走強約 2.5-2.8%,QCOM 因 Apple 專利授權續約 +4%。",
+      "catalyst": "週五 −5.5% — 資安族群估值疑慮延續重挫;本週稍早 Bernstein 將 OKTA 降至「市場表現」(目標價 $143→$174,調目標價但降評),同族群 PANW/S/QLYS/RPD 齊跌",
+      "newsDetail": "> **今日跌因:** 週五 **−5.5% 收 $195.19** — 資安類股估值疑慮延續集體下跌,Okta 跌幅居大型資安股前段;本週稍早 Bernstein 已將 Okta 降至「市場表現」。\n\n**族群同步下跌(9/25):** Rapid7 −9.6%、SentinelOne −6.7%、Qualys −5.8%、Okta −5.5%、Palo Alto −3.9%。市場報導歸因於估值倍數偏高:資安股年初以來受 AI 資安需求題材推升,漲速快過營收與獲利成長。\n\n**Bernstein 降評:** 將 Okta 由「優於大盤」降至「市場表現」,**目標價反而由 $143 上調至 $174**;論點是 AI 帶動的身分驗證與資安需求仍強,但經過上一季的重新評價,股價已回到合理價附近。Okta 週五收盤 $195 仍高於新目標價約 12%。\n\n**同族群:** 包內 Zscaler 同日因營收長換人收低;PANW 見同日個股頁。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=SNPS"
+          "url": "https://finviz.com/quote.ashx?t=OKTA"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/SNPS"
+          "url": "https://finance.yahoo.com/quote/OKTA"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-SNPS/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-OKTA/news/"
         }
       ],
-      "publishedAt": "2026-09-25T06:30:00-04:00",
+      "publishedAt": "2026-09-25T14:00:00-04:00",
       "publishedTimezone": "ET",
       "sources": [
         {
-          "label": "CNBC — Stocks making the biggest moves premarket: AKAM, SNPS, NKE",
-          "url": "https://www.cnbc.com/2026/09/25/stocks-making-the-biggest-moves-premarket-akam-snps-nke.html"
+          "label": "StockStory — Qualys, Okta, Palo Alto, Rapid7, SentinelOne shares plummet",
+          "url": "https://stockstory.org/us/stocks/nasdaq/qlys/news/why-up-down/qualys-okta-palo-alto-networks-rapid7-and-sentinelone-shares-plummet-what-you-need-to-know"
         },
         {
-          "label": "24/7 Wall St — HSBC upgrades Synopsys to Buy",
-          "url": "https://247wallst.com/investing/2026/09/25/hsbc-upgrades-synopsys-to-buy-sees-28-earnings-growth-through-2028/"
+          "label": "NAI 500 — Bernstein downgrades three cybersecurity companies",
+          "url": "https://nai500.com/blog/2026/09/cybersecurity-sector-valuations-run-high-as-bernstein-downgrades-three-companies/"
         }
       ],
       "seanAnalysis": null,
       "milanAnalysis": null,
       "sessions": [
         {
-          "last": 425.76,
-          "chgPct": 4.38,
-          "volume": 2170900,
+          "last": 195.19,
+          "chgPct": -5.54,
+          "volume": 3990700,
           "session": "headline",
-          "direction": "up",
-          "name": "Synopsys, Inc.",
+          "direction": "down",
+          "name": "Okta, Inc.",
           "sessionDate": "2026-09-25",
           "targetDate": "2026-09-25"
         }
       ],
       "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 425.76,
-      "chgPct": 4.38,
-      "volume": 2170900,
+      "primaryDirection": "down",
+      "last": 195.19,
+      "chgPct": -5.54,
+      "volume": 3990700,
       "tv": {
-        "latestEPS": 3.91,
-        "consensusEPS": 3.67,
-        "priorYrEPS": 3.39,
-        "surpriseEPS_pct": 6.63,
-        "surpriseEPS_dollar": 0.2400000000000002,
-        "latestRev_M": 2480.0,
-        "consensusRev_M": 2440.0,
-        "priorYrRev_M": 1740.0,
-        "surpriseRev_pct": 1.61,
-        "yrYrRev_pct": 42.5287356321839,
-        "epsYoY_pct": 15.339233038348082,
+        "latestEPS": 1.05,
+        "consensusEPS": 0.97,
+        "priorYrEPS": 0.91,
+        "surpriseEPS_pct": 8.77,
+        "surpriseEPS_dollar": 0.08000000000000007,
+        "latestRev_M": 805.0,
+        "consensusRev_M": 793.0,
+        "priorYrRev_M": 728.0,
+        "surpriseRev_pct": 1.51,
+        "yrYrRev_pct": 10.576923076923077,
+        "epsYoY_pct": 15.384615384615385,
         "epsEst_next4": [
-          4.12,
-          4.33,
-          3.98,
-          4.49
+          0.93,
+          1.03,
+          1.01,
+          1.11
         ],
         "revEst_next4": [
-          2560.0,
-          2650.0,
-          2550.0,
-          2730.0
+          815.97,
+          837.53,
+          840.82,
+          882.73
         ],
-        "yoyBlock": "+15.34% / +42.53%\n--------------------\n+42.07% / +13.78%\n+14.85% / +9.96%\n+18.81% / +11.84%\n+14.83% / +10.08%",
+        "yoyBlock": "+15.38% / +10.58%\n--------------------\n+13.41% / +9.97%\n+14.44% / +10.06%\n+10.99% / +9.91%\n+5.71% / +9.66%",
         "chart": {
           "quarters": [
+            "Q2 '25",
             "Q3 '25",
             "Q4 '25",
             "Q1 '26",
@@ -684,86 +484,85 @@
             "Q4 '26",
             "Q1 '27",
             "Q2 '27",
-            "Q3 '27",
+            "Q4 '20",
             "Q1 '21",
-            "Q2 '21",
-            "Q3 '21"
+            "Q2 '21"
           ],
           "eps_reported": [
-            3.4,
-            3.03,
-            3.67,
-            3.39,
-            2.9,
-            3.77,
-            3.35,
-            3.91,
+            0.67,
+            0.78,
+            0.86,
+            0.91,
+            0.82,
+            0.9,
+            0.91,
+            1.05,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            3.3,
-            2.79,
-            3.39,
-            3.8,
-            2.78,
-            3.56,
-            3.15,
-            3.67,
-            4.12,
-            4.33,
-            3.98,
-            4.49
+            0.58,
+            0.74,
+            0.77,
+            0.85,
+            0.76,
+            0.85,
+            0.85,
+            0.97,
+            0.93,
+            1.03,
+            1.01,
+            1.11
           ],
           "rev_reported_M": [
-            1640.0,
-            1460.0,
-            1600.0,
-            1740.0,
-            2250.0,
-            2410.0,
-            2280.0,
-            2480.0,
+            665.0,
+            682.0,
+            688.0,
+            728.0,
+            742.0,
+            761.0,
+            765.0,
+            805.0,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            1630.0,
-            1450.0,
-            1600.0,
-            1770.0,
-            2250.0,
-            2390.0,
-            2250.0,
-            2440.0,
-            2560.0,
-            2650.0,
-            2550.0,
-            2730.0
+            649.74,
+            668.91,
+            680.28,
+            712.26,
+            730.82,
+            749.52,
+            751.84,
+            793.0,
+            815.97,
+            837.53,
+            840.82,
+            882.73
           ],
           "latest_idx": 7
         },
         "latestReportDate": null,
         "nextReportDate": null
       },
-      "shortFloat": 3.14,
-      "shortRatio": 3.01,
-      "marketCap_M": 80490,
-      "floatShares_M": 182.02,
-      "perf1M": -9.66,
-      "perf3M": -6.09,
-      "perf6M": 10.39,
-      "perfYTD": -10.59,
-      "perf12M": -13.89,
+      "shortFloat": 4.94,
+      "shortRatio": 2.33,
+      "marketCap_M": 34090,
+      "floatShares_M": 166.21,
+      "perf1M": 12.78,
+      "perf3M": 48.5,
+      "perf6M": 166.28,
+      "perfYTD": 125.51,
+      "perf12M": 113.91,
       "prevOhlcv": null,
       "modelPred": {
         "version": "v12",
-        "gap": 4.38,
-        "predDay": 7.2,
+        "gap": -5.54,
+        "predDay": -4.7,
         "band": [
           -2.8,
           2.9
@@ -771,407 +570,14 @@
         "tier": "na",
         "lottery": false,
         "spike": [
-          0.3,
-          1.6,
-          3.6
+          1.0,
+          2.3,
+          4.4
         ],
-        "predHi": 6.1,
+        "predHi": -3.4,
         "predHiBand": [
-          4.7,
-          8.1
-        ]
-      }
-    },
-    "NKE": {
-      "symbol": "NKE",
-      "name": "NIKE, Inc.",
-      "type": "analyst",
-      "earningsReaction": false,
-      "catalyst": "盤前 −2.1% 至 $35.2 — 美銀證券將 Nike 評等由中立降至表現落後,目標價由 $47 大砍至 $30",
-      "newsDetail": "> **今日跌因:** 美銀證券(BofA Securities)將Nike評等由中立降至**表現落後(Underperform)**,目標價自**47美元**大砍至**30美元**,盤前跌**2.1%**至約**35.2美元**。\n\n**降評理由**\n\nBofA分析師指出,Nike創新產品線的表現持續被經典鞋款(classics)業務的下滑壓力掩蓋,加上類股與總體經濟逆風正在累積,使公司獲利估值面臨**下行風險**。分析師同時將財測展望轉趨保守:先前預期**2027財年**春季營收將回溫,如今改為預估**2027財年營收將呈負成長**;**2027財年**每股盈餘(EPS)估計調降**11%**、**2028財年**調降**12%**,使2027財年EPS預估較華爾街共識低**14%**。\n\n**目標價與評等調整依據**\n\n新目標價30美元是以**16倍本益比**推算(先前為22倍),下修後與同業平均水準看齊。BofA同時將Nike的收益評等(income rating)由7降至8,理由是公司**股利發放率已超過100%**,對股利永續性亮起警訊。\n\n**股價現況**\n\nNike股價目前約**35.99美元**,貼近52週低點**35.35美元**,過去六個月累計下跌約**31%**,是道瓊成分股中表現最差之一;今日盤前續跌反映市場對這次降評的即時反應。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=NKE"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/NKE"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-NKE/news/"
-        }
-      ],
-      "publishedAt": "2026-09-25T07:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Seeking Alpha — BofA downgrades Nike to Underperform, cuts PT to $30",
-          "url": "https://seekingalpha.com/news/4647047-bofa-downgrades-nike-to-underperform-cuts-pt-to-30",
-          "publishedAt": "2026-09-25"
-        },
-        {
-          "label": "Investing.com — BofA cuts Nike stock rating on innovation concerns, slashes target to $30",
-          "url": "https://ng.investing.com/news/stock-market-news/bofa-cuts-nike-stock-rating-on-innovation-concerns-slashes-target-to-30-93CH-2709653",
-          "publishedAt": "2026-09-25"
-        },
-        {
-          "label": "TradingPedia — Nike Shares Slide as Wall Street Target Cuts Pressure Stock",
-          "url": "https://www.tradingpedia.com/2026/09/25/nike-shares-slide-as-wall-street-target-cuts-pressure-stock/",
-          "publishedAt": "2026-09-25"
-        }
-      ],
-      "seanAnalysis": {
-        "verdict": "PASS",
-        "summary": "美銀降評砍目標價,只是分析師意見沒新基本面,財報前不追空",
-        "sourceDate": "2026-09-25"
-      },
-      "milanAnalysis": {
-        "score": 2,
-        "summary": "美銀降評非公司新資訊,是既有疲弱基本面的重新詮釋,證據力弱於公司自行揭露",
-        "sourceDate": "2026-09-25"
-      },
-      "sessions": [
-        {
-          "last": 35.23,
-          "chgPct": -2.11,
-          "volume": 0,
-          "session": "headline",
-          "direction": "down",
-          "name": "NIKE, Inc.",
-          "sessionDate": "2026-09-25",
-          "targetDate": "2026-09-25"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 35.23,
-      "chgPct": -2.11,
-      "volume": 0,
-      "tv": {
-        "latestEPS": 0.72,
-        "consensusEPS": 0.12,
-        "priorYrEPS": 0.14,
-        "surpriseEPS_pct": 479.22,
-        "surpriseEPS_dollar": 0.6,
-        "latestRev_M": 10970.0,
-        "consensusRev_M": 10850.0,
-        "priorYrRev_M": 11100.0,
-        "surpriseRev_pct": 1.13,
-        "yrYrRev_pct": -1.1711711711711712,
-        "epsYoY_pct": 414.2857142857142,
-        "epsEst_next4": [
-          0.44,
-          0.52,
-          0.42,
-          0.27
-        ],
-        "revEst_next4": [
-          11330.0,
-          11830.0,
-          11190.0,
-          11020.0
-        ],
-        "yoyBlock": "+414.29% / -1.17%\n--------------------\n-10.20% / -3.33%\n-1.89% / -4.83%\n+20.00% / -0.80%\n-62.50% / +0.46%",
-        "chart": {
-          "quarters": [
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q3 '20"
-          ],
-          "eps_reported": [
-            0.7,
-            0.78,
-            0.54,
-            0.14,
-            0.49,
-            0.53,
-            0.35,
-            0.72,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.52,
-            0.67,
-            0.3,
-            0.13,
-            0.27,
-            0.37,
-            0.29,
-            0.12,
-            0.44,
-            0.52,
-            0.42,
-            0.27
-          ],
-          "rev_reported_M": [
-            11590.0,
-            12350.0,
-            11270.0,
-            11100.0,
-            11720.0,
-            12430.0,
-            11280.0,
-            10970.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            11640.0,
-            12130.0,
-            11020.0,
-            10730.0,
-            10990.0,
-            12200.0,
-            11230.0,
-            10850.0,
-            11330.0,
-            11830.0,
-            11190.0,
-            11020.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": "2026-10-02"
-      },
-      "shortFloat": 7.3,
-      "shortRatio": 3.08,
-      "marketCap_M": 52600,
-      "floatShares_M": 1170,
-      "perf1M": -7.75,
-      "perf3M": -14.51,
-      "perf6M": -30.97,
-      "perfYTD": -44.34,
-      "perf12M": -48.84,
-      "prevOhlcv": null,
-      "modelPred": {
-        "version": "v12",
-        "gap": -2.11,
-        "predDay": -2.0,
-        "band": [
-          -2.3,
-          2.1
-        ],
-        "tier": "big",
-        "lottery": false,
-        "spike": [
-          0.7,
-          1.7,
-          2.9
-        ],
-        "predHi": -0.4,
-        "predHiBand": [
-          -1.4,
-          0.7
-        ],
-        "predQuant": -1.5,
-        "qual": {
-          "adj": -0.5,
-          "confidence": "low",
-          "reasoning": "美銀降評且目標價 $30 距現價仍有約 15% 下檔,財報前的公開唱空通常讓買方觀望;跳空僅 −2%,微幅下調。"
-        }
-      }
-    },
-    "VRT": {
-      "symbol": "VRT",
-      "name": "Vertiv Holdings Co",
-      "type": "analyst",
-      "earningsReaction": false,
-      "catalyst": "盤前 +2.2% 至 $250.7 — 富國銀行首度給予 Vertiv 加碼評等、目標價 $340;AI 資料中心電力/散熱族群走強",
-      "newsDetail": "> **今日漲因:** 富國銀行(Wells Fargo)首度給予Vertiv Holdings**加碼(Overweight)**評等,目標價設在**340美元**,盤前上漲**2.2%**至約**250.7美元**。\n\n**評等理由**\n\n富國銀行分析師Stephen Tusa在啟動評等報告中指出,Vertiv是業界**營收成長最佳的公司之一**,約**85%**營收來自資料中心(data center)相關業務,受惠於AI基礎建設資本支出持續擴張的趨勢。以目前股價約245美元計算,340美元目標價隱含約**37%**的上漲空間。\n\n**產業脈絡**\n\nVertiv長期被視為AI資料中心電力與散熱基礎設施的核心供應商之一,先前包括花旗(Citi)在內的券商也曾於2026年4月將目標價上修至340美元,理由同樣指向AI驅動的工業需求趨勢不變。此次富國銀行以新覆蓋報告形式重申該股在資料中心供應鏈中的**成長領先地位**。\n\n**股價現況**\n\n今日盤前上漲反映市場對這份新覆蓋報告的正向解讀,呼應近月Vertiv股價隨資料中心/AI基礎建設投資熱度走高的整體趨勢。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=VRT"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/VRT"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-VRT/news/"
-        }
-      ],
-      "publishedAt": "2026-09-25T07:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Investing.com (DE) — Wells Fargo startet Vertiv mit \"Overweight\" – Wachstum im Rechenzentrumsgeschäft als Treiber",
-          "url": "https://de.investing.com/news/analyst-ratings/wells-fargo-startet-vertiv-mit-overweight--wachstum-im-rechenzentrumsgeschaft-als-treiber-93CH-3677804",
-          "publishedAt": "2026-09-25"
-        },
-        {
-          "label": "24/7 Wall St. — Citi Raises Vertiv Price Target to $340 as AI-Driven Industrial Trends Stay Intact",
-          "url": "https://247wallst.com/investing/2026/04/13/citi-raises-vertiv-price-target-to-340-as-ai-driven-industrial-trends-stay-intact/",
-          "publishedAt": "2026-04-13"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 250.65,
-          "chgPct": 2.18,
-          "volume": 0,
-          "session": "headline",
-          "direction": "up",
-          "name": "Vertiv Holdings Co",
-          "sessionDate": "2026-09-25",
-          "targetDate": "2026-09-25"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 250.65,
-      "chgPct": 2.18,
-      "volume": 0,
-      "tv": {
-        "latestEPS": 1.52,
-        "consensusEPS": 1.42,
-        "priorYrEPS": 0.95,
-        "surpriseEPS_pct": 6.87,
-        "surpriseEPS_dollar": 0.10000000000000009,
-        "latestRev_M": 3270.0,
-        "consensusRev_M": 3380.0,
-        "priorYrRev_M": 2640.0,
-        "surpriseRev_pct": -3.1,
-        "yrYrRev_pct": 23.863636363636363,
-        "epsYoY_pct": 60.00000000000001,
-        "epsEst_next4": [
-          1.82,
-          2.21,
-          1.68,
-          2.15
-        ],
-        "revEst_next4": [
-          3760.0,
-          4320.0,
-          3620.0,
-          4360.0
-        ],
-        "yoyBlock": "+60.00% / +23.86%\n--------------------\n+46.77% / +40.30%\n+62.50% / +50.00%\n+43.59% / +36.60%\n+41.45% / +33.33%",
-        "chart": {
-          "quarters": [
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q1 '21"
-          ],
-          "eps_reported": [
-            0.76,
-            0.99,
-            0.64,
-            0.95,
-            1.24,
-            1.36,
-            1.17,
-            1.52,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.69,
-            0.82,
-            0.61,
-            0.83,
-            0.98,
-            1.29,
-            1.0,
-            1.42,
-            1.82,
-            2.21,
-            1.68,
-            2.15
-          ],
-          "rev_reported_M": [
-            2070.0,
-            2350.0,
-            2040.0,
-            2640.0,
-            2680.0,
-            2880.0,
-            2650.0,
-            3270.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            1980.0,
-            2150.0,
-            1940.0,
-            2350.0,
-            2580.0,
-            2880.0,
-            2640.0,
-            3380.0,
-            3760.0,
-            4320.0,
-            3620.0,
-            4360.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": 3.69,
-      "shortRatio": 2.48,
-      "marketCap_M": 95710,
-      "floatShares_M": 383.73,
-      "perf1M": -7.68,
-      "perf3M": -19.01,
-      "perf6M": -0.98,
-      "perfYTD": 53.45,
-      "perf12M": 79.34,
-      "prevOhlcv": null,
-      "modelPred": {
-        "version": "v12",
-        "gap": 2.18,
-        "predDay": 2.5,
-        "band": [
-          -2.3,
-          2.1
-        ],
-        "tier": "big",
-        "lottery": false,
-        "spike": [
-          0.6,
-          1.6,
-          2.7
-        ],
-        "predHi": 3.8,
-        "predHiBand": [
-          2.8,
-          4.9
+          -4.6,
+          -1.4
         ]
       }
     },
@@ -1364,85 +770,90 @@
         ]
       }
     },
-    "OKTA": {
-      "symbol": "OKTA",
-      "name": "Okta, Inc.",
-      "type": "analyst",
+    "QCOM": {
+      "symbol": "QCOM",
+      "name": "QUALCOMM Incorporated",
+      "type": "contract",
       "earningsReaction": false,
-      "catalyst": "週五 −5.5% — 資安族群估值疑慮延續重挫;本週稍早 Bernstein 將 OKTA 降至「市場表現」(目標價 $143→$174,調目標價但降評),同族群 PANW/S/QLYS/RPD 齊跌",
-      "newsDetail": "> **今日跌因:** 週五 **−5.5% 收 $195.19** — 資安類股估值疑慮延續集體下跌,Okta 跌幅居大型資安股前段;本週稍早 Bernstein 已將 Okta 降至「市場表現」。\n\n**族群同步下跌(9/25):** Rapid7 −9.6%、SentinelOne −6.7%、Qualys −5.8%、Okta −5.5%、Palo Alto −3.9%。市場報導歸因於估值倍數偏高:資安股年初以來受 AI 資安需求題材推升,漲速快過營收與獲利成長。\n\n**Bernstein 降評:** 將 Okta 由「優於大盤」降至「市場表現」,**目標價反而由 $143 上調至 $174**;論點是 AI 帶動的身分驗證與資安需求仍強,但經過上一季的重新評價,股價已回到合理價附近。Okta 週五收盤 $195 仍高於新目標價約 12%。\n\n**同族群:** 包內 Zscaler 同日因營收長換人收低;PANW 見同日個股頁。",
+      "catalyst": "週五 +4.0% 收 $201.97 — 與 Apple 續簽全球專利授權協議(2027/4/1 生效),市場先賣後買,確認授權營收延續;新款 Snapdragon 8 Elite 同步推出",
+      "newsDetail": "> **今日漲因:** 週五 **+4.0% 收 $201.97**(盤中一度 +5.7%)— Qualcomm 與 Apple **續簽全球專利授權協議**,2027 年 4 月 1 日起生效;市場先把續約讀成條件讓步而賣,盤中翻多。\n\n**事件內容:** Qualcomm 宣布與 Apple 的全球專利授權協議續約,新約自 **2027/4/1** 生效,Apple 將繼續使用 Qualcomm 的無線通訊專利並支付權利金。這解除了市場對 Apple 改用自研數據機晶片後、授權收入(QTL 部門)跟著斷掉的疑慮 —— 晶片供貨可以被替代,專利授權費仍要付。\n\n**盤中走勢:** 公告初期股價下跌(市場擔心條款讓步),隨後買盤回補,收盤反轉上漲約 4%,成交量 **1,781 萬股**,明顯高於平日。同日新款 Snapdragon 8 Elite 晶片推出、裝置端 AI 題材一併被提及。\n\n**族群背景:** 同日半導體設備(LRCX +2.8%、AMAT +2.5%)與 TXN(+2.8%)同步走強,大盤受公債殖利率回落、美伊荷莫茲海峽談判帶動油價下跌支撐。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=OKTA"
+          "url": "https://finviz.com/quote.ashx?t=QCOM"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/OKTA"
+          "url": "https://finance.yahoo.com/quote/QCOM"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-OKTA/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-QCOM/news/"
         }
       ],
-      "publishedAt": "2026-09-25T14:00:00-04:00",
+      "publishedAt": "2026-09-25T08:00:00-04:00",
       "publishedTimezone": "ET",
       "sources": [
         {
-          "label": "StockStory — Qualys, Okta, Palo Alto, Rapid7, SentinelOne shares plummet",
-          "url": "https://stockstory.org/us/stocks/nasdaq/qlys/news/why-up-down/qualys-okta-palo-alto-networks-rapid7-and-sentinelone-shares-plummet-what-you-need-to-know"
+          "label": "24/7 Wall St — Qualcomm rallies as buyers reverse Apple renewal selloff",
+          "url": "https://247wallst.com/investing/2026/09/25/qualcomm-rallies-6-as-buyers-reverse-apple-renewal-selloff-apple-stock-ticks-up/"
         },
         {
-          "label": "NAI 500 — Bernstein downgrades three cybersecurity companies",
-          "url": "https://nai500.com/blog/2026/09/cybersecurity-sector-valuations-run-high-as-bernstein-downgrades-three-companies/"
+          "label": "Benzinga — What is going on with Qualcomm stock on Friday",
+          "url": "https://www.benzinga.com/markets/tech/26/09/62002905/what-is-going-on-with-qualcomm-stock-on-friday"
+        },
+        {
+          "label": "GuruFocus — Apple extends the royalty bridge",
+          "url": "https://www.gurufocus.com/news/9097410/qualcomm-stocks-jump-as-apple-extends-the-royalty-bridge"
         }
       ],
       "seanAnalysis": null,
       "milanAnalysis": null,
       "sessions": [
         {
-          "last": 195.19,
-          "chgPct": -5.54,
-          "volume": 3990700,
+          "last": 201.97,
+          "chgPct": 3.97,
+          "volume": 17805500,
           "session": "headline",
-          "direction": "down",
-          "name": "Okta, Inc.",
+          "direction": "up",
+          "name": "QUALCOMM Incorporated",
           "sessionDate": "2026-09-25",
           "targetDate": "2026-09-25"
         }
       ],
       "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 195.19,
-      "chgPct": -5.54,
-      "volume": 3990700,
+      "primaryDirection": "up",
+      "last": 201.97,
+      "chgPct": 3.97,
+      "volume": 17805500,
       "tv": {
-        "latestEPS": 1.05,
-        "consensusEPS": 0.97,
-        "priorYrEPS": 0.91,
-        "surpriseEPS_pct": 8.77,
-        "surpriseEPS_dollar": 0.08000000000000007,
-        "latestRev_M": 805.0,
-        "consensusRev_M": 793.0,
-        "priorYrRev_M": 728.0,
-        "surpriseRev_pct": 1.51,
-        "yrYrRev_pct": 10.576923076923077,
-        "epsYoY_pct": 15.384615384615385,
+        "latestEPS": 2.21,
+        "consensusEPS": 2.23,
+        "priorYrEPS": 2.77,
+        "surpriseEPS_pct": -1.02,
+        "surpriseEPS_dollar": -0.020000000000000018,
+        "latestRev_M": 9950.0,
+        "consensusRev_M": 9690.0,
+        "priorYrRev_M": 10370.0,
+        "surpriseRev_pct": 2.6,
+        "yrYrRev_pct": -4.050144648023143,
+        "epsYoY_pct": -20.21660649819495,
         "epsEst_next4": [
-          0.93,
-          1.03,
-          1.01,
-          1.11
+          2.17,
+          2.27,
+          2.32,
+          2.5
         ],
         "revEst_next4": [
-          815.97,
-          837.53,
-          840.82,
-          882.73
+          10150.0,
+          10520.0,
+          10830.0,
+          11260.0
         ],
-        "yoyBlock": "+15.38% / +10.58%\n--------------------\n+13.41% / +9.97%\n+14.44% / +10.06%\n+10.99% / +9.91%\n+5.71% / +9.66%",
+        "yoyBlock": "-20.22% / -4.05%\n--------------------\n-27.67% / -9.94%\n-35.14% / -14.12%\n-12.45% / +2.17%\n+13.12% / +13.17%",
         "chart": {
           "quarters": [
+            "Q1 '25",
             "Q2 '25",
             "Q3 '25",
             "Q4 '25",
@@ -1452,85 +863,84 @@
             "Q4 '26",
             "Q1 '27",
             "Q2 '27",
-            "Q4 '20",
-            "Q1 '21",
+            "Q3 '27",
             "Q2 '21"
           ],
           "eps_reported": [
-            0.67,
-            0.78,
-            0.86,
-            0.91,
-            0.82,
-            0.9,
-            0.91,
-            1.05,
+            2.69,
+            3.41,
+            2.85,
+            2.77,
+            3.0,
+            3.5,
+            2.65,
+            2.21,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            0.58,
-            0.74,
-            0.77,
-            0.85,
-            0.76,
-            0.85,
-            0.85,
-            0.97,
-            0.93,
-            1.03,
-            1.01,
-            1.11
+            2.56,
+            2.96,
+            2.82,
+            2.71,
+            2.87,
+            3.39,
+            2.56,
+            2.23,
+            2.17,
+            2.27,
+            2.32,
+            2.5
           ],
           "rev_reported_M": [
-            665.0,
-            682.0,
-            688.0,
-            728.0,
-            742.0,
-            761.0,
-            765.0,
-            805.0,
+            10240.0,
+            11670.0,
+            10840.0,
+            10370.0,
+            11270.0,
+            12250.0,
+            10600.0,
+            9950.0,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            649.74,
-            668.91,
-            680.28,
-            712.26,
-            730.82,
-            749.52,
-            751.84,
-            793.0,
-            815.97,
-            837.53,
-            840.82,
-            882.73
+            9900.0,
+            10910.0,
+            10640.0,
+            10330.0,
+            10770.0,
+            12120.0,
+            10590.0,
+            9690.0,
+            10150.0,
+            10520.0,
+            10830.0,
+            11260.0
           ],
           "latest_idx": 7
         },
         "latestReportDate": null,
         "nextReportDate": null
       },
-      "shortFloat": 4.94,
-      "shortRatio": 2.33,
-      "marketCap_M": 34090,
-      "floatShares_M": 166.21,
-      "perf1M": 12.78,
-      "perf3M": 48.5,
-      "perf6M": 166.28,
-      "perfYTD": 125.51,
-      "perf12M": 113.91,
+      "shortFloat": 3.67,
+      "shortRatio": 2.83,
+      "marketCap_M": 208460,
+      "floatShares_M": 1040,
+      "perf1M": 20.46,
+      "perf3M": 5.18,
+      "perf6M": 56.16,
+      "perfYTD": 16.04,
+      "perf12M": 17.31,
       "prevOhlcv": null,
       "modelPred": {
         "version": "v12",
-        "gap": -5.54,
-        "predDay": -4.7,
+        "gap": 3.97,
+        "predDay": 2.7,
         "band": [
           -2.8,
           2.9
@@ -1538,105 +948,288 @@
         "tier": "na",
         "lottery": false,
         "spike": [
-          1.0,
-          2.3,
-          4.4
+          0,
+          0.7,
+          2.8
         ],
-        "predHi": -3.4,
+        "predHi": 4.7,
         "predHiBand": [
-          -4.6,
-          -1.4
+          4.0,
+          6.9
         ]
       }
     },
-    "ZS": {
-      "symbol": "ZS",
-      "name": "Zscaler, Inc.",
-      "type": "news",
+    "VRT": {
+      "symbol": "VRT",
+      "name": "Vertiv Holdings Co",
+      "type": "analyst",
       "earningsReaction": false,
-      "catalyst": "盤前 −3.5% 至 $207 — 9/24 盤後 8-K:營收長 Mike Rich 因個人因素 10/1 卸任,由全球業務主管 Ross Tackett 接任;CFO Kevin Rubin 9 月初法說會已把 FY27 ARR 指引保守歸因於「兩次業務主管交接」,此次換將正是其一",
-      "newsDetail": "> **今日跌因:** 盤前 **−3.5%** 至約 **$207** — Zscaler 9/24 盤後公告營收長(CRO)Mike Rich 卸任、由 Ross Tackett 接任;這正是 CFO 在上次法說會點名、導致 FY27 指引保守的「業務主管交接」。\n\n**人事異動(8-K)**\n\nZscaler 9/24 向 SEC 申報 8-K:營收長 **Mike Rich** 因個人因素將於 **10/1** 卸任,轉任策略顧問至 **12/31**,並依公司離職政策領取資遣福利。接任者 **Ross Tackett** 現任全球業務主管,在 Zscaler 約 3 年,之前在 ServiceNow 超過 10 年、Dell 超過 16 年。CEO Jay Chaudhry 稱他兼具「營運紀律、全球規模與以客戶為先的領導力」。8-K 由 CFO **Kevin Rubin** 簽署,**財務長本身沒有異動**,公告也未更新財測。\n\n**與 CFO 說法的關聯**\n\nZscaler 9 月初公布 FY26 Q4 財報時,FY27 年度經常性收入(ARR)指引中位數隱含淨新增 ARR 成長放緩到約 **4%**(Q4 才 **17%**)。CFO Rubin 當時把保守的主因歸於**兩次業務主管交接**的時點,以及新產品採用度仍待驗證。這次營收長換人,等於證實業務團隊確實在換手期,市場把它解讀為指引保守的理由成真。\n\n**其他**\n\nCFO Rubin 9/16 依預先設定的 10b5-1 計畫賣出 **5,957 股**、均價 **$192.76**(約 **$115 萬**),屬例行性交易。",
+      "catalyst": "盤前 +2.2% 至 $250.7 — 富國銀行首度給予 Vertiv 加碼評等、目標價 $340;AI 資料中心電力/散熱族群走強",
+      "newsDetail": "> **今日漲因:** 富國銀行(Wells Fargo)首度給予Vertiv Holdings**加碼(Overweight)**評等,目標價設在**340美元**,盤前上漲**2.2%**至約**250.7美元**。\n\n**評等理由**\n\n富國銀行分析師Stephen Tusa在啟動評等報告中指出,Vertiv是業界**營收成長最佳的公司之一**,約**85%**營收來自資料中心(data center)相關業務,受惠於AI基礎建設資本支出持續擴張的趨勢。以目前股價約245美元計算,340美元目標價隱含約**37%**的上漲空間。\n\n**產業脈絡**\n\nVertiv長期被視為AI資料中心電力與散熱基礎設施的核心供應商之一,先前包括花旗(Citi)在內的券商也曾於2026年4月將目標價上修至340美元,理由同樣指向AI驅動的工業需求趨勢不變。此次富國銀行以新覆蓋報告形式重申該股在資料中心供應鏈中的**成長領先地位**。\n\n**股價現況**\n\n今日盤前上漲反映市場對這份新覆蓋報告的正向解讀,呼應近月Vertiv股價隨資料中心/AI基礎建設投資熱度走高的整體趨勢。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=ZS"
+          "url": "https://finviz.com/quote.ashx?t=VRT"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/ZS"
+          "url": "https://finance.yahoo.com/quote/VRT"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-ZS/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-VRT/news/"
         }
       ],
-      "publishedAt": "2026-09-24T16:05:00-04:00",
+      "publishedAt": "2026-09-25T07:00:00-04:00",
       "publishedTimezone": "ET",
       "sources": [
         {
-          "label": "Zscaler 8-K(2026-09-24)",
-          "url": "https://www.sec.gov/Archives/edgar/data/0001713683/000171368326000193/zs-20260924.htm",
-          "publishedAt": "2026-09-24"
+          "label": "Investing.com (DE) — Wells Fargo startet Vertiv mit \"Overweight\" – Wachstum im Rechenzentrumsgeschäft als Treiber",
+          "url": "https://de.investing.com/news/analyst-ratings/wells-fargo-startet-vertiv-mit-overweight--wachstum-im-rechenzentrumsgeschaft-als-treiber-93CH-3677804",
+          "publishedAt": "2026-09-25"
         },
         {
-          "label": "Zscaler 新聞稿 Exhibit 99.1 — Ross Tackett 接任 CRO",
-          "url": "https://www.sec.gov/Archives/edgar/data/0001713683/000171368326000193/zs-09242026_991.htm",
-          "publishedAt": "2026-09-24"
-        },
-        {
-          "label": "Yahoo Finance — Zscaler Went From 100x Earnings to 40x(CFO 指引說法)",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/zscaler-went-100x-earnings-40x-194831797.html"
-        },
-        {
-          "label": "MarketBeat — Zscaler CFO 10b5-1 賣股",
-          "url": "https://www.marketbeat.com/instant-alerts/insider-insider-selling-zscaler-nasdaq-zs-cfo-sells-114827132-in-stock-2026-09-17/",
-          "publishedAt": "2026-09-17"
+          "label": "24/7 Wall St. — Citi Raises Vertiv Price Target to $340 as AI-Driven Industrial Trends Stay Intact",
+          "url": "https://247wallst.com/investing/2026/04/13/citi-raises-vertiv-price-target-to-340-as-ai-driven-industrial-trends-stay-intact/",
+          "publishedAt": "2026-04-13"
         }
       ],
       "seanAnalysis": null,
       "milanAnalysis": null,
       "sessions": [
         {
-          "last": 207.07,
-          "chgPct": -3.53,
-          "volume": 2383555,
+          "last": 250.65,
+          "chgPct": 2.18,
+          "volume": 0,
+          "session": "headline",
+          "direction": "up",
+          "name": "Vertiv Holdings Co",
+          "sessionDate": "2026-09-25",
+          "targetDate": "2026-09-25"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 250.65,
+      "chgPct": 2.18,
+      "volume": 0,
+      "tv": {
+        "latestEPS": 1.52,
+        "consensusEPS": 1.42,
+        "priorYrEPS": 0.95,
+        "surpriseEPS_pct": 6.87,
+        "surpriseEPS_dollar": 0.10000000000000009,
+        "latestRev_M": 3270.0,
+        "consensusRev_M": 3380.0,
+        "priorYrRev_M": 2640.0,
+        "surpriseRev_pct": -3.1,
+        "yrYrRev_pct": 23.863636363636363,
+        "epsYoY_pct": 60.00000000000001,
+        "epsEst_next4": [
+          1.82,
+          2.21,
+          1.68,
+          2.15
+        ],
+        "revEst_next4": [
+          3760.0,
+          4320.0,
+          3620.0,
+          4360.0
+        ],
+        "yoyBlock": "+60.00% / +23.86%\n--------------------\n+46.77% / +40.30%\n+62.50% / +50.00%\n+43.59% / +36.60%\n+41.45% / +33.33%",
+        "chart": {
+          "quarters": [
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q1 '21"
+          ],
+          "eps_reported": [
+            0.76,
+            0.99,
+            0.64,
+            0.95,
+            1.24,
+            1.36,
+            1.17,
+            1.52,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.69,
+            0.82,
+            0.61,
+            0.83,
+            0.98,
+            1.29,
+            1.0,
+            1.42,
+            1.82,
+            2.21,
+            1.68,
+            2.15
+          ],
+          "rev_reported_M": [
+            2070.0,
+            2350.0,
+            2040.0,
+            2640.0,
+            2680.0,
+            2880.0,
+            2650.0,
+            3270.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            1980.0,
+            2150.0,
+            1940.0,
+            2350.0,
+            2580.0,
+            2880.0,
+            2640.0,
+            3380.0,
+            3760.0,
+            4320.0,
+            3620.0,
+            4360.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": 3.69,
+      "shortRatio": 2.48,
+      "marketCap_M": 95710,
+      "floatShares_M": 383.73,
+      "perf1M": -7.68,
+      "perf3M": -19.01,
+      "perf6M": -0.98,
+      "perfYTD": 53.45,
+      "perf12M": 79.34,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": 2.18,
+        "predDay": 2.5,
+        "band": [
+          -2.3,
+          2.1
+        ],
+        "tier": "big",
+        "lottery": false,
+        "spike": [
+          0.6,
+          1.6,
+          2.7
+        ],
+        "predHi": 3.8,
+        "predHiBand": [
+          2.8,
+          4.9
+        ]
+      }
+    },
+    "COST": {
+      "symbol": "COST",
+      "name": "Costco Wholesale Corporation",
+      "type": "earnings",
+      "earningsReaction": true,
+      "catalyst": "盤前 −0.5% 至 $892 — 9/24 盤後公布 FY26 Q4:EPS $6.75 優於預估 $6.55、營收 $957 億(+11.2%);財報超預期但股價持平",
+      "newsDetail": "> **今日跌因:** 儘管 FY26 Q4 每股盈餘、營收與同店銷售全數超標,但獲利了結賣壓加上會員成長趨緩疑慮,COST 盤前小跌約 **0.5%** 至 **$892** 附近。\n\n**財報數據**\n\nCostco 9月24日 盤後公布 FY2026 第四季財報:每股盈餘 **$6.75**,優於市場預估的 $6.55;營收(含會員費)**$957億**,年增 **11.2%**。同店銷售成長 **9.4%**,排除油價與匯率後為 **6.7%**,優於分析師預估的 6.44%。管理層表示,未來若回落至 6-7% 區間可能是「較正常」的節奏。\n\n**電商與會員**\n\n電商同店銷售年增 **19.5%**(排除匯率後 19.8%),全年電商銷售突破 **$330億**,成長逾 20%。付費高級會員(Executive)成長 **9.4%** 至 **4,230萬人**,總付費會員數成長 3.8% 至 **8,410萬人**,續約率較上季改善,高級會員滲透率創新高。\n\n**展店與市場反應**\n\nFY2026 全年淨增 **25家**新倉儲店(美國18、加拿大5、其他國際2)。分析師普遍維持正面看法,21 位平均目標價約 **$1,092**,共識為「買進」;9月25日 盤前股價仍小幅走弱,顯示創高後漲勢略顯謹慎。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=COST"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/COST"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-COST/news/"
+        }
+      ],
+      "publishedAt": "2026-09-24T00:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Investing.com — Costco FY2026 Q4 slides: 11% sales growth, digital surge continues",
+          "url": "https://www.investing.com/news/company-news/costco-fy2026-q4-slides-11-sales-growth-digital-surge-continues-93CH-4916354",
+          "publishedAt": "2026-09-24"
+        },
+        {
+          "label": "Tradingpedia — Costco Caps Fiscal 2026 With Strong Q4 Beat and Sales Growth",
+          "url": "https://www.tradingpedia.com/2026/09/25/costco-caps-fiscal-2026-with-strong-q4-beat-and-sales-growth/",
+          "publishedAt": "2026-09-25"
+        },
+        {
+          "label": "Investing.com (CA) — Costco Wholesale Corp (COST) Q4 2026 Earnings Call Highlights",
+          "url": "https://ca.investing.com/news/company-news/costco-wholesale-corp-cost-q4-2026-earnings-call-highlights-doubledigit-sales-growth--4852870",
+          "publishedAt": "2026-09-24"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 892.0,
+          "chgPct": -0.5,
+          "volume": 2831452,
           "session": "headline",
           "direction": "down",
-          "name": "Zscaler, Inc.",
+          "name": "Costco Wholesale Corporation",
           "sessionDate": "2026-09-25",
           "targetDate": "2026-09-25"
         }
       ],
       "primarySession": "headline",
       "primaryDirection": "down",
-      "last": 207.07,
-      "chgPct": -3.53,
-      "volume": 2383555,
+      "last": 892.0,
+      "chgPct": -0.5,
+      "volume": 2831452,
       "tv": {
-        "latestEPS": 1.19,
-        "consensusEPS": 1.09,
-        "priorYrEPS": 0.89,
-        "surpriseEPS_pct": 9.32,
-        "surpriseEPS_dollar": 0.09999999999999987,
-        "latestRev_M": 898.18,
-        "consensusRev_M": 876.96,
-        "priorYrRev_M": 719.23,
-        "surpriseRev_pct": 2.42,
-        "yrYrRev_pct": 24.88077527355643,
-        "epsYoY_pct": 33.70786516853932,
+        "latestEPS": 6.75,
+        "consensusEPS": 6.54,
+        "priorYrEPS": 5.87,
+        "surpriseEPS_pct": 3.21,
+        "surpriseEPS_dollar": 0.20999999999999996,
+        "latestRev_M": 95720.0,
+        "consensusRev_M": 94970.0,
+        "priorYrRev_M": 86160.0,
+        "surpriseRev_pct": 0.8,
+        "yrYrRev_pct": 11.095636025998143,
+        "epsYoY_pct": 14.991482112436113,
         "epsEst_next4": [
-          1.16,
-          1.18,
-          1.23,
-          1.32
+          4.9,
+          5.14,
+          5.45,
+          7.27
         ],
         "revEst_next4": [
-          937.7,
-          956.99,
-          992.1,
-          1040.0
+          74200.0,
+          76640.0,
+          76110.0,
+          102730.0
         ],
-        "yoyBlock": "+33.71% / +24.88%\n--------------------\n+20.83% / +18.98%\n+16.83% / +17.31%\n+13.89% / +16.65%\n+10.92% / +15.79%",
+        "yoyBlock": "+14.99% / +11.10%\n--------------------\n+8.89% / +10.24%\n+12.23% / +10.11%\n+10.55% / +7.91%\n+7.70% / +7.32%",
         "chart": {
           "quarters": [
             "Q4 '25",
@@ -1653,80 +1246,80 @@
             "Q4 '21"
           ],
           "eps_reported": [
-            0.77,
-            0.78,
-            0.84,
-            0.89,
-            0.96,
-            1.01,
-            1.08,
-            1.19,
+            4.04,
+            4.02,
+            4.28,
+            5.87,
+            4.5,
+            4.58,
+            4.93,
+            6.75,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            0.63,
-            0.69,
-            0.75,
-            0.8,
-            0.86,
-            0.89,
-            1.01,
-            1.09,
-            1.16,
-            1.18,
-            1.23,
-            1.32
+            3.79,
+            4.09,
+            4.24,
+            5.8,
+            4.27,
+            4.55,
+            4.99,
+            6.54,
+            4.9,
+            5.14,
+            5.45,
+            7.27
           ],
           "rev_reported_M": [
-            627.96,
-            647.9,
-            678.03,
-            719.23,
-            788.11,
-            815.75,
-            850.48,
-            898.18,
+            62150.0,
+            63720.0,
+            63200.0,
+            86160.0,
+            67310.0,
+            69600.0,
+            70530.0,
+            95720.0,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            605.51,
-            634.38,
-            666.46,
-            706.94,
-            773.28,
-            798.33,
-            835.14,
-            876.96,
-            937.7,
-            956.99,
-            992.1,
-            1040.0
+            62050.0,
+            63110.0,
+            63130.0,
+            86010.0,
+            67140.0,
+            69290.0,
+            69790.0,
+            94970.0,
+            74200.0,
+            76640.0,
+            76110.0,
+            102730.0
           ],
           "latest_idx": 7
         },
-        "latestReportDate": null,
+        "latestReportDate": "2026-09-25",
         "nextReportDate": null
       },
-      "shortFloat": 6.15,
-      "shortRatio": 2.26,
-      "marketCap_M": 31060,
-      "floatShares_M": 105.74,
-      "perf1M": 1.71,
-      "perf3M": 38.44,
-      "perf6M": 43.06,
-      "perfYTD": -15.3,
-      "perf12M": -35.35,
+      "shortFloat": 1.66,
+      "shortRatio": 3.28,
+      "marketCap_M": 410930,
+      "floatShares_M": 442.96,
+      "perf1M": -0.86,
+      "perf3M": -2.12,
+      "perf6M": -5.82,
+      "perfYTD": 7.45,
+      "perf12M": 1.16,
       "prevOhlcv": null,
       "modelPred": {
         "version": "v12",
-        "gap": -4.03,
-        "predDay": -4.2,
+        "gap": -0.5,
+        "predDay": -1.1,
         "band": [
           -2.3,
           2.1
@@ -1734,14 +1327,199 @@
         "tier": "big",
         "lottery": false,
         "spike": [
-          2.6,
-          3.6,
-          4.7
+          0.1,
+          1.1,
+          2.2
         ],
-        "predHi": -0.6,
+        "predHi": 0.6,
         "predHiBand": [
-          -1.5,
-          0.5
+          -0.4,
+          1.7
+        ]
+      }
+    },
+    "SNPS": {
+      "symbol": "SNPS",
+      "name": "Synopsys, Inc.",
+      "type": "analyst",
+      "earningsReaction": false,
+      "catalyst": "盤前 +4.4%(收 +0.2%)— HSBC 將 Synopsys 升至「買進」,目標價由 $490 大幅上調至 $700,看好到 2028 年每股盈餘年增約 28%",
+      "newsDetail": "> **今日漲因:** 盤前 **+4.4%**(收盤僅 +0.2%、$425.76)— **HSBC 將 Synopsys 升至「買進」,目標價從 $490 大幅上調至 $700**。\n\n**分析師論點:** HSBC 看好 Synopsys 到 2028 年**每股盈餘年增約 28%**。新目標價 $700 較週五收盤有約 64% 上檔空間,是近期晶片設計軟體(EDA)族群最積極的目標價之一。CNBC 盤前異動股清單將 SNPS 與 AKAM、NKE 並列。\n\n**盤中走勢:** 盤前漲幅在開盤後幾乎全數回吐,收盤僅微漲 0.2%,成交量 **217 萬股** —— 單一分析師升評沒有帶出持續買盤。\n\n**族群背景:** 同日半導體設備與類比晶片(LRCX、AMAT、TXN)走強約 2.5-2.8%,QCOM 因 Apple 專利授權續約 +4%。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=SNPS"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/SNPS"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-SNPS/news/"
+        }
+      ],
+      "publishedAt": "2026-09-25T06:30:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "CNBC — Stocks making the biggest moves premarket: AKAM, SNPS, NKE",
+          "url": "https://www.cnbc.com/2026/09/25/stocks-making-the-biggest-moves-premarket-akam-snps-nke.html"
+        },
+        {
+          "label": "24/7 Wall St — HSBC upgrades Synopsys to Buy",
+          "url": "https://247wallst.com/investing/2026/09/25/hsbc-upgrades-synopsys-to-buy-sees-28-earnings-growth-through-2028/"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 425.76,
+          "chgPct": 4.38,
+          "volume": 2170900,
+          "session": "headline",
+          "direction": "up",
+          "name": "Synopsys, Inc.",
+          "sessionDate": "2026-09-25",
+          "targetDate": "2026-09-25"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 425.76,
+      "chgPct": 4.38,
+      "volume": 2170900,
+      "tv": {
+        "latestEPS": 3.91,
+        "consensusEPS": 3.67,
+        "priorYrEPS": 3.39,
+        "surpriseEPS_pct": 6.63,
+        "surpriseEPS_dollar": 0.2400000000000002,
+        "latestRev_M": 2480.0,
+        "consensusRev_M": 2440.0,
+        "priorYrRev_M": 1740.0,
+        "surpriseRev_pct": 1.61,
+        "yrYrRev_pct": 42.5287356321839,
+        "epsYoY_pct": 15.339233038348082,
+        "epsEst_next4": [
+          4.12,
+          4.33,
+          3.98,
+          4.49
+        ],
+        "revEst_next4": [
+          2560.0,
+          2650.0,
+          2550.0,
+          2730.0
+        ],
+        "yoyBlock": "+15.34% / +42.53%\n--------------------\n+42.07% / +13.78%\n+14.85% / +9.96%\n+18.81% / +11.84%\n+14.83% / +10.08%",
+        "chart": {
+          "quarters": [
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q3 '27",
+            "Q1 '21",
+            "Q2 '21",
+            "Q3 '21"
+          ],
+          "eps_reported": [
+            3.4,
+            3.03,
+            3.67,
+            3.39,
+            2.9,
+            3.77,
+            3.35,
+            3.91,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            3.3,
+            2.79,
+            3.39,
+            3.8,
+            2.78,
+            3.56,
+            3.15,
+            3.67,
+            4.12,
+            4.33,
+            3.98,
+            4.49
+          ],
+          "rev_reported_M": [
+            1640.0,
+            1460.0,
+            1600.0,
+            1740.0,
+            2250.0,
+            2410.0,
+            2280.0,
+            2480.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            1630.0,
+            1450.0,
+            1600.0,
+            1770.0,
+            2250.0,
+            2390.0,
+            2250.0,
+            2440.0,
+            2560.0,
+            2650.0,
+            2550.0,
+            2730.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": 3.14,
+      "shortRatio": 3.01,
+      "marketCap_M": 80490,
+      "floatShares_M": 182.02,
+      "perf1M": -9.66,
+      "perf3M": -6.09,
+      "perf6M": 10.39,
+      "perfYTD": -10.59,
+      "perf12M": -13.89,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": 4.38,
+        "predDay": 7.2,
+        "band": [
+          -2.8,
+          2.9
+        ],
+        "tier": "na",
+        "lottery": false,
+        "spike": [
+          0.3,
+          1.6,
+          3.6
+        ],
+        "predHi": 6.1,
+        "predHiBand": [
+          4.7,
+          8.1
         ]
       }
     },
@@ -1958,89 +1736,98 @@
         ]
       }
     },
-    "QCOM": {
-      "symbol": "QCOM",
-      "name": "QUALCOMM Incorporated",
-      "type": "contract",
+    "MGM": {
+      "symbol": "MGM",
+      "name": "MGM Resorts International",
+      "type": "M&A",
       "earningsReaction": false,
-      "catalyst": "週五 +4.0% 收 $201.97 — 與 Apple 續簽全球專利授權協議(2027/4/1 生效),市場先賣後買,確認授權營收延續;新款 Snapdragon 8 Elite 同步推出",
-      "newsDetail": "> **今日漲因:** 週五 **+4.0% 收 $201.97**(盤中一度 +5.7%)— Qualcomm 與 Apple **續簽全球專利授權協議**,2027 年 4 月 1 日起生效;市場先把續約讀成條件讓步而賣,盤中翻多。\n\n**事件內容:** Qualcomm 宣布與 Apple 的全球專利授權協議續約,新約自 **2027/4/1** 生效,Apple 將繼續使用 Qualcomm 的無線通訊專利並支付權利金。這解除了市場對 Apple 改用自研數據機晶片後、授權收入(QTL 部門)跟著斷掉的疑慮 —— 晶片供貨可以被替代,專利授權費仍要付。\n\n**盤中走勢:** 公告初期股價下跌(市場擔心條款讓步),隨後買盤回補,收盤反轉上漲約 4%,成交量 **1,781 萬股**,明顯高於平日。同日新款 Snapdragon 8 Elite 晶片推出、裝置端 AI 題材一併被提及。\n\n**族群背景:** 同日半導體設備(LRCX +2.8%、AMAT +2.5%)與 TXN(+2.8%)同步走強,大盤受公債殖利率回落、美伊荷莫茲海峽談判帶動油價下跌支撐。",
+      "catalyst": "週五 −3.3% — People Inc(Barry Diller)撤回每股 $48.30、估值逾 $180 億的收購提案後,WSJ 報導 MGM 反過來洽談收購 People;MGM 本週累計跌近 15%,People 週五 +11%",
+      "newsDetail": "> **今日跌因:** 週五 **−3.3% 收 $32.58**,本週累計跌近 **15%** — Barry Diller 的 People Inc 撤回收購 MGM 的提案後,WSJ 報導 MGM 反過來洽談收購 People,買賣雙方角色對調。\n\n**撤回的收購案:** People Inc 6 月 1 日提出**非約束性**提案,以**每股現金 $48.30** 收購其尚未持有的 MGM 股權(People 已持有約 27%),含債估值逾 **$180 億**。Diller 本週確認談判終止,稱交易的條件「沒有如預期湊齊」—— 原本支撐 MGM 股價的收購價參考點就此消失。\n\n**角色對調:** 據 WSJ(Bloomberg 9/24 轉述),**MGM 正討論對 People Inc 出價**;兩家都認為自家股價被低估,People 旗下 Food & Wine 等生活風格雜誌可與 MGM 的旅遊娛樂業務互補。消息帶動 **People 週五 +11% 收 $40.05**,MGM 則續跌 —— 收購方通常承壓。\n\n**對照:** MGM 現價 $32.58,較原提案 $48.30 低約 33%。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=QCOM"
+          "url": "https://finviz.com/quote.ashx?t=MGM"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/QCOM"
+          "url": "https://finance.yahoo.com/quote/MGM"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-QCOM/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-MGM/news/"
         }
       ],
-      "publishedAt": "2026-09-25T08:00:00-04:00",
+      "publishedAt": "2026-09-24T18:00:00-04:00",
       "publishedTimezone": "ET",
       "sources": [
         {
-          "label": "24/7 Wall St — Qualcomm rallies as buyers reverse Apple renewal selloff",
-          "url": "https://247wallst.com/investing/2026/09/25/qualcomm-rallies-6-as-buyers-reverse-apple-renewal-selloff-apple-stock-ticks-up/"
+          "label": "Bloomberg — MGM Resorts is discussing making a bid for People: WSJ",
+          "url": "https://www.bloomberg.com/news/articles/2026-09-24/mgm-resorts-is-discussing-making-a-bid-for-people-wsj"
         },
         {
-          "label": "Benzinga — What is going on with Qualcomm stock on Friday",
-          "url": "https://www.benzinga.com/markets/tech/26/09/62002905/what-is-going-on-with-qualcomm-stock-on-friday"
+          "label": "iGaming Business — MGM could bid for People Inc after Diller rescinds offer",
+          "url": "https://igamingbusiness.com/casino/mgm-people-inc-flipped-september-2026/"
         },
         {
-          "label": "GuruFocus — Apple extends the royalty bridge",
-          "url": "https://www.gurufocus.com/news/9097410/qualcomm-stocks-jump-as-apple-extends-the-royalty-bridge"
+          "label": "Deadline — People Inc shares surge on role-reversal report",
+          "url": "https://deadline.com/2026/09/barry-diller-people-inc-merger-mgm-resorts-1237113781/"
         }
       ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
+      "seanAnalysis": {
+        "verdict": "AVOID",
+        "summary": "併購案破局是找不到資金,月線已跌两成,現在是壞消息剛反映完,不是低接時機,先閃。",
+        "sourceDate": "2026-09-24"
+      },
+      "milanAnalysis": {
+        "score": 6,
+        "summary": "收購案正式撤回非僅延後,移除潛在收購溢價,屬確定性負面事件但基本面未變",
+        "sourceDate": "2026-09-24"
+      },
       "sessions": [
         {
-          "last": 201.97,
-          "chgPct": 3.97,
-          "volume": 17805500,
+          "last": 32.58,
+          "chgPct": -3.29,
+          "volume": 11252700,
           "session": "headline",
-          "direction": "up",
-          "name": "QUALCOMM Incorporated",
+          "direction": "down",
+          "name": "MGM Resorts International",
           "sessionDate": "2026-09-25",
           "targetDate": "2026-09-25"
         }
       ],
       "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 201.97,
-      "chgPct": 3.97,
-      "volume": 17805500,
+      "primaryDirection": "down",
+      "last": 32.58,
+      "chgPct": -3.29,
+      "volume": 11252700,
       "tv": {
-        "latestEPS": 2.21,
-        "consensusEPS": 2.23,
-        "priorYrEPS": 2.77,
-        "surpriseEPS_pct": -1.02,
-        "surpriseEPS_dollar": -0.020000000000000018,
-        "latestRev_M": 9950.0,
-        "consensusRev_M": 9690.0,
-        "priorYrRev_M": 10370.0,
-        "surpriseRev_pct": 2.6,
-        "yrYrRev_pct": -4.050144648023143,
-        "epsYoY_pct": -20.21660649819495,
+        "latestEPS": 0.59,
+        "consensusEPS": 0.56,
+        "priorYrEPS": 0.79,
+        "surpriseEPS_pct": 5.49,
+        "surpriseEPS_dollar": 0.029999999999999916,
+        "latestRev_M": 4450.0,
+        "consensusRev_M": 4420.0,
+        "priorYrRev_M": 4400.0,
+        "surpriseRev_pct": 0.79,
+        "yrYrRev_pct": 1.1363636363636365,
+        "epsYoY_pct": -25.31645569620254,
         "epsEst_next4": [
-          2.17,
-          2.27,
-          2.32,
-          2.5
+          0.16,
+          0.45,
+          0.5,
+          0.55
         ],
         "revEst_next4": [
-          10150.0,
-          10520.0,
-          10830.0,
-          11260.0
+          4280.0,
+          4480.0,
+          4420.0,
+          4450.0
         ],
-        "yoyBlock": "-20.22% / -4.05%\n--------------------\n-27.67% / -9.94%\n-35.14% / -14.12%\n-12.45% / +2.17%\n+13.12% / +13.17%",
+        "yoyBlock": "-25.32% / +1.14%\n--------------------\n-33.33% / +0.71%\n-71.88% / -2.82%\n+2.04% / -0.67%\n-6.78% / +0.00%",
         "chart": {
           "quarters": [
+            "Q4 '24",
             "Q1 '25",
             "Q2 '25",
             "Q3 '25",
@@ -2051,84 +1838,91 @@
             "Q4 '26",
             "Q1 '27",
             "Q2 '27",
-            "Q3 '27",
-            "Q2 '21"
+            "Q1 '21"
           ],
           "eps_reported": [
-            2.69,
-            3.41,
-            2.85,
-            2.77,
-            3.0,
-            3.5,
-            2.65,
-            2.21,
+            0.54,
+            0.45,
+            0.69,
+            0.79,
+            0.24,
+            1.6,
+            0.49,
+            0.59,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            2.56,
-            2.96,
-            2.82,
-            2.71,
-            2.87,
-            3.39,
-            2.56,
-            2.23,
-            2.17,
-            2.27,
-            2.32,
-            2.5
+            0.59,
+            0.3,
+            0.46,
+            0.58,
+            0.42,
+            0.67,
+            0.5,
+            0.56,
+            0.16,
+            0.45,
+            0.5,
+            0.55
           ],
           "rev_reported_M": [
-            10240.0,
-            11670.0,
-            10840.0,
-            10370.0,
-            11270.0,
-            12250.0,
-            10600.0,
-            9950.0,
+            4180.0,
+            4350.0,
+            4280.0,
+            4400.0,
+            4250.0,
+            4610.0,
+            4450.0,
+            4450.0,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            9900.0,
-            10910.0,
-            10640.0,
-            10330.0,
-            10770.0,
-            12120.0,
-            10590.0,
-            9690.0,
-            10150.0,
-            10520.0,
-            10830.0,
-            11260.0
+            4210.0,
+            4270.0,
+            4280.0,
+            4320.0,
+            4240.0,
+            4500.0,
+            4370.0,
+            4420.0,
+            4280.0,
+            4480.0,
+            4420.0,
+            4450.0
           ],
           "latest_idx": 7
         },
         "latestReportDate": null,
         "nextReportDate": null
       },
-      "shortFloat": 3.67,
-      "shortRatio": 2.83,
-      "marketCap_M": 208460,
-      "floatShares_M": 1040,
-      "perf1M": 20.46,
-      "perf3M": 5.18,
-      "perf6M": 56.16,
-      "perfYTD": 16.04,
-      "perf12M": 17.31,
-      "prevOhlcv": null,
+      "shortFloat": 10.57,
+      "shortRatio": 6.53,
+      "marketCap_M": 8180,
+      "floatShares_M": 181.41,
+      "perf1M": -24.37,
+      "perf3M": -34.59,
+      "perf6M": -10.52,
+      "perfYTD": -10.93,
+      "perf12M": -8.71,
+      "prevOhlcv": {
+        "date": "2026-09-23",
+        "open": 38.54,
+        "high": 38.98,
+        "low": 37.64,
+        "close": 37.85,
+        "volume": 3052100,
+        "prev_close": 38.73
+      },
       "modelPred": {
         "version": "v12",
-        "gap": 3.97,
-        "predDay": 2.7,
+        "gap": -3.29,
+        "predDay": -3.6,
         "band": [
           -2.8,
           2.9
@@ -2136,14 +1930,14 @@
         "tier": "na",
         "lottery": false,
         "spike": [
-          0,
-          0.7,
-          2.8
+          0.3,
+          1.6,
+          3.7
         ],
-        "predHi": 4.7,
+        "predHi": -1.7,
         "predHiBand": [
-          4.0,
-          6.9
+          -3.0,
+          0.3
         ]
       }
     },
@@ -2332,6 +2126,212 @@
           -2.2,
           -0.1
         ]
+      }
+    },
+    "NKE": {
+      "symbol": "NKE",
+      "name": "NIKE, Inc.",
+      "type": "analyst",
+      "earningsReaction": false,
+      "catalyst": "盤前 −2.1% 至 $35.2 — 美銀證券將 Nike 評等由中立降至表現落後,目標價由 $47 大砍至 $30",
+      "newsDetail": "> **今日跌因:** 美銀證券(BofA Securities)將Nike評等由中立降至**表現落後(Underperform)**,目標價自**47美元**大砍至**30美元**,盤前跌**2.1%**至約**35.2美元**。\n\n**降評理由**\n\nBofA分析師指出,Nike創新產品線的表現持續被經典鞋款(classics)業務的下滑壓力掩蓋,加上類股與總體經濟逆風正在累積,使公司獲利估值面臨**下行風險**。分析師同時將財測展望轉趨保守:先前預期**2027財年**春季營收將回溫,如今改為預估**2027財年營收將呈負成長**;**2027財年**每股盈餘(EPS)估計調降**11%**、**2028財年**調降**12%**,使2027財年EPS預估較華爾街共識低**14%**。\n\n**目標價與評等調整依據**\n\n新目標價30美元是以**16倍本益比**推算(先前為22倍),下修後與同業平均水準看齊。BofA同時將Nike的收益評等(income rating)由7降至8,理由是公司**股利發放率已超過100%**,對股利永續性亮起警訊。\n\n**股價現況**\n\nNike股價目前約**35.99美元**,貼近52週低點**35.35美元**,過去六個月累計下跌約**31%**,是道瓊成分股中表現最差之一;今日盤前續跌反映市場對這次降評的即時反應。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=NKE"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/NKE"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-NKE/news/"
+        }
+      ],
+      "publishedAt": "2026-09-25T07:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Seeking Alpha — BofA downgrades Nike to Underperform, cuts PT to $30",
+          "url": "https://seekingalpha.com/news/4647047-bofa-downgrades-nike-to-underperform-cuts-pt-to-30",
+          "publishedAt": "2026-09-25"
+        },
+        {
+          "label": "Investing.com — BofA cuts Nike stock rating on innovation concerns, slashes target to $30",
+          "url": "https://ng.investing.com/news/stock-market-news/bofa-cuts-nike-stock-rating-on-innovation-concerns-slashes-target-to-30-93CH-2709653",
+          "publishedAt": "2026-09-25"
+        },
+        {
+          "label": "TradingPedia — Nike Shares Slide as Wall Street Target Cuts Pressure Stock",
+          "url": "https://www.tradingpedia.com/2026/09/25/nike-shares-slide-as-wall-street-target-cuts-pressure-stock/",
+          "publishedAt": "2026-09-25"
+        }
+      ],
+      "seanAnalysis": {
+        "verdict": "PASS",
+        "summary": "美銀降評砍目標價,只是分析師意見沒新基本面,財報前不追空",
+        "sourceDate": "2026-09-25"
+      },
+      "milanAnalysis": {
+        "score": 2,
+        "summary": "美銀降評非公司新資訊,是既有疲弱基本面的重新詮釋,證據力弱於公司自行揭露",
+        "sourceDate": "2026-09-25"
+      },
+      "sessions": [
+        {
+          "last": 35.23,
+          "chgPct": -2.11,
+          "volume": 0,
+          "session": "headline",
+          "direction": "down",
+          "name": "NIKE, Inc.",
+          "sessionDate": "2026-09-25",
+          "targetDate": "2026-09-25"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "down",
+      "last": 35.23,
+      "chgPct": -2.11,
+      "volume": 0,
+      "tv": {
+        "latestEPS": 0.72,
+        "consensusEPS": 0.12,
+        "priorYrEPS": 0.14,
+        "surpriseEPS_pct": 479.22,
+        "surpriseEPS_dollar": 0.6,
+        "latestRev_M": 10970.0,
+        "consensusRev_M": 10850.0,
+        "priorYrRev_M": 11100.0,
+        "surpriseRev_pct": 1.13,
+        "yrYrRev_pct": -1.1711711711711712,
+        "epsYoY_pct": 414.2857142857142,
+        "epsEst_next4": [
+          0.44,
+          0.52,
+          0.42,
+          0.27
+        ],
+        "revEst_next4": [
+          11330.0,
+          11830.0,
+          11190.0,
+          11020.0
+        ],
+        "yoyBlock": "+414.29% / -1.17%\n--------------------\n-10.20% / -3.33%\n-1.89% / -4.83%\n+20.00% / -0.80%\n-62.50% / +0.46%",
+        "chart": {
+          "quarters": [
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q3 '20"
+          ],
+          "eps_reported": [
+            0.7,
+            0.78,
+            0.54,
+            0.14,
+            0.49,
+            0.53,
+            0.35,
+            0.72,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.52,
+            0.67,
+            0.3,
+            0.13,
+            0.27,
+            0.37,
+            0.29,
+            0.12,
+            0.44,
+            0.52,
+            0.42,
+            0.27
+          ],
+          "rev_reported_M": [
+            11590.0,
+            12350.0,
+            11270.0,
+            11100.0,
+            11720.0,
+            12430.0,
+            11280.0,
+            10970.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            11640.0,
+            12130.0,
+            11020.0,
+            10730.0,
+            10990.0,
+            12200.0,
+            11230.0,
+            10850.0,
+            11330.0,
+            11830.0,
+            11190.0,
+            11020.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": "2026-10-02"
+      },
+      "shortFloat": 7.3,
+      "shortRatio": 3.08,
+      "marketCap_M": 52600,
+      "floatShares_M": 1170,
+      "perf1M": -7.75,
+      "perf3M": -14.51,
+      "perf6M": -30.97,
+      "perfYTD": -44.34,
+      "perf12M": -48.84,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": -2.11,
+        "predDay": -2.0,
+        "band": [
+          -2.3,
+          2.1
+        ],
+        "tier": "big",
+        "lottery": false,
+        "spike": [
+          0.7,
+          1.7,
+          2.9
+        ],
+        "predHi": -0.4,
+        "predHiBand": [
+          -1.4,
+          0.7
+        ],
+        "predQuant": -1.5,
+        "qual": {
+          "adj": -0.5,
+          "confidence": "low",
+          "reasoning": "美銀降評且目標價 $30 距現價仍有約 15% 下檔,財報前的公開唱空通常讓買方觀望;跳空僅 −2%,微幅下調。"
+        }
       }
     },
     "AKAM": {
