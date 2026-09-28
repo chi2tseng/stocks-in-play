@@ -51,6 +51,13 @@ BE CEG VST NRG TLN OKLO SMR VRT ETN PWR NEE EMR PH ROK FSLR CARR JCI EME AOS
 P ILMN SNX DRI CTAS PAYX GIS ROST ORLY AZO CMG YUM DRI MAR HLT LVS WYNN MGM CZR DASH ABNB
 """.split()
 
+# 核心大股(2026-09-28 使用者:「FAANG、AVGO 之類的都要找」— NVDA +1.8% 帶 $1,500 億回購卻沒被 ≥2% 門檻列出)。
+# 不看漲跌幅,每次必抓頭條;有當日重大新聞就以 Session=headline 補入(§2.0b)。
+CORE = """
+AAPL MSFT NVDA GOOGL AMZN META NFLX AVGO TSLA ORCL AMD TSM PLTR MU LLY JPM V MA WMT COST
+UNH XOM BRK-B ASML NVO BABA INTC QCOM CRM ADBE
+""".split()
+
 def chg_today(sym):
     # Pre/post-aware (2026-07-16 ABT lesson): daily closes are blind to pre-market.
     # 2026-07-20 fix: the old range=1d call silently returned the PREVIOUS trading
@@ -79,18 +86,19 @@ if os.path.exists(_twp):
         pass
 
 seen = set(); hits = []; nodata = []
-for sym in list(UNIVERSE) + [s for s in theme_syms if s not in UNIVERSE]:
+for sym in CORE + list(UNIVERSE) + [s for s in theme_syms if s not in UNIVERSE]:
     if sym in seen: continue
     seen.add(sym)
     r = chg_today(sym)
-    th = THEME_THRESHOLD if sym in theme_syms else THRESHOLD
+    th = 0 if sym in CORE else THEME_THRESHOLD if sym in theme_syms else THRESHOLD
     if r is None:
         nodata.append(sym)          # no-premarket-data: hasn't traded today yet
     elif abs(r[0]) >= th:
         hits.append((sym, r[0], r[1], sym in have))
 
 hits.sort(key=lambda x: -abs(x[1]))
-missing = [h for h in hits if not h[3]]
+core_hits = [h for h in hits if h[0] in CORE and not h[3] and abs(h[1]) < THRESHOLD]
+missing = [h for h in hits if not h[3] and h not in core_hits]
 
 # headline column — default ON. A mover with no "why" attached is a lead nobody
 # chases (2026-07-20 GOOG). Threaded: 8 workers keeps this under ~5s.
@@ -116,6 +124,10 @@ for sym, chg, last, _ in missing:
     show(sym, chg, last)
 if not missing:
     print('  (none — all large-cap movers already in the scan)')
+if core_hits:
+    print(f'--- CORE megacaps <{THRESHOLD}% (不看漲跌幅:逐檔判斷頭條是否為當日重大新聞,是就補入) ---')
+    for sym, chg, last, _ in core_hits:
+        show(sym, chg, last)
 already = [h for h in hits if h[3]]
 if already:
     print('--- already in candidates.csv (headline for cross-check) ---')
