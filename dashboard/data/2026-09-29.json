@@ -1,195 +1,8 @@
 {
   "date": "2026-09-29",
-  "scanTime": "21:18",
-  "scanTimestamp": "2026-09-30T21:18",
+  "scanTime": "21:21",
+  "scanTimestamp": "2026-09-30T21:21",
   "stocks": {
-    "EFX": {
-      "symbol": "EFX",
-      "name": "Equifax Inc",
-      "type": "policy",
-      "earningsReaction": false,
-      "catalyst": "FHFA 9/28 宣布房貸評分引入競爭(VantageScore 納入定價表),信用局隨 FICO 同步下挫",
-      "newsDetail": "> **今日跌因:** 9/28 盤後 FHFA 局長 Pulte 宣布房利美、房地美將改採單一房貸定價表,VantageScore 4.0 與傳統 FICO 並列,房貸評分市場走向競爭,信用局股價盤前承壓(EFX 盤前約 -4.7%)。\n\n**事件詳解**\nFHFA 局長 Bill Pulte 週一(9/28)晚間宣布,房利美(Fannie Mae)與房地美(Freddie Mac)將把 **VantageScore 4.0** 納入與傳統 FICO 並列的單一房貸定價表,用來計算貸款的前端費率調整(LLPA)。此前 FHFA 已在 9/9 讓所有核准貸款機構都能使用 VantageScore 4.0,不必再事先取得書面核准。\n\n**官方說法與細節**\n據媒體報導,Pulte 這次沒有公布生效日,也沒有附上新的定價矩陣,因此借款人層級的實際費率影響目前還無法計算。VantageScore 是由 Equifax、Experian、TransUnion 三家信用局共同持有的合資公司;各家信用局已把 VantageScore 4.0 的單價壓低,Equifax 報價低至 **1 美元**,TransUnion 與 Experian 約 **0.99 美元**。\n\n**市場反應**\nEFX 9/28 收盤約 **148.11 美元**,盤前約下跌 **4.7%**(盤前跌幅為任務提供資料,本次查不到一級來源交叉驗證)。9/4 曾因 Pulte 批評信用局定價「卡特爾式」、並考慮 bi-merge 等做法,EFX 當日下跌約 7%,這次是同一議題的延續。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=EFX"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/EFX"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-EFX/news/"
-        }
-      ],
-      "publishedAt": "2026-09-29T06:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "WRE News:房利美、房地美改採單一定價表(納入 VantageScore 4.0)",
-          "url": "https://wrenews.com/fannie-freddie-single-pricing-grid-vantagescore-fico-2026/"
-        },
-        {
-          "label": "FHFA:Credit Scores",
-          "url": "https://www.fhfa.gov/policy/credit-scores"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 138.97,
-          "chgPct": -4.67,
-          "volume": 2323139,
-          "session": "headline",
-          "direction": "down",
-          "name": "Equifax Inc",
-          "sessionDate": "2026-09-29",
-          "targetDate": "2026-09-29"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 138.97,
-      "chgPct": -4.67,
-      "volume": 2323139,
-      "tv": {
-        "latestEPS": 2.25,
-        "consensusEPS": 2.2,
-        "priorYrEPS": 2.0,
-        "surpriseEPS_pct": 2.19,
-        "surpriseEPS_dollar": 0.04999999999999982,
-        "latestRev_M": 1700.0,
-        "consensusRev_M": 1700.0,
-        "priorYrRev_M": 1540.0,
-        "surpriseRev_pct": 0.23,
-        "yrYrRev_pct": 10.38961038961039,
-        "epsYoY_pct": 12.5,
-        "epsEst_next4": [
-          2.22,
-          2.23,
-          2.15,
-          2.55
-        ],
-        "revEst_next4": [
-          1700.0,
-          1700.0,
-          1780.0,
-          1840.0
-        ],
-        "yoyBlock": "+12.50% / +10.39%\n--------------------\n+8.82% / +10.39%\n+6.70% / +9.68%\n+15.59% / +7.88%\n+13.33% / +8.24%",
-        "chart": {
-          "quarters": [
-            "Q4 '24",
-            "Q1 '25",
-            "Q2 '25",
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q1 '21"
-          ],
-          "eps_reported": [
-            1.85,
-            2.12,
-            1.53,
-            2.0,
-            2.04,
-            2.09,
-            1.86,
-            2.25,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            1.85,
-            2.1,
-            1.41,
-            1.93,
-            1.94,
-            2.06,
-            1.69,
-            2.2,
-            2.22,
-            2.23,
-            2.15,
-            2.55
-          ],
-          "rev_reported_M": [
-            1440.0,
-            1420.0,
-            1440.0,
-            1540.0,
-            1540.0,
-            1550.0,
-            1650.0,
-            1700.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            1440.0,
-            1440.0,
-            1420.0,
-            1510.0,
-            1530.0,
-            1530.0,
-            1620.0,
-            1700.0,
-            1700.0,
-            1700.0,
-            1780.0,
-            1840.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": 6.65,
-      "shortRatio": 5,
-      "marketCap_M": 16550,
-      "floatShares_M": 116.56,
-      "perf1M": -25.54,
-      "perf3M": -13.15,
-      "perf6M": -21.79,
-      "perfYTD": -35.09,
-      "perf12M": -45.1,
-      "prevOhlcv": null,
-      "modelPred": {
-        "version": "v12",
-        "gap": -4.65,
-        "predDay": -4.7,
-        "band": [
-          -2.8,
-          2.9
-        ],
-        "tier": "na",
-        "gapScan": 0.62,
-        "lottery": false,
-        "spike": [
-          0.6,
-          1.9,
-          3.7
-        ],
-        "predHi": -2.8,
-        "predHiBand": [
-          -4.1,
-          -1.1
-        ],
-        "asOf": "09:39 開盤定格"
-      }
-    },
     "CCL": {
       "symbol": "CCL",
       "name": "Carnival Corporation Ltd.",
@@ -379,6 +192,197 @@
         "predHiBand": [
           12.1,
           15.5
+        ],
+        "asOf": "09:39 開盤定格"
+      }
+    },
+    "TRU": {
+      "symbol": "TRU",
+      "name": "TransUnion",
+      "type": "policy",
+      "earningsReaction": false,
+      "catalyst": "FHFA 9/28 宣布房貸評分引入競爭(VantageScore 納入定價表),信用局隨 FICO 同步下挫",
+      "newsDetail": "> **今日跌因:** 9/28 盤後 FHFA 宣布房利美、房地美改採單一房貸定價表,VantageScore 4.0 與 FICO 並列,房貸評分競爭升溫,連帶拖累信用局類股,TRU 盤前約 -3%。\n\n**事件詳解**\nFHFA 局長 Bill Pulte 週一(9/28)晚間表示,房利美與房地美將把 **VantageScore 4.0** 與傳統 FICO 納入同一張房貸定價表,用於計算貸款的前端費率調整(LLPA)。VantageScore 由 Equifax、Experian、TransUnion 三家信用局共同持有,FHFA 早在 9/9 就已開放所有核准貸款機構直接使用 VantageScore 4.0。\n\n**官方說法與細節**\n這次公告未提供生效日期,也沒有公布替代的定價矩陣,借款人實際費用的影響仍待後續細節。市場對 TransUnion 的疑慮,除了評分模型競爭外,還包括 Pulte 先前(9/4)提到 FHFA 正「認真考慮」bi-merge(房貸改用兩家信用局報告)等更強硬措施,報導稱此舉可能讓房貸信用報告量減少約三分之一。\n\n**市場反應**\nTRU 盤前約下跌 **3%**(此數字為任務提供資料,本次查不到一級來源交叉驗證)。信用局已把 VantageScore 4.0 報價壓到約 **0.99 至 1 美元**。FICO 同日盤前也大跌。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=TRU"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/TRU"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-TRU/news/"
+        }
+      ],
+      "publishedAt": "2026-09-29T06:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "WRE News:房利美、房地美改採單一定價表(納入 VantageScore 4.0)",
+          "url": "https://wrenews.com/fannie-freddie-single-pricing-grid-vantagescore-fico-2026/"
+        },
+        {
+          "label": "FHFA:Credit Scores",
+          "url": "https://www.fhfa.gov/policy/credit-scores"
+        },
+        {
+          "label": "Benzinga:TransUnion 股價下跌原因(9 月)",
+          "url": "https://www.benzinga.com/trading-ideas/movers/26/09/61635623/transunion-stock-tumbles-friday-whats-driving-the-action"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 64.23,
+          "chgPct": -2.96,
+          "volume": 3205112,
+          "session": "headline",
+          "direction": "down",
+          "name": "TransUnion",
+          "sessionDate": "2026-09-29",
+          "targetDate": "2026-09-29"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "down",
+      "last": 64.23,
+      "chgPct": -2.96,
+      "volume": 3205112,
+      "tv": {
+        "latestEPS": 1.23,
+        "consensusEPS": 1.16,
+        "priorYrEPS": 1.08,
+        "surpriseEPS_pct": 6.47,
+        "surpriseEPS_dollar": 0.07000000000000006,
+        "latestRev_M": 1310.0,
+        "consensusRev_M": 1280.0,
+        "priorYrRev_M": 1140.0,
+        "surpriseRev_pct": 2.04,
+        "yrYrRev_pct": 14.912280701754385,
+        "epsYoY_pct": 13.888888888888879,
+        "epsEst_next4": [
+          1.21,
+          1.22,
+          1.35,
+          1.38
+        ],
+        "revEst_next4": [
+          1310.0,
+          1300.0,
+          1370.0,
+          1400.0
+        ],
+        "yoyBlock": "+13.89% / +14.91%\n--------------------\n+10.00% / +11.97%\n+14.02% / +11.11%\n+14.41% / +9.60%\n+12.20% / +6.87%",
+        "chart": {
+          "quarters": [
+            "Q4 '24",
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q1 '21"
+          ],
+          "eps_reported": [
+            1.04,
+            0.97,
+            1.05,
+            1.08,
+            1.1,
+            1.07,
+            1.18,
+            1.23,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            1.01,
+            0.96,
+            0.98,
+            0.99,
+            1.04,
+            1.03,
+            1.11,
+            1.16,
+            1.21,
+            1.22,
+            1.35,
+            1.38
+          ],
+          "rev_reported_M": [
+            1080.0,
+            1040.0,
+            1100.0,
+            1140.0,
+            1170.0,
+            1170.0,
+            1250.0,
+            1310.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            1060.0,
+            1030.0,
+            1070.0,
+            1100.0,
+            1130.0,
+            1130.0,
+            1210.0,
+            1280.0,
+            1310.0,
+            1300.0,
+            1370.0,
+            1400.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": 6.11,
+      "shortRatio": 5.08,
+      "marketCap_M": 12300,
+      "floatShares_M": 190.07,
+      "perf1M": -24.39,
+      "perf3M": -13.79,
+      "perf6M": -7.21,
+      "perfYTD": -25.13,
+      "perf12M": -23.37,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": -2.79,
+        "predDay": -2.8,
+        "band": [
+          -2.8,
+          2.9
+        ],
+        "tier": "na",
+        "gapScan": 1.65,
+        "lottery": false,
+        "spike": [
+          0.4,
+          1.7,
+          3.5
+        ],
+        "predHi": -1.1,
+        "predHiBand": [
+          -2.4,
+          0.6
         ],
         "asOf": "09:39 開盤定格"
       }
@@ -580,25 +584,25 @@
         "asOf": "09:39 開盤定格"
       }
     },
-    "TRU": {
-      "symbol": "TRU",
-      "name": "TransUnion",
+    "EFX": {
+      "symbol": "EFX",
+      "name": "Equifax Inc",
       "type": "policy",
       "earningsReaction": false,
       "catalyst": "FHFA 9/28 宣布房貸評分引入競爭(VantageScore 納入定價表),信用局隨 FICO 同步下挫",
-      "newsDetail": "> **今日跌因:** 9/28 盤後 FHFA 宣布房利美、房地美改採單一房貸定價表,VantageScore 4.0 與 FICO 並列,房貸評分競爭升溫,連帶拖累信用局類股,TRU 盤前約 -3%。\n\n**事件詳解**\nFHFA 局長 Bill Pulte 週一(9/28)晚間表示,房利美與房地美將把 **VantageScore 4.0** 與傳統 FICO 納入同一張房貸定價表,用於計算貸款的前端費率調整(LLPA)。VantageScore 由 Equifax、Experian、TransUnion 三家信用局共同持有,FHFA 早在 9/9 就已開放所有核准貸款機構直接使用 VantageScore 4.0。\n\n**官方說法與細節**\n這次公告未提供生效日期,也沒有公布替代的定價矩陣,借款人實際費用的影響仍待後續細節。市場對 TransUnion 的疑慮,除了評分模型競爭外,還包括 Pulte 先前(9/4)提到 FHFA 正「認真考慮」bi-merge(房貸改用兩家信用局報告)等更強硬措施,報導稱此舉可能讓房貸信用報告量減少約三分之一。\n\n**市場反應**\nTRU 盤前約下跌 **3%**(此數字為任務提供資料,本次查不到一級來源交叉驗證)。信用局已把 VantageScore 4.0 報價壓到約 **0.99 至 1 美元**。FICO 同日盤前也大跌。",
+      "newsDetail": "> **今日跌因:** 9/28 盤後 FHFA 局長 Pulte 宣布房利美、房地美將改採單一房貸定價表,VantageScore 4.0 與傳統 FICO 並列,房貸評分市場走向競爭,信用局股價盤前承壓(EFX 盤前約 -4.7%)。\n\n**事件詳解**\nFHFA 局長 Bill Pulte 週一(9/28)晚間宣布,房利美(Fannie Mae)與房地美(Freddie Mac)將把 **VantageScore 4.0** 納入與傳統 FICO 並列的單一房貸定價表,用來計算貸款的前端費率調整(LLPA)。此前 FHFA 已在 9/9 讓所有核准貸款機構都能使用 VantageScore 4.0,不必再事先取得書面核准。\n\n**官方說法與細節**\n據媒體報導,Pulte 這次沒有公布生效日,也沒有附上新的定價矩陣,因此借款人層級的實際費率影響目前還無法計算。VantageScore 是由 Equifax、Experian、TransUnion 三家信用局共同持有的合資公司;各家信用局已把 VantageScore 4.0 的單價壓低,Equifax 報價低至 **1 美元**,TransUnion 與 Experian 約 **0.99 美元**。\n\n**市場反應**\nEFX 9/28 收盤約 **148.11 美元**,盤前約下跌 **4.7%**(盤前跌幅為任務提供資料,本次查不到一級來源交叉驗證)。9/4 曾因 Pulte 批評信用局定價「卡特爾式」、並考慮 bi-merge 等做法,EFX 當日下跌約 7%,這次是同一議題的延續。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=TRU"
+          "url": "https://finviz.com/quote.ashx?t=EFX"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/TRU"
+          "url": "https://finance.yahoo.com/quote/EFX"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-TRU/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-EFX/news/"
         }
       ],
       "publishedAt": "2026-09-29T06:00:00-04:00",
@@ -611,56 +615,52 @@
         {
           "label": "FHFA:Credit Scores",
           "url": "https://www.fhfa.gov/policy/credit-scores"
-        },
-        {
-          "label": "Benzinga:TransUnion 股價下跌原因(9 月)",
-          "url": "https://www.benzinga.com/trading-ideas/movers/26/09/61635623/transunion-stock-tumbles-friday-whats-driving-the-action"
         }
       ],
       "seanAnalysis": null,
       "milanAnalysis": null,
       "sessions": [
         {
-          "last": 64.23,
-          "chgPct": -2.96,
-          "volume": 3205112,
+          "last": 138.97,
+          "chgPct": -4.67,
+          "volume": 2323139,
           "session": "headline",
           "direction": "down",
-          "name": "TransUnion",
+          "name": "Equifax Inc",
           "sessionDate": "2026-09-29",
           "targetDate": "2026-09-29"
         }
       ],
       "primarySession": "headline",
       "primaryDirection": "down",
-      "last": 64.23,
-      "chgPct": -2.96,
-      "volume": 3205112,
+      "last": 138.97,
+      "chgPct": -4.67,
+      "volume": 2323139,
       "tv": {
-        "latestEPS": 1.23,
-        "consensusEPS": 1.16,
-        "priorYrEPS": 1.08,
-        "surpriseEPS_pct": 6.47,
-        "surpriseEPS_dollar": 0.07000000000000006,
-        "latestRev_M": 1310.0,
-        "consensusRev_M": 1280.0,
-        "priorYrRev_M": 1140.0,
-        "surpriseRev_pct": 2.04,
-        "yrYrRev_pct": 14.912280701754385,
-        "epsYoY_pct": 13.888888888888879,
+        "latestEPS": 2.25,
+        "consensusEPS": 2.2,
+        "priorYrEPS": 2.0,
+        "surpriseEPS_pct": 2.19,
+        "surpriseEPS_dollar": 0.04999999999999982,
+        "latestRev_M": 1700.0,
+        "consensusRev_M": 1700.0,
+        "priorYrRev_M": 1540.0,
+        "surpriseRev_pct": 0.23,
+        "yrYrRev_pct": 10.38961038961039,
+        "epsYoY_pct": 12.5,
         "epsEst_next4": [
-          1.21,
-          1.22,
-          1.35,
-          1.38
+          2.22,
+          2.23,
+          2.15,
+          2.55
         ],
         "revEst_next4": [
-          1310.0,
-          1300.0,
-          1370.0,
-          1400.0
+          1700.0,
+          1700.0,
+          1780.0,
+          1840.0
         ],
-        "yoyBlock": "+13.89% / +14.91%\n--------------------\n+10.00% / +11.97%\n+14.02% / +11.11%\n+14.41% / +9.60%\n+12.20% / +6.87%",
+        "yoyBlock": "+12.50% / +10.39%\n--------------------\n+8.82% / +10.39%\n+6.70% / +9.68%\n+15.59% / +7.88%\n+13.33% / +8.24%",
         "chart": {
           "quarters": [
             "Q4 '24",
@@ -677,96 +677,96 @@
             "Q1 '21"
           ],
           "eps_reported": [
-            1.04,
-            0.97,
-            1.05,
-            1.08,
-            1.1,
-            1.07,
-            1.18,
-            1.23,
+            1.85,
+            2.12,
+            1.53,
+            2.0,
+            2.04,
+            2.09,
+            1.86,
+            2.25,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            1.01,
-            0.96,
-            0.98,
-            0.99,
-            1.04,
-            1.03,
-            1.11,
-            1.16,
-            1.21,
-            1.22,
-            1.35,
-            1.38
+            1.85,
+            2.1,
+            1.41,
+            1.93,
+            1.94,
+            2.06,
+            1.69,
+            2.2,
+            2.22,
+            2.23,
+            2.15,
+            2.55
           ],
           "rev_reported_M": [
-            1080.0,
-            1040.0,
-            1100.0,
-            1140.0,
-            1170.0,
-            1170.0,
-            1250.0,
-            1310.0,
+            1440.0,
+            1420.0,
+            1440.0,
+            1540.0,
+            1540.0,
+            1550.0,
+            1650.0,
+            1700.0,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            1060.0,
-            1030.0,
-            1070.0,
-            1100.0,
-            1130.0,
-            1130.0,
-            1210.0,
-            1280.0,
-            1310.0,
-            1300.0,
-            1370.0,
-            1400.0
+            1440.0,
+            1440.0,
+            1420.0,
+            1510.0,
+            1530.0,
+            1530.0,
+            1620.0,
+            1700.0,
+            1700.0,
+            1700.0,
+            1780.0,
+            1840.0
           ],
           "latest_idx": 7
         },
         "latestReportDate": null,
         "nextReportDate": null
       },
-      "shortFloat": 6.11,
-      "shortRatio": 5.08,
-      "marketCap_M": 12300,
-      "floatShares_M": 190.07,
-      "perf1M": -24.39,
-      "perf3M": -13.79,
-      "perf6M": -7.21,
-      "perfYTD": -25.13,
-      "perf12M": -23.37,
+      "shortFloat": 6.65,
+      "shortRatio": 5,
+      "marketCap_M": 16550,
+      "floatShares_M": 116.56,
+      "perf1M": -25.54,
+      "perf3M": -13.15,
+      "perf6M": -21.79,
+      "perfYTD": -35.09,
+      "perf12M": -45.1,
       "prevOhlcv": null,
       "modelPred": {
         "version": "v12",
-        "gap": -2.79,
-        "predDay": -2.8,
+        "gap": -4.65,
+        "predDay": -4.7,
         "band": [
           -2.8,
           2.9
         ],
         "tier": "na",
-        "gapScan": 1.65,
+        "gapScan": 0.62,
         "lottery": false,
         "spike": [
-          0.4,
-          1.7,
-          3.5
+          0.6,
+          1.9,
+          3.7
         ],
-        "predHi": -1.1,
+        "predHi": -2.8,
         "predHiBand": [
-          -2.4,
-          0.6
+          -4.1,
+          -1.1
         ],
         "asOf": "09:39 開盤定格"
       }
@@ -20750,7 +20750,10 @@
       "lo_pct": -42.55
     },
     "result": "HIT",
-    "intraday_result": "MISS"
+    "intraday_result": "MISS",
+    "cause": "uniQure AMT-130 亨廷頓舞蹈症 48 個月資料喜憂參半(未達關鍵統計終點),盤前一度 -50~65%,收 -37%",
+    "lesson": "基因療法題材股遇混合臨床數據,盤前大跌後盤中未能收復,方向正確但盤中無反彈;高預期題材的數據事件不對稱偏空",
+    "analyzed_at": "2026-09-30T08:20-04:00"
   },
   "tradeIdeas": [],
   "dayResets": {

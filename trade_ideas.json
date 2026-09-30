@@ -1,6 +1,31 @@
 {
- "date": "2026-09-29",
- "written_at": "2026-09-29T08:14:12-04:00",
- "ideas": [],
- "no_trade_notes": "今日空手。① 錯殺反彈(≥$10B):今天無財報真 beat 卻被錯殺的大型股;FICO −19% 是 FHFA 政策打破房貸評分壟斷(結構性利空,非財報),不符條件。② 大合約 fade:SMMT +17%(AstraZeneca $20 億策略入股,隱含價 $18.36)是策略投資且股價貼著入股價,非合約 pump,不 fade。③ BeatenSqueezeGo:XNDU 一個月 −52%、short float 77%、DTC 2.8,但 gap 僅 +4.6%(<5%)且無 fwd_rev 數據,不合格;FCEL 一個月 −1%、不符。④ DTC 假軋空 fade:IOVA(DTC 5.28、gap +10%)與 SMMT(DTC 8.0、gap +17%)形狀合格,但依「出單前自查新聞」濾網主動跳過——IOVA 是上調全年營收指引 $4.1-4.2 億(原 $3.5-3.7 億)的真基本面,SMMT 有 AZ 入股價作底,SANG(DTC 8.95)是每股 $4.925 現金+股票的併購價、價差釘住不會軋。"
+ "date": "2026-09-30",
+ "written_at": "2026-09-30T08:17:55-04:00",
+ "ideas": [
+  {
+   "rank": 1,
+   "symbol": "OGG",
+   "setup": "dtc_fade",
+   "direction": "short",
+   "thesis": "Osisko Gold Group 盤前約 +4.6%(價 $2.93,前一晚盤後 +8.6%),查不到 9/29-30 的公司新聞——9/29 礦業論壇簡報是背景,9/23 已定價 US$600M 9.25% 優先擔保票據屬舊聞,無第二棒。回補天數 12.9 天(short float 11%)是今日候選最高:空單要近 13 個交易日才補得完,單日買盤吃不下,符合 dtc_fade 結構。市值約 $8.9 億。",
+   "entry": "10:30 ET 放空(不在開盤進)",
+   "target": "收盤回補",
+   "stop": "進場價 +5%",
+   "backtest_note": "dtc_fade:全庫 60 分 K n=149、勝率 53%、+0.17R/筆;每日限 2 筆後逐日等權 +0.28R、天勝率 67%、bootstrap 95% 區間 [+0.02, +0.32]。2026-08-16 升次主力。空單有借券風險,+5% 停損不可省;倉位不得超過 contract_fade。",
+   "written_at": "2026-09-30T08:17:55-04:00"
+  },
+  {
+   "rank": 2,
+   "symbol": "NRXP",
+   "setup": "dtc_fade",
+   "direction": "short",
+   "thesis": "NRx Pharmaceuticals 盤前約 +5.1%(價 $3.07),同樣查無當日催化劑(9/15 FDA 修訂 ketamine 藥物審查時程為舊聞)。回補天數 11.1 天、short float 25.6%,籌碼壅擠但單日回補需求被攤平,盤中容易回落。市值僅 $1.3 億、借券風險高,倉位減半。",
+   "entry": "10:30 ET 放空(不在開盤進)",
+   "target": "收盤回補",
+   "stop": "進場價 +5%",
+   "backtest_note": "dtc_fade:全庫 60 分 K n=149、勝率 53%、+0.17R/筆;每日限 2 筆後逐日等權 +0.28R、天勝率 67%、bootstrap 95% 區間 [+0.02, +0.32]。2026-08-16 升次主力。空單有借券風險,+5% 停損不可省;倉位不得超過 contract_fade。 小型股流動性差,倉位減半。",
+   "written_at": "2026-09-30T08:17:55-04:00"
+  }
+ ],
+ "no_trade_notes": "其餘 setup 今日不合格:① 錯殺反彈:JBL(FQ4 核心獲利與營收成長、盤前 -2.5%)與 FDS(-2.7%)gap 不在 −4%~−18% 帶,CNXC(FQ3 non-GAAP EPS 超預期但營收略低、商譽減損)市值 $14 億 <100 億,MRNA 是 Citi 降評非財報;② 大合約 fade:BA($200 億海軍 F/A-XX)是 $1,520 億大型股、gap 僅 +2.5%,不適用;③ BeatenSqueezeGo:今日無 gap≥+5% 且 1M ≤−20% 同時 DTC<5 者(QTTB 1M −31% gap +10% 但 DTC 3.1、無 fwd_rev 數據,LGHL/NCI 為微型股拋物線,列入 avoid);④ DTC fade 跳過:SGMT(DTC 9)因同日定價 $1.15 億增資於 $10、股價貼著發行價,VNDA(DTC 9.4)是三期正面數據的真基本面。"
 }
