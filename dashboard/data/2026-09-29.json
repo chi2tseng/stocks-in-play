@@ -1,8 +1,209 @@
 {
   "date": "2026-09-29",
-  "scanTime": "21:22",
-  "scanTimestamp": "2026-09-30T21:22",
+  "scanTime": "22:09",
+  "scanTimestamp": "2026-09-30T22:09",
   "stocks": {
+    "FICO": {
+      "symbol": "FICO",
+      "name": "Fair Isaac Corp",
+      "type": "policy",
+      "earningsReaction": false,
+      "catalyst": "9/28 盤後 FHFA 局長 Pulte 宣布房利美/房地美合併為單一定價表、VantageScore 納入 FICO Classic 定價表,打破 FICO 房貸評分壟斷;盤前 -19%",
+      "newsDetail": "> **今日跌因:** FICO 盤前重挫約 19%。聯邦住宅金融局(FHFA)局長 Pulte 宣布房利美、房地美將合併成單一定價表,並把 VantageScore 與 FICO Classic 放在同等地位,威脅 FICO 房貸評分的獨占地位。\n\n**事件詳解**\n9 月 28 日(週一)美股盤後,FHFA 局長 Bill Pulte 在社群平台 X 宣布,房利美(Fannie Mae)與房地美(Freddie Mac)將把原本各自獨立的貸款層級價格調整(LLPA)定價表,**合併為單一統一定價表**,並讓 VantageScore(由三大信用局共同創立的競爭評分模型)與 FICO Classic 分數在同一張表上並列。消息傳出後,FICO 盤後一度下跌約 **7.7%**,9 月 29 日盤前跌幅擴大。\n\n**細節與背景**\n這項宣布並未附上實施日期、新定價表內容或操作細節,貸款機構目前還無法算出對借款人的實際定價影響;現有兩張定價表是立即被取代還是分階段淘汰,也未說明。這已是 FHFA 今年連續第二次動作:9 月 9 日 FHFA 取消貸款機構使用 VantageScore 4.0 須事先書面核准的規定,開放所有核准的貸款機構立即使用。9 月 4 日 FICO 才因同一議題單日重挫 **16.68%**,收在 $932.26。\n\n市場端也有跟進:Rocket Mortgage 同日宣布,在測試 **140 萬份**信用報告後,2026 年第四季起對符合資格的貸款預設使用 VantageScore 4.0;房利美則表示,自 10 月 19 日起,MBS 檔案將加入貸款層級的信用評分模型識別欄位。\n\n**管理層或官員說法**\nPulte 表示,舊有的兩張定價表結構是根據貸款機構與消費者的意見調整,並形容原制度「makes zero sense」。報導中查不到 FICO 公司對此次宣布的正式回應。\n\n**分析師與市場反應**\n投資媒體指出,華爾街對 FICO 的目標價共識已明顯下修,主因房貸發行量是 FICO 評分業務成長的主要引擎,現在直接面臨風險。FICO 股價 52 週高點 $1,998.01,52 週低點約 $832。當天大盤持平,顯示賣壓來自個股消息而非整體市場。\n\n**風險備註**\n政策細節與實施時程尚未公布,實際對 FICO 房貸評分收入的影響仍無法量化。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=FICO"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/FICO"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-FICO/news/"
+        }
+      ],
+      "publishedAt": "2026-09-28T18:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "WRE News:房利美/房地美單一定價表",
+          "url": "https://wrenews.com/fannie-freddie-single-pricing-grid-vantagescore-fico-2026/"
+        },
+        {
+          "label": "Investing.com:Why is Fair Isaac stock sliding today",
+          "url": "https://www.investing.com/news/stock-market-news/why-is-fair-isaac-stock-sliding-today-93CH-4921272"
+        }
+      ],
+      "seanAnalysis": {
+        "verdict": "MAIN WATCH",
+        "summary": "監管打破房貸評分壟斷,屬結構性利空;只做開盤反彈失敗的空,盤前已 -19%,不在低點追空",
+        "sourceDate": "2026-09-29"
+      },
+      "milanAnalysis": {
+        "score": 2,
+        "summary": "負面:政策讓 VantageScore 納入定價,動搖 FICO 房貸評分壟斷,結構性利空;評分低代表負面而非雜訊",
+        "sourceDate": "2026-09-29"
+      },
+      "sessions": [
+        {
+          "last": 680.5,
+          "chgPct": -19.07,
+          "volume": 356584,
+          "session": "headline",
+          "direction": "down",
+          "name": "Fair Isaac Corp",
+          "sessionDate": "2026-09-29",
+          "targetDate": "2026-09-29"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "down",
+      "last": 680.5,
+      "chgPct": -19.07,
+      "volume": 356584,
+      "tv": {
+        "latestEPS": 12.18,
+        "consensusEPS": 11.76,
+        "priorYrEPS": 8.57,
+        "surpriseEPS_pct": 3.57,
+        "surpriseEPS_dollar": 0.41999999999999993,
+        "latestRev_M": 674.19,
+        "consensusRev_M": 679.17,
+        "priorYrRev_M": 536.41,
+        "surpriseRev_pct": -0.73,
+        "yrYrRev_pct": 25.68557633153746,
+        "epsYoY_pct": 42.12368728121353,
+        "epsEst_next4": [
+          11.04,
+          10.65,
+          14.34,
+          14.39
+        ],
+        "revEst_next4": [
+          664.02,
+          646.33,
+          747.79,
+          767.39
+        ],
+        "yoyBlock": "+42.12% / +25.69%\n--------------------\n+42.64% / +28.75%\n+45.29% / +26.25%\n+14.72% / +8.11%\n+18.14% / +13.82%",
+        "chart": {
+          "quarters": [
+            "Q1 '25",
+            "Q2 '25",
+            "Q3 '25",
+            "Q4 '25",
+            "Q1 '26",
+            "Q2 '26",
+            "Q3 '26",
+            "Q4 '26",
+            "Q1 '27",
+            "Q2 '27",
+            "Q3 '27",
+            "Q2 '21"
+          ],
+          "eps_reported": [
+            6.54,
+            5.79,
+            7.81,
+            8.57,
+            7.74,
+            7.33,
+            12.5,
+            12.18,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            6.36,
+            6.09,
+            7.48,
+            7.71,
+            7.32,
+            7.08,
+            10.89,
+            11.76,
+            11.04,
+            10.65,
+            14.34,
+            14.39
+          ],
+          "rev_reported_M": [
+            453.81,
+            439.97,
+            498.74,
+            536.41,
+            515.75,
+            511.96,
+            691.68,
+            674.19,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            447.9,
+            452.23,
+            499.78,
+            515.34,
+            513.32,
+            501.31,
+            630.21,
+            679.17,
+            664.02,
+            646.33,
+            747.79,
+            767.39
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": 9.29,
+      "shortRatio": 4.59,
+      "marketCap_M": 13030,
+      "floatShares_M": 20.88,
+      "perf1M": -47.39,
+      "perf3M": -49.99,
+      "perf6M": -43.47,
+      "perfYTD": -64.3,
+      "perf12M": -59.67,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": -21.23,
+        "predDay": -17.4,
+        "band": [
+          -2.8,
+          2.9
+        ],
+        "tier": "na",
+        "gapScan": 1.42,
+        "lottery": false,
+        "spike": [
+          3.9,
+          5.2,
+          7.0
+        ],
+        "predHi": -17.1,
+        "predHiBand": [
+          -18.2,
+          -15.7
+        ],
+        "predQuant": -19.4,
+        "qual": {
+          "adj": 2.0,
+          "confidence": "medium",
+          "reasoning": "政策結構性利空,9/4 同類事件當日 -21% 且無反彈;量化基準對大型股跳空的收復傾向偏樂觀,質化下修收盤預測。"
+        },
+        "asOf": "09:39 開盤定格"
+      }
+    },
     "AMD": {
       "symbol": "AMD",
       "name": "Advanced Micro Devices Inc",
@@ -387,95 +588,81 @@
         "asOf": "09:39 開盤定格"
       }
     },
-    "FICO": {
-      "symbol": "FICO",
-      "name": "Fair Isaac Corp",
-      "type": "policy",
+    "CCL": {
+      "symbol": "CCL",
+      "name": "\"Carnival Corporation Ltd.",
+      "type": "earnings",
       "earningsReaction": false,
-      "catalyst": "9/28 盤後 FHFA 局長 Pulte 宣布房利美/房地美合併為單一定價表、VantageScore 納入 FICO Classic 定價表,打破 FICO 房貸評分壟斷;盤前 -19%",
-      "newsDetail": "> **今日跌因:** FICO 盤前重挫約 19%。聯邦住宅金融局(FHFA)局長 Pulte 宣布房利美、房地美將合併成單一定價表,並把 VantageScore 與 FICO Classic 放在同等地位,威脅 FICO 房貸評分的獨占地位。\n\n**事件詳解**\n9 月 28 日(週一)美股盤後,FHFA 局長 Bill Pulte 在社群平台 X 宣布,房利美(Fannie Mae)與房地美(Freddie Mac)將把原本各自獨立的貸款層級價格調整(LLPA)定價表,**合併為單一統一定價表**,並讓 VantageScore(由三大信用局共同創立的競爭評分模型)與 FICO Classic 分數在同一張表上並列。消息傳出後,FICO 盤後一度下跌約 **7.7%**,9 月 29 日盤前跌幅擴大。\n\n**細節與背景**\n這項宣布並未附上實施日期、新定價表內容或操作細節,貸款機構目前還無法算出對借款人的實際定價影響;現有兩張定價表是立即被取代還是分階段淘汰,也未說明。這已是 FHFA 今年連續第二次動作:9 月 9 日 FHFA 取消貸款機構使用 VantageScore 4.0 須事先書面核准的規定,開放所有核准的貸款機構立即使用。9 月 4 日 FICO 才因同一議題單日重挫 **16.68%**,收在 $932.26。\n\n市場端也有跟進:Rocket Mortgage 同日宣布,在測試 **140 萬份**信用報告後,2026 年第四季起對符合資格的貸款預設使用 VantageScore 4.0;房利美則表示,自 10 月 19 日起,MBS 檔案將加入貸款層級的信用評分模型識別欄位。\n\n**管理層或官員說法**\nPulte 表示,舊有的兩張定價表結構是根據貸款機構與消費者的意見調整,並形容原制度「makes zero sense」。報導中查不到 FICO 公司對此次宣布的正式回應。\n\n**分析師與市場反應**\n投資媒體指出,華爾街對 FICO 的目標價共識已明顯下修,主因房貸發行量是 FICO 評分業務成長的主要引擎,現在直接面臨風險。FICO 股價 52 週高點 $1,998.01,52 週低點約 $832。當天大盤持平,顯示賣壓來自個股消息而非整體市場。\n\n**風險備註**\n政策細節與實施時程尚未公布,實際對 FICO 房貸評分收入的影響仍無法量化。",
+      "catalyst": "9/29 盤前公布 FQ3:調整後 EPS $1.43 vs 預期 $1.35、營收/淨收益率創新高(固定匯率 +2.4%)、全年調整後淨利上修逾 $1.5 億、2027 訂位創高",
+      "newsDetail": "> **今日漲因:** 盤前 +11.0% — 9/29 盤前公布 FQ3 財報,調整後 EPS **$1.43**(市場預期約 $1.35)、單季淨利與淨收益率創歷史新高,並上修全年獲利預期。\n\n**財報數字:** 稀釋後 EPS **$1.40**、調整後 EPS **$1.43**,與去年同期持平,但已吸收燃油與匯率造成的 **$0.10(1.31 億美元)** 不利影響。調整後 EBITDA **$30 億**,比 6 月指引好 **1.1 億美元**。淨利創高 **$19 億**(調整後 **$20 億**)。固定匯率淨收益率 **+2.4%**,比 6 月指引高逾 1 個百分點。\n\n**訂位與需求:** 第三季客戶訂金創單季新高 **$76 億**,較去年同期紀錄多 **5 億美元**(約 +7%),運力成長持平;**2027 年**訂位入住率與票價皆創紀錄,2028 年開局也優於去年。\n\n**指引:** 全年調整後淨利較 6 月指引改善逾 **1.5 億美元**(已吸收約 1.5 億美元燃油上漲衝擊);全年固定匯率淨收益率約 **+2.3%**,較 6 月指引高 0.5 個百分點;第四季預期淨收益率約 **+1.7%**。年初至今已買回約 **12 億美元**庫藏股。\n\n**管理層:** 執行長 Josh Weinstein 稱「訂位趨勢整季持續走強,量遠高於去年,遠超運力成長」。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=FICO"
+          "url": "https://finviz.com/quote.ashx?t=CCL"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/FICO"
+          "url": "https://finance.yahoo.com/quote/CCL"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-FICO/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-CCL/news/"
         }
       ],
-      "publishedAt": "2026-09-28T18:00:00-04:00",
+      "publishedAt": "2026-09-29T07:00:00-04:00",
       "publishedTimezone": "ET",
       "sources": [
         {
-          "label": "WRE News:房利美/房地美單一定價表",
-          "url": "https://wrenews.com/fannie-freddie-single-pricing-grid-vantagescore-fico-2026/"
-        },
-        {
-          "label": "Investing.com:Why is Fair Isaac stock sliding today",
-          "url": "https://www.investing.com/news/stock-market-news/why-is-fair-isaac-stock-sliding-today-93CH-4921272"
+          "label": "Carnival Corp 8-K — Q3 2026 earnings release",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000815097/000081509726000104/a20263qearningsrelease8-k.htm"
         }
       ],
-      "seanAnalysis": {
-        "verdict": "MAIN WATCH",
-        "summary": "監管打破房貸評分壟斷,屬結構性利空;只做開盤反彈失敗的空,盤前已 -19%,不在低點追空",
-        "sourceDate": "2026-09-29"
-      },
-      "milanAnalysis": {
-        "score": 2,
-        "summary": "負面:政策讓 VantageScore 納入定價,動搖 FICO 房貸評分壟斷,結構性利空;評分低代表負面而非雜訊",
-        "sourceDate": "2026-09-29"
-      },
+      "seanAnalysis": null,
+      "milanAnalysis": null,
       "sessions": [
         {
-          "last": 680.5,
-          "chgPct": -19.07,
-          "volume": 356584,
+          "last": 22.14,
+          "chgPct": -0.49,
+          "volume": 30913074,
           "session": "headline",
-          "direction": "down",
-          "name": "Fair Isaac Corp",
+          "direction": "up",
+          "name": "\"Carnival Corporation Ltd.",
           "sessionDate": "2026-09-29",
           "targetDate": "2026-09-29"
         }
       ],
       "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 680.5,
-      "chgPct": -19.07,
-      "volume": 356584,
+      "primaryDirection": "up",
+      "last": 22.14,
+      "chgPct": -0.49,
+      "volume": 30913074,
       "tv": {
-        "latestEPS": 12.18,
-        "consensusEPS": 11.76,
-        "priorYrEPS": 8.57,
-        "surpriseEPS_pct": 3.57,
-        "surpriseEPS_dollar": 0.41999999999999993,
-        "latestRev_M": 674.19,
-        "consensusRev_M": 679.17,
-        "priorYrRev_M": 536.41,
-        "surpriseRev_pct": -0.73,
-        "yrYrRev_pct": 25.68557633153746,
-        "epsYoY_pct": 42.12368728121353,
+        "latestEPS": 1.43,
+        "consensusEPS": 1.35,
+        "priorYrEPS": 1.43,
+        "surpriseEPS_pct": 5.62,
+        "surpriseEPS_dollar": 0.07999999999999985,
+        "latestRev_M": 8440.0,
+        "consensusRev_M": 8390.0,
+        "priorYrRev_M": 8150.0,
+        "surpriseRev_pct": 0.57,
+        "yrYrRev_pct": 3.5582822085889574,
+        "epsYoY_pct": 0.0,
         "epsEst_next4": [
-          11.04,
-          10.65,
-          14.34,
-          14.39
+          0.24,
+          0.16,
+          0.47,
+          1.53
         ],
         "revEst_next4": [
-          664.02,
-          646.33,
-          747.79,
-          767.39
+          6420.0,
+          6290.0,
+          6870.0,
+          8710.0
         ],
-        "yoyBlock": "+42.12% / +25.69%\n--------------------\n+42.64% / +28.75%\n+45.29% / +26.25%\n+14.72% / +8.11%\n+18.14% / +13.82%",
+        "yoyBlock": "+0.00% / +3.56%\n--------------------\n-29.41% / +1.42%\n-20.00% / +1.94%\n+14.63% / +3.15%\n+6.99% / +3.20%",
         "chart": {
           "quarters": [
-            "Q1 '25",
-            "Q2 '25",
             "Q3 '25",
             "Q4 '25",
             "Q1 '26",
@@ -485,106 +672,102 @@
             "Q1 '27",
             "Q2 '27",
             "Q3 '27",
-            "Q2 '21"
+            "Q1 '21",
+            "Q2 '21",
+            "Q3 '21"
           ],
           "eps_reported": [
-            6.54,
-            5.79,
-            7.81,
-            8.57,
-            7.74,
-            7.33,
-            12.5,
-            12.18,
+            0.14,
+            0.13,
+            0.35,
+            1.43,
+            0.34,
+            0.2,
+            0.41,
+            1.43,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            6.36,
-            6.09,
-            7.48,
-            7.71,
-            7.32,
-            7.08,
-            10.89,
-            11.76,
-            11.04,
-            10.65,
-            14.34,
-            14.39
+            0.08,
+            0.03,
+            0.25,
+            1.32,
+            0.25,
+            0.18,
+            0.34,
+            1.35,
+            0.24,
+            0.16,
+            0.47,
+            1.53
           ],
           "rev_reported_M": [
-            453.81,
-            439.97,
-            498.74,
-            536.41,
-            515.75,
-            511.96,
-            691.68,
-            674.19,
+            5940.0,
+            5810.0,
+            6330.0,
+            8150.0,
+            6330.0,
+            6170.0,
+            6660.0,
+            8440.0,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            447.9,
-            452.23,
-            499.78,
-            515.34,
-            513.32,
-            501.31,
-            630.21,
-            679.17,
-            664.02,
-            646.33,
-            747.79,
-            767.39
+            5940.0,
+            5750.0,
+            6210.0,
+            8100.0,
+            6370.0,
+            6140.0,
+            6690.0,
+            8390.0,
+            6420.0,
+            6290.0,
+            6870.0,
+            8710.0
           ],
           "latest_idx": 7
         },
-        "latestReportDate": null,
+        "latestReportDate": "2026-09-29",
         "nextReportDate": null
       },
-      "shortFloat": 9.29,
-      "shortRatio": 4.59,
-      "marketCap_M": 13030,
-      "floatShares_M": 20.88,
-      "perf1M": -47.39,
-      "perf3M": -49.99,
-      "perf6M": -43.47,
-      "perfYTD": -64.3,
-      "perf12M": -59.67,
+      "shortFloat": 3.79,
+      "shortRatio": 2.35,
+      "marketCap_M": 34530,
+      "floatShares_M": 1270,
+      "perf1M": 5.53,
+      "perf3M": -11.61,
+      "perf6M": -2.59,
+      "perfYTD": -17.45,
+      "perf12M": -12.8,
       "prevOhlcv": null,
       "modelPred": {
         "version": "v12",
-        "gap": -21.23,
-        "predDay": -17.4,
+        "gap": 11.25,
+        "predDay": 9.9,
         "band": [
           -2.8,
           2.9
         ],
         "tier": "na",
-        "gapScan": 1.42,
+        "gapScan": -1.31,
         "lottery": false,
         "spike": [
-          3.9,
-          5.2,
-          7.0
+          0.8,
+          2.0,
+          3.8
         ],
-        "predHi": -17.1,
+        "predHi": 13.5,
         "predHiBand": [
-          -18.2,
-          -15.7
+          12.1,
+          15.5
         ],
-        "predQuant": -19.4,
-        "qual": {
-          "adj": 2.0,
-          "confidence": "medium",
-          "reasoning": "政策結構性利空,9/4 同類事件當日 -21% 且無反彈;量化基準對大型股跳空的收復傾向偏樂觀,質化下修收盤預測。"
-        },
         "asOf": "09:39 開盤定格"
       }
     },
@@ -775,199 +958,6 @@
         "predHiBand": [
           -2.4,
           0.6
-        ],
-        "asOf": "09:39 開盤定格"
-      }
-    },
-    "CCL": {
-      "symbol": "CCL",
-      "name": "Carnival Corporation Ltd.",
-      "type": "earnings",
-      "earningsReaction": false,
-      "catalyst": "9/29 盤前公布 FQ3:調整後 EPS $1.43 vs 預期 $1.35、營收/淨收益率創新高(固定匯率 +2.4%)、全年調整後淨利上修逾 $1.5 億、2027 訂位創高",
-      "newsDetail": "> **今日漲因:** 盤前 +11.0% — 9/29 盤前公布 FQ3 財報,調整後 EPS **$1.43**(市場預期約 $1.35)、單季淨利與淨收益率創歷史新高,並上修全年獲利預期。\n\n**財報數字:** 稀釋後 EPS **$1.40**、調整後 EPS **$1.43**,與去年同期持平,但已吸收燃油與匯率造成的 **$0.10(1.31 億美元)** 不利影響。調整後 EBITDA **$30 億**,比 6 月指引好 **1.1 億美元**。淨利創高 **$19 億**(調整後 **$20 億**)。固定匯率淨收益率 **+2.4%**,比 6 月指引高逾 1 個百分點。\n\n**訂位與需求:** 第三季客戶訂金創單季新高 **$76 億**,較去年同期紀錄多 **5 億美元**(約 +7%),運力成長持平;**2027 年**訂位入住率與票價皆創紀錄,2028 年開局也優於去年。\n\n**指引:** 全年調整後淨利較 6 月指引改善逾 **1.5 億美元**(已吸收約 1.5 億美元燃油上漲衝擊);全年固定匯率淨收益率約 **+2.3%**,較 6 月指引高 0.5 個百分點;第四季預期淨收益率約 **+1.7%**。年初至今已買回約 **12 億美元**庫藏股。\n\n**管理層:** 執行長 Josh Weinstein 稱「訂位趨勢整季持續走強,量遠高於去年,遠超運力成長」。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=CCL"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/CCL"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-CCL/news/"
-        }
-      ],
-      "publishedAt": "2026-09-29T07:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Carnival Corp 8-K — Q3 2026 earnings release",
-          "url": "https://www.sec.gov/Archives/edgar/data/0000815097/000081509726000104/a20263qearningsrelease8-k.htm"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 22.14,
-          "chgPct": -0.49,
-          "volume": 30913074,
-          "session": "headline",
-          "direction": "up",
-          "name": "Carnival Corporation Ltd.\"",
-          "sessionDate": "2026-09-29",
-          "targetDate": "2026-09-29"
-        },
-        {
-          "last": 24.57,
-          "chgPct": 10.98,
-          "volume": 30913074,
-          "session": "headline",
-          "direction": "up",
-          "name": "Carnival Corporation Ltd.",
-          "sessionDate": "2026-09-29",
-          "targetDate": "2026-09-29"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 24.57,
-      "chgPct": 10.98,
-      "volume": 30913074,
-      "tv": {
-        "latestEPS": 1.43,
-        "consensusEPS": 1.35,
-        "priorYrEPS": 1.43,
-        "surpriseEPS_pct": 5.62,
-        "surpriseEPS_dollar": 0.07999999999999985,
-        "latestRev_M": 8440.0,
-        "consensusRev_M": 8390.0,
-        "priorYrRev_M": 8150.0,
-        "surpriseRev_pct": 0.57,
-        "yrYrRev_pct": 3.5582822085889574,
-        "epsYoY_pct": 0.0,
-        "epsEst_next4": [
-          0.24,
-          0.16,
-          0.47,
-          1.53
-        ],
-        "revEst_next4": [
-          6420.0,
-          6290.0,
-          6870.0,
-          8710.0
-        ],
-        "yoyBlock": "+0.00% / +3.56%\n--------------------\n-29.41% / +1.42%\n-20.00% / +1.94%\n+14.63% / +3.15%\n+6.99% / +3.20%",
-        "chart": {
-          "quarters": [
-            "Q3 '25",
-            "Q4 '25",
-            "Q1 '26",
-            "Q2 '26",
-            "Q3 '26",
-            "Q4 '26",
-            "Q1 '27",
-            "Q2 '27",
-            "Q3 '27",
-            "Q1 '21",
-            "Q2 '21",
-            "Q3 '21"
-          ],
-          "eps_reported": [
-            0.14,
-            0.13,
-            0.35,
-            1.43,
-            0.34,
-            0.2,
-            0.41,
-            1.43,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.08,
-            0.03,
-            0.25,
-            1.32,
-            0.25,
-            0.18,
-            0.34,
-            1.35,
-            0.24,
-            0.16,
-            0.47,
-            1.53
-          ],
-          "rev_reported_M": [
-            5940.0,
-            5810.0,
-            6330.0,
-            8150.0,
-            6330.0,
-            6170.0,
-            6660.0,
-            8440.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            5940.0,
-            5750.0,
-            6210.0,
-            8100.0,
-            6370.0,
-            6140.0,
-            6690.0,
-            8390.0,
-            6420.0,
-            6290.0,
-            6870.0,
-            8710.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-09-29",
-        "nextReportDate": null
-      },
-      "shortFloat": 3.79,
-      "shortRatio": 2.35,
-      "marketCap_M": 34530,
-      "floatShares_M": 1270,
-      "perf1M": 5.53,
-      "perf3M": -11.61,
-      "perf6M": -2.59,
-      "perfYTD": -17.45,
-      "perf12M": -12.8,
-      "prevOhlcv": null,
-      "modelPred": {
-        "version": "v12",
-        "gap": 11.25,
-        "predDay": 9.9,
-        "band": [
-          -2.8,
-          2.9
-        ],
-        "tier": "na",
-        "gapScan": -1.31,
-        "lottery": false,
-        "spike": [
-          0.8,
-          2.0,
-          3.8
-        ],
-        "predHi": 13.5,
-        "predHiBand": [
-          12.1,
-          15.5
         ],
         "asOf": "09:39 開盤定格"
       }
