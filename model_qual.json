@@ -198,10 +198,10 @@
   "reasoning": "無消息連漲後急殺,樂透帶。"
  },
  "MEDS": {
-  "date": "2026-09-29",
+  "date": "2026-10-01",
   "adj": 0,
   "confidence": "low",
-  "reasoning": "一個月 +311% 無實質消息,樂透帶。"
+  "reasoning": "1M 已 +340%、收購小型實驗室即暴漲 48%,屬樂透帶,不可預測,不做調整。"
  },
  "KMX": {
   "date": "2026-09-29",
@@ -366,16 +366,16 @@
   "reasoning": "增資稀釋通常收盤不會完全回補,稍微下修。"
  },
  "LGHL": {
-  "date": "2026-09-30",
+  "date": "2026-10-01",
   "adj": 0,
   "confidence": "low",
-  "reasoning": "低流通量拋物線/無消息動能股,本質不可預測,依樂透帶規則不做調整。"
+  "reasoning": "查無原因、市值不到 100 萬美元,不可預測。"
  },
  "SDEV": {
-  "date": "2026-09-30",
+  "date": "2026-10-01",
   "adj": 0,
   "confidence": "low",
-  "reasoning": "低流通量拋物線/無消息動能股,本質不可預測,依樂透帶規則不做調整。"
+  "reasoning": "前日已暴漲 115%、無新消息連噴,樂透帶不調整。"
  },
  "VBIO": {
   "date": "2026-09-30",
@@ -394,5 +394,107 @@
   "adj": 0,
   "confidence": "low",
   "reasoning": "低流通量拋物線/無消息動能股,本質不可預測,依樂透帶規則不做調整。"
+ },
+ "ACN": {
+  "date": "2026-10-01",
+  "adj": 2,
+  "confidence": "med",
+  "reasoning": "1,300 億美元大型股財報跳空 +16% 屬樣本外情境(大型股鮮少有 15%+ gap);訂單創新高+營益率大升是基本面重估、非情緒,族群同步走強,收盤回吐幅度應小於量化基準假設。"
+ },
+ "GLUE": {
+  "date": "2026-10-01",
+  "adj": -2,
+  "confidence": "low",
+  "reasoning": "臨床數據強(hsCRP −85%),但 9/30 盤後已先漲 16.5%,開盤時兩日累積近 30%,一期數據常見「賣在新聞」;DTC 15 天的空方回補可能撐住,方向不確定,小幅下修。"
+ },
+ "VICR": {
+  "date": "2026-10-01",
+  "adj": 1,
+  "confidence": "med",
+  "reasoning": "權利金驅動的指引上調是高毛利、可持續收入,且為財報前主動發布,意外程度高;中型股流動性佳。"
+ },
+ "ABAT": {
+  "date": "2026-10-01",
+  "adj": -3,
+  "confidence": "low",
+  "reasoning": "出口許可是銷售上限而非訂單,小型股合約型 gap 歷史上多在盤中回吐(contract_fade 樣態)。"
+ },
+ "RZAI": {
+  "date": "2026-10-01",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "9/29 直接上市新股,無歷史可循、單日區間 $19-58,樂透帶不調整。"
+ },
+ "FHTX": {
+  "date": "2026-10-01",
+  "adj": -1,
+  "confidence": "med",
+  "reasoning": "主力合作終止+裁員 40% 是結構性利空,小型生技股腰斬後常見續弱;但跌幅已大,只小幅下修。"
+ },
+ "LQDA": {
+  "date": "2026-10-01",
+  "adj": -1,
+  "confidence": "low",
+  "reasoning": "專利敗訴已腰斬,續跌延續機率略高,但禁制令範圍未明,反彈風險大。"
+ },
+ "CTVA": {
+  "date": "2026-10-01",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "−81% 為分拆除權的價格調整,非真跌幅,模型 gap 輸入失真,忽略。"
+ },
+ "LPA": {
+  "date": "2026-10-01",
+  "adj": 1,
+  "confidence": "low",
+  "reasoning": "出售資產價格高於帳面 20% 且金額達市值 1.5 倍,硬性價值確認;但市值不到 1 億、流動性差。"
+ },
+ "SDOT": {
+  "date": "2026-10-01",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "無確切當日催化、going concern 公司,樂透帶不調整。"
+ },
+ "GURE": {
+  "date": "2026-10-01",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "遲交財報的微型股,資訊不足。"
+ },
+ "IMCC": {
+  "date": "2026-10-01",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "關係人資產出售的微型股,資訊不足。"
+ },
+ "CPOP": {
+  "date": "2026-10-01",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "查無一級源催化,微型股不可預測。"
+ },
+ "IBM": {
+  "date": "2026-10-01",
+  "adj": 0,
+  "confidence": "med",
+  "reasoning": "純族群連動、無自身新聞,依量化基準。"
+ },
+ "RKLB": {
+  "date": "2026-10-01",
+  "adj": 0,
+  "confidence": "med",
+  "reasoning": "合約金額未揭露、gap 小,依量化基準。"
+ },
+ "CEG": {
+  "date": "2026-10-01",
+  "adj": 0,
+  "confidence": "med",
+  "reasoning": "長約利多但 gap 小,依量化基準。"
+ },
+ "MKC": {
+  "date": "2026-10-01",
+  "adj": 0,
+  "confidence": "med",
+  "reasoning": "財報小幅 beat、本業成長僅 1.9%,依量化基準。"
  }
 }
