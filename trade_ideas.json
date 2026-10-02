@@ -1,31 +1,6 @@
 {
-  "date": "2026-10-01",
-  "written_at": "2026-10-01T08:12:50-04:00",
-  "ideas": [
-    {
-      "rank": 1,
-      "symbol": "ABAT",
-      "setup": "contract_fade",
-      "direction": "short",
-      "thesis": "American Battery Technology 盤前 +16.3%(價 $2.57,量 318 萬股)。消息是美國商務部 BIS 核准出口許可,最多可賣 1 億美元回收黑色物料——這是「出口上限」而非已簽約訂單,實際出貨量與時程未定。合約型利多 + 小型股(市值約 3.7 億)+ 開盤跳空 ≥15%,正是 contract_fade 樣態;short float 16.7%、DTC 6.9 天,空方擁擠需嚴守停損。",
-      "entry": "09:30 開盤先複核 open gap ≥+15%(不足就作廢);合格即開盤放空",
-      "target": "收盤回補",
-      "stop": "進場價 +20%(倉位相應縮小)",
-      "backtest_note": "contract_fade:主力 setup(2026-08-16 唯一通過逐日 bootstrap 檢驗);全期 71% 勝 / +0.47R(n=28),兩獨立窗口重現。開盤放空優於 10:30。 注意:許可上限 $100M ≈ 年營收 4.6 倍,若市場當成真重估可能續強——這是本筆最大風險,倉位降為標準的一半。",
-      "written_at": "2026-10-01T08:12:50-04:00"
-    },
-    {
-      "rank": 2,
-      "symbol": "GLUE",
-      "setup": "dtc_fade",
-      "direction": "short",
-      "thesis": "Monte Rosa Therapeutics 盤前 +12.8%(價 $13.45),昨盤後已 +16.5%。回補天數 15.2 天、short float 32%,是今日候選中 DTC 最高者:空單要兩週以上才補得完,單日回補買盤吃不下,符合 dtc_fade 結構。催化劑:公司 10/1 08:00 ET 電話會議公布 GFORCE-1 一期數據(NEK7 降解劑 MRT-8102),昨盤後已先炒作。臨床數據日屬新催化,若數據被市場認定為重大突破,fade 風險升高 → 10:30 前若持續創新高則不進場。",
-      "entry": "10:30 ET 放空(不在開盤進)",
-      "target": "收盤回補",
-      "stop": "進場價 +5%",
-      "backtest_note": "dtc_fade:全庫 60 分 K n=149、勝率 53%、+0.17R/筆;每日限 2 筆後逐日等權 +0.28R。空單有借券風險,+5% 停損不可省;倉位不得超過 contract_fade。 生技小型股,倉位減半。",
-      "written_at": "2026-10-01T08:12:50-04:00"
-    }
-  ],
-  "no_trade_notes": "① beatdip(錯殺反彈 ≥10B):今日無市值 ≥100 億且財報 beat 的 −4%~−18% gap 股;LQDA −12.5% 但市值 24 億 <100 億;CTVA −81% 為分拆後的價格調整,不是跳空。② beaten_squeeze_go:gap≥+5 且 perf1M ≤−20、short float ≥10、DTC<5 五條件無一檔同時符合(LQDA 為 gap down;SDEV/MEDS 1M 已漲 +287%/+340%)。③ ACN(+16%)、IBM、INFY、NU 為大型股財報/族群連動,多單 setup 中 cap1010 已除役,不出多單。④ SDEV/MEDS/RZAI 屬無回補買盤家族/樂透帶,依 avoid_rules 不做。"
+  "date": "2026-10-02",
+  "written_at": "2026-10-02T08:13:07-04:00",
+  "ideas": [],
+  "no_trade_notes": "今日不出單(寧缺勿濫)。① beatdip(錯殺反彈 ≥100 億):NKE −8% 是 EPS 小 beat 但營收不如預期、FY27 EPS 指引 $1.15–1.35 遠低於預期 $1.65,不是「雙 beat」;STX/WDC 是 Toshiba/HDD 擴產報導引發的族群殺盤、非財報;FICO 是 FHFA 信用局政策+BofA 降評,皆不符。② contract_fade:唯一合約股 AISP(DHS $2,900 萬合約)跳空僅 +6%,未達 +15%。③ dtc_fade:DTC>5 的 DHC/STLA/AGMB 全是跳空下跌,無 gap-up 標的。④ beaten_squeeze_go:無一檔同時滿足 gap≥5、1M≤−20、short float≥10、DTC<5。⑤ SYNA 為現金 $123 收購案修訂(現價 $122)= mna_pin 剔除;AMOD(+118%,比特幣私募增發)、SDEV、TNMG、SSM 屬無回補買盤家族,依 avoid_rules 不做多。"
 }
