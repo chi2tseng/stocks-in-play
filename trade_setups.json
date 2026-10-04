@@ -6,9 +6,9 @@
   "model": {
     "name": "spike GBM(盤中最高逐檔)+ gap 慣性基準(收盤)",
     "blind_hit": 45.5,
-    "rho": 0.745,
-    "n_events": 5867,
-    "note": "2026-10-03(週六)MODEL-DRIFT(small 層 bias +4.75/+8.48 連兩日同向)觸發 refit;盲測 hit 45.5%(前版 44.6%)、rho 0.745、n 5,867,分層 big 62.9/mid 44.6/small 30.6/na 54.5;spikefit 重訓 n=5,786。10/2 實盤命中 44%,small 層 19%(+8.48 高估);最大誤差 AMOD +93、SDEV +77(樂透帶)。",
+    "rho": 0.744,
+    "n_events": 5878,
+    "note": "2026-10-04(週日)verify 10/2:small 層 bias +6.14(n=24,命中 17%)仍觸發 MODEL-DRIFT → 再 refit(週末新增 11 筆事件);盲測 hit 45.5% 持平、rho 0.744、n 5,878,分層 big 62.9/mid 44.8/small 30.7/na 54.5;spikefit n=5,797。最大誤差 SDEV +79、AMOD +71(樂透帶,不可預測)。前次:2026-10-03(週六)MODEL-DRIFT(small 層 bias +4.75/+8.48 連兩日同向)觸發 refit;盲測 hit 45.5%(前版 44.6%)、rho 0.745、n 5,867,分層 big 62.9/mid 44.6/small 30.6/na 54.5;spikefit 重訓 n=5,786。10/2 實盤命中 44%,small 層 19%(+8.48 高估);最大誤差 AMOD +93、SDEV +77(樂透帶)。",
     "refit": "2026-09-11 refit(MODEL-DRIFT 觸發:9/10 verify mid 層 bias −2.68/−3.62、small 層 +4.07/+5.32 連兩日同向):盲測 44.6%(前 45.0%)、rho 0.758、n 5,142,分層 big 59.8 / mid 43.2 / small 30.7 / na 46.1;spikefit 重訓 n=5,073。small 層系統性高估漲幅的偏誤仍在(+5.32),refit 未消除 —— 屬輸入層問題(小型股盤前快照 vs 開盤 gap),非係數問題。| 前次:2026-08-31 refit(MODEL-DRIFT 再次觸發:8/28 verify small 層 bias −6.60、連兩日同向):盲測 44.0%、rho 0.75、n 4,796,分層 big 58.4 / mid 43.9 / small 30.5 / na 48.3 —— 與 8/30 refit 完全相同(ingest 對 8/28 為 +0 筆,樣本未增,等於重跑一次)。要記的是:small 層連兩次 refit 都沒有改善(30.6 → 30.5),而今日 verify 顯示盤前快照與實際開盤 gap 的中位差只有 0.2pt,代表這次不是 8/5 那種輸入時點問題。",
     "refit_date": "2026-09-25",
     "tiers": {
