@@ -1,6 +1,29 @@
 {
- "date": "2026-10-05",
- "written_at": "2026-10-05T07:48:11-04:00",
- "ideas": [],
- "no_trade_notes": "今日不出單(寧缺勿濫)。① contract_fade:唯一合約型大跳空 ALEC(+53%)是 Genentech 授權、預付 $1 億+里程碑 $11.7 億,金額遠超公司年營收 = 真重新評價,依規則跳過。② dtc_fade:符合 DTC>5 且跳空上漲的有 PCVX(DTC 14,三期疫苗數據)、PAGS(DTC 6.6,巴西大選)、ALEC(DTC 5.2),但 live 帳本 8 筆累積 −3.74R、勝率 25%,滾動開關(前 10 筆累積 R ≤0)關閉 → 不做。③ beatdip:今日無市值 ≥100 億的財報跳空下跌股。④ beaten_squeeze_go:無一檔同時滿足 gap≥5、1M≤−20、short float≥10、DTC<5、前瞻營收≥30(DKNG 1M −20% 但 gap 僅 +4% 且無確定新聞)。⑤ PTC 為 Schneider $205 現金收購 = mna_pin 剔除;SAIQ/SDEV/VEEA/RETO/GLND 屬無回補買盤家族,依 avoid_rules 不做多。"
+ "date": "2026-10-06",
+ "written_at": "2026-10-06T08:13:48-04:00",
+ "ideas": [
+  {
+   "rank": 1,
+   "symbol": "IPDN",
+   "setup": "contract_fade",
+   "direction": "short",
+   "thesis": "10/6 盤前宣布向 AMAX 訂購 1 套 NVIDIA B300 AI 運算系統(先付 50%),要轉型賣算力 —— 這是公司『花錢買設備』不是拿到營收合約,市值僅約 400 萬美元的微型股盤前 +100%。合約/AI 題材 pump 的頂點通常在開盤。",
+   "entry": "09:30 開盤放空(先確認開盤 gap 仍 ≥+15%,否則作廢)",
+   "target": "收盤回補",
+   "stop": "進場價 +20%(倉位相應縮小)",
+   "backtest_note": "contract_fade 主力 setup:全庫 71% 勝 / +0.47R;live 3 筆全勝 +3.28R。風險:微型股借券困難/費率高,借不到就放棄。"
+  },
+  {
+   "rank": 2,
+   "symbol": "QTEX",
+   "setup": "contract_fade",
+   "direction": "short",
+   "thesis": "10/5 盤後公布低溫互連獨立測試數據,稱『正敲定具約束力協議、數週內揭露夥伴』—— 尚未簽約(MOU 等級),盤前 +17%,1M 已 +118%。屬未落地的題材跳空。",
+   "entry": "09:30 開盤放空(開盤 gap 須 ≥+15%)",
+   "target": "收盤回補",
+   "stop": "進場價 +20%",
+   "backtest_note": "同 contract_fade 規則;但催化劑是『測試結果+未簽協議』而非已簽合約,樣本外延伸 → 半倉。股價 <$2,借券可能受限。"
+  }
+ ],
+ "no_trade_notes": "dtc_fade:OPCH(DTC 5.5,+20%)與 NEO(DTC 7.2,+4%)符合條件,但 live 帳本 8 筆累積 −3.74R,滾動開關關閉;且 OPCH 為 McKesson/CD&R 收購洽談,放空收購標的風險過高。beatdip:無市值 ≥100 億財報跳空下跌股。beaten_squeeze_go:XNDU(1M −50%、SF 高)gap 僅 +9% 但 DTC 2.5、前瞻營收不明,不足五條件。PTC 為 Schneider $205 現金收購 = 剔除。AIXI/JAGX/IPDN 屬無回補買盤家族,不做多。"
 }
