@@ -1,162 +1,212 @@
 {
- "PENG": {
-  "Type": "earnings",
-  "Catalyst": "10/6 盤後 FQ4 營收創新高 $5.67 億(+68% YoY)、調整後 EPS $1.00(去年 $0.43);FY27 營收指引約 +40%、EPS $4.45,盤前 +5%",
-  "EarningsReaction": true
- },
- "NEOG": {
-  "Type": "earnings",
-  "Catalyst": "10/6 盤後 FQ1 營收 $2.228 億(+6.5%,本業 +8.1%)、調整後 EPS $0.08;上調 FY27 營收指引至 $8.85-8.90 億(原 $8.80-8.85 億),盤前 +14%",
-  "EarningsReaction": true
- },
- "STZ": {
-  "Type": "earnings",
-  "Catalyst": "10/6 盤後 FQ2 營收 $26.3 億(+6%)、可比 EPS $3.74 優於預估;全年 EPS 指引維持,但啤酒消耗量仍弱,盤前 −4%",
-  "EarningsReaction": true
- },
- "BULL": {
-  "Type": "policy",
-  "Catalyst": "眾議院中國特別委員會 10/7 報告認定 Webull 的中國關聯構成國安風險,市場擔心下架/監管,盤前 −28%",
-  "EarningsReaction": false
- },
- "LPCN": {
-  "Type": "FDA",
-  "Catalyst": "10/7 盤前宣布加拿大衛生部核准口服睪固酮 TLANDO 上市,微型股盤前 +52%",
-  "EarningsReaction": false
- },
- "SGML": {
-  "Type": "news",
-  "Catalyst": "巴西法院維持環評執照,Sigma Lithium 10/7 宣布恢復營運,盤後/盤前 +6~8%",
-  "EarningsReaction": false
- },
- "BIYA": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞;市值約 1,500 萬美元的微型股無消息暴漲 +78%",
-  "EarningsReaction": false
- },
- "SXTC": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞;市值約 260 萬美元微型股盤後無消息 +64%(7 月曾辦約 $900 萬增資)",
-  "EarningsReaction": false
- },
- "IPDN": {
-  "Type": "momentum",
-  "Catalyst": "10/6 因 AMAX NVIDIA B300 採購題材 +100% 後,今日盤前回吐 −20%",
-  "EarningsReaction": false
- },
- "DLXY": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞;9/28 已做 1 合 5 反向分割,盤前 −14%",
-  "EarningsReaction": false
- },
- "DCX": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞;小型加密概念股盤後 +9%",
-  "EarningsReaction": false
- },
- "AMOD": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞,盤前 −8%",
-  "EarningsReaction": false
- },
- "APUS": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞;1 個月已漲 +239% 的微型股續噴 +9%",
-  "EarningsReaction": false
- },
- "SDEV": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞;昨盤後 +6%、今盤前回落,空單比例 66% 的小型穩定幣概念股",
-  "EarningsReaction": false
- },
- "CYPH": {
-  "Type": "macro",
-  "Catalyst": "隨加密幣走弱(持有約 32 萬枚 ZEC),盤前 −6%",
-  "EarningsReaction": false
- },
- "ALP": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞,低價股盤前 −5.5%",
-  "EarningsReaction": false
- },
- "MTNB": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞,盤後 −5%",
-  "EarningsReaction": false
- },
- "PACB": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞,盤前 −5%(下次財報 11/5)",
-  "EarningsReaction": false
- },
- "BMNR": {
-  "Type": "macro",
-  "Catalyst": "伊朗攻擊推升油價、殖利率,加密幣走弱(ETH 跌約 5%),ETH 庫存股 BMNR 盤前 −4.6%",
-  "EarningsReaction": false
- },
- "SBSW": {
-  "Type": "macro",
-  "Catalyst": "金價回檔、殖利率走高壓抑貴金屬,南非礦業股盤前 −5%",
-  "EarningsReaction": false
- },
- "HMY": {
-  "Type": "macro",
-  "Catalyst": "金價回檔、殖利率走高,金礦族群盤前 −5%",
-  "EarningsReaction": false
- },
- "STM": {
-  "Type": "macro",
-  "Catalyst": "10 年期殖利率突破 5.3%、半導體類股普跌,意法半導體盤前 −5%",
-  "EarningsReaction": false
- },
- "BKH": {
-  "Type": "news",
-  "Catalyst": "10/6 提交 ATM 增資文件(餘額約 $1.83 億);盤後 +4.5% 原因查無",
-  "EarningsReaction": false
- },
- "SAN": {
-  "Type": "macro",
-  "Catalyst": "查無個股新聞;歐洲銀行股隨風險趨避走弱,盤前 −4%",
-  "EarningsReaction": false
- },
- "PURR": {
-  "Type": "macro",
-  "Catalyst": "隨加密幣/HYPE 走弱,盤前 −4%",
-  "EarningsReaction": false
- },
- "ZIM": {
-  "Type": "M&A",
-  "Catalyst": "查無當日新聞;Hapag-Lloyd 收購案預計第 4 季完成,盤後 +4%",
-  "EarningsReaction": false
- },
- "AAOI": {
-  "Type": "news",
-  "Catalyst": "10/5-6 完成 $6 億 ATM 增資,今年已漲逾 200% 後盤前回吐 −4%",
-  "EarningsReaction": false
- },
- "HSBC": {
-  "Type": "news",
-  "Catalyst": "FT 10/7 報導:HSBC 英國財富管理部門因導入 AI 大裁員,理財顧問最多砍約 70%;ADR 盤前 −3.8%",
-  "EarningsReaction": false
- },
- "MU": {
-  "Type": "analyst",
-  "Catalyst": "DA Davidson 10/7 將目標價從 $2,100 升至 $3,000;但殖利率衝高拖累記憶體股,盤前 −2.7%",
-  "EarningsReaction": false
- },
- "MRVL": {
-  "Type": "analyst",
-  "Catalyst": "TD Cowen 10/7 由持有升至買進、目標價 $245→$350,稱客製晶片風險已化解;隨晶片股盤前 −1.6%",
-  "EarningsReaction": false
- },
- "DHR": {
-  "Type": "news",
-  "Catalyst": "10/7 宣布首座 AI 自動化實驗室(Abcam + Automata 機器人),抗體開發速度最快 8 倍;盤前 +2.2%",
-  "EarningsReaction": false
- },
- "AMD": {
-  "Type": "news",
-  "Catalyst": "Lisa Su 訪台承諾投入數百億美元擴充 AI 晶片供應鏈(高於 5 月 $100 億);Citi 升 PT 至 $800;隨晶片股盤前 −2%",
-  "EarningsReaction": false
- }
+  "PENG": {
+    "Type": "earnings",
+    "Catalyst": "10/6 盤後 FQ4 營收創新高 $5.67 億(+68% YoY)、調整後 EPS $1.00(去年 $0.43);FY27 營收指引約 +40%、EPS $4.45,盤前 +5%",
+    "EarningsReaction": true
+  },
+  "NEOG": {
+    "Type": "earnings",
+    "Catalyst": "10/6 盤後 FQ1 營收 $2.228 億(+6.5%,本業 +8.1%)、調整後 EPS $0.08;上調 FY27 營收指引至 $8.85-8.90 億(原 $8.80-8.85 億),盤前 +14%",
+    "EarningsReaction": true
+  },
+  "STZ": {
+    "Type": "earnings",
+    "Catalyst": "10/6 盤後 FQ2 營收 $26.3 億(+6%)、可比 EPS $3.74 優於預估;全年 EPS 指引維持,但啤酒消耗量仍弱,盤前 −4%",
+    "EarningsReaction": true
+  },
+  "BULL": {
+    "Type": "policy",
+    "Catalyst": "眾議院中國特別委員會 10/7 報告認定 Webull 的中國關聯構成國安風險,市場擔心下架/監管,盤前 −28%",
+    "EarningsReaction": false
+  },
+  "LPCN": {
+    "Type": "FDA",
+    "Catalyst": "10/7 盤前宣布加拿大衛生部核准口服睪固酮 TLANDO 上市,微型股盤前 +52%",
+    "EarningsReaction": false
+  },
+  "SGML": {
+    "Type": "news",
+    "Catalyst": "巴西法院維持環評執照,Sigma Lithium 10/7 宣布恢復營運,盤後/盤前 +6~8%",
+    "EarningsReaction": false
+  },
+  "BIYA": {
+    "Type": "momentum",
+    "Catalyst": "查無當日新聞;市值約 1,500 萬美元的微型股無消息暴漲 +78%",
+    "EarningsReaction": false
+  },
+  "SXTC": {
+    "Type": "momentum",
+    "Catalyst": "查無當日新聞;市值約 260 萬美元微型股盤後無消息 +64%(7 月曾辦約 $900 萬增資)",
+    "EarningsReaction": false
+  },
+  "IPDN": {
+    "Type": "momentum",
+    "Catalyst": "10/6 因 AMAX NVIDIA B300 採購題材 +100% 後,今日盤前回吐 −20%",
+    "EarningsReaction": false
+  },
+  "DLXY": {
+    "Type": "momentum",
+    "Catalyst": "查無當日新聞;9/28 已做 1 合 5 反向分割,盤前 −14%",
+    "EarningsReaction": false
+  },
+  "DCX": {
+    "Type": "momentum",
+    "Catalyst": "查無當日新聞;小型加密概念股盤後 +9%",
+    "EarningsReaction": false
+  },
+  "AMOD": {
+    "Type": "momentum",
+    "Catalyst": "查無當日新聞,盤前 −8%",
+    "EarningsReaction": false
+  },
+  "APUS": {
+    "Type": "momentum",
+    "Catalyst": "查無當日新聞;1 個月已漲 +239% 的微型股續噴 +9%",
+    "EarningsReaction": false
+  },
+  "SDEV": {
+    "Type": "momentum",
+    "Catalyst": "查無當日新聞;昨盤後 +6%、今盤前回落,空單比例 66% 的小型穩定幣概念股",
+    "EarningsReaction": false
+  },
+  "CYPH": {
+    "Type": "macro",
+    "Catalyst": "隨加密幣走弱(持有約 32 萬枚 ZEC),盤前 −6%",
+    "EarningsReaction": false
+  },
+  "ALP": {
+    "Type": "momentum",
+    "Catalyst": "查無當日新聞,低價股盤前 −5.5%",
+    "EarningsReaction": false
+  },
+  "MTNB": {
+    "Type": "momentum",
+    "Catalyst": "查無當日新聞,盤後 −5%",
+    "EarningsReaction": false
+  },
+  "PACB": {
+    "Type": "momentum",
+    "Catalyst": "查無當日新聞,盤前 −5%(下次財報 11/5)",
+    "EarningsReaction": false
+  },
+  "BMNR": {
+    "Type": "macro",
+    "Catalyst": "伊朗攻擊推升油價、殖利率,加密幣走弱(ETH 跌約 5%),ETH 庫存股 BMNR 盤前 −4.6%",
+    "EarningsReaction": false
+  },
+  "SBSW": {
+    "Type": "macro",
+    "Catalyst": "金價回檔、殖利率走高壓抑貴金屬,南非礦業股盤前 −5%",
+    "EarningsReaction": false
+  },
+  "HMY": {
+    "Type": "macro",
+    "Catalyst": "金價回檔、殖利率走高,金礦族群盤前 −5%",
+    "EarningsReaction": false
+  },
+  "STM": {
+    "Type": "macro",
+    "Catalyst": "10 年期殖利率突破 5.3%、半導體類股普跌,意法半導體盤前 −5%",
+    "EarningsReaction": false
+  },
+  "BKH": {
+    "Type": "news",
+    "Catalyst": "10/6 提交 ATM 增資文件(餘額約 $1.83 億);盤後 +4.5% 原因查無",
+    "EarningsReaction": false
+  },
+  "SAN": {
+    "Type": "macro",
+    "Catalyst": "查無個股新聞;歐洲銀行股隨風險趨避走弱,盤前 −4%",
+    "EarningsReaction": false
+  },
+  "PURR": {
+    "Type": "macro",
+    "Catalyst": "隨加密幣/HYPE 走弱,盤前 −4%",
+    "EarningsReaction": false
+  },
+  "ZIM": {
+    "Type": "M&A",
+    "Catalyst": "查無當日新聞;Hapag-Lloyd 收購案預計第 4 季完成,盤後 +4%",
+    "EarningsReaction": false
+  },
+  "AAOI": {
+    "Type": "news",
+    "Catalyst": "10/5-6 完成 $6 億 ATM 增資,今年已漲逾 200% 後盤前回吐 −4%",
+    "EarningsReaction": false
+  },
+  "HSBC": {
+    "Type": "news",
+    "Catalyst": "FT 10/7 報導:HSBC 英國財富管理部門因導入 AI 大裁員,理財顧問最多砍約 70%;ADR 盤前 −3.8%",
+    "EarningsReaction": false
+  },
+  "MU": {
+    "Type": "analyst",
+    "Catalyst": "DA Davidson 10/7 將目標價從 $2,100 升至 $3,000;但殖利率衝高拖累記憶體股,盤前 −2.7%",
+    "EarningsReaction": false
+  },
+  "MRVL": {
+    "Type": "analyst",
+    "Catalyst": "TD Cowen 10/7 由持有升至買進、目標價 $245→$350,稱客製晶片風險已化解;隨晶片股盤前 −1.6%",
+    "EarningsReaction": false
+  },
+  "DHR": {
+    "Type": "news",
+    "Catalyst": "10/7 宣布首座 AI 自動化實驗室(Abcam + Automata 機器人),抗體開發速度最快 8 倍;盤前 +2.2%",
+    "EarningsReaction": false
+  },
+  "AMD": {
+    "Type": "news",
+    "Catalyst": "Lisa Su 訪台承諾投入數百億美元擴充 AI 晶片供應鏈(高於 5 月 $100 億);Citi 升 PT 至 $800;隨晶片股盤前 −2%",
+    "EarningsReaction": false
+  },
+  "AXTI": {
+    "Type": "momentum",
+    "Catalyst": "查無個股新聞;盤前 −5.0%,隨半導體設備/材料股走弱(LRCX/KLAC/AMAT −2.5~3%)。大盤:美債殖利率走升、油價反彈,期指自紀錄高點回落(Dow 期貨 −305 點、Nasdaq 期貨 −0.7%)",
+    "EarningsReaction": false
+  },
+  "CRCL": {
+    "Type": "macro",
+    "Catalyst": "查無個股新聞;加密族群盤前同步走弱(MSTR −4.0%、COIN −3.1%),CRCL −4.1%",
+    "EarningsReaction": false
+  },
+  "DB": {
+    "Type": "macro",
+    "Catalyst": "查無個股新聞;盤前 −5.0%,歐洲銀行同步偏弱(HSBC −3.7%,傳考慮裁減英國財富管理部門人力)",
+    "EarningsReaction": false
+  },
+  "FCEL": {
+    "Type": "momentum",
+    "Catalyst": "查無今日新聞;盤前 −7.3%。上次財報為 9/2(FQ3 EPS −/usr/bin/bash.64 遜於預期 −/usr/bin/bash.39、營收 ,300 萬遜於 ,890 萬),9 月曾增發",
+    "EarningsReaction": false
+  },
+  "FUTU": {
+    "Type": "macro",
+    "Catalyst": "查無個股新聞;盤前 −6.0%,中概股同步走弱(BABA −2.2%)。大盤:美債殖利率走升、油價反彈,期指自紀錄高點回落(Dow 期貨 −305 點、Nasdaq 期貨 −0.7%)",
+    "EarningsReaction": false
+  },
+  "GFI": {
+    "Type": "macro",
+    "Catalyst": "查無個股新聞;盤前 −4.1%,貴金屬礦業股集體走弱(NEM −3.1%、PAAS −3.3%、EXK −3.6%)",
+    "EarningsReaction": false
+  },
+  "JAGX": {
+    "Type": "momentum",
+    "Catalyst": "查無個股新聞;盤前 −9.1%。低價稀釋型股(4/30 曾 1 拆 35 反向分割,年初至今 −99%)",
+    "EarningsReaction": false
+  },
+  "RBLX": {
+    "Type": "momentum",
+    "Catalyst": "查無今日個股新聞;盤前 −4.4%,隨科技股走弱。大盤:美債殖利率走升、油價反彈,期指自紀錄高點回落(Dow 期貨 −305 點、Nasdaq 期貨 −0.7%)",
+    "EarningsReaction": false
+  },
+  "SPAI": {
+    "Type": "momentum",
+    "Catalyst": "查無今日新聞;盤前 +4.6%、量 386 萬股(異常放量)。最近一則為 8/18 美國國務院烏克蘭掃雷分包合約(舊聞)",
+    "EarningsReaction": false
+  },
+  "USDE": {
+    "Type": "macro",
+    "Catalyst": "查無個股新聞;盤前 −4.4%,加密族群同步走弱(MSTR −4.0%、COIN −3.1%)",
+    "EarningsReaction": false
+  }
 }
