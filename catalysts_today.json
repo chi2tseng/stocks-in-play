@@ -1,552 +1,162 @@
 {
- "ON": {
-  "Type": "M&A",
-  "Catalyst": "10/1 盤後修訂收購 Synaptics:改全現金 $123/股、總值約 $57 億(原約 $70 億),不發新股、非 GAAP EPS 立即增益;盤後 +7%、盤前 +8%",
-  "EarningsReaction": false
+ "PENG": {
+  "Type": "earnings",
+  "Catalyst": "10/6 盤後 FQ4 營收創新高 $5.67 億(+68% YoY)、調整後 EPS $1.00(去年 $0.43);FY27 營收指引約 +40%、EPS $4.45,盤前 +5%",
+  "EarningsReaction": true
  },
- "SYNA": {
-  "Type": "M&A",
-  "Catalyst": "onsemi 修訂收購條件為全現金 $123/股(因第三方競價),盤後 +15% 至約 $122,貼近收購價",
-  "EarningsReaction": false
+ "NEOG": {
+  "Type": "earnings",
+  "Catalyst": "10/6 盤後 FQ1 營收 $2.228 億(+6.5%,本業 +8.1%)、調整後 EPS $0.08;上調 FY27 營收指引至 $8.85-8.90 億(原 $8.80-8.85 億),盤前 +14%",
+  "EarningsReaction": true
  },
- "NKE": {
-  "Type": "analyst",
-  "Catalyst": "Berenberg 由 Hold 降至 Sell,目標價 $49→$27.50,稱市占流失不可逆;股價近 13 年低點,盤前 −0.7%",
-  "EarningsReaction": false
+ "STZ": {
+  "Type": "earnings",
+  "Catalyst": "10/6 盤後 FQ2 營收 $26.3 億(+6%)、可比 EPS $3.74 優於預估;全年 EPS 指引維持,但啤酒消耗量仍弱,盤前 −4%",
+  "EarningsReaction": true
  },
- "FICO": {
+ "BULL": {
   "Type": "policy",
-  "Catalyst": "Bloomberg 報導 FHFA 將讓房貸機構只調閱 2 家(非 3 家)信用局資料;BofA 降評至中立、目標價 $1,400→$700,盤後 −6.4%",
+  "Catalyst": "眾議院中國特別委員會 10/7 報告認定 Webull 的中國關聯構成國安風險,市場擔心下架/監管,盤前 −28%",
   "EarningsReaction": false
  },
- "STX": {
+ "LPCN": {
+  "Type": "FDA",
+  "Catalyst": "10/7 盤前宣布加拿大衛生部核准口服睪固酮 TLANDO 上市,微型股盤前 +52%",
+  "EarningsReaction": false
+ },
+ "SGML": {
   "Type": "news",
-  "Catalyst": "10/5 Toshiba 擴產消息重挫約 10% 後今日反彈 +4.5%;Bloomberg 10/6 報導 Seagate 與 Toshiba 競購 TDK 硬碟磁頭部門",
+  "Catalyst": "巴西法院維持環評執照,Sigma Lithium 10/7 宣布恢復營運,盤後/盤前 +6~8%",
   "EarningsReaction": false
  },
- "WDC": {
-  "Type": "news",
-  "Catalyst": "硬碟族群反彈:10/5 因 Toshiba 計畫擴產搶市占重挫約 10%,今日開盤回升 +6.3%;無自家新聞",
-  "EarningsReaction": false
- },
- "APP": {
-  "Type": "news",
-  "Catalyst": "創 52 週新低、連 7 日下跌累計約 −12%,集體訴訟與指引疑慮壓抑;盤前 −5%,查無單一當日觸發新聞",
-  "EarningsReaction": false
- },
- "STLA": {
+ "BIYA": {
   "Type": "momentum",
-  "Catalyst": "查無 10/2 個股新聞;10/1 因 Q3 美國銷量(Ram +34%)大漲 +7.6% 後盤前回吐 −4.5%",
+  "Catalyst": "查無當日新聞;市值約 1,500 萬美元的微型股無消息暴漲 +78%",
   "EarningsReaction": false
  },
- "TH": {
+ "SXTC": {
   "Type": "momentum",
-  "Catalyst": "查無當日新聞;9 月大股東 1,400 萬股二次發行 @$18.50 的賣壓延續,盤後 −4.8%",
+  "Catalyst": "查無當日新聞;市值約 260 萬美元微型股盤後無消息 +64%(7 月曾辦約 $900 萬增資)",
+  "EarningsReaction": false
+ },
+ "IPDN": {
+  "Type": "momentum",
+  "Catalyst": "10/6 因 AMAX NVIDIA B300 採購題材 +100% 後,今日盤前回吐 −20%",
+  "EarningsReaction": false
+ },
+ "DLXY": {
+  "Type": "momentum",
+  "Catalyst": "查無當日新聞;9/28 已做 1 合 5 反向分割,盤前 −14%",
+  "EarningsReaction": false
+ },
+ "DCX": {
+  "Type": "momentum",
+  "Catalyst": "查無當日新聞;小型加密概念股盤後 +9%",
   "EarningsReaction": false
  },
  "AMOD": {
-  "Type": "offering",
-  "Catalyst": "9/30 完成約 $2.5 億比特幣私募(3,170 BTC,發 5,162 萬股+等量認股權,約十倍稀釋);週五盤後先漲後今日回吐 −14%",
+  "Type": "momentum",
+  "Catalyst": "查無當日新聞,盤前 −8%",
+  "EarningsReaction": false
+ },
+ "APUS": {
+  "Type": "momentum",
+  "Catalyst": "查無當日新聞;1 個月已漲 +239% 的微型股續噴 +9%",
   "EarningsReaction": false
  },
  "SDEV": {
   "Type": "momentum",
-  "Catalyst": "查無當日新聞;SKY 代幣財庫概念,9/17 起從 $0.84 漲到 10/2 $7.48,動能延續",
-  "EarningsReaction": false
- },
- "SORA": {
-  "Type": "M&A",
-  "Catalyst": "AsiaStrategy 與 Plume 簽非約束性 MOU,探索亞洲代幣化金融合資;盤後 +28%",
-  "EarningsReaction": false
- },
- "TNMG": {
-  "Type": "M&A",
-  "Catalyst": "簽正式協議以 $550 萬將日本業務出售給管理層(MBO),預計 10/30 前完成,保留台灣業務;盤前 +21%",
-  "EarningsReaction": false
- },
- "NXL": {
-  "Type": "news",
-  "Catalyst": "10/1 宣布巴西+南美 6 國 10 年獨家經銷(首批 100 台)大漲後回落,盤後 −14%、盤前 −19%",
-  "EarningsReaction": false
- },
- "SSM": {
-  "Type": "momentum",
-  "Catalyst": "Sono Group 查無當日新聞;9 月小額增資與非約束意向書題材回吐 −9%",
-  "EarningsReaction": false
- },
- "SMX": {
-  "Type": "news",
-  "Catalyst": "10/1 trueGold 黃金隱形分子標記平台消息盤後一度 +38%,盤前回吐 −12%",
-  "EarningsReaction": false
- },
- "HTCR": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞;10/1 盤中重挫 −28% 後盤後反彈 +12%",
-  "EarningsReaction": false
- },
- "LONA": {
-  "Type": "momentum",
-  "Catalyst": "查無當日公司新聞,盤後 +9.6%",
+  "Catalyst": "查無當日新聞;昨盤後 +6%、今盤前回落,空單比例 66% 的小型穩定幣概念股",
   "EarningsReaction": false
  },
  "CYPH": {
+  "Type": "macro",
+  "Catalyst": "隨加密幣走弱(持有約 32 萬枚 ZEC),盤前 −6%",
+  "EarningsReaction": false
+ },
+ "ALP": {
   "Type": "momentum",
-  "Catalyst": "Zcash(ZEC)國庫股,隨加密幣走強盤前 +8%,查無公司新聞",
-  "EarningsReaction": false
- },
- "DHC": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞,盤後 −8.2%",
-  "EarningsReaction": false
- },
- "TNON": {
-  "Type": "news",
-  "Catalyst": "9/30 宣布 SImmetry+ 3D 列印鈦螺釘全面上市,連兩日走高,盤前 +7.4%",
-  "EarningsReaction": false
- },
- "AISP": {
-  "Type": "contract",
-  "Catalyst": "獲美國國土安全部(DHS)下屬機構 $2,900 萬固定價合約(6 個月履約),盤後 +6.3%",
-  "EarningsReaction": false
- },
- "AGMB": {
-  "Type": "FDA",
-  "Catalyst": "10/1 公布 ontunisertib 克隆氏症 2a 期延伸 48 週數據(年化事件率 3%),計畫進 2b 期;盤後 −5.7%",
-  "EarningsReaction": false
- },
- "GRML": {
-  "Type": "offering",
-  "Catalyst": "近日宣布 $4,200 萬登記直接增資(每股 $12)並於法蘭克福上市,稀釋壓力回落",
-  "EarningsReaction": false
- },
- "SBET": {
-  "Type": "momentum",
-  "Catalyst": "查無當日公司新聞,隨加密股走高盤前 +4.4%;Jones Trading 9/28 首評買進目標 $13",
-  "EarningsReaction": false
- },
- "MRNA": {
-  "Type": "news",
-  "Catalyst": "Nasdaq 宣布 10/9 開盤前納入 Nasdaq-100,取代 WBD",
-  "EarningsReaction": false
- },
- "RKLB": {
-  "Type": "analyst",
-  "Catalyst": "Citi 首次評等買進、目標價 $105;ARK 加碼;簽 Synspective 20 次發射大單",
-  "EarningsReaction": false
- },
- "LI": {
-  "Type": "news",
-  "Catalyst": "9 月交付 31,817 輛,年減 6.3%、月減 15.6%",
-  "EarningsReaction": false
- },
- "MSTR": {
-  "Type": "analyst",
-  "Catalyst": "Citi 目標價 $136→$240 維持買進、上修比特幣 12 個月預測至 $113,400;比特幣反彈至約 $86,500,盤前 +2.9%",
-  "EarningsReaction": false
- },
- "AVGO": {
-  "Type": "contract",
-  "Catalyst": "Anthropic S-1 揭露 Broadcom 最多借 Anthropic $420 億租用晶片,綁 5 年 $1,252 億 TPU 租約;銀行另為 Broadcom 籌 $600 億債,盤前 +1.9%",
-  "EarningsReaction": false
- },
- "ABNB": {
-  "Type": "analyst",
-  "Catalyst": "KeyBanc 升評 Overweight、目標價 $191(約 +20% 空間),看好飯店業務成第二成長引擎,盤前 +2.2%",
-  "EarningsReaction": false
- },
- "TSLA": {
-  "Type": "news",
-  "Catalyst": "10/2 公布 Q3 交車 48.65 萬輛(年減 2.1%),高於公司彙整共識 46.20 萬輛約 5.3%;產量 46.44 萬、儲能 13.7 GWh 低於預期,全日 +4.7%",
-  "EarningsReaction": false
- },
- "APLD": {
-  "Type": "contract",
-  "Catalyst": "Polaris Forge 1 二號樓第二期 75MW 啟用,整棟達 150MW IT 負載;帶動 AI 資料中心/礦工族群(WULF、HIVE)走強",
-  "EarningsReaction": false
- },
- "ARM": {
-  "Type": "momentum",
-  "Catalyst": "無個股新聞;AI 基建股回補、資料中心 CPU 題材帶動,盤前 +5%、收 +5.2%(年初至今已漲逾 2 倍)",
-  "EarningsReaction": false
- },
- "CYCU": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞;週五 +42% 後獲利了結",
-  "EarningsReaction": false
- },
- "FPS": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞;隨 AI 資料中心電力設備族群走強,開盤 +6%、收 +8.1%",
-  "EarningsReaction": false
- },
- "HIVE": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞;隨 APLD 150MW 上線帶動的 AI 資料中心/比特幣礦工族群走強,收 +2.1%",
-  "EarningsReaction": false
- },
- "QUBT": {
-  "Type": "news",
-  "Catalyst": "10/2 發布更新版投資人簡報(光子量子路線圖、薄膜鈮酸鋰晶圓廠、$4,250 萬未交訂單);盤前 +4%、收盤翻黑 −2.5%",
-  "EarningsReaction": false
- },
- "RKT": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞;盤前 +5.7% 後翻黑,收 −2.3%",
-  "EarningsReaction": false
- },
- "SOC": {
-  "Type": "news",
-  "Catalyst": "石油銷量升至每日約 3.2-3.4 萬桶、10 月提名約 3.8 萬桶;Hondo 平台重建完成,待核准後第四季重啟,收 +6.7%",
-  "EarningsReaction": false
- },
- "ULCC": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞;航空股隨大盤走高,開盤 +4.5%、收 +3.7%",
-  "EarningsReaction": false
- },
- "WULF": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞;隨 APLD AI 資料中心上線消息帶動族群,收 +3.9%",
-  "EarningsReaction": false
- },
- "NAUT": {
-  "Type": "analyst",
-  "Catalyst": "10/2 Roth(買進,目標 $3.5)與 Leerink(優於大盤,目標 $4)同日首次覆蓋,Nature Methods 論文驗證 Voyager 平台;今日查無新消息",
-  "EarningsReaction": false
- },
- "VEEA": {
-  "Type": "momentum",
-  "Catalyst": "查無 10/2 盤後後的新消息;TROLLEE 1,000 家無人商店部署合約為 10/1 舊聞,小籌碼動能延燒(盤前 +69%)",
-  "EarningsReaction": false
- },
- "RETO": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞;10/2 起 1 拆 20 反向分割生效,週五跌後盤前反彈",
-  "EarningsReaction": false
- },
- "GLND": {
-  "Type": "news",
-  "Catalyst": "80 Mile 併購案 PUSU 期限延至 11/3,雙方仍在盡職調查;前波從約 $1.2 漲到 $6 以上後回落,今日跌因查無",
-  "EarningsReaction": false
- },
- "PINS": {
-  "Type": "momentum",
-  "Catalyst": "10/2 查無新消息;財務長請辭為 8/26 舊聞,盤後 +4% 無明確新催化劑",
-  "EarningsReaction": false
- },
- "BLMN": {
-  "Type": "momentum",
-  "Catalyst": "查無 10/2 盤後新聞;9 月已跌 25%,弱勢延續",
+  "Catalyst": "查無當日新聞,低價股盤前 −5.5%",
   "EarningsReaction": false
  },
  "MTNB": {
   "Type": "momentum",
-  "Catalyst": "查無當日新聞;週五收 +9%、盤後再 +5%",
+  "Catalyst": "查無當日新聞,盤後 −5%",
   "EarningsReaction": false
  },
- "MARA": {
+ "PACB": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞;隨 APLD 150MW 上線與比特幣站上 $87K,礦工族群同步走強,盤前 +3.8%",
+  "Catalyst": "查無當日新聞,盤前 −5%(下次財報 11/5)",
   "EarningsReaction": false
  },
- "PTC": {
-  "Type": "M&A",
-  "Catalyst": "Schneider Electric 宣布以每股 $205 現金收購 PTC,總值約 $226 億,較上週五收盤溢價 42%,預計 2027 年第三季前完成;盤前 +36% 至 $196",
-  "EarningsReaction": false
- },
- "PCVX": {
-  "Type": "FDA",
-  "Catalyst": "10/5 VAX-31 成人三期 OPUS-1 正面後收 +30.7%;盤後回落 −4.4% 獲利了結",
-  "EarningsReaction": false
- },
- "ALEC": {
-  "Type": "contract",
-  "Catalyst": "將帕金森症酵素替代療法 AL050 全球授權給羅氏旗下 Genentech:預付 $1 億、里程碑最高 $11.7 億加分級權利金,現金可撐到 2029 年;盤前 +53%",
-  "EarningsReaction": false
- },
- "SAIQ": {
-  "Type": "momentum",
-  "Catalyst": "WISeSat.Space 與 SPAC Columbus Acquisition 合併完成,10/2 起掛牌;今日無新消息,去 SPAC 小籌碼暴漲(盤前 +283%)",
-  "EarningsReaction": false
- },
- "JAGX": {
-  "Type": "offering",
-  "Catalyst": "10/2 宣布特別股票股息(Series R 可轉特別股,11/2 每股轉 5 股普通股)並延長債務期限;10/5 盤後 +35%",
-  "EarningsReaction": false
- },
- "XP": {
+ "BMNR": {
   "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;券商受惠風險偏好回升",
+  "Catalyst": "伊朗攻擊推升油價、殖利率,加密幣走弱(ETH 跌約 5%),ETH 庫存股 BMNR 盤前 −4.6%",
   "EarningsReaction": false
  },
- "STNE": {
+ "SBSW": {
   "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;內需支付股對降息最敏感",
+  "Catalyst": "金價回檔、殖利率走高壓抑貴金屬,南非礦業股盤前 −5%",
   "EarningsReaction": false
  },
- "PAGS": {
+ "HMY": {
   "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;內需支付股對降息最敏感",
+  "Catalyst": "金價回檔、殖利率走高,金礦族群盤前 −5%",
   "EarningsReaction": false
  },
- "INTR": {
+ "STM": {
   "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;數位銀行受惠利率下行預期",
+  "Catalyst": "10 年期殖利率突破 5.3%、半導體類股普跌,意法半導體盤前 −5%",
   "EarningsReaction": false
  },
- "BBD": {
-  "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;大型銀行股同步走強",
-  "EarningsReaction": false
- },
- "ITUB": {
-  "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;大型銀行股同步走強",
-  "EarningsReaction": false
- },
- "NU": {
-  "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;Nubank 隨巴西資產重新評價",
-  "EarningsReaction": false
- },
- "CIG": {
-  "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;公用事業(Cemig)受惠政策風險下降",
-  "EarningsReaction": false
- },
- "PBR": {
-  "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;右派領先降低政府干預國營石油公司的風險",
-  "EarningsReaction": false
- },
- "PBR.A": {
-  "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;同 PBR",
-  "EarningsReaction": false
- },
- "GGB": {
-  "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;鋼鐵股延續週五漲勢",
-  "EarningsReaction": false
- },
- "VALE": {
-  "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;雷亞爾與巴西風險資產走強",
-  "EarningsReaction": false
- },
- "UMC": {
+ "BKH": {
   "Type": "news",
-  "Catalyst": "查無聯電個別利空;台股 10/5 大漲 2.6%,美股 ADR 盤前 −8% 疑為 ADR 溢價修正(未證實)",
+  "Catalyst": "10/6 提交 ATM 增資文件(餘額約 $1.83 億);盤後 +4.5% 原因查無",
+  "EarningsReaction": false
+ },
+ "SAN": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;歐洲銀行股隨風險趨避走弱,盤前 −4%",
   "EarningsReaction": false
  },
  "PURR": {
-  "Type": "momentum",
-  "Catalyst": "查無公司公告;HYPE 幣價走強帶動,近歷史高點",
-  "EarningsReaction": false
- },
- "CBRS": {
-  "Type": "news",
-  "Catalyst": "OpenAI 執行長 Altman 在 X 稱 Cerebras 是「密切夥伴」,緩解先前 OpenAI 新模型改用 NVIDIA 的疑慮;Barclays 稱關係仍穩,盤前 +4.5%",
-  "EarningsReaction": false
- },
- "VST": {
-  "Type": "news",
-  "Catalyst": "AI 電力族群連動:同業 CEG 10/6 與 Google 簽 890MW/20 年核電購電協議 + 2,700MW 供電合約,核電/獨立電廠股同步走高;盤前 +4.6%",
-  "EarningsReaction": false
- },
- "DKNG": {
-  "Type": "momentum",
-  "Catalyst": "今日盤前 +4% 查無確定的當日新聞;股價貼近 52 週低點",
-  "EarningsReaction": false
- },
- "INTC": {
-  "Type": "news",
-  "Catalyst": "報導指台積電與馬斯克 Terafab 洽談合作,分析師點出英特爾晶圓代工恐失份額;油價走高、10 年期殖利率約 5.26% 壓抑科技股,盤前 −4%",
-  "EarningsReaction": false
- },
- "RXO": {
-  "Type": "M&A",
-  "Catalyst": "C.H. Robinson 宣布以每股 $30.25(現金 $17.25 + 0.0856 股 CHRW)收購 RXO,總值約 $58 億,較週五收盤溢價 29%;盤前 +24%",
-  "EarningsReaction": false
- },
- "CHRW": {
-  "Type": "M&A",
-  "Catalyst": "宣布以約 $58 億現金加股票收購同業 RXO(溢價 29%),目標兩年內 $3 億年化綜效;收購方股價盤前 −7%",
-  "EarningsReaction": false
- },
- "TSM": {
-  "Type": "news",
-  "Catalyst": "報導指台積電與馬斯克洽談合作德州 Terafab 晶圓廠,馬斯克在 X 證實「只是討論,也許會有結果」;盤前 +1.8%,英特爾同步 −4%",
-  "EarningsReaction": false
- },
- "EL": {
-  "Type": "analyst",
-  "Catalyst": "Barclays 由中立升至加碼,目標價 $97→$108,理由為 FY26 Q4 本業銷售優於預期、FY27 起成長更廣;盤前 +2.8%",
-  "EarningsReaction": false
- },
- "BSBR": {
   "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;大型銀行股同步走強",
+  "Catalyst": "隨加密幣/HYPE 走弱,盤前 −4%",
   "EarningsReaction": false
  },
- "VRAX": {
-  "Type": "momentum",
-  "Catalyst": "查無 10/5 當日新聞(網路流傳的分銷協議為 5 月舊聞);微型股盤前 +9~16%,無基本面催化",
-  "EarningsReaction": false
- },
- "ABEV": {
-  "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;消費龍頭 Ambev 盤前 +10% 隨族群補漲",
-  "EarningsReaction": false
- },
- "SBS": {
-  "Type": "macro",
-  "Catalyst": "巴西大選第一輪(10/4)右派 Flávio Bolsonaro 得票 47.0% 領先 Lula 45.2%、10/25 進第二輪,市場押注較親市場政策與降息,巴西 ADR 集體跳漲;聖保羅水務 Sabesp 盤前 +13%,右派領先利多已民營化公用事業與監理穩定",
-  "EarningsReaction": false
- },
- "CRML": {
-  "Type": "news",
-  "Catalyst": "10/5 盤前 08:30 ET 公告取得格陵蘭政府正式採礦核准,Tanbreez 稀土礦許可效期至 2050 年,盤前 +8~11%",
-  "EarningsReaction": false
- },
- "BMY": {
-  "Type": "analyst",
-  "Catalyst": "Leerink Partners 10/5 盤前將 BMY 降評至 Market Perform(原 Outperform),目標價 3 砍至 9,盤前 −1.5~2%",
-  "EarningsReaction": false
- },
- "APUS": {
-  "Type": "news",
-  "Catalyst": "子公司 MindWave Innovations 與 BlockAssure 簽 2 年協議建置保險區塊鏈網路 AssureChain,盤前 +94%;公司現金僅約 .3M,稀釋風險高",
-  "EarningsReaction": false
- },
- "MI": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞(僅例行 6-K),低價低流通股盤前自 <$1 暴衝 +192%,純投機量能",
-  "EarningsReaction": false
- },
- "CTNT": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞;9/28 甫完成 1 比 150 反向分割、另有 ATM 增發計畫,盤前 +12% 屬技術性反彈",
-  "EarningsReaction": false
- },
- "ACB": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞,大麻族群盤前 +8% 走強(重分類為背景舊題材)",
-  "EarningsReaction": false
- },
- "CEG": {
-  "Type": "contract",
-  "Catalyst": "10/6 與 Google 簽 890MW/20 年購電協議 + 2,700MW/15 年供電合約,涉 11 座機組、帶動逾 $43 億投資;盤前 +7.7%",
-  "EarningsReaction": false
- },
- "OPCH": {
+ "ZIM": {
   "Type": "M&A",
-  "Catalyst": "FT 10/5 報導 McKesson 與私募 CD&R 洽談聯手收購,含債逾 $50 億;盤後 +21%、盤前 +20%",
+  "Catalyst": "查無當日新聞;Hapag-Lloyd 收購案預計第 4 季完成,盤後 +4%",
   "EarningsReaction": false
  },
- "XNDU": {
-  "Type": "contract",
-  "Catalyst": "10/6 與 GlobalFoundries 簽多年策略合作,光子量子元件移至 GF 300mm 產線量產;盤前 +9%",
-  "EarningsReaction": false
- },
- "IPDN": {
-  "Type": "contract",
-  "Catalyst": "10/6 宣布向 AMAX 訂購 1 套 NVIDIA B300 系統(先付 50%)轉型賣算力;市值僅約 400 萬美元,盤前 +100%",
-  "EarningsReaction": false
- },
- "QTEX": {
+ "AAOI": {
   "Type": "news",
-  "Catalyst": "10/5 盤後公布低溫互連獨立測試(隔離度 >100dB),稱正敲定具約束力協議、數週內揭露夥伴;未簽約",
+  "Catalyst": "10/5-6 完成 $6 億 ATM 增資,今年已漲逾 200% 後盤前回吐 −4%",
   "EarningsReaction": false
  },
- "AIXI": {
-  "Type": "momentum",
-  "Catalyst": "查無今日新聞;Apple 專利案實為 3/27 專利有效確認、6/10 一審敗訴待上訴(舊聞),盤前 +120% 屬低價股投機量能",
-  "EarningsReaction": false
- },
- "FRSH": {
+ "HSBC": {
   "Type": "news",
-  "Catalyst": "S&P 10/5 盤後宣布 Freshworks 納入 S&P SmallCap 600(取代 BLFS),10/8 生效;盤後 +4.6%",
-  "EarningsReaction": false
- },
- "NEO": {
-  "Type": "guidance",
-  "Catalyst": "10/5 盤後預告 Q3 營收約 $2.09 億(優於預期 $2.06 億)、NGS 成長 28%,同時宣布 Warren Stone 2027/1/4 接任執行長;盤後 −4%",
-  "EarningsReaction": true
- },
- "CLF": {
-  "Type": "analyst",
-  "Catalyst": "查無 10/6 專屬新聞;10/5 收漲 7.8% 延續,BofA/JPM 目標價升至 $13,10/19 財報",
-  "EarningsReaction": false
- },
- "AVTR": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞;10/5 盤後 −4.8%,下次財報 10/28",
-  "EarningsReaction": false
- },
- "USDE": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞;1M +81% 後回落 −4.9%",
-  "EarningsReaction": false
- },
- "ELPW": {
-  "Type": "earnings",
-  "Catalyst": "10/6 公布上半年財報:營收僅 $290 萬,淨利 $2,049 萬全來自出售鋰電業務利得,持續經營虧損 $211 萬(半年報公司,無 TradingView 季度資料)",
-  "EarningsReaction": true
- },
- "HSCS": {
-  "Type": "momentum",
-  "Catalyst": "查無今日跌因;合併對象 Fortitude 的 DCG 信貸增額為 9/23 舊聞,盤後 −15%",
-  "EarningsReaction": false
- },
- "AMD": {
-  "Type": "analyst",
-  "Catalyst": "Citi 目標價升至 $800(較前收約 26% 上行空間);盤前 +1.9%",
-  "EarningsReaction": false
- },
- "CTVA": {
-  "Type": "analyst",
-  "Catalyst": "JPMorgan 升評至 Overweight(種子業務分拆後);盤前 +3.2%",
-  "EarningsReaction": false
- },
- "LEN": {
-  "Type": "news",
-  "Catalyst": "Berkshire Hathaway 揭露買進約 240 萬股 Lennar;盤前 +1.4%",
-  "EarningsReaction": false
- },
- "RPM": {
-  "Type": "earnings",
-  "Catalyst": "10/6 盤前 FQ1:調整後 EPS $1.98 略優於預估 $1.97,營收 $22.16 億略低於預估 $22.45 億,並給 FQ2 指引;盤前 −0.8%",
-  "EarningsReaction": true
- },
- "TLN": {
-  "Type": "news",
-  "Catalyst": "AI 電力族群連動:同業 CEG 10/6 與 Google 簽 890MW/20 年核電購電協議 + 2,700MW 供電合約,核電/獨立電廠股同步走高;盤前 +4.6%",
-  "EarningsReaction": false
- },
- "SYK": {
-  "Type": "news",
-  "Catalyst": "10/6 宣布 CEO 交棒:總裁暨營運長 Spencer Stiles 明年 1/1 接任 CEO,Kevin Lobo 轉任執行董事長;盤前 −3.9%,開盤翻紅 +3.6%",
+  "Catalyst": "FT 10/7 報導:HSBC 英國財富管理部門因導入 AI 大裁員,理財顧問最多砍約 70%;ADR 盤前 −3.8%",
   "EarningsReaction": false
  },
  "MU": {
-  "Type": "legal",
-  "Catalyst": "10/6 與 Netlist 達成專利授權與和解,結清全部訴訟:5 年每季付 $3,000 萬(共 $6 億),並買進 Netlist 1,000 萬股;股價 −1%",
-  "EarningsReaction": false
- },
- "JBLU": {
   "Type": "analyst",
-  "Catalyst": "Citi 由 Sell 升評至 Neutral(高風險),理由是估值,目標價 $5.30 降至 $4.50;盤前 +4.4%",
+  "Catalyst": "DA Davidson 10/7 將目標價從 $2,100 升至 $3,000;但殖利率衝高拖累記憶體股,盤前 −2.7%",
   "EarningsReaction": false
  },
- "PL": {
-  "Type": "momentum",
-  "Catalyst": "查無 10/6 當日新聞;延續 10/2 漲勢(20 顆衛星發射成功,含 Google Suncatcher 原型星)",
+ "MRVL": {
+  "Type": "analyst",
+  "Catalyst": "TD Cowen 10/7 由持有升至買進、目標價 $245→$350,稱客製晶片風險已化解;隨晶片股盤前 −1.6%",
   "EarningsReaction": false
  },
- "PRME": {
+ "DHR": {
   "Type": "news",
-  "Catalyst": "10/5 公告 Wilson 病基因編輯療法 PM577a 1/2 期試驗首位病人用藥;今日無新消息,屬前日消息延續",
+  "Catalyst": "10/7 宣布首座 AI 自動化實驗室(Abcam + Automata 機器人),抗體開發速度最快 8 倍;盤前 +2.2%",
+  "EarningsReaction": false
+ },
+ "AMD": {
+  "Type": "news",
+  "Catalyst": "Lisa Su 訪台承諾投入數百億美元擴充 AI 晶片供應鏈(高於 5 月 $100 億);Citi 升 PT 至 $800;隨晶片股盤前 −2%",
   "EarningsReaction": false
  }
 }

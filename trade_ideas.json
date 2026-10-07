@@ -1,29 +1,18 @@
 {
- "date": "2026-10-06",
- "written_at": "2026-10-06T08:13:48-04:00",
- "ideas": [
-  {
-   "rank": 1,
-   "symbol": "IPDN",
-   "setup": "contract_fade",
-   "direction": "short",
-   "thesis": "10/6 盤前宣布向 AMAX 訂購 1 套 NVIDIA B300 AI 運算系統(先付 50%),要轉型賣算力 —— 這是公司『花錢買設備』不是拿到營收合約,市值僅約 400 萬美元的微型股盤前 +100%。合約/AI 題材 pump 的頂點通常在開盤。",
-   "entry": "09:30 開盤放空(先確認開盤 gap 仍 ≥+15%,否則作廢)",
-   "target": "收盤回補",
-   "stop": "進場價 +20%(倉位相應縮小)",
-   "backtest_note": "contract_fade 主力 setup:全庫 71% 勝 / +0.47R;live 3 筆全勝 +3.28R。風險:微型股借券困難/費率高,借不到就放棄。"
-  },
-  {
-   "rank": 2,
-   "symbol": "QTEX",
-   "setup": "contract_fade",
-   "direction": "short",
-   "thesis": "10/5 盤後公布低溫互連獨立測試數據,稱『正敲定具約束力協議、數週內揭露夥伴』—— 尚未簽約(MOU 等級),盤前 +17%,1M 已 +118%。屬未落地的題材跳空。",
-   "entry": "09:30 開盤放空(開盤 gap 須 ≥+15%)",
-   "target": "收盤回補",
-   "stop": "進場價 +20%",
-   "backtest_note": "同 contract_fade 規則;但催化劑是『測試結果+未簽協議』而非已簽合約,樣本外延伸 → 半倉。股價 <$2,借券可能受限。"
-  }
- ],
- "no_trade_notes": "dtc_fade:OPCH(DTC 5.5,+20%)與 NEO(DTC 7.2,+4%)符合條件,但 live 帳本 8 筆累積 −3.74R,滾動開關關閉;且 OPCH 為 McKesson/CD&R 收購洽談,放空收購標的風險過高。beatdip:無市值 ≥100 億財報跳空下跌股。beaten_squeeze_go:XNDU(1M −50%、SF 高)gap 僅 +9% 但 DTC 2.5、前瞻營收不明,不足五條件。PTC 為 Schneider $205 現金收購 = 剔除。AIXI/JAGX/IPDN 屬無回補買盤家族,不做多。"
+  "date": "2026-10-07",
+  "written_at": "2026-10-07T08:13:41-04:00",
+  "ideas": [
+    {
+      "rank": 1,
+      "symbol": "STZ",
+      "setup": "beatdip",
+      "direction": "long",
+      "thesis": "10/6 盤後公布 FQ2(8 月底止季度):營收 $26.33 億(+6% YoY,高於預估約 $25 億)、可比 EPS $3.74 高於預估 $3.37,全年可比 EPS 指引 $11.20-11.90 維持 —— 數字是真 beat,但啤酒消耗量(depletion)−0.6% 拖累,盤前 −3.8%。市值約 190 億美元,符合 beatdip 的大型財報錯殺條件。",
+      "entry": "09:30 先複核開盤 gap:須落在 −4%~−18%(盤前僅 −3.8%,開盤未達 −4% 即作廢);通過後 10:30 ET 前不進場,10:30 價須高於早盤低點 0.5% 以上",
+      "target": "回到平盤或 +6% 先到先出;收盤前全部了結",
+      "stop": "早盤低點下 0.5%(結構停損)",
+      "backtest_note": "beatdip 降級複驗中:live 5 筆 60% 勝 +0.88R(avg +0.18R);主層逐日等權 −0.00 → 半倉。今日大盤偏弱(殖利率上升、Dow 盤前 −400 點、FOMC 會議紀要),承接濾網不過就放棄。"
+    }
+  ],
+  "no_trade_notes": "dtc_fade:BKH(DTC 12.5、+3.4%)符合條件,但 live 帳本 8 筆累積 −3.74R,滾動開關關閉。contract_fade:今日無合約型 ≥+15% 跳空(BIYA/SXTC 為無消息微型股 pump,LPCN 為加拿大藥證核准非合約)。beaten_squeeze_go:無同時符合 perf1M≤−20 + SF≥10 + gap≥+5 的標的(BULL 為 gap-down)。BIYA/SXTC/LPCN/APUS 屬無回補買盤家族,禁做多。"
 }
