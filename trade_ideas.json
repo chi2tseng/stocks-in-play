@@ -1,6 +1,19 @@
 {
- "date": "2026-10-12",
- "written_at": "2026-10-12T08:57:02-04:00",
- "ideas": [],
- "no_trade_notes": "今日無合格 setup,不出單。dtc_fade:ENVX(DTC 7.45、盤前 +14%)、TRAX(DTC 7.0、+25%)、CCC(DTC 5.7、+11%)、CTNM(DTC 5.9)形態符合,但 live 帳本滾動開關仍關閉(前 8 筆累積 −3.74R),照規則跳過。beaten_squeeze_go:需 perf1M ≤−20,ENVX 僅 −10%;CTNM perf1M −33% 但跳空 +4.9% 未達 5% 且 DTC 5.9 ≥5,不合格。contract_fade:無合約型 ≥+15% 跳空(DCX 合約消息為下跌)。beatdip:今日無 ≥100 億財報股跳空下跌。BMY(兩項三期達標)、CRM(美銀升兩級)為大型股事件,不屬任何已回測 setup,僅列精選與 Daily Case。"
+ "date": "2026-10-13",
+ "written_at": "2026-10-13T08:16:14-04:00",
+ "ideas": [
+  {
+   "rank": 1,
+   "symbol": "BKYI",
+   "setup": "contract_fade",
+   "direction": "short",
+   "thesis": "10/13 04:01 ET 公告新增中東政府安全機構客戶(多重驗證/單一登入平台),合約金額未揭露、不像年營收級的真重估;市值約 $570 萬、流通股僅約 131 萬股,盤前 +147% 屬典型小公司合約 pump,當日過熱由散戶追價構成。",
+   "entry": "09:30 開盤放空;前提:開盤 gap 仍 ≥+15% 且借得到券,借不到或開盤已回落到 +15% 以下即作廢",
+   "target": "收盤回補(不設固定目標)",
+   "stop": "進場價 +20%(1R=20%,倉位相應縮小至正常的 1/4 以下)",
+   "backtest_note": "contract_fade 全庫 n=28、勝率 71%、+0.47R;live 3 筆全勝 +3.28R。風險註記:short float 約 76%、流通股極小,軋空與借券風險遠高於樣本平均,倉位必須最小化",
+   "written_at": "2026-10-13T08:16:14-04:00"
+  }
+ ],
+ "no_trade_notes": "只出 1 檔。beatdip:今日 ≥100 億財報股無一跳空落在 −4%~−18%(JNJ −1.75%、WFC −1.6%、DPZ −1.6%、C −1.1%)。beaten_squeeze_go:gap-up 名單無一同時符合 perf1M ≤−20 與 short float ≥10。dtc_fade:滾動開關仍關閉。GS(+4.6%,大超預期)、UNH(+3.2%,上調指引)為大型股財報事件,不屬已回測 setup,列精選與 Daily Case。TCRT(+91~129%)無合約消息不適用 contract_fade。"
 }

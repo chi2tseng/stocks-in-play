@@ -1,362 +1,192 @@
 {
- "HUM": {
-  "Type": "news",
-  "Catalyst": "CMS 10/8 公布 2027 Medicare Advantage 星級:95% 會員進 4 星以上方案(2026 僅 20%),2028 年品質獎金可望大幅回補;盤後 +13%、盤前 +15%",
-  "EarningsReaction": true
- },
- "ALHC": {
-  "Type": "news",
-  "Catalyst": "8-K 揭露加州 HMO 合約 H3815(約 75% 會員)2027 星級由 4.0 降至 3.5,跌破品質獎金門檻;盤後 −23%",
-  "EarningsReaction": true
- },
- "CLOV": {
-  "Type": "news",
-  "Catalyst": "隨 2027 Medicare Advantage 星級公布族群連動(HUM 大漲);查無 Clover 個股星級公告,盤前 +11.6%",
-  "EarningsReaction": false
- },
- "TMUS": {
-  "Type": "M&A",
-  "Catalyst": "SpaceX 10/8 盤後宣布收購 Grain Management 全國頻譜組合、擴大 Starlink 直連手機,市場憂心搶走電信用戶;盤前 −7.4%",
-  "EarningsReaction": true
- },
- "T": {
-  "Type": "M&A",
-  "Catalyst": "SpaceX 收購 Grain Management 頻譜、進軍行動通訊,電信類股重挫;Scotiabank 目標價 $27.5→$26.5,盤前 −7.3%",
-  "EarningsReaction": true
- },
- "VZ": {
-  "Type": "M&A",
-  "Catalyst": "SpaceX 收購 Grain Management 頻譜衝擊電信業者;Scotiabank 目標價 $51.5→$50,盤前 −6.9%",
-  "EarningsReaction": true
- },
- "CCI": {
-  "Type": "M&A",
-  "Catalyst": "SpaceX 買下 Grain 頻譜後需建地面網路、預期帶動塔台租賃需求,塔台股逆勢大漲;盤後 +7%、盤前 +8.9%",
-  "EarningsReaction": true
- },
- "AMT": {
-  "Type": "M&A",
-  "Catalyst": "SpaceX 收購 Grain 頻譜帶動塔台租賃需求預期,AMT 與 SBAC 同步走高;盤前 +6.2%",
-  "EarningsReaction": true
- },
- "SPCX": {
-  "Type": "M&A",
-  "Catalyst": "與 Grain 簽約收購全國 800 MHz 頻譜,須 FCC 核准;WSJ 稱約 $80 億現金。",
-  "EarningsReaction": true
- },
- "LITE": {
-  "Type": "news",
-  "Catalyst": "執行長接受 Bloomberg TV 專訪稱產能「實際上已被訂到 2029 年初」;前一日光通訊重挫後反彈,盤前 +6.2%",
-  "EarningsReaction": false
- },
- "AAOI": {
-  "Type": "momentum",
-  "Catalyst": "光通訊族群 10/8 重挫後反彈(LITE 稱訂單排到 2029 年初),查無個股新聞;盤前 +6.9%",
-  "EarningsReaction": false
- },
- "COHR": {
-  "Type": "momentum",
-  "Catalyst": "10/8 光通訊股單日近 −10% 後反彈,隨 LITE 訂單能見度消息走高;查無個股新聞,盤前 +4.6%",
-  "EarningsReaction": false
- },
- "AXTI": {
-  "Type": "momentum",
-  "Catalyst": "隨光通訊族群(LITE/COHR)反彈,磷化銦基板供應商同步走高;查無個股新聞,盤前 +4.4%",
-  "EarningsReaction": false
- },
- "DAL": {
+ "GS": {
   "Type": "earnings",
-  "Catalyst": "Q3 調整後 EPS $1.72 略低於共識,因燃油成本下修全年 EPS 至 $5.10-5.60;Q4 營收指引年增約 20%。",
-  "EarningsReaction": true
- },
- "CVS": {
-  "Type": "news",
-  "Catalyst": "Aetna 2027 星等:逾 69% MA 會員在 4 星以上方案,低於去年逾 81%。",
+  "Catalyst": "Q3 EPS $17.01 遠超預估約 $13.02、營收 $18.68B 超預估 $16.71B,交易與投行業務強勁,盤前 +4.6%",
   "EarningsReaction": true
  },
  "UNH": {
-  "Type": "news",
-  "Catalyst": "TD Cowen 目標價 $430→$402(Hold),估 68% 會員在 4 星以上;10/13 公布 Q3。",
+  "Type": "earnings",
+  "Catalyst": "Q3 調整後 EPS $4.69 超預估 $4.14、營收 $112.7B 優於預期,全年 EPS 指引上調至 ≥$20.50,盤前 +3.2%",
   "EarningsReaction": true
  },
- "AAPL": {
+ "JPM": {
+  "Type": "earnings",
+  "Catalyst": "Q3 調整後 EPS $5.75 略低於預估約 $5.90、營收 $50.2B(+8%),固定收益交易 $5.37B 低於預期,盤前持平",
+  "EarningsReaction": true
+ },
+ "JNJ": {
+  "Type": "earnings",
+  "Catalyst": "Q3 營收 $25.4B(+5.9%)略優、上調全年 EPS 指引至 $11.05-11.15,但醫材營收 $8.64B 低於預期,盤前 −1.75%",
+  "EarningsReaction": true
+ },
+ "WFC": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS $1.87 略優,但營收 $21.87B 低於預估 $22.3B、淨利息收入不如預期,盤前 −1.6%",
+  "EarningsReaction": true
+ },
+ "C": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS $2.85 優於預估 $2.66、營收 $23.85B 小幅超預期,盤前 −1.1%",
+  "EarningsReaction": true
+ },
+ "DPZ": {
+  "Type": "earnings",
+  "Catalyst": "FQ3 EPS $4.60 優於預估 $4.36,但營收 $1.177B 略低、美國同店銷售僅 +0.3%(預估 +0.7%),盤前 −1.6%",
+  "EarningsReaction": true
+ },
+ "MU": {
+  "Type": "news",
+  "Catalyst": "中國長鑫存儲(CXMT)宣布新記憶體架構進展、擔憂供給緩解,加上 AI 投資泡沫疑慮,記憶體族群連兩日重挫,盤前 −4.5%",
+  "EarningsReaction": false
+ },
+ "BP": {
+  "Type": "guidance",
+  "Catalyst": "Q3 交易更新:預期淨負債大幅下降、煉油利潤指標走高,盤前 +2.3%",
+  "EarningsReaction": true
+ },
+ "SNDK": {
+  "Type": "news",
+  "Catalyst": "記憶體族群賣壓:中國 CXMT 新記憶體架構進展引發供給疑慮,首爾 SK hynix 一度跌逾 10%,盤前 −4.5%",
+  "EarningsReaction": false
+ },
+ "WDC": {
   "Type": "analyst",
-  "Catalyst": "瑞銀:iPhone 18 Pro 等候天數一週縮短約 6 天,維持中立、目標價 $296。",
-  "EarningsReaction": true
+  "Catalyst": "記憶體族群賣壓(中國 CXMT 新記憶體架構引發供給疑慮)延續,另據 InvestorsHub 報導 UBS 下調目標價(未經一級源證實),盤前 −6.6%",
+  "EarningsReaction": false
  },
- "BKD": {
+ "SKHY": {
   "Type": "news",
-  "Catalyst": "9 月入住率月報:加權平均 83.4%(去年同期 82.5%)、月底 84.6%;盤後 −5%",
+  "Catalyst": "CXMT 新記憶體架構進展衝擊,SK hynix 首爾股價一度跌逾 10%、KOSPI 重挫,美股 ADR 盤前 −6%",
   "EarningsReaction": false
  },
- "VEEA": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;背景為 9/14 與 NovaGen 簽非約束性合併條款、8/28 已 1 拆 20 反向分割;盤後 +49%、盤前 +46%",
-  "EarningsReaction": false
- },
- "XRTX": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;背景為 8 月 S-1 增發、計畫 2026 Q4 送 IND;盤後 +22%、盤前 +15%",
-  "EarningsReaction": false
- },
- "WORX": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;7/29 收 Nasdaq 部分合規函、需反向分割;盤後 +20% 盤前轉 −14%",
-  "EarningsReaction": false
- },
- "INHD": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;背景為 $6,000 萬 ATM 增發持續稀釋;盤後 −11%",
-  "EarningsReaction": false
- },
- "NN": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞(NextNav);900MHz 頻譜 FCC 規則審查中,或受 SpaceX 頻譜交易聯想帶動;盤後 +10.9%",
-  "EarningsReaction": false
- },
- "SECZ": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;7 月 NYSE 上市後約 1.5 億股賣方股東可轉售;盤後 +9.9%",
-  "EarningsReaction": false
- },
- "CIIT": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;盤後 −7.7%",
-  "EarningsReaction": false
- },
- "CYPH": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;持有約 32 萬枚 ZEC,隨加密幣波動;盤前 +6%",
-  "EarningsReaction": false
- },
- "BULL": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;前日國會報告利空後技術反彈,盤前 +5%",
-  "EarningsReaction": false
- },
- "MEDS": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;盤後 −5%",
-  "EarningsReaction": false
- },
- "KOPN": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;盤後 +4.3%",
-  "EarningsReaction": false
- },
- "FSLY": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;盤前 +6.7%",
-  "EarningsReaction": false
- },
- "TEVA": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;盤前 +4.5%",
-  "EarningsReaction": false
- },
- "GFI": {
-  "Type": "macro",
-  "Catalyst": "查無個股新聞;隨貴金屬族群走高,盤前 +4.4%",
-  "EarningsReaction": false
- },
- "LI": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;9 月交付 31,817 輛(年減 6%)、10 月推 Li i6;盤前 +5%",
-  "EarningsReaction": false
- },
- "GGR": {
-  "Type": "momentum",
-  "Catalyst": "盤前 +9% 查無個股新聞(10/9 無相關報導),低價電動機車換電股量能放大。",
-  "EarningsReaction": false
- },
- "ACHR": {
-  "Type": "momentum",
-  "Catalyst": "盤前 +4% 查無個股新聞,eVTOL 族群跟漲;無 10/9 公司公告。",
-  "EarningsReaction": false
- },
- "MRNA": {
-  "Type": "news",
-  "Catalyst": "NYT 報導 NIH 規劃全國個人化癌症疫苗加速計畫(12 月啟動);10/9 重新納入 Nasdaq-100;收 +14.2% 創 4 年新高",
+ "S": {
+  "Type": "offering",
+  "Catalyst": "傳擬發行約 $12.5 億 2031 年到期可轉債(含上限買權與回購),稀釋疑慮,盤前 −8%",
   "EarningsReaction": false
  },
  "BNTX": {
+  "Type": "FDA",
+  "Catalyst": "BNT113 mRNA 頭頸癌二/三期 AHEAD-MERIT 未達第一個無惡化存活期主要終點,盤前 −5.9%",
+  "EarningsReaction": false
+ },
+ "FUN": {
   "Type": "news",
-  "Catalyst": "NIH 癌症疫苗計畫報導帶動 mRNA 疫苗族群,BNTX 隨 MRNA/NVAX 收 +5.3%",
+  "Catalyst": "10/12 喬治亞州 Six Flags Over Georgia 雲霄飛車事故致死,公司暫停同型設施,盤後 −10.3%",
   "EarningsReaction": false
  },
- "NVAX": {
-  "Type": "news",
-  "Catalyst": "NIH 癌症疫苗加速計畫報導帶動疫苗族群,NVAX 收 +15.8%、量 1,900 萬",
+ "BKYI": {
+  "Type": "contract",
+  "Catalyst": "新增中東政府安全機構客戶採用其多重驗證/單一登入平台(金額未揭露),流通股僅約 131 萬股,盤前 +147%",
   "EarningsReaction": false
  },
- "PCVX": {
-  "Type": "news",
-  "Catalyst": "NIH 癌症疫苗計畫報導帶動疫苗族群連動,PCVX 收 +9.8%",
-  "EarningsReaction": false
- },
- "ZS": {
-  "Type": "news",
-  "Catalyst": "重申 FY27 營收指引 $39.1–39.4 億,並宣布與 IBM、Red Hat 合作保護私有應用;收 +7.8% 領漲資安股",
-  "EarningsReaction": false
- },
- "CRWD": {
-  "Type": "analyst",
-  "Catalyst": "Needham 目標價 $250→$310(看好 Flex 訂閱模式);資安族群隨 ZS 走強,收 +4.6%",
-  "EarningsReaction": false
- },
- "PANW": {
-  "Type": "news",
-  "Catalyst": "資安族群隨 Zscaler 重申指引同步走強,PANW 收 +5.1%",
-  "EarningsReaction": false
- },
- "PLTR": {
-  "Type": "analyst",
-  "Catalyst": "Goldman Sachs 10/8 升評至 Buy(PT $230),並與 Armada 結盟主權 AI 模組化資料中心;收 +5.2%",
-  "EarningsReaction": false
- },
- "SNOW": {
-  "Type": "news",
-  "Catalyst": "Agentic Marketplace 公開預覽 + 軟體股自 OpenAI 營收賣壓反彈;收 +7.4% 創 52 週新高",
-  "EarningsReaction": false
- },
- "DDOG": {
-  "Type": "analyst",
-  "Catalyst": "CIBC 重申 Outperform 調高目標價,軟體股自前日 OpenAI 賣壓反彈;收 +7.1% 創歷史新高",
-  "EarningsReaction": false
- },
- "NET": {
-  "Type": "analyst",
-  "Catalyst": "Oppenheimer 目標價 $380→$430,預估 Q3 營收 $7.385 億略高於共識;收 +5.6%",
-  "EarningsReaction": false
- },
- "ORCL": {
-  "Type": "news",
-  "Catalyst": "前日因 OpenAI 年化營收約 $500 億低於市場傳言 −5.7%,10/9 隨 AI 軟體股反彈收 +4.2%",
-  "EarningsReaction": false
- },
- "DE": {
-  "Type": "news",
-  "Catalyst": "USDA 與 FTC 宣布聯合調查農機市場反競爭行為,USDA 上調玉米產量拖累穀價;收 −4.9%,本週 −9%",
-  "EarningsReaction": false
- },
- "CMG": {
-  "Type": "news",
-  "Catalyst": "10/8 傳 Starbucks 研議收購衝 +6.2%,10/9 市場質疑成局機率(FT 稱可能不成)回吐,收 −3.3%",
-  "EarningsReaction": false
- },
- "COIN": {
-  "Type": "news",
-  "Catalyst": "川普談話緩解攻擊伊朗疑慮,加密股反彈;Morgan Stanley 目標價 $250→$258;收 +4.3%",
-  "EarningsReaction": false
- },
- "CCC": {
-  "Type": "M&A",
-  "Catalyst": "Bloomberg:GTCR 與 Elliott 進入收購 CCC 的深入洽談,最快下週宣布(未簽約);盤後 +13.1%",
-  "EarningsReaction": false
- },
- "SVC": {
-  "Type": "M&A",
-  "Catalyst": "TKO Hotels 主動提出以 $20 億現金收購 SVC 旅館組合(93 間、逾 2.1 萬房),董事會將評估;盤後 +5.5%",
-  "EarningsReaction": false
- },
- "YMAT": {
-  "Type": "news",
-  "Catalyst": "發布德州 Houston 碳纖維無人機機身產線募資計畫(未揭露金額,有 F-3 儲架);盤後 +135%、量 3,000 萬",
-  "EarningsReaction": false
- },
- "WFF": {
+ "TCRT": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞;盤後 −18.6%、量 970 萬",
+  "Catalyst": "查無公司新聞稿;微型股無消息暴衝,現金僅約 $12 萬,留意增發風險,盤前 +91~129%",
   "EarningsReaction": false
  },
  "AIXI": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞;盤後 +4.4%",
+  "Catalyst": "查無 10/12-13 個股新聞;昨盤中已漲 18%,盤前再 +31~37%,無消息炒作",
   "EarningsReaction": false
  },
- "APUS": {
+ "DCX": {
   "Type": "momentum",
-  "Catalyst": "查無當日個股新聞(MindChain 區塊鏈為 7/28 舊聞);盤後 +21.7%",
+  "Catalyst": "查無新聞;昨盤後 +41%、盤前 +6.8%,前身 Chijet,現做鏈上衍生品平台",
   "EarningsReaction": false
  },
- "ASTS": {
-  "Type": "news",
-  "Catalyst": "SpaceX 買下 800MHz 低頻頻譜,AST 競爭壓力升高",
+ "YJ": {
+  "Type": "momentum",
+  "Catalyst": "查無 10 月新聞,中概小型股無消息上漲 +15%",
   "EarningsReaction": false
  },
- "MT": {
-  "Type": "news",
-  "Catalyst": "UBS 升評至買進,目標價 €71",
+ "WORX": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,盤前 −13%;曾收 Nasdaq 低價通知,留意合規/稀釋",
   "EarningsReaction": false
  },
- "VOD": {
+ "SNDX": {
   "Type": "news",
-  "Catalyst": "SpaceX 進軍行動通訊,歐洲電信股同步下挫",
+  "Catalyst": "10/12 盤後 −18%,查無公司公告(最近 Q2 營收 $73M +92%)",
+  "EarningsReaction": false
+ },
+ "MNDR": {
+  "Type": "momentum",
+  "Catalyst": "前一日暴漲後獲利回吐,查無公司公告,盤前 −28%",
+  "EarningsReaction": false
+ },
+ "YMAT": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,炒作型回吐 −20%",
+  "EarningsReaction": false
+ },
+ "WFF": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,1M +862% 後回吐,盤後 −9%",
+  "EarningsReaction": false
+ },
+ "MSGY": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,盤後 +19%",
+  "EarningsReaction": false
+ },
+ "SUGP": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,盤後 +15%",
+  "EarningsReaction": false
+ },
+ "SKK": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,盤後 −13%(8 月曾稀釋增發 37%)",
+  "EarningsReaction": false
+ },
+ "AGRZ": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,盤後 +12%",
+  "EarningsReaction": false
+ },
+ "CYPH": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,盤後 −4%,疑隨 ZEC 幣價波動",
+  "EarningsReaction": false
+ },
+ "MEDS": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,盤前 −4.6%",
+  "EarningsReaction": false
+ },
+ "MGN": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,盤前 −6.6%",
+  "EarningsReaction": false
+ },
+ "SCNX": {
+  "Type": "momentum",
+  "Catalyst": "10/5 已 1 比 25 反向分割,今日無新聞,+4.4%",
   "EarningsReaction": false
  },
  "VIVK": {
   "Type": "M&A",
-  "Catalyst": "10/9 簽意向書(LOI)擬以 $4,000 萬收購 Permian 盆地 Direct Midstream;盤前 +74% 後全天回吐,盤後再 −25%",
+  "Catalyst": "10/9 擬收購 Direct Midstream 非約束意向書、10/5 完成 1 比 15 反分割;昨盤後 −7.8% 無新消息",
   "EarningsReaction": false
  },
- "TRAX": {
-  "Type": "FDA",
-  "Catalyst": "ANB033 乳糜瀉 Ph1b 隊列1達標:Vh:Cd 變化較安慰劑優 +0.49(p=0.009),無安全性疑慮",
-  "EarningsReaction": false
- },
- "SKYA": {
-  "Type": "M&A",
-  "Catalyst": "宣布以每股 $3.00 現金公開收購最多 95% 股份,較 10/9 收盤溢價 65%,總額上限約 $2.01 億",
-  "EarningsReaction": false
- },
- "DLXY": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞,疑似低流通量拉抬",
-  "EarningsReaction": false
- },
- "ENVX": {
-  "Type": "guidance",
-  "Catalyst": "Q3 營收初步值 $1,100 萬、年增 38%,高於 $900-1,000 萬指引;現金約 $5.12 億",
-  "EarningsReaction": true
- },
- "CTNM": {
+ "STX": {
   "Type": "news",
-  "Catalyst": "BMS 同機轉 LPA1 抑制劑 admilparant 在 IPF Phase 3 達主要終點,帶動同機轉 PIPE-791 連動",
+  "Catalyst": "中國長鑫存儲(CXMT)新記憶體設計引發供給疑慮,記憶體/儲存股連兩日重挫,盤前 −6.1%",
   "EarningsReaction": false
  },
- "DCX": {
-  "Type": "contract",
-  "Catalyst": "DCX 與 Whales AI 簽約:投資 $400 萬取得北美 AI STEM 教育機器人平台獨家商業化權,分潤 60/40",
-  "EarningsReaction": false
- },
- "CRM": {
-  "Type": "analyst",
-  "Catalyst": "美銀由劣於大盤升至買進,目標價由160美元大幅上調至285美元",
-  "EarningsReaction": false
- },
- "BMY": {
-  "Type": "FDA",
-  "Catalyst": "RYZ101三期ACTION-1期中分析達主要終點(PFS顯著改善),另ALOFT-IPF三期同日達標,盤前漲約5.7%",
-  "EarningsReaction": false
- },
- "ADBE": {
-  "Type": "analyst",
-  "Catalyst": "Wells Fargo 將 Adobe 評等由「加碼」連降兩級至「減碼」,盤前 −3.8%",
-  "EarningsReaction": false
- },
- "FSLR": {
-  "Type": "analyst",
-  "Catalyst": "今年跌 32% 後獲分析師升評「買進」、看 51% 上檔,盤前 +2.9%",
-  "EarningsReaction": false
- },
- "MU": {
+ "MRVL": {
   "Type": "news",
-  "Catalyst": "中國長鑫存儲(CXMT)推進更高容量新記憶體晶片,Barron's 稱記憶體股受壓,盤前 −2.1%",
+  "Catalyst": "AI 泡沫疑慮延續、晶片股走弱;Barron's 稱 $200 億計畫加深客戶集中風險(未證實),盤前 −3.2%",
   "EarningsReaction": false
  },
- "NOW": {
-  "Type": "analyst",
-  "Catalyst": "RBC 將 ServiceNow 目標價由 $130 大幅上調至 $176(+35%),維持「優於大盤」,盤前 +2.4%",
+ "CRWV": {
+  "Type": "news",
+  "Catalyst": "AI 泡沫疑慮波及高槓桿資料中心股,未查到公司專屬消息,盤前 −3.2%",
+  "EarningsReaction": false
+ },
+ "SMCI": {
+  "Type": "news",
+  "Catalyst": "AI 伺服器族群續弱,未查到當日觸發事件,盤前 −2.9%",
   "EarningsReaction": false
  }
 }
