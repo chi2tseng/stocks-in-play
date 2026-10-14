@@ -181,7 +181,12 @@ async function fetchPage(page, baseUrl, pageNum) {
     let pageNum = 1;
     while (pageNum <= MAX_PAGE) {
       process.stderr.write(`[${new Date().toISOString().slice(11,19)}] ${src.session}-${src.direction} p${pageNum} ... `);
-      const captured = await fetchPage(page, src.url, pageNum);
+      let captured = await fetchPage(page, src.url, pageNum);
+      if (!captured) {
+        process.stderr.write(`(retrying once) `);
+        await page.waitForTimeout(3000);
+        captured = await fetchPage(page, src.url, pageNum);
+      }
       if (!captured) {
         process.stderr.write(`FAIL (no API response)\n`);
         meta.push({ ...src, page: pageNum, status: 'fail', count: 0, qualifying: 0 });
