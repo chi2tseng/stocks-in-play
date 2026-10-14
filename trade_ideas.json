@@ -1,19 +1,31 @@
 {
- "date": "2026-10-13",
- "written_at": "2026-10-13T08:16:14-04:00",
+ "date": "2026-10-14",
+ "written_at": "2026-10-14T08:23:11-04:00",
  "ideas": [
   {
    "rank": 1,
-   "symbol": "BKYI",
-   "setup": "contract_fade",
-   "direction": "short",
-   "thesis": "10/13 04:01 ET 公告新增中東政府安全機構客戶(多重驗證/單一登入平台),合約金額未揭露、不像年營收級的真重估;市值約 $570 萬、流通股僅約 131 萬股,盤前 +147% 屬典型小公司合約 pump,當日過熱由散戶追價構成。",
-   "entry": "09:30 開盤放空;前提:開盤 gap 仍 ≥+15% 且借得到券,借不到或開盤已回落到 +15% 以下即作廢",
-   "target": "收盤回補(不設固定目標)",
-   "stop": "進場價 +20%(1R=20%,倉位相應縮小至正常的 1/4 以下)",
-   "backtest_note": "contract_fade 全庫 n=28、勝率 71%、+0.47R;live 3 筆全勝 +3.28R。風險註記:short float 約 76%、流通股極小,軋空與借券風險遠高於樣本平均,倉位必須最小化",
-   "written_at": "2026-10-13T08:16:14-04:00"
+   "symbol": "LQDA",
+   "setup": "beaten_squeeze_go",
+   "direction": "long",
+   "thesis": "10/13 盤後與 United Therapeutics 全球和解、終結 6 件訴訟,YUTREPIA 供貨風險解除,Q3 初步 YUTREPIA 淨銷售 $2.23 億(去年同季營收僅 $884 萬)。五條件全中:gap 約 +40%、perf1M −42%(空單建在低位)、short float 16.3%、DTC 4.8(<5 快燃料)、前瞻營收成長遠高於 30%;市值約 $34 億,不屬微型股無回補買盤家族。",
+   "entry": "09:30 開盤買進;前提:開盤 gap 仍 ≥+5%(vs 10/13 收盤)",
+   "target": "13:30 ET 前了結(不設固定目標)",
+   "stop": "進場價 −5%",
+   "backtest_note": "beaten_squeeze_go 全庫 n=45、勝率 58%、+0.59R(7 月集群風險註記,候補等級);gap 已達 +40% 高於樣本中位,開盤價位風險較大,倉位取正常的一半",
+   "written_at": "2026-10-14T08:23:11-04:00"
+  },
+  {
+   "rank": 2,
+   "symbol": "FAST",
+   "setup": "beatdip",
+   "direction": "long",
+   "thesis": "Q3 EPS $0.35 小超預期、營收 $24.63 億 +15.5% 優於預期(真 beat:EPS 與營收 surprise 皆 ≥0),盤前卻 −4.4%(客戶結構壓毛利);市值約 $590 億 ≥100 億硬條件,gap 落在 −4%~−18% 帶。",
+   "entry": "09:30 先複核開盤 gap 仍在 −4%~−18%,否則作廢;10:30 ET 前不進場,10:30 價需高於早盤低點 0.5% 以上",
+   "target": "回到平盤或 +6% 先到先出",
+   "stop": "早盤低點下 0.5%(結構停損)",
+   "backtest_note": "beatdip 降級複驗中(2026-08-16 主層逐日等權 −0.00),僅以最小倉位執行並列入 live 對帳;開盤 gap 若收斂到 −4% 以內即作廢",
+   "written_at": "2026-10-14T08:23:11-04:00"
   }
  ],
- "no_trade_notes": "只出 1 檔。beatdip:今日 ≥100 億財報股無一跳空落在 −4%~−18%(JNJ −1.75%、WFC −1.6%、DPZ −1.6%、C −1.1%)。beaten_squeeze_go:gap-up 名單無一同時符合 perf1M ≤−20 與 short float ≥10。dtc_fade:滾動開關仍關閉。GS(+4.6%,大超預期)、UNH(+3.2%,上調指引)為大型股財報事件,不屬已回測 setup,列精選與 Daily Case。TCRT(+91~129%)無合約消息不適用 contract_fade。"
+ "no_trade_notes": "contract_fade:今日無合約型 gap ≥+15%(JBDI 是 $9 億可轉債收購且為 gap-down,GLND/GRML 為政策貼文非合約)。dtc_fade:滾動開關仍關閉,且唯一形狀合格的 VSTM(DTC 6.5、+11%)有真臨床利多(VS-7375 二線胰臟癌緩解率 50%),依出單前新聞濾網跳過。BAC(−5.5%)、STT(−8.9%)為財報 miss/營收 miss,不符 beatdip 真 beat 條件。AEHL/TCRT/GLND/GRML 屬無回補買盤家族或樂透帶,禁做多。"
 }

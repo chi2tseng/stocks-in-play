@@ -852,7 +852,42 @@
    "direction": "up",
    "thesis": "Q3 EPS $17.01 大超預估約 $13.02(+31%)、營收 $18.68B 超預估 $16.71B(+12%),驚奇幅度是本週銀行財報之最;大型股真 beat 的 +4.6% 跳空少有機構全數回吐,收盤守在前收之上的機率高。風險:JPM/WFC 同日表現平淡拖累銀行類股情緒",
    "premarket": null,
-   "written_at": "2026-10-13T08:16-04:00"
+   "written_at": "2026-10-13T08:16-04:00",
+   "actual": {
+    "prev_close": 893.95,
+    "open": 923.0,
+    "high": 931.0,
+    "low": 891.01,
+    "close": 891.91,
+    "volume": 4937800,
+    "gap_pct": 3.25,
+    "day_pct": -0.23,
+    "intra_pct": -3.37,
+    "hi_pct": 4.14,
+    "lo_pct": -0.33
+   },
+   "result": "MISS",
+   "intraday_result": "MISS",
+   "cause": "高盛 Q3 EPS $17.01 大超預期,但盤前已漲約 4%,開盤即當日高點、之後一路賣壓收 −0.2%:利多在盤前已定價、出現獲利了結;同日 JPM 收 +0.4%、C +1.8%,不是銀行族群集體殺盤;盤中反轉的具體報導查無",
+   "lesson": "大型銀行財報日即使大超預期,盤前已漲 3-5% 時開盤往往就是當日高點;Daily Case 對財報季大型股 gap-up 要看開盤後續航力,不宜單憑超預期幅度押收盤上漲",
+   "analyzed_at": "2026-10-14T08:23-04:00"
+  },
+  {
+   "date": "2026-10-14",
+   "symbol": "LQDA",
+   "direction": "up",
+   "thesis": "與 UTHR 全球和解終結 6 件訴訟、YUTREPIA 供貨風險解除,Q3 初步淨銷售 $2.23 億;盤前 +40%,short float 16% 且 1 個月跌 42% 後空單回補,收盤高於前收機率高",
+   "premarket": {
+    "symbol": "LQDA",
+    "mcap_M": 3390,
+    "avg_dollar_vol_M": 175.8,
+    "gap": 39.87,
+    "predDay": 44.2,
+    "type": "news",
+    "catalyst": "10/13 盤後與 United Therapeutics 全球和解,終結 6 件訴訟、YUTREPIA 持續供貨;Q3 初步 YUTREPIA 淨銷售 $2.",
+    "score": 44.2
+   },
+   "written_at": "2026-10-14T08:23-04:00"
   }
  ]
 }

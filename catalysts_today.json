@@ -1,237 +1,132 @@
 {
-  "GS": {
-    "Type": "earnings",
-    "Catalyst": "Q3 EPS $17.01 遠超預估約 $13.02、營收 $18.68B 超預估 $16.71B,交易與投行業務強勁,盤前 +4.6%",
-    "EarningsReaction": true
-  },
-  "UNH": {
-    "Type": "earnings",
-    "Catalyst": "Q3 調整後 EPS $4.69 超預估 $4.14、營收 $112.7B 優於預期,全年 EPS 指引上調至 ≥$20.50,盤前 +3.2%",
-    "EarningsReaction": true
-  },
-  "JPM": {
-    "Type": "earnings",
-    "Catalyst": "Q3 調整後 EPS $5.75 略低於預估約 $5.90、營收 $50.2B(+8%),固定收益交易 $5.37B 低於預期,盤前持平",
-    "EarningsReaction": true
-  },
-  "JNJ": {
-    "Type": "earnings",
-    "Catalyst": "Q3 營收 $25.4B(+5.9%)略優、上調全年 EPS 指引至 $11.05-11.15,但醫材營收 $8.64B 低於預期,盤前 −1.75%",
-    "EarningsReaction": true
-  },
-  "WFC": {
-    "Type": "earnings",
-    "Catalyst": "Q3 EPS $1.87 略優,但營收 $21.87B 低於預估 $22.3B、淨利息收入不如預期,盤前 −1.6%",
-    "EarningsReaction": true
-  },
-  "C": {
-    "Type": "earnings",
-    "Catalyst": "Q3 EPS $2.85 優於預估 $2.66、營收 $23.85B 小幅超預期,盤前 −1.1%",
-    "EarningsReaction": true
-  },
-  "DPZ": {
-    "Type": "earnings",
-    "Catalyst": "FQ3 EPS $4.60 優於預估 $4.36,但營收 $1.177B 略低、美國同店銷售僅 +0.3%(預估 +0.7%),盤前 −1.6%",
-    "EarningsReaction": true
-  },
-  "MU": {
-    "Type": "news",
-    "Catalyst": "中國長鑫存儲(CXMT)宣布新記憶體架構進展、擔憂供給緩解,加上 AI 投資泡沫疑慮,記憶體族群連兩日重挫,盤前 −4.5%",
-    "EarningsReaction": false
-  },
-  "BP": {
-    "Type": "guidance",
-    "Catalyst": "Q3 交易更新:預期淨負債大幅下降、煉油利潤指標走高,盤前 +2.3%",
-    "EarningsReaction": true
-  },
-  "SNDK": {
-    "Type": "news",
-    "Catalyst": "記憶體族群賣壓:中國 CXMT 新記憶體架構進展引發供給疑慮,首爾 SK hynix 一度跌逾 10%,盤前 −4.5%",
-    "EarningsReaction": false
-  },
-  "WDC": {
-    "Type": "analyst",
-    "Catalyst": "記憶體族群賣壓(中國 CXMT 新記憶體架構引發供給疑慮)延續,另據 InvestorsHub 報導 UBS 下調目標價(未經一級源證實),盤前 −6.6%",
-    "EarningsReaction": false
-  },
-  "SKHY": {
-    "Type": "news",
-    "Catalyst": "CXMT 新記憶體架構進展衝擊,SK hynix 首爾股價一度跌逾 10%、KOSPI 重挫,美股 ADR 盤前 −6%",
-    "EarningsReaction": false
-  },
-  "S": {
-    "Type": "offering",
-    "Catalyst": "傳擬發行約 $12.5 億 2031 年到期可轉債(含上限買權與回購),稀釋疑慮,盤前 −8%",
-    "EarningsReaction": false
-  },
-  "BNTX": {
-    "Type": "FDA",
-    "Catalyst": "BNT113 mRNA 頭頸癌二/三期 AHEAD-MERIT 未達第一個無惡化存活期主要終點,盤前 −5.9%",
-    "EarningsReaction": false
-  },
-  "FUN": {
-    "Type": "news",
-    "Catalyst": "10/12 喬治亞州 Six Flags Over Georgia 雲霄飛車事故致死,公司暫停同型設施,盤後 −10.3%",
-    "EarningsReaction": false
-  },
-  "BKYI": {
-    "Type": "contract",
-    "Catalyst": "新增中東政府安全機構客戶採用其多重驗證/單一登入平台(金額未揭露),流通股僅約 131 萬股,盤前 +147%",
-    "EarningsReaction": false
-  },
-  "TCRT": {
-    "Type": "momentum",
-    "Catalyst": "查無公司新聞稿;微型股無消息暴衝,現金僅約 $12 萬,留意增發風險,盤前 +91~129%",
-    "EarningsReaction": false
-  },
-  "AIXI": {
-    "Type": "momentum",
-    "Catalyst": "查無 10/12-13 個股新聞;昨盤中已漲 18%,盤前再 +31~37%,無消息炒作",
-    "EarningsReaction": false
-  },
-  "DCX": {
-    "Type": "momentum",
-    "Catalyst": "查無新聞;昨盤後 +41%、盤前 +6.8%,前身 Chijet,現做鏈上衍生品平台",
-    "EarningsReaction": false
-  },
-  "YJ": {
-    "Type": "momentum",
-    "Catalyst": "查無 10 月新聞,中概小型股無消息上漲 +15%",
-    "EarningsReaction": false
-  },
-  "WORX": {
-    "Type": "momentum",
-    "Catalyst": "查無新聞,盤前 −13%;曾收 Nasdaq 低價通知,留意合規/稀釋",
-    "EarningsReaction": false
-  },
-  "SNDX": {
-    "Type": "news",
-    "Catalyst": "10/12 盤後 −18%,查無公司公告(最近 Q2 營收 $73M +92%)",
-    "EarningsReaction": false
-  },
-  "MNDR": {
-    "Type": "momentum",
-    "Catalyst": "前一日暴漲後獲利回吐,查無公司公告,盤前 −28%",
-    "EarningsReaction": false
-  },
-  "YMAT": {
-    "Type": "momentum",
-    "Catalyst": "查無新聞,炒作型回吐 −20%",
-    "EarningsReaction": false
-  },
-  "WFF": {
-    "Type": "momentum",
-    "Catalyst": "查無新聞,1M +862% 後回吐,盤後 −9%",
-    "EarningsReaction": false
-  },
-  "MSGY": {
-    "Type": "momentum",
-    "Catalyst": "查無新聞,盤後 +19%",
-    "EarningsReaction": false
-  },
-  "SUGP": {
-    "Type": "momentum",
-    "Catalyst": "查無新聞,盤後 +15%",
-    "EarningsReaction": false
-  },
-  "SKK": {
-    "Type": "momentum",
-    "Catalyst": "查無新聞,盤後 −13%(8 月曾稀釋增發 37%)",
-    "EarningsReaction": false
-  },
-  "AGRZ": {
-    "Type": "momentum",
-    "Catalyst": "查無新聞,盤後 +12%",
-    "EarningsReaction": false
-  },
-  "CYPH": {
-    "Type": "momentum",
-    "Catalyst": "查無新聞,盤後 −4%,疑隨 ZEC 幣價波動",
-    "EarningsReaction": false
-  },
-  "MEDS": {
-    "Type": "momentum",
-    "Catalyst": "查無新聞,盤前 −4.6%",
-    "EarningsReaction": false
-  },
-  "MGN": {
-    "Type": "momentum",
-    "Catalyst": "查無新聞,盤前 −6.6%",
-    "EarningsReaction": false
-  },
-  "SCNX": {
-    "Type": "momentum",
-    "Catalyst": "10/5 已 1 比 25 反向分割,今日無新聞,+4.4%",
-    "EarningsReaction": false
-  },
-  "VIVK": {
-    "Type": "M&A",
-    "Catalyst": "10/9 擬收購 Direct Midstream 非約束意向書、10/5 完成 1 比 15 反分割;昨盤後 −7.8% 無新消息",
-    "EarningsReaction": false
-  },
-  "STX": {
-    "Type": "news",
-    "Catalyst": "中國長鑫存儲(CXMT)新記憶體設計引發供給疑慮,記憶體/儲存股連兩日重挫,盤前 −6.1%",
-    "EarningsReaction": false
-  },
-  "MRVL": {
-    "Type": "news",
-    "Catalyst": "AI 泡沫疑慮延續、晶片股走弱;Barron's 稱 $200 億計畫加深客戶集中風險(未證實),盤前 −3.2%",
-    "EarningsReaction": false
-  },
-  "CRWV": {
-    "Type": "news",
-    "Catalyst": "AI 泡沫疑慮波及高槓桿資料中心股,未查到公司專屬消息,盤前 −3.2%",
-    "EarningsReaction": false
-  },
-  "SMCI": {
-    "Type": "news",
-    "Catalyst": "AI 伺服器族群續弱,未查到當日觸發事件,盤前 −2.9%",
-    "EarningsReaction": false
-  },
-  "CIFR": {
-    "Type": "offering",
-    "Catalyst": "擬發行 $8.5 億 2032 年到期零息可轉債,並置換部分 2030 年到期舊債,稀釋疑慮壓股價,盤前 −12.3%",
-    "EarningsReaction": false
-  },
-  "HUM": {
-    "Type": "M&A",
-    "Catalyst": "與貝萊德旗下 HPS 成立合資接手約 150 家 CenterWell 診所,貝萊德以約 $28 億買下 WCAS 持股,負債大幅下降、不影響 2026 獲利指引;UNH 上調全年指引帶動管理式醫療族群",
-    "EarningsReaction": false
-  },
-  "ADBE": {
-    "Type": "analyst",
-    "Catalyst": "據 Yahoo/MT Newswires 標題,HSBC 將 Adobe 由買進降至持有、目標價 $267(降評原因未經一級源證實)",
-    "EarningsReaction": false
-  },
-  "FRMI": {
-    "Type": "momentum",
-    "Catalyst": "查無 10/13 個股新聞;前一日收 $3.25 近 52 週低點後技術性反彈,盤前約 +17.5%,AI 電力族群題材股",
-    "EarningsReaction": false
-  },
-  "PFAI": {
-    "Type": "momentum",
-    "Catalyst": "查無個股新聞;市值約 $3,500 萬的微型股,10/7 已單日翻倍,今日盤前再 +177%,純籌碼行情、極高風險",
-    "EarningsReaction": false
-  },
-  "BIAF": {
-    "Type": "momentum",
-    "Catalyst": "查無 10/13 個股新聞,微型股盤前 −10%",
-    "EarningsReaction": false
-  },
-  "ILAG": {
-    "Type": "momentum",
-    "Catalyst": "查無個股新聞,微型股盤前 −7%",
-    "EarningsReaction": false
-  },
-  "ASTS": {
-    "Type": "momentum",
-    "Catalyst": "查無 10/13 個股新聞,太空概念股回檔,盤前 −4.7%",
-    "EarningsReaction": false
-  },
-  "SECZ": {
-    "Type": "momentum",
-    "Catalyst": "查無個股新聞;7 月經 SPAC 合併上市,盤前 −5.2%",
-    "EarningsReaction": false
-  }
+ "BAC": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS $0.91(含 OCC/FinCEN $12 億裁罰,排除後 $1.08)低於預期約 $1.11;營收 $300 億 +7% 略低於預期 ~$306 億,盤前 −5%",
+  "EarningsReaction": true
+ },
+ "MS": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS $3.03 略低於預期 ~$3.12;淨營收 $203.4 億 +12%,財富管理 $90.7 億創紀錄、淨新增資產 $2,324 億,盤前小跌",
+  "EarningsReaction": true
+ },
+ "BLK": {
+  "Type": "earnings",
+  "Catalyst": "Q3 調整後 EPS $15.93 大超預期 ~$14.28(+38% YoY);營收 $77.5 億 +19%,單季淨流入 $2,050 億、AUM $15.49 兆,盤前 +3.7%",
+  "EarningsReaction": true
+ },
+ "STT": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS $3.69 小超預期、營收 $40.0 億 +13% 略低於預期 $40.2 億;淨利息收入 +21%,盤前 −8.9%",
+  "EarningsReaction": true
+ },
+ "FAST": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS $0.35 小超預期、營收 $24.6 億 +15.5% 優於預期;營業利益率 21.5%(+90bp),但客戶結構壓毛利,盤前 −4.4%",
+  "EarningsReaction": true
+ },
+ "ASML": {
+  "Type": "earnings",
+  "Catalyst": "Q3 營收 €116.6 億、毛利率 57.5% 優於指引;上修全年營收至 €440-450 億,Q4 指引 €142-152 億;客戶洽談 2029-30 訂單,但晶片股續弱盤前持平",
+  "EarningsReaction": true
+ },
+ "LQDA": {
+  "Type": "news",
+  "Catalyst": "10/13 盤後與 United Therapeutics 全球和解,終結 6 件訴訟、YUTREPIA 持續供貨;Q3 初步 YUTREPIA 淨銷售 $2.23 億,盤後 +42%",
+  "EarningsReaction": false
+ },
+ "VSTM": {
+  "Type": "FDA",
+  "Catalyst": "10/14 公布 VS-7375 口服 KRAS G12D 抑制劑數據:二線胰臟癌確認緩解率 50%(4/8)、2L+ 41%(9/22);與 FDA 就一線 Phase 3 設計達共識,盤前 +11%",
+  "EarningsReaction": false
+ },
+ "JBDI": {
+  "Type": "M&A",
+  "Catalyst": "10/13 6-K:以 $9 億零息永續可轉債(轉換價 $1.00)收購倫敦社群平台母公司 Glorian Capital,稀釋疑慮,盤後/盤前 −22~26%",
+  "EarningsReaction": false
+ },
+ "GLND": {
+  "Type": "policy",
+  "Catalyst": "川普 10/14 凌晨在 Truth Social 稱格陵蘭「大規模石油、天然氣與礦產探勘即將展開」,Jameson Land 鑽探標的 Greenland Energy 盤前 +77%",
+  "EarningsReaction": false
+ },
+ "GRML": {
+  "Type": "policy",
+  "Catalyst": "川普 10/14 凌晨貼文稱格陵蘭大規模礦產/油氣探勘即將展開,格陵蘭礦業股集體跳漲,GRML 盤前 +29%",
+  "EarningsReaction": false
+ },
+ "CRML": {
+  "Type": "policy",
+  "Catalyst": "川普 10/14 凌晨貼文稱格陵蘭大規模礦產探勘即將展開,格陵蘭稀土礦商 Critical Metals 隨族群盤前 +5%",
+  "EarningsReaction": false
+ },
+ "CRWV": {
+  "Type": "news",
+  "Catalyst": "FT 10/14 報導 CoreWeave 尋求保險資金「不設上限」支應 AI 建置融資;半導體/AI 族群續弱,盤前 −4%",
+  "EarningsReaction": false
+ },
+ "AEHL": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞稿或 6-K;連兩個盤段 +150~165% 的低流通股動能,X 上大量喊單,無基本面催化",
+  "EarningsReaction": false
+ },
+ "TCRT": {
+  "Type": "momentum",
+  "Catalyst": "查無 10/13-14 公告;延續 10/13 大漲的低價股動能(盤前成交 1,900 萬股),X 有喊單群組",
+  "EarningsReaction": false
+ },
+ "ENVX": {
+  "Type": "momentum",
+  "Catalyst": "查無 10/13-14 新聞稿,盤後/盤前 +9~12% 動能",
+  "EarningsReaction": false
+ },
+ "BKYI": {
+  "Type": "momentum",
+  "Catalyst": "10/13 盤後 +10% 後今盤前回吐 −11.5%,查無新公告(10/13 簽約利多已反映)",
+  "EarningsReaction": false
+ },
+ "GTLB": {
+  "Type": "momentum",
+  "Catalyst": "查無盤後新聞;10/12 剛創 52 週新高後獲利了結,盤後 −4.2%",
+  "EarningsReaction": false
+ },
+ "FBGL": {
+  "Type": "momentum",
+  "Catalyst": "查無 10/13 盤後新聞,−18.5%",
+  "EarningsReaction": false
+ },
+ "FLYE": {
+  "Type": "momentum",
+  "Catalyst": "查無 10/13-14 公司新聞,盤前 +4.9%",
+  "EarningsReaction": false
+ },
+ "AIXI": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,盤前 −6%",
+  "EarningsReaction": false
+ },
+ "LGHL": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,盤後 −8%",
+  "EarningsReaction": false
+ },
+ "MNSO": {
+  "Type": "momentum",
+  "Catalyst": "查無 10/13-14 新聞,盤前 +4.3%",
+  "EarningsReaction": false
+ },
+ "PFAI": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,延續前日大跌 −13.6%",
+  "EarningsReaction": false
+ },
+ "RLJ": {
+  "Type": "momentum",
+  "Catalyst": "查無 10/13 盤後公告或 8-K,−8%",
+  "EarningsReaction": false
+ },
+ "WFF": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,10/13 盤中大跌後盤後反彈 +8.5%",
+  "EarningsReaction": false
+ }
 }
