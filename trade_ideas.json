@@ -1,31 +1,19 @@
 {
- "date": "2026-10-14",
- "written_at": "2026-10-14T08:23:11-04:00",
- "ideas": [
-  {
-   "rank": 1,
-   "symbol": "LQDA",
-   "setup": "beaten_squeeze_go",
-   "direction": "long",
-   "thesis": "10/13 盤後與 United Therapeutics 全球和解、終結 6 件訴訟,YUTREPIA 供貨風險解除,Q3 初步 YUTREPIA 淨銷售 $2.23 億(去年同季營收僅 $884 萬)。五條件全中:gap 約 +40%、perf1M −42%(空單建在低位)、short float 16.3%、DTC 4.8(<5 快燃料)、前瞻營收成長遠高於 30%;市值約 $34 億,不屬微型股無回補買盤家族。",
-   "entry": "09:30 開盤買進;前提:開盤 gap 仍 ≥+5%(vs 10/13 收盤)",
-   "target": "13:30 ET 前了結(不設固定目標)",
-   "stop": "進場價 −5%",
-   "backtest_note": "beaten_squeeze_go 全庫 n=45、勝率 58%、+0.59R(7 月集群風險註記,候補等級);gap 已達 +40% 高於樣本中位,開盤價位風險較大,倉位取正常的一半",
-   "written_at": "2026-10-14T08:23:11-04:00"
-  },
-  {
-   "rank": 2,
-   "symbol": "FAST",
-   "setup": "beatdip",
-   "direction": "long",
-   "thesis": "Q3 EPS $0.35 小超預期、營收 $24.63 億 +15.5% 優於預期(真 beat:EPS 與營收 surprise 皆 ≥0),盤前卻 −4.4%(客戶結構壓毛利);市值約 $590 億 ≥100 億硬條件,gap 落在 −4%~−18% 帶。",
-   "entry": "09:30 先複核開盤 gap 仍在 −4%~−18%,否則作廢;10:30 ET 前不進場,10:30 價需高於早盤低點 0.5% 以上",
-   "target": "回到平盤或 +6% 先到先出",
-   "stop": "早盤低點下 0.5%(結構停損)",
-   "backtest_note": "beatdip 降級複驗中(2026-08-16 主層逐日等權 −0.00),僅以最小倉位執行並列入 live 對帳;開盤 gap 若收斂到 −4% 以內即作廢",
-   "written_at": "2026-10-14T08:23:11-04:00"
-  }
- ],
- "no_trade_notes": "contract_fade:今日無合約型 gap ≥+15%(JBDI 是 $9 億可轉債收購且為 gap-down,GLND/GRML 為政策貼文非合約)。dtc_fade:滾動開關仍關閉,且唯一形狀合格的 VSTM(DTC 6.5、+11%)有真臨床利多(VS-7375 二線胰臟癌緩解率 50%),依出單前新聞濾網跳過。BAC(−5.5%)、STT(−8.9%)為財報 miss/營收 miss,不符 beatdip 真 beat 條件。AEHL/TCRT/GLND/GRML 屬無回補買盤家族或樂透帶,禁做多。"
+  "date": "2026-10-15",
+  "written_at": "2026-10-15T08:15:31-04:00",
+  "ideas": [
+    {
+      "rank": 1,
+      "symbol": "ERIC",
+      "setup": "dtc_fade",
+      "direction": "short",
+      "thesis": "Ericsson Q3 調整後 EBITA 101 億瑞典克朗遠高於共識約 79 億、利潤率 17%,盤前 +11.7% 至約 $10.70。DTC 7.4(>5)、gap ≥+2% 符合 dtc_fade 條件;大盤處於 CPI 偏熱+AI 族群殺盤的避險環境,高開後回吐機率較高。",
+      "entry": "10:30 ET 放空;前提:開盤 gap 仍 ≥+2%(vs 10/14 收盤)",
+      "target": "收盤回補",
+      "stop": "進場價 +5%",
+      "backtest_note": "dtc_fade 次主力(逐日等權 +0.28R);但這次是真 beat(EBITA 超預期約 28%),逆勢放空真實利多屬樣本邊緣,倉位取正常的一半",
+      "written_at": "2026-10-15T08:15:31-04:00"
+    }
+  ],
+  "no_trade_notes": "beatdip:今日財報股 gap −4%~−18% 且確認雙 beat 的 ≥100 億大股無(TSM 盤前 −2.6% 未入帶;FHN −4.9% 營收下滑非雙 beat;FMC 為大砍指引非 beat)。contract_fade:無合約型 gap ≥+15%。beaten_squeeze_go:無 gap≥+5 且 perf1M≤−20、SF≥10、DTC<5 的組合(ANRO/ABR DTC>8;SPRC/FLYE 為微型股無回補買盤家族)。PAG 為每股 $212 現金私有化,依規整檔剔除。"
 }
