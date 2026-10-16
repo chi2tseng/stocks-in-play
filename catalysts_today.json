@@ -1,297 +1,152 @@
 {
-  "ERIC": {
-    "Type": "earnings",
-    "Catalyst": "Q3 調整後 EBITA 101 億瑞典克朗大幅超越預期約 79 億、利潤率 17%、本業銷售 +7%,盤前 +11.7%",
-    "EarningsReaction": true
-  },
-  "FMC": {
-    "Type": "guidance",
-    "Catalyst": "預告 Q3 營收僅 $0.65-1.25 億、調整後 EBITDA 虧 $5.1-5.65 億(含清通路庫存降價),正與銀行協商修改契約條款,盤前 −44%",
-    "EarningsReaction": true
-  },
-  "RKLB": {
-    "Type": "news",
-    "Catalyst": "10/14 盤後宣布 Neutron 火箭首發延至 2027(一級燃料箱前圓頂製造瑕疵),連兩段下跌,盤前再 −10%",
-    "EarningsReaction": false
-  },
-  "CRWV": {
-    "Type": "news",
-    "Catalyst": "10/14 信用恐慌 −15%(2032 債殖利率逼近 15%、CDS 破 1000bp),盤後/盤前續跌約 −6%",
-    "EarningsReaction": false
-  },
-  "VNDA": {
-    "Type": "FDA",
-    "Catalyst": "焦慮症新藥 VQW-765 三期試驗未達主要終點,10/14 盤後 −4.5%~−10%",
-    "EarningsReaction": false
-  },
-  "DELL": {
-    "Type": "analyst",
-    "Catalyst": "Barclays 降評至中立、目標價 $603→$574(估值偏高),疊加 AI 族群殺盤,盤前 −4.5%",
-    "EarningsReaction": false
-  },
-  "PAG": {
-    "Type": "M&A",
-    "Catalyst": "Penske Corp 與三井以每股 $212 現金私有化(企業價值約 $163 億,預計 2027 Q1 完成),盤前 +8.5% 貼近收購價",
-    "EarningsReaction": false
-  },
-  "CTVA": {
-    "Type": "macro",
-    "Catalyst": "隨 FMC 預告崩跌(學名藥降價、通路庫存)農化族群連帶走弱,無個股消息",
-    "EarningsReaction": false
-  },
-  "CIFR": {
-    "Type": "offering",
-    "Catalyst": "10/14 定價 $8.5 億 0% 可轉債(2032)並換股處理舊債,稀釋疑慮+AI 資料中心族群走弱",
-    "EarningsReaction": false
-  },
-  "WULF": {
-    "Type": "macro",
-    "Catalyst": "同業 CIFR 發可轉債+AI 資料中心族群走弱,無自身消息",
-    "EarningsReaction": false
-  },
-  "JBDI": {
-    "Type": "M&A",
-    "Catalyst": "10/13 公告以 $9 億可轉債收購 Glorian(AI 社群 ZYMIX),10/22 股東會;盤後 +20.7% 後盤前回吐 −8%",
-    "EarningsReaction": false
-  },
-  "SPRC": {
-    "Type": "momentum",
-    "Catalyst": "查無當日公告,市值約 $270 萬微型股無消息拉抬 +40%",
-    "EarningsReaction": false
-  },
-  "AEHL": {
-    "Type": "momentum",
-    "Catalyst": "查無公告,盤後 +17% 後盤前回吐 −13%",
-    "EarningsReaction": false
-  },
-  "GLND": {
-    "Type": "momentum",
-    "Catalyst": "格陵蘭題材退潮,查無新公告,續跌約 −16%",
-    "EarningsReaction": false
-  },
-  "GRML": {
-    "Type": "momentum",
-    "Catalyst": "格陵蘭概念股隨 GLND 回落,查無公司公告",
-    "EarningsReaction": false
-  },
-  "NXGL": {
-    "Type": "momentum",
-    "Catalyst": "查無 10/14 公告,盤後 −13%(近期持續可轉債/權證融資)",
-    "EarningsReaction": false
-  },
-  "FBGL": {
-    "Type": "momentum",
-    "Catalyst": "查無公告,微型股盤後 +12.9%",
-    "EarningsReaction": false
-  },
-  "CYPH": {
-    "Type": "momentum",
-    "Catalyst": "查無公司新聞(Zcash 財庫股),隨加密幣波動",
-    "EarningsReaction": false
-  },
-  "FLYE": {
-    "Type": "momentum",
-    "Catalyst": "查無新催化(9/3 曾收 10-Q 逾期通知)",
-    "EarningsReaction": false
-  },
-  "ABR": {
-    "Type": "momentum",
-    "Catalyst": "查無 10/14 盤後公告(Q3 財報 10/30)",
-    "EarningsReaction": false
-  },
-  "ANRO": {
-    "Type": "momentum",
-    "Catalyst": "查無公告,10/14 盤中量增後盤後 +6.6%",
-    "EarningsReaction": false
-  },
-  "KEEL": {
-    "Type": "macro",
-    "Catalyst": "查無當日新聞,隨 AI 資料中心族群走弱",
-    "EarningsReaction": false
-  },
-  "TE": {
-    "Type": "macro",
-    "Catalyst": "查無當日新聞,隨能源設備族群走弱",
-    "EarningsReaction": false
-  },
-  "FPS": {
-    "Type": "macro",
-    "Catalyst": "查無當日新聞,隨 AI 電力設備族群走弱",
-    "EarningsReaction": false
-  },
-  "RDW": {
-    "Type": "macro",
-    "Catalyst": "查無新聞,隨 RKLB 延誤太空股連動走弱",
-    "EarningsReaction": false
-  },
-  "AEHR": {
-    "Type": "macro",
-    "Catalyst": "10/14 盤後隨半導體族群走弱,查無個股消息(財報 11/2)",
-    "EarningsReaction": false
-  },
-  "AXTI": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/半導體族群續殺(費半 10/14 −4.5%);高 beta 材料股,查無個股消息",
-    "EarningsReaction": false
-  },
-  "SKHY": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/記憶體族群續殺(費半 10/14 −4.5%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "MU": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/半導體族群續殺(費半 10/14 −4.5%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "SNDK": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/半導體族群續殺(費半 10/14 −4.5%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "WDC": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/半導體族群續殺(費半 10/14 −4.5%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "ASX": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/半導體族群續殺(費半 10/14 −4.5%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "STM": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/半導體族群續殺(費半 10/14 −4.5%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "LITE": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/半導體族群續殺(費半 10/14 −4.5%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "COHR": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/半導體族群續殺(費半 10/14 −4.5%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "CRDO": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/半導體族群續殺(費半 10/14 −4.5%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "MRVL": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/半導體族群續殺(費半 10/14 −4.5%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "AAOI": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/半導體族群續殺(費半 10/14 −4.5%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "VRT": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/半導體族群續殺(費半 10/14 −4.5%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "BE": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/半導體族群續殺(費半 10/14 −4.5%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "APLD": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 3.7% 高於預期+CoreWeave 信用恐慌,AI/半導體族群續殺(費半 10/14 −4.5%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "TSM": {
-    "Type": "earnings",
-    "Catalyst": "Q3 營收 $467.2 億(+41%)、毛利率 66.4%、Q4 指引 $523-543 億皆優於預期,但 AI 族群殺盤下盤前 −2.6%",
-    "EarningsReaction": true
-  },
-  "SCHW": {
-    "Type": "earnings",
-    "Catalyst": "Q3 調整後 EPS $1.69 勝預估 $1.66,營收 $71.7 億略低於預估,核心淨新增資產 $1,904 億,盤前 −3%",
-    "EarningsReaction": true
-  },
-  "PNC": {
-    "Type": "earnings",
-    "Catalyst": "Q3 調整後 EPS $5.09 勝預估約 $4.88,營收 $65.6 億季減 5% 略低於預估、淨壞帳沖銷年增 44%,盤前 −2.2%",
-    "EarningsReaction": true
-  },
-  "USB": {
-    "Type": "earnings",
-    "Catalyst": "Q3 EPS $1.34 勝預估 $1.32,淨營收創紀錄 $79.7 億略低於預估,信用卡組合收購首期提列 $1.35 億",
-    "EarningsReaction": true
-  },
-  "MRSH": {
-    "Type": "earnings",
-    "Catalyst": "Q3 調整後 EPS $2.03(+10%)勝預估約 $1.98,營收 $69 億、本業成長 5%,買回 $5 億,盤前 +1.1%",
-    "EarningsReaction": true
-  },
-  "BNY": {
-    "Type": "earnings",
-    "Catalyst": "Q3 EPS $2.34 優於預期約 $2.26,營收 $56.76 億 +12%,淨利 $16.87 億,盤前 +1.7%",
-    "EarningsReaction": true
-  },
-  "PLD": {
-    "Type": "earnings",
-    "Catalyst": "Q3 核心 FFO $1.60(去年 $1.49),全年指引 $6.25-6.29;同時為英國 SEGRO 收購案收購方",
-    "EarningsReaction": true
-  },
-  "FHN": {
-    "Type": "earnings",
-    "Catalyst": "Q3 調整後 EPS $0.53 持平預期,但出售 $45 億房貸認列損失 $4.73 億、GAAP 每股虧 $0.20,盤前 −4.9%",
-    "EarningsReaction": true
-  },
-  "WIT": {
-    "Type": "earnings",
-    "Catalyst": "Q2 淨利 ₹3,200.6 crore 年減 1.4%,IT 服務營收 $26.1 億,Q3 指引 $25.71-26.25 億",
-    "EarningsReaction": true
-  },
-  "STX": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 偏熱+CoreWeave 信用恐慌,AI/半導體族群續殺;查無個股消息",
-    "EarningsReaction": false
-  },
-  "ALAB": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 偏熱+CoreWeave 信用恐慌,AI/半導體族群續殺;查無個股消息",
-    "EarningsReaction": false
-  },
-  "ARM": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 偏熱+CoreWeave 信用恐慌,AI/半導體族群續殺;查無個股消息",
-    "EarningsReaction": false
-  },
-  "INTC": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 偏熱+CoreWeave 信用恐慌,AI/半導體族群續殺;查無個股消息",
-    "EarningsReaction": false
-  },
-  "SMCI": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 偏熱+CoreWeave 信用恐慌,AI/半導體族群續殺;查無個股消息",
-    "EarningsReaction": false
-  },
-  "AMD": {
-    "Type": "macro",
-    "Catalyst": "9 月 CPI 偏熱+CoreWeave 信用恐慌,AI/半導體族群續殺(10/14 已跌 5.7%);查無個股消息",
-    "EarningsReaction": false
-  },
-  "WMT": {
-    "Type": "analyst",
-    "Catalyst": "德意志銀行升評至買進、目標價 $113→$136,看好通膨環境下市占與利潤率,盤前 +2.6%",
-    "EarningsReaction": false
-  },
-  "AZN": {
-    "Type": "contract",
-    "Catalyst": "與 insitro 簽 AI 藥物研發合作,預付 $4,000 萬、里程碑最高約 $14.6 億,盤前 +2.8%",
-    "EarningsReaction": false
-  },
-  "FRO": {
-    "Type": "macro",
-    "Catalyst": "油輪族群同跌,路透:美方考慮放寬影子船隊制裁以壓低運價;查無個股消息",
-    "EarningsReaction": false
-  }
+ "GUTS": {
+  "Type": "FDA",
+  "Catalyst": "REMAIN-1 樞紐試驗 6 個月達共同主要終點(GLP-1 減重維持約 80% vs 安慰組 67%),但療效差距小,盤前崩跌 −45%",
+  "EarningsReaction": false
+ },
+ "JAGX": {
+  "Type": "news",
+  "Catalyst": "查無今日個股新聞;10/14 公告特別股息更新與胃腸科學會初步數據,盤前 −29%",
+  "EarningsReaction": false
+ },
+ "TCRT": {
+  "Type": "M&A",
+  "Catalyst": "Alaunos 與 Paragon 分拆公司反向合併題材(10/13 報導)延燒,昨盤後+今盤前 +26~30%",
+  "EarningsReaction": false
+ },
+ "PMI": {
+  "Type": "momentum",
+  "Catalyst": "Picard Medical 查無今日個股新聞,盤前 +24% 微型股投機",
+  "EarningsReaction": false
+ },
+ "SITC": {
+  "Type": "news",
+  "Catalyst": "10/15 盤後宣布出售 DTP 權益(淨得 $3,240 萬)、每股 $3 特別分配並計畫自 NYSE 下市,+17%",
+  "EarningsReaction": false
+ },
+ "NCPL": {
+  "Type": "momentum",
+  "Catalyst": "10/14 宣布重新符合 Nasdaq 最低股價規定後連日投機,+9~18%",
+  "EarningsReaction": false
+ },
+ "JBDI": {
+  "Type": "momentum",
+  "Catalyst": "查無個股新聞,10/15 盤後 +16% 微型股投機",
+  "EarningsReaction": false
+ },
+ "RGC": {
+  "Type": "momentum",
+  "Catalyst": "查無個股新聞,盤前 +9%",
+  "EarningsReaction": false
+ },
+ "SKY.S": {
+  "Type": "news",
+  "Catalyst": "查無個股新聞,盤前 −17%",
+  "EarningsReaction": false
+ },
+ "TLK": {
+  "Type": "news",
+  "Catalyst": "印尼電信 ADR 查無個股新聞,盤前 −15%(Q3 財報約 10/29)",
+  "EarningsReaction": false
+ },
+ "UAMY": {
+  "Type": "momentum",
+  "Catalyst": "查無今日個股新聞;稀土/關鍵礦產族群近期震盪,盤前 +8%",
+  "EarningsReaction": false
+ },
+ "NUAI": {
+  "Type": "momentum",
+  "Catalyst": "查無個股新聞,10/15 盤後 +7%",
+  "EarningsReaction": false
+ },
+ "TNMG": {
+  "Type": "news",
+  "Catalyst": "10/16 宣布重新符合 Nasdaq 最低股價規定,但盤前 −6%",
+  "EarningsReaction": false
+ },
+ "KNX": {
+  "Type": "news",
+  "Catalyst": "同業 J.B. Hunt 10/15 盤後財報後卡車運輸股連動,盤後一度 −6%,盤前已回平(本身 10/21 才報)",
+  "EarningsReaction": false
+ },
+ "ZETA": {
+  "Type": "analyst",
+  "Catalyst": "Goldman Sachs 由中立升為買進、目標價 $45(較昨收約 +34%),盤前 +5%",
+  "EarningsReaction": false
+ },
+ "CRWV": {
+  "Type": "news",
+  "Catalyst": "信用恐慌延續(2032 債殖利率逼近 15%),10/15 盤中反彈後今日盤前再跌 −5%",
+  "EarningsReaction": false
+ },
+ "BORR": {
+  "Type": "momentum",
+  "Catalyst": "查無今日新聞;10/12 多年期自升式平台合約+內部人 $1,180 萬買股後續強,盤前 +5%",
+  "EarningsReaction": false
+ },
+ "MBLY": {
+  "Type": "analyst",
+  "Catalyst": "Citigroup 首評買進、目標價 $11,盤前 +5%(Q3 財報 10/29 盤前)",
+  "EarningsReaction": false
+ },
+ "TRV": {
+  "Type": "earnings",
+  "Catalyst": "Q3 核心 EPS $9.18 大超預期 $7.39(+24%)、營收小超預期,但保費成長停滯+石綿準備金 $2.95 億,盤前 −5%",
+  "EarningsReaction": true
+ },
+ "TFC": {
+  "Type": "earnings",
+  "Catalyst": "Q3 調整後 EPS $1.16 小超預期約 $1.12(GAAP $0.56),盤前 −2%",
+  "EarningsReaction": true
+ },
+ "IBKR": {
+  "Type": "earnings",
+  "Catalyst": "Q3 調整後 EPS $0.67 大致符合、DARTs +18%、帳戶 +35%,季股息由 $0.0875 調高至 $0.15",
+  "EarningsReaction": true
+ },
+ "MTB": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 與營收雙雙超預期,放款成長帶動",
+  "EarningsReaction": true
+ },
+ "CFG": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS $1.41(+34%)小超預期 $1.38,但營收不及預期,盤前 −2%",
+  "EarningsReaction": true
+ },
+ "RF": {
+  "Type": "earnings",
+  "Catalyst": "Q3 調整後 EPS $0.73 超預期 $0.66(+16% YoY),盤前 +0.7%",
+  "EarningsReaction": true
+ },
+ "JBHT": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS $1.82 年增僅 3%、營業利益 +2%,營收 +20%;JPM 下調目標價至 $283,盤前 −3%",
+  "EarningsReaction": true
+ },
+ "AA": {
+  "Type": "earnings",
+  "Catalyst": "Q3 調整後 EPS $1.82 大超預期約 $1.50、調整後 EBITDA $7.89 億,鋁產量連 6 季成長,盤前 +2%",
+  "EarningsReaction": true
+ },
+ "TSLA": {
+  "Type": "news",
+  "Catalyst": "飛行版 Roadster 示範登場,Musk 提及與 SpaceX 合作,盤前 +3%",
+  "EarningsReaction": false
+ },
+ "MSTR": {
+  "Type": "news",
+  "Catalyst": "MSCI 可能剔除「非營運公司」疑慮蓋過比特幣價格,盤前 −3%",
+  "EarningsReaction": false
+ },
+ "INSW": {
+  "Type": "guidance",
+  "Catalyst": "預告 Q3 淨利 $3.4-3.5 億、營收 $4.8-4.9 億,並宣布以約 $3.7 億收購 Bruton,盤前 +2.6%",
+  "EarningsReaction": true
+ },
+ "WDC": {
+  "Type": "analyst",
+  "Catalyst": "Wells Fargo 目標價由 $730 大砍至 $450,儲存族群(SNDK/MU)同步走弱,盤前 −1.7%",
+  "EarningsReaction": false
+ }
 }

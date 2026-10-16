@@ -1,19 +1,31 @@
 {
-  "date": "2026-10-15",
-  "written_at": "2026-10-15T08:15:31-04:00",
-  "ideas": [
-    {
-      "rank": 1,
-      "symbol": "ERIC",
-      "setup": "dtc_fade",
-      "direction": "short",
-      "thesis": "Ericsson Q3 調整後 EBITA 101 億瑞典克朗遠高於共識約 79 億、利潤率 17%,盤前 +11.7% 至約 $10.70。DTC 7.4(>5)、gap ≥+2% 符合 dtc_fade 條件;大盤處於 CPI 偏熱+AI 族群殺盤的避險環境,高開後回吐機率較高。",
-      "entry": "10:30 ET 放空;前提:開盤 gap 仍 ≥+2%(vs 10/14 收盤)",
-      "target": "收盤回補",
-      "stop": "進場價 +5%",
-      "backtest_note": "dtc_fade 次主力(逐日等權 +0.28R);但這次是真 beat(EBITA 超預期約 28%),逆勢放空真實利多屬樣本邊緣,倉位取正常的一半",
-      "written_at": "2026-10-15T08:15:31-04:00"
-    }
-  ],
-  "no_trade_notes": "beatdip:今日財報股 gap −4%~−18% 且確認雙 beat 的 ≥100 億大股無(TSM 盤前 −2.6% 未入帶;FHN −4.9% 營收下滑非雙 beat;FMC 為大砍指引非 beat)。contract_fade:無合約型 gap ≥+15%。beaten_squeeze_go:無 gap≥+5 且 perf1M≤−20、SF≥10、DTC<5 的組合(ANRO/ABR DTC>8;SPRC/FLYE 為微型股無回補買盤家族)。PAG 為每股 $212 現金私有化,依規整檔剔除。"
+ "date": "2026-10-16",
+ "written_at": "2026-10-16T08:18:43-04:00",
+ "ideas": [
+  {
+   "rank": 1,
+   "symbol": "TRV",
+   "setup": "beatdip",
+   "direction": "long",
+   "thesis": "Travelers Q3 核心 EPS $9.18 遠超共識 $7.39(+24%)、營收 $114.8 億超預期 1%,屬真 beat;但盤前 −5.3% 至約 $364(市場擔心保費收入下滑、石綿準備金追加約 $2.95 億)。市值約 $790 億、gap 落在 −4%~−18% 帶,符合 beatdip 條件。",
+   "entry": "09:30 先用開盤價複核 gap 仍在 −4%~−18%;10:30 ET 前不進場,10:30 價格需高於早盤低點 0.5% 以上才買",
+   "target": "回到平盤(10/15 收盤)或 +6% 先到先出",
+   "stop": "早盤低點下 0.5%",
+   "backtest_note": "beatdip 降級複驗中(live n=5、+0.18R/筆、60% 勝);逐日等權接近 0,倉位取正常的一半,絕不留倉",
+   "written_at": "2026-10-16T08:18:43-04:00"
+  },
+  {
+   "rank": 2,
+   "symbol": "MBLY",
+   "setup": "dtc_fade",
+   "direction": "short",
+   "thesis": "Mobileye 盤前 +5.2% 至約 $7.81,來自 Citi 首評買進、目標價 $11;DTC 7.7(>5)、short float 26.7%,符合 dtc_fade 條件(回補需多日、單日買盤難以撐住)。",
+   "entry": "10:30 ET 放空;前提:開盤 gap 仍 ≥+2%(vs 10/15 收盤)",
+   "target": "收盤回補",
+   "stop": "進場價 +5%",
+   "backtest_note": "dtc_fade 次主力但 live n=8 −0.47R/筆(近期失準);首評買進是真利多,逆勢放空,倉位取正常的一半",
+   "written_at": "2026-10-16T08:18:43-04:00"
+  }
+ ],
+ "no_trade_notes": "contract_fade:無合約型 gap ≥+15%。beaten_squeeze_go:gap≥+5 名單中 ZETA perf1M +16%、MBLY DTC>5、SITC/TCRT/PMI/NCPL 為微型股(無回補買盤家族)皆不符。GUTS −45% 為微型股臨床數據跳空,不做。SITC 為 $3 特別股息+下市計畫的公司行動,不建方向部位。"
 }
