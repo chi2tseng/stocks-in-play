@@ -1,85 +1,85 @@
 {
   "date": "2026-10-16",
-  "scanTime": "21:21",
-  "scanTimestamp": "2026-10-19T21:21",
+  "scanTime": "21:56",
+  "scanTimestamp": "2026-10-19T21:56",
   "stocks": {
-    "CFG": {
-      "symbol": "CFG",
-      "name": "Citizens Financial",
+    "TFC": {
+      "symbol": "TFC",
+      "name": "Truist Financial",
       "type": "earnings",
       "earningsReaction": true,
-      "catalyst": "Q3 EPS $1.41(+34%)小超預期 $1.38,但營收不及預期,盤前 −2%",
-      "newsDetail": "> **今日跌因:** Citizens 第三季 EPS 小幅優於預期,但 StockStory 指營收低於預期,盤前股價下跌約 1.8%。\n\nCitizens Financial Group 於 10/16 公布 2026 年第三季財報:**稀釋 EPS 1.41 美元**,較去年同期 1.05 美元成長 **34%**,高於預期約 1.38 美元;淨利 **6.36 億美元**,年增 **29%**。\n\n總營收約 **23.2 億美元**,年增 **10%**;淨利息收入 **16.8 億美元**,年增 **13%**;淨利差(NIM)為 **3.18%**,較去年同期的 2.99% 上升 19 個基點。非利息收入 **6.47 億美元**,其中財富管理手續費創 **1.09 億美元**新高。\n\nStockStory 稱營收不及預期,但我未查到營收共識的原始數字,此說法無法獨立驗證。執行長 Bruce Van Saun 表示本季營收與獲利成長亮眼。",
+      "catalyst": "Q3 調整後 EPS $1.16 小超預期約 $1.12(GAAP $0.56),盤前 −2%",
+      "newsDetail": "> **今日跌因:** Truist 第三季調整後 EPS 優於預期,但盤前股價仍小幅下跌約 2.0%,漲跌原因公司未明說。\n\nTruist 在 10/16 美股開盤前公布 2026 年第三季財報:**調整後稀釋 EPS 為 1.16 美元**,較去年同期成長 **12%**;依 GAAP 計算稀釋 EPS 為 **0.56 美元**。市場預期約 1.12 至 1.13 美元,調整後數字略高於預期。\n\n財報顯示放款與租賃餘額約 **3,290 億美元**,存款約 **4,110 億美元**。公司稱本季表現穩健,並持續簡化組織、重新配置資源。執行長 Mike Lyons、財務長 Mike Maguire 於美東 8 點主持法說會。\n\n調整後與 GAAP 數字落差較大(1.16 對 0.56 美元),查到的資料未列出差額明細。盤前下跌約 2.0%,查不到針對該跌幅的專門報導。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=CFG"
+          "url": "https://finviz.com/quote.ashx?t=TFC"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/CFG"
+          "url": "https://finance.yahoo.com/quote/TFC"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-CFG/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-TFC/news/"
         }
       ],
       "publishedAt": "2026-10-16T08:00:00-04:00",
       "publishedTimezone": "ET",
       "sources": [
         {
-          "label": "Citizens 3Q26 財報 8-K(SEC)",
-          "url": "https://www.sec.gov/Archives/edgar/data/0000759944/000075994426000206/a3q26earningsrelease.htm"
+          "label": "Truist 8-K Ex.99.1(SEC)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000092230/000009223026000108/ex991-3q26.htm"
         },
         {
-          "label": "Citizens 3Q26 財務補充資料(SEC)",
-          "url": "https://www.sec.gov/Archives/edgar/data/0000759944/000075994426000206/q326financialsupplement.htm"
+          "label": "Truist 財報法說會公告(Finviz)",
+          "url": "https://finviz.com/news/393502/truist-announces-third-quarter-2026-earnings-call-details"
         }
       ],
       "seanAnalysis": null,
       "milanAnalysis": null,
       "sessions": [
         {
-          "last": 62.29,
-          "chgPct": -1.8,
+          "last": 45.65,
+          "chgPct": -1.98,
           "volume": 14977146,
           "session": "headline",
           "direction": "down",
-          "name": "Citizens Financial",
+          "name": "Truist Financial",
           "sessionDate": "2026-10-16",
           "targetDate": "2026-10-16"
         }
       ],
       "primarySession": "headline",
       "primaryDirection": "down",
-      "last": 62.29,
-      "chgPct": -1.8,
+      "last": 45.65,
+      "chgPct": -1.98,
       "volume": 14977146,
       "tv": {
-        "latestEPS": 1.41,
-        "consensusEPS": 1.39,
-        "priorYrEPS": 1.05,
-        "surpriseEPS_pct": 1.55,
-        "surpriseEPS_dollar": 0.020000000000000018,
-        "latestRev_M": 2320.0,
-        "consensusRev_M": 2340.0,
-        "priorYrRev_M": 2120.0,
-        "surpriseRev_pct": -0.73,
-        "yrYrRev_pct": 9.433962264150944,
-        "epsYoY_pct": 34.28571428571428,
+        "latestEPS": 0.56,
+        "consensusEPS": 1.14,
+        "priorYrEPS": 1.04,
+        "surpriseEPS_pct": -50.85,
+        "surpriseEPS_dollar": -0.5799999999999998,
+        "latestRev_M": 5300.0,
+        "consensusRev_M": 5360.0,
+        "priorYrRev_M": 5240.0,
+        "surpriseRev_pct": -1.07,
+        "yrYrRev_pct": 1.1450381679389312,
+        "epsYoY_pct": -46.15384615384615,
         "epsEst_next4": [
-          1.48,
-          1.43,
-          1.59,
-          1.72
+          1.25,
+          1.11,
+          1.24,
+          1.25
         ],
         "revEst_next4": [
-          2400.0,
-          2390.0,
-          2470.0,
-          2540.0
+          5350.0,
+          5270.0,
+          5380.0,
+          5490.0
         ],
-        "yoyBlock": "+34.29% / +9.43%\n--------------------\n+30.97% / +11.11%\n+26.55% / +10.14%\n+22.31% / +8.33%\n+21.99% / +9.48%",
+        "yoyBlock": "-46.15% / +1.15%\n--------------------\n+25.00% / +1.13%\n+1.83% / +1.35%\n+0.81% / +1.32%\n+123.21% / +3.58%",
         "chart": {
           "quarters": [
             "Q4 '21",
@@ -96,80 +96,80 @@
             "Q3 '24"
           ],
           "eps_reported": [
-            0.83,
-            0.77,
-            0.92,
-            1.05,
-            1.13,
-            1.13,
-            1.3,
-            1.41,
+            0.91,
+            0.87,
+            0.9,
+            1.04,
+            1.0,
+            1.09,
+            1.23,
+            0.56,
             null,
             null,
             null,
             null
           ],
           "eps_estimate": [
-            0.82,
-            0.75,
             0.88,
-            1.03,
-            1.1,
+            0.87,
+            0.92,
+            1.0,
             1.09,
+            1.0,
+            1.08,
+            1.14,
+            1.25,
+            1.11,
             1.24,
-            1.39,
-            1.48,
-            1.43,
-            1.59,
-            1.72
+            1.25
           ],
           "rev_reported_M": [
-            1980.0,
-            1940.0,
-            2040.0,
-            2120.0,
-            2160.0,
-            2170.0,
-            2280.0,
-            2320.0,
+            5110.0,
+            4950.0,
+            5040.0,
+            5240.0,
+            5290.0,
+            5200.0,
+            5310.0,
+            5300.0,
             null,
             null,
             null,
             null
           ],
           "rev_estimate_M": [
-            1960.0,
-            1940.0,
-            2009.9999999999998,
-            2100.0,
-            2150.0,
-            2160.0,
-            2250.0,
-            2340.0,
-            2400.0,
-            2390.0,
-            2470.0,
-            2540.0
+            5040.0,
+            4930.0,
+            5010.0,
+            5190.0,
+            5310.0,
+            5180.0,
+            5240.0,
+            5360.0,
+            5350.0,
+            5270.0,
+            5380.0,
+            5490.0
           ],
           "latest_idx": 7
         },
         "latestReportDate": "2026-10-16",
         "nextReportDate": null
       },
-      "shortFloat": 4.07,
-      "shortRatio": 4.43,
-      "marketCap_M": 26690,
-      "floatShares_M": 417.42,
-      "perf1M": -5.49,
-      "perf3M": -12,
-      "perf6M": -3.65,
-      "perfYTD": 8.47,
-      "perf12M": 28.49,
+      "shortFloat": 2.48,
+      "shortRatio": 4.07,
+      "marketCap_M": 57230,
+      "floatShares_M": 1220,
+      "perf1M": -3.53,
+      "perf3M": -8.82,
+      "perf6M": -7.85,
+      "perfYTD": -4.8,
+      "perf12M": 9.97,
       "prevOhlcv": null,
       "modelPred": {
         "version": "v12",
-        "gap": -1.8,
-        "predDay": -2.3,
+        "gap": -1.98,
+        "predDay": -2.5,
         "band": [
           -2.2,
           2.1
@@ -177,14 +177,605 @@
         "tier": "big",
         "lottery": false,
         "spike": [
-          1.1,
-          1.8,
-          3.3
+          0.6,
+          1.3,
+          2.8
         ],
-        "predHi": -0.0,
+        "predHi": -0.7,
         "predHiBand": [
-          -0.7,
-          1.4
+          -1.4,
+          0.8
+        ]
+      }
+    },
+    "JBHT": {
+      "symbol": "JBHT",
+      "name": "J.B. Hunt Transport",
+      "type": "earnings",
+      "earningsReaction": true,
+      "catalyst": "Q3 EPS $1.82 年增僅 3%、營業利益 +2%,營收 +20%;JPM 下調目標價至 $283,盤前 −3%",
+      "newsDetail": "> **今日跌因:** J.B. Hunt 第三季每股盈餘 $1.82、營收約 $36.8 億,但獲利成長僅 2%,盤前股價跌約 3% 至 $228.3。\n\n**財報詳解**\n\nJ.B. Hunt 於 10/15 盤後公布 2026 年第三季:營業收入 **$36.77 億**,年增 **20%**(去年同期 $30.53 億);營業利益 **$2.471 億**,年增 **2%**;淨利 **$1.724 億**;稀釋後每股盈餘 **$1.82**,去年同期為 $1.76。財報前一份預覽指出市場共識約 $1.81、營收約 $35.9 億,因此每股盈餘僅略高於預期一美分。公司說明,營業利益占毛營收比率較去年下降,原因是外購運輸成本、燃料與燃料稅,以及保險理賠費用增加。\n\n**各事業體表現**\n\n聯運(Intermodal)營收 **$18.28 億**,年增 20%,營業利益 **$1.475 億**,年增 18%,貨量 **585,582 筆**,去年為 539,907 筆(約增 8%)。專屬運輸(Dedicated)營收 $9.602 億,年增 11%,但營業利益 **$8,170 萬**,年減 22%。整合運能(ICS)營收 $4.338 億,年增 57%,營業利益 $960 萬,去年同期虧損 $80 萬。卡車運輸營收 $2.608 億,年增 37%,營業利益 $700 萬,年減 6%。最後一哩(FMS)營收 $2.001 億,年減 3%,營業利益僅 **$160 萬**,年減 76%,停靠點 876,409 個,去年為 971,244 個。\n\n**資本配置**\n\n第三季公司買回約 **70.4 萬股**、約 **$1.74 億**,截至 9/30 剩餘買回額度約 **$6.19 億**。前九個月淨資本支出 **$2.911 億**,去年同期為 $4.909 億。\n\n**管理層說法**\n\n執行長 Shelley Simpson 在新聞稿中感謝員工對客戶的承諾;查無電話會議具名引言。\n\n**先前預警與分析師反應**\n\n9 月中旬公司在 Morgan Stanley 會議上預告,第三季盈餘將較第二季下降 5% 至 10%,當時股價盤前一度下跌最多約 9%。10 月初,Truist、BMO、Citi、JPMorgan、TD Cowen 與 Susquehanna 等已在財報前下調目標價。線索另指 JPMorgan 於財報後把目標價由 $287 降至 $283、同業 Knight-Swift 昨日盤後一度下跌 6%,本次搜尋未能獨立證實這兩點。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=JBHT"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/JBHT"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-JBHT/news/"
+        }
+      ],
+      "publishedAt": "2026-10-15T16:05:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "J.B. Hunt 8-K 第三季新聞稿",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000728535/000143774926032715/ex_1025956.htm",
+          "publishedAt": "2026-10-15"
+        },
+        {
+          "label": "Talk Business 財報前瞻",
+          "url": "https://talkbusiness.net/2026/10/j-b-hunt-q3-earnings-revenue-to-rise-analysts-say/",
+          "publishedAt": "2026-10"
+        }
+      ],
+      "seanAnalysis": {
+        "verdict": "PASS",
+        "summary": "EPS 年增僅 3%、9 月已預警,利空消化過;$228.3 沒新意,不碰",
+        "sourceDate": "2026-10-16"
+      },
+      "milanAnalysis": {
+        "score": 3,
+        "summary": "EPS 年增僅 3%,9 月已預警,市場早有預期;JPM 目標價小降 $287 到 $283,沒有驚喜",
+        "sourceDate": "2026-10-16"
+      },
+      "sessions": [
+        {
+          "last": 228.31,
+          "chgPct": -2.97,
+          "volume": 14977146,
+          "session": "headline",
+          "direction": "down",
+          "name": "J.B. Hunt Transport",
+          "sessionDate": "2026-10-16",
+          "targetDate": "2026-10-16"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "down",
+      "last": 228.31,
+      "chgPct": -2.97,
+      "volume": 14977146,
+      "tv": {
+        "latestEPS": 1.82,
+        "consensusEPS": 1.81,
+        "priorYrEPS": 1.76,
+        "surpriseEPS_pct": 0.79,
+        "surpriseEPS_dollar": 0.010000000000000009,
+        "latestRev_M": 3680.0,
+        "consensusRev_M": 3590.0,
+        "priorYrRev_M": 3050.0,
+        "surpriseRev_pct": 2.3,
+        "yrYrRev_pct": 20.655737704918035,
+        "epsYoY_pct": 3.4090909090909123,
+        "epsEst_next4": [
+          2.06,
+          1.83,
+          2.36,
+          2.73
+        ],
+        "revEst_next4": [
+          3730.0,
+          3490.0,
+          3830.0,
+          4019.9999999999995
+        ],
+        "yoyBlock": "+3.41% / +20.66%\n--------------------\n+8.42% / +20.32%\n+22.82% / +14.05%\n+23.56% / +9.43%\n+50.00% / +9.24%",
+        "chart": {
+          "quarters": [
+            "Q4 '21",
+            "Q1 '22",
+            "Q2 '22",
+            "Q3 '22",
+            "Q4 '22",
+            "Q1 '23",
+            "Q2 '23",
+            "Q3 '23",
+            "Q4 '23",
+            "Q1 '24",
+            "Q2 '24",
+            "Q3 '24"
+          ],
+          "eps_reported": [
+            1.53,
+            1.17,
+            1.31,
+            1.76,
+            1.9,
+            1.49,
+            1.91,
+            1.82,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            1.61,
+            1.15,
+            1.3,
+            1.46,
+            1.81,
+            1.44,
+            1.74,
+            1.81,
+            2.06,
+            1.83,
+            2.36,
+            2.73
+          ],
+          "rev_reported_M": [
+            3150.0,
+            2920.0,
+            2930.0,
+            3050.0,
+            3100.0,
+            3060.0,
+            3500.0,
+            3680.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            3130.0,
+            2900.0,
+            2920.0,
+            3020.0,
+            3120.0,
+            2960.0,
+            3260.0,
+            3590.0,
+            3730.0,
+            3490.0,
+            3830.0,
+            4019.9999999999995
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-10-16",
+        "nextReportDate": null
+      },
+      "shortFloat": 4.4,
+      "shortRatio": 3.2,
+      "marketCap_M": 22770,
+      "floatShares_M": 73.3,
+      "perf1M": 3.49,
+      "perf3M": -17.33,
+      "perf6M": -3.64,
+      "perfYTD": 24.75,
+      "perf12M": 47.06,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": -2.97,
+        "predDay": -3.5,
+        "band": [
+          -2.2,
+          2.1
+        ],
+        "tier": "big",
+        "lottery": false,
+        "spike": [
+          2.0,
+          2.7,
+          4.1
+        ],
+        "predHi": -0.4,
+        "predHiBand": [
+          -1.0,
+          1.0
+        ],
+        "predQuant": -3.5,
+        "qual": {
+          "adj": 0.0,
+          "confidence": "low",
+          "reasoning": "財報符合預期偏弱,無明顯偏離量化基準的理由"
+        }
+      }
+    },
+    "TSLA": {
+      "symbol": "TSLA",
+      "name": "Tesla",
+      "type": "news",
+      "earningsReaction": false,
+      "catalyst": "飛行版 Roadster 示範登場,Musk 提及與 SpaceX 合作,盤前 +3%",
+      "newsDetail": "> **今日漲因:** 特斯拉盤前上漲約 3.3% 至 $374.5;IBD 報導 Roadster 飛行展示後股價走高,馬斯克提到與 SpaceX 的合作。\n\n**事件詳解**\n\n據 IBD 10/16 美東 08:04 報導,標題為「Tesla Jumps On Flying Roadster Demo; Musk Cites Collaboration With SpaceX」。本次檢索未能取得該文全文或展示結果的一級報導,以下僅整理展示前已公開的背景。\n\n**展示背景**\n\n特斯拉原訂 10/1 的戶外 Roadster 展示,因強風延後兩週。Stocktwits 10/14 報導,特斯拉確認於週四(10/15)晚間舉行直播。多家媒體先前報導,展示將使用與 SpaceX 共同開發的**壓縮氣體推進器**(內部代號傳為 A71),使 Roadster 離地懸浮;車輛據稱以遙控方式操作、無駕駛、不能合法上路。\n\n**管理層說法**\n\n馬斯克曾告訴員工,這項展示「很難做到,而且可能出錯」,並說空頭「幾乎把我們逼到懸崖邊」。他也在直播前貼文暗示「時機就是一切」。\n\n**市場背景**\n\n展示前的 10/13 週二,特斯拉收盤 **$375.23**,單日跌近 3%,距 52 週高點約低 25%。過去特斯拉發表會常伴隨股價下跌:2019 年 Cybertruck 發表後跌 6%、2024 年 10 月 Cybercab 發表後跌 8.3%。分析師先前表示,今天盤前反應是市場對展示的第一次檢驗,投資人也可能等待定價與量產細節。展示實際內容、是否成功飛行,本次查無一級來源證實。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=TSLA"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/TSLA"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-TSLA/news/"
+        }
+      ],
+      "publishedAt": "2026-10-16T08:04:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "KuCoin 轉載:展示前背景(10/14)",
+          "url": "https://www.kucoin.com/news/flash/tesla-s-flying-demo-fails-to-break-market-doubts-as-share-price-slumps",
+          "publishedAt": "2026-10-14"
+        },
+        {
+          "label": "Stocktwits:Roadster 活動重啟",
+          "url": "https://stocktwits.com/news-articles/markets/equity/tsla-stock-tesla-roadster-event-back-musk-teases-timing-is-everything/cZxfhlNRBpQ",
+          "publishedAt": "2026-10-14"
+        }
+      ],
+      "seanAnalysis": {
+        "verdict": "PASS",
+        "summary": "飛行 Roadster 與 SpaceX 屬故事題材,無財報支撐;$374.5 不追",
+        "sourceDate": "2026-10-16"
+      },
+      "milanAnalysis": {
+        "score": 2,
+        "summary": "飛行 Roadster 示範與 SpaceX 合作只是口頭提及,無合約、無數字,對獲利沒有實質影響",
+        "sourceDate": "2026-10-16"
+      },
+      "sessions": [
+        {
+          "last": 374.52,
+          "chgPct": 3.33,
+          "volume": 14977146,
+          "session": "headline",
+          "direction": "up",
+          "name": "Tesla",
+          "sessionDate": "2026-10-16",
+          "targetDate": "2026-10-16"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 374.52,
+      "chgPct": 3.33,
+      "volume": 14977146,
+      "tv": {
+        "latestEPS": 0.33,
+        "consensusEPS": 0.53,
+        "priorYrEPS": 0.4,
+        "surpriseEPS_pct": -38.12,
+        "surpriseEPS_dollar": -0.2,
+        "latestRev_M": 28240.0,
+        "consensusRev_M": 26420.0,
+        "priorYrRev_M": 22500.0,
+        "surpriseRev_pct": 6.86,
+        "yrYrRev_pct": 25.511111111111113,
+        "epsYoY_pct": -17.5,
+        "epsEst_next4": [
+          0.45,
+          0.47,
+          0.53,
+          0.64
+        ],
+        "revEst_next4": [
+          27940.0,
+          28580.0,
+          26350.0,
+          30400.0
+        ],
+        "yoyBlock": "-17.50% / +25.51%\n--------------------\n-10.00% / -0.53%\n-6.00% / +14.78%\n+29.27% / +17.69%\n+93.94% / +7.65%",
+        "chart": {
+          "quarters": [
+            "Q3 '21",
+            "Q4 '21",
+            "Q1 '22",
+            "Q2 '22",
+            "Q3 '22",
+            "Q4 '22",
+            "Q1 '23",
+            "Q2 '23",
+            "Q3 '23",
+            "Q4 '23",
+            "Q1 '24",
+            "Q2 '24"
+          ],
+          "eps_reported": [
+            0.72,
+            0.73,
+            0.27,
+            0.4,
+            0.5,
+            0.5,
+            0.41,
+            0.33,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.59,
+            0.77,
+            0.41,
+            0.4,
+            0.56,
+            0.45,
+            0.35,
+            0.53,
+            0.45,
+            0.47,
+            0.53,
+            0.64
+          ],
+          "rev_reported_M": [
+            25180.0,
+            25710.0,
+            19340.0,
+            22500.0,
+            28090.0,
+            24900.0,
+            22390.0,
+            28240.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            25470.0,
+            27260.0,
+            21270.0,
+            22280.0,
+            26540.0,
+            24780.0,
+            22100.0,
+            26420.0,
+            27940.0,
+            28580.0,
+            26350.0,
+            30400.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": "2026-10-22"
+      },
+      "shortFloat": 2.51,
+      "shortRatio": 1.88,
+      "marketCap_M": 1400430,
+      "floatShares_M": 2820,
+      "perf1M": -2.66,
+      "perf3M": -6.43,
+      "perf6M": -9.66,
+      "perfYTD": -21.16,
+      "perf12M": -19.29,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": 3.33,
+        "predDay": 4.2,
+        "band": [
+          -2.2,
+          2.1
+        ],
+        "tier": "big",
+        "lottery": false,
+        "spike": [
+          0,
+          0.6,
+          2.1
+        ],
+        "predHi": 3.9,
+        "predHiBand": [
+          3.3,
+          5.5
+        ]
+      }
+    },
+    "INSW": {
+      "symbol": "INSW",
+      "name": "International Seaways",
+      "type": "guidance",
+      "earningsReaction": true,
+      "catalyst": "預告 Q3 淨利 $3.4-3.5 億、營收 $4.8-4.9 億,並宣布以約 $3.7 億收購 Bruton,盤前 +2.6%",
+      "newsDetail": "> **今日漲因:** 盤前漲約 2.6%、報約 $116;油輪業者 International Seaways 預告第三季淨利約 $3.4 億至 $3.5 億,並宣布收購 Bruton。\n\n**財報/事件詳解**\nInternational Seaways(INSW)10/16 公布第三季初步業績:營運營收約 **$4.8 億至 $4.9 億**、淨利約 **$3.4 億至 $3.5 億**,其中含出售一艘 2012 年造蘇伊士型油輪的約 **$5,000 萬**處分利益。第三季混合現貨日收入約 **$68,000**,低於第二季的 $79,000,但遠高於去年同期的 $29,000。第四季至今(前三週)已鎖定約 37% 營運天數,混合現貨日收入約 **$180,000**。截至 9/30 總流動性約 $9.65 億,含現金與短期投資 $4.55 億、未動用循環信貸額度 $5.1 億。\n\n**Bruton 收購案**\n公司同時宣布收購 Bruton Limited,隱含交易價值約 **$3.7 億**。Bruton 擁有 4 艘超大型油輪(VLCC,含新造船),INSW 目前船隊約 70 艘。交易分兩步:先以每股 Bruton 股份換 0.0519 股 INSW 股份,取得約 50.5% 股權,預計約 10/20 交割;其餘股份以現金加股票的合併方式取得。INSW 預計發行約 312 萬股新股,約占總對價 96%,其餘為現金。Bruton 特別股東會預計約 10/30 召開,合併預計其後不久完成,並須符合一般成交條件;協議載明若 11/15 前未完成,可終止交易。\n\n**管理層說法**\n總裁暨執行長 Lois Zabrocky 表示:「We're excited about the opportunity to expand and modernize our fleet through this accretive transaction with Bruton.」\n\n**分析師與市場反應**\n分析師對預告與收購的評論目前查不到;每股盈餘與股利宣布也未在公布中披露,待正式財報再確認。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=INSW"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/INSW"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-INSW/news/"
+        }
+      ],
+      "publishedAt": "2026-10-16T07:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "INSW 8-K 新聞稿(SEC)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001679049/000110465926116371/tm2627713d1_ex99-1.htm",
+          "publishedAt": "2026-10-16"
+        },
+        {
+          "label": "INSW 8-K(SEC)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001679049/000110465926116371/tm2627713d1_8k.htm",
+          "publishedAt": "2026-10-16"
+        }
+      ],
+      "seanAnalysis": {
+        "verdict": "WATCH",
+        "summary": "淨利 $3.4-3.5 億含約 $5,000 萬賣船利得,品質打折;守住 $116 才做多",
+        "sourceDate": "2026-10-16"
+      },
+      "milanAnalysis": {
+        "score": 5,
+        "summary": "淨利 $3.4-3.5 億但含約 $5,000 萬賣船利得;收購 Bruton 約 $3.7 億加分",
+        "sourceDate": "2026-10-16"
+      },
+      "sessions": [
+        {
+          "last": 116.0,
+          "chgPct": 2.56,
+          "volume": 14977146,
+          "session": "headline",
+          "direction": "up",
+          "name": "International Seaways",
+          "sessionDate": "2026-10-16",
+          "targetDate": "2026-10-16"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "up",
+      "last": 116.0,
+      "chgPct": 2.56,
+      "volume": 14977146,
+      "tv": {
+        "latestEPS": 5.91,
+        "consensusEPS": 5.55,
+        "priorYrEPS": 1.02,
+        "surpriseEPS_pct": 6.4,
+        "surpriseEPS_dollar": 0.3600000000000003,
+        "latestRev_M": 434.19,
+        "consensusRev_M": 407.68,
+        "priorYrRev_M": 188.82,
+        "surpriseRev_pct": 6.5,
+        "yrYrRev_pct": 129.94915792818557,
+        "epsYoY_pct": 479.41176470588243,
+        "epsEst_next4": [
+          3.63,
+          3.83,
+          4.21,
+          3.12
+        ],
+        "revEst_next4": [
+          308.47,
+          328.42,
+          378.2,
+          305.87
+        ],
+        "yoyBlock": "+479.41% / +129.95%\n--------------------\n+215.65% / +60.27%\n+56.33% / +26.33%\n+7.95% / +19.21%\n-47.21% / -29.55%",
+        "chart": {
+          "quarters": [
+            "Q3 '21",
+            "Q4 '21",
+            "Q1 '22",
+            "Q2 '22",
+            "Q3 '22",
+            "Q4 '22",
+            "Q1 '23",
+            "Q2 '23",
+            "Q3 '23",
+            "Q4 '23",
+            "Q1 '24",
+            "Q2 '24"
+          ],
+          "eps_reported": [
+            1.57,
+            0.9,
+            0.8,
+            1.02,
+            1.15,
+            2.45,
+            3.9,
+            5.91,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            1.5,
+            0.84,
+            0.65,
+            0.93,
+            1.0,
+            2.09,
+            2.87,
+            5.55,
+            3.63,
+            3.83,
+            4.21,
+            3.12
+          ],
+          "rev_reported_M": [
+            219.69,
+            190.64,
+            178.34,
+            188.82,
+            192.47,
+            259.98,
+            317.25,
+            434.19,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            208.75,
+            182.22,
+            176.25,
+            191.29,
+            187.91,
+            242.09,
+            279.34,
+            407.68,
+            308.47,
+            328.42,
+            378.2,
+            305.87
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": null
+      },
+      "shortFloat": 6.98,
+      "shortRatio": 4.48,
+      "marketCap_M": 5450,
+      "floatShares_M": 42.05,
+      "perf1M": -0.95,
+      "perf3M": 21.69,
+      "perf6M": 50.18,
+      "perfYTD": 146.61,
+      "perf12M": 163.44,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": 2.56,
+        "predDay": 2.2,
+        "band": [
+          -3.6,
+          3.4
+        ],
+        "tier": "mid",
+        "lottery": false,
+        "spike": [
+          1.4,
+          3.2,
+          4.7
+        ],
+        "predHi": 5.8,
+        "predHiBand": [
+          4.0,
+          7.4
         ]
       }
     },
@@ -389,965 +980,6 @@
         }
       }
     },
-    "JBHT": {
-      "symbol": "JBHT",
-      "name": "J.B. Hunt Transport",
-      "type": "earnings",
-      "earningsReaction": true,
-      "catalyst": "Q3 EPS $1.82 年增僅 3%、營業利益 +2%,營收 +20%;JPM 下調目標價至 $283,盤前 −3%",
-      "newsDetail": "> **今日跌因:** J.B. Hunt 第三季每股盈餘 $1.82、營收約 $36.8 億,但獲利成長僅 2%,盤前股價跌約 3% 至 $228.3。\n\n**財報詳解**\n\nJ.B. Hunt 於 10/15 盤後公布 2026 年第三季:營業收入 **$36.77 億**,年增 **20%**(去年同期 $30.53 億);營業利益 **$2.471 億**,年增 **2%**;淨利 **$1.724 億**;稀釋後每股盈餘 **$1.82**,去年同期為 $1.76。財報前一份預覽指出市場共識約 $1.81、營收約 $35.9 億,因此每股盈餘僅略高於預期一美分。公司說明,營業利益占毛營收比率較去年下降,原因是外購運輸成本、燃料與燃料稅,以及保險理賠費用增加。\n\n**各事業體表現**\n\n聯運(Intermodal)營收 **$18.28 億**,年增 20%,營業利益 **$1.475 億**,年增 18%,貨量 **585,582 筆**,去年為 539,907 筆(約增 8%)。專屬運輸(Dedicated)營收 $9.602 億,年增 11%,但營業利益 **$8,170 萬**,年減 22%。整合運能(ICS)營收 $4.338 億,年增 57%,營業利益 $960 萬,去年同期虧損 $80 萬。卡車運輸營收 $2.608 億,年增 37%,營業利益 $700 萬,年減 6%。最後一哩(FMS)營收 $2.001 億,年減 3%,營業利益僅 **$160 萬**,年減 76%,停靠點 876,409 個,去年為 971,244 個。\n\n**資本配置**\n\n第三季公司買回約 **70.4 萬股**、約 **$1.74 億**,截至 9/30 剩餘買回額度約 **$6.19 億**。前九個月淨資本支出 **$2.911 億**,去年同期為 $4.909 億。\n\n**管理層說法**\n\n執行長 Shelley Simpson 在新聞稿中感謝員工對客戶的承諾;查無電話會議具名引言。\n\n**先前預警與分析師反應**\n\n9 月中旬公司在 Morgan Stanley 會議上預告,第三季盈餘將較第二季下降 5% 至 10%,當時股價盤前一度下跌最多約 9%。10 月初,Truist、BMO、Citi、JPMorgan、TD Cowen 與 Susquehanna 等已在財報前下調目標價。線索另指 JPMorgan 於財報後把目標價由 $287 降至 $283、同業 Knight-Swift 昨日盤後一度下跌 6%,本次搜尋未能獨立證實這兩點。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=JBHT"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/JBHT"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-JBHT/news/"
-        }
-      ],
-      "publishedAt": "2026-10-15T16:05:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "J.B. Hunt 8-K 第三季新聞稿",
-          "url": "https://www.sec.gov/Archives/edgar/data/0000728535/000143774926032715/ex_1025956.htm",
-          "publishedAt": "2026-10-15"
-        },
-        {
-          "label": "Talk Business 財報前瞻",
-          "url": "https://talkbusiness.net/2026/10/j-b-hunt-q3-earnings-revenue-to-rise-analysts-say/",
-          "publishedAt": "2026-10"
-        }
-      ],
-      "seanAnalysis": {
-        "verdict": "PASS",
-        "summary": "EPS 年增僅 3%、9 月已預警,利空消化過;$228.3 沒新意,不碰",
-        "sourceDate": "2026-10-16"
-      },
-      "milanAnalysis": {
-        "score": 3,
-        "summary": "EPS 年增僅 3%,9 月已預警,市場早有預期;JPM 目標價小降 $287 到 $283,沒有驚喜",
-        "sourceDate": "2026-10-16"
-      },
-      "sessions": [
-        {
-          "last": 228.31,
-          "chgPct": -2.97,
-          "volume": 14977146,
-          "session": "headline",
-          "direction": "down",
-          "name": "J.B. Hunt Transport",
-          "sessionDate": "2026-10-16",
-          "targetDate": "2026-10-16"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 228.31,
-      "chgPct": -2.97,
-      "volume": 14977146,
-      "tv": {
-        "latestEPS": 1.82,
-        "consensusEPS": 1.81,
-        "priorYrEPS": 1.76,
-        "surpriseEPS_pct": 0.79,
-        "surpriseEPS_dollar": 0.010000000000000009,
-        "latestRev_M": 3680.0,
-        "consensusRev_M": 3590.0,
-        "priorYrRev_M": 3050.0,
-        "surpriseRev_pct": 2.3,
-        "yrYrRev_pct": 20.655737704918035,
-        "epsYoY_pct": 3.4090909090909123,
-        "epsEst_next4": [
-          2.06,
-          1.83,
-          2.36,
-          2.73
-        ],
-        "revEst_next4": [
-          3730.0,
-          3490.0,
-          3830.0,
-          4019.9999999999995
-        ],
-        "yoyBlock": "+3.41% / +20.66%\n--------------------\n+8.42% / +20.32%\n+22.82% / +14.05%\n+23.56% / +9.43%\n+50.00% / +9.24%",
-        "chart": {
-          "quarters": [
-            "Q4 '21",
-            "Q1 '22",
-            "Q2 '22",
-            "Q3 '22",
-            "Q4 '22",
-            "Q1 '23",
-            "Q2 '23",
-            "Q3 '23",
-            "Q4 '23",
-            "Q1 '24",
-            "Q2 '24",
-            "Q3 '24"
-          ],
-          "eps_reported": [
-            1.53,
-            1.17,
-            1.31,
-            1.76,
-            1.9,
-            1.49,
-            1.91,
-            1.82,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            1.61,
-            1.15,
-            1.3,
-            1.46,
-            1.81,
-            1.44,
-            1.74,
-            1.81,
-            2.06,
-            1.83,
-            2.36,
-            2.73
-          ],
-          "rev_reported_M": [
-            3150.0,
-            2920.0,
-            2930.0,
-            3050.0,
-            3100.0,
-            3060.0,
-            3500.0,
-            3680.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            3130.0,
-            2900.0,
-            2920.0,
-            3020.0,
-            3120.0,
-            2960.0,
-            3260.0,
-            3590.0,
-            3730.0,
-            3490.0,
-            3830.0,
-            4019.9999999999995
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-10-16",
-        "nextReportDate": null
-      },
-      "shortFloat": 4.4,
-      "shortRatio": 3.2,
-      "marketCap_M": 22770,
-      "floatShares_M": 73.3,
-      "perf1M": 3.49,
-      "perf3M": -17.33,
-      "perf6M": -3.64,
-      "perfYTD": 24.75,
-      "perf12M": 47.06,
-      "prevOhlcv": null,
-      "modelPred": {
-        "version": "v12",
-        "gap": -2.97,
-        "predDay": -3.5,
-        "band": [
-          -2.2,
-          2.1
-        ],
-        "tier": "big",
-        "lottery": false,
-        "spike": [
-          2.0,
-          2.7,
-          4.1
-        ],
-        "predHi": -0.4,
-        "predHiBand": [
-          -1.0,
-          1.0
-        ],
-        "predQuant": -3.5,
-        "qual": {
-          "adj": 0.0,
-          "confidence": "low",
-          "reasoning": "財報符合預期偏弱,無明顯偏離量化基準的理由"
-        }
-      }
-    },
-    "WDC": {
-      "symbol": "WDC",
-      "name": "Western Digital",
-      "type": "analyst",
-      "earningsReaction": false,
-      "catalyst": "Wells Fargo 目標價由 $730 大砍至 $450,儲存族群(SNDK/MU)同步走弱,盤前 −1.7%",
-      "newsDetail": "> **今日跌因:** 據 MT Newswires 10/16 美東 06:09 報導,Wells Fargo 將 Western Digital 目標價由 730 美元大幅下調至 450 美元,盤前股價下跌約 1.7%。\n\n依指定線索,Wells Fargo 於 10/16 把 WDC 目標價從 **730 美元**降至 **450 美元**,降幅約 **38%**。我未能在公開搜尋中找到這則調降的原始報導,因此調降理由與評等是否變動,查不到。\n\n背景資料:Wells Fargo 分析師 Aaron Rakers 在 7 月 10 日把目標價由 575 美元調升至 730 美元,評等為「優於大盤」(Overweight)。另有資料顯示,Baird 與 Barclays 在 5 月均把目標價調至 450 美元。9 月底 Benzinga 彙整的 20 位分析師共識目標價約 **483 美元**。\n\n換言之,新目標價 450 美元已低於當時的共識目標價。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=WDC"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/WDC"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-WDC/news/"
-        }
-      ],
-      "publishedAt": "2026-10-16T08:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "TipRanks/The Fly:Wells Fargo WDC 目標價紀錄",
-          "url": "https://www.tipranks.com/news/the-fly/western-digital-price-target-raised-to-180-from-150-at-wells-fargo-thefly"
-        },
-        {
-          "label": "Benzinga WDC 分析師評等",
-          "url": "https://www.benzinga.com/quote/WDC/analyst-ratings"
-        }
-      ],
-      "seanAnalysis": {
-        "verdict": "WATCH",
-        "summary": "記憶體類股連兩日重挫,盤前$361.5已比前收$389.04少6.6%,三個月已跌約30%,追空風險高;只做反彈到$389附近過不去的空單。",
-        "sourceDate": "2026-10-13"
-      },
-      "milanAnalysis": {
-        "score": 2,
-        "summary": "跌因是長鑫存儲的記憶體技術消息拖累族群,與WDC本業關聯薄弱;傳聞的UBS下調目標價查無一級來源。",
-        "sourceDate": "2026-10-13"
-      },
-      "sessions": [
-        {
-          "last": 350.34,
-          "chgPct": -1.71,
-          "volume": 14977146,
-          "session": "headline",
-          "direction": "down",
-          "name": "Western Digital",
-          "sessionDate": "2026-10-16",
-          "targetDate": "2026-10-16"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 350.34,
-      "chgPct": -1.71,
-      "volume": 14977146,
-      "tv": {
-        "latestEPS": 3.56,
-        "consensusEPS": 3.31,
-        "priorYrEPS": 1.66,
-        "surpriseEPS_pct": 7.54,
-        "surpriseEPS_dollar": 0.25,
-        "latestRev_M": 3750.0,
-        "consensusRev_M": 3700.0,
-        "priorYrRev_M": 2600.0,
-        "surpriseRev_pct": 1.27,
-        "yrYrRev_pct": 44.230769230769226,
-        "epsYoY_pct": 114.45783132530123,
-        "epsEst_next4": [
-          4.08,
-          4.76,
-          5.53,
-          6.38
-        ],
-        "revEst_next4": [
-          4140.0,
-          4550.0,
-          5010.0,
-          5510.0
-        ],
-        "yoyBlock": "+114.46% / +44.23%\n--------------------\n+129.21% / +46.81%\n+123.47% / +50.66%\n+103.31% / +50.00%\n+79.21% / +46.93%",
-        "chart": {
-          "quarters": [
-            "Q1 '22",
-            "Q2 '22",
-            "Q3 '22",
-            "Q4 '22",
-            "Q1 '23",
-            "Q2 '23",
-            "Q3 '23",
-            "Q4 '23",
-            "Q1 '24",
-            "Q2 '24",
-            "Q3 '24",
-            "Q4 '24"
-          ],
-          "eps_reported": [
-            1.35,
-            1.34,
-            1.36,
-            1.66,
-            1.78,
-            2.13,
-            2.72,
-            3.56,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            1.29,
-            1.35,
-            1.12,
-            1.48,
-            1.59,
-            1.93,
-            2.39,
-            3.31,
-            4.08,
-            4.76,
-            5.53,
-            6.38
-          ],
-          "rev_reported_M": [
-            4090.0,
-            4290.0,
-            2290.0,
-            2600.0,
-            2820.0,
-            3020.0,
-            3340.0,
-            3750.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            4120.0,
-            4260.0,
-            2310.0,
-            2470.0,
-            2730.0,
-            2930.0,
-            3250.0,
-            3700.0,
-            4140.0,
-            4550.0,
-            5010.0,
-            5510.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": "2026-10-23"
-      },
-      "shortFloat": 4.91,
-      "shortRatio": 2.33,
-      "marketCap_M": 128280,
-      "floatShares_M": 372.63,
-      "perf1M": -22.35,
-      "perf3M": -37.51,
-      "perf6M": -8.4,
-      "perfYTD": 98.93,
-      "perf12M": 171.55,
-      "prevOhlcv": null,
-      "modelPred": {
-        "version": "v12",
-        "gap": -1.71,
-        "predDay": -0.8,
-        "band": [
-          -2.2,
-          2.1
-        ],
-        "tier": "big",
-        "lottery": false,
-        "spike": [
-          1.7,
-          2.4,
-          3.9
-        ],
-        "predHi": 0.6,
-        "predHiBand": [
-          -0.0,
-          2.1
-        ]
-      }
-    },
-    "MTB": {
-      "symbol": "MTB",
-      "name": "M&T Bank",
-      "type": "earnings",
-      "earningsReaction": true,
-      "catalyst": "Q3 EPS 與營收雙雙超預期,放款成長帶動",
-      "newsDetail": "> **今日跌因:** 盤前小跌約 0.3%;據 Zacks、StockStory 10/16 報導,M&T 第三季 EPS 與營收均優於預期,跌幅不大,查不到明確跌因。\n\nM&T Bank 於 10/16 開盤前公布第三季財報。財報前市場共識約為 EPS **4.95 至 4.98 美元**、營收約 **25.3 億美元**。據 Zacks 與 StockStory 10/16 的報導,實際 EPS 與營收均高於預期。\n\n我未能查到官方新聞稿或上述報導全文,因此本次實際 EPS、營收的精確數字查不到,不在此列示。作為對照,M&T 第二季稀釋 EPS 約 5.35 美元,營收約 25.3 億美元,第三季共識意味著獲利略低於前一季。\n\n股價在財報優於預期下仍小幅下跌,屬銀行股財報日常見的反應,但缺乏一級來源說明原因,不做推測。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=MTB"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/MTB"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-MTB/news/"
-        }
-      ],
-      "publishedAt": "2026-10-16T08:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "M&T Bank 第三季財報公告(Placera)",
-          "url": "https://www.placera.se/pressmeddelanden/m-t-bank-m-t-bank-corporation-announces-third-quarter-2026-earnings-release-and-conference-call-20260918"
-        },
-        {
-          "label": "Benzinga MTB 預估",
-          "url": "https://www.benzinga.com/quote/MTB/earnings-forecasts"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 218.0,
-          "chgPct": -0.3,
-          "volume": 14977146,
-          "session": "headline",
-          "direction": "down",
-          "name": "M&T Bank",
-          "sessionDate": "2026-10-16",
-          "targetDate": "2026-10-16"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 218.0,
-      "chgPct": -0.3,
-      "volume": 14977146,
-      "tv": {
-        "latestEPS": 5.04,
-        "consensusEPS": 4.93,
-        "priorYrEPS": 4.82,
-        "surpriseEPS_pct": 2.17,
-        "surpriseEPS_dollar": 0.11000000000000032,
-        "latestRev_M": 2540.0,
-        "consensusRev_M": 2530.0,
-        "priorYrRev_M": 2510.0,
-        "surpriseRev_pct": 0.16,
-        "yrYrRev_pct": 1.1952191235059761,
-        "epsYoY_pct": 4.56431535269709,
-        "epsEst_next4": [
-          4.92,
-          4.57,
-          5.37,
-          5.53
-        ],
-        "revEst_next4": [
-          2550.0,
-          2550.0,
-          2590.0,
-          2640.0
-        ],
-        "yoyBlock": "+4.56% / +1.20%\n--------------------\n+5.35% / +2.82%\n+10.65% / +4.51%\n+0.94% / +1.97%\n+9.72% / +3.94%",
-        "chart": {
-          "quarters": [
-            "Q4 '21",
-            "Q1 '22",
-            "Q2 '22",
-            "Q3 '22",
-            "Q4 '22",
-            "Q1 '23",
-            "Q2 '23",
-            "Q3 '23",
-            "Q4 '23",
-            "Q1 '24",
-            "Q2 '24",
-            "Q3 '24"
-          ],
-          "eps_reported": [
-            3.86,
-            3.32,
-            4.24,
-            4.82,
-            4.67,
-            4.13,
-            5.32,
-            5.04,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            3.69,
-            3.4,
-            3.99,
-            4.43,
-            4.48,
-            4.02,
-            4.66,
-            4.93,
-            4.92,
-            4.57,
-            5.37,
-            5.53
-          ],
-          "rev_reported_M": [
-            2380.0,
-            2310.0,
-            2400.0,
-            2510.0,
-            2480.0,
-            2440.0,
-            2540.0,
-            2540.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            2340.0,
-            2340.0,
-            2390.0,
-            2440.0,
-            2470.0,
-            2430.0,
-            2460.0,
-            2530.0,
-            2550.0,
-            2550.0,
-            2590.0,
-            2640.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-10-16",
-        "nextReportDate": null
-      },
-      "shortFloat": 3.54,
-      "shortRatio": 4.89,
-      "marketCap_M": 31090,
-      "floatShares_M": 143.9,
-      "perf1M": -5.29,
-      "perf3M": -13.42,
-      "perf6M": -2,
-      "perfYTD": 6.85,
-      "perf12M": 19.16,
-      "prevOhlcv": null,
-      "modelPred": {
-        "version": "v12",
-        "gap": -0.3,
-        "predDay": -0.9,
-        "band": [
-          -2.2,
-          2.1
-        ],
-        "tier": "big",
-        "lottery": false,
-        "spike": [
-          1.2,
-          1.9,
-          3.4
-        ],
-        "predHi": 1.6,
-        "predHiBand": [
-          0.9,
-          3.1
-        ]
-      }
-    },
-    "INSW": {
-      "symbol": "INSW",
-      "name": "International Seaways",
-      "type": "guidance",
-      "earningsReaction": true,
-      "catalyst": "預告 Q3 淨利 $3.4-3.5 億、營收 $4.8-4.9 億,並宣布以約 $3.7 億收購 Bruton,盤前 +2.6%",
-      "newsDetail": "> **今日漲因:** 盤前漲約 2.6%、報約 $116;油輪業者 International Seaways 預告第三季淨利約 $3.4 億至 $3.5 億,並宣布收購 Bruton。\n\n**財報/事件詳解**\nInternational Seaways(INSW)10/16 公布第三季初步業績:營運營收約 **$4.8 億至 $4.9 億**、淨利約 **$3.4 億至 $3.5 億**,其中含出售一艘 2012 年造蘇伊士型油輪的約 **$5,000 萬**處分利益。第三季混合現貨日收入約 **$68,000**,低於第二季的 $79,000,但遠高於去年同期的 $29,000。第四季至今(前三週)已鎖定約 37% 營運天數,混合現貨日收入約 **$180,000**。截至 9/30 總流動性約 $9.65 億,含現金與短期投資 $4.55 億、未動用循環信貸額度 $5.1 億。\n\n**Bruton 收購案**\n公司同時宣布收購 Bruton Limited,隱含交易價值約 **$3.7 億**。Bruton 擁有 4 艘超大型油輪(VLCC,含新造船),INSW 目前船隊約 70 艘。交易分兩步:先以每股 Bruton 股份換 0.0519 股 INSW 股份,取得約 50.5% 股權,預計約 10/20 交割;其餘股份以現金加股票的合併方式取得。INSW 預計發行約 312 萬股新股,約占總對價 96%,其餘為現金。Bruton 特別股東會預計約 10/30 召開,合併預計其後不久完成,並須符合一般成交條件;協議載明若 11/15 前未完成,可終止交易。\n\n**管理層說法**\n總裁暨執行長 Lois Zabrocky 表示:「We're excited about the opportunity to expand and modernize our fleet through this accretive transaction with Bruton.」\n\n**分析師與市場反應**\n分析師對預告與收購的評論目前查不到;每股盈餘與股利宣布也未在公布中披露,待正式財報再確認。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=INSW"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/INSW"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-INSW/news/"
-        }
-      ],
-      "publishedAt": "2026-10-16T07:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "INSW 8-K 新聞稿(SEC)",
-          "url": "https://www.sec.gov/Archives/edgar/data/0001679049/000110465926116371/tm2627713d1_ex99-1.htm",
-          "publishedAt": "2026-10-16"
-        },
-        {
-          "label": "INSW 8-K(SEC)",
-          "url": "https://www.sec.gov/Archives/edgar/data/0001679049/000110465926116371/tm2627713d1_8k.htm",
-          "publishedAt": "2026-10-16"
-        }
-      ],
-      "seanAnalysis": {
-        "verdict": "WATCH",
-        "summary": "淨利 $3.4-3.5 億含約 $5,000 萬賣船利得,品質打折;守住 $116 才做多",
-        "sourceDate": "2026-10-16"
-      },
-      "milanAnalysis": {
-        "score": 5,
-        "summary": "淨利 $3.4-3.5 億但含約 $5,000 萬賣船利得;收購 Bruton 約 $3.7 億加分",
-        "sourceDate": "2026-10-16"
-      },
-      "sessions": [
-        {
-          "last": 116.0,
-          "chgPct": 2.56,
-          "volume": 14977146,
-          "session": "headline",
-          "direction": "up",
-          "name": "International Seaways",
-          "sessionDate": "2026-10-16",
-          "targetDate": "2026-10-16"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 116.0,
-      "chgPct": 2.56,
-      "volume": 14977146,
-      "tv": {
-        "latestEPS": 5.91,
-        "consensusEPS": 5.55,
-        "priorYrEPS": 1.02,
-        "surpriseEPS_pct": 6.4,
-        "surpriseEPS_dollar": 0.3600000000000003,
-        "latestRev_M": 434.19,
-        "consensusRev_M": 407.68,
-        "priorYrRev_M": 188.82,
-        "surpriseRev_pct": 6.5,
-        "yrYrRev_pct": 129.94915792818557,
-        "epsYoY_pct": 479.41176470588243,
-        "epsEst_next4": [
-          3.63,
-          3.83,
-          4.21,
-          3.12
-        ],
-        "revEst_next4": [
-          308.47,
-          328.42,
-          378.2,
-          305.87
-        ],
-        "yoyBlock": "+479.41% / +129.95%\n--------------------\n+215.65% / +60.27%\n+56.33% / +26.33%\n+7.95% / +19.21%\n-47.21% / -29.55%",
-        "chart": {
-          "quarters": [
-            "Q3 '21",
-            "Q4 '21",
-            "Q1 '22",
-            "Q2 '22",
-            "Q3 '22",
-            "Q4 '22",
-            "Q1 '23",
-            "Q2 '23",
-            "Q3 '23",
-            "Q4 '23",
-            "Q1 '24",
-            "Q2 '24"
-          ],
-          "eps_reported": [
-            1.57,
-            0.9,
-            0.8,
-            1.02,
-            1.15,
-            2.45,
-            3.9,
-            5.91,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            1.5,
-            0.84,
-            0.65,
-            0.93,
-            1.0,
-            2.09,
-            2.87,
-            5.55,
-            3.63,
-            3.83,
-            4.21,
-            3.12
-          ],
-          "rev_reported_M": [
-            219.69,
-            190.64,
-            178.34,
-            188.82,
-            192.47,
-            259.98,
-            317.25,
-            434.19,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            208.75,
-            182.22,
-            176.25,
-            191.29,
-            187.91,
-            242.09,
-            279.34,
-            407.68,
-            308.47,
-            328.42,
-            378.2,
-            305.87
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": null
-      },
-      "shortFloat": 6.98,
-      "shortRatio": 4.48,
-      "marketCap_M": 5450,
-      "floatShares_M": 42.05,
-      "perf1M": -0.95,
-      "perf3M": 21.69,
-      "perf6M": 50.18,
-      "perfYTD": 146.61,
-      "perf12M": 163.44,
-      "prevOhlcv": null,
-      "modelPred": {
-        "version": "v12",
-        "gap": 2.56,
-        "predDay": 2.2,
-        "band": [
-          -3.6,
-          3.4
-        ],
-        "tier": "mid",
-        "lottery": false,
-        "spike": [
-          1.4,
-          3.2,
-          4.7
-        ],
-        "predHi": 5.8,
-        "predHiBand": [
-          4.0,
-          7.4
-        ]
-      }
-    },
-    "TFC": {
-      "symbol": "TFC",
-      "name": "Truist Financial",
-      "type": "earnings",
-      "earningsReaction": true,
-      "catalyst": "Q3 調整後 EPS $1.16 小超預期約 $1.12(GAAP $0.56),盤前 −2%",
-      "newsDetail": "> **今日跌因:** Truist 第三季調整後 EPS 優於預期,但盤前股價仍小幅下跌約 2.0%,漲跌原因公司未明說。\n\nTruist 在 10/16 美股開盤前公布 2026 年第三季財報:**調整後稀釋 EPS 為 1.16 美元**,較去年同期成長 **12%**;依 GAAP 計算稀釋 EPS 為 **0.56 美元**。市場預期約 1.12 至 1.13 美元,調整後數字略高於預期。\n\n財報顯示放款與租賃餘額約 **3,290 億美元**,存款約 **4,110 億美元**。公司稱本季表現穩健,並持續簡化組織、重新配置資源。執行長 Mike Lyons、財務長 Mike Maguire 於美東 8 點主持法說會。\n\n調整後與 GAAP 數字落差較大(1.16 對 0.56 美元),查到的資料未列出差額明細。盤前下跌約 2.0%,查不到針對該跌幅的專門報導。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=TFC"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/TFC"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-TFC/news/"
-        }
-      ],
-      "publishedAt": "2026-10-16T08:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Truist 8-K Ex.99.1(SEC)",
-          "url": "https://www.sec.gov/Archives/edgar/data/0000092230/000009223026000108/ex991-3q26.htm"
-        },
-        {
-          "label": "Truist 財報法說會公告(Finviz)",
-          "url": "https://finviz.com/news/393502/truist-announces-third-quarter-2026-earnings-call-details"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 45.65,
-          "chgPct": -1.98,
-          "volume": 14977146,
-          "session": "headline",
-          "direction": "down",
-          "name": "Truist Financial",
-          "sessionDate": "2026-10-16",
-          "targetDate": "2026-10-16"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 45.65,
-      "chgPct": -1.98,
-      "volume": 14977146,
-      "tv": {
-        "latestEPS": 0.56,
-        "consensusEPS": 1.14,
-        "priorYrEPS": 1.04,
-        "surpriseEPS_pct": -50.85,
-        "surpriseEPS_dollar": -0.5799999999999998,
-        "latestRev_M": 5300.0,
-        "consensusRev_M": 5360.0,
-        "priorYrRev_M": 5240.0,
-        "surpriseRev_pct": -1.07,
-        "yrYrRev_pct": 1.1450381679389312,
-        "epsYoY_pct": -46.15384615384615,
-        "epsEst_next4": [
-          1.25,
-          1.11,
-          1.24,
-          1.25
-        ],
-        "revEst_next4": [
-          5350.0,
-          5270.0,
-          5380.0,
-          5490.0
-        ],
-        "yoyBlock": "-46.15% / +1.15%\n--------------------\n+25.00% / +1.13%\n+1.83% / +1.35%\n+0.81% / +1.32%\n+123.21% / +3.58%",
-        "chart": {
-          "quarters": [
-            "Q4 '21",
-            "Q1 '22",
-            "Q2 '22",
-            "Q3 '22",
-            "Q4 '22",
-            "Q1 '23",
-            "Q2 '23",
-            "Q3 '23",
-            "Q4 '23",
-            "Q1 '24",
-            "Q2 '24",
-            "Q3 '24"
-          ],
-          "eps_reported": [
-            0.91,
-            0.87,
-            0.9,
-            1.04,
-            1.0,
-            1.09,
-            1.23,
-            0.56,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.88,
-            0.87,
-            0.92,
-            1.0,
-            1.09,
-            1.0,
-            1.08,
-            1.14,
-            1.25,
-            1.11,
-            1.24,
-            1.25
-          ],
-          "rev_reported_M": [
-            5110.0,
-            4950.0,
-            5040.0,
-            5240.0,
-            5290.0,
-            5200.0,
-            5310.0,
-            5300.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            5040.0,
-            4930.0,
-            5010.0,
-            5190.0,
-            5310.0,
-            5180.0,
-            5240.0,
-            5360.0,
-            5350.0,
-            5270.0,
-            5380.0,
-            5490.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-10-16",
-        "nextReportDate": null
-      },
-      "shortFloat": 2.48,
-      "shortRatio": 4.07,
-      "marketCap_M": 57230,
-      "floatShares_M": 1220,
-      "perf1M": -3.53,
-      "perf3M": -8.82,
-      "perf6M": -7.85,
-      "perfYTD": -4.8,
-      "perf12M": 9.97,
-      "prevOhlcv": null,
-      "modelPred": {
-        "version": "v12",
-        "gap": -1.98,
-        "predDay": -2.5,
-        "band": [
-          -2.2,
-          2.1
-        ],
-        "tier": "big",
-        "lottery": false,
-        "spike": [
-          0.6,
-          1.3,
-          2.8
-        ],
-        "predHi": -0.7,
-        "predHiBand": [
-          -1.4,
-          0.8
-        ]
-      }
-    },
     "AA": {
       "symbol": "AA",
       "name": "Alcoa",
@@ -1544,187 +1176,6 @@
         }
       }
     },
-    "IBKR": {
-      "symbol": "IBKR",
-      "name": "Interactive Brokers",
-      "type": "earnings",
-      "earningsReaction": true,
-      "catalyst": "Q3 調整後 EPS $0.67 大致符合、DARTs +18%、帳戶 +35%,季股息由 $0.0875 調高至 $0.15",
-      "newsDetail": "> **今日跌因:** 盤前微跌約 0.4%;財報與股息調升均優於去年,屬獲利了結式的小幅整理,公司與媒體未特別說明跌因。\n\nInteractive Brokers 於 10/15 盤後公布第三季財報:**調整後 EPS 0.67 美元**(去年同期 0.57 美元),GAAP 稀釋 EPS 為 0.69 美元;淨營收 **19.1 億美元**(調整後 18.7 億美元),去年同期 16.6 億美元。\n\n業務面:佣金收入年增 **12%** 至 **6.02 億美元**,DARTs 年增 **18%**;淨利息收入年增 **19%** 至 **11.5 億美元**,稅前利潤率 **78%**。依公司提供的資料,帳戶數約 **558 萬**,年增 **35%**。\n\n股息方面,季股息由 **0.0875 美元調升至 0.15 美元**。另外,Jefferies 將目標價由 110 美元調升至 118 美元(此項來自指定線索,未另行查到原始報導)。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=IBKR"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/IBKR"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-IBKR/news/"
-        }
-      ],
-      "publishedAt": "2026-10-16T08:00:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "IBKR 3Q2026 財報 8-K Ex.99.1(SEC)",
-          "url": "https://www.sec.gov/Archives/edgar/data/0001381197/000138119726000154/ibkr-ex99_1.htm"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 85.7,
-          "chgPct": -0.38,
-          "volume": 14977146,
-          "session": "headline",
-          "direction": "down",
-          "name": "Interactive Brokers",
-          "sessionDate": "2026-10-16",
-          "targetDate": "2026-10-16"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "down",
-      "last": 85.7,
-      "chgPct": -0.38,
-      "volume": 14977146,
-      "tv": {
-        "latestEPS": 0.67,
-        "consensusEPS": 0.67,
-        "priorYrEPS": 0.57,
-        "surpriseEPS_pct": 0.36,
-        "surpriseEPS_dollar": 0.0,
-        "latestRev_M": 1910.0,
-        "consensusRev_M": 1860.0,
-        "priorYrRev_M": 1660.0,
-        "surpriseRev_pct": 3.03,
-        "yrYrRev_pct": 15.060240963855422,
-        "epsYoY_pct": 17.543859649122826,
-        "epsEst_next4": [
-          0.74,
-          0.77,
-          0.82,
-          0.84
-        ],
-        "revEst_next4": [
-          2000.0,
-          2090.0,
-          2230.0,
-          2260.0
-        ],
-        "yoyBlock": "+17.54% / +15.06%\n--------------------\n+13.85% / +21.95%\n+28.33% / +25.15%\n+18.84% / +18.62%\n+25.37% / +18.32%",
-        "chart": {
-          "quarters": [
-            "Q4 '21",
-            "Q1 '22",
-            "Q2 '22",
-            "Q3 '22",
-            "Q4 '22",
-            "Q1 '23",
-            "Q2 '23",
-            "Q3 '23",
-            "Q4 '23",
-            "Q1 '24",
-            "Q2 '24",
-            "Q3 '24"
-          ],
-          "eps_reported": [
-            0.51,
-            0.47,
-            0.51,
-            0.57,
-            0.65,
-            0.6,
-            0.69,
-            0.67,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.46,
-            0.48,
-            0.47,
-            0.54,
-            0.59,
-            0.6,
-            0.64,
-            0.67,
-            0.74,
-            0.77,
-            0.82,
-            0.84
-          ],
-          "rev_reported_M": [
-            1390.0,
-            1430.0,
-            1480.0,
-            1660.0,
-            1640.0,
-            1670.0,
-            1880.0,
-            1910.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            1350.0,
-            1410.0,
-            1370.0,
-            1530.0,
-            1640.0,
-            1680.0,
-            1800.0,
-            1860.0,
-            2000.0,
-            2090.0,
-            2230.0,
-            2260.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": "2026-10-16",
-        "nextReportDate": null
-      },
-      "shortFloat": 3.13,
-      "shortRatio": 3.26,
-      "marketCap_M": 37660,
-      "floatShares_M": 438.57,
-      "perf1M": -8.36,
-      "perf3M": -11.98,
-      "perf6M": 2.29,
-      "perfYTD": 29.23,
-      "perf12M": 25.49,
-      "prevOhlcv": null,
-      "modelPred": {
-        "version": "v12",
-        "gap": -0.38,
-        "predDay": -1.0,
-        "band": [
-          -2.2,
-          2.1
-        ],
-        "tier": "big",
-        "lottery": false,
-        "spike": [
-          0.3,
-          1.0,
-          2.5
-        ],
-        "predHi": 0.6,
-        "predHiBand": [
-          -0.1,
-          2.1
-        ]
-      }
-    },
     "RF": {
       "symbol": "RF",
       "name": "Regions Financial",
@@ -1907,201 +1358,6 @@
         "predHiBand": [
           1.6,
           3.8
-        ]
-      }
-    },
-    "TSLA": {
-      "symbol": "TSLA",
-      "name": "Tesla",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "飛行版 Roadster 示範登場,Musk 提及與 SpaceX 合作,盤前 +3%",
-      "newsDetail": "> **今日漲因:** 特斯拉盤前上漲約 3.3% 至 $374.5;IBD 報導 Roadster 飛行展示後股價走高,馬斯克提到與 SpaceX 的合作。\n\n**事件詳解**\n\n據 IBD 10/16 美東 08:04 報導,標題為「Tesla Jumps On Flying Roadster Demo; Musk Cites Collaboration With SpaceX」。本次檢索未能取得該文全文或展示結果的一級報導,以下僅整理展示前已公開的背景。\n\n**展示背景**\n\n特斯拉原訂 10/1 的戶外 Roadster 展示,因強風延後兩週。Stocktwits 10/14 報導,特斯拉確認於週四(10/15)晚間舉行直播。多家媒體先前報導,展示將使用與 SpaceX 共同開發的**壓縮氣體推進器**(內部代號傳為 A71),使 Roadster 離地懸浮;車輛據稱以遙控方式操作、無駕駛、不能合法上路。\n\n**管理層說法**\n\n馬斯克曾告訴員工,這項展示「很難做到,而且可能出錯」,並說空頭「幾乎把我們逼到懸崖邊」。他也在直播前貼文暗示「時機就是一切」。\n\n**市場背景**\n\n展示前的 10/13 週二,特斯拉收盤 **$375.23**,單日跌近 3%,距 52 週高點約低 25%。過去特斯拉發表會常伴隨股價下跌:2019 年 Cybertruck 發表後跌 6%、2024 年 10 月 Cybercab 發表後跌 8.3%。分析師先前表示,今天盤前反應是市場對展示的第一次檢驗,投資人也可能等待定價與量產細節。展示實際內容、是否成功飛行,本次查無一級來源證實。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=TSLA"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/TSLA"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-TSLA/news/"
-        }
-      ],
-      "publishedAt": "2026-10-16T08:04:00-04:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "KuCoin 轉載:展示前背景(10/14)",
-          "url": "https://www.kucoin.com/news/flash/tesla-s-flying-demo-fails-to-break-market-doubts-as-share-price-slumps",
-          "publishedAt": "2026-10-14"
-        },
-        {
-          "label": "Stocktwits:Roadster 活動重啟",
-          "url": "https://stocktwits.com/news-articles/markets/equity/tsla-stock-tesla-roadster-event-back-musk-teases-timing-is-everything/cZxfhlNRBpQ",
-          "publishedAt": "2026-10-14"
-        }
-      ],
-      "seanAnalysis": {
-        "verdict": "PASS",
-        "summary": "飛行 Roadster 與 SpaceX 屬故事題材,無財報支撐;$374.5 不追",
-        "sourceDate": "2026-10-16"
-      },
-      "milanAnalysis": {
-        "score": 2,
-        "summary": "飛行 Roadster 示範與 SpaceX 合作只是口頭提及,無合約、無數字,對獲利沒有實質影響",
-        "sourceDate": "2026-10-16"
-      },
-      "sessions": [
-        {
-          "last": 374.52,
-          "chgPct": 3.33,
-          "volume": 14977146,
-          "session": "headline",
-          "direction": "up",
-          "name": "Tesla",
-          "sessionDate": "2026-10-16",
-          "targetDate": "2026-10-16"
-        }
-      ],
-      "primarySession": "headline",
-      "primaryDirection": "up",
-      "last": 374.52,
-      "chgPct": 3.33,
-      "volume": 14977146,
-      "tv": {
-        "latestEPS": 0.33,
-        "consensusEPS": 0.53,
-        "priorYrEPS": 0.4,
-        "surpriseEPS_pct": -38.12,
-        "surpriseEPS_dollar": -0.2,
-        "latestRev_M": 28240.0,
-        "consensusRev_M": 26420.0,
-        "priorYrRev_M": 22500.0,
-        "surpriseRev_pct": 6.86,
-        "yrYrRev_pct": 25.511111111111113,
-        "epsYoY_pct": -17.5,
-        "epsEst_next4": [
-          0.45,
-          0.47,
-          0.53,
-          0.64
-        ],
-        "revEst_next4": [
-          27940.0,
-          28580.0,
-          26350.0,
-          30400.0
-        ],
-        "yoyBlock": "-17.50% / +25.51%\n--------------------\n-10.00% / -0.53%\n-6.00% / +14.78%\n+29.27% / +17.69%\n+93.94% / +7.65%",
-        "chart": {
-          "quarters": [
-            "Q3 '21",
-            "Q4 '21",
-            "Q1 '22",
-            "Q2 '22",
-            "Q3 '22",
-            "Q4 '22",
-            "Q1 '23",
-            "Q2 '23",
-            "Q3 '23",
-            "Q4 '23",
-            "Q1 '24",
-            "Q2 '24"
-          ],
-          "eps_reported": [
-            0.72,
-            0.73,
-            0.27,
-            0.4,
-            0.5,
-            0.5,
-            0.41,
-            0.33,
-            null,
-            null,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            0.59,
-            0.77,
-            0.41,
-            0.4,
-            0.56,
-            0.45,
-            0.35,
-            0.53,
-            0.45,
-            0.47,
-            0.53,
-            0.64
-          ],
-          "rev_reported_M": [
-            25180.0,
-            25710.0,
-            19340.0,
-            22500.0,
-            28090.0,
-            24900.0,
-            22390.0,
-            28240.0,
-            null,
-            null,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            25470.0,
-            27260.0,
-            21270.0,
-            22280.0,
-            26540.0,
-            24780.0,
-            22100.0,
-            26420.0,
-            27940.0,
-            28580.0,
-            26350.0,
-            30400.0
-          ],
-          "latest_idx": 7
-        },
-        "latestReportDate": null,
-        "nextReportDate": "2026-10-22"
-      },
-      "shortFloat": 2.51,
-      "shortRatio": 1.88,
-      "marketCap_M": 1400430,
-      "floatShares_M": 2820,
-      "perf1M": -2.66,
-      "perf3M": -6.43,
-      "perf6M": -9.66,
-      "perfYTD": -21.16,
-      "perf12M": -19.29,
-      "prevOhlcv": null,
-      "modelPred": {
-        "version": "v12",
-        "gap": 3.33,
-        "predDay": 4.2,
-        "band": [
-          -2.2,
-          2.1
-        ],
-        "tier": "big",
-        "lottery": false,
-        "spike": [
-          0,
-          0.6,
-          2.1
-        ],
-        "predHi": 3.9,
-        "predHiBand": [
-          3.3,
-          5.5
         ]
       }
     },
@@ -2291,6 +1547,750 @@
         "predHiBand": [
           -1.8,
           0.3
+        ]
+      }
+    },
+    "WDC": {
+      "symbol": "WDC",
+      "name": "Western Digital",
+      "type": "analyst",
+      "earningsReaction": false,
+      "catalyst": "Wells Fargo 目標價由 $730 大砍至 $450,儲存族群(SNDK/MU)同步走弱,盤前 −1.7%",
+      "newsDetail": "> **今日跌因:** 據 MT Newswires 10/16 美東 06:09 報導,Wells Fargo 將 Western Digital 目標價由 730 美元大幅下調至 450 美元,盤前股價下跌約 1.7%。\n\n依指定線索,Wells Fargo 於 10/16 把 WDC 目標價從 **730 美元**降至 **450 美元**,降幅約 **38%**。我未能在公開搜尋中找到這則調降的原始報導,因此調降理由與評等是否變動,查不到。\n\n背景資料:Wells Fargo 分析師 Aaron Rakers 在 7 月 10 日把目標價由 575 美元調升至 730 美元,評等為「優於大盤」(Overweight)。另有資料顯示,Baird 與 Barclays 在 5 月均把目標價調至 450 美元。9 月底 Benzinga 彙整的 20 位分析師共識目標價約 **483 美元**。\n\n換言之,新目標價 450 美元已低於當時的共識目標價。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=WDC"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/WDC"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-WDC/news/"
+        }
+      ],
+      "publishedAt": "2026-10-16T08:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "TipRanks/The Fly:Wells Fargo WDC 目標價紀錄",
+          "url": "https://www.tipranks.com/news/the-fly/western-digital-price-target-raised-to-180-from-150-at-wells-fargo-thefly"
+        },
+        {
+          "label": "Benzinga WDC 分析師評等",
+          "url": "https://www.benzinga.com/quote/WDC/analyst-ratings"
+        }
+      ],
+      "seanAnalysis": {
+        "verdict": "WATCH",
+        "summary": "記憶體類股連兩日重挫,盤前$361.5已比前收$389.04少6.6%,三個月已跌約30%,追空風險高;只做反彈到$389附近過不去的空單。",
+        "sourceDate": "2026-10-13"
+      },
+      "milanAnalysis": {
+        "score": 2,
+        "summary": "跌因是長鑫存儲的記憶體技術消息拖累族群,與WDC本業關聯薄弱;傳聞的UBS下調目標價查無一級來源。",
+        "sourceDate": "2026-10-13"
+      },
+      "sessions": [
+        {
+          "last": 350.34,
+          "chgPct": -1.71,
+          "volume": 14977146,
+          "session": "headline",
+          "direction": "down",
+          "name": "Western Digital",
+          "sessionDate": "2026-10-16",
+          "targetDate": "2026-10-16"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "down",
+      "last": 350.34,
+      "chgPct": -1.71,
+      "volume": 14977146,
+      "tv": {
+        "latestEPS": 3.56,
+        "consensusEPS": 3.31,
+        "priorYrEPS": 1.66,
+        "surpriseEPS_pct": 7.54,
+        "surpriseEPS_dollar": 0.25,
+        "latestRev_M": 3750.0,
+        "consensusRev_M": 3700.0,
+        "priorYrRev_M": 2600.0,
+        "surpriseRev_pct": 1.27,
+        "yrYrRev_pct": 44.230769230769226,
+        "epsYoY_pct": 114.45783132530123,
+        "epsEst_next4": [
+          4.08,
+          4.76,
+          5.53,
+          6.38
+        ],
+        "revEst_next4": [
+          4140.0,
+          4550.0,
+          5010.0,
+          5510.0
+        ],
+        "yoyBlock": "+114.46% / +44.23%\n--------------------\n+129.21% / +46.81%\n+123.47% / +50.66%\n+103.31% / +50.00%\n+79.21% / +46.93%",
+        "chart": {
+          "quarters": [
+            "Q1 '22",
+            "Q2 '22",
+            "Q3 '22",
+            "Q4 '22",
+            "Q1 '23",
+            "Q2 '23",
+            "Q3 '23",
+            "Q4 '23",
+            "Q1 '24",
+            "Q2 '24",
+            "Q3 '24",
+            "Q4 '24"
+          ],
+          "eps_reported": [
+            1.35,
+            1.34,
+            1.36,
+            1.66,
+            1.78,
+            2.13,
+            2.72,
+            3.56,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            1.29,
+            1.35,
+            1.12,
+            1.48,
+            1.59,
+            1.93,
+            2.39,
+            3.31,
+            4.08,
+            4.76,
+            5.53,
+            6.38
+          ],
+          "rev_reported_M": [
+            4090.0,
+            4290.0,
+            2290.0,
+            2600.0,
+            2820.0,
+            3020.0,
+            3340.0,
+            3750.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            4120.0,
+            4260.0,
+            2310.0,
+            2470.0,
+            2730.0,
+            2930.0,
+            3250.0,
+            3700.0,
+            4140.0,
+            4550.0,
+            5010.0,
+            5510.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": null,
+        "nextReportDate": "2026-10-23"
+      },
+      "shortFloat": 4.91,
+      "shortRatio": 2.33,
+      "marketCap_M": 128280,
+      "floatShares_M": 372.63,
+      "perf1M": -22.35,
+      "perf3M": -37.51,
+      "perf6M": -8.4,
+      "perfYTD": 98.93,
+      "perf12M": 171.55,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": -1.71,
+        "predDay": -0.8,
+        "band": [
+          -2.2,
+          2.1
+        ],
+        "tier": "big",
+        "lottery": false,
+        "spike": [
+          1.7,
+          2.4,
+          3.9
+        ],
+        "predHi": 0.6,
+        "predHiBand": [
+          -0.0,
+          2.1
+        ]
+      }
+    },
+    "CFG": {
+      "symbol": "CFG",
+      "name": "Citizens Financial",
+      "type": "earnings",
+      "earningsReaction": true,
+      "catalyst": "Q3 EPS $1.41(+34%)小超預期 $1.38,但營收不及預期,盤前 −2%",
+      "newsDetail": "> **今日跌因:** Citizens 第三季 EPS 小幅優於預期,但 StockStory 指營收低於預期,盤前股價下跌約 1.8%。\n\nCitizens Financial Group 於 10/16 公布 2026 年第三季財報:**稀釋 EPS 1.41 美元**,較去年同期 1.05 美元成長 **34%**,高於預期約 1.38 美元;淨利 **6.36 億美元**,年增 **29%**。\n\n總營收約 **23.2 億美元**,年增 **10%**;淨利息收入 **16.8 億美元**,年增 **13%**;淨利差(NIM)為 **3.18%**,較去年同期的 2.99% 上升 19 個基點。非利息收入 **6.47 億美元**,其中財富管理手續費創 **1.09 億美元**新高。\n\nStockStory 稱營收不及預期,但我未查到營收共識的原始數字,此說法無法獨立驗證。執行長 Bruce Van Saun 表示本季營收與獲利成長亮眼。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=CFG"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/CFG"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-CFG/news/"
+        }
+      ],
+      "publishedAt": "2026-10-16T08:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Citizens 3Q26 財報 8-K(SEC)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000759944/000075994426000206/a3q26earningsrelease.htm"
+        },
+        {
+          "label": "Citizens 3Q26 財務補充資料(SEC)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000759944/000075994426000206/q326financialsupplement.htm"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 62.29,
+          "chgPct": -1.8,
+          "volume": 14977146,
+          "session": "headline",
+          "direction": "down",
+          "name": "Citizens Financial",
+          "sessionDate": "2026-10-16",
+          "targetDate": "2026-10-16"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "down",
+      "last": 62.29,
+      "chgPct": -1.8,
+      "volume": 14977146,
+      "tv": {
+        "latestEPS": 1.41,
+        "consensusEPS": 1.39,
+        "priorYrEPS": 1.05,
+        "surpriseEPS_pct": 1.55,
+        "surpriseEPS_dollar": 0.020000000000000018,
+        "latestRev_M": 2320.0,
+        "consensusRev_M": 2340.0,
+        "priorYrRev_M": 2120.0,
+        "surpriseRev_pct": -0.73,
+        "yrYrRev_pct": 9.433962264150944,
+        "epsYoY_pct": 34.28571428571428,
+        "epsEst_next4": [
+          1.48,
+          1.43,
+          1.59,
+          1.72
+        ],
+        "revEst_next4": [
+          2400.0,
+          2390.0,
+          2470.0,
+          2540.0
+        ],
+        "yoyBlock": "+34.29% / +9.43%\n--------------------\n+30.97% / +11.11%\n+26.55% / +10.14%\n+22.31% / +8.33%\n+21.99% / +9.48%",
+        "chart": {
+          "quarters": [
+            "Q4 '21",
+            "Q1 '22",
+            "Q2 '22",
+            "Q3 '22",
+            "Q4 '22",
+            "Q1 '23",
+            "Q2 '23",
+            "Q3 '23",
+            "Q4 '23",
+            "Q1 '24",
+            "Q2 '24",
+            "Q3 '24"
+          ],
+          "eps_reported": [
+            0.83,
+            0.77,
+            0.92,
+            1.05,
+            1.13,
+            1.13,
+            1.3,
+            1.41,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.82,
+            0.75,
+            0.88,
+            1.03,
+            1.1,
+            1.09,
+            1.24,
+            1.39,
+            1.48,
+            1.43,
+            1.59,
+            1.72
+          ],
+          "rev_reported_M": [
+            1980.0,
+            1940.0,
+            2040.0,
+            2120.0,
+            2160.0,
+            2170.0,
+            2280.0,
+            2320.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            1960.0,
+            1940.0,
+            2009.9999999999998,
+            2100.0,
+            2150.0,
+            2160.0,
+            2250.0,
+            2340.0,
+            2400.0,
+            2390.0,
+            2470.0,
+            2540.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-10-16",
+        "nextReportDate": null
+      },
+      "shortFloat": 4.07,
+      "shortRatio": 4.43,
+      "marketCap_M": 26690,
+      "floatShares_M": 417.42,
+      "perf1M": -5.49,
+      "perf3M": -12,
+      "perf6M": -3.65,
+      "perfYTD": 8.47,
+      "perf12M": 28.49,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": -1.8,
+        "predDay": -2.3,
+        "band": [
+          -2.2,
+          2.1
+        ],
+        "tier": "big",
+        "lottery": false,
+        "spike": [
+          1.1,
+          1.8,
+          3.3
+        ],
+        "predHi": -0.0,
+        "predHiBand": [
+          -0.7,
+          1.4
+        ]
+      }
+    },
+    "MTB": {
+      "symbol": "MTB",
+      "name": "M&T Bank",
+      "type": "earnings",
+      "earningsReaction": true,
+      "catalyst": "Q3 EPS 與營收雙雙超預期,放款成長帶動",
+      "newsDetail": "> **今日跌因:** 盤前小跌約 0.3%;據 Zacks、StockStory 10/16 報導,M&T 第三季 EPS 與營收均優於預期,跌幅不大,查不到明確跌因。\n\nM&T Bank 於 10/16 開盤前公布第三季財報。財報前市場共識約為 EPS **4.95 至 4.98 美元**、營收約 **25.3 億美元**。據 Zacks 與 StockStory 10/16 的報導,實際 EPS 與營收均高於預期。\n\n我未能查到官方新聞稿或上述報導全文,因此本次實際 EPS、營收的精確數字查不到,不在此列示。作為對照,M&T 第二季稀釋 EPS 約 5.35 美元,營收約 25.3 億美元,第三季共識意味著獲利略低於前一季。\n\n股價在財報優於預期下仍小幅下跌,屬銀行股財報日常見的反應,但缺乏一級來源說明原因,不做推測。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=MTB"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/MTB"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-MTB/news/"
+        }
+      ],
+      "publishedAt": "2026-10-16T08:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "M&T Bank 第三季財報公告(Placera)",
+          "url": "https://www.placera.se/pressmeddelanden/m-t-bank-m-t-bank-corporation-announces-third-quarter-2026-earnings-release-and-conference-call-20260918"
+        },
+        {
+          "label": "Benzinga MTB 預估",
+          "url": "https://www.benzinga.com/quote/MTB/earnings-forecasts"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 218.0,
+          "chgPct": -0.3,
+          "volume": 14977146,
+          "session": "headline",
+          "direction": "down",
+          "name": "M&T Bank",
+          "sessionDate": "2026-10-16",
+          "targetDate": "2026-10-16"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "down",
+      "last": 218.0,
+      "chgPct": -0.3,
+      "volume": 14977146,
+      "tv": {
+        "latestEPS": 5.04,
+        "consensusEPS": 4.93,
+        "priorYrEPS": 4.82,
+        "surpriseEPS_pct": 2.17,
+        "surpriseEPS_dollar": 0.11000000000000032,
+        "latestRev_M": 2540.0,
+        "consensusRev_M": 2530.0,
+        "priorYrRev_M": 2510.0,
+        "surpriseRev_pct": 0.16,
+        "yrYrRev_pct": 1.1952191235059761,
+        "epsYoY_pct": 4.56431535269709,
+        "epsEst_next4": [
+          4.92,
+          4.57,
+          5.37,
+          5.53
+        ],
+        "revEst_next4": [
+          2550.0,
+          2550.0,
+          2590.0,
+          2640.0
+        ],
+        "yoyBlock": "+4.56% / +1.20%\n--------------------\n+5.35% / +2.82%\n+10.65% / +4.51%\n+0.94% / +1.97%\n+9.72% / +3.94%",
+        "chart": {
+          "quarters": [
+            "Q4 '21",
+            "Q1 '22",
+            "Q2 '22",
+            "Q3 '22",
+            "Q4 '22",
+            "Q1 '23",
+            "Q2 '23",
+            "Q3 '23",
+            "Q4 '23",
+            "Q1 '24",
+            "Q2 '24",
+            "Q3 '24"
+          ],
+          "eps_reported": [
+            3.86,
+            3.32,
+            4.24,
+            4.82,
+            4.67,
+            4.13,
+            5.32,
+            5.04,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            3.69,
+            3.4,
+            3.99,
+            4.43,
+            4.48,
+            4.02,
+            4.66,
+            4.93,
+            4.92,
+            4.57,
+            5.37,
+            5.53
+          ],
+          "rev_reported_M": [
+            2380.0,
+            2310.0,
+            2400.0,
+            2510.0,
+            2480.0,
+            2440.0,
+            2540.0,
+            2540.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            2340.0,
+            2340.0,
+            2390.0,
+            2440.0,
+            2470.0,
+            2430.0,
+            2460.0,
+            2530.0,
+            2550.0,
+            2550.0,
+            2590.0,
+            2640.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-10-16",
+        "nextReportDate": null
+      },
+      "shortFloat": 3.54,
+      "shortRatio": 4.89,
+      "marketCap_M": 31090,
+      "floatShares_M": 143.9,
+      "perf1M": -5.29,
+      "perf3M": -13.42,
+      "perf6M": -2,
+      "perfYTD": 6.85,
+      "perf12M": 19.16,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": -0.3,
+        "predDay": -0.9,
+        "band": [
+          -2.2,
+          2.1
+        ],
+        "tier": "big",
+        "lottery": false,
+        "spike": [
+          1.2,
+          1.9,
+          3.4
+        ],
+        "predHi": 1.6,
+        "predHiBand": [
+          0.9,
+          3.1
+        ]
+      }
+    },
+    "IBKR": {
+      "symbol": "IBKR",
+      "name": "Interactive Brokers",
+      "type": "earnings",
+      "earningsReaction": true,
+      "catalyst": "Q3 調整後 EPS $0.67 大致符合、DARTs +18%、帳戶 +35%,季股息由 $0.0875 調高至 $0.15",
+      "newsDetail": "> **今日跌因:** 盤前微跌約 0.4%;財報與股息調升均優於去年,屬獲利了結式的小幅整理,公司與媒體未特別說明跌因。\n\nInteractive Brokers 於 10/15 盤後公布第三季財報:**調整後 EPS 0.67 美元**(去年同期 0.57 美元),GAAP 稀釋 EPS 為 0.69 美元;淨營收 **19.1 億美元**(調整後 18.7 億美元),去年同期 16.6 億美元。\n\n業務面:佣金收入年增 **12%** 至 **6.02 億美元**,DARTs 年增 **18%**;淨利息收入年增 **19%** 至 **11.5 億美元**,稅前利潤率 **78%**。依公司提供的資料,帳戶數約 **558 萬**,年增 **35%**。\n\n股息方面,季股息由 **0.0875 美元調升至 0.15 美元**。另外,Jefferies 將目標價由 110 美元調升至 118 美元(此項來自指定線索,未另行查到原始報導)。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=IBKR"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/IBKR"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-IBKR/news/"
+        }
+      ],
+      "publishedAt": "2026-10-16T08:00:00-04:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "IBKR 3Q2026 財報 8-K Ex.99.1(SEC)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001381197/000138119726000154/ibkr-ex99_1.htm"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 85.7,
+          "chgPct": -0.38,
+          "volume": 14977146,
+          "session": "headline",
+          "direction": "down",
+          "name": "Interactive Brokers",
+          "sessionDate": "2026-10-16",
+          "targetDate": "2026-10-16"
+        }
+      ],
+      "primarySession": "headline",
+      "primaryDirection": "down",
+      "last": 85.7,
+      "chgPct": -0.38,
+      "volume": 14977146,
+      "tv": {
+        "latestEPS": 0.67,
+        "consensusEPS": 0.67,
+        "priorYrEPS": 0.57,
+        "surpriseEPS_pct": 0.36,
+        "surpriseEPS_dollar": 0.0,
+        "latestRev_M": 1910.0,
+        "consensusRev_M": 1860.0,
+        "priorYrRev_M": 1660.0,
+        "surpriseRev_pct": 3.03,
+        "yrYrRev_pct": 15.060240963855422,
+        "epsYoY_pct": 17.543859649122826,
+        "epsEst_next4": [
+          0.74,
+          0.77,
+          0.82,
+          0.84
+        ],
+        "revEst_next4": [
+          2000.0,
+          2090.0,
+          2230.0,
+          2260.0
+        ],
+        "yoyBlock": "+17.54% / +15.06%\n--------------------\n+13.85% / +21.95%\n+28.33% / +25.15%\n+18.84% / +18.62%\n+25.37% / +18.32%",
+        "chart": {
+          "quarters": [
+            "Q4 '21",
+            "Q1 '22",
+            "Q2 '22",
+            "Q3 '22",
+            "Q4 '22",
+            "Q1 '23",
+            "Q2 '23",
+            "Q3 '23",
+            "Q4 '23",
+            "Q1 '24",
+            "Q2 '24",
+            "Q3 '24"
+          ],
+          "eps_reported": [
+            0.51,
+            0.47,
+            0.51,
+            0.57,
+            0.65,
+            0.6,
+            0.69,
+            0.67,
+            null,
+            null,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            0.46,
+            0.48,
+            0.47,
+            0.54,
+            0.59,
+            0.6,
+            0.64,
+            0.67,
+            0.74,
+            0.77,
+            0.82,
+            0.84
+          ],
+          "rev_reported_M": [
+            1390.0,
+            1430.0,
+            1480.0,
+            1660.0,
+            1640.0,
+            1670.0,
+            1880.0,
+            1910.0,
+            null,
+            null,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            1350.0,
+            1410.0,
+            1370.0,
+            1530.0,
+            1640.0,
+            1680.0,
+            1800.0,
+            1860.0,
+            2000.0,
+            2090.0,
+            2230.0,
+            2260.0
+          ],
+          "latest_idx": 7
+        },
+        "latestReportDate": "2026-10-16",
+        "nextReportDate": null
+      },
+      "shortFloat": 3.13,
+      "shortRatio": 3.26,
+      "marketCap_M": 37660,
+      "floatShares_M": 438.57,
+      "perf1M": -8.36,
+      "perf3M": -11.98,
+      "perf6M": 2.29,
+      "perfYTD": 29.23,
+      "perf12M": 25.49,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": -0.38,
+        "predDay": -1.0,
+        "band": [
+          -2.2,
+          2.1
+        ],
+        "tier": "big",
+        "lottery": false,
+        "spike": [
+          0.3,
+          1.0,
+          2.5
+        ],
+        "predHi": 0.6,
+        "predHiBand": [
+          -0.1,
+          2.1
         ]
       }
     },
