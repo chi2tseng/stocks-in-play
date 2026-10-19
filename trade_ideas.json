@@ -1,31 +1,19 @@
 {
- "date": "2026-10-16",
- "written_at": "2026-10-16T08:18:43-04:00",
+ "date": "2026-10-19",
+ "written_at": "2026-10-19T08:12:55-04:00",
  "ideas": [
   {
    "rank": 1,
-   "symbol": "TRV",
-   "setup": "beatdip",
+   "symbol": "APLD",
+   "setup": "beaten_squeeze_go",
    "direction": "long",
-   "thesis": "Travelers Q3 核心 EPS $9.18 遠超共識 $7.39(+24%)、營收 $114.8 億超預期 1%,屬真 beat;但盤前 −5.3% 至約 $364(市場擔心保費收入下滑、石綿準備金追加約 $2.95 億)。市值約 $790 億、gap 落在 −4%~−18% 帶,符合 beatdip 條件。",
-   "entry": "09:30 先用開盤價複核 gap 仍在 −4%~−18%;10:30 ET 前不進場,10:30 價格需高於早盤低點 0.5% 以上才買",
-   "target": "回到平盤(10/15 收盤)或 +6% 先到先出",
-   "stop": "早盤低點下 0.5%",
-   "backtest_note": "beatdip 降級複驗中(live n=5、+0.18R/筆、60% 勝);逐日等權接近 0,倉位取正常的一半,絕不留倉",
-   "written_at": "2026-10-16T08:18:43-04:00"
-  },
-  {
-   "rank": 2,
-   "symbol": "MBLY",
-   "setup": "dtc_fade",
-   "direction": "short",
-   "thesis": "Mobileye 盤前 +5.2% 至約 $7.81,來自 Citi 首評買進、目標價 $11;DTC 7.7(>5)、short float 26.7%,符合 dtc_fade 條件(回補需多日、單日買盤難以撐住)。",
-   "entry": "10:30 ET 放空;前提:開盤 gap 仍 ≥+2%(vs 10/15 收盤)",
-   "target": "收盤回補",
-   "stop": "進場價 +5%",
-   "backtest_note": "dtc_fade 次主力但 live n=8 −0.47R/筆(近期失準);首評買進是真利多,逆勢放空,倉位取正常的一半",
-   "written_at": "2026-10-16T08:18:43-04:00"
+   "thesis": "AI 雲端/資料中心族群上週重挫後今天盤前反彈(Goldman 升評 CoreWeave 至買進、目標價 $106 帶動族群),Applied Digital 盤前 +7.9% 至約 $19.48;內部人申報買進約 $566 萬 + $101 萬。籌碼條件全數符合:近一個月 −30.5%、空單佔流通 20.8%、回補天數 2.9 天(<5,回補快)、前瞻營收成長遠高於 30%。",
+   "entry": "09:30 開盤直接買進(此型不等回檔);開盤 gap 需仍 ≥+5%,不足即放棄",
+   "target": "13:30 ET 前時間出場,不留倉",
+   "stop": "進場價 −5%",
+   "backtest_note": "BeatenSqueezeGo 全庫 n=45、勝率 58%、+0.59R/筆;樣本集中於 7 月 AI 基建叢集(今天同屬 AI 基建反彈,集群風險高),live n=2 / +0.31R,仍屬候補 — 半倉。",
+   "written_at": "2026-10-19T08:12:55-04:00"
   }
  ],
- "no_trade_notes": "contract_fade:無合約型 gap ≥+15%。beaten_squeeze_go:gap≥+5 名單中 ZETA perf1M +16%、MBLY DTC>5、SITC/TCRT/PMI/NCPL 為微型股(無回補買盤家族)皆不符。GUTS −45% 為微型股臨床數據跳空,不做。SITC 為 $3 特別股息+下市計畫的公司行動,不建方向部位。"
+ "no_trade_notes": "錯殺反彈:今日無 ≥$10B 好財報下跌股(TLK −8% 但空單/財報不符)。大合約 fade:無大合約 gap。BeatenSqueezeGo 另有 NBIS(+7.1%、1M −20.6%、SF 20%、DTC 2.1)、CIFR、WULF 同樣合格,但與 APLD 同一 AI 基建主題,依同日不重複押注規則只取一筆。DTC fade:IRON DTC 14.8 但為三期試驗全數達標的真催化、gap +52%,不做空;該 setup live 8 筆 −3.74R,待審視。"
 }
