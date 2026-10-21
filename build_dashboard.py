@@ -776,6 +776,12 @@ for td in sorted(target_dates_set):
     # Skip writing empty stock files unless they're the scan date.
     if not new_data['stocks'] and td != DATE:
         continue
+    # surpStale: TV surprise is from a PAST quarter (stock isn't reacting to a report today —
+    # e.g. SMCI 10/21 pre-announcement, full results 11/3). UI hides EPS/Rev Surp pills so
+    # last quarter's surprise doesn't read as today's news (user 2026-10-21).
+    for _st in new_data['stocks'].values():
+        if isinstance(_st.get('tv'), dict):
+            _st['tv']['surpStale'] = not (_st.get('type') == 'earnings' and bool(_st.get('earningsReaction')))
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(new_data, f, ensure_ascii=False, indent=2)
     written[td] = len(new_data['stocks'])
@@ -4098,11 +4104,11 @@ function shortPerfLine(s) {
   // Row 2: EPS / Rev Surprise % (TradingView FQ-sourced earnings surprise metrics). Pos/neg tinted.
   const surpBits = [];
   const tv = s.tv;
-  if (tv && tv.surpriseEPS_pct != null) {
+  if (tv && !tv.surpStale && tv.surpriseEPS_pct != null) {
     const v = tv.surpriseEPS_pct, cn = v >= 0 ? 'pos' : 'neg';
     surpBits.push(`<span class="stat-pill ${cn}" title="EPS surprise vs consensus (TradingView FQ)">EPS Surp ${(v >= 0 ? '+' : '') + v.toFixed(1)}%</span>`);
   }
-  if (tv && tv.surpriseRev_pct != null) {
+  if (tv && !tv.surpStale && tv.surpriseRev_pct != null) {
     const v = tv.surpriseRev_pct, cn = v >= 0 ? 'pos' : 'neg';
     surpBits.push(`<span class="stat-pill ${cn}" title="Revenue surprise vs consensus (TradingView FQ)">Rev Surp ${(v >= 0 ? '+' : '') + v.toFixed(1)}%</span>`);
   }
@@ -5798,8 +5804,8 @@ async function renderStock(sym) {
     s.shortRatio != null ? `<span class="tag stat-tag" title="Days to cover (short ratio)">DTC ${s.shortRatio.toFixed(1)}d</span>` : '',
   ].filter(Boolean).join(' ');
   const headerSurpPills = [
-    _tv ? _surpPill('EPS Surp', _tv.surpriseEPS_pct, 'EPS surprise vs consensus (TradingView FQ)') : '',
-    _tv ? _surpPill('Rev Surp', _tv.surpriseRev_pct, 'Revenue surprise vs consensus (TradingView FQ)') : '',
+    (_tv && !_tv.surpStale) ? _surpPill('EPS Surp', _tv.surpriseEPS_pct, 'EPS surprise vs consensus (TradingView FQ)') : '',
+    (_tv && !_tv.surpStale) ? _surpPill('Rev Surp', _tv.surpriseRev_pct, 'Revenue surprise vs consensus (TradingView FQ)') : '',
   ].filter(Boolean).join(' ');
   app.innerHTML = `
     <div class="breadcrumb study-detail-breadcrumb">
@@ -8344,8 +8350,8 @@ async function renderStudyDetail(idOrSym) {
     s.shortRatio != null ? `<span class="tag stat-tag" title="Days to cover (short ratio)">DTC ${s.shortRatio.toFixed(1)}d</span>` : '',
   ].filter(Boolean).join(' ');
   const headerSurpPills = [
-    _tv ? _surpPill('EPS Surp', _tv.surpriseEPS_pct, 'EPS surprise vs consensus (TradingView FQ)') : '',
-    _tv ? _surpPill('Rev Surp', _tv.surpriseRev_pct, 'Revenue surprise vs consensus (TradingView FQ)') : '',
+    (_tv && !_tv.surpStale) ? _surpPill('EPS Surp', _tv.surpriseEPS_pct, 'EPS surprise vs consensus (TradingView FQ)') : '',
+    (_tv && !_tv.surpStale) ? _surpPill('Rev Surp', _tv.surpriseRev_pct, 'Revenue surprise vs consensus (TradingView FQ)') : '',
   ].filter(Boolean).join(' ');
   // Trade pills row — Gain / Stop, click to open OHLCV popup. Pos/neg tinted.
   const gainCls = initGain == null ? '' : (initGain >= 0 ? 'pos' : 'neg');
