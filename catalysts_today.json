@@ -1,362 +1,367 @@
 {
- "NFLX": {
-  "Type": "earnings",
-  "Catalyst": "第三季營收 128.7 億美元(+11.8%)持平預期、EPS 0.87 美元優於自家指引 0.82;但下修全年廣告營收預期約 3 億美元、第四季指引低於市場,營收成長三年最慢,盤前 −6.6%",
-  "EarningsReaction": true
- },
- "ISRG": {
-  "Type": "earnings",
-  "Catalyst": "第三季營收 30.5 億美元(+22%)、調整後 EPS 3.00 美元皆優於預期(預估 29.1 億/2.65);但認列 4.5 億美元反壟斷和解費用(GAAP EPS 1.49)、收窄成長指引,盤後 −7%",
-  "EarningsReaction": true
- },
- "T": {
-  "Type": "earnings",
-  "Catalyst": "第三季調整後 EPS 0.65 美元(預估 0.60)、營收 323 億美元(+5.3%,預估 316.9 億)優於預期,上調全年 EPS 至約 2.40 美元;後付費手機淨增 37.9 萬戶,盤前仍跌 5.6%,跌因未見一級源說明",
-  "EarningsReaction": true
- },
- "DHR": {
-  "Type": "earnings",
-  "Catalyst": "第三季營收 65.5 億美元(+8.5%)、調整後 EPS 2.11 美元(+11.5%),上調全年 EPS 至 8.57–8.62 美元;但核心營收僅 +3%、全年核心成長約 2.5%,盤前 −3~4%",
-  "EarningsReaction": true
- },
- "COF": {
-  "Type": "earnings",
-  "Catalyst": "第三季調整後 EPS 6.69 美元大幅優於預估 5.50、淨營收 163 億美元(+6%);淨沖銷率降至 2.73%(上季 3.23%),信用品質改善,盤後 +4.2%",
-  "EarningsReaction": true
- },
- "PEGA": {
-  "Type": "earnings",
-  "Catalyst": "第三季營收 3.93 億美元、EPS 0.35 美元均低於預估(4.29 億/0.45);年度合約價值 16.5 億美元(+6%)低於預期 17 億,並警告 AI 衝擊使成長放緩,盤後 −4.8%",
-  "EarningsReaction": true
- },
- "MYGN": {
-  "Type": "M&A",
-  "Catalyst": "同意以 2.1 億美元現金(另加存貨價款)將產前檢測事業出售給 Labcorp,Piper Sandler 升評至中立、目標價 2→5 美元;10/20 盤中已漲 37.5%,盤後再 +4%",
-  "EarningsReaction": false
- },
- "FOXF": {
-  "Type": "news",
-  "Catalyst": "查無個股新聞(下次財報 11/5);前一日跌 7.8% 後反彈",
-  "EarningsReaction": false
- },
- "WFRD": {
-  "Type": "earnings",
-  "Catalyst": "第三季營收 11.43 億美元、GAAP EPS 1.66 美元、調整後 EBITDA 2.54 億(利潤率 22.2%);預告第四季 EBITDA 顯著提升、上調全年自由現金流指引,盤後 +6.3%",
-  "EarningsReaction": true
- },
- "ECHO": {
-  "Type": "analyst",
-  "Catalyst": "查無當日公告;JPMorgan 10/16 調升至加碼、目標價 144 美元(稱較資產淨值折價約 40%),頻譜出售予 AT&T/SpaceX 完成後風險下降,盤後 +5.3%",
-  "EarningsReaction": false
- },
- "SMCI": {
-  "Type": "guidance",
-  "Catalyst": "10/20 盤後 8-K 預告 2027 財年第一季營收 185–195 億美元(原指引 145–155 億)、毛利率 12.0–12.5%(原 10.4–10.8%),AI 平台需求強勁;完整財報 11/3,盤後 +15.6%",
-  "EarningsReaction": true
- },
- "DELL": {
-  "Type": "news",
-  "Catalyst": "族群連動:美超微(SMCI)10/20 盤後預告本季營收 185–195 億美元、遠高於原指引 145–155 億,AI 伺服器/基建股盤後齊揚,戴爾盤後 +6%",
-  "EarningsReaction": false
- },
- "HPE": {
-  "Type": "news",
-  "Catalyst": "族群連動:美超微(SMCI)10/20 盤後預告本季營收 185–195 億美元、遠高於原指引 145–155 億,AI 伺服器/基建股盤後齊揚,HPE 盤後 +5.5%",
-  "EarningsReaction": false
- },
- "VRT": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 資料中心/算力股隨美超微上調財測走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "CRDO": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 資料中心/算力股隨美超微上調財測走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "LITE": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 資料中心/算力股隨美超微上調財測走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "COHR": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 資料中心/算力股隨美超微上調財測走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "AAOI": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 資料中心/算力股隨美超微上調財測走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "AXTI": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 資料中心/算力股隨美超微上調財測走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "AMKR": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 資料中心/算力股隨美超微上調財測走強;查無個股新聞(盤前 +8~9%)",
-  "EarningsReaction": false
- },
- "NBIS": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 資料中心/算力股隨美超微上調財測走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "CRWV": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 資料中心/算力股隨美超微上調財測走強;查無個股新聞;另於 10/21 推出 Physical AI Launchables 機器人/自駕開發工具",
-  "EarningsReaction": false
- },
- "IREN": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 資料中心/算力股隨美超微上調財測走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "CIFR": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 資料中心/算力股隨美超微上調財測走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "WULF": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 資料中心/算力股隨美超微上調財測走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "RIOT": {
-  "Type": "news",
-  "Catalyst": "族群連動:比特幣礦工轉 AI 資料中心概念隨算力股走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "HUT": {
-  "Type": "news",
-  "Catalyst": "族群連動:比特幣礦工轉 AI 資料中心概念隨算力股走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "HIVE": {
-  "Type": "news",
-  "Catalyst": "族群連動:比特幣礦工轉 AI 資料中心概念隨算力股走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "LRCX": {
-  "Type": "news",
-  "Catalyst": "查無當日個股新聞;半導體設備股隨 AI 需求走強(財報預計稍後公布)",
-  "EarningsReaction": false
- },
- "ICHR": {
-  "Type": "news",
-  "Catalyst": "族群連動:半導體設備股走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "COHU": {
-  "Type": "news",
-  "Catalyst": "族群連動:半導體設備股走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "AEHR": {
-  "Type": "news",
-  "Catalyst": "族群連動:半導體設備股走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "MXL": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞",
-  "EarningsReaction": false
- },
- "PENG": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 資料中心/算力股隨美超微上調財測走強;查無個股新聞",
-  "EarningsReaction": false
- },
- "OUST": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞",
-  "EarningsReaction": false
- },
- "BE": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 資料中心供電股隨算力股走強;財報預計 10/22 後公布,查無個股新聞",
-  "EarningsReaction": false
- },
- "NRGV": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞",
-  "EarningsReaction": false
- },
- "SPCX": {
-  "Type": "earnings",
-  "Catalyst": "SpaceX 公布第三季財報,營收 +161% 優於預期;並與特斯拉各自成立委員會探討合併,盤後 +8%、盤前 +7.4%",
-  "EarningsReaction": true
- },
- "DGXX": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞",
-  "EarningsReaction": false
- },
- "PURR": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞",
-  "EarningsReaction": false
- },
- "TKNO": {
-  "Type": "news",
-  "Catalyst": "公布第三季初步營收 1,250–1,270 萬美元(+19~21%,高於預估 1,170 萬),但同時宣布公開增發(TD Cowen/William Blair 主辦),盤後 −23%、盤前 −30%",
-  "EarningsReaction": false
- },
- "ROIV": {
+ "BHVN": {
   "Type": "FDA",
-  "Catalyst": "旗下 Priovant 公布 brepocitinib 治療非感染性葡萄膜炎第三期 CLARITY-1/2 雙雙達標(治療失敗時間中位數 >48 週 vs 安慰劑約 12 週,p<0.0001),計劃 2027 上半年送件,盤前 +9%",
-  "EarningsReaction": false
+  "Catalyst": "10/22 8-K:FDA 受理 Vyglxia(troriluzole)脊髓小腦萎縮症新藥重新送件,審查目標日 2027 年第一季,將召開專家諮詢會",
+  "EarningsReaction": true
  },
- "AHT": {
+ "POM": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞(未見併購/私有化公告);低價股盤後暴漲 66%、盤前 +41%,原因未證實",
+  "Catalyst": "查無個股新聞;前一日投機連漲後回吐,盤前 -25%",
   "EarningsReaction": false
  },
- "ATGL": {
+ "BKYI": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞",
-  "EarningsReaction": false
- },
- "SPHL": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞",
-  "EarningsReaction": false
- },
- "INVE": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞",
-  "EarningsReaction": false
- },
- "YMAT": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞",
-  "EarningsReaction": false
- },
- "WORX": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞",
-  "EarningsReaction": false
- },
- "NCPL": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞",
-  "EarningsReaction": false
- },
- "VYGR": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞",
-  "EarningsReaction": false
- },
- "AVEX": {
-  "Type": "news",
-  "Catalyst": "查無當日催化;證券集體訴訟首席原告登記截止日為 10/20,上季 EPS 0.01 美元低於預期",
-  "EarningsReaction": false
- },
- "TNMG": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞",
-  "EarningsReaction": false
- },
- "CYPH": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞(持有 ZEC 的加密資產財庫股)",
+  "Catalyst": "查無一級源新聞;X 盤前提及新股登記申報(未證實),低價投機股連漲",
   "EarningsReaction": false
  },
  "XLAB": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞;10/16 暴漲 72.8% 後回吐",
+  "Catalyst": "查無新催化;10/19 單日 +30%、週漲約 2 倍後延燒,借券成本極高(X 傳聞未證實)",
   "EarningsReaction": false
  },
- "AIXI": {
+ "SPHL": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞",
+  "Catalyst": "查無個股新聞;低價投機股回吐",
   "EarningsReaction": false
  },
- "XPEV": {
+ "AVEX": {
+  "Type": "news",
+  "Catalyst": "前一日傳美國海軍暫停採購其無人艇而重挫,今晨反彈;公司重申海事策略(X 傳聞未證實,查無一級源)",
+  "EarningsReaction": false
+ },
+ "CYPH": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞",
+  "Catalyst": "查無個股新聞;加密族群走弱連動",
   "EarningsReaction": false
  },
- "SHMD": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞",
+ "QS": {
+  "Type": "earnings",
+  "Catalyst": "Q3 淨虧損8,450萬美元、調整後EBITDA虧損6,070萬;流動資金8.2億、首筆本田客戶帳單,11/11東京技術更新",
+  "EarningsReaction": true
+ },
+ "HSAI": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;中概科技股隨港股恒生科技指數跌約 5% 走弱",
   "EarningsReaction": false
  },
- "PM": {
+ "ROL": {
   "Type": "earnings",
-  "Catalyst": "第三季調整後 EPS 2.36 美元(預估 2.30)、營收 114 億美元(+5.5%,本業 +7.1%)優於預期;但管理層稱本業營業利潤成長將落在 7–9% 區間中段偏低(地緣成本、美國投資、能源通膨),盤前 −3.4%",
+  "Catalyst": "Q3 營收10.9億美元年增6.2%、調整後EPS 0.34年減2.9%略低於預期,管理層稱表現令人失望",
   "EarningsReaction": true
  },
- "TMO": {
+ "LRCX": {
   "Type": "earnings",
-  "Catalyst": "第三季調整後 EPS 6.68 美元(預估約 6.40)、營收 121.4 億美元(+9%,本業 +6%)皆優於預期;特殊診斷營收年減,盤前仍跌約 2.9%,查無明確跌因",
+  "Catalyst": "9月季營收82.2億美元年增54%、非GAAP EPS 2.20;12月季指引86億±4億,盤後股價回落",
   "EarningsReaction": true
  },
- "ABT": {
+ "FPS": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨 AI 基建/半導體賣壓走弱",
+  "EarningsReaction": false
+ },
+ "TTMI": {
+  "Type": "macro",
+  "Catalyst": "AI/半導體類股盤前齊跌:META 10/21 申報發行無投票權 C 股為 AI 資本支出籌資、TSLA 下調全年資本支出,市場再度擔心 AI 投資報酬,PCB 族群連動",
+  "EarningsReaction": false
+ },
+ "NOK": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨光通訊/AI 網通股走弱",
+  "EarningsReaction": false
+ },
+ "PURR": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;Hyperliquid 幣庫藏股,隨加密幣價回落",
+  "EarningsReaction": false
+ },
+ "RCUS": {
+  "Type": "news",
+  "Catalyst": "查無 10/21 盤後一級源公告,盤後 -5.6%",
+  "EarningsReaction": false
+ },
+ "AXTI": {
+  "Type": "macro",
+  "Catalyst": "AI/半導體類股盤前齊跌:META 10/21 申報發行無投票權 C 股為 AI 資本支出籌資、TSLA 下調全年資本支出,市場再度擔心 AI 投資報酬,磷化銦/光通訊族群連動",
+  "EarningsReaction": false
+ },
+ "ASST": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;比特幣回落至約 8.2 萬美元,加密庫藏股連動",
+  "EarningsReaction": false
+ },
+ "IBM": {
   "Type": "earnings",
-  "Catalyst": "第三季調整後 EPS 1.42 美元(預估約 1.43)小幅落後、營收 130.1 億美元(可比 +7%);全年可比銷售成長指引約 6%,低於先前市場引用的 6.5–7.5%,盤前 −4.3%",
+  "Catalyst": "Q3 營收171億美元年增5%、營運EPS 2.95;全年FCF上調,營收指引維持4-5%",
   "EarningsReaction": true
  },
- "NEE": {
+ "MOH": {
   "Type": "earnings",
-  "Catalyst": "第三季調整後 EPS 1.24 美元(預估約 1.18)優於預期,再生能源子公司 NEER 獲利強,營收 80.9 億美元低於預期;重申 2026 年 EPS 3.92–4.02 美元並瞄準高端,盤前 +0.8%",
+  "Catalyst": "Q3 調整後EPS 0.89(去年1.84)、保費收入105億美元年減4%;維持全年調整後EPS至少5.25",
   "EarningsReaction": true
  },
- "CME": {
+ "SPOT": {
   "Type": "earnings",
-  "Catalyst": "第三季營收 17.37 億美元(+13%)創紀錄、日均成交量 2,940 萬口(+16%),調整後 EPS 3.02 美元(預估 2.98)小幅優於預期,盤前小跌",
+  "Catalyst": "Q3 營收49.7億歐元年增16%、營業利益6.72億歐元、MAU 7.88億、付費訂閱3.06億;Q4營業利益指引8.2億",
   "EarningsReaction": true
  },
- "ELV": {
-  "Type": "earnings",
-  "Catalyst": "第三季調整後 EPS 6.99 美元遠優於預估約 4.70(含每股 1.85 美元非營運收益),醫療損失率 90.6% 優於預期 91.2%;全年 EPS 下限上調至至少 29 美元(原至少 27),盤前平盤",
-  "EarningsReaction": true
+ "MSTR": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;比特幣回落至約 8.2 萬美元,加密股連動",
+  "EarningsReaction": false
  },
- "MCO": {
-  "Type": "earnings",
-  "Catalyst": "第三季調整後 EPS 4.14 美元(預估 4.25)、營收 20.2 億美元(預估 20.8 億)雙雙低於預期,評級業務營收 −1%(槓桿融資發行量低於去年);全年 EPS 指引中位數 16.75 美元低於共識 16.90,盤前 −3%",
-  "EarningsReaction": true
+ "BMNR": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;以太幣回落至約 2,400 美元,加密庫藏股連動",
+  "EarningsReaction": false
  },
- "WAB": {
-  "Type": "earnings",
-  "Catalyst": "第三季調整後 EPS 2.83 美元優於預期,營收 31.2 億美元(+8.1%)低於預期、全年營收指引 123 億美元未上調;在手訂單 +23% 至 314.4 億美元,盤前 −3.2%",
-  "EarningsReaction": true
+ "BTDR": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;比特幣回落,挖礦股連動",
+  "EarningsReaction": false
  },
- "NTRS": {
-  "Type": "earnings",
-  "Catalyst": "第三季 EPS 3.40 美元(預估 2.87)、營收 23.0 億美元(預估 22.6 億)雙雙優於預期,盤前小漲",
-  "EarningsReaction": true
+ "COIN": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;加密幣價回落,加密股連動",
+  "EarningsReaction": false
  },
- "TDY": {
-  "Type": "earnings",
-  "Catalyst": "第三季非 GAAP EPS 6.72 美元(預估 6.17)、營收 16.85 億美元(+9.4%),上調全年 EPS 至 25.40–25.50 美元(原 24.45–24.65);盤前仍小跌 1.1%",
-  "EarningsReaction": true
+ "CRCL": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;加密族群連動走弱",
+  "EarningsReaction": false
+ },
+ "AAOI": {
+  "Type": "macro",
+  "Catalyst": "AI/半導體類股盤前齊跌:META 10/21 申報發行無投票權 C 股為 AI 資本支出籌資、TSLA 下調全年資本支出,市場再度擔心 AI 投資報酬,光通訊族群齊跌",
+  "EarningsReaction": false
+ },
+ "LITE": {
+  "Type": "macro",
+  "Catalyst": "AI/半導體類股盤前齊跌:META 10/21 申報發行無投票權 C 股為 AI 資本支出籌資、TSLA 下調全年資本支出,市場再度擔心 AI 投資報酬,光通訊族群齊跌",
+  "EarningsReaction": false
+ },
+ "CRDO": {
+  "Type": "macro",
+  "Catalyst": "AI/半導體類股盤前齊跌:META 10/21 申報發行無投票權 C 股為 AI 資本支出籌資、TSLA 下調全年資本支出,市場再度擔心 AI 投資報酬,AI 網通晶片連動",
+  "EarningsReaction": false
+ },
+ "MRVL": {
+  "Type": "macro",
+  "Catalyst": "AI/半導體類股盤前齊跌:META 10/21 申報發行無投票權 C 股為 AI 資本支出籌資、TSLA 下調全年資本支出,市場再度擔心 AI 投資報酬,盤前約 -5%",
+  "EarningsReaction": false
+ },
+ "NVTS": {
+  "Type": "macro",
+  "Catalyst": "AI/半導體類股盤前齊跌:META 10/21 申報發行無投票權 C 股為 AI 資本支出籌資、TSLA 下調全年資本支出,市場再度擔心 AI 投資報酬,AI 電力晶片連動",
+  "EarningsReaction": false
+ },
+ "AMD": {
+  "Type": "macro",
+  "Catalyst": "AI/半導體類股盤前齊跌:META 10/21 申報發行無投票權 C 股為 AI 資本支出籌資、TSLA 下調全年資本支出,市場再度擔心 AI 投資報酬,盤前約 -4%",
+  "EarningsReaction": false
+ },
+ "INTC": {
+  "Type": "macro",
+  "Catalyst": "AI/半導體類股盤前齊跌:META 10/21 申報發行無投票權 C 股為 AI 資本支出籌資、TSLA 下調全年資本支出,市場再度擔心 AI 投資報酬,盤前約 -4%",
+  "EarningsReaction": false
+ },
+ "SKHY": {
+  "Type": "macro",
+  "Catalyst": "AI/半導體類股盤前齊跌:META 10/21 申報發行無投票權 C 股為 AI 資本支出籌資、TSLA 下調全年資本支出,市場再度擔心 AI 投資報酬,記憶體股連動(MU 約 -3%)",
+  "EarningsReaction": false
+ },
+ "GLW": {
+  "Type": "macro",
+  "Catalyst": "AI/半導體類股盤前齊跌:META 10/21 申報發行無投票權 C 股為 AI 資本支出籌資、TSLA 下調全年資本支出,市場再度擔心 AI 投資報酬,光纖族群連動",
+  "EarningsReaction": false
  },
  "TSLA": {
-  "Type": "M&A",
-  "Catalyst": "SpaceX 財報電話會上馬斯克表示,SpaceX 與特斯拉已各自成立獨立特別委員會評估合併,條款未公布;特斯拉今晚盤後也將公布第三季財報,盤前 +1.4%",
-  "EarningsReaction": false
+  "Type": "earnings",
+  "Catalyst": "Q3 營收280.5億美元持平、非GAAP EPS 0.48;GAAP淨利7.87億年減43%,全年資本支出>250億",
+  "EarningsReaction": true
  },
- "APLD": {
-  "Type": "news",
-  "Catalyst": "族群連動:美超微上調本季營收預告帶動 AI 資料中心股走強,盤前 +4.1%;查無個股新聞",
-  "EarningsReaction": false
- },
- "WDC": {
-  "Type": "news",
-  "Catalyst": "族群連動:AI 儲存股(STX、SNDK、MU)盤前同步走強,威騰 +4.1%;查無個股新聞",
-  "EarningsReaction": false
- },
- "BNC": {
+ "KEEL": {
   "Type": "momentum",
-  "Catalyst": "盤前新進榜 +12.9%,催化劑未查證",
+  "Catalyst": "查無個股新聞",
   "EarningsReaction": false
  },
- "TCRT": {
-  "Type": "momentum",
-  "Catalyst": "盤前新進榜 +5.7%,催化劑未查證",
+ "EXK": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;金銀價走弱(殖利率約 5.06%、油價推升通膨疑慮),白銀礦股連動",
   "EarningsReaction": false
+ },
+ "SBSW": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;貴金屬族群連動走弱",
+  "EarningsReaction": false
+ },
+ "AG": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;白銀走弱,銀礦股連動",
+  "EarningsReaction": false
+ },
+ "CDE": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;金銀價走弱,礦業股連動",
+  "EarningsReaction": false
+ },
+ "BE": {
+  "Type": "macro",
+  "Catalyst": "AI/半導體類股盤前齊跌:META 10/21 申報發行無投票權 C 股為 AI 資本支出籌資、TSLA 下調全年資本支出,市場再度擔心 AI 投資報酬,AI 電力族群連動",
+  "EarningsReaction": false
+ },
+ "ABUS": {
+  "Type": "momentum",
+  "Catalyst": "查無個股新聞",
+  "EarningsReaction": false
+ },
+ "AAL": {
+  "Type": "earnings",
+  "Catalyst": "美航Q3調整後虧損0.28美元優於預期,營收163億美元年增19.3%,但全年虧損擴大至1.00-1.60美元",
+  "EarningsReaction": true
+ },
+ "BABA": {
+  "Type": "policy",
+  "Catalyst": "中國官方約談電商平台要求提升商品品質,港股阿里跌約 6%、恒生科技指數跌約 5%",
+  "EarningsReaction": false
+ },
+ "NUAI": {
+  "Type": "momentum",
+  "Catalyst": "查無個股新聞",
+  "EarningsReaction": false
+ },
+ "INFQ": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;量子/科技股隨大盤風險趨避走弱",
+  "EarningsReaction": false
+ },
+ "CRML": {
+  "Type": "momentum",
+  "Catalyst": "查無個股新聞;稀土族群回檔",
+  "EarningsReaction": false
+ },
+ "IONQ": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;量子股隨科技股走弱",
+  "EarningsReaction": false
+ },
+ "PG": {
+  "Type": "earnings",
+  "Catalyst": "FQ1核心EPS $2.00(+1%),營收$233億(+4%),有機銷售+4%;財測維持,淨銷售因Thorne上修",
+  "EarningsReaction": true
+ },
+ "UNP": {
+  "Type": "earnings",
+  "Catalyst": "Q3調整後EPS $3.53(+15%),營收$72億(+15%),調整後營業比率58.8%;股價盤前-1.1%",
+  "EarningsReaction": true
+ },
+ "LMT": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS $7.97、營收$207億(+11%)優於預期;全年EPS財測上修至$30.35–30.75,積壓訂單創高$2,920億",
+  "EarningsReaction": true
+ },
+ "VLO": {
+  "Type": "earnings",
+  "Catalyst": "Q3調整後EPS $23.90(去年$3.66)優於預期$21左右;營收$461億,煉油營業利益$88億",
+  "EarningsReaction": true
+ },
+ "BX": {
+  "Type": "earnings",
+  "Catalyst": "Q3可分配盈餘每股$1.32(-13%),費用相關盈餘$15.7億(+6%);房地產DE-10%",
+  "EarningsReaction": true
+ },
+ "CMCSA": {
+  "Type": "earnings",
+  "Catalyst": "Q3調整後EPS $1.07(去年$1.12),營收$293億(-6.1%,預估口徑+0.5%);寬頻流失14.4萬戶",
+  "EarningsReaction": true
+ },
+ "BCS": {
+  "Type": "earnings",
+  "Catalyst": "Q3稅前利潤£23億(+12%),收入£74億(+3%),RoTE 11.7%;宣布£5億買回;固定收益交易-19%",
+  "EarningsReaction": true
+ },
+ "HON": {
+  "Type": "earnings",
+  "Catalyst": "Q3調整後EPS $2.27(+34%)、營收$49.9億(有機+7%),上調全年EPS財測至$8.40–8.45",
+  "EarningsReaction": true
+ },
+ "ARGX": {
+  "Type": "earnings",
+  "Catalyst": "Q3 Vyvgart淨銷售$17.2億(年增54%),營業利益$4.86億,低於市場預期約$5.66億",
+  "EarningsReaction": true
+ },
+ "NDAQ": {
+  "Type": "earnings",
+  "Catalyst": "Q3調整後EPS $1.04(年增18%)、淨營收$14.8億(+13%),Index營收年增39%",
+  "EarningsReaction": true
+ },
+ "ROP": {
+  "Type": "earnings",
+  "Catalyst": "Q3調整後DEPS $5.89(+15%)、營收$21.7億(+8%),上調全年DEPS財測至$22.35–22.40",
+  "EarningsReaction": true
+ },
+ "CBRE": {
+  "Type": "earnings",
+  "Catalyst": "Q3核心EPS $2.05(+28%)優於預期約$1.93,營收$115.2億(+12.7%)",
+  "EarningsReaction": true
+ },
+ "PCG": {
+  "Type": "earnings",
+  "Catalyst": "Q3核心EPS $0.41(去年$0.50)略低於預期$0.42,營收$61.9億低於預期$68.2億,重申財測",
+  "EarningsReaction": true
+ },
+ "HBAN": {
+  "Type": "earnings",
+  "Catalyst": "Q3調整後EPS $0.38(季減$0.01),低於預期約$0.39,淨利息收入$20.7億",
+  "EarningsReaction": true
+ },
+ "DOV": {
+  "Type": "earnings",
+  "Catalyst": "Q3調整後EPS $2.88(+10%)優於預期$2.86,營收$22.3億(+8%),訂單+15.5%",
+  "EarningsReaction": true
+ },
+ "DGX": {
+  "Type": "earnings",
+  "Catalyst": "Q3調整後EPS $3.00(+15.4%)優於預期約$2.86,營收$31億(+10%),上調全年財測",
+  "EarningsReaction": true
+ },
+ "DOW": {
+  "Type": "earnings",
+  "Catalyst": "陶氏Q3營運EPS 0.71美元轉盈(去年虧0.19),營收112.7億美元年增13%",
+  "EarningsReaction": true
+ },
+ "PHM": {
+  "Type": "earnings",
+  "Catalyst": "普爾特Q3 EPS 2.53美元低於預期約2.62-2.65,營收39.7億美元年減9.8%",
+  "EarningsReaction": true
+ },
+ "SNA": {
+  "Type": "earnings",
+  "Catalyst": "Snap-on Q3 EPS 4.64美元低於預期約4.96,營收11.84億美元年減0.6%,有機銷售減2.8%",
+  "EarningsReaction": true
+ },
+ "CRS": {
+  "Type": "earnings",
+  "Catalyst": "卡本特Q1營業利益1.964億美元年增28%,EPS 3.25美元,宣布新增10億美元回購",
+  "EarningsReaction": true
+ },
+ "TSCO": {
+  "Type": "earnings",
+  "Catalyst": "拖拉機供應Q3營收39.1億美元年增5.1%,同店僅增0.4%,EPS 0.43美元(去年0.49)",
+  "EarningsReaction": true
+ },
+ "ALLE": {
+  "Type": "earnings",
+  "Catalyst": "Allegion Q3調整後EPS 2.60美元(預估2.35),營收11.73億美元,調高全年財測至9.05-9.10美元",
+  "EarningsReaction": true
+ },
+ "BPOP": {
+  "Type": "earnings",
+  "Catalyst": "Popular Q3淨利2.663億美元、EPS 4.21美元(去年3.14),淨利息收入6.99億美元",
+  "EarningsReaction": true
+ },
+ "META": {
+  "Type": "earnings",
+  "Catalyst": "10/21 公布 Q3 營收 646 億美元(+26%),另宣布發行無投票權 C 股股利;含 98.9 億美元法律費用,AI 支出疑慮",
+  "EarningsReaction": true
  }
 }

@@ -54,10 +54,10 @@
   "reasoning": "無消息低價股投機連噴(樂透帶),本質不可預測,不做方向調整"
  },
  "XLAB": {
-  "date": "2026-10-20",
+  "date": "2026-10-22",
   "adj": 0,
   "confidence": "low",
-  "reasoning": "樂透帶:前日炒作後回吐,不可預測,不做點估調整"
+  "reasoning": "前數日連噴、無新消息的樂透帶,不可預測,adj=0"
  },
  "UPLD": {
   "date": "2026-10-19",
@@ -268,5 +268,77 @@
   "adj": 0,
   "confidence": "low",
   "reasoning": "查無消息的低價股,不可預測"
+ },
+ "BHVN": {
+  "date": "2026-10-22",
+  "adj": 2,
+  "confidence": "medium",
+  "reasoning": "FDA 受理是事件型轉折、空單回補 7.4 天,量化基準以一般 FDA gap 處理;但盤前已從 +49% 回落到 +31%,上調幅度保守"
+ },
+ "ALLE": {
+  "date": "2026-10-22",
+  "adj": 1,
+  "confidence": "medium",
+  "reasoning": "真 beat + 上調指引的工業股,在 AI 賣壓日屬資金輪動受惠方,收盤慣性略優於基準"
+ },
+ "LMT": {
+  "date": "2026-10-22",
+  "adj": 1,
+  "confidence": "medium",
+  "reasoning": "國防股 + 上調指引 + 油價/中東升溫背景,大盤逆風日相對抗跌"
+ },
+ "SPOT": {
+  "date": "2026-10-22",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "當季小幅不及、靠 Q4 指引撐;方向資訊不足,不調"
+ },
+ "SNA": {
+  "date": "2026-10-22",
+  "adj": -1,
+  "confidence": "medium",
+  "reasoning": "真 miss + 本業衰退,無回補理由;大盤偏弱"
+ },
+ "LRCX": {
+  "date": "2026-10-22",
+  "adj": -1,
+  "confidence": "low",
+  "reasoning": "好財報但處於 AI 設備賣壓中心、近一月 −22%,族群 regime 主導;錯殺反彈可能但需 10:30 確認"
+ },
+ "MOH": {
+  "date": "2026-10-22",
+  "adj": -1,
+  "confidence": "medium",
+  "reasoning": "EPS 腰斬、第四季缺口大,管理式醫療族群近期無利多"
+ },
+ "IBM": {
+  "date": "2026-10-22",
+  "adj": 1,
+  "confidence": "low",
+  "reasoning": "真 beat、近一月持平屬 fresh,錯殺反彈型;大盤逆風壓抑幅度"
+ },
+ "POM": {
+  "date": "2026-10-22",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "投機連漲後回吐,樂透帶,adj=0"
+ },
+ "BKYI": {
+  "date": "2026-10-22",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "無一級源消息的低價投機股,樂透帶,adj=0"
+ },
+ "QS": {
+  "date": "2026-10-22",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "空單 22%、財報無驚喜,方向不明"
+ },
+ "AVEX": {
+  "date": "2026-10-22",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "前日海軍採購傳聞重挫後反彈,消息未證實,不調"
  }
 }
