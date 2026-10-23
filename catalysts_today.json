@@ -1,200 +1,230 @@
 {
- "RNG": {
-  "Type": "earnings",
-  "Catalyst": "10/22 盤後公布 Q3:營收約 6.76 億美元(年增約 6%),上調全年營收、非 GAAP 利潤率與自由現金流指引,並提前達成 10 億美元總負債目標;盤後 +14.6%",
-  "EarningsReaction": true,
-  "Cluster": null
- },
- "WDC": {
-  "Type": "earnings",
-  "Catalyst": "10/22 盤後公布 FQ1:營收 43.8 億美元(年增 55%)、非 GAAP EPS 4.64 美元,高於財測中值 41 億/4.00;FQ2 營收預估年增 66-72%。今年漲約 2 倍,獲利了結盤後 -6.5%",
-  "EarningsReaction": true,
-  "Cluster": null
- },
- "DECK": {
-  "Type": "earnings",
-  "Catalyst": "10/22 盤後公布 FQ2:營收 14.81 億美元(+3.5%)低於預期約 15.1 億,UGG 直營年減 8%;全年 EPS 指引上調至 7.80-7.95 美元但營收下修至 57.0-57.25 億,盤後 -7.3%",
-  "EarningsReaction": true,
-  "Cluster": null
- },
- "NOK": {
-  "Type": "earnings",
-  "Catalyst": "10/23 公布 Q3:可比營業利益 6.05 億歐元、營收 51.5 億歐元,明顯高於 Q2 的 4.34 億與去年同期 4.48 億(管理層原說 Q3 與 Q2 持平);盤前 +5.6%、量 830 萬股",
-  "EarningsReaction": true,
-  "Cluster": null
- },
- "AXP": {
-  "Type": "earnings",
-  "Catalyst": "10/23 盤前公布 Q3:調整後 EPS 4.68 美元(+13%)高於預估約 4.50,營收約 201 億美元(+9%)符合預期;全年調整後 EPS 上調至 18.30-18.60 美元",
-  "EarningsReaction": true,
-  "Cluster": null
- },
- "E": {
-  "Type": "earnings",
-  "Catalyst": "10/23 公布 Q3:調整後淨利 28 億歐元(年增 125%)高於預估 24.8 億,產量日均 183 萬桶油當量(+4%);宣布每股 0.46 歐元特別股息、庫藏股加碼至 38 億歐元",
-  "EarningsReaction": true,
-  "Cluster": null
- },
- "SLB": {
-  "Type": "earnings",
-  "Catalyst": "10/23 盤前公布 Q3:營收 94.5 億美元(年增 6%)高於預估約 92.8 億,調整後 EPS 0.64 美元略優於 0.61-0.62;自由現金流 8.28 億美元",
-  "EarningsReaction": true,
-  "Cluster": null
- },
- "FCNCA": {
-  "Type": "earnings",
-  "Catalyst": "10/23 盤前公布 Q3:調整後 EPS 55.37 美元(Q2 為 57.09)、營收 24.3 億美元優於預期,並宣布新庫藏股計畫",
-  "EarningsReaction": true,
-  "Cluster": null
- },
- "RCI": {
-  "Type": "earnings",
-  "Catalyst": "10/23 公布 Q3:營收 54.4 億加幣、調整後 EBITDA 約 25.4 億加幣(+1%),獲利優於預期但手機淨增僅 1.7 萬戶(去年 11.1 萬);重申 2026 全年展望",
-  "EarningsReaction": true,
-  "Cluster": null
- },
- "CCI": {
-  "Type": "news",
-  "Catalyst": "彭博 10/22 盤後報導 SpaceX 洽談取得全美至少 8 萬座基地台(約全美鐵塔一半)建全國無線網,鐵塔股大漲;CCI 另於 10/21 盤後公布 Q3 並更新全年展望;盤後 +9.5%",
-  "EarningsReaction": false,
-  "Cluster": "SpaceX 基地台"
- },
- "SBAC": {
-  "Type": "news",
-  "Catalyst": "彭博 10/22 盤後報導 SpaceX 洽談取得全美至少 8 萬座基地台建全國無線網,鐵塔租賃需求題材發酵;SBAC 盤後 +7%(財報 10/27 才公布)",
-  "EarningsReaction": false,
-  "Cluster": "SpaceX 基地台"
- },
- "AMT": {
-  "Type": "news",
-  "Catalyst": "彭博 10/22 盤後報導 SpaceX 洽談取得全美至少 8 萬座基地台,鐵塔族群走高;AMT 盤後 +4.3%(Q3 財報 10/27 盤前才公布)",
-  "EarningsReaction": false,
-  "Cluster": "SpaceX 基地台"
- },
- "T": {
-  "Type": "news",
-  "Catalyst": "彭博 10/22 盤後報導 SpaceX 洽談取得 8 萬座基地台自建全國無線網,市場擔心新競爭者,電信股集體下跌;AT&T 盤前 -4.6%(Q3 已於 10/21 公布)",
-  "EarningsReaction": false,
-  "Cluster": "SpaceX 基地台"
- },
- "TMUS": {
-  "Type": "news",
-  "Catalyst": "彭博 10/22 盤後報導 SpaceX 洽談取得 8 萬座基地台自建全國無線網,電信三雄盤後各跌 3-5%;T-Mobile 盤前 -5%,無自身消息",
-  "EarningsReaction": false,
-  "Cluster": "SpaceX 基地台"
- },
- "VZ": {
-  "Type": "news",
-  "Catalyst": "彭博 10/22 盤後報導 SpaceX 洽談取得 8 萬座基地台自建全國無線網,電信股承壓;Verizon 盤前 -3.5%,10/8 SpaceX 買頻譜時已曾重挫",
-  "EarningsReaction": false,
-  "Cluster": "SpaceX 基地台"
- },
- "TKC": {
-  "Type": "news",
-  "Catalyst": "查無個股新聞;疑隨電信族群(SpaceX 基地台報導)走弱,Q3 財報 11 月初才公布;盤前 -8.4%",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "STX": {
-  "Type": "news",
-  "Catalyst": "無自身消息;隨 WDC 財報後獲利了結走弱,STX 自家財報 10/27 公布;盤後 -4.4%",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "SKHY": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞;SK 海力士 Q3 財報 10/29 才公布,盤前 +4.7% 屬財報前卡位與記憶體族群反彈",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "BE": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞;AI 電力族群獲利了結,BTIG 10/23 將目標價由 295 下修至 250 美元;Q3 財報 10/27 公布;盤後 -6.9%",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "LITE": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞;AI 光通訊族群隨晶片股反彈,盤前 +4%",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "AXTI": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞;AI 光通訊基板族群動能,盤前 +5.5%",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "INFY": {
-  "Type": "momentum",
-  "Catalyst": "查無一級源新聞;近期急漲創新高後回吐,盤前 -6.9%",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "TNGX": {
-  "Type": "momentum",
-  "Catalyst": "查無公司公告或新聞,盤前 -9.6%",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "AARD": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;ARD-101 臨床暫停仍在與 FDA 討論,昨盤後 +25% 今盤前 -6%",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "OCS": {
-  "Type": "momentum",
-  "Catalyst": "查無當日催化劑;乾眼症 PREDICT-1 結果預告 2026 年 Q4,盤後 +4.2%",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "BKYI": {
-  "Type": "momentum",
-  "Catalyst": "查無公司公告;低價生物辨識股連漲,盤前 +13%",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "AIXI": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞;低價 AI 小型股動能,盤前 +6%",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "DKI": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞;昨盤後 +18%、今盤前 -7%,低價股暴漲暴跌",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "TANH": {
-  "Type": "momentum",
-  "Catalyst": "查無催化劑;9/4 完成 1 比 50 反向分割後的低價股,昨盤後 +32%、今盤前 -39%",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "YMAT": {
-  "Type": "momentum",
-  "Catalyst": "查無今日新稿;低價固態電池題材股盤前 +54%、量 790 萬股",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "XLAB": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞;10/16 劇烈波動後持續回吐,盤後 -6.6%",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "YHC": {
-  "Type": "momentum",
-  "Catalyst": "查無當日新聞或公告,盤後 +6%",
-  "EarningsReaction": false,
-  "Cluster": null
- },
- "NEM": {
-  "Type": "earnings",
-  "Catalyst": "10/22 盤後公布 Q3:金價走高帶動獲利與營收成長,但警告 2027 年單位成本上升;盤前 -1.7%",
-  "EarningsReaction": true,
-  "Cluster": null
- }
+  "RNG": {
+    "Type": "earnings",
+    "Catalyst": "10/22 盤後公布 Q3:營收約 6.76 億美元(年增約 6%),上調全年營收、非 GAAP 利潤率與自由現金流指引,並提前達成 10 億美元總負債目標;盤後 +14.6%",
+    "EarningsReaction": true,
+    "Cluster": null
+  },
+  "WDC": {
+    "Type": "earnings",
+    "Catalyst": "10/22 盤後公布 FQ1:營收 43.8 億美元(年增 55%)、非 GAAP EPS 4.64 美元,高於財測中值 41 億/4.00;FQ2 營收預估年增 66-72%。今年漲約 2 倍,獲利了結盤後 -6.5%",
+    "EarningsReaction": true,
+    "Cluster": null
+  },
+  "DECK": {
+    "Type": "earnings",
+    "Catalyst": "10/22 盤後公布 FQ2:營收 14.81 億美元(+3.5%)低於預期約 15.1 億,UGG 直營年減 8%;全年 EPS 指引上調至 7.80-7.95 美元但營收下修至 57.0-57.25 億,盤後 -7.3%",
+    "EarningsReaction": true,
+    "Cluster": null
+  },
+  "NOK": {
+    "Type": "earnings",
+    "Catalyst": "10/23 公布 Q3:可比營業利益 6.05 億歐元、營收 51.5 億歐元,明顯高於 Q2 的 4.34 億與去年同期 4.48 億(管理層原說 Q3 與 Q2 持平);盤前 +5.6%、量 830 萬股",
+    "EarningsReaction": true,
+    "Cluster": null
+  },
+  "AXP": {
+    "Type": "earnings",
+    "Catalyst": "10/23 盤前公布 Q3:調整後 EPS 4.68 美元(+13%)高於預估約 4.50,營收約 201 億美元(+9%)符合預期;全年調整後 EPS 上調至 18.30-18.60 美元",
+    "EarningsReaction": true,
+    "Cluster": null
+  },
+  "E": {
+    "Type": "earnings",
+    "Catalyst": "10/23 公布 Q3:調整後淨利 28 億歐元(年增 125%)高於預估 24.8 億,產量日均 183 萬桶油當量(+4%);宣布每股 0.46 歐元特別股息、庫藏股加碼至 38 億歐元",
+    "EarningsReaction": true,
+    "Cluster": null
+  },
+  "SLB": {
+    "Type": "earnings",
+    "Catalyst": "10/23 盤前公布 Q3:營收 94.5 億美元(年增 6%)高於預估約 92.8 億,調整後 EPS 0.64 美元略優於 0.61-0.62;自由現金流 8.28 億美元",
+    "EarningsReaction": true,
+    "Cluster": null
+  },
+  "FCNCA": {
+    "Type": "earnings",
+    "Catalyst": "10/23 盤前公布 Q3:調整後 EPS 55.37 美元(Q2 為 57.09)、營收 24.3 億美元優於預期,並宣布新庫藏股計畫",
+    "EarningsReaction": true,
+    "Cluster": null
+  },
+  "RCI": {
+    "Type": "earnings",
+    "Catalyst": "10/23 公布 Q3:營收 54.4 億加幣、調整後 EBITDA 約 25.4 億加幣(+1%),獲利優於預期但手機淨增僅 1.7 萬戶(去年 11.1 萬);重申 2026 全年展望",
+    "EarningsReaction": true,
+    "Cluster": null
+  },
+  "CCI": {
+    "Type": "news",
+    "Catalyst": "彭博 10/22 盤後報導 SpaceX 洽談取得全美至少 8 萬座基地台(約全美鐵塔一半)建全國無線網,鐵塔股大漲;CCI 另於 10/21 盤後公布 Q3 並更新全年展望;盤後 +9.5%",
+    "EarningsReaction": false,
+    "Cluster": "SpaceX 基地台"
+  },
+  "SBAC": {
+    "Type": "news",
+    "Catalyst": "彭博 10/22 盤後報導 SpaceX 洽談取得全美至少 8 萬座基地台建全國無線網,鐵塔租賃需求題材發酵;SBAC 盤後 +7%(財報 10/27 才公布)",
+    "EarningsReaction": false,
+    "Cluster": "SpaceX 基地台"
+  },
+  "AMT": {
+    "Type": "news",
+    "Catalyst": "彭博 10/22 盤後報導 SpaceX 洽談取得全美至少 8 萬座基地台,鐵塔族群走高;AMT 盤後 +4.3%(Q3 財報 10/27 盤前才公布)",
+    "EarningsReaction": false,
+    "Cluster": "SpaceX 基地台"
+  },
+  "T": {
+    "Type": "news",
+    "Catalyst": "彭博 10/22 盤後報導 SpaceX 洽談取得 8 萬座基地台自建全國無線網,市場擔心新競爭者,電信股集體下跌;AT&T 盤前 -4.6%(Q3 已於 10/21 公布)",
+    "EarningsReaction": false,
+    "Cluster": "SpaceX 基地台"
+  },
+  "TMUS": {
+    "Type": "news",
+    "Catalyst": "彭博 10/22 盤後報導 SpaceX 洽談取得 8 萬座基地台自建全國無線網,電信三雄盤後各跌 3-5%;T-Mobile 盤前 -5%,無自身消息",
+    "EarningsReaction": false,
+    "Cluster": "SpaceX 基地台"
+  },
+  "VZ": {
+    "Type": "news",
+    "Catalyst": "彭博 10/22 盤後報導 SpaceX 洽談取得 8 萬座基地台自建全國無線網,電信股承壓;Verizon 盤前 -3.5%,10/8 SpaceX 買頻譜時已曾重挫",
+    "EarningsReaction": false,
+    "Cluster": "SpaceX 基地台"
+  },
+  "TKC": {
+    "Type": "news",
+    "Catalyst": "查無個股新聞;疑隨電信族群(SpaceX 基地台報導)走弱,Q3 財報 11 月初才公布;盤前 -8.4%",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "STX": {
+    "Type": "news",
+    "Catalyst": "無自身消息;隨 WDC 財報後獲利了結走弱,STX 自家財報 10/27 公布;盤後 -4.4%",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "SKHY": {
+    "Type": "momentum",
+    "Catalyst": "查無個股新聞;SK 海力士 Q3 財報 10/29 才公布,盤前 +4.7% 屬財報前卡位與記憶體族群反彈",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "BE": {
+    "Type": "momentum",
+    "Catalyst": "查無個股新聞;AI 電力族群獲利了結,BTIG 10/23 將目標價由 295 下修至 250 美元;Q3 財報 10/27 公布;盤後 -6.9%",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "LITE": {
+    "Type": "momentum",
+    "Catalyst": "查無個股新聞;AI 光通訊族群隨晶片股反彈,盤前 +4%",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "AXTI": {
+    "Type": "momentum",
+    "Catalyst": "查無個股新聞;AI 光通訊基板族群動能,盤前 +5.5%",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "INFY": {
+    "Type": "momentum",
+    "Catalyst": "查無一級源新聞;近期急漲創新高後回吐,盤前 -6.9%",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "TNGX": {
+    "Type": "momentum",
+    "Catalyst": "查無公司公告或新聞,盤前 -9.6%",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "AARD": {
+    "Type": "momentum",
+    "Catalyst": "查無當日個股新聞;ARD-101 臨床暫停仍在與 FDA 討論,昨盤後 +25% 今盤前 -6%",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "OCS": {
+    "Type": "momentum",
+    "Catalyst": "查無當日催化劑;乾眼症 PREDICT-1 結果預告 2026 年 Q4,盤後 +4.2%",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "BKYI": {
+    "Type": "momentum",
+    "Catalyst": "查無公司公告;低價生物辨識股連漲,盤前 +13%",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "AIXI": {
+    "Type": "momentum",
+    "Catalyst": "查無個股新聞;低價 AI 小型股動能,盤前 +6%",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "DKI": {
+    "Type": "momentum",
+    "Catalyst": "查無個股新聞;昨盤後 +18%、今盤前 -7%,低價股暴漲暴跌",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "TANH": {
+    "Type": "momentum",
+    "Catalyst": "查無催化劑;9/4 完成 1 比 50 反向分割後的低價股,昨盤後 +32%、今盤前 -39%",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "YMAT": {
+    "Type": "momentum",
+    "Catalyst": "查無今日新稿;低價固態電池題材股盤前 +54%、量 790 萬股",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "XLAB": {
+    "Type": "momentum",
+    "Catalyst": "查無當日新聞;10/16 劇烈波動後持續回吐,盤後 -6.6%",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "YHC": {
+    "Type": "momentum",
+    "Catalyst": "查無當日新聞或公告,盤後 +6%",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "NEM": {
+    "Type": "earnings",
+    "Catalyst": "10/22 盤後公布 Q3:金價走高帶動獲利與營收成長,但警告 2027 年單位成本上升;盤前 -1.7%",
+    "EarningsReaction": true,
+    "Cluster": null
+  },
+  "FLG": {
+    "Type": "earnings",
+    "Catalyst": "10/23 盤前公布 Q3:淨利 $1,200 萬(Q2 $3,400 萬),每股盈餘 $0.01 低於預估約 $0.07;淨利息收入比上季 +5%,但 CEO 把長期獲利目標從 2027 延到 2028;盤前 -7.3%",
+    "EarningsReaction": true,
+    "Cluster": null
+  },
+  "RITM": {
+    "Type": "earnings",
+    "Catalyst": "10/23 盤前公布 Q3:可分配盈餘每股 $0.55 高於預估約 $0.51(GAAP EPS $0.38),房貸子公司 Newrez 股東權益報酬率 24%;盤前 +6.5%",
+    "EarningsReaction": true,
+    "Cluster": null
+  },
+  "SLM": {
+    "Type": "earnings",
+    "Catalyst": "10/22 盤後公布 Q3:轉為虧損每股 $0.19(去年同期獲利 $1.32 億),呆帳提存增至 $2.14 億、淨利差縮小;私人學貸發放 $34 億 +15% 創單季新高;盤前 -4.6%",
+    "EarningsReaction": true,
+    "Cluster": null
+  },
+  "DAVI": {
+    "Type": "news",
+    "Catalyst": "愛爾蘭居家乳癌檢測公司 Davion Healthcare 10/22 才以直接上市方式登上 Nasdaq(未募資),上市次日盤前 -32.5%;查無當日個股新聞,屬新股劇烈波動",
+    "EarningsReaction": false,
+    "Cluster": null
+  },
+  "XPEV": {
+    "Type": "momentum",
+    "Catalyst": "查無 10/23 個股新聞;股價今年以來 -54%、10/22 收 $9.07 近低點,盤前 +4.3% 屬跌深技術性反彈",
+    "EarningsReaction": false,
+    "Cluster": null
+  }
 }
