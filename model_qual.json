@@ -222,10 +222,10 @@
   "reasoning": "真 beat 但收窄指引;beatdip 型錯殺,10:30 後承接機率略高"
  },
  "T": {
-  "date": "2026-10-21",
-  "adj": 1,
+  "date": "2026-10-23",
+  "adj": 0,
   "confidence": "low",
-  "reasoning": "beat + 上調仍跌,錯殺型;但 SpaceX 頻譜競爭是新的長期疑慮,反彈幅度有限"
+  "reasoning": "同 TMUS,財報本身優於預期,族群恐慌程度難量化"
  },
  "AHT": {
   "date": "2026-10-21",
@@ -258,10 +258,10 @@
   "reasoning": "增發定價日,跌幅取決於定價折讓,資訊不足"
  },
  "YMAT": {
-  "date": "2026-10-21",
+  "date": "2026-10-23",
   "adj": 0,
   "confidence": "low",
-  "reasoning": "查無消息的低價股,不可預測"
+  "reasoning": "樂透帶:無消息低價股盤前 +54%,不可預測"
  },
  "NCPL": {
   "date": "2026-10-21",
@@ -324,10 +324,10 @@
   "reasoning": "投機連漲後回吐,樂透帶,adj=0"
  },
  "BKYI": {
-  "date": "2026-10-22",
+  "date": "2026-10-23",
   "adj": 0,
   "confidence": "low",
-  "reasoning": "無一級源消息的低價投機股,樂透帶,adj=0"
+  "reasoning": "樂透帶:無消息低價股連漲,不可預測"
  },
  "QS": {
   "date": "2026-10-22",
@@ -340,5 +340,65 @@
   "adj": 0,
   "confidence": "low",
   "reasoning": "前日海軍採購傳聞重挫後反彈,消息未證實,不調"
+ },
+ "RNG": {
+  "date": "2026-10-23",
+  "adj": 1,
+  "confidence": "medium",
+  "reasoning": "上調全年三項指引 + 提前去槓桿,屬財報上修型跳空;成長僅 6% 限制追價空間,小幅上調"
+ },
+ "CCI": {
+  "date": "2026-10-23",
+  "adj": -2,
+  "confidence": "medium",
+  "reasoning": "消息屬「洽談」非簽約,且 10/8 已有同主線大漲、近月 +29%;報導型跳空開盤後易回吐部分,溫和下修"
+ },
+ "AMT": {
+  "date": "2026-10-23",
+  "adj": -1,
+  "confidence": "low",
+  "reasoning": "同 CCI,洽談階段的族群連動;大型股流動性好、回吐幅度通常較小"
+ },
+ "SBAC": {
+  "date": "2026-10-23",
+  "adj": -1,
+  "confidence": "low",
+  "reasoning": "族群連動、無自身事件,洽談消息開盤後易被賣"
+ },
+ "NOK": {
+  "date": "2026-10-23",
+  "adj": 1,
+  "confidence": "medium",
+  "reasoning": "營業利益大幅優於管理層自家指引,近月 -21% 位置低,反轉型財報利多收盤守住機率較高"
+ },
+ "DECK": {
+  "date": "2026-10-23",
+  "adj": -1,
+  "confidence": "medium",
+  "reasoning": "營收 miss + 下修營收指引,主力品牌 UGG 直營衰退,基本面轉弱型跳空通常不回補"
+ },
+ "TMUS": {
+  "date": "2026-10-23",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "新競爭者疑慮屬長期敘事,短線難判斷是否超跌,不做調整"
+ },
+ "TANH": {
+  "date": "2026-10-23",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "樂透帶:反向分割後低價股暴漲暴跌,不可預測"
+ },
+ "DKI": {
+  "date": "2026-10-23",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "樂透帶:無消息低價股暴漲暴跌,不可預測"
+ },
+ "AARD": {
+  "date": "2026-10-23",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "樂透帶:無消息生技股前一日 +25%,不可預測"
  }
 }

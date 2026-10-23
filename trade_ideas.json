@@ -1,9 +1,33 @@
 {
- "date": "2026-10-22",
- "written_at": "2026-10-22T08:22:34-04:00",
+ "date": "2026-10-23",
+ "written_at": "2026-10-23T08:23:24-04:00",
  "ideas": [
-  {"rank": 1, "symbol": "IBM", "setup": "beatdip", "direction": "long", "thesis": "IBM 10/21 盤後公布第三季:營收 171 億美元(+5%)、營運 EPS 2.95 美元(預估約 2.86)優於預期,全年自由現金流上調,盤前卻跌約 7.6%(市值約 2,200 億美元,近一個月 +1%,屬 fresh)。真 beat + 跳空落在 −4%~−18% 帶 + 市值 ≥100 億,符合錯殺反彈條件;跌因是主機營收 −20%、營收指引只維持 4–5%,加上今天大盤 AI 賣壓。", "entry": "09:30 先複核開盤 gap 仍在 −4%~−18%,不在帶內作廢;10:30 ET 前不進場,10:30 價格需高於早盤低點 0.5% 以上才買", "target": "回到平盤或 +6% 先到先出,當日了結", "stop": "早盤低點下 0.5%(結構停損)", "backtest_note": "beatdip 全庫 ≥10B n=48、+0.60R/筆;降級複驗中,live 5 筆 avgR +0.18 — 半倉。今日那指期貨 −1.7%,大盤逆風。", "written_at": "2026-10-22T08:22:34-04:00"},
-  {"rank": 2, "symbol": "LRCX", "setup": "beatdip", "direction": "long", "thesis": "Lam Research 10/21 盤後:9 月季營收 82.2 億美元、非 GAAP EPS 2.20 美元,均高於自家指引中位(81 億、2.15),12 月季營收指引 86 億美元續創高;盤前跌約 8.4%(市值約 3,000 億美元)。符合 beat + gap 帶 + 市值條件,但近一個月已 −22%(非 fresh)且處在 AI/半導體設備族群賣壓中心,順位第二。", "entry": "同上:09:30 複核 gap 帶;10:30 ET 前不進場,10:30 價格高於早盤低點 0.5% 以上才買;若費半 10:30 仍創日低則放棄", "target": "回到平盤或 +6% 先到先出,當日了結", "stop": "早盤低點下 0.5%(結構停損)", "backtest_note": "beatdip 全庫 ≥10B n=48、+0.60R/筆;降級複驗中 — 半倉。非 fresh + 族群逆風,倉位再減半(1/4)。", "written_at": "2026-10-22T08:22:34-04:00"}
+  {
+   "rank": 1,
+   "symbol": "RCI",
+   "setup": "dtc_fade",
+   "direction": "short",
+   "thesis": "Rogers 10/23 公布 Q3:調整後 EPS 0.90 加幣優於預估 0.86,但手機淨增僅 1.7 萬戶(去年 11.1 萬)、無線服務營收 -1%;空單回補天數 10.7 天(DTC>5),盤前 +2.1%,符合 DTC 假軋空 fade 條件(gap≥+2%)。盤前 gap 剛好卡在門檻邊緣。",
+   "entry": "09:30 先複核開盤 gap(vs 昨收 33.20 附近)仍 ≥+2%,不到門檻作廢;通過後 10:30 ET 放空",
+   "target": "收盤回補",
+   "stop": "進場價 +5%",
+   "backtest_note": "dtc_fade 次主力(2026-08-16 升格,逐日等權 +0.28R);每日限 2 筆"
+  },
+  {
+   "rank": 2,
+   "symbol": "FCNCA",
+   "setup": "dtc_fade",
+   "direction": "short",
+   "thesis": "First Citizens 10/23 盤前公布 Q3:調整後 EPS 55.37 美元優於預估 46.18、新庫藏股計畫;空單回補天數 7.5 天(DTC>5),盤前 +2.7%,符合 DTC 假軋空 fade 條件。股價高(約 2,250 美元)、盤前量薄,開盤價差可能大。",
+   "entry": "09:30 複核開盤 gap ≥+2%,不到作廢;通過後 10:30 ET 放空",
+   "target": "收盤回補",
+   "stop": "進場價 +5%",
+   "backtest_note": "dtc_fade 次主力;每日限 2 筆;高價股注意買賣價差,倉位以金額計"
+  }
  ],
- "no_trade_notes": "大合約 fade:今日無大合約跳空。BeatenSqueezeGo:無符合(QS gap +10 但近一月 −14%、未達 −20;BHVN 近一月 +16%)。BHVN +31%(盤前回落自 +49%)屬 FDA 受理事件,非已回測 setup,不列 idea。SNA −9% 為真 miss,不符 beatdip。"
+ "no_trade_notes": {
+  "contract_fade": "今日無 contract 型且 gap≥+15% 的標的",
+  "beatdip": "WDC 為真 beat(EPS +13%、營收 +5.7%)但盤前 gap 僅 −2.0%,不在 −4%~−18% 帶;DECK 營收 miss、AXP 營收略低於預期,皆非真 beat",
+  "beaten_squeeze_go": "NOK perf1M −21% 但 short float 1.5% 遠低於 10%;其餘無符合五條件者"
+ }
 }
