@@ -1,7 +1,7 @@
 {
   "date": "2026-10-26",
-  "scanTime": "21:19",
-  "scanTimestamp": "2026-10-24T21:19",
+  "scanTime": "22:11",
+  "scanTimestamp": "2026-10-24T22:11",
   "stocks": {
     "ALEC": {
       "symbol": "ALEC",
@@ -192,243 +192,6 @@
           11.7,
           21.4
         ]
-      }
-    },
-    "PHAT": {
-      "symbol": "PHAT",
-      "name": "Phathom Pharmaceuticals Inc",
-      "type": "momentum",
-      "earningsReaction": false,
-      "catalyst": "10/23 盤後 −4.2%,查無公司公告",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=PHAT"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/PHAT"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-PHAT/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 5.5,
-          "chgPct": -4.18,
-          "volume": 338146,
-          "session": "post",
-          "direction": "down",
-          "name": "Phathom Pharmaceuticals Inc",
-          "sessionDate": "2026-10-23",
-          "targetDate": "2026-10-26"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 5.5,
-      "chgPct": -4.18,
-      "volume": 338146,
-      "tv": null,
-      "shortFloat": 19.73,
-      "shortRatio": 7.31,
-      "marketCap_M": 464.37,
-      "floatShares_M": 51.23,
-      "perf1M": -18.93,
-      "perf3M": -51.97,
-      "perf6M": -50.94,
-      "perfYTD": -65.4,
-      "perf12M": -57.83,
-      "prevOhlcv": null,
-      "modelPred": {
-        "version": "v12",
-        "gap": -4.18,
-        "predDay": -4.5,
-        "band": [
-          -6.5,
-          7.0
-        ],
-        "tier": "small",
-        "lottery": false,
-        "spike": [
-          0.1,
-          3.5,
-          8.8
-        ],
-        "predHi": -0.8,
-        "predHiBand": [
-          -4.1,
-          4.3
-        ]
-      }
-    },
-    "BOLT": {
-      "symbol": "BOLT",
-      "name": "Bolt Biotherapeutics Inc",
-      "type": "M&A",
-      "earningsReaction": false,
-      "catalyst": "10/23 盤後宣布收購 Prana Therapies 並同步私募 1.2 億美元,推進發炎適應症藥物 PRA-216;盤後 +9.4%",
-      "newsDetail": "> **盤後漲因:** 10/23 盤後 +9.4% — Bolt Biotherapeutics 宣布收購 Prana Therapies,同時完成 1.2 億美元私募,用來推進發炎疾病新藥 PRA-216。\n\n**交易內容:** 收購 Prana 取得 PRA-216,公司將轉向多個發炎適應症;同步私募 1.2 億美元提供研發資金。\n\n**風險備註:** 私募代表股本稀釋,定價與條款需看正式 8-K。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=BOLT"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/BOLT"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-BOLT/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "GlobeNewswire — Bolt acquires Prana + $120M PIPE",
-          "url": "https://www.manilatimes.net/2026/10/23/tmt-newswire/globenewswire/bolt-biotherapeutics-announces-acquisition-of-prana-therapies-and-120-million-concurrent-private-placement-to-advance-pra-216-in-multiple-high-value-inflammatory-indications/2452861"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 6.86,
-          "chgPct": 9.41,
-          "volume": 190815,
-          "session": "post",
-          "direction": "up",
-          "name": "Bolt Biotherapeutics Inc",
-          "sessionDate": "2026-10-23",
-          "targetDate": "2026-10-26"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 6.86,
-      "chgPct": 9.41,
-      "volume": 190815,
-      "tv": null,
-      "shortFloat": 1.57,
-      "shortRatio": 0.93,
-      "marketCap_M": 12.08,
-      "floatShares_M": 1.64,
-      "perf1M": 74.65,
-      "perf3M": 57.76,
-      "perf6M": 29.81,
-      "perfYTD": 14.67,
-      "perf12M": 8.85,
-      "prevOhlcv": null,
-      "modelPred": {
-        "version": "v12",
-        "gap": 9.41,
-        "predDay": 9.9,
-        "band": [
-          -6.5,
-          7.0
-        ],
-        "tier": "small",
-        "lottery": true,
-        "spike": [
-          3.0,
-          6.3,
-          11.7
-        ],
-        "predHi": 16.3,
-        "predHiBand": [
-          12.7,
-          22.2
-        ]
-      }
-    },
-    "RENT": {
-      "symbol": "RENT",
-      "name": "Rent The Runway Inc Cl A",
-      "type": "momentum",
-      "earningsReaction": false,
-      "catalyst": "10/23 盤後 +25.7%(常規盤收 $2.30、−3%),查無公司公告",
-      "newsDetail": null,
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=RENT"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/RENT"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-RENT/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": null,
-      "sources": null,
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 2.89,
-          "chgPct": 25.65,
-          "volume": 6590654,
-          "session": "post",
-          "direction": "up",
-          "name": "Rent The Runway Inc Cl A",
-          "sessionDate": "2026-10-23",
-          "targetDate": "2026-10-26"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 2.89,
-      "chgPct": 25.65,
-      "volume": 6590654,
-      "tv": null,
-      "shortFloat": 6.77,
-      "shortRatio": 11.71,
-      "marketCap_M": 77.68,
-      "floatShares_M": 24.23,
-      "perf1M": 28.49,
-      "perf3M": -27.67,
-      "perf6M": -53.44,
-      "perfYTD": -70.92,
-      "perf12M": -50.54,
-      "prevOhlcv": null,
-      "modelPred": {
-        "version": "v12",
-        "gap": 25.65,
-        "predDay": 19.6,
-        "band": [
-          -6.5,
-          7.0
-        ],
-        "tier": "small",
-        "lottery": false,
-        "spike": [
-          3.3,
-          6.6,
-          11.9
-        ],
-        "predHi": 33.9,
-        "predHiBand": [
-          29.8,
-          40.6
-        ],
-        "flags": [
-          "dtc_squeeze"
-        ],
-        "flag": "dtc_squeeze"
       }
     },
     "VRDN": {
@@ -747,6 +510,243 @@
           -6.1,
           1.8
         ]
+      }
+    },
+    "PHAT": {
+      "symbol": "PHAT",
+      "name": "Phathom Pharmaceuticals Inc",
+      "type": "momentum",
+      "earningsReaction": false,
+      "catalyst": "10/23 盤後 −4.2%,查無公司公告",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=PHAT"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/PHAT"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-PHAT/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 5.5,
+          "chgPct": -4.18,
+          "volume": 338146,
+          "session": "post",
+          "direction": "down",
+          "name": "Phathom Pharmaceuticals Inc",
+          "sessionDate": "2026-10-23",
+          "targetDate": "2026-10-26"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 5.5,
+      "chgPct": -4.18,
+      "volume": 338146,
+      "tv": null,
+      "shortFloat": 19.73,
+      "shortRatio": 7.31,
+      "marketCap_M": 464.37,
+      "floatShares_M": 51.23,
+      "perf1M": -18.93,
+      "perf3M": -51.97,
+      "perf6M": -50.94,
+      "perfYTD": -65.4,
+      "perf12M": -57.83,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": -4.18,
+        "predDay": -4.5,
+        "band": [
+          -6.5,
+          7.0
+        ],
+        "tier": "small",
+        "lottery": false,
+        "spike": [
+          0.1,
+          3.5,
+          8.8
+        ],
+        "predHi": -0.8,
+        "predHiBand": [
+          -4.1,
+          4.3
+        ]
+      }
+    },
+    "BOLT": {
+      "symbol": "BOLT",
+      "name": "Bolt Biotherapeutics Inc",
+      "type": "M&A",
+      "earningsReaction": false,
+      "catalyst": "10/23 盤後宣布收購 Prana Therapies 並同步私募 1.2 億美元,推進發炎適應症藥物 PRA-216;盤後 +9.4%",
+      "newsDetail": "> **盤後漲因:** 10/23 盤後 +9.4% — Bolt Biotherapeutics 宣布收購 Prana Therapies,同時完成 1.2 億美元私募,用來推進發炎疾病新藥 PRA-216。\n\n**交易內容:** 收購 Prana 取得 PRA-216,公司將轉向多個發炎適應症;同步私募 1.2 億美元提供研發資金。\n\n**風險備註:** 私募代表股本稀釋,定價與條款需看正式 8-K。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=BOLT"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/BOLT"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-BOLT/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "GlobeNewswire — Bolt acquires Prana + $120M PIPE",
+          "url": "https://www.manilatimes.net/2026/10/23/tmt-newswire/globenewswire/bolt-biotherapeutics-announces-acquisition-of-prana-therapies-and-120-million-concurrent-private-placement-to-advance-pra-216-in-multiple-high-value-inflammatory-indications/2452861"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 6.86,
+          "chgPct": 9.41,
+          "volume": 190815,
+          "session": "post",
+          "direction": "up",
+          "name": "Bolt Biotherapeutics Inc",
+          "sessionDate": "2026-10-23",
+          "targetDate": "2026-10-26"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 6.86,
+      "chgPct": 9.41,
+      "volume": 190815,
+      "tv": null,
+      "shortFloat": 1.57,
+      "shortRatio": 0.93,
+      "marketCap_M": 12.08,
+      "floatShares_M": 1.64,
+      "perf1M": 74.65,
+      "perf3M": 57.76,
+      "perf6M": 29.81,
+      "perfYTD": 14.67,
+      "perf12M": 8.85,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": 9.41,
+        "predDay": 9.9,
+        "band": [
+          -6.5,
+          7.0
+        ],
+        "tier": "small",
+        "lottery": true,
+        "spike": [
+          3.0,
+          6.3,
+          11.7
+        ],
+        "predHi": 16.3,
+        "predHiBand": [
+          12.7,
+          22.2
+        ]
+      }
+    },
+    "RENT": {
+      "symbol": "RENT",
+      "name": "Rent The Runway Inc Cl A",
+      "type": "momentum",
+      "earningsReaction": false,
+      "catalyst": "10/23 盤後 +25.7%(常規盤收 $2.30、−3%),查無公司公告",
+      "newsDetail": null,
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=RENT"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/RENT"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-RENT/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": null,
+      "sources": null,
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 2.89,
+          "chgPct": 25.65,
+          "volume": 6590654,
+          "session": "post",
+          "direction": "up",
+          "name": "Rent The Runway Inc Cl A",
+          "sessionDate": "2026-10-23",
+          "targetDate": "2026-10-26"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 2.89,
+      "chgPct": 25.65,
+      "volume": 6590654,
+      "tv": null,
+      "shortFloat": 6.77,
+      "shortRatio": 11.71,
+      "marketCap_M": 77.68,
+      "floatShares_M": 24.23,
+      "perf1M": 28.49,
+      "perf3M": -27.67,
+      "perf6M": -53.44,
+      "perfYTD": -70.92,
+      "perf12M": -50.54,
+      "prevOhlcv": null,
+      "modelPred": {
+        "version": "v12",
+        "gap": 25.65,
+        "predDay": 19.6,
+        "band": [
+          -6.5,
+          7.0
+        ],
+        "tier": "small",
+        "lottery": false,
+        "spike": [
+          3.3,
+          6.6,
+          11.9
+        ],
+        "predHi": 33.9,
+        "predHiBand": [
+          29.8,
+          40.6
+        ],
+        "flags": [
+          "dtc_squeeze"
+        ],
+        "flag": "dtc_squeeze"
       }
     }
   },
