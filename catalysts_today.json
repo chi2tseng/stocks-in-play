@@ -397,13 +397,61 @@
  },
  "CRWV": {
   "Type": "news",
-  "Catalyst": "彭博報導 CoreWeave 股債雙殺引發 AI 雲端股修正疑慮,股價自 10/6 以來已跌約 41%;盤前續跌 −3.9%",
+  "Catalyst": "彭博報導 CoreWeave 股債雙殺引發 AI 雲端股修正疑慮,股價自 10/6 以來已跌約 41%;盤前續跌 約 −4%",
   "EarningsReaction": false,
   "Cluster": null
  },
  "COIN": {
   "Type": "analyst",
   "Catalyst": "Bernstein 目標價由 330 大砍至 250 美元(約 −24%);盤前 −1.7%",
+  "EarningsReaction": false,
+  "Cluster": null
+ },
+ "ABEV": {
+  "Type": "macro",
+  "Catalyst": "盧拉 10/25 決選以約 51.8% 連任、市場原押注右派勝選,雷亞爾期貨一夜貶約 10%,巴西資產全面拋售;巴西啤酒龍頭 Ambev,盤前 −15%",
+  "EarningsReaction": false,
+  "Cluster": "brazil_election_1026"
+ },
+ "SBS": {
+  "Type": "macro",
+  "Catalyst": "盧拉 10/25 決選以約 51.8% 連任、市場原押注右派勝選,雷亞爾期貨一夜貶約 10%,巴西資產全面拋售;聖保羅水務公司 Sabesp(民營化後市場關注監管風險),盤前 −25%",
+  "EarningsReaction": false,
+  "Cluster": "brazil_election_1026"
+ },
+ "UGP": {
+  "Type": "macro",
+  "Catalyst": "盧拉 10/25 決選以約 51.8% 連任、市場原押注右派勝選,雷亞爾期貨一夜貶約 10%,巴西資產全面拋售;巴西燃料通路商 Ultrapar,盤前 −19%",
+  "EarningsReaction": false,
+  "Cluster": "brazil_election_1026"
+ },
+ "VALE": {
+  "Type": "macro",
+  "Catalyst": "盧拉 10/25 決選以約 51.8% 連任、市場原押注右派勝選,雷亞爾期貨一夜貶約 10%,巴西資產全面拋售;鐵礦砂巨頭 Vale,營收以美元計價,盤前僅 −4%,跌幅遠輕於巴西內需股",
+  "EarningsReaction": false,
+  "Cluster": "brazil_election_1026"
+ },
+ "ARCO": {
+  "Type": "macro",
+  "Catalyst": "盧拉 10/25 決選以約 51.8% 連任、市場原押注右派勝選,雷亞爾期貨一夜貶約 10%,巴西資產全面拋售;拉美麥當勞經營商 Arcos Dorados,巴西為最大市場,盤前 −13%",
+  "EarningsReaction": false,
+  "Cluster": "brazil_election_1026"
+ },
+ "XNCR": {
+  "Type": "momentum",
+  "Catalyst": "雙特異性抗體藥廠 Xencor 盤前 +29~39%;搜尋 IR 與新聞查無今日公告,原因待確認",
+  "EarningsReaction": false,
+  "Cluster": null
+ },
+ "WORX": {
+  "Type": "momentum",
+  "Catalyst": "微型股 SCWorx 盤前一度 +8.7%、目前轉為小跌;查無公司公告",
+  "EarningsReaction": false,
+  "Cluster": null
+ },
+ "WTI": {
+  "Type": "macro",
+  "Catalyst": "海上油氣商 W&T Offshore 盤前 −4%;週一油價自高點回落,查無公司公告",
   "EarningsReaction": false,
   "Cluster": null
  }
