@@ -1,33 +1,23 @@
 {
- "date": "2026-10-23",
- "written_at": "2026-10-23T08:23:24-04:00",
+ "date": "2026-10-26",
+ "written_at": "2026-10-26T07:45:00-04:00",
  "ideas": [
   {
    "rank": 1,
-   "symbol": "RCI",
+   "symbol": "RENT",
    "setup": "dtc_fade",
    "direction": "short",
-   "thesis": "Rogers 10/23 公布 Q3:調整後 EPS 0.90 加幣優於預估 0.86,但手機淨增僅 1.7 萬戶(去年 11.1 萬)、無線服務營收 -1%;空單回補天數 10.7 天(DTC>5),盤前 +2.1%,符合 DTC 假軋空 fade 條件(gap≥+2%)。盤前 gap 剛好卡在門檻邊緣。",
-   "entry": "09:30 先複核開盤 gap(vs 昨收 33.20 附近)仍 ≥+2%,不到門檻作廢;通過後 10:30 ET 放空",
+   "thesis": "Rent the Runway 週五盤後 +25.7%、週一盤前續漲至 +38%,查無公司公告;空單回補天數 6.8 天(DTC>5),符合 DTC 假軋空 fade 條件(gap≥+2%)。市值約 1 億美元、盤前 gap 落在微型股 +10~50% 區間,回測此區間日內中位數 −5.2%,與放空方向一致。",
+   "entry": "09:30 先複核開盤 gap(vs 週五收盤約 $2.30)仍 ≥+2%;通過後 10:30 ET 放空",
    "target": "收盤回補",
    "stop": "進場價 +5%",
-   "backtest_note": "dtc_fade 次主力(2026-08-16 升格,逐日等權 +0.28R);每日限 2 筆"
-  },
-  {
-   "rank": 2,
-   "symbol": "FCNCA",
-   "setup": "dtc_fade",
-   "direction": "short",
-   "thesis": "First Citizens 10/23 盤前公布 Q3:調整後 EPS 55.37 美元優於預估 46.18、新庫藏股計畫;空單回補天數 7.5 天(DTC>5),盤前 +2.7%,符合 DTC 假軋空 fade 條件。股價高(約 2,250 美元)、盤前量薄,開盤價差可能大。",
-   "entry": "09:30 複核開盤 gap ≥+2%,不到作廢;通過後 10:30 ET 放空",
-   "target": "收盤回補",
-   "stop": "進場價 +5%",
-   "backtest_note": "dtc_fade 次主力;每日限 2 筆;高價股注意買賣價差,倉位以金額計"
+   "backtest_note": "dtc_fade 次主力,但 live 8 筆 sumR −3.74R、勝率 25%,距降級門檻(n≥10 且 sumR<0)只差 2 筆 — 建議半倉;微型股借券可能受限,借不到就作廢"
   }
  ],
  "no_trade_notes": {
-  "contract_fade": "今日無 contract 型且 gap≥+15% 的標的",
-  "beatdip": "WDC 為真 beat(EPS +13%、營收 +5.7%)但盤前 gap 僅 −2.0%,不在 −4%~−18% 帶;DECK 營收 miss、AXP 營收略低於預期,皆非真 beat",
-  "beaten_squeeze_go": "NOK perf1M −21% 但 short float 1.5% 遠低於 10%;其餘無符合五條件者"
+  "beatdip": "今日跳空股沒有『財報優於預期卻大跌』的大型股;巴西股是政治事件,不適用",
+  "contract_fade": "無大合約跳空股",
+  "beaten_squeeze_go": "跳空上漲股中沒有同時符合近一月跌 ≥20%、空單比率 ≥10%、回補天數 <5 的標的(AVBP 回補天數 7.9 天不符)",
+  "dtc_fade_2": "AVBP 回補天數 7.9 天、盤前 +13%,但盤前量僅約 10 萬股,流動性不足不列"
  }
 }

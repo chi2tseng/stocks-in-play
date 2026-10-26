@@ -258,10 +258,10 @@
   "reasoning": "增發定價日,跌幅取決於定價折讓,資訊不足"
  },
  "YMAT": {
-  "date": "2026-10-23",
+  "date": "2026-10-26",
   "adj": 0,
   "confidence": "low",
-  "reasoning": "樂透帶:無消息低價股盤前 +54%,不可預測"
+  "reasoning": "樂透帶:市值不到 1,000 萬美元、無消息"
  },
  "NCPL": {
   "date": "2026-10-21",
@@ -400,5 +400,77 @@
   "adj": 0,
   "confidence": "low",
   "reasoning": "樂透帶:無消息生技股前一日 +25%,不可預測"
+ },
+ "XP": {
+  "date": "2026-10-26",
+  "adj": 3,
+  "confidence": "low",
+  "reasoning": "樣本外情境:政治事件造成的整體國家重新定價,不是公司利空;XP −45% 已遠超同業 −21~−30%,盤前流動性薄,開盤後有向同業水準收斂的空間"
+ },
+ "NU": {
+  "date": "2026-10-26",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "國家級事件,ADR 跌幅大致對應雷亞爾 −10% 加上巴西股市本地跌幅;量化基準(≈gap)已合理,無額外資訊"
+ },
+ "ITUB": {
+  "date": "2026-10-26",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "同 NU:匯率加本地股市的機械性換算,量化基準合理"
+ },
+ "BBD": {
+  "date": "2026-10-26",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "同 ITUB"
+ },
+ "PBR": {
+  "date": "2026-10-26",
+  "adj": -1,
+  "confidence": "low",
+  "reasoning": "多一層油價/股利干預的個股風險,開盤後買盤承接意願可能比銀行股差"
+ },
+ "STNE": {
+  "date": "2026-10-26",
+  "adj": 1,
+  "confidence": "low",
+  "reasoning": "小型支付股跌幅 −34% 大於大型銀行,部分是流動性折價,開盤後可能小幅收斂"
+ },
+ "INTR": {
+  "date": "2026-10-26",
+  "adj": 1,
+  "confidence": "low",
+  "reasoning": "同 STNE"
+ },
+ "PAGS": {
+  "date": "2026-10-26",
+  "adj": 1,
+  "confidence": "low",
+  "reasoning": "同 STNE"
+ },
+ "GGB": {
+  "date": "2026-10-26",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "今晚盤後公布財報,盤中可能卡位;北美營收占比高,跌幅已比銀行輕"
+ },
+ "RENT": {
+  "date": "2026-10-26",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "樂透帶:無消息微型股連兩個盤段大漲,不可預測"
+ },
+ "AVBP": {
+  "date": "2026-10-26",
+  "adj": 0,
+  "confidence": "low",
+  "reasoning": "無消息、盤前量僅約 10 萬股"
+ },
+ "MRNA": {
+  "date": "2026-10-26",
+  "adj": 0,
+  "confidence": "medium",
+  "reasoning": "ESMO 數據利空的延續第三天,量化基準合理"
  }
 }
