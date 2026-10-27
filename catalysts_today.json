@@ -277,7 +277,7 @@
  },
  "CLRO": {
   "Type": "momentum",
-  "Catalyst": "市值不到 1,000 萬美元的微型股,週五盤後 −9.5% 後盤前續弱;查無公司公告",
+  "Catalyst": "10/26 盤前 +34% 後盤後回落 -5.2%;查無當日新聞,7/1 已公告與 Cortigent 合併(未來改代號 CRGT),另需 S-1 募資 1,000-1,500 萬美元",
   "EarningsReaction": false,
   "Cluster": null
  },
@@ -445,7 +445,7 @@
  },
  "WORX": {
   "Type": "momentum",
-  "Catalyst": "微型股 SCWorx 盤前一度 +8.7%、目前轉為小跌;查無公司公告",
+  "Catalyst": "10/26 查無個股新聞,盤後 +11.7% 疑似無消息跟漲",
   "EarningsReaction": false,
   "Cluster": null
  },
@@ -453,6 +453,102 @@
   "Type": "macro",
   "Catalyst": "海上油氣商 W&T Offshore 盤前 −4%;週一油價自高點回落,查無公司公告",
   "EarningsReaction": false,
+  "Cluster": null
+ },
+ "CLS": {
+  "Type": "earnings",
+  "Catalyst": "10/26 盤後公布 Q3:營收 58.3 億美元(年增 83%),營收與調整後 EPS 3.30 美元皆超過公司財測上緣(55.5 億、3.08 美元),並首度給出 2027 年展望;盤後 +16.8%",
+  "EarningsReaction": true,
+  "Cluster": "ai_infra"
+ },
+ "AMKR": {
+  "Type": "earnings",
+  "Catalyst": "10/26 盤後公布 Q3:EPS 0.76 美元、毛利率 18.3%,Q4 營收指引 19-20 億美元;同晚 Celestica 財報大超預期帶動 AI 供應鏈;盤後 +4.1%",
+  "EarningsReaction": true,
+  "Cluster": "ai_infra"
+ },
+ "WHR": {
+  "Type": "earnings",
+  "Catalyst": "10/26 盤後公布 Q3:營收 36.8 億美元(年減 8.8%)低於預期約 39 億,調整後轉虧;全年調整後 EPS 財測由 2.50-3.00 美元下修為虧損約 1.30 美元,CEO 稱復甦比預期慢;盤後 -8.8%",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "JBLU": {
+  "Type": "earnings",
+  "Catalyst": "10/26 盤後公布 Q3:營收 28.1 億美元年增 21%,每可用座位英里營收 +18.4%,Q4 該指標指引最高 +22%;盤後 +6.8%",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "CRDO": {
+  "Type": "momentum",
+  "Catalyst": "10/26 無個股新聞;盤後 +5.4% 疑隨 Celestica 財報大超預期帶動 AI 網通/光通訊族群連動(推測,未證實)",
+  "EarningsReaction": false,
+  "Cluster": "ai_infra"
+ },
+ "BRAI": {
+  "Type": "momentum",
+  "Catalyst": "10/26 查無個股新聞,盤後 +52% 疑似無消息炒作(最近 PR 為 10/12 研討會座談)",
+  "EarningsReaction": false,
+  "Cluster": null
+ },
+ "MSGY": {
+  "Type": "momentum",
+  "Catalyst": "10/26 查無個股新聞,盤後 -5.2%;3 月曾收 Nasdaq 股價低於 1 美元缺失通知",
+  "EarningsReaction": false,
+  "Cluster": null
+ },
+ "CDNS": {
+  "Type": "earnings",
+  "Catalyst": "10/26 盤後公布 Q3:營收 16.33 億美元超過財測上緣,非 GAAP EPS 2.11 美元;全年 EPS 財測上調至 8.40 美元(原 8.05-8.15),積壓訂單 82 億美元創高;盤後 +2.4%",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "NUE": {
+  "Type": "earnings",
+  "Catalyst": "10/26 盤後公布 Q3:EPS 5.80 美元高於 9 月自家預告 5.55-5.65 美元,但略低於市場預估約 5.84 美元;營收 112.5 億美元;盤後 -1.9%",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "WELL": {
+  "Type": "earnings",
+  "Catalyst": "10/26 盤後公布 Q3:全年正常化 FFO 指引上調至每股 6.47-6.53 美元(原 6.36-6.44),同店 NOI 成長指引 15%-16.25%;盤後 -0.5%",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "PSA": {
+  "Type": "earnings",
+  "Catalyst": "10/26 盤後公布 Q3:全年核心 FFO 指引上調至每股 16.90-17.10 美元(原 16.75-17.05),National Storage Affiliates 等兩宗併購已完成;盤後 +0.7%",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "CINF": {
+  "Type": "earnings",
+  "Catalyst": "10/26 盤後公布 Q3:產險綜合比率 90.9%(去年 88.2%),巨災損失增加;淨簽單保費年增 2%、新業務保費年減 12%;盤後 +1.5%",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "BRO": {
+  "Type": "earnings",
+  "Catalyst": "10/26 盤後公布 Q3:調整後 EPS 1.07 美元略低於預期 1.09;營收約 17 億美元(年增 7.4%),本業成長僅 1.2%,調整後利潤率降至 34.6%(去年 36.6%);盤後 -3.0%",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "PFG": {
+  "Type": "earnings",
+  "Catalyst": "10/26 盤後公布 Q3:非 GAAP 營業 EPS 2.22 美元低於預期約 2.50,排除特殊項目為 2.49 美元(年增 7%);Q4 股息調升至 0.85 美元;盤後 -1.1%",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "SUI": {
+  "Type": "earnings",
+  "Catalyst": "10/26 盤後公布 Q3:核心 FFO 每股 2.35 美元高於自家區間 2.23-2.33;英國事業出售完成,同店 NOI 年增 3.6%;盤後持平",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "HIG": {
+  "Type": "earnings",
+  "Catalyst": "10/26 盤後公布 Q3 財報;核心 EPS 與預期比較查無,盤後持平",
+  "EarningsReaction": true,
   "Cluster": null
  }
 }
