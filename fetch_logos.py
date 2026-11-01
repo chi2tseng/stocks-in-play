@@ -141,7 +141,9 @@ def _try_download(url):
             if resp.status != 200:
                 return None
             body = resp.read()
-    except (URLError, HTTPError, TimeoutError, ConnectionError, OSError):
+    except (URLError, HTTPError, TimeoutError, ConnectionError, OSError, UnicodeError):
+        # UnicodeError: a non-ASCII symbol in the universe (foreign listing) would
+        # otherwise crash the whole run at http.client's ascii request encoding.
         return None
     return body if _is_valid_png(body) else None
 
