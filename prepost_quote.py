@@ -13,11 +13,22 @@ previous regular-session close. No today bars -> return None (never fall back to
 a daily-close diff and pass it off as today's move).
 """
 import json, urllib.request, datetime
+try:
+    from zoneinfo import ZoneInfo
+except Exception:  # pragma: no cover
+    ZoneInfo = None
 
 UA = {'User-Agent': 'Mozilla/5.0'}
 
 
-def _lt(ts, off):
+def _lt(ts, off, tz=None):
+    # 2026-11-02 bug: meta.gmtoffset is a SINGLE offset for "now". On the first
+    # session after a DST change (Mon 11/02 after Sun 11/01), Friday's bars were
+    # still EDT, so a fixed EST offset shifted them +1h and the 9:30-16:00 filter
+    # swallowed Friday's first after-hours hour -> prev close became the AH price
+    # (INO read -18% instead of +242%). Convert each bar with the exchange's tz.
+    if tz is not None:
+        return datetime.datetime.fromtimestamp(ts, tz).replace(tzinfo=None)
     return datetime.datetime.utcfromtimestamp(ts + off)
 
 
@@ -32,6 +43,12 @@ def prepost_quote(sym, timeout=12):
         return None
     m = r.get('meta') or {}
     off = m.get('gmtoffset')
+    tz = None
+    if ZoneInfo and m.get('exchangeTimezoneName'):
+        try:
+            tz = ZoneInfo(m['exchangeTimezoneName'])
+        except Exception:
+            tz = None
     reg = ((m.get('currentTradingPeriod') or {}).get('regular') or {})
     start = reg.get('start')
     ts = r.get('timestamp') or []
@@ -40,9 +57,9 @@ def prepost_quote(sym, timeout=12):
     if off is None or not start or not ts:
         return None
 
-    today = _lt(start, off).date()
+    today = _lt(start, off, tz).date()
     bars = [(t, c) for t, c in zip(ts, cl) if c is not None]
-    todays = [(t, c) for t, c in bars if _lt(t, off).date() == today]
+    todays = [(t, c) for t, c in bars if _lt(t, off, tz).date() == today]
     if not todays:
         return None  # no-premarket-data: nothing traded today yet
 
@@ -56,8 +73,8 @@ def prepost_quote(sym, timeout=12):
     # clock — anchor on the previous session's own last regular-hours bar and
     # pick whichever meta field it matches.
     prev = [c for t, c in bars
-            if _lt(t, off).date() < today
-            and 9 * 60 + 30 <= _lt(t, off).hour * 60 + _lt(t, off).minute < 16 * 60]
+            if _lt(t, off, tz).date() < today
+            and 9 * 60 + 30 <= _lt(t, off, tz).hour * 60 + _lt(t, off, tz).minute < 16 * 60]
     anchor = prev[-1] if prev else None
     cands = [c for c in (m.get('previousClose'), m.get('regularMarketPrice')) if c]
     if anchor and cands:
