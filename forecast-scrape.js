@@ -11,7 +11,7 @@
 // Sources tested are blocked-or-thin under WebFetch — Playwright tries them via real
 // browser to see if the data is actually there once JS renders.
 
-const { chromium } = require('@playwright/test');
+const { chromium } = (() => { try { return require('@playwright/test'); } catch (e) { return require('playwright'); } })(); // cloud: fall back to preinstalled playwright
 const fs = require('fs');
 const path = require('path');
 

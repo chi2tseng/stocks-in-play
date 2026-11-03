@@ -45,7 +45,7 @@
 //   .firecrawl/barchart-{session}-{direction}-pN.json  (raw API responses, one per page)
 //   .firecrawl/candidates.csv                          (final filtered + deduped list)
 
-const { chromium } = require('@playwright/test');
+const { chromium } = (() => { try { return require('@playwright/test'); } catch (e) { return require('playwright'); } })(); // cloud: fall back to preinstalled playwright
 const fs = require('fs');
 const path = require('path');
 

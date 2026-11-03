@@ -2,7 +2,7 @@
 // Replaces Firecrawl for /mtrt-scan §6.1 scraping.
 // Output: .firecrawl/<TICKER>-earnings-fq.md  (same path as Firecrawl, so existing parser works)
 
-const { chromium } = require('@playwright/test');
+const { chromium } = (() => { try { return require('@playwright/test'); } catch (e) { return require('playwright'); } })(); // cloud: fall back to preinstalled playwright
 const fs = require('fs');
 const path = require('path');
 

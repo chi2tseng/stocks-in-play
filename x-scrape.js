@@ -8,7 +8,7 @@
 // 紀律:X 內容=傳聞層,主流程寫進 catalyst/rationale 必標「X 傳聞未證實」。
 // 遇到 captcha / 驗證挑戰:直接結束回報,禁止繞過。
 
-const { chromium } = require('@playwright/test');
+const { chromium } = (() => { try { return require('@playwright/test'); } catch (e) { return require('playwright'); } })(); // cloud: fall back to preinstalled playwright
 const fs = require('fs');
 const path = require('path');
 

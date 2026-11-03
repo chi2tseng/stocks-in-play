@@ -19,7 +19,7 @@
 // Playwright's `page.content()` and parse the snapshot table directly. Concurrency: 5 pages
 // in parallel to keep total runtime under ~30s for ~80 tickers.
 
-const { chromium } = require('@playwright/test');
+const { chromium } = (() => { try { return require('@playwright/test'); } catch (e) { return require('playwright'); } })(); // cloud: fall back to preinstalled playwright
 const fs = require('fs');
 const path = require('path');
 
