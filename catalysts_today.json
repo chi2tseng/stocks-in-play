@@ -90,10 +90,10 @@
   "Cluster": "ai_capex_selloff"
  },
  "POET": {
-  "Type": "macro",
-  "Catalyst": "無個股新聞(Q3 財報 11/16);隨 AI 資本支出疑慮與光通訊類股同步重挫",
+  "Type": "news",
+  "Catalyst": "僅 11/02 宣布更換財務長,無實質利多;隨光通訊類股反彈,Q3 財報 11/16 公布",
   "EarningsReaction": false,
-  "Cluster": "ai_capex_selloff"
+  "Cluster": "optical"
  },
  "NVTS": {
   "Type": "macro",
@@ -115,9 +115,9 @@
  },
  "AEHR": {
   "Type": "earnings",
-  "Catalyst": "Q1營收3,300萬、年增200%，全年上調至1.5億",
+  "Catalyst": "FQ1 營收 3,300 萬美元創新高、年增 200%;全年營收財測下限由 1.3 億上調至 1.5 億美元",
   "EarningsReaction": true,
-  "Cluster": "semi_test"
+  "Cluster": "ai_semis"
  },
  "SMCI": {
   "Type": "macro",
@@ -132,10 +132,10 @@
   "Cluster": "ai_capex_selloff"
  },
  "BE": {
-  "Type": "contract",
-  "Catalyst": "與CRC簽MOU，評估加州1GW燃料電池加碳捕捉",
+  "Type": "analyst",
+  "Catalyst": "巴克萊升評至加碼(目標價 289 美元);另與 CRC 簽加州 1GW 燃料電池供電備忘錄,尚非正式合約",
   "EarningsReaction": false,
-  "Cluster": "fuel_cell"
+  "Cluster": "ai_power"
  },
  "CRWV": {
   "Type": "macro",
@@ -174,10 +174,10 @@
   "Cluster": "btc_miner_reset"
  },
  "PENG": {
-  "Type": "macro",
-  "Catalyst": "無個股新聞(FQ4 財報 10/6 已公布);隨 AI 類股重挫",
+  "Type": "M&A",
+  "Catalyst": "SK 海力士 13D 揭露持股 9.1%(約 3.77 億美元)並取得董事提名權;前一日跌 8.5% 後反彈",
   "EarningsReaction": false,
-  "Cluster": "ai_capex_selloff"
+  "Cluster": "memory"
  },
  "CBRS": {
   "Type": "macro",
@@ -467,10 +467,10 @@
   "Cluster": "crypto_hack"
  },
  "SNDK": {
-  "Type": "earnings",
-  "Catalyst": "FQ1 營收 110.3 億美元、EPS 49.51 美元雙雙優於預估並上調財測,宣布 1 拆 8 股票分割,但市場擔心記憶體漲價見頂,盤前 −9%",
-  "EarningsReaction": true,
-  "Cluster": "memory_selloff"
+  "Type": "momentum",
+  "Catalyst": "無個股新聞;記憶體族群盤前齊彈(美光漲逾 3%),收復 11/02 鎧俠示警造成的跌幅",
+  "EarningsReaction": false,
+  "Cluster": "memory"
  },
  "DELL": {
   "Type": "macro",
@@ -654,9 +654,9 @@
  },
  "CYPH": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞(最新 8-K 為 9/22),盤後 −12%、盤前 −11%,無明確催化",
+  "Catalyst": "查無個股新聞;11/02 隨 Zcash(ZEC)重挫殺 21%(傳大戶遭清算、治理爭議),今晨跟著反彈",
   "EarningsReaction": false,
-  "Cluster": null
+  "Cluster": "crypto"
  },
  "COUR": {
   "Type": "guidance",
@@ -863,7 +863,7 @@
  },
  "PLTR": {
   "Type": "earnings",
-  "Catalyst": "Q3營收23.1億增近倍、上調全年至85.3億，惟高估值賣壓",
+  "Catalyst": "Q3 營收 23.1 億美元年增 96% 優於預期並上調全年財測,但美國商業訂單成長放緩、估值偏高,利多出盡",
   "EarningsReaction": true,
   "Cluster": "ai_software"
  },
@@ -999,9 +999,9 @@
  },
  "CLRO": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞，單日暴漲66%後盤後獲利回吐",
+  "Catalyst": "查無 11/2–3 個股新聞;前日暴漲 67% 後回吐(背景:10/13 上市合規通知、Cortigent 合併待完成)",
   "EarningsReaction": false,
-  "Cluster": "microcap"
+  "Cluster": "microcap_pump"
  },
  "CNO": {
   "Type": "earnings",
@@ -1062,10 +1062,10 @@
   "Cluster": "ai_capex_selloff"
  },
  "DOCN": {
-  "Type": "macro",
-  "Catalyst": "查無個股新聞;隨軟體/雲端類股走勢:DOCN 跳空 −6.9%、收 −10.3%;UBS 10/26 降目標價至 105 美元,11/3 公布 Q3",
-  "EarningsReaction": false,
-  "Cluster": "software_selloff"
+  "Type": "earnings",
+  "Catalyst": "Q3 營收優於預期、全年營收財測上調至 12.1 億美元(預期 11.8 億),但 AI 需求壓縮利潤率",
+  "EarningsReaction": true,
+  "Cluster": "ai_software"
  },
  "EQX": {
   "Type": "macro",
@@ -1079,9 +1079,10 @@
   "EarningsReaction": true
  },
  "ETN": {
-  "Type": "macro",
-  "Catalyst": "查無個股新聞;週五收 369.97 美元,跌約 6%;Q3 財報將於 11/3 盤前公布,共識 EPS 3.54 美元、營收 84.8 億美元(+21.4%)",
-  "EarningsReaction": false
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 3.68 美元創新高優於預期、營收 89.5 億年增 28%(本業 19%)、訂單創高,全年 EPS 財測上調至 13.70–13.80",
+  "EarningsReaction": true,
+  "Cluster": "ai_power"
  },
  "EXEL": {
   "Type": "earnings",
@@ -1208,9 +1209,9 @@
  },
  "LSCC": {
   "Type": "earnings",
-  "Catalyst": "Q3營收2.91億增118%超預期，Q4指引3.35億(+130%)遠高於共識",
+  "Catalyst": "Q3 營收 2.91 億美元年增 118%(含 AMI 併購)、EPS 0.72 美元優於預期;Q4 營收財測中值 3.35 億遠高於華爾街預估",
   "EarningsReaction": true,
-  "Cluster": "fpga_ai"
+  "Cluster": "ai_semis"
  },
  "LYG": {
   "Type": "earnings",
@@ -1288,10 +1289,10 @@
   "Cluster": "ai_capex_selloff"
  },
  "ORCL": {
-  "Type": "news",
-  "Catalyst": "完成200億美元股債籌資、增發8,620萬股折價定價116美元",
+  "Type": "offering",
+  "Catalyst": "200 億美元增資定價:新股 100 億美元每股 116 美元(折價約 11%)加公司債 100 億,週一已跌 8.8%",
   "EarningsReaction": false,
-  "Cluster": "oracle_raise"
+  "Cluster": "ai_capex_funding"
  },
  "PGEN": {
   "Type": "FDA",
@@ -1337,10 +1338,10 @@
   "EarningsReaction": false
  },
  "SHOP": {
-  "Type": "macro",
-  "Catalyst": "查無個股新聞;隨軟體類股走勢:SHOP 週五收 −5.6%,Motley Fool 稱股價較歷史高點低逾 10%,11/3 公布財報",
-  "EarningsReaction": false,
-  "Cluster": "software_selloff"
+  "Type": "earnings",
+  "Catalyst": "Q3 營收 37.4 億美元年增 32% 僅符合預期;毛利率年減 1.3 個百分點、Q4 毛利成長財測僅 20% 後段",
+  "EarningsReaction": true,
+  "Cluster": "software_margin"
  },
  "SIMO": {
   "Type": "earnings",
@@ -1464,10 +1465,10 @@
   "EarningsReaction": false
  },
  "VCIG": {
-  "Type": "momentum",
-  "Catalyst": "1拆18反分割首日暴漲168%後回吐，無基本面消息",
+  "Type": "offering",
+  "Catalyst": "18 併 1 反向分割生效後,盤後遞 F-1/A 登記轉售 1.02 億股(流通股僅約 53.6 萬股),稀釋壓力重挫",
   "EarningsReaction": false,
-  "Cluster": "microcap"
+  "Cluster": "microcap_pump"
  },
  "VECO": {
   "Type": "macro",
@@ -1514,10 +1515,10 @@
   "Cluster": "energy_oil"
  },
  "MPC": {
-  "Type": "macro",
-  "Catalyst": "查無個股新聞;隨 WTI 12 月合約 +2.08% 至 104.12 美元與煉油股反彈;Q3 財報尚未公布,Zacks 列共識 EPS 25.74 美元(年增 755.2%)",
-  "EarningsReaction": false,
-  "Cluster": "energy_oil"
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 26.93 美元優於預期;42 億美元出售兩座煉油廠給 CVR Energy、股息調升 10%、加碼 50 億美元庫藏股",
+  "EarningsReaction": true,
+  "Cluster": "oil"
  },
  "OXY": {
   "Type": "macro",
@@ -1638,9 +1639,9 @@
  },
  "ELAB": {
   "Type": "M&A",
-  "Catalyst": "旗下SPAC NorthStrive以3.5億美元與Nuclea Energy合併",
+  "Catalyst": "旗下 SPAC 與核能公司 Nuclea Energy 合併(估值 3.5 億美元)題材退燒,11/02 殺 19% 後盤前續跌",
   "EarningsReaction": false,
-  "Cluster": "spac"
+  "Cluster": "microcap_pump"
  },
  "KOS": {
   "Type": "earnings",
@@ -1654,110 +1655,326 @@
  },
  "BRAI": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞，低價小型股跌深後技術性反彈",
+  "Catalyst": "查無個股新聞;11/02 僅遞年報延遲申報(NT 20-F),連漲後的投機反彈",
   "EarningsReaction": false,
-  "Cluster": "microcap"
+  "Cluster": "microcap_pump"
  },
  "AAPL": {
   "Type": "earnings",
-  "Catalyst": "FQ4營收1,145億增12%勝預期，但毛利率展望弱、中國不如預期",
+  "Catalyst": "FQ4 營收 1,145 億美元、EPS 2.10 美元優於預期,但 12 月季毛利率財測僅 45–46%,記憶體成本飆升壓縮獲利",
   "EarningsReaction": true,
-  "Cluster": "apple_margin"
+  "Cluster": "memory"
  },
  "ON": {
   "Type": "earnings",
-  "Catalyst": "Q3營收17.2億增11%優於指引，6億收購Ferric、AI電源目標上調",
+  "Catalyst": "Q3 營收 17.2 億美元、EPS 0.90 美元小幅優於預期,上調 AI 電源營收目標並以 6 億美元收購 Ferric;Craig-Hallum 升評買進",
   "EarningsReaction": true,
-  "Cluster": "semi_rebound"
+  "Cluster": "ai_semis"
  },
  "CLX": {
   "Type": "earnings",
-  "Catalyst": "Q1營收19.05億增33%(含GOJO)、調整後EPS 1.55，全年有機成長維持3.5-4.5%",
+  "Catalyst": "FQ1 調整後 EPS 1.55 美元遠優於預期約 1.1–1.3、營收 19 億(含 GOJO 併購);全年財測維持但偏低端",
   "EarningsReaction": true,
-  "Cluster": "staples"
+  "Cluster": "earnings_beat"
  },
  "ACB": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞，隨大麻族群與 Curaleaf 收購題材反彈",
+  "Type": "M&A",
+  "Catalyst": "Curaleaf 敵意收購戰持續、董事會反對中,隨大麻類股走高;財報 11/12 才公布",
   "EarningsReaction": false,
   "Cluster": "cannabis"
  },
  "ADEA": {
   "Type": "guidance",
-  "Catalyst": "Q3營收0.80億減8%大幅不如預期，全年財測下修至3.75-4.15億",
+  "Catalyst": "Q3 營收 8,020 萬美元年減 8%、低於預期,全年營收財測下修至 3.75–4.15 億美元",
   "EarningsReaction": true,
-  "Cluster": "licensing"
+  "Cluster": "earnings_miss"
  },
  "BLZE": {
   "Type": "earnings",
-  "Catalyst": "Q3營收4,670萬增26%，全年上調至1.78億",
+  "Catalyst": "Q3 營收 4,670 萬美元年增 26%、B2 雲端儲存年增 47%,全年營收財測上調至 1.78 億美元",
   "EarningsReaction": true,
-  "Cluster": "cloud_storage"
+  "Cluster": "earnings_beat"
  },
  "BMRN": {
   "Type": "earnings",
-  "Catalyst": "Q3營收10.2億符合、調整後EPS 0.23勝預期；全年營收/EPS下修(IPR&D費用)",
+  "Catalyst": "Q3 營收 10.25 億美元年增 32% 約符合預期,全年營收財測下修至 38–39 億(海外大單延後)",
   "EarningsReaction": true,
-  "Cluster": "biotech"
+  "Cluster": "earnings_miss"
  },
  "CMPS": {
-  "Type": "news",
-  "Catalyst": "同業Usona遞交psilocybin NDA，前日暴跌27%後盤後反彈",
-  "EarningsReaction": false,
+  "Type": "earnings",
+  "Catalyst": "11/02 因對手 Usona 遞交新藥申請重挫 27%;今晨 Q3 每股虧損 0.31 美元優於預期,並表示自家 NDA 兩週內送完",
+  "EarningsReaction": true,
   "Cluster": "psychedelics"
  },
  "EHGO": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞，市值僅270萬美元微型股低量軋空",
+  "Catalyst": "查無個股新聞;10/19 才 5 併 1 合股、6–8 月三度增發,低量純投機彈升",
   "EarningsReaction": false,
-  "Cluster": "microcap"
+  "Cluster": "microcap_pump"
  },
  "FN": {
   "Type": "earnings",
-  "Catalyst": "Q1 EPS 4.34、營收14.7億超預期，Q2指引16-16.5億",
+  "Catalyst": "FQ1 營收 14.7 億美元年增 51%、EPS 4.34 美元雙雙超過財測上緣;FQ2 營收財測 16–16.5 億",
   "EarningsReaction": true,
-  "Cluster": "optical"
+  "Cluster": "ai_semis"
  },
  "GRAB": {
   "Type": "earnings",
-  "Catalyst": "Q3營收11.1億增27%，全年營收與EBITDA指引二度上調",
+  "Catalyst": "Q3 營收 11.1 億美元年增 27%、調整後 EBITDA 年增 73%;全年 EBITDA 財測上調至 7.9–8 億美元",
   "EarningsReaction": true,
-  "Cluster": "ridehailing"
+  "Cluster": "earnings_beat"
  },
  "HLIT": {
   "Type": "earnings",
-  "Catalyst": "Q3營收1.488億增64%超預期，全年指引三度上調至5.45-5.55億",
+  "Catalyst": "Q3 營收 1.49 億美元比預期 1.29 億高 15%(年增約 5%)、EPS 0.23 美元優於 0.17;Q4 營收財測 1.41–1.51 億",
   "EarningsReaction": true,
-  "Cluster": "broadband"
+  "Cluster": "earnings_beat"
  },
  "LIFE": {
   "Type": "earnings",
-  "Catalyst": "Q3營收2.35億增151%，上調全年指引並授權1億回購",
+  "Catalyst": "Q3 營收 2.35 億美元年增 151%、遠超財測 1.60–1.64 億;全年營收財測上調 15% 至 8.4 億,並授權 1 億美元庫藏股",
   "EarningsReaction": true,
-  "Cluster": "biotech"
+  "Cluster": "earnings_beat"
  },
  "NOV": {
   "Type": "macro",
-  "Catalyst": "查無個股新聞，財報後回落、盤後隨油價及能源族群反彈",
+  "Catalyst": "查無個股新聞(財報為 10/27 舊聞);油價週一大跌後反彈,能源設備股跟漲、盤前已回到平盤",
   "EarningsReaction": false,
-  "Cluster": "oil_service"
+  "Cluster": "oil"
  },
  "PARA": {
   "Type": "momentum",
-  "Catalyst": "前日因退市通知暴跌47%後軋空，流通股僅52萬股",
+  "Catalyst": "查無 11/02 個股新聞;10/30 公告下市通知並遞 S-1 擬募資 1,175 萬美元,盤後暴漲屬投機、盤前已回吐大半",
   "EarningsReaction": false,
-  "Cluster": "microcap"
+  "Cluster": "microcap_pump"
  },
  "TTI": {
   "Type": "earnings",
-  "Catalyst": "Q3營收1.68億創十年同期新高、EPS 0.06與EBITDA超預期",
+  "Catalyst": "Q3 營收 1.68 億美元年增 10%、優於預期,EPS 0.05 美元符合預期;預告 Q4 雙位數成長、2027 年續增",
   "EarningsReaction": true,
-  "Cluster": "energy"
+  "Cluster": "oil"
  },
  "UPWK": {
   "Type": "earnings",
-  "Catalyst": "Q3 EPS 0.40遠超預期、併購WorkMotion；Q4指引低於共識",
+  "Catalyst": "Q3 EPS 0.40 美元優於預期 0.36、全年 EPS 財測上調至 1.45–1.47 並併購 WorkMotion,但 Q4 財測偏弱;盤後 +10% 到盤前回落至約 +2%",
   "EarningsReaction": true,
-  "Cluster": "freelance"
+  "Cluster": "earnings_beat"
+ },
+ "CRE": {
+  "Type": "M&A",
+  "Catalyst": "以 80 萬美元現金收購香港翻譯公司 LingXpert,金額極小,漲勢屬題材炒作、盤前已回吐",
+  "EarningsReaction": false,
+  "Cluster": "microcap_pump"
+ },
+ "DT": {
+  "Type": "earnings",
+  "Catalyst": "Q2 EPS 0.54 美元優於預期,但全年 EPS 財測中值由 1.98 下修至 1.89 美元(含 Arize 併購稀釋)",
+  "EarningsReaction": true,
+  "Cluster": "software_margin"
+ },
+ "TEVA": {
+  "Type": "earnings",
+  "Catalyst": "Q3 調整後 EPS 0.86 美元、營收 43.95 億雙雙優於預期;三款新藥銷售財測全數上調、全年營收財測上調,但學名藥營收年減 16%",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "KDP": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 0.66 美元小幅優於預期(含 9,900 萬美元關稅退款),營收 73.4 億略低於預期、營益率下滑,全年財測僅維持",
+  "EarningsReaction": true,
+  "Cluster": "staples_miss"
+ },
+ "WAT": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 4.10 美元、營收 17.67 億雙雙優於預期,全年 EPS 財測上調至 14.60–14.70 美元",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "YUM": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 1.56 美元符合偏高預估、營收 20.54 億低於預期;Taco Bell 走出生菜食安風波,9 月底起同店表現跑贏同業",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "SYY": {
+  "Type": "earnings",
+  "Catalyst": "FQ1 財報公布並任命新財務長,調整後 EPS 與營收約略符合預期,盤前跌逾 4%(詳細跌因待確認)",
+  "EarningsReaction": true,
+  "Cluster": "staples_miss"
+ },
+ "ADM": {
+  "Type": "earnings",
+  "Catalyst": "Q3 調整後 EPS 1.77 美元大幅優於預期 1.53、營收 223 億優於預期,全年 EPS 財測上調至 5.50–5.80 美元",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "PHG": {
+  "Type": "earnings",
+  "Catalyst": "Q3 淨利下滑但銷售成長,維持 2026 年銷售成長財測,盤前漲約 6%",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "UPST": {
+  "Type": "earnings",
+  "Catalyst": "Q3 營收年增 34% 小幅優於預期,但全年財測下修:營收 14 億→13.5 億、EBITDA 2.94 億→2.6 億美元",
+  "EarningsReaction": true,
+  "Cluster": "earnings_miss"
+ },
+ "JD": {
+  "Type": "M&A",
+  "Catalyst": "歐盟有條件核准收購德國 CECONOMY(MediaMarkt 母公司),加上港股中概股大漲 5%,ADR 盤前 +4.5%",
+  "EarningsReaction": false,
+  "Cluster": "china"
+ },
+ "KEP": {
+  "Type": "momentum",
+  "Catalyst": "查無個股新聞;韓股反彈帶動 ADR 補漲,盤前約 +1.5%",
+  "EarningsReaction": false,
+  "Cluster": "macro"
+ },
+ "VITL": {
+  "Type": "guidance",
+  "Catalyst": "Q3 EPS −0.15 美元遜於預期,全年營收財測由 7.75–8 億砍到 7.3 億美元,盤前 −5%",
+  "EarningsReaction": true,
+  "Cluster": "earnings_miss"
+ },
+ "PFE": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 0.87 美元、營收 165.8 億雙雙優於預期,全年 EPS 財測上調至 2.95–3.05、營收 620–640 億,並任命新財務長",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "MPLX": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 1.15 美元、營收 36 億雙雙優於預期,配息調升 12.5%;母公司 MPC 同步出售資產給 CVR",
+  "EarningsReaction": true,
+  "Cluster": "oil"
+ },
+ "RACE": {
+  "Type": "earnings",
+  "Catalyst": "Q3 獲利優於預期,全年財測小幅上調至 EPS 至少 9.85 歐元、營收約 76.5 億歐元,僅符合市場預期",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "APO": {
+  "Type": "earnings",
+  "Catalyst": "Q3 調整後淨收益每股 2.07 美元低於預期(Athene 精算假設檢討拖累),手續費相關收益創新高 8 億美元、年增 23%",
+  "EarningsReaction": true,
+  "Cluster": "earnings_miss"
+ },
+ "TRI": {
+  "Type": "earnings",
+  "Catalyst": "Q3 本業營收成長 10%、三大事業財測維持;因剔除 Global Print 改口徑,EPS 0.81 美元與舊預估不可直接比較",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "ZBRA": {
+  "Type": "earnings",
+  "Catalyst": "Q3 營收 16.1 億美元優於預期但 EPS 4.95 美元略低於 5.00,Q4 EPS 財測中值低於預期、自由現金流財測偏弱,盤前重挫 14%",
+  "EarningsReaction": true,
+  "Cluster": "earnings_miss"
+ },
+ "RVTY": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 1.38 美元、營收 7.29 億雙雙優於預期、本業成長 7%,全年 EPS 財測上調至 5.40–5.45 美元",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "EXPD": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 2.65 美元、營收 41.1 億大幅優於預期(+18% / +13%),但稱港口擁塞與供應鏈問題延續到年底,股價持平",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "BNTX": {
+  "Type": "earnings",
+  "Catalyst": "Q3 轉盈(淨利 1.85 億歐元)、營收明顯優於預期,全年營收下限上調至 17–19 億歐元;BNT113 試驗未達顯著",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "BR": {
+  "Type": "earnings",
+  "Catalyst": "FQ1 EPS 1.56 美元大幅優於預期 1.37、營收小幅優於預期,全年 EPS 財測維持 10.37–10.75",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "DD": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 2.09 美元超出自家財測上緣、營收 18.7 億優於預期,全年 EPS 財測上調至 7.47–7.52",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "LDOS": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 3.62 美元大幅優於預期、全年 EPS 財測上調至 12.5–12.7,但營收 46.3 億略低於預期、營收財測下修",
+  "EarningsReaction": true,
+  "Cluster": "earnings_miss"
+ },
+ "BALL": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 1.10 美元小幅優於預期、營收 41.9 億大幅優於預期;GAAP 虧損來自英國退休金非現金費用",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "TLN": {
+  "Type": "guidance",
+  "Catalyst": "Q3 調整後 EPS 未達預期但營收 13.3 億優於預期;維持 2026 財測、首度給 2027 財測,庫藏股擴大至 30 億美元",
+  "EarningsReaction": true,
+  "Cluster": "ai_power"
+ },
+ "YUMC": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 0.91 美元年增 20%、營收 34.8 億年增 8%,但同店銷售 −3%(肯德基、必勝客皆 −3%),新店目標上調至 2,400 家以上",
+  "EarningsReaction": true,
+  "Cluster": "china"
+ },
+ "ULS": {
+  "Type": "earnings",
+  "Catalyst": "Q3 調整後 EPS 0.62 美元、營收 8.23 億雙雙優於預期,全年本業成長財測上調至約 6.5%",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "IT": {
+  "Type": "earnings",
+  "Catalyst": "Q3 調整後 EPS 3.59 美元遠優於 2.86、營收優於預期且全年財測上調,但合約價值(CV)僅成長 2.5%,成長放緩拖累股價",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "FMS": {
+  "Type": "guidance",
+  "Catalyst": "Q3 調整後營業利益年減 6%,全年營業利益財測收斂至區間下半(持平到中個位數衰退)",
+  "EarningsReaction": true,
+  "Cluster": "earnings_miss"
+ },
+ "CRM": {
+  "Type": "M&A",
+  "Catalyst": "宣布收購語音 AI 公司 Cresta(報導價約 27 億美元,官方未證實),預計 2027 年 2–4 月完成交割",
+  "EarningsReaction": false,
+  "Cluster": "ai_software"
+ },
+ "IEP": {
+  "Type": "M&A",
+  "Catalyst": "子公司 CVR Energy 以 42 億美元買下 Marathon 兩座煉油廠;Q3 淨資產價值增加 8.65 億到 34.7 億美元",
+  "EarningsReaction": true,
+  "Cluster": "oil"
+ },
+ "FISV": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 1.75 美元優於預期約 1.72、財測維持;降本目標由 5 億加倍到 10 億美元,Q4 再買回 5 億美元庫藏股",
+  "EarningsReaction": true,
+  "Cluster": "earnings_beat"
+ },
+ "RRX": {
+  "Type": "earnings",
+  "Catalyst": "Q3 調整後 EPS 指引上修至 $10.60–10.90(原 $10.35–10.85),資料中心 E-Pod 銷售 $2,500 萬;另認列 $1.19 億商譽減損,GAAP 指引下修",
+  "EarningsReaction": true,
+  "Cluster": ""
+ },
+ "AME": {
+  "Type": "earnings",
+  "Catalyst": "Q3 營收創高 $22.2 億(+17% YoY),調整後 EPS $2.21 優於自家指引 $2.08–2.10,上修全年財測",
+  "EarningsReaction": true,
+  "Cluster": ""
  }
 }
