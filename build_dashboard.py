@@ -725,6 +725,13 @@ for td in sorted(target_dates_set):
                     old_st = (old.get('stocks') or {}).get(sym)
                     if old_st and old_st.get('modelPred') and not st.get('modelPred'):
                         st['modelPred'] = old_st['modelPred']
+                    # Cloud re-scan (2026-11-03): tv-summary.json / *-earnings-fq.md are
+                    # gitignored, so a fresh clone rebuilds overlapping stocks with NO tv
+                    # and silently wipes the TV the morning run published (28 names lost).
+                    # Keep the packet's tv when this run has none; a fresh tv-summary row
+                    # still overrides it in the loop below.
+                    if old_st and old_st.get('tv') and not st.get('tv'):
+                        st['tv'] = old_st['tv']
                 # Union-restored stocks also carry their OLD `tv` block. A day-2 earnings
                 # carryover (IOVA on 2026-08-07) is no longer in today's Barchart filter,
                 # so the main loop never rebuilds its TV — re-scraping the post-report
