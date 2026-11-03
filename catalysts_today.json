@@ -114,10 +114,10 @@
   "Cluster": "ai_capex_selloff"
  },
  "AEHR": {
-  "Type": "macro",
-  "Catalyst": "無催化劑(FQ1 財報 11/2);隨 AI 類股重挫",
-  "EarningsReaction": false,
-  "Cluster": "ai_capex_selloff"
+  "Type": "earnings",
+  "Catalyst": "Q1營收3,300萬、年增200%，全年上調至1.5億",
+  "EarningsReaction": true,
+  "Cluster": "semi_test"
  },
  "SMCI": {
   "Type": "macro",
@@ -132,10 +132,10 @@
   "Cluster": "ai_capex_selloff"
  },
  "BE": {
-  "Type": "macro",
-  "Catalyst": "10/22 財報(營收 12.4 億美元、年增 138%、上調財測)後走弱;今日隨 AI 類股重挫",
+  "Type": "contract",
+  "Catalyst": "與CRC簽MOU，評估加州1GW燃料電池加碳捕捉",
   "EarningsReaction": false,
-  "Cluster": "ai_capex_selloff"
+  "Cluster": "fuel_cell"
  },
  "CRWV": {
   "Type": "macro",
@@ -862,10 +862,10 @@
   "Cluster": "ai_capex_selloff"
  },
  "PLTR": {
-  "Type": "macro",
-  "Catalyst": "查無專屬新聞;隨 Intel 財測、Amazon 現金流引發的 AI 資本支出賣壓與科技股同步下跌,盤中約 −4.7%",
-  "EarningsReaction": false,
-  "Cluster": "ai_capex_selloff"
+  "Type": "earnings",
+  "Catalyst": "Q3營收23.1億增近倍、上調全年至85.3億，惟高估值賣壓",
+  "EarningsReaction": true,
+  "Cluster": "ai_software"
  },
  "NEM": {
   "Type": "macro",
@@ -999,8 +999,9 @@
  },
  "CLRO": {
   "Type": "momentum",
-  "Catalyst": "查無新消息(10/15 後無新申報);週五 −31.8% 後反彈,背景為 Cortigent 併購未完成與 Nasdaq 下市決定",
-  "EarningsReaction": false
+  "Catalyst": "查無個股新聞，單日暴漲66%後盤後獲利回吐",
+  "EarningsReaction": false,
+  "Cluster": "microcap"
  },
  "CNO": {
   "Type": "earnings",
@@ -1206,10 +1207,10 @@
   "EarningsReaction": false
  },
  "LSCC": {
-  "Type": "macro",
-  "Catalyst": "查無個股新聞;隨 AI 硬體股殺盤收 92.97 美元(−9.7%);7/4 止季度營收年增 62.2%",
-  "EarningsReaction": false,
-  "Cluster": "ai_capex_selloff"
+  "Type": "earnings",
+  "Catalyst": "Q3營收2.91億增118%超預期，Q4指引3.35億(+130%)遠高於共識",
+  "EarningsReaction": true,
+  "Cluster": "fpga_ai"
  },
  "LYG": {
   "Type": "earnings",
@@ -1287,9 +1288,10 @@
   "Cluster": "ai_capex_selloff"
  },
  "ORCL": {
-  "Type": "analyst",
-  "Catalyst": "Stephens 升評至加碼,目標價 213 美元,較 10/30 收盤價高約 63%",
-  "EarningsReaction": false
+  "Type": "news",
+  "Catalyst": "完成200億美元股債籌資、增發8,620萬股折價定價116美元",
+  "EarningsReaction": false,
+  "Cluster": "oracle_raise"
  },
  "PGEN": {
   "Type": "FDA",
@@ -1462,9 +1464,10 @@
   "EarningsReaction": false
  },
  "VCIG": {
-  "Type": "news",
-  "Catalyst": "查不到;VCI Global 盤後 +22.0% 至 0.2062 美元(量 2,126 萬股),最新公告為 10/16 上半年財報(營收年減 86.37%)",
-  "EarningsReaction": false
+  "Type": "momentum",
+  "Catalyst": "1拆18反分割首日暴漲168%後回吐，無基本面消息",
+  "EarningsReaction": false,
+  "Cluster": "microcap"
  },
  "VECO": {
   "Type": "macro",
@@ -1635,8 +1638,9 @@
  },
  "ELAB": {
   "Type": "M&A",
-  "Catalyst": "旗下 SPAC(NorthStrive Acquisition Corp I)宣布與 Nuclea Energy 合併(GlobeNewswire 07:00)",
-  "EarningsReaction": false
+  "Catalyst": "旗下SPAC NorthStrive以3.5億美元與Nuclea Energy合併",
+  "EarningsReaction": false,
+  "Cluster": "spac"
  },
  "KOS": {
   "Type": "earnings",
@@ -1650,7 +1654,110 @@
  },
  "BRAI": {
   "Type": "momentum",
-  "Catalyst": "查無新消息(最新公告 10/26);連兩日 −15%、−20% 後反彈",
-  "EarningsReaction": false
+  "Catalyst": "查無個股新聞，低價小型股跌深後技術性反彈",
+  "EarningsReaction": false,
+  "Cluster": "microcap"
+ },
+ "AAPL": {
+  "Type": "earnings",
+  "Catalyst": "FQ4營收1,145億增12%勝預期，但毛利率展望弱、中國不如預期",
+  "EarningsReaction": true,
+  "Cluster": "apple_margin"
+ },
+ "ON": {
+  "Type": "earnings",
+  "Catalyst": "Q3營收17.2億增11%優於指引，6億收購Ferric、AI電源目標上調",
+  "EarningsReaction": true,
+  "Cluster": "semi_rebound"
+ },
+ "CLX": {
+  "Type": "earnings",
+  "Catalyst": "Q1營收19.05億增33%(含GOJO)、調整後EPS 1.55，全年有機成長維持3.5-4.5%",
+  "EarningsReaction": true,
+  "Cluster": "staples"
+ },
+ "ACB": {
+  "Type": "momentum",
+  "Catalyst": "查無個股新聞，隨大麻族群與 Curaleaf 收購題材反彈",
+  "EarningsReaction": false,
+  "Cluster": "cannabis"
+ },
+ "ADEA": {
+  "Type": "guidance",
+  "Catalyst": "Q3營收0.80億減8%大幅不如預期，全年財測下修至3.75-4.15億",
+  "EarningsReaction": true,
+  "Cluster": "licensing"
+ },
+ "BLZE": {
+  "Type": "earnings",
+  "Catalyst": "Q3營收4,670萬增26%，全年上調至1.78億",
+  "EarningsReaction": true,
+  "Cluster": "cloud_storage"
+ },
+ "BMRN": {
+  "Type": "earnings",
+  "Catalyst": "Q3營收10.2億符合、調整後EPS 0.23勝預期；全年營收/EPS下修(IPR&D費用)",
+  "EarningsReaction": true,
+  "Cluster": "biotech"
+ },
+ "CMPS": {
+  "Type": "news",
+  "Catalyst": "同業Usona遞交psilocybin NDA，前日暴跌27%後盤後反彈",
+  "EarningsReaction": false,
+  "Cluster": "psychedelics"
+ },
+ "EHGO": {
+  "Type": "momentum",
+  "Catalyst": "查無個股新聞，市值僅270萬美元微型股低量軋空",
+  "EarningsReaction": false,
+  "Cluster": "microcap"
+ },
+ "FN": {
+  "Type": "earnings",
+  "Catalyst": "Q1 EPS 4.34、營收14.7億超預期，Q2指引16-16.5億",
+  "EarningsReaction": true,
+  "Cluster": "optical"
+ },
+ "GRAB": {
+  "Type": "earnings",
+  "Catalyst": "Q3營收11.1億增27%，全年營收與EBITDA指引二度上調",
+  "EarningsReaction": true,
+  "Cluster": "ridehailing"
+ },
+ "HLIT": {
+  "Type": "earnings",
+  "Catalyst": "Q3營收1.488億增64%超預期，全年指引三度上調至5.45-5.55億",
+  "EarningsReaction": true,
+  "Cluster": "broadband"
+ },
+ "LIFE": {
+  "Type": "earnings",
+  "Catalyst": "Q3營收2.35億增151%，上調全年指引並授權1億回購",
+  "EarningsReaction": true,
+  "Cluster": "biotech"
+ },
+ "NOV": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞，財報後回落、盤後隨油價及能源族群反彈",
+  "EarningsReaction": false,
+  "Cluster": "oil_service"
+ },
+ "PARA": {
+  "Type": "momentum",
+  "Catalyst": "前日因退市通知暴跌47%後軋空，流通股僅52萬股",
+  "EarningsReaction": false,
+  "Cluster": "microcap"
+ },
+ "TTI": {
+  "Type": "earnings",
+  "Catalyst": "Q3營收1.68億創十年同期新高、EPS 0.06與EBITDA超預期",
+  "EarningsReaction": true,
+  "Cluster": "energy"
+ },
+ "UPWK": {
+  "Type": "earnings",
+  "Catalyst": "Q3 EPS 0.40遠超預期、併購WorkMotion；Q4指引低於共識",
+  "EarningsReaction": true,
+  "Cluster": "freelance"
  }
 }
