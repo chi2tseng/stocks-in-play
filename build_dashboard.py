@@ -22,6 +22,15 @@ _MARKET_HOLIDAYS = frozenset({
     '2027-01-01', '2027-01-18', '2027-02-15', '2027-03-26', '2027-05-31',
     '2027-06-18', '2027-07-05', '2027-09-06', '2027-11-25', '2027-12-24',
 })
+
+def _existing_trade_ideas(td):
+    # 重 build 舊日包時 trade_ideas.json 已是別日的:保留包內既有 Ideas,別清空(2026-11-04 PLTR 事故)
+    try:
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dashboard', 'data', td + '.json'), encoding='utf-8') as f:
+            return json.load(f).get('tradeIdeas') or []
+    except Exception:
+        return []
+
 def _is_trading_day(d):
     return d.weekday() < 5 and d.isoformat() not in _MARKET_HOLIDAYS
 def _next_trading_day(iso):
@@ -657,7 +666,7 @@ def _build_data_for(td):
         'grokPicks':   gkp,
         'ollamaPicks':   qwp,
         'dailyCase':   _daily_case_for(td),
-        'tradeIdeas':  (lambda _ti: (_ti.get('ideas') if isinstance(_ti, dict) and _ti.get('date') == td else []))(
+        'tradeIdeas':  (lambda _ti: (_ti.get('ideas') if isinstance(_ti, dict) and _ti.get('date') == td else _existing_trade_ideas(td)))(
             json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'trade_ideas.json'), encoding='utf-8'))
             if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'trade_ideas.json')) else {}),
         'dayResets':   drs,
