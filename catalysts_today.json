@@ -6,16 +6,16 @@
     "Cluster": "ai_capex_selloff"
   },
   "AMD": {
-    "Type": "macro",
-    "Catalyst": "AI 燒錢疑慮加上 Intel 警訊重壓類股;11/3 盤後才公布財報,無個股新聞",
-    "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Type": "earnings",
+    "Catalyst": "Q3 EPS 2.09、營收133.8億美元雙超預期,資料中心營收年增97%",
+    "EarningsReaction": true,
+    "Cluster": ""
   },
   "MU": {
     "Type": "macro",
-    "Catalyst": "AI 燒錢疑慮、Intel 警訊加上 SanDisk 引發記憶體漲價見頂疑慮,記憶體類股連動走弱;無個股新聞",
+    "Catalyst": "查無個股新聞;AI 族群因民主黨掌國會、審查疑慮走弱",
     "EarningsReaction": false,
-    "Cluster": "memory_selloff"
+    "Cluster": "ai_datacenter_selloff"
   },
   "SKHY": {
     "Type": "macro",
@@ -30,22 +30,22 @@
     "Cluster": "ai_capex_selloff"
   },
   "MRVL": {
-    "Type": "M&A",
-    "Catalyst": "邁威爾換股收購 Lumentum:企業價值 1,150 億美元,以 10/28 未受影響價計溢價 23.9%",
+    "Type": "macro",
+    "Catalyst": "查無個股新聞;AI 族群因民主黨掌國會、審查疑慮走弱",
     "EarningsReaction": false,
-    "Cluster": "mrvl_lite_deal"
+    "Cluster": "ai_datacenter_selloff"
   },
   "CRDO": {
-    "Type": "macro",
-    "Catalyst": "Amazon 燒錢疑慮與 Intel 財測重挫,AI 連接晶片股遭砍;無個股新聞",
+    "Type": "policy",
+    "Catalyst": "AI 族群走弱,盤前 -5.3% 至 $142.96",
     "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Cluster": "ai_datacenter_selloff"
   },
   "ALAB": {
-    "Type": "macro",
-    "Catalyst": "AI 燒錢疑慮與 Intel 警訊,AI 連接晶片類股同步下挫;無個股新聞",
-    "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Type": "earnings",
+    "Catalyst": "Q3 營收 $5.849 億創高、年增 154%,盤前仍 -6.6%",
+    "EarningsReaction": true,
+    "Cluster": "ai_datacenter_selloff"
   },
   "AMKR": {
     "Type": "macro",
@@ -67,9 +67,9 @@
   },
   "COHR": {
     "Type": "macro",
-    "Catalyst": "族群連動,未見個股新聞:同業 Lumentum 被邁威爾收購帶動光通訊股;財報 11/4 盤後",
+    "Catalyst": "查無個股新聞;AI 族群因民主黨掌國會、審查疑慮走弱",
     "EarningsReaction": false,
-    "Cluster": "mrvl_lite_deal"
+    "Cluster": "ai_datacenter_selloff"
   },
   "CIEN": {
     "Type": "macro",
@@ -96,10 +96,10 @@
     "Cluster": "optical"
   },
   "NVTS": {
-    "Type": "macro",
-    "Catalyst": "無個股新聞(Q3 財報 11/3);隨 AI 資本支出疑慮與功率半導體類股重挫",
-    "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Type": "earnings",
+    "Catalyst": "Q3 營收 $1,400 萬年增 38%,Rosenblatt 升評買進,盤前+11%",
+    "EarningsReaction": true,
+    "Cluster": ""
   },
   "TTMI": {
     "Type": "macro",
@@ -114,64 +114,64 @@
     "Cluster": "ai_capex_selloff"
   },
   "AEHR": {
-    "Type": "earnings",
-    "Catalyst": "FQ1 營收 3,300 萬美元創新高、年增 200%;全年營收財測下限由 1.3 億上調至 1.5 億美元",
-    "EarningsReaction": true,
-    "Cluster": "ai_semis"
+    "Type": "news",
+    "Catalyst": "查無今日新聞;財報後大漲隔日回吐",
+    "EarningsReaction": false,
+    "Cluster": ""
   },
   "SMCI": {
-    "Type": "macro",
-    "Catalyst": "無個股新聞(11/3 財報);伺服器股隨 Dell、HPE 同步重挫",
-    "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Type": "earnings",
+    "Catalyst": "FQ1 營收199.5億美元、FQ2 財測遠高於預期;盤後 +7% 到盤前收斂至 +1%",
+    "EarningsReaction": true,
+    "Cluster": ""
   },
   "VRT": {
-    "Type": "macro",
-    "Catalyst": "10/28 財報(訂單年增逾一倍、財測上調)大漲逾 16% 後,今日隨 AI 電力類股獲利回吐",
+    "Type": "policy",
+    "Catalyst": "資料中心審查疑慮再起,盤前 -7.8% 至 $217.50",
     "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Cluster": "ai_datacenter_selloff"
   },
   "BE": {
-    "Type": "analyst",
-    "Catalyst": "巴克萊升評至加碼(目標價 289 美元);另與 CRC 簽加州 1GW 燃料電池供電備忘錄,尚非正式合約",
+    "Type": "contract",
+    "Catalyst": "盤前漲跌查不到;昨日 CRC 1GW 合作意向、Barclays 升評",
     "EarningsReaction": false,
-    "Cluster": "ai_power"
+    "Cluster": ""
   },
   "CRWV": {
-    "Type": "macro",
-    "Catalyst": "無個股新聞;高盛 10/29 估算其新增舉債需求 200–380 億美元,AI 融資疑慮升溫,又逢 Amazon、Intel 財報賣壓",
+    "Type": "policy",
+    "Catalyst": "民主黨掌國會、AI 審查疑慮,盤前 -9.3% 至 $48.73",
     "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Cluster": "ai_datacenter_selloff"
   },
   "NBIS": {
-    "Type": "macro",
-    "Catalyst": "無個股新聞;Amazon 現金流轉弱與 Intel 財測加深 AI 支出疑慮",
+    "Type": "policy",
+    "Catalyst": "AI 資料中心股隨民主黨掌國會下挫,盤前 -6.4%",
     "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Cluster": "ai_datacenter_selloff"
   },
   "APLD": {
-    "Type": "macro",
-    "Catalyst": "無個股新聞;延續微軟資本支出低於預期的賣壓,今日再受 Amazon、Intel 拖累",
+    "Type": "policy",
+    "Catalyst": "資料中心類股下挫,盤前 -6.9% 至 $16.59",
     "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Cluster": "ai_datacenter_selloff"
   },
   "IREN": {
-    "Type": "macro",
-    "Catalyst": "無個股新聞(10/28 已完成 3.63 億美元 GPU 資產再融資);隨 AI 資本支出疑慮重挫",
+    "Type": "policy",
+    "Catalyst": "資料中心類股隨民主黨勝選下挫,盤前 -7.0%",
     "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Cluster": "ai_datacenter_selloff"
   },
   "CIFR": {
-    "Type": "earnings",
-    "Catalyst": "Q3 虧損擴大、營收下滑;同日 KBW 對 AI 代管礦企全面下修目標價,CIFR 砍幅最大",
-    "EarningsReaction": true,
-    "Cluster": "btc_miner_reset"
+    "Type": "analyst",
+    "Catalyst": "KBW 降評、多家砍目標價;盤前 -16.9% 至 $6.75",
+    "EarningsReaction": false,
+    "Cluster": ""
   },
   "WULF": {
-    "Type": "macro",
-    "Catalyst": "無個股新聞;比特幣回升帶動礦股盤前走高,KBW 同日下修族群目標價",
+    "Type": "policy",
+    "Catalyst": "資料中心類股下挫,盤前 -6.9% 至 $11.66",
     "EarningsReaction": false,
-    "Cluster": "btc_miner_reset"
+    "Cluster": "ai_datacenter_selloff"
   },
   "PENG": {
     "Type": "M&A",
@@ -209,10 +209,10 @@
     "EarningsReaction": true
   },
   "RXRX": {
-    "Type": "macro",
-    "Catalyst": "無個股新聞;AI 題材股隨 Nasdaq 期貨下跌回吐",
+    "Type": "news",
+    "Catalyst": "查無個股新聞",
     "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Cluster": ""
   },
   "BB": {
     "Type": "momentum",
@@ -227,28 +227,28 @@
     "Cluster": "nuclear_selloff"
   },
   "OUST": {
-    "Type": "macro",
-    "Catalyst": "無個股新聞(Q3 財報尚未公布);隨科技股風險趨避走弱",
-    "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Type": "earnings",
+    "Catalyst": "Q3 營收5900萬美元年增50%創高,Cantor 升評至優於大盤、目標價45美元",
+    "EarningsReaction": true,
+    "Cluster": ""
   },
   "CRCL": {
-    "Type": "macro",
-    "Catalyst": "無個股新聞;隨 Binance 遭駭殺盤,另 Coinbase 財報顯示 USDC 相關營收年減",
-    "EarningsReaction": false,
-    "Cluster": "crypto_hack"
+    "Type": "earnings",
+    "Catalyst": "Q3 EPS 0.84 美元優於預期,裁員約 5%,加密股同日承壓",
+    "EarningsReaction": true,
+    "Cluster": "crypto_selloff"
   },
   "GLXY": {
     "Type": "macro",
-    "Catalyst": "10/27 已公布財報;隨 Binance 遭駭與比特幣下跌走弱",
+    "Catalyst": "查無個股新聞;比特幣下挫,盤前 -8.5% 至 $15.40",
     "EarningsReaction": false,
-    "Cluster": "crypto_hack"
+    "Cluster": "crypto_selloff"
   },
   "MARA": {
     "Type": "macro",
-    "Catalyst": "無個股新聞;比特幣跌至約 7.7 萬美元,礦商隨 AI 基建與加密類股走弱",
+    "Catalyst": "比特幣下挫、加密法案恐擱置,盤前 -6.0% 至 $6.73",
     "EarningsReaction": false,
-    "Cluster": "crypto_hack"
+    "Cluster": "crypto_selloff"
   },
   "RIOT": {
     "Type": "macro",
@@ -257,16 +257,16 @@
     "Cluster": "crypto_hack"
   },
   "CLSK": {
-    "Type": "macro",
-    "Catalyst": "無個股新聞;比特幣跌至約 7.7 萬美元,礦商隨 AI 基建與加密類股走弱",
+    "Type": "analyst",
+    "Catalyst": "KBW 降評至 Market Perform;盤前 -9.2% 至 $7.40",
     "EarningsReaction": false,
-    "Cluster": "crypto_hack"
+    "Cluster": "crypto_selloff"
   },
   "BTDR": {
     "Type": "macro",
-    "Catalyst": "無個股新聞(Q3 財報 11/10);隨比特幣下跌走弱",
+    "Catalyst": "查無個股新聞;比特幣下挫,盤前 -7.3% 至 $6.42",
     "EarningsReaction": false,
-    "Cluster": "crypto_hack"
+    "Cluster": "crypto_selloff"
   },
   "BMNR": {
     "Type": "macro",
@@ -281,10 +281,10 @@
     "Cluster": "crypto_hack"
   },
   "ASST": {
-    "Type": "macro",
-    "Catalyst": "無個股新聞;比特幣庫藏股,隨比特幣下跌與 Binance 遭駭走弱",
+    "Type": "news",
+    "Catalyst": "查無個股新聞",
     "EarningsReaction": false,
-    "Cluster": "crypto_hack"
+    "Cluster": ""
   },
   "FWDI": {
     "Type": "macro",
@@ -293,10 +293,10 @@
     "Cluster": "crypto_hack"
   },
   "DFDV": {
-    "Type": "macro",
-    "Catalyst": "無個股新聞(Q3 財報 11/12);Solana 跌約 4%,小型庫藏股跌幅放大",
+    "Type": "news",
+    "Catalyst": "查無個股新聞",
     "EarningsReaction": false,
-    "Cluster": "crypto_hack"
+    "Cluster": ""
   },
   "PURR": {
     "Type": "momentum",
@@ -390,15 +390,15 @@
   },
   "SBSW": {
     "Type": "macro",
-    "Catalyst": "白金跌破 1,500 美元、金價失守 4,000 美元,貴金屬礦業股走弱;無個股新聞",
+    "Catalyst": "盤前 +7.2%;現貨黃金漲約 3%、美元重挫,金銀礦股齊揚",
     "EarningsReaction": false,
     "Cluster": "precious_metals"
   },
   "INTC": {
-    "Type": "earnings",
-    "Catalyst": "Q3 調整後 EPS 0.52 美元優於預估,但 Q4 營收財測 150–160 億美元遠低於預估 170.8 億、EPS 財測 0.25 美元(預估 0.44),並示警 PC 疲弱延續到 2027 年上半年,BofA 降評,盤前 −25%",
-    "EarningsReaction": true,
-    "Cluster": "ai_capex_selloff"
+    "Type": "analyst",
+    "Catalyst": "大和證券目標價由 $96 降至 $63",
+    "EarningsReaction": false,
+    "Cluster": ""
   },
   "AMZN": {
     "Type": "earnings",
@@ -467,16 +467,16 @@
     "Cluster": "crypto_hack"
   },
   "SNDK": {
-    "Type": "momentum",
-    "Catalyst": "無個股新聞;記憶體族群盤前齊彈(美光漲逾 3%),收復 11/02 鎧俠示警造成的跌幅",
+    "Type": "macro",
+    "Catalyst": "查無個股新聞;AI 族群因民主黨掌國會、審查疑慮走弱",
     "EarningsReaction": false,
-    "Cluster": "memory"
+    "Cluster": "ai_datacenter_selloff"
   },
   "DELL": {
-    "Type": "macro",
-    "Catalyst": "Intel 示警 PC 疲弱延續至 2027 年上半年、記憶體漲價壓抑需求,PC 與伺服器廠連動重挫;無個股新聞",
+    "Type": "policy",
+    "Catalyst": "AI 族群走弱,盤前 -4.9% 至 $388.37",
     "EarningsReaction": false,
-    "Cluster": "pc_weakness"
+    "Cluster": "ai_datacenter_selloff"
   },
   "HPQ": {
     "Type": "macro",
@@ -563,10 +563,10 @@
     "Cluster": null
   },
   "GD": {
-    "Type": "earnings",
-    "Catalyst": "Q3 營收 145.7 億美元(年增 13%)、EPS 4.49 美元雙雙優於預估,海軍系統 +21%、積壓訂單 2,203 億美元,盤前 +3.5%",
-    "EarningsReaction": true,
-    "Cluster": null
+    "Type": "macro",
+    "Catalyst": "民主黨拿下國會,國防股選後走弱",
+    "EarningsReaction": false,
+    "Cluster": "defense_midterm"
   },
   "CNI": {
     "Type": "earnings",
@@ -653,10 +653,10 @@
     "Cluster": null
   },
   "CYPH": {
-    "Type": "momentum",
-    "Catalyst": "查無個股新聞;11/02 隨 Zcash(ZEC)重挫殺 21%(傳大戶遭清算、治理爭議),今晨跟著反彈",
+    "Type": "news",
+    "Catalyst": "查無個股新聞",
     "EarningsReaction": false,
-    "Cluster": "crypto"
+    "Cluster": ""
   },
   "COUR": {
     "Type": "guidance",
@@ -671,10 +671,10 @@
     "Cluster": "crypto_selloff"
   },
   "FPS": {
-    "Type": "macro",
-    "Catalyst": "查無個股新聞;AI 電力類股隨科技股風險偏好轉弱,10/22 財務長離任後賣壓未歇",
+    "Type": "news",
+    "Catalyst": "查無個股新聞",
     "EarningsReaction": false,
-    "Cluster": "ai_infra_selloff"
+    "Cluster": ""
   },
   "BFAM": {
     "Type": "guidance",
@@ -689,21 +689,22 @@
     "Cluster": null
   },
   "TE": {
-    "Type": "momentum",
-    "Catalyst": "查無當日新聞,週五 −5.6% 後反彈;10/30 曾公布 1.58GW 承購協議",
-    "EarningsReaction": false
+    "Type": "policy",
+    "Catalyst": "盤前 +7.1%;民主黨掌國會,潔淨能源類股齊漲",
+    "EarningsReaction": false,
+    "Cluster": "clean_energy_rally"
   },
   "DKI": {
-    "Type": "momentum",
-    "Catalyst": "查無個股新聞;10/8 募資 600 萬美元、10/22 1 拆 50 反向分割(年內第二次)後賣壓延續",
+    "Type": "news",
+    "Catalyst": "查無個股新聞,盤前+48%、僅 $2.22,市值約 $2 百萬",
     "EarningsReaction": false,
-    "Cluster": null
+    "Cluster": ""
   },
   "FCEL": {
     "Type": "news",
-    "Catalyst": "10/29 公布韓國京畿綠能專案 4,900 萬美元美國進出口銀行融資(中性消息),股價仍隨燃料電池類股走弱",
+    "Catalyst": "查無個股新聞;燃料電池同業 Bloom 獲 Barclays 升評",
     "EarningsReaction": false,
-    "Cluster": null
+    "Cluster": "clean_energy_rally"
   },
   "LUNG": {
     "Type": "momentum",
@@ -784,16 +785,16 @@
     "Cluster": null
   },
   "FSLR": {
-    "Type": "guidance",
-    "Catalyst": "Q3 營收年減 23%,全年營收財測下修至 46–49 億美元,Evercore 目標價由 218 美元降至 189 美元",
-    "EarningsReaction": true,
-    "Cluster": null
+    "Type": "policy",
+    "Catalyst": "盤前 +6.3%;民主黨掌國會,潔淨能源類股齊漲",
+    "EarningsReaction": false,
+    "Cluster": "clean_energy_rally"
   },
   "GEV": {
-    "Type": "analyst",
-    "Catalyst": "HSBC 由持有升評買進、目標價 1,100 美元,但股價仍隨 AI 電力類股走低",
+    "Type": "policy",
+    "Catalyst": "資料中心審查疑慮,盤前 -7.0% 至 $853.50",
     "EarningsReaction": false,
-    "Cluster": "ai_power_selloff"
+    "Cluster": "ai_datacenter_selloff"
   },
   "CAT": {
     "Type": "analyst",
@@ -820,10 +821,10 @@
     "Cluster": null
   },
   "CRML": {
-    "Type": "momentum",
-    "Catalyst": "盤前-6.3%至7.45美元;10/28–30查不到公司或稀土政策新聞,同日美股期貨重挫",
+    "Type": "news",
+    "Catalyst": "查無個股新聞",
     "EarningsReaction": false,
-    "Cluster": "rare_earths"
+    "Cluster": ""
   },
   "MP": {
     "Type": "momentum",
@@ -833,15 +834,15 @@
   },
   "WDC": {
     "Type": "macro",
-    "Catalyst": "查無專屬新聞;隨 Intel 財測、Amazon 現金流引發的 AI 資本支出賣壓與 SanDisk 走弱,盤前 -7.9%",
+    "Catalyst": "查無個股新聞;AI 族群因民主黨掌國會、審查疑慮走弱",
     "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Cluster": "ai_datacenter_selloff"
   },
   "STX": {
     "Type": "macro",
-    "Catalyst": "財報 10/27 已出,今日無專屬新聞;隨 Intel、Amazon 引發的 AI 資本支出賣壓與 SanDisk 走弱,盤前 -7.6%",
+    "Catalyst": "查無個股新聞;AI 族群因民主黨掌國會、審查疑慮走弱",
     "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Cluster": "ai_datacenter_selloff"
   },
   "AVGO": {
     "Type": "macro",
@@ -862,40 +863,40 @@
     "Cluster": "ai_capex_selloff"
   },
   "PLTR": {
-    "Type": "earnings",
-    "Catalyst": "Q3 營收 23.1 億美元年增 96% 優於預期並上調全年財測,但美國商業訂單成長放緩、估值偏高,利多出盡",
-    "EarningsReaction": true,
-    "Cluster": "ai_software"
+    "Type": "macro",
+    "Catalyst": "查無今日個股利空;與 AI 類股同步走弱",
+    "EarningsReaction": false,
+    "Cluster": "ai_datacenter_selloff"
   },
   "NEM": {
     "Type": "macro",
-    "Catalyst": "金價盤前-1.94%跌破4,000美元、白銀-4.56%,金銀礦股同步下殺;紐蒙特盤前-3.4%,查無個股新聞",
+    "Catalyst": "盤前 +5.6%;現貨黃金漲約 3%、美元重挫,金銀礦股齊揚",
     "EarningsReaction": false,
-    "Cluster": "precious_metals_selloff"
+    "Cluster": "precious_metals"
   },
   "PAAS": {
     "Type": "macro",
-    "Catalyst": "白銀盤前-4.56%至49.67美元、金價跌破4,000,銀礦股同步下殺;泛美白銀盤前-3.75%,Q3財報11/4盤後",
+    "Catalyst": "盤前 +6.8%;現貨黃金漲約 3%、美元重挫,金銀礦股齊揚",
     "EarningsReaction": false,
-    "Cluster": "precious_metals_selloff"
+    "Cluster": "precious_metals"
   },
   "AGI": {
     "Type": "macro",
-    "Catalyst": "金價盤前跌破4,000美元,金銀礦股同步下殺;Alamos盤前-3.7%,Q3財報10/28已公布,Island Gold豎井延後",
+    "Catalyst": "盤前 +5.9%;現貨黃金漲約 3%、美元重挫,金銀礦股齊揚",
     "EarningsReaction": false,
-    "Cluster": "precious_metals_selloff"
+    "Cluster": "precious_metals"
   },
   "BTG": {
     "Type": "macro",
-    "Catalyst": "金價盤前-1.94%、白銀-4.56%,金銀礦股同步下殺;B2Gold盤前-3.4%,10/28–30查不到公司新聞",
+    "Catalyst": "盤前 +6.2%;現貨黃金漲約 3%、美元重挫,金銀礦股齊揚",
     "EarningsReaction": false,
-    "Cluster": "precious_metals_selloff"
+    "Cluster": "precious_metals"
   },
   "EXK": {
     "Type": "macro",
-    "Catalyst": "白銀盤前-4.56%至49.67美元、金價跌破4,000;Endeavour Silver盤前-4.8%,Q3財報11/9盤後,無個股新聞",
+    "Catalyst": "盤前 +7.8%;現貨黃金漲約 3%、美元重挫,金銀礦股齊揚",
     "EarningsReaction": false,
-    "Cluster": "precious_metals_selloff"
+    "Cluster": "precious_metals"
   },
   "AAON": {
     "Type": "macro",
@@ -925,10 +926,10 @@
     "EarningsReaction": true
   },
   "ANET": {
-    "Type": "macro",
-    "Catalyst": "查無個股新聞;隨 AI 硬體/網通類股走勢:ANET 跳空 −5.8%、收 −8.3%,同日英特爾 −28.6%、輝達 −4.2%",
-    "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Type": "earnings",
+    "Catalyst": "Q3 財報超預期、Q4 財測遠高於預期,盤前漲約5.3%",
+    "EarningsReaction": true,
+    "Cluster": ""
   },
   "APP": {
     "Type": "macro",
@@ -993,9 +994,9 @@
   },
   "CDE": {
     "Type": "macro",
-    "Catalyst": "查無個股新聞;隨黃金跌破 4,000 美元、GDX −5% 的金銀礦股賣壓,週五 −6.70% 收 13.10 美元(成交 4,426 萬股);Q3 財報預計 11/4",
+    "Catalyst": "盤前 +7.2%;現貨黃金漲約 3%、美元重挫,金銀礦股齊揚",
     "EarningsReaction": false,
-    "Cluster": "precious_metals_selloff"
+    "Cluster": "precious_metals"
   },
   "CLRO": {
     "Type": "momentum",
@@ -1014,10 +1015,10 @@
     "EarningsReaction": true
   },
   "CORZ": {
-    "Type": "analyst",
-    "Catalyst": "B. Riley 週五盤前將 CORZ 目標價由 42 降至 31 美元、維持買進;同日 Binance 遭駭約 63.6 億美元拖累加密股,CORZ 收 −8.2%",
+    "Type": "policy",
+    "Catalyst": "資料中心類股下挫,盤前 -8.6% 至 $13.02",
     "EarningsReaction": false,
-    "Cluster": "crypto_hack"
+    "Cluster": "ai_datacenter_selloff"
   },
   "CPRI": {
     "Type": "earnings",
@@ -1045,10 +1046,10 @@
     "EarningsReaction": true
   },
   "DDOG": {
-    "Type": "macro",
-    "Catalyst": "查無個股新聞;隨軟體/雲端類股走勢:亞馬遜、英特爾財報加深 AI 支出疑慮,DDOG 收 235.27 美元(−11.5%),11/4 盤前公布 Q3",
-    "EarningsReaction": false,
-    "Cluster": "software_selloff"
+    "Type": "earnings",
+    "Catalyst": "Q3 雙超預期、全年上調,但第四季財測季增持平,盤前一度跌近 19%",
+    "EarningsReaction": true,
+    "Cluster": ""
   },
   "DFIN": {
     "Type": "momentum",
@@ -1069,9 +1070,9 @@
   },
   "EQX": {
     "Type": "macro",
-    "Catalyst": "查無個股新聞;隨黃金跌破 4,000 美元、GDX −5% 的礦股賣壓,週五 −4.72% 收 9.70 美元;Q3 產量 237,019 盎司,財報 11/9 盤後公布",
+    "Catalyst": "盤前 +6.8%;現貨黃金漲約 3%、美元重挫,金銀礦股齊揚",
     "EarningsReaction": false,
-    "Cluster": "precious_metals_selloff"
+    "Cluster": "precious_metals"
   },
   "ERIE": {
     "Type": "earnings",
@@ -1079,10 +1080,10 @@
     "EarningsReaction": true
   },
   "ETN": {
-    "Type": "earnings",
-    "Catalyst": "Q3 EPS 3.68 美元創新高優於預期、營收 89.5 億年增 28%(本業 19%)、訂單創高,全年 EPS 財測上調至 13.70–13.80",
-    "EarningsReaction": true,
-    "Cluster": "ai_power"
+    "Type": "policy",
+    "Catalyst": "查無個股新聞與盤前漲跌;資料中心電力設備族群承壓",
+    "EarningsReaction": false,
+    "Cluster": "ai_datacenter_selloff"
   },
   "EXEL": {
     "Type": "earnings",
@@ -1133,10 +1134,10 @@
     "EarningsReaction": true
   },
   "GFS": {
-    "Type": "macro",
-    "Catalyst": "查無個股新聞;隨 Intel 財測與 AI 支出疑慮引發的類股殺盤收 41.90 美元(−8.6%)",
-    "EarningsReaction": false,
-    "Cluster": "ai_capex_selloff"
+    "Type": "earnings",
+    "Catalyst": "Q3 非 IFRS EPS 0.53 美元,毛利率創高,AI 資料中心需求強",
+    "EarningsReaction": true,
+    "Cluster": ""
   },
   "GPN": {
     "Type": "M&A",
@@ -1170,10 +1171,10 @@
     "EarningsReaction": false
   },
   "HUT": {
-    "Type": "news",
-    "Catalyst": "Binance 遭駭約 63.6 億美元拖累加密股,HUT 盤前 −5.7%、收 −10.6%(跳空 −7.4%);B. Riley 同日降目標價 163→134 美元",
-    "EarningsReaction": false,
-    "Cluster": "crypto_hack"
+    "Type": "earnings",
+    "Catalyst": "第三季財報不及預期,盤前 -13.7% 至 $55",
+    "EarningsReaction": true,
+    "Cluster": "crypto_selloff"
   },
   "INO": {
     "Type": "FDA",
@@ -1214,9 +1215,10 @@
     "Cluster": "ai_semis"
   },
   "LYG": {
-    "Type": "earnings",
-    "Catalyst": "Lloyds 10/29 公布 Q3,淨收入 50.7 億英鎊低於預估約 3%;週五同業 NatWest 財報後 NWG 收 −8.5%,來源未明述 LYG 跌因;跳空 −4.1%、收 −4.8%",
-    "EarningsReaction": false
+    "Type": "macro",
+    "Catalyst": "英國銀行股大漲,駱駝銀行盤前+4.8%;市場預期英銀升息",
+    "EarningsReaction": false,
+    "Cluster": "euro_banks"
   },
   "MCHP": {
     "Type": "macro",
@@ -1289,10 +1291,10 @@
     "Cluster": "ai_capex_selloff"
   },
   "ORCL": {
-    "Type": "offering",
-    "Catalyst": "200 億美元增資定價:新股 100 億美元每股 116 美元(折價約 11%)加公司債 100 億,週一已跌 8.8%",
+    "Type": "news",
+    "Catalyst": "FT:甲骨文取消與騰訊約 $70 億 AI 晶片租賃約",
     "EarningsReaction": false,
-    "Cluster": "ai_capex_funding"
+    "Cluster": ""
   },
   "PGEN": {
     "Type": "FDA",
@@ -1368,9 +1370,9 @@
   },
   "SNOW": {
     "Type": "macro",
-    "Catalyst": "查無個股新聞;隨軟體/雲端類股走勢:SNOW 週五收 −7.3%,同日 Datadog −11.5%、Cloudflare −9.5%;財報日查不到",
+    "Catalyst": "查無個股新聞;AI 族群因民主黨掌國會、審查疑慮走弱",
     "EarningsReaction": false,
-    "Cluster": "software_selloff"
+    "Cluster": "ai_datacenter_selloff"
   },
   "SNX": {
     "Type": "macro",
@@ -1384,9 +1386,10 @@
     "EarningsReaction": false
   },
   "SPCX": {
-    "Type": "macro",
-    "Catalyst": "查無個股新聞;隨大盤下殺:SPCX 跳空 −4.2%、收 −6.4% 至 134.72 美元,成交約 1.22 億股,Nasdaq −2.86%",
-    "EarningsReaction": false
+    "Type": "policy",
+    "Catalyst": "民主黨拿下國會,SpaceX 面臨更多監管疑慮",
+    "EarningsReaction": false,
+    "Cluster": "musk_political_risk"
   },
   "SPOT": {
     "Type": "news",
@@ -1545,10 +1548,10 @@
     "Cluster": "energy_oil"
   },
   "KEEL": {
-    "Type": "analyst",
-    "Catalyst": "B. Riley 10/30 將目標價由 6 降至 5 美元、維持買進;同日 Binance 遭駭(約 63 億美元,10/29 盤後揭露)拖累加密相關股,KEEL 盤前 −6.5%、收 −6.1%",
+    "Type": "macro",
+    "Catalyst": "盤前 -8.2%;查無個股新聞,加密貨幣類股同日承壓",
     "EarningsReaction": false,
-    "Cluster": "crypto_hack"
+    "Cluster": "crypto_selloff"
   },
   "MAR": {
     "Type": "earnings",
@@ -1577,8 +1580,9 @@
   },
   "ADBE": {
     "Type": "analyst",
-    "Catalyst": "Redburn 目標價由 270 美元砍至 140 美元,較 10/30 收盤價低約 44%",
-    "EarningsReaction": false
+    "Catalyst": "花旗降評至賣出,目標價 $207",
+    "EarningsReaction": false,
+    "Cluster": ""
   },
   "PERI": {
     "Type": "M&A",
@@ -1654,10 +1658,10 @@
     "EarningsReaction": false
   },
   "BRAI": {
-    "Type": "momentum",
-    "Catalyst": "查無個股新聞;11/02 僅遞年報延遲申報(NT 20-F),連漲後的投機反彈",
+    "Type": "news",
+    "Catalyst": "查無個股新聞",
     "EarningsReaction": false,
-    "Cluster": "microcap_pump"
+    "Cluster": ""
   },
   "AAPL": {
     "Type": "earnings",
@@ -1708,10 +1712,10 @@
     "Cluster": "psychedelics"
   },
   "EHGO": {
-    "Type": "momentum",
-    "Catalyst": "查無個股新聞;10/19 才 5 併 1 合股、6–8 月三度增發,低量純投機彈升",
+    "Type": "news",
+    "Catalyst": "查無個股新聞",
     "EarningsReaction": false,
-    "Cluster": "microcap_pump"
+    "Cluster": ""
   },
   "FN": {
     "Type": "earnings",
@@ -1744,10 +1748,10 @@
     "Cluster": "oil"
   },
   "PARA": {
-    "Type": "momentum",
-    "Catalyst": "查無 11/02 個股新聞;10/30 公告下市通知並遞 S-1 擬募資 1,175 萬美元,盤後暴漲屬投機、盤前已回吐大半",
+    "Type": "news",
+    "Catalyst": "查無個股新聞,盤後股價異動無公開消息可查",
     "EarningsReaction": false,
-    "Cluster": "microcap_pump"
+    "Cluster": ""
   },
   "TTI": {
     "Type": "earnings",
@@ -1828,10 +1832,10 @@
     "Cluster": "china"
   },
   "KEP": {
-    "Type": "momentum",
-    "Catalyst": "查無個股新聞;韓股反彈帶動 ADR 補漲,盤前約 +1.5%",
+    "Type": "news",
+    "Catalyst": "查無個股新聞",
     "EarningsReaction": false,
-    "Cluster": "macro"
+    "Cluster": ""
   },
   "VITL": {
     "Type": "guidance",
@@ -2008,15 +2012,513 @@
     "Cluster": "microcap_pump"
   },
   "WYHG": {
-    "Type": "momentum",
-    "Catalyst": "查無當日個股新聞,盤前量放大至 360 萬股、+10.6%,屬無消息小型股拉抬",
+    "Type": "news",
+    "Catalyst": "查無個股新聞,盤後股價異動無公開消息可查",
     "EarningsReaction": false,
-    "Cluster": "microcap_pump"
+    "Cluster": ""
   },
   "XMAX": {
     "Type": "momentum",
     "Catalyst": "查無當日個股新聞;預計 11/13 公布 Q3,盤前 +5.5% 屬小型股波動",
     "EarningsReaction": false,
     "Cluster": "microcap_pump"
+  },
+  "VST": {
+    "Type": "policy",
+    "Catalyst": "資料中心審查疑慮,盤前 -7.0% 至 $129.79",
+    "EarningsReaction": false,
+    "Cluster": "ai_datacenter_selloff"
+  },
+  "CEG": {
+    "Type": "policy",
+    "Catalyst": "資料中心電力股走弱,標題顯示 -5.3% 至 $249.50",
+    "EarningsReaction": false,
+    "Cluster": "ai_datacenter_selloff"
+  },
+  "NRG": {
+    "Type": "policy",
+    "Catalyst": "資料中心電力股走弱,標題顯示 -4.4% 至 $92.02",
+    "EarningsReaction": false,
+    "Cluster": "ai_datacenter_selloff"
+  },
+  "PWR": {
+    "Type": "policy",
+    "Catalyst": "Bernstein 點名受惠股遇審查疑慮,標題 -6.1% 至 $617",
+    "EarningsReaction": false,
+    "Cluster": "ai_datacenter_selloff"
+  },
+  "EME": {
+    "Type": "policy",
+    "Catalyst": "資料中心基建股走弱,標題 -5.3% 至 $670.06",
+    "EarningsReaction": false,
+    "Cluster": "ai_datacenter_selloff"
+  },
+  "NUAI": {
+    "Type": "policy",
+    "Catalyst": "查無個股新聞;資料中心族群下挫,盤前 -6.5% 至 $2.60",
+    "EarningsReaction": false,
+    "Cluster": "ai_datacenter_selloff"
+  },
+  "RUN": {
+    "Type": "policy",
+    "Catalyst": "盤前 +4.7%;民主黨掌國會,潔淨能源類股齊漲",
+    "EarningsReaction": false,
+    "Cluster": "clean_energy_rally"
+  },
+  "ENPH": {
+    "Type": "policy",
+    "Catalyst": "盤前漲幅查無;民主黨掌國會,潔淨能源類股齊漲",
+    "EarningsReaction": false,
+    "Cluster": "clean_energy_rally"
+  },
+  "ARRY": {
+    "Type": "M&A",
+    "Catalyst": "Array 宣布與 Shoals 換股合併;Q3 在手訂單創高 26 億美元",
+    "EarningsReaction": true,
+    "Cluster": "clean_energy_rally"
+  },
+  "SHLS": {
+    "Type": "M&A",
+    "Catalyst": "Shoals Q3 營收 1.953 億美元優於預期,並宣布與 Array 合併",
+    "EarningsReaction": true,
+    "Cluster": "clean_energy_rally"
+  },
+  "FLNC": {
+    "Type": "policy",
+    "Catalyst": "盤前 +5.5%;潔淨能源類股齊漲,前日更換臨時執行長",
+    "EarningsReaction": false,
+    "Cluster": "clean_energy_rally"
+  },
+  "CSIQ": {
+    "Type": "policy",
+    "Catalyst": "盤前 +6.4%;民主黨掌國會,潔淨能源類股齊漲",
+    "EarningsReaction": false,
+    "Cluster": "clean_energy_rally"
+  },
+  "SEDG": {
+    "Type": "earnings",
+    "Catalyst": "Q3 調整後 EPS 0.29 美元,但 Q4 營收財測 2.45–2.75 億美元遠低於 Q3",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "SLDP": {
+    "Type": "news",
+    "Catalyst": "盤前 +5.9%;前晚 Q3 營收 122 萬美元,下調 2026 現金投資展望",
+    "EarningsReaction": false,
+    "Cluster": "clean_energy_rally"
+  },
+  "HL": {
+    "Type": "earnings",
+    "Catalyst": "盤前 +11.6%;貴金屬大漲,另有 Q3 營收 3.95 億美元、EPS 0.22",
+    "EarningsReaction": false,
+    "Cluster": "precious_metals"
+  },
+  "AG": {
+    "Type": "macro",
+    "Catalyst": "盤前 +7.1%;現貨黃金漲約 3%、美元重挫,金銀礦股齊揚",
+    "EarningsReaction": false,
+    "Cluster": "precious_metals"
+  },
+  "USAS": {
+    "Type": "macro",
+    "Catalyst": "盤前 +7.2%;現貨黃金漲約 3%、美元重挫,金銀礦股齊揚",
+    "EarningsReaction": false,
+    "Cluster": "precious_metals"
+  },
+  "B": {
+    "Type": "macro",
+    "Catalyst": "盤前 +5.3%;現貨黃金漲約 3%、美元重挫,金銀礦股齊揚",
+    "EarningsReaction": false,
+    "Cluster": "precious_metals"
+  },
+  "ASM": {
+    "Type": "macro",
+    "Catalyst": "盤前 +8.9%;現貨黃金漲約 3%、美元重挫,金銀礦股齊揚",
+    "EarningsReaction": false,
+    "Cluster": "precious_metals"
+  },
+  "MCD": {
+    "Type": "earnings",
+    "Catalyst": "Q3 EPS 3.57 美元勝預期 3.38,營收 71.6 億略遜",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "UBER": {
+    "Type": "earnings",
+    "Catalyst": "Q3 EPS 0.88 美元、總預訂年增約 20%,發 Q4 展望",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "CVS": {
+    "Type": "earnings",
+    "Catalyst": "Q3 EPS 2.09 美元大勝,上調財測,傳分拆為兩家公司",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "EMR": {
+    "Type": "earnings",
+    "Catalyst": "FQ4 EPS 1.86 美元、營收 52 億優於預期,FY27 展望符合",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "GWW": {
+    "Type": "earnings",
+    "Catalyst": "Q3 調整後 EPS 12.54 美元年增 22.8%,上調全年財測",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "COR": {
+    "Type": "earnings",
+    "Catalyst": "FQ4 EPS 4.66 美元勝預期,FY27 EPS 財測 19.40-19.75",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "CVE": {
+    "Type": "earnings",
+    "Catalyst": "Q3 EPS 1.83 加元,獲利與營收年增,優於預期",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "MLM": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收 23.7 億勝預期,但 GAAP EPS 不如預期,EBITDA 財測低",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "RPRX": {
+    "Type": "earnings",
+    "Catalyst": "Q3 調整後 EPS 1.21 勝預期,全年收款財測再上調",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "CHT": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收年增 16.7%、淨利年增 29.5%,超出自家財測高標",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "SN": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收年增 21.2%、調整後 EPS 2.34 美元,上調全年展望",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "KHC": {
+    "Type": "earnings",
+    "Catalyst": "Q3 EPS 0.53 美元勝預期 0.42,上調全年 EPS 財測並出售北美咖啡",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "UTHR": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收 8.33 億勝預期但 GAAP EPS 不及,5.25 億買斷 ralinepag 權利金",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "Q": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收 16 億年增 22%、調整後 EPS 1.46 美元,上調全年財測",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "BEP": {
+    "Type": "earnings",
+    "Catalyst": "Q3 FFO 每單位 0.51 美元,每單位虧損 0.52 美元略遜,調整後營收不及",
+    "EarningsReaction": true,
+    "Cluster": "clean_energy_rally"
+  },
+  "BEPC": {
+    "Type": "earnings",
+    "Catalyst": "Q3 淨利 22.9 億美元由虧轉盈,營收增加",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "CDW": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收 67.5 億年增 17.7%、EPS 3.26 美元雙雙大勝",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "ZBH": {
+    "Type": "earnings",
+    "Catalyst": "Q3 EPS 1.90 美元、營收 20.6 億小幅勝預期,全年 EPS 財測 8.50-8.60",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "CRL": {
+    "Type": "earnings",
+    "Catalyst": "FQ3 EPS 3.09 美元、營收 9.83 億勝預期,上調全年 EPS 至 11.35-11.55",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "SWK": {
+    "Type": "earnings",
+    "Catalyst": "Q3 調整後 EPS 2.31 美元(含 0.67 關稅退款一次性),上調全年財測",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "PFGC": {
+    "Type": "earnings",
+    "Catalyst": "FQ1 EPS 1.32 美元勝預期 1.27,下一季營收展望低於預期",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "W": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收 34.2 億、EPS 0.93 雙勝;盤前由漲翻跌約 3%",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "FLUT": {
+    "Type": "earnings",
+    "Catalyst": "Q3 調整後虧損 0.18 美元、營收 38.7 億不及預期,下調全年營收展望",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "TRMB": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收 9.67 億、EPS 0.86 美元與預期相當,營業利益率降至 14.7%",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "NYT": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收 7.69 億年增 9.7%、EPS 0.68 美元勝預期",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "PODD": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收 8.42 億年增 19.2%、EPS 1.99 美元大勝,全年 EPS 展望維持",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "DOX": {
+    "Type": "guidance",
+    "Catalyst": "FY27 財測營收降7-11%、EPS降26-30%,T-Mobile 拖累;Oppenheimer 降評",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "DUOL": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收3.09億美元超預期、Q4 營收財測3.22億美元,盤後漲11%",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "FLYW": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收2.503億美元年增25.1%、調整後EPS 0.68超預期,上調全年財測",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "FRSH": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收2.454億美元持平預期、Q4 財測約2.54億美元,盤後跌4.6%",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "NRIX": {
+    "Type": "news",
+    "Catalyst": "Sanofi 終止 STAT6 降解劑計畫,Nurix 失約4.55億美元里程碑,股價跌約33%",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "PCOR": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收4.02億美元年增18.7%超預期,Q4 財測4.20-4.22億美元,盤後漲11%",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "RARE": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收1.73億美元低於預期1.843億,虧損每股1.16美元,宣布大幅縮減支出",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "RVLV": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收3.56億美元年增20%但 EPS 0.20 不及預期、全年G&A費用財測上調",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "RWT": {
+    "Type": "news",
+    "Catalyst": "轉型 C 型公司、股息降至每股0.02美元,Q3 GAAP 虧損每股0.39美元",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "SENS": {
+    "Type": "news",
+    "Catalyst": "查無個股新聞,盤後股價異動無公開消息可查",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "SWKS": {
+    "Type": "earnings",
+    "Catalyst": "FQ4 營收10.46億美元、EPS 1.28;FQ1 營收財測18-19億美元,盤前跌約12%",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "XYZ": {
+    "Type": "earnings",
+    "Catalyst": "Q3 毛利32億美元年增22%、調整後營業利益年增92%,2027 毛利財測超預期",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "ARDX": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收1.277億美元高於預期,IBSRELA 年增23%,盤後漲7.3%",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "FIS": {
+    "Type": "earnings",
+    "Catalyst": "Q3 調整後EPS 1.61持平預期,下修全年財測、CFO Kehoe 離職,盤前跌約17.5%",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "CHSN": {
+    "Type": "news",
+    "Catalyst": "查無個股新聞,盤後股價異動無公開消息可查",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "CNL": {
+    "Type": "news",
+    "Catalyst": "昨日公布 Apollo 礦區鑽探 154.3 公尺含金當量12.66 g/t;下跌原因查不到",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "METC": {
+    "Type": "earnings",
+    "Catalyst": "Q3 虧損每股0.32美元高於預期,營收1.501億美元優於預期,盤後跌8.1%",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "NUWE": {
+    "Type": "news",
+    "Catalyst": "查無個股新聞,盤後股價異動無公開消息可查",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "TSLA": {
+    "Type": "policy",
+    "Catalyst": "民主黨拿下國會、德州翻藍,馬斯克政治風險升",
+    "EarningsReaction": false,
+    "Cluster": "musk_political_risk"
+  },
+  "LMT": {
+    "Type": "analyst",
+    "Catalyst": "國防股選後走弱;Guggenheim 首評買進、目標價 $735",
+    "EarningsReaction": false,
+    "Cluster": "defense_midterm"
+  },
+  "RTX": {
+    "Type": "macro",
+    "Catalyst": "民主黨拿下國會,國防股選後走弱",
+    "EarningsReaction": false,
+    "Cluster": "defense_midterm"
+  },
+  "NOC": {
+    "Type": "macro",
+    "Catalyst": "民主黨拿下國會,國防股選後走弱",
+    "EarningsReaction": false,
+    "Cluster": "defense_midterm"
+  },
+  "WMT": {
+    "Type": "contract",
+    "Catalyst": "沃爾瑪擴大 Symbotic 合作,約 $60 億",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "META": {
+    "Type": "news",
+    "Catalyst": "歐元債獲 €530 億(約 $597 億)認購",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "NVO": {
+    "Type": "earnings",
+    "Catalyst": "第三季營收優於預期,上調 2026 年展望",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "AMGN": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收年增 8% 至 $104 億,多家券商調高目標價",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "HCA": {
+    "Type": "policy",
+    "Catalyst": "民主黨拿下國會,醫療支出預期升溫",
+    "EarningsReaction": false,
+    "Cluster": "healthcare_policy"
+  },
+  "ISRG": {
+    "Type": "policy",
+    "Catalyst": "查無個股新聞;醫材隨醫療政策預期走強",
+    "EarningsReaction": false,
+    "Cluster": "healthcare_policy"
+  },
+  "OSCR": {
+    "Type": "policy",
+    "Catalyst": "查無個股新聞;ACA 政策預期帶動",
+    "EarningsReaction": false,
+    "Cluster": "healthcare_policy"
+  },
+  "CPSH": {
+    "Type": "earnings",
+    "Catalyst": "第三季營收創高 $890 萬、毛利率 20.9%,盤前+16.7%",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "MDLN": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收 $78.6 億、調整後 EPS $0.44 優於預期,上調全年成長目標",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "HSBC": {
+    "Type": "macro",
+    "Catalyst": "英國銀行股大漲,匯豐盤前+5.3%;市場預期英銀本週升息",
+    "EarningsReaction": false,
+    "Cluster": "euro_banks"
+  },
+  "SAN": {
+    "Type": "macro",
+    "Catalyst": "查無個股新聞;歐洲銀行族群同步走強,盤前+6.4%",
+    "EarningsReaction": false,
+    "Cluster": "euro_banks"
+  },
+  "ING": {
+    "Type": "macro",
+    "Catalyst": "查無個股新聞;歐洲銀行與歐元走強,盤前+5.6%",
+    "EarningsReaction": false,
+    "Cluster": "euro_banks"
+  },
+  "DJT": {
+    "Type": "policy",
+    "Catalyst": "期中選舉民主黨勝,川普媒體盤前-11.3%",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "BILI": {
+    "Type": "news",
+    "Catalyst": "查無個股新聞;11/24 才公布 Q3,盤前+5.1%",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "TLRY": {
+    "Type": "news",
+    "Catalyst": "查無今日個股新聞;稍早公布裁撤釀酒廠、兩年省 $2,000 萬",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "BABA": {
+    "Type": "news",
+    "Catalyst": "查無明確催化;Nvidia 晶片供應報導與 Qwen 測試",
+    "EarningsReaction": false,
+    "Cluster": ""
   }
 }
