@@ -251,10 +251,10 @@
     "Cluster": "crypto_selloff"
   },
   "RIOT": {
-    "Type": "macro",
-    "Catalyst": "無個股新聞;比特幣跌至約 7.7 萬美元,礦商隨 AI 基建與加密類股走弱",
-    "EarningsReaction": false,
-    "Cluster": "crypto_hack"
+    "Type": "earnings",
+    "Catalyst": "Q3 淨利降至 403 萬美元仍漲 15%;Cantor 稱 RIOT 較不受德州政治影響",
+    "EarningsReaction": true,
+    "Cluster": "crypto_selloff"
   },
   "CLSK": {
     "Type": "analyst",
@@ -2518,6 +2518,84 @@
   "BABA": {
     "Type": "news",
     "Catalyst": "查無明確催化;Nvidia 晶片供應報導與 Qwen 測試",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "TBLA": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收 $4.62 億美元年減 6.9%、略低於預期;Q4 營收指引 $4.85 億遠低於預估",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "MOD": {
+    "Type": "earnings",
+    "Catalyst": "FQ2 調整後 EPS $1.35 低於預估 $1.55,營收 $9.94 億年增 35% 優於預期",
+    "EarningsReaction": true,
+    "Cluster": "ai_datacenter_selloff"
+  },
+  "TREX": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收 $3.595 億年增 26%、調整後 EPS $0.55 優於預期,上調全年財測",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "STIM": {
+    "Type": "earnings",
+    "Catalyst": "Q3 營收 $4,200 萬年增 12.5%、調整後 EBITDA 轉正至 $190 萬,全年營收指引 $1.6–1.64 億",
+    "EarningsReaction": true,
+    "Cluster": ""
+  },
+  "KGC": {
+    "Type": "macro",
+    "Catalyst": "金價單日漲約 3% 推升金礦股;Kinross 前期 Q3 財報優於預期",
+    "EarningsReaction": false,
+    "Cluster": "precious_metals"
+  },
+  "BCS": {
+    "Type": "news",
+    "Catalyst": "查無個股新聞;歐洲銀行股與美元走弱連動",
+    "EarningsReaction": false,
+    "Cluster": "euro_banks"
+  },
+  "HSAI": {
+    "Type": "news",
+    "Catalyst": "查無個股新聞",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "INIO": {
+    "Type": "news",
+    "Catalyst": "查無個股新聞",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "SEGG": {
+    "Type": "news",
+    "Catalyst": "查無個股新聞",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "VRDN": {
+    "Type": "news",
+    "Catalyst": "查無個股新聞",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "JBLU": {
+    "Type": "news",
+    "Catalyst": "盤前漲 4.3%;近期漲價行李費,董事長日前買進股票",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "NCEL": {
+    "Type": "M&A",
+    "Catalyst": "簽約出售舊 Mazindol 資產:預付 50 萬美元,最多 5,500 萬美元里程碑金",
+    "EarningsReaction": false,
+    "Cluster": ""
+  },
+  "TRLV": {
+    "Type": "policy",
+    "Catalyst": "DEA 登記完成、醫療大麻改列第三級管制;盤前漲 5.3%",
     "EarningsReaction": false,
     "Cluster": ""
   }
