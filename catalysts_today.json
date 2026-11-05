@@ -49,7 +49,7 @@
  },
  "AMKR": {
   "Type": "macro",
-  "Catalyst": "10/26 盤後已公布 Q3,今日純受半導體殺盤拖累;無新消息",
+  "Catalyst": "查無今日新聞;盤前跌 5.39%,隨半導體賣壓走弱,近三個月已跌 30.2%",
   "EarningsReaction": false,
   "Cluster": "ai_capex_selloff"
  },
@@ -67,7 +67,7 @@
  },
  "COHR": {
   "Type": "earnings",
-  "Catalyst": "營收 23.7 億美元、財測優於預期,2027 財年看增逾 60%,盤後漲 4.97%",
+  "Catalyst": "營收 23.7 億美元、財測優於預期,2027 財年看增逾 60%,但今晨隨晶片賣壓翻黑",
   "EarningsReaction": true,
   "Cluster": null
  },
@@ -114,10 +114,10 @@
   "Cluster": "ai_capex_selloff"
  },
  "AEHR": {
-  "Type": "news",
-  "Catalyst": "查無今日新聞;財報後大漲隔日回吐",
+  "Type": "macro",
+  "Catalyst": "查無今日新聞;盤前跌 6.85%,隨半導體賣壓回吐 11/3 財報後漲勢",
   "EarningsReaction": false,
-  "Cluster": ""
+  "Cluster": "ai_capex_selloff"
  },
  "SMCI": {
   "Type": "policy",
@@ -300,9 +300,9 @@
  },
  "PURR": {
   "Type": "momentum",
-  "Catalyst": "10/29 因 ICE 將推出 Hyperliquid 永續合約大漲 23%,今日獲利回吐並隨加密類股下殺",
+  "Catalyst": "查無具體新聞",
   "EarningsReaction": false,
-  "Cluster": "crypto_hack"
+  "Cluster": null
  },
  "USDE": {
   "Type": "macro",
@@ -671,10 +671,10 @@
   "Cluster": "crypto_selloff"
  },
  "FPS": {
-  "Type": "news",
-  "Catalyst": "查無個股新聞",
+  "Type": "macro",
+  "Catalyst": "查無自身新聞;11/4 收盤已跌 17.32%,盤前再跌 5.7%,隨 AI 資料中心賣壓走弱",
   "EarningsReaction": false,
-  "Cluster": ""
+  "Cluster": "ai_capex_selloff"
  },
  "BFAM": {
   "Type": "guidance",
@@ -1482,9 +1482,9 @@
   "Cluster": "ai_capex_selloff"
  },
  "VIAV": {
-  "Type": "macro",
-  "Catalyst": "查無個股新聞;隨 AI 硬體股殺盤收 29.92 美元(−10.2%);財報日期查不到",
-  "EarningsReaction": false,
+  "Type": "earnings",
+  "Catalyst": "Q1 營收 $4.693 億、下季財測中值 $5.1 億皆優於預期,仍遭賣壓;另宣布買回 $5 億",
+  "EarningsReaction": true,
   "Cluster": "ai_capex_selloff"
  },
  "VIVK": {
@@ -1889,7 +1889,7 @@
  },
  "EXPD": {
   "Type": "momentum",
-  "Catalyst": "查無今日新事件;11/4 盤後漲 5.07%,此前已公布財報並獲 UBS 調高目標價",
+  "Catalyst": "查無今日新事件;11/4 盤後曾漲 5.07%,今晨回吐",
   "EarningsReaction": false,
   "Cluster": null
  },
@@ -2056,10 +2056,10 @@
   "Cluster": "ai_datacenter_selloff"
  },
  "NUAI": {
-  "Type": "policy",
-  "Catalyst": "查無個股新聞;資料中心族群下挫,盤前 -6.5% 至 $2.60",
+  "Type": "macro",
+  "Catalyst": "查無自身利空;盤前跌 5.39%,隨資料中心賣壓走弱;Alliance Global 同日給買進、目標價 $6",
   "EarningsReaction": false,
-  "Cluster": "ai_datacenter_selloff"
+  "Cluster": "ai_capex_selloff"
  },
  "RUN": {
   "Type": "earnings",
@@ -2381,7 +2381,7 @@
  },
  "CHSN": {
   "Type": "momentum",
-  "Catalyst": "查無具體新聞;盤前報價跌8.04%至3.09美元",
+  "Catalyst": "查無具體新聞",
   "EarningsReaction": false,
   "Cluster": null
  },
@@ -2939,7 +2939,7 @@
  },
  "JOBY": {
   "Type": "earnings",
-  "Catalyst": "第 3 季營收 5,500 萬美元優於預估 3,921 萬美元,全年財測上修 15%,盤前漲 9.9%",
+  "Catalyst": "第 3 季營收 5,500 萬美元優於預估 3,921 萬美元,全年財測上修 15%",
   "EarningsReaction": true,
   "Cluster": null
  },
@@ -3011,19 +3011,19 @@
  },
  "PTON": {
   "Type": "earnings",
-  "Catalyst": "財年第一季 EPS 0.19 美元優於預期 0.11,調整後 EBITDA 增 42%,盤前漲 8.55%",
+  "Catalyst": "財年第一季 EPS 0.19 美元優於預期 0.11,調整後 EBITDA 增 42%",
   "EarningsReaction": true,
   "Cluster": null
  },
  "FUN": {
   "Type": "earnings",
-  "Catalyst": "Q3 同店營收增 1.4%、調整後 EBITDA 4.932 億美元,但 Q4 財測偏弱,盤前漲 11.98%",
+  "Catalyst": "Q3 同店營收增 1.4%、調整後 EBITDA 4.932 億美元,但 Q4 財測偏弱",
   "EarningsReaction": true,
   "Cluster": null
  },
  "HTZ": {
   "Type": "earnings",
-  "Catalyst": "Q3 營收 26.17 億美元增 6%,調整後 EBITDA 2.33 億美元增 15%,盤前漲 4.42%",
+  "Catalyst": "Q3 營收 26.17 億美元增 6%,調整後 EBITDA 2.33 億美元增 15%,今晨翻黑",
   "EarningsReaction": true,
   "Cluster": null
  },
@@ -3271,6 +3271,48 @@
   "Type": "earnings",
   "Catalyst": "調整後 EBITDA 15 億美元年增 18%、季減 6%,2027 年配息擬增 20%,盤前跌 1.75%",
   "EarningsReaction": true,
+  "Cluster": null
+ },
+ "GIL": {
+  "Type": "earnings",
+  "Catalyst": "Q3 營收 $14.7 億低於預期 9.65%,全年 EPS 財測由 $4.65–4.75 砍至 $3.70–3.80",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "DDD": {
+  "Type": "earnings",
+  "Catalyst": "Q4 營收財測中值 $1.015 億低於預期 $1.059 億,另換債將增發 1,347 萬股",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "FWONK": {
+  "Type": "earnings",
+  "Catalyst": "F1 第三季營收年增 28% 至 $11.15 億,Malone 高投票權股換股後投票權由 48% 降至約 3%",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "MAIR": {
+  "Type": "earnings",
+  "Catalyst": "Madison Air Q3 營收年增 25.4% 至 $11.27 億,全年營收財測上調至 $40.5–41.25 億",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "PACB": {
+  "Type": "earnings",
+  "Catalyst": "Q3 營收 $4,056 萬優於預期,但毛利率由 42% 降至 36%、耗材收入年減至 $2,080 萬",
+  "EarningsReaction": true,
+  "Cluster": null
+ },
+ "LI": {
+  "Type": "momentum",
+  "Catalyst": "查無具體新聞;盤前漲 4.15%,10 月交車 29,025 輛低於去年同期",
+  "EarningsReaction": false,
+  "Cluster": null
+ },
+ "INFQ": {
+  "Type": "momentum",
+  "Catalyst": "查無具體新聞",
+  "EarningsReaction": false,
   "Cluster": null
  }
 }
