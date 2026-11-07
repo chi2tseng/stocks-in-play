@@ -104,7 +104,8 @@ def spike_from_gbm(SM, s, gap, typ, tier):
     except Exception:
         return None
 
-ET = datetime.timezone(datetime.timedelta(hours=-4))
+from zoneinfo import ZoneInfo
+ET = ZoneInfo('America/New_York')   # DST-aware: fixed -4 ended the premarket window at 08:30 EST
 
 def in_premarket_window():
     now = datetime.datetime.now(ET)
