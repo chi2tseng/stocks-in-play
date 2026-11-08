@@ -1,122 +1,74 @@
 {
   "date": "2026-11-09",
-  "scanTime": "21:07",
-  "scanTimestamp": "2026-11-08T21:07",
+  "scanTime": "22:06",
+  "scanTimestamp": "2026-11-08T22:06",
   "stocks": {
-    "OMH": {
-      "symbol": "OMH",
-      "name": "Ohmyhome Limited",
+    "NWGL": {
+      "symbol": "NWGL",
+      "name": "Cl Workshop Group Ltd ADR",
       "type": "momentum",
       "earningsReaction": false,
       "catalyst": "查無具體新聞",
-      "newsDetail": "> **今日跌因:** 最新報價跌 **23.05%** 至 10.27 美元,查無具體新聞;較早盤前快照則為上漲,方向待確認。\n\nOhmyhome 最新報價成交量約 1,145 萬股;較早快照為盤前漲 5.69% 至 14.11 美元,周四盤後則跌 4.87%。Yahoo 當日新聞為零則,X 爬蟲也沒有貼文,關鍵字搜尋同樣未見 11 月 6 日的公告或報導,因此無法確認原因,也查不到是否涉及增發。",
+      "newsDetail": "> **今日漲因:** 週五盤後 +38% — 查無盤後當下新聞;公司 11/4 公告 ADS 比率由 1:8 改為 1:640(等同 **1 拆 80 合股**),預定 11/6 開盤生效,未見其與盤後上漲有關的報導。",
       "newsLinks": [
         {
           "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=OMH"
+          "url": "https://finviz.com/quote.ashx?t=NWGL"
         },
         {
           "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/OMH"
+          "url": "https://finance.yahoo.com/quote/NWGL"
         },
         {
           "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-OMH/news/"
+          "url": "https://www.tradingview.com/symbols/NASDAQ-NWGL/news/"
         }
       ],
       "publishedAt": null,
       "publishedTimezone": "ET",
       "sources": [
         {
-          "label": "Yahoo Finance — OMH 報價頁(查無當日新聞)",
-          "url": "https://finance.yahoo.com/quote/OMH/"
+          "label": "CL Workshop ADS 比率變更公告",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/cl-workshop-group-limited-announces-110500240.html"
+        },
+        {
+          "label": "Nasdaq 盤後逐筆 NWGL",
+          "url": "https://api.nasdaq.com/api/quote/NWGL/extended-trading?assetclass=stocks&markettype=post"
+        },
+        {
+          "label": "SEC EDGAR 申報清單",
+          "url": "https://data.sec.gov/submissions/CIK0001948294.json"
         }
       ],
       "seanAnalysis": null,
       "milanAnalysis": null,
       "sessions": [
         {
-          "last": 15.5,
-          "chgPct": 110.59,
-          "volume": 5769229,
+          "last": 3.5,
+          "chgPct": 38.34,
+          "volume": 435150,
           "session": "post",
           "direction": "up",
-          "name": "Ohmyhome Limited",
+          "name": "Cl Workshop Group Ltd ADR",
           "sessionDate": "2026-11-06",
           "targetDate": "2026-11-09"
         }
       ],
       "primarySession": "post",
       "primaryDirection": "up",
-      "last": 15.5,
-      "chgPct": 110.59,
-      "volume": 5769229,
-      "tv": {
-        "latestEPS": -6.88,
-        "consensusEPS": -64.27,
-        "priorYrEPS": null,
-        "surpriseEPS_pct": 89.3,
-        "surpriseEPS_dollar": 57.38999999999999,
-        "latestRev_M": 8.32,
-        "consensusRev_M": 7.92,
-        "priorYrRev_M": null,
-        "surpriseRev_pct": 4.99,
-        "yrYrRev_pct": null,
-        "epsYoY_pct": null,
-        "epsEst_next4": [
-          -5.8,
-          -4.64,
-          null,
-          null
-        ],
-        "revEst_next4": [
-          10.7,
-          13.16,
-          null,
-          null
-        ],
-        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M",
-        "chart": {
-          "quarters": [],
-          "eps_reported": [
-            -95.46,
-            -6.88,
-            null,
-            null
-          ],
-          "eps_estimate": [
-            -89.28,
-            -64.27,
-            -5.8,
-            -4.64
-          ],
-          "rev_reported_M": [
-            3.67,
-            8.32,
-            null,
-            null
-          ],
-          "rev_estimate_M": [
-            3.73,
-            7.92,
-            10.7,
-            13.16
-          ],
-          "latest_idx": 1
-        },
-        "latestReportDate": null,
-        "nextReportDate": null,
-        "surpStale": true
-      },
-      "shortFloat": 2.63,
-      "shortRatio": 0.03,
-      "marketCap_M": 15.54,
-      "floatShares_M": 2.11,
-      "perf1M": 210.55,
-      "perf3M": 67.08,
-      "perf6M": -83.27,
-      "perfYTD": -81.77,
-      "perf12M": -87.81,
+      "last": 3.5,
+      "chgPct": 38.34,
+      "volume": 435150,
+      "tv": null,
+      "shortFloat": null,
+      "shortRatio": 0.02,
+      "marketCap_M": 1.42,
+      "floatShares_M": null,
+      "perf1M": -97.27,
+      "perf3M": -89.58,
+      "perf6M": -96.52,
+      "perfYTD": -97.77,
+      "perf12M": -97.55,
       "prevOhlcv": null
     },
     "NAVN": {
@@ -258,6 +210,74 @@
       "perf6M": 36.4,
       "perfYTD": 49.18,
       "perf12M": 42.75,
+      "prevOhlcv": null
+    },
+    "STAK": {
+      "symbol": "STAK",
+      "name": "Stak Inc",
+      "type": "news",
+      "earningsReaction": false,
+      "catalyst": "發電機業務簽無約束力意向書,首批僅數十萬美元;正規盤飆 82%",
+      "newsDetail": "> **今日漲因:** 盤前 +13.97% 至 **$2.04** — 11/5 盤後公告燃氣發電機業務簽下無約束力意向書。\n\nSTAK 於 11/5 美東 16:05 發布新聞稿:德州二級子公司 STAK Industry Energy 簽署意向書,首批採購規模為**數十萬美元**,後續階段可能再達**數百萬美元**,買方身分未揭露。公司寫明這不是正式訂單,也不支持認列營收。\n\n週四正規盤在公告前已漲 25.2%,收 $1.79。週五開 $2.05,收 **$3.26**,漲 **82.1%**。查無媒體直接說明週五大漲原因,僅時間上相連。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=STAK"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/STAK"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-STAK/news/"
+        }
+      ],
+      "publishedAt": "2026-11-05T16:05:00-05:00",
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "PR Newswire — STAK Inc. Discloses Initial Progress in Gas-Powered Generator Business",
+          "url": "https://finance.yahoo.com/energy/articles/stak-inc-discloses-initial-progress-210500727.html"
+        },
+        {
+          "label": "SEC 6-K Exhibit 99.1",
+          "url": "https://www.sec.gov/Archives/edgar/data/0002002453/000149315226050238/ex99-1.htm"
+        },
+        {
+          "label": "Yahoo Finance 日線 STAK",
+          "url": "https://query1.finance.yahoo.com/v8/finance/chart/STAK?period1=1793836800&period2=1794009600&interval=1d"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 3.07,
+          "chgPct": -5.83,
+          "volume": 2801967,
+          "session": "post",
+          "direction": "down",
+          "name": "Stak Inc",
+          "sessionDate": "2026-11-06",
+          "targetDate": "2026-11-09"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 3.07,
+      "chgPct": -5.83,
+      "volume": 2801967,
+      "tv": null,
+      "shortFloat": null,
+      "shortRatio": 0.18,
+      "marketCap_M": null,
+      "floatShares_M": null,
+      "perf1M": 193.69,
+      "perf3M": 97.58,
+      "perf6M": 201.85,
+      "perfYTD": 717.25,
+      "perf12M": 400.08,
       "prevOhlcv": null
     },
     "EFXT": {
@@ -484,202 +504,6 @@
       "perf12M": -94.71,
       "prevOhlcv": null
     },
-    "NWGL": {
-      "symbol": "NWGL",
-      "name": "Cl Workshop Group Ltd ADR",
-      "type": "momentum",
-      "earningsReaction": false,
-      "catalyst": "查無具體新聞",
-      "newsDetail": "> **今日漲因:** 週五盤後 +38% — 查無盤後當下新聞;公司 11/4 公告 ADS 比率由 1:8 改為 1:640(等同 **1 拆 80 合股**),預定 11/6 開盤生效,未見其與盤後上漲有關的報導。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=NWGL"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/NWGL"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-NWGL/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "CL Workshop ADS 比率變更公告",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/cl-workshop-group-limited-announces-110500240.html"
-        },
-        {
-          "label": "Nasdaq 盤後逐筆 NWGL",
-          "url": "https://api.nasdaq.com/api/quote/NWGL/extended-trading?assetclass=stocks&markettype=post"
-        },
-        {
-          "label": "SEC EDGAR 申報清單",
-          "url": "https://data.sec.gov/submissions/CIK0001948294.json"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 3.5,
-          "chgPct": 38.34,
-          "volume": 435150,
-          "session": "post",
-          "direction": "up",
-          "name": "Cl Workshop Group Ltd ADR",
-          "sessionDate": "2026-11-06",
-          "targetDate": "2026-11-09"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "up",
-      "last": 3.5,
-      "chgPct": 38.34,
-      "volume": 435150,
-      "tv": null,
-      "shortFloat": null,
-      "shortRatio": 0.02,
-      "marketCap_M": 1.42,
-      "floatShares_M": null,
-      "perf1M": -97.27,
-      "perf3M": -89.58,
-      "perf6M": -96.52,
-      "perfYTD": -97.77,
-      "perf12M": -97.55,
-      "prevOhlcv": null
-    },
-    "AEHL": {
-      "symbol": "AEHL",
-      "name": "Antelope Enterprise Hldg Ltd",
-      "type": "momentum",
-      "earningsReaction": false,
-      "catalyst": "查無具體新聞",
-      "newsDetail": "> **今日跌因:** 盤前跌 **27.75%** 至 12.6 美元,查無具體新聞。\n\nAntelope Enterprise 周四盤後已跌 **31.19%**,今日成交量約 2,484 萬股,賣壓從盤後延續到盤前。Yahoo 當日新聞為零則,X 爬蟲也沒有貼文,另以關鍵字搜尋同樣找不到 11 月 6 日的公告或媒體報導,因此無法確認下跌原因,也查不到是否涉及增發或併股。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=AEHL"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/AEHL"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-AEHL/news/"
-        }
-      ],
-      "publishedAt": null,
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "Yahoo Finance — AEHL 報價頁(查無當日新聞)",
-          "url": "https://finance.yahoo.com/quote/AEHL/"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 11.77,
-          "chgPct": -5.84,
-          "volume": 297683,
-          "session": "post",
-          "direction": "down",
-          "name": "Antelope Enterprise Hldg Ltd",
-          "sessionDate": "2026-11-06",
-          "targetDate": "2026-11-09"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 11.77,
-      "chgPct": -5.84,
-      "volume": 297683,
-      "tv": null,
-      "shortFloat": 1.39,
-      "shortRatio": 0.1,
-      "marketCap_M": 237.69,
-      "floatShares_M": 16.46,
-      "perf1M": 10.13,
-      "perf3M": 118.91,
-      "perf6M": -34.9,
-      "perfYTD": -92.64,
-      "perf12M": -91.81,
-      "prevOhlcv": null
-    },
-    "STAK": {
-      "symbol": "STAK",
-      "name": "Stak Inc",
-      "type": "news",
-      "earningsReaction": false,
-      "catalyst": "發電機業務簽無約束力意向書,首批僅數十萬美元;正規盤飆 82%",
-      "newsDetail": "> **今日漲因:** 盤前 +13.97% 至 **$2.04** — 11/5 盤後公告燃氣發電機業務簽下無約束力意向書。\n\nSTAK 於 11/5 美東 16:05 發布新聞稿:德州二級子公司 STAK Industry Energy 簽署意向書,首批採購規模為**數十萬美元**,後續階段可能再達**數百萬美元**,買方身分未揭露。公司寫明這不是正式訂單,也不支持認列營收。\n\n週四正規盤在公告前已漲 25.2%,收 $1.79。週五開 $2.05,收 **$3.26**,漲 **82.1%**。查無媒體直接說明週五大漲原因,僅時間上相連。",
-      "newsLinks": [
-        {
-          "label": "Finviz",
-          "url": "https://finviz.com/quote.ashx?t=STAK"
-        },
-        {
-          "label": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/quote/STAK"
-        },
-        {
-          "label": "TradingView News",
-          "url": "https://www.tradingview.com/symbols/NASDAQ-STAK/news/"
-        }
-      ],
-      "publishedAt": "2026-11-05T16:05:00-05:00",
-      "publishedTimezone": "ET",
-      "sources": [
-        {
-          "label": "PR Newswire — STAK Inc. Discloses Initial Progress in Gas-Powered Generator Business",
-          "url": "https://finance.yahoo.com/energy/articles/stak-inc-discloses-initial-progress-210500727.html"
-        },
-        {
-          "label": "SEC 6-K Exhibit 99.1",
-          "url": "https://www.sec.gov/Archives/edgar/data/0002002453/000149315226050238/ex99-1.htm"
-        },
-        {
-          "label": "Yahoo Finance 日線 STAK",
-          "url": "https://query1.finance.yahoo.com/v8/finance/chart/STAK?period1=1793836800&period2=1794009600&interval=1d"
-        }
-      ],
-      "seanAnalysis": null,
-      "milanAnalysis": null,
-      "sessions": [
-        {
-          "last": 3.07,
-          "chgPct": -5.83,
-          "volume": 2801967,
-          "session": "post",
-          "direction": "down",
-          "name": "Stak Inc",
-          "sessionDate": "2026-11-06",
-          "targetDate": "2026-11-09"
-        }
-      ],
-      "primarySession": "post",
-      "primaryDirection": "down",
-      "last": 3.07,
-      "chgPct": -5.83,
-      "volume": 2801967,
-      "tv": null,
-      "shortFloat": null,
-      "shortRatio": 0.18,
-      "marketCap_M": null,
-      "floatShares_M": null,
-      "perf1M": 193.69,
-      "perf3M": 97.58,
-      "perf6M": 201.85,
-      "perfYTD": 717.25,
-      "perf12M": 400.08,
-      "prevOhlcv": null
-    },
     "VSA": {
       "symbol": "VSA",
       "name": "Visionsys AI Inc ADR",
@@ -816,6 +640,182 @@
         "volume": 15628900,
         "prev_close": 2.07
       }
+    },
+    "AEHL": {
+      "symbol": "AEHL",
+      "name": "Antelope Enterprise Hldg Ltd",
+      "type": "momentum",
+      "earningsReaction": false,
+      "catalyst": "查無具體新聞",
+      "newsDetail": "> **今日跌因:** 盤前跌 **27.75%** 至 12.6 美元,查無具體新聞。\n\nAntelope Enterprise 周四盤後已跌 **31.19%**,今日成交量約 2,484 萬股,賣壓從盤後延續到盤前。Yahoo 當日新聞為零則,X 爬蟲也沒有貼文,另以關鍵字搜尋同樣找不到 11 月 6 日的公告或媒體報導,因此無法確認下跌原因,也查不到是否涉及增發或併股。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=AEHL"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/AEHL"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-AEHL/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Yahoo Finance — AEHL 報價頁(查無當日新聞)",
+          "url": "https://finance.yahoo.com/quote/AEHL/"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 11.77,
+          "chgPct": -5.84,
+          "volume": 297683,
+          "session": "post",
+          "direction": "down",
+          "name": "Antelope Enterprise Hldg Ltd",
+          "sessionDate": "2026-11-06",
+          "targetDate": "2026-11-09"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "down",
+      "last": 11.77,
+      "chgPct": -5.84,
+      "volume": 297683,
+      "tv": null,
+      "shortFloat": 1.39,
+      "shortRatio": 0.1,
+      "marketCap_M": 237.69,
+      "floatShares_M": 16.46,
+      "perf1M": 10.13,
+      "perf3M": 118.91,
+      "perf6M": -34.9,
+      "perfYTD": -92.64,
+      "perf12M": -91.81,
+      "prevOhlcv": null
+    },
+    "OMH": {
+      "symbol": "OMH",
+      "name": "Ohmyhome Limited",
+      "type": "momentum",
+      "earningsReaction": false,
+      "catalyst": "查無具體新聞",
+      "newsDetail": "> **今日跌因:** 最新報價跌 **23.05%** 至 10.27 美元,查無具體新聞;較早盤前快照則為上漲,方向待確認。\n\nOhmyhome 最新報價成交量約 1,145 萬股;較早快照為盤前漲 5.69% 至 14.11 美元,周四盤後則跌 4.87%。Yahoo 當日新聞為零則,X 爬蟲也沒有貼文,關鍵字搜尋同樣未見 11 月 6 日的公告或報導,因此無法確認原因,也查不到是否涉及增發。",
+      "newsLinks": [
+        {
+          "label": "Finviz",
+          "url": "https://finviz.com/quote.ashx?t=OMH"
+        },
+        {
+          "label": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/quote/OMH"
+        },
+        {
+          "label": "TradingView News",
+          "url": "https://www.tradingview.com/symbols/NASDAQ-OMH/news/"
+        }
+      ],
+      "publishedAt": null,
+      "publishedTimezone": "ET",
+      "sources": [
+        {
+          "label": "Yahoo Finance — OMH 報價頁(查無當日新聞)",
+          "url": "https://finance.yahoo.com/quote/OMH/"
+        }
+      ],
+      "seanAnalysis": null,
+      "milanAnalysis": null,
+      "sessions": [
+        {
+          "last": 15.5,
+          "chgPct": 110.59,
+          "volume": 5769229,
+          "session": "post",
+          "direction": "up",
+          "name": "Ohmyhome Limited",
+          "sessionDate": "2026-11-06",
+          "targetDate": "2026-11-09"
+        }
+      ],
+      "primarySession": "post",
+      "primaryDirection": "up",
+      "last": 15.5,
+      "chgPct": 110.59,
+      "volume": 5769229,
+      "tv": {
+        "latestEPS": -6.88,
+        "consensusEPS": -64.27,
+        "priorYrEPS": null,
+        "surpriseEPS_pct": 89.3,
+        "surpriseEPS_dollar": 57.38999999999999,
+        "latestRev_M": 8.32,
+        "consensusRev_M": 7.92,
+        "priorYrRev_M": null,
+        "surpriseRev_pct": 4.99,
+        "yrYrRev_pct": null,
+        "epsYoY_pct": null,
+        "epsEst_next4": [
+          -5.8,
+          -4.64,
+          null,
+          null
+        ],
+        "revEst_next4": [
+          10.7,
+          13.16,
+          null,
+          null
+        ],
+        "yoyBlock": "N/M / N/M\n--------------------\nN/M / N/M\nN/M / N/M",
+        "chart": {
+          "quarters": [],
+          "eps_reported": [
+            -95.46,
+            -6.88,
+            null,
+            null
+          ],
+          "eps_estimate": [
+            -89.28,
+            -64.27,
+            -5.8,
+            -4.64
+          ],
+          "rev_reported_M": [
+            3.67,
+            8.32,
+            null,
+            null
+          ],
+          "rev_estimate_M": [
+            3.73,
+            7.92,
+            10.7,
+            13.16
+          ],
+          "latest_idx": 1
+        },
+        "latestReportDate": null,
+        "nextReportDate": null,
+        "surpStale": true
+      },
+      "shortFloat": 2.63,
+      "shortRatio": 0.03,
+      "marketCap_M": 15.54,
+      "floatShares_M": 2.11,
+      "perf1M": 210.55,
+      "perf3M": 67.08,
+      "perf6M": -83.27,
+      "perfYTD": -81.77,
+      "perf12M": -87.81,
+      "prevOhlcv": null
     },
     "TGE": {
       "symbol": "TGE",
