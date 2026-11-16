@@ -25,9 +25,9 @@
   "EarningsReaction": false
  },
  "CBRS": {
-  "Type": "earnings",
-  "Catalyst": "Q3 營收 2.108 億美元年增 55%(核心營收 2.309 億 +70%),全年核心營收財測 9.4–9.6 億;媒體報導新增微軟為客戶",
-  "EarningsReaction": true
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "查無今日個股新聞,隨 AI 硬體族群走弱(Nvidia 換帥風波)"
  },
  "LFTO": {
   "Type": "earnings",
@@ -111,8 +111,8 @@
  },
  "NVDA": {
   "Type": "news",
-  "Catalyst": "輝達 11/12 宣布黃仁勳辭去執行長、總裁與董事,財務長 Kress 代理執行長;11/12 收 −4.3%,盤前反彈 +1.7%,財報 11/17",
-  "EarningsReaction": false
+  "EarningsReaction": false,
+  "Catalyst": "黃仁勳上週因醜聞辭職、Colette Kress 暫代;FT 報導他考慮回任;週二盤後財報,UBS/Mizuho 下調目標價"
  },
  "CSCO": {
   "Type": "earnings",
@@ -140,54 +140,54 @@
   "EarningsReaction": true
  },
  "AMD": {
-  "Type": "macro",
+  "Type": "momentum",
   "EarningsReaction": false,
-  "Catalyst": "AI 硬體族群賣壓 + 前幾日大漲後回吐,當日 S&P 500 跌幅最大成分股;11/13 收 -8.75%(10 年期殖利率 5.15%、SOX −3.4%)"
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "DELL": {
-  "Type": "macro",
+  "Type": "momentum",
   "EarningsReaction": false,
-  "Catalyst": "AI 伺服器族群賣壓(HPE 同步 −4%),無自身公司消息;11/13 收 -7.18%(10 年期殖利率 5.15%、SOX −3.4%)"
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "CRWV": {
-  "Type": "macro",
+  "Type": "momentum",
   "EarningsReaction": false,
-  "Catalyst": "AI 雲端算力族群賣壓,Reuters 點名一起收低;11/13 收 -6.13%(10 年期殖利率 5.15%、SOX −3.4%)"
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "COHR": {
-  "Type": "macro",
+  "Type": "momentum",
   "EarningsReaction": false,
-  "Catalyst": "AI 光通訊類股整批下跌,無公司消息;11/13 收 -6.00%(10 年期殖利率 5.15%、SOX −3.4%)"
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "SNDK": {
-  "Type": "macro",
+  "Type": "news",
   "EarningsReaction": false,
-  "Catalyst": "AI 儲存族群賣壓(WDC/STX/MU 同步走弱),無公司消息;11/13 收 -5.59%(10 年期殖利率 5.15%、SOX −3.4%)"
+  "Catalyst": "傳長鑫存儲(CXMT)準備跨入 NAND,加上 AI 硬體賣壓"
  },
  "WDC": {
-  "Type": "macro",
+  "Type": "momentum",
   "EarningsReaction": false,
-  "Catalyst": "AI 儲存族群賣壓,無公司消息;11/13 收 -5.00%(10 年期殖利率 5.15%、SOX −3.4%)"
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "BE": {
-  "Type": "macro",
+  "Type": "momentum",
   "EarningsReaction": false,
-  "Catalyst": "AI 資料中心供電題材隨族群下跌,無公司消息;11/13 收 -4.92%(10 年期殖利率 5.15%、SOX −3.4%)"
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "MRVL": {
-  "Type": "macro",
+  "Type": "momentum",
   "EarningsReaction": false,
-  "Catalyst": "AI 晶片族群賣壓,無當日公司消息;11/13 收 -4.68%(10 年期殖利率 5.15%、SOX −3.4%)"
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "AVGO": {
-  "Type": "macro",
+  "Type": "momentum",
   "EarningsReaction": false,
-  "Catalyst": "AI 晶片族群賣壓,無公司消息;11/13 收 -4.76%(10 年期殖利率 5.15%、SOX −3.4%)"
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "ARM": {
-  "Type": "macro",
+  "Type": "momentum",
   "EarningsReaction": false,
-  "Catalyst": "AI 晶片族群賣壓;報導稱輝達董事會曾接觸 Arm 執行長接任;11/13 收 -4.63%(10 年期殖利率 5.15%、SOX −3.4%)"
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "ANET": {
   "Type": "macro",
@@ -275,34 +275,34 @@
   "Catalyst": "查無個股新聞"
  },
  "MU": {
-  "Type": "macro",
+  "Type": "news",
   "EarningsReaction": false,
-  "Catalyst": "AI 硬體族群賣壓(輝達執行長請辭後續、10 年期殖利率 5.15%、SOX −3.4%);11/13 收 -2.52%"
+  "Catalyst": "DRAM 價格操縱集體訴訟獲法官准許續行(被告含美光、SK 海力士、三星);Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "STX": {
-  "Type": "macro",
+  "Type": "momentum",
   "EarningsReaction": false,
-  "Catalyst": "AI 硬體族群賣壓(輝達執行長請辭後續、10 年期殖利率 5.15%、SOX −3.4%);11/13 收 -3.09%"
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "INTC": {
-  "Type": "macro",
+  "Type": "news",
   "EarningsReaction": false,
-  "Catalyst": "AI 硬體族群賣壓(輝達執行長請辭後續、10 年期殖利率 5.15%、SOX −3.4%);11/13 收 -2.52%"
+  "Catalyst": "遭提擬議集體訴訟,指控誤導 PC 需求與庫存;Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "VRT": {
-  "Type": "macro",
+  "Type": "momentum",
   "EarningsReaction": false,
-  "Catalyst": "AI 硬體族群賣壓(輝達執行長請辭後續、10 年期殖利率 5.15%、SOX −3.4%);11/13 收 -3.61%"
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "ALAB": {
-  "Type": "macro",
+  "Type": "momentum",
   "EarningsReaction": false,
-  "Catalyst": "AI 硬體族群賣壓(輝達執行長請辭後續、10 年期殖利率 5.15%、SOX −3.4%);11/13 收 -2.62%"
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "TSM": {
-  "Type": "macro",
+  "Type": "momentum",
   "EarningsReaction": false,
-  "Catalyst": "AI 硬體族群賣壓(輝達執行長請辭後續、10 年期殖利率 5.15%、SOX −3.4%);11/13 收 -1.67%"
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
  },
  "PLTR": {
   "Type": "macro",
@@ -310,13 +310,238 @@
   "Catalyst": "AI 硬體族群賣壓(輝達執行長請辭後續、10 年期殖利率 5.15%、SOX −3.4%);11/13 收 -2.09%"
  },
  "MSTR": {
-  "Type": "macro",
+  "Type": "news",
   "EarningsReaction": false,
-  "Catalyst": "比特幣跌破 6.9 萬美元,加密貨幣相關股同步走弱;11/13 收 -2.44%"
+  "Catalyst": "比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱;MSCI 已確認 11/30 後將 Strategy 剔除指數"
  },
  "COIN": {
-  "Type": "macro",
+  "Type": "momentum",
   "EarningsReaction": false,
-  "Catalyst": "比特幣跌破 6.9 萬美元,加密貨幣相關股同步走弱;11/13 收 -2.31%"
+  "Catalyst": "隨族群:比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱"
+ },
+ "AKAN": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "查無個股新聞;週五已漲 102%,今日盤前續漲約 75%,市值僅約 350 萬美元"
+ },
+ "LXEO": {
+  "Type": "FDA",
+  "EarningsReaction": false,
+  "Catalyst": "基因療法 LX2020(PKP2 心肌病)期中數據:高劑量組非持續性心室頻脈平均降 80%;同日公布 Q3"
+ },
+ "TU": {
+  "Type": "M&A",
+  "EarningsReaction": false,
+  "Catalyst": "Québecor 提出非約束性合併提案:每股 $6.35 現金 + 0.17 股,約溢價 60%,TELUS 成立特別委員會審議"
+ },
+ "DRTS": {
+  "Type": "news",
+  "EarningsReaction": false,
+  "Catalyst": "Alpha DaRT 復發性膠質母細胞瘤期中數據(SNO 會議):8 人全數存活、可評估 6 人皆有反應"
+ },
+ "HELP": {
+  "Type": "news",
+  "EarningsReaction": false,
+  "Catalyst": "HLP003 第三期 APPROACH 達主要終點(MADRS 降 7.6 分),但有 3 例治療相關嚴重不良事件,股價反跌"
+ },
+ "SMMT": {
+  "Type": "FDA",
+  "EarningsReaction": false,
+  "Catalyst": "FDA 週日對 ivonescimab 發出拒絕批准函(CRL),理由為整體存活期數據不足"
+ },
+ "POET": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Q3 營收 $103 萬(年增 244%)規模仍小,3 萬顆光引擎訂單交期延到 2027 Q2;AI 硬體族群同步走弱"
+ },
+ "ACRS": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "查無個股新聞,隨小型生技走弱"
+ },
+ "ASX": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺(日月光,查無個股新聞)"
+ },
+ "FLNC": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "查無個股新聞,隨 AI 電力/儲能族群走弱"
+ },
+ "USAR": {
+  "Type": "analyst",
+  "EarningsReaction": false,
+  "Catalyst": "William Blair 降評,理由為旗下 LCM 原料長期短缺"
+ },
+ "DJT": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱"
+ },
+ "ONDS": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "查無今日個股新聞,隨高估值投機股走弱"
+ },
+ "PURR": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱"
+ },
+ "SKHY": {
+  "Type": "news",
+  "EarningsReaction": false,
+  "Catalyst": "DRAM 價格操縱集體訴訟獲准續行;韓股 SK 海力士跌約 5.6%"
+ },
+ "MARA": {
+  "Type": "news",
+  "EarningsReaction": false,
+  "Catalyst": "比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱;Q3 後賣出 13,597 顆比特幣套現約 $11 億"
+ },
+ "BIDU": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "百度盤前公布 Q3:獲利不如預期(Barron's)"
+ },
+ "TSN": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "泰森食品 FQ4 調整後 EPS 年減、營收成長"
+ },
+ "BEKE": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "貝殼盤前公布 Q3 財報"
+ },
+ "HTHT": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "華住集團盤前公布 Q3 財報,盤前 +4%"
+ },
+ "ARMK": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "Aramark FQ4 調整後 EPS $0.71,低於預期 $0.75"
+ },
+ "XPEV": {
+  "Type": "earnings",
+  "EarningsReaction": true,
+  "Catalyst": "小鵬汽車盤前公布 Q3,股價走高但仍虧損(Barron's)"
+ },
+ "JNJ": {
+  "Type": "M&A",
+  "EarningsReaction": false,
+  "Catalyst": "FT 報導嬌生最快週一宣布以最高 $34 億收購 Ollin Biosciences"
+ },
+ "TTWO": {
+  "Type": "news",
+  "EarningsReaction": false,
+  "Catalyst": "GTA VI 週四發售,Jefferies 重申買進、目標價 $300"
+ },
+ "NVO": {
+  "Type": "FDA",
+  "EarningsReaction": false,
+  "Catalyst": "研發中減重藥第三期分析顯示平均減重 25%"
+ },
+ "LLY": {
+  "Type": "M&A",
+  "EarningsReaction": false,
+  "Catalyst": "禮來宣布以最高 $15 億收購 Calytrix Bio"
+ },
+ "AAOI": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
+ },
+ "AXTI": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
+ },
+ "CRDO": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
+ },
+ "NBIS": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
+ },
+ "NVTS": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
+ },
+ "SMCI": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
+ },
+ "APLD": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
+ },
+ "OKLO": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
+ },
+ "SMR": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:Nvidia 執行長黃仁勳上週因醜聞辭職、週二盤後財報在即,AI 硬體類股盤前續殺"
+ },
+ "ASST": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱"
+ },
+ "BMNR": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱"
+ },
+ "BTDR": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱"
+ },
+ "CIFR": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱"
+ },
+ "CLSK": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱"
+ },
+ "CRCL": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱"
+ },
+ "HOOD": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱"
+ },
+ "IREN": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱"
+ },
+ "RIOT": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱"
+ },
+ "WULF": {
+  "Type": "momentum",
+  "EarningsReaction": false,
+  "Catalyst": "隨族群:比特幣週末跌到約 $64,000(三個月低點),加密概念股全面走弱"
  }
 }

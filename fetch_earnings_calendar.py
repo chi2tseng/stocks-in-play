@@ -61,15 +61,24 @@ def _load_universe():
 
 UNIVERSE = _load_universe()
 
+
+def _curl_json(url):
+    import subprocess, json as _j
+    out = subprocess.run(['curl','-s','--max-time','20','-A','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36','-H','Accept: application/json',url], capture_output=True, timeout=30).stdout
+    return _j.loads(out)
+
 def fetch_calendar(date_iso):
     """One day's NASDAQ earnings calendar rows. [] on any failure (logged)."""
     import urllib.request
     url = f'https://api.nasdaq.com/api/calendar/earnings?date={date_iso}'
     req = urllib.request.Request(url, headers={
-        'User-Agent': 'Mozilla/5.0', 'Accept': 'application/json, text/plain, */*'})
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*'})
     try:
-        with urllib.request.urlopen(req, timeout=20) as r:
-            d = json.load(r)
+        try:
+            with urllib.request.urlopen(req, timeout=20) as r:
+                d = json.load(r)
+        except Exception:
+            d = _curl_json(url)  # NASDAQ 403s urllib but not curl — 2026-11-16
         return (d.get('data') or {}).get('rows') or []
     except Exception as e:
         print(f'[WARN] calendar {date_iso}: {e}')

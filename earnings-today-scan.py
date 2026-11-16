@@ -59,11 +59,20 @@ try:
 except Exception:
     UNIVERSE = set()
 
+
+def _curl_json(url):
+    import subprocess, json as _j
+    out = subprocess.run(['curl','-s','--max-time','20','-A','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36','-H','Accept: application/json',url], capture_output=True, timeout=30).stdout
+    return _j.loads(out)
+
 def get(url):
     req = urllib.request.Request(url, headers={
-        'User-Agent': 'Mozilla/5.0', 'Accept': 'application/json, text/plain, */*'})
-    with urllib.request.urlopen(req, timeout=20) as r:
-        return json.load(r)
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36', 'Accept': 'application/json, text/plain, */*'})
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return json.load(r)
+    except Exception:
+        return _curl_json(url)  # NASDAQ 403s urllib (TLS fingerprint) but not curl — 2026-11-16
 
 def calendar(date_iso):
     try:
