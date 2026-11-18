@@ -36,6 +36,10 @@ from headline import top_headline
 
 # Curated large-cap / well-known universe (market cap roughly >=$10B). Extend as
 # needed — the point is "famous big companies", not an exhaustive index.
+# 2026-09-24 追加(倒數第二行):AI 電力/資料中心供電與電氣化族群(原宇宙只有 GEV,BE -6.3% 與當日 #1 精選 P 都漏掉)
+# 2026-09-24 追加(最後一行):其餘遺漏的標普 500 成分/知名大型股
+# 註解一律放在字串外 — fetch_logos / earnings-today-scan / fetch_earnings_calendar 都用正則直接讀這個區塊
+# (2026-11-03:字串內的 # 註解行曾被當成代號「#」「2026-09-24」「追加:AI」)
 UNIVERSE = """
 AAPL MSFT NVDA GOOGL GOOG AMZN META AVGO TSLA ORCL CRM ADBE AMD INTC QCOM TXN CSCO NOW AMAT LRCX KLAC MU ARM PLTR SNOW PANW CRWD ANET DELL SMCI MRVL IBM UBER ABNB
 JPM BAC WFC C GS MS BLK BK STT SCHW AXP V MA COF USB PNC TFC MTB BX KKR APO SPGI CB PGR TRV AIG MET PRU ICE CME
@@ -45,9 +49,7 @@ XOM CVX COP BA CAT GE HON UNP UPS RTX LMT DE EMR GEV SLB EOG PSX MPC NOC GD
 T VZ TMUS
 BABA PDD JD BIDU NIO LI XPEV TSM SE SHOP SAP TM SONY NVO ASML AZN NVS HSBC TTE BP SHEL RIO BHP
 HCA CI MCK COR
-# 2026-09-24 追加:AI 電力/資料中心供電與電氣化族群(原宇宙只有 GEV,BE -6.3% 與當日 #1 精選 P 都漏掉)
 BE CEG VST NRG TLN OKLO SMR VRT ETN PWR NEE EMR PH ROK FSLR CARR JCI EME AOS
-# 2026-09-24 追加:其餘遺漏的標普 500 成分/知名大型股
 P ILMN SNX DRI CTAS PAYX GIS ROST ORLY AZO CMG YUM DRI MAR HLT LVS WYNN MGM CZR DASH ABNB
 """.split()
 

@@ -13,10 +13,11 @@ Store: D:\\SIPs\\daily_case.json  {"cases":[{date,symbol,direction,thesis,...}]}
 """
 import io, json, os, sys, urllib.request
 from datetime import datetime, timezone, timedelta
+from zoneinfo import ZoneInfo
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 STORE = os.path.join(DIR, 'daily_case.json')
-ET = timezone(timedelta(hours=-4))
+ET = ZoneInfo('America/New_York')  # 2026-11-03:原本寫死 −4,冬令(EST)時 written_at 會晚標一小時
 TYPE_W = {'earnings': 1.0, 'guidance': 1.0, 'news': 1.0, 'fda': 1.0, 'contract': 0.9, 'm&a': 0.5,
           'analyst': 0.8, 'macro': 0.7, 'policy': 0.7, 'momentum': 0.6}
 

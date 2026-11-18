@@ -233,7 +233,7 @@ class SidecarHandler(SimpleHTTPRequestHandler):
 def _premarket_watch():
     """每 5 分鐘刷新最新日包的盤前報價 + 重算模型預測(美股盤前時段才動作)。
 
-    時窗 UTC 08:00–13:30(EDT 盤前 4:00–9:30 ET;冬令 EST 少蓋前半小時,可接受 —
+    時窗 = 美東當地 04:00–09:40(zoneinfo,自動處理夏令/冬令)—
     刷到開盤後也只是繼續追 live 價,無害)。來源 = Yahoo(prepost_quote.py,延遲 ≤15 分)。
     """
     import time as _time
@@ -245,8 +245,12 @@ def _premarket_watch():
     while True:
         try:
             now = _dt.datetime.now(_dt.timezone.utc)
-            hm = now.strftime('%H:%M')
-            if '08:00' <= hm <= '13:40':
+            # 2026-11-12 修:原本寫死 UTC 時窗 + UTC-4,冬令(EST)時 08:31 ET 就誤判開盤,
+            # 拿「昨天的開盤 gap」蓋掉全部卡片的盤前漲跌。改用 America/New_York 當地時間。
+            from zoneinfo import ZoneInfo as _ZI
+            et_now = now.astimezone(_ZI('America/New_York'))
+            hm = et_now.strftime('%H:%M')
+            if '04:00' <= hm <= '09:40':
                 from prepost_quote import prepost_quote
                 import model_predict as mp
                 import urllib.request as _ur
@@ -262,7 +266,6 @@ def _premarket_watch():
                 # 清晨 4:00 ET 到 /SIPs 寫出今日包之前,都在用今天的盤前價覆寫「昨天」的歷史
                 # 紀錄 — chgPct 是模型的輸入(掃描時跳空),被寫成隔日盤前價就毀了對帳基礎。
                 # 週末同理:ET 週六 08:05 曾把週五整包 149 檔改成週五收盤值並抹掉 spike/qual。
-                et_now = now - _dt.timedelta(hours=4)
                 if et_now.weekday() >= 5 or date != et_now.strftime('%Y-%m-%d'):
                     _time.sleep(300)
                     continue
@@ -272,10 +275,10 @@ def _premarket_watch():
                 pk = os.path.join(base, 'dashboard', 'data', f'{date}.json')
                 d = mp.load(pk)
                 stocks = d.get('stocks') or {}
-                et_hm = (now - _dt.timedelta(hours=4)).strftime('%H:%M')
+                et_hm = hm
                 # 開盤定格(2026-08-06 verify 8/5 發現:盤前快照 vs 實際開盤 gap 中位差 6.1pt,
-                # 是預測誤差的最大來源):13:31-13:40 UTC 的最後一輪改用「真實開盤價」算 gap。
-                open_lock = hm >= '13:31'
+                # 是預測誤差的最大來源):09:31-09:40 ET 的最後一輪改用「真實開盤價」算 gap。
+                open_lock = hm >= '09:31'
                 _UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0'}
                 def open_gap(sym):
                     try:
