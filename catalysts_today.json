@@ -1,617 +1,322 @@
 {
- "GP": {
-  "Type": "momentum",
-  "Catalyst": "11/17 公布 FQ2 虧損收斂後暴漲約 70%、爆量 9,200 萬股,今日盤前延續;查無今日新聞。盤前 +16%",
-  "EarningsReaction": false
- },
- "AYTU": {
-  "Type": "M&A",
-  "Catalyst": "Rosemont 以每股 2.70 美元現金收購(溢價 41%,約 5,600 萬美元);同時公布 FQ1 營收 1,484 萬美元優於預期。盤後 +44%",
-  "EarningsReaction": false
- },
- "RCAT": {
+ "PANW": {
   "Type": "earnings",
-  "Catalyst": "Q3 營收 1,180 萬美元(年增 22%)遠低於預期,撤回 2026 全年營收目標,淨損 4,040 萬美元。盤後 −26%、盤前 −33%",
+  "Catalyst": "FQ1 營收 34.4 億超預期、NGS ARR +66%,上修 FY27 指引並以 45 億美元收購 Applied Compute",
   "EarningsReaction": true
  },
- "SPAI": {
+ "P": {
   "Type": "earnings",
-  "Catalyst": "Q3 營收 268 萬美元創新高(年增 2,539%、季增 101%),AI 業務毛利率 79%;營收略低於預期 281 萬。盤前 +29%",
+  "Catalyst": "FQ3 營收 14.6 億年增 51% 超預期,FY27 營收指引上修至 52.0–52.1 億美元",
   "EarningsReaction": true
  },
- "AKAN": {
-  "Type": "momentum",
-  "Catalyst": "查無 11/17 個股新聞(Nasdaq 合規期限 11/16,結果未見)。盤後 +16.1%",
-  "EarningsReaction": false
- },
- "OMH": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞(近期僅 11/16 增資登記修正)。盤前 +5%",
-  "EarningsReaction": false
- },
- "LUCK": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞(最近一則是 11/5 FY27 Q1 財報);盤前 +15%,空單回補天數 22.7 天",
-  "EarningsReaction": false
- },
- "VAI": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞(11 月有 500 萬美元私募、Youngstown 18MW 資料中心收購盡調,皆非當日)",
-  "EarningsReaction": false
- },
- "EGG": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞;盤後 −8%",
-  "EarningsReaction": false
- },
- "OMER": {
+ "PDD": {
   "Type": "earnings",
-  "Catalyst": "Q3 淨營收 3,590 萬美元(季增 26%)低於預期約 3,727 萬;GAAP 淨損 5,740 萬美元。盤後 −7.7%",
+  "Catalyst": "Q3 調整後每 ADS 21.04 元大勝預估 18.54 元,營收 1,083 億持平、低於預期",
   "EarningsReaction": true
  },
- "SLS": {
-  "Type": "offering",
-  "Catalyst": "11/17 盤前公布 REGAL 三期達整體存活主要終點(HR 0.59)正規盤收 +156%;16:01 ET 宣布 1.5 億美元公開增資。盤後 −10.5%",
-  "EarningsReaction": false
- },
- "ACM": {
+ "RRGB": {
   "Type": "earnings",
-  "Catalyst": "FQ4 調整後 EPS 1.63 美元;積壓訂單創新高 280 億美元;FY27 EPS 指引 6.15-6.35 美元,股息上調 10%。盤後 +6.8%",
+  "Catalyst": "Q3 營收 2.321 億、虧損皆遜於預期,Q4 調整後 EBITDA 僅約 600 萬美元",
   "EarningsReaction": true
  },
- "COHR": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,光通訊/AI 互連族群盤後跟漲;查無個股新聞。盤後 +7.2%",
-  "EarningsReaction": false
- },
- "AAOI": {
-  "Type": "offering",
-  "Catalyst": "11/17 盤後宣布最高 5.5 億美元 ATM 增發(Raymond James/Needham 承銷),稀釋疑慮蓋過 NVDA 利多。盤後 −8.7%",
-  "EarningsReaction": false
- },
- "LITE": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,光通訊/AI 互連族群盤後跟漲;查無個股新聞。盤後 +6.5%",
-  "EarningsReaction": false
- },
- "MRVL": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,半導體族群盤後跟漲;查無個股新聞。盤後 +5.7%",
-  "EarningsReaction": false
- },
- "CRDO": {
-  "Type": "news",
-  "Catalyst": "11/17 16:05 ET 與 Marvell 就主動電纜(AEC)達成專利協議(條款未公開,僅單一來源),疊加 NVDA 財報利多。盤後 +7.5%",
-  "EarningsReaction": false
- },
- "POET": {
+ "BORR": {
   "Type": "earnings",
-  "Catalyst": "11/16 公布 Q3 財報(前一日舊聞),11/17 盤後隨 NVDA 財報光通訊族群上漲。盤後 +4.3%",
-  "EarningsReaction": false
- },
- "GLW": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,光通訊/AI 互連族群盤後跟漲;查無個股新聞。盤後 +4.1%",
-  "EarningsReaction": false
- },
- "TEM": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞(最近是 11/2 Q3 財報);週一重挫後反彈 +5.5%",
-  "EarningsReaction": false
- },
- "CYPH": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞(Zcash 財庫股);盤前 +4.9%",
-  "EarningsReaction": false
- },
- "KLAR": {
-  "Type": "earnings",
-  "Catalyst": "Q3 營收 10.09 億美元(年增 12%,優於預期約 9.66 億),GMV 361 億達財測上緣,調整後營業利益 2,100 萬美元;EPS −0.19 遜於預期",
+  "Catalyst": "Borr Drilling Q3 營收 2.63 億美元(年減 5%)、淨虧 3,870 萬美元;10/24 Prospector 5 平台沉沒全損。盤前 −4%",
   "EarningsReaction": true
  },
- "JD": {
+ "WMT": {
   "Type": "earnings",
-  "Catalyst": "Q3 營收 3,096 億人民幣(年增 3.5%)略優於預期;非 GAAP 每 ADS 盈餘 5.88 元略低於預期 5.91;盤前 −4%",
+  "Catalyst": "FQ3 EPS 0.65 美元優於預期、全年營收與 EPS 指引上修,但美國同店銷售放緩至 2.9%",
   "EarningsReaction": true
  },
- "SPG": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞(Q3 財報 11/5 已公布);盤後 −4.5%",
-  "EarningsReaction": false
- },
- "CPRI": {
-  "Type": "momentum",
-  "Catalyst": "查無當日個股新聞;盤後 −4.4%",
-  "EarningsReaction": false
- },
- "FWDI": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞(Solana 財庫股,持有約 850 萬顆 SOL);盤前 +4.3%",
-  "EarningsReaction": false
- },
- "HD": {
+ "BABA": {
   "Type": "earnings",
-  "Catalyst": "Q3 營收 434 億美元(年增 4.9%)優於預期 428 億,調整後 EPS 3.86 美元;全年同店成長指引約 +1.4%;財務長 McPhail 11/23 接任執行長。盤前 −1.9%",
+  "Catalyst": "9 月季營收 2,715 億人民幣優於預期、AI 雲端 +53%,但調整後 EPS 低於預估、現金流出擴大",
   "EarningsReaction": true
  },
- "DIS": {
+ "NTES": {
   "Type": "earnings",
-  "Catalyst": "FQ4 調整後 EPS 1.77 美元優於預期 1.67,營收 259.5 億優於 251.8 億;新執行長宣布 FY29 前節省 30 億美元成本。盤前 −1.4%",
+  "Catalyst": "Q3 營收 279 億人民幣年減 1.8%,營收與每股盈餘雙雙低於預期",
   "EarningsReaction": true
  },
- "ESLT": {
+ "WSM": {
   "Type": "earnings",
-  "Catalyst": "Q3 財報各事業部全面成長(國防需求);盤前 +8%",
+  "Catalyst": "Q3 同店 +5.1% 不如預期、Pottery Barn 僅 +1.8%,全年財測僅維持",
   "EarningsReaction": true
  },
- "AS": {
+ "WMG": {
   "Type": "earnings",
-  "Catalyst": "Q3 淨利與營收成長,上調 2026 全年財測;盤前 +5%",
+  "Catalyst": "FY26 Q4 營收 20 億美元年增 7%、全年營收創新高,但未給 2027 年具體數字指引",
   "EarningsReaction": true
  },
- "TME": {
+ "FUTU": {
   "Type": "earnings",
-  "Catalyst": "公布 2026 Q3 財報(04:00 ET);盤前 +3%",
+  "Catalyst": "Q3 營收 8.53 億美元年增 4.5% 優於預期,有效帳戶年增 27.9%;每股盈餘低於預估",
   "EarningsReaction": true
  },
- "VIK": {
-  "Type": "earnings",
-  "Catalyst": "Q3 財報仍受夏季淡季拖累(Barron's);盤前 −0.3%",
-  "EarningsReaction": true
- },
- "ALAB": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,光通訊/AI 互連族群盤後跟漲;查無個股新聞。盤後 +7.3%",
-  "EarningsReaction": false
- },
- "SMCI": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,AI 伺服器/雲端族群盤後跟漲;查無個股新聞。盤後 +5.3%",
-  "EarningsReaction": false
- },
- "ARM": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,半導體族群盤後跟漲;查無個股新聞。盤後 +5.9%",
-  "EarningsReaction": false
- },
- "STX": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,記憶體/儲存族群盤後跟漲;查無個股新聞。盤後 +5.5%",
-  "EarningsReaction": false
- },
- "VRT": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,AI 資料中心電力族群盤後跟漲;查無個股新聞。盤後 +6.5%",
-  "EarningsReaction": false
- },
- "AMD": {
-  "Type": "momentum",
-  "Catalyst": "週一 AI 硬體股集體重挫後技術性反彈,NVDA 今晚盤後財報前卡位;盤前 +1.9%",
-  "EarningsReaction": false
- },
- "WDC": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,記憶體/儲存族群盤後跟漲;查無個股新聞。盤後 +4.6%",
-  "EarningsReaction": false
- },
- "MP": {
-  "Type": "momentum",
-  "Catalyst": "稀土/關鍵礦產族群盤前走強(美中供應鏈議題延續);盤前 +2.7%",
-  "EarningsReaction": false
- },
- "CRML": {
-  "Type": "momentum",
-  "Catalyst": "稀土/關鍵礦產族群盤前走強(美中供應鏈議題延續);盤前 +3.8%",
-  "EarningsReaction": false
- },
- "NBIS": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元;CNBC 點名 CRWV/NBIS/IREN 盤後各漲 8-10%,查無 NBIS 個股新聞。盤後 +11.3%",
-  "EarningsReaction": false
- },
- "CRWV": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,新雲端/礦工轉 AI 算力族群盤後跟漲;查無個股新聞。盤後 +9.0%",
-  "EarningsReaction": false
- },
- "IREN": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,新雲端/礦工轉 AI 算力族群盤後跟漲;查無個股新聞。盤後 +10.1%",
-  "EarningsReaction": false
- },
- "APLD": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,新雲端/礦工轉 AI 算力族群盤後跟漲;查無個股新聞。盤後 +10.1%",
-  "EarningsReaction": false
- },
- "WULF": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,新雲端/礦工轉 AI 算力族群盤後跟漲;查無個股新聞。盤後 +10.4%",
-  "EarningsReaction": false
- },
- "CIFR": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,新雲端/礦工轉 AI 算力族群盤後跟漲;查無個股新聞。盤後 +8.9%",
-  "EarningsReaction": false
- },
- "HUT": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,新雲端/礦工轉 AI 算力族群盤後跟漲;查無個股新聞。盤後 +8.1%",
-  "EarningsReaction": false
- },
- "CORZ": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,新雲端/礦工轉 AI 算力族群盤後跟漲;查無個股新聞。盤後 +7.2%",
-  "EarningsReaction": false
- },
- "GLXY": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,新雲端/礦工轉 AI 算力族群盤後跟漲;查無個股新聞。盤後 +7.0%",
-  "EarningsReaction": false
- },
- "CLSK": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,新雲端/礦工轉 AI 算力族群盤後跟漲;查無個股新聞。盤後 +6.2%",
-  "EarningsReaction": false
- },
- "MARA": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,新雲端/礦工轉 AI 算力族群盤後跟漲;查無個股新聞。盤後 +6.1%",
-  "EarningsReaction": false
- },
- "RIOT": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,新雲端/礦工轉 AI 算力族群盤後跟漲;查無個股新聞。盤後 +5.3%",
-  "EarningsReaction": false
- },
- "BTDR": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,新雲端/礦工轉 AI 算力族群盤後跟漲;查無個股新聞。盤後 +6.8%",
-  "EarningsReaction": false
- },
- "CLS": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,光通訊/AI 互連族群盤後跟漲;查無個股新聞。盤後 +5.5%",
-  "EarningsReaction": false
- },
- "AXTI": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,光通訊/AI 互連族群盤後跟漲;查無個股新聞。盤後 +6.7%",
-  "EarningsReaction": false
- },
- "SMTC": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,光通訊/AI 互連族群盤後跟漲;查無個股新聞。盤後 +7.2%",
-  "EarningsReaction": false
- },
- "TSM": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,半導體族群盤後跟漲;查無個股新聞。盤後 +4.7%",
-  "EarningsReaction": false
- },
- "ASX": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,半導體族群盤後跟漲;查無個股新聞。盤後 +5.1%",
-  "EarningsReaction": false
- },
- "AMKR": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,半導體族群盤後跟漲;查無個股新聞。盤後 +7.0%",
-  "EarningsReaction": false
- },
- "KLAC": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,半導體族群盤後跟漲;查無個股新聞。盤後 +4.2%",
-  "EarningsReaction": false
- },
- "LRCX": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,半導體族群盤後跟漲;查無個股新聞。盤後 +4.0%",
-  "EarningsReaction": false
- },
- "ENTG": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,半導體族群盤後跟漲;查無個股新聞。盤後 +6.2%",
-  "EarningsReaction": false
- },
- "AEHR": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,半導體族群盤後跟漲;查無個股新聞。盤後 +9.5%",
-  "EarningsReaction": false
- },
- "NVTS": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,半導體族群盤後跟漲;查無個股新聞。盤後 +6.7%",
-  "EarningsReaction": false
- },
- "CBRS": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,半導體族群盤後跟漲;查無個股新聞。盤後 +5.2%",
-  "EarningsReaction": false
- },
- "MU": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,記憶體/儲存族群盤後跟漲;查無個股新聞。盤後 +4.7%",
-  "EarningsReaction": false
- },
- "SNDK": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,記憶體/儲存族群盤後跟漲;查無個股新聞。盤後 +5.8%",
-  "EarningsReaction": false
- },
- "SKHY": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,記憶體/儲存族群盤後跟漲;查無個股新聞。盤後 +5.7%",
-  "EarningsReaction": false
- },
- "DELL": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,AI 伺服器/雲端族群盤後跟漲;查無個股新聞。盤後 +6.2%",
-  "EarningsReaction": false
- },
- "HPE": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,AI 伺服器/雲端族群盤後跟漲;查無個股新聞。盤後 +5.5%",
-  "EarningsReaction": false
- },
- "FLEX": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,AI 伺服器/雲端族群盤後跟漲;查無個股新聞。盤後 +5.3%",
-  "EarningsReaction": false
- },
- "ORCL": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,AI 伺服器/雲端族群盤後跟漲;查無個股新聞。盤後 +4.1%",
+ "NVS": {
+  "Type": "guidance",
+  "Catalyst": "中期展望改為 2026–2031 年營收年複合成長 5%,低於前一版 5%–6%;多項藥品銷售高峰上調",
   "EarningsReaction": false
  },
  "BE": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,AI 資料中心電力族群盤後跟漲;查無個股新聞。盤後 +7.2%",
+  "Type": "analyst",
+  "Catalyst": "BMO 升評優於大盤、目標價 230 美元,加上 Anthropic IPO 帶動 AI 電力族群",
   "EarningsReaction": false
  },
- "NVT": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,AI 資料中心電力族群盤後跟漲;查無個股新聞。盤後 +5.3%",
-  "EarningsReaction": false
- },
- "FPS": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,AI 資料中心電力族群盤後跟漲;查無個股新聞。盤後 +6.4%",
-  "EarningsReaction": false
- },
- "BW": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,AI 資料中心電力族群盤後跟漲;查無個股新聞。盤後 +4.6%",
-  "EarningsReaction": false
- },
- "FRMI": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,AI 資料中心電力族群盤後跟漲;查無個股新聞。盤後 +5.8%",
-  "EarningsReaction": false
- },
- "NUAI": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,AI 資料中心電力族群盤後跟漲;查無個股新聞。盤後 +6.2%",
-  "EarningsReaction": false
- },
- "IONQ": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,量子族群盤後跟漲;查無個股新聞。盤後 +5.2%",
-  "EarningsReaction": false
- },
- "RGTI": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,量子族群盤後跟漲;查無個股新聞。盤後 +4.5%",
-  "EarningsReaction": false
- },
- "QBTS": {
-  "Type": "macro",
-  "Catalyst": "NVDA 11/17 盤後公布 FQ3 營收 1,158 億美元(預期約 1,091 億)、Q4 指引約 1,300 億美元,量子族群盤後跟漲;查無個股新聞。盤後 +5.9%",
-  "EarningsReaction": false
- },
- "NVDA": {
-  "Type": "earnings",
-  "Catalyst": "FQ3 營收 1,158 億美元(年增約 103%,預期 1,091 億)、資料中心 1,076 億;Q4 指引 1,300 億±3% 高於預期 1,251 億,FY28 成長展望由 70% 上調至 75%。盤後 +4.8%",
-  "EarningsReaction": true
- },
- "RXT": {
+ "GOOGL": {
   "Type": "news",
-  "Catalyst": "11/17 公布高階主管任命(未見原文);疊加雲端族群隨 NVDA 財報走高。盤後 +6.0%",
+  "Catalyst": "Anthropic IPO 定價 83 美元高於區間,Alphabet 持約 18 億股,以定價換算約 1,494 億美元",
   "EarningsReaction": false
  },
- "SVRA": {
-  "Type": "FDA",
-  "Catalyst": "MOLBREEVI PDUFA 日 11/22(4 月已公布),屬事前卡位;查無 11/17 新聞。盤後 +4.5%",
-  "EarningsReaction": false
- },
- "MPU": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞。盤後 +9.4%",
-  "EarningsReaction": false
- },
- "STUB": {
-  "Type": "momentum",
-  "Catalyst": "查無 11/17 新聞(Q3 財報為 11/10 舊聞)。盤後 +8.1%",
-  "EarningsReaction": false
- },
- "ASST": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞(比特幣庫藏股)。盤後 +5.3%",
-  "EarningsReaction": false
- },
- "FLNC": {
-  "Type": "momentum",
-  "Catalyst": "查無 11/17 新聞;FY26 財報排在 11/23。盤後 +4.5%",
-  "EarningsReaction": false
- },
- "OUST": {
-  "Type": "momentum",
-  "Catalyst": "查無 11/17 新聞;11/18 出席 ROTH 會議。盤後 +4.4%",
-  "EarningsReaction": false
- },
- "CUE": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞。盤後 +9.9%",
-  "EarningsReaction": false
- },
- "PEPG": {
-  "Type": "momentum",
-  "Catalyst": "查無 11/17 新聞;11/11 前後 1.25 億美元增發為舊聞。盤後 +8.1%",
-  "EarningsReaction": false
- },
- "ASTS": {
-  "Type": "momentum",
-  "Catalyst": "查無 11/17 個股新聞,隨風險偏好回升。盤後 +6.7%",
-  "EarningsReaction": false
- },
- "ALHC": {
-  "Type": "momentum",
-  "Catalyst": "查無 11/17 個股新聞。盤後 -5.0%",
-  "EarningsReaction": false
- },
- "GEMI": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞(加密族群)。盤後 +4.4%",
-  "EarningsReaction": false
- },
- "JOBY": {
-  "Type": "momentum",
-  "Catalyst": "查無 11/17 新聞;11/4 空軍合約擴至約 3,700 萬美元為舊聞。盤後 +4.1%",
-  "EarningsReaction": false
- },
- "SATL": {
-  "Type": "momentum",
-  "Catalyst": "查無 11/17 新聞(Q3 為 11/10 舊聞),太空股隨風險偏好走高。盤後 +6.4%",
-  "EarningsReaction": false
- },
- "RDW": {
-  "Type": "momentum",
-  "Catalyst": "查無 11/17 新聞(11/5 DARPA 2,000 萬美元合約為舊聞)。盤後 +5.0%",
-  "EarningsReaction": false
- },
- "RXRX": {
-  "Type": "momentum",
-  "Catalyst": "查無 11/17 新聞。盤後 +5.2%",
-  "EarningsReaction": false
- },
- "USAR": {
-  "Type": "momentum",
-  "Catalyst": "查無 11/17 新聞(Q3 財報為 11/9 舊聞)。盤後 +4.5%",
-  "EarningsReaction": false
- },
- "CAPR": {
-  "Type": "momentum",
-  "Catalyst": "查無 11/17 個股新聞。盤後 +4.3%",
-  "EarningsReaction": false
- },
- "GTM": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞。盤後 -5.1%",
-  "EarningsReaction": false
- },
- "PAVS": {
-  "Type": "momentum",
-  "Catalyst": "查無 11/17 個股新聞,11/17 盤前曾 +65% 後回吐。盤後 -9.8%",
-  "EarningsReaction": false
- },
- "TJX": {
-  "Type": "earnings",
-  "Catalyst": "11/18 盤前 Q3 營收 159.5 億美元(+6%)、同店 +4%,營收與獲利皆高於公司規劃;稀釋 EPS 1.39(含關稅退款,調整後 1.34),全年同店 +4%、EPS 5.33-5.36。盤前 +6%",
-  "EarningsReaction": true
- },
- "TTWO": {
+ "AMZN": {
   "Type": "news",
-  "Catalyst": "GTA VI 今晚午夜上市,Sensor Tower 11/11 估數位預購逾 10 億美元、約 1,031 萬套,連跌兩日後反彈。盤前 +5%",
+  "Catalyst": "Anthropic 以 83 美元定價今日掛牌,亞馬遜持有約 19.2 億股、持股約 14.7%",
   "EarningsReaction": false
  },
- "JMIA": {
-  "Type": "guidance",
-  "Catalyst": "11/18 盤前 Q3 營收 6,070 萬美元(年增 33%)優於預期,但全年 GMV 成長下修至 16-18%(原 20-30%),Q4 由損益兩平改為虧損 400-800 萬。盤前 −18%",
-  "EarningsReaction": true
- },
- "PONY": {
-  "Type": "earnings",
-  "Catalyst": "11/18 盤前 Q3 營收 4,460 萬美元(年增 75%),Robotaxi 營收 +165%、車隊 2,768 輛,維持年底 3,500 輛目標。盤前 +9%",
-  "EarningsReaction": true
- },
- "ZIM": {
-  "Type": "M&A",
-  "Catalyst": "Hapag-Lloyd 每股 35 美元現金收購案待完成(今日公告原申請終止、將重新送件,目標 2027 年 Q1 完成),股價由併購價差主導;同日 Q3 稀釋 EPS 6.88 美元、營收 27.1 億(+53%)。盤前 +4%",
+ "TSM": {
+  "Type": "news",
+  "Catalyst": "隨 Anthropic 掛牌帶動半導體上漲;路透:台積電依美國新規暫停中國客戶 16 奈米以下訂單",
   "EarningsReaction": false
  },
- "BORR": {
+ "VRT": {
+  "Type": "contract",
+  "Catalyst": "Anthropic IPO 帶動 AI 基建;另有與 Solenis、Dow 合作液冷方案(報導最早見於 10 月底)",
+  "EarningsReaction": false
+ },
+ "CRWD": {
+  "Type": "news",
+  "Catalyst": "無個股新聞,隨 PANW 財報上修指引帶動資安族群上漲;12/1 盤後財報",
+  "EarningsReaction": false
+ },
+ "SLS": {
+  "Type": "news",
+  "Catalyst": "每股 13 美元增資 1.5 億美元,較前收折價約 28%",
+  "EarningsReaction": false
+ },
+ "INHD": {
+  "Type": "news",
+  "Catalyst": "11/18 盤後 8-K:遷冊至英屬維京群島並更名 EverCircle(1:1 換股),無基本面利多;社群傳借券枯竭(未證實)。盤後 +75%",
+  "EarningsReaction": false
+ },
+ "GMM": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞;Q3 財報排在今日盤後公布,屬報前卡位。盤前 +7%",
-  "EarningsReaction": false
- },
- "SBSW": {
-  "Type": "macro",
-  "Catalyst": "貴金屬族群連動:美元走強、升息預期升溫,現貨金跌約 2.4% 至 3,760 美元、銀跌約 3.5% 至 45.7 美元,查無個股新聞。盤前 −6%",
-  "EarningsReaction": false
- },
- "AG": {
-  "Type": "macro",
-  "Catalyst": "貴金屬族群連動:美元走強、升息預期升溫,現貨金跌約 2.4% 至 3,760 美元、銀跌約 3.5% 至 45.7 美元,銀礦股承壓,查無個股新聞。盤前 −5%",
-  "EarningsReaction": false
- },
- "CDE": {
-  "Type": "macro",
-  "Catalyst": "貴金屬族群連動:美元走強、升息預期升溫,現貨金跌約 2.4% 至 3,760 美元、銀跌約 3.5% 至 45.7 美元,查無個股新聞。盤前 −4%",
-  "EarningsReaction": false
- },
- "NEM": {
-  "Type": "macro",
-  "Catalyst": "貴金屬族群連動:美元走強、升息預期升溫,現貨金跌約 2.4% 至 3,760 美元、銀跌約 3.5% 至 45.7 美元,CNBC 盤前異動點名,金價為 2025 年 9 月以來低點。盤前 −3%",
-  "EarningsReaction": false
- },
- "FCX": {
-  "Type": "macro",
-  "Catalyst": "金屬價格全面走弱(金、銀、銅),CNBC 盤前異動點名;查無個股新聞。盤前 −2.5%",
+  "Catalyst": "無新稿;11/16 公告經基金間接投資 Anthropic,今日 Anthropic 掛牌社群再炒作。盤前 +31%",
   "EarningsReaction": false
  },
  "NCPL": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞(僅律所集體訴訟通知)。盤前 +9%",
+  "Catalyst": "查無公司新聞,僅律所集體訴訟通知;小型股連漲延續。盤前 +12%",
   "EarningsReaction": false
  },
- "TGL": {
-  "Type": "earnings",
-  "Catalyst": "11/17 公布 FQ1 營收 221 萬美元(年增約 11 倍)、轉盈 178 萬美元;11/16 起 1 拆 24 反分割。盤前 +4%",
-  "EarningsReaction": true
- },
- "WYHG": {
+ "AKAN": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞。盤前 +7%",
+  "Catalyst": "查無個股新聞,前波暴漲後回吐。盤前 −7%",
   "EarningsReaction": false
  },
- "LOW": {
-  "Type": "earnings",
-  "Catalyst": "11/18 盤前 Q3 營收 228 億美元(+9.3%)、調整後 EPS 3.10(含約 0.34 關稅退款),全年營收預估上調至 925 億,但 EPS 預估維持 12.25、營業利益率預估下修、毛利率年減 1.2 個百分點。盤前 −4.7%",
-  "EarningsReaction": true
- },
- "TGT": {
-  "Type": "earnings",
-  "Catalyst": "11/18 盤前 Q3 營收 271 億美元(+7.1%)、同店 +5.6%,EPS 2.65 美元但含 0.50 一次性關稅退款(扣除約 2.15),全年預估上調。盤前 −1.7%(各報價方向不一)",
-  "EarningsReaction": true
- },
- "SQM": {
-  "Type": "earnings",
-  "Catalyst": "11/17 盤後 Q3 淨利 5.44 億美元(年增 205%),但調整後淨利 10.3 億低於預期 11.1 億,並警告 Q4 鋰實現價格明顯低於 Q3。盤前 −1.7%",
-  "EarningsReaction": true
- },
- "ROST": {
-  "Type": "news",
-  "Catalyst": "同業 TJX 11/18 盤前 Q3 營收與同店 +4% 高於公司規劃,帶動折扣零售族群;ROST 本身 11/20 才公布。盤前 +3%",
+ "GP": {
+  "Type": "momentum",
+  "Catalyst": "查無新聞,11/12 大漲 174% 後回吐;11/16 6-K 揭露現金僅 39 萬美元、違反貸款契約。盤後 −5.6%",
   "EarningsReaction": false
  },
- "RIO": {
-  "Type": "news",
-  "Catalyst": "BHP、力拓高層週五將與中國總理李強會面,鐵礦砂價格談判緊張;疊加金屬價格走弱。盤前 −3%",
+ "MU": {
+  "Type": "macro",
+  "Catalyst": "Anthropic IPO 帶動記憶體族群;CNBC 提德州恢復資料中心許可審查",
   "EarningsReaction": false
  },
- "BHP": {
+ "NBIS": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨 Anthropic IPO 帶動算力租賃族群上漲",
+  "EarningsReaction": false
+ },
+ "CRWV": {
+  "Type": "macro",
+  "Catalyst": "查無當日個股新聞;隨 Anthropic IPO 帶動算力租賃族群,Anthropic 為既有客戶(4 月合約)",
+  "EarningsReaction": false
+ },
+ "IREN": {
+  "Type": "macro",
+  "Catalyst": "AI 雲端/礦商族群連動:Anthropic(ANT)IPO 定價每股 83 美元、高於 70–78 美元區間,募資約 813 億美元創史上最大,今日 Nasdaq 掛牌,帶動 AI 交易回溫、那指期貨約 +2%;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "APLD": {
+  "Type": "macro",
+  "Catalyst": "AI 資料中心族群連動:Anthropic(ANT)IPO 定價每股 83 美元、高於 70–78 美元區間,募資約 813 億美元創史上最大,今日 Nasdaq 掛牌,帶動 AI 交易回溫、那指期貨約 +2%;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "CIFR": {
+  "Type": "macro",
+  "Catalyst": "礦商轉 AI族群連動:Anthropic(ANT)IPO 定價每股 83 美元、高於 70–78 美元區間,募資約 813 億美元創史上最大,今日 Nasdaq 掛牌,帶動 AI 交易回溫、那指期貨約 +2%;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "WULF": {
+  "Type": "macro",
+  "Catalyst": "礦商轉 AI族群連動:Anthropic(ANT)IPO 定價每股 83 美元、高於 70–78 美元區間,募資約 813 億美元創史上最大,今日 Nasdaq 掛牌,帶動 AI 交易回溫、那指期貨約 +2%;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "RIOT": {
+  "Type": "macro",
+  "Catalyst": "比特幣礦商族群連動:Anthropic(ANT)IPO 定價每股 83 美元、高於 70–78 美元區間,募資約 813 億美元創史上最大,今日 Nasdaq 掛牌,帶動 AI 交易回溫、那指期貨約 +2%;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "MARA": {
+  "Type": "macro",
+  "Catalyst": "比特幣礦商族群連動:Anthropic(ANT)IPO 定價每股 83 美元、高於 70–78 美元區間,募資約 813 億美元創史上最大,今日 Nasdaq 掛牌,帶動 AI 交易回溫、那指期貨約 +2%;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "COHR": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨 Anthropic IPO 定價 83 美元帶動 AI 光通訊族群上漲",
+  "EarningsReaction": false
+ },
+ "AXTI": {
+  "Type": "macro",
+  "Catalyst": "光通訊材料族群連動:Anthropic(ANT)IPO 定價每股 83 美元、高於 70–78 美元區間,募資約 813 億美元創史上最大,今日 Nasdaq 掛牌,帶動 AI 交易回溫、那指期貨約 +2%;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "AAOI": {
+  "Type": "macro",
+  "Catalyst": "光通訊族群連動:Anthropic(ANT)IPO 定價每股 83 美元、高於 70–78 美元區間,募資約 813 億美元創史上最大,今日 Nasdaq 掛牌,帶動 AI 交易回溫、那指期貨約 +2%;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "SKHY": {
+  "Type": "macro",
+  "Catalyst": "Anthropic IPO 定價 83 美元、募資 813 億美元,帶動記憶體族群;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "SNDK": {
   "Type": "news",
-  "Catalyst": "BHP、力拓高層週五將與中國總理李強會面,鐵礦砂價格談判緊張;疊加金屬價格走弱。盤前 −3%",
+  "Catalyst": "Anthropic IPO 帶動記憶體族群;1 拆 8 股票分割 11/20 開盤生效",
+  "EarningsReaction": false
+ },
+ "POET": {
+  "Type": "macro",
+  "Catalyst": "光通訊族群連動:Anthropic(ANT)IPO 定價每股 83 美元、高於 70–78 美元區間,募資約 813 億美元創史上最大,今日 Nasdaq 掛牌,帶動 AI 交易回溫、那指期貨約 +2%;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "MRVL": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨 Anthropic IPO 帶動半導體族群,Investing.com 列為盤前漲逾 4%",
+  "EarningsReaction": false
+ },
+ "NVTS": {
+  "Type": "macro",
+  "Catalyst": "AI 電源族群連動:Anthropic(ANT)IPO 定價每股 83 美元、高於 70–78 美元區間,募資約 813 億美元創史上最大,今日 Nasdaq 掛牌,帶動 AI 交易回溫、那指期貨約 +2%;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "INTC": {
+  "Type": "news",
+  "Catalyst": "陳立武宣布 18A 製程拿下首家外部客戶(18A-P),微軟擴大合作;Anthropic IPO 帶動族群",
+  "EarningsReaction": false
+ },
+ "DELL": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨 Anthropic IPO 定價 83 美元帶動 AI 伺服器族群上漲",
+  "EarningsReaction": false
+ },
+ "SMCI": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨 Anthropic IPO 定價 83 美元帶動 AI 伺服器族群上漲",
+  "EarningsReaction": false
+ },
+ "HOOD": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨 Anthropic IPO 帶動科技與散戶券商族群上漲",
+  "EarningsReaction": false
+ },
+ "MSTR": {
+  "Type": "macro",
+  "Catalyst": "Monness Crespi 降評至賣出;股價仍隨 Anthropic IPO 帶動的科技股漲勢走高",
+  "EarningsReaction": false
+ },
+ "ASTS": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨 Anthropic IPO 帶動高成長股上漲,空單比例約 36%",
+  "EarningsReaction": false
+ },
+ "RKLB": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨 Anthropic IPO 帶動高成長科技股上漲",
+  "EarningsReaction": false
+ },
+ "QBTS": {
+  "Type": "macro",
+  "Catalyst": "量子族群連動:Anthropic(ANT)IPO 定價每股 83 美元、高於 70–78 美元區間,募資約 813 億美元創史上最大,今日 Nasdaq 掛牌,帶動 AI 交易回溫、那指期貨約 +2%;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "IONQ": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨 Anthropic IPO 帶動量子與 AI 高成長股上漲",
+  "EarningsReaction": false
+ },
+ "ACHR": {
+  "Type": "macro",
+  "Catalyst": "eVTOL族群連動:Anthropic(ANT)IPO 定價每股 83 美元、高於 70–78 美元區間,募資約 813 億美元創史上最大,今日 Nasdaq 掛牌,帶動 AI 交易回溫、那指期貨約 +2%;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "ASST": {
+  "Type": "macro",
+  "Catalyst": "加密庫存族群連動:Anthropic(ANT)IPO 定價每股 83 美元、高於 70–78 美元區間,募資約 813 億美元創史上最大,今日 Nasdaq 掛牌,帶動 AI 交易回溫、那指期貨約 +2%;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "BMNR": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨 Anthropic IPO 帶動科技與加密相關股上漲",
+  "EarningsReaction": false
+ },
+ "NVDA": {
+  "Type": "macro",
+  "Catalyst": "Anthropic IPO 定價 83 美元、募資 813 億美元創紀錄,帶動 AI 晶片族群;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "AMD": {
+  "Type": "macro",
+  "Catalyst": "OpenAI 稱其模型讓 AMD 旗艦 GPU 設計最多改善 14%;Anthropic IPO 帶動 AI 族群",
+  "EarningsReaction": false
+ },
+ "AVGO": {
+  "Type": "macro",
+  "Catalyst": "Anthropic IPO 定價 83 美元、募資 813 億美元創紀錄,帶動 AI 晶片族群;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "STX": {
+  "Type": "macro",
+  "Catalyst": "Anthropic IPO 定價 83 美元、募資 813 億美元,帶動儲存族群;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "WDC": {
+  "Type": "macro",
+  "Catalyst": "Anthropic IPO 定價 83 美元、募資 813 億美元,帶動儲存族群;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "ALAB": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨 Anthropic IPO 定價 83 美元、募資 813 億美元帶動 AI 網通族群上漲",
+  "EarningsReaction": false
+ },
+ "ARM": {
+  "Type": "macro",
+  "Catalyst": "Anthropic IPO 定價 83 美元、募資 813 億美元,帶動 AI 晶片族群;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "PLTR": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨 Anthropic IPO 定價 83 美元帶動 AI 軟體族群上漲",
+  "EarningsReaction": false
+ },
+ "COIN": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞;隨 Anthropic IPO 帶動科技股風險偏好,比特幣約 6.3 萬美元持平",
+  "EarningsReaction": false
+ },
+ "LRCX": {
+  "Type": "macro",
+  "Catalyst": "Anthropic IPO 帶動半導體族群,設備股盤前各漲逾 4%;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "AMAT": {
+  "Type": "macro",
+  "Catalyst": "Anthropic IPO 帶動半導體族群,設備股盤前各漲逾 4%;查無個股新聞",
   "EarningsReaction": false
  }
 }
