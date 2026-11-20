@@ -389,14 +389,12 @@
  },
  "_daily_review_2026_08_24": "四個在役 setup 全部走完條件表,今日零合格標的 —— 這是條件表正常運作的結果,不是找不到東西。今日候選以微型股籌碼行情(SDOT/PMI/DXST/OLOX/PUSA)與光通訊稀釋利空連動(AAOI 震央 + AXTI/COHR/LITE 跟跌)為主,兩類都不在任何 setup 的機制範圍內。本次新增:為每個 setup 補上預先註冊的 kill criteria(先前為 null),避免事後才畫線。",
  "daily_review": {
-  "date": "2026-11-05",
-  "summary": "setup 審視:無調整。今日候選 contract_fade ELPW、dtc_fade ULCC;beatdip 候補 FIG。",
+  "date": "2026-11-20",
+  "summary": "setup 審視:無調整。今日 beatdip 候選 ROST、BJ(半倉);INTU 屬殺指引排除;dtc_fade 形狀合格的 WRD/BSP 有真利多跳過。",
   "notes": [
-   "9/15 VERA dtc_fade 對帳待 verify 收錄(VERA 9/15 有真臨床利多,前提錯誤已於昨日記錄);9/14 RUM 同待收錄。dtc_fade live 仍 n=8 / −3.74R。",
-   "今日 EPM 形狀合格(DTC 6.4、盤後 +4.6%)但主動跳過:財報淨利轉正 + 配息為真利多,且盤前 08:35 已回到 −0.3%(gap 消化)。這是流程濾網第一次實際擋單。",
-   "模型:small 層連兩日正向偏差 → refit 完成,盲測 44.2%(前 44.6%),係數與 spike 模型皆更新;9/15 verify 命中僅 22%(n=27,MAE 12.7),主因 VEEA(+93)/BDRX/NAMI 等微型股樂透帶 — 質化層對它們 adj=0 是對的(加值 +0.18)。",
-   "9/15 Daily Case FPS up 命中(+9.5%,盤中最高 +15.5%);9/16 選 NOK up(首評 + 指數納入 + AI-RAN)。今日 FOMC,ideas 空手。",
-   "2026-11-05 verify 11/4:命中 42%、無 drift。RUN 11/4 當日財報前 dtc_fade 的對帳待 verify 收錄。"
+   "11/19 Daily Case PANW up 命中(+6.4%)。",
+   "verify 11/19:big/mid 層連兩日負偏差觸發 MODEL-DRIFT → refit 完成,盲測 hit 45.5%(前 45.7%),係數與 spike 模型更新;質化層 11/19 減值 −0.25。",
+   "BJ 毛利率年減 170bp,屬 SNX 案例記錄的「獲利品質惡化」型 — 該過濾未回測,照規則列出,作驗證樣本。"
   ]
  }
 }
