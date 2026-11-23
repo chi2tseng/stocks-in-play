@@ -1,287 +1,412 @@
 {
- "INTU": {
-  "Type": "earnings",
-  "Catalyst": "FQ1 調整後 EPS 2.91 美元(預期 2.46)、營收 43.5 億(預期 43.1 億),但 FQ2 營收指引 49.3–49.5 億低於預期 51.1 億、FY27 營收下修(Credit Karma 放緩);另以 36.8 億美元出售 Mailchimp。盤前 −8%",
-  "EarningsReaction": true
- },
- "ROST": {
-  "Type": "earnings",
-  "Catalyst": "FQ3 EPS 1.91 美元(預期約 1.82)、營收 62.6 億(+12%)、同店 +8%,全年 EPS 上修至 8.75–8.84;但 Q4 EPS 指引 2.16–2.25 低於預期 2.28。盤前 −5.5%",
-  "EarningsReaction": true
- },
- "BJ": {
-  "Type": "earnings",
-  "Catalyst": "FQ3 調整後 EPS 1.73 美元(預期 1.26)、營收 62.8 億(預期 59.4 億)、同店(不含油)+4.1%,全年 EPS 上修至 5.10–5.30;商品毛利率 −170bp。盤前 −5%",
-  "EarningsReaction": true
- },
- "WRD": {
-  "Type": "earnings",
-  "Catalyst": "文遠知行 Q3 營收 3.215 億人民幣(+88%)、毛利率 43%,Robotaxi 營收首破 1 億人民幣、海外營收 +171.5%。盤前 +4%",
-  "EarningsReaction": true
- },
- "GAP": {
-  "Type": "earnings",
-  "Catalyst": "Gap 季度 EPS 0.82 美元優於預期 0.78,營收小幅不及。盤前 +3.5%",
-  "EarningsReaction": true
- },
- "BSP": {
+ "ZS": {
   "Type": "M&A",
-  "Catalyst": "Bending Spoons 以 36.8 億美元(現金 33.1 億+股票 3.68 億)向 Intuit 收購 Mailchimp,預計 2027 年初完成。盤後 +5%",
+  "Catalyst": "CrowdStrike 11/23 宣布全股票收購:每股 ZS 換 1.135 股 CRWD(隱含 260.41 美元、溢價 34%),企業價值 439 億美元;同日 FQ1 營收 9.493 億美元(+20%)、撤回財測。盤前 +15%",
   "EarningsReaction": false
  },
- "BILL": {
+ "CRWD": {
   "Type": "M&A",
-  "Catalyst": "TPG 以每股 63.25 美元、約 60 億美元現金收購 BILL。盤前 −3.6%(現金收購案,股價貼近收購價)",
+  "Catalyst": "宣布以 439 億美元全股票收購 Zscaler(合併後原股東持股 84.1%);同日 FQ3 營收 15.8 億美元(+28%)、每股盈餘 0.34 美元優於財測、上修 FY27 財測。盤前 −8.6%",
   "EarningsReaction": false
  },
- "AMD": {
+ "NVDA": {
   "Type": "news",
-  "Catalyst": "Hunterbrook 11/19 宣布放空 AMD,質疑 AI 客戶融資、中國浪潮(IEIT)被列黑名單後仍取得韌體,AMD 否認;11/19 收 −7.7%,盤前再 −6.5%;另受11/19 美股盤中反轉(標普 −2%、拖累",
-  "EarningsReaction": false
- },
- "TSM": {
-  "Type": "policy",
-  "Catalyst": "美國新規收緊晶圓代工審查、傳台積電限制中國 IC 設計客戶下單;台股 11/20 −6.2%、單週 −17.5%。ADR 盤前 −5.5%",
-  "EarningsReaction": false
- },
- "ANT": {
-  "Type": "news",
-  "Catalyst": "Anthropic 掛牌次日回吐:IPO 定價 83 美元,11/19 首日開 111.50、收 97.17(+17%),盤前再 −6~−10%,AI 族群利多出盡",
-  "EarningsReaction": false
- },
- "SNDK": {
-  "Type": "news",
-  "Catalyst": "TrendForce 警告 2027 年 NAND 價格可能轉弱(部分因中國雲端業者砍單);11/19 完成 1 拆 8。盤前 −7%",
-  "EarningsReaction": false
- },
- "MRVL": {
-  "Type": "analyst",
-  "Catalyst": "Stifel 目標價 370→280 美元;另隨 AI 晶片族群下跌。盤前 −5.3%",
-  "EarningsReaction": false
- },
- "WDC": {
-  "Type": "analyst",
-  "Catalyst": "Arete 目標價 650→693 美元(偏多),但隨記憶體/儲存族群下跌;前一日 +8%。盤前 −5.6%",
-  "EarningsReaction": false
- },
- "CRWV": {
-  "Type": "news",
-  "Catalyst": "黃仁勳夫婦基金會承諾向 CoreWeave 採購 3.5 億美元算力,引發循環融資疑慮;隨 neocloud 族群盤前 −5.9%",
-  "EarningsReaction": false
- },
- "SPCX": {
-  "Type": "news",
-  "Catalyst": "SpaceX 11/19 發行 320 億美元公司債(最大一檔 252 億、殖利率 8.26%)購買 NVDA 晶片,引發 AI 債務疑慮;太空股回落,盤前 −6%",
-  "EarningsReaction": false
- },
- "USAR": {
-  "Type": "analyst",
-  "Catalyst": "William Blair 由 Outperform 降至 Market Perform;11/19 曾因董事長買股約 300 萬美元上漲。盤前 −4.2%",
+  "Catalyst": "川普 11/22 在 Truth Social 呼籲董事會重新聘回 11/12 請辭的黃仁勳,財長 Bessent 口氣轉軟;Kalshi 回任機率升到 16%。上週跌逾 20%(11/20 −14%)後盤前 +8.7%",
   "EarningsReaction": false
  },
  "CAPR": {
   "Type": "FDA",
-  "Catalyst": "deramiocel(DMD)PDUFA 決定日 11/22(週六),今日屬決定前卡位;Roth 認為 11/22 前獲批機率低。盤前 +11%",
+  "Catalyst": "11/20 盤後 FDA 對杜氏肌肉失養症細胞療法 deramiocel 發出第二封完全回應函(CRL),指療效證據不足;B. Riley 降評至中立,現金約 1.985 億美元。盤前 −72%",
   "EarningsReaction": false
  },
- "CBRS": {
+ "UUUU": {
   "Type": "news",
-  "Catalyst": "Barron's 報導做空機構 Culper 稱 Cerebras 晶圓約 2 年失效(公司駁斥,報告約 3 週前發布);隨 AI 晶片族群盤前 −4.8%",
+  "Catalyst": "11/23 宣布 White Mesa 廠 2026 年 12 月至 2027 年第一季加工約 100 萬磅鈾;2027 年長約交貨 111 萬磅(+35%),Pinyon Plain 成本約每磅 23 美元。盤前 +9.3%",
   "EarningsReaction": false
  },
- "BE": {
-  "Type": "analyst",
-  "Catalyst": "BMO 11/19 升評 Outperform 但目標價 260→230;股價距 6 月高點 −51%,隨 AI 電力族群盤前 −7%",
+ "SKHY": {
+  "Type": "news",
+  "Catalyst": "市場傳聞軟銀曾評估以 1 兆美元收購 SK 海力士(MT Newswires 11/23,未證實);記憶體族群跌深反彈,ADR 盤前 +8.9%(Kospi 當日 −3.3%)",
+  "EarningsReaction": false
+ },
+ "TSM": {
+  "Type": "macro",
+  "Catalyst": "查無個股新聞。台股上週 −17.5%(1990 年來最差單週)後 11/23 收 +2.2%、台灣限制放空護盤;ADR 11/20 −9.5% 後盤前 +7.3%",
+  "EarningsReaction": false
+ },
+ "RXRX": {
+  "Type": "momentum",
+  "Catalyst": "舊聞餘波:11/18 宣布 REC-4881(家族性腺瘤性息肉症)三期設計與 FDA 取得共識(約 200 人、2027 下半年啟動);今日查無新消息,隨小型生技反彈。盤前 +6.9%",
+  "EarningsReaction": false
+ },
+ "XPEV": {
+  "Type": "news",
+  "Catalyst": "11/23 在巴黎開放輔助駕駛試乘,飛行汽車子公司 ARIDGE A868 完成傾轉旋翼轉換飛行。盤前 +7.6%",
+  "EarningsReaction": false
+ },
+ "GLXY": {
+  "Type": "news",
+  "Catalyst": "11/20 盤後申報:執行長 Novogratz 買進約 41.5 萬股、共 486.9 萬美元(均價約 11.73 美元);比特幣回到約 61,300 美元。盤前 +9.8%",
+  "EarningsReaction": false
+ },
+ "SLS": {
+  "Type": "news",
+  "Catalyst": "11/20 盤後完成增資:1,327 萬股、每股 13 美元,共 1.725 億美元;11/17 REGAL 三期數據(中位存活 24 個月 vs 14.7 個月)帶動上週 +74%。盤後 +4%",
+  "EarningsReaction": false
+ },
+ "FRMI": {
+  "Type": "news",
+  "Catalyst": "德州商業法院支持公司 70% 絕對多數章程條款(11/21 報導,反對方將上訴)。盤後 +7%",
+  "EarningsReaction": false
+ },
+ "MEDS": {
+  "Type": "momentum",
+  "Catalyst": "舊聞餘波:11/19 宣布向 Todos 破產財團收購 TBIA 癌症血檢資產(金額未揭露),11/20 收漲 84%,今日查無新消息。盤前 +67%",
   "EarningsReaction": false
  },
  "AKAN": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞,僅列入盤前漲幅榜;昨盤後 −11%、今盤前 +45%,低價股投機波動",
+  "Catalyst": "查無個股新聞;11/20 盤前大漲後盤後回吐 −7%,低價股投機波動",
   "EarningsReaction": false
  },
- "FGI": {
+ "LFST": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞,小型股投機波動",
+  "Catalyst": "查無 11/20 之後的個股新聞(最近一則為 11/9–12 股東釋股 4,500 萬股)。盤後 −4.6%",
   "EarningsReaction": false
  },
- "INHD": {
+ "CLBT": {
   "Type": "momentum",
-  "Catalyst": "查無個股新聞,小型股投機波動",
+  "Catalyst": "查無 11/20 之後的個股新聞。盤後 +4.3%",
   "EarningsReaction": false
  },
- "OMH": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞,小型股投機波動",
-  "EarningsReaction": false
- },
- "PURR": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞,小型股投機波動",
-  "EarningsReaction": false
- },
- "NUAI": {
-  "Type": "momentum",
-  "Catalyst": "查無個股新聞,小型股投機波動",
-  "EarningsReaction": false
- },
- "NBIS": {
+ "ITUB": {
   "Type": "macro",
-  "Catalyst": "AI 雲端族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+  "Catalyst": "查無個股新聞,隨新興市場/巴西類股反彈。盤後 +4.6%",
   "EarningsReaction": false
  },
- "IREN": {
-  "Type": "macro",
-  "Catalyst": "AI 雲端/礦商族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+ "ALM": {
+  "Type": "momentum",
+  "Catalyst": "查無個股催化劑,隨戰略金屬族群反彈。盤後 +4.5%",
   "EarningsReaction": false
  },
- "APLD": {
-  "Type": "macro",
-  "Catalyst": "AI 資料中心族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+ "RKLB": {
+  "Type": "momentum",
+  "Catalyst": "太空族群跌深反彈(上週 −26%);11/23 財務長稱 Electron 火箭報價半年內將明顯上漲。盤前 +9.6%",
   "EarningsReaction": false
  },
- "CIFR": {
+ "ASTS": {
+  "Type": "momentum",
+  "Catalyst": "查無新消息,太空族群跌深反彈;11/20 盤中曾獲分析師升評(舊聞)。盤前 +9.8%",
+  "EarningsReaction": false
+ },
+ "RDW": {
+  "Type": "momentum",
+  "Catalyst": "查無新消息,太空族群反彈;11/19 獲 1,500 萬美元太陽能板合約(舊聞)。盤前 +8.5%",
+  "EarningsReaction": false
+ },
+ "OKLO": {
+  "Type": "momentum",
+  "Catalyst": "核能族群跌深反彈;11/20 Guggenheim 升評買進、目標價 38 美元(舊聞)。盤前 +6.9%",
+  "EarningsReaction": false
+ },
+ "USAR": {
+  "Type": "momentum",
+  "Catalyst": "稀土族群跌深反彈,查無新消息;11/19 董事買進約 300 萬美元股票(舊聞)。盤前 +8.3%",
+  "EarningsReaction": false
+ },
+ "ONDS": {
+  "Type": "momentum",
+  "Catalyst": "查無新消息,隨高波動小型股反彈;11/20 與 Palantir 合辦國防活動(舊聞)。盤前 +8.2%",
+  "EarningsReaction": false
+ },
+ "QBTS": {
+  "Type": "momentum",
+  "Catalyst": "量子族群跌深反彈,查無新消息;11/19 財報後曾跌 27%。盤前 +8.1%",
+  "EarningsReaction": false
+ },
+ "SMR": {
+  "Type": "momentum",
+  "Catalyst": "核能族群跌深反彈(近一個月 −40%),查無新消息。盤前 +7.4%",
+  "EarningsReaction": false
+ },
+ "BE": {
+  "Type": "momentum",
+  "Catalyst": "AI 電力族群跌深反彈(上週 −26%),查無新消息。盤前 +6.8%",
+  "EarningsReaction": false
+ },
+ "HOOD": {
   "Type": "macro",
-  "Catalyst": "礦商轉 AI族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+  "Catalyst": "加密與科技股反彈:比特幣週末跌到 55,298 美元後回到約 61,300 美元(空單回補)。盤前 +7.1%",
+  "EarningsReaction": false
+ },
+ "CRCL": {
+  "Type": "macro",
+  "Catalyst": "隨加密族群反彈(比特幣週末跌到 55,298 美元後回到約 61,300 美元(空單回補));11/22 被列入阿布達比凍結令屬利空。盤前 +7.3%",
+  "EarningsReaction": false
+ },
+ "MSTR": {
+  "Type": "macro",
+  "Catalyst": "比特幣週末跌到 55,298 美元後回到約 61,300 美元(空單回補);11/30 遭 MSCI 剔除為 11/11 舊聞。盤前 +9.1%",
   "EarningsReaction": false
  },
  "WULF": {
   "Type": "macro",
-  "Catalyst": "礦商轉 AI族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
-  "EarningsReaction": false
- },
- "BTDR": {
-  "Type": "macro",
-  "Catalyst": "礦商轉 AI族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
-  "EarningsReaction": false
- },
- "COHR": {
-  "Type": "macro",
-  "Catalyst": "光通訊族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞(11/19 宣布 20 億美元庫藏股為前日消息)",
-  "EarningsReaction": false
- },
- "AXTI": {
-  "Type": "macro",
-  "Catalyst": "光通訊材料族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
-  "EarningsReaction": false
- },
- "AAOI": {
-  "Type": "macro",
-  "Catalyst": "光通訊族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞(11/18 宣布 5.5 億美元增發為舊聞)",
-  "EarningsReaction": false
- },
- "POET": {
-  "Type": "macro",
-  "Catalyst": "光通訊族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
-  "EarningsReaction": false
- },
- "GLW": {
-  "Type": "macro",
-  "Catalyst": "光通訊族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
-  "EarningsReaction": false
- },
- "CRDO": {
-  "Type": "macro",
-  "Catalyst": "AI 網通族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
-  "EarningsReaction": false
- },
- "ALAB": {
-  "Type": "macro",
-  "Catalyst": "AI 網通族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
-  "EarningsReaction": false
- },
- "NVTS": {
-  "Type": "macro",
-  "Catalyst": "AI 電源族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
-  "EarningsReaction": false
- },
- "FCEL": {
-  "Type": "macro",
-  "Catalyst": "AI 電力族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
-  "EarningsReaction": false
- },
- "VRT": {
-  "Type": "macro",
-  "Catalyst": "AI 基建族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
-  "EarningsReaction": false
- },
- "INTC": {
-  "Type": "macro",
-  "Catalyst": "半導體族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
-  "EarningsReaction": false
- },
- "ARM": {
-  "Type": "macro",
-  "Catalyst": "晶片 IP族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
-  "EarningsReaction": false
- },
- "MU": {
-  "Type": "macro",
-  "Catalyst": "記憶體族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+  "Catalyst": "礦商/AI 資料中心族群反彈;執行長 11/23 表示 Muskie 租約不急著簽。盤前 +7.9%",
   "EarningsReaction": false
  },
  "DELL": {
   "Type": "macro",
-  "Catalyst": "AI 伺服器族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+  "Catalyst": "AI 伺服器族群跌深反彈;11/24 盤後公布財報,今日屬財報前。盤前 +7.6%",
   "EarningsReaction": false
  },
  "SMCI": {
   "Type": "macro",
-  "Catalyst": "AI 伺服器族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞;Muddy Waters 做空 NVDA 報告點名前高管轉運案(舊案延燒)",
+  "Catalyst": "AI 伺服器族群跌深反彈(上週 −19.4%);上調 FY27 營收展望至 720–820 億美元是 11/3 隨財報公布的舊聞。盤前 +8.2%",
   "EarningsReaction": false
  },
- "UMC": {
+ "ARM": {
+  "Type": "news",
+  "Catalyst": "11/23 盤前公司發布新聞稿:執行長 Rene Haas 確認將長期留任、帶領下一階段成長(先前 FT 11/13 報導 Nvidia 曾接觸他);上週 −20.1% 後盤前 +9.4%",
+  "EarningsReaction": false
+ },
+ "NBIS": {
   "Type": "macro",
-  "Catalyst": "台灣半導體 ADR族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+  "Catalyst": "AI 雲端族群跌深反彈(上週約 −30%);美國收緊東南亞 AI 晶片出口屬利空。盤前 +9.8%",
+  "EarningsReaction": false
+ },
+ "CRWV": {
+  "Type": "macro",
+  "Catalyst": "AI 雲端族群跌深反彈(上週 −26%);東南亞 AI 晶片出口新管制、Jim Chanos 批評皆屬利空。盤前 +7.9%",
+  "EarningsReaction": false
+ },
+ "CRDO": {
+  "Type": "macro",
+  "Catalyst": "光通訊/AI 連接族群反彈;Stifel 11/20 目標價 310→250 美元(偏空)。盤前 +7.7%",
+  "EarningsReaction": false
+ },
+ "AXTI": {
+  "Type": "macro",
+  "Catalyst": "光通訊材料族群反彈,查無新消息(10/29 Q3 營收 7,340 萬美元為舊聞)。盤前 +8.2%",
+  "EarningsReaction": false
+ },
+ "INTC": {
+  "Type": "news",
+  "Catalyst": "執行長陳立武 11/18 透露已拿到首位 18A-P 製程客戶(CNBC;客戶與金額未揭露),11/22 再獲報導;隨半導體族群反彈。盤前 +5.9%",
+  "EarningsReaction": false
+ },
+ "TSLA": {
+  "Type": "news",
+  "Catalyst": "FSD V15 於 11/21 推送首批用戶,馬斯克稱 12 月大範圍推出(IBD);隨大型科技股反彈。盤前 +4.5%",
+  "EarningsReaction": false
+ },
+ "TXN": {
+  "Type": "analyst",
+  "Catalyst": "Cantor Fitzgerald 11/23 升評至加碼、目標價 385 美元。盤前 +4.6%",
+  "EarningsReaction": false
+ },
+ "ORCL": {
+  "Type": "news",
+  "Catalyst": "Oracle 11/20 透過 Reuters 表示已取得履行 OpenAI 合約所需全部資金(11 月籌資約 200 億美元);11/20 收跌近 9% 後隨 AI 族群反彈。盤前 +4.7%",
+  "EarningsReaction": false
+ },
+ "PANW": {
+  "Type": "analyst",
+  "Catalyst": "Phillip Securities 11/23 由中立升評買進、目標價 346→418 美元;同業 CrowdStrike 宣布 439 億美元收購 Zscaler。盤前 +4.6%",
+  "EarningsReaction": false
+ },
+ "UNH": {
+  "Type": "news",
+  "Catalyst": "查無 11/20 之後的新利空;延續上週跌勢 — CMS 11/16 提出稽核新規(業界每年可能被追回約 90 億美元)、11/18 單日 −10.2%;大盤反彈日資金撤出防禦股。盤前 −4.6%",
+  "EarningsReaction": false
+ },
+ "HUM": {
+  "Type": "news",
+  "Catalyst": "查無 11/20 之後的新利空;延續上週 CMS 稽核新規(11/16)後的跌勢,11/18 單日 −12.7%。盤前 −3.9%",
+  "EarningsReaction": false
+ },
+ "MU": {
+  "Type": "macro",
+  "Catalyst": "記憶體族群跌深反彈(SNDK/WDC/STX 盤前約 +6%);Barron's 11/23 列出反彈可延續的三個理由。盤前 +5.8%",
+  "EarningsReaction": false
+ },
+ "GOOGL": {
+  "Type": "macro",
+  "Catalyst": "隨大型科技股反彈;當日個股消息為 Waymo 召回自駕系統(封閉車道/人工指揮情境),屬利空。盤前 +5.8%",
+  "EarningsReaction": false
+ },
+ "AMD": {
+  "Type": "macro",
+  "Catalyst": "AI 晶片族群跌深反彈;Hunterbrook 放空報告為 11/19 舊聞。盤前 +4.8%",
+  "EarningsReaction": false
+ },
+ "AVGO": {
+  "Type": "macro",
+  "Catalyst": "AI 晶片族群跌深反彈,查無個股新聞。盤前 +5.7%",
+  "EarningsReaction": false
+ },
+ "SNDK": {
+  "Type": "macro",
+  "Catalyst": "記憶體族群跌深反彈;Morgan Stanley 11/23 目標價微調至 218 美元。盤前 +6.4%",
+  "EarningsReaction": false
+ },
+ "MRVL": {
+  "Type": "macro",
+  "Catalyst": "AI 晶片族群跌深反彈;Stifel 目標價 370→280 為 11/20 舊聞。盤前 +6.6%",
+  "EarningsReaction": false
+ },
+ "PLTR": {
+  "Type": "macro",
+  "Catalyst": "AI 軟體族群跌深反彈,查無個股新聞。盤前 +5.3%",
+  "EarningsReaction": false
+ },
+ "COIN": {
+  "Type": "macro",
+  "Catalyst": "比特幣週末跌到 55,298 美元後回到約 61,300 美元(空單回補),加密類股反彈。盤前 +4.8%",
+  "EarningsReaction": false
+ },
+ "NEM": {
+  "Type": "macro",
+  "Catalyst": "金價期貨反彈 3% 至 3,622 美元、白銀 +3.5%(上週跌到 14 個月低點),市場減碼聯準會升息押注。盤前 +5.6%",
   "EarningsReaction": false
  },
  "ASX": {
   "Type": "macro",
-  "Catalyst": "台灣半導體 ADR族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+  "Catalyst": "台灣半導體 ADR(台股 11/23 +2.2%)族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
   "EarningsReaction": false
  },
- "ASTS": {
+ "UMC": {
   "Type": "macro",
-  "Catalyst": "太空族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+  "Catalyst": "台灣半導體 ADR(台股 11/23 +2.2%)族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
   "EarningsReaction": false
  },
- "RKLB": {
+ "NVTS": {
   "Type": "macro",
-  "Catalyst": "太空族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+  "Catalyst": "功率半導體(11/20 −15%)族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
   "EarningsReaction": false
  },
- "RDW": {
+ "AAOI": {
   "Type": "macro",
-  "Catalyst": "太空族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+  "Catalyst": "光通訊(11/20 −7%)族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
   "EarningsReaction": false
  },
- "QBTS": {
+ "POET": {
   "Type": "macro",
-  "Catalyst": "量子族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+  "Catalyst": "光通訊族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
   "EarningsReaction": false
  },
- "QUBT": {
+ "ICHR": {
   "Type": "macro",
-  "Catalyst": "量子族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+  "Catalyst": "半導體設備族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
   "EarningsReaction": false
  },
- "ONDS": {
+ "IREN": {
   "Type": "macro",
-  "Catalyst": "無人機族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+  "Catalyst": "AI 雲端/礦商族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
   "EarningsReaction": false
  },
- "OUST": {
+ "APLD": {
   "Type": "macro",
-  "Catalyst": "光達族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+  "Catalyst": "AI 資料中心族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
   "EarningsReaction": false
  },
- "BB": {
+ "CIFR": {
   "Type": "macro",
-  "Catalyst": "科技族群連動:11/19 美股盤中反轉(標普 −2%、那指 −2.3%)延續,亞洲晶片股崩跌(台股 −6.2%、單週 −17.5% 為 1991 年來最差;KOSPI −5.2%、日經 −5.1%),那指期貨約 −1.6%;查無個股新聞",
+  "Catalyst": "礦商轉 AI族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
   "EarningsReaction": false
  },
- "KEP": {
+ "BTDR": {
   "Type": "macro",
-  "Catalyst": "KOSPI −5.2% 下資金轉向防禦型公用事業,韓電首爾收 +1.2%;查無個股新聞",
+  "Catalyst": "礦商族群跌深反彈,查無個股新聞:比特幣週末跌到 55,298 美元後回到約 61,300 美元(空單回補)",
+  "EarningsReaction": false
+ },
+ "NUAI": {
+  "Type": "momentum",
+  "Catalyst": "AI 資料中心小型股族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
+  "EarningsReaction": false
+ },
+ "MARA": {
+  "Type": "macro",
+  "Catalyst": "比特幣礦商族群跌深反彈,查無個股新聞:比特幣週末跌到 55,298 美元後回到約 61,300 美元(空單回補)",
+  "EarningsReaction": false
+ },
+ "HUT": {
+  "Type": "macro",
+  "Catalyst": "比特幣礦商族群跌深反彈,查無個股新聞:比特幣週末跌到 55,298 美元後回到約 61,300 美元(空單回補)",
+  "EarningsReaction": false
+ },
+ "BMNR": {
+  "Type": "macro",
+  "Catalyst": "以太幣庫藏股族群跌深反彈,查無個股新聞:比特幣週末跌到 55,298 美元後回到約 61,300 美元(空單回補)",
+  "EarningsReaction": false
+ },
+ "ASST": {
+  "Type": "macro",
+  "Catalyst": "比特幣庫藏股族群跌深反彈,查無個股新聞:比特幣週末跌到 55,298 美元後回到約 61,300 美元(空單回補)",
+  "EarningsReaction": false
+ },
+ "PURR": {
+  "Type": "macro",
+  "Catalyst": "加密庫藏股族群跌深反彈,查無個股新聞:比特幣週末跌到 55,298 美元後回到約 61,300 美元(空單回補)",
+  "EarningsReaction": false
+ },
+ "LUNR": {
+  "Type": "macro",
+  "Catalyst": "太空族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
+  "EarningsReaction": false
+ },
+ "IONQ": {
+  "Type": "macro",
+  "Catalyst": "量子族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
+  "EarningsReaction": false
+ },
+ "RGTI": {
+  "Type": "macro",
+  "Catalyst": "量子族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
+  "EarningsReaction": false
+ },
+ "CRML": {
+  "Type": "macro",
+  "Catalyst": "稀土族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
+  "EarningsReaction": false
+ },
+ "FLNC": {
+  "Type": "macro",
+  "Catalyst": "儲能族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
+  "EarningsReaction": false
+ },
+ "STAK": {
+  "Type": "momentum",
+  "Catalyst": "低價小型股族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
+  "EarningsReaction": false
+ },
+ "OMH": {
+  "Type": "momentum",
+  "Catalyst": "低價小型股族群跌深反彈,查無個股新聞:上週 AI 股遭拋售(那指 2020 年來最差單週、11/20 那指 −5.3%、標普連跌 7 天)後跌深反彈:亞洲官方護盤、市場減碼聯準會升息押注,那指期貨 +3.6%、標普期貨 +2.9%",
+  "EarningsReaction": false
+ },
+ "AU": {
+  "Type": "macro",
+  "Catalyst": "金銀礦族群反彈:金價期貨反彈 3% 至 3,622 美元、白銀 +3.5%(上週跌到 14 個月低點),市場減碼聯準會升息押注;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "HMY": {
+  "Type": "macro",
+  "Catalyst": "金銀礦族群反彈:金價期貨反彈 3% 至 3,622 美元、白銀 +3.5%(上週跌到 14 個月低點),市場減碼聯準會升息押注;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "AG": {
+  "Type": "macro",
+  "Catalyst": "金銀礦族群反彈:金價期貨反彈 3% 至 3,622 美元、白銀 +3.5%(上週跌到 14 個月低點),市場減碼聯準會升息押注;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "HL": {
+  "Type": "macro",
+  "Catalyst": "金銀礦族群反彈:金價期貨反彈 3% 至 3,622 美元、白銀 +3.5%(上週跌到 14 個月低點),市場減碼聯準會升息押注;查無個股新聞",
+  "EarningsReaction": false
+ },
+ "CDE": {
+  "Type": "macro",
+  "Catalyst": "金銀礦族群反彈:金價期貨反彈 3% 至 3,622 美元、白銀 +3.5%(上週跌到 14 個月低點),市場減碼聯準會升息押注;查無個股新聞",
   "EarningsReaction": false
  }
 }
